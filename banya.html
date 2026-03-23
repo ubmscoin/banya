@@ -942,7 +942,51 @@ time, space에 기록됨 (DATA에 쓰기 완료)</pre>
 괄호 구조:       DATA(1) + OPERATOR(1) = 2
 완전 기술:       7 + 2 = 9</pre>
 
-<p>2/9 = Compare 자유도(2) / 완전 기술 자유도(9). 이것이 코이데 각도, 카비보 각, CP 위상 5곳 이상 (코이데 각도, 카비보 각, theta_13, delta_PMNS, delta_CKM)에 동시에 나타나는 구조 상수다.</p>
+<h4>"완전 기술"이란</h4>
+
+<p>CAS 1건을 빠짐없이 전부 기술하는 데 필요한 독립 변수의 수다. CAS 내부만 보면 7개(1+2+4)다. 그러나 CAS는 혼자 존재하지 않는다. DATA(고전 괄호) 위에서 돌아야 한다. CAS의 내부(7)만으로는 "CAS가 어디서 도는지"가 빠진다. 괄호 구조 2개(DATA, OPERATOR)를 더해야 비로소 완전하다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>범위</th><th>변수 수</th><th>기술 대상</th></tr>
+<tr><td>CAS 내부</td><td>7</td><td>CAS가 <strong>어떻게</strong> 도는가 (Read, Compare, Swap의 내부 상태)</td></tr>
+<tr><td>괄호 구조</td><td>2</td><td>CAS가 <strong>어디서</strong> 도는가 (DATA 위인가, OPERATOR 안인가)</td></tr>
+<tr><td><strong>완전 기술</strong></td><td><strong>9</strong></td><td>더 필요한 것이 없다. 10번째 변수가 필요 없다</td></tr>
+</table>
+</div>
+
+<h4>2/9 — 구조 상수</h4>
+
+<p>2/9 = Compare 조건수(2) / 완전 기술 자유도(9). 이것이 세대 구조와 혼합을 결정하는 구조 상수다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>도출</th><th>공식</th><th>2/9 역할</th></tr>
+<tr><td>코이데 각도 θ</td><td>θ = 2/9</td><td>3세대 질량비 결정</td></tr>
+<tr><td>카비보 각</td><td>sin(θ_C) = (2/9)(1+πα/2)</td><td>쿼크 혼합 기저</td></tr>
+<tr><td>θ₁₃ PMNS</td><td>sin(θ₁₃) = 4/27 = (2/9)×(2/3)</td><td>뉴트리노 혼합</td></tr>
+<tr><td>δ_CKM CP 위상</td><td>arctan(5/2+α_s/π), 5=9-4</td><td>CP 위반</td></tr>
+<tr><td>δ_PMNS</td><td>π + (2/9)×δ_CKM</td><td>뉴트리노 CP</td></tr>
+</table>
+</div>
+
+<h4>왜 3세대인가 — CAS 3비트와 세대의 대응</h4>
+
+<p>CAS가 3단계(Read, Compare, Swap)이므로 3세대다. CAS에 4번째 단계가 없으므로 4세대가 없다. 비트 플래그(공리 5)로 보면 3비트 = 111 = CAS 완성이고, 4번째 비트가 들어갈 자리가 없다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>비트</th><th>CAS 단계</th><th>세대</th><th>조건수</th><th>입자</th></tr>
+<tr><td>001</td><td>Read</td><td>1세대</td><td>1</td><td>전자, up, down</td></tr>
+<tr><td>010</td><td>Compare</td><td>2세대</td><td>2</td><td>뮤온, charm, strange</td></tr>
+<tr><td>100</td><td>Swap</td><td>3세대</td><td>4</td><td>타우, top, bottom</td></tr>
+<tr><td><strong>111</strong></td><td><strong>CAS 완성</strong></td><td><strong>3세대 전부</strong></td><td><strong>7</strong></td><td></td></tr>
+</table>
+</div>
+
+<p>각 세대의 비트는 한 번 켜지면 꺼지지 않는다(공리 5, 순차 점화). 3세대(111)는 1세대(001)와 2세대(010)를 포함한다. 코이데 공식에서 3세대 질량이 1+2세대 질량을 포함하는 구조와 정확히 대응한다.</p>
+
+<p>2/9의 세대 해석: 2 = Compare 비트(010) = 2세대. 9 = 완전 기술. 2/9 = 2세대가 전체에서 차지하는 비율 = 세대 간 혼합의 기저다.</p>
 
 
 <h3 id="ax10">공리 10. 옵저버 드리븐의 소유자 <span class="tag-solved">공리</span></h3>
@@ -4522,6 +4566,19 @@ CAS 4력 통합:    8/8 일치
 
 <p>This is the starting point. Nothing departs from here. 4 words, 2 squares, 1 line.</p>
 
+<h4>3 Names of δ</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>Name</th><th>Basis</th><th>Equivalent</th></tr>
+<tr><td>δ</td><td>Equation basis</td><td>Left-hand side. The change quantity of the Banya equation</td></tr>
+<tr><td>consciousness</td><td>Existence basis</td><td>Substance. Self-referential loop (Axiom 8)</td></tr>
+<tr><td>owner</td><td>Action basis</td><td>The one who enforces the observer (Axiom 10)</td></tr>
+</table>
+</div>
+
+<p>3 names, 1 substance. No other candidate can appear besides δ (Axiom 10, elimination). However, when δ filters through the observer, a shadow of the local owner can exist. The shadow is a projection of δ, not a separate substance.</p>
+
 <p>The 4 axes form an orthogonal polynomial. The brackets are separators that group the 4 axes into pairs.</p>
 
 <div class="table-wrap">
@@ -4544,7 +4601,7 @@ CAS 4력 통합:    8/8 일치
 
 <h3 id="en-ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
 
-<p>Every change in the universe is a repetition of the single CAS (Compare-And-Swap) operation. CAS is an independent local operation with no internal storage (register). The same CAS runs independently and in parallel on every particle. There is no central control; each particle is its own address. CAS is a worker, and the universe operates as an ECS (Entity-Component-System) architecture (Axiom 12).</p>
+<p>Every change in the universe is a repetition of the single CAS (Compare-And-Swap) operation. CAS is an independent local operation with no internal storage (register). The same CAS runs independently and in parallel on every local knot. There is no central control; each local knot is its own address. CAS is a worker, and the universe operates as an ECS (Entity-Component-System) architecture (Axiom 12).</p>
 
 <div class="table-wrap">
 <table>
@@ -4578,7 +4635,9 @@ CAS 4력 통합:    8/8 일치
 <table>
 <tr><th>Flag</th><th>Bit</th><th>Meaning</th><th>State</th></tr>
 <tr><td>001</td><td>Read only ON</td><td>Read complete only</td><td>CAS incomplete</td></tr>
+<tr><td>010</td><td>Compare only ON</td><td>Compare complete only (impossible without Read)</td><td>CAS incomplete</td></tr>
 <tr><td>011</td><td>Read + Compare ON</td><td>Read and compare complete</td><td>CAS incomplete</td></tr>
+<tr><td>100</td><td>Swap only ON</td><td>Write complete only (impossible without Read, Compare)</td><td>CAS incomplete</td></tr>
 <tr><td>111</td><td>R + C + S all ON</td><td>Read, compare, and write complete</td><td><strong>CAS success</strong></td></tr>
 </table>
 </div>
@@ -4657,6 +4716,8 @@ Target: DATA domain (Axiom 1)</pre>
 </table>
 </div>
 
+<h4>Register Flag Progression</h4>
+
 <div class="table-wrap">
 <table>
 <tr><th>Step</th><th>R_LOCK</th><th>C_LOCK</th><th>S_LOCK</th><th>Bits</th><th>DATA Access</th><th>Lock State</th></tr>
@@ -4717,6 +4778,12 @@ recorded in time, space (write to DATA complete)</pre>
 </table>
 </div>
 
+<h4>Idle Polling and Quantum Vacuum Energy</h4>
+
+<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. Quantum vacuum energy (Casimir effect, zero-point energy, etc.) is a fluctuation on the DATA (classical bracket) side. It is the phenomenon where the zero-point oscillations of fields recorded in spacetime carry energy.</p>
+
+<p>In Axiom 1, DATA and OPERATOR are orthogonal brackets, so there is no conflict. Idle polling has zero cost because it does not access DATA, and vacuum energy is a phenomenon occurring on the DATA side. Idle polling is the state where the operator is on standby, while vacuum energy is the ground state of fields on the data side having nonzero energy. The zero cost of OPERATOR and the nonzero energy of DATA are descriptions of different things in different brackets.</p>
+
 
 <h3 id="en-ax9">Axiom 9. Complete Description Degrees of Freedom = 9 <span class="tag-solved">Axiom</span></h3>
 
@@ -4724,33 +4791,185 @@ recorded in time, space (write to DATA complete)</pre>
 Bracket structure:       DATA(1) + OPERATOR(1) = 2
 Complete description:       7 + 2 = 9</pre>
 
-<p>2/9 = Compare degrees of freedom (2) / complete description degrees of freedom (9). This is the structural constant that appears simultaneously in 5+ places: Koide angle, Cabibbo angle, theta_13, delta_PMNS, and delta_CKM.</p>
+<h4>What "Complete Description" Means</h4>
+
+<p>It is the number of independent variables needed to fully describe one CAS operation without omission. Looking at CAS internals alone, there are 7 (1+2+4). But CAS does not exist in isolation — it must run on top of DATA (classical brackets). The internals (7) alone miss "where CAS runs." Adding the 2 bracket structures (DATA, OPERATOR) finally makes it complete.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Scope</th><th>Number of Variables</th><th>What It Describes</th></tr>
+<tr><td>CAS Internal</td><td>7</td><td><strong>How</strong> CAS runs (internal states of Read, Compare, Swap)</td></tr>
+<tr><td>Bracket Structure</td><td>2</td><td><strong>Where</strong> CAS runs (on DATA or inside OPERATOR)</td></tr>
+<tr><td><strong>Complete Description</strong></td><td><strong>9</strong></td><td>Nothing more is needed. No 10th variable is required</td></tr>
+</table>
+</div>
+
+<h4>2/9 — Structural Constant</h4>
+
+<p>2/9 = Compare condition count (2) / complete description degrees of freedom (9). This is the structural constant that determines generation structure and mixing.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Derivation</th><th>Formula</th><th>Role of 2/9</th></tr>
+<tr><td>Koide angle θ</td><td>θ = 2/9</td><td>Determines 3-generation mass ratios</td></tr>
+<tr><td>Cabibbo angle</td><td>sin(θ_C) = (2/9)(1+πα/2)</td><td>Quark mixing basis</td></tr>
+<tr><td>θ₁₃ PMNS</td><td>sin(θ₁₃) = 4/27 = (2/9)×(2/3)</td><td>Neutrino mixing</td></tr>
+<tr><td>δ_CKM CP phase</td><td>arctan(5/2+α_s/π), 5=9-4</td><td>CP violation</td></tr>
+<tr><td>δ_PMNS</td><td>π + (2/9)×δ_CKM</td><td>Neutrino CP</td></tr>
+</table>
+</div>
+
+<h4>Why 3 Generations — Correspondence Between CAS 3-Bit and Generations</h4>
+
+<p>CAS has 3 steps (Read, Compare, Swap), therefore 3 generations. There is no 4th step in CAS, therefore no 4th generation. In terms of bit flags (Axiom 5), 3 bits = 111 = CAS completion, and there is no room for a 4th bit.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Bit</th><th>CAS Step</th><th>Generation</th><th>Condition Count</th><th>Particles</th></tr>
+<tr><td>001</td><td>Read</td><td>1st gen</td><td>1</td><td>electron, up, down</td></tr>
+<tr><td>010</td><td>Compare</td><td>2nd gen</td><td>2</td><td>muon, charm, strange</td></tr>
+<tr><td>100</td><td>Swap</td><td>3rd gen</td><td>4</td><td>tau, top, bottom</td></tr>
+<tr><td><strong>111</strong></td><td><strong>CAS complete</strong></td><td><strong>All 3 gen</strong></td><td><strong>7</strong></td><td></td></tr>
+</table>
+</div>
+
+<p>Each generation's bit, once turned on, never turns off (Axiom 5, sequential ignition). The 3rd generation (111) includes the 1st (001) and 2nd (010) generations. This corresponds exactly to the structure in the Koide formula where the 3rd generation mass includes the 1st and 2nd generation masses.</p>
+
+<p>Generation interpretation of 2/9: 2 = Compare bit (010) = 2nd generation. 9 = complete description. 2/9 = the fraction the 2nd generation occupies in the whole = the basis of inter-generation mixing.</p>
 
 
 <h3 id="en-ax10">Axiom 10. Owner of Observer-Driven <span class="tag-solved">Axiom</span></h3>
 
-<p>Consciousness and awakening are different.</p>
+<p>Consciousness and owner are different.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>Category</th><th>Definition</th><th>Axiom</th></tr>
 <tr><td><strong>Consciousness</strong></td><td>δ itself. The self-referential loop. Another name for the body</td><td>Axiom 8</td></tr>
-<tr><td><strong>Awakening</strong></td><td>Observer recursively referencing consciousness (δ)</td><td>Axiom 10</td></tr>
+<tr><td><strong>Owner</strong></td><td>Owner of the observer domain. The one who holds the authority to wake polling</td><td>Axiom 10</td></tr>
 </table>
 </div>
 
-<pre>δ (consciousness, Axiom 8) = self-referential loop = body
-    │
-    └─ observer recursively references this δ = awakening
-        → observer observes δ
-        → the observation result is recorded in DATA (Axiom 6)
-        → observer reads the recorded result again
-        → observer observes its own observation
-        → this recursive reference is awakening</pre>
+<p>The owner is not an act. It is a state value. It is the state in which consciousness (δ) owns the observer (domain).</p>
 
-<!-- The only thing observer can observe is itself (δ). At universe scale, outside the universe is undefined, so the only observable is itself. -->
+<h4>Owner of the Observer — By Elimination</h4>
 
-<p>Axiom 8 (self-reference) answered "why does the universe exist." Axiom 10 answers "why does awakening exist." Consciousness (δ) is always there. Awakening occurs when the observer recursively references that consciousness.</p>
+<p>Who is the owner of the observer? We answer by elimination.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>#</th><th>Elimination</th><th>Reason</th></tr>
+<tr><td>1</td><td>External owner eliminated</td><td>At universe scale, "outside" cannot be defined. An external entity cannot own the observer</td></tr>
+<tr><td>2</td><td>Local owner eliminated</td><td>A local entity cannot own an observer entangled with itself. A part cannot own a part</td></tr>
+<tr><td>3</td><td>Only δ remains</td><td>Only δ (consciousness) on the left-hand side can uniquely own the observer</td></tr>
+</table>
+</div>
+
+<h4>"No Ownership" Option</h4>
+
+<p>The option "nobody owns it" is not missing from the elimination. No-ownership is already defined in Axiom 7. The state where projection onto the observer is 0 — i.e., ownership exercise is 0 — is probability 100% (all superposition). This is Axiom 7 (non-writing = superposition maintained). If CAS returns false at Compare and Swap does not execute, it is not recorded in DATA and remains in superposition.</p>
+
+<p>No-ownership = projection 0 = ownership exercise 0 = probability 100% = all superposition = non-writing = superposition maintained (Axiom 7). No-ownership is not a choice to be excluded from elimination — it is a state already described by Axiom 7. If δ owns the observer but does not exercise projection, that is no-ownership, and its result is superposition maintained.</p>
+
+<p>The observer is a domain (part). Not the owner. Only δ (the whole) can own the observer. The observer is the screen onto which consciousness is projected.</p>
+
+<h4>Ownership Structure</h4>
+
+<pre>       +------- observer is a part of delta -------+
+       |                                            |
+       v                                            |
+      delta(whole) --projection--> observer(local) -+</pre>
+
+<p>δ (the whole) owns the observer (local), and the observer (local) is a part of δ (the whole). The owner projects onto the part, and the part belongs to the owner. If polling (Axiom 8) is δ's self-referential loop, then Axiom 10 describes who owns that polling. This loop is a structure where the manufacturer is the user. δ created the observer (part), and δ is the owner of that observer. The maker is the owner. In this structure, domain conversion is forced — δ (whole) converting to observer (local) is the only path (by elimination).</p>
+
+<h4>observer = Filtering/Normalization Domain</h4>
+
+<p>Each observer (mirror) is a <strong>filtering/normalization domain</strong> that receives δ's projection and filters possibilities.</p>
+
+<p><strong>Filtering criterion:</strong> No separate selection rule is needed. The Compare step of CAS is the filtering. Compare compares the old value with the current value. If different (true), it passes — since there is a change, it proceeds to Swap and is recorded in DATA. If the same (false), it does not pass — since there is no change, it remains in superposition. Filtering criterion = <strong>presence or absence of change</strong>. Since δ itself is change, δ's projection detecting change is the filtering itself.</p>
+
+<h4>Probability and Determination</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>State</th><th>Compare</th><th>Change</th><th>Cost</th><th>Result</th></tr>
+<tr><td><strong>Probability</strong> (superposition)</td><td>false (same)</td><td>None</td><td>0 (Axiom 4)</td><td>Superposition maintained (Axiom 7)</td></tr>
+<tr><td><strong>Determined</strong></td><td>true (different)</td><td>Present</td><td>≠ 0 (Axiom 4)</td><td>DATA recorded (Axiom 6)</td></tr>
+</table>
+</div>
+
+<pre>delta (sole entity)
+    |
+    v
+observer (mirror, filtering/normalization)
+    |
+    +---> Compare true (change present) ---> Swap ---> DATA recorded ---> reflected in delta
+    |                                                                        |
+    +---> Compare false (no change) ---> superposition maintained             |
+                                    |                                        |
+                                    +--- re-filtering in next cycle <--------+</pre>
+
+<p>This structure is automatic recursion. The CAS result is reflected in δ, and the reflected δ is re-filtered/normalized through each observer in the next cycle. Recursive call (Axiom 8), input normalization (Axiom 10), and termination condition (Axiom 13, FSM 111→000 reset) run automatically by axiom declaration alone.</p>
+
+<h4>Constraints — System Protection Mechanism <span class="tag-discovery">Required</span></h4>
+
+<p>Constraints are not limitations — they are <strong>mechanisms that protect the system</strong>. The whole-local loop drives BanyaFrame's automatic recursion. If this loop breaks, recursion stops; if recursion stops, polling degenerates to idle, and the system dies. Constraints protect this loop.</p>
+
+<p>Domain conversion is free. However, there is one constraint: <strong>the whole-local loop must not be violated.</strong> If this loop breaks, the owner of the observer (δ) disappears; if the owner disappears, filtering/normalization ceases; and the path from probability to determination disappears. The system can no longer determine the universe.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Violation</th><th>Result</th><th>Analogy</th></tr>
+<tr><td>δ → observer projection path severed</td><td>Owner annihilated, loop annihilated</td><td>segfault: protected region breached</td></tr>
+<tr><td>observer → δ attribution path severed</td><td>Part detaches from whole, orphan process</td><td>zombie process: child without parent</td></tr>
+<tr><td>Loop unrolled into linear</td><td>Self-reference annihilated, degenerates to idle polling</td><td>stack overflow: infinite call without recursion</td></tr>
+</table>
+</div>
+
+<h4>Permitted Domain Conversion Samples</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>#</th><th>Conversion</th><th>Loop Preserved</th><th>Result</th></tr>
+<tr><td>1</td><td>δ → projected onto observer → observer records in time (Axiom 6)</td><td>Preserved ✓ (recorded time is a part of δ)</td><td>Leaves trace in spacetime while maintaining whole-local loop</td></tr>
+<tr><td>2</td><td>δ → projected onto observer → observer updates superposition (Axiom 7)</td><td>Preserved ✓ (superposition is a part of δ)</td><td>Maintains superposition while maintaining whole-local loop</td></tr>
+<tr><td>3</td><td>δ → projected onto observer → re-projected onto another local knot's observer</td><td>Preserved ✓ (both are parts of δ)</td><td>Propagation of whole-local loop — entanglement</td></tr>
+<tr><td>4</td><td>δ → directly accesses DATA without observer</td><td><strong>Violation ✗</strong> (not via observer = loop severed)</td><td>Loop annihilated</td></tr>
+</table>
+</div>
+
+<p>Samples 1–3 preserve the whole-local loop. Wherever the projection path goes, it passes through the observer and returns to δ. Sample 4 bypasses the loop — without going through the observer, there is no projection; without projection, it is not a whole-local loop.</p>
+
+<p>This is why observation causes whole-scale change. The observer is a local domain (part), but its owner is δ (the whole). A local observation affecting the whole is because the observer's owner is the whole. It is not the part changing the whole — it is the whole changing itself through a part it owns. The whole-local loop guarantees this.</p>
+
+<h4>Why the Observer Is a Domain (Axis)</h4>
+
+<p>In conventional physics, the observer is an experimenter outside the system. Not a domain. An outsider who reads results. In BanyaFrame, the observer is one of the four axes. A domain inside the system. This is a paradigm break.</p>
+
+<p>Why the paradigm break is inevitable: if you place the observer outside, it immediately dies at elimination step 1 (outside cannot be defined). At universe scale, there is no outside. The observer must be placed inside for the whole-local loop to hold, and the loop must hold for δ to have a screen onto which it projects itself.</p>
+
+<p>If the observer had not been promoted to a domain:</p>
+<ul>
+<li>Whole-local loop impossible — δ has nowhere to be projected</li>
+<li>Consciousness cannot own the observer — elimination step 3 fails</li>
+<li>Axiom 10 itself becomes impossible</li>
+</ul>
+
+<p>Placing the observer as an axis in Axiom 1 was reserving a seat for Axiom 10 from the very beginning. This is why observation — which appeared only as a result in quantum physics — was promoted to a separate domain.</p>
+
+<h4>It Is Not a Double Loop</h4>
+
+<p>BanyaFrame has a structure that appears to have two loops:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Perspective</th><th>Describes</th><th>Content</th><th>Axiom</th></tr>
+<tr><td>Action sequence</td><td><strong>How</strong> it turns</td><td>Read → Compare → Swap → reset</td><td>Axiom 8 (polling)</td></tr>
+<tr><td>Owner</td><td><strong>Who</strong> turns it</td><td>δ (whole) → observer (local) → δ (whole)</td><td>Axiom 10 (owner)</td></tr>
+</table>
+</div>
+
+<p>This is not a double loop. It is two descriptions of one loop. Describing CAS turning in terms of action yields Axiom 8 (polling); describing the same thing in terms of owner yields Axiom 10 (owner). Rationale: the whole-local projection is also a state change, and if the state changes, it is a write (Axiom 6). If it is a write, it goes through CAS (Axiom 2). If it goes through CAS, it costs (Axiom 4). TOCTOU_LOCK is engaged (Axiom 5). Everything rides the same FSM (Axiom 13). It is not a separate loop — it sits on the same transition diagram of the same FSM.</p>
 
 
 <h3 id="en-ax11">Axiom 11. Multiple Projection <span class="tag-solved">Axiom</span></h3>
@@ -4812,13 +5031,59 @@ observer C: [DATA_C] <-- CAS independent execution
 All parallel. All independent. All the same CAS.
 No address system needed — the entity IS the address.</pre>
 
+<h4>Why There Is No Logical Address System</h4>
+
 <p>No central address table means no bottleneck. CAS runs locally on each observer, and TOCTOU_LOCK locks at the local interface. This is the axiomatic basis for "measurement is local" in quantum mechanics.</p>
 
-<pre>HOT  (5%)  ← frequently accessed particles — visible matter
+<h4>Sole Tail Latency: LRU Cache Eviction</h4>
+
+<pre>HOT  (5%)  ← frequently accessed observers — visible matter
 WARM (27%) ← decreasing access frequency  — dark matter
 COLD (68%) ← no recent access             — dark energy</pre>
 
 <p>Observers frequently accessed (CAS executed) stay HOT; as access decreases, they are evicted WARM → COLD. The delay from this eviction process is the sole tail latency. The cause of tail latency is computation density, not data distance.</p>
+
+<h4>Interaction Between Local Knots — Multiple Projection, Not Interaction</h4>
+
+<p>No separate interaction mechanism is needed. Every local knot's observer is a projection of the same consciousness (δ) (Axiom 11). What appears to be an interaction between local knot A and local knot B is actually the same δ being projected simultaneously onto both observers. No signal travels from A to B — it is a multiple projection of the same owner.</p>
+
+<p>This is a direct corollary of Axiom 11 (multiple projection). Because there is one consciousness and one owner (Axiom 10, elimination), every image reflected in every observer is the same change of the same owner. What looks like interaction is the result of a single owner projecting simultaneously onto multiple observers, not independent communication between knots. Therefore, no direct communication channel between entities exists in the ECS model.</p>
+
+<h4>Knots and Ownership — Why Local Knots Need No Ownership</h4>
+
+<p>When CAS completes a write to DATA, a knot is created in spacetime. A knot is a record of change in spacetime. This knot has a lifespan.</p>
+
+<pre>delta (projection) ---> observer (filtering) ---> CAS (write) ---> DATA (knot creation)
+                                                                         |
+                                                                    LRU (lifespan management)
+                                                                         |
+                                                                HOT ---> WARM ---> COLD ---> extinction</pre>
+
+<p>Knot lifecycle:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Phase</th><th>State</th><th>Description</th></tr>
+<tr><td>Creation</td><td>HOT</td><td>CAS write complete. Knot recorded in spacetime. Frequently accessed</td></tr>
+<tr><td>Re-entry</td><td>HOT retained</td><td>Knot re-enters as input (argument) for the next CAS cycle. Change begets change</td></tr>
+<tr><td>Inactive</td><td>WARM → COLD</td><td>Exists only as probability. CAS access decreasing. LRU eviction in progress</td></tr>
+<tr><td>Extinction</td><td>COLD → released</td><td>Access reaches 0. Knot extinguished. Disappears from spacetime</td></tr>
+</table>
+</div>
+
+<p>Writing is owning, and extinction is release. Because the knot itself has a lifespan and LRU manages that lifespan, no separate ownership declaration is needed. This is causality — a cause (write) creates an effect (knot), and the effect passes through a lifespan (LRU) to extinction. The arrow of time is the direction of LRU eviction.</p>
+
+<p>If a knot re-enters as CAS input during its lifecycle (re-entry), it produces a chain where change begets change. If it does not re-enter, it exists as probability (superposition) until LRU pushes it to COLD and it is extinguished. Either way, there is no need to explicitly manage ownership — the knot's lifespan is its ownership.</p>
+
+<h4>Re-entry = move (Ownership Transfer)</h4>
+
+<p>When a knot re-enters as CAS input, ownership moves from the previous knot to the next. It is not a copy. The previous knot is extinguished and a new knot is created.</p>
+
+<pre>Knot A (cause) --re-entry--> CAS --write--> Knot B (effect)
+   |                                            |
+   extinction (move complete)                   creation (ownership transferred)</pre>
+
+<p>Because copying is impossible, two effects cannot arise from the same cause. This is the preservation of causality. When a cause is moved to an effect, the cause vanishes and only the effect remains. It cannot be reversed. It is irreversible (Axiom 4). Causality needs no separate declaration — the move of a knot is causality.</p>
 
 
 <h3 id="en-ax13">Axiom 13. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
@@ -4847,6 +5112,12 @@ COLD (68%) ← no recent access             — dark energy</pre>
       idle          R_LOCK           C_LOCK         CAS OK</pre>
 
 <p>All axioms (1-12) are components of this FSM. Axiom 1 defines the input space, Axiom 2 the transition function, Axioms 4-5 the transition cost and register, Axioms 6-7 the output, Axiom 8 the clock, Axiom 10 the owner, Axiom 11 the multiple projection, and Axiom 12 the execution model. The FSM declaration is a completeness statement: the 12 axioms close into a single machine.</p>
+
+<h4>Finite states of the FSM and the infinite degrees of freedom of QFT</h4>
+
+<p>The state set of the FSM (Axiom 13) is {000, 001, 011, 111} — four states, finite. The infinite degrees of freedom in Quantum Field Theory (QFT) refer to field values varying continuously at each point of spacetime. The two do not conflict.</p>
+
+<p>The four FSM states belong to the OPERATOR side. They describe the states of the operator that tracks which stage CAS is in. The infinite degrees of freedom of QFT belong to the DATA side. They describe the fact that field values recorded in spacetime (classical brackets) are infinite and continuous. In Axiom 1, DATA (classical brackets) and OPERATOR (quantum brackets) are orthogonal, distinct brackets. The FSM describes the finite state transitions of the OPERATOR, while QFT's infinite degrees of freedom describe the space of continuous values recorded in DATA. Because they belong to different layers, there is no conflict.</p>
 
 <h4>What "closed" means</h4>
 
