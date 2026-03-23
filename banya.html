@@ -847,12 +847,30 @@
 
 <h3 id="ax5">공리 5. TOCTOU 락 레지스터 <span class="tag-solved">공리</span></h3>
 
-<p>락은 CAS 내부에 있지 않다. CAS와 DATA 사이의 접점에 존재하는 전역 락 레지스터다. CAS가 자체 저장소(레지스터)를 갖지 않는 독립적 지역 연산이므로, 이 전역 락 레지스터가 유일한 상태 보존 수단이다.</p>
+<p>락은 CAS 내부에 있지 않다. CAS와 DATA 사이의 접점에 존재한다. CAS가 자체 저장소(레지스터)를 갖지 않는 독립적 지역 연산이므로, 이 접점 락 레지스터가 유일한 상태 보존 수단이다.</p>
 
-<pre>전역 락 레지스터: TOCTOU_LOCK
+<pre>접점 락 레지스터: TOCTOU_LOCK
 위치: CAS(OPERATOR)와 DATA 사이의 접점
+범위: 각 observer(국소적 매듭)마다 독립적으로 1개씩 존재
 소유자: CAS 연산자 (공리 2)
 대상: DATA 도메인 (공리 1)</pre>
+
+<p><strong>락의 범위:</strong> TOCTOU_LOCK은 CAS 입장에서는 외부(CAS 내부에 레지스터가 없으므로)이고, 우주 입장에서는 각 observer의 로컬 접점에 존재한다. 중앙 락이 아니다. 각 observer마다 독립적인 TOCTOU_LOCK이 있고, 그 observer의 CAS만 접근한다(공리 12, ECS).</p>
+
+<pre>delta ---> observer(필터링)
+               |
+               +---> Compare true (변화 있음)
+               |        |
+               |       000 --Read--> 001 --Compare--> 011 --Swap--> 111
+               |       idle         R_LOCK            C_LOCK        CAS OK
+               |                                                      |
+               |                              +-------- reset --------+
+               |                              |
+               |                             000 (락 해제, DATA 반환)
+               |
+               +---> Compare false (변화 없음)
+                        |
+                       000 유지 ---> 락 없음 ---> superposition 유지</pre>
 
 <div class="table-wrap">
 <table>
@@ -4700,12 +4718,30 @@ CAS 4력 통합:    8/8 일치
 
 <h3 id="en-ax5">Axiom 5. TOCTOU Lock Register <span class="tag-solved">Axiom</span></h3>
 
-<p>The lock is not inside CAS. It is a global lock register at the interface between CAS and DATA. Since CAS is an independent local operation with no internal storage (register), this global lock register is the sole means of state preservation.</p>
+<p>The lock is not inside CAS. It exists at the interface between CAS and DATA. Since CAS is an independent local operation with no internal storage (register), this interface lock register is the sole means of state preservation.</p>
 
-<pre>Global lock register: TOCTOU_LOCK
+<pre>Interface lock register: TOCTOU_LOCK
 Location: Interface between CAS (OPERATOR) and DATA
+Scope: One per observer (local knot), independently
 Owner: CAS operator (Axiom 2)
 Target: DATA domain (Axiom 1)</pre>
+
+<p><strong>Scope of the lock:</strong> TOCTOU_LOCK is external from CAS's perspective (CAS has no internal register), and local from the universe's perspective (exists at each observer's interface). It is not a central lock. Each observer has its own independent TOCTOU_LOCK, accessed only by that observer's CAS (Axiom 12, ECS).</p>
+
+<pre>delta ---> observer(filtering)
+               |
+               +---> Compare true (change detected)
+               |        |
+               |       000 --Read--> 001 --Compare--> 011 --Swap--> 111
+               |       idle         R_LOCK            C_LOCK        CAS OK
+               |                                                      |
+               |                              +-------- reset --------+
+               |                              |
+               |                             000 (lock released, DATA returned)
+               |
+               +---> Compare false (no change)
+                        |
+                       000 stays ---> no lock ---> superposition maintained</pre>
 
 <div class="table-wrap">
 <table>
