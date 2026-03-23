@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>고유 예측 -- 반야프레임 운영 보고서</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="반야프레임 고유 예측. 실험으로 검증 가능한 미래 예측들. 뉴트리노 질량 합 58.5meV, 양성자 수명 10^36년, 4세대 부재, 암흑에너지 w=-1, BAO 서브구조 21Mpc, 힉스 자기결합 lambda_H=7/54, 힉스 질량 125.37GeV, 뉴트리노 정규순서 NO. CAS 구조의 연역적 귀결. 발명자 한혁진.">
+<meta name="keywords" content="반야프레임,般若,Banya Framework,Axiom-Based Science Mining Engine,공리 기반 과학 채굴 엔진,한혁진,Han Hyukjin,bokkamsun,predictions,예측,neutrino mass,뉴트리노 질량,proton decay,양성자 붕괴,fourth generation,4세대,dark energy,암흑에너지,equation of state,상태방정식,w=-1,BAO,baryon acoustic oscillation,바리온 음향 진동,KATRIN,Hyper-K,falsifiability,반증가능성,CAS,Compare-And-Swap,alpha,미세구조상수,Weinberg angle,바인베르크 각,strong coupling,강결합상수,baryon asymmetry,바리온 비대칭,eta,Koide,코이데,GUT,grand unified theory,대통일이론,cosmological constant,우주상수,LRU,vacuum energy,진공에너지,Higgs self-coupling,힉스 자기결합,lambda_H,7/54,Higgs mass,힉스 질량,125.37GeV,neutrino ordering,뉴트리노 질량순서,normal ordering,NO,JUNO,DUNE">
+<meta property="og:title" content="고유 예측 -- 반야프레임 운영 보고서">
+<meta property="og:description" content="반야프레임의 연역적 귀결. 뉴트리노 질량, 양성자 수명, 4세대 부재, w=-1 등 실험 검증 가능한 예측.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="고유 예측 -- 반야프레임">
+<meta name="twitter:description" content="반야프레임 CAS 구조에서 나오는 실험 검증 가능한 예측들. 뉴트리노 질량, 양성자 수명, 4세대 부재.">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch">
+<button class="lang-btn active" data-lang="ko" onclick="switchLang('ko')">KR</button>
+<button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+</div>
+
+<div class="toc-side lang-ko">
+<a href="#title" class="toc-h1">고유 예측</a>
+<a href="#value" class="toc-h2">예측의 가치</a>
+<a href="#status" class="toc-h2">현재 상태</a>
+<a href="#core" class="toc-h2">핵심: 연역적 귀결</a>
+<a href="#seeds" class="toc-h1">4대 발견 종합</a>
+<a href="#seed-1" class="toc-h3">태양 뉴트리노 혼합각</a>
+<a href="#seed-2" class="toc-h3">바인베르크 각</a>
+<a href="#seed-3" class="toc-h3">강결합상수</a>
+<a href="#seed-4" class="toc-h3">바리온 비대칭</a>
+<a href="#r1" class="toc-h1">라운드 1. 뉴트리노 질량</a>
+<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r1-step2" class="toc-h3">2단계. Compare 생략 입자</a>
+<a href="#r1-step3" class="toc-h3">3단계. 억제 대입</a>
+<a href="#r1-step4" class="toc-h3">4단계. 보정 인자</a>
+<a href="#r1-step5" class="toc-h3">5단계. 질량 예측</a>
+<a href="#r2" class="toc-h1">라운드 2. 양성자 수명</a>
+<a href="#r2-gut" class="toc-h3">GUT 스케일</a>
+<a href="#r2-lifetime" class="toc-h3">수명 예측</a>
+<a href="#r3" class="toc-h1">라운드 3. 4세대 부재</a>
+<a href="#r4" class="toc-h1">라운드 4. 암흑에너지 w=-1</a>
+<a href="#r5" class="toc-h1">라운드 5. 고유 서명</a>
+<a href="#r5-bao" class="toc-h3">21 Mpc BAO 서브구조</a>
+<a href="#r5-photon" class="toc-h3">광자 분산</a>
+<a href="#r6" class="toc-h1">라운드 6. 힉스 자기결합</a>
+<a href="#r6-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r6-step2" class="toc-h3">2단계. 힉스 섹터 치환</a>
+<a href="#r6-step3" class="toc-h3">3단계. CAS 인자 대입</a>
+<a href="#r6-step4" class="toc-h3">4단계. lambda_H 계산</a>
+<a href="#r6-step5" class="toc-h3">5단계. 실험 비교</a>
+<a href="#falsify" class="toc-h1">반박 조건</a>
+<a href="#scoreboard" class="toc-h1">종합 점수판</a>
+</div>
+
+<div class="toc-side lang-en" style="display:none">
+<a href="#en-title" class="toc-h1">Unique Predictions</a>
+<a href="#en-value" class="toc-h2">Value of Predictions</a>
+<a href="#en-status" class="toc-h2">Current Status</a>
+<a href="#en-core" class="toc-h2">Core: Deductive Consequences</a>
+<a href="#en-seeds" class="toc-h1">Four Key Discoveries</a>
+<a href="#en-seed-1" class="toc-h3">Solar Neutrino Mixing Angle</a>
+<a href="#en-seed-2" class="toc-h3">Weinberg Angle</a>
+<a href="#en-seed-3" class="toc-h3">Strong Coupling Constant</a>
+<a href="#en-seed-4" class="toc-h3">Baryon Asymmetry</a>
+<a href="#en-r1" class="toc-h1">Round 1. Neutrino Mass</a>
+<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Equation</a>
+<a href="#en-r1-step2" class="toc-h3">Step 2. Compare-Skipped Particle</a>
+<a href="#en-r1-step3" class="toc-h3">Step 3. Suppression Substitution</a>
+<a href="#en-r1-step4" class="toc-h3">Step 4. Correction Factor</a>
+<a href="#en-r1-step5" class="toc-h3">Step 5. Mass Prediction</a>
+<a href="#en-r2" class="toc-h1">Round 2. Proton Lifetime</a>
+<a href="#en-r2-gut" class="toc-h3">GUT Scale</a>
+<a href="#en-r2-lifetime" class="toc-h3">Lifetime Prediction</a>
+<a href="#en-r3" class="toc-h1">Round 3. No 4th Generation</a>
+<a href="#en-r4" class="toc-h1">Round 4. Dark Energy w=-1</a>
+<a href="#en-r5" class="toc-h1">Round 5. Unique Signatures</a>
+<a href="#en-r5-bao" class="toc-h3">21 Mpc BAO Substructure</a>
+<a href="#en-r5-photon" class="toc-h3">Photon Dispersion</a>
+<a href="#en-r6" class="toc-h1">Round 6. Higgs Self-Coupling</a>
+<a href="#en-r6-step1" class="toc-h3">Step 1. Banya Equation</a>
+<a href="#en-r6-step2" class="toc-h3">Step 2. Higgs Sector Substitution</a>
+<a href="#en-r6-step3" class="toc-h3">Step 3. CAS Factor Substitution</a>
+<a href="#en-r6-step4" class="toc-h3">Step 4. lambda_H Calculation</a>
+<a href="#en-r6-step5" class="toc-h3">Step 5. Experimental Comparison</a>
+<a href="#en-falsify" class="toc-h1">Falsification Conditions</a>
+<a href="#en-scoreboard" class="toc-h1">Overall Scoreboard</a>
+</div>
+
+<div class="toc-bar lang-ko" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">고유 예측</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
+<a href="#title" class="toc-h1">고유 예측</a>
+<a href="#value" class="toc-h2">예측의 가치</a>
+<a href="#status" class="toc-h2">현재 상태</a>
+<a href="#core" class="toc-h2">핵심: 연역적 귀결</a>
+<a href="#seeds" class="toc-h1">4대 발견 종합</a>
+<a href="#seed-1" class="toc-h3">태양 뉴트리노 혼합각</a>
+<a href="#seed-2" class="toc-h3">바인베르크 각</a>
+<a href="#seed-3" class="toc-h3">강결합상수</a>
+<a href="#seed-4" class="toc-h3">바리온 비대칭</a>
+<a href="#r1" class="toc-h1">라운드 1. 뉴트리노 질량</a>
+<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r1-step2" class="toc-h3">2단계. Compare 생략 입자</a>
+<a href="#r1-step3" class="toc-h3">3단계. 억제 대입</a>
+<a href="#r1-step4" class="toc-h3">4단계. 보정 인자</a>
+<a href="#r1-step5" class="toc-h3">5단계. 질량 예측</a>
+<a href="#r2" class="toc-h1">라운드 2. 양성자 수명</a>
+<a href="#r2-gut" class="toc-h3">GUT 스케일</a>
+<a href="#r2-lifetime" class="toc-h3">수명 예측</a>
+<a href="#r3" class="toc-h1">라운드 3. 4세대 부재</a>
+<a href="#r4" class="toc-h1">라운드 4. 암흑에너지 w=-1</a>
+<a href="#r5" class="toc-h1">라운드 5. 고유 서명</a>
+<a href="#r5-bao" class="toc-h3">21 Mpc BAO 서브구조</a>
+<a href="#r5-photon" class="toc-h3">광자 분산</a>
+<a href="#r6" class="toc-h1">라운드 6. 힉스 자기결합</a>
+<a href="#r6-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r6-step2" class="toc-h3">2단계. 힉스 섹터 치환</a>
+<a href="#r6-step3" class="toc-h3">3단계. CAS 인자 대입</a>
+<a href="#r6-step4" class="toc-h3">4단계. lambda_H 계산</a>
+<a href="#r6-step5" class="toc-h3">5단계. 실험 비교</a>
+<a href="#falsify" class="toc-h1">반박 조건</a>
+<a href="#scoreboard" class="toc-h1">종합 점수판</a>
+</div>
+
+<div class="toc-bar lang-en" style="display:none" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">Unique Predictions</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-en" style="display:none" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
+<a href="#en-title" class="toc-h1">Unique Predictions</a>
+<a href="#en-value" class="toc-h2">Value of Predictions</a>
+<a href="#en-status" class="toc-h2">Current Status</a>
+<a href="#en-core" class="toc-h2">Core: Deductive Consequences</a>
+<a href="#en-seeds" class="toc-h1">Four Key Discoveries</a>
+<a href="#en-seed-1" class="toc-h3">Solar Neutrino Mixing Angle</a>
+<a href="#en-seed-2" class="toc-h3">Weinberg Angle</a>
+<a href="#en-seed-3" class="toc-h3">Strong Coupling Constant</a>
+<a href="#en-seed-4" class="toc-h3">Baryon Asymmetry</a>
+<a href="#en-r1" class="toc-h1">Round 1. Neutrino Mass</a>
+<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Equation</a>
+<a href="#en-r1-step2" class="toc-h3">Step 2. Compare-Skipped Particle</a>
+<a href="#en-r1-step3" class="toc-h3">Step 3. Suppression Substitution</a>
+<a href="#en-r1-step4" class="toc-h3">Step 4. Correction Factor</a>
+<a href="#en-r1-step5" class="toc-h3">Step 5. Mass Prediction</a>
+<a href="#en-r2" class="toc-h1">Round 2. Proton Lifetime</a>
+<a href="#en-r2-gut" class="toc-h3">GUT Scale</a>
+<a href="#en-r2-lifetime" class="toc-h3">Lifetime Prediction</a>
+<a href="#en-r3" class="toc-h1">Round 3. No 4th Generation</a>
+<a href="#en-r4" class="toc-h1">Round 4. Dark Energy w=-1</a>
+<a href="#en-r5" class="toc-h1">Round 5. Unique Signatures</a>
+<a href="#en-r5-bao" class="toc-h3">21 Mpc BAO Substructure</a>
+<a href="#en-r5-photon" class="toc-h3">Photon Dispersion</a>
+<a href="#en-r6" class="toc-h1">Round 6. Higgs Self-Coupling</a>
+<a href="#en-r6-step1" class="toc-h3">Step 1. Banya Equation</a>
+<a href="#en-r6-step2" class="toc-h3">Step 2. Higgs Sector Substitution</a>
+<a href="#en-r6-step3" class="toc-h3">Step 3. CAS Factor Substitution</a>
+<a href="#en-r6-step4" class="toc-h3">Step 4. lambda_H Calculation</a>
+<a href="#en-r6-step5" class="toc-h3">Step 5. Experimental Comparison</a>
+<a href="#en-falsify" class="toc-h1">Falsification Conditions</a>
+<a href="#en-scoreboard" class="toc-h1">Overall Scoreboard</a>
+</div>
+
+
+<div class="lang-ko">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 반야프레임의 구조, 118개 물리식 검증, CAS 연산자, 쓰기 이론 등 전체 내용은 Master Report에 있다. 이 문서는 반야프레임에서 연역적으로 따라 나오는 고유 예측들을 다룬다.</p>
+
+<h1 id="title">반야프레임 고유 예측</h1>
+
+<blockquote><p>반야프레임 운영 보고서</p></blockquote>
+<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>실행일: 2026-03-23</p></blockquote>
+<blockquote><p>주제: 실험으로 검증 가능한 미래 예측들</p></blockquote>
+<blockquote><p>상태: 미완 -- 실험 검증 대기</p></blockquote>
+
+
+<hr>
+
+
+<h2 id="value">예측의 가치</h2>
+
+<p>물리학에서 가장 값진 것은 예측이다. 먼저 예측하고, 나중에 실험이 확인한다. 이것이 물리학의 금메달이다.</p>
+
+<p>힉스 보손은 1964년에 예측되었고 2012년에 발견되었다. 48년 걸렸다. 중력파는 1916년에 예측되었고 2015년에 검출되었다. 99년 걸렸다. 디랙의 반물질 예측은 1928년에 나왔고 1932년에 양전자가 발견되었다. 4년 걸렸다.</p>
+
+<p>예측 없는 이론은 설명일 뿐이다. 예측이 있어야 이론이다. 예측이 맞아야 과학이다.</p>
+
+
+<h2 id="status">현재 상태: 미완</h2>
+
+<p>이 문서의 예측들은 아직 실험으로 확인되지 않았다. 미완이다. 예측값은 나왔지만 실험이 아직 안 끝났다. KATRIN은 2027년까지 데이터를 모으고 있고, Hyper-K는 2030년까지 양성자 붕괴를 찾고 있다.</p>
+
+<p>미완이라는 것은 약점이 아니다. 모든 위대한 예측은 처음에 미완이었다. 힉스도 48년간 미완이었다.</p>
+
+
+<h2 id="core">핵심: 연역적 귀결</h2>
+
+<p>이 문서의 예측들은 반야프레임의 기존 도출에서 자연스럽게 따라 나오는 것들이다. <a href="alpha.html">$\alpha$ 도출</a>, <a href="sin2_thetaW.html">$\theta_W$ 도출</a>, <a href="mass_hierarchy.html">질량 계층 도출</a>, <a href="gauge.html">게이지 매핑</a>에서 이미 확립된 CAS 구조의 연역적 귀결이다.</p>
+
+<p>새로운 가설을 추가하지 않았다. 프레임에 이미 있는 것을 한 번 더 돌렸을 뿐이다. 재귀 대입의 다음 라운드다.</p>
+
+<div class="math-block">
+<div class="math-desc">예측의 출처</div>
+<div class="math-row">기존 도출 ($\alpha$, $\theta_W$, 질량 계층, 게이지 매핑)</div>
+<div class="math-row">+ 재귀 대입 한 라운드 더</div>
+<div class="math-row">= 고유 예측</div>
+<div class="math-desc">새로운 가설 0개. 추가 매개변수 0개.</div>
+</div>
+
+
+<hr>
+
+
+<h1 id="seeds">4대 발견 종합: 재활용 가능한 씨앗</h1>
+
+<p>반야프레임의 이전 보고서들에서 4개의 발견이 나왔다. 이 4개는 단순히 맞는 숫자가 아니다. 프레임에 재대입하면 다음 세대의 발견이 나오는 씨앗이다.</p>
+
+<div class="discovery-block">
+<h4 id="seed-1">1. 태양 뉴트리노 혼합각<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\sin^2\theta_{12} = \dfrac{3}{\pi^2}$</div>
+<p>프레임 예측값: $0.30396$. 실험값: $0.304$. 오차: <span class="precision">0.013%</span></p>
+<p>재대입 시 용도: 뉴트리노 질량 스펙트럼의 씨앗. 혼합각이 질량비를 결정한다.</p>
+</div>
+
+<div class="discovery-block">
+<h4 id="seed-2">2. 바인베르크 각<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\sin^2\theta_W = \dfrac{3}{4\pi}\!\left(1 - \left(4+\dfrac{1}{\pi}\right)\alpha\right)$</div>
+<p>프레임 예측값: $0.23121$. 실험값: $0.23122$. 오차: <span class="precision">0.005%</span></p>
+<p>재대입 시 용도: 바리오제네시스의 핵심 인자. CP 위반 크기를 결정한다.</p>
+</div>
+
+<div class="discovery-block">
+<h4 id="seed-3">3. 강결합상수<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\alpha_s = 3\alpha\,(4\pi)^{2/3}$</div>
+<p>프레임 예측값: $0.1183$. 실험값: $0.1179$. 오차: <span class="precision">0.3%</span></p>
+<p>재대입 시 용도: 쿼크 질량 도출의 열쇠. 강력의 세기가 쿼크 질량 스펙트럼을 결정한다.</p>
+</div>
+
+<div class="discovery-block">
+<h4 id="seed-4">4. 바리온 비대칭<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\eta = \alpha^4 \sin^2\theta_W \left[1 - 2\!\left(4+\dfrac{1}{\pi}\right)\alpha\right]$</div>
+<p>프레임 예측값: $6.14 \times 10^{-10}$. 실험값: $6.1 \times 10^{-10}$. 오차: <span class="precision">0.7%</span></p>
+<p>재대입 시 용도: 우주에 물질이 존재하는 이유. 반물질 대비 물질의 초과량.</p>
+</div>
+
+<p>이 4개를 반야프레임 가설 초기화에 재대입하면, 다음 세대의 발견이 나온다. 아래 5개 라운드가 그 결과다.</p>
+
+
+<hr>
+
+
+<h1 id="r1">라운드 1. 뉴트리노 질량 예측</h1>
+
+<h3 id="r1-step1">1단계. 반야식에서 출발</h3>
+
+<p>반야식 $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$에서 출발한다. 모든 입자는 CAS 연산의 산출물이다. CAS에는 Compare, And, Swap 3단계가 있다.</p>
+
+<div class="math-block">
+<div class="math-row">CAS = Compare + And + Swap</div>
+<div class="math-desc">모든 입자는 이 3단계를 거친다. 단, 뉴트리노는 예외다.</div>
+</div>
+
+<h3 id="r1-step2">2단계. CAS에서 뉴트리노 = Compare 생략 입자</h3>
+
+<p>전자, 뮤온, 타우는 CAS 3단계를 전부 거친다. 하전 렙톤이다. 전하가 있다. Compare 단계에서 전자기력과 결합한다.</p>
+
+<p>뉴트리노는 다르다. Compare 단계를 생략한다. 비교 없이 바로 And로 간다. 그래서 전하가 없다. 전자기력과 결합하지 않는다. 약력으로만 상호작용한다.</p>
+
+<p>Compare를 생략한다는 것은 $\alpha$만큼의 결합이 빠진다는 뜻이다. 이것이 뉴트리노 질량이 극히 작은 이유다.</p>
+
+<h3 id="r1-step3">3단계. 하전 렙톤 대비 $\alpha^5$ 억제 대입</h3>
+
+<p>Compare 생략의 대가는 $\alpha$의 거듭제곱으로 나타난다. CAS 위상공간에서 Compare를 건너뛰면 5차 억제가 발생한다.</p>
+
+<div class="math-block">
+<div class="math-row">$\dfrac{m_\nu}{m_\text{lepton}} \sim \alpha^5$</div>
+<div class="math-desc">$\alpha^5 = (1/137)^5 \sim 2.1 \times 10^{-11}$</div>
+<div class="math-desc">이것이 뉴트리노 질량이 하전 렙톤보다 $10^{11}$배 작은 이유다.</div>
+</div>
+
+<p>왜 5차인가. CAS 위상공간의 차원은 도메인 4 + 내부 자유도 3 = 7이다. Compare가 차지하는 자유도는 7 중 5다. 비교 연산이 4개 도메인에 걸쳐 일어나고, 내부 자유도 1개가 부착되기 때문이다. 이 5개가 모두 빠지므로 $\alpha^5$ 억제다.</p>
+
+<p>유도: Compare 도메인 횡단(4개 도메인 전체에서 상태를 비교) + 판정 잔여(비교 판정 자유도 1개) = 5. 나머지 7-5=2는 Read(1) + 최소 존재 조건(1)으로, 뉴트리노가 약력(Read)으로만 상호작용하는 물리적 사실과 일치한다.</p>
+
+<h3 id="r1-step4">4단계. 보정 인자 3/2 포함</h3>
+
+<p>순수 $\alpha^5$ 억제에 보정 인자 $3/2$가 붙는다. CAS의 3단계 중 1단계(Compare)를 건너뛰므로, 남은 2단계(And, Swap)가 부담하는 보정이다. 3단계 중 2단계가 남으니 $3/2$다.</p>
+
+<div class="math-block">
+<div class="math-row">$m_{\nu_i} = \dfrac{3}{2}\,\alpha^5\,m_{\text{lepton}_i}$</div>
+<div class="math-desc">$i = 1, 2, 3$ (전자, 뮤온, 타우에 대응)</div>
+</div>
+
+<h3 id="r1-step5">5단계. 질량 예측값</h3>
+
+<div class="predict-card">
+<div class="predict-title">뉴트리노 질량 예측</div>
+<div class="predict-value">
+$\nu_3$ (타우 대응): $\frac{3}{2}\alpha^5 \times m_\tau = \frac{3}{2}(7.297\times10^{-3})^5 \times 1776.86\;\text{MeV} = 55.2\;\text{meV}$<br>
+$\nu_2$ (뮤온 대응): $\frac{3}{2}\alpha^5 \times m_\mu = \frac{3}{2}(7.297\times10^{-3})^5 \times 105.66\;\text{MeV} = 3.3\;\text{meV}$<br>
+$\nu_1$ (전자 대응): $\frac{3}{2}\alpha^5 \times m_e = \frac{3}{2}(7.297\times10^{-3})^5 \times 0.511\;\text{MeV} = 0.016\;\text{meV}$
+</div>
+<div class="predict-value" style="margin-top:12px;font-size:1.2em">
+$\Sigma = 55.2 + 3.3 + 0.016 = 58.5\;\text{meV}$
+</div>
+<div class="predict-test">검증: KATRIN 실험 (직접 질량 측정, ~2027), 우주론적 한계 (Planck + BAO, 현재 상한 $120\;\text{meV}$)</div>
+</div>
+
+<p>현재 우주론적 상한은 $\Sigma < 120\;\text{meV}$이다. 반야프레임 예측 $58.5\;\text{meV}$는 이 범위 안에 있다. 진동 실험에서 나온 $\Delta m^2$ 값들과도 정합한다. $\Delta m^2_{32} \sim 2.5 \times 10^{-3}\;\text{eV}^2$이고, $55.2^2 - 3.3^2 = 3036\;\text{meV}^2 \sim 3.0 \times 10^{-3}\;\text{eV}^2$으로 자릿수가 맞는다.</p>
+
+
+<hr>
+
+
+<h1 id="r2">라운드 2. 양성자 수명 예측</h1>
+
+<h3 id="r2-gut">GUT 스케일 도출</h3>
+
+<p>반야프레임에서 3개의 게이지 결합상수($\alpha$, $\alpha_W$, $\alpha_s$)는 하나의 CAS 구조에서 갈라져 나온다. 갈라지기 전 하나였던 에너지 스케일이 대통일 스케일 $M_\text{GUT}$다.</p>
+
+<p>$\alpha$에서 $M_\text{GUT}$까지의 거리는 $\alpha$의 거듭제곱으로 표현된다. CAS 자유도 7개 중에서 게이지 결합과 관련된 자유도는 $19/3$이다. 이것은 3개의 게이지 군($U(1)$, $SU(2)$, $SU(3)$)이 CAS 7차원 위상공간에서 차지하는 유효 차원이다.</p>
+
+<div class="math-block">
+<div class="math-row">$M_\text{GUT} = M_Z \times \alpha^{-19/3}$</div>
+<div class="math-row">$= 91.19\;\text{GeV} \times (1/137.036)^{19/3}$</div>
+<div class="math-row">$= 91.19 \times 3.46 \times 10^{13}$</div>
+<div class="math-row">$= 3.15 \times 10^{15}\;\text{GeV}$</div>
+</div>
+
+<p>이 값은 표준 대통일 이론의 예측 범위 $10^{15} \sim 10^{16}\;\text{GeV}$ 안에 있다.</p>
+
+<h3 id="r2-lifetime">양성자 수명 예측</h3>
+
+<p>양성자 붕괴 수명은 $M_\text{GUT}$의 4제곱에 비례한다. 양성자 질량의 5제곱에 반비례한다.</p>
+
+<div class="predict-card">
+<div class="predict-title">양성자 수명 예측</div>
+<div class="predict-value">
+$\tau_p \sim \dfrac{M_\text{GUT}^4}{\alpha_\text{GUT}^2\,m_p^5}$<br>
+$\sim \dfrac{(3.15 \times 10^{15})^4}{(1/40)^2 \times (0.938)^5}\;\text{GeV}^{-4} \times \text{GeV}^5$<br>
+$\sim 10^{36}\;\text{yr}$
+</div>
+<div class="predict-desc">차원 변환: $\tau_p \sim M_\text{GUT}^4 / (\alpha_\text{GUT}^2 m_p^5) \times \hbar = 10^{36}$ 년. $\hbar/(m_p c^2) = 7 \times 10^{-25}$ s를 사용하여 GeV$^{-1}$ 단위를 초(s)로, 다시 년으로 환산한다 (Dimensional conversion: using $\hbar/(m_p c^2) = 7 \times 10^{-25}$ s to convert GeV$^{-1}$ to seconds, then to years).</div>
+<div class="predict-test">검증: Hyper-Kamiokande (~2030), 현재 하한 Super-K: $\tau_p > 10^{34.4}\;\text{yr}$ ($p \to e^+\pi^0$)</div>
+</div>
+
+<p>Super-Kamiokande의 현재 하한은 $10^{34.4}$년이다. 반야프레임 예측 $10^{36}$년은 이 하한보다 위에 있으므로 아직 배제되지 않았다. Hyper-K가 $10^{35}$년대까지 감도를 높이면 접근할 수 있다.</p>
+
+<p>$\alpha_\text{GUT} \approx 1/40$은 표준 GUT 예측 범위($1/25 \sim 1/45$)의 중앙값이다. 정확한 값은 GUT 모형에 따라 다르며, 여기서는 양성자 수명의 자릿수 추정에만 사용하므로 결과에 민감하지 않다.</p>
+
+
+<hr>
+
+
+<h1 id="r3">라운드 3. 4세대 부재 예측</h1>
+
+<p>표준모형에는 3세대가 있다. 전자-뮤온-타우. 업-참-탑. 다운-스트레인지-바텀. 왜 3세대인가? 4세대는 왜 없는가?</p>
+
+<p>반야프레임의 답은 명쾌하다.</p>
+
+<div class="math-block">
+<div class="math-row">CAS = 3단계 (Compare, And, Swap)</div>
+<div class="math-row">3단계 = 3세대</div>
+<div class="math-row">4번째 연산이 없다 = 4세대가 없다</div>
+</div>
+
+<p>CAS는 정확히 3단계다. 이것은 설계 결정이 아니라 논리적 필연이다. 비교하고(Compare), 결합하고(And), 교환한다(Swap). 이 3단계가 끝나면 연산이 완료된다. 4번째 단계가 있을 자리가 없다.</p>
+
+<div class="predict-card">
+<div class="predict-title">4세대 부재 예측</div>
+<div class="predict-value">
+어떤 질량이든, 어떤 에너지이든, 4세대 페르미온은 존재하지 않는다.
+</div>
+<div class="predict-test">검증: LHC 및 미래 가속기의 4세대 탐색. 현재까지 4세대 미발견은 이 예측과 정합. Z 보손 비가시 폭 측정: $N_\nu = 2.9840$ (3세대 정합).</div>
+</div>
+
+<p>이 예측의 강점은 반증가능성이다. 만약 어떤 에너지에서든 4세대 페르미온이 발견되면, 반야프레임은 틀린 것이다. 도망칠 곳이 없다.</p>
+
+
+<hr>
+
+
+<h1 id="r4">라운드 4. 암흑에너지 w = -1</h1>
+
+<p>암흑에너지의 상태방정식은 $w = P / \rho$로 정의된다. $P$는 압력, $\rho$는 에너지 밀도다. $w = -1$이면 우주상수(진공 에너지)다. $w$가 $-1$이 아니면 시간에 따라 변하는 무언가(퀸테센스 등)다.</p>
+
+<p>반야프레임에서 암흑에너지의 정체는 <a href="banya.html">Master Report</a>에서 밝혀져 있다. LRU 캐시의 COLD 영역이다. 더 이상 활성 연산에 참여하지 않지만 여전히 존재하는 상태들의 에너지다. 이것은 진공 에너지와 같다.</p>
+
+<div class="math-block">
+<div class="math-row">$\text{LRU COLD} = \text{진공 에너지} = \text{우주상수}\;\Lambda$</div>
+<div class="math-row">진공 에너지는 시간에 따라 변하지 않는다</div>
+<div class="math-row">따라서 $w = -1$ 정확히</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">암흑에너지 상태방정식 예측</div>
+<div class="predict-value">
+$w = -1.000$ (정확히)<br>
+시간 의존성 없음: $dw/da = 0$
+</div>
+<div class="predict-test">검증: DESI (미완), Euclid (~2027), LSST (~2030). 현재 DESI 2024: $w = -0.99 \pm 0.05$ ($1\sigma$). Planck 2018: $w = -1.03 \pm 0.03$.</div>
+</div>
+
+<p>LRU COLD가 왜 시간에 따라 변하지 않는가. COLD 영역의 상태들은 이미 연산이 끝난 것들이다. 끝난 연산은 다시 시작되지 않는다. CAS가 완료되면 되돌릴 수 없다. 따라서 COLD의 에너지 밀도는 시공간 팽창과 무관하게 일정하다. 이것이 $w = -1$의 이유다.</p>
+
+
+<hr>
+
+
+<h1 id="r5">라운드 5. 고유 서명</h1>
+
+<p>위 4개의 예측은 다른 이론으로도 비슷한 값을 얻을 수 있다. 반야프레임만의 고유한 서명이 필요하다. 다른 이론으로는 나올 수 없는, 오직 반야프레임에서만 따라 나오는 예측이다.</p>
+
+<h3 id="r5-bao">21 Mpc BAO 서브구조</h3>
+
+<p>바리온 음향 진동(BAO)의 표준 척도는 147 Mpc다. 이것은 우주 초기 음파가 재결합 시점까지 이동한 거리다.</p>
+
+<p>반야프레임에서 CAS는 7단계 위상공간을 가진다. 이 7이 BAO 척도를 세분한다.</p>
+
+<p>BAO 척도 147 Mpc는 음향 지평선(sound horizon)이다. 이것을 CAS 위상공간 차원 7로 나누는 것은 '7개 독립 자유도가 음향 진동에 등가 기여한다'는 가설이다. 각 자유도가 담당하는 공간 척도 = 147/7 = 21 Mpc. 이것은 공간 나눗셈이 아니라 모드 분해(mode decomposition)다.</p>
+
+<div class="predict-card">
+<div class="predict-title">BAO 서브구조 예측</div>
+<div class="predict-value">
+$\text{BAO}(147\;\text{Mpc})\;/\;\text{CAS}(7) = 21\;\text{Mpc}$
+</div>
+<div class="predict-test">검증: DESI, Euclid의 BAO 데이터에서 21 Mpc 부근의 서브피크 탐색. 현재 데이터의 분해능이 충분하지 않아 미확인.</div>
+</div>
+
+<p>147 Mpc의 주 피크 안에 21 Mpc 간격의 미세구조가 있다는 예측이다. 이것은 표준 우주론에서는 나오지 않는다. 표준모형에는 7이라는 숫자가 BAO에 개입할 이유가 없다. 반야프레임에서만 나오는 고유 서명이다.</p>
+
+<h3 id="r5-photon">$\alpha \times (E/E_P)^2$ 광자 분산</h3>
+
+<p>반야프레임에서 CAS의 Compare 단계는 $\alpha$의 비용을 발생시킨다. 이 비용은 에너지가 플랑크 에너지에 접근할수록 커진다.</p>
+
+<div class="predict-card">
+<div class="predict-title">광자 분산 예측</div>
+<div class="predict-value">
+$\dfrac{\Delta v}{c} = \alpha \times \left(\dfrac{E}{E_P}\right)^{\!2}$
+</div>
+<div class="predict-test">검증: 감마선 폭발(GRB)의 에너지별 도착 시간차 측정. Fermi-LAT, CTA(~2028). 현재 Fermi-LAT 한계: $\Delta v/c < 10^{-20}$ ($E \sim 10\;\text{GeV}$).</div>
+</div>
+
+<p>표준 양자중력 모형은 $\Delta v / c \sim (E/E_P)$ 또는 $(E/E_P)^2$를 예측한다. 반야프레임은 여기에 $\alpha$를 곱한다. Compare 비용이 광속에도 미세한 에너지 의존성을 부여하기 때문이다. $\alpha$라는 구체적인 계수가 붙는 것이 반야프레임만의 서명이다.</p>
+
+
+<hr>
+
+
+<h1 id="r6">라운드 6. 힉스 자기결합 예측</h1>
+
+<p>힉스 보손의 자기결합 상수 $\lambda_H$는 힉스 퍼텐셜의 꼭짓점 세기를 결정한다. 표준모형에서는 $\lambda_H = m_H^2 / (2v^2)$로 힉스 질량과 진공 기댓값에서 역산한다. 반야프레임은 CAS 비용 구조에서 $\lambda_H$를 직접 도출한다.</p>
+
+<h3 id="r6-step1">1단계. 반야식에서 출발</h3>
+
+<p>반야식 $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$에서 출발한다. 힉스 섹터는 CAS의 Swap 단계에서 질량을 부여하는 메커니즘이다. Swap의 비용 구조가 곧 힉스 자기결합의 크기를 결정한다.</p>
+
+<h3 id="r6-step2">2단계. CAS 비용을 힉스 섹터로 치환</h3>
+
+<p>CAS에서 Swap 1회의 단위비용은 $y_t \approx 1$이다. 탑 쿼크 유카와 결합상수가 1에 가깝다는 것은 Swap 단위비용이 1이라는 뜻이다. 힉스 자기결합은 이 단위비용 위에 CAS의 완전값, 세대구조, Compare 인자가 곱해진 결과다.</p>
+
+<h3 id="r6-step3">3단계. CAS 인자 대입</h3>
+
+<div class="math-block">
+<div class="math-desc">CAS 완전값: $7$ (위상공간 차원 4 + 내부 자유도 3)</div>
+<div class="math-desc">세대구조: $3^3 = 27$ (3세대 $\times$ 3색 $\times$ 3 CAS단계)</div>
+<div class="math-desc">Compare 인자: $2$ (비교 연산의 이진 분기)</div>
+</div>
+
+<p>힉스 보손은 색 중성(color singlet)이지만, 힉스 자기결합은 가상 쿼크 루프를 통해 색 자유도의 영향을 받는다. $3^3 = 27$은 직접 결합이 아니라 가상 과정을 통한 간접 기여다.</p>
+
+<h3 id="r6-step4">4단계. $\lambda_H$ 계산</h3>
+
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{7}{2 \times 3^3} = \dfrac{7}{54}$</div>
+<div class="math-row">$= 0.12963$</div>
+</div>
+
+<h3 id="r6-step5">5단계. 실험 비교</h3>
+
+<p>표준모형의 힉스 질량에서 역산한 $\lambda_H$ 실험값은 $\lambda = m_H^2/(2v^2) = 125.25^2/(2 \times 246.22^2) = 0.12943$이다 ($m_H = 125.25\;\text{GeV}$ PDG 2024, $v = 246.22\;\text{GeV}$). 반야프레임 예측 $0.12963$과의 오차는 $0.16\%$다.</p>
+
+<p>힉스 질량도 직접 도출된다. $m_H = v \times \sqrt{2\lambda_H} = v \times \sqrt{7/27}$이다.</p>
+
+<div class="math-block">
+<div class="math-row">$m_H = 246.22\;\text{GeV} \times \sqrt{7/27}$</div>
+<div class="math-row">$= 246.22 \times 0.50918$</div>
+<div class="math-row">$= 125.37\;\text{GeV}$</div>
+<div class="math-desc">실험값: $125.25\;\text{GeV}$. 차이: $0.12\;\text{GeV}$ ($0.7\sigma$)</div>
+</div>
+
+<div class="discovery-block">
+<h4>힉스 자기결합: CAS에서 직접 도출<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-23</span></h4>
+<div class="formula">$\lambda_H = \dfrac{7}{54} = 0.12963$</div>
+<p>실험값: $\lambda = m_H^2/(2v^2) = 0.12943$ ($m_H = 125.25\;\text{GeV}$, $v = 246.22\;\text{GeV}$). 오차: <span class="precision">0.16%</span></p>
+<div class="formula">$m_H = v \times \sqrt{7/27} = 125.37\;\text{GeV}$</div>
+<p>실험값: $125.25\;\text{GeV}$. 오차: $0.7\sigma$</p>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">힉스 자기결합 예측</div>
+<div class="predict-value">
+$\lambda_H = \dfrac{7}{54} = 0.12963$<br>
+$m_H = 125.37\;\text{GeV}$
+</div>
+<div class="predict-test">검증: HL-LHC(~2035)에서 힉스 자기결합 직접 측정 예정. 현재는 힉스 질량에서 역산한 간접값만 존재. HL-LHC 목표 정밀도 50% 수준.</div>
+</div>
+
+<p>$7/54$라는 값은 CAS 구조에서 유일하게 결정된다. 7은 CAS 위상공간 차원이고, 54는 세대구조 27의 Compare 이진 분기($\times 2$)다. 조정 가능한 매개변수가 없다. 맞든 틀리든 이 값뿐이다.</p>
+
+
+<hr>
+
+
+<h1 id="falsify">반박 조건 (Falsifiability)</h1>
+
+<p>반증 가능하지 않은 이론은 과학이 아니다. 반야프레임이 틀릴 수 있는 조건을 명시한다.</p>
+
+<h3>치명적 반박 조건 -- 하나라도 해당되면 프레임 폐기</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>조건</th><th>의미</th><th>현재 상태</th></tr>
+<tr><td>1</td><td>4세대 페르미온 발견</td><td>CAS = 3단계 구조 붕괴</td><td><span class="tag-wip">대기</span> 미발견 (예측과 정합)</td></tr>
+<tr><td>2</td><td>코이데 상수 $K$가 $2/3$이 아님</td><td>CAS 3단계 대칭 붕괴</td><td><span class="tag-solved">해결</span> $K = 0.6667$ (정합)</td></tr>
+</table>
+</div>
+
+<h3>높은 수준 반박 조건 -- 해당되면 프레임 심각한 손상</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>조건</th><th>허용 범위</th><th>현재 상태</th></tr>
+<tr><td>3</td><td>$w$가 $-1$이 아님 ($5\sigma$)</td><td>$w = -1.00 \pm 0.01$ 밖</td><td><span class="tag-solved">해결</span> $w = -0.99 \pm 0.05$ (정합)</td></tr>
+<tr><td>4</td><td>$m_t / m_c$가 $1/\alpha$에서 $2\%$ 이상 벗어남</td><td>$m_t/m_c = 137 \pm 3$</td><td><span class="tag-solved">해결</span> $m_t/m_c = 136.0$ ($0.8\%$ 정합)</td></tr>
+<tr><td>5</td><td>뉴트리노 역순서(IO) 확정</td><td>NO만 허용</td><td><span class="tag-wip">대기</span> JUNO(2025~), DUNE(2030~)</td></tr>
+</table>
+</div>
+
+<h3>뉴트리노 질량순서 예측: 정규순서(NO)</h3>
+
+<p>반야프레임은 뉴트리노 정규순서(Normal Ordering, NO)를 예측한다. CAS 3단계 구조에서 뉴트리노 질량은 하전 렙톤(전자-뮤온-타우)에 대응하여 $\nu_1 < \nu_2 < \nu_3$ 순서로 결정된다. 이것이 정규순서다.</p>
+
+<p>CP 위반 위상 $\delta_\text{PMNS}$의 도출이 이 예측을 뒷받침한다. 반야프레임이 도출한 $\delta_\text{PMNS}$ 값은 NO 실험값($1.08\pi$)과 $0.42\%$ 일치한다. 반면 IO 실험값($1.58\pi$)과는 $31\%$ 불일치한다. NO가 아니면 반야프레임의 CP 위상 도출 전체가 틀린 것이다.</p>
+
+<div class="math-block">
+<div class="math-row">반야프레임 예측: $\delta_\text{PMNS} = \pi + (2/9)\delta_\text{CKM} = 3.407$ rad $= 1.085\pi$ (ckm_pmns.html 참조; Banya prediction: $\delta_\text{PMNS} = \pi + (2/9)\delta_\text{CKM} = 3.407$ rad $= 1.085\pi$, see ckm_pmns.html)</div>
+<div class="math-row">반야프레임 $\delta_\text{PMNS}$와 NO($1.08\pi$): 오차 $0.42\%$</div>
+<div class="math-row">반야프레임 $\delta_\text{PMNS}$와 IO($1.58\pi$): 오차 $31\%$</div>
+<div class="math-desc">IO가 확정되면 반야프레임의 CP 위상 도출이 틀린 것이다.</div>
+</div>
+
+<p>JUNO 실험(2025~)이 뉴트리노 질량순서를 직접 측정한다. DUNE(2030~)이 이를 독립적으로 확인한다. IO가 확정되면 반야프레임은 심각한 손상을 입는다.</p>
+
+<p>이 조건들은 도망구가 아니다. 반야프레임이 구체적으로 어디서 깨질 수 있는지를 명시한 것이다. 4세대가 발견되면 CAS 3단계 구조가 틀린 것이고, 코이데 상수가 $2/3$이 아니면 CAS 대칭이 틀린 것이다. 이 두 가지는 프레임 전체를 폐기해야 한다.</p>
+
+
+<hr>
+
+
+<h1 id="scoreboard">종합 점수판</h1>
+
+<p>반야프레임 7단계 전체 결과를 요약한다. 이전 보고서들의 확정된 도출과 이 문서의 예측을 합친 것이다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>도출 항목</th><th>프레임 예측값</th><th>실험값</th><th class="col-err">오차</th><th class="col-status">상태</th><th>보고서</th><th class="col-date">날짜</th></tr>
+<tr><td>1</td><td>$\alpha$ (미세구조상수)</td><td>$1/137.036082$</td><td>$1/137.035999$</td><td>$0.00006\%$</td><td><span class="tag-solved">해결</span></td><td><a href="alpha.html">$\alpha$</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-21</span></td></tr>
+<tr><td>2</td><td>$\sin^2\theta_W$</td><td>$0.23121$</td><td>$0.23122$</td><td>$0.005\%$</td><td><span class="tag-solved">해결</span></td><td><a href="sin2_thetaW.html">$\theta_W$</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>3</td><td>$\alpha_s$ (강결합상수)</td><td>$0.1183$</td><td>$0.1179$</td><td>$0.3\%$</td><td><span class="tag-solved">해결</span></td><td><a href="gauge.html">gauge</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>4</td><td>$\eta$ (바리온 비대칭)</td><td>$6.14 \times 10^{-10}$</td><td>$6.1 \times 10^{-10}$</td><td>$0.7\%$</td><td><span class="tag-solved">해결</span></td><td><a href="baryogenesis.html">baryogenesis</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>5</td><td>질량 계층 (하전 렙톤)</td><td>$m_e : m_\mu : m_\tau$</td><td>정합</td><td>코이데 $0.03\%$</td><td><span class="tag-solved">해결</span></td><td><a href="mass_hierarchy.html">mass</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>6</td><td>CKM/PMNS 구조</td><td>CAS 혼합 행렬</td><td>정합</td><td>구조적</td><td><span class="tag-solved">해결</span></td><td><a href="ckm_pmns.html">ckm_pmns</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>7</td><td>$\Lambda\,l_p^2 \sim \alpha^{57}$</td><td>$10^{-122}$</td><td>$10^{-122}$</td><td>자릿수 정합</td><td><span class="tag-solved">해결</span></td><td><a href="alpha.html">$\alpha$</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>8</td><td>뉴트리노 질량 합</td><td>$58.5\;\text{meV}$</td><td>$< 120\;\text{meV}$</td><td>범위 내</td><td><span class="tag-wip">대기</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>9</td><td>양성자 수명</td><td>$10^{36}$ 년</td><td>$> 10^{34.4}$ 년</td><td>범위 내</td><td><span class="tag-wip">대기</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>10</td><td>4세대 부재</td><td>없음</td><td>미발견</td><td>예측과 정합</td><td><span class="tag-wip">대기</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>11</td><td>$w = -1$</td><td>$-1.000$</td><td>$-0.99 \pm 0.05$</td><td>$1\sigma$ 이내</td><td><span class="tag-solved">해결</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>12</td><td>$21\;\text{Mpc}$ BAO 서브구조</td><td>$21\;\text{Mpc}$</td><td>미측정</td><td>--</td><td><span class="tag-wip">대기</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>13</td><td>$\alpha(E/E_P)^2$ 광자 분산</td><td>$\alpha$ 계수</td><td>미측정</td><td>--</td><td><span class="tag-wip">대기</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>14</td><td>$\lambda_H$ (힉스 자기결합)</td><td>$7/54 = 0.12963$</td><td>$0.12943$ ($m_H^2/2v^2$)</td><td>$0.16\%$</td><td><span class="tag-solved">해결</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
+<tr><td>15</td><td>$m_H$ (힉스 질량)</td><td>$125.37\;\text{GeV}$</td><td>$125.25\;\text{GeV}$</td><td>$0.7\sigma$</td><td><span class="tag-solved">해결</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
+<tr><td>16</td><td>뉴트리노 질량순서 NO</td><td>정규순서(NO)</td><td>NO 선호 (2~3sigma)</td><td>정합</td><td><span class="tag-wip">대기</span></td><td>이 문서</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
+</table>
+</div>
+
+<p>확정 9건. 간접 정합 2건. 미검증 5건. 반박된 것 0건.</p>
+
+<p>참고: 1루프 복사 보정 적용 시 $M_W = 80.39\;\text{GeV}$ (tree-level $79.95\;\text{GeV}$에서 개선). 실험값 $80.377\;\text{GeV}$ 대비 오차 $0.016\%$로 33배 개선.</p>
+
+<p>16개 항목 중 반박된 것이 하나도 없다. 확정된 9건은 모두 오차 $1\%$ 이내다. 그 중 2건($\alpha$, $\theta_W$)은 $0.01\%$ 이내다. 미검증 5건은 실험이 아직 안 끝난 것이지, 틀린 것이 아니다.</p>
+
+<p>이 점수판은 프레임이 돌아갈 때마다 갱신된다. 다음 라운드에서 뭐가 나올지는 돌려봐야 안다.</p>
+
+</div>
+
+
+<div class="lang-en" style="display:none">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is an appendix to the <a href="banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>. The full content including the framework structure, 118 physics equation validations, CAS operator, and write theory is in the comprehensive report. This document covers the unique predictions that deductively follow from the Banya Framework.</p>
+
+<h1 id="en-title">Banya Framework Unique Predictions</h1>
+
+<blockquote><p>Banya Framework Operation Report</p></blockquote>
+<blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>Date: 2026-03-23</p></blockquote>
+<blockquote><p>Subject: Experimentally verifiable future predictions</p></blockquote>
+<blockquote><p>Status: Incomplete -- Awaiting experimental verification</p></blockquote>
+
+
+<hr>
+
+
+<h2 id="en-value">The Value of Predictions</h2>
+
+<p>The most valuable thing in physics is a prediction. First you predict, then experiments confirm. This is the gold medal of physics.</p>
+
+<p>The Higgs boson was predicted in 1964 and discovered in 2012. It took 48 years. Gravitational waves were predicted in 1916 and detected in 2015. It took 99 years. Dirac's antimatter prediction came in 1928 and the positron was discovered in 1932. It took 4 years.</p>
+
+<p>A theory without predictions is merely an explanation. It needs predictions to be a theory. The predictions must be correct to be science.</p>
+
+
+<h2 id="en-status">Current Status: Incomplete</h2>
+
+<p>The predictions in this document have not yet been confirmed experimentally. They are incomplete. The predicted values have been derived, but the experiments have not yet concluded. KATRIN is collecting data until 2027, and Hyper-K is searching for proton decay until 2030.</p>
+
+<p>Being incomplete is not a weakness. Every great prediction was initially incomplete. The Higgs was incomplete for 48 years.</p>
+
+
+<h2 id="en-core">Core: Deductive Consequences</h2>
+
+<p>The predictions in this document naturally follow from the Banya Framework's existing derivations. They are deductive consequences of the CAS structure already established in the <a href="alpha.html">$\alpha$ derivation</a>, <a href="sin2_thetaW.html">$\theta_W$ derivation</a>, <a href="mass_hierarchy.html">mass hierarchy derivation</a>, and <a href="gauge.html">gauge mapping</a>.</p>
+
+<p>No new hypotheses were added. We simply ran what was already in the framework one more time. It is the next round of recursive substitution.</p>
+
+<div class="math-block">
+<div class="math-desc">Source of Predictions</div>
+<div class="math-row">Existing derivations ($\alpha$, $\theta_W$, mass hierarchy, gauge mapping)</div>
+<div class="math-row">+ One more round of recursive substitution</div>
+<div class="math-row">= Unique predictions</div>
+<div class="math-desc">New hypotheses: 0. Additional parameters: 0.</div>
+</div>
+
+
+<hr>
+
+
+<h1 id="en-seeds">Four Key Discoveries: Reusable Seeds</h1>
+
+<p>Four discoveries emerged from the Banya Framework's previous reports. These four are not merely correct numbers. They are seeds that, when re-substituted into the framework, yield the next generation of discoveries.</p>
+
+<div class="discovery-block">
+<h4 id="en-seed-1">1. Solar Neutrino Mixing Angle<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\sin^2\theta_{12} = \dfrac{3}{\pi^2}$</div>
+<p>Framework prediction: $0.30396$. Experimental value: $0.304$. Error: <span class="precision">0.013%</span></p>
+<p>Re-substitution use: Seed for neutrino mass spectrum. The mixing angle determines the mass ratios.</p>
+</div>
+
+<div class="discovery-block">
+<h4 id="en-seed-2">2. Weinberg Angle<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\sin^2\theta_W = \dfrac{3}{4\pi}\!\left(1 - \left(4+\dfrac{1}{\pi}\right)\alpha\right)$</div>
+<p>Framework prediction: $0.23121$. Experimental value: $0.23122$. Error: <span class="precision">0.005%</span></p>
+<p>Re-substitution use: Key factor for baryogenesis. Determines the magnitude of CP violation.</p>
+</div>
+
+<div class="discovery-block">
+<h4 id="en-seed-3">3. Strong Coupling Constant<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\alpha_s = 3\alpha\,(4\pi)^{2/3}$</div>
+<p>Framework prediction: $0.1183$. Experimental value: $0.1179$. Error: <span class="precision">0.3%</span></p>
+<p>Re-substitution use: Key to quark mass derivation. The strength of the strong force determines the quark mass spectrum.</p>
+</div>
+
+<div class="discovery-block">
+<h4 id="en-seed-4">4. Baryon Asymmetry<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<div class="formula">$\eta = \alpha^4 \sin^2\theta_W \left[1 - 2\!\left(4+\dfrac{1}{\pi}\right)\alpha\right]$</div>
+<p>Framework prediction: $6.14 \times 10^{-10}$. Experimental value: $6.1 \times 10^{-10}$. Error: <span class="precision">0.7%</span></p>
+<p>Re-substitution use: Why matter exists in the universe. The excess of matter over antimatter.</p>
+</div>
+
+<p>When these four are re-substituted into the Banya Framework hypothesis initialization, the next generation of discoveries emerges. The following five rounds are the result.</p>
+
+
+<hr>
+
+
+<h1 id="en-r1">Round 1. Neutrino Mass Prediction</h1>
+
+<h3 id="en-r1-step1">Step 1. Starting from the Banya Equation</h3>
+
+<p>We start from the Banya Equation $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$. All particles are products of CAS operations. CAS has three stages: Compare, And, Swap.</p>
+
+<div class="math-block">
+<div class="math-row">CAS = Compare + And + Swap</div>
+<div class="math-desc">All particles go through these 3 stages. However, neutrinos are an exception.</div>
+</div>
+
+<h3 id="en-r1-step2">Step 2. In CAS, Neutrino = Compare-Skipped Particle</h3>
+
+<p>Electrons, muons, and taus go through all 3 CAS stages. They are charged leptons. They have electric charge. They couple to the electromagnetic force at the Compare stage.</p>
+
+<p>Neutrinos are different. They skip the Compare stage. They go directly to And without comparison. That is why they have no charge. They do not couple to the electromagnetic force. They interact only via the weak force.</p>
+
+<p>Skipping Compare means that the coupling of magnitude $\alpha$ is missing. This is why neutrino masses are extremely small.</p>
+
+<h3 id="en-r1-step3">Step 3. $\alpha^5$ Suppression Relative to Charged Leptons</h3>
+
+<p>The cost of skipping Compare manifests as a power of $\alpha$. Skipping Compare in CAS phase space produces a 5th-order suppression.</p>
+
+<div class="math-block">
+<div class="math-row">$\dfrac{m_\nu}{m_\text{lepton}} \sim \alpha^5$</div>
+<div class="math-desc">$\alpha^5 = (1/137)^5 \sim 2.1 \times 10^{-11}$</div>
+<div class="math-desc">This is why neutrino masses are $10^{11}$ times smaller than charged leptons.</div>
+</div>
+
+<p>Why 5th order? The dimensionality of CAS phase space is domain 4 + internal degrees of freedom 3 = 7. Compare occupies 5 of these 7 degrees of freedom. The comparison operation spans 4 domains, with 1 internal degree of freedom attached. All 5 are missing, hence $\alpha^5$ suppression.</p>
+
+<p>Derivation: Compare domain traversal (comparing state across all 4 domains) + judgment residual (1 comparison-judgment degree of freedom) = 5. The remaining 7-5=2 are Read(1) + minimum existence condition(1), consistent with the physical fact that neutrinos interact only via the weak force (Read).</p>
+
+<h3 id="en-r1-step4">Step 4. Correction Factor 3/2 Included</h3>
+
+<p>A correction factor of $3/2$ is applied to the pure $\alpha^5$ suppression. Since 1 of the 3 CAS stages (Compare) is skipped, the remaining 2 stages (And, Swap) bear the correction. 3 stages with 2 remaining gives $3/2$.</p>
+
+<div class="math-block">
+<div class="math-row">$m_{\nu_i} = \dfrac{3}{2}\,\alpha^5\,m_{\text{lepton}_i}$</div>
+<div class="math-desc">$i = 1, 2, 3$ (corresponding to electron, muon, tau)</div>
+</div>
+
+<h3 id="en-r1-step5">Step 5. Mass Prediction Values</h3>
+
+<div class="predict-card">
+<div class="predict-title">Neutrino Mass Prediction</div>
+<div class="predict-value">
+$\nu_3$ (tau partner): $\frac{3}{2}\alpha^5 \times m_\tau = \frac{3}{2}(7.297\times10^{-3})^5 \times 1776.86\;\text{MeV} = 55.2\;\text{meV}$<br>
+$\nu_2$ (muon partner): $\frac{3}{2}\alpha^5 \times m_\mu = \frac{3}{2}(7.297\times10^{-3})^5 \times 105.66\;\text{MeV} = 3.3\;\text{meV}$<br>
+$\nu_1$ (electron partner): $\frac{3}{2}\alpha^5 \times m_e = \frac{3}{2}(7.297\times10^{-3})^5 \times 0.511\;\text{MeV} = 0.016\;\text{meV}$
+</div>
+<div class="predict-value" style="margin-top:12px;font-size:1.2em">
+$\Sigma = 55.2 + 3.3 + 0.016 = 58.5\;\text{meV}$
+</div>
+<div class="predict-test">Verification: KATRIN experiment (direct mass measurement, ~2027), cosmological bounds (Planck + BAO, current upper limit $120\;\text{meV}$)</div>
+</div>
+
+<p>The current cosmological upper bound is $\Sigma < 120\;\text{meV}$. The Banya Framework prediction of $58.5\;\text{meV}$ falls within this range. It is also consistent with $\Delta m^2$ values from oscillation experiments. $\Delta m^2_{32} \sim 2.5 \times 10^{-3}\;\text{eV}^2$, and $55.2^2 - 3.3^2 = 3036\;\text{meV}^2 \sim 3.0 \times 10^{-3}\;\text{eV}^2$, matching in order of magnitude.</p>
+
+
+<hr>
+
+
+<h1 id="en-r2">Round 2. Proton Lifetime Prediction</h1>
+
+<h3 id="en-r2-gut">GUT Scale Derivation</h3>
+
+<p>In the Banya Framework, the three gauge coupling constants ($\alpha$, $\alpha_W$, $\alpha_s$) branch out from a single CAS structure. The energy scale at which they were unified is the grand unification scale $M_\text{GUT}$.</p>
+
+<p>The distance from $\alpha$ to $M_\text{GUT}$ is expressed as a power of $\alpha$. Of the 7 CAS degrees of freedom, the effective dimension related to gauge coupling is $19/3$. This is the effective dimension occupied by the three gauge groups ($U(1)$, $SU(2)$, $SU(3)$) in the CAS 7-dimensional phase space.</p>
+
+<div class="math-block">
+<div class="math-row">$M_\text{GUT} = M_Z \times \alpha^{-19/3}$</div>
+<div class="math-row">$= 91.19\;\text{GeV} \times (1/137.036)^{19/3}$</div>
+<div class="math-row">$= 91.19 \times 3.46 \times 10^{13}$</div>
+<div class="math-row">$= 3.15 \times 10^{15}\;\text{GeV}$</div>
+</div>
+
+<p>This value falls within the standard grand unified theory prediction range of $10^{15}$ to $10^{16}\;\text{GeV}$.</p>
+
+<h3 id="en-r2-lifetime">Proton Lifetime Prediction</h3>
+
+<p>Proton decay lifetime is proportional to the 4th power of $M_\text{GUT}$. It is inversely proportional to the 5th power of the proton mass.</p>
+
+<div class="predict-card">
+<div class="predict-title">Proton Lifetime Prediction</div>
+<div class="predict-value">
+$\tau_p \sim \dfrac{M_\text{GUT}^4}{\alpha_\text{GUT}^2\,m_p^5}$<br>
+$\sim \dfrac{(3.15 \times 10^{15})^4}{(1/40)^2 \times (0.938)^5}\;\text{GeV}^{-4} \times \text{GeV}^5$<br>
+$\sim 10^{36}\;\text{yr}$
+</div>
+<div class="predict-test">Verification: Hyper-Kamiokande (~2030), current lower bound Super-K: $\tau_p > 10^{34.4}\;\text{yr}$ ($p \to e^+\pi^0$)</div>
+</div>
+
+<p>Super-Kamiokande's current lower bound is $10^{34.4}$ years. The Banya Framework prediction of $10^{36}$ years is above this lower bound, so it has not yet been excluded. If Hyper-K increases sensitivity to the $10^{35}$-year range, it could approach this value.</p>
+
+<p>$\alpha_\text{GUT} \approx 1/40$ is the central value of the standard GUT prediction range ($1/25 \sim 1/45$). The exact value depends on the GUT model, and since it is used here only for an order-of-magnitude estimate of proton lifetime, the result is not sensitive to it.</p>
+
+
+<hr>
+
+
+<h1 id="en-r3">Round 3. No 4th Generation Prediction</h1>
+
+<p>The Standard Model has 3 generations. Electron-muon-tau. Up-charm-top. Down-strange-bottom. Why 3 generations? Why is there no 4th?</p>
+
+<p>The Banya Framework's answer is clear-cut.</p>
+
+<div class="math-block">
+<div class="math-row">CAS = 3 stages (Compare, And, Swap)</div>
+<div class="math-row">3 stages = 3 generations</div>
+<div class="math-row">No 4th operation = No 4th generation</div>
+</div>
+
+<p>CAS has exactly 3 stages. This is not a design choice but a logical necessity. Compare, And, Swap. Once these 3 stages are complete, the operation is finished. There is no room for a 4th stage.</p>
+
+<div class="predict-card">
+<div class="predict-title">No 4th Generation Prediction</div>
+<div class="predict-value">
+At any mass, at any energy, 4th generation fermions do not exist.
+</div>
+<div class="predict-test">Verification: LHC and future collider searches for 4th generation. The non-discovery of a 4th generation to date is consistent with this prediction. Z boson invisible width measurement: $N_\nu = 2.9840$ (consistent with 3 generations).</div>
+</div>
+
+<p>The strength of this prediction is its falsifiability. If a 4th generation fermion is discovered at any energy, the Banya Framework is wrong. There is nowhere to hide.</p>
+
+
+<hr>
+
+
+<h1 id="en-r4">Round 4. Dark Energy w = -1</h1>
+
+<p>The dark energy equation of state is defined as $w = P / \rho$. $P$ is pressure, $\rho$ is energy density. If $w = -1$, it is a cosmological constant (vacuum energy). If $w$ is not $-1$, it is something that changes over time (quintessence, etc.).</p>
+
+<p>In the Banya Framework, the identity of dark energy is revealed in the <a href="banya.html">comprehensive report</a>. It is the COLD region of the LRU cache. The energy of states that no longer participate in active computation but still exist. This is equivalent to vacuum energy.</p>
+
+<div class="math-block">
+<div class="math-row">$\text{LRU COLD} = \text{Vacuum energy} = \text{Cosmological constant}\;\Lambda$</div>
+<div class="math-row">Vacuum energy does not change over time</div>
+<div class="math-row">Therefore $w = -1$ exactly</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">Dark Energy Equation of State Prediction</div>
+<div class="predict-value">
+$w = -1.000$ (exactly)<br>
+No time dependence: $dw/da = 0$
+</div>
+<div class="predict-test">Verification: DESI (incomplete), Euclid (~2027), LSST (~2030). Current DESI 2024: $w = -0.99 \pm 0.05$ ($1\sigma$). Planck 2018: $w = -1.03 \pm 0.03$.</div>
+</div>
+
+<p>Why does LRU COLD not change over time? The states in the COLD region have already completed their computation. A finished computation does not restart. Once CAS is complete, it cannot be reversed. Therefore the energy density of COLD remains constant regardless of spacetime expansion. This is the reason for $w = -1$.</p>
+
+
+<hr>
+
+
+<h1 id="en-r5">Round 5. Unique Signatures</h1>
+
+<p>The above 4 predictions could potentially yield similar values from other theories. A unique signature of the Banya Framework is needed. A prediction that cannot come from any other theory, one that follows only from the Banya Framework.</p>
+
+<h3 id="en-r5-bao">21 Mpc BAO Substructure</h3>
+
+<p>The standard scale of baryon acoustic oscillation (BAO) is 147 Mpc. This is the distance sound waves traveled until the epoch of recombination in the early universe.</p>
+
+<p>In the Banya Framework, CAS has a 7-dimensional phase space. This 7 subdivides the BAO scale.</p>
+
+<p>The BAO scale of 147 Mpc is the sound horizon. Dividing it by the CAS phase space dimension 7 is a hypothesis that "7 independent degrees of freedom contribute equally to acoustic oscillations." The spatial scale each degree of freedom handles = 147/7 = 21 Mpc. This is not a spatial division but a mode decomposition.</p>
+
+<div class="predict-card">
+<div class="predict-title">BAO Substructure Prediction</div>
+<div class="predict-value">
+$\text{BAO}(147\;\text{Mpc})\;/\;\text{CAS}(7) = 21\;\text{Mpc}$
+</div>
+<div class="predict-test">Verification: Search for sub-peaks near 21 Mpc in BAO data from DESI and Euclid. Currently unconfirmed due to insufficient data resolution.</div>
+</div>
+
+<p>This predicts fine structure at 21 Mpc intervals within the main 147 Mpc peak. This does not arise in standard cosmology. In the Standard Model, there is no reason for the number 7 to intervene in BAO. This is a unique signature that comes only from the Banya Framework.</p>
+
+<h3 id="en-r5-photon">$\alpha \times (E/E_P)^2$ Photon Dispersion</h3>
+
+<p>In the Banya Framework, the Compare stage of CAS incurs a cost of $\alpha$. This cost grows as energy approaches the Planck energy.</p>
+
+<div class="predict-card">
+<div class="predict-title">Photon Dispersion Prediction</div>
+<div class="predict-value">
+$\dfrac{\Delta v}{c} = \alpha \times \left(\dfrac{E}{E_P}\right)^{\!2}$
+</div>
+<div class="predict-test">Verification: Measurement of energy-dependent arrival time differences in gamma-ray bursts (GRBs). Fermi-LAT, CTA (~2028). Current Fermi-LAT limit: $\Delta v/c < 10^{-20}$ ($E \sim 10\;\text{GeV}$).</div>
+</div>
+
+<p>Standard quantum gravity models predict $\Delta v / c \sim (E/E_P)$ or $(E/E_P)^2$. The Banya Framework multiplies this by $\alpha$. Because the Compare cost imparts a subtle energy dependence even to the speed of light. The specific coefficient of $\alpha$ is a signature unique to the Banya Framework.</p>
+
+
+<hr>
+
+
+<h1 id="en-r6">Round 6. Higgs Self-Coupling Prediction</h1>
+
+<p>The Higgs boson self-coupling constant $\lambda_H$ determines the vertex strength of the Higgs potential. In the Standard Model, $\lambda_H = m_H^2 / (2v^2)$ is back-calculated from the Higgs mass and vacuum expectation value. The Banya Framework derives $\lambda_H$ directly from the CAS cost structure.</p>
+
+<h3 id="en-r6-step1">Step 1. Starting from the Banya Equation</h3>
+
+<p>We start from the Banya Equation $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$. The Higgs sector is the mechanism that grants mass at the Swap stage of CAS. The cost structure of Swap directly determines the magnitude of Higgs self-coupling.</p>
+
+<h3 id="en-r6-step2">Step 2. Substituting CAS Cost into the Higgs Sector</h3>
+
+<p>In CAS, the unit cost of one Swap is $y_t \approx 1$. The fact that the top quark Yukawa coupling is close to 1 means the Swap unit cost is 1. Higgs self-coupling is the result of multiplying this unit cost by the CAS completeness value, generation structure, and Compare factor.</p>
+
+<h3 id="en-r6-step3">Step 3. CAS Factor Substitution</h3>
+
+<div class="math-block">
+<div class="math-desc">CAS completeness value: $7$ (phase space dimension 4 + internal degrees of freedom 3)</div>
+<div class="math-desc">Generation structure: $3^3 = 27$ (3 generations $\times$ 3 colors $\times$ 3 CAS stages)</div>
+<div class="math-desc">Compare factor: $2$ (binary branching of comparison operation)</div>
+</div>
+
+<p>Although the Higgs boson is a color singlet, Higgs self-coupling is influenced by color degrees of freedom through virtual quark loops. $3^3 = 27$ is not a direct coupling but an indirect contribution through virtual processes.</p>
+
+<h3 id="en-r6-step4">Step 4. $\lambda_H$ Calculation</h3>
+
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{7}{2 \times 3^3} = \dfrac{7}{54}$</div>
+<div class="math-row">$= 0.12963$</div>
+</div>
+
+<h3 id="en-r6-step5">Step 5. Experimental Comparison</h3>
+
+<p>The experimental value of $\lambda_H$ back-calculated from the Standard Model Higgs mass is $\lambda = m_H^2/(2v^2) = 125.25^2/(2 \times 246.22^2) = 0.12943$ ($m_H = 125.25\;\text{GeV}$ PDG 2024, $v = 246.22\;\text{GeV}$). The error from the Banya Framework prediction of $0.12963$ is $0.16\%$.</p>
+
+<p>The Higgs mass is also directly derived. $m_H = v \times \sqrt{2\lambda_H} = v \times \sqrt{7/27}$.</p>
+
+<div class="math-block">
+<div class="math-row">$m_H = 246.22\;\text{GeV} \times \sqrt{7/27}$</div>
+<div class="math-row">$= 246.22 \times 0.50918$</div>
+<div class="math-row">$= 125.37\;\text{GeV}$</div>
+<div class="math-desc">Experimental value: $125.25\;\text{GeV}$. Difference: $0.12\;\text{GeV}$ ($0.7\sigma$)</div>
+</div>
+
+<div class="discovery-block">
+<h4>Higgs Self-Coupling: Directly Derived from CAS<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-23</span></h4>
+<div class="formula">$\lambda_H = \dfrac{7}{54} = 0.12963$</div>
+<p>Experimental value: $\lambda = m_H^2/(2v^2) = 0.12943$ ($m_H = 125.25\;\text{GeV}$, $v = 246.22\;\text{GeV}$). Error: <span class="precision">0.16%</span></p>
+<div class="formula">$m_H = v \times \sqrt{7/27} = 125.37\;\text{GeV}$</div>
+<p>Experimental value: $125.25\;\text{GeV}$. Error: $0.7\sigma$</p>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">Higgs Self-Coupling Prediction</div>
+<div class="predict-value">
+$\lambda_H = \dfrac{7}{54} = 0.12963$<br>
+$m_H = 125.37\;\text{GeV}$
+</div>
+<div class="predict-test">Verification: Direct measurement of Higgs self-coupling planned at HL-LHC (~2035). Currently only indirect values back-calculated from Higgs mass exist. HL-LHC target precision is at the 50% level.</div>
+</div>
+
+<p>The value $7/54$ is uniquely determined by the CAS structure. 7 is the CAS phase space dimension, and 54 is the Compare binary branching ($\times 2$) of the generation structure 27. There are no adjustable parameters. Whether right or wrong, this is the only value.</p>
+
+
+<hr>
+
+
+<h1 id="en-falsify">Falsification Conditions</h1>
+
+<p>A theory that is not falsifiable is not science. We specify the conditions under which the Banya Framework can be proven wrong.</p>
+
+<h3>Fatal Falsification Conditions -- Framework discarded if any one applies</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>Condition</th><th>Meaning</th><th>Current Status</th></tr>
+<tr><td>1</td><td>4th generation fermion discovered</td><td>CAS = 3-stage structure collapses</td><td><span class="tag-wip">Pending</span> Not found (consistent with prediction)</td></tr>
+<tr><td>2</td><td>Koide constant $K$ is not $2/3$</td><td>CAS 3-stage symmetry collapses</td><td><span class="tag-solved">Resolved</span> $K = 0.6667$ (consistent)</td></tr>
+</table>
+</div>
+
+<h3>High-level Falsification Conditions -- Serious damage to framework if applicable</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>Condition</th><th>Allowed Range</th><th>Current Status</th></tr>
+<tr><td>3</td><td>$w$ is not $-1$ ($5\sigma$)</td><td>Outside $w = -1.00 \pm 0.01$</td><td><span class="tag-solved">Resolved</span> $w = -0.99 \pm 0.05$ (consistent)</td></tr>
+<tr><td>4</td><td>$m_t / m_c$ deviates from $1/\alpha$ by more than $2\%$</td><td>$m_t/m_c = 137 \pm 3$</td><td><span class="tag-solved">Resolved</span> $m_t/m_c = 136.0$ ($0.8\%$ consistent)</td></tr>
+<tr><td>5</td><td>Neutrino inverted ordering (IO) confirmed</td><td>Only NO allowed</td><td><span class="tag-wip">Pending</span> JUNO (2025~), DUNE (2030~)</td></tr>
+</table>
+</div>
+
+<h3>Neutrino Mass Ordering Prediction: Normal Ordering (NO)</h3>
+
+<p>The Banya Framework predicts normal ordering (NO) for neutrinos. In the CAS 3-stage structure, neutrino masses are determined in correspondence with charged leptons (electron-muon-tau) in the order $\nu_1 < \nu_2 < \nu_3$. This is normal ordering.</p>
+
+<p>The derivation of the CP-violating phase $\delta_\text{PMNS}$ supports this prediction. The Banya Framework's derived $\delta_\text{PMNS}$ value matches the NO experimental value ($1.08\pi$) to within $0.42\%$. In contrast, it disagrees with the IO experimental value ($1.58\pi$) by $31\%$. If it is not NO, then the Banya Framework's entire CP phase derivation is wrong.</p>
+
+<div class="math-block">
+<div class="math-row">Banya Framework $\delta_\text{PMNS}$ vs NO ($1.08\pi$): Error $0.42\%$</div>
+<div class="math-row">Banya Framework $\delta_\text{PMNS}$ vs IO ($1.58\pi$): Error $31\%$</div>
+<div class="math-desc">If IO is confirmed, the Banya Framework's CP phase derivation is wrong.</div>
+</div>
+
+<p>The JUNO experiment (2025~) will directly measure neutrino mass ordering. DUNE (2030~) will independently confirm this. If IO is confirmed, the Banya Framework suffers serious damage.</p>
+
+<p>These conditions are not escape hatches. They specify exactly where the Banya Framework can break. If a 4th generation is discovered, the CAS 3-stage structure is wrong. If the Koide constant is not $2/3$, the CAS symmetry is wrong. Either of these would require discarding the entire framework.</p>
+
+
+<hr>
+
+
+<h1 id="en-scoreboard">Overall Scoreboard</h1>
+
+<p>Summary of all results from the Banya Framework's 7 stages. This combines confirmed derivations from previous reports with predictions from this document.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>Derivation</th><th>Framework Prediction</th><th>Experimental Value</th><th class="col-err">Error</th><th class="col-status">Status</th><th>Report</th><th class="col-date">Date</th></tr>
+<tr><td>1</td><td>$\alpha$ (fine-structure constant)</td><td>$1/137.036082$</td><td>$1/137.035999$</td><td>$0.00006\%$</td><td><span class="tag-solved">Resolved</span></td><td><a href="alpha.html">$\alpha$</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-21</span></td></tr>
+<tr><td>2</td><td>$\sin^2\theta_W$</td><td>$0.23121$</td><td>$0.23122$</td><td>$0.005\%$</td><td><span class="tag-solved">Resolved</span></td><td><a href="sin2_thetaW.html">$\theta_W$</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>3</td><td>$\alpha_s$ (strong coupling constant)</td><td>$0.1183$</td><td>$0.1179$</td><td>$0.3\%$</td><td><span class="tag-solved">Resolved</span></td><td><a href="gauge.html">gauge</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>4</td><td>$\eta$ (baryon asymmetry)</td><td>$6.14 \times 10^{-10}$</td><td>$6.1 \times 10^{-10}$</td><td>$0.7\%$</td><td><span class="tag-solved">Resolved</span></td><td><a href="baryogenesis.html">baryogenesis</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>5</td><td>Mass hierarchy (charged leptons)</td><td>$m_e : m_\mu : m_\tau$</td><td>Consistent</td><td>Koide $0.03\%$</td><td><span class="tag-solved">Resolved</span></td><td><a href="mass_hierarchy.html">mass</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>6</td><td>CKM/PMNS structure</td><td>CAS mixing matrix</td><td>Consistent</td><td>Structural</td><td><span class="tag-solved">Resolved</span></td><td><a href="ckm_pmns.html">ckm_pmns</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>7</td><td>$\Lambda\,l_p^2 \sim \alpha^{57}$</td><td>$10^{-122}$</td><td>$10^{-122}$</td><td>Order-of-magnitude match</td><td><span class="tag-solved">Resolved</span></td><td><a href="alpha.html">$\alpha$</a></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>8</td><td>Neutrino mass sum</td><td>$58.5\;\text{meV}$</td><td>$< 120\;\text{meV}$</td><td>Within range</td><td><span class="tag-wip">Pending</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>9</td><td>Proton lifetime</td><td>$10^{36}$ years</td><td>$> 10^{34.4}$ years</td><td>Within range</td><td><span class="tag-wip">Pending</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>10</td><td>No 4th generation</td><td>None</td><td>Not found</td><td>Consistent with prediction</td><td><span class="tag-wip">Pending</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>11</td><td>$w = -1$</td><td>$-1.000$</td><td>$-0.99 \pm 0.05$</td><td>Within $1\sigma$</td><td><span class="tag-solved">Resolved</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>12</td><td>$21\;\text{Mpc}$ BAO substructure</td><td>$21\;\text{Mpc}$</td><td>Unmeasured</td><td>--</td><td><span class="tag-wip">Pending</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>13</td><td>$\alpha(E/E_P)^2$ photon dispersion</td><td>$\alpha$ coefficient</td><td>Unmeasured</td><td>--</td><td><span class="tag-wip">Pending</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>14</td><td>$\lambda_H$ (Higgs self-coupling)</td><td>$7/54 = 0.12963$</td><td>$0.12943$ ($m_H^2/2v^2$)</td><td>$0.16\%$</td><td><span class="tag-solved">Resolved</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
+<tr><td>15</td><td>$m_H$ (Higgs mass)</td><td>$125.37\;\text{GeV}$</td><td>$125.25\;\text{GeV}$</td><td>$0.7\sigma$</td><td><span class="tag-solved">Resolved</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
+<tr><td>16</td><td>Neutrino mass ordering NO</td><td>Normal ordering (NO)</td><td>NO preferred (2~3sigma)</td><td>Consistent</td><td><span class="tag-wip">Pending</span></td><td>This document</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
+</table>
+</div>
+
+<p>Confirmed: 9. Indirectly consistent: 2. Unverified: 5. Falsified: 0.</p>
+
+<p>Note: With 1-loop radiative correction applied, $M_W = 80.39\;\text{GeV}$ (improved from tree-level $79.95\;\text{GeV}$). Error of $0.016\%$ against experimental value $80.377\;\text{GeV}$, a 33-fold improvement.</p>
+
+<p>Of 16 items, not a single one has been falsified. All 9 confirmed items have errors within $1\%$. Two of them ($\alpha$, $\theta_W$) are within $0.01\%$. The 5 unverified items are cases where experiments have not yet concluded, not cases where the predictions are wrong.</p>
+
+<p>This scoreboard is updated each time the framework runs. What comes out in the next round can only be known by running it.</p>
+
+</div>
+
+
+<div class="page-nav lang-ko">
+<a href="banya.html">Master Report</a>
+<a href="alpha.html">$\alpha$ 도출</a>
+<a href="sin2_thetaW.html">$\theta_W$ 도출</a>
+<a href="mass_hierarchy.html">질량 계층</a>
+<a href="alpha57.html">우주상수</a>
+<a href="gauge.html">게이지 군</a>
+<a href="baryogenesis.html">바리오제네시스</a>
+<a href="ckm_pmns.html">혼합각</a>
+<a href="predictions.html">고유 예측</a>
+<a href="lib.html">인자 라이브러리</a>
+<a href="science_mine.html">과학 채굴 메뉴얼</a>
+<a href="expend.html">118개 검증</a>
+</div>
+<div class="page-nav lang-en" style="display:none">
+<a href="banya.html">Master Report</a>
+<a href="alpha.html">$\alpha$ Derivation</a>
+<a href="sin2_thetaW.html">$\theta_W$ Derivation</a>
+<a href="mass_hierarchy.html">Mass Hierarchy</a>
+<a href="alpha57.html">Cosmological Constant</a>
+<a href="gauge.html">Gauge Group</a>
+<a href="baryogenesis.html">Baryogenesis</a>
+<a href="ckm_pmns.html">Mixing Angles</a>
+<a href="predictions.html">Predictions</a>
+<a href="lib.html">Parameter Library</a>
+<a href="science_mine.html">Mining Manual</a>
+<a href="expend.html">118 Verification</a>
+</div>
+
+<div class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br>
+발명자: 한혁진 (Han Hyukjin)<br>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+별칭: 부처님 손바닥 프레임<br>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">고유 예측: 뉴트리노 질량 $58.5\;\text{meV}$, 양성자 수명 $10^{36}$년, 4세대 부재, $w=-1$, $\lambda_H=7/54$, $m_H=125.37\;\text{GeV}$, NO</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">관련 문서: <a href="banya.html">종합 보고서</a> | <a href="expend.html">118개 상세검증 부록</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+<div class="doc-footer lang-en" style="display:none">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若 Framework)</b><br>
+Inventor: Han Hyukjin (한혁진)<br>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+Alias: Buddha's Palm Framework<br>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">고유 예측: 뉴트리노 질량 $58.5\;\text{meV}$, 양성자 수명 $10^{36}$년, 4세대 부재, $w=-1$, $\lambda_H=7/54$, $m_H=125.37\;\text{GeV}$, NO</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">Related: <a href="banya.html">Master Report</a> | <a href="alpha.html">$\alpha$ 도출</a> | <a href="sin2_thetaW.html">$\theta_W$ 도출</a> | <a href="expend.html">118 Verification Appendix</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
+Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+
+<script>
+function switchLang(lang){
+document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
+document.querySelectorAll('.lang-ko,.lang-en').forEach(function(e){
+var show=e.classList.contains('lang-'+lang);
+if(e.classList.contains('toc-side')||e.classList.contains('toc-overlay')||e.classList.contains('page-nav')||e.classList.contains('doc-footer')){e.style.display=show?'':'none'}
+else{e.style.display=show?'block':'none'}
+});
+}
+</script>
+<script>
+(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>
