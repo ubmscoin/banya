@@ -890,7 +890,7 @@ time, space에 기록됨 (DATA에 쓰기 완료)</pre>
 
 <h3 id="ax8">공리 8. 옵저버 드리븐 폴링 시스템 (Observer-Driven Polling System) <span class="tag-solved">공리</span></h3>
 
-<p>반야식의 자기참조 루프는 플랑크 클록마다 항상 돈다. 변화 유무와 상관없이 매 사이클 상태를 확인한다. 이것이 폴링이다. 폴링을 깨우는 것은 observer다(공리 10).</p>
+<p>반야식의 자기참조 루프는 플랑크 클록마다 항상 돈다. 변화 유무와 상관없이 매 사이클 상태를 확인한다. 이것이 폴링이다. 이 폴링은 busy가 아니다. 양자 괄호(OPERATOR) 안에서만 돌고, 고전 괄호(DATA)에 접근하지 않으므로 비용이 0이다(공리 4). observer가 깨울 때만 DATA에 접근하고, 그때 비용이 발생한다. 폴링을 깨우는 것은 observer다(공리 10).</p>
 
 <div class="math-block">
 <div class="math-row">$\delta$(변화)가 존재하려면</div>
@@ -1038,6 +1038,10 @@ COLD (68%) ← 최근 접근 없음      — 암흑에너지</pre>
       idle          R_LOCK           C_LOCK         CAS OK</pre>
 
 <p>반야프레임의 모든 공리(1~11)는 이 FSM의 구성요소다. 공리 1이 입력 공간을, 공리 2가 전이 함수를, 공리 4~5가 전이 비용과 레지스터를, 공리 6~7이 출력을, 공리 8이 클록을, 공리 10이 트리거를, 공리 11이 실행 모델을 정의한다. FSM 선언은 11개 공리가 하나의 기계로 닫힌다는 완결성 선언이다.</p>
+
+<h4>닫힌다는 것</h4>
+
+<p>닫힌다 = 외부에서 가져올 것이 없다. 반야프레임은 12개 공리 밖에서 아무것도 수입하지 않는다. 13번째 공리가 필요 없다. 외부 상수가 필요 없다. 외부 이론이 필요 없다. 공리만으로 입력 공간, 연산자, 비용, 레지스터, 출력, 클록, 트리거, 실행 모델이 전부 정의되고, FSM으로 전이도가 완성되고, 그 FSM이 플랑크 클록마다 스스로 돈다. 이것이 자기완결이고, 이것이 닫힘이다.</p>
 
 
 <h2 id="axiom-consequence">공리에서 나오는 것</h2>
@@ -4492,7 +4496,7 @@ recorded in time, space (write to DATA complete)</pre>
 
 <h3 id="en-ax8">Axiom 8. Observer-Driven Polling System <span class="tag-solved">Axiom</span></h3>
 
-<p>The self-referential loop of the Banya Equation runs every Planck clock. It checks state every cycle regardless of whether change occurred. This is polling. What wakes the polling is the observer (Axiom 10).</p>
+<p>The self-referential loop of the Banya Equation runs every Planck clock. It checks state every cycle regardless of whether change occurred. This is polling. This polling is not busy. It runs only within the quantum bracket (OPERATOR) and does not access the classical bracket (DATA), so its cost is zero (Axiom 4). Only when the observer wakes it does DATA access occur, and only then does cost arise. What wakes the polling is the observer (Axiom 10).</p>
 
 <div class="math-block">
 <div class="math-row">For $\delta$ (change) to exist</div>
@@ -4609,6 +4613,10 @@ COLD (68%) ← no recent access             — dark energy</pre>
       idle          R_LOCK           C_LOCK         CAS OK</pre>
 
 <p>All axioms (1-11) are components of this FSM. Axiom 1 defines the input space, Axiom 2 the transition function, Axioms 4-5 the transition cost and register, Axioms 6-7 the output, Axiom 8 the clock, Axiom 10 the trigger, and Axiom 11 the execution model. The FSM declaration is a completeness statement: the 11 axioms close into a single machine.</p>
+
+<h4>What "closed" means</h4>
+
+<p>Closed = nothing to import from outside. The Banya Framework imports nothing beyond its 12 axioms. No 13th axiom is needed. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
 
 
 <h2 id="en-axiom-consequence">What Follows from the Axioms</h2>
