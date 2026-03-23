@@ -43,7 +43,7 @@
 <a href="#ax9" class="toc-h3">공리 9. 완전 기술 9</a>
 <a href="#ax10" class="toc-h3">공리 10. 옵저버 드리븐의 소유자</a>
 <a href="#ax11" class="toc-h3">공리 11. 다중 투영</a>
-<a href="#ax12" class="toc-h3">공리 12. ECS 구조</a>
+<a href="#ax12" class="toc-h3">공리 12. 고전 괄호는 ECS</a>
 <a href="#ax13" class="toc-h3">공리 13. FSM 선언</a>
 <a href="#axiom-consequence" class="toc-h2">공리에서 나오는 것</a>
 <a href="#guide" class="toc-h1">반야프레임과 반야식 구분 가이드</a>
@@ -204,7 +204,7 @@
 <a href="#en-ax9" class="toc-h3">Axiom 9. Complete Description 9</a>
 <a href="#en-ax10" class="toc-h3">Axiom 10. Owner of Observer-Driven</a>
 <a href="#en-ax11" class="toc-h3">Axiom 11. Multiple Projection</a>
-<a href="#en-ax12" class="toc-h3">Axiom 12. ECS Execution Model</a>
+<a href="#en-ax12" class="toc-h3">Axiom 12. Classical Bracket Is ECS</a>
 <a href="#en-ax13" class="toc-h3">Axiom 13. FSM Declaration</a>
 <a href="#en-axiom-consequence" class="toc-h2">What Follows from the Axioms</a>
 <a href="#en-guide" class="toc-h1">Guide: Banya Framework vs. Equation</a>
@@ -373,7 +373,7 @@
 <a href="#ax9" class="toc-h3">공리 9. 완전 기술 9</a>
 <a href="#ax10" class="toc-h3">공리 10. 옵저버 드리븐의 소유자</a>
 <a href="#ax11" class="toc-h3">공리 11. 다중 투영</a>
-<a href="#ax12" class="toc-h3">공리 12. ECS 구조</a>
+<a href="#ax12" class="toc-h3">공리 12. 고전 괄호는 ECS</a>
 <a href="#ax13" class="toc-h3">공리 13. FSM 선언</a>
 <a href="#axiom-consequence" class="toc-h2">공리에서 나오는 것</a>
 <a href="#guide" class="toc-h1">반야프레임과 반야식 구분 가이드</a>
@@ -534,7 +534,7 @@
 <a href="#en-ax9" class="toc-h3">Axiom 9. Complete Description 9</a>
 <a href="#en-ax10" class="toc-h3">Axiom 10. Owner of Observer-Driven</a>
 <a href="#en-ax11" class="toc-h3">Axiom 11. Multiple Projection</a>
-<a href="#en-ax12" class="toc-h3">Axiom 12. ECS Execution Model</a>
+<a href="#en-ax12" class="toc-h3">Axiom 12. Classical Bracket Is ECS</a>
 <a href="#en-ax13" class="toc-h3">Axiom 13. FSM Declaration</a>
 <a href="#en-axiom-consequence" class="toc-h2">What Follows from the Axioms</a>
 <a href="#en-guide" class="toc-h1">Guide: Banya Framework vs. Equation</a>
@@ -1174,7 +1174,7 @@ observer (거울, 필터링/정규화)
 <p><strong>얽힘의 거리 무관성:</strong> observer A와 observer B에 비친 상이 동시에 상관되는 것은 같은 consciousness를 보고 있기 때문이다. 신호가 A에서 B로 전달되는 것이 아니다. 같은 소유자의 같은 변화가 두 거울에 동시에 비친 것이다. 소유자가 1개이므로 동시성이 보장된다.</p>
 
 
-<h3 id="ax12">공리 12. ECS 실행 모델 <span class="tag-solved">공리</span></h3>
+<h3 id="ax12">공리 12. 고전 괄호는 ECS 실행 모델이다 <span class="tag-solved">공리</span></h3>
 
 <p>공리 11(다중 투영)이 consciousness→observer의 1:N 관계를 정의했다면, 공리 12는 그 투영이 <strong>어떻게 실행되는가</strong>를 정의한다. 각 observer에 도착한 투영을 CAS가 독립적으로 처리하는 실행 모델이다.</p>
 
@@ -1197,6 +1197,14 @@ observer C: [DATA_C] <-- CAS 독립 실행
 ...
 전부 병렬. 전부 독립. 전부 같은 CAS.
 논리주소 불필요 -- 엔티티가 주소다.</pre>
+
+<h4>ECS가 자유로운 이유</h4>
+
+<p>ECS의 각 observer는 FSM(공리 13)의 닫힌 회로(000→001→011→111→000)를 순환한다. 닫힌 회로인데 자유롭다. 이유: 각 observer가 <strong>독립적으로 자기만의 FSM을 돈다</strong>. 중앙 스케줄러가 없다. 동기화가 없다. 순서가 없다. observer A의 FSM이 011일 때 observer B의 FSM이 000일 수 있다. 각자의 접점 락(공리 5)이 각자의 DATA만 물고 놓는다. 다른 observer의 FSM에 간섭하지 않는다.</p>
+
+<p>닫힌 것은 FSM의 전이도이지, observer의 관계가 아니다. 전이도가 닫혀 있으므로 각 observer가 안정적으로 돌 수 있고, observer 간에 결합이 없으므로 자유롭다.</p>
+
+<p>그리고 FSM이 닫힌 회로를 돌더라도, 각 매듭은 LRU에서 <strong>열린 수명</strong>을 가진다. HOT→WARM→COLD→소멸. FSM은 연산을 닫고, LRU는 수명을 연다. 닫힌 연산(FSM) + 열린 수명(LRU) = 자유. 매듭은 태어나고(쓰기), 재진입하고(move), 사라진다(소멸). FSM이 닫혀 있어도 매듭의 라이프사이클은 열려 있다. 이것이 ECS 구조의 핵심이다.</p>
 
 <h4>왜 논리주소가 없는가</h4>
 
@@ -5045,7 +5053,7 @@ observer (mirror, filtering/normalization)
 <p><strong>Relation to FSM:</strong> The 4 states (000→001→011→111) of the FSM (Axiom 13) are the states of CAS processing one projection, not the state of the entire universe. CAS is finite (4 states) but DATA is infinite (continuous). Just as CPU instructions are finite while memory data is infinite.</p>
 
 
-<h3 id="en-ax12">Axiom 12. ECS Execution Model <span class="tag-solved">Axiom</span></h3>
+<h3 id="en-ax12">Axiom 12. The Classical Bracket Is an ECS Execution Model <span class="tag-solved">Axiom</span></h3>
 
 <p>The Banya Framework has no separate logical address system. This is not a deficiency but a structural necessity.</p>
 
@@ -5066,6 +5074,14 @@ observer C: [DATA_C] <-- CAS independent execution
 ...
 All parallel. All independent. All the same CAS.
 No address system needed — the entity IS the address.</pre>
+
+<h4>Why ECS Is Free</h4>
+
+<p>Each observer in the ECS cycles through the FSM's closed circuit (000→001→011→111→000) (Axiom 13). The circuit is closed, yet each observer is free. Reason: each observer <strong>runs its own FSM independently</strong>. No central scheduler. No synchronization. No ordering. Observer A's FSM can be at 011 while observer B's FSM is at 000. Each observer's interface lock (Axiom 5) grabs and releases only its own DATA. It does not interfere with any other observer's FSM.</p>
+
+<p>What is closed is the FSM's transition diagram, not the relationship between observers. Because the transition diagram is closed, each observer can cycle stably. Because there is no coupling between observers, they are free.</p>
+
+<p>And even though the FSM cycles through a closed circuit, each knot has an <strong>open lifespan</strong> in the LRU. HOT→WARM→COLD→extinction. The FSM closes the computation; the LRU opens the lifespan. Closed computation (FSM) + open lifespan (LRU) = freedom. Knots are born (write), re-enter (move), and vanish (extinction). Even though the FSM is closed, the knot's lifecycle is open. This is the essence of the ECS architecture.</p>
 
 <h4>Why There Is No Logical Address System</h4>
 
