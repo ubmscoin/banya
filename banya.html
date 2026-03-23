@@ -321,7 +321,7 @@
 <a href="#en-sec100" class="toc-h2">Chapter 11. Verification Method</a>
 <a href="#en-sec101" class="toc-h3">8.1 Methodology</a>
 <a href="#en-sec102" class="toc-h3">8.2 Sub-frame Classification</a>
-<a href="#en-sec103" class="toc-h2">Chapter 12. Summary of 118 Verification Results</a>
+<a href="#en-sec103" class="toc-h2">Chapter 12. Summary of 118 Compatibility Verification Results</a>
 <a href="#en-sec104" class="toc-h3">Verification Summary</a>
 <a href="#en-sec105" class="toc-h2">Chapter 13. Benchmark Aggregation</a>
 <a href="#en-sec106" class="toc-h3">10.1 Reduction Pattern Summary</a>
@@ -641,7 +641,7 @@
 <a href="#en-sec100" class="toc-h2">Chapter 11. Verification Method</a>
 <a href="#en-sec101" class="toc-h3">8.1 Methodology</a>
 <a href="#en-sec102" class="toc-h3">8.2 Sub-frame Classification</a>
-<a href="#en-sec103" class="toc-h2">Chapter 12. Summary of 118 Verification Results</a>
+<a href="#en-sec103" class="toc-h2">Chapter 12. Summary of 118 Compatibility Verification Results</a>
 <a href="#en-sec104" class="toc-h3">Verification Summary</a>
 <a href="#en-sec105" class="toc-h2">Chapter 13. Benchmark Aggregation</a>
 <a href="#en-sec106" class="toc-h3">10.1 Reduction Pattern Summary</a>
@@ -776,6 +776,31 @@ time, space에 기록됨 (DATA에 쓰기 완료)</pre>
 </div>
 
 <p>입력: 구조 하나 (7 = 도메인 4 + 내부 자유도 3). 출력: 물리 상수 23개, 난제 해결 42개. 자유 매개변수 0개.</p>
+
+
+<h3>가설 라이브러리 -- 재대입 무기 목록</h3>
+
+<p>위에서 도출한 발견과 가설은 전부 <a href="lib.html" style="font-weight:600">가설 라이브러리(lib.html)</a>에 등록되어 있다. 이것이 다음 라운드의 무기가 된다. 프레임을 돌릴수록 라이브러리가 커지고, 라이브러리가 커질수록 숨은 값이 도망칠 곳이 없어진다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>분류</th><th>수량</th><th>상태</th><th>설명</th></tr>
+<tr><td><span class="tag-discovery">발견</span> D-01 ~ D-25</td><td>25개</td><td>오차 1% 이내 확정</td><td>$\alpha$, $\sin^2\theta_W$, $\alpha_s$, 코이데, PMNS/CKM 혼합각, 쿼크 질량 6개, 우주상수 등</td></tr>
+<tr><td><span class="tag-hypothesis">가설</span> H-01 ~ H-25</td><td>25개</td><td>구조적 대응 확인, 정량 증명 미완</td><td>CAS→게이지 군, 색 가둠=원자성, 시간 밖 연산자, TOCTOU 락, 붕괴=쓰기, 자기참조 등</td></tr>
+</table>
+</div>
+
+<h4>사용법: 재대입</h4>
+
+<p><a href="science_mine.html">과학 채굴 메뉴얼</a>의 3단계(상수 대입)에서 기존 물리 상수와 함께 라이브러리의 발견/가설을 넣는다. 하나의 발견이 다음 발견의 씨앗이 된다.</p>
+
+<pre><code>실전 연쇄 도출 경로:
+  D-01 alpha → D-02 sin^2(theta_W) → D-04 eta(바리온비)
+  D-01 alpha → D-09 코이데(2/9) → D-05~D-08 PMNS/CKM 혼합각
+  D-01 alpha → D-03 alpha_s → D-15~D-20 쿼크 6개 질량
+  D-01 alpha → D-21 Lambda*l_p^2 = alpha^57</code></pre>
+
+<p>전체 목록과 재대입 맵은 <a href="lib.html" style="color:#58a6ff;font-weight:600">가설 라이브러리(lib.html)</a>에서 확인할 수 있다.</p>
 
 
 <h3>표준모형 완전 도출 선언</h3>
@@ -1442,7 +1467,7 @@ E_p = m_p × c²          ← m_p = √(ℏc/G) = 플랑크 질량</code></pre>
 </table>
 </div>
 
-<p>넣는 상수가 늘수록 더 구체적인 값이 나온다. 1개 넣으면 구조가 나오고, 3개 넣으면 공식이 나오고, 4개 넣으면 입자 질량이 나온다. 이것이 프레임의 수익률이다.</p>
+<p>1개 넣으면 구조가 나오고, 3개 넣으면 공식이 나오고, 4개 넣으면 입자 질량이 나온다.</p>
 
 
 <hr>
@@ -1484,7 +1509,7 @@ E_p = m_p × c²          ← m_p = √(ℏc/G) = 플랑크 질량</code></pre>
 
 <p><strong>도메인 변환:</strong> 반야프레임은 4개 도메인을 강제하고 전부 감시한다. 기존 물리식이 일부 도메인만 사용할 때 나머지 도메인으로 전환하면 숨은 물리량이 드러난다. 관측은 변화의 종속이며 모든 관측은 본질적으로 간접이다. 디코히어런스는 CAS 커밋(백그라운드→포그라운드 전이)이다.</p>
 
-<p><strong>통합:</strong> CAS의 3단계 비용이 4가지 힘에 대응한다(Swap=중력, Compare=전자기, Read=약력, 속박=강력). LRU 큐 하나로 보이는 물질(HOT 5%), 암흑물질(WARM 27%), 암흑에너지(COLD 68%)가 통합된다. 상수를 넣으면 숨은 값이 연립방정식처럼 나온다. 투입 13 → 산출 24+. 넣는 것보다 나오는 게 많다.</p>
+<p><strong>통합:</strong> CAS의 3단계 비용이 4가지 힘에 대응한다(Swap=중력, Compare=전자기, Read=약력, 속박=강력). LRU 큐 하나로 보이는 물질(HOT 5%), 암흑물질(WARM 27%), 암흑에너지(COLD 68%)가 통합된다.</p>
 
 <p><strong>검증:</strong> 118개 물리식 전수 검증 FAIL 0. 쓰기 공리에서 6개 기본 물리식 도출(전부 1.000000). CAS 비용에서 전자 전하, 바인베르크 각, W/Z 질량비, 힉스 VEV(0.6% 오차) 도출. 코이데 공식 0.0011% 오차.</p>
 
@@ -1696,17 +1721,13 @@ E_p = m_p × c²          ← m_p = √(ℏc/G) = 플랑크 질량</code></pre>
 <div class="math-legend">$\hbar$: 플랑크 환산상수 | $\sin^2\theta_W$: 바인베르크 각 | $\cos\theta_W$: 바인베르크 코사인 | $r_s$: 슈바르츠실트 반지름 | $t_p$: 플랑크 시간 | $E_p$: 플랑크 에너지 | $l_p$: 플랑크 길이 | $m_p$: 플랑크 질량 | $q_p$: 플랑크 전하 | $M_W$: W보손 질량</div>
 </div>
 
-<p>7개를 넣어서 20개 이상이 나왔다. 투입 7, 산출 20+. 남는장사다. 이것이 프레임의 가치다.</p>
-
-<p>반야프레임의 가치는 <strong>수익률</strong>에 있다. 상수를 넣을수록 나오는 결과물이 투입보다 많다. 4축 직교 구조가 연립방정식처럼 작동하므로 조건(알려진 값)이 늘어날수록 미지의 값이 결정된다. 기존 물리학에서는 각 식마다 별도의 실험과 이론이 필요했다. 반야프레임에서는 상수 몇 개만 넣으면 나머지가 연쇄적으로 나온다.</p>
+<p>4축 직교 구조가 연립방정식처럼 작동한다. 조건(알려진 값)이 늘어날수록 미지의 값이 결정된다. 기존 물리학에서는 각 식마다 별도의 실험과 이론이 필요했다. 반야프레임에서는 상수 몇 개만 넣으면 나머지가 연쇄적으로 나온다.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{기존 물리:} E=mc^{2} \text{따로,} \Delta E\Delta t \geq \hbar \text{따로,} S=kBA/4lp^{2} \text{따로} → \text{각각 별도 이론 필요} $$</div>
 <div class="math-row">반야프레임: 쓰기 공리 하나 → 6개 동시 도출 + CAS 비용 → 8개 추가 도출</div>
 <div class="math-legend">$\hbar$: 플랑크 환산상수 | CAS: Compare-And-Swap</div>
 </div>
-
-<p>넣을수록 더 나온다. 부처님 손바닥 안에서는 숨은 값이 도망칠 곳이 없다.</p>
 
 <h3 id="sec8">반야프레임의 7가지 가치</h3>
 
@@ -1757,7 +1778,7 @@ E_p = m_p × c²          ← m_p = √(ℏc/G) = 플랑크 질량</code></pre>
 <li>α 길이 사다리: 플랑크 길이(10⁻³⁵m)부터 우주의 크기(10²⁶m)까지 α가 관통</li>
 </ul>
 
-<p>하나를 풀면 다른 것의 답이 딸려 나온다. 이것이 프레임의 수익률이다. 넣을수록 더 나온다.</p>
+<p>하나를 풀면 다른 것의 답이 딸려 나온다.</p>
 
 <p><strong>5. α는 우연의 수가 아니라 구조의 필연이다.</strong> 정삼각형의 내각이 60°인 것은 "우연히 60°"가 아니라 "3변이 같으면 60°가 강제"되는 것이다. α가 1/137인 것도 마찬가지다. 도메인이 4개이고 내부 자유도가 3개이면 7 자유도 위상 공간의 체적비로 1/137이 강제된다.</p>
 
@@ -1803,7 +1824,7 @@ E_p = m_p × c²          ← m_p = √(ℏc/G) = 플랑크 질량</code></pre>
 <div class="math-legend">프레임은 값을 계산하지 않는다 | 프레임은 값이 존재하는 구조를 정의한다</div>
 </div>
 
-<p>프레임에 값을 직접 대입해서 "답이 안 나온다"고 하는 것은 피타고라스 정리에 삼각형 없이 변의 길이를 요구하는 것과 같다. 프레임에는 상수를 넣고, 도메인을 전환하고, 연립방정식처럼 풀어야 한다. 그러면 넣은 것보다 나오는 게 많다.</p>
+<p>프레임에 값을 직접 대입해서 "답이 안 나온다"고 하는 것은 피타고라스 정리에 삼각형 없이 변의 길이를 요구하는 것과 같다. 프레임에는 상수를 넣고, 도메인을 전환하고, 연립방정식처럼 풀어야 한다.</p>
 
 <h4>사용 샘플: 뉴턴 만유인력에서 불확정성 원리 도출</h4>
 
@@ -3245,12 +3266,7 @@ CAS 속박 비용 (글루온 결합) = 929 MeV (99%)
 <tr><td>4</td><td>코이데 공식 2/3</td><td>0.666659</td><td>0.0011%</td></tr>
 </table>
 
-<p>투입에 쿼크 질량 6개를 추가하여 총 투입 13개. 산출은 24개 이상으로 증가했다.</p>
-
-<pre>투입 13 → 산출 24+
-</pre>
-
-<p>넣을수록 나온다. 부처님 손바닥 안에서 숨은 값이 도망칠 곳이 없다.</p>
+<p>투입에 쿼크 질량 6개를 추가하여 총 투입 13개, 산출 24개 이상.</p>
 
 <h3 id="sec88">연립방정식 풀기 8: 전자 질량과 중력의 관계</h3>
 
@@ -3895,7 +3911,7 @@ CAS 4력 통합:    8/8 일치
 <tr><td><a href="baryogenesis.html">바리오제네시스</a></td><td>$\eta = \alpha^4\sin^2\theta_W$. 물질-반물질 비대칭. 0.7%</td><td><span class="tag-hypothesis">가설</span></td></tr>
 <tr><td><a href="ckm_pmns.html">혼합각</a></td><td>CKM/PMNS 8개 + CP 2개 + θ₁₃ + λ_H. 0.013%~0.49%</td><td><span class="tag-solved">해결</span></td></tr>
 <tr><td><a href="predictions.html">고유 예측</a></td><td>$\Sigma m_\nu$ = 58.5 meV, $\tau_p \sim 10^{36}$년, $\lambda_H$ = 7/54, NO 예측, 반박 조건</td><td><span class="tag-wip">대기</span></td></tr>
-<tr><td><a href="lib.html">인자 라이브러리</a></td><td>발견 25개 + 가설 25개 = 50개 재대입 인자</td><td>--</td></tr>
+<tr><td><a href="lib.html">가설 라이브러리</a></td><td>발견 25개 + 가설 25개 = 50개 재대입 인자</td><td>--</td></tr>
 <tr><td><a href="science_mine.html">과학 채굴 메뉴얼</a></td><td>작업 방법론 10장. 용어 범례, CAS 공리, 문서 규칙</td><td>--</td></tr>
 <tr><td><a href="expend.html">118개 호환성 검증</a></td><td>118개 물리식 × 반야프레임 호환성 확인. FAIL 0. 도출 기대값 포함</td><td><span class="tag-solved">해결</span></td></tr>
 </table>
@@ -4016,6 +4032,31 @@ Complete description:       7 + 2 = 9</pre>
 </div>
 
 <p>Input: one structure (7 = 4 domains + 3 internal degrees of freedom). Output: 23 physical constants, 42 Solved Challenges. Free parameters: 0.</p>
+
+
+<h3>Hypothesis Library -- Re-substitution Arsenal</h3>
+
+<p>All discoveries and hypotheses derived above are registered in the <a href="lib.html" style="font-weight:600">Hypothesis Library (lib.html)</a>. These become weapons for the next round. The more rounds you run, the larger the library grows, and the fewer places hidden values can escape.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Category</th><th>Count</th><th>Status</th><th>Description</th></tr>
+<tr><td><span class="tag-discovery">Discovery</span> D-01 ~ D-25</td><td>25</td><td>Confirmed within 1% error</td><td>$\alpha$, $\sin^2\theta_W$, $\alpha_s$, Koide, PMNS/CKM mixing angles, 6 quark masses, cosmological constant, etc.</td></tr>
+<tr><td><span class="tag-hypothesis">Hypothesis</span> H-01 ~ H-25</td><td>25</td><td>Structural correspondence confirmed, quantitative proof incomplete</td><td>CAS to gauge group, color confinement = atomicity, operator outside time, TOCTOU lock, collapse = write, self-reference, etc.</td></tr>
+</table>
+</div>
+
+<h4>Usage: Re-substitution</h4>
+
+<p>At Step 3 (constant substitution) of the <a href="science_mine.html">Science Mining Manual</a>, insert library discoveries/hypotheses alongside known physical constants. Each discovery seeds the next.</p>
+
+<pre><code>Actual chain derivation paths:
+  D-01 alpha -> D-02 sin^2(theta_W) -> D-04 eta (baryon ratio)
+  D-01 alpha -> D-09 Koide(2/9) -> D-05~D-08 PMNS/CKM mixing angles
+  D-01 alpha -> D-03 alpha_s -> D-15~D-20 six quark masses
+  D-01 alpha -> D-21 Lambda*l_p^2 = alpha^57</code></pre>
+
+<p>Full list and re-substitution map available at <a href="lib.html" style="color:#58a6ff;font-weight:600">Hypothesis Library (lib.html)</a>.</p>
 
 
 <h3>Standard Model Fully Derived Declaration</h3>
@@ -6652,7 +6693,7 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 
 <hr>
 
-<h2 id="en-sec103">Chapter 12. Summary of 118 Verification Results</h2>
+<h2 id="en-sec103">Chapter 12. Summary of 118 Compatibility Verification Results</h2>
 
 <p>All 118 physics equations (76 quadratic + 42 non-quadratic) were substituted into the Banya Framework for full verification. For each equation, the original formula, Banya Framework transformation, sub-frame classification, and verdict rationale were recorded. Detailed verification content is included in the appendix at the end of this report.</p>
 
@@ -7154,9 +7195,9 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <a href="baryogenesis.html">바리오제네시스</a>
 <a href="ckm_pmns.html">혼합각</a>
 <a href="predictions.html">고유 예측</a>
-<a href="lib.html">인자 라이브러리</a>
+<a href="lib.html">가설 라이브러리</a>
 <a href="science_mine.html">과학 채굴 메뉴얼</a>
-<a href="expend.html">118개 검증</a>
+<a href="expend.html">118개 호환성 검증</a>
 </div>
 <div class="page-nav lang-en" style="display:none">
 <a href="banya.html">Master Report</a>
@@ -7168,63 +7209,32 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <a href="baryogenesis.html">Baryogenesis</a>
 <a href="ckm_pmns.html">Mixing Angles</a>
 <a href="predictions.html">Predictions</a>
-<a href="lib.html">Parameter Library</a>
+<a href="lib.html">Hypothesis Library</a>
 <a href="science_mine.html">Mining Manual</a>
-<a href="expend.html">118 Verification</a>
+<a href="expend.html">118 Compatibility Verification</a>
 </div>
 
 <div class="doc-footer lang-ko">
 <div class="f-top">
-<div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
-분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
-</div>
-<div class="f-right">
-<div class="f1">δ² = (time + space)² + (observer + superposition)²</div>
-<div class="f2">프레임 벤치마크 118/118 | 쓰기 공리 도출 6개 | CAS 4력 통합 8/8</div>
-<div class="f2">α = 1/137 근원 도출: 1/α = 137.036082, 오차 0.00006%</div>
-</div>
+<div class="f-corp"><b>반야프레임 (般若 Framework)</b><br>발명자: 한혁진 (Han Hyukjin)<br>이메일: bokkamsun@gmail.com<br>별칭: 부처님 손바닥 프레임<br>분류: 공리 기반 과학 채굴 엔진</div>
+<div class="f-right"><div class="f1">$\delta^2 = (\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$</div><div class="f2">벤치마크 118/118 | 쓰기 공리 도출 6개 | CAS 4력 통합 8/8</div></div>
 </div>
 <div class="f-bottom">
-<div class="f2">관련 문서: <a href="banya.html">종합 보고서</a> | <a href="expend.html">118개 상세검증 부록</a></div>
+<div class="f2">관련: <a href="alpha.html">$\alpha$ 도출</a> | <a href="expend.html">118개 호환성 검증</a></div>
 <div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
-기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
-<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+<div class="f-license"><div class="license-title">CC BY-NC-SA 4.0</div>BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div></div>
 </div>
 </div>
-</div>
+
 <div class="doc-footer lang-en" style="display:none">
 <div class="f-top">
-<div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
-Classification: Axiom-Based Science Mining Engine
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2$ = (time + space)$^2$ + (observer + superposition)$^2$</div>
-<div class="f2">Framework Benchmark 118/118 | Write Axiom 6 derivations | CAS 4-force unification 8/8</div>
-<div class="f2">$\alpha$ = 1/137 origin derived: $1/\alpha$ = 137.036082, error 0.00006%</div>
-</div>
-</div>
+<div class="f-corp"><b>Banya Framework (般若 Framework)</b><br>Inventor: Han Hyukjin (한혁진)<br>Email: bokkamsun@gmail.com<br>Alias: Buddha's Palm Framework<br>Classification: Axiom-Based Science Mining Engine</div>
+<div class="f-right"><div class="f1">$\delta^2 = (\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$</div><div class="f2">Benchmark 118/118 | Write Axiom 6 | CAS 4-force 8/8</div></div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="alpha.html">$\alpha$ = 1/137 Origin</a> | <a href="expend.html">118 Verification Appendix</a></div>
+<div class="f2">Related: <a href="alpha.html">$\alpha$ Origin</a> | <a href="expend.html">118 Compatibility Verification</a></div>
 <div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
-<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+<div class="f-license"><div class="license-title">CC BY-NC-SA 4.0</div>BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div></div>
 </div>
 </div>
 
