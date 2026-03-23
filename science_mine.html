@@ -528,37 +528,37 @@
 
 <p>반야프레임에는 12개 공리가 있다(<a href="banya.html#axioms">banya.html 공리 체계</a> 참조). 그 중 모든 전문가가 작업 전에 반드시 이해해야 하는 필수 4개를 여기서 설명한다. 이것을 이해하지 못한 상태에서 프레임을 돌리면 "CAS가 시간 안에서 작동한다"는 오해에 빠진다. 결과의 해석이 전부 틀어진다.</p>
 
-<h3 id="ch6-a1">공리 1: CAS는 시간 밖의 연산자</h3>
+<h3 id="ch6-a1">필수 1: CAS는 시간 밖의 연산자 (공리 3)</h3>
 
 <div class="step-block">
-<div class="step-num">공리 1</div>
+<div class="step-num">필수 1</div>
 <p>반야식에서 CAS는 양자 괄호(observer + superposition) 쪽에 있다. time 도메인 밖이다. R에서 C에서 S로 가는 것은 시간 순서가 아니라 논리 의존성이다.</p>
 </div>
 
 <p>비유하면 이렇다. 컴퓨터에서 CAS 명령어는 CPU 1클록 안에서 원자적으로 실행된다. 바깥에서 보면 "시간이 안 흐른 것처럼" 한 번에 일어난다. 자연의 CAS도 마찬가지다. time 도메인 밖에서 작동한다.</p>
 
-<h3 id="ch6-a2">공리 2: $\hbar$ = TOCTOU 락 비용</h3>
+<h3 id="ch6-a2">필수 2: DATA 접근 비용 (공리 4,5)</h3>
 
 <div class="step-block">
-<div class="step-num">공리 2</div>
-<p>Compare와 Swap 사이에 상태가 바뀌지 않도록 거는 최소 비용이 $\hbar$다. 불확정성 원리는 "자연의 한계"가 아니라 "연산의 비용"이다.</p>
+<div class="step-num">필수 2</div>
+<p>Compare와 Swap 사이에 상태가 바뀌지 않도록 거는 최소 비용이 $\hbar$다(공리 4). 불확정성 원리는 "자연의 한계"가 아니라 "연산의 비용"이다. 또한 TOCTOU 락 레지스터(공리 5)가 이 비용을 물리적으로 강제한다.</p>
 </div>
 
-<p>TOCTOU(Time Of Check to Time Of Use)는 컴퓨터 과학에서 "확인 시점과 사용 시점 사이에 상태가 바뀌는 문제"를 말한다. CAS는 이 문제를 락으로 해결한다. 그 락의 최소 비용이 $\hbar$다. 그래서 $\Delta x \cdot \Delta p \geq \hbar / 2$ 인 것이다.</p>
+<p>TOCTOU(Time Of Check to Time Of Use)는 컴퓨터 과학에서 "확인 시점과 사용 시점 사이에 상태가 바뀌는 문제"를 말한다. CAS는 이 문제를 락으로 해결한다. 그 락의 최소 비용이 $\hbar$다(공리 4). 그리고 TOCTOU 락 레지스터(공리 5)가 이 락을 구현하는 물리적 메커니즘이다. 그래서 $\Delta x \cdot \Delta p \geq \hbar / 2$ 인 것이다.</p>
 
-<h3 id="ch6-a3">공리 3: 파동함수 붕괴 = 쓰기</h3>
+<h3 id="ch6-a3">필수 3: 파동함수 붕괴 = 쓰기 (공리 6)</h3>
 
 <div class="step-block">
-<div class="step-num">공리 3</div>
+<div class="step-num">필수 3</div>
 <p>superposition(여러 상태)에서 CAS 실행하면 observer(1개 확정)가 되고 DATA로 기록된다. 100년 미스터리의 답: 쓰기니까.</p>
 </div>
 
 <p>왜 관측하면 파동함수가 붕괴하는가? 100년간 아무도 답 못 했다. 반야프레임의 답: 관측은 쓰기이고, 쓰기는 여러 상태 중 1개를 확정하는 것이다. 쓰기가 일어나면 중첩이 해소된다. 그것이 붕괴다.</p>
 
-<h3 id="ch6-a4">공리 4: 반야식 자기참조</h3>
+<h3 id="ch6-a4">필수 4: 반야식 자기참조 (공리 8)</h3>
 
 <div class="step-block">
-<div class="step-num">공리 4</div>
+<div class="step-num">필수 4</div>
 <p>$\delta$ 존재에서 OPERATOR 작동, 비용 $\hbar$, DATA 기록, time과 space, 우주. 반야식 1줄이 "왜 우주가 존재하는가"에 답한다.</p>
 </div>
 
@@ -1102,37 +1102,37 @@ $\pi$, $e$, 정수의 조합으로 거의 모든 수를 0.1% 이내로 근사할
 
 <p>The Banya Framework has 12 axioms (see <a href="banya.html#en-axioms">banya.html Axiom System</a>). Of these, the following 4 are essential knowledge every expert must understand before starting work. If you run the framework without understanding these, you fall into the misconception that "CAS operates within time." The interpretation of all results goes wrong.</p>
 
-<h3 id="en-ch6-a1">Axiom 1: CAS Is an Operator Outside Time</h3>
+<h3 id="en-ch6-a1">Essential 1: CAS Is an Operator Outside Time (Axiom 3)</h3>
 
 <div class="step-block">
-<div class="step-num">Axiom 1</div>
+<div class="step-num">Essential 1</div>
 <p>In the Banya Equation, CAS is on the quantum bracket (observer + superposition) side. It is outside the time domain. Going from R to C to S is not temporal order but logical dependency.</p>
 </div>
 
 <p>An analogy: in a computer, the CAS instruction executes atomically within a single CPU clock. From the outside, it happens all at once "as if time did not flow." Nature's CAS is the same. It operates outside the time domain.</p>
 
-<h3 id="en-ch6-a2">Axiom 2: $\hbar$ = TOCTOU Lock Cost</h3>
+<h3 id="en-ch6-a2">Essential 2: DATA Access Cost (Axiom 4,5)</h3>
 
 <div class="step-block">
-<div class="step-num">Axiom 2</div>
-<p>The minimum cost of locking to prevent state change between Compare and Swap is $\hbar$. The uncertainty principle is not "a limit of nature" but "a cost of computation."</p>
+<div class="step-num">Essential 2</div>
+<p>The minimum cost of locking to prevent state change between Compare and Swap is $\hbar$ (Axiom 4). The uncertainty principle is not "a limit of nature" but "a cost of computation." Additionally, the TOCTOU lock register (Axiom 5) physically enforces this cost.</p>
 </div>
 
-<p>TOCTOU (Time Of Check to Time Of Use) refers to the problem in computer science where "the state changes between the time of checking and the time of using." CAS solves this problem with a lock. The minimum cost of that lock is $\hbar$. That is why $\Delta x \cdot \Delta p \geq \hbar/2$.</p>
+<p>TOCTOU (Time Of Check to Time Of Use) refers to the problem in computer science where "the state changes between the time of checking and the time of using." CAS solves this problem with a lock. The minimum cost of that lock is $\hbar$ (Axiom 4). And the TOCTOU lock register (Axiom 5) is the physical mechanism that implements this lock. That is why $\Delta x \cdot \Delta p \geq \hbar/2$.</p>
 
-<h3 id="en-ch6-a3">Axiom 3: Wavefunction Collapse = Write</h3>
+<h3 id="en-ch6-a3">Essential 3: Wavefunction Collapse = Write (Axiom 6)</h3>
 
 <div class="step-block">
-<div class="step-num">Axiom 3</div>
+<div class="step-num">Essential 3</div>
 <p>When CAS executes on superposition (multiple states), it becomes observer (1 determined state) and is recorded as DATA. The answer to the 100-year mystery: because it is a write.</p>
 </div>
 
 <p>Why does the wavefunction collapse upon observation? No one answered this for 100 years. The Banya Framework's answer: observation is a write, and a write is determining 1 state out of many. When a write occurs, superposition is resolved. That is collapse.</p>
 
-<h3 id="en-ch6-a4">Axiom 4: Banya Equation Self-Reference</h3>
+<h3 id="en-ch6-a4">Essential 4: Banya Equation Self-Reference (Axiom 8)</h3>
 
 <div class="step-block">
-<div class="step-num">Axiom 4</div>
+<div class="step-num">Essential 4</div>
 <p>From $\delta$'s existence, OPERATOR operates, cost $\hbar$, DATA is recorded, time and space, the universe. A single line of the Banya Equation answers "why does the universe exist."</p>
 </div>
 

@@ -35,7 +35,7 @@
 <a href="#ax1" class="toc-h3">공리 1. 반야식</a>
 <a href="#ax2" class="toc-h3">공리 2. CAS 유일 연산자</a>
 <a href="#ax3" class="toc-h3">공리 3. 시간 밖 연산자</a>
-<a href="#ax4" class="toc-h3">공리 4. DATA 접근 비용</a>
+<a href="#ax4" class="toc-h3">공리 4. 비용은 공짜가 아니다</a>
 <a href="#ax5" class="toc-h3">공리 5. TOCTOU 락 레지스터</a>
 <a href="#ax6" class="toc-h3">공리 6. 붕괴=쓰기</a>
 <a href="#ax7" class="toc-h3">공리 7. 비쓰기=중첩유지</a>
@@ -195,7 +195,7 @@
 <a href="#en-ax1" class="toc-h3">Axiom 1. Banya Equation</a>
 <a href="#en-ax2" class="toc-h3">Axiom 2. CAS as Sole Operator</a>
 <a href="#en-ax3" class="toc-h3">Axiom 3. Operator Outside Time</a>
-<a href="#en-ax4" class="toc-h3">Axiom 4. DATA Access Cost</a>
+<a href="#en-ax4" class="toc-h3">Axiom 4. Cost Is Not Free</a>
 <a href="#en-ax5" class="toc-h3">Axiom 5. TOCTOU Lock Register</a>
 <a href="#en-ax6" class="toc-h3">Axiom 6. Collapse = Write</a>
 <a href="#en-ax7" class="toc-h3">Axiom 7. Non-Write = Superposition</a>
@@ -363,7 +363,7 @@
 <a href="#ax1" class="toc-h3">공리 1. 반야식</a>
 <a href="#ax2" class="toc-h3">공리 2. CAS 유일 연산자</a>
 <a href="#ax3" class="toc-h3">공리 3. 시간 밖 연산자</a>
-<a href="#ax4" class="toc-h3">공리 4. DATA 접근 비용</a>
+<a href="#ax4" class="toc-h3">공리 4. 비용은 공짜가 아니다</a>
 <a href="#ax5" class="toc-h3">공리 5. TOCTOU 락 레지스터</a>
 <a href="#ax6" class="toc-h3">공리 6. 붕괴=쓰기</a>
 <a href="#ax7" class="toc-h3">공리 7. 비쓰기=중첩유지</a>
@@ -523,7 +523,7 @@
 <a href="#en-ax1" class="toc-h3">Axiom 1. Banya Equation</a>
 <a href="#en-ax2" class="toc-h3">Axiom 2. CAS as Sole Operator</a>
 <a href="#en-ax3" class="toc-h3">Axiom 3. Operator Outside Time</a>
-<a href="#en-ax4" class="toc-h3">Axiom 4. DATA Access Cost</a>
+<a href="#en-ax4" class="toc-h3">Axiom 4. Cost Is Not Free</a>
 <a href="#en-ax5" class="toc-h3">Axiom 5. TOCTOU Lock Register</a>
 <a href="#en-ax6" class="toc-h3">Axiom 6. Collapse = Write</a>
 <a href="#en-ax7" class="toc-h3">Axiom 7. Non-Write = Superposition</a>
@@ -705,6 +705,25 @@
 
 <p>이것이 출발점이다. 여기서 벗어나지 않는다. 4개 단어, 제곱 2개, 1줄.</p>
 
+<p>4축은 직교하는 다항식이다. 괄호는 그 4축을 2개씩 묶는 세퍼레이터다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>구분</th><th>괄호</th><th>축</th><th>역할</th></tr>
+<tr><td>고전 괄호</td><td>(time + space)²</td><td>time, space</td><td>DATA — 상태가 기록되는 곳</td></tr>
+<tr><td>양자 괄호</td><td>(observer + superposition)²</td><td>observer, superposition</td><td>OPERATOR — 연산이 실행되는 곳</td></tr>
+</table>
+</div>
+
+<p>괄호가 없으면 4축이 뒤섞인다:</p>
+
+<div class="math-block">
+<div class="math-row">$$\delta^{2} = \text{time}^{2} + \text{space}^{2} + \text{observer}^{2} + \text{superposition}^{2} \quad \leftarrow \text{틀림}$$</div>
+<div class="math-desc">괄호 없이 4개를 나열하면 DATA와 OPERATOR의 구분이 사라진다. CAS를 통한 간접 접근(공리 4)이 표현되지 않고, 4축이 직접 연결된 것처럼 보인다. DATA와 OPERATOR 사이에 락(공리 5)이 있다는 구조가 소멸한다.</div>
+</div>
+
+<p>괄호가 DATA와 OPERATOR를 분리한다. 이 분리가 직교다.</p>
+
 
 <h3 id="ax2">공리 2. CAS는 유일한 연산자 <span class="tag-solved">공리</span></h3>
 
@@ -721,6 +740,20 @@
 </div>
 
 <p>CAS 내부 상태의 합(1+2+4=7)은 물리학의 자유도(degrees of freedom)와 대응된다. 시스템을 완전히 기술하는 데 필요한 독립 변수의 수가 자유도이고, CAS 1건을 완전히 기술하는 데 필요한 내부 상태의 수가 7이다. 같은 구조의 다른 이름이다.</p>
+
+<h4>자유도 용어 정리</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>명칭</th><th>값</th><th>의미</th><th>사용처</th></tr>
+<tr><td>CAS 단계 수</td><td>3</td><td>Read, Compare, Swap 3단계</td><td>sin²θ_W 도출, 코이데, 3세대</td></tr>
+<tr><td>CAS 내부 상태 합</td><td>1+2+4 = 7</td><td>CAS 1건을 완전히 기술하는 내부 상태 수</td><td>α 도출 (Wyler 7차원), 도메인4+단계3</td></tr>
+<tr><td>완전 기술 자유도</td><td>7+2 = 9</td><td>CAS(7) + 괄호 구조(2)</td><td>코이데 2/9, 카비보 각 (공리 9)</td></tr>
+<tr><td>외적 대수 기저</td><td>21+35+1 = 57</td><td>7차원 공간의 물리적 k-형식 합</td><td>우주상수 α⁵⁷ (alpha57.html)</td></tr>
+</table>
+</div>
+
+<p>같은 "자유도"라는 단어가 문맥에 따라 3, 7, 9, 57을 가리킨다. 혼동을 피하려면 위 명칭을 사용한다.</p>
 
 <p>CAS 3단계는 비트 플래그로 작동한다. 각 단계가 1비트를 점유하며, 3비트가 전부 켜져야(111) CAS 1건이 완성된다. 하나라도 0이면 미완성이다. 이것이 원자성(분리 불가)의 비트 플래그 표현이다.</p>
 
@@ -761,9 +794,9 @@
 <p>R→C→S는 시간 순서가 아니라 논리 의존성이다. CAS는 time 축 바깥에서 time 축에 쓰기를 한다. CAS가 time에 쓸 때 시간의 화살이 생긴다.</p>
 
 
-<h3 id="ax4">공리 4. ℏ = DATA 접근 비용 <span class="tag-solved">공리</span></h3>
+<h3 id="ax4">공리 4. CAS-DATA 비용은 공짜가 아니다 <span class="tag-solved">공리</span></h3>
 
-<p>DATA(고전 괄호)와 OPERATOR(양자 괄호)는 공리 1에서 직교한다. 직교는 구조다. 항상 얽혀 있다. 비용은 0이다. 그러나 CAS가 DATA를 실제로 물고 읽고 쓰는 순간 — 그것이 락이다. 락은 사건이다. 사건에는 비용이 든다. 그 최소 비용이 ℏ다.</p>
+<p>CAS가 DATA에 접근하는 비용은 0이 될 수 없다. 비용이 0이면 락이 없고, 락이 없으면 점유가 불가능하고, 점유 없이는 CAS가 실행되지 않는다. 따라서 최소 비용이 존재한다.</p>
 
 <pre>DATA (고전 괄호) ──── TOCTOU_LOCK ──── OPERATOR (양자 괄호)
  시공간이 여기 있다        경계           CAS가 여기 산다</pre>
@@ -772,40 +805,25 @@
 <table>
 <tr><th>구분</th><th>성격</th><th>비용</th><th>공리</th></tr>
 <tr><td>얽힘 (직교)</td><td>구조 — 항상 성립</td><td>0</td><td>공리 1</td></tr>
-<tr><td>락 (상호작용)</td><td>사건 — CAS가 DATA를 물고 놓는 순간</td><td>ℏ (최소)</td><td>공리 4</td></tr>
+<tr><td>락 (상호작용)</td><td>사건 — CAS가 DATA를 물고 놓는 순간</td><td>≠ 0 (최소값 존재)</td><td>공리 4</td></tr>
 </table>
 </div>
 
-<p>ℏ는 CAS가 DATA를 물고 놓는 1건의 상호작용에 지불하는 최소 단가다. 락 없이(비용 0으로) 상호작용하는 것은 불가능하고, 그 바닥이 ℏ다.</p>
+<p>이 최소 비용이 물리학에서 ℏ(디렉 상수)로 측정된다. 하이젠베르크의 불확정성 원리($\Delta x \cdot \Delta p \geq \hbar/2$)는 이 공리의 도출 결과다. 기존 물리학은 이것을 "자연의 근본적 한계"라고 말하지만, 반야프레임에서는 CAS가 DATA에 접근할 때 지불하는 비용이다.</p>
 
-<div class="math-block">
-<div class="math-row">$$\Delta x \cdot \Delta p \geq \hbar/2$$</div>
-<div class="math-desc">= CAS가 DATA를 점유하는 최소 비용</div>
-<div class="math-desc">= 점유 비용 없이는 아무것도 확정 못 한다</div>
-</div>
-
-<h4>불확정성 원리란 무엇인가</h4>
-
-<p>위치(x)를 정확히 알수록 운동량(p)이 부정확해지고, 운동량을 정확히 알수록 위치가 부정확해진다. 둘 다 동시에 완벽히 아는 것은 불가능하고, 그 한계가 ℏ/2다. 이것이 하이젠베르크의 불확정성 원리다.</p>
-
-<p>기존 물리학은 이것을 "자연의 근본적 한계"라고 말한다. 반야프레임은 다르다. 이것은 한계가 아니라 <strong>CAS가 DATA에 접근할 때 지불하는 비용</strong>이다.</p>
-
-<h4>물리학 ↔ CAS 대응 테이블</h4>
+<h4>비가역성 용어 정리</h4>
 
 <div class="table-wrap">
 <table>
-<tr><th>물리학</th><th>의미</th><th>CAS (공리 2)</th><th>의미</th></tr>
-<tr><td>$\Delta x$</td><td>위치의 불확정 범위</td><td>DATA 주소 정밀도</td><td>도메인의 <strong>어느 주소</strong>를 물고 있는가</td></tr>
-<tr><td>$\Delta p$</td><td>운동량의 불확정 범위</td><td>DATA 값 정밀도</td><td>그 주소에 <strong>어떤 값</strong>을 쓰는가</td></tr>
-<tr><td>$\hbar/2$</td><td>동시 확정의 최소 한계</td><td>최소 점유 비용</td><td>주소와 값을 동시에 확정하는 최소 락 비용 (공리 5)</td></tr>
-<tr><td>$\Delta x$ 줄임</td><td>위치를 정확히 잡음</td><td>주소를 정확히 잡음</td><td>→ 값(운동량)이 흔들린다</td></tr>
-<tr><td>$\Delta p$ 줄임</td><td>운동량을 정확히 잡음</td><td>값을 정확히 잡음</td><td>→ 주소(위치)가 흔들린다</td></tr>
+<tr><th>의미</th><th>설명</th><th>공리</th></tr>
+<tr><td>순서 불가역</td><td>R→C→S 순서를 되돌릴 수 없다. 논리 의존성</td><td>공리 3</td></tr>
+<tr><td>정보 소비</td><td>Compare에서 1비트가 비가역적으로 소비된다</td><td>공리 4</td></tr>
+<tr><td>열역학 방향</td><td>superposition 경우의 수가 증가하는 방향</td><td>공리 7</td></tr>
+<tr><td>OPERATOR 성질</td><td>비가역성은 DATA(time)가 아니라 CAS(OPERATOR)의 성질이다</td><td>공리 3</td></tr>
 </table>
 </div>
 
-<p><strong>왜 동시에 확정할 수 없는가:</strong> CAS가 DATA 주소를 점유하는 순간(공리 5, R_LOCK ON), 그 주소에 쓸 값은 아직 Compare를 거쳐야 확정된다. 반대로 값을 먼저 확정하면 그 값을 쓸 주소가 아직 Read를 거쳐야 확정된다. 주소 확정(Read)과 값 확정(Compare→Swap)은 CAS 내부에서 순차적으로 일어나므로, 한쪽을 먼저 확정하면 다른 쪽은 아직 미확정이다. 둘 다 동시에 확정하려면 CAS 1건을 완전히 실행해야 하고, 그 최소 비용이 ℏ/2다.</p>
-
-<p>불확정성 원리는 "자연의 한계"가 아니라 "CAS가 DATA에 접근하는 비용"이다.</p>
+<p>같은 "비가역성"이라는 단어가 문맥에 따라 다른 공리를 가리킨다. 혼동을 피하려면 위 구분을 사용한다.</p>
 
 
 <h3 id="ax5">공리 5. TOCTOU 락 레지스터 <span class="tag-solved">공리</span></h3>
@@ -4299,6 +4317,25 @@ CAS 4력 통합:    8/8 일치
 
 <p>This is the starting point. Nothing departs from here. 4 words, 2 squares, 1 line.</p>
 
+<p>The 4 axes form an orthogonal polynomial. The brackets are separators that group the 4 axes into pairs.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Category</th><th>Bracket</th><th>Axes</th><th>Role</th></tr>
+<tr><td>Classical bracket</td><td>(time + space)²</td><td>time, space</td><td>DATA — where states are recorded</td></tr>
+<tr><td>Quantum bracket</td><td>(observer + superposition)²</td><td>observer, superposition</td><td>OPERATOR — where computation executes</td></tr>
+</table>
+</div>
+
+<p>Without brackets, the 4 axes mix:</p>
+
+<div class="math-block">
+<div class="math-row">$$\delta^{2} = \text{time}^{2} + \text{space}^{2} + \text{observer}^{2} + \text{superposition}^{2} \quad \leftarrow \text{wrong}$$</div>
+<div class="math-desc">Listing 4 terms without brackets erases the distinction between DATA and OPERATOR. Indirect access through CAS (Axiom 4) is not expressed, and the 4 axes appear directly connected. The lock structure (Axiom 5) between DATA and OPERATOR vanishes.</div>
+</div>
+
+<p>The brackets separate DATA from OPERATOR. This separation is orthogonality.</p>
+
 
 <h3 id="en-ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
 
@@ -4315,6 +4352,20 @@ CAS 4력 통합:    8/8 일치
 </div>
 
 <p>The sum of CAS internal states (1+2+4=7) corresponds to degrees of freedom in physics. The number of independent variables needed to fully describe a system is degrees of freedom; the number of internal states needed to fully describe 1 CAS event is 7. Same structure, different name.</p>
+
+<h4>Degrees of Freedom Terminology</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>Name</th><th>Value</th><th>Meaning</th><th>Used in</th></tr>
+<tr><td>CAS stage count</td><td>3</td><td>Read, Compare, Swap — 3 stages</td><td>sin²θ_W derivation, Koide, 3 generations</td></tr>
+<tr><td>CAS internal state sum</td><td>1+2+4 = 7</td><td>Internal states needed to fully describe 1 CAS event</td><td>α derivation (Wyler 7-dim), domain 4 + stages 3</td></tr>
+<tr><td>Complete description DOF</td><td>7+2 = 9</td><td>CAS(7) + bracket structure(2)</td><td>Koide 2/9, Cabibbo angle (Axiom 9)</td></tr>
+<tr><td>Exterior algebra basis</td><td>21+35+1 = 57</td><td>Physical k-form sum in 7-dim space</td><td>Cosmological constant α⁵⁷ (alpha57.html)</td></tr>
+</table>
+</div>
+
+<p>The same word "degrees of freedom" refers to 3, 7, 9, or 57 depending on context. Use the names above to avoid confusion.</p>
 
 <p>CAS 3 steps operate as bit flags. Each step occupies 1 bit, and all 3 bits must be ON (111) for 1 CAS event to complete. If any bit is 0, it is incomplete. This is the bit flag expression of atomicity (inseparability).</p>
 
@@ -4349,9 +4400,9 @@ CAS 4력 통합:    8/8 일치
 <p>R→C→S is not a temporal sequence but a logical dependency. CAS writes to the time axis from outside it. When CAS writes to time, the arrow of time emerges.</p>
 
 
-<h3 id="en-ax4">Axiom 4. ℏ = DATA Access Cost <span class="tag-solved">Axiom</span></h3>
+<h3 id="en-ax4">Axiom 4. CAS-DATA Cost Is Not Free <span class="tag-solved">Axiom</span></h3>
 
-<p>DATA (classical bracket) and OPERATOR (quantum bracket) are orthogonal by Axiom 1. Orthogonality is structure -- always entangled, cost zero. But the moment CAS actually grabs DATA to read and write -- that is a lock. A lock is an event. Events have cost. The minimum cost is ℏ.</p>
+<p>The cost of CAS accessing DATA cannot be zero. If cost is zero, there is no lock. If there is no lock, occupation is impossible. Without occupation, CAS cannot execute. Therefore a minimum cost exists.</p>
 
 <pre>DATA (classical bracket) ──── TOCTOU_LOCK ──── OPERATOR (quantum bracket)
  spacetime lives here           boundary         CAS lives here</pre>
@@ -4360,17 +4411,25 @@ CAS 4력 통합:    8/8 일치
 <table>
 <tr><th>Category</th><th>Nature</th><th>Cost</th><th>Axiom</th></tr>
 <tr><td>Entanglement (orthogonality)</td><td>Structure -- always holds</td><td>0</td><td>Axiom 1</td></tr>
-<tr><td>Lock (interaction)</td><td>Event -- the moment CAS grabs and releases DATA</td><td>ℏ (minimum)</td><td>Axiom 4</td></tr>
+<tr><td>Lock (interaction)</td><td>Event -- the moment CAS grabs and releases DATA</td><td>≠ 0 (minimum exists)</td><td>Axiom 4</td></tr>
 </table>
 </div>
 
-<div class="math-block">
-<div class="math-row">$$\Delta x \cdot \Delta p \geq \hbar/2$$</div>
-<div class="math-desc">= minimum cost of CAS occupying DATA</div>
-<div class="math-desc">= nothing can be determined without occupation cost</div>
+<p>This minimum cost is measured as ℏ (Dirac constant) in physics. Heisenberg's uncertainty principle ($\Delta x \cdot \Delta p \geq \hbar/2$) is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost CAS pays to access DATA.</p>
+
+<h4>Irreversibility Terminology</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>Meaning</th><th>Description</th><th>Axiom</th></tr>
+<tr><td>Order irreversibility</td><td>R→C→S order cannot be reversed. Logical dependency</td><td>Axiom 3</td></tr>
+<tr><td>Information consumption</td><td>1 bit is irreversibly consumed at Compare</td><td>Axiom 4</td></tr>
+<tr><td>Thermodynamic direction</td><td>Direction of increasing superposition states</td><td>Axiom 7</td></tr>
+<tr><td>OPERATOR property</td><td>Irreversibility is a property of CAS (OPERATOR), not DATA (time)</td><td>Axiom 3</td></tr>
+</table>
 </div>
 
-<p>The uncertainty principle is not "a limit of nature" but "the cost of CAS accessing DATA."</p>
+<p>The same word "irreversibility" refers to different axioms depending on context. Use the distinctions above to avoid confusion.</p>
 
 
 <h3 id="en-ax5">Axiom 5. TOCTOU Lock Register <span class="tag-solved">Axiom</span></h3>
