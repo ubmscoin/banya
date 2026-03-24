@@ -702,6 +702,8 @@
 
 <p>반야프레임은 이론이 아니다. 가설이 아니다. <strong>공리 기반 과학 채굴 엔진</strong>이다. 공리에서 출발해서 재귀 대입으로 물리 상수를 캐낸다. 입력은 구조 하나(7 = 도메인 4 + 내부 자유도 3)이고, 출력은 물리학이다.</p>
 
+<p><strong>공리 수식 규칙:</strong> 공리와 명제에 등장하는 모든 수식은 공리 내부 구조에서 파생된 식이다. 외부에서 가져온 식(다른 이론의 공식, 실험식)은 공리 본문에 넣지 않는다. 수학 기호(π, r, N 등)는 도구로 사용하되, 다른 사람이 조합한 식(equation)은 사용하지 않는다. 외부 식과의 대응은 "물리 대응 용어 표"에서만 기술한다.</p>
+
 <h2 id="axiom-list">확정 공리</h2>
 
 <h3 id="ax1">공리 1. 반야식 <span class="tag-solved">공리</span></h3>
@@ -757,6 +759,77 @@
 
 <p>observer가 없으면 CAS의 Compare 결과를 받을 곳이 없다. superposition이 없으면 CAS가 참조할 대상이 없다. 둘 다 반야식이 작동하기 위한 <strong>구조적 필수 요소</strong>이지, 양자역학을 의식한 비유적 수사가 아니다.</p>
 
+<h4>4축 직교 = 4비트 <span class="tag-corollary">명제</span></h4>
+
+<p>직교 = 독립. 독립이면 각 축이 다른 축에 간섭 없이 ON/OFF된다. 간섭 없는 독립 ON/OFF = 비트. 4축이 직교(공리 1)하므로 4비트다. $2^4 = 16$가지 도메인 조합이 가능하다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>bit 0</th><th>bit 1</th><th>bit 2</th><th>bit 3</th><th>값</th><th>상태</th></tr>
+<tr><td>time</td><td>space</td><td>observer</td><td>superposition</td><td></td><td></td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>전부 OFF</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>time만 ON</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>space만 ON</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>time + space (DATA 괄호)</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>observer만 ON</td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>8</td><td>superposition만 ON</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>12</td><td>observer + superposition (OPERATOR 괄호)</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>15</td><td>전부 ON</td></tr>
+</table>
+</div>
+
+<p style="font-size:0.85em;color:#8b949e">반야식 순서: (time + space) + (observer + superposition). bit 0~1 = DATA 괄호, bit 2~3 = OPERATOR 괄호. $2^4 = 16$가지 조합. 대표 8개만 표시.</p>
+
+<p>CAS(OPERATOR)가 3비트(공리 5: R_LOCK, C_LOCK, S_LOCK)이고, DATA(도메인)가 4비트다. 연산자도 비트, 대상도 비트. 같은 언어를 써야 TOCTOU_LOCK(공리 5)이 접점에서 물고 놓을 수 있다.</p>
+
+<p>도메인 4비트는 CAS의 <strong>접근 상태 플래그</strong>다. 어떤 도메인 비트가 켜져 있느냐에 따라 CAS가 어떤 경로로 접근하는지 결정되고, 경로가 비용 구조를 결정한다.</p>
+
+<pre>CAS 3비트: 연산자의 진행 상태  (뭘 하고 있냐)
+도메인 4비트: 대상의 접근 상태  (어디가 열려 있냐)
+
+도메인 4비트 예시:  1 0 1 0
+                   | | | |
+                   | | | +-- bit 0 time:          0 (닫힘)
+                   | | +---- bit 1 space:         1 (열림)
+                   | +------ bit 2 observer:      0 (닫힘)
+                   +-------- bit 3 superposition: 1 (열림)
+
+--> CAS가 space와 superposition만 접근 가능
+--> 접근 경로에 따라 비용 구조가 갈린다</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>4비트 패턴</th><th>열린 도메인</th><th>접근 경로</th><th>비용 구조</th></tr>
+<tr><td>0011</td><td>time + space</td><td>DATA 내부 교차</td><td>Swap 누적 비용</td></tr>
+<tr><td>0110</td><td>space + observer</td><td>DATA-OPERATOR 교차</td><td>교차 Cmp/Swp 비용</td></tr>
+<tr><td>0101</td><td>time + observer</td><td>DATA-OPERATOR 교차</td><td>교차 Cmp/Swp 비용</td></tr>
+<tr><td>0001</td><td>time만</td><td>자기참조 (같은 축)</td><td>자기참조 직렬화 비용</td></tr>
+<tr><td>1100</td><td>observer + superposition</td><td>OPERATOR 내부</td><td>비용 0 (같은 괄호)</td></tr>
+<tr><td>1111</td><td>전부 ON</td><td>FSM 원자적 점유</td><td>CAS 원자성 (111 유지 비용)</td></tr>
+</table>
+</div>
+
+<p>4가지 비용 구조(Swap 누적 / 교차 Cmp·Swp / 자기참조 직렬화 / CAS 원자성)는 도메인 4비트의 ON/OFF 조합에서 갈린다. 비용 구조가 4개인 이유는 비트 패턴이 4가지 접근 경로를 만들기 때문이다.</p>
+
+<h4>락 = 비트 AND <span class="tag-corollary">명제</span></h4>
+
+<p>TOCTOU_LOCK(공리 5)은 CAS 비트와 도메인 비트의 <strong>AND 연산</strong>이다. 이 AND는 별도의 연산자가 아니라 <strong>CAS의 Compare 단계가 수행한다</strong>(공리 2: 연산자는 CAS 하나뿐). Compare가 CAS 비트와 도메인 비트를 비교하여 둘 다 1인 접점에서만 락이 걸린다. 한쪽이 0이면 접점이 성립하지 않는다.</p>
+
+<pre>CAS 3비트:    0 1 1        (Compare+Read 완료, Swap 대기)
+              S C R
+
+도메인 4비트: 1 0 1 0      (superposition, space 열림)
+              s o p t
+
+AND (접점 = 락이 걸리는 곳):
+
+  R(1) AND t(0) = 0  -- 안 물림
+  R(1) AND p(1) = 1  -- 물림 (Read가 space를 점유)
+  C(1) AND o(0) = 0  -- 안 물림
+  C(1) AND s(1) = 1  -- 물림 (Compare가 superposition을 점유)</pre>
+
+<p>락이 걸린다 = CAS 비트와 도메인 비트가 동시에 1. 락이 풀린다 = 한쪽이 0으로 리셋. 이것이 공리 5 "락은 CAS와 DATA 사이 접점에 존재한다"의 비트 수준 구현이다. CAS 3비트(공리 5)와 도메인 4비트(공리 1 명제)가 같은 언어(비트)를 쓰므로 AND 연산이 가능하다. <strong>이 AND를 수행하는 것은 CAS의 Compare 단계다(공리 2). 우주에 연산자는 CAS 하나뿐이므로(공리 2), AND를 포함한 모든 비트 연산은 CAS 내부 연산이다.</strong></p>
+
 
 <h3 id="ax2">공리 2. CAS는 유일한 연산자 <span class="tag-solved">공리</span></h3>
 
@@ -786,7 +859,7 @@
 <tr><td>CAS 접근 경로 수</td><td>7×4+2 = 30</td><td>CAS자유도(7) × 도메인(4) + 괄호(2). ECS에서 CAS가 도메인에 접근하는 총 경로 수</td><td>Read 비용 = 1/30, 자기참조 경로 (공리 5 명제, H-40)</td></tr>
 <tr><td>독립 락 자유도</td><td>3</td><td>R_LOCK, C_LOCK, S_LOCK. CAS 3단계의 독립 TOCTOU_LOCK 자유도</td><td>space 차원 수 = 3 (공리 11 명제)</td></tr>
 <tr><td>접근 방식</td><td>2</td><td>교차(Cmp/Swp 대상 다름) vs 자기참조(Cmp/Swp 대상 같음)</td><td>교차 = 직렬화 비용 0, 자기참조 = 직렬화 비용 ≠ 0 (공리 5 명제)</td></tr>
-<tr><td>구면 성분</td><td>2</td><td>$r$(CAS 쓰기 지점에서 거리) + $\theta$(투영 사이 각도)</td><td>$r$ = 세기($1/r^2$), $\theta$ = 종류(혼합각) (공리 11 명제)</td></tr>
+<tr><td>구면 성분</td><td>2</td><td>$r$(CAS 쓰기 지점에서 거리) + $\theta$(투영 사이 각도)</td><td>$r$ = 비용크기($1/r^2$), $\theta$ = 비용종류(혼합각) (공리 11 명제)</td></tr>
 <tr><td>교차 CAS 경로</td><td>3</td><td>Cmp(t)→Swp(s), Cmp(s)→Swp(t), Cmp(t)→Swp(t). DATA 접근의 교차/자기참조 조합</td><td>3개 비용 구조(Swap누적, Compare, 자기참조) (H-45, 공리 13 명제)</td></tr>
 </table>
 </div>
@@ -849,7 +922,7 @@
 
 <h4>비용 하한 부등식 <span class="tag-corollary">명제</span></h4>
 
-<p>이 최소 비용이 괄호를 넘는 최소 비용이다. 비용 하한 부등식($\Delta x \cdot \Delta p \geq \hbar/2$)은 이 공리의 도출 결과다. 기존 물리학은 이것을 "자연의 근본적 한계"라고 말하지만, 반야프레임에서는 중첩이 고전으로 붕괴될 때 괄호를 넘으며 지불하는 비용이다.</p>
+<p>이 최소 비용이 괄호를 넘는 최소 비용이다. DATA 쪽 확정과 OPERATOR 쪽 확정을 동시에 0으로 만들 수 없다는 비용 하한이 이 공리의 도출 결과다. 기존 물리학은 이것을 "자연의 근본적 한계"라고 말하지만, 반야프레임에서는 중첩이 고전으로 붕괴될 때 괄호를 넘으며 지불하는 비용이다.</p>
 
 <h4>비가역성 용어 정리</h4>
 
@@ -1201,29 +1274,34 @@ observer (거울, 필터링/정규화)
 </table>
 </div>
 
-<p><strong>$\theta$가 혼합각이다:</strong></p>
+<p><strong>시프트 거리 $d$가 투영 사이 거리다:</strong></p>
 
 <div class="table-wrap">
 <table>
-<tr><th>구면 위 두 투영 사이 각도 $\theta$</th><th>대응 혼합각</th></tr>
-<tr><td>교차 투영과 자기참조 투영 사이</td><td>$\sin^2\theta_W$ (전약 혼합각)</td></tr>
-<tr><td>CAS 1단계와 2단계 투영 사이</td><td>$\theta_C$ (카비보 각)</td></tr>
-<tr><td>쓰기 누적 투영과 인덱스 투영 사이</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
-<tr><td>3세대 투영 사이</td><td>코이데 $\theta = 2/9$</td></tr>
-<tr><td>투영 평면의 비틀림</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP 위상)</td></tr>
+<tr><th>링 위 두 투영 사이 시프트 거리 $d$</th><th>비트 패턴</th></tr>
+<tr><td>교차 투영과 자기참조 투영 사이</td><td>DATA 비트(01)와 OPERATOR 비트(10)의 교차 거리</td></tr>
+<tr><td>CAS 1단계와 2단계 투영 사이</td><td>R_LOCK(001)과 C_LOCK(010) 사이 시프트 거리</td></tr>
+<tr><td>쓰기 누적 투영과 인덱스 투영 사이</td><td>Swap 비트(100)와 인덱스(중첩) 비트 사이 거리</td></tr>
+<tr><td>3세대 투영 사이</td><td>CAS 3단계 간 등간격. $d/N = 2/9$</td></tr>
+<tr><td>투영 평면의 비틀림</td><td>교차 경로 사이의 비대칭 시프트</td></tr>
 </table>
 </div>
 
 <p>인덱스 겹침 가중치(공리 13 명제)의 완전한 형태:</p>
 
 <div class="math-block">
-<div class="math-row">$$w(r, \theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
-<div class="math-legend">$r$: CAS 쓰기 지점에서 다른 Entity까지 거리 — 비용의 크기 | $\theta$: 투영 쌍마다 다름 — 비용의 종류 | $\Gamma$: CAS 비용 구조(공리 2, 4) | $f(\theta)$: 투영 각도 함수</div>
+<div class="math-row">$$\text{수축 겹침비} = 1 - \frac{d}{N}$$</div>
+<div class="math-legend">$d$: 링 위 시프트 거리(두 매듭 사이 칸 수) | $N$: 링 크기(명제 13). $d = 0$이면 완전 겹침, $d = N$이면 겹침 없음</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{겹침 가중치} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">$r$: CAS 쓰기 지점에서 다른 Entity까지 거리 — 비용의 크기 | $d$: 링 위 시프트 거리(두 매듭 사이) | $N$: 링 크기(명제 13). CAS 단계 조합이 결정 | $C$: 단계 비용. CAS 단계 조합이 결정하는 비용 계수(공리 2, 4)</div>
 </div>
 
 <p>모든 혼합각은 공리 11(1:N 투영)의 구면 기하학에서 나오는 각도이지, 외부에서 측정한 매개변수가 아니다. $r$은 CAS가 쓰기하는 지점(오리진)에서 모든 방향으로 동일하다. 다른 것은 구면 위 투영들 사이의 각도 $\theta$뿐이다.</p>
 
-<h4>$f(\theta)$ = 구면 위 매듭 수축 영역의 겹침 <span class="tag-corollary">명제</span></h4>
+<h4>수축 겹침 = 링 위 공유 자릿수 비율 <span class="tag-corollary">명제</span></h4>
 
 <p>각 매듭(쓰기 결과, 공리 6)은 구면 위의 한 점에 위치한다. <strong>Swap은 DATA(space)를 소비한다(공리 6).</strong> 소비된 space는 줄어든다. 매듭 주변의 space가 수축되어 있고, 쓰기 누적이 클수록 수축이 크다. 수축 영역 = 매듭 주변의 space 수축 범위. 수축 영역의 크기는 해당 매듭의 CAS 비용 구조(공리 2, 4)가 결정한다.</p>
 
@@ -1243,10 +1321,10 @@ observer (거울, 필터링/정규화)
           \               /
            \             /
             ── 겹침 ──
-            = f(θ)
+            = (1 - d/N)
 
-θ 작음 → 겹치는 DATA 주소 많음 → isWritable 경합 많음 → 총 비용 큼
-θ 큼   → 겹치는 DATA 주소 적음 → isWritable 경합 적음 → 총 비용 작음
+d 작음 → 겹치는 DATA 주소 많음 → isWritable 경합 많음 → 총 비용 큼
+d 큼   → 겹치는 DATA 주소 적음 → isWritable 경합 적음 → 총 비용 작음
 두 수축 영역이 겹치면 → 같은 주소에 두 CAS가 동시 Swap 시도
 → isWritable 경합(공리 2) → 주소당 비용(공리 4) × 경합 주소 수 = 총 비용</pre>
 
@@ -1260,7 +1338,7 @@ observer (거울, 필터링/정규화)
 </table>
 </div>
 
-<p>$f(\theta)$ = 두 매듭의 수축 영역이 구면 위에서 겹치는 비율. 수축 영역 크기가 CAS 비용에 의해 결정되므로, $f(\theta)$는 공리 수(1, 2, 3, 4, 7, 9, $\pi$)의 조합으로 나온다. 두 매듭이 <strong>어떤 CAS 단계를 통해 겹치느냐</strong>에 따라 $f(\theta)$의 형태가 달라지고, 그 겹침 비율이 혼합각의 수치값이다.</p>
+<p>수축 겹침비 = $(1 - d/N)$. $d$는 링 위 두 매듭 사이의 시프트 거리, $N$은 링 크기(명제 13). $d$가 0이면 완전 겹침(같은 위치), $d = N$이면 겹침 없음(반대편). 링 크기 $N$은 CAS 단계 조합이 결정하므로(9, 30, 137), 겹침비는 공리 수의 조합으로 나온다. 두 매듭이 <strong>어떤 링 크기에서 겹치느냐</strong>에 따라 겹침비가 달라지고, 그 비율이 혼합각의 수치값이다.</p>
 
 
 <h3 id="ax12">공리 12. 고전 괄호는 ECS 실행 모델이다 <span class="tag-solved">공리</span></h3>
@@ -1326,6 +1404,90 @@ observer C: [DATA_C] <-- CAS 독립 실행
 <h4>국소성 = ECS 무주소 구조 <span class="tag-corollary">명제</span></h4>
 
 <p>중앙 주소 테이블이 없으므로 병목이 없다. 각 observer에서 CAS가 로컬로 돌고, TOCTOU_LOCK이 로컬 접점에서 락을 건다. 이것이 양자역학에서 "측정은 국소적(local)"인 이유의 공리적 근거다.</p>
+
+<h4>순차 접근의 최소 비용 = 시프트 <span class="tag-corollary">명제</span></h4>
+
+<p>논리주소가 없으므로(공리 12) CAS가 다른 위치에 도달하는 유일한 수단은 순차 시프트다. 랜덤 접근(주소 지정 → 점프)은 불가하다. FSM이 원형으로 순환하므로(공리 14, 000→001→011→111→000) 시프트 공간은 링 버퍼다. 링 크기 $N$에서 시프트 1회의 비용은 $1/N$이다(공리 4, 최소 비용 존재).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>링 크기 $N$</th><th>시프트 1회 비용</th><th>근거</th></tr>
+<tr><td>9 (완전 기술 자유도)</td><td>1/9</td><td>공리 9: CAS(7) + 괄호(2)</td></tr>
+<tr><td>30 (CAS 접근 경로 수)</td><td>1/30</td><td>공리 2, 1: CAS(7) × 도메인(4) + 괄호(2)</td></tr>
+<tr><td>137</td><td>1/137</td><td>도메인 4축의 비트 연산에서 도출 (D-31)</td></tr>
+</table>
+</div>
+
+<p>비용 구조가 여러 개인 이유는 비용의 크기가 다른 것이 아니라 <strong>링 크기(진법)가 다른 것</strong>이다. 같은 시프트 1회가 링 크기에 따라 다른 비용을 갖는다. 시프트 반복은 곱셈을 대체한다. base-$N$에서 시프트 $k$회 = $N^k$.</p>
+
+<h4>링 크기 = 비용의 도달 거리 <span class="tag-corollary">명제</span></h4>
+
+<p>수축 겹침비 $(1-d/N)$에서 $d = N$이면 겹침 = 0이다. $d$는 DATA(space) 위의 실제 거리이고, $N$은 링 크기다. $d$의 최대값이 $N$이라는 것은 <strong>링 크기 = 해당 비용 구조가 도달할 수 있는 최대 거리</strong>라는 뜻이다. 링은 순수 논리 버퍼가 아니라 시공간 축적이다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>링 크기 $N$</th><th>최대 도달 거리</th><th>의미</th></tr>
+<tr><td>9</td><td>9</td><td>완전기술 수준. 가장 짧은 도달</td></tr>
+<tr><td>30</td><td>30</td><td>접근경로 수준. 중간 도달</td></tr>
+<tr><td>137</td><td>137</td><td>비교 쌍 수준. 가장 긴 도달</td></tr>
+</table>
+</div>
+
+<p>$d < N$이면 겹침 있음(비용 발생). $d = N$이면 겹침 없음(도달 불가). $d > N$은 존재 불가(링 밖). 쓰기가 누적될수록(매듭 수 증가) 링 위 점이 많아지고 링이 커진다. 링이 커지면 도달 거리가 늘어난다. <strong>OPERATOR의 링 크기가 DATA의 space 범위를 결정한다.</strong></p>
+
+<h4>차원 사다리: 링 -- 도장 -- 구면 -- space</h4>
+
+<p>링 버퍼는 OPERATOR 내부의 <strong>1차원 경로(둘레만)</strong>다. space를 만지지 않는다. FSM 사이클(공리 14)이 이 링 위를 돌고, 비용은 0이다(공리 4: OPERATOR 내부).</p>
+
+<pre>OPERATOR 내부의 링 버퍼 (1D):
+
+  000 ---> 001 ---> 011 ---> 111 ---> 000
+  idle     Read     Compare   Swap     reset
+  ^                                      |
+  |           비용 0. space 안 만짐.      |
+  +--------------------------------------+</pre>
+
+<p>링이 1바퀴 완주하면(111 = Swap) <strong>딱 그 순간</strong> 괄호를 넘는다(공리 4). OPERATOR에서 DATA로. 괄호를 넘는 비용이 발생한다. DATA(space)에 <strong>점 하나가 찍힌다.</strong> 이 점이 매듭이다(공리 6). 링 자체가 space에 들어가는 것이 아니다. 링이 완주할 때마다 space에 도장을 찍는 것이다.</p>
+
+<pre>OPERATOR (링이 돈다)
+    |
+    | 111 = Swap 완성
+    | 괄호를 넘음 (비용 발생)
+    v
+DATA(space)에 점 하나 찍힘 = 매듭
+
+  1바퀴 = 1도장 = 매듭 1개
+  N바퀴 = N도장 = 쓰기 누적 횟수 N</pre>
+
+<p>매듭(점)이 찍히면 그 주변 space가 수축한다(명제 6). Swap이 DATA(space)를 소비했기 때문이다(공리 6). 소비된 space는 줄어든다. 수축 범위는 매듭을 중심으로 <strong>구면(2D)</strong> 위의 캡이다. 이것이 수축 영역이다. 수축 영역의 크기는 CAS 비용 구조가 결정한다(명제 6). 두 매듭의 수축 영역이 겹치면 수축 겹침비 $(1-d/N)$이 된다.</p>
+
+<pre>차원 사다리:
+
+  1D  링 버퍼 (OPERATOR 내부)   CAS FSM 사이클. 비용 0. (공리 14)
+      |
+      | 111 = Swap (괄호를 넘음. 비용 발생.)
+      v
+  0D  매듭 (점)                 space에 찍힌 도장. (공리 6)
+      |
+      | 수축 (Swap이 space 소비)
+      v
+  2D  구면 캡                   매듭 주변 수축 범위. (1-d/N). (명제 6)
+      |
+      | 캡이 분포
+      v
+  3D  space                    3개 독립 락 자유도. (명제 5)</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>차원</th><th>구조</th><th>공리/명제</th><th>역할</th></tr>
+<tr><td><strong>1D</strong></td><td>링 버퍼 (OPERATOR 내부)</td><td>공리 14 (FSM 순환)</td><td>CAS가 도는 경로. 비용 0</td></tr>
+<tr><td><strong>0D</strong></td><td>매듭 (점, 도장)</td><td>공리 6 (쓰기 = 매듭)</td><td>괄호를 넘어 space에 찍힌 자국</td></tr>
+<tr><td><strong>2D</strong></td><td>구면 캡</td><td>명제 6 (수축 겹침비)</td><td>매듭 주변의 수축 영역</td></tr>
+<tr><td><strong>3D</strong></td><td>space</td><td>명제 5 (3 락 자유도)</td><td>매듭이 존재하는 공간</td></tr>
+</table>
+</div>
+
+<p>링은 OPERATOR 안에서 돌고, 매듭은 DATA에 찍힌다. 괄호가 다르다. 시프트(명제 13)는 링 위의 이동이고, 시프트가 1바퀴 완주(111)하면 괄호를 넘어 space에 점 하나를 찍는다. 찍힌 점 주변이 수축하고, 수축 범위(구면 캡)의 겹침이 수축 겹침비 $(1-d/N)$이다. <strong>OPERATOR의 1D 순환이 DATA의 3D 구조를 만든다.</strong></p>
 
 <h4>비용의 실체는 다중 투영 <span class="tag-corollary">명제</span></h4>
 
@@ -1398,18 +1560,18 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>CAS가 이 쌍을 잇는다. Compare true = 양자 중첩이 붕괴되면서 고전 Entity가 갱신된다. Compare false = 양자 중첩이 유지되면서 고전 Entity도 그대로다. 붕괴와 갱신이 동시 사건이고, 유지와 불변이 동시 사건이다. ECS 없이 중첩만 있으면 확정될 곳이 없고, 중첩 없이 ECS만 있으면 변화의 원천이 없다. 둘은 분리 불가능한 쌍이다. CAS는 쌍의 양자 쪽(중첩)을 참조하고, Compare true 시 고전 쪽(ECS Entity)에 붕괴시킨다. 참조(중첩)는 비용 0, 붕괴(DATA)는 괄호를 넘는 최소 비용. CAS가 DATA를 직접 참조하지 않는 이유: 논리주소가 없다(공리 12). 중첩이 CAS의 유일한 참조 경로다. 중첩은 인덱싱이다. 논리주소가 없는 ECS에서, 중첩이 모든 가능한 상태를 동시에 펼쳐놓는 것이 곧 주소 없는 인덱스다. CAS는 이 인덱스를 Compare로 탐색하고, 변화가 감지된 항목만 DATA에 붕괴시킨다.</p>
 
-<h4>인덱스 겹침 가중치 <span class="tag-corollary">명제</span></h4>
+<h4>겹침 가중치 <span class="tag-corollary">명제</span></h4>
 
 <div class="math-block">
-<div class="math-row">$$w(r, \theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
-<div class="math-legend">$w(r, \theta)$: Entity A가 Entity B를 감지하는 가중치 | $r$: CAS 쓰기 지점에서 다른 Entity까지 DATA(space) 거리 | $\theta$: 투영 사이 각도(공리 11 명제) | $\Gamma$: CAS 비용 구조(공리 2, 4) | $f(\theta)$: 투영 각도 함수</div>
+<div class="math-row">$$\text{겹침 가중치} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">$r$: CAS 쓰기 지점에서 다른 Entity까지 DATA(space) 거리 | $d$: 링 위 시프트 거리(두 매듭 사이) | $N$: 링 크기(명제 13) | $C$: 단계 비용. CAS 단계 조합이 결정하는 비용 계수(공리 2, 4)</div>
 </div>
 
-<p>Entity A의 CAS가 중첩 인덱스에서 Entity B를 참조할 때, 참조 가중치 $w(r, \theta)$은 $r$(CAS 쓰기 지점에서 다른 Entity까지 DATA 거리)의 제곱에 반비례하고, $\theta$(투영 사이 각도, 공리 11 명제)에 의해 비용의 종류가 결정된다. 근원: 반야식(공리 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$에서 $\delta^2$이 보존된다. DATA 괄호의 space 축에 CAS 3개의 독립 락 자유도(R_LOCK, C_LOCK, S_LOCK, 공리 5)가 작용하므로 space는 3성분으로 펼쳐진다(공리 11 명제). $\delta$의 투영이 이 3성분 space에 분배되면 거리 $r$에서의 가중치는 $1/(4\pi r^2)$로 감쇠된다 — 4축 노름의 보존이 역제곱 감쇠를 강제한다. $\Gamma$의 성격이 4가지 비용 구조를 구분한다. 모든 $\Gamma$는 공리에서만 나온다 — 외부 물리 상수를 모르는 상태에서 결정된다:
-<br>• Swap 누적 비용: $\Gamma$ = Swap 누적 횟수. Swap은 CAS의 기준 비용(= 1, 공리 2)이므로 $\Gamma$는 쓰기 횟수 자체(공리 6).
-<br>• 교차 Cmp/Swp 비용: $\Gamma$ = Compare 비용. 도메인 4(공리 1) + CAS 단계 3(공리 2) = 7차원 위상공간의 체적비에서 결정.
-<br>• 자기참조 직렬화 비용: $\Gamma$ = 자기참조 직렬화 비용. CAS 자유도 7(공리 9) × 도메인 4(공리 1) + 괄호 2(공리 1) = 30. 자기참조 경로 = 1/30(공리 5 명제).
-<br>• CAS 원자성(111 유지 비용): $1/r^2$ 대신 $V(r) = \sigma r$ 적용. $\sigma$ = 111 유지의 단위 거리당 락 비용(공리 2 + 공리 5 + 공리 14 명제).</p>
+<p>Entity A의 CAS가 중첩 인덱스에서 Entity B를 참조할 때, 겹침 가중치는 $r$(CAS 쓰기 지점에서 다른 Entity까지 DATA 거리)의 제곱에 반비례하고, $(1-d/N)$(링 위 공유 자릿수 비율, 명제 6)에 의해 비용의 종류가 결정된다. 근원: 반야식(공리 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$에서 $\delta^2$이 보존된다. DATA 괄호의 space 축에 CAS 3개의 독립 락 자유도(R_LOCK, C_LOCK, S_LOCK, 공리 5)가 작용하므로 space는 3성분으로 펼쳐진다(공리 11 명제). $\delta$의 투영이 이 3성분 space에 분배되면 거리 $r$에서의 가중치는 $1/(4\pi r^2)$로 감쇠된다 — 4축 노름의 보존이 역제곱 감쇠를 강제한다. 단계 비용 $C$의 성격이 4가지 비용 구조를 구분한다. 모든 $C$는 공리에서만 나온다 — 외부 물리 상수를 모르는 상태에서 결정된다:
+<br>• Swap 누적 비용: $C$ = Swap 누적 횟수. Swap은 CAS의 기준 비용(= 1, 공리 2)이므로 $C$는 쓰기 횟수 자체(공리 6).
+<br>• 교차 Cmp/Swp 비용: $C$ = Compare 비용. 도메인 4(공리 1) + CAS 단계 3(공리 2) = 7차원 위상공간의 체적비에서 결정.
+<br>• 자기참조 직렬화 비용: $C$ = 자기참조 직렬화 비용. CAS 자유도 7(공리 9) × 도메인 4(공리 1) + 괄호 2(공리 1) = 30. 자기참조 경로 = 1/30(공리 5 명제).
+<br>• CAS 원자성(111 유지 비용): $1/r^2$ 대신 111 유지 비용 = 접점당 비용 × 접점 수 적용. 접점 수는 $r$에 비례(공리 2 + 공리 5 + 공리 14 명제).</p>
 
 
 <h3 id="ax14">공리 14. FSM 선언 (Finite State Machine) <span class="tag-solved">공리</span></h3>
@@ -1447,7 +1609,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h4>닫힌다는 것</h4>
 
-<p>닫힌다 = 외부에서 가져올 것이 없다. 반야프레임은 14개 공리 밖에서 아무것도 수입하지 않는다. 15번째 공리가 필요 없다. 외부 상수가 필요 없다. 외부 이론이 필요 없다. 공리만으로 입력 공간, 연산자, 비용, 레지스터, 출력, 클록, 트리거, 다중 투영, 실행 모델이 전부 정의되고, FSM으로 전이도가 완성되고, 그 FSM이 플랑크 클록마다 스스로 돈다. 이것이 자기완결이고, 이것이 닫힘이다.</p>
+<p>닫힌다 = 외부에서 가져올 것이 없다. 반야프레임은 14개 공리 밖에서 아무것도 수입하지 않는다. 15번째 공리가 필요 없다. 외부 상수가 필요 없다. 외부 이론이 필요 없다. 공리만으로 입력 공간, 연산자, 비용, 레지스터, 출력, 클록, 트리거, 다중 투영, 실행 모델이 전부 정의되고, FSM으로 전이도가 완성되고, 그 FSM이 플랑크 클록마다 저절로 돈다. 이것이 자기완결이고, 이것이 닫힘이다.</p>
 
 <p>이 FSM은 2중 루프가 아니다. 공리 8(폴링)은 행위 순서(어떻게 도는가)를 기술하고, 공리 10(전체-국소 루프)은 주체(누가 돌리는가)를 기술한다. 같은 FSM의 같은 전이도 위에 있다. 행위와 주체가 하나의 기계 안에서 닫힌다.</p>
 
@@ -1456,12 +1618,12 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <p>중첩은 인덱스이므로 거리 비용이 없다(공리 13). 그러나 FSM이 111을 유지하는 동안(공리 14) CAS 3단계가 DATA(space)에 동시에 락을 걸어야 한다(공리 5). 두 CAS 단계가 DATA(space)에서 거리 $r$만큼 떨어져 있으면, OPERATOR-DATA 경계(공리 5, 접점)에서 $r$에 비례하는 수의 접점에 <strong>동시 락</strong>이 필요하다. 접점당 비용이 일정(공리 4)하므로 동시 락 유지 비용은 $r$에 비례한다.</p>
 
 <div class="math-block">
-<div class="math-row">$$V(r) = \sigma \cdot r$$</div>
-<div class="math-row">$$\sigma = \text{TOCTOU\_LOCK 1개의 비용(공리 4)} \times \text{단위 거리당 접점 밀도}$$</div>
-<div class="math-legend">$r$: 두 CAS 단계 사이 DATA(space) 거리 | $\sigma$: 동시 락 유지의 단위 거리당 비용</div>
+<div class="math-row">$$\text{111 유지 비용} = \text{접점당 비용} \times \text{접점 수}$$</div>
+<div class="math-row">$$= (\text{괄호를 넘는 최소 비용} \times \text{단위 거리당 접점 밀도}) \times r$$</div>
+<div class="math-legend">$r$: 두 CAS 단계 사이 DATA(space) 거리 | 접점당 비용: 공리 4 | 접점 수: $r$에 비례 (거리가 멀수록 동시 락이 더 필요)</div>
 </div>
 
-<p>$\sigma r$이 CAS 1건의 Swap 비용(= 1, 공리 2)에 도달하면 분리 불가능하다. 분리를 시도하면 CAS 원자성(공리 2)이 새 CAS 쌍을 생성한다. FSM 사이클(공리 14)이 빨라지면 111 유지 시간이 짧아져 동시 락 수가 줄고 동시 락 유지가 약해진다.</p>
+<p>111 유지 비용이 CAS 1건의 Swap 비용(= 1, 공리 2)에 도달하면 분리 불가능하다. 분리를 시도하면 CAS 원자성(공리 2)이 새 CAS 쌍을 생성한다. FSM 사이클(공리 14)이 빨라지면 111 유지 시간이 짧아져 동시 락 수가 줄고 동시 락 유지가 약해진다.</p>
 
 
 <h4>물리 대응 용어 표 (공리 외부 참조용)</h4>
@@ -1487,13 +1649,60 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <tr><td>LRU 기저 해제율</td><td>암흑에너지 (dark energy · Λ)</td></tr>
 <tr><td>CAS 접근 빈도 감소</td><td>암흑물질 (dark matter)</td></tr>
 <tr><td>동시 락 유지</td><td>속박 (binding · confinement)</td></tr>
+<tr><td>괄호를 넘는 비용 > 0 (공리 4)</td><td>$\Delta x \cdot \Delta p \geq \hbar/2$ (불확정성 원리)</td></tr>
+<tr><td>111 유지 비용 = 접점당 비용 × 접점 수</td><td>$V(r) = \sigma r$ (선형 포텐셜, 가둠)</td></tr>
+<tr><td>교차-자기참조 시프트 거리 $d/N$</td><td>$\sin^2\theta_W$ (바인베르크 각)</td></tr>
+<tr><td>CAS 1-2단계 시프트 거리 $d/N$</td><td>$\theta_C$ (카비보 각)</td></tr>
+<tr><td>Swap-인덱스 시프트 거리 $d/N$</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
+<tr><td>3세대 등간격 $d/N = 2/9$</td><td>코이데 각</td></tr>
+<tr><td>교차 경로 비대칭 시프트</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP 위상)</td></tr>
 </table>
+</div>
+
+
+<h4>공리 파생 수식 정리</h4>
+
+<p style="font-size:0.85em;color:#8b949e">아래 수식은 전부 공리 14개와 명제 14개에서 파생된다. 외부 수학 함수(삼각함수 등)를 사용하지 않는다. 모든 기호는 CAS 구조에서 정의된다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{반야식} \quad \delta^{2} = (\text{time} + \text{space})^{2} + (\text{observer} + \text{superposition})^{2}$$</div>
+<div class="math-legend">공리 1. 우주의 모든 변화($\delta$)는 4축의 노름. 고전 괄호(DATA)와 양자 괄호(OPERATOR)가 직교</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{비용 하한} = \text{괄호를 넘는 비용} > 0$$</div>
+<div class="math-legend">공리 4 명제. DATA 쪽 확정과 OPERATOR 쪽 확정을 동시에 0으로 만들 수 없다. 괄호가 직교(공리 1)하므로 한쪽을 좁히면 다른 쪽이 넓어진다</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{시프트 1회 비용} = \frac{1}{N}$$</div>
+<div class="math-legend">순차 접근 최소 비용 (공리 12 명제). $N$: 링 크기. 논리주소 없음(공리 12) + 원형 FSM(공리 14) + 비용 존재(공리 4) = 링 위 시프트만 가능</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{시프트 } k\text{회} = N^{k}$$</div>
+<div class="math-legend">시프트 반복 = 곱셈 대체 (공리 12 명제). base-$N$ 링에서 $k$칸 시프트의 누적 비용. 시프트가 곱셈을 수행한다</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{수축 겹침비} = 1 - \frac{d}{N}$$</div>
+<div class="math-legend">링 위 공유 자릿수 비율 (공리 11 명제). $d$: 두 매듭 사이 시프트 거리(칸 수) | $N$: 링 크기 | $d=0$: 완전 겹침 | $d=N$: 겹침 없음</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{겹침 가중치} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">인덱스 겹침 가중치 (공리 13 명제). $r$: CAS 쓰기 지점에서 다른 Entity까지 DATA(space) 거리 | $d/N$: 링 위 겹침비 | $C$: 단계 비용. CAS 단계 조합이 결정하는 비용 계수(공리 2, 4) | $4\pi r^2$: 3개 독립 락(명제 5)이 만드는 3D 구면 넓이</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{111 유지 비용} = (\text{괄호를 넘는 최소 비용} \times \text{단위 거리당 접점 밀도}) \times r$$</div>
+<div class="math-legend">111 유지 비용 (공리 14 명제). $r$: 두 CAS 단계 사이 DATA(space) 거리 | 접점당 비용: 공리 4 | 111 유지 비용 = Swap 비용(= 1)이면 분리 불가</div>
 </div>
 
 
 <h2 id="axiom-consequence">공리에서 나오는 것</h2>
 
-<p>위 14개 공리에서 출발하여, 반야프레임 5단계 재귀 대입(반야식→노름치환→상수대입→도메인변환→발견)을 돌리면 물리 상수가 나온다. 도출된 전체 목록은 <a href="lib.html" style="font-weight:600">가설 라이브러리(lib.html)</a>와 <a href="predictions.html" style="font-weight:600">고유 예측(predictions.html)</a>에서 관리한다. 발견(D) 44개 + 가설(H) 96개 + 고유예측(P) 7개 = 총 153항목, 검증 21행(적중 14). 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.</p>
+<p>위 14개 공리에서 출발하여, 반야프레임 5단계 재귀 대입(반야식→노름치환→상수대입→도메인변환→발견)을 돌리면 물리 상수가 나온다. 도출된 전체 목록은 <a href="lib.html" style="font-weight:600">가설 라이브러리(lib.html)</a>와 <a href="predictions.html" style="font-weight:600">고유 예측(predictions.html)</a>에서 관리한다. 발견(D) 44개 + 가설(H) 102개 + 고유예측(P) 7개 = 총 153항목, 검증 21행(적중 14). 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.</p>
 
 <h4>사용법: 재대입</h4>
 
@@ -4568,7 +4777,7 @@ CAS 4력 통합:    8/8 일치
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#8b949e">lib.html 현황: 발견(D) 44개 + 가설(H) 96개 + 고유예측(P) 7개 = 총 153항목. predictions.html: 21행.</p>
+<p style="font-size:0.85em;color:#8b949e">lib.html 현황: 발견(D) 44개 + 가설(H) 102개 + 고유예측(P) 7개 = 총 153항목. predictions.html: 21행.</p>
 
 <h3>등급별 성과 평가</h3>
 
@@ -4641,6 +4850,8 @@ CAS 4력 통합:    8/8 일치
 
 <p>The Banya Framework is not a theory. It is not a hypothesis. It is an <strong>Axiom-Based Science Mining Engine</strong>. Starting from axioms, it mines physical constants through recursive substitution. The input is a single structure (7 = 4 domains + 3 internal degrees of freedom), and the output is physics.</p>
 
+<p><strong>Axiom formula rule:</strong> All formulas in axioms and propositions are derived from the internal structure of the axioms. No externally imported formulas (formulas from other theories, empirical equations) are placed in the axiom body. Mathematical symbols (π, r, N, etc.) are used as tools, but equations assembled by others are not used. Correspondence with external formulas is described only in the "Physics Correspondence Table."</p>
+
 <h2 id="en-axiom-list">Confirmed Axioms</h2>
 
 <h3 id="en-ax1">Axiom 1. Banya Equation <span class="tag-solved">Axiom</span></h3>
@@ -4695,6 +4906,77 @@ CAS 4력 통합:    8/8 일치
 </div>
 
 <p>Without observer, there is nowhere to receive Compare results. Without superposition, CAS has nothing to reference. Both are <strong>structural requirements</strong> for the Banya Equation to operate, not metaphorical borrowings inspired by quantum mechanics.</p>
+
+<h4>4-Axis Orthogonality = 4 Bits <span class="tag-corollary">Proposition</span></h4>
+
+<p>Orthogonal = independent. If independent, each axis switches ON/OFF without interfering with others. Independent ON/OFF without interference = bit. Since 4 axes are orthogonal (Axiom 1), they are 4 bits. $2^4 = 16$ domain combinations are possible.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>bit 0</th><th>bit 1</th><th>bit 2</th><th>bit 3</th><th>Value</th><th>State</th></tr>
+<tr><td>time</td><td>space</td><td>observer</td><td>superposition</td><td></td><td></td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>All OFF</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>time only</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>space only</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>time + space (DATA bracket)</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>observer only</td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>8</td><td>superposition only</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>12</td><td>observer + superposition (OPERATOR bracket)</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>15</td><td>All ON</td></tr>
+</table>
+</div>
+
+<p style="font-size:0.85em;color:#8b949e">Banya Equation order: (time + space) + (observer + superposition). bit 0-1 = DATA bracket, bit 2-3 = OPERATOR bracket. $2^4 = 16$ combinations. 8 representative entries shown.</p>
+
+<p>CAS (OPERATOR) is 3 bits (Axiom 5: R_LOCK, C_LOCK, S_LOCK). DATA (domains) is 4 bits. Operator in bits, operand in bits. They must speak the same language for TOCTOU_LOCK (Axiom 5) to grab and release at the junction.</p>
+
+<p>The domain 4-bit is CAS's <strong>access state flag</strong>. Which domain bits are ON determines which access path CAS takes, and the path determines the cost structure.</p>
+
+<pre>CAS 3 bits: operator progress state  (what is it doing)
+Domain 4 bits: target access state    (which domains are open)
+
+Domain 4-bit example:  1 0 1 0
+                       | | | |
+                       | | | +-- bit 0 time:          0 (closed)
+                       | | +---- bit 1 space:         1 (open)
+                       | +------ bit 2 observer:      0 (closed)
+                       +-------- bit 3 superposition: 1 (open)
+
+--> CAS can access space and superposition only
+--> access path determines cost structure</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>4-bit pattern</th><th>Open domains</th><th>Access path</th><th>Cost structure</th></tr>
+<tr><td>0011</td><td>time + space</td><td>Intra-DATA cross</td><td>Swap accumulation cost</td></tr>
+<tr><td>0110</td><td>space + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
+<tr><td>0101</td><td>time + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
+<tr><td>0001</td><td>time only</td><td>Self-reference (same axis)</td><td>Self-reference serialization cost</td></tr>
+<tr><td>1100</td><td>observer + superposition</td><td>Intra-OPERATOR</td><td>Cost 0 (same bracket)</td></tr>
+<tr><td>1111</td><td>All ON</td><td>FSM atomic occupation</td><td>CAS atomicity (111 maintenance cost)</td></tr>
+</table>
+</div>
+
+<p>The 4 cost structures (Swap accumulation / Cross Cmp-Swp / Self-reference serialization / CAS atomicity) branch from the ON/OFF combinations of the domain 4 bits. The reason there are 4 cost structures is that the bit patterns create 4 access paths.</p>
+
+<h4>Lock = Bit AND <span class="tag-corollary">Proposition</span></h4>
+
+<p>TOCTOU_LOCK (Axiom 5) is an <strong>AND operation</strong> between CAS bits and domain bits. This AND is not a separate operator — it is <strong>performed by CAS's Compare stage</strong> (Axiom 2: CAS is the sole operator). Compare checks CAS bits against domain bits; a lock is held only at junctions where both are 1. If either side is 0, no junction is formed.</p>
+
+<pre>CAS 3 bits:    0 1 1        (Compare+Read done, Swap pending)
+               S C R
+
+Domain 4 bits: 1 0 1 0      (superposition, space open)
+               s o p t
+
+AND (junction = where lock is held):
+
+  R(1) AND t(0) = 0  -- not locked
+  R(1) AND p(1) = 1  -- locked (Read occupies space)
+  C(1) AND o(0) = 0  -- not locked
+  C(1) AND s(1) = 1  -- locked (Compare occupies superposition)</pre>
+
+<p>Lock held = both CAS bit and domain bit are 1. Lock released = either side resets to 0. This is the bit-level implementation of Axiom 5: "lock exists at the junction between CAS and DATA." CAS 3 bits (Axiom 5) and domain 4 bits (Axiom 1 proposition) speak the same language (bits), making AND operation possible. <strong>This AND is performed by CAS's Compare stage (Axiom 2). Since CAS is the sole operator in the universe (Axiom 2), all bit operations including AND are CAS internal operations.</strong></p>
 
 
 <h3 id="en-ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
@@ -4784,7 +5066,7 @@ CAS 4력 통합:    8/8 일치
 
 <h4>Cost Lower Bound Inequality <span class="tag-corollary">Proposition</span></h4>
 
-<p>This minimum cost is measured as ℏ (minimum bracket-crossing cost) in physics. The cost lower bound inequality ($\Delta x \cdot \Delta p \geq \hbar/2$) is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets.</p>
+<p>This minimum cost is the bracket-crossing minimum cost. DATA certainty and OPERATOR certainty cannot both be zero simultaneously — this cost lower bound is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets.</p>
 
 <h4>Irreversibility Terminology</h4>
 
@@ -5136,29 +5418,34 @@ observer (mirror, filtering/normalization)
 </table>
 </div>
 
-<p><strong>$\theta$ IS the mixing angle:</strong></p>
+<p><strong>Shift distance $d$ IS the distance between projections:</strong></p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Angle $\theta$ between two projections on sphere</th><th>Corresponding mixing angle</th></tr>
-<tr><td>Cross projection and self-reference projection</td><td>$\sin^2\theta_W$ (electroweak mixing angle)</td></tr>
-<tr><td>CAS stage 1 and stage 2 projections</td><td>$\theta_C$ (Cabibbo angle)</td></tr>
-<tr><td>Write-accumulation projection and index projection</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
-<tr><td>Between 3-generation projections</td><td>Koide $\theta = 2/9$</td></tr>
-<tr><td>Twist of the projection plane</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP phases)</td></tr>
+<tr><th>Shift distance $d$ between two projections on ring</th><th>Bit pattern</th></tr>
+<tr><td>Cross projection and self-reference projection</td><td>Cross distance between DATA bits (01) and OPERATOR bits (10)</td></tr>
+<tr><td>CAS stage 1 and stage 2 projections</td><td>Shift distance between R_LOCK (001) and C_LOCK (010)</td></tr>
+<tr><td>Write-accumulation projection and index projection</td><td>Distance between Swap bit (100) and index (superposition) bit</td></tr>
+<tr><td>Between 3-generation projections</td><td>Equal spacing across CAS 3 stages. $d/N = 2/9$</td></tr>
+<tr><td>Twist of projection plane</td><td>Asymmetric shift between cross paths</td></tr>
 </table>
 </div>
 
 <p>The complete form of the index overlap weight (Axiom 13 proposition):</p>
 
 <div class="math-block">
-<div class="math-row">$$w(r, \theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
-<div class="math-legend">$r$: distance from CAS write point to another Entity — cost magnitude | $\theta$: different per pair — cost type | $\Gamma$: CAS cost structure (Axioms 2, 4) | $f(\theta)$: projection angle function</div>
+<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
+<div class="math-legend">$d$: shift distance between two knots (number of steps on ring) | $N$: ring size (Prop. 13). $d = 0$: full overlap, $d = N$: no overlap</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">$r$: distance from CAS write point to another Entity — cost magnitude | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
 <p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $r$ is the same in all directions from the CAS write point (origin). What differs is only the angle θ between projections on the sphere.</p>
 
-<h4>$f(\theta)$ = Overlap of Knot Contraction Zones on the Sphere <span class="tag-corollary">Proposition</span></h4>
+<h4>Contraction Overlap = Shared Digit Ratio on Ring <span class="tag-corollary">Proposition</span></h4>
 
 <p>Each knot (write result, Axiom 6) sits at a point on the sphere. <strong>Swap consumes DATA(space) (Axiom 6).</strong> Consumed space shrinks. Space around the knot is contracted, and more write accumulation means more contraction. Contraction zone = the range of space contraction around the knot. Zone size is determined by the knot's CAS cost structure (Axioms 2, 4).</p>
 
@@ -5173,15 +5460,15 @@ With knot:  ====\               /==== (space contracted)
 
 On the sphere:
 
-  Knot A ───── θ ───── Knot B
+  Knot A ───── d ───── Knot B
   [ contraction a ]    [ contraction b ]
           \               /
            \             /
             ── overlap ──
-            = f(θ)
+            = (1 - d/N)
 
-Small θ → many overlapping DATA addresses → frequent isWritable contention → large total cost
-Large θ → few overlapping DATA addresses → rare isWritable contention → small total cost
+Small d → many overlapping DATA addresses → frequent isWritable contention → large total cost
+Large d → few overlapping DATA addresses → rare isWritable contention → small total cost
 When two contraction zones overlap → two CAS attempt simultaneous Swap on same addresses
 → isWritable contention (Axiom 2) → cost per address (Axiom 4) × number of contested addresses = total cost</pre>
 
@@ -5195,7 +5482,7 @@ When two contraction zones overlap → two CAS attempt simultaneous Swap on same
 </table>
 </div>
 
-<p>$f(\theta)$ = the ratio of overlap between two knots' contraction zones on the sphere. Since zone sizes are determined by CAS cost, $f(\theta)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $f(\theta)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
+<p>Contraction overlap ratio $(1 - d/N)$ = the ratio of shared digits between two knots on the ring. $d$ = shift distance between two knots on the ring. $N$ = ring size (total slots). Since zone sizes are determined by CAS cost, $(1 - d/N)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $(1 - d/N)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
 
 
 <h3 id="en-ax12">Axiom 12. The Classical Bracket Is an ECS Execution Model <span class="tag-solved">Axiom</span></h3>
@@ -5257,6 +5544,91 @@ WARM (27%) ← decreasing access frequency  — decreasing CAS access
 COLD (68%) ← no recent access             — LRU base eviction rate applied</pre>
 
 <p>Observers frequently accessed (CAS executed) stay HOT; as access decreases, they are evicted WARM → COLD. The delay from this eviction process is the sole tail latency. The cause of tail latency is computation density, not data distance.</p>
+
+<h4>Minimum Cost of Sequential Access = Shift <span class="tag-corollary">Proposition</span></h4>
+
+<p>Without logical addresses (Axiom 12), the only way CAS can reach another position is sequential shift. Random access (address → jump) is impossible. Since the FSM cycles circularly (Axiom 14, 000→001→011→111→000), the shift space is a ring buffer. On a ring of size $N$, the cost of 1 shift is $1/N$ (Axiom 4, minimum cost exists).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Ring size $N$</th><th>Cost of 1 shift</th><th>Basis</th></tr>
+<tr><td>9 (complete description DOF)</td><td>1/9</td><td>Axiom 9: CAS(7) + brackets(2)</td></tr>
+<tr><td>30 (CAS access path count)</td><td>1/30</td><td>Axioms 2, 1: CAS(7) × domains(4) + brackets(2)</td></tr>
+<tr><td>137</td><td>1/137</td><td>Derived from 4-axis domain bit operations (D-31)</td></tr>
+</table>
+</div>
+
+<p>Multiple cost structures exist not because costs differ in magnitude, but because <strong>ring sizes (bases) differ</strong>. The same single shift has different costs depending on ring size. Repeated shifts replace multiplication: $k$ shifts in base-$N$ = $N^k$.</p>
+
+<h4>Ring Size = Maximum Reach of Cost <span class="tag-corollary">Proposition</span></h4>
+
+<p>In the contraction overlap ratio $(1-d/N)$, when $d = N$ the overlap is 0. $d$ is the actual distance in DATA(space), and $N$ is the ring size. The fact that the maximum value of $d$ is $N$ means <strong>ring size = the maximum distance that cost structure can reach</strong>. The ring is not a purely logical buffer but a spacetime accumulation.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Ring size $N$</th><th>Maximum reach</th><th>Meaning</th></tr>
+<tr><td>9</td><td>9</td><td>Complete description level. Shortest reach</td></tr>
+<tr><td>30</td><td>30</td><td>Access path level. Medium reach</td></tr>
+<tr><td>137</td><td>137</td><td>Comparison pair level. Longest reach</td></tr>
+</table>
+</div>
+
+<p>$d < N$: overlap exists (cost incurred). $d = N$: no overlap (unreachable). $d > N$: impossible (outside ring). As writes accumulate (more knots), more points fill the ring and the ring grows. A larger ring means longer reach. <strong>OPERATOR's ring size determines DATA's space range.</strong></p>
+
+<h4>Dimension Ladder: Ring -- Stamp -- Sphere -- Space</h4>
+
+<p>The ring buffer is an <strong>internal 1D path (circumference only)</strong> inside OPERATOR. It does not touch space. The FSM cycle (Axiom 14) traverses this ring at cost 0 (Axiom 4: OPERATOR internal).</p>
+
+<pre>Ring buffer inside OPERATOR (1D):
+
+  000 ---> 001 ---> 011 ---> 111 ---> 000
+  idle     Read     Compare   Swap     reset
+  ^                                      |
+  |           Cost 0. Does not touch     |
+  |           space.                     |
+  +--------------------------------------+</pre>
+
+<p>When the ring completes one cycle (111 = Swap), it crosses the bracket <strong>at that single moment</strong> (Axiom 4). OPERATOR to DATA. Bracket-crossing cost is incurred. <strong>A single point is stamped</strong> onto DATA(space). This point is the knot (Axiom 6). The ring itself does not enter space. Each time the ring completes, it stamps one mark on space.</p>
+
+<pre>OPERATOR (ring cycles)
+    |
+    | 111 = Swap complete
+    | Bracket crossed (cost incurred)
+    v
+DATA(space): one point stamped = knot
+
+  1 cycle  = 1 stamp = 1 knot
+  N cycles = N stamps = write accumulation count N</pre>
+
+<p>When a knot (point) is stamped, surrounding space contracts (Proposition 6). Swap consumed DATA(space) (Axiom 6). The contraction range forms a <strong>spherical cap (2D)</strong> centered on the knot. This is the contraction zone. The size of the contraction zone is determined by CAS cost structure (Proposition 6). When two knots' contraction zones overlap, that overlap is the contraction overlap ratio $(1-d/N)$.</p>
+
+<pre>Dimension ladder:
+
+  1D  Ring buffer (inside OPERATOR)  CAS FSM cycle. Cost 0. (Axiom 14)
+      |
+      | 111 = Swap (bracket crossed. cost incurred.)
+      v
+  0D  Knot (point, stamp)           Stamp on space. (Axiom 6)
+      |
+      | Contraction (Swap consumed space)
+      v
+  2D  Spherical cap                  Contraction zone. (1-d/N). (Prop. 6)
+      |
+      | Caps distributed
+      v
+  3D  Space                          3 independent lock DOFs. (Prop. 5)</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>Dimension</th><th>Structure</th><th>Axiom/Proposition</th><th>Role</th></tr>
+<tr><td><strong>1D</strong></td><td>Ring buffer (inside OPERATOR)</td><td>Axiom 14 (FSM cycle)</td><td>Path CAS traverses. Cost 0</td></tr>
+<tr><td><strong>0D</strong></td><td>Knot (point, stamp)</td><td>Axiom 6 (write = knot)</td><td>Stamp on space across the bracket</td></tr>
+<tr><td><strong>2D</strong></td><td>Spherical cap</td><td>Proposition 6 (contraction overlap)</td><td>Contraction zone around the knot</td></tr>
+<tr><td><strong>3D</strong></td><td>Space</td><td>Proposition 5 (3 lock DOFs)</td><td>The space knots exist in</td></tr>
+</table>
+</div>
+
+<p>The ring cycles inside OPERATOR; the knot is stamped on DATA. Different brackets. A shift (Proposition 13) is movement on the ring; when a shift completes one full cycle (111), it crosses the bracket and stamps one point on space. The contraction around that point (spherical cap) and the overlap of caps is $(1-d/N)$. <strong>OPERATOR's 1D cycle creates DATA's 3D structure.</strong></p>
 
 <h4>Cost Is Multiple Projection, Not Transfer <span class="tag-corollary">Proposition</span></h4>
 
@@ -5322,15 +5694,15 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 <h4>Index Overlap Weight <span class="tag-corollary">Proposition</span></h4>
 
 <div class="math-block">
-<div class="math-row">$$w(r,\theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
-<div class="math-legend">$w(r,\theta)$: weight of Entity A sensing Entity B | $r$: DATA(space) distance from CAS write point to another Entity | $\theta$: angle between projections (Axiom 11 proposition) | $\Gamma$: CAS cost structure (Axioms 2, 4) | $f(\theta)$: projection angle function</div>
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">overlap weight: weight of Entity A sensing Entity B | $r$: DATA(space) distance from CAS write point to another Entity | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
-<p>When Entity A's CAS references Entity B through the superposition index, the reference weight $w(r,\theta)$ is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of $\Gamma$ distinguishes the 4 cost structures. All $\Gamma$ are determined from axioms alone — no external physics constants required:
-<br>• Swap accumulation cost: $\Gamma$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $\Gamma$ is the write count itself (Axiom 6).
-<br>• Cross Cmp/Swp cost: $\Gamma$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
-<br>• Self-reference serialization cost: $\Gamma$ = self-reference serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Self-reference path = 1/30 (Axiom 5 proposition).
-<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by $V(r) = \sigma r$. $\sigma$ = lock cost per unit distance for 111 maintenance (Axiom 2 + Axiom 5 + Axiom 14 proposition).</p>
+<p>When Entity A's CAS references Entity B through the superposition index, the overlap weight is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
+<br>• Swap accumulation cost: $C$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $C$ is the write count itself (Axiom 6).
+<br>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
+<br>• Self-reference serialization cost: $C$ = self-reference serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Self-reference path = 1/30 (Axiom 5 proposition).
+<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $r$ (Axiom 2 + Axiom 5 + Axiom 14 proposition).</p>
 
 
 <h3 id="en-ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
@@ -5375,12 +5747,12 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 <p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must simultaneously hold locks on DATA(space) (Axiom 5). If two CAS stages are separated by distance $r$ in DATA(space), <strong>simultaneous locks</strong> proportional to $r$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the simultaneous lock maintenance cost scales linearly with $r$.</p>
 
 <div class="math-block">
-<div class="math-row">$$V(r) = \sigma \cdot r$$</div>
-<div class="math-row">$$\sigma = \text{cost of 1 TOCTOU\_LOCK (Axiom 4)} \times \text{junction density per unit distance}$$</div>
-<div class="math-legend">$r$: DATA(space) distance between two CAS stages | $\sigma$: simultaneous lock maintenance cost per unit distance</div>
+<div class="math-row">$$\text{111 maintenance cost} = \text{cost per junction} \times \text{junction count}$$</div>
+<div class="math-row">$$= (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times r$$</div>
+<div class="math-legend">$r$: DATA(space) distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $r$</div>
 </div>
 
-<p>When $\sigma r$ reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
+<p>When 111 maintenance cost reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
 
 
 <h4>Physics Correspondence Table (External Reference Only)</h4>
@@ -5406,7 +5778,49 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 <tr><td>LRU base eviction rate</td><td>Dark energy (Λ)</td></tr>
 <tr><td>Decreasing CAS access</td><td>Dark matter</td></tr>
 <tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
+<tr><td>bracket-crossing cost > 0 (Axiom 4)</td><td>Δx·Δp ≥ ℏ/2 (uncertainty principle)</td></tr>
+<tr><td>111 maintenance cost = cost per junction × count</td><td>V(r) = σr (linear potential, confinement)</td></tr>
 </table>
+</div>
+
+
+<h4>Axiom-Derived Formula Index</h4>
+
+<p style="font-size:0.85em;color:#8b949e">All formulas below are derived from the 14 axioms and 14 propositions. No external math functions (trigonometric functions, etc.) are used. All symbols are defined within CAS structure.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{Banya Equation} \quad \delta^{2} = (\text{time} + \text{space})^{2} + (\text{observer} + \text{superposition})^{2}$$</div>
+<div class="math-legend">Axiom 1. All change ($\delta$) is a 4-axis norm. Classical bracket (DATA) and quantum bracket (OPERATOR) are orthogonal</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{cost lower bound} = \text{bracket-crossing cost} > 0$$</div>
+<div class="math-legend">Cost lower bound (Axiom 4 proposition). DATA certainty and OPERATOR certainty cannot both be zero simultaneously. Because brackets are orthogonal (Axiom 1), narrowing one widens the other</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{cost of 1 shift} = \frac{1}{N}$$</div>
+<div class="math-legend">Minimum sequential access cost (Axiom 12 proposition). $N$: ring size. No logical address (Axiom 12) + circular FSM (Axiom 14) + cost exists (Axiom 4) = only ring shift possible</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$k \text{ shifts} = N^{k}$$</div>
+<div class="math-legend">Shift repetition = multiplication replacement (Axiom 12 proposition). Cumulative cost of $k$ shifts on a base-$N$ ring. Shifts perform multiplication</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
+<div class="math-legend">Shared digit ratio on ring (Axiom 11 proposition). $d$: shift distance between two knots (steps) | $N$: ring size | $d=0$: full overlap | $d=N$: no overlap</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">Index overlap weight (Axiom 13 proposition). $r$: DATA(space) distance from CAS write point to another Entity | $d/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi r^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{111 maintenance cost} = (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times r$$</div>
+<div class="math-legend">111 maintenance cost (Axiom 14 proposition). $r$: DATA(space) distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $r$ | cost = Swap cost (1) means inseparable</div>
 </div>
 
 

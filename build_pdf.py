@@ -15,46 +15,70 @@ DOC_ORDER = [
     "science_mine.html",
     "predictions.html",
     "lib.html",
-    "alpha.html",
-    "sin2_thetaW.html",
-    "mass_hierarchy.html",
-    "alpha57.html",
-    "gauge.html",
-    "baryogenesis.html",
-    "ckm_pmns.html",
+    "discovery/alpha.html",
+    "discovery/sin2_thetaW.html",
+    "discovery/mass_hierarchy.html",
+    "discovery/alpha57.html",
+    "discovery/gauge.html",
+    "discovery/baryogenesis.html",
+    "discovery/ckm_pmns.html",
+    "discovery/alpha_ladder.html",
+    "discovery/alpha_structure.html",
+    "discovery/lepton_ratio.html",
+    "discovery/higgs_top.html",
+    "discovery/M_W.html",
+    "discovery/cas_internal.html",
+    "discovery/coupling_relations.html",
+    "discovery/cosmic_thermo.html",
     "expend.html",
 ]
 
 # ── File → first English anchor (for inter-doc link rewriting) ──
 FILE_ANCHOR = {
-    "banya.html":          "en-sec1",
-    "alpha.html":          "en-title",
-    "sin2_thetaW.html":    "en-title",
-    "mass_hierarchy.html":  "en-title",
-    "alpha57.html":        "en-title",
-    "gauge.html":          "en-title",
-    "baryogenesis.html":   "en-title",
-    "ckm_pmns.html":       "en-title",
-    "predictions.html":    "en-title",
-    "lib.html":            "en-title",
-    "science_mine.html":   "en-title",
-    "expend.html":         "en-title",
+    "banya.html":                       "en-sec1",
+    "science_mine.html":                "en-title",
+    "predictions.html":                 "en-title",
+    "lib.html":                         "en-title",
+    "discovery/alpha.html":             "en-title",
+    "discovery/sin2_thetaW.html":       "en-title",
+    "discovery/mass_hierarchy.html":    "en-title",
+    "discovery/alpha57.html":           "en-title",
+    "discovery/gauge.html":             "en-title",
+    "discovery/baryogenesis.html":      "en-title",
+    "discovery/ckm_pmns.html":          "en-title",
+    "discovery/alpha_ladder.html":      "title",
+    "discovery/alpha_structure.html":   "title",
+    "discovery/lepton_ratio.html":      "title",
+    "discovery/higgs_top.html":         "title",
+    "discovery/M_W.html":              "title",
+    "discovery/cas_internal.html":      "title",
+    "discovery/coupling_relations.html":"title",
+    "discovery/cosmic_thermo.html":     "title",
+    "expend.html":                      "en-title",
 }
 
 # ── Unique prefix per file (to avoid id collisions across files) ──
 FILE_PREFIX = {
-    "banya.html":          "",          # main doc keeps original ids
-    "alpha.html":          "alpha-",
-    "sin2_thetaW.html":    "sw-",
-    "mass_hierarchy.html":  "mh-",
-    "alpha57.html":        "a57-",
-    "gauge.html":          "ga-",
-    "baryogenesis.html":   "ba-",
-    "ckm_pmns.html":       "ckm-",
-    "predictions.html":    "pr-",
-    "lib.html":            "lib-",
-    "science_mine.html":   "sm-",
-    "expend.html":         "exp-",
+    "banya.html":                       "",
+    "science_mine.html":                "sm-",
+    "predictions.html":                 "pr-",
+    "lib.html":                         "lib-",
+    "discovery/alpha.html":             "alpha-",
+    "discovery/sin2_thetaW.html":       "sw-",
+    "discovery/mass_hierarchy.html":    "mh-",
+    "discovery/alpha57.html":           "a57-",
+    "discovery/gauge.html":             "ga-",
+    "discovery/baryogenesis.html":      "ba-",
+    "discovery/ckm_pmns.html":          "ckm-",
+    "discovery/alpha_ladder.html":      "al-",
+    "discovery/alpha_structure.html":   "as-",
+    "discovery/lepton_ratio.html":      "lr-",
+    "discovery/higgs_top.html":         "ht-",
+    "discovery/M_W.html":             "mw-",
+    "discovery/cas_internal.html":      "ci-",
+    "discovery/coupling_relations.html":"cr-",
+    "discovery/cosmic_thermo.html":     "ct-",
+    "expend.html":                      "exp-",
 }
 
 def read_file(name):
@@ -105,10 +129,33 @@ def rewrite_inter_doc_links(content, current_file):
     """Convert href="other.html" and href="other.html#anchor" to internal PDF anchors."""
     prefix_for_current = FILE_PREFIX.get(current_file, "")
 
+    # Bare filenames that actually live in discovery/
+    BARE_TO_DISCOVERY = {
+        "alpha.html": "discovery/alpha.html",
+        "sin2_thetaW.html": "discovery/sin2_thetaW.html",
+        "mass_hierarchy.html": "discovery/mass_hierarchy.html",
+        "alpha57.html": "discovery/alpha57.html",
+        "gauge.html": "discovery/gauge.html",
+        "baryogenesis.html": "discovery/baryogenesis.html",
+        "ckm_pmns.html": "discovery/ckm_pmns.html",
+        "alpha_ladder.html": "discovery/alpha_ladder.html",
+        "alpha_structure.html": "discovery/alpha_structure.html",
+        "lepton_ratio.html": "discovery/lepton_ratio.html",
+        "higgs_top.html": "discovery/higgs_top.html",
+        "M_W.html": "discovery/M_W.html",
+        "cas_internal.html": "discovery/cas_internal.html",
+        "coupling_relations.html": "discovery/coupling_relations.html",
+        "cosmic_thermo.html": "discovery/cosmic_thermo.html",
+    }
+
     def replace_link(m):
         full = m.group(0)
         filename = m.group(1)
         anchor = m.group(2) if m.group(2) else None
+
+        # Resolve bare names to discovery/ paths
+        if filename in BARE_TO_DISCOVERY:
+            filename = BARE_TO_DISCOVERY[filename]
 
         if filename not in FILE_PREFIX:
             return full  # external link, keep as-is
@@ -124,9 +171,9 @@ def rewrite_inter_doc_links(content, current_file):
             first_anchor = FILE_ANCHOR.get(filename, "en-title")
             return f'href="#{target_prefix}{first_anchor}"'
 
-    # Match href="filename.html" or href="filename.html#anchor"
+    # Match href="filename.html" or href="discovery/filename.html" with optional #anchor
     content = re.sub(
-        r'href="([a-zA-Z0-9_]+\.html)(?:#([^"]*))?"',
+        r'href="((?:discovery/)?[a-zA-Z0-9_]+\.html)(?:#([^"]*))?"',
         replace_link,
         content
     )
