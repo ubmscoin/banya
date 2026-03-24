@@ -132,6 +132,26 @@ def rewrite_inter_doc_links(content, current_file):
     )
     return content
 
+def remap_inline_colors(content):
+    """Remap dark-theme inline style colors to white-base readable colors.
+    Only touches inline style= attributes. Preserves colored badges/borders."""
+    # Dark-theme light grays → dark readable on white
+    color_map = {
+        "#c9d1d9": "#1a1a1a",   # primary text (light gray → near black)
+        "#e6edf3": "#000",      # heading/strong (white-ish → black)
+        "#8b949e": "#555",      # secondary text (medium gray → darker gray)
+        "#6e7681": "#666",      # tertiary/legend (light gray → readable gray)
+        "#0d1117": "#fff",      # dark bg → white bg
+        "#161b22": "#f5f5f5",   # code bg → light gray
+        "#30363d": "#d0d0d0",   # border dark → border light
+        "#21262d": "#e0e0e0",   # dark divider → light divider
+        "#58a6ff": "#0366d6",   # link blue (too bright) → GitHub blue
+        "#3fb950": "#1a7f37",   # green text (too bright on white) → darker green
+    }
+    for dark, light in color_map.items():
+        content = content.replace(dark, light)
+    return content
+
 def build_combined_html():
     """Build a single combined HTML with all English content."""
 
@@ -284,10 +304,13 @@ def build_combined_html():
 
         prefix = FILE_PREFIX[filename]
 
-        # 1. Prefix IDs to avoid collision
+        # 1. Remap dark-theme inline colors to white-base readable colors
+        en_content = remap_inline_colors(en_content)
+
+        # 2. Prefix IDs to avoid collision
         en_content = prefix_ids(en_content, prefix)
 
-        # 2. Rewrite inter-document links
+        # 3. Rewrite inter-document links
         en_content = rewrite_inter_doc_links(en_content, filename)
 
         # Add section break (except for first doc)
