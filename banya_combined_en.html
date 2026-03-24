@@ -350,6 +350,18 @@ hr { border-top: 1px solid #ccc !important; }
 
 <p>The brackets separate DATA from OPERATOR. This separation is orthogonality.</p>
 
+<h4>Observer and Superposition Are Not Symbolic — They Are Structural Necessities</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>Axis</th><th>Usage</th><th>Without it</th></tr>
+<tr><td><strong>observer</strong></td><td>Compare branching agent (Axiom 6: true→write, false→maintain). Filtering/normalization domain (Axiom 10). Multiple projection receiver (Axiom 11). ECS Entity (Axiom 12)</td><td>No Compare branching → write/maintain undecidable → CAS cannot execute</td></tr>
+<tr><td><strong>superposition</strong></td><td>CAS's only reference path (Axioms 3, 13). Address-free ECS indexing (Axiom 13). State maintained on Compare false (Axiom 7)</td><td>No reference path to DATA → all operations impossible. No non-write state storage → quantum default state vanishes</td></tr>
+</table>
+</div>
+
+<p>Without observer, there is nowhere to receive Compare results. Without superposition, CAS has nothing to reference. Both are <strong>structural requirements</strong> for the Banya Equation to operate, not metaphorical borrowings inspired by quantum mechanics.</p>
+
 
 <h3 id="en-ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
 
@@ -413,12 +425,12 @@ hr { border-top: 1px solid #ccc !important; }
 <div class="math-row">$$\delta^{2} = \underbrace{(\text{time} + \text{space})^{2}}_{\color{#555}{\text{DATA -- Spacetime}}} + \underbrace{(\text{observer} + \text{superposition})^{2}}_{\color{#0366d6}{\text{OPERATOR -- CAS lives here}}}$$</div>
 </div>
 
-<p>R→C→S is not a temporal sequence but a logical dependency. CAS writes to the time axis from outside it. When CAS writes to time, the arrow of time emerges.</p>
+<p>R→C→S is not a temporal sequence but a logical dependency. CAS writes to the time axis from outside it. When CAS writes to time, the arrow of time emerges. CAS references superposition. Without logical addresses (Axiom 12), CAS cannot directly point to DATA. CAS and superposition are in the same OPERATOR bracket, so reference cost is 0.</p>
 
 
-<h3 id="en-ax4">Axiom 4. CAS-DATA Cost Is Not Free <span class="tag-solved">Axiom</span></h3>
+<h3 id="en-ax4">Axiom 4. Crossing Brackets Is Not Free <span class="tag-solved">Axiom</span></h3>
 
-<p>The cost of CAS accessing DATA cannot be zero. If cost is zero, there is no lock. If there is no lock, occupation is impossible. Without occupation, CAS cannot execute. Therefore a minimum cost exists.</p>
+<p>The cost of crossing brackets cannot be zero. If cost is zero, there is no lock. If there is no lock, occupation is impossible. Without occupation, CAS cannot execute. Therefore a minimum cost exists. This access is indirect. CAS → superposition (cost 0) → collapse → DATA (cost ℏ). ℏ is not the cost of CAS touching DATA, but the cost of superposition collapsing into the classical. It is the cost of crossing brackets.</p>
 
 <pre>DATA (classical bracket) ──── TOCTOU_LOCK ──── OPERATOR (quantum bracket)
  spacetime lives here           boundary         CAS lives here</pre>
@@ -431,7 +443,7 @@ hr { border-top: 1px solid #ccc !important; }
 </table>
 </div>
 
-<p>This minimum cost is measured as ℏ (Dirac constant) in physics. Heisenberg's uncertainty principle ($\Delta x \cdot \Delta p \geq \hbar/2$) is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost CAS pays to access DATA.</p>
+<p>This minimum cost is measured as ℏ (Dirac constant) in physics. Heisenberg's uncertainty principle ($\Delta x \cdot \Delta p \geq \hbar/2$) is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets.</p>
 
 <h4>Irreversibility Terminology</h4>
 
@@ -492,23 +504,30 @@ Target: DATA domain (Axiom 1)</pre>
 <table>
 <tr><th>Step</th><th>R_LOCK</th><th>C_LOCK</th><th>S_LOCK</th><th>Bits</th><th>DATA Access</th><th>Lock State</th></tr>
 <tr><td>Idle</td><td>0</td><td>0</td><td>0</td><td>000</td><td>None</td><td>DATA unoccupied, cost 0</td></tr>
-<tr><td>Read</td><td><strong>1</strong></td><td>0</td><td>0</td><td>001</td><td>Read address</td><td>Lock start — DATA occupied, cost ℏ</td></tr>
-<tr><td>Compare</td><td><strong>1</strong></td><td><strong>1</strong></td><td>0</td><td>011</td><td>Compare old value</td><td>Lock held — other operations blocked</td></tr>
-<tr><td>Swap</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td>111</td><td>Write new value</td><td>CAS success — all 3 bits ON</td></tr>
+<tr><td>Read</td><td><strong>1</strong></td><td>0</td><td>0</td><td>001</td><td>Superposition ref</td><td>Intra-OPERATOR, cost 0</td></tr>
+<tr><td>Compare</td><td><strong>1</strong></td><td><strong>1</strong></td><td>0</td><td>011</td><td>Compare superposition</td><td>If true: ready to cross brackets (pre-collapse)</td></tr>
+<tr><td>Swap</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td>111</td><td>Write to DATA</td><td>Brackets crossed — cost ℏ. CAS complete</td></tr>
 <tr><td>Reset</td><td>0</td><td>0</td><td>0</td><td>000</td><td>None</td><td>Flags reset — DATA returned, lock released</td></tr>
 </table>
 </div>
 
 <p>Flags turn on sequentially only. No duplicate locks on the same DATA address. One event must complete 000→001→011→111→000 before the next can begin. This is the register-level implementation of CAS atomicity (Axiom 2).</p>
 
+<p>Read (001) and Compare (011) are intra-OPERATOR (superposition reference), cost 0. Cost ℏ occurs only at Swap (111) when writing to DATA — crossing brackets (Axiom 4). If cost is not spent (Compare false), superposition is maintained (Axiom 7). Quantum is the default; classical is the result of spending cost.</p>
 
 <h3 id="en-ax6">Axiom 6. Wavefunction Collapse = Write <span class="tag-solved">Axiom</span></h3>
 
-<pre>superposition (multiple states)
-    | CAS execution
-observer (determined to 1)
-    | cost h-bar
-recorded in time, space (write to DATA complete)</pre>
+<pre>CAS (inside OPERATOR)
+    | superposition reference (cost 0, same bracket)
+superposition (multiple states)
+    | Compare: change detected?
+    |
+    ├── true → observer (determined to 1)
+    |              | Swap: crosses brackets (cost ℏ)
+    |              v
+    |         recorded in time, space (write to DATA complete)
+    |
+    └── false → superposition maintained (cost 0, Axiom 7)</pre>
 
 <p>The answer to the question quantum mechanics has asked for 100 years -- "why does observation cause collapse?" -- is: because it is a write.</p>
 
@@ -550,7 +569,7 @@ recorded in time, space (write to DATA complete)</pre>
 
 <h4>Idle Polling and Quantum Vacuum Energy</h4>
 
-<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. Quantum vacuum energy (Casimir effect, zero-point energy, etc.) is a fluctuation on the DATA (classical bracket) side. It is the phenomenon where the zero-point oscillations of fields recorded in spacetime carry energy.</p>
+<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. Why cost is 0: CAS referencing superposition is an intra-OPERATOR bracket operation. No bracket crossing, no cost. Quantum vacuum energy (Casimir effect, zero-point energy, etc.) is a fluctuation on the DATA (classical bracket) side. It is the phenomenon where the zero-point oscillations of fields recorded in spacetime carry energy.</p>
 
 <p>In Axiom 1, DATA and OPERATOR are orthogonal brackets, so there is no conflict. Idle polling has zero cost because it does not access DATA, and vacuum energy is a phenomenon occurring on the DATA side. Idle polling is the state where the operator is on standby, while vacuum energy is the ground state of fields on the data side having nonzero energy. The zero cost of OPERATOR and the nonzero energy of DATA are descriptions of different things in different brackets.</p>
 
@@ -646,7 +665,7 @@ observer (mirror, filtering/normalization)
                                     |                                        |
                                     +--- re-filtering in next cycle <--------+</pre>
 
-<p>This structure is automatic recursion. The CAS result is reflected in δ, and the reflected δ is re-filtered/normalized through each observer in the next cycle. Recursive call (Axiom 8), input normalization (Axiom 10), and termination condition (Axiom 13, FSM 111→000 reset) run automatically by axiom declaration alone.</p>
+<p>This structure is automatic recursion. The CAS result is reflected in δ, and the reflected δ is re-filtered/normalized through each observer in the next cycle. Recursive call (Axiom 8), input normalization (Axiom 10), and termination condition (Axiom 14, FSM 111→000 reset) run automatically by axiom declaration alone.</p>
 
 <h4>Constraints — System Protection Mechanism <span class="tag-discovery">Required</span></h4>
 
@@ -706,7 +725,7 @@ observer (mirror, filtering/normalization)
 </table>
 </div>
 
-<p>This is not a double loop. It is two descriptions of one loop. Describing CAS turning in terms of action yields Axiom 8 (polling); describing the same thing in terms of owner yields Axiom 10 (owner). Rationale: the whole-local projection is also a state change, and if the state changes, it is a write (Axiom 6). If it is a write, it goes through CAS (Axiom 2). If it goes through CAS, it costs (Axiom 4). TOCTOU_LOCK is engaged (Axiom 5). Everything rides the same FSM (Axiom 13). It is not a separate loop — it sits on the same transition diagram of the same FSM.</p>
+<p>This is not a double loop. It is two descriptions of one loop. Describing CAS turning in terms of action yields Axiom 8 (polling); describing the same thing in terms of owner yields Axiom 10 (owner). Rationale: the whole-local projection is also a state change, and if the state changes, it is a write (Axiom 6). If it is a write, it goes through CAS (Axiom 2). If it goes through CAS, it costs (Axiom 4). TOCTOU_LOCK is engaged (Axiom 5). Everything rides the same FSM (Axiom 14). It is not a separate loop — it sits on the same transition diagram of the same FSM.</p>
 
 
 <h3 id="en-ax11">Axiom 11. Multiple Projection <span class="tag-solved">Axiom</span></h3>
@@ -743,7 +762,7 @@ observer (mirror, filtering/normalization)
 
 <p><strong>Distance-independence of entanglement:</strong> The simultaneous correlation of images reflected in observer A and observer B occurs because they are looking at the same consciousness. No signal travels from A to B. The same change of the same owner is simultaneously reflected in two mirrors. Since the owner is one, simultaneity is guaranteed.</p>
 
-<p><strong>Relation to FSM:</strong> The 4 states (000→001→011→111) of the FSM (Axiom 13) are the states of CAS processing one projection, not the state of the entire universe. CAS is finite (4 states) but DATA is infinite (continuous). Just as CPU instructions are finite while memory data is infinite.</p>
+<p><strong>Relation to FSM:</strong> The 4 states (000→001→011→111) of the FSM (Axiom 14) are the states of CAS processing one projection, not the state of the entire universe. CAS is finite (4 states) but DATA is infinite (continuous). Just as CPU instructions are finite while memory data is infinite.</p>
 
 
 <h3 id="en-ax12">Axiom 12. The Classical Bracket Is an ECS Execution Model <span class="tag-solved">Axiom</span></h3>
@@ -770,11 +789,27 @@ No address system needed — the entity IS the address.</pre>
 
 <h4>Why ECS Is Free</h4>
 
-<p>Each observer in the ECS cycles through the FSM's closed circuit (000→001→011→111→000) (Axiom 13). The circuit is closed, yet each observer is free. Reason: each observer <strong>runs its own FSM independently</strong>. No central scheduler. No synchronization. No ordering. Observer A's FSM can be at 011 while observer B's FSM is at 000. Each observer's interface lock (Axiom 5) grabs and releases only its own DATA. It does not interfere with any other observer's FSM.</p>
+<p>Each observer in the ECS cycles through the FSM's closed circuit (000→001→011→111→000) (Axiom 14). The circuit is closed, yet each observer is free. Reason: each observer <strong>runs its own FSM independently</strong>. No central scheduler. No synchronization. No ordering. Observer A's FSM can be at 011 while observer B's FSM is at 000. Each observer's interface lock (Axiom 5) grabs and releases only its own DATA. It does not interfere with any other observer's FSM.</p>
 
 <p>What is closed is the FSM's transition diagram, not the relationship between observers. Because the transition diagram is closed, each observer can cycle stably. Because there is no coupling between observers, they are free.</p>
 
 <p>And even though the FSM cycles through a closed circuit, each knot has an <strong>open lifespan</strong> in the LRU. HOT→WARM→COLD→extinction. The FSM closes the computation; the LRU opens the lifespan. Closed computation (FSM) + open lifespan (LRU) = freedom. Knots are born (write), re-enter (move), and vanish (extinction). Even though the FSM is closed, the knot's lifecycle is open. This is the essence of the ECS architecture.</p>
+
+<h4>Corollary: Separation of FSM and LRU Domains</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>Domain</th><th>Scope</th><th>Access Mode</th><th>Physics</th></tr>
+<tr><td><strong>FSM domain</strong> (closed)</td><td>Intra-Entity. CAS atomic execution 001→011→111→000</td><td>Sequential. No duplicate locks (Axiom 5)</td><td>Strong force = CAS atomicity (confinement). Quark confinement</td></tr>
+<tr><td><strong>LRU domain</strong> (open)</td><td>Inter-Entity. CAS accesses multiple Entities' DATA simultaneously</td><td>Concurrent. No von Neumann sequential bus</td><td>3 forces = how CAS accesses DATA (time, space). Gravity, EM, weak</td></tr>
+</table>
+</div>
+
+<p>The <strong>moment of CAS write</strong> is concurrent — multiple Entities execute CAS independently in parallel (ECS). The <strong>LRU lifecycle after writing</strong> is sequential — HOT→WARM→COLD follows state order. CAS operates outside time (Axiom 3), enabling concurrency; once results are recorded in time (DATA), sequential LRU begins. This distinction separates the two interaction domains.</p>
+
+<p><strong>Why CAS writes must be concurrent:</strong> Upon LRU entry, the same generation must enter HOT simultaneously. Simultaneous entry enforces the same lifecycle (HOT→WARM→COLD). Sequential entry would stagger creation times, giving the same generation different lifespans, breaking generational structure. Concurrent write = same generation = same LRU lifecycle.</p>
+
+<p><strong>LRU delegation = quantum bracket ownership:</strong> Knots written by CAS are stored in DATA (classical bracket), but the moment they enter LRU management, they come under OPERATOR (quantum bracket) ownership. Storage is in DATA, but lifecycle authority belongs to OPERATOR. The transition HOT (active management) → WARM (pending eviction) → COLD (base eviction rate) is OPERATOR's management policy. Residing in DATA, but not belonging to DATA.</p>
 
 <h4>Why There Is No Logical Address System</h4>
 
@@ -831,7 +866,24 @@ COLD (68%) ← no recent access             — dark energy</pre>
 <p>Because copying is impossible, two effects cannot arise from the same cause. This is the preservation of causality. When a cause is moved to an effect, the cause vanishes and only the effect remains. It cannot be reversed. It is irreversible (Axiom 4). Causality needs no separate declaration — the move of a knot is causality.</p>
 
 
-<h3 id="en-ax13">Axiom 13. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
+<h3 id="en-ax13">Axiom 13. Quantum Bracket Superposition Is the Indexing of Classical Bracket ECS <span class="tag-solved">Axiom</span></h3>
+
+<p>Classical bracket (DATA) multiplicity = ECS (multiple Entities coexisting in definite states). Quantum bracket (OPERATOR) multiplicity = superposition (multiple states coexisting in indefinite states). Same "simultaneous multiplicity," different brackets. One is definite plurality, the other indefinite plurality. An orthogonal pair.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th></th><th>Classical Bracket (DATA)</th><th>Quantum Bracket (OPERATOR)</th></tr>
+<tr><td>Multiplicity</td><td>ECS (multiple Entities)</td><td>Superposition (multiple states)</td></tr>
+<tr><td>Each item</td><td>Definite</td><td>Indefinite</td></tr>
+<tr><td>Compare true</td><td>Entity updated (Swap)</td><td>Superposition collapses (1 confirmed)</td></tr>
+<tr><td>Compare false</td><td>Entity unchanged</td><td>Superposition maintained</td></tr>
+</table>
+</div>
+
+<p>CAS bridges this pair. Compare true = quantum superposition collapses while classical Entity updates. Compare false = superposition maintained while Entity stays unchanged. Collapse and update are simultaneous events; maintenance and invariance are simultaneous events. Without ECS, superposition has nowhere to collapse into. Without superposition, ECS has no source of change. The two are an inseparable pair. CAS references the quantum side (superposition) of the pair, and upon Compare true, collapses it into the classical side (ECS Entity). Reference (superposition) costs 0; collapse (DATA) costs ℏ. Why CAS does not reference DATA directly: no logical addresses (Axiom 12). Superposition is CAS's only reference path. Superposition is the indexing of ECS. In an ECS without logical addresses, superposition spreading all possible states simultaneously IS the address-free index. CAS searches this index via Compare, and collapses only the items where change is detected into DATA.</p>
+
+
+<h3 id="en-ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
 
 <p>The Banya Framework is a Finite State Machine (FSM).</p>
 
@@ -856,48 +908,22 @@ COLD (68%) ← no recent access             — dark energy</pre>
       000 --Read--> 001 --Compare--> 011 --Swap--> 111
       idle          R_LOCK           C_LOCK         CAS OK</pre>
 
-<p>All axioms (1-12) are components of this FSM. Axiom 1 defines the input space, Axiom 2 the transition function, Axioms 4-5 the transition cost and register, Axioms 6-7 the output, Axiom 8 the clock, Axiom 10 the owner, Axiom 11 the multiple projection, and Axiom 12 the execution model. The FSM declaration is a completeness statement: the 12 axioms close into a single machine.</p>
+<p>All axioms (1-14) are components of this FSM. Axiom 1 defines the input space, Axiom 2 the transition function, Axioms 4-5 the transition cost and register, Axioms 6-7 the output, Axiom 8 the clock, Axiom 10 the owner, Axiom 11 the multiple projection, Axiom 12 the execution model, and Axiom 13 the ECS-superposition pair. The FSM declaration is a completeness statement: the 14 axioms close into a single machine.</p>
 
 <h4>Finite states of the FSM and the infinite degrees of freedom of QFT</h4>
 
-<p>The state set of the FSM (Axiom 13) is {000, 001, 011, 111} — four states, finite. The infinite degrees of freedom in Quantum Field Theory (QFT) refer to field values varying continuously at each point of spacetime. The two do not conflict.</p>
+<p>The state set of the FSM (Axiom 14) is {000, 001, 011, 111} — four states, finite. The infinite degrees of freedom in Quantum Field Theory (QFT) refer to field values varying continuously at each point of spacetime. The two do not conflict.</p>
 
 <p>The four FSM states belong to the OPERATOR side. They describe the states of the operator that tracks which stage CAS is in. The infinite degrees of freedom of QFT belong to the DATA side. They describe the fact that field values recorded in spacetime (classical brackets) are infinite and continuous. In Axiom 1, DATA (classical brackets) and OPERATOR (quantum brackets) are orthogonal, distinct brackets. The FSM describes the finite state transitions of the OPERATOR, while QFT's infinite degrees of freedom describe the space of continuous values recorded in DATA. Because they belong to different layers, there is no conflict.</p>
 
 <h4>What "closed" means</h4>
 
-<p>Closed = nothing to import from outside. The Banya Framework imports nothing beyond its 13 axioms. No 14th axiom is needed. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, multiple projection, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
+<p>Closed = nothing to import from outside. The Banya Framework imports nothing beyond its 14 axioms. No 15th axiom is needed. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, multiple projection, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
 
 
 <h2 id="en-axiom-consequence">What Follows from the Axioms</h2>
 
-<p>Starting from the 13 axioms above, running the Banya Framework 5-step recursive substitution (Banya Equation → norm substitution → constant substitution → domain transformation → discovery) yields physical constants. What has been derived so far:</p>
-
-<div class="table-wrap">
-<table>
-<tr><th>Derivation</th><th>Formula</th><th class="col-err">Error</th><th>Axioms Used</th></tr>
-<tr><td>$\alpha$</td><td>Wyler 7-dim volume ratio</td><td>0.00006%</td><td>Axioms 1,2 (7-dim)</td></tr>
-<tr><td>$\sin^2\theta_W$</td><td>$(4\pi^2-3)/(16\pi^2)$</td><td>0.09%</td><td>Axioms 1,2 (geometry)</td></tr>
-<tr><td>$\alpha_s$</td><td>$3\alpha(4\pi)^{2/3}$</td><td>0.3%</td><td>Axiom 2 (CAS confinement)</td></tr>
-<tr><td>Lepton 3 generations</td><td>Koide $\theta$=2/9</td><td>0.2%</td><td>Axioms 2,9 (2/9)</td></tr>
-<tr><td>6 quarks</td><td>Lepton x color correction</td><td>0.17%~0.81%</td><td>Axiom 2 (CAS cost)</td></tr>
-<tr><td>PMNS $\theta_{12}$</td><td>$3/\pi^2$</td><td>0.013%</td><td>Axiom 1 (domain curvature)</td></tr>
-<tr><td>Cosmological constant</td><td>$\alpha^{57} \cdot e^{21/35}$</td><td>0.09%</td><td>Axioms 1,2 (exterior algebra)</td></tr>
-<tr><td>Baryon-photon ratio</td><td>$\alpha^4\sin^2\theta_W$</td><td>0.7%</td><td>Axioms 3,4 (irreversibility)</td></tr>
-</table>
-</div>
-
-<h3>Hypothesis Library -- Re-substitution Arsenal</h3>
-
-<p>All discoveries and hypotheses derived above are registered in the <a href="#lib-en-title" style="font-weight:600">Hypothesis Library (lib.html)</a>. These become weapons for the next round. The more rounds you run, the larger the library grows, and the fewer places hidden values can escape.</p>
-
-<div class="table-wrap">
-<table>
-<tr><th>Category</th><th>Count</th><th>Status</th><th>Description</th></tr>
-<tr><td><span class="tag-discovery">Discovery</span> D series</td><td>Hit confirmed</td><td>Within 1% error</td><td>$\alpha$, $\sin^2\theta_W$, $\alpha_s$, Koide, PMNS/CKM mixing angles, 6 quark masses, cosmological constant, etc.</td></tr>
-<tr><td><span class="tag-hypothesis">Hypothesis</span> H series</td><td>In Progress</td><td>Structural correspondence confirmed, quantitative proof incomplete</td><td>CAS to gauge group, color confinement = atomicity, operator outside time, TOCTOU lock, collapse = write, self-reference, etc.</td></tr>
-</table>
-</div>
+<p>Starting from the 14 axioms above, running the Banya Framework 5-step recursive substitution (Banya Equation → norm substitution → constant substitution → domain transformation → discovery) yields physical constants. The full list is managed in the <a href="#lib-en-title" style="font-weight:600">Factor Library (lib.html)</a> and <a href="#pr-en-title" style="font-weight:600">Unique Predictions (predictions.html)</a>. Discovery (D) 42 + Hypothesis (H) 47 + Unique Prediction (P) 7 = 96 total items, 21 verification rows (14 hits). The more rounds you run, the larger the library grows, and the fewer places hidden values can escape.</p>
 
 <h4>Usage: Re-substitution</h4>
 
@@ -935,21 +961,9 @@ Pending:     Answer is unknown -> framework states it first -> wait for experime
 
 <h3>Banya Framework Unique Predictions</h3>
 
-<div class="table-wrap">
-<table>
-<tr><th>Prediction</th><th>Derived Value</th><th>Verification Experiment</th><th>Timeline</th></tr>
-<tr><td>Neutrino mass sum</td><td>$\Sigma m_\nu$ = 58.5 meV</td><td>KATRIN / JUNO</td><td>~2027</td></tr>
-<tr><td>Proton lifetime</td><td>$\tau_p \sim 10^{36}$ years</td><td>Hyper-Kamiokande</td><td>~2030</td></tr>
-<tr><td>4th generation particles</td><td><strong>Do not exist</strong> (CAS has no 4th operation)</td><td>LHC statistics</td><td>Confirmed</td></tr>
-<tr><td>Dark energy EoS</td><td>$w = -1$ (exactly)</td><td>DESI</td><td>~2026</td></tr>
-<tr><td>Neutrino mass ordering</td><td>Normal ordering (NO)</td><td>JUNO / DUNE</td><td>~2027</td></tr>
-<tr><td>Higgs self-coupling</td><td>$\lambda_H = 7/54$</td><td>Future collider</td><td>TBD</td></tr>
-</table>
-</div>
+<p>Full list at <a href="#pr-en-title" style="color:#0366d6;font-weight:600">Unique Predictions Report (predictions.html)</a>. 21 rows, 14 hits, 6 pending, 0 falsified.</p>
 
 <p><strong>Falsification conditions:</strong> If any prediction is wrong, the corresponding part must be revised. If a 4th generation particle is discovered, the CAS structure itself collapses. These are falsification conditions that the Banya Framework imposes on itself.</p>
-
-<p>Derivation process, falsification scenarios, and experiment timelines for each prediction are available at <a href="#pr-en-title" style="color:#0366d6;font-weight:600">Banya Framework Unique Predictions Report (predictions.html)</a>.</p>
 
 
 <h3>Standard Model Fully Derived Declaration</h3>
@@ -966,26 +980,29 @@ Pending:     Answer is unknown -> framework states it first -> wait for experime
 <div class="table-wrap">
 <table>
 <tr><th>Category</th><th>Parameter</th><th>Formula</th><th class="col-err">Error</th><th>Source</th></tr>
-<tr><td rowspan="3"><strong>Coupling Constants (3)</strong></td><td>$\alpha$</td><td>Wyler 7-dim volume ratio</td><td>0.00006%</td><td><a href="#alpha-en-title">alpha.html</a></td></tr>
-<tr><td>$\alpha_s$</td><td>$3\alpha(4\pi)^{2/3}$</td><td>0.3%</td><td><a href="#ga-en-title">gauge.html</a></td></tr>
-<tr><td>$\sin^2\theta_W$</td><td>$(4\pi^2-3)/(16\pi^2)$</td><td>0.09%</td><td><a href="#sw-en-title">sin2_thetaW.html</a></td></tr>
-<tr><td rowspan="6"><strong>Quark Masses (6)</strong></td><td>$m_t$</td><td>$v/\sqrt{2}$</td><td>0.78%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td>$m_c$</td><td>$m_t \cdot \alpha$</td><td>0.73%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td>$m_u$</td><td>$m_c \cdot \alpha_s^3$</td><td>0.67%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td>$m_b$</td><td>$m_\tau \cdot 7/3$</td><td>0.81%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td>$m_s$</td><td>$m_\mu(1-\alpha_s)$</td><td>0.17%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td>$m_d$</td><td>$m_e(9+3\alpha_s/\pi)$</td><td>0.28%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td><strong>Lepton Masses (3)</strong></td><td>$e, \mu, \tau$</td><td>Koide $\theta$=2/9, $r=\sqrt{2}$</td><td>0.2%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td rowspan="4"><strong>CKM (4)</strong></td><td>$\sin\theta_C$</td><td>$(2/9)(1+\pi\alpha/2)$</td><td>0.24%</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td>$A$</td><td>$\sqrt{2/3}$</td><td>0.18%</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td>$\sin\theta_{13}$ CKM</td><td>Indirect derivation</td><td>--</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td>$\delta_{\text{CKM}}$</td><td>$\arctan(5/2+\alpha_s/\pi)$</td><td>0.049%</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td rowspan="4"><strong>PMNS (4)</strong></td><td>$\sin^2\theta_{12}$</td><td>$3/\pi^2$</td><td>0.013%</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td>$\sin^2\theta_{23}$</td><td>$4/7$</td><td>0.28%</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td>$\sin\theta_{13}$</td><td>$4/27$</td><td>0.23%</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td>$\delta_{\text{PMNS}}$</td><td>$\pi+(2/9)\delta_{\text{CKM}}$</td><td>0.42%</td><td><a href="#ckm-en-title">ckm_pmns.html</a></td></tr>
-<tr><td rowspan="2"><strong>Higgs (2)</strong></td><td>$v$ (VEV)</td><td>$m_t \cdot \sqrt{2}$ ($y_t$=1)</td><td>0.78%</td><td><a href="#mh-en-title">mass_hierarchy.html</a></td></tr>
-<tr><td>$\lambda_H$</td><td>$7/54$</td><td>0.16%</td><td><a href="#pr-en-title">predictions.html</a></td></tr>
+<tr><td rowspan="3"><strong>Coupling Constants (3)</strong></td><td>$\alpha$</td><td>Wyler 7-dim volume ratio</td><td>0.00006%</td><td><a href="#lib-en-d01">D-01</a></td></tr>
+<tr><td>$\alpha_s$</td><td>$3\alpha(4\pi)^{2/3}$</td><td>0.3%</td><td><a href="#lib-en-d03">D-03</a></td></tr>
+<tr><td>$\sin^2\theta_W$</td><td>$(4\pi^2-3)/(16\pi^2)$</td><td>0.09%</td><td><a href="#lib-en-d02">D-02</a></td></tr>
+<tr><td rowspan="6"><strong>Quark Masses (6)</strong></td><td>$m_t$</td><td>$v/\sqrt{2}$</td><td>0.78%</td><td><a href="#lib-en-d16">D-16</a></td></tr>
+<tr><td>$m_c$</td><td>$m_t \cdot \alpha$</td><td>0.73%</td><td><a href="#lib-en-d17">D-17</a></td></tr>
+<tr><td>$m_u$</td><td>$m_c \cdot \alpha_s^3$</td><td>0.67%</td><td><a href="#lib-en-d18">D-18</a></td></tr>
+<tr><td>$m_b$</td><td>$m_\tau \cdot 7/3$</td><td>0.81%</td><td><a href="#lib-en-d19">D-19</a></td></tr>
+<tr><td>$m_s$</td><td>$m_\mu(1-\alpha_s)$</td><td>0.17%</td><td><a href="#lib-en-d20">D-20</a></td></tr>
+<tr><td>$m_d$</td><td>$m_e(9+3\alpha_s/\pi)$</td><td>0.28%</td><td><a href="#lib-en-d21">D-21</a></td></tr>
+<tr><td><strong>Lepton Masses (3)</strong></td><td>$e, \mu, \tau$</td><td>Koide $\theta$=2/9, $r=\sqrt{2}$</td><td>0.2%</td><td><a href="#lib-en-d09">D-09</a></td></tr>
+<tr><td rowspan="4"><strong>CKM (4)</strong></td><td>$\sin\theta_C$</td><td>$(2/9)(1+\pi\alpha/2)$</td><td>0.24%</td><td><a href="#lib-en-d07">D-07</a></td></tr>
+<tr><td>$A$</td><td>$\sqrt{2/3}$</td><td>0.18%</td><td><a href="#lib-en-d08">D-08</a></td></tr>
+<tr><td>$\sin\theta_{13}$ CKM</td><td>$A\lambda^3(2/5)$</td><td>0.51%</td><td><a href="#lib-en-h47">H-47</a></td></tr>
+<tr><td>$\delta_{\text{CKM}}$</td><td>$\arctan(5/2+\alpha_s/\pi)$</td><td>0.049%</td><td><a href="#lib-en-d23">D-23</a></td></tr>
+<tr><td rowspan="4"><strong>PMNS (4)</strong></td><td>$\sin^2\theta_{12}$</td><td>$3/\pi^2$</td><td>0.013%</td><td><a href="#lib-en-d05">D-05</a></td></tr>
+<tr><td>$\sin^2\theta_{23}$</td><td>$4/7$</td><td>0.28%</td><td><a href="#lib-en-d06">D-06</a></td></tr>
+<tr><td>$\sin\theta_{13}$</td><td>$4/27$</td><td>0.23%</td><td><a href="#lib-en-d22">D-22</a></td></tr>
+<tr><td>$\delta_{\text{PMNS}}$</td><td>$\pi+(2/9)\delta_{\text{CKM}}$</td><td>0.42%</td><td><a href="#lib-en-d36">D-36</a></td></tr>
+<tr><td rowspan="2"><strong>Higgs (2)</strong></td><td>$v$ (VEV)</td><td>$m_t \cdot \sqrt{2}$ ($y_t$=1)</td><td>0.78%</td><td><a href="#lib-en-d16">D-16</a></td></tr>
+<tr><td>$\lambda_H$</td><td>$7/54$</td><td>0.16%</td><td><a href="#lib-en-d24">D-24</a></td></tr>
+<tr><td colspan="5" style="border:none;padding-top:8px"><strong>Additional (beyond 22)</strong></td></tr>
+<tr><td><strong>Boson masses</strong></td><td>$M_W$</td><td>$M_Z\cos\theta_W$ (1-loop)</td><td>0.016%</td><td><a href="#lib-en-d41">D-41</a></td></tr>
+<tr><td></td><td>$m_H$</td><td>$v\sqrt{7/27}$</td><td>0.10%</td><td><a href="#lib-en-d25">D-25</a></td></tr>
 </table>
 </div>
 
@@ -1658,7 +1675,7 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 
 <p><strong>Domain transformation:</strong> The Banya Framework enforces all 4 domains and monitors them all. When existing physics equations use only some domains, switching to the remaining domains reveals hidden physical quantities. Observation is subordinate to change, and all observations are fundamentally indirect. Decoherence is a CAS commit (Background to Foreground transition).</p>
 
-<p><strong>Unification:</strong> The 3-stage costs of CAS correspond to the 4 forces (Swap=gravity, Compare=electromagnetism, Read=weak force, confinement=strong force). A single LRU queue unifies visible matter (HOT 5%), dark matter (WARM 27%), and dark energy (COLD 68%). Inserting constants yields hidden values like a system of simultaneous equations. Input 13, output 24+. More comes out than goes in.</p>
+<p><strong>Unification:</strong> CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. A single LRU queue unifies visible matter (HOT 5%), dark matter (WARM 27%), and dark energy (COLD 68%). Inserting constants yields hidden values like a system of simultaneous equations. Input: 7. Output: 96+. More comes out than goes in.</p>
 
 <p><strong>Verification:</strong> Full verification of 118 physics equations, FAIL 0. 6 fundamental physics equations derived from Write Axiom (all 1.000000). Electron charge, Weinberg angle, W/Z mass ratio, Higgs VEV (0.6% Error) derived from CAS cost. Koide Formula 0.0011% Error.</p>
 
@@ -1767,28 +1784,26 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 
 <p>Switching from the area domain to the information domain yields the Bekenstein-Hawking entropy. The reason entropy is proportional to surface area rather than volume is that CAS occupies 2-dimensional area, not 3-dimensional volume.</p>
 
-<h4>Evidence 6: CAS internal structure -> expansion to quark domain</h4>
+<h4>Evidence 6: CAS→DATA Imprint → Quark Octet (<a href="#lib-en-h44">H-44</a>)</h4>
 
 <div class="math-block">
-<div class="math-row">CAS internal structure: Read -> Compare -> Swap (3 stages)</div>
-<div class="math-row">$$\text{quark domain:} 3 colors (R,G,B) = 3 \text{stages} | 6 flavors (3 generations \times 2) = 3 \text{stages} \times success/failure$$</div>
-<div class="math-row">$$\text{confinement domain:} 8 gluons = 3^{2}-1 | quark confinement = CAS atomicity$$</div>
-<div class="math-legend">Internal structure of CAS 3 stages structurally matches quark physics (hypothesis stage)</div>
+<div class="math-row">CAS 3-bit: Read(001), Compare(010), Swap(100) → $2^3$ = 8 states</div>
+<div class="math-row">$$\text{000=vacuum, 111=baryon. up-type=single bit(001,010,100), down-type=composite bit(011,101,110)}$$</div>
+<div class="math-row">$$\text{confinement: } 8 \text{ gluons} = 3^{2}-1 | \text{quark confinement} = \text{CAS atomicity (FSM domain)}$$</div>
+<div class="math-legend">3-bit pattern imprinted by CAS onto DATA structurally matches quark octet (H-44, hypothesis)</div>
 </div>
 
-<p>The quantum of action (h-bar) was "the smallest indivisible event" in physics, but had no internal structure. CAS gives this quantum of action the 3-stage internal structure of Read, Compare, Swap. This structure structurally matches the 3 colors, 6 flavors, and 8 gluons of quarks.</p>
+<p>The quantum of action (ℏ) was "the smallest indivisible event" in physics, but had no internal structure. CAS gives this quantum of action the 3-stage internal structure of Read→Compare→Swap. When these 3 bits are imprinted on DATA, $2^3$=8 states emerge (<a href="#lib-en-h44">H-44</a>), corresponding to 6 quark flavors + vacuum + baryon. The strong force is the atomicity (inseparability) of the 3 CAS stages.</p>
 
-<h4>Evidence 7: CAS cost ratio -> expansion to 4-force domain</h4>
+<h4>Evidence 7: CAS × DATA Access → 4 Forces (<a href="#lib-en-h45">H-45</a>)</h4>
 
 <div class="math-block">
-<div class="math-row">$$\text{Swap cost} = \alpha_{G} = 1 (\text{gravity, in Planck units})$$</div>
-<div class="math-row">$$\text{Compare cost} = \alpha_{em} = 1/137 (\text{electromagnetism})$$</div>
-<div class="math-row">$$\text{Read cost} = \alpha_{weak} = 1/30 (\text{weak force})$$</div>
-<div class="math-row">$$\text{CAS confinement} = \text{strong force} (3 \text{stages} \text{inseparable})$$</div>
-<div class="math-legend">$\alpha_G$: gravitational coupling | $\alpha_{\text{em}}$: EM coupling (~1/137) | $\alpha_{\text{weak}}$: weak coupling (~1/30) | 4 forces unified by CAS cost (hypothesis stage)</div>
+<div class="math-row">$$\text{Swap cost} = \alpha_{G} = 1, \quad \text{Compare cost} = \alpha_{em} = 1/137, \quad \text{Read cost} = \alpha_{weak} = 1/30$$</div>
+<div class="math-row">$$\text{3 forces} = \text{CAS accessing DATA(time, space). Strong} = \text{CAS atomicity(confinement)}$$</div>
+<div class="math-legend">$\alpha_G$: gravitational coupling | $\alpha_{\text{em}}$: EM coupling (~1/137) | $\alpha_{\text{weak}}$: weak coupling (~1/30) | 3 forces = CAS×DATA, strong = CAS atomicity (H-45, hypothesis)</div>
 </div>
 
-<p>The cost ratios of the 3 CAS stages correspond to the coupling constants of the 4 fundamental forces. Gravity (Swap) always executes so cost 1 is the baseline, electromagnetism (Compare) is 0.73%, and the weak force (Read) is 3.3%. From this ratio, the Weinberg angle ($\sin^2\theta_W$ = Compare/Read = 0.231), the electron charge ($e = q_p\sqrt{\alpha}$), and the W/Z mass ratio ($\cos\theta_W$) are all derived.</p>
+<p>The cost ratios of the 3 CAS stages correspond to the coupling constants of 3 forces. Swap cost (1) is the baseline, Compare cost (1/137) is electromagnetism, Read cost (1/30) is the weak force. The strong force is not a cost but the atomicity (inseparability) of the 3 CAS stages. From the cost ratios, the Weinberg angle ($\sin^2\theta_W$ = Compare/Read = 0.231), the electron charge ($e = q_p\sqrt{\alpha}$), and the W/Z mass ratio ($\cos\theta_W$) are all derived.</p>
 
 <h4>Equivalence Evidence Summary</h4>
 
@@ -1800,8 +1815,8 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 <tr><td>4</td><td>mass -> energy</td><td>$E = mc^2$</td><td>1.000000</td></tr>
 <tr><td>5</td><td>mass -> gravity</td><td>$r_s = 2GM/c^2$</td><td>1.000000</td></tr>
 <tr><td>6</td><td>area -> information</td><td>$S = k_B A/(4l_p^2)$</td><td>Same formula</td></tr>
-<tr><td>7</td><td>CAS internal -> quark</td><td>3 colors, 6 flavors, 8 gluons</td><td>Structural match</td></tr>
-<tr><td>8</td><td>CAS cost -> 4 forces</td><td>$\alpha_G$, $\alpha_{\text{em}}$, $\alpha_{\text{weak}}$, strong</td><td>Structural match</td></tr>
+<tr><td>7</td><td>CAS→DATA imprint (<a href="#lib-en-h44">H-44</a>)</td><td>3-bit octet: 3 colors, 6 flavors, 8 gluons</td><td>Structural match</td></tr>
+<tr><td>8</td><td>CAS×DATA→3 forces + CAS atomicity→strong</td><td>$\alpha_G$, $\alpha_{\text{em}}$, $\alpha_{\text{weak}}$ + confinement (<a href="#lib-en-h45">H-45</a>)</td><td>Structural match</td></tr>
 <tr><td>9</td><td>CAS cost -> Higgs</td><td>$v = m_{\text{top}} \times \sqrt{2}$ (0.6% Error)</td><td>0.9937</td></tr>
 </table>
 
@@ -1841,44 +1856,34 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 
 <p>The process actually performed in this report:</p>
 
-<div class="math-block">
-<div class="math-desc">Input (7 measured values):</div>
-<div class="math-row">$$c = 299,792,458 m/s           \text{speed of light}$$</div>
-<div class="math-row">$$\hbar = 1.055 \times 10^{-34} J s    \text{Planck constant}$$</div>
-<div class="math-row">$$G = 6.674 \times 10^{-11} m^{3}/(kg s^{2}) \text{gravitational constant}$$</div>
-<div class="math-row">$$\alpha = 1/137.036              \text{fine-structure constant}$$</div>
-<div class="math-row">$$\sin^{2}\theta_W = 0.23122 \text{Weinberg angle}$$</div>
-<div class="math-row">$$G_F = 1.166 \times 10^{-5} GeV^{-2}    \text{Fermi constant}$$</div>
-<div class="math-row">$$\Lambda = 1.106 \times 10^{-52} m^{-2}   \text{cosmological constant}$$</div>
-<div class="math-desc">Output (16+ derived values):</div>
-<div class="math-row">$$\text{Cost of 1 write:} t_p, E_p, l_p^2, m_p \leftarrow \text{derived from} c, \hbar, G$$</div>
-<div class="math-row">$$E = mc^{2}                               \leftarrow \text{derived from Write Axiom}$$</div>
-<div class="math-row">$$\Delta E*\Delta t  \geq  \hbar                \leftarrow \text{derived from Write Axiom}$$</div>
-<div class="math-row">$$\Delta x*\Delta p  \geq  \hbar                \leftarrow \text{derived from Write Axiom}$$</div>
-<div class="math-row">$$S = k_B A/(4l_p^{2})                     \leftarrow \text{derived from Write Axiom}$$</div>
-<div class="math-row">$$r_s = 2GM/c^{2}                          \leftarrow \text{derived from Write Axiom}$$</div>
-<div class="math-row">$$E = \hbar \omega                        \leftarrow \text{derived from Write Axiom}$$</div>
-<div class="math-row">$$G = \hbar c/m_p^{2}                      \leftarrow \text{derived from Write Axiom}$$</div>
-<div class="math-row">$$e = q_p \times \sqrt{\alpha}                  \leftarrow \text{derived from } \alpha$$</div>
-<div class="math-row">$$\sin^{2}\theta_W = Compare/Read \leftarrow \text{derived from CAS cost}$$</div>
-<div class="math-row">$$M_W/M_Z = \cos \theta_W                  \leftarrow \text{derived from CAS cost}$$</div>
-<div class="math-row">$$M_W = 77.5 \text{ GeV} \;(3.5\% \text{ Error}) \leftarrow \text{derived from } \alpha, G_F, \sin^{2}\theta_W$$</div>
-<div class="math-row">$$M_Z = 88.4 \text{ GeV} \;(3.0\% \text{ Error}) \leftarrow \text{derived from } M_W, \sin^{2}\theta_W$$</div>
-<div class="math-desc">Dark energy Ratio 69.4% (1.4% Error)       <- derived from Lambda</div>
-<div class="math-row">$$\text{GUT convergence} = \text{CAS symmetry restoration} \leftarrow \text{derived from CAS Cost Structure}$$</div>
-<div class="math-row">$$\text{strong confinement} = \text{CAS 3-stage binding}   \leftarrow \text{derived from CAS structure}$$</div>
-<div class="math-legend">$\hbar$: reduced Planck constant | $\sin^{2}\theta_W$: Weinberg angle | $\cos\theta_W$: Weinberg cosine | $r_s$: Schwarzschild radius | $t_p$: Planck time | $E_p$: Planck energy | $l_p$: Planck length | $m_p$: Planck mass | $q_p$: Planck charge | $M_W$: W boson mass</div>
+<p><strong>Input</strong> (7 measured values subordinated to norms):</p>
+<div class="table-wrap">
+<table>
+<tr><th>Constant</th><th>Value</th><th>Subordinated to</th></tr>
+<tr><td>$c$</td><td>299,792,458 m/s</td><td>$\|C\|$ (classical bracket norm)</td></tr>
+<tr><td>$\hbar$</td><td>$1.055 \times 10^{-34}$ J·s</td><td>$\|Q\|$ (quantum bracket norm)</td></tr>
+<tr><td>$G$</td><td>$6.674 \times 10^{-11}$ m³/(kg·s²)</td><td>Swap cost</td></tr>
+<tr><td>$\alpha$</td><td>1/137.036</td><td>Compare cost (<a href="#lib-en-d01">D-01</a> derived)</td></tr>
+<tr><td>$\sin^2\theta_W$</td><td>0.23122</td><td>Compare/Read (<a href="#lib-en-d02">D-02</a> derived)</td></tr>
+<tr><td>$G_F$</td><td>$1.166 \times 10^{-5}$ GeV⁻²</td><td>Weak Fermi constant</td></tr>
+<tr><td>$\Lambda$</td><td>$1.106 \times 10^{-52}$ m⁻²</td><td>LRU base eviction rate (<a href="#lib-en-d15">D-15</a> derived)</td></tr>
+</table>
 </div>
 
-<p>7 inputs produced 20+ outputs. Input 7, output 20+. A profitable deal. This is the value of the framework.</p>
-
-<p>The value of the Banya Framework lies in its <strong>return on investment</strong>. The more constants you put in, the more results exceed the input. The 4-axis orthogonal structure works like a system of simultaneous equations, so the more conditions (known values) you add, the more unknown values are determined. In existing physics, each equation required separate experiments and theories. In the Banya Framework, inserting a few constants causes the rest to cascade out.</p>
-
-<div class="math-block">
-<div class="math-row">$$\text{Existing physics}: E=mc^{2} \text{separate}, \Delta E*\Delta t \geq \hbar \text{separate}, S=kBA/4lp^{2} \text{separate} \rightarrow \text{each needs \text{separate} theory}$$</div>
-<div class="math-row">Banya Framework: 1 Write Axiom -> 6 simultaneous derivations + CAS cost -> 8 additional derivations</div>
-<div class="math-legend">$\hbar$: reduced Planck constant | CAS: Compare-And-Swap</div>
+<p><strong>Output</strong>: 96 total items. Details in <a href="#lib-en-title">Factor Library</a> + <a href="#pr-en-title">Unique Predictions</a>. Key derivations:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Derivation</th><th>Formula</th><th>Source</th></tr>
+<tr><td>Write cost per event</td><td>$t_p, E_p, l_p^2, m_p$</td><td>From $c, \hbar, G$</td></tr>
+<tr><td>$E=mc^2$, $\Delta E\Delta t \geq \hbar$, $\Delta x\Delta p \geq \hbar$</td><td>Write Axiom (Axiom 6)</td><td>6 simultaneous</td></tr>
+<tr><td>$S = k_B A/(4l_p^2)$, $r_s = 2GM/c^2$, $E=\hbar\omega$</td><td>Write Axiom (Axiom 6)</td><td>6 simultaneous</td></tr>
+<tr><td>$\sin^2\theta_W$, $e$, $M_W/M_Z$</td><td>CAS cost structure</td><td><a href="#lib-en-d02">D-02</a>, <a href="#lib-en-d41">D-41</a></td></tr>
+<tr><td>$M_W$ = 80.39 GeV (0.016%)</td><td>$M_Z\cos\theta_W$ (1-loop)</td><td><a href="#lib-en-d41">D-41</a></td></tr>
+<tr><td>GUT convergence, strong confinement</td><td>CAS symmetry restoration, CAS atomicity</td><td><a href="#lib-en-h45">H-45</a></td></tr>
+</table>
 </div>
+
+<p>The 4-axis orthogonal structure works like a system of simultaneous equations. In conventional physics, $E=mc^2$, $\Delta E\Delta t \geq \hbar$, $S=k_BA/(4l_p^2)$ each required separate theories. In the Banya Framework, 6 emerge simultaneously from one Write Axiom, and the rest cascade from CAS cost.</p>
 
 <p>The more you put in, the more comes out. Within Buddha's palm, hidden values have nowhere to escape.</p>
 
@@ -1892,7 +1897,7 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 <tr><td>2</td><td>All existing physics is compatible</td><td>Full verification of 118 physics equations, FAIL 0. No physics equation exists outside the framework</td></tr>
 <tr><td>3</td><td>A new physical phenomenon was discovered</td><td>The physical phenomenon called write. 6 existing physics equations are derived from write cost</td></tr>
 <tr><td>4</td><td>100-year unsolved problems are solved</td><td>Observer problem, dark matter, dark energy, causality, decoherence, quantum entanglement</td></tr>
-<tr><td>5</td><td>4 forces emerge from one</td><td>CAS Read=weak force, Compare=electromagnetism, Swap=gravity, confinement=strong force. They were one from the start</td></tr>
+<tr><td>5</td><td>4 forces emerge from one</td><td>CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. They were one from the start</td></tr>
 <tr><td>6</td><td>Verified with just paper and calculator</td><td>No particle accelerator needed. Insert constants, solve simultaneous equations, done. Cost 0</td></tr>
 <tr><td><strong>7</strong></td><td><strong>Answers "why?"</strong></td><td><strong>Derived the origin of alpha = 1/137 (0.00006% Error). The first framework to answer "why this value?" -- a question existing physics could not solve for 100 years</strong></td></tr>
 </table>
@@ -2904,7 +2909,7 @@ Verdict:   Write is real. The Banya Framework is the first to discover and quant
 <div class="math-row">$$l_p \times (m_p \times c) = 1.6163 \times 10^{-35} m \times 6.5248 \text{ kg}·m/s = 1.0546 \times 10^{-34} J·s$$</div>
 <div class="math-desc">This value is also exactly equal to h-bar.</div>
 <div class="math-row">$$Verification: l_p \times m_p \times c / \hbar = 1.000000$$</div>
-<div class="math-row">$$\therefore\ \Delta \times \times \Delta p \geq l_p \times m_p \times c = \hbar$$</div>
+<div class="math-row">$$\therefore\ \Delta x \cdot \Delta p \geq l_p \times m_p \times c = \hbar$$</div>
 <div class="math-legend">$\hbar$: reduced Planck constant | $c$: speed of light | $l_p$: Planck length | $m_p$: Planck mass</div>
 </div>
 
@@ -3421,7 +3426,7 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 
 <p>Adding 6 quark masses to the input brings total inputs to 13. Outputs increased to 24 or more.</p>
 
-<pre>Input 13 → Output 24+
+<pre>Input: 7. Output: 96+
 </pre>
 
 <p>The more you put in, the more comes out. Within the palm of the Banya Framework, hidden values have nowhere to escape.</p>
@@ -3486,11 +3491,11 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 
 <p>Quantify the write cost and numerically compare it with existing physics observations.</p>
 
-<h3 id="en-sec93">7.1 Experimental Purpose</h3>
+<h3 id="en-sec93">10.1 Experimental Purpose</h3>
 
 <p>Verify by numerically comparing the mathematical structures derived from the Banya Framework write theory with actual physics observations.</p>
 
-<h3 id="en-sec94">7.2 Core Mapping</h3>
+<h3 id="en-sec94">10.2 Core Mapping</h3>
 
 <p><code>r_s = 2GM/c²</code> is the total budget (limit) of space. The effect of a single write is nonlinear: negligible at large distances, it grows sharply as one approaches.</p>
 
@@ -3501,7 +3506,7 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 <div class="math-desc">$g_{tt}$: metric time component</div>
 </div>
 
-<h3 id="en-sec95">7.3 Verification Results: 7 Items</h3>
+<h3 id="en-sec95">10.3 Verification Results: 7 Items</h3>
 
 <table>
 <tr><th>No.</th><th>Comparison Item</th><th>Banya Framework</th><th>Existing Physics</th><th>Verdict</th></tr>
@@ -3514,7 +3519,7 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 <tr><td>7</td><td>Planck limit</td><td>1 tick = 1 E_p</td><td>Planck energy</td><td><strong>Exact match (1.000000)</strong></td></tr>
 </table>
 
-<h3 id="en-sec96">7.4 Distance-by-Distance Comparison (Sun, r_s = 2,954 m)</h3>
+<h3 id="en-sec96">10.4 Distance-by-Distance Comparison (Sun, r_s = 2,954 m)</h3>
 
 <table>
 <tr><th>Distance</th><th>r/r_s</th><th>Remaining capacity (Banya Framework)</th><th>√(g_tt) (Schwarzschild)</th><th>Match</th></tr>
@@ -3529,17 +3534,17 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 <tr><td>r = r_s</td><td>1</td><td>0.0000000000</td><td>0.0000000000</td><td>YES</td></tr>
 </table>
 
-<h3 id="en-sec97">7.5 Memory Pool Size by Celestial Body</h3>
+<h3 id="en-sec97">10.5 Memory Pool Size by Celestial Body</h3>
 
 <table>
 <tr><th>Body</th><th>Mass (kg)</th><th>r_s</th><th>Write limit (bits)</th><th>Hawking temp. (K)</th></tr>
 <tr><td>Earth</td><td>5.972 × 10²⁴</td><td>8.87 mm</td><td>9.46 × 10⁶⁵</td><td>-</td></tr>
-<tr><td>Sun</td><td>1.989 × 10³^{0}</td><td>2.95 km</td><td>1.05 × 10⁷⁷</td><td>6.17 × 10⁻⁸</td></tr>
-<tr><td>Sgr A*</td><td>7.956 × 10³⁶</td><td>1.18 × 10⁷ km</td><td>1.68 × 10⁹^{0}</td><td>1.54 × 10⁻¹⁴</td></tr>
-<tr><td>M87</td><td>1.293 × 10⁴^{0}</td><td>1.92 × 10¹^{0} km</td><td>4.43 × 10⁹⁶</td><td>9.49 × 10⁻¹⁸</td></tr>
+<tr><td>Sun</td><td>1.989 × 10³⁰</td><td>2.95 km</td><td>1.05 × 10⁷⁷</td><td>6.17 × 10⁻⁸</td></tr>
+<tr><td>Sgr A*</td><td>7.956 × 10³⁶</td><td>1.18 × 10⁷ km</td><td>1.68 × 10⁹⁰</td><td>1.54 × 10⁻¹⁴</td></tr>
+<tr><td>M87</td><td>1.293 × 10⁴⁰</td><td>1.92 × 10¹⁰ km</td><td>4.43 × 10⁹⁶</td><td>9.49 × 10⁻¹⁸</td></tr>
 </table>
 
-<h3 id="en-sec98">7.6 Planck Scale Limit</h3>
+<h3 id="en-sec98">10.6 Planck Scale Limit</h3>
 
 <table>
 <tr><th>Verification Item</th><th>Result</th></tr>
@@ -3622,7 +3627,7 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 
 <p>Aggregate the 118 verification results by field and by sub-frame.</p>
 
-<h3 id="en-sec106">10.1 Reduction Pattern Summary</h3>
+<h3 id="en-sec106">13.1 Reduction Pattern Summary</h3>
 
 <table>
 <tr><th>Type</th><th>Count</th><th>Why compatible</th></tr>
@@ -3636,7 +3641,7 @@ CAS binding cost (gluon binding) = 929 MeV (99%)
 
 <p>All non-quadratic equations either reduce to quadratic, contain quadratic quantities as arguments, or are structural rules of the framework.</p>
 
-<h3 id="en-sec107">10.4 Overall Verdict</h3>
+<h3 id="en-sec107">13.4 Overall Verdict</h3>
 
 <pre>Quadratic:      76/76 PASS (100%)
 Non-quadratic:  42/42 PASS (100%)
@@ -3695,7 +3700,7 @@ No physics equation outside the Banya Framework was discovered.
 <li>13. <strong>Dark energy is the LRU COLD region.</strong> The accumulation of the base eviction rate Λ of empty space.</li>
 <li>14. <strong>Visible matter + Dark matter + Dark energy = HOT:WARM:COLD segments of a single LRU queue.</strong></li>
 <li>15. <strong>The universe is born from quantum, lives as classical, and returns to quantum.</strong> <code>δ²</code> does not change. Only the vessel changes.</li>
-<li>16. <strong>The 4 forces are the 3-step cost of a single CAS.</strong> Swap=gravity, Compare=electromagnetism, Read=weak force, CAS confinement=strong force. They were one from the beginning.</li>
+<li>16. <strong>The 4 forces are the 3-step cost of a single CAS.</strong> CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. They were one from the beginning.</li>
 <li>17. <strong>Irreversibility is a CAS-dependent local phenomenon.</strong> time (DATA) is a reversible resource. Only the order of CAS (OPERATOR) is irreversible.</li>
 <li>18. <strong>Write is a real physical phenomenon.</strong> Six existing physics equations are derived from the Write Axiom. All six yielding 1.000000 is proof that write physically exists.</li>
 
@@ -3843,7 +3848,7 @@ Framework itself:      S  (118/118 compatible + CAS axioms established)
 Standard Model derived: S  (22/22 free parameters all derived, 0 remaining)
 Constants derived:     A+ (alpha S-grade + remaining 23 at A~B)
 Structural analysis:   A  (CAS outside time + TOCTOU + principal bundle projection)
-Documentation:         A+ (12 HTML + lib 36 factors + manual)
+Documentation:         A+ (12 HTML + lib 96 items + manual)
 Overall:               S
 </pre>
 
@@ -3994,13 +3999,13 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><td><a href="#ba-en-title">Baryogenesis</a></td><td>$\eta = \alpha^4\sin^2\theta_W$. Matter-antimatter asymmetry. 0.7%</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
 <tr><td><a href="#ckm-en-title">Mixing Angles</a></td><td>CKM/PMNS 8 + CP 2 + θ₁₃ + λ_H. 0.013%~0.49%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="#pr-en-title">Unique Predictions</a></td><td>21 rows total. Hit 14, pending 6, hypothesis 1. Falsified 0</td><td><span class="tag-solved">Hit 14</span></td></tr>
-<tr><td><a href="#lib-en-title">Factor Library</a></td><td>D-42 discoveries + H-43 hypotheses + P-7 predictions = 92 items. Managed as re-substitution factors</td><td>--</td></tr>
+<tr><td><a href="#lib-en-title">Factor Library</a></td><td>D-42 discoveries + H-47 hypotheses + P-7 predictions = 96 items. Managed as re-substitution factors</td><td>--</td></tr>
 <tr><td><a href="#sm-en-title">Science Mining Manual</a></td><td>Methodology 10 chapters. Term legend, CAS axioms, document rules</td><td>--</td></tr>
 <tr><td><a href="#exp-appendix-en">118 Compatibility Verification</a></td><td>118 physics equations x Banya Framework compatibility check. FAIL 0. 49 equations marked derivation achieved</td><td><span class="tag-solved">Hit</span></td></tr>
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#555">lib.html status: Discovery (D) 42 + Hypothesis (H) 43 + Unique Prediction (P) 7 = 92 total items. predictions.html: 21 rows.</p>
+<p style="font-size:0.85em;color:#555">lib.html status: Discovery (D) 42 + Hypothesis (H) 47 + Unique Prediction (P) 7 = 96 total items. predictions.html: 21 rows.</p>
 
 <h3>Performance by Grade</h3>
 
@@ -4010,7 +4015,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><th>Problem</th><th>Result</th><th class="col-status">Status</th></tr>
 <tr><td><a href="#alpha-en-title">Origin of $\alpha$ = 1/137</a> (Feynman's question, 100 years unsolved)</td><td>Derived from 7-dim Wyler volume ratio. Error 0.00006%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="#a57-en-title">Cosmological constant problem</a> (10¹²⁰ mismatch, "worst prediction in physics")</td><td>$\Lambda l_p^2 = \alpha^{57} \times e^{21/35}$. Error 0.09%</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td><a href="#ga-en-title">Unification of 4 forces</a> (string theory 40yr, LQG 30yr incomplete)</td><td>From single CAS: Read=weak, Compare=EM, Swap=gravity, confinement=strong</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
+<tr><td><a href="#lib-en-h45">Unification of 4 forces</a> (string theory 40yr, LQG 30yr incomplete)</td><td>CAS × domain pair = 4 forces. Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
 <tr><td><a href="#en-sec1">Quantum gravity</a> (GR+QM 90 years unresolved)</td><td>Orthogonal declaration. 118/118 compatible</td><td><span class="tag-solved">Hit</span></td></tr>
 </table>
 </div>
@@ -4050,7 +4055,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 </div>
 
 <h4>C-Grade -- Precision Verification</h4>
-<p>Full list in <a href="#lib-en-title">Factor Library</a>. D-42 discoveries + H-43 hypotheses = 85 numerical derivation items.</p>
+<p>Full list in <a href="#lib-en-title">Factor Library</a>. D-42 discoveries + H-47 hypotheses = 89 numerical derivation items.</p>
 
 <h4>Pending (Unique Predictions)</h4>
 <p>Full list in <a href="#pr-en-title">Unique Predictions</a>. 21 rows total: Hit 14, pending 6, hypothesis 1. Falsified 0.</p>
@@ -4157,8 +4162,8 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <p>What can be inserted:</p>
 <ul>
 <li>Existing physical constants: $c$, $\hbar$, $G$, $\Lambda$, $\alpha$, $\sin^2\theta_W$, etc.</li>
-<li>Discoveries from <a href="#lib-en-title">lib.html</a>: D-01 through D-15, already verified</li>
-<li>Hypotheses from <a href="#lib-en-title">lib.html</a>: H-01 through H-18, structural correspondence confirmed but quantitative proof incomplete</li>
+<li>Discoveries from <a href="#lib-en-title">lib.html</a>: D-01 through D-42, already verified</li>
+<li>Hypotheses from <a href="#lib-en-title">lib.html</a>: H-01 through H-47, structural correspondence confirmed but quantitative proof incomplete</li>
 <li>By-products from previous rounds: large error but visible structure</li>
 </ul>
 
@@ -4389,7 +4394,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 
 <h1 id="sm-en-ch6">Chapter 6. CAS Axioms (Required Prior Knowledge)</h1>
 
-<p>The Banya Framework has 12 axioms (see <a href="#en-axioms">banya.html Axiom System</a>). Of these, the following 4 are essential knowledge every expert must understand before starting work. If you run the framework without understanding these, you fall into the misconception that "CAS operates within time." The interpretation of all results goes wrong.</p>
+<p>The Banya Framework has 14 axioms (see <a href="#en-axioms">banya.html Axiom System</a>). Of these, the following 4 are essential knowledge every expert must understand before starting work. If you run the framework without understanding these, you fall into the misconception that "CAS operates within time." The interpretation of all results goes wrong.</p>
 
 <h3 id="sm-en-ch6-a1">Essential 1: CAS Is an Operator Outside Time (Axiom 3)</h3>
 
@@ -4622,7 +4627,7 @@ Combinations of $\pi$, $e$, and integers can approximate almost any number to wi
 <tr><th>Tool</th><th>Role</th><th>Description</th></tr>
 <tr><td>Banya Framework 5 Steps</td><td>Core Engine</td><td>Recursive substitution structure that derives physical constants starting from the Banya Equation</td></tr>
 <tr><td>Expert Agents (5~10)</td><td>Multi-path Attack</td><td>Deploy multiple paths simultaneously on a single task to find the convergence point</td></tr>
-<tr><td><a href="#lib-en-title">lib.html</a></td><td>Factor Library</td><td>Discoveries D-01 through D-15, hypotheses H-01 through H-18. Weapons for the next round</td></tr>
+<tr><td><a href="#lib-en-title">lib.html</a></td><td>Factor Library</td><td>Discoveries D-01 through D-42, hypotheses H-01 through H-47. Weapons for the next round</td></tr>
 <tr><td><a href="#en-sec1">banya.html</a></td><td>Comprehensive Hub</td><td>Discovery hierarchy, challenge resolution list, overall structure overview</td></tr>
 <tr><td>Session Records (md)</td><td>Continuity Assurance</td><td>Preserve work contents across sessions so the next session can continue</td></tr>
 </table>
@@ -5213,6 +5218,10 @@ $m_H = 125.37\;\text{GeV}$
 <tr><td class="col-id"><strong>H-41</strong></td><td><strong>Jarlskog $J$ = 3.10×10⁻⁵</strong></td><td><strong>0.62%</strong></td><td><strong>$s_{13}$ CKM external input</strong></td><td><strong><a href="#lib-en-h41">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-42</strong></td><td><strong>$m_n - m_p$ = 1.278 MeV</strong></td><td><strong>1.2%</strong></td><td><strong>EM correction undetermined</strong></td><td><strong><a href="#lib-en-h42">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-43</strong></td><td><strong>$r_n^2/r_p^2 \approx -1/6 + (29/9)\alpha/9$</strong></td><td><strong>0.04%</strong></td><td><strong>29/9 independent emergence clue</strong></td><td><strong><a href="#lib-en-h43">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-44</strong></td><td><strong>CAS 3-bit quark octet: 000=vacuum, 111=baryon</strong></td><td><strong>D-16~D-21 consistent</strong></td><td><strong>up=single bit, down=composite</strong></td><td><strong><a href="#lib-en-h44">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-45</strong></td><td><strong>4 forces = CAS × domain pair</strong></td><td><strong>D-34 reinterpretation</strong></td><td><strong>gravity=txs, strong=CAS atomicity(confinement), EW=boundary</strong></td><td><strong><a href="#lib-en-h45">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-46</strong></td><td><strong>LRU general term = Friedmann eq.</strong></td><td><strong>$\Omega_m$ 0.6%, $\Omega_\Lambda$ 0.3%</strong></td><td><strong>$E(z) = (18/57)(1+z)^3 + 39/57$</strong></td><td><strong><a href="#lib-en-h46">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-47</strong></td><td><strong>CKM $s_{13} = A\lambda^3(2/5)$</strong></td><td><strong>0.51%</strong></td><td><strong>$2/5 = \cot\delta_0$, Jarlskog completion path</strong></td><td><strong><a href="#lib-en-h47">lib.html</a></strong></td><td>03-24</td></tr>
 </table>
 </div>
 
@@ -5941,8 +5950,8 @@ $m_H = 125.37\;\text{GeV}$
 <h3>HOT:WARM:COLD = 3:15:39 / 57</h3>
 <div class="lib-formula">$$\text{HOT}:\text{WARM}:\text{COLD} = \frac{3}{57}:\frac{15}{57}:\frac{39}{57}$$</div>
 <p class="lib-precision">~2-5%</p>
-<p>Cosmic energy partition splits as 57 = 3+15+39. 3=CAS steps, 15=3x5 (Koide deviation), 39=57-18. 57 is the same number as the cosmological constant exponent (D-15).</p>
-<div class="lib-reuse">Re-entry use: CAS structure of cosmic energy partition. Connection between D-15 (cosmological constant) and H-06 (exponent 57).</div>
+<p>Cosmic energy partition splits as 57 = 3+15+39. 3=CAS steps, 15=3x5 (Koide deviation), 39=57-18. 57 is the same number as the cosmological constant exponent (D-15). Note: 3:15:39 is a snapshot at z=0 (present universe). With redshift z or LRU eviction rate as parameter, a general term HOT(z):WARM(z):COLD(z) is derivable. Early universe (z→∞) = HOT-dominant, present (z=0) = COLD-dominant. This transition equals the time evolution of the LRU queue.</p>
+<div class="lib-reuse">Re-entry use: CAS structure of cosmic energy partition. Connection between D-15 (cosmological constant) and H-06 (exponent 57). Next task: derive z-dependent general term HOT(z):WARM(z):COLD(z). Potential to reproduce Friedmann equation via LRU eviction rate Λ(z) and redshift relation.</div>
 </div>
 
 
@@ -6037,9 +6046,9 @@ $m_H = 125.37\;\text{GeV}$
 <div class="lib-id">H-40 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#666;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
 <h3>Read Cost = Weak Coupling Constant α/sin²θ_W</h3>
 <div class="lib-formula">$$\text{Read} = \frac{\alpha}{\sin^2\theta_W} = \frac{1}{31.69} \approx \frac{1}{30}$$</div>
-<p class="lib-precision">1/31.69 vs current notation 1/30. Discrepancy 5.6%. Refinement needed</p>
-<p>CAS 3-stage cost ↔ 3-force correspondence: Swap = 1 (gravity/strong), Compare = α = 1/137 (electromagnetic), Read = α/sin²θ_W = 1/31.69 (weak). "~1/30" is approximate notation. Duality exists between gauge DOF mapping (H-02: Read→U(1)) and cost mapping (Read→weak SU(2)). Independent CAS derivation of integer 30 is incomplete.</p>
-<div class="lib-reuse">Re-entry use: Fixing precise Read value refines the starting point for sin²θ_W derivation. Next tasks: search for CAS basis of 30 = 2×3×5, or verify 1/31.69 as exact value. Intersection of H-02 (CAS-gauge correspondence) and D-02 (sin²θ_W).</div>
+<p class="lib-precision">1/31.69 vs current notation 1/30. Discrepancy 5.6%. 30 = 7×4+2 = CAS DOF(7) × domains(4) + bracket structure(2). Or Read(1)×4 + Compare(2)×4 + Swap(4)×4 + brackets(2) = 30. ECS interaction sum.</p>
+<p>CAS 3-stage cost ↔ 3-force correspondence: Swap = 1 (gravity/strong), Compare = α = 1/137 (electromagnetic), Read = α/sin²θ_W = 1/31.69 (weak). "~1/30" is approximate notation. Duality exists between gauge DOF mapping (H-02: Read→U(1)) and cost mapping (Read→weak SU(2)). Independent CAS derivation of 30: CAS costs {1,2,4} interacting with 4 domains {t,s,o,sp} give 1×4+2×4+4×4=28, plus bracket structure 2 yields 30. Equivalent: total CAS DOF(7)×domains(4)+brackets(2)=30. In ECS, "sum of inter-entity interactions" determines the integer 30.</p>
+<div class="lib-reuse">Re-entry use: Fixing precise Read value refines the starting point for sin²θ_W derivation. 30 = 7×4+2 independently derived as CAS-domain interaction sum. The 5.6% gap between 1/31.69 and 1/30 corresponds to radiative correction. Intersection of H-02 (CAS-gauge correspondence) and D-02 (sin²θ_W).</div>
 </div>
 
 <div class="lib-card" id="lib-en-d41" style="border-left:4px solid #2ea043">
@@ -6085,6 +6094,42 @@ $m_H = 125.37\;\text{GeV}$
 <p class="lib-precision">-0.16405 vs experiment -0.16399. Error 0.04%. Subsidiary finding, verification needed</p>
 <p>Proton radius correction 29/9 (H-35) appears in neutron/proton charge radius ratio. $-1/6$ reflects neutron charge distribution asymmetry (d-quark outer distribution). Indirect clue for 29/9 independent confirmation, but coincidence not excluded.</p>
 <div class="lib-reuse">Re-entry use: Candidate for independent appearance of 29/9. Clue to resolve H-35 fitting suspicion. Needs reconfirmation in other hadron charge radius ratios.</div>
+</div>
+
+<div class="lib-card" id="lib-en-h44" style="border-left:4px solid #d29922">
+<div class="lib-id">H-44 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#666;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>CAS 3-bit Quark Octet: 000=vacuum, 111=baryon</h3>
+<div class="lib-formula">$$\text{up-type: } 001=u,\; 010=c,\; 100=t \quad \text{down-type: } 011=d,\; 101=s,\; 110=b$$</div>
+<p class="lib-precision">Consistent with D-16~D-21 mass formula structures. up=single bit (single chain), down=composite bit (dual structure)</p>
+<p>$2^3=8$ states. Up-type quarks have single CAS stage imprinted (Read/Compare/Swap), down-type are composites of two stages. Up-type mass formulas form a single chain ($m_t \to m_c \to m_u$, jumping by $\alpha$), down-type have dual structure (lepton $\times$ color factor) — explained by bit count. F(k)={3,1/3,1} (H-24) and bit-value ordering match asymptotic freedom. DATA-side imprinting, no conflict with Axiom 5 FSM sequential ignition.</p>
+<div class="lib-reuse">Re-entry use: CKM mixing = bit transition interpretation. 8 gluons (H-03) and 8-state relation. Baryogenesis (D-04) bit-completion interpretation. Quantitative mass ratio reproduction via weighted bit cost (Swap=1, Compare=$\alpha$, Read=$\alpha_s$).</div>
+</div>
+
+<div class="lib-card" id="lib-en-h45" style="border-left:4px solid #d29922">
+<div class="lib-id">H-45 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#666;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>4 Forces = 4 Ways CAS(OPERATOR) Accesses DATA</h3>
+<div class="lib-formula">$$\text{Gravity}=\text{Cmp}(t){\to}\text{Swp}(s),\; \text{EM}=\text{Cmp}(s){\to}\text{Swp}(t),\; \text{Weak}=\text{Cmp}(t){\to}\text{Swp}(t),\; \text{Strong}=\text{CAS atomicity(confinement)}$$</div>
+<p class="lib-precision">Interaction = OPERATOR→DATA access. All 4 forces pass through CAS, so all are quantizable (including gravity). 30 = 7(CAS DOF) × 4(targets) + 2(brackets) = total interaction DOF</p>
+<p>When CAS(OPERATOR) accesses Entity DATA attributes (time, space), the combination of Compare target and Swap target determines 3 forces. Cross-access (different Cmp/Swp targets) = gravity (time-compare→space-swap), EM (space-compare→time-swap). Self-reference (same Cmp/Swp target) = weak (time→time, 1/30 = 1 path / 30 total DOF). Strong force is CAS 3-stage atomicity itself (OPERATOR internal binding, not domain interaction). OPERATOR×OPERATOR contention is structural error (Axiom 5). In ECS, CAS accessing multiple Entities' DATA simultaneously = force multiplicity.</p>
+<div class="lib-reuse">Re-entry use: sin²θ_W = CAS path ratio independent derivation. Structural basis for gravity quantization (OPERATOR mediated). D-34 CAS path count reinterpretation. 1/30 = weak force DOF derivation (H-40).</div>
+</div>
+
+<div class="lib-card" id="lib-en-h46" style="border-left:4px solid #d29922">
+<div class="lib-id">H-46 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#666;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>LRU General Term = Friedmann Equation</h3>
+<div class="lib-formula">$$E(z) \equiv \frac{H^2(z)}{H_0^2} = \frac{18}{57}(1+z)^3 + \frac{39}{57}$$</div>
+<p class="lib-precision">Ω_m: 0.316 vs 0.314 (0.6%). Ω_Λ: 0.684 vs 0.686 (0.3%). z_t = 0.63 vs 0.67 (6%)</p>
+<p>Inserting redshift z into H-30's HOT:WARM:COLD = 3:15:39/57 yields the Friedmann equation. HOT+WARM = 18/57 is matter scaling as (1+z)³, COLD = 39/57 is cosmological constant. R(z)/R(0) = H²(z)/H₀². Both ratio (39/57) and absolute value (α⁵⁷·e^(21/35)/l²_p, D-15) come from 57. Deceleration→acceleration transition: z_t = (13/3)^(1/3) - 1 = 0.63.</p>
+<div class="lib-reuse">Re-entry use: Completes H-30 z general term. Unifies D-15 and Eq.14 (Friedmann). Next: radiation separation (z_eq), BAO scale from HOT→WARM rate, z_t precision.</div>
+</div>
+
+<div class="lib-card" id="lib-en-h47" style="border-left:4px solid #d29922">
+<div class="lib-id">H-47 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#666;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>CKM $s_{13} = A\lambda^3(2/5)$, $R = 2/5 = \cot\delta_0$</h3>
+<div class="lib-formula">$$\sin\theta_{13}^{\text{CKM}} = \sqrt{\frac{2}{3}} \cdot \left(\frac{2}{9}\right)^3 \cdot \left(1+\frac{\pi\alpha}{2}\right)^3 \cdot \frac{2}{5} = 0.003709$$</div>
+<p class="lib-precision">0.003709 vs experiment 0.00369. Error 0.51%. 2/5 = 2/(9-4) = cot(arctan(5/2))</p>
+<p>sqrt(ρ²+η²) = 2/5. Same CAS number 5/2 = (9-4)/2 governs both CP phase (δ = arctan(5/2+α_s/π), D-23) and mixing magnitude (R = 2/5). R × tan(δ₀) = 1 exactly. Replaces external s₁₃ input in Jarlskog (H-41), enabling full CAS closed formula: J ≈ (2⁸/(3¹⁴·5))sin(δ)(1+πα/2)⁶.</p>
+<div class="lib-reuse">Re-entry use: Path to H-41 (Jarlskog) D-card promotion. Derivation of R = cot(δ₀) necessity is next task. Possible derivation from H-44 bit transition (u(001)→b(110) = XOR 111) amplitude.</div>
 </div>
 
 <hr>
@@ -6137,7 +6182,7 @@ Semi-independent (weak alpha dependence):
 
 <p>20 of 42 discoveries came directly from $\alpha$ (D-02 to D-04, D-09 to D-21, D-24 to D-25). 3 independent structural constants (D-05, D-06, D-08). 2 semi-independent (D-07, D-22). 1 CKM CP (D-23). Of 42 total discoveries, 20 hang from a single $\alpha$. $\alpha$ is the root of the framework.</p>
 
-<p>Of 43 hypotheses (H-01 to H-20, H-22 to H-43), 4 (H-15, H-16, H-19, H-21) were promoted to discoveries, leaving 39 active hypotheses. If discoveries are "what emerged", hypotheses are "why it emerged." When a hypothesis is proven, it is promoted to discovery, and another green tag is added to the library.</p>
+<p>Of 47 hypotheses (H-01 to H-20, H-22 to H-47), 4 (H-15, H-16, H-19, H-21) were promoted to discoveries, leaving 43 active hypotheses. If discoveries are "what emerged", hypotheses are "why it emerged." When a hypothesis is proven, it is promoted to discovery, and another green tag is added to the library.</p>
 
 <p>The more the framework runs, the larger this map grows. The larger the map, the fewer unknowns remain. Just like each added condition in a system of equations narrows the solution.</p>
 
@@ -6841,10 +6886,10 @@ Round 4: interpretation + cosmological constant -> new relation</code></pre>
 <div class="math-row">$$\text{Read} = \alpha_{\text{weak}} \sim 1/30 \quad\text{(weak coupling constant)}$$</div>
 <div class="math-row">$$\text{Compare} = \alpha_{\text{em}} \sim 1/137 \quad\text{(electromagnetic coupling constant)}$$</div>
 <div class="math-row">$$\text{Swap} = \alpha_{\text{gravity}} \sim 1 \quad\text{(gravity, natural units)}$$</div>
-<div class="math-desc">Each CAS stage corresponds to one fundamental force.</div>
+<div class="math-desc">CAS operating on domain pairs produces the 4 forces (H-45).</div>
 </div>
 
-<p>Read is reading a state. The weak force "reads" a particle's weak quantum number to trigger transformations such as beta decay. Compare is comparing. Electromagnetism "compares" charges -- repelling like charges and attracting opposite ones. Swap is actually changing the state. Gravity "swaps" spacetime itself.</p>
+<p>Each CAS stage has a different cost structure. Read cost ~ 1/30 (weak coupling constant), Compare cost ~ 1/137 (electromagnetic coupling constant). The 4 forces are collective effects that emerge when CAS operates on domain pairs (H-45).</p>
 
 
 <h3 id="sw-en-r1-step4">Step 4. Domain Transformation</h3>
