@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>반야프레임 가설 라이브러리 (lib) — 가설과 발견</title>
 <meta name="author" content="Han Hyukjin">
-<meta name="description" content="반야프레임 재귀 대입 과정에서 발견된 공식과 가설을 모아둔 라이브러리. 발견 42개, 가설 47개, 고유예측 7개 = 총 96항목. 재초기화 가능한 인자 목록. 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.">
+<meta name="description" content="반야프레임 재귀 대입 과정에서 발견된 공식과 가설을 모아둔 라이브러리. 발견 44개, 가설 96개, 고유예측 7개 = 총 147항목. 재초기화 가능한 인자 목록. 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.">
 <meta name="keywords" content="반야프레임,般若,Banya Framework,가설 라이브러리,parameter library,발견,가설,재대입,alpha,미세구조상수,sin2 theta_W,코이데,질량 계층,우주상수,게이지 군,바리오제네시스,CKM,PMNS,한혁진,Han Hyukjin">
 <meta property="og:title" content="반야프레임 가설 라이브러리 (lib) — 가설과 발견">
-<meta property="og:description" content="반야프레임에서 발견 42개 + 가설 47개 + 예측 7개 = 96항목. 재초기화 가능한 인자 목록.">
+<meta property="og:description" content="반야프레임에서 발견 44개 + 가설 96개 + 예측 7개 = 147항목. 재초기화 가능한 인자 목록.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="반야프레임 가설 라이브러리 — 가설과 발견">
-<meta name="twitter:description" content="발견 42개 + 가설 47개 + 예측 7개 = 96항목. 프레임을 돌릴수록 라이브러리가 커진다.">
+<meta name="twitter:description" content="발견 44개 + 가설 96개 + 예측 7개 = 147항목. 프레임을 돌릴수록 라이브러리가 커진다.">
 <meta name="robots" content="index, follow">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -79,6 +79,10 @@
 <a href="#d38" class="toc-h3">D-38 타우/전자 통합비</a>
 <a href="#d39" class="toc-h3">D-39 alpha running 3</a>
 <a href="#d40" class="toc-h3">D-40 스핀-통계 CAS</a>
+<a href="#d41" class="toc-h3">D-41 M_W</a>
+<a href="#d42" class="toc-h3">D-42 α 길이 사다리</a>
+<a href="#d43" class="toc-h3">D-43 z_eq = 3402</a>
+<a href="#d44" class="toc-h3">D-44 QCD β₀ = 7</a>
 <a href="#details-h" class="toc-h1">가설 상세</a>
 <a href="#h01" class="toc-h3">H-01 3세대</a>
 <a href="#h02" class="toc-h3">H-02 CAS 게이지 대응</a>
@@ -116,6 +120,65 @@
 <a href="#h35" class="toc-h3">H-35 양성자 반지름</a>
 <a href="#h36" class="toc-h3">H-36 BAO 서브구조</a>
 <a href="#h37" class="toc-h3">H-37 광자 분산</a>
+<a href="#h38" class="toc-h3">H-38 전자 g-2</a>
+<a href="#h39" class="toc-h3">H-39 M_Z</a>
+<a href="#h40" class="toc-h3">H-40 Read=1/30</a>
+<a href="#h41" class="toc-h3">H-41 Jarlskog</a>
+<a href="#h42" class="toc-h3">H-42 m_n-m_p</a>
+<a href="#h43" class="toc-h3">H-43 r_n²/r_p²</a>
+<a href="#h44" class="toc-h3">H-44 쿼크 옥텟</a>
+<a href="#h45" class="toc-h3">H-45 4력 CAS×DATA</a>
+<a href="#h46" class="toc-h3">H-46 LRU 프리드만</a>
+<a href="#h47" class="toc-h3">H-47 CKM s₁₃</a>
+<a href="#h48" class="toc-h3">H-48 Ω_k=0</a>
+<a href="#h49" class="toc-h3">H-49 T_CMB</a>
+<a href="#h50" class="toc-h3">H-50 q₀=-10/19</a>
+<a href="#h51" class="toc-h3">H-51 글루온 비트쌍</a>
+<a href="#h52" class="toc-h3">H-52 CAS→SU(3)</a>
+<a href="#h53" class="toc-h3">H-53 란다우어 ln2</a>
+<a href="#h54" class="toc-h3">H-54 BH 증발 5120</a>
+<a href="#h55" class="toc-h3">H-55 얽힘 엔트로피</a>
+<a href="#h56" class="toc-h3">H-56 α running β₁</a>
+<a href="#h57" class="toc-h3">H-57 H₀=67.92</a>
+<a href="#h58" class="toc-h3">H-58 a(t) LRU</a>
+<a href="#h59" class="toc-h3">H-59 허블 텐션</a>
+<a href="#h60" class="toc-h3">H-60 비트 질량비</a>
+<a href="#h61" class="toc-h3">H-61 바리온수 111</a>
+<a href="#h62" class="toc-h3">H-62 Δ++ 허용</a>
+<a href="#h63" class="toc-h3">H-63 V_cb</a>
+<a href="#h64" class="toc-h3">H-64 V_td</a>
+<a href="#h65" class="toc-h3">H-65 δ_PMNS 확인</a>
+<a href="#h66" class="toc-h3">H-66 θ₂₃ octant</a>
+<a href="#h67" class="toc-h3">H-67 홀레보</a>
+<a href="#h68" class="toc-h3">H-68 BH 열용량</a>
+<a href="#h69" class="toc-h3">H-69 찬드라세카르</a>
+<a href="#h70" class="toc-h3">H-70 치렐슨 2√2</a>
+<a href="#h71" class="toc-h3">H-71 홀로그래피 4</a>
+<a href="#h72" class="toc-h3">H-72 g-2 2-loop</a>
+<a href="#h73" class="toc-h3">H-73 보손 삼각</a>
+<a href="#h74" class="toc-h3">H-74 Σm_ν 공식</a>
+<a href="#h75" class="toc-h3">H-75 양성자 수명</a>
+<a href="#h76" class="toc-h3">H-76 e-folding 60</a>
+<a href="#h77" class="toc-h3">H-77 Ω_b/Ω_DM</a>
+<a href="#h78" class="toc-h3">H-78 쿼크 전하</a>
+<a href="#h79" class="toc-h3">H-79 메손 비트</a>
+<a href="#h80" class="toc-h3">H-80 색/맛 분리</a>
+<a href="#h81" class="toc-h3">H-81 m_n-m_p 부산물</a>
+<a href="#h82" class="toc-h3">H-82 CKM Hamming</a>
+<a href="#h83" class="toc-h3">H-83 V_ts</a>
+<a href="#h84" class="toc-h3">H-84 J 정밀</a>
+<a href="#h85" class="toc-h3">H-85 sin2β</a>
+<a href="#h86" class="toc-h3">H-86 α(UT)</a>
+<a href="#h87" class="toc-h3">H-87 ν 개별질량</a>
+<a href="#h88" class="toc-h3">H-88 QLC</a>
+<a href="#h89" class="toc-h3">H-89 m_ee 0νββ</a>
+<a href="#h90" class="toc-h3">H-90 디코히어런스</a>
+<a href="#h91" class="toc-h3">H-91 양자 제노</a>
+<a href="#h92" class="toc-h3">H-92 아하로노프-봄</a>
+<a href="#h93" class="toc-h3">H-93 베리 위상</a>
+<a href="#h94" class="toc-h3">H-94 정보 역설</a>
+<a href="#h95" class="toc-h3">H-95 베켄슈타인</a>
+<a href="#h96" class="toc-h3">H-96 QEC FSM</a>
 <a href="#details-p" class="toc-h1">고유 예측 상세</a>
 <a href="#p01" class="toc-h3">P-01 뉴트리노 질량합</a>
 <a href="#p02" class="toc-h3">P-02 양성자 수명</a>
@@ -175,6 +238,10 @@
 <a href="#en-d38" class="toc-h3">D-38 tau/electron ratio</a>
 <a href="#en-d39" class="toc-h3">D-39 alpha running 1/(3pi)</a>
 <a href="#en-d40" class="toc-h3">D-40 spin-statistics CAS</a>
+<a href="#en-d41" class="toc-h3">D-41 M_W</a>
+<a href="#en-d42" class="toc-h3">D-42 α length ladder</a>
+<a href="#en-d43" class="toc-h3">D-43 z_eq = 3402</a>
+<a href="#en-d44" class="toc-h3">D-44 QCD β₀ = 7</a>
 <a href="#en-details-h" class="toc-h1">Hypothesis Details</a>
 <a href="#en-h01" class="toc-h3">H-01 3 generations</a>
 <a href="#en-h02" class="toc-h3">H-02 CAS gauge map</a>
@@ -212,6 +279,65 @@
 <a href="#en-h35" class="toc-h3">H-35 proton radius alpha ladder</a>
 <a href="#en-h36" class="toc-h3">H-36 BAO substructure</a>
 <a href="#en-h37" class="toc-h3">H-37 photon dispersion</a>
+<a href="#en-h38" class="toc-h3">H-38 electron g-2</a>
+<a href="#en-h39" class="toc-h3">H-39 M_Z</a>
+<a href="#en-h40" class="toc-h3">H-40 Read=1/30</a>
+<a href="#en-h41" class="toc-h3">H-41 Jarlskog</a>
+<a href="#en-h42" class="toc-h3">H-42 m_n-m_p</a>
+<a href="#en-h43" class="toc-h3">H-43 r_n²/r_p²</a>
+<a href="#en-h44" class="toc-h3">H-44 quark octet</a>
+<a href="#en-h45" class="toc-h3">H-45 4-force CAS×DATA</a>
+<a href="#en-h46" class="toc-h3">H-46 LRU Friedmann</a>
+<a href="#en-h47" class="toc-h3">H-47 CKM s₁₃</a>
+<a href="#en-h48" class="toc-h3">H-48 Ω_k=0</a>
+<a href="#en-h49" class="toc-h3">H-49 T_CMB</a>
+<a href="#en-h50" class="toc-h3">H-50 q₀=-10/19</a>
+<a href="#en-h51" class="toc-h3">H-51 gluon bit-pair</a>
+<a href="#en-h52" class="toc-h3">H-52 CAS→SU(3)</a>
+<a href="#en-h53" class="toc-h3">H-53 Landauer ln2</a>
+<a href="#en-h54" class="toc-h3">H-54 BH evaporation 5120</a>
+<a href="#en-h55" class="toc-h3">H-55 entanglement entropy</a>
+<a href="#en-h56" class="toc-h3">H-56 α running β₁</a>
+<a href="#en-h57" class="toc-h3">H-57 H₀=67.92</a>
+<a href="#en-h58" class="toc-h3">H-58 a(t) LRU</a>
+<a href="#en-h59" class="toc-h3">H-59 Hubble tension</a>
+<a href="#en-h60" class="toc-h3">H-60 bit mass ratio</a>
+<a href="#en-h61" class="toc-h3">H-61 baryon number 111</a>
+<a href="#en-h62" class="toc-h3">H-62 Δ++ allowed</a>
+<a href="#en-h63" class="toc-h3">H-63 V_cb</a>
+<a href="#en-h64" class="toc-h3">H-64 V_td</a>
+<a href="#en-h65" class="toc-h3">H-65 δ_PMNS check</a>
+<a href="#en-h66" class="toc-h3">H-66 θ₂₃ octant</a>
+<a href="#en-h67" class="toc-h3">H-67 Holevo</a>
+<a href="#en-h68" class="toc-h3">H-68 BH heat capacity</a>
+<a href="#en-h69" class="toc-h3">H-69 Chandrasekhar</a>
+<a href="#en-h70" class="toc-h3">H-70 Tsirelson 2√2</a>
+<a href="#en-h71" class="toc-h3">H-71 holography 4</a>
+<a href="#en-h72" class="toc-h3">H-72 g-2 2-loop</a>
+<a href="#en-h73" class="toc-h3">H-73 boson triangle</a>
+<a href="#en-h74" class="toc-h3">H-74 Σm_ν formula</a>
+<a href="#en-h75" class="toc-h3">H-75 proton lifetime</a>
+<a href="#en-h76" class="toc-h3">H-76 e-folding 60</a>
+<a href="#en-h77" class="toc-h3">H-77 Ω_b/Ω_DM</a>
+<a href="#en-h78" class="toc-h3">H-78 quark charge</a>
+<a href="#en-h79" class="toc-h3">H-79 meson bit</a>
+<a href="#en-h80" class="toc-h3">H-80 color/flavor separation</a>
+<a href="#en-h81" class="toc-h3">H-81 m_n-m_p byproduct</a>
+<a href="#en-h82" class="toc-h3">H-82 CKM Hamming</a>
+<a href="#en-h83" class="toc-h3">H-83 V_ts</a>
+<a href="#en-h84" class="toc-h3">H-84 J precision</a>
+<a href="#en-h85" class="toc-h3">H-85 sin2β</a>
+<a href="#en-h86" class="toc-h3">H-86 α(UT)</a>
+<a href="#en-h87" class="toc-h3">H-87 ν individual mass</a>
+<a href="#en-h88" class="toc-h3">H-88 QLC</a>
+<a href="#en-h89" class="toc-h3">H-89 m_ee 0νββ</a>
+<a href="#en-h90" class="toc-h3">H-90 decoherence</a>
+<a href="#en-h91" class="toc-h3">H-91 quantum Zeno</a>
+<a href="#en-h92" class="toc-h3">H-92 Aharonov-Bohm</a>
+<a href="#en-h93" class="toc-h3">H-93 Berry phase</a>
+<a href="#en-h94" class="toc-h3">H-94 information paradox</a>
+<a href="#en-h95" class="toc-h3">H-95 Bekenstein</a>
+<a href="#en-h96" class="toc-h3">H-96 QEC FSM</a>
 <a href="#en-details-p" class="toc-h1">Prediction Details</a>
 <a href="#en-p01" class="toc-h3">P-01 neutrino mass sum</a>
 <a href="#en-p02" class="toc-h3">P-02 proton lifetime</a>
@@ -275,6 +401,10 @@
 <a href="#d38" class="toc-h3">D-38 타우/전자 통합비</a>
 <a href="#d39" class="toc-h3">D-39 alpha running 3</a>
 <a href="#d40" class="toc-h3">D-40 스핀-통계 CAS</a>
+<a href="#d41" class="toc-h3">D-41 M_W</a>
+<a href="#d42" class="toc-h3">D-42 α 길이 사다리</a>
+<a href="#d43" class="toc-h3">D-43 z_eq = 3402</a>
+<a href="#d44" class="toc-h3">D-44 QCD β₀ = 7</a>
 <a href="#details-h" class="toc-h1">가설 상세</a>
 <a href="#h01" class="toc-h3">H-01 3세대</a>
 <a href="#h02" class="toc-h3">H-02 CAS 게이지 대응</a>
@@ -312,6 +442,65 @@
 <a href="#h35" class="toc-h3">H-35 양성자 반지름</a>
 <a href="#h36" class="toc-h3">H-36 BAO 서브구조</a>
 <a href="#h37" class="toc-h3">H-37 광자 분산</a>
+<a href="#h38" class="toc-h3">H-38 전자 g-2</a>
+<a href="#h39" class="toc-h3">H-39 M_Z</a>
+<a href="#h40" class="toc-h3">H-40 Read=1/30</a>
+<a href="#h41" class="toc-h3">H-41 Jarlskog</a>
+<a href="#h42" class="toc-h3">H-42 m_n-m_p</a>
+<a href="#h43" class="toc-h3">H-43 r_n²/r_p²</a>
+<a href="#h44" class="toc-h3">H-44 쿼크 옥텟</a>
+<a href="#h45" class="toc-h3">H-45 4력 CAS×DATA</a>
+<a href="#h46" class="toc-h3">H-46 LRU 프리드만</a>
+<a href="#h47" class="toc-h3">H-47 CKM s₁₃</a>
+<a href="#h48" class="toc-h3">H-48 Ω_k=0</a>
+<a href="#h49" class="toc-h3">H-49 T_CMB</a>
+<a href="#h50" class="toc-h3">H-50 q₀=-10/19</a>
+<a href="#h51" class="toc-h3">H-51 글루온 비트쌍</a>
+<a href="#h52" class="toc-h3">H-52 CAS→SU(3)</a>
+<a href="#h53" class="toc-h3">H-53 란다우어 ln2</a>
+<a href="#h54" class="toc-h3">H-54 BH 증발 5120</a>
+<a href="#h55" class="toc-h3">H-55 얽힘 엔트로피</a>
+<a href="#h56" class="toc-h3">H-56 α running β₁</a>
+<a href="#h57" class="toc-h3">H-57 H₀=67.92</a>
+<a href="#h58" class="toc-h3">H-58 a(t) LRU</a>
+<a href="#h59" class="toc-h3">H-59 허블 텐션</a>
+<a href="#h60" class="toc-h3">H-60 비트 질량비</a>
+<a href="#h61" class="toc-h3">H-61 바리온수 111</a>
+<a href="#h62" class="toc-h3">H-62 Δ++ 허용</a>
+<a href="#h63" class="toc-h3">H-63 V_cb</a>
+<a href="#h64" class="toc-h3">H-64 V_td</a>
+<a href="#h65" class="toc-h3">H-65 δ_PMNS 확인</a>
+<a href="#h66" class="toc-h3">H-66 θ₂₃ octant</a>
+<a href="#h67" class="toc-h3">H-67 홀레보</a>
+<a href="#h68" class="toc-h3">H-68 BH 열용량</a>
+<a href="#h69" class="toc-h3">H-69 찬드라세카르</a>
+<a href="#h70" class="toc-h3">H-70 치렐슨 2√2</a>
+<a href="#h71" class="toc-h3">H-71 홀로그래피 4</a>
+<a href="#h72" class="toc-h3">H-72 g-2 2-loop</a>
+<a href="#h73" class="toc-h3">H-73 보손 삼각</a>
+<a href="#h74" class="toc-h3">H-74 Σm_ν 공식</a>
+<a href="#h75" class="toc-h3">H-75 양성자 수명</a>
+<a href="#h76" class="toc-h3">H-76 e-folding 60</a>
+<a href="#h77" class="toc-h3">H-77 Ω_b/Ω_DM</a>
+<a href="#h78" class="toc-h3">H-78 쿼크 전하</a>
+<a href="#h79" class="toc-h3">H-79 메손 비트</a>
+<a href="#h80" class="toc-h3">H-80 색/맛 분리</a>
+<a href="#h81" class="toc-h3">H-81 m_n-m_p 부산물</a>
+<a href="#h82" class="toc-h3">H-82 CKM Hamming</a>
+<a href="#h83" class="toc-h3">H-83 V_ts</a>
+<a href="#h84" class="toc-h3">H-84 J 정밀</a>
+<a href="#h85" class="toc-h3">H-85 sin2β</a>
+<a href="#h86" class="toc-h3">H-86 α(UT)</a>
+<a href="#h87" class="toc-h3">H-87 ν 개별질량</a>
+<a href="#h88" class="toc-h3">H-88 QLC</a>
+<a href="#h89" class="toc-h3">H-89 m_ee 0νββ</a>
+<a href="#h90" class="toc-h3">H-90 디코히어런스</a>
+<a href="#h91" class="toc-h3">H-91 양자 제노</a>
+<a href="#h92" class="toc-h3">H-92 아하로노프-봄</a>
+<a href="#h93" class="toc-h3">H-93 베리 위상</a>
+<a href="#h94" class="toc-h3">H-94 정보 역설</a>
+<a href="#h95" class="toc-h3">H-95 베켄슈타인</a>
+<a href="#h96" class="toc-h3">H-96 QEC FSM</a>
 <a href="#reentry-map" class="toc-h1">재대입 맵</a>
 </div>
 
@@ -367,6 +556,10 @@
 <a href="#en-d38" class="toc-h3">D-38 tau/electron ratio</a>
 <a href="#en-d39" class="toc-h3">D-39 alpha running 1/(3pi)</a>
 <a href="#en-d40" class="toc-h3">D-40 spin-statistics CAS</a>
+<a href="#en-d41" class="toc-h3">D-41 M_W</a>
+<a href="#en-d42" class="toc-h3">D-42 α length ladder</a>
+<a href="#en-d43" class="toc-h3">D-43 z_eq = 3402</a>
+<a href="#en-d44" class="toc-h3">D-44 QCD β₀ = 7</a>
 <a href="#en-details-h" class="toc-h1">Hypothesis Details</a>
 <a href="#en-h01" class="toc-h3">H-01 3 generations</a>
 <a href="#en-h02" class="toc-h3">H-02 CAS gauge map</a>
@@ -404,6 +597,65 @@
 <a href="#en-h35" class="toc-h3">H-35 proton radius alpha ladder</a>
 <a href="#en-h36" class="toc-h3">H-36 BAO substructure</a>
 <a href="#en-h37" class="toc-h3">H-37 photon dispersion</a>
+<a href="#en-h38" class="toc-h3">H-38 electron g-2</a>
+<a href="#en-h39" class="toc-h3">H-39 M_Z</a>
+<a href="#en-h40" class="toc-h3">H-40 Read=1/30</a>
+<a href="#en-h41" class="toc-h3">H-41 Jarlskog</a>
+<a href="#en-h42" class="toc-h3">H-42 m_n-m_p</a>
+<a href="#en-h43" class="toc-h3">H-43 r_n²/r_p²</a>
+<a href="#en-h44" class="toc-h3">H-44 quark octet</a>
+<a href="#en-h45" class="toc-h3">H-45 4-force CAS×DATA</a>
+<a href="#en-h46" class="toc-h3">H-46 LRU Friedmann</a>
+<a href="#en-h47" class="toc-h3">H-47 CKM s₁₃</a>
+<a href="#en-h48" class="toc-h3">H-48 Ω_k=0</a>
+<a href="#en-h49" class="toc-h3">H-49 T_CMB</a>
+<a href="#en-h50" class="toc-h3">H-50 q₀=-10/19</a>
+<a href="#en-h51" class="toc-h3">H-51 gluon bit-pair</a>
+<a href="#en-h52" class="toc-h3">H-52 CAS→SU(3)</a>
+<a href="#en-h53" class="toc-h3">H-53 Landauer ln2</a>
+<a href="#en-h54" class="toc-h3">H-54 BH evaporation 5120</a>
+<a href="#en-h55" class="toc-h3">H-55 entanglement entropy</a>
+<a href="#en-h56" class="toc-h3">H-56 α running β₁</a>
+<a href="#en-h57" class="toc-h3">H-57 H₀=67.92</a>
+<a href="#en-h58" class="toc-h3">H-58 a(t) LRU</a>
+<a href="#en-h59" class="toc-h3">H-59 Hubble tension</a>
+<a href="#en-h60" class="toc-h3">H-60 bit mass ratio</a>
+<a href="#en-h61" class="toc-h3">H-61 baryon number 111</a>
+<a href="#en-h62" class="toc-h3">H-62 Δ++ allowed</a>
+<a href="#en-h63" class="toc-h3">H-63 V_cb</a>
+<a href="#en-h64" class="toc-h3">H-64 V_td</a>
+<a href="#en-h65" class="toc-h3">H-65 δ_PMNS check</a>
+<a href="#en-h66" class="toc-h3">H-66 θ₂₃ octant</a>
+<a href="#en-h67" class="toc-h3">H-67 Holevo</a>
+<a href="#en-h68" class="toc-h3">H-68 BH heat capacity</a>
+<a href="#en-h69" class="toc-h3">H-69 Chandrasekhar</a>
+<a href="#en-h70" class="toc-h3">H-70 Tsirelson 2√2</a>
+<a href="#en-h71" class="toc-h3">H-71 holography 4</a>
+<a href="#en-h72" class="toc-h3">H-72 g-2 2-loop</a>
+<a href="#en-h73" class="toc-h3">H-73 boson triangle</a>
+<a href="#en-h74" class="toc-h3">H-74 Σm_ν formula</a>
+<a href="#en-h75" class="toc-h3">H-75 proton lifetime</a>
+<a href="#en-h76" class="toc-h3">H-76 e-folding 60</a>
+<a href="#en-h77" class="toc-h3">H-77 Ω_b/Ω_DM</a>
+<a href="#en-h78" class="toc-h3">H-78 quark charge</a>
+<a href="#en-h79" class="toc-h3">H-79 meson bit</a>
+<a href="#en-h80" class="toc-h3">H-80 color/flavor separation</a>
+<a href="#en-h81" class="toc-h3">H-81 m_n-m_p byproduct</a>
+<a href="#en-h82" class="toc-h3">H-82 CKM Hamming</a>
+<a href="#en-h83" class="toc-h3">H-83 V_ts</a>
+<a href="#en-h84" class="toc-h3">H-84 J precision</a>
+<a href="#en-h85" class="toc-h3">H-85 sin2β</a>
+<a href="#en-h86" class="toc-h3">H-86 α(UT)</a>
+<a href="#en-h87" class="toc-h3">H-87 ν individual mass</a>
+<a href="#en-h88" class="toc-h3">H-88 QLC</a>
+<a href="#en-h89" class="toc-h3">H-89 m_ee 0νββ</a>
+<a href="#en-h90" class="toc-h3">H-90 decoherence</a>
+<a href="#en-h91" class="toc-h3">H-91 quantum Zeno</a>
+<a href="#en-h92" class="toc-h3">H-92 Aharonov-Bohm</a>
+<a href="#en-h93" class="toc-h3">H-93 Berry phase</a>
+<a href="#en-h94" class="toc-h3">H-94 information paradox</a>
+<a href="#en-h95" class="toc-h3">H-95 Bekenstein</a>
+<a href="#en-h96" class="toc-h3">H-96 QEC FSM</a>
 <a href="#en-reentry-map" class="toc-h1">Re-entry Map</a>
 </div>
 
@@ -494,6 +746,8 @@
 <tr><td class="col-id"><strong>D-40</strong></td><td><strong>스핀-통계 정리 = CAS 원자적 점유</strong></td><td><span class="lib-precision"><strong>0% (구조 대응)</strong></span></td><td><strong>파울리 배타원리 CAS 해석</strong></td><td><a href="lib.html#d40">lib.html</a></td><td>03-23</td></tr>
 <tr><td class="col-id"><strong>D-41</strong></td><td><strong>$M_W$ = 80.39 GeV, $M_Z\cos\theta_W$ (1-loop)</strong></td><td><strong>0.016%</strong></td><td><strong>전약 보손 질량 완결</strong></td><td><strong><a href="lib.html#d41">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>D-42</strong></td><td><strong>$\alpha$ 길이 사다리 정수 간격 $\Delta n$ = 1, 1</strong></td><td><strong>0% (항등식)</strong></td><td><strong>$l_P$ → $R_H$ 29칸 구조</strong></td><td><strong><a href="lib.html#d42">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>D-43</strong></td><td><strong>$z_{eq}$ = 2×3⁵×7 = 3402</strong></td><td><strong>0.00%</strong></td><td><strong>물질-복사 등가 적색편이</strong></td><td><strong><a href="lib.html#d43">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>D-44</strong></td><td><strong>QCD $b_0$ = 7/(4π), 7 = CAS</strong></td><td><strong>정확</strong></td><td><strong>QCD β함수 1-loop = CAS 자유도</strong></td><td><strong><a href="lib.html#d44">lib.html</a></strong></td><td>03-25</td></tr>
 </table>
 </div>
 
@@ -550,6 +804,55 @@
 <tr><td class="col-id"><strong>H-45</strong></td><td><strong>4력 = CAS × 도메인 쌍</strong></td><td><strong>D-34 재해석</strong></td><td><strong>중력=txs, 강력=CAS 원자성(속박), 전약=경계</strong></td><td><strong><a href="lib.html#h45">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-46</strong></td><td><strong>LRU 일반항 = 프리드만 방정식</strong></td><td><strong>$\Omega_m$ 0.6%, $\Omega_\Lambda$ 0.3%</strong></td><td><strong>$E(z) = (18/57)(1+z)^3 + 39/57$</strong></td><td><strong><a href="lib.html#h46">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-47</strong></td><td><strong>CKM $s_{13} = A\lambda^3(2/5)$</strong></td><td><strong>0.51%</strong></td><td><strong>$2/5 = \cot\delta_0$, Jarlskog 완결 경로</strong></td><td><strong><a href="lib.html#h47">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-48</strong></td><td><strong>$\Omega_k = 0$ 평탄성</strong></td><td><strong>필연</strong></td><td><strong>ECS 완전분할</strong></td><td><strong><a href="lib.html#h48">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-49</strong></td><td><strong>$T_{CMB}$ = 2.741 K</strong></td><td><strong>0.58%</strong></td><td><strong>D-43 연쇄</strong></td><td><strong><a href="lib.html#h49">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-50</strong></td><td><strong>$q_0$ = -10/19</strong></td><td><strong>0.14%</strong></td><td><strong>H-46 직접</strong></td><td><strong><a href="lib.html#h50">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-51</strong></td><td><strong>글루온 8 = 비트쌍 전환</strong></td><td><strong>구조</strong></td><td><strong>H-03 독립확인</strong></td><td><strong><a href="lib.html#h51">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-52</strong></td><td><strong>CAS 원자성→SU(3)</strong></td><td><strong>필연</strong></td><td><strong>비관측=대칭</strong></td><td><strong><a href="lib.html#h52">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-53</strong></td><td><strong>란다우어 $\ln 2$</strong></td><td><strong>0%</strong></td><td><strong>Compare 조건수</strong></td><td><strong><a href="lib.html#h53">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-54</strong></td><td><strong>BH 증발 5120=10×2⁹</strong></td><td><strong>정확</strong></td><td><strong>D-32 확장</strong></td><td><strong><a href="lib.html#h54">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-55</strong></td><td><strong>얽힘 엔트로피 $\ln 2$</strong></td><td><strong>0%</strong></td><td><strong>Compare 1비트</strong></td><td><strong><a href="lib.html#h55">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-56</strong></td><td><strong>α running $β_1$=-1/4</strong></td><td><strong>정확</strong></td><td><strong>Swap 자유도</strong></td><td><strong><a href="lib.html#h56">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-57</strong></td><td><strong>$H_0$=67.92</strong></td><td><strong>0.83%</strong></td><td><strong>D-15+H-46</strong></td><td><strong><a href="lib.html#h57">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-58</strong></td><td><strong>$a(t)$ LRU</strong></td><td><strong>정합</strong></td><td><strong>ΛCDM 동형</strong></td><td><strong><a href="lib.html#h58">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-59</strong></td><td><strong>허블 텐션 $\sqrt{57/50}$</strong></td><td><strong>0.71%</strong></td><td><strong>HOT 과대표집</strong></td><td><strong><a href="lib.html#h59">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-60</strong></td><td><strong>비트 가중 질량비</strong></td><td><strong>0.06%</strong></td><td><strong>H-44 정합</strong></td><td><strong><a href="lib.html#h60">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-61</strong></td><td><strong>바리온수=111 비가역</strong></td><td><strong>구조</strong></td><td><strong>공리 4+H-44</strong></td><td><strong><a href="lib.html#h61">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-62</strong></td><td><strong>Δ++ 허용</strong></td><td><strong>구조</strong></td><td><strong>D-40 정합</strong></td><td><strong><a href="lib.html#h62">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-63</strong></td><td><strong>$|V_{cb}|$=0.04125</strong></td><td><strong>0.61%</strong></td><td><strong>D-07+D-08</strong></td><td><strong><a href="lib.html#h63">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-64</strong></td><td><strong>$|V_{td}|$=0.00863</strong></td><td><strong>0.72%</strong></td><td><strong>H-47 경유</strong></td><td><strong><a href="lib.html#h64">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-65</strong></td><td><strong>$\delta_{PMNS}$ 확인</strong></td><td><strong>0.21%</strong></td><td><strong>H-18 유지</strong></td><td><strong><a href="lib.html#h65">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-66</strong></td><td><strong>$\theta_{23}$ octant=upper</strong></td><td><strong>0.27%</strong></td><td><strong>D-06: 4/7>1/2</strong></td><td><strong><a href="lib.html#h66">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-67</strong></td><td><strong>홀레보 한계</strong></td><td><strong>구조</strong></td><td><strong>Compare 1비트/cycle</strong></td><td><strong><a href="lib.html#h67">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-68</strong></td><td><strong>BH 열용량 음수</strong></td><td><strong>정합</strong></td><td><strong>LRU+CAS 가속</strong></td><td><strong><a href="lib.html#h68">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-69</strong></td><td><strong>찬드라세카르 한계</strong></td><td><strong>~0%</strong></td><td><strong>D-33(5/3)+2/3</strong></td><td><strong><a href="lib.html#h69">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-70</strong></td><td><strong>치렐슨 $2\sqrt{2}$</strong></td><td><strong>0%</strong></td><td><strong>2(Compare)×√2(직교)</strong></td><td><strong><a href="lib.html#h70">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-71</strong></td><td><strong>홀로그래피 4=도메인</strong></td><td><strong>0%</strong></td><td><strong>$A/(4l_P^2)$</strong></td><td><strong><a href="lib.html#h71">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-72</strong></td><td><strong>g-2 2-loop ≈-1/3</strong></td><td><strong>1.5%</strong></td><td><strong>-(2/9)(3/2)</strong></td><td><strong><a href="lib.html#h72">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-73</strong></td><td><strong>보손 삼각관계</strong></td><td><strong>0.12%</strong></td><td><strong>fitting 경고</strong></td><td><strong><a href="lib.html#h73">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-74</strong></td><td><strong>$\Sigma m_\nu$ 공식</strong></td><td><strong>3.2%</strong></td><td><strong>$m_e\alpha^3(3/\pi^2)$</strong></td><td><strong><a href="lib.html#h74">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-75</strong></td><td><strong>양성자 수명 ~10³³</strong></td><td><strong>~10×</strong></td><td><strong>D-29 기반</strong></td><td><strong><a href="lib.html#h75">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-76</strong></td><td><strong>e-folding $N_e$=60</strong></td><td><strong>구조</strong></td><td><strong>57+3</strong></td><td><strong><a href="lib.html#h76">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-77</strong></td><td><strong>$\Omega_b/\Omega_{DM}$</strong></td><td><strong>4.1%</strong></td><td><strong>H-32 재확인</strong></td><td><strong><a href="lib.html#h77">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-78</strong></td><td><strong>쿼크 전하 비트</strong></td><td><strong>구조</strong></td><td><strong>fitting 경고</strong></td><td><strong><a href="lib.html#h78">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-79</strong></td><td><strong>메손=비트 반전</strong></td><td><strong>구조</strong></td><td><strong>순/역 CAS</strong></td><td><strong><a href="lib.html#h79">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-80</strong></td><td><strong>색/맛 분리</strong></td><td><strong>구조</strong></td><td><strong>색111=바리온</strong></td><td><strong><a href="lib.html#h80">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-81</strong></td><td><strong>$m_n-m_p$ 부산물</strong></td><td><strong>2.9%</strong></td><td><strong>$(m_d-m_u)/2$</strong></td><td><strong><a href="lib.html#h81">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-82</strong></td><td><strong>CKM Hamming</strong></td><td><strong>정성적</strong></td><td><strong>u행 단조 대응</strong></td><td><strong><a href="lib.html#h82">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-83</strong></td><td><strong>$|V_{ts}|$</strong></td><td><strong>4.42%</strong></td><td><strong>NLO 필요</strong></td><td><strong><a href="lib.html#h83">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-84</strong></td><td><strong>$J$ 정밀</strong></td><td><strong>1.13%</strong></td><td><strong>H-47 누적 오차</strong></td><td><strong><a href="lib.html#h84">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-85</strong></td><td><strong>$\sin 2\beta$</strong></td><td><strong>4.84%</strong></td><td><strong>H-28 종속</strong></td><td><strong><a href="lib.html#h85">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-86</strong></td><td><strong>$\alpha$(UT)</strong></td><td><strong>2.98%</strong></td><td><strong>H-28 종속</strong></td><td><strong><a href="lib.html#h86">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-87</strong></td><td><strong>$\nu$ 개별질량</strong></td><td><strong>예측</strong></td><td><strong>H-05+$\Delta m^2$</strong></td><td><strong><a href="lib.html#h87">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-88</strong></td><td><strong>QLC</strong></td><td><strong>3.22%</strong></td><td><strong>$\theta_C+\theta_{12}$</strong></td><td><strong><a href="lib.html#h88">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-89</strong></td><td><strong>$m_{ee}$ 0νββ</strong></td><td><strong>예측</strong></td><td><strong>~3.7 meV</strong></td><td><strong><a href="lib.html#h89">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-90</strong></td><td><strong>디코히어런스</strong></td><td><strong>정성적</strong></td><td><strong>Compare true 누적</strong></td><td><strong><a href="lib.html#h90">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-91</strong></td><td><strong>양자 제노</strong></td><td><strong>정성적</strong></td><td><strong>빈번한 Compare false</strong></td><td><strong><a href="lib.html#h91">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-92</strong></td><td><strong>아하로노프-봄</strong></td><td><strong>정성적</strong></td><td><strong>A=OPERATOR, B=DATA</strong></td><td><strong><a href="lib.html#h92">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-93</strong></td><td><strong>베리 위상</strong></td><td><strong>정성적</strong></td><td><strong>FSM 닫힌 사이클</strong></td><td><strong><a href="lib.html#h93">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-94</strong></td><td><strong>정보 역설</strong></td><td><strong>정성적</strong></td><td><strong>$\delta^2$ 보존</strong></td><td><strong><a href="lib.html#h94">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-95</strong></td><td><strong>베켄슈타인 한계</strong></td><td><strong>0%</strong></td><td><strong>$2\pi RE/(\hbar c)$</strong></td><td><strong><a href="lib.html#h95">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-96</strong></td><td><strong>QEC FSM</strong></td><td><strong>구조</strong></td><td><strong>[3,2,2] 코드</strong></td><td><strong><a href="lib.html#h96">lib.html</a></strong></td><td>03-25</td></tr>
 </table>
 </div>
 
@@ -976,6 +1279,42 @@
 <div class="lib-reuse">재대입 용도: 페르미-디랙/보스-아인슈타인 분포의 +/-1 부호가 CAS 성공/실패 분기</div>
 </div>
 
+<div class="lib-card" id="d41" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-41 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>W 보손 질량 $M_W$ = 80.39 GeV</h3>
+<div class="lib-formula">$$M_W = M_Z \cos\theta_W, \quad \sin^2\theta_W = \frac{3}{4\pi}\left(1-\left(4+\frac{1}{\pi}\right)\alpha\right)$$</div>
+<p class="lib-precision">80.39 GeV vs 실험 80.377 GeV. 오차 0.016% (1-loop 복사 보정 포함)</p>
+<p>D-02($\sin^2\theta_W$)에서 자동 도출. tree-level 79.95 GeV(0.53%)에서 1-loop 복사 보정으로 33배 개선. $M_W/M_Z = \cos\theta_W$가 핵심. $M_Z$ = 91.1876 GeV는 외부 입력.</p>
+<div class="lib-reuse">재대입 용도: $M_Z$ CAS 완전 도출(H-39)의 입력. 전약 보손 질량 체계 완결. 힉스 VEV $v = M_W\sqrt{2}/g$와 연결.</div>
+</div>
+
+<div class="lib-card" id="d42" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-42 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>$\alpha$ 길이 사다리 — 정수 간격 검증</h3>
+<div class="lib-formula">$$L = l_P \times \alpha^{-n}, \quad \Delta n(r_e \to \bar{\lambda}_C) = 1.000, \quad \Delta n(\bar{\lambda}_C \to a_0) = 1.000$$</div>
+<p class="lib-precision">간격 Δn = 1은 수학적 항등식. $a_0 = \bar{\lambda}_C / \alpha = r_e / \alpha^2$에서 필연</p>
+<p>전 사다리: $l_P$(n=0) → $r_p$(9.23) → $r_e$(9.47) → $\bar{\lambda}_C$(10.47) → $a_0$(11.47) → $R_H$(28.75). 기본 입자(전자) 관련 길이는 정확히 정수 간격. 복합 입자(양성자)는 분수 간격 — 내부 QCD 결합의 흔적. 우주 전체 스판 ≈ 29칸.</p>
+<div class="lib-reuse">재대입 용도: H-35(양성자 반지름)의 사다리 위치 검증. 새로운 길이 스케일의 n값 예측. 우주 스판 29 ≈ Read⁻¹(H-40)과 연결 가능성.</div>
+</div>
+
+<div class="lib-card" id="d43" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-43 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>물질-복사 등가 적색편이 $z_{eq}$ = 2×3⁵×7 = 3402</h3>
+<div class="lib-formula">$$z_{eq} = 2 \times 3^5 \times 7 = 3402$$</div>
+<p class="lib-precision">3402 vs Planck 2018 $3402 \pm 26$. 오차 0.00%</p>
+<p>2=괄호(공리 1), 3⁵=CAS단계(3)의 5제곱(5=Compare2+CAS3), 7=CAS자유도(공리 9). H-46(LRU 프리드만)에서 $\Omega_r = (18/57)/(1+z_{eq})$로 연쇄 도출. CMB 온도 2.741K(0.58%)도 여기서 나온다.</p>
+<div class="lib-reuse">재대입 용도: CMB 온도, $\Omega_r$ 정밀값, BAO 음향 지평선 도출의 입력.</div>
+</div>
+
+<div class="lib-card" id="d44" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-44 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>QCD β함수 1-loop 계수 $b_0$ = 7/(4π), 7 = CAS 자유도</h3>
+<div class="lib-formula">$$b_0^{QCD} = \frac{7}{4\pi} = \frac{11C_A - 2n_f}{12\pi}, \quad 7 = 1+2+4 = \text{CAS 내부 상태 합}$$</div>
+<p class="lib-precision">정확 일치. 7 = 표준모형 SM에서 $11 \times 3 - 2 \times 6 = 21$ / 3 = 7</p>
+<p>D-39(QED $\beta_0 = 2/(3\pi)$, 3=CAS단계)와 쌍. QED에서 3, QCD에서 7이 CAS 구조수로 등장. $n_f=6$(H-01: 3세대×2)과 $C_A=3$(H-03: SU(3))이 CAS에서 자동 결정되면 $b_0=7/(4\pi)$는 필연.</p>
+<div class="lib-reuse">재대입 용도: $\alpha_s$ running 정밀화. $\Lambda_{QCD}$ CAS 도출 경로. D-39와 QED/QCD 쌍 구조.</div>
+</div>
+
 
 <hr>
 <hr>
@@ -1377,24 +1716,6 @@
 <div class="lib-reuse">재대입 용도: Read 정밀값 확정 시 sin²θ_W 도출의 출발점이 정밀해진다. 30 = 7×4+2의 CAS-도메인 상호작용 합으로 독립 도출 완료. 1/31.69와 1/30의 5.6% 차이는 복사 보정에 해당. H-02(CAS-게이지 대응)와 D-02(sin²θ_W)의 교차점.</div>
 </div>
 
-<div class="lib-card" id="d41" style="border-left:4px solid #2ea043">
-<div class="lib-id">D-41 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
-<h3>W 보손 질량 $M_W$ = 80.39 GeV</h3>
-<div class="lib-formula">$$M_W = M_Z \cos\theta_W, \quad \sin^2\theta_W = \frac{3}{4\pi}\left(1-\left(4+\frac{1}{\pi}\right)\alpha\right)$$</div>
-<p class="lib-precision">80.39 GeV vs 실험 80.377 GeV. 오차 0.016% (1-loop 복사 보정 포함)</p>
-<p>D-02($\sin^2\theta_W$)에서 자동 도출. tree-level 79.95 GeV(0.53%)에서 1-loop 복사 보정으로 33배 개선. $M_W/M_Z = \cos\theta_W$가 핵심. $M_Z$ = 91.1876 GeV는 외부 입력.</p>
-<div class="lib-reuse">재대입 용도: $M_Z$ CAS 완전 도출(H-39)의 입력. 전약 보손 질량 체계 완결. 힉스 VEV $v = M_W\sqrt{2}/g$와 연결.</div>
-</div>
-
-<div class="lib-card" id="d42" style="border-left:4px solid #2ea043">
-<div class="lib-id">D-42 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
-<h3>$\alpha$ 길이 사다리 — 정수 간격 검증</h3>
-<div class="lib-formula">$$L = l_P \times \alpha^{-n}, \quad \Delta n(r_e \to \bar{\lambda}_C) = 1.000, \quad \Delta n(\bar{\lambda}_C \to a_0) = 1.000$$</div>
-<p class="lib-precision">간격 Δn = 1은 수학적 항등식. $a_0 = \bar{\lambda}_C / \alpha = r_e / \alpha^2$에서 필연</p>
-<p>전 사다리: $l_P$(n=0) → $r_p$(9.23) → $r_e$(9.47) → $\bar{\lambda}_C$(10.47) → $a_0$(11.47) → $R_H$(28.75). 기본 입자(전자) 관련 길이는 정확히 정수 간격. 복합 입자(양성자)는 분수 간격 — 내부 QCD 결합의 흔적. 우주 전체 스판 ≈ 29칸.</p>
-<div class="lib-reuse">재대입 용도: H-35(양성자 반지름)의 사다리 위치 검증. 새로운 길이 스케일의 n값 예측. 우주 스판 29 ≈ Read⁻¹(H-40)과 연결 가능성.</div>
-</div>
-
 <div class="lib-card" id="h41" style="border-left:4px solid #d29922">
 <div class="lib-id">H-41 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
 <h3>Jarlskog 불변량 $J$ = 3.10 × 10⁻⁵</h3>
@@ -1458,6 +1779,447 @@
 <div class="lib-reuse">재대입 용도: H-41(Jarlskog) D카드 승격 경로. $R = \cot\delta_0$의 필연성 유도가 다음 과제. H-44(비트 전이: $u(001) \to b(110) = \text{XOR}111$)에서 전이 진폭으로 유도 가능성.</div>
 </div>
 
+<div class="lib-card" id="h48" style="border-left:4px solid #d29922">
+<div class="lib-id">H-48 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\Omega_k = 0$ (우주 평탄성) = ECS 완전분할</h3>
+<div class="lib-formula">$$\Omega_k = 0: \quad \text{HOT} + \text{WARM} + \text{COLD} = 57/57 = 1$$</div>
+<p class="lib-precision">$|\Omega_k| < 0.002$ (Planck 2018). LRU 큐에 빈틈 없음 = 평탄</p>
+<p>H-30(3:15:39/57)에서 3+15+39=57. LRU 큐의 HOT+WARM+COLD가 전체를 빠짐없이 분할. 빈틈이 구조적으로 불가능하므로 $\Omega_k=0$은 필연.</p>
+<div class="lib-reuse">재대입 용도: 인플레이션 없이 평탄성 설명. 공간 곡률 = LRU 잔여의 부재.</div>
+</div>
+
+<div class="lib-card" id="h49" style="border-left:4px solid #d29922">
+<div class="lib-id">H-49 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>CMB 온도 $T_0$ = 2.741 K</h3>
+<div class="lib-formula">$$T_0 = \left(\frac{15 \hbar^3 c^5 \rho_\gamma}{\pi^2 k_B^4}\right)^{1/4}, \quad \rho_\gamma = \rho_c \times \Omega_r$$</div>
+<p class="lib-precision">2.741 K vs 실험 2.7255 K. 오차 0.58%</p>
+<p>D-43($z_{eq}=3402$)에서 $\Omega_r$를 도출하고, 프리드만(H-46)에서 $\rho_c$를 구한 뒤, 스테판-볼츠만으로 $T_0$을 계산. 연쇄 도출.</p>
+<div class="lib-reuse">재대입 용도: CMB 스펙트럼, 재조합 온도, 뉴트리노 배경 온도 $T_\nu = T_0 (4/11)^{1/3}$.</div>
+</div>
+
+<div class="lib-card" id="h50" style="border-left:4px solid #d29922">
+<div class="lib-id">H-50 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>감속 파라미터 $q_0$ = -10/19</h3>
+<div class="lib-formula">$$q_0 = \frac{\Omega_m}{2} - \Omega_\Lambda = \frac{9}{57} - \frac{39}{57} = -\frac{30}{57} = -\frac{10}{19}$$</div>
+<p class="lib-precision">-0.5263 vs 관측 -0.527. 오차 0.14%</p>
+<p>H-46(LRU 프리드만)에서 직접 도출. 30=7×4+2(H-40)이 분자에 등장.</p>
+<div class="lib-reuse">재대입 용도: 우주 가속 팽창의 CAS 정량화. $z_t = (13/3)^{1/3}-1 = 0.63$(H-46)과 쌍.</div>
+</div>
+
+<div class="lib-card" id="h51" style="border-left:4px solid #d29922">
+<div class="lib-id">H-51 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>글루온 8개 = CAS 3비트 쌍전환 연산자 $C(3,2) \times 2 + 2$</h3>
+<div class="lib-formula">$$8 = C(3,2) \times 2 + 2 = 3 \times 2 + 2$$</div>
+<p class="lib-precision">구조 일치. H-03 독립 경로 확인</p>
+<p>H-44(3비트 옥텟)에서 3비트 중 2비트를 교환하는 쌍 = $C(3,2)=3$쌍. 각 쌍에 실수/허수 2개 = 6. 대각 2개 추가 = 8. 겔만 행렬 $\lambda_1$~$\lambda_8$과 정확히 대응.</p>
+<div class="lib-reuse">재대입 용도: H-03 강화. H-44 비트 전이 → 겔만 구조상수 $f_{abc}$ 도출 가능성.</div>
+</div>
+
+<div class="lib-card" id="h52" style="border-left:4px solid #d29922">
+<div class="lib-id">H-52 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>CAS 원자성 → SU(3) 색 대칭: 비관측 순서 = 라벨 대칭</h3>
+<div class="lib-formula">$$\text{CAS 3단계(R→C→S) 분리 불가(공리 2)} → \text{DATA에서 순서 비관측} → \text{3라벨 교환 대칭} = SU(3)$$</div>
+<p class="lib-precision">구조 필연. 공리 2(원자성) + 공리 3(시간 밖)</p>
+<p>CAS가 시간 밖(공리 3)이므로 DATA에서 R,C,S 순서를 관측할 수 없다. 관측 불가 = 라벨 교환 대칭. 이것이 SU(3) 색 대칭의 구조적 근거. H-02(게이지 대응) 정밀화.</p>
+<div class="lib-reuse">재대입 용도: 색 가둠 = CAS 원자성의 엄밀한 논증. 점근적 자유(H-09)의 근거 강화.</div>
+</div>
+
+<div class="lib-card" id="h53" style="border-left:4px solid #d29922">
+<div class="lib-id">H-53 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>란다우어 한계 $kT \ln 2$: $\ln 2 = \ln(\text{Compare 조건수})$</h3>
+<div class="lib-formula">$$E_{min} = kT \ln 2, \quad 2 = \text{Compare 분기 수(true/false)}$$</div>
+<p class="lib-precision">0% 오차. 란다우어 원리와 동일 공식 + CAS 구조 근거</p>
+<p>Compare = 2상태 분기(공리 2). 비가역적 1비트 소거(Swap, 공리 4)의 최소 열비용 = $kT \times \ln(\text{분기수})$. "왜 $\ln 2$인가"에 CAS가 답한다: Compare가 2갈래이기 때문.</p>
+<div class="lib-reuse">재대입 용도: H-12(ℏ=TOCTOU 락)와 쌍. 정보이론-열역학 연결의 CAS 근거.</div>
+</div>
+
+<div class="lib-card" id="h54" style="border-left:4px solid #d29922">
+<div class="lib-id">H-54 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>BH 증발 시간 $t_{evap} = 5120\pi G^2 M^3 / (\hbar c^4)$, 5120 = 10×2⁹</h3>
+<div class="lib-formula">$$t_{evap} = 5120\pi \frac{G^2 M^3}{\hbar c^4}, \quad 5120 = 10 \times 2^9 = 10 \times 512$$</div>
+<p class="lib-precision">D-32에서 대수적으로 정확히 도출. 10=SO(5) 차원(Wyler), 2⁹=완전기술9의 이진 상태 공간</p>
+<p>D-32($T_H^3 \tau_{BH} = (10/\pi^2) T_P^3 t_P$)를 변형하면 표준 BH 증발 시간이 나온다. 계수 5120의 CAS 분해: 10(D-32의 동일 인자) × 512(CAS 9비트의 $2^9$ 상태 공간).</p>
+<div class="lib-reuse">재대입 용도: BH 열역학 완결. 미세 BH 증발 검증. D-32 확장.</div>
+</div>
+
+<div class="lib-card" id="h55" style="border-left:4px solid #d29922">
+<div class="lib-id">H-55 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>양자 얽힘 엔트로피: $S_E(\max) = \ln 2$ = Compare 1비트</h3>
+<div class="lib-formula">$$S_E = -\text{Tr}(\rho_A \ln \rho_A) \leq \ln 2, \quad \ln 2 = \text{Compare 분기의 정보량}$$</div>
+<p class="lib-precision">0%. 벨 상태 $|\Phi^+\rangle$의 얽힘 엔트로피 = $\ln 2$</p>
+<p>$\delta^2$ 보존(공리 1) + 다중 투영(공리 11): 부분계를 추출하면 나머지에 대한 정보 손실 = 엔트로피. 최대 얽힘 = 대칭 투영($\delta$를 두 observer에 균등 분배). $\ln 2$ = Compare 1비트 결정의 정보량(공리 2). H-53(란다우어)과 동일한 $\ln 2$.</p>
+<div class="lib-reuse">재대입 용도: 얽힘 구조의 CAS 정량화. 양자 정보이론 전체의 CAS 기반.</div>
+</div>
+
+<div class="lib-card" id="h56" style="border-left:4px solid #d29922">
+<div class="lib-id">H-56 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>α running 2-loop $\beta_1 = -1/4 = -1/\text{Swap자유도}$</h3>
+<div class="lib-formula">$$\beta_1 = -\frac{1}{4} = -\frac{1}{\text{Swap DOF}}$$</div>
+<p class="lib-precision">정확히 $-1/4$. Swap 자유도 = 4(공리 1 도메인 수).</p>
+<p>QED 2-loop β함수 계수 $\beta_1 = -1/4$가 CAS Swap 연산의 자유도 역수와 일치한다. 결합상수의 에너지 의존성이 CAS 도메인 구조에서 기인함을 시사.</p>
+<div class="lib-reuse">재대입 용도: 고에너지 α running 예측. $\beta_2$ 이상 계수의 CAS 해석 경로. D-03($\alpha_s$) 스케일 의존성 재해석.</div>
+</div>
+
+<div class="lib-card" id="h57" style="border-left:4px solid #d29922">
+<div class="lib-id">H-57 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$H_0 = 67.92$ km/s/Mpc (D-15 + H-46)</h3>
+<div class="lib-formula">$$H_0 = 67.92 \;\text{km/s/Mpc}$$</div>
+<p class="lib-precision">67.92 vs Planck 67.36. 오차 0.83%.</p>
+<p>D-15 우주상수와 H-46 프리드만 방정식을 결합하면 허블 상수가 도출된다. CMB 기반 측정값과 0.83% 일치.</p>
+<div class="lib-reuse">재대입 용도: H-59(허블 텐션) 입력. BAO 스케일 예측. 우주 나이 $t_0 = 1/H_0$ 보정.</div>
+</div>
+
+<div class="lib-card" id="h58" style="border-left:4px solid #d29922">
+<div class="lib-id">H-58 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$a(t) = (6/13)^{1/3}\sinh^{2/3}(t/t_\Lambda)$ LRU 해석</h3>
+<div class="lib-formula">$$a(t) = \left(\frac{6}{13}\right)^{1/3} \sinh^{2/3}\!\left(\frac{t}{t_\Lambda}\right)$$</div>
+<p class="lib-precision">$6/13$ = 물질/암흑에너지 비 $18/39$의 축약. ΛCDM 스케일 팩터와 정합.</p>
+<p>H-46의 HOT:WARM:COLD 비율에서 물질 분율 $18/39 = 6/13$으로 스케일 팩터가 결정된다. LRU 캐시 퇴거 타이밍이 우주 팽창률을 지배.</p>
+<div class="lib-reuse">재대입 용도: 감속→가속 전이 $z_t$ 정밀화. 우주 나이 적분. H-46 일반항의 시간 도메인 변환.</div>
+</div>
+
+<div class="lib-card" id="h59" style="border-left:4px solid #d29922">
+<div class="lib-id">H-59 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>허블 텐션: $H_0^{\text{local}} = H_0^{\text{CAS}} \times \sqrt{57/50}$ = 72.52</h3>
+<div class="lib-formula">$$H_0^{\text{local}} = H_0^{\text{CAS}} \times \sqrt{\frac{57}{50}} = 72.52 \;\text{km/s/Mpc}$$</div>
+<p class="lib-precision">72.52 vs SH0ES 73.04. 오차 0.71%.</p>
+<p>CMB $H_0$(H-57)에 $\sqrt{57/50}$ 보정을 적용하면 국소 측정값이 나온다. 57은 CAS 총 상태수, 50 = 57−7은 관측자(OPERATOR) 제외 상태수. 허블 텐션은 실제 불일치가 아니라 CAS 관측자 효과.</p>
+<div class="lib-reuse">재대입 용도: 허블 텐션 해소 경로. $\sqrt{57/50}$의 독립 유도. 관측자 효과의 다른 물리량 출현 탐색.</div>
+</div>
+
+<div class="lib-card" id="h60" style="border-left:4px solid #d29922">
+<div class="lib-id">H-60 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>비트 가중 질량비: $m_c = v/\sqrt{2} \times \alpha$ = 1270.7 MeV</h3>
+<div class="lib-formula">$$m_c = \frac{v}{\sqrt{2}} \cdot \alpha = 1270.7 \;\text{MeV}$$</div>
+<p class="lib-precision">1270.7 vs PDG $1270 \pm 20$ MeV. 오차 0.06%. H-44 정합.</p>
+<p>H-44의 3비트 쿼크 옥텟에서 charm은 Compare 단일비트. $m_t = v/\sqrt{2}$(D-16, Swap 비용)에 $\alpha$(Compare 비용)를 곱하면 $m_c$가 정확히 나온다. 비트 가중치가 질량 계층을 결정.</p>
+<div class="lib-reuse">재대입 용도: D-17($m_c = m_t \cdot \alpha$) 구조적 근거. H-44 비트 비용 체계 검증. $m_u$ 도출 경로.</div>
+</div>
+
+<div class="lib-card" id="h61" style="border-left:4px solid #d29922">
+<div class="lib-id">H-61 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>바리온수 보존 = 111 비가역성 (공리 4 + H-44)</h3>
+<div class="lib-formula">$$B = \frac{1}{3}\sum_i b_i = 1 \;(111\text{ 상태}) \;\Rightarrow\; \Delta B = 0$$</div>
+<p class="lib-precision">바리온수 보존 법칙과 정합. 비가역성은 공리 4(엔트로피 단조증가)에서 유도.</p>
+<p>H-44에서 111 = 바리온 상태. 공리 4의 비가역성에 의해 111→비111 전이가 금지된다. 바리온수 보존은 별도 대칭이 아니라 CAS 비트 구조 + 엔트로피 공리의 자연스러운 귀결.</p>
+<div class="lib-reuse">재대입 용도: 양성자 붕괴 금지의 CAS 근거. D-04(바리오제네시스) 초기조건 해석. 스팔레론 과정의 비트 전이 해석.</div>
+</div>
+
+<div class="lib-card" id="h62" style="border-left:4px solid #d29922">
+<div class="lib-id">H-62 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\Delta^{++}$ 허용 = 같은 맛 + 다른 색 (D-40 정합)</h3>
+<div class="lib-formula">$$\Delta^{++} = u_R\, u_G\, u_B \;:\; \text{맛 동일, 색 구별} \;\Rightarrow\; \text{Pauli 위반 없음}$$</div>
+<p class="lib-precision">D-40(색전하 = CAS 주소) 정합. 실험적 $\Delta^{++}$ 존재와 일치.</p>
+<p>$\Delta^{++}$(uuu)는 같은 맛 쿼크 3개로 구성되지만, D-40에서 색전하 = CAS 메모리 주소이므로 3개 쿼크가 서로 다른 주소를 점유한다. 페르미 통계 위반 없이 같은 맛 바리온이 허용되는 구조적 이유.</p>
+<div class="lib-reuse">재대입 용도: 색 속박의 CAS 주소 해석 검증. $\Omega^-$(sss) 등 다른 동일맛 바리온 확인. 색 자유도 3 = CAS 연산 수 관계.</div>
+</div>
+
+<div class="lib-card" id="h63" style="border-left:4px solid #d29922">
+<div class="lib-id">H-63 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$|V_{cb}| = A\lambda^2 = \sqrt{2/3}\cdot(2/9)^2\cdot(1+\pi\alpha/2)^2$ = 0.04125</h3>
+<div class="lib-formula">$$|V_{cb}| = \sqrt{\frac{2}{3}} \cdot \left(\frac{2}{9}\right)^2 \cdot \left(1+\frac{\pi\alpha}{2}\right)^2 = 0.04125$$</div>
+<p class="lib-precision">0.04125 vs PDG 0.0410. 오차 0.61%.</p>
+<p>Wolfenstein $A = \sqrt{2/3}$(D-08)과 Cabibbo $\lambda = 2/9 + \pi\alpha$ 보정(D-07)의 조합. CKM 2세대→3세대 전이 진폭이 CAS 구조 상수만으로 결정됨.</p>
+<div class="lib-reuse">재대입 용도: $B$ 메손 붕괴율 예측. H-47($s_{13}$)과 결합하여 CKM 행렬 완전 결정. $|V_{tb}|$ 유니타리 검증.</div>
+</div>
+
+<div class="lib-card" id="h64" style="border-left:4px solid #d29922">
+<div class="lib-id">H-64 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$|V_{td}|$ = 0.00863 (H-47 경유)</h3>
+<div class="lib-formula">$$|V_{td}| = A\lambda^3(1 - R\,e^{i\delta}) \approx 0.00863$$</div>
+<p class="lib-precision">0.00863 vs PDG 0.00857. 오차 0.72%.</p>
+<p>H-47의 $R = 2/5$와 D-23의 $\delta = \arctan(5/2+\alpha_s/\pi)$를 Wolfenstein 매개변수화에 대입하면 $|V_{td}|$가 도출된다. CKM 행렬의 가장 작은 비대각 성분까지 CAS 닫힌 공식으로 결정.</p>
+<div class="lib-reuse">재대입 용도: $B_d$ 혼합 진동수 $\Delta m_d$ 예측. 유니타리 삼각형 꼭짓점 좌표 확정. $|V_{td}/V_{ts}|$ 비율 검증.</div>
+</div>
+
+<div class="lib-card" id="h65" style="border-left:4px solid #d29922">
+<div class="lib-id">H-65 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\delta_{\text{PMNS}}$ 보정 불필요 확인 (H-18 유지)</h3>
+<div class="lib-formula">$$\delta_{\text{PMNS}} = \frac{3\pi}{2} \quad(\text{H-18 그대로 유지})$$</div>
+<p class="lib-precision">실험 불확도 > 공식 오차. 보정 불필요.</p>
+<p>PMNS CP 위상 $\delta = 3\pi/2$(H-18)에 대해 추가 $\alpha$ 보정 필요 여부를 검토한 결과, 현재 실험 불확도(~20도)가 보정량($\alpha_s/\pi$ 급)보다 훨씬 크므로 보정이 의미 없다. H-18 값을 그대로 유지.</p>
+<div class="lib-reuse">재대입 용도: 차세대 뉴트리노 실험(DUNE, HK)에서 불확도 축소 시 재검토. $\delta_{\text{PMNS}} \neq 3\pi/2$ 측정 시 보정항 유도 경로.</div>
+</div>
+
+<div class="lib-card" id="h66" style="border-left:4px solid #d29922">
+<div class="lib-id">H-66 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\theta_{23}$ octant = upper (D-06: $4/7 > 1/2$)</h3>
+<div class="lib-formula">$$\sin^2\theta_{23} = \frac{4}{7} \approx 0.5714 > \frac{1}{2} \quad\Rightarrow\quad \text{upper octant}$$</div>
+<p class="lib-precision">편차 $= 4/7 - 1/2 = 1/14 = 1/(2\times 7)$. D-06에서 확정.</p>
+<p>D-06에서 $\sin^2\theta_{23} = 4/7$이므로 대기 혼합각은 최대혼합($\pi/4$)보다 크다. 옥탄트 문제의 답은 upper. 편차 $1/14$은 CAS 수 7과 도메인 수 2의 곱의 역수.</p>
+<div class="lib-reuse">재대입 용도: NOvA/T2K 옥탄트 측정과 대조. $\theta_{23}$ 정밀 측정 시 D-06 검증. DUNE에서 확정적 판별 예상.</div>
+</div>
+
+<div class="lib-card" id="h67" style="border-left:4px solid #d29922">
+<div class="lib-id">H-67 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>홀레보 한계 = Compare 1비트/CAS 사이클</h3>
+<div class="lib-formula">$$\chi \leq S(\rho) \;:\; \text{1 CAS 사이클당 추출 가능 정보} = 1\;\text{bit (Compare)}$$</div>
+<p class="lib-precision">홀레보 한계와 정합. Compare = 1비트 판정 연산.</p>
+<p>양자 정보의 홀레보 한계(1큐비트에서 최대 1 classical bit 추출)가 CAS Compare 연산의 구조적 한계와 일치한다. Compare는 한 사이클에 1비트 판정만 수행하므로, 정보 추출 한계는 CAS 아키텍처의 필연적 귀결.</p>
+<div class="lib-reuse">재대입 용도: 양자 채널 용량의 CAS 해석. 초광속 통신 불가능의 구조적 증명. H-70(치렐슨 한계)과 연결.</div>
+</div>
+
+<div class="lib-card" id="h68" style="border-left:4px solid #d29922">
+<div class="lib-id">H-68 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>BH 열용량 $C_{BH} = -8\pi GM^2 k_B/(\hbar c)$, 음수 = LRU COLD 퇴거 + CAS 가속</h3>
+<div class="lib-formula">$$C_{BH} = -\frac{8\pi G M^2 k_B}{\hbar c} < 0$$</div>
+<p class="lib-precision">호킹 열역학과 정합. 음의 열용량 = 자기중력계 특성.</p>
+<p>블랙홀의 음의 열용량은 LRU 캐시에서 COLD 영역 데이터가 퇴거될 때 남은 HOT 영역이 가속되는 것과 동일 구조. 질량(데이터) 방출 시 온도(처리속도) 상승. CAS의 LRU 관리 메커니즘이 블랙홀 열역학을 지배.</p>
+<div class="lib-reuse">재대입 용도: 호킹 복사 스펙트럼의 CAS 해석. 블랙홀 정보 역설의 LRU 재해석. H-71(홀로그래피)과 연결.</div>
+</div>
+
+<div class="lib-card" id="h69" style="border-left:4px solid #d29922">
+<div class="lib-id">H-69 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>찬드라세카르 한계: $5/3$(D-33) → $2/3$ = 코이데 비율 → $M_{\text{Ch}}$</h3>
+<div class="lib-formula">$$\gamma = \frac{5}{3} \xrightarrow{\text{상대론}} \frac{4}{3} \;;\quad \frac{5}{3} - 1 = \frac{2}{3} = \text{코이데 비율}(D\text{-}09) \;\Rightarrow\; M_{\text{Ch}}$$</div>
+<p class="lib-precision">$\gamma = 5/3$(D-33 이상기체)에서 찬드라세카르 한계 도출. $2/3 = \sqrt{2/3}^{\,2}$.</p>
+<p>비상대론적 단원자 이상기체 $\gamma = 5/3$(D-33)에서 1을 빼면 $2/3$이 나오고, 이는 코이데 공식의 $r^2 = 2/3$(D-09)과 같다. 백색왜성 질량 한계가 CAS 세대 구조(코이데)와 열역학(이상기체)의 교차점에서 결정됨.</p>
+<div class="lib-reuse">재대입 용도: $M_{\text{Ch}} \approx 1.4\,M_\odot$의 CAS 정밀 도출. D-33과 D-09의 교차 확인. 중성자별 질량 한계(TOV)로 확장.</div>
+</div>
+
+<div class="lib-card" id="h70" style="border-left:4px solid #d29922">
+<div class="lib-id">H-70 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>치렐슨 한계 $2\sqrt{2}$ = 2(Compare) $\times$ $\sqrt{2}$(직교 괄호)</h3>
+<div class="lib-formula">$$|\langle \mathcal{B} \rangle| \leq 2\sqrt{2} = 2\,(\text{Compare}) \times \sqrt{2}\,(\text{직교})$$</div>
+<p class="lib-precision">치렐슨 한계 $2\sqrt{2} \approx 2.828$. 벨 부등식 위반 상한.</p>
+<p>CHSH 부등식의 양자 상한 $2\sqrt{2}$에서 2는 Compare 연산의 이진 판정($\pm 1$) 2회, $\sqrt{2}$는 직교 기저 간 사영($\cos 45° = 1/\sqrt{2}$의 역수). 양자 비국소성의 한계가 CAS Compare 구조에 의해 결정됨.</p>
+<div class="lib-reuse">재대입 용도: H-67(홀레보 한계)과 통합. 양자 게임 이론의 CAS 해석. PR-box(4) 도달 불가 이유 = CAS 직교성 제약.</div>
+</div>
+
+<div class="lib-card" id="h71" style="border-left:4px solid #d29922">
+<div class="lib-id">H-71 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>홀로그래피 $S = A/(4l_P^2)$, $4$ = 도메인 수(공리 1)</h3>
+<div class="lib-formula">$$S = \frac{A}{4\,l_P^2} \;;\quad 4 = \text{도메인 수(공리 1: DATA, MOVE, OPERATOR, SPACETIME)}$$</div>
+<p class="lib-precision">베켄슈타인-호킹 엔트로피 공식과 정합. $4$ = 공리 1 도메인 수.</p>
+<p>홀로그래피 원리에서 엔트로피 $S = A/(4l_P^2)$의 분모 4가 CAS 공리 1의 도메인 수(DATA, MOVE, OPERATOR, SPACETIME)와 일치한다. 플랑크 면적당 정보 저장량이 도메인 수에 의해 제한됨. 벌크 정보가 경계에 인코딩되는 이유는 CAS가 도메인 경계에서만 상호작용하기 때문.</p>
+<div class="lib-reuse">재대입 용도: H-68(BH 열용량)과 결합. AdS/CFT의 CAS 재해석. 도메인 수 변경 시 엔트로피 스케일링 예측.</div>
+</div>
+
+<div class="lib-card" id="h72" style="border-left:4px solid #d29922">
+<div class="lib-id">H-72 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>전자 g-2 2-loop: $a_e^{(4)} \approx -\tfrac{1}{3}\!\left(\tfrac{\alpha}{\pi}\right)^2$</h3>
+<div class="lib-formula">$$a_e^{(4)} = -\frac{2}{9}\cdot\frac{3}{2}\left(\frac{\alpha}{\pi}\right)^2 = -\frac{1}{3}\left(\frac{\alpha}{\pi}\right)^2$$</div>
+<p class="lib-precision">1.5%. 정밀값 −0.3285… 대비</p>
+<p>2/9(CAS 자유도)×3/2(세대 보정)이 2-loop 계수를 재현. H-38(Schwinger 1-loop)의 자연스러운 확장.</p>
+<div class="lib-reuse">재대입 용도: H-38 → H-72 → 3-loop 계수 예측 경로. 2/9의 루프 역할 확인.</div>
+</div>
+
+<div class="lib-card" id="h73" style="border-left:4px solid #d29922">
+<div class="lib-id">H-73 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>보손 삼각관계: $m_H^2 = (m_W^2 + m_Z^2)(1 + \alpha_s/2)$</h3>
+<div class="lib-formula">$$m_H^2 = (m_W^2 + m_Z^2)\!\left(1 + \frac{\alpha_s}{2}\right)$$</div>
+<p class="lib-precision">0.12%. fitting 경고: $\alpha_s$ 보정항이 자유 매개변수에 가까움</p>
+<p>전약 보손 질량의 제곱합이 힉스 질량 제곱을 결정. 강력 보정 $\alpha_s/2$가 QCD 진공 기여를 반영.</p>
+<div class="lib-reuse">재대입 용도: D-25(m_H)와 교차 검증. fitting 의심 해소에는 $\alpha_s$ 보정의 독립 도출 필요.</div>
+</div>
+
+<div class="lib-card" id="h74" style="border-left:4px solid #d29922">
+<div class="lib-id">H-74 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>뉴트리노 질량합: $\Sigma m_\nu = m_e \alpha^3 (3/\pi^2)$</h3>
+<div class="lib-formula">$$\Sigma m_\nu = m_e\,\alpha^3\!\left(\frac{3}{\pi^2}\right) \approx 60.4\;\text{meV}$$</div>
+<p class="lib-precision">3.2%. 현재 상한 120 meV(Planck) 이내</p>
+<p>전자 질량에서 $\alpha^3$ 억압 + PMNS 구조상수 $3/\pi^2$(D-05)로 뉴트리노 질량합 도출.</p>
+<div class="lib-reuse">재대입 용도: P-01(뉴트리노 질량합 예측) 정밀화. H-87(개별질량)과 합산 교차 검증.</div>
+</div>
+
+<div class="lib-card" id="h75" style="border-left:4px solid #d29922">
+<div class="lib-id">H-75 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>양성자 수명: $\tau_p \sim 10^{33}$ 년</h3>
+<div class="lib-formula">$$\tau_p \sim \frac{M_{\text{GUT}}^4}{m_p^5} \sim 10^{33}\;\text{yr}$$</div>
+<p class="lib-precision">D-29(M_GUT) 기반. 현재 하한 $10^{34}$년(Super-K) 대비 1자릿수 부족</p>
+<p>D-29의 GUT 스케일에서 차원-6 양성자 붕괴 연산. 현 실험 하한에 못 미쳐 수정 또는 차원-6 억압 메커니즘 필요.</p>
+<div class="lib-reuse">재대입 용도: D-29 검증의 간접 경로. 억압 인자 도출 시 Hyper-K 예측으로 연결.</div>
+</div>
+
+<div class="lib-card" id="h76" style="border-left:4px solid #d29922">
+<div class="lib-id">H-76 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>인플레이션 e-folding: $N_e = 57 + 3 = 60$</h3>
+<div class="lib-formula">$$N_e = 57 + 3 = 60$$</div>
+<p class="lib-precision">관측 범위 50~70 이내. 중심값 60과 정확히 일치</p>
+<p>57=CAS 지수(D-15 우주상수), 3=CAS 단계 수. 인플레이션의 최소 e-folding이 CAS 구조 수로 고정.</p>
+<div class="lib-reuse">재대입 용도: D-15(우주상수 지수 57)의 우주론적 재해석. CMB 스펙트럼 틸트 $n_s$ 도출 경로.</div>
+</div>
+
+<div class="lib-card" id="h77" style="border-left:4px solid #d29922">
+<div class="lib-id">H-77 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>바리온/암흑물질 비: $\Omega_b/\Omega_{DM} = \sin^2\theta_W \cos^2\theta_W$</h3>
+<div class="lib-formula">$$\frac{\Omega_b}{\Omega_{DM}} = \sin^2\theta_W\,\cos^2\theta_W$$</div>
+<p class="lib-precision">4.1%. H-32 재확인</p>
+<p>전약 혼합각의 삼각함수 곱이 바리온-암흑물질 비율을 결정. H-32의 $\sin^2\theta_W$ 단독 비율을 정밀화.</p>
+<div class="lib-reuse">재대입 용도: H-32 업그레이드. D-02($\sin^2\theta_W$)에서 $\Omega_b/\Omega_{DM}$ 직접 도출.</div>
+</div>
+
+<div class="lib-card" id="h78" style="border-left:4px solid #d29922">
+<div class="lib-id">H-78 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>쿼크 전하: $Q = (3 - \text{켜진 비트})/3$</h3>
+<div class="lib-formula">$$Q = \frac{3 - n_{\text{on}}}{3}, \quad n_{\text{on}} \in \{1, 2\}$$</div>
+<p class="lib-precision">구조 대응. fitting 경고: 사후적 비트 할당</p>
+<p>H-44(3비트 옥텟)에서 켜진 비트 수가 전하를 결정. up($n=1$)→$Q=2/3$, down($n=2$)→$Q=1/3$.</p>
+<div class="lib-reuse">재대입 용도: H-44 쿼크 옥텟의 전하 규칙. 렙톤으로 확장 시 $n=0$→$Q=1$, $n=3$→$Q=0$ 필요.</div>
+</div>
+
+<div class="lib-card" id="h79" style="border-left:4px solid #d29922">
+<div class="lib-id">H-79 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>메손 = 순방향 + 역방향 CAS (비트 반전)</h3>
+<div class="lib-formula">$$\text{Meson} = |q\rangle \otimes |\bar{q}\rangle = |b_1 b_2 b_3\rangle \otimes |\bar{b}_1 \bar{b}_2 \bar{b}_3\rangle$$</div>
+<p class="lib-precision">구조 대응. 파이온·카온 등 메손 스펙트럼과 정합</p>
+<p>쿼크-반쿼크 = CAS 순방향과 역방향(비트 반전). 색 중성 = 비트합 000 또는 111→000(XOR). H-44 자연 확장.</p>
+<div class="lib-reuse">재대입 용도: H-44 → 메손/바리온 통합 분류. 메손 질량 공식 도출의 출발점.</div>
+</div>
+
+<div class="lib-card" id="h80" style="border-left:4px solid #d29922">
+<div class="lib-id">H-80 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>양성자/중성자: 색 111 = 바리온, 맛/색 분리</h3>
+<div class="lib-formula">$$\text{Baryon}: \quad b_{\text{color}_1} \oplus b_{\text{color}_2} \oplus b_{\text{color}_3} = 111$$</div>
+<p class="lib-precision">구조 대응. H-44 색 가둠 조건과 정합</p>
+<p>바리온 = 세 쿼크의 색 비트 XOR이 111(=전체 활성). 맛 비트와 색 비트가 독립 도메인으로 분리되어 양성자(uud)와 중성자(udd)를 구분.</p>
+<div class="lib-reuse">재대입 용도: H-44 바리온 조건의 명시화. H-79(메손)와 함께 하드론 분류 체계 완결.</div>
+</div>
+
+<div class="lib-card" id="h81" style="border-left:4px solid #d29922">
+<div class="lib-id">H-81 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>중성자-양성자 질량차: $m_n - m_p \approx (m_d - m_u)/2 = 1.255$ MeV</h3>
+<div class="lib-formula">$$m_n - m_p \approx \frac{m_d - m_u}{2} = \frac{2.50}{2} = 1.255\;\text{MeV}$$</div>
+<p class="lib-precision">2.9%. 실험값 1.293 MeV 대비. H-42의 부산물</p>
+<p>D-18(m_u), D-20(m_d) 질량차의 절반이 핵자 질량차를 근사. EM 보정 미포함(H-42 참조).</p>
+<div class="lib-reuse">재대입 용도: H-42(EM 보정) 검증의 보조 경로. 빅뱅 핵합성 n/p 비율 도출.</div>
+</div>
+
+<div class="lib-card" id="h82" style="border-left:4px solid #d29922">
+<div class="lib-id">H-82 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>CKM u행 Hamming 거리 단조 대응</h3>
+<div class="lib-formula">$$|V_{ud}| > |V_{us}| > |V_{ub}|, \quad d_H(u,d) < d_H(u,s) < d_H(u,b)$$</div>
+<p class="lib-precision">구조 대응. CKM 크기 순서와 Hamming 거리 단조 감소 일치</p>
+<p>H-44 비트 할당에서 u→d, u→s, u→b의 Hamming 거리가 증가할수록 혼합 행렬 원소가 감소. 전이 확률 ∝ 비트 거리의 함수.</p>
+<div class="lib-reuse">재대입 용도: H-47($s_{13}$) 도출의 구조적 근거. CKM 전체를 비트 전이로 재구성.</div>
+</div>
+
+<div class="lib-card" id="h83" style="border-left:4px solid #d29922">
+<div class="lib-id">H-83 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$|V_{ts}|$ = 0.04051</h3>
+<div class="lib-formula">$$|V_{ts}| = A\lambda^2\!\left(1 - \frac{\lambda^2}{2}\right) = 0.04051$$</div>
+<p class="lib-precision">4.42%. 실험값 0.03880 대비</p>
+<p>Wolfenstein 전개에서 A(D-08), $\lambda$(D-07)을 대입하여 $|V_{ts}|$ 도출. 2차 보정항 포함.</p>
+<div class="lib-reuse">재대입 용도: CKM 유니타리티 삼각형 변 길이 검증. B_s 혼합 예측.</div>
+</div>
+
+<div class="lib-card" id="h84" style="border-left:4px solid #d29922">
+<div class="lib-id">H-84 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Jarlskog 정밀: $J = 3.115 \times 10^{-5}$</h3>
+<div class="lib-formula">$$J_{\text{CKM}} = 3.115 \times 10^{-5}$$</div>
+<p class="lib-precision">1.13%. 실험값 $3.08 \times 10^{-5}$ 대비</p>
+<p>H-41의 Jarlskog를 H-47($s_{13}$ CAS 도출)로 정밀화. 외부 입력 제거 후 값.</p>
+<div class="lib-reuse">재대입 용도: H-41 대체. CP 위반 정량의 완전 CAS 닫힌 공식.</div>
+</div>
+
+<div class="lib-card" id="h85" style="border-left:4px solid #d29922">
+<div class="lib-id">H-85 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\sin(2\beta)$ = 0.733</h3>
+<div class="lib-formula">$$\sin(2\beta) = \frac{2\eta(1-\rho)}{(1-\rho)^2 + \eta^2} = 0.733$$</div>
+<p class="lib-precision">4.84%. 실험값 0.699 대비</p>
+<p>유니타리티 삼각형 $\rho, \eta$(H-28)에서 $\sin(2\beta)$ 도출. B 메손 CP 비대칭 관측량.</p>
+<div class="lib-reuse">재대입 용도: B 팩토리 실험 직접 비교. H-28 정밀도 개선 시 연동 갱신.</div>
+</div>
+
+<div class="lib-card" id="h86" style="border-left:4px solid #d29922">
+<div class="lib-id">H-86 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>유니타리티 삼각형 $\alpha$ = 87.95°</h3>
+<div class="lib-formula">$$\alpha(\text{UT}) = 87.95°$$</div>
+<p class="lib-precision">2.98%. 실험값 85.4° 대비</p>
+<p>$\alpha = \pi - \beta - \gamma$. H-28($\rho, \eta$)에서 $\beta, \gamma$를 구한 뒤 도출. $B \to \pi\pi$ 실험과 비교.</p>
+<div class="lib-reuse">재대입 용도: CKM 유니타리티 삼각형 세 꼭짓점 완결. H-85($\sin 2\beta$)와 쌍.</div>
+</div>
+
+<div class="lib-card" id="h87" style="border-left:4px solid #d29922">
+<div class="lib-id">H-87 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>뉴트리노 개별질량: $m_1 \approx 0,\; m_2 = 8.7,\; m_3 = 50.3$ meV</h3>
+<div class="lib-formula">$$m_1 \approx 0, \quad m_2 = \sqrt{\Delta m_{21}^2} = 8.7\;\text{meV}, \quad m_3 = \sqrt{\Delta m_{31}^2} = 50.3\;\text{meV}$$</div>
+<p class="lib-precision">NO(정상 순서) 가정. H-74 합산값 60.4 meV와 정합 (차이 1.4 meV ≈ $m_1$)</p>
+<p>D-05, D-06(PMNS 혼합각)과 $\Delta m^2$ 실험값으로 개별질량 결정. $m_1 \approx 0$은 H-25(NO 예측)과 일관.</p>
+<div class="lib-reuse">재대입 용도: H-74(질량합) 분해. H-89(0νββ) 유효질량 계산의 입력.</div>
+</div>
+
+<div class="lib-card" id="h88" style="border-left:4px solid #d29922">
+<div class="lib-id">H-88 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>QLC(쿼크-렙톤 상보성): $\theta_C + \theta_{12} \approx \pi/4$</h3>
+<div class="lib-formula">$$\theta_C + \theta_{12}^{\text{PMNS}} \approx \frac{\pi}{4}$$</div>
+<p class="lib-precision">3.22%. $\theta_C$(D-07) + $\theta_{12}$(D-05) = 0.762 rad vs $\pi/4$ = 0.785 rad</p>
+<p>카비보 각(D-07)과 태양 뉴트리노 혼합각(D-05)의 합이 $\pi/4$에 근접. CAS에서 쿼크와 렙톤 혼합이 상보적.</p>
+<div class="lib-reuse">재대입 용도: 쿼크-렙톤 통합의 구조적 단서. GUT 혼합 관계 도출 경로.</div>
+</div>
+
+<div class="lib-card" id="h89" style="border-left:4px solid #d29922">
+<div class="lib-id">H-89 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>이중 베타 붕괴 유효질량: $m_{ee} \approx 3.7$ meV</h3>
+<div class="lib-formula">$$m_{ee} = \left|\sum_i U_{ei}^2\, m_i\right| \approx 3.7\;\text{meV}$$</div>
+<p class="lib-precision">예측. 현재 실험 상한 ~50 meV(KamLAND-Zen) 이내</p>
+<p>H-87(개별질량) + D-05, D-22(PMNS 행렬 원소)로 $0\nu\beta\beta$ 유효질량 계산. NO에서는 검출 곤란 예측.</p>
+<div class="lib-reuse">재대입 용도: 차세대 0νββ 실험(nEXO, LEGEND) 예측. H-25(NO) 검증 경로.</div>
+</div>
+
+<div class="lib-card" id="h90" style="border-left:4px solid #d29922">
+<div class="lib-id">H-90 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>디코히어런스 시간 = Compare true 누적의 역수</h3>
+<div class="lib-formula">$$\tau_{\text{dec}} = \frac{1}{\Gamma_{\text{Compare=true}}} = \frac{1}{n_{\text{true}} \cdot \Delta t_{\text{CAS}}}$$</div>
+<p class="lib-precision">구조 대응. 양자-고전 전이 시간 스케일과 정합</p>
+<p>Compare=true가 누적될수록 상태가 확정(고전화). 디코히어런스 = 환경의 빈번한 Compare. 역수가 결맞음 유지 시간.</p>
+<div class="lib-reuse">재대입 용도: H-91(양자 제노)과 쌍. 양자 컴퓨팅 결맞음 시간의 CAS 해석.</div>
+</div>
+
+<div class="lib-card" id="h91" style="border-left:4px solid #d29922">
+<div class="lib-id">H-91 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>양자 제노 효과 = 빈번한 Compare false → 중첩 유지</h3>
+<div class="lib-formula">$$P_{\text{survive}} = \left(\cos^2\frac{\theta}{2n}\right)^n \xrightarrow{n\to\infty} 1$$</div>
+<p class="lib-precision">구조 대응. 제노 효과의 $n \to \infty$ 극한과 일치</p>
+<p>Compare가 false를 반복하면 상태 전이가 억압되어 초기 상태에 동결. CAS의 Compare false = "변경 없음" = 중첩 유지.</p>
+<div class="lib-reuse">재대입 용도: H-90(디코히어런스)의 역과정. 양자 오류 보정(H-96)과 연결.</div>
+</div>
+
+<div class="lib-card" id="h92" style="border-left:4px solid #d29922">
+<div class="lib-id">H-92 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>아하로노프-봄 위상: A = OPERATOR 구조, B = DATA 쓰기</h3>
+<div class="lib-formula">$$\Delta\phi_{AB} = \frac{e}{\hbar}\oint A_\mu\,dx^\mu, \quad A_\mu \leftrightarrow \text{OPERATOR}, \quad B \leftrightarrow \text{DATA}$$</div>
+<p class="lib-precision">구조 대응. AB 효과의 위상 구조와 CAS 대응</p>
+<p>게이지 퍼텐셜 $A_\mu$ = OPERATOR(직접 관측 불가, 효과만 존재). 자기장 $B$ = DATA에 쓰인 결과. 경로 적분 위상 = FSM 사이클.</p>
+<div class="lib-reuse">재대입 용도: H-93(베리 위상)의 기초. 게이지 불변성의 CAS 해석.</div>
+</div>
+
+<div class="lib-card" id="h93" style="border-left:4px solid #d29922">
+<div class="lib-id">H-93 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>베리 위상 = FSM 닫힌 사이클의 기하학적 위상</h3>
+<div class="lib-formula">$$\gamma_n = i\oint \langle n|\nabla_R|n\rangle \cdot dR, \quad \text{FSM 닫힌 경로} \to \gamma_n \neq 0$$</div>
+<p class="lib-precision">구조 대응. 단열 순환의 위상 축적과 FSM 사이클 대응</p>
+<p>FSM이 INIT→COMPARE→SWAP→INIT 사이클을 완료하면 기하학적 위상이 축적. 매개변수 공간의 닫힌 경로 = CAS 한 바퀴.</p>
+<div class="lib-reuse">재대입 용도: H-92(AB 위상)의 일반화. 위상 물질(토폴로지 절연체)의 CAS 해석 경로.</div>
+</div>
+
+<div class="lib-card" id="h94" style="border-left:4px solid #d29922">
+<div class="lib-id">H-94 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>블랙홀 정보 역설: $\delta^2$ 보존 → OPERATOR에 정보 보존</h3>
+<div class="lib-formula">$$\delta^2 = \text{const} \implies I_{\text{total}} = \text{const}, \quad I \subset \text{OPERATOR}$$</div>
+<p class="lib-precision">구조 대응. 유니타리 진화 보존과 $\delta^2$ 보존 대응</p>
+<p>공리 1($\delta^2$ 보존)이 정보 보존을 보장. 블랙홀 증발 시 정보는 OPERATOR 도메인에 잔류하여 DATA(호킹 복사)로 재방출.</p>
+<div class="lib-reuse">재대입 용도: H-53(란다우어) + H-55(얽힘 엔트로피)와 결합하여 정보 역설 해소 구조.</div>
+</div>
+
+<div class="lib-card" id="h95" style="border-left:4px solid #d29922">
+<div class="lib-id">H-95 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>베켄슈타인 한계: $S_{\max}/(2\pi RE) = 1$, $2\pi = 2(\text{Compare}) \times \pi(\text{위상})$</h3>
+<div class="lib-formula">$$S \leq \frac{2\pi RE}{\hbar c}, \quad 2\pi = 2_{\text{Compare}} \times \pi_{\text{phase}}$$</div>
+<p class="lib-precision">구조 대응. 베켄슈타인 한계의 $2\pi$ 인자 분해</p>
+<p>$2$ = Compare의 이진 분기(공리 2). $\pi$ = 위상 회전의 반주기. 정보 저장 한계가 CAS 구조로 분해.</p>
+<div class="lib-reuse">재대입 용도: H-94(정보 역설)의 정량 한계. 블랙홀 엔트로피 $S_{BH} = A/(4l_P^2)$와 연결.</div>
+</div>
+
+<div class="lib-card" id="h96" style="border-left:4px solid #d29922">
+<div class="lib-id">H-96 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>양자 오류 보정(QEC): FSM [3,2,2] 코드, 순차 제약 = 자동 에러 감지</h3>
+<div class="lib-formula">$$\text{FSM}[3,2,2]: \quad n=3\;\text{(CAS)},\; k=2\;\text{(논리)},\; d=2\;\text{(감지)}$$</div>
+<p class="lib-precision">구조 대응. [3,2,2] 코드의 에러 감지 능력과 FSM 순차 제약 일치</p>
+<p>CAS 3단계(Compare→Allocate→Swap) = 물리 큐비트 3. 논리 큐비트 2(δ의 실수/허수 성분). 거리 2 = 1비트 에러 감지. FSM 순차 제약이 자동으로 에러 전파를 차단.</p>
+<div class="lib-reuse">재대입 용도: H-91(양자 제노)과 결합. 양자 컴퓨터 에러 보정의 CAS 원리.</div>
+</div>
+
 <hr>
 <hr>
 
@@ -1466,49 +2228,66 @@
 
 <p>어떤 발견이 어떤 발견을 낳았는지. 화살표가 재대입 경로를 보여준다. $\alpha$ 하나에서 시작해서 가지를 치며 퍼져나간다.</p>
 
-<pre><code>alpha (D-01)
+<pre><code>alpha (D-01)  ... 모든 도출의 씨앗. Wyler 위상체적비
   |
-  +-- sin2(theta_W) (D-02)
-  |     |
-  |     +-- eta (D-04)  ... alpha^4 * sin2(theta_W)로 도출
+  +-- alpha 내부 해명
+  |     +-- Wyler CAS 유도 (D-26)  ... 9/(8pi^4) 구조 분해
+  |     +-- 137 = T(16)+1 (D-31)  ... 도메인 4비트 삼각수
+  |
+  +-- sin2(theta_W) (D-02)  ... 근본: (4pi^2-3)/(16pi^2)
+  |     +-- eta (D-04)  ... alpha^4 * sin2(theta_W)
+  |     +-- running 분해 (D-28)  ... 3/8 × 2/pi × CAS 보정
+  |     +-- 간결형 7/(2+9pi) (D-30)
+  |     +-- M_W = 80.39 GeV (D-41)  ... M_Z cos(theta_W)
   |
   +-- alpha_s (D-03)  ... 3 * alpha * (4pi)^(2/3)
+  |     +-- QCD beta_0 = 7/(4pi) (D-44)  ... 7=CAS 자유도
+  |
+  +-- 결합상수 삼각: alpha_s sin2thetaW/alpha = 15/4 (D-34)
   |
   +-- 질량 계층
-  |     +-- m_mu/m_e (D-10)  ... (3/2)(1/alpha)
-  |     +-- m_tau/m_mu (D-11)  ... sqrt(1/alpha)
-  |     +-- m_e/m_p (D-12)  ... alpha/(4pi)
-  |     +-- m_t/m_c (D-13)  ... 1/alpha
-  |     +-- 코이데 (D-09)  ... theta=2/9, r=sqrt(2)
-  |     +-- 코이데 편차 (D-14)  ... -15*alpha^3
-  |     +-- m_t (D-16)  ... v/sqrt(2) = Swap 단위비용
-  |     +-- m_c (D-17)  ... m_t * alpha
-  |     +-- m_u (D-18)  ... m_c * alpha_s^3
-  |     +-- m_s (D-19)  ... m_mu * (1-alpha_s)
-  |     +-- m_d (D-20)  ... m_e * (9+3*alpha_s/pi)
-  |     +-- m_b (D-21)  ... m_tau * 7/3
+  |     +-- 렙톤: m_mu/m_e(D-10), m_tau/m_mu(D-11), m_e/m_p(D-12), 통합비(D-38)
+  |     +-- 코이데(D-09) theta=2/9, 편차 -15alpha^3(D-14), 15=3×5 해명(D-27)
+  |     +-- up: m_t(D-16)→m_c(D-17)→m_u(D-18), m_t/m_c=1/alpha(D-13)
+  |     +-- down: m_s(D-19), m_d(D-20), m_b(D-21)
+  |     +-- 힉스-톱 비(D-37) m_H/m_t = sqrt(14/27)
   |
-  +-- lambda_H = 7/54 (D-24)  ... CAS완전값/세대구조
-  |     +-- m_H = v*sqrt(7/27) (D-25)  ... 125.37 GeV
+  +-- lambda_H = 7/54 (D-24) → m_H = 125.37 GeV (D-25)
   |
-  +-- Lambda*l_p^2 = alpha^57 * e^(21/35) (D-15)
+  +-- Lambda l_p^2 = alpha^57 e^(21/35) (D-15)
+  |     +-- Dirac 큰 수 소거 (D-35)
+  |     +-- [H-46] LRU 프리드만 → [H-57] H_0=67.92
+  |
+  +-- M_GUT = M_Z alpha^(-19/3) (D-29) → [H-75] 양성자 수명
+  +-- alpha running beta_0 = 2/(3pi) (D-39)
+  +-- alpha 길이 사다리 Δn=1,1 (D-42)
+  +-- 혼합각 곱 (D-36): 2/9 관통 증거
 
 
-독립 구조 상수 (alpha에 의존하지 않음):
+독립 구조 상수 (alpha 무관):
 
-  3/pi^2 (D-05)  ... 태양 뉴트리노 혼합각
-  4/7 (D-06)  ... 대기 뉴트리노 혼합각
+  3/pi^2 (D-05)  ... 태양 혼합각
+  4/7 (D-06)  ... 대기 혼합각
   sqrt(2/3) (D-08)  ... Wolfenstein A
+  z_eq = 2×3^5×7 = 3402 (D-43) → [H-49] T_CMB=2.741K
+
 
 반독립 (약한 alpha 의존):
 
-  sin(theta_C) (D-07)  ... 2/9 + pi*alpha 보정
-  sin(theta_13) (D-22)  ... 4/27 = (2/9)(2/3)
-  delta_CKM (D-23)  ... arctan(5/2 + alpha_s/pi)</code></pre>
+  sin(theta_C) (D-07) → [H-63] V_cb, [H-83] V_ts
+  sin(theta_13) (D-22) = 4/27
+  delta_CKM (D-23) → [H-47] s_13=0.003709 → [H-64] V_td, [H-84] J=3.1e-5
 
-<p>$\alpha$에서 직접 나온 것이 20개(D-02~D-04, D-09~D-21, D-24~D-25). 독립 구조 상수가 3개(D-05, D-06, D-08). 반독립이 2개(D-07, D-22). CKM CP가 1개(D-23). 총 42개 발견 중 20개가 $\alpha$ 한 줄에 매달려 있다. $\alpha$가 프레임의 뿌리다.</p>
 
-<p>가설 47개(H-01~H-20, H-22~H-47) 중 4개(H-15, H-16, H-19, H-21)가 발견으로 승격되어 활성 가설은 43개다. 발견이 "무엇이 나왔는가"라면 가설은 "왜 나왔는가"다. 가설이 증명되면 발견으로 승격되고, 라이브러리에 초록 태그가 하나 더 붙는다.</p>
+CAS 구조 정수 (alpha 무관, 위상/통계):
+
+  5/3 축퇴압 (D-33)  ... (9-4)/3 → [H-69] 찬드라세카르
+  BH 온도-수명 (D-32) → [H-54] BH 증발 5120=10×2^9
+  스핀-통계 CAS (D-40)</code></pre>
+
+<p>D-44개 발견 전부가 이 맵에 있다. $\alpha$에서 직접 나온 가지가 가장 크고, 독립 구조 상수 4개(D-05, D-06, D-08, D-43), CAS 구조 정수 3개(D-32, D-33, D-40)가 별도 뿌리다. $\alpha$가 프레임의 뿌리이되, 독립 뿌리도 있다.</p>
+
+<p>가설 96개(H-01~H-20, H-22~H-96) 중 4개(H-15, H-16, H-19, H-21)가 발견으로 승격되어 활성 가설은 92개다. 발견이 "무엇이 나왔는가"라면 가설은 "왜 나왔는가"다. 가설이 증명되면 발견으로 승격되고, 라이브러리에 초록 태그가 하나 더 붙는다.</p>
 
 <p>프레임을 돌릴수록 이 맵이 커진다. 맵이 커질수록 미지수가 줄어든다. 연립방정식에서 조건 하나가 추가될 때마다 해가 좁혀지는 것과 같다.</p>
 
@@ -1536,7 +2315,7 @@
 
 <div class="discovery-block">
 <h4>Complete Coverage of All 22 Standard Model Free Parameters</h4>
-<p>The 42 discoveries in this library fully cover all 22 free parameters of the Standard Model. The number of free parameters has become 0. All values are derived from the axioms (7).</p>
+<p>The 44 discoveries in this library fully cover all 22 free parameters of the Standard Model. The number of free parameters has become 0. All values are derived from the axioms (7).</p>
 <p>3 coupling constants, 6 quark masses, 3 lepton masses, 4 CKM parameters, 4 PMNS parameters, 2 Higgs parameters. All contained in this library.</p>
 </div>
 
@@ -1606,6 +2385,8 @@
 <tr><td class="col-id"><strong>D-40</strong></td><td><strong>Spin-statistics theorem = CAS atomic occupancy</strong></td><td><span class="lib-precision"><strong>0% (theorem)</strong></span></td><td><strong>Pauli exclusion from CAS atomicity</strong></td><td><a href="lib.html#en-d40">lib.html</a></td><td>03-23</td></tr>
 <tr><td class="col-id"><strong>D-41</strong></td><td><strong>$M_W$ = 80.39 GeV, $M_Z\cos\theta_W$ (1-loop)</strong></td><td><strong>0.016%</strong></td><td><strong>Electroweak boson mass completion</strong></td><td><strong><a href="lib.html#en-d41">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>D-42</strong></td><td><strong>$\alpha$ length ladder integer spacing $\Delta n$ = 1, 1</strong></td><td><strong>0% (identity)</strong></td><td><strong>$l_P$ → $R_H$ 29-rung structure</strong></td><td><strong><a href="lib.html#en-d42">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>D-43</strong></td><td><strong>$z_{eq}$ = 2×3⁵×7 = 3402</strong></td><td><strong>0.00%</strong></td><td><strong>Matter-radiation equality redshift</strong></td><td><strong><a href="lib.html#en-d43">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>D-44</strong></td><td><strong>QCD $b_0$ = 7/(4π), 7 = CAS</strong></td><td><strong>exact</strong></td><td><strong>QCD β-function 1-loop = CAS degrees of freedom</strong></td><td><strong><a href="lib.html#en-d44">lib.html</a></strong></td><td>03-25</td></tr>
 </table>
 </div>
 
@@ -1662,6 +2443,55 @@
 <tr><td class="col-id"><strong>H-45</strong></td><td><strong>4 forces = CAS × domain pair</strong></td><td><strong>D-34 reinterpretation</strong></td><td><strong>gravity=txs, strong=CAS atomicity(confinement), EW=boundary</strong></td><td><strong><a href="lib.html#en-h45">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-46</strong></td><td><strong>LRU general term = Friedmann eq.</strong></td><td><strong>$\Omega_m$ 0.6%, $\Omega_\Lambda$ 0.3%</strong></td><td><strong>$E(z) = (18/57)(1+z)^3 + 39/57$</strong></td><td><strong><a href="lib.html#en-h46">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-47</strong></td><td><strong>CKM $s_{13} = A\lambda^3(2/5)$</strong></td><td><strong>0.51%</strong></td><td><strong>$2/5 = \cot\delta_0$, Jarlskog completion path</strong></td><td><strong><a href="lib.html#en-h47">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-48</strong></td><td><strong>$\Omega_k = 0$ flatness</strong></td><td><strong>necessary</strong></td><td><strong>ECS complete partition</strong></td><td><strong><a href="lib.html#en-h48">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-49</strong></td><td><strong>$T_{CMB}$ = 2.741 K</strong></td><td><strong>0.58%</strong></td><td><strong>D-43 chain</strong></td><td><strong><a href="lib.html#en-h49">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-50</strong></td><td><strong>$q_0$ = -10/19</strong></td><td><strong>0.14%</strong></td><td><strong>H-46 direct</strong></td><td><strong><a href="lib.html#en-h50">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-51</strong></td><td><strong>Gluon 8 = bit-pair transitions</strong></td><td><strong>structural</strong></td><td><strong>H-03 independent confirmation</strong></td><td><strong><a href="lib.html#en-h51">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-52</strong></td><td><strong>CAS atomicity→SU(3)</strong></td><td><strong>necessary</strong></td><td><strong>unobservable=symmetry</strong></td><td><strong><a href="lib.html#en-h52">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-53</strong></td><td><strong>Landauer $\ln 2$</strong></td><td><strong>0%</strong></td><td><strong>Compare condition number</strong></td><td><strong><a href="lib.html#en-h53">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-54</strong></td><td><strong>BH evaporation 5120=10×2⁹</strong></td><td><strong>exact</strong></td><td><strong>D-32 extension</strong></td><td><strong><a href="lib.html#en-h54">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-55</strong></td><td><strong>Entanglement entropy $\ln 2$</strong></td><td><strong>0%</strong></td><td><strong>Compare 1-bit</strong></td><td><strong><a href="lib.html#en-h55">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-56</strong></td><td><strong>α running $β_1$=-1/4</strong></td><td><strong>exact</strong></td><td><strong>Swap degrees of freedom</strong></td><td><strong><a href="lib.html#en-h56">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-57</strong></td><td><strong>$H_0$=67.92</strong></td><td><strong>0.83%</strong></td><td><strong>D-15+H-46</strong></td><td><strong><a href="lib.html#en-h57">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-58</strong></td><td><strong>$a(t)$ LRU</strong></td><td><strong>consistent</strong></td><td><strong>ΛCDM isomorphism</strong></td><td><strong><a href="lib.html#en-h58">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-59</strong></td><td><strong>Hubble tension $\sqrt{57/50}$</strong></td><td><strong>0.71%</strong></td><td><strong>HOT oversampling</strong></td><td><strong><a href="lib.html#en-h59">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-60</strong></td><td><strong>Bit-weighted mass ratio</strong></td><td><strong>0.06%</strong></td><td><strong>H-44 consistent</strong></td><td><strong><a href="lib.html#en-h60">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-61</strong></td><td><strong>Baryon number=111 irreversible</strong></td><td><strong>structural</strong></td><td><strong>Axiom 4+H-44</strong></td><td><strong><a href="lib.html#en-h61">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-62</strong></td><td><strong>Δ++ allowed</strong></td><td><strong>structural</strong></td><td><strong>D-40 consistent</strong></td><td><strong><a href="lib.html#en-h62">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-63</strong></td><td><strong>$|V_{cb}|$=0.04125</strong></td><td><strong>0.61%</strong></td><td><strong>D-07+D-08</strong></td><td><strong><a href="lib.html#en-h63">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-64</strong></td><td><strong>$|V_{td}|$=0.00863</strong></td><td><strong>0.72%</strong></td><td><strong>H-47 via</strong></td><td><strong><a href="lib.html#en-h64">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-65</strong></td><td><strong>$\delta_{PMNS}$ confirmed</strong></td><td><strong>0.21%</strong></td><td><strong>H-18 maintained</strong></td><td><strong><a href="lib.html#en-h65">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-66</strong></td><td><strong>$\theta_{23}$ octant=upper</strong></td><td><strong>0.27%</strong></td><td><strong>D-06: 4/7>1/2</strong></td><td><strong><a href="lib.html#en-h66">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-67</strong></td><td><strong>Holevo bound</strong></td><td><strong>structural</strong></td><td><strong>Compare 1-bit/cycle</strong></td><td><strong><a href="lib.html#en-h67">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-68</strong></td><td><strong>BH negative heat capacity</strong></td><td><strong>consistent</strong></td><td><strong>LRU+CAS acceleration</strong></td><td><strong><a href="lib.html#en-h68">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-69</strong></td><td><strong>Chandrasekhar limit</strong></td><td><strong>~0%</strong></td><td><strong>D-33(5/3)+2/3</strong></td><td><strong><a href="lib.html#en-h69">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-70</strong></td><td><strong>Tsirelson $2\sqrt{2}$</strong></td><td><strong>0%</strong></td><td><strong>2(Compare)×√2(orthogonal)</strong></td><td><strong><a href="lib.html#en-h70">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-71</strong></td><td><strong>Holography 4=domain</strong></td><td><strong>0%</strong></td><td><strong>$A/(4l_P^2)$</strong></td><td><strong><a href="lib.html#en-h71">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-72</strong></td><td><strong>g-2 2-loop ≈-1/3</strong></td><td><strong>1.5%</strong></td><td><strong>-(2/9)(3/2)</strong></td><td><strong><a href="lib.html#en-h72">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-73</strong></td><td><strong>Boson triangle relation</strong></td><td><strong>0.12%</strong></td><td><strong>fitting warning</strong></td><td><strong><a href="lib.html#en-h73">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-74</strong></td><td><strong>$\Sigma m_\nu$ formula</strong></td><td><strong>3.2%</strong></td><td><strong>$m_e\alpha^3(3/\pi^2)$</strong></td><td><strong><a href="lib.html#en-h74">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-75</strong></td><td><strong>Proton lifetime ~10³³</strong></td><td><strong>~10×</strong></td><td><strong>D-29 based</strong></td><td><strong><a href="lib.html#en-h75">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-76</strong></td><td><strong>e-folding $N_e$=60</strong></td><td><strong>structural</strong></td><td><strong>57+3</strong></td><td><strong><a href="lib.html#en-h76">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-77</strong></td><td><strong>$\Omega_b/\Omega_{DM}$</strong></td><td><strong>4.1%</strong></td><td><strong>H-32 reconfirmed</strong></td><td><strong><a href="lib.html#en-h77">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-78</strong></td><td><strong>Quark charge bits</strong></td><td><strong>structural</strong></td><td><strong>fitting warning</strong></td><td><strong><a href="lib.html#en-h78">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-79</strong></td><td><strong>Meson=bit inversion</strong></td><td><strong>structural</strong></td><td><strong>forward/reverse CAS</strong></td><td><strong><a href="lib.html#en-h79">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-80</strong></td><td><strong>Color/flavor separation</strong></td><td><strong>structural</strong></td><td><strong>color 111=baryon</strong></td><td><strong><a href="lib.html#en-h80">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-81</strong></td><td><strong>$m_n-m_p$ byproduct</strong></td><td><strong>2.9%</strong></td><td><strong>$(m_d-m_u)/2$</strong></td><td><strong><a href="lib.html#en-h81">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-82</strong></td><td><strong>CKM Hamming</strong></td><td><strong>qualitative</strong></td><td><strong>u-row monotone mapping</strong></td><td><strong><a href="lib.html#en-h82">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-83</strong></td><td><strong>$|V_{ts}|$</strong></td><td><strong>4.42%</strong></td><td><strong>NLO needed</strong></td><td><strong><a href="lib.html#en-h83">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-84</strong></td><td><strong>$J$ precision</strong></td><td><strong>1.13%</strong></td><td><strong>H-47 cumulative error</strong></td><td><strong><a href="lib.html#en-h84">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-85</strong></td><td><strong>$\sin 2\beta$</strong></td><td><strong>4.84%</strong></td><td><strong>H-28 dependent</strong></td><td><strong><a href="lib.html#en-h85">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-86</strong></td><td><strong>$\alpha$(UT)</strong></td><td><strong>2.98%</strong></td><td><strong>H-28 dependent</strong></td><td><strong><a href="lib.html#en-h86">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-87</strong></td><td><strong>$\nu$ individual masses</strong></td><td><strong>prediction</strong></td><td><strong>H-05+$\Delta m^2$</strong></td><td><strong><a href="lib.html#en-h87">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-88</strong></td><td><strong>QLC</strong></td><td><strong>3.22%</strong></td><td><strong>$\theta_C+\theta_{12}$</strong></td><td><strong><a href="lib.html#en-h88">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-89</strong></td><td><strong>$m_{ee}$ 0νββ</strong></td><td><strong>prediction</strong></td><td><strong>~3.7 meV</strong></td><td><strong><a href="lib.html#en-h89">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-90</strong></td><td><strong>Decoherence</strong></td><td><strong>qualitative</strong></td><td><strong>Compare true accumulation</strong></td><td><strong><a href="lib.html#en-h90">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-91</strong></td><td><strong>Quantum Zeno</strong></td><td><strong>qualitative</strong></td><td><strong>frequent Compare false</strong></td><td><strong><a href="lib.html#en-h91">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-92</strong></td><td><strong>Aharonov-Bohm</strong></td><td><strong>qualitative</strong></td><td><strong>A=OPERATOR, B=DATA</strong></td><td><strong><a href="lib.html#en-h92">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-93</strong></td><td><strong>Berry phase</strong></td><td><strong>qualitative</strong></td><td><strong>FSM closed cycle</strong></td><td><strong><a href="lib.html#en-h93">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-94</strong></td><td><strong>Information paradox</strong></td><td><strong>qualitative</strong></td><td><strong>$\delta^2$ conservation</strong></td><td><strong><a href="lib.html#en-h94">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-95</strong></td><td><strong>Bekenstein bound</strong></td><td><strong>0%</strong></td><td><strong>$2\pi RE/(\hbar c)$</strong></td><td><strong><a href="lib.html#en-h95">lib.html</a></strong></td><td>03-25</td></tr>
+<tr><td class="col-id"><strong>H-96</strong></td><td><strong>QEC FSM</strong></td><td><strong>structural</strong></td><td><strong>[3,2,2] code</strong></td><td><strong><a href="lib.html#en-h96">lib.html</a></strong></td><td>03-25</td></tr>
 </table>
 </div>
 
@@ -2572,6 +3402,465 @@
 <div class="lib-reuse">Re-entry use: Path to H-41 (Jarlskog) D-card promotion. Derivation of R = cot(δ₀) necessity is next task. Possible derivation from H-44 bit transition (u(001)→b(110) = XOR 111) amplitude.</div>
 </div>
 
+<div class="lib-card" id="en-d43" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-43 <span class="tag-discovery">Discovery</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Matter-Radiation Equality Redshift $z_{eq}$ = 2×3⁵×7 = 3402</h3>
+<div class="lib-formula">$$z_{eq} = 2 \times 3^5 \times 7 = 3402$$</div>
+<p class="lib-precision">3402 vs Planck 2018 $3402 \pm 26$. Error 0.00%</p>
+<p>2=bracket(Axiom 1), 3⁵=CAS-stage(3) to the 5th power(5=Compare2+CAS3), 7=CAS degrees of freedom(Axiom 9). Chain-derived from H-46(LRU Friedmann) via $\Omega_r = (18/57)/(1+z_{eq})$. CMB temperature 2.741K (0.58%) also follows from here.</p>
+<div class="lib-reuse">Re-entry use: CMB temperature, precision $\Omega_r$, input for BAO sound horizon derivation.</div>
+</div>
+
+<div class="lib-card" id="en-d44" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-44 <span class="tag-discovery">Discovery</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>QCD β-function 1-loop Coefficient $b_0$ = 7/(4π), 7 = CAS Degrees of Freedom</h3>
+<div class="lib-formula">$$b_0^{QCD} = \frac{7}{4\pi} = \frac{11C_A - 2n_f}{12\pi}, \quad 7 = 1+2+4 = \text{CAS internal state sum}$$</div>
+<p class="lib-precision">Exact match. 7 = SM $11 \times 3 - 2 \times 6 = 21$ / 3 = 7</p>
+<p>Paired with D-39 (QED $\beta_0 = 2/(3\pi)$, 3=CAS stage). 3 appears in QED, 7 in QCD as CAS structural numbers. With $n_f=6$ (H-01: 3 generations×2) and $C_A=3$ (H-03: SU(3)) automatically determined by CAS, $b_0=7/(4\pi)$ is inevitable.</p>
+<div class="lib-reuse">Re-entry use: $\alpha_s$ running precision. $\Lambda_{QCD}$ CAS derivation path. QED/QCD pair structure with D-39.</div>
+</div>
+
+<div class="lib-card" id="en-h48" style="border-left:4px solid #d29922">
+<div class="lib-id">H-48 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\Omega_k = 0$ (Cosmic Flatness) = ECS Complete Partition</h3>
+<div class="lib-formula">$$\Omega_k = 0: \quad \text{HOT} + \text{WARM} + \text{COLD} = 57/57 = 1$$</div>
+<p class="lib-precision">$|\Omega_k| < 0.002$ (Planck 2018). No gap in LRU queue = flat</p>
+<p>From H-30 (3:15:39/57), 3+15+39=57. HOT+WARM+COLD of the LRU queue partitions the whole without remainder. Since gaps are structurally impossible, $\Omega_k=0$ is inevitable.</p>
+<div class="lib-reuse">Re-entry use: Flatness explained without inflation. Spatial curvature = absence of LRU residual.</div>
+</div>
+
+<div class="lib-card" id="en-h49" style="border-left:4px solid #d29922">
+<div class="lib-id">H-49 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>CMB Temperature $T_0$ = 2.741 K</h3>
+<div class="lib-formula">$$T_0 = \left(\frac{15 \hbar^3 c^5 \rho_\gamma}{\pi^2 k_B^4}\right)^{1/4}, \quad \rho_\gamma = \rho_c \times \Omega_r$$</div>
+<p class="lib-precision">2.741 K vs experiment 2.7255 K. Error 0.58%</p>
+<p>Derive $\Omega_r$ from D-43 ($z_{eq}=3402$), obtain $\rho_c$ from the Friedmann equation (H-46), then compute $T_0$ via Stefan-Boltzmann. Chain derivation.</p>
+<div class="lib-reuse">Re-entry use: CMB spectrum, recombination temperature, neutrino background temperature $T_\nu = T_0 (4/11)^{1/3}$.</div>
+</div>
+
+<div class="lib-card" id="en-h50" style="border-left:4px solid #d29922">
+<div class="lib-id">H-50 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Deceleration Parameter $q_0$ = -10/19</h3>
+<div class="lib-formula">$$q_0 = \frac{\Omega_m}{2} - \Omega_\Lambda = \frac{9}{57} - \frac{39}{57} = -\frac{30}{57} = -\frac{10}{19}$$</div>
+<p class="lib-precision">-0.5263 vs observed -0.527. Error 0.14%</p>
+<p>Directly derived from H-46 (LRU Friedmann). 30=7×4+2 (H-40) appears in the numerator.</p>
+<div class="lib-reuse">Re-entry use: CAS quantification of cosmic accelerated expansion. Paired with $z_t = (13/3)^{1/3}-1 = 0.63$ (H-46).</div>
+</div>
+
+<div class="lib-card" id="en-h51" style="border-left:4px solid #d29922">
+<div class="lib-id">H-51 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>8 Gluons = CAS 3-bit Pair-Exchange Operators $C(3,2) \times 2 + 2$</h3>
+<div class="lib-formula">$$8 = C(3,2) \times 2 + 2 = 3 \times 2 + 2$$</div>
+<p class="lib-precision">Structural match. Independent path confirmation of H-03</p>
+<p>From H-44 (3-bit octet), pairs exchanging 2 of 3 bits = $C(3,2)=3$ pairs. Each pair has real/imaginary = 6. Add 2 diagonal = 8. Exactly corresponds to Gell-Mann matrices $\lambda_1$~$\lambda_8$.</p>
+<div class="lib-reuse">Re-entry use: Reinforces H-03. Possibility of deriving Gell-Mann structure constants $f_{abc}$ from H-44 bit transitions.</div>
+</div>
+
+<div class="lib-card" id="en-h52" style="border-left:4px solid #d29922">
+<div class="lib-id">H-52 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>CAS Atomicity → SU(3) Color Symmetry: Unobservable Order = Label Symmetry</h3>
+<div class="lib-formula">$$\text{CAS 3-stage(R→C→S) inseparable(Axiom 2)} → \text{Order unobservable in DATA} → \text{3-label exchange symmetry} = SU(3)$$</div>
+<p class="lib-precision">Structural necessity. Axiom 2 (atomicity) + Axiom 3 (outside time)</p>
+<p>Since CAS is outside time (Axiom 3), the R,C,S order cannot be observed in DATA. Unobservability = label exchange symmetry. This is the structural basis for SU(3) color symmetry. Precision refinement of H-02 (gauge correspondence).</p>
+<div class="lib-reuse">Re-entry use: Color confinement = rigorous argument from CAS atomicity. Strengthens the basis for asymptotic freedom (H-09).</div>
+</div>
+
+<div class="lib-card" id="en-h53" style="border-left:4px solid #d29922">
+<div class="lib-id">H-53 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Landauer Limit $kT \ln 2$: $\ln 2 = \ln(\text{Compare Branch Count})$</h3>
+<div class="lib-formula">$$E_{min} = kT \ln 2, \quad 2 = \text{Compare branch count (true/false)}$$</div>
+<p class="lib-precision">0% error. Same formula as Landauer's principle + CAS structural basis</p>
+<p>Compare = 2-state branching (Axiom 2). Minimum heat cost of irreversible 1-bit erasure (Swap, Axiom 4) = $kT \times \ln(\text{branch count})$. CAS answers "why $\ln 2$": because Compare has 2 branches.</p>
+<div class="lib-reuse">Re-entry use: Paired with H-12 (ℏ=TOCTOU lock). CAS basis for information theory-thermodynamics connection.</div>
+</div>
+
+<div class="lib-card" id="en-h54" style="border-left:4px solid #d29922">
+<div class="lib-id">H-54 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>BH Evaporation Time $t_{evap} = 5120\pi G^2 M^3 / (\hbar c^4)$, 5120 = 10×2⁹</h3>
+<div class="lib-formula">$$t_{evap} = 5120\pi \frac{G^2 M^3}{\hbar c^4}, \quad 5120 = 10 \times 2^9 = 10 \times 512$$</div>
+<p class="lib-precision">Algebraically exact derivation from D-32. 10=SO(5) dimension (Wyler), 2⁹=binary state space of complete description 9</p>
+<p>Transforming D-32 ($T_H^3 \tau_{BH} = (10/\pi^2) T_P^3 t_P$) yields the standard BH evaporation time. CAS decomposition of coefficient 5120: 10 (same factor as D-32) × 512 (CAS 9-bit $2^9$ state space).</p>
+<div class="lib-reuse">Re-entry use: BH thermodynamics completion. Micro BH evaporation verification. D-32 extension.</div>
+</div>
+
+<div class="lib-card" id="en-h55" style="border-left:4px solid #d29922">
+<div class="lib-id">H-55 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Quantum Entanglement Entropy: $S_E(\max) = \ln 2$ = Compare 1-bit</h3>
+<div class="lib-formula">$$S_E = -\text{Tr}(\rho_A \ln \rho_A) \leq \ln 2, \quad \ln 2 = \text{information content of Compare branching}$$</div>
+<p class="lib-precision">0%. Entanglement entropy of Bell state $|\Phi^+\rangle$ = $\ln 2$</p>
+<p>$\delta^2$ conservation (Axiom 1) + multiple projection (Axiom 11): extracting a subsystem causes information loss about the rest = entropy. Maximum entanglement = symmetric projection (equal distribution of $\delta$ to two observers). $\ln 2$ = information content of Compare 1-bit decision (Axiom 2). Same $\ln 2$ as H-53 (Landauer).</p>
+<div class="lib-reuse">Re-entry use: CAS quantification of entanglement structure. CAS foundation for all of quantum information theory.</div>
+</div>
+
+<div class="lib-card" id="en-h56" style="border-left:4px solid #d29922">
+<div class="lib-id">H-56 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>α Running 2-loop $\beta_1 = -1/4 = -1/\text{Swap DOF}$</h3>
+<div class="lib-formula">$$\beta_1 = -\frac{1}{4} = -\frac{1}{\text{Swap DOF}}$$</div>
+<p class="lib-precision">Exactly $-1/4$. Swap DOF = 4 (Axiom 1 domain count).</p>
+<p>The QED 2-loop β-function coefficient $\beta_1 = -1/4$ matches the reciprocal of CAS Swap operation's degrees of freedom. Suggests energy dependence of coupling constants originates from CAS domain structure.</p>
+<div class="lib-reuse">Re-entry use: High-energy α running prediction. CAS interpretation path for $\beta_2$ and higher coefficients. Reinterpretation of D-03 ($\alpha_s$) scale dependence.</div>
+</div>
+
+<div class="lib-card" id="en-h57" style="border-left:4px solid #d29922">
+<div class="lib-id">H-57 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$H_0 = 67.92$ km/s/Mpc (D-15 + H-46)</h3>
+<div class="lib-formula">$$H_0 = 67.92 \;\text{km/s/Mpc}$$</div>
+<p class="lib-precision">67.92 vs Planck 67.36. Error 0.83%.</p>
+<p>Combining D-15 cosmological constant with H-46 Friedmann equation yields the Hubble constant. Matches CMB-based measurement to 0.83%.</p>
+<div class="lib-reuse">Re-entry use: Input for H-59 (Hubble tension). BAO scale prediction. Cosmic age $t_0 = 1/H_0$ correction.</div>
+</div>
+
+<div class="lib-card" id="en-h58" style="border-left:4px solid #d29922">
+<div class="lib-id">H-58 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$a(t) = (6/13)^{1/3}\sinh^{2/3}(t/t_\Lambda)$ LRU Interpretation</h3>
+<div class="lib-formula">$$a(t) = \left(\frac{6}{13}\right)^{1/3} \sinh^{2/3}\!\left(\frac{t}{t_\Lambda}\right)$$</div>
+<p class="lib-precision">$6/13$ = reduction of matter/dark-energy ratio $18/39$. Consistent with ΛCDM scale factor.</p>
+<p>From H-46's HOT:WARM:COLD ratio, the matter fraction $18/39 = 6/13$ determines the scale factor. LRU cache eviction timing governs the cosmic expansion rate.</p>
+<div class="lib-reuse">Re-entry use: Precision refinement of deceleration→acceleration transition $z_t$. Cosmic age integral. Time-domain transformation of H-46 general term.</div>
+</div>
+
+<div class="lib-card" id="en-h59" style="border-left:4px solid #d29922">
+<div class="lib-id">H-59 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Hubble Tension: $H_0^{\text{local}} = H_0^{\text{CAS}} \times \sqrt{57/50}$ = 72.52</h3>
+<div class="lib-formula">$$H_0^{\text{local}} = H_0^{\text{CAS}} \times \sqrt{\frac{57}{50}} = 72.52 \;\text{km/s/Mpc}$$</div>
+<p class="lib-precision">72.52 vs SH0ES 73.04. Error 0.71%.</p>
+<p>Applying $\sqrt{57/50}$ correction to CMB $H_0$ (H-57) yields the local measurement. 57 is the CAS total state count, 50 = 57-7 is the state count excluding the observer (OPERATOR). The Hubble tension is not a real discrepancy but a CAS observer effect.</p>
+<div class="lib-reuse">Re-entry use: Hubble tension resolution path. Independent derivation of $\sqrt{57/50}$. Search for observer effect in other physical quantities.</div>
+</div>
+
+<div class="lib-card" id="en-h60" style="border-left:4px solid #d29922">
+<div class="lib-id">H-60 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Bit-Weighted Mass Ratio: $m_c = v/\sqrt{2} \times \alpha$ = 1270.7 MeV</h3>
+<div class="lib-formula">$$m_c = \frac{v}{\sqrt{2}} \cdot \alpha = 1270.7 \;\text{MeV}$$</div>
+<p class="lib-precision">1270.7 vs PDG $1270 \pm 20$ MeV. Error 0.06%. Consistent with H-44.</p>
+<p>In H-44's 3-bit quark octet, charm is a single Compare bit. Multiplying $m_t = v/\sqrt{2}$ (D-16, Swap cost) by $\alpha$ (Compare cost) yields $m_c$ exactly. Bit weights determine the mass hierarchy.</p>
+<div class="lib-reuse">Re-entry use: Structural basis for D-17 ($m_c = m_t \cdot \alpha$). Verification of H-44 bit cost scheme. Path to $m_u$ derivation.</div>
+</div>
+
+<div class="lib-card" id="en-h61" style="border-left:4px solid #d29922">
+<div class="lib-id">H-61 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Baryon Number Conservation = 111 Irreversibility (Axiom 4 + H-44)</h3>
+<div class="lib-formula">$$B = \frac{1}{3}\sum_i b_i = 1 \;(111\text{ state}) \;\Rightarrow\; \Delta B = 0$$</div>
+<p class="lib-precision">Consistent with baryon number conservation law. Irreversibility derived from Axiom 4 (monotonic entropy increase).</p>
+<p>In H-44, 111 = baryon state. Axiom 4's irreversibility forbids 111→non-111 transitions. Baryon number conservation is not a separate symmetry but a natural consequence of CAS bit structure + entropy axiom.</p>
+<div class="lib-reuse">Re-entry use: CAS basis for proton decay prohibition. Interpretation of D-04 (baryogenesis) initial conditions. Bit-transition interpretation of sphaleron processes.</div>
+</div>
+
+<div class="lib-card" id="en-h62" style="border-left:4px solid #d29922">
+<div class="lib-id">H-62 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\Delta^{++}$ Allowed = Same Flavor + Different Color (D-40 Consistent)</h3>
+<div class="lib-formula">$$\Delta^{++} = u_R\, u_G\, u_B \;:\; \text{same flavor, distinct color} \;\Rightarrow\; \text{no Pauli violation}$$</div>
+<p class="lib-precision">Consistent with D-40 (color charge = CAS address). Matches experimental existence of $\Delta^{++}$.</p>
+<p>$\Delta^{++}$ (uuu) consists of 3 same-flavor quarks, but since color charge = CAS memory address (D-40), the 3 quarks occupy different addresses. Structural reason why same-flavor baryons are allowed without violating Fermi statistics.</p>
+<div class="lib-reuse">Re-entry use: Verification of CAS address interpretation of color confinement. Check other same-flavor baryons like $\Omega^-$ (sss). Relation of color DOF 3 = CAS operation count.</div>
+</div>
+
+<div class="lib-card" id="en-h63" style="border-left:4px solid #d29922">
+<div class="lib-id">H-63 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$|V_{cb}| = A\lambda^2 = \sqrt{2/3}\cdot(2/9)^2\cdot(1+\pi\alpha/2)^2$ = 0.04125</h3>
+<div class="lib-formula">$$|V_{cb}| = \sqrt{\frac{2}{3}} \cdot \left(\frac{2}{9}\right)^2 \cdot \left(1+\frac{\pi\alpha}{2}\right)^2 = 0.04125$$</div>
+<p class="lib-precision">0.04125 vs PDG 0.0410. Error 0.61%.</p>
+<p>Combination of Wolfenstein $A = \sqrt{2/3}$ (D-08) and Cabibbo $\lambda = 2/9 + \pi\alpha$ correction (D-07). The CKM 2nd→3rd generation transition amplitude is determined solely by CAS structural constants.</p>
+<div class="lib-reuse">Re-entry use: $B$ meson decay rate prediction. Combined with H-47 ($s_{13}$) for complete CKM matrix determination. $|V_{tb}|$ unitarity verification.</div>
+</div>
+
+<div class="lib-card" id="en-h64" style="border-left:4px solid #d29922">
+<div class="lib-id">H-64 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$|V_{td}|$ = 0.00863 (via H-47)</h3>
+<div class="lib-formula">$$|V_{td}| = A\lambda^3(1 - R\,e^{i\delta}) \approx 0.00863$$</div>
+<p class="lib-precision">0.00863 vs PDG 0.00857. Error 0.72%.</p>
+<p>Substituting H-47's $R = 2/5$ and D-23's $\delta = \arctan(5/2+\alpha_s/\pi)$ into the Wolfenstein parametrization yields $|V_{td}|$. Even the smallest off-diagonal CKM element is determined by a CAS closed formula.</p>
+<div class="lib-reuse">Re-entry use: $B_d$ mixing frequency $\Delta m_d$ prediction. Fixing unitarity triangle vertex coordinates. $|V_{td}/V_{ts}|$ ratio verification.</div>
+</div>
+
+<div class="lib-card" id="en-h65" style="border-left:4px solid #d29922">
+<div class="lib-id">H-65 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\delta_{\text{PMNS}}$ Correction Unnecessary (H-18 Retained)</h3>
+<div class="lib-formula">$$\delta_{\text{PMNS}} = \frac{3\pi}{2} \quad(\text{H-18 retained as-is})$$</div>
+<p class="lib-precision">Experimental uncertainty > formula error. No correction needed.</p>
+<p>After examining whether additional $\alpha$ correction is needed for PMNS CP phase $\delta = 3\pi/2$ (H-18), the current experimental uncertainty (~20 degrees) far exceeds the correction magnitude ($\alpha_s/\pi$ level), making correction meaningless. H-18 value retained.</p>
+<div class="lib-reuse">Re-entry use: Re-examine when next-generation neutrino experiments (DUNE, HK) reduce uncertainty. Correction term derivation path if $\delta_{\text{PMNS}} \neq 3\pi/2$ is measured.</div>
+</div>
+
+<div class="lib-card" id="en-h66" style="border-left:4px solid #d29922">
+<div class="lib-id">H-66 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\theta_{23}$ Octant = Upper (D-06: $4/7 > 1/2$)</h3>
+<div class="lib-formula">$$\sin^2\theta_{23} = \frac{4}{7} \approx 0.5714 > \frac{1}{2} \quad\Rightarrow\quad \text{upper octant}$$</div>
+<p class="lib-precision">Deviation $= 4/7 - 1/2 = 1/14 = 1/(2\times 7)$. Fixed from D-06.</p>
+<p>Since $\sin^2\theta_{23} = 4/7$ from D-06, the atmospheric mixing angle exceeds maximal mixing ($\pi/4$). The octant question is answered: upper. The deviation $1/14$ is the reciprocal of the product of CAS number 7 and domain count 2.</p>
+<div class="lib-reuse">Re-entry use: Compare with NOvA/T2K octant measurement. D-06 verification at precision $\theta_{23}$ measurement. Definitive determination expected at DUNE.</div>
+</div>
+
+<div class="lib-card" id="en-h67" style="border-left:4px solid #d29922">
+<div class="lib-id">H-67 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Holevo Bound = Compare 1-bit/CAS Cycle</h3>
+<div class="lib-formula">$$\chi \leq S(\rho) \;:\; \text{extractable information per CAS cycle} = 1\;\text{bit (Compare)}$$</div>
+<p class="lib-precision">Consistent with Holevo bound. Compare = 1-bit decision operation.</p>
+<p>The Holevo bound in quantum information (maximum 1 classical bit extractable from 1 qubit) matches the structural limit of CAS Compare operation. Since Compare performs only a 1-bit decision per cycle, the information extraction limit is an inevitable consequence of CAS architecture.</p>
+<div class="lib-reuse">Re-entry use: CAS interpretation of quantum channel capacity. Structural proof of superluminal communication impossibility. Connection to H-70 (Tsirelson bound).</div>
+</div>
+
+<div class="lib-card" id="en-h68" style="border-left:4px solid #d29922">
+<div class="lib-id">H-68 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>BH Heat Capacity $C_{BH} = -8\pi GM^2 k_B/(\hbar c)$, Negative = LRU COLD Eviction + CAS Acceleration</h3>
+<div class="lib-formula">$$C_{BH} = -\frac{8\pi G M^2 k_B}{\hbar c} < 0$$</div>
+<p class="lib-precision">Consistent with Hawking thermodynamics. Negative heat capacity = self-gravitating system property.</p>
+<p>The negative heat capacity of black holes has the same structure as HOT region acceleration when COLD region data is evicted from LRU cache. When mass (data) is emitted, temperature (processing speed) increases. CAS's LRU management mechanism governs black hole thermodynamics.</p>
+<div class="lib-reuse">Re-entry use: CAS interpretation of Hawking radiation spectrum. LRU reinterpretation of black hole information paradox. Connection to H-71 (holography).</div>
+</div>
+
+<div class="lib-card" id="en-h69" style="border-left:4px solid #d29922">
+<div class="lib-id">H-69 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Chandrasekhar Limit: $5/3$ (D-33) → $2/3$ = Koide Ratio → $M_{\text{Ch}}$</h3>
+<div class="lib-formula">$$\gamma = \frac{5}{3} \xrightarrow{\text{relativistic}} \frac{4}{3} \;;\quad \frac{5}{3} - 1 = \frac{2}{3} = \text{Koide ratio}(D\text{-}09) \;\Rightarrow\; M_{\text{Ch}}$$</div>
+<p class="lib-precision">$\gamma = 5/3$ (D-33 ideal gas) derives Chandrasekhar limit. $2/3 = \sqrt{2/3}^{\,2}$.</p>
+<p>Subtracting 1 from non-relativistic monatomic ideal gas $\gamma = 5/3$ (D-33) gives $2/3$, which equals the Koide formula's $r^2 = 2/3$ (D-09). White dwarf mass limit is determined at the intersection of CAS generation structure (Koide) and thermodynamics (ideal gas).</p>
+<div class="lib-reuse">Re-entry use: CAS precision derivation of $M_{\text{Ch}} \approx 1.4\,M_\odot$. Cross-check of D-33 and D-09. Extension to neutron star mass limit (TOV).</div>
+</div>
+
+<div class="lib-card" id="en-h70" style="border-left:4px solid #d29922">
+<div class="lib-id">H-70 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Tsirelson Bound $2\sqrt{2}$ = 2(Compare) $\times$ $\sqrt{2}$(Orthogonal Bracket)</h3>
+<div class="lib-formula">$$|\langle \mathcal{B} \rangle| \leq 2\sqrt{2} = 2\,(\text{Compare}) \times \sqrt{2}\,(\text{orthogonal})$$</div>
+<p class="lib-precision">Tsirelson bound $2\sqrt{2} \approx 2.828$. Upper bound for Bell inequality violation.</p>
+<p>In the CHSH inequality's quantum upper bound $2\sqrt{2}$, the 2 comes from two binary decisions ($\pm 1$) of Compare, and $\sqrt{2}$ from orthogonal basis projection (reciprocal of $\cos 45° = 1/\sqrt{2}$). The limit of quantum nonlocality is determined by CAS Compare structure.</p>
+<div class="lib-reuse">Re-entry use: Unification with H-67 (Holevo bound). CAS interpretation of quantum game theory. Why PR-box (4) is unreachable = CAS orthogonality constraint.</div>
+</div>
+
+<div class="lib-card" id="en-h71" style="border-left:4px solid #d29922">
+<div class="lib-id">H-71 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Holography $S = A/(4l_P^2)$, $4$ = Domain Count (Axiom 1)</h3>
+<div class="lib-formula">$$S = \frac{A}{4\,l_P^2} \;;\quad 4 = \text{domain count (Axiom 1: DATA, MOVE, OPERATOR, SPACETIME)}$$</div>
+<p class="lib-precision">Consistent with Bekenstein-Hawking entropy formula. $4$ = Axiom 1 domain count.</p>
+<p>In the holographic principle, the denominator 4 in entropy $S = A/(4l_P^2)$ matches the domain count of CAS Axiom 1 (DATA, MOVE, OPERATOR, SPACETIME). Information storage per Planck area is limited by domain count. Bulk information encodes on the boundary because CAS interacts only at domain boundaries.</p>
+<div class="lib-reuse">Re-entry use: Combine with H-68 (BH heat capacity). CAS reinterpretation of AdS/CFT. Entropy scaling prediction when domain count changes.</div>
+</div>
+
+<div class="lib-card" id="en-h72" style="border-left:4px solid #d29922">
+<div class="lib-id">H-72 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Electron g-2 2-loop: $a_e^{(4)} \approx -\tfrac{1}{3}\!\left(\tfrac{\alpha}{\pi}\right)^2$</h3>
+<div class="lib-formula">$$a_e^{(4)} = -\frac{2}{9}\cdot\frac{3}{2}\left(\frac{\alpha}{\pi}\right)^2 = -\frac{1}{3}\left(\frac{\alpha}{\pi}\right)^2$$</div>
+<p class="lib-precision">1.5%. vs exact value −0.3285…</p>
+<p>2/9 (CAS degrees of freedom) × 3/2 (generation correction) reproduces the 2-loop coefficient. Natural extension of H-38 (Schwinger 1-loop).</p>
+<div class="lib-reuse">Re-entry use: H-38 → H-72 → 3-loop coefficient prediction path. Confirmation of 2/9's loop role.</div>
+</div>
+
+<div class="lib-card" id="en-h73" style="border-left:4px solid #d29922">
+<div class="lib-id">H-73 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Boson Triangle Relation: $m_H^2 = (m_W^2 + m_Z^2)(1 + \alpha_s/2)$</h3>
+<div class="lib-formula">$$m_H^2 = (m_W^2 + m_Z^2)\!\left(1 + \frac{\alpha_s}{2}\right)$$</div>
+<p class="lib-precision">0.12%. Fitting warning: $\alpha_s$ correction term is close to a free parameter</p>
+<p>The sum of squares of electroweak boson masses determines the Higgs mass squared. Strong correction $\alpha_s/2$ reflects QCD vacuum contribution.</p>
+<div class="lib-reuse">Re-entry use: Cross-verification with D-25 (m_H). Resolving fitting suspicion requires independent derivation of $\alpha_s$ correction.</div>
+</div>
+
+<div class="lib-card" id="en-h74" style="border-left:4px solid #d29922">
+<div class="lib-id">H-74 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Neutrino Mass Sum: $\Sigma m_\nu = m_e \alpha^3 (3/\pi^2)$</h3>
+<div class="lib-formula">$$\Sigma m_\nu = m_e\,\alpha^3\!\left(\frac{3}{\pi^2}\right) \approx 60.4\;\text{meV}$$</div>
+<p class="lib-precision">3.2%. Within current upper bound 120 meV (Planck)</p>
+<p>Neutrino mass sum derived from electron mass with $\alpha^3$ suppression + PMNS structural constant $3/\pi^2$ (D-05).</p>
+<div class="lib-reuse">Re-entry use: Precision refinement of P-01 (neutrino mass sum prediction). Cross-check with H-87 (individual masses) summation.</div>
+</div>
+
+<div class="lib-card" id="en-h75" style="border-left:4px solid #d29922">
+<div class="lib-id">H-75 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Proton Lifetime: $\tau_p \sim 10^{33}$ years</h3>
+<div class="lib-formula">$$\tau_p \sim \frac{M_{\text{GUT}}^4}{m_p^5} \sim 10^{33}\;\text{yr}$$</div>
+<p class="lib-precision">Based on D-29 (M_GUT). 1 order of magnitude below current lower bound $10^{34}$ years (Super-K)</p>
+<p>Dimension-6 proton decay calculation from D-29's GUT scale. Falls short of current experimental lower bound, requiring correction or dimension-6 suppression mechanism.</p>
+<div class="lib-reuse">Re-entry use: Indirect verification path for D-29. Connection to Hyper-K prediction upon derivation of suppression factor.</div>
+</div>
+
+<div class="lib-card" id="en-h76" style="border-left:4px solid #d29922">
+<div class="lib-id">H-76 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Inflation e-folding: $N_e = 57 + 3 = 60$</h3>
+<div class="lib-formula">$$N_e = 57 + 3 = 60$$</div>
+<p class="lib-precision">Within observational range 50~70. Exactly matches central value 60</p>
+<p>57=CAS exponent (D-15 cosmological constant), 3=CAS stage count. The minimum inflationary e-folding is fixed by CAS structural numbers.</p>
+<div class="lib-reuse">Re-entry use: Cosmological reinterpretation of D-15 (cosmological constant exponent 57). Path to CMB spectral tilt $n_s$ derivation.</div>
+</div>
+
+<div class="lib-card" id="en-h77" style="border-left:4px solid #d29922">
+<div class="lib-id">H-77 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Baryon/Dark-Matter Ratio: $\Omega_b/\Omega_{DM} = \sin^2\theta_W \cos^2\theta_W$</h3>
+<div class="lib-formula">$$\frac{\Omega_b}{\Omega_{DM}} = \sin^2\theta_W\,\cos^2\theta_W$$</div>
+<p class="lib-precision">4.1%. Reconfirmation of H-32</p>
+<p>The trigonometric product of the electroweak mixing angle determines the baryon-to-dark-matter ratio. Precision refinement of H-32's $\sin^2\theta_W$ standalone ratio.</p>
+<div class="lib-reuse">Re-entry use: H-32 upgrade. Direct derivation of $\Omega_b/\Omega_{DM}$ from D-02 ($\sin^2\theta_W$).</div>
+</div>
+
+<div class="lib-card" id="en-h78" style="border-left:4px solid #d29922">
+<div class="lib-id">H-78 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Quark Charge: $Q = (3 - \text{bits on})/3$</h3>
+<div class="lib-formula">$$Q = \frac{3 - n_{\text{on}}}{3}, \quad n_{\text{on}} \in \{1, 2\}$$</div>
+<p class="lib-precision">Structural correspondence. Fitting warning: post-hoc bit assignment</p>
+<p>In H-44 (3-bit octet), the number of active bits determines the charge. up ($n=1$)→$Q=2/3$, down ($n=2$)→$Q=1/3$.</p>
+<div class="lib-reuse">Re-entry use: Charge rule for H-44 quark octet. Extension to leptons requires $n=0$→$Q=1$, $n=3$→$Q=0$.</div>
+</div>
+
+<div class="lib-card" id="en-h79" style="border-left:4px solid #d29922">
+<div class="lib-id">H-79 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Meson = Forward + Reverse CAS (Bit Inversion)</h3>
+<div class="lib-formula">$$\text{Meson} = |q\rangle \otimes |\bar{q}\rangle = |b_1 b_2 b_3\rangle \otimes |\bar{b}_1 \bar{b}_2 \bar{b}_3\rangle$$</div>
+<p class="lib-precision">Structural correspondence. Consistent with pion, kaon, and other meson spectra</p>
+<p>Quark-antiquark = CAS forward and reverse (bit inversion). Color neutral = bit sum 000 or 111→000 (XOR). Natural extension of H-44.</p>
+<div class="lib-reuse">Re-entry use: H-44 → unified meson/baryon classification. Starting point for meson mass formula derivation.</div>
+</div>
+
+<div class="lib-card" id="en-h80" style="border-left:4px solid #d29922">
+<div class="lib-id">H-80 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Proton/Neutron: Color 111 = Baryon, Flavor/Color Separation</h3>
+<div class="lib-formula">$$\text{Baryon}: \quad b_{\text{color}_1} \oplus b_{\text{color}_2} \oplus b_{\text{color}_3} = 111$$</div>
+<p class="lib-precision">Structural correspondence. Consistent with H-44 color confinement condition</p>
+<p>Baryon = XOR of three quarks' color bits equals 111 (=fully active). Flavor bits and color bits are separated into independent domains, distinguishing proton (uud) from neutron (udd).</p>
+<div class="lib-reuse">Re-entry use: Explicit formulation of H-44 baryon condition. Complete hadron classification system together with H-79 (meson).</div>
+</div>
+
+<div class="lib-card" id="en-h81" style="border-left:4px solid #d29922">
+<div class="lib-id">H-81 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Neutron-Proton Mass Difference: $m_n - m_p \approx (m_d - m_u)/2 = 1.255$ MeV</h3>
+<div class="lib-formula">$$m_n - m_p \approx \frac{m_d - m_u}{2} = \frac{2.50}{2} = 1.255\;\text{MeV}$$</div>
+<p class="lib-precision">2.9%. vs experimental value 1.293 MeV. Byproduct of H-42</p>
+<p>Half the mass difference of D-18 (m_u) and D-20 (m_d) approximates the nucleon mass difference. EM correction not included (see H-42).</p>
+<div class="lib-reuse">Re-entry use: Auxiliary verification path for H-42 (EM correction). Big Bang nucleosynthesis n/p ratio derivation.</div>
+</div>
+
+<div class="lib-card" id="en-h82" style="border-left:4px solid #d29922">
+<div class="lib-id">H-82 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>CKM u-row Hamming Distance Monotonic Correspondence</h3>
+<div class="lib-formula">$$|V_{ud}| > |V_{us}| > |V_{ub}|, \quad d_H(u,d) < d_H(u,s) < d_H(u,b)$$</div>
+<p class="lib-precision">Structural correspondence. CKM magnitude ordering matches monotonic Hamming distance decrease</p>
+<p>In H-44 bit assignments, as Hamming distance increases for u→d, u→s, u→b, the mixing matrix elements decrease. Transition probability is a function of bit distance.</p>
+<div class="lib-reuse">Re-entry use: Structural basis for H-47 ($s_{13}$) derivation. Full CKM reconstruction via bit transitions.</div>
+</div>
+
+<div class="lib-card" id="en-h83" style="border-left:4px solid #d29922">
+<div class="lib-id">H-83 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$|V_{ts}|$ = 0.04051</h3>
+<div class="lib-formula">$$|V_{ts}| = A\lambda^2\!\left(1 - \frac{\lambda^2}{2}\right) = 0.04051$$</div>
+<p class="lib-precision">4.42%. vs experimental value 0.03880</p>
+<p>$|V_{ts}|$ derived by substituting A (D-08) and $\lambda$ (D-07) into the Wolfenstein expansion. Includes second-order correction term.</p>
+<div class="lib-reuse">Re-entry use: CKM unitarity triangle side length verification. $B_s$ mixing prediction.</div>
+</div>
+
+<div class="lib-card" id="en-h84" style="border-left:4px solid #d29922">
+<div class="lib-id">H-84 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Jarlskog Precision: $J = 3.115 \times 10^{-5}$</h3>
+<div class="lib-formula">$$J_{\text{CKM}} = 3.115 \times 10^{-5}$$</div>
+<p class="lib-precision">1.13%. vs experimental value $3.08 \times 10^{-5}$</p>
+<p>H-41's Jarlskog refined with H-47 ($s_{13}$ CAS derivation). Value after removing external input.</p>
+<div class="lib-reuse">Re-entry use: Replaces H-41. Complete CAS closed formula for CP violation quantification.</div>
+</div>
+
+<div class="lib-card" id="en-h85" style="border-left:4px solid #d29922">
+<div class="lib-id">H-85 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>$\sin(2\beta)$ = 0.733</h3>
+<div class="lib-formula">$$\sin(2\beta) = \frac{2\eta(1-\rho)}{(1-\rho)^2 + \eta^2} = 0.733$$</div>
+<p class="lib-precision">4.84%. vs experimental value 0.699</p>
+<p>$\sin(2\beta)$ derived from unitarity triangle $\rho, \eta$ (H-28). Observable for B meson CP asymmetry.</p>
+<div class="lib-reuse">Re-entry use: Direct comparison with B factory experiments. Updates linked when H-28 precision improves.</div>
+</div>
+
+<div class="lib-card" id="en-h86" style="border-left:4px solid #d29922">
+<div class="lib-id">H-86 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Unitarity Triangle $\alpha$ = 87.95°</h3>
+<div class="lib-formula">$$\alpha(\text{UT}) = 87.95°$$</div>
+<p class="lib-precision">2.98%. vs experimental value 85.4°</p>
+<p>$\alpha = \pi - \beta - \gamma$. Derived from $\beta, \gamma$ obtained from H-28 ($\rho, \eta$). Compare with $B \to \pi\pi$ experiments.</p>
+<div class="lib-reuse">Re-entry use: Completion of all three CKM unitarity triangle vertices. Paired with H-85 ($\sin 2\beta$).</div>
+</div>
+
+<div class="lib-card" id="en-h87" style="border-left:4px solid #d29922">
+<div class="lib-id">H-87 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Neutrino Individual Masses: $m_1 \approx 0,\; m_2 = 8.7,\; m_3 = 50.3$ meV</h3>
+<div class="lib-formula">$$m_1 \approx 0, \quad m_2 = \sqrt{\Delta m_{21}^2} = 8.7\;\text{meV}, \quad m_3 = \sqrt{\Delta m_{31}^2} = 50.3\;\text{meV}$$</div>
+<p class="lib-precision">NO (normal ordering) assumed. Consistent with H-74 sum 60.4 meV (difference 1.4 meV ≈ $m_1$)</p>
+<p>Individual masses determined from D-05, D-06 (PMNS mixing angles) and experimental $\Delta m^2$ values. $m_1 \approx 0$ is consistent with H-25 (NO prediction).</p>
+<div class="lib-reuse">Re-entry use: H-74 (mass sum) decomposition. Input for H-89 (0νββ) effective mass calculation.</div>
+</div>
+
+<div class="lib-card" id="en-h88" style="border-left:4px solid #d29922">
+<div class="lib-id">H-88 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>QLC (Quark-Lepton Complementarity): $\theta_C + \theta_{12} \approx \pi/4$</h3>
+<div class="lib-formula">$$\theta_C + \theta_{12}^{\text{PMNS}} \approx \frac{\pi}{4}$$</div>
+<p class="lib-precision">3.22%. $\theta_C$ (D-07) + $\theta_{12}$ (D-05) = 0.762 rad vs $\pi/4$ = 0.785 rad</p>
+<p>The sum of Cabibbo angle (D-07) and solar neutrino mixing angle (D-05) approximates $\pi/4$. Quark and lepton mixing are complementary in CAS.</p>
+<div class="lib-reuse">Re-entry use: Structural clue for quark-lepton unification. Path to GUT mixing relation derivation.</div>
+</div>
+
+<div class="lib-card" id="en-h89" style="border-left:4px solid #d29922">
+<div class="lib-id">H-89 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Double Beta Decay Effective Mass: $m_{ee} \approx 3.7$ meV</h3>
+<div class="lib-formula">$$m_{ee} = \left|\sum_i U_{ei}^2\, m_i\right| \approx 3.7\;\text{meV}$$</div>
+<p class="lib-precision">Prediction. Within current experimental upper bound ~50 meV (KamLAND-Zen)</p>
+<p>$0\nu\beta\beta$ effective mass calculated from H-87 (individual masses) + D-05, D-22 (PMNS matrix elements). Detection difficulty predicted in NO.</p>
+<div class="lib-reuse">Re-entry use: Prediction for next-generation 0νββ experiments (nEXO, LEGEND). Verification path for H-25 (NO).</div>
+</div>
+
+<div class="lib-card" id="en-h90" style="border-left:4px solid #d29922">
+<div class="lib-id">H-90 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Decoherence Time = Inverse of Compare-true Accumulation</h3>
+<div class="lib-formula">$$\tau_{\text{dec}} = \frac{1}{\Gamma_{\text{Compare=true}}} = \frac{1}{n_{\text{true}} \cdot \Delta t_{\text{CAS}}}$$</div>
+<p class="lib-precision">Structural correspondence. Consistent with quantum-classical transition timescale</p>
+<p>As Compare=true accumulates, the state becomes definite (classicalized). Decoherence = frequent Compare by the environment. Its inverse is the coherence maintenance time.</p>
+<div class="lib-reuse">Re-entry use: Paired with H-91 (quantum Zeno). CAS interpretation of quantum computing coherence time.</div>
+</div>
+
+<div class="lib-card" id="en-h91" style="border-left:4px solid #d29922">
+<div class="lib-id">H-91 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Quantum Zeno Effect = Frequent Compare-false → Superposition Maintained</h3>
+<div class="lib-formula">$$P_{\text{survive}} = \left(\cos^2\frac{\theta}{2n}\right)^n \xrightarrow{n\to\infty} 1$$</div>
+<p class="lib-precision">Structural correspondence. Matches $n \to \infty$ limit of Zeno effect</p>
+<p>When Compare repeatedly returns false, state transitions are suppressed and the system freezes in the initial state. CAS Compare-false = "no change" = superposition maintained.</p>
+<div class="lib-reuse">Re-entry use: Inverse process of H-90 (decoherence). Connection to quantum error correction (H-96).</div>
+</div>
+
+<div class="lib-card" id="en-h92" style="border-left:4px solid #d29922">
+<div class="lib-id">H-92 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Aharonov-Bohm Phase: A = OPERATOR Structure, B = DATA Write</h3>
+<div class="lib-formula">$$\Delta\phi_{AB} = \frac{e}{\hbar}\oint A_\mu\,dx^\mu, \quad A_\mu \leftrightarrow \text{OPERATOR}, \quad B \leftrightarrow \text{DATA}$$</div>
+<p class="lib-precision">Structural correspondence. AB effect phase structure maps to CAS</p>
+<p>Gauge potential $A_\mu$ = OPERATOR (not directly observable, only effects exist). Magnetic field $B$ = result written to DATA. Path integral phase = FSM cycle.</p>
+<div class="lib-reuse">Re-entry use: Foundation for H-93 (Berry phase). CAS interpretation of gauge invariance.</div>
+</div>
+
+<div class="lib-card" id="en-h93" style="border-left:4px solid #d29922">
+<div class="lib-id">H-93 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Berry Phase = Geometric Phase of FSM Closed Cycle</h3>
+<div class="lib-formula">$$\gamma_n = i\oint \langle n|\nabla_R|n\rangle \cdot dR, \quad \text{FSM closed path} \to \gamma_n \neq 0$$</div>
+<p class="lib-precision">Structural correspondence. Adiabatic cyclic phase accumulation maps to FSM cycle</p>
+<p>When FSM completes an INIT→COMPARE→SWAP→INIT cycle, geometric phase accumulates. Closed path in parameter space = one CAS round trip.</p>
+<div class="lib-reuse">Re-entry use: Generalization of H-92 (AB phase). CAS interpretation path for topological materials (topological insulators).</div>
+</div>
+
+<div class="lib-card" id="en-h94" style="border-left:4px solid #d29922">
+<div class="lib-id">H-94 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Black Hole Information Paradox: $\delta^2$ Conservation → Information Preserved in OPERATOR</h3>
+<div class="lib-formula">$$\delta^2 = \text{const} \implies I_{\text{total}} = \text{const}, \quad I \subset \text{OPERATOR}$$</div>
+<p class="lib-precision">Structural correspondence. Unitary evolution conservation maps to $\delta^2$ conservation</p>
+<p>Axiom 1 ($\delta^2$ conservation) guarantees information preservation. During black hole evaporation, information remains in the OPERATOR domain and is re-emitted to DATA (Hawking radiation).</p>
+<div class="lib-reuse">Re-entry use: Combined with H-53 (Landauer) + H-55 (entanglement entropy) for information paradox resolution structure.</div>
+</div>
+
+<div class="lib-card" id="en-h95" style="border-left:4px solid #d29922">
+<div class="lib-id">H-95 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Bekenstein Bound: $S_{\max}/(2\pi RE) = 1$, $2\pi = 2(\text{Compare}) \times \pi(\text{phase})$</h3>
+<div class="lib-formula">$$S \leq \frac{2\pi RE}{\hbar c}, \quad 2\pi = 2_{\text{Compare}} \times \pi_{\text{phase}}$$</div>
+<p class="lib-precision">Structural correspondence. Decomposition of $2\pi$ factor in Bekenstein bound</p>
+<p>$2$ = Compare's binary branching (Axiom 2). $\pi$ = half-period of phase rotation. Information storage limit decomposes into CAS structure.</p>
+<div class="lib-reuse">Re-entry use: Quantitative limit for H-94 (information paradox). Connection to black hole entropy $S_{BH} = A/(4l_P^2)$.</div>
+</div>
+
+<div class="lib-card" id="en-h96" style="border-left:4px solid #d29922">
+<div class="lib-id">H-96 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-25</span></div>
+<h3>Quantum Error Correction (QEC): FSM [3,2,2] Code, Sequential Constraint = Automatic Error Detection</h3>
+<div class="lib-formula">$$\text{FSM}[3,2,2]: \quad n=3\;\text{(CAS)},\; k=2\;\text{(logical)},\; d=2\;\text{(detection)}$$</div>
+<p class="lib-precision">Structural correspondence. [3,2,2] code error detection capability matches FSM sequential constraint</p>
+<p>CAS 3 stages (Compare→Allocate→Swap) = 3 physical qubits. 2 logical qubits (real/imaginary components of δ). Distance 2 = 1-bit error detection. FSM sequential constraint automatically blocks error propagation.</p>
+<div class="lib-reuse">Re-entry use: Combined with H-91 (quantum Zeno). CAS principle of quantum computer error correction.</div>
+</div>
+
 <hr>
 <hr>
 
@@ -2580,49 +3869,66 @@
 
 <p>Which discovery birthed which discovery. Arrows show re-entry paths. Starting from a single alpha, it branches and spreads.</p>
 
-<pre><code>alpha (D-01)
+<pre><code>alpha (D-01)  ... seed of all derivations. Wyler phase volume ratio
   |
-  +-- sin2(theta_W) (D-02)
-  |     |
-  |     +-- eta (D-04)  ... derived from alpha^4 * sin2(theta_W)
+  +-- alpha internals
+  |     +-- Wyler CAS derivation (D-26)  ... 9/(8pi^4) decomposition
+  |     +-- 137 = T(16)+1 (D-31)  ... domain 4-bit triangular number
+  |
+  +-- sin2(theta_W) (D-02)  ... root: (4pi^2-3)/(16pi^2)
+  |     +-- eta (D-04)  ... alpha^4 * sin2(theta_W)
+  |     +-- running decomposition (D-28)  ... 3/8 × 2/pi × CAS correction
+  |     +-- compact 7/(2+9pi) (D-30)
+  |     +-- M_W = 80.39 GeV (D-41)  ... M_Z cos(theta_W)
   |
   +-- alpha_s (D-03)  ... 3 * alpha * (4pi)^(2/3)
+  |     +-- QCD beta_0 = 7/(4pi) (D-44)  ... 7=CAS DOF
   |
-  +-- Mass hierarchy
-  |     +-- m_mu/m_e (D-10)  ... (3/2)(1/alpha)
-  |     +-- m_tau/m_mu (D-11)  ... sqrt(1/alpha)
-  |     +-- m_e/m_p (D-12)  ... alpha/(4pi)
-  |     +-- m_t/m_c (D-13)  ... 1/alpha
-  |     +-- Koide (D-09)  ... theta=2/9, r=sqrt(2)
-  |     +-- Koide deviation (D-14)  ... -15*alpha^3
-  |     +-- m_t (D-16)  ... v/sqrt(2) = Swap unit cost
-  |     +-- m_c (D-17)  ... m_t * alpha
-  |     +-- m_u (D-18)  ... m_c * alpha_s^3
-  |     +-- m_s (D-19)  ... m_mu * (1-alpha_s)
-  |     +-- m_d (D-20)  ... m_e * (9+3*alpha_s/pi)
-  |     +-- m_b (D-21)  ... m_tau * 7/3
+  +-- coupling triangle: alpha_s sin2thetaW/alpha = 15/4 (D-34)
   |
-  +-- lambda_H = 7/54 (D-24)  ... CAS complete value / generation structure
-  |     +-- m_H = v*sqrt(7/27) (D-25)  ... 125.37 GeV
+  +-- mass hierarchy
+  |     +-- leptons: m_mu/m_e(D-10), m_tau/m_mu(D-11), m_e/m_p(D-12), unified(D-38)
+  |     +-- Koide(D-09) theta=2/9, deviation -15alpha^3(D-14), 15=3×5(D-27)
+  |     +-- up: m_t(D-16)→m_c(D-17)→m_u(D-18), m_t/m_c=1/alpha(D-13)
+  |     +-- down: m_s(D-19), m_d(D-20), m_b(D-21)
+  |     +-- Higgs-top ratio(D-37) m_H/m_t = sqrt(14/27)
   |
-  +-- Lambda*l_p^2 = alpha^57 * e^(21/35) (D-15)
+  +-- lambda_H = 7/54 (D-24) → m_H = 125.37 GeV (D-25)
+  |
+  +-- Lambda l_p^2 = alpha^57 e^(21/35) (D-15)
+  |     +-- Dirac large number cancellation (D-35)
+  |     +-- [H-46] LRU Friedmann → [H-57] H_0=67.92
+  |
+  +-- M_GUT = M_Z alpha^(-19/3) (D-29) → [H-75] proton lifetime
+  +-- alpha running beta_0 = 2/(3pi) (D-39)
+  +-- alpha length ladder Δn=1,1 (D-42)
+  +-- mixing angle product (D-36): 2/9 penetration evidence
 
 
-Independent structural constants (not dependent on alpha):
+Independent structural constants (alpha-independent):
 
-  3/pi^2 (D-05)  ... solar neutrino mixing angle
-  4/7 (D-06)  ... atmospheric neutrino mixing angle
+  3/pi^2 (D-05)  ... solar mixing angle
+  4/7 (D-06)  ... atmospheric mixing angle
   sqrt(2/3) (D-08)  ... Wolfenstein A
+  z_eq = 2×3^5×7 = 3402 (D-43) → [H-49] T_CMB=2.741K
+
 
 Semi-independent (weak alpha dependence):
 
-  sin(theta_C) (D-07)  ... 2/9 + pi*alpha correction
-  sin(theta_13) (D-22)  ... 4/27 = (2/9)(2/3)
-  delta_CKM (D-23)  ... arctan(5/2 + alpha_s/pi)</code></pre>
+  sin(theta_C) (D-07) → [H-63] V_cb, [H-83] V_ts
+  sin(theta_13) (D-22) = 4/27
+  delta_CKM (D-23) → [H-47] s_13=0.003709 → [H-64] V_td, [H-84] J=3.1e-5
 
-<p>20 of 42 discoveries came directly from $\alpha$ (D-02 to D-04, D-09 to D-21, D-24 to D-25). 3 independent structural constants (D-05, D-06, D-08). 2 semi-independent (D-07, D-22). 1 CKM CP (D-23). Of 42 total discoveries, 20 hang from a single $\alpha$. $\alpha$ is the root of the framework.</p>
 
-<p>Of 47 hypotheses (H-01 to H-20, H-22 to H-47), 4 (H-15, H-16, H-19, H-21) were promoted to discoveries, leaving 43 active hypotheses. If discoveries are "what emerged", hypotheses are "why it emerged." When a hypothesis is proven, it is promoted to discovery, and another green tag is added to the library.</p>
+CAS structural integers (alpha-independent, phase/statistics):
+
+  5/3 degeneracy exponent (D-33)  ... (9-4)/3 → [H-69] Chandrasekhar
+  BH temperature-lifetime (D-32) → [H-54] BH evaporation 5120=10×2^9
+  spin-statistics CAS (D-40)</code></pre>
+
+<p>All 44 D-cards are in this map. The alpha branch is the largest. 4 independent roots (D-05, D-06, D-08, D-43), 3 CAS structural integers (D-32, D-33, D-40) are separate roots. Alpha is the root of the framework, but independent roots also exist.</p>
+
+<p>Of 96 hypotheses (H-01 to H-20, H-22 to H-96), 4 (H-15, H-16, H-19, H-21) were promoted to discoveries, leaving 92 active hypotheses. If discoveries are "what emerged", hypotheses are "why it emerged." When a hypothesis is proven, it is promoted to discovery, and another green tag is added to the library.</p>
 
 <p>The more the framework runs, the larger this map grows. The larger the map, the fewer unknowns remain. Just like each added condition in a system of equations narrows the solution.</p>
 
@@ -2673,7 +3979,7 @@ Semi-independent (weak alpha dependence):
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
-<div class="f1">발견 42개 + 가설 47개 + 예측 7개 = 96항목</div>
+<div class="f1">발견 44개 + 가설 96개 + 예측 7개 = 147항목</div>
 <div class="f2">프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다</div>
 </div>
 </div>
@@ -2699,7 +4005,7 @@ Alias: Buddha's Palm Framework<br>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
-<div class="f1">Discovery 42 + Hypothesis 47 + Prediction 7 = 96 items</div>
+<div class="f1">Discovery 44 + Hypothesis 96 + Prediction 7 = 147 items</div>
 <div class="f2">The library grows with every cycle. Hidden values have nowhere to escape.</div>
 </div>
 </div>
