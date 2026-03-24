@@ -12,6 +12,9 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 # ── Document order (matches banya.html appendix) ──
 DOC_ORDER = [
     "banya.html",
+    "science_mine.html",
+    "predictions.html",
+    "lib.html",
     "alpha.html",
     "sin2_thetaW.html",
     "mass_hierarchy.html",
@@ -19,9 +22,6 @@ DOC_ORDER = [
     "gauge.html",
     "baryogenesis.html",
     "ckm_pmns.html",
-    "predictions.html",
-    "lib.html",
-    "science_mine.html",
     "expend.html",
 ]
 
