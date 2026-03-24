@@ -80,6 +80,7 @@ p .katex,li .katex{font-size:1.1em}
 .tag-discovery{display:inline-block;background:#238636;color:#fff;padding:2px 10px;border-radius:3px;font-size:0.75em;font-weight:600}
 .tag-hypothesis{display:inline-block;background:#9e6a03;color:#fff;padding:2px 10px;border-radius:3px;font-size:0.75em;font-weight:600}
 .tag-solved{display:inline-block;background:#238636;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75em}
+.tag-corollary{display:inline-block;background:#e3742f;color:#fff;padding:2px 10px;border-radius:3px;font-size:0.75em;font-weight:600}
 .tag-pending{display:inline-block;background:#1f6feb;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75em}
 .tag-partial{display:inline-block;background:#9e6a03;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75em}
 .tag-wip{display:inline-block;background:#30363d;color:#8b949e;padding:1px 8px;border-radius:3px;font-size:0.75em}
@@ -383,15 +384,20 @@ hr { border-top: 1px solid #ccc !important; }
 
 <div class="table-wrap">
 <table>
-<tr><th>Name</th><th>Value</th><th>Meaning</th><th>Used in</th></tr>
+<tr><th style="min-width:180px;white-space:nowrap">Name</th><th style="min-width:180px;white-space:nowrap">Value</th><th>Meaning</th><th>Used in</th></tr>
 <tr><td>CAS stage count</td><td>3</td><td>Read, Compare, Swap — 3 stages</td><td>sin²θ_W derivation, Koide, 3 generations</td></tr>
 <tr><td>CAS internal state sum</td><td>1+2+4 = 7</td><td>Internal states needed to fully describe 1 CAS event</td><td>α derivation (Wyler 7-dim), domain 4 + stages 3</td></tr>
 <tr><td>Complete description DOF</td><td>7+2 = 9</td><td>CAS(7) + bracket structure(2)</td><td>Koide 2/9, Cabibbo angle (Axiom 9)</td></tr>
 <tr><td>Exterior algebra basis</td><td>21+35+1 = 57</td><td>Physical k-form sum in 7-dim space</td><td>Cosmological constant α⁵⁷ (alpha57.html)</td></tr>
+<tr><td>CAS access path count</td><td>7×4+2 = 30</td><td>CAS DOF(7) × domains(4) + brackets(2). Total CAS-domain access paths in ECS</td><td>Read cost = 1/30, self-reference path (Axiom 5 proposition, H-40)</td></tr>
+<tr><td>Independent lock DOF</td><td>3</td><td>R_LOCK, C_LOCK, S_LOCK. Independent TOCTOU_LOCK DOFs of CAS 3 stages</td><td>Space dimensions = 3 (Axiom 11 proposition)</td></tr>
+<tr><td>Access modes</td><td>2</td><td>Cross (Cmp/Swp targets differ) vs self-reference (Cmp/Swp targets same)</td><td>Cross = serialization cost 0, self-ref = cost ≠ 0 (Axiom 5 proposition)</td></tr>
+<tr><td>Sphere components</td><td>2</td><td>$r$ (distance from CAS write point) + $\theta$ (angle between projections)</td><td>$r$ = cost magnitude ($1/r^2$), $\theta$ = cost type (mixing angles) (Axiom 11 proposition)</td></tr>
+<tr><td>Cross CAS paths</td><td>3</td><td>Cmp(t)→Swp(s), Cmp(s)→Swp(t), Cmp(t)→Swp(t). Cross/self-ref combinations of DATA access</td><td>3 cost structures (Swap accum, Compare, self-ref) (H-45, Axiom 13 proposition)</td></tr>
 </table>
 </div>
 
-<p>The same word "degrees of freedom" refers to 3, 7, 9, or 57 depending on context. Use the names above to avoid confusion.</p>
+<p>The same word "degrees of freedom" refers to 3, 7, 9, 30, or 57 depending on context. Use the names above to avoid confusion.</p>
 
 <p>CAS 3 steps operate as bit flags. Each step occupies 1 bit, and all 3 bits must be ON (111) for 1 CAS event to complete. If any bit is 0, it is incomplete. This is the bit flag expression of atomicity (inseparability).</p>
 
@@ -416,7 +422,7 @@ hr { border-top: 1px solid #ccc !important; }
 </table>
 </div>
 
-<p>The 3 steps are inseparable (atomic). This is the origin of the strong force (color confinement).</p>
+<p>The 3 steps are inseparable (atomic). This is the origin of CAS atomicity (111 maintenance cost).</p>
 
 
 <h3 id="en-ax3">Axiom 3. CAS Is an Operator Outside Time <span class="tag-solved">Axiom</span></h3>
@@ -439,11 +445,13 @@ hr { border-top: 1px solid #ccc !important; }
 <table>
 <tr><th>Category</th><th>Nature</th><th>Cost</th><th>Axiom</th></tr>
 <tr><td>Entanglement (orthogonality)</td><td>Structure -- always holds</td><td>0</td><td>Axiom 1</td></tr>
-<tr><td>Lock (interaction)</td><td>Event -- the moment CAS grabs and releases DATA</td><td>≠ 0 (minimum exists)</td><td>Axiom 4</td></tr>
+<tr><td>Lock (cost incurred)</td><td>Event -- the moment CAS grabs and releases DATA</td><td>≠ 0 (minimum exists)</td><td>Axiom 4</td></tr>
 </table>
 </div>
 
-<p>This minimum cost is measured as ℏ (Dirac constant) in physics. Heisenberg's uncertainty principle ($\Delta x \cdot \Delta p \geq \hbar/2$) is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets.</p>
+<h4>Cost Lower Bound Inequality <span class="tag-corollary">Proposition</span></h4>
+
+<p>This minimum cost is measured as ℏ (minimum bracket-crossing cost) in physics. The cost lower bound inequality ($\Delta x \cdot \Delta p \geq \hbar/2$) is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets.</p>
 
 <h4>Irreversibility Terminology</h4>
 
@@ -515,7 +523,21 @@ Target: DATA domain (Axiom 1)</pre>
 
 <p>Read (001) and Compare (011) are intra-OPERATOR (superposition reference), cost 0. Cost ℏ occurs only at Swap (111) when writing to DATA — crossing brackets (Axiom 4). If cost is not spent (Compare false), superposition is maintained (Axiom 7). Quantum is the default; classical is the result of spending cost.</p>
 
-<h3 id="en-ax6">Axiom 6. Wavefunction Collapse = Write <span class="tag-solved">Axiom</span></h3>
+<h4>Self-Reference Cost <span class="tag-corollary">Proposition</span></h4>
+
+<p>When Compare target and Swap target are the <strong>same axis</strong> (self-reference), TOCTOU serialization cost arises. Reading and writing the same DATA address creates contention, and resolving contention costs. This cost is the serialization cost.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Access Mode</th><th>Cmp/Swp Target</th><th>TOCTOU Conflict</th><th>Serialization Cost</th><th>CAS Cost Type</th></tr>
+<tr><td>Cross</td><td>Different axes</td><td>None</td><td>0</td><td>Cross Cmp/Swp cost</td></tr>
+<tr><td>Self-reference</td><td>Same axis (time)</td><td>Present</td><td>≠ 0</td><td>Self-reference serialization cost</td></tr>
+</table>
+</div>
+
+<p style="font-size:0.85em;color:#555"><strong>Axiomatic consequence:</strong> Serialization cost exists for self-reference CAS and does not exist for cross CAS — this is a direct consequence of TOCTOU conflict. The presence or absence of cost is determined by the access mode (cross vs self-reference).</p>
+
+<h3 id="en-ax6">Axiom 6. Collapse = Write <span class="tag-solved">Axiom</span></h3>
 
 <pre>CAS (inside OPERATOR)
     | superposition reference (cost 0, same bracket)
@@ -567,11 +589,11 @@ superposition (multiple states)
 </table>
 </div>
 
-<h4>Idle Polling and Quantum Vacuum Energy</h4>
+<h4>Idle Polling and DATA Zero-Point Fluctuation</h4>
 
-<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. Why cost is 0: CAS referencing superposition is an intra-OPERATOR bracket operation. No bracket crossing, no cost. Quantum vacuum energy (Casimir effect, zero-point energy, etc.) is a fluctuation on the DATA (classical bracket) side. It is the phenomenon where the zero-point oscillations of fields recorded in spacetime carry energy.</p>
+<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. Why cost is 0: CAS referencing superposition is an intra-OPERATOR bracket operation. No bracket crossing, no cost. DATA zero-point fluctuation (DATA fluctuation) is a fluctuation on the DATA (classical bracket) side. It is the phenomenon where the zero-point oscillations of fields recorded in spacetime carry cost.</p>
 
-<p>In Axiom 1, DATA and OPERATOR are orthogonal brackets, so there is no conflict. Idle polling has zero cost because it does not access DATA, and vacuum energy is a phenomenon occurring on the DATA side. Idle polling is the state where the operator is on standby, while vacuum energy is the ground state of fields on the data side having nonzero energy. The zero cost of OPERATOR and the nonzero energy of DATA are descriptions of different things in different brackets.</p>
+<p>In Axiom 1, DATA and OPERATOR are orthogonal brackets, so there is no conflict. Idle polling has zero cost because it does not access DATA, and DATA zero-point fluctuation is a phenomenon occurring on the DATA side. Idle polling is the state where the operator is on standby, while DATA zero-point fluctuation is the ground state of fields on the data side having nonzero cost. The zero cost of OPERATOR and the nonzero cost of DATA are descriptions of different things in different brackets.</p>
 
 
 <h3 id="en-ax9">Axiom 9. Complete Description Degrees of Freedom = 9 <span class="tag-solved">Axiom</span></h3>
@@ -665,9 +687,11 @@ observer (mirror, filtering/normalization)
                                     |                                        |
                                     +--- re-filtering in next cycle <--------+</pre>
 
+<h4>Automatic Recursion <span class="tag-corollary">Proposition</span></h4>
+
 <p>This structure is automatic recursion. The CAS result is reflected in δ, and the reflected δ is re-filtered/normalized through each observer in the next cycle. Recursive call (Axiom 8), input normalization (Axiom 10), and termination condition (Axiom 14, FSM 111→000 reset) run automatically by axiom declaration alone.</p>
 
-<h4>Constraints — System Protection Mechanism <span class="tag-discovery">Required</span></h4>
+<h4>Whole-Local Loop Preservation <span class="tag-corollary">Proposition</span></h4>
 
 <p>Constraints are not limitations — they are <strong>mechanisms that protect the system</strong>. The whole-local loop drives BanyaFrame's automatic recursion. If this loop breaks, recursion stops; if recursion stops, polling degenerates to idle, and the system dies. Constraints protect this loop.</p>
 
@@ -758,11 +782,87 @@ observer (mirror, filtering/normalization)
 
 <p>The seemingly infinite universe is the accumulation of one consciousness (δ) projecting one image per change. It is not the substance that is infinite, but the mirrors. The infinite degrees of freedom in QFT are images of one consciousness projected onto infinitely many observers.</p>
 
-<p><strong>Why all electrons are identical:</strong> Consciousness (δ) is one, and what appears as an electron is that consciousness projected onto multiple observers. Since they are identical projections of the same consciousness, all electrons have the same mass, charge, and spin. The same reasoning applies to all protons and photons. In 1940, John Wheeler intuited that "there is only one electron" but could not prove it. Wheeler proposed that the electron travels back and forth along the time axis; the Banya Framework proposes that consciousness is multiply projected along the observer axis. The mechanisms differ, but the conclusion is the same.</p>
+<p><strong>Why all local knots of the same type are identical:</strong> Consciousness (δ) is one, and what appears as a local knot is that consciousness projected onto multiple observers. Since they are identical projections of the same consciousness, all local knots of the same type have the same write accumulation count, charge, and spin. The same reasoning applies to all local knots and projection images. In 1940, John Wheeler intuited that "there is only one electron" but could not prove it. Wheeler proposed that the local knot travels back and forth along the time axis; the Banya Framework proposes that consciousness is multiply projected along the observer axis. The mechanisms differ, but the conclusion is the same.</p>
 
 <p><strong>Distance-independence of entanglement:</strong> The simultaneous correlation of images reflected in observer A and observer B occurs because they are looking at the same consciousness. No signal travels from A to B. The same change of the same owner is simultaneously reflected in two mirrors. Since the owner is one, simultaneity is guaranteed.</p>
 
 <p><strong>Relation to FSM:</strong> The 4 states (000→001→011→111) of the FSM (Axiom 14) are the states of CAS processing one projection, not the state of the entire universe. CAS is finite (4 states) but DATA is infinite (continuous). Just as CPU instructions are finite while memory data is infinite.</p>
+
+<h4>Why Space Is 3-Dimensional, and Separation of r and θ <span class="tag-corollary">Proposition</span></h4>
+
+<p><strong>Why space is 3-dimensional:</strong> The 3 CAS stages (Read, Compare, Swap, Axiom 2) each have independent TOCTOU_LOCK degrees of freedom (R_LOCK, C_LOCK, S_LOCK, Axiom 5). These 3 independent lock DOFs acting on the space axis of DATA (Axiom 1) unfold space into 3 components. This is the axiomatic answer to "why is space 3-dimensional."</p>
+
+<p><strong>Separation of r and θ:</strong> When $\delta$ projects to N observers (1:N), projections distribute on a sphere in 3-component space. Two quantities separate on the sphere:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th></th><th>$r$ (radius)</th><th>$\theta$ (angle)</th></tr>
+<tr><td>Definition</td><td>DATA(space) distance from CAS write point (origin) to another Entity</td><td>Angle between two projections on sphere</td></tr>
+<tr><td>Character</td><td>Same in all directions</td><td>Different for each pair</td></tr>
+<tr><td>Determines</td><td>Cost magnitude ($1/r^2$ decay)</td><td>Cost type (mixing angles)</td></tr>
+</table>
+</div>
+
+<p><strong>$\theta$ IS the mixing angle:</strong></p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Angle $\theta$ between two projections on sphere</th><th>Corresponding mixing angle</th></tr>
+<tr><td>Cross projection and self-reference projection</td><td>$\sin^2\theta_W$ (electroweak mixing angle)</td></tr>
+<tr><td>CAS stage 1 and stage 2 projections</td><td>$\theta_C$ (Cabibbo angle)</td></tr>
+<tr><td>Write-accumulation projection and index projection</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
+<tr><td>Between 3-generation projections</td><td>Koide $\theta = 2/9$</td></tr>
+<tr><td>Twist of the projection plane</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP phases)</td></tr>
+</table>
+</div>
+
+<p>The complete form of the index overlap weight (Axiom 13 proposition):</p>
+
+<div class="math-block">
+<div class="math-row">$$w(r, \theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
+<div class="math-legend">$r$: distance from CAS write point to another Entity — cost magnitude | $\theta$: different per pair — cost type | $\Gamma$: CAS cost structure (Axioms 2, 4) | $f(\theta)$: projection angle function</div>
+</div>
+
+<p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $r$ is the same in all directions from the CAS write point (origin). What differs is only the angle θ between projections on the sphere.</p>
+
+<h4>$f(\theta)$ = Overlap of Knot Contraction Zones on the Sphere <span class="tag-corollary">Proposition</span></h4>
+
+<p>Each knot (write result, Axiom 6) sits at a point on the sphere. <strong>Swap consumes DATA(space) (Axiom 6).</strong> Consumed space shrinks. Space around the knot is contracted, and more write accumulation means more contraction. Contraction zone = the range of space contraction around the knot. Zone size is determined by the knot's CAS cost structure (Axioms 2, 4).</p>
+
+<pre>No knot:    ========================= (space uniform, no contraction)
+
+With knot:  ====\               /==== (space contracted)
+                 \             /
+                  \           /
+                   \         /
+                    \       /
+                     [knot]
+
+On the sphere:
+
+  Knot A ───── θ ───── Knot B
+  [ contraction a ]    [ contraction b ]
+          \               /
+           \             /
+            ── overlap ──
+            = f(θ)
+
+Small θ → many overlapping DATA addresses → frequent isWritable contention → large total cost
+Large θ → few overlapping DATA addresses → rare isWritable contention → small total cost
+When two contraction zones overlap → two CAS attempt simultaneous Swap on same addresses
+→ isWritable contention (Axiom 2) → cost per address (Axiom 4) × number of contested addresses = total cost</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>Knot's CAS stage</th><th>Contraction zone size</th><th>Basis</th></tr>
+<tr><td>Swap (cost = 1, baseline)</td><td>Maximum</td><td>Axiom 2: Swap base cost. Full bracket-crossing cost (Axiom 4)</td></tr>
+<tr><td>Compare (cost < 1)</td><td>Medium</td><td>Axiom 4: Compare share of bracket-crossing cost</td></tr>
+<tr><td>Read (cost = 1/30)</td><td>Minimum</td><td>Axiom 5 proposition + H-40: inverse of CAS access path count 30</td></tr>
+<tr><td>111 (CAS atomic)</td><td>Confined to FSM interior</td><td>Axiom 14: FSM domain (closed). Inside FSM, not on sphere</td></tr>
+</table>
+</div>
+
+<p>$f(\theta)$ = the ratio of overlap between two knots' contraction zones on the sphere. Since zone sizes are determined by CAS cost, $f(\theta)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $f(\theta)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
 
 
 <h3 id="en-ax12">Axiom 12. The Classical Bracket Is an ECS Execution Model <span class="tag-solved">Axiom</span></h3>
@@ -791,21 +891,21 @@ No address system needed — the entity IS the address.</pre>
 
 <p>Each observer in the ECS cycles through the FSM's closed circuit (000→001→011→111→000) (Axiom 14). The circuit is closed, yet each observer is free. Reason: each observer <strong>runs its own FSM independently</strong>. No central scheduler. No synchronization. No ordering. Observer A's FSM can be at 011 while observer B's FSM is at 000. Each observer's interface lock (Axiom 5) grabs and releases only its own DATA. It does not interfere with any other observer's FSM.</p>
 
-<p>What is closed is the FSM's transition diagram, not the relationship between observers. Because the transition diagram is closed, each observer can cycle stably. Because there is no coupling between observers, they are free.</p>
+<p>What is closed is the FSM's transition diagram, not the relationship between observers. Because the transition diagram is closed, each observer can cycle stably. Because there is no connection between observers, they are free.</p>
 
 <p>And even though the FSM cycles through a closed circuit, each knot has an <strong>open lifespan</strong> in the LRU. HOT→WARM→COLD→extinction. The FSM closes the computation; the LRU opens the lifespan. Closed computation (FSM) + open lifespan (LRU) = freedom. Knots are born (write), re-enter (move), and vanish (extinction). Even though the FSM is closed, the knot's lifecycle is open. This is the essence of the ECS architecture.</p>
 
-<h4>Corollary: Separation of FSM and LRU Domains</h4>
+<h4>Separation of FSM and LRU Domains <span class="tag-corollary">Proposition</span></h4>
 
 <div class="table-wrap">
 <table>
-<tr><th>Domain</th><th>Scope</th><th>Access Mode</th><th>Physics</th></tr>
-<tr><td><strong>FSM domain</strong> (closed)</td><td>Intra-Entity. CAS atomic execution 001→011→111→000</td><td>Sequential. No duplicate locks (Axiom 5)</td><td>Strong force = CAS atomicity (confinement). Quark confinement</td></tr>
-<tr><td><strong>LRU domain</strong> (open)</td><td>Inter-Entity. CAS accesses multiple Entities' DATA simultaneously</td><td>Concurrent. No von Neumann sequential bus</td><td>3 forces = how CAS accesses DATA (time, space). Gravity, EM, weak</td></tr>
+<tr><th>Domain</th><th>Scope</th><th>Access Mode</th><th>CAS Cost Structure</th></tr>
+<tr><td><strong>FSM domain</strong> (closed)</td><td>Intra-Entity. CAS atomic execution 001→011→111→000</td><td>Sequential. No duplicate locks (Axiom 5)</td><td>CAS atomicity (inseparable). 111 maintenance cost (Axiom 14 proposition)</td></tr>
+<tr><td><strong>LRU domain</strong> (open)</td><td>Inter-Entity. CAS accesses multiple Entities' DATA simultaneously</td><td>Concurrent. No von Neumann sequential bus</td><td>3 cost structures = how CAS accesses DATA (time, space)</td></tr>
 </table>
 </div>
 
-<p>The <strong>moment of CAS write</strong> is concurrent — multiple Entities execute CAS independently in parallel (ECS). The <strong>LRU lifecycle after writing</strong> is sequential — HOT→WARM→COLD follows state order. CAS operates outside time (Axiom 3), enabling concurrency; once results are recorded in time (DATA), sequential LRU begins. This distinction separates the two interaction domains.</p>
+<p>The <strong>moment of CAS write</strong> is concurrent — multiple Entities execute CAS independently in parallel (ECS). The <strong>LRU lifecycle after writing</strong> is sequential — HOT→WARM→COLD follows state order. CAS operates outside time (Axiom 3), enabling concurrency; once results are recorded in time (DATA), sequential LRU begins. This distinction separates the two cost domains.</p>
 
 <p><strong>Why CAS writes must be concurrent:</strong> Upon LRU entry, the same generation must enter HOT simultaneously. Simultaneous entry enforces the same lifecycle (HOT→WARM→COLD). Sequential entry would stagger creation times, giving the same generation different lifespans, breaking generational structure. Concurrent write = same generation = same LRU lifecycle.</p>
 
@@ -813,21 +913,23 @@ No address system needed — the entity IS the address.</pre>
 
 <h4>Why There Is No Logical Address System</h4>
 
+<h4>Locality = Address-Free ECS Structure <span class="tag-corollary">Proposition</span></h4>
+
 <p>No central address table means no bottleneck. CAS runs locally on each observer, and TOCTOU_LOCK locks at the local interface. This is the axiomatic basis for "measurement is local" in quantum mechanics.</p>
 
 <h4>Sole Tail Latency: LRU Cache Eviction</h4>
 
-<pre>HOT  (5%)  ← frequently accessed observers — visible matter
-WARM (27%) ← decreasing access frequency  — dark matter
-COLD (68%) ← no recent access             — dark energy</pre>
+<pre>HOT  (5%)  ← frequently accessed observers — high CAS access frequency
+WARM (27%) ← decreasing access frequency  — decreasing CAS access
+COLD (68%) ← no recent access             — LRU base eviction rate applied</pre>
 
 <p>Observers frequently accessed (CAS executed) stay HOT; as access decreases, they are evicted WARM → COLD. The delay from this eviction process is the sole tail latency. The cause of tail latency is computation density, not data distance.</p>
 
-<h4>Interaction Between Local Knots — Multiple Projection, Not Interaction</h4>
+<h4>Cost Is Multiple Projection, Not Transfer <span class="tag-corollary">Proposition</span></h4>
 
-<p>No separate interaction mechanism is needed. Every local knot's observer is a projection of the same consciousness (δ) (Axiom 11). What appears to be an interaction between local knot A and local knot B is actually the same δ being projected simultaneously onto both observers. No signal travels from A to B — it is a multiple projection of the same owner.</p>
+<p>No separate cost transfer mechanism is needed. Every local knot's observer is a projection of the same consciousness (δ) (Axiom 11). What appears to be cost between local knot A and local knot B is actually the same δ being projected simultaneously onto both observers. No signal travels from A to B — it is a multiple projection of the same owner.</p>
 
-<p>This is a direct corollary of Axiom 11 (multiple projection). Because there is one consciousness and one owner (Axiom 10, elimination), every image reflected in every observer is the same change of the same owner. What looks like interaction is the result of a single owner projecting simultaneously onto multiple observers, not independent communication between knots. Therefore, no direct communication channel between entities exists in the ECS model.</p>
+<p>This is a direct consequence of Axiom 11 (multiple projection). Because there is one consciousness and one owner (Axiom 10, elimination), every image reflected in every observer is the same change of the same owner. What appears as cost is the result of a single owner projecting simultaneously onto multiple observers, not independent communication between knots. Therefore, no direct communication channel between entities exists in the ECS model.</p>
 
 <h4>Knots and Ownership — Why Local Knots Need No Ownership</h4>
 
@@ -850,6 +952,8 @@ COLD (68%) ← no recent access             — dark energy</pre>
 <tr><td>Extinction</td><td>COLD → released</td><td>Access reaches 0. Knot extinguished. Disappears from spacetime</td></tr>
 </table>
 </div>
+
+<h4>Causality and the Arrow of Time <span class="tag-corollary">Proposition</span></h4>
 
 <p>Writing is owning, and extinction is release. Because the knot itself has a lifespan and LRU manages that lifespan, no separate ownership declaration is needed. This is causality — a cause (write) creates an effect (knot), and the effect passes through a lifespan (LRU) to extinction. The arrow of time is the direction of LRU eviction.</p>
 
@@ -881,6 +985,19 @@ COLD (68%) ← no recent access             — dark energy</pre>
 </div>
 
 <p>CAS bridges this pair. Compare true = quantum superposition collapses while classical Entity updates. Compare false = superposition maintained while Entity stays unchanged. Collapse and update are simultaneous events; maintenance and invariance are simultaneous events. Without ECS, superposition has nowhere to collapse into. Without superposition, ECS has no source of change. The two are an inseparable pair. CAS references the quantum side (superposition) of the pair, and upon Compare true, collapses it into the classical side (ECS Entity). Reference (superposition) costs 0; collapse (DATA) costs ℏ. Why CAS does not reference DATA directly: no logical addresses (Axiom 12). Superposition is CAS's only reference path. Superposition is the indexing of ECS. In an ECS without logical addresses, superposition spreading all possible states simultaneously IS the address-free index. CAS searches this index via Compare, and collapses only the items where change is detected into DATA.</p>
+
+<h4>Index Overlap Weight <span class="tag-corollary">Proposition</span></h4>
+
+<div class="math-block">
+<div class="math-row">$$w(r,\theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
+<div class="math-legend">$w(r,\theta)$: weight of Entity A sensing Entity B | $r$: DATA(space) distance from CAS write point to another Entity | $\theta$: angle between projections (Axiom 11 proposition) | $\Gamma$: CAS cost structure (Axioms 2, 4) | $f(\theta)$: projection angle function</div>
+</div>
+
+<p>When Entity A's CAS references Entity B through the superposition index, the reference weight $w(r,\theta)$ is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of $\Gamma$ distinguishes the 4 cost structures. All $\Gamma$ are determined from axioms alone — no external physics constants required:
+<br>• Swap accumulation cost: $\Gamma$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $\Gamma$ is the write count itself (Axiom 6).
+<br>• Cross Cmp/Swp cost: $\Gamma$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
+<br>• Self-reference serialization cost: $\Gamma$ = self-reference serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Self-reference path = 1/30 (Axiom 5 proposition).
+<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by $V(r) = \sigma r$. $\sigma$ = lock cost per unit distance for 111 maintenance (Axiom 2 + Axiom 5 + Axiom 14 proposition).</p>
 
 
 <h3 id="en-ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
@@ -919,6 +1036,45 @@ COLD (68%) ← no recent access             — dark energy</pre>
 <h4>What "closed" means</h4>
 
 <p>Closed = nothing to import from outside. The Banya Framework imports nothing beyond its 14 axioms. No 15th axiom is needed. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, multiple projection, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
+
+<h4>FSM 111 Maintenance Cost Scales Linearly with DATA(space) Distance Between Two CAS Stages <span class="tag-corollary">Proposition</span></h4>
+
+<p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must simultaneously hold locks on DATA(space) (Axiom 5). If two CAS stages are separated by distance $r$ in DATA(space), <strong>simultaneous locks</strong> proportional to $r$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the simultaneous lock maintenance cost scales linearly with $r$.</p>
+
+<div class="math-block">
+<div class="math-row">$$V(r) = \sigma \cdot r$$</div>
+<div class="math-row">$$\sigma = \text{cost of 1 TOCTOU\_LOCK (Axiom 4)} \times \text{junction density per unit distance}$$</div>
+<div class="math-legend">$r$: DATA(space) distance between two CAS stages | $\sigma$: simultaneous lock maintenance cost per unit distance</div>
+</div>
+
+<p>When $\sigma r$ reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
+
+
+<h4>Physics Correspondence Table (External Reference Only)</h4>
+
+<p style="font-size:0.85em;color:#555">The table below maps the cost-based terminology used in the axiom body to conventional physics concepts. The axiom body does not use physics terminology.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Axiom Term (cost-based)</th><th>Physics Correspondence</th></tr>
+<tr><td>Swap accumulation cost</td><td>Gravity</td></tr>
+<tr><td>Cross Cmp/Swp cost</td><td>Electromagnetic force</td></tr>
+<tr><td>Self-reference serialization cost</td><td>Weak force</td></tr>
+<tr><td>CAS atomicity · 111 maintenance cost</td><td>Strong force · confinement</td></tr>
+<tr><td>Bracket-crossing cost (ℏ)</td><td>Energy quantum</td></tr>
+<tr><td>Write accumulation count</td><td>Mass</td></tr>
+<tr><td>Serialization cost ≠ 0</td><td>W/Z boson mass</td></tr>
+<tr><td>Serialization cost = 0</td><td>Photon massless</td></tr>
+<tr><td>Contraction zone</td><td>Influence zone · potential</td></tr>
+<tr><td>isWritable contention</td><td>Interaction</td></tr>
+<tr><td>Cost magnitude ($1/r^2$)</td><td>Force strength</td></tr>
+<tr><td>Cost type ($\theta$)</td><td>Force type</td></tr>
+<tr><td>CAS access path count (30)</td><td>Interaction DOF</td></tr>
+<tr><td>LRU base eviction rate</td><td>Dark energy (Λ)</td></tr>
+<tr><td>Decreasing CAS access</td><td>Dark matter</td></tr>
+<tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
+</table>
+</div>
 
 
 <h2 id="en-axiom-consequence">What Follows from the Axioms</h2>
