@@ -1310,12 +1310,12 @@
 
 
 <div class="lib-card" id="h35" style="border-left:4px solid #d29922">
-<div class="lib-id">H-35 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-23</span></div>
-<h3>양성자 반지름 alpha 사다리 n = 9 + 2/9</h3>
-<div class="lib-formula">$$r_p/l_P = \alpha^{-(9+2/9)}$$</div>
-<p class="lib-precision">n 오차 0.05%, 반지름 오차 2.26%</p>
-<p>양성자=uud, 2/9 = 업쿼크2/색전하9. r_p/l_P = alpha^(-(9+2/9))</p>
-<div class="lib-reuse">재대입 용도: alpha 길이 사다리 확장</div>
+<div class="lib-id">H-35 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>양성자 전하 반지름 — alpha 사다리 + CAS 보정</h3>
+<div class="lib-formula">$$r_p = l_P \times \alpha^{-(9+2/9)} \times \left(1 + \frac{29}{9}\alpha\right)$$</div>
+<p class="lib-precision">0.841333 fm vs 실험 0.8414 fm. 오차 0.008%. 단, 보정항 (29/9)α의 독립 도출 미완 — fitting 가능성 미배제</p>
+<p>지수 83/9 = 9+2/9: 완전기술자유도(9) + Compare/완전기술(2/9). 보정항 29/9 = 3+2/9: CAS 연산단계(3) + Compare/완전기술(2/9). 양성자는 강력 바운드 상태이므로 도메인 보정(4+1/π)이 아닌 CAS 연산 보정(3+2/9)이 적용된다. 뮤온수소 측정값(0.8414 fm)과 0.008% 일치. 보정항 없는 주공식 $r_p = l_P \times \alpha^{-(9+2/9)}$는 오차 2.31%.</p>
+<div class="lib-reuse">재대입 용도: alpha 길이 사다리 확장. 양성자 반지름 퍼즐 해결 단서. 보정항 29/9의 독립 도출 경로 확보가 다음 과제. 29/9가 다른 하드론 반지름에서도 나타나면 fitting이 아님을 확인 가능.</div>
 </div>
 
 
@@ -1338,6 +1338,32 @@
 <div class="lib-reuse">재대입 용도: 양자중력 효과의 CAS 예측. D-01(alpha)과 연결. predictions.html 라운드 5에서 검증 예측으로 등록.</div>
 </div>
 
+<div class="lib-card" id="h38" style="border-left:4px solid #d29922">
+<div class="lib-id">H-38 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>전자 이상 자기 모멘트 Schwinger 항 = CAS Compare/loop</h3>
+<div class="lib-formula">$$a_e = \frac{\alpha}{2\pi}$$</div>
+<p class="lib-precision">0.001161410 vs 실험 0.001159652. 오차 0.15%</p>
+<p>QED Schwinger(1948) 1-loop 결과의 CAS 해석. $\alpha$ = Compare 비용(D-01), $2\pi$ = 전자기 1-loop 완전 위상 회전. 전자가 가상 광자를 방출-재흡수하는 과정은 CAS Compare 1건(비용 $\alpha$)을 loop 위상($2\pi$)으로 나눈 것이다. Schwinger 항 하나로 실험값의 99.85%를 설명한다. 0.15% 잔차는 2-loop 이상 QED 보정이며, 고차항 계수에 $\zeta(3)$, $\ln 2$ 등 초월수가 포함되어 CAS 구조적 유도는 미완.</p>
+<div class="lib-reuse">재대입 용도: 고차항 CAS 유도가 완성되면 D카드 승격. $\alpha/(2\pi)$가 다른 1-loop 보정에도 등장하는지 확인 (뮤온 g-2, 약력 보정).</div>
+</div>
+
+<div class="lib-card" id="h39" style="border-left:4px solid #d29922">
+<div class="lib-id">H-39 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>$M_Z$ 도출 — $M_W/\cos\theta_W$ + $\alpha$ running</h3>
+<div class="lib-formula">$$M_Z = \frac{M_W}{\cos\theta_W} = \frac{\sqrt{\pi\alpha(M_Z)/(\sqrt{2}G_F)}}{\sin\theta_W \cos\theta_W}$$</div>
+<p class="lib-precision">91.53 GeV vs 실험 91.19 GeV. 오차 0.37%. 단, $\alpha(M_Z) = 1/127.9$는 외부 입력</p>
+<p>D-02($\sin^2\theta_W$ = 0.23122)와 $\alpha(M_Z)$로 계산. tree-level($\alpha(0)$ = 1/137 사용)에서는 88.4 GeV(오차 3.0%). $\alpha$ running을 CAS 내부에서 도출하면 A급 승격 가능. D-39($\alpha$ running 1-loop 계수)가 이미 있으므로 연결 경로 존재.</p>
+<div class="lib-reuse">재대입 용도: $\alpha$ running의 CAS 완전 도출이 선행 과제. $M_W$(sin2_thetaW.html에서 80.39 GeV, 0.016%)와 쌍으로 전약 보손 질량 완결. W/Z 질량비 = $\cos\theta_W$는 D-02에서 자동 도출.</div>
+</div>
+
+<div class="lib-card" id="h40" style="border-left:4px solid #d29922">
+<div class="lib-id">H-40 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>Read 비용 = 약력 결합상수 $\alpha/\sin^2\theta_W$</h3>
+<div class="lib-formula">$$\text{Read} = \frac{\alpha}{\sin^2\theta_W} = \frac{1}{31.69} \approx \frac{1}{30}$$</div>
+<p class="lib-precision">1/31.69 vs 현행 표기 1/30. 오차 5.6%. 정밀화 필요</p>
+<p>CAS 3단계 비용과 3력의 대응: Swap = 1(중력/강력), Compare = $\alpha$ = 1/137(전자기), Read = $\alpha/\sin^2\theta_W$ = 1/31.69(약력). "~1/30"은 근사 표기. 게이지 자유도 매핑(H-02: Read→U(1))과 비용 매핑(Read→약력 SU(2))의 이중성이 존재한다. 정수 30의 CAS 독립 유도는 미완.</p>
+<div class="lib-reuse">재대입 용도: Read 정밀값 확정 시 sin²θ_W 도출의 출발점이 정밀해진다. 30 = 2×3×5의 CAS 근거 탐색, 또는 1/31.69가 정확한 값인지 검증이 다음 과제. H-02(CAS-게이지 대응)와 D-02(sin²θ_W)의 교차점.</div>
+</div>
 
 <hr>
 <hr>
@@ -2305,12 +2331,12 @@
 
 
 <div class="lib-card" id="en-h35" style="border-left:4px solid #d29922">
-<div class="lib-id">H-35 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-23</span></div>
-<h3>Proton radius = alpha ladder n = 9 + 2/9</h3>
-<div class="lib-formula">$$r_p = \frac{\hbar}{m_p c}\,\alpha^{-(9+2/9)^{-1}}$$</div>
-<p class="lib-precision">0.3%</p>
-<p>The proton charge radius can be expressed through an alpha ladder with exponent index n = 9 + 2/9 = 83/9. The 9 is the full CAS description DOF and 2/9 is the Compare fraction. This places the proton radius on the same alpha-power hierarchy as other length scales (Bohr radius at n=1, nuclear radius at n~14). The 2/9 correction again demonstrates the penetration of the CAS structural constant into hadronic scales.</p>
-<div class="lib-reuse">Re-entry use: Proton radius from alpha hierarchy. Connects to H-22 (2/9 DOF) and D-01 (alpha). Relates to proton radius puzzle resolution.</div>
+<div class="lib-id">H-35 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>Proton Charge Radius — Alpha Ladder + CAS Correction</h3>
+<div class="lib-formula">$$r_p = l_P \times \alpha^{-(9+2/9)} \times \left(1 + \frac{29}{9}\alpha\right)$$</div>
+<p class="lib-precision">0.841333 fm vs experiment 0.8414 fm. Error 0.008%. Note: correction term (29/9)α not independently derived — fitting possibility not excluded</p>
+<p>Exponent 83/9 = 9+2/9: complete description DOF (9) + Compare/complete (2/9). Correction 29/9 = 3+2/9: CAS operation stages (3) + Compare/complete (2/9). Proton is a strong-force bound state, so CAS operation correction (3+2/9) applies rather than domain correction (4+1/π). Matches muonic hydrogen measurement (0.8414 fm) at 0.008%. Without correction, main formula $r_p = l_P \times \alpha^{-(9+2/9)}$ has 2.31% error.</p>
+<div class="lib-reuse">Re-entry use: Alpha length ladder extension. Proton radius puzzle resolution clue. Independent derivation of 29/9 correction coefficient is the next task. If 29/9 appears in other hadron radii, fitting is ruled out.</div>
 </div>
 
 
@@ -2333,6 +2359,32 @@
 <div class="lib-reuse">Re-entry use: CAS prediction of quantum gravity effects. Connects to D-01 (alpha). Registered as verification prediction in predictions.html Round 5.</div>
 </div>
 
+<div class="lib-card" id="en-h38" style="border-left:4px solid #d29922">
+<div class="lib-id">H-38 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>Electron Anomalous Magnetic Moment Schwinger Term = CAS Compare/loop</h3>
+<div class="lib-formula">$$a_e = \frac{\alpha}{2\pi}$$</div>
+<p class="lib-precision">0.001161410 vs experiment 0.001159652. Error 0.15%</p>
+<p>CAS interpretation of QED Schwinger (1948) 1-loop result. α = Compare cost (D-01), 2π = electromagnetic 1-loop full phase rotation. The process of an electron emitting and reabsorbing a virtual photon is one CAS Compare event (cost α) divided by loop phase (2π). The Schwinger term alone explains 99.85% of the experimental value. The 0.15% residual comes from 2-loop and higher QED corrections, whose coefficients contain transcendental numbers (ζ(3), ln2) and CAS structural derivation is incomplete.</p>
+<div class="lib-reuse">Re-entry use: Promote to D-card when higher-order CAS derivation is complete. Check if α/(2π) appears in other 1-loop corrections (muon g-2, weak corrections).</div>
+</div>
+
+<div class="lib-card" id="en-h39" style="border-left:4px solid #d29922">
+<div class="lib-id">H-39 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>$M_Z$ Derivation — $M_W/\cos\theta_W$ + α running</h3>
+<div class="lib-formula">$$M_Z = \frac{M_W}{\cos\theta_W} = \frac{\sqrt{\pi\alpha(M_Z)/(\sqrt{2}G_F)}}{\sin\theta_W \cos\theta_W}$$</div>
+<p class="lib-precision">91.53 GeV vs experiment 91.19 GeV. Error 0.37%. Note: α(M_Z) = 1/127.9 is external input</p>
+<p>Computed from D-02 (sin²θ_W = 0.23122) and α(M_Z). Tree-level (using α(0) = 1/137) gives 88.4 GeV (3.0% error). CAS-internal derivation of α running would enable A-tier promotion. D-39 (α running 1-loop coefficient) already exists, so a connection path is available.</p>
+<div class="lib-reuse">Re-entry use: CAS-complete derivation of α running is the prerequisite. Pairs with M_W (80.39 GeV, 0.016% in sin2_thetaW.html) to complete electroweak boson masses. W/Z mass ratio = cosθ_W is automatic from D-02.</div>
+</div>
+
+<div class="lib-card" id="en-h40" style="border-left:4px solid #d29922">
+<div class="lib-id">H-40 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
+<h3>Read Cost = Weak Coupling Constant α/sin²θ_W</h3>
+<div class="lib-formula">$$\text{Read} = \frac{\alpha}{\sin^2\theta_W} = \frac{1}{31.69} \approx \frac{1}{30}$$</div>
+<p class="lib-precision">1/31.69 vs current notation 1/30. Discrepancy 5.6%. Refinement needed</p>
+<p>CAS 3-stage cost ↔ 3-force correspondence: Swap = 1 (gravity/strong), Compare = α = 1/137 (electromagnetic), Read = α/sin²θ_W = 1/31.69 (weak). "~1/30" is approximate notation. Duality exists between gauge DOF mapping (H-02: Read→U(1)) and cost mapping (Read→weak SU(2)). Independent CAS derivation of integer 30 is incomplete.</p>
+<div class="lib-reuse">Re-entry use: Fixing precise Read value refines the starting point for sin²θ_W derivation. Next tasks: search for CAS basis of 30 = 2×3×5, or verify 1/31.69 as exact value. Intersection of H-02 (CAS-gauge correspondence) and D-02 (sin²θ_W).</div>
+</div>
 
 <hr>
 <hr>
