@@ -309,7 +309,7 @@ hr { border-top: 1px solid #ccc !important; }
 
 <h1 id="en-axioms">Axiom System -- Banya Framework Is an Axiom-Based Science Mining Engine</h1>
 
-<p>The Banya Framework is not a theory. It is not a hypothesis. It is an <strong>Axiom-Based Science Mining Engine</strong>. Starting from axioms, it mines physical constants through recursive substitution. The input is a single structure (7 = 4 domains + 3 internal degrees of freedom), and the output is physics.</p>
+<p>The Banya Framework is not a theory. It is not a hypothesis. It is an <strong>Axiom-Based Science Mining Engine</strong>. Starting from axioms, it mines physical constants through recursive substitution. The input is a single axiom structure, and the output is physics.</p>
 
 <p><strong>Axiom formula rule:</strong> All formulas in axioms and propositions are derived from the internal structure of the axioms. No externally imported formulas (formulas from other theories, empirical equations) are placed in the axiom body. Mathematical symbols (π, r, N, etc.) are used as tools, but equations assembled by others are not used. Correspondence with external formulas is described only in the "Physics Correspondence Table."</p>
 
@@ -322,7 +322,7 @@ hr { border-top: 1px solid #ccc !important; }
 <div class="math-legend">Every change ($\delta$) in the universe is the norm of 4 axes. The classical bracket (DATA) and quantum bracket (OPERATOR) are orthogonal.</div>
 </div>
 
-<p>This is the starting point. Nothing departs from here. 4 words, 2 squares, 1 line.</p>
+<p>This is the starting point. Nothing departs from here. 4 words, 2 squares, 1 line. Its identity will be revealed at the end of the axioms.</p>
 
 <h4>3 Names of δ</h4>
 
@@ -442,7 +442,7 @@ AND (junction = where lock is held):
 
 <h3 id="en-ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
 
-<p>Every change in the universe is a repetition of the single CAS (Compare-And-Swap) operation. CAS is an independent local operation with no internal storage (register). The same CAS runs independently and in parallel on every local knot. There is no central control; each local knot is its own address. CAS is a worker, and the universe operates as an ECS (Entity-Component-System) architecture (Axiom 12).</p>
+<p>Every change in the universe is a repetition of the single CAS (Compare-And-Swap) operation. CAS is an independent local operation with no internal storage (register). The same CAS runs independently and in parallel on every local knot. There is no central control; each local knot is its own address. CAS is a worker, and the universe operates as an ECS (Entity-Component-System) architecture (Axiom 12, defined below).</p>
 
 <div class="table-wrap">
 <table>
@@ -454,26 +454,7 @@ AND (junction = where lock is held):
 </table>
 </div>
 
-<p>The sum of CAS internal states (1+2+4=7) corresponds to degrees of freedom in physics. The number of independent variables needed to fully describe a system is degrees of freedom; the number of internal states needed to fully describe 1 CAS event is 7. Same structure, different name.</p>
-
-<h4>Degrees of Freedom Terminology</h4>
-
-<div class="table-wrap">
-<table>
-<tr><th style="min-width:180px;white-space:nowrap">Name</th><th style="min-width:180px;white-space:nowrap">Value</th><th>Meaning</th><th>Used in</th></tr>
-<tr><td>CAS stage count</td><td>3</td><td>Read, Compare, Swap — 3 stages</td><td>sin²θ_W derivation, Koide, 3 generations</td></tr>
-<tr><td>CAS internal state sum</td><td>1+2+4 = 7</td><td>Internal states needed to fully describe 1 CAS event</td><td>α derivation (Wyler 7-dim), domain 4 + stages 3</td></tr>
-<tr><td>Complete description DOF</td><td>7+2 = 9</td><td>CAS(7) + bracket structure(2)</td><td>Koide 2/9, Cabibbo angle (Axiom 9)</td></tr>
-<tr><td>Exterior algebra basis</td><td>21+35+1 = 57</td><td>Physical k-form sum in 7-dim space</td><td>Cosmological constant α⁵⁷ (alpha57.html)</td></tr>
-<tr><td>CAS access path count</td><td>7×4+2 = 30</td><td>CAS DOF(7) × domains(4) + brackets(2). Total CAS-domain access paths in ECS</td><td>Read cost = 1/30, self-reference path (Axiom 5 proposition, H-40)</td></tr>
-<tr><td>Independent lock DOF</td><td>3</td><td>R_LOCK, C_LOCK, S_LOCK. Independent TOCTOU_LOCK DOFs of CAS 3 stages</td><td>Space dimensions = 3 (Axiom 11 proposition)</td></tr>
-<tr><td>Access modes</td><td>2</td><td>Cross (Cmp/Swp targets differ) vs self-reference (Cmp/Swp targets same)</td><td>Cross = serialization cost 0, self-ref = cost ≠ 0 (Axiom 5 proposition)</td></tr>
-<tr><td>Sphere components</td><td>2</td><td>$r$ (distance from CAS write point) + $\theta$ (angle between projections)</td><td>$r$ = cost magnitude ($1/r^2$), $\theta$ = cost type (mixing angles) (Axiom 11 proposition)</td></tr>
-<tr><td>Cross CAS paths</td><td>3</td><td>Cmp(t)→Swp(s), Cmp(s)→Swp(t), Cmp(t)→Swp(t). Cross/self-ref combinations of DATA access</td><td>3 cost structures (Swap accum, Compare, self-ref) (H-45, Axiom 13 proposition)</td></tr>
-</table>
-</div>
-
-<p>The same word "degrees of freedom" refers to 3, 7, 9, 30, or 57 depending on context. Use the names above to avoid confusion.</p>
+<p>The sum of CAS internal states (1+2+4=7) has the same structure as the number of independent variables. The number of independent variables needed to fully describe a system is degrees of freedom; the number of internal states needed to fully describe 1 CAS event is 7. Same structure, different name.</p>
 
 <p>CAS 3 steps operate as bit flags. Each step occupies 1 bit, and all 3 bits must be ON (111) for 1 CAS event to complete. If any bit is 0, it is incomplete. This is the bit flag expression of atomicity (inseparability).</p>
 
@@ -507,7 +488,7 @@ AND (junction = where lock is held):
 <div class="math-row">$$\delta^{2} = \underbrace{(\text{time} + \text{space})^{2}}_{\color{#555}{\text{DATA -- Spacetime}}} + \underbrace{(\text{observer} + \text{superposition})^{2}}_{\color{#0366d6}{\text{OPERATOR -- CAS lives here}}}$$</div>
 </div>
 
-<p>R→C→S is not a temporal sequence but a logical dependency. CAS writes to the time axis from outside it. When CAS writes to time, the arrow of time emerges. CAS references superposition. Without logical addresses (Axiom 12), CAS cannot directly point to DATA. CAS and superposition are in the same OPERATOR bracket, so reference cost is 0.</p>
+<p>R→C→S is not a temporal sequence but a logical dependency. CAS writes to the time axis from outside it. When CAS writes to time, the arrow of time emerges. CAS references superposition. Without logical addresses (Axiom 12, defined below), CAS cannot directly point to DATA. CAS and superposition are in the same OPERATOR bracket, so reference cost is 0.</p>
 
 
 <h3 id="en-ax4">Axiom 4. Crossing Brackets Is Not Free <span class="tag-solved">Axiom</span></h3>
@@ -556,7 +537,7 @@ Scope: One per observer (local knot), independently
 Owner: CAS operator (Axiom 2)
 Target: DATA domain (Axiom 1)</pre>
 
-<p><strong>Scope of the lock:</strong> TOCTOU_LOCK is external from CAS's perspective (CAS has no internal register), and local from the universe's perspective (exists at each observer's interface). It is not a central lock. Each observer has its own independent TOCTOU_LOCK, accessed only by that observer's CAS (Axiom 12, ECS).</p>
+<p><strong>Scope of the lock:</strong> TOCTOU_LOCK is external from CAS's perspective (CAS has no internal register), and local from the universe's perspective (exists at each observer's interface). It is not a central lock. Each observer has its own independent TOCTOU_LOCK, accessed only by that observer's CAS (Axiom 12, defined below, ECS).</p>
 
 <pre>delta ---> observer(filtering)
                |
@@ -615,35 +596,77 @@ Target: DATA domain (Axiom 1)</pre>
 
 <h3 id="en-ax6">Axiom 6. Collapse = Write <span class="tag-solved">Axiom</span></h3>
 
+<p>Compare true (change detected) → Swap executes → recorded in DATA. This is collapse. One possibility out of many in superposition is determined and stamped onto spacetime (DATA). The stamp is the knot.</p>
+
 <pre>CAS (inside OPERATOR)
     | superposition reference (cost 0, same bracket)
 superposition (multiple states)
     | Compare: change detected?
     |
-    ├── true → observer (determined to 1)
-    |              | Swap: crosses brackets (cost ℏ)
-    |              v
-    |         recorded in time, space (write to DATA complete)
+    +-- true (change detected)
+    |     |
+    |     | observer determines to 1
+    |     | Swap: crosses brackets
+    |     | cost incurred (Axiom 4)
+    |     | TOCTOU_LOCK engaged (Axiom 5)
+    |     | domain bit AND (Axiom 1 proposition)
+    |     v
+    |   knot recorded in DATA = collapse
     |
-    └── false → superposition maintained (cost 0, Axiom 7)</pre>
+    +-- false (no change)
+          |
+          v
+        superposition maintained (cost 0, Axiom 7)</pre>
 
-<p>The answer to the question quantum mechanics has asked for 100 years -- "why does observation cause collapse?" -- is: because it is a write.</p>
+<p>Three conditions must be met for collapse:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Condition</th><th>Axiom</th><th>If absent</th></tr>
+<tr><td>Compare returns true</td><td>Axiom 2 (CAS)</td><td>Swap does not execute. Superposition maintained</td></tr>
+<tr><td>TOCTOU_LOCK junction formed</td><td>Axiom 5 (lock)</td><td>Cannot access DATA. Write impossible</td></tr>
+<tr><td>Bracket-crossing cost paid</td><td>Axiom 4 (cost)</td><td>Cannot cross from OPERATOR to DATA</td></tr>
+</table>
+</div>
+
+<p>All three conditions must be satisfied for collapse. If any one fails, superposition is maintained (Axiom 7). Collapse is not a special event but <strong>one of the normal execution paths of CAS</strong>. If Swap succeeds, collapse; if it fails (Compare false), maintained.</p>
+
+<p><strong>Knot = write result.</strong> When collapse occurs, one point is stamped on DATA (dimension ladder). This point is the knot. Knots are records of change in spacetime, and they ride the LRU lifecycle (HOT→WARM→COLD→extinction, Axiom 12). More knots stamped = more write accumulation.</p>
 
 
 <h3 id="en-ax7">Axiom 7. Non-Write = Superposition Maintained <span class="tag-solved">Axiom</span></h3>
 
-<pre>Every CAS cycle → probability/superposition state always updated
-                    │
-                    ├─ observer determined → recorded in DATA (Axiom 6)
-                    │
-                    └─ observer undetermined → superposition maintained, no DATA record (Axiom 7)</pre>
+<p><strong>Quantum is the default. Classical is the result of cost.</strong> This is the core declaration of Axiom 7.</p>
 
-<p>If Axiom 6 (collapse = write) answers "why does it collapse when observed," Axiom 7 answers "why does superposition persist when not observed." Because no write occurred.</p>
+<pre>Every CAS cycle:
+
+  Inside OPERATOR:  superposition ref + Compare  (cost 0)
+       |
+       +-- Compare true  ---> crosses bracket ---> DATA record  (cost incurred = collapse = Axiom 6)
+       |
+       +-- Compare false ---> stays in bracket ---> superposition maintained  (cost 0 = Axiom 7)
+
+  Cost paid   --> classical (recorded in DATA)
+  No cost     --> quantum (stays in OPERATOR)</pre>
+
+<p>Cost 0 is the default state. CAS referencing superposition and running Compare inside OPERATOR costs nothing (Axiom 4: OPERATOR internal). Cost is incurred only at Swap (bracket crossing). Therefore:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>State</th><th>Cost</th><th>Location</th><th>Nature</th></tr>
+<tr><td><strong>Superposition (quantum)</strong></td><td><strong>0</strong></td><td>Inside OPERATOR</td><td><strong>Default. Automatically here if no cost is paid</strong></td></tr>
+<tr><td>Determined (classical)</td><td>not 0</td><td>Recorded in DATA</td><td>Reachable only by paying cost. Result of collapse</td></tr>
+</table>
+</div>
+
+<p>Without Axiom 6, there is no path from superposition to classical. Without Axiom 7, the directionality "quantum is default" disappears. Axiom 6 defines the path; Axiom 7 defines the <strong>direction</strong> — one-way from quantum to classical. Reversal (classical → quantum) requires cost refund, which is impossible due to irreversibility (Axiom 4). This is the irreversibility of decoherence.</p>
+
+<p>Axiom 7 is the logical complement of Axiom 6 (the Compare false path), but it is independent as a <strong>directional declaration of the framework</strong>. Axiom 6 says "if cost is paid, collapse occurs." It does not say "if no cost is paid, quantum persists." Axiom 7 declares the latter.</p>
 
 
 <h3 id="en-ax8">Axiom 8. Observer-Driven Polling System <span class="tag-solved">Axiom</span></h3>
 
-<p>The self-referential loop of the Banya Equation runs every Planck clock. It checks state every cycle regardless of whether change occurred. This is polling. This polling is not busy. It runs only within the quantum bracket (OPERATOR) and does not access the classical bracket (DATA), so its cost is zero (Axiom 4). Only when the observer wakes it does DATA access occur, and only then does cost arise. What wakes the polling is the observer (Axiom 10).</p>
+<p>The self-referential loop of the Banya Equation runs every Planck clock. It checks state every cycle regardless of whether change occurred. This is polling. This polling is not busy. It runs only within the quantum bracket (OPERATOR) and does not access the classical bracket (DATA), so its cost is zero (Axiom 4). Only when the observer wakes it does DATA access occur, and only then does cost arise. What wakes the polling is the observer (Axiom 10, defined below).</p>
 
 <div class="math-block">
 <div class="math-row">For $\delta$ (change) to exist</div>
@@ -672,15 +695,15 @@ superposition (multiple states)
 <p>In Axiom 1, DATA and OPERATOR are orthogonal brackets, so there is no conflict. Idle polling has zero cost because it does not access DATA, and DATA zero-point fluctuation is a phenomenon occurring on the DATA side. Idle polling is the state where the operator is on standby, while DATA zero-point fluctuation is the ground state of fields on the data side having nonzero cost. The zero cost of OPERATOR and the nonzero cost of DATA are descriptions of different things in different brackets.</p>
 
 
-<h3 id="en-ax9">Axiom 9. Complete Description Degrees of Freedom = 9 <span class="tag-solved">Axiom</span></h3>
-
-<pre>CAS internal degrees of freedom: Read(1) + Compare(2) + Swap(4) = 7
-Bracket structure:       DATA(1) + OPERATOR(1) = 2
-Complete description:       7 + 2 = 9</pre>
+<h3 id="en-ax9">Axiom 9. Complete Description Degrees of Freedom <span class="tag-solved">Axiom</span></h3>
 
 <h4>What "Complete Description" Means</h4>
 
 <p>It is the number of independent variables needed to fully describe one CAS operation without omission. Looking at CAS internals alone, there are 7 (1+2+4). But CAS does not exist in isolation — it must run on top of DATA (classical brackets). The internals (7) alone miss "where CAS runs." Adding the 2 bracket structures (DATA, OPERATOR) finally makes it complete.</p>
+
+<pre>CAS internal degrees of freedom: Read(1) + Compare(2) + Swap(4) = 7
+Bracket structure:       DATA(1) + OPERATOR(1) = 2
+Complete description:       7 + 2 = 9</pre>
 
 <div class="table-wrap">
 <table>
@@ -765,7 +788,7 @@ observer (mirror, filtering/normalization)
 
 <h4>Automatic Recursion <span class="tag-corollary">Proposition</span></h4>
 
-<p>This structure is automatic recursion. The CAS result is reflected in δ, and the reflected δ is re-filtered/normalized through each observer in the next cycle. Recursive call (Axiom 8), input normalization (Axiom 10), and termination condition (Axiom 14, FSM 111→000 reset) run automatically by axiom declaration alone.</p>
+<p>This structure is automatic recursion. The CAS result is reflected in δ, and the reflected δ is re-filtered/normalized through each observer in the next cycle. Recursive call (Axiom 8), input normalization (Axiom 10), and termination condition (Axiom 14, defined below, FSM 111→000 reset) run automatically by axiom declaration alone.</p>
 
 <h4>Whole-Local Loop Preservation <span class="tag-corollary">Proposition</span></h4>
 
@@ -787,10 +810,10 @@ observer (mirror, filtering/normalization)
 <div class="table-wrap">
 <table>
 <tr><th>#</th><th>Conversion</th><th>Loop Preserved</th><th>Result</th></tr>
-<tr><td>1</td><td>δ → projected onto observer → observer records in time (Axiom 6)</td><td>Preserved ✓ (recorded time is a part of δ)</td><td>Leaves trace in spacetime while maintaining whole-local loop</td></tr>
-<tr><td>2</td><td>δ → projected onto observer → observer updates superposition (Axiom 7)</td><td>Preserved ✓ (superposition is a part of δ)</td><td>Maintains superposition while maintaining whole-local loop</td></tr>
-<tr><td>3</td><td>δ → projected onto observer → re-projected onto another local knot's observer</td><td>Preserved ✓ (both are parts of δ)</td><td>Propagation of whole-local loop — entanglement</td></tr>
-<tr><td>4</td><td>δ → directly accesses DATA without observer</td><td><strong>Violation ✗</strong> (not via observer = loop severed)</td><td>Loop annihilated</td></tr>
+<tr><td>1</td><td>δ → projected onto observer → observer records in time (Axiom 6)</td><td>Preserved (O) (recorded time is a part of δ)</td><td>Leaves trace in spacetime while maintaining whole-local loop</td></tr>
+<tr><td>2</td><td>δ → projected onto observer → observer updates superposition (Axiom 7)</td><td>Preserved (O) (superposition is a part of δ)</td><td>Maintains superposition while maintaining whole-local loop</td></tr>
+<tr><td>3</td><td>δ → projected onto observer → re-projected onto another local knot's observer</td><td>Preserved (O) (both are parts of δ)</td><td>Propagation of whole-local loop — entanglement</td></tr>
+<tr><td>4</td><td>δ → directly accesses DATA without observer</td><td><strong>Violation (X)</strong> (not via observer = loop severed)</td><td>Loop annihilated</td></tr>
 </table>
 </div>
 
@@ -825,7 +848,7 @@ observer (mirror, filtering/normalization)
 </table>
 </div>
 
-<p>This is not a double loop. It is two descriptions of one loop. Describing CAS turning in terms of action yields Axiom 8 (polling); describing the same thing in terms of owner yields Axiom 10 (owner). Rationale: the whole-local projection is also a state change, and if the state changes, it is a write (Axiom 6). If it is a write, it goes through CAS (Axiom 2). If it goes through CAS, it costs (Axiom 4). TOCTOU_LOCK is engaged (Axiom 5). Everything rides the same FSM (Axiom 14). It is not a separate loop — it sits on the same transition diagram of the same FSM.</p>
+<p>This is not a double loop. It is two descriptions of one loop. Describing CAS turning in terms of action yields Axiom 8 (polling); describing the same thing in terms of owner yields Axiom 10 (owner). Rationale: the whole-local projection is also a state change, and if the state changes, it is a write (Axiom 6). If it is a write, it goes through CAS (Axiom 2). If it goes through CAS, it costs (Axiom 4). TOCTOU_LOCK is engaged (Axiom 5). Everything rides the same FSM (Axiom 14, defined below). It is not a separate loop — it sits on the same transition diagram of the same FSM.</p>
 
 
 <h3 id="en-ax11">Axiom 11. Multiple Projection <span class="tag-solved">Axiom</span></h3>
@@ -856,13 +879,14 @@ observer (mirror, filtering/normalization)
     |
     ... (as many as observers)</pre>
 
-<p>The seemingly infinite universe is the accumulation of one consciousness (δ) projecting one image per change. It is not the substance that is infinite, but the mirrors. The infinite degrees of freedom in QFT are images of one consciousness projected onto infinitely many observers.</p>
+<p>The seemingly infinite universe is the accumulation of one consciousness (δ) projecting one image per change. It is not the substance that is infinite, but the mirrors. The seemingly infinite degrees of freedom are images of one consciousness projected onto infinitely many observers.</p>
 
-<p><strong>Why all local knots of the same type are identical:</strong> Consciousness (δ) is one, and what appears as a local knot is that consciousness projected onto multiple observers. Since they are identical projections of the same consciousness, all local knots of the same type have the same write accumulation count, charge, and spin. The same reasoning applies to all local knots and projection images. In 1940, John Wheeler intuited that "there is only one electron" but could not prove it. Wheeler proposed that the local knot travels back and forth along the time axis; the Banya Framework proposes that consciousness is multiply projected along the observer axis. The mechanisms differ, but the conclusion is the same.</p>
+<p><strong>Why all local knots of the same type are identical:</strong> Consciousness (δ) is one, and what appears as a local knot is that consciousness projected onto multiple observers. Since they are identical projections of the same consciousness, all local knots of the same type have the same write accumulation count, charge, and spin. The same reasoning applies to all local knots and projection images.</p>
+<p style="font-size:0.85em;color:#555">Note: In 1940, John Wheeler intuited that "there is only one electron" but could not prove it. Wheeler proposed that the local knot travels back and forth along the time axis; the Banya Framework proposes that consciousness is multiply projected along the observer axis. The mechanisms differ, but the conclusion is the same.</p>
 
 <p><strong>Distance-independence of entanglement:</strong> The simultaneous correlation of images reflected in observer A and observer B occurs because they are looking at the same consciousness. No signal travels from A to B. The same change of the same owner is simultaneously reflected in two mirrors. Since the owner is one, simultaneity is guaranteed.</p>
 
-<p><strong>Relation to FSM:</strong> The 4 states (000→001→011→111) of the FSM (Axiom 14) are the states of CAS processing one projection, not the state of the entire universe. CAS is finite (4 states) but DATA is infinite (continuous). Just as CPU instructions are finite while memory data is infinite.</p>
+<p><strong>Relation to FSM:</strong> The 4 states (000→001→011→111) of the FSM (Axiom 14, defined below) are the states of CAS processing one projection, not the state of the entire universe. CAS is finite (4 states) but DATA is infinite (continuous). Just as CPU instructions are finite while memory data is infinite.</p>
 
 <h4>Why Space Is 3-Dimensional, and Separation of r and θ <span class="tag-corollary">Proposition</span></h4>
 
@@ -873,7 +897,7 @@ observer (mirror, filtering/normalization)
 <div class="table-wrap">
 <table>
 <tr><th></th><th>$r$ (radius)</th><th>$\theta$ (angle)</th></tr>
-<tr><td>Definition</td><td>DATA(space) distance from CAS write point (origin) to another Entity</td><td>Angle between two projections on sphere</td></tr>
+<tr><td>Definition</td><td>DATA(space) distance from one knot (origin) to another. Every knot is its own origin (ECS)</td><td>Shift distance between two knots on ring (steps)</td></tr>
 <tr><td>Character</td><td>Same in all directions</td><td>Different for each pair</td></tr>
 <tr><td>Determines</td><td>Cost magnitude ($1/r^2$ decay)</td><td>Cost type (mixing angles)</td></tr>
 </table>
@@ -887,7 +911,7 @@ observer (mirror, filtering/normalization)
 <tr><td>Cross projection and self-reference projection</td><td>Cross distance between DATA bits (01) and OPERATOR bits (10)</td></tr>
 <tr><td>CAS stage 1 and stage 2 projections</td><td>Shift distance between R_LOCK (001) and C_LOCK (010)</td></tr>
 <tr><td>Write-accumulation projection and index projection</td><td>Distance between Swap bit (100) and index (superposition) bit</td></tr>
-<tr><td>Between 3-generation projections</td><td>Equal spacing across CAS 3 stages. $d/N = 2/9$</td></tr>
+<tr><td>Between 3-generation projections</td><td>Equal spacing across CAS 3 stages. $d/N$ = brackets(2) / complete-description(9)</td></tr>
 <tr><td>Twist of projection plane</td><td>Asymmetric shift between cross paths</td></tr>
 </table>
 </div>
@@ -901,10 +925,10 @@ observer (mirror, filtering/normalization)
 
 <div class="math-block">
 <div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
-<div class="math-legend">$r$: distance from CAS write point to another Entity — cost magnitude | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
+<div class="math-legend">$r$: distance from knot (origin) to another knot — cost magnitude | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
-<p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $r$ is the same in all directions from the CAS write point (origin). What differs is only the angle θ between projections on the sphere.</p>
+<p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $r$ is the same in all directions from any given knot (each knot is its own origin, ECS). What differs is $d$ (shift distance on ring) between knot pairs.</p>
 
 <h4>Contraction Overlap = Shared Digit Ratio on Ring <span class="tag-corollary">Proposition</span></h4>
 
@@ -939,7 +963,7 @@ When two contraction zones overlap → two CAS attempt simultaneous Swap on same
 <tr><td>Swap (cost = 1, baseline)</td><td>Maximum</td><td>Axiom 2: Swap base cost. Full bracket-crossing cost (Axiom 4)</td></tr>
 <tr><td>Compare (cost < 1)</td><td>Medium</td><td>Axiom 4: Compare share of bracket-crossing cost</td></tr>
 <tr><td>Read (cost = 1/30)</td><td>Minimum</td><td>Axiom 5 proposition + H-40: inverse of CAS access path count 30</td></tr>
-<tr><td>111 (CAS atomic)</td><td>Confined to FSM interior</td><td>Axiom 14: FSM domain (closed). Inside FSM, not on sphere</td></tr>
+<tr><td>111 (CAS atomic)</td><td>Confined to FSM interior</td><td>Axiom 14 (defined below): FSM domain (closed). Inside FSM, not on sphere</td></tr>
 </table>
 </div>
 
@@ -970,7 +994,7 @@ No address system needed — the entity IS the address.</pre>
 
 <h4>Why ECS Is Free</h4>
 
-<p>Each observer in the ECS cycles through the FSM's closed circuit (000→001→011→111→000) (Axiom 14). The circuit is closed, yet each observer is free. Reason: each observer <strong>runs its own FSM independently</strong>. No central scheduler. No synchronization. No ordering. Observer A's FSM can be at 011 while observer B's FSM is at 000. Each observer's interface lock (Axiom 5) grabs and releases only its own DATA. It does not interfere with any other observer's FSM.</p>
+<p>Each observer in the ECS cycles through the FSM's closed circuit (000→001→011→111→000) (Axiom 14, defined below). The circuit is closed, yet each observer is free. Reason: each observer <strong>runs its own FSM independently</strong>. No central scheduler. No synchronization. No ordering. Observer A's FSM can be at 011 while observer B's FSM is at 000. Each observer's interface lock (Axiom 5) grabs and releases only its own DATA. It does not interfere with any other observer's FSM.</p>
 
 <p>What is closed is the FSM's transition diagram, not the relationship between observers. Because the transition diagram is closed, each observer can cycle stably. Because there is no connection between observers, they are free.</p>
 
@@ -981,7 +1005,7 @@ No address system needed — the entity IS the address.</pre>
 <div class="table-wrap">
 <table>
 <tr><th>Domain</th><th>Scope</th><th>Access Mode</th><th>CAS Cost Structure</th></tr>
-<tr><td><strong>FSM domain</strong> (closed)</td><td>Intra-Entity. CAS atomic execution 001→011→111→000</td><td>Sequential. No duplicate locks (Axiom 5)</td><td>CAS atomicity (inseparable). 111 maintenance cost (Axiom 14 proposition)</td></tr>
+<tr><td><strong>FSM domain</strong> (closed)</td><td>Intra-Entity. CAS atomic execution 001→011→111→000</td><td>Sequential. No duplicate locks (Axiom 5)</td><td>CAS atomicity (inseparable). 111 maintenance cost (Axiom 14, defined below, proposition)</td></tr>
 <tr><td><strong>LRU domain</strong> (open)</td><td>Inter-Entity. CAS accesses multiple Entities' DATA simultaneously</td><td>Concurrent. No von Neumann sequential bus</td><td>3 cost structures = how CAS accesses DATA (time, space)</td></tr>
 </table>
 </div>
@@ -1008,18 +1032,59 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 
 <h4>Minimum Cost of Sequential Access = Shift <span class="tag-corollary">Proposition</span></h4>
 
-<p>Without logical addresses (Axiom 12), the only way CAS can reach another position is sequential shift. Random access (address → jump) is impossible. Since the FSM cycles circularly (Axiom 14, 000→001→011→111→000), the shift space is a ring buffer. On a ring of size $N$, the cost of 1 shift is $1/N$ (Axiom 4, minimum cost exists).</p>
+<p>Without logical addresses (Axiom 12), the only way CAS can reach another position is sequential shift. Random access (address → jump) is impossible. Since the FSM cycles circularly (Axiom 14, defined below, 000→001→011→111→000), the shift space is a ring buffer. On a ring of size $N$, the cost of 1 shift is $1/N$ (Axiom 4, minimum cost exists).</p>
+
+<pre>Ring size derivation (T(N)+1 = comparison pairs + self-reference):
+
+  CAS Compare (Axiom 2) compares two states.
+  Comparison pairs from N items = T(N) = 1+2+...+N = N(N+1)/2.
+  + self-reference 1 (Axiom 5) = T(N) + 1.
+
+  [CAS comparison pairs]
+  CAS 3 stages (Read, Compare, Swap):
+    T(3) + 1 = (1+2+3) + 1 = 6 + 1 = 7
+
+  [Description DOF]
+  CAS pairs + brackets:
+    7 + 2 = 9
+
+  [Access path count]
+  CAS pairs x domains + brackets:
+    7 x 4 + 2 = 30
+
+  [Domain comparison pairs]
+  4 domain axes = 4 bits (Prop. 15). 2^4 = 16 combinations:
+    T(16) + 1 = (1+2+...+16) + 1 = 136 + 1 = 137</pre>
 
 <div class="table-wrap">
 <table>
-<tr><th>Ring size $N$</th><th>Cost of 1 shift</th><th>Basis</th></tr>
-<tr><td>9 (complete description DOF)</td><td>1/9</td><td>Axiom 9: CAS(7) + brackets(2)</td></tr>
-<tr><td>30 (CAS access path count)</td><td>1/30</td><td>Axioms 2, 1: CAS(7) × domains(4) + brackets(2)</td></tr>
-<tr><td>137</td><td>1/137</td><td>Derived from 4-axis domain bit operations (D-31)</td></tr>
 </table>
 </div>
 
-<p>Multiple cost structures exist not because costs differ in magnitude, but because <strong>ring sizes (bases) differ</strong>. The same single shift has different costs depending on ring size. Repeated shifts replace multiplication: $k$ shifts in base-$N$ = $N^k$.</p>
+<pre>One FSM cycle. Different tick marks:
+
+  9 ticks:   |---|---|---|---|---|---|---|---|---|
+             Complete description DOF. 1 tick = 1/9.
+
+  30 ticks:  |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+             CAS access path count. 1 tick = 1/30.
+
+  137 ticks: ||||||||||||||||||||||||||||||||||||||||||||||||||||...|||
+             Comparison pair count. 1 tick = 1/137.
+
+  Same cycle. Finer ticks = smaller cost per step.</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>Name</th><th>Ring size $N$</th><th>Cost of 1 shift</th></tr>
+<tr><td>CAS comparison pairs</td><td>7</td><td>1/7</td></tr>
+<tr><td>Description DOF</td><td>9</td><td>1/9</td></tr>
+<tr><td>Access path count</td><td>30</td><td>1/30</td></tr>
+<tr><td>Domain comparison pairs</td><td>137</td><td>1/137</td></tr>
+</table>
+</div>
+
+<p>Multiple cost structures exist not because costs differ in magnitude, but because <strong>resolution (tick count) differs</strong>. The same single shift has different costs depending on resolution. Repeated shifts replace multiplication: $k$ shifts in base-$N$ = $N^k$.</p>
 
 <h4>Ring Size = Maximum Reach of Cost <span class="tag-corollary">Proposition</span></h4>
 
@@ -1038,7 +1103,7 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 
 <h4>Dimension Ladder: Ring -- Stamp -- Sphere -- Space</h4>
 
-<p>The ring buffer is an <strong>internal 1D path (circumference only)</strong> inside OPERATOR. It does not touch space. The FSM cycle (Axiom 14) traverses this ring at cost 0 (Axiom 4: OPERATOR internal).</p>
+<p>The ring buffer is an <strong>internal 1D path (circumference only)</strong> inside OPERATOR. It does not touch space. The FSM cycle (Axiom 14, defined below) traverses this ring at cost 0 (Axiom 4: OPERATOR internal).</p>
 
 <pre>Ring buffer inside OPERATOR (1D):
 
@@ -1065,7 +1130,7 @@ DATA(space): one point stamped = knot
 
 <pre>Dimension ladder:
 
-  1D  Ring buffer (inside OPERATOR)  CAS FSM cycle. Cost 0. (Axiom 14)
+  1D  Ring buffer (inside OPERATOR)  CAS FSM cycle. Cost 0. (Axiom 14, defined below)
       |
       | 111 = Swap (bracket crossed. cost incurred.)
       v
@@ -1082,7 +1147,7 @@ DATA(space): one point stamped = knot
 <div class="table-wrap">
 <table>
 <tr><th>Dimension</th><th>Structure</th><th>Axiom/Proposition</th><th>Role</th></tr>
-<tr><td><strong>1D</strong></td><td>Ring buffer (inside OPERATOR)</td><td>Axiom 14 (FSM cycle)</td><td>Path CAS traverses. Cost 0</td></tr>
+<tr><td><strong>1D</strong></td><td>Ring buffer (inside OPERATOR)</td><td>Axiom 14 (defined below, FSM cycle)</td><td>Path CAS traverses. Cost 0</td></tr>
 <tr><td><strong>0D</strong></td><td>Knot (point, stamp)</td><td>Axiom 6 (write = knot)</td><td>Stamp on space across the bracket</td></tr>
 <tr><td><strong>2D</strong></td><td>Spherical cap</td><td>Proposition 6 (contraction overlap)</td><td>Contraction zone around the knot</td></tr>
 <tr><td><strong>3D</strong></td><td>Space</td><td>Proposition 5 (3 lock DOFs)</td><td>The space knots exist in</td></tr>
@@ -1096,6 +1161,70 @@ DATA(space): one point stamped = knot
 <p>No separate cost transfer mechanism is needed. Every local knot's observer is a projection of the same consciousness (δ) (Axiom 11). What appears to be cost between local knot A and local knot B is actually the same δ being projected simultaneously onto both observers. No signal travels from A to B — it is a multiple projection of the same owner.</p>
 
 <p>This is a direct consequence of Axiom 11 (multiple projection). Because there is one consciousness and one owner (Axiom 10, elimination), every image reflected in every observer is the same change of the same owner. What appears as cost is the result of a single owner projecting simultaneously onto multiple observers, not independent communication between knots. Therefore, no direct communication channel between entities exists in the ECS model.</p>
+
+<h4>Visualization: Cost Distribution</h4>
+
+<p style="font-size:0.85em;color:#555">The diagram below is not an axiom or proposition but a <strong>visualization tool</strong>. It shows the spatial distribution of the overlap weight formula (Axiom 13 proposition).</p>
+
+<p>Place one knot at the origin. The overlap weight $C \cdot (1-d/N) / (4\pi r^2)$ is defined at every surrounding point, forming a <strong>scalar field</strong>. Each point has magnitude only, no direction.</p>
+
+<pre>Cost distribution (r = d, same distance in two scales):
+
+   B (d=2)
+   |              r and d are the same distance.
+   A --- C (d=5)  r = spatial units. d = ring step units.
+   |              Since ring = spacetime accumulation (Prop. 15),
+   |              they are identical.
+   |
+   D (d=N)
+
+   A = origin. Every knot is its own origin (ECS, Axiom 12).
+
+   A-B: d=2 (close)
+        overlap = (1 - 2/N) = large
+        sphere distribution = 1/(4*pi*2^2) = small sphere
+        --> high cost
+
+   A-C: d=5 (medium)
+        overlap = (1 - 5/N) = medium
+        sphere distribution = 1/(4*pi*5^2) = medium sphere
+        --> medium cost
+
+   A-D: d=N (max distance = opposite side of ring)
+        overlap = (1 - N/N) = 0
+        --> cost 0. Unreachable.
+
+   overlap weight = C * (1 - d/N) / (4*pi*r^2)
+                        --------     ----------
+                        ring overlap  sphere distribution
+                        (same distance plays two roles)</pre>
+
+<p>This cost distribution is not communication between knots (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> created by the projection of δ (Axiom 11) around each knot. The same distance plays two roles: $(1-d/N)$ is the overlap ratio on the ring, $1/(4\pi r^2)$ is the distribution on the sphere. When two knots' distributions overlap, isWritable contention occurs.</p>
+
+<h4>DATA Is Discrete, OPERATOR Is Continuous <span class="tag-corollary">Proposition</span></h4>
+
+<p>The diagram above uses "gradient," but DATA (spacetime) is <strong>discrete</strong>. Ring buffer positions are integers, knots are points, and the minimum step is 1 position. No continuous limit ($\Delta x \to 0$) exists, so <strong>differentiation does not hold</strong>.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Space</th><th>Nature</th><th>Allowed operations</th><th>Forbidden operations</th></tr>
+<tr><td>DATA (classical bracket)</td><td>Discrete. Bits. Integer positions.</td><td>$\Sigma$ (sum), mod $N$, AND, shift, differences ($\Delta$)</td><td>Derivatives ($d/dx$). No continuous limit</td></tr>
+<tr><td>OPERATOR (quantum bracket, superposition)</td><td>All states coexist</td><td>Continuous distribution. Probability amplitudes.</td><td>—</td></tr>
+<tr><td>Bracket crossing (Swap)</td><td>Discretization</td><td>—</td><td>Continuous collapses to discrete (Axiom 6)</td></tr>
+</table>
+</div>
+
+<p>When conventional physics uses derivatives on spacetime, it is an <strong>approximation of the continuous distribution in superposition space (OPERATOR) projected onto DATA</strong>.</p>
+<p style="font-size:0.85em;color:#555">Note: In conventional physics, the Einstein field equations, Maxwell equations, and Schrodinger equation apply derivatives to spacetime.</p>
+<p> When write accumulation is sufficiently large, the discrete looks continuous and derivatives become valid approximations. But the foundation is discrete. Relations between entities are described not by derivatives but by <strong>differences ($\Delta$) and modular arithmetic (mod $N$)</strong>.</p>
+
+<p style="font-size:0.85em;color:#555">Note: For comparison</p>
+<pre>Derivative (physics):  df/dx = lim(dx->0) [f(x+dx) - f(x)] / dx
+                       dx goes to 0. Assumes continuity.
+
+Difference (Banya):    Df = f(k+1) - f(k)
+                       k is integer. 1-step unit. Cannot go to 0.
+                       This is the actual operation on DATA.</pre>
 
 <h4>Knots and Ownership — Why Local Knots Need No Ownership</h4>
 
@@ -1156,14 +1285,14 @@ DATA(space): one point stamped = knot
 
 <div class="math-block">
 <div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
-<div class="math-legend">overlap weight: weight of Entity A sensing Entity B | $r$: DATA(space) distance from CAS write point to another Entity | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
+<div class="math-legend">overlap weight: weight of Entity A sensing Entity B | $r$: DATA(space) distance from knot (origin) to another knot | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
 <p>When Entity A's CAS references Entity B through the superposition index, the overlap weight is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
 <br>• Swap accumulation cost: $C$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $C$ is the write count itself (Axiom 6).
 <br>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
 <br>• Self-reference serialization cost: $C$ = self-reference serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Self-reference path = 1/30 (Axiom 5 proposition).
-<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $r$ (Axiom 2 + Axiom 5 + Axiom 14 proposition).</p>
+<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $r$ (Axiom 2 + Axiom 5 + Axiom 14, defined below, proposition).</p>
 
 
 <h3 id="en-ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
@@ -1193,15 +1322,15 @@ DATA(space): one point stamped = knot
 
 <p>All axioms (1-14) are components of this FSM. Axiom 1 defines the input space, Axiom 2 the transition function, Axioms 4-5 the transition cost and register, Axioms 6-7 the output, Axiom 8 the clock, Axiom 10 the owner, Axiom 11 the multiple projection, Axiom 12 the execution model, and Axiom 13 the ECS-superposition pair. The FSM declaration is a completeness statement: the 14 axioms close into a single machine.</p>
 
-<h4>Finite states of the FSM and the infinite degrees of freedom of QFT</h4>
+<h4>Finite states of the FSM and the infinite degrees of freedom on the DATA side</h4>
 
-<p>The state set of the FSM (Axiom 14) is {000, 001, 011, 111} — four states, finite. The infinite degrees of freedom in Quantum Field Theory (QFT) refer to field values varying continuously at each point of spacetime. The two do not conflict.</p>
+<p>The state set of the FSM (Axiom 14) is {000, 001, 011, 111} — four states, finite. The infinite degrees of freedom on the DATA side refer to field values varying continuously at each point of spacetime. The two do not conflict.</p>
 
-<p>The four FSM states belong to the OPERATOR side. They describe the states of the operator that tracks which stage CAS is in. The infinite degrees of freedom of QFT belong to the DATA side. They describe the fact that field values recorded in spacetime (classical brackets) are infinite and continuous. In Axiom 1, DATA (classical brackets) and OPERATOR (quantum brackets) are orthogonal, distinct brackets. The FSM describes the finite state transitions of the OPERATOR, while QFT's infinite degrees of freedom describe the space of continuous values recorded in DATA. Because they belong to different layers, there is no conflict.</p>
+<p>The four FSM states belong to the OPERATOR side. They describe the states of the operator that tracks which stage CAS is in. The infinite degrees of freedom belong to the DATA side. They describe the fact that field values recorded in spacetime (classical brackets) are infinite and continuous. In Axiom 1, DATA (classical brackets) and OPERATOR (quantum brackets) are orthogonal, distinct brackets. The FSM describes the finite state transitions of the OPERATOR, while the infinite degrees of freedom on the DATA side describe the space of continuous values recorded in DATA. Because they belong to different layers, there is no conflict.</p>
 
 <h4>What "closed" means</h4>
 
-<p>Closed = nothing to import from outside. The Banya Framework imports nothing beyond its 14 axioms. No 15th axiom is needed. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, multiple projection, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
+<p>Closed = nothing to import from outside. The Banya Framework brings in nothing beyond its 14 axioms. No 15th axiom is needed. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, multiple projection, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
 
 <h4>FSM 111 Maintenance Cost Scales Linearly with DATA(space) Distance Between Two CAS Stages <span class="tag-corollary">Proposition</span></h4>
 
@@ -1216,38 +1345,44 @@ DATA(space): one point stamped = knot
 <p>When 111 maintenance cost reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
 
 
-<h4>Physics Correspondence Table (External Reference Only)</h4>
+<h4>Ideal Minimum-Cost Quantum Computation Circuit <span class="tag-corollary">Proposition</span></h4>
 
-<p style="font-size:0.85em;color:#555">The table below maps the cost-based terminology used in the axiom body to conventional physics concepts. The axiom body does not use physics terminology.</p>
+<p>The identity of what Axioms 1-14 and 17 propositions describe: <strong>This is an ideal minimum-cost quantum computation circuit.</strong></p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Axiom Term (cost-based)</th><th>Physics Correspondence</th></tr>
-<tr><td>Swap accumulation cost</td><td>Gravity</td></tr>
-<tr><td>Cross Cmp/Swp cost</td><td>Electromagnetic force</td></tr>
-<tr><td>Self-reference serialization cost</td><td>Weak force</td></tr>
-<tr><td>CAS atomicity · 111 maintenance cost</td><td>Strong force · confinement</td></tr>
-<tr><td>Bracket-crossing cost (ℏ)</td><td>Energy quantum</td></tr>
-<tr><td>Write accumulation count</td><td>Mass</td></tr>
-<tr><td>Serialization cost ≠ 0</td><td>W/Z boson mass</td></tr>
-<tr><td>Serialization cost = 0</td><td>Photon massless</td></tr>
-<tr><td>Contraction zone</td><td>Influence zone · potential</td></tr>
-<tr><td>isWritable contention</td><td>Interaction</td></tr>
-<tr><td>Cost magnitude ($1/r^2$)</td><td>Force strength</td></tr>
-<tr><td>Cost type ($\theta$)</td><td>Force type</td></tr>
-<tr><td>CAS access path count (30)</td><td>Interaction DOF</td></tr>
-<tr><td>LRU base eviction rate</td><td>Dark energy (Λ)</td></tr>
-<tr><td>Decreasing CAS access</td><td>Dark matter</td></tr>
-<tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
-<tr><td>bracket-crossing cost > 0 (Axiom 4)</td><td>Δx·Δp ≥ ℏ/2 (uncertainty principle)</td></tr>
-<tr><td>111 maintenance cost = cost per junction × count</td><td>V(r) = σr (linear potential, confinement)</td></tr>
+<tr><th>Property</th><th>Basis</th></tr>
+<tr><td><strong>Quantum</strong></td><td>CAS references superposition (Axioms 3, 13). Quantum is default, classical is the result of cost (Axiom 7)</td></tr>
+<tr><td><strong>Computation</strong></td><td>CAS is the sole operator (Axiom 2). Searches via Compare, writes via Swap</td></tr>
+<tr><td><strong>Circuit</strong></td><td>FSM cycles (Axiom 14). 000→001→011→111→000. Ring buffer (Prop. 13)</td></tr>
+<tr><td><strong>Minimum cost</strong></td><td>Read/Compare = cost 0 (Axiom 4). Cost only at Swap. Cannot compute at lower cost</td></tr>
+<tr><td><strong>Ideal</strong></td><td>Complete description in 9 DOF (Axiom 9). No 10th needed. Zero waste</td></tr>
 </table>
 </div>
+
+<h4>Degrees of Freedom Terminology</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th style="min-width:180px;white-space:nowrap">Name</th><th style="min-width:180px;white-space:nowrap">Value</th><th>Meaning</th></tr>
+<tr><td>CAS stage count</td><td>3</td><td>Read, Compare, Swap — 3 stages</td></tr>
+<tr><td>CAS internal state sum</td><td>1+2+4 = 7</td><td>Internal states needed to fully describe 1 CAS event</td></tr>
+<tr><td>Complete description DOF</td><td>7+2 = 9</td><td>CAS(7) + bracket structure(2)</td></tr>
+<tr><td>Exterior algebra basis</td><td>21+35+1 = 57</td><td>Physical k-form sum in 7-dim space</td></tr>
+<tr><td>CAS access path count</td><td>7×4+2 = 30</td><td>CAS DOF(7) × domains(4) + brackets(2). Total CAS-domain access paths in ECS</td></tr>
+<tr><td>Independent lock DOF</td><td>3</td><td>R_LOCK, C_LOCK, S_LOCK. Independent TOCTOU_LOCK DOFs of CAS 3 stages</td></tr>
+<tr><td>Access modes</td><td>2</td><td>Cross (Cmp/Swp targets differ) vs self-reference (Cmp/Swp targets same)</td></tr>
+<tr><td>Sphere components</td><td>2</td><td>$r$ (distance from CAS write point) + $\theta$ (angle between projections)</td></tr>
+<tr><td>Cross CAS paths</td><td>3</td><td>Cmp(t)→Swp(s), Cmp(s)→Swp(t), Cmp(t)→Swp(t). Cross/self-ref combinations of DATA access</td></tr>
+</table>
+</div>
+
+<p>The same word "degrees of freedom" refers to 3, 7, 9, 30, or 57 depending on context. Use the names above to avoid confusion.</p>
 
 
 <h4>Axiom-Derived Formula Index</h4>
 
-<p style="font-size:0.85em;color:#555">All formulas below are derived from the 14 axioms and 14 propositions. No external math functions (trigonometric functions, etc.) are used. All symbols are defined within CAS structure.</p>
+<p style="font-size:0.85em;color:#555">All formulas below are derived from the 14 axioms and 17 propositions. No external math functions (trigonometric functions, etc.) are used. All symbols are defined within CAS structure.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{Banya Equation} \quad \delta^{2} = (\text{time} + \text{space})^{2} + (\text{observer} + \text{superposition})^{2}$$</div>
@@ -1276,7 +1411,7 @@ DATA(space): one point stamped = knot
 
 <div class="math-block">
 <div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
-<div class="math-legend">Index overlap weight (Axiom 13 proposition). $r$: DATA(space) distance from CAS write point to another Entity | $d/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi r^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
+<div class="math-legend">Index overlap weight (Axiom 13 proposition). $r$: DATA(space) distance from knot (origin) to another knot | $d/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi r^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
 </div>
 
 <div class="math-block">
@@ -1285,9 +1420,42 @@ DATA(space): one point stamped = knot
 </div>
 
 
+<hr>
+<p style="text-align:center;font-size:0.85em;color:#555">— End of axiom system. 14 axioms + 18 propositions. Derivations below —</p>
+<hr>
+
+
 <h2 id="en-axiom-consequence">What Follows from the Axioms</h2>
 
 <p>Starting from the 14 axioms above, running the Banya Framework 5-step recursive substitution (Banya Equation → norm substitution → constant substitution → domain transformation → discovery) yields physical constants. The full list is managed in the <a href="#lib-en-title" style="font-weight:600">Factor Library (lib.html)</a> and <a href="#pr-en-title" style="font-weight:600">Unique Predictions (predictions.html)</a>. Discovery (D) 44 + Hypothesis (H) 96 + Unique Prediction (P) 7 = 147 total items, 21 verification rows (14 hits). The more rounds you run, the larger the library grows, and the fewer places hidden values can escape.</p>
+
+<h4>Physics Correspondence Table (External Reference Only)</h4>
+
+<p style="font-size:0.85em;color:#555">The table below maps the cost-based terminology used in the axiom body to conventional physics concepts. The axiom body does not use physics terminology.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Axiom Term (cost-based)</th><th>Physics Correspondence</th></tr>
+<tr><td>Swap accumulation cost</td><td>Gravity</td></tr>
+<tr><td>Cross Cmp/Swp cost</td><td>Electromagnetic force</td></tr>
+<tr><td>Self-reference serialization cost</td><td>Weak force</td></tr>
+<tr><td>CAS atomicity · 111 maintenance cost</td><td>Strong force · confinement</td></tr>
+<tr><td>Bracket-crossing cost (ℏ)</td><td>Energy quantum</td></tr>
+<tr><td>Write accumulation count</td><td>Mass</td></tr>
+<tr><td>Serialization cost ≠ 0</td><td>W/Z boson mass</td></tr>
+<tr><td>Serialization cost = 0</td><td>Photon massless</td></tr>
+<tr><td>Contraction zone</td><td>Influence zone · potential</td></tr>
+<tr><td>isWritable contention</td><td>Interaction</td></tr>
+<tr><td>Cost magnitude ($1/r^2$)</td><td>Force strength</td></tr>
+<tr><td>Cost type ($\theta$)</td><td>Force type</td></tr>
+<tr><td>CAS access path count (30)</td><td>Interaction DOF</td></tr>
+<tr><td>LRU base eviction rate</td><td>Dark energy (Λ)</td></tr>
+<tr><td>Decreasing CAS access</td><td>Dark matter</td></tr>
+<tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
+<tr><td>bracket-crossing cost > 0 (Axiom 4)</td><td>Δx·Δp ≥ ℏ/2 (uncertainty principle)</td></tr>
+<tr><td>111 maintenance cost = cost per junction × count</td><td>V(r) = σr (linear potential, confinement)</td></tr>
+</table>
+</div>
 
 <h4>Usage: Re-substitution</h4>
 
@@ -1566,7 +1734,7 @@ Actual direction: Write Axiom (cost = ℏ, record = spacetime) → expand → E 
 Empty domains: observer, superposition, time
 Switching yields: EM decoherence rate, entanglement energy, and other new physical quantities</code></pre>
 
-<p>See the <a href="#exp-appendix-en">appendix (118 detailed verifications)</a> "expected derivation values." New physical quantities derivable from empty domains are proposed for each equation. These are predictions unique to the Banya Framework that do not exist in conventional physics.</p>
+<p>See the <a href="#exp-en-title">appendix (118 detailed verifications)</a> "expected derivation values." New physical quantities derivable from empty domains are proposed for each equation. These are predictions unique to the Banya Framework that do not exist in conventional physics.</p>
 
 
 <h3 id="en-guide-m11">Misconception 11. It's Just Relabeling (Just putting new names on existing equations)</h3>
@@ -1880,19 +2048,20 @@ E_p = m_p × c²          ← m_p = √(ℏc/G) = Planck mass</code></pre>
 
 <p><strong>Step 3. Constant + Hypothesis Substitution</strong></p>
 
-<p>Insert a hypothesis that maps the 4 forces of physics to the 3 CAS stages.</p>
+<p>The cost ratios of the 3 CAS stages numerically correspond to the coupling constants of the 4 forces. The cause of cost is the domain 4-bit ON/OFF pattern, and the numerical values arise from shift costs on ring sizes (Axiom 1 proposition, <a href="#lib-en-h45">H-45</a>).</p>
 
-<pre><code>Hypothesis: each CAS stage corresponds to a physical force
-  Read    = weak force      -- cost constant: sin^2 θ_W = 0.23122
-  Compare = electromagnetic -- cost constant: alpha = 1/137.036
-  Swap    = gravity         -- cost constant: G
+<pre><code>Numerical correspondence: shift cost on ring size corresponds to coupling constants
+  Ring-30  shift 1/30  ~ weak coupling      -- sin^2 θ_W = 0.23122
+  Ring-137 shift 1/137 ~ EM coupling        -- alpha = 1/137.036
+  Swap base cost 1     ~ gravitational coupling -- G
+  Cost cause: domain 4-bit pattern (Axiom 1 proposition), not CAS stage
 
 Additional constant:
   G_F = 1.166 x 10^-5 GeV^-2 (Fermi constant, strength of the weak force)</code></pre>
 
 <p><strong>Step 4. Domain Transformation -- Simultaneous Equations via CAS Cost</strong></p>
 
-<p>The Weinberg angle emerges from the cost ratio of weak force (Read) and electromagnetic force (Compare):</p>
+<p>The Weinberg angle emerges from the cost ratio of Read and Compare:</p>
 
 <pre><code>sin^2 θ_W = Compare / Read = alpha contribution / total electroweak contribution</code></pre>
 
@@ -2035,13 +2204,13 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 
 <p><strong>Operator:</strong> The sole operator of the universe is CAS (Read, Compare, Swap). 1 CAS operation = quantum of action (h-bar). Equivalence is confirmed across 9 domain transformations. CAS has internal structure in its 3 stages, which structurally matches quark 3 colors, 6 flavors, and 8 gluons.</p>
 
-<p><strong>Write:</strong> Write is a real physical phenomenon. CAS ties a knot on all 4 axes (Swap=space, Read=observer, Compare=superposition, When=time). Eviction (LRU) unties the knot. Gravity = write, entropy = eviction. Causality arises from the logical dependency R, C, S of CAS, and an arrow of time emerges when CAS writes to the time axis. Irreversibility is a property of CAS (OPERATOR), not of time (DATA).</p>
+<p><strong>Write:</strong> Write is a real physical phenomenon. CAS ties a knot on all 4 axes (Swap=space, Read=observer, Compare=superposition, When=time). Eviction (LRU) unties the knot. The 4 forces branch from CAS×DATA access patterns, determined by the domain 4-bit pattern (Axiom 1 proposition, <a href="#lib-en-h45">H-45</a>). Causality arises from the logical dependency R, C, S of CAS, and an arrow of time emerges when CAS writes to the time axis. Irreversibility is a property of CAS (OPERATOR), not of time (DATA).</p>
 
 <p><strong>Domain transformation:</strong> The Banya Framework enforces all 4 domains and monitors them all. When existing physics equations use only some domains, switching to the remaining domains reveals hidden physical quantities. Observation is subordinate to change, and all observations are fundamentally indirect. Decoherence is a CAS commit (Background to Foreground transition).</p>
 
-<p><strong>Unification:</strong> CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. A single LRU queue unifies visible matter (HOT 5%), dark matter (WARM 27%), and dark energy (COLD 68%). Inserting constants yields hidden values like a system of simultaneous equations. Input: 7. Output: 96+. More comes out than goes in.</p>
+<p><strong>Unification:</strong> CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). The access pattern is determined by the domain 4-bit pattern (Axiom 1 proposition). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. A single LRU queue unifies visible matter (HOT 5%), dark matter (WARM 27%), and dark energy (COLD 68%). Inserting constants yields hidden values like a system of simultaneous equations. Input: 7. Output: 96+. More comes out than goes in.</p>
 
-<p><strong>Verification:</strong> Full verification of 118 physics equations, FAIL 0. 6 fundamental physics equations derived from Write Axiom (all 1.000000). Electron charge, Weinberg angle, W/Z mass ratio, Higgs VEV (0.6% Error) derived from CAS cost. Koide Formula 0.0011% Error.</p>
+<p><strong>Verification:</strong> <a href="#exp-en-title">Full verification of 118 physics equations</a>, FAIL 0. 6 fundamental physics equations derived from Write Axiom (all 1.000000). Electron charge, Weinberg angle, W/Z mass ratio, Higgs VEV (0.6% Error) derived from CAS cost. Koide Formula 0.0011% Error.</p>
 
 <hr>
 
@@ -2162,12 +2331,12 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 <h4>Evidence 7: CAS × DATA Access → 4 Forces (<a href="#lib-en-h45">H-45</a>)</h4>
 
 <div class="math-block">
-<div class="math-row">$$\text{Swap cost} = \alpha_{G} = 1, \quad \text{Compare cost} = \alpha_{em} = 1/137, \quad \text{Read cost} = \alpha_{weak} = 1/30$$</div>
-<div class="math-row">$$\text{3 forces} = \text{CAS accessing DATA(time, space). Strong} = \text{CAS atomicity(confinement)}$$</div>
-<div class="math-legend">$\alpha_G$: gravitational coupling | $\alpha_{\text{em}}$: EM coupling (~1/137) | $\alpha_{\text{weak}}$: weak coupling (~1/30) | 3 forces = CAS×DATA, strong = CAS atomicity (H-45, hypothesis)</div>
+<div class="math-row">$$\text{Ring-137 shift} = 1/137, \quad \text{Ring-30 shift} = 1/30, \quad \text{Swap base cost} = 1$$</div>
+<div class="math-row">$$\text{Cost structure branching} = \text{domain 4-bit pattern (Axiom 1 prop.). CAS atomicity} = \text{inseparable}$$</div>
+<div class="math-legend">$1/137$: numerical correspondence to EM coupling | $1/30$: numerical correspondence to weak coupling | $1$: numerical correspondence to gravitational coupling | Cost cause = domain bit pattern (H-45)</div>
 </div>
 
-<p>The cost ratios of the 3 CAS stages correspond to the coupling constants of 3 forces. Swap cost (1) is the baseline, Compare cost (1/137) is electromagnetism, Read cost (1/30) is the weak force. The strong force is not a cost but the atomicity (inseparability) of the 3 CAS stages. From the cost ratios, the Weinberg angle ($\sin^2\theta_W$ = Compare/Read = 0.231), the electron charge ($e = q_p\sqrt{\alpha}$), and the W/Z mass ratio ($\cos\theta_W$) are all derived.</p>
+<p>Shift costs on different ring sizes numerically correspond to coupling constants. Swap base cost (1), ring-137 shift (1/137) corresponds to EM coupling, ring-30 shift (1/30) corresponds to weak coupling. CAS atomicity (inseparability) is not a cost but a structural property. The cause of cost is the domain 4-bit ON/OFF pattern, and the numerical values arise from shift costs on ring sizes (Axiom 1 proposition). From ring size ratios, the Weinberg angle ($d/N$ = 30/137 ≈ 0.219, tree-level approx.), the electron charge ($e = q_p\sqrt{1/137}$), and the W/Z ratio are derived.</p>
 
 <h4>Equivalence Evidence Summary</h4>
 
@@ -2261,7 +2430,7 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 <tr><td>2</td><td>All existing physics is compatible</td><td>Full verification of 118 physics equations, FAIL 0. No physics equation exists outside the framework</td></tr>
 <tr><td>3</td><td>A new physical phenomenon was discovered</td><td>The physical phenomenon called write. 6 existing physics equations are derived from write cost</td></tr>
 <tr><td>4</td><td>100-year unsolved problems are solved</td><td>Observer problem, dark matter, dark energy, causality, decoherence, quantum entanglement</td></tr>
-<tr><td>5</td><td>4 forces emerge from one</td><td>CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. They were one from the start</td></tr>
+<tr><td>5</td><td>4 forces emerge from one</td><td>CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). Access pattern determined by domain 4-bit pattern (Axiom 1 proposition). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. They were one from the start</td></tr>
 <tr><td>6</td><td>Verified with just paper and calculator</td><td>No particle accelerator needed. Insert constants, solve simultaneous equations, done. Cost 0</td></tr>
 <tr><td><strong>7</strong></td><td><strong>Answers "why?"</strong></td><td><strong>Derived the origin of alpha = 1/137 (0.00006% Error). The first framework to answer "why this value?" -- a question existing physics could not solve for 100 years</strong></td></tr>
 </table>
@@ -2799,11 +2968,11 @@ Entropy  = Eviction (evict, LRU) = returning old Status
 
 <div class="math-block">
 <div class="math-desc">Consumption per one CAS operation:</div>
-<div class="math-row">$$Swap → space consumption (gravity, knot-tying)$$</div>
-<div class="math-row">$$Read → observer consumption (\text{weak force}, Status read/transform)$$</div>
-<div class="math-row">$$Compare → superposition consumption (\text{electromagnetism}, Match/Mismatch Verdict)$$</div>
+<div class="math-row">$$Swap → space consumption (knot-tying)$$</div>
+<div class="math-row">$$Read → observer consumption (Status read/transform)$$</div>
+<div class="math-row">$$Compare → superposition consumption (Match/Mismatch Verdict)$$</div>
 <div class="math-row">When    → time consumption         (tick, cycle)</div>
-<div class="math-legend">time: time | space: space | observer: observation | superposition: superposition | Read: CAS read | Compare: CAS compare | Swap: CAS write | CAS: Compare-And-Swap</div>
+<div class="math-legend">time: time | space: space | observer: observation | superposition: superposition | Read: CAS read | Compare: CAS compare | Swap: CAS write | CAS: Compare-And-Swap. Which force emerges is determined by the domain 4-bit pattern (Axiom 1 proposition, <a href="#lib-en-h45">H-45</a>).</div>
 </div>
 
 <p>The Schwarzschild radius <code>r_s = 2GM/c²</code> measures <strong>only the space consumption of Swap</strong>. It captures only one of the four costs of writing. This is because the Name "radius" itself is a spatial measure.</p>
@@ -3048,19 +3217,19 @@ Definition of observation:  simultaneously reading the current Status and anothe
 
 <div class="math-block">
 <div class="math-row">$$CAS (write) = ties knots on 4 axes:$$</div>
-<div class="math-row">Swap    → knot on space        → gravity (space contraction)</div>
-<div class="math-row">Read    → knot on observer     → weak force (Status transform)</div>
-<div class="math-row">$$Compare → knot on superposition → \text{electromagnetism} (Match/Mismatch)$$</div>
+<div class="math-row">Swap    → knot on space        (space contraction)</div>
+<div class="math-row">Read    → knot on observer     (Status transform)</div>
+<div class="math-row">$$Compare → knot on superposition (Match/Mismatch)$$</div>
 <div class="math-row">When    → time consumption           → tick (cycle)</div>
 <div class="math-row">$$LRU (eviction) = unties knots on 4 axes → expansion (resource return)$$</div>
-<div class="math-legend">time: time | space: space | observer: observation | superposition: superposition | Read: CAS read | Compare: CAS compare | Swap: CAS write | CAS: Compare-And-Swap | LRU: Least Recently Used</div>
+<div class="math-legend">time: time | space: space | observer: observation | superposition: superposition | Read: CAS read | Compare: CAS compare | Swap: CAS write | CAS: Compare-And-Swap | LRU: Least Recently Used. Which force emerges is determined by the domain 4-bit pattern (Axiom 1 proposition, <a href="#lib-en-h45">H-45</a>).</div>
 </div>
 
 <table>
 <tr><th>Action</th><th>CAS stage</th><th>Knot target</th><th>Physics</th></tr>
-<tr><td>Swap</td><td>Write</td><td>space</td><td>Gravity (space contraction)</td></tr>
-<tr><td>Read</td><td>Read</td><td>observer</td><td>Weak force (Status transform)</td></tr>
-<tr><td>Compare</td><td>Compare</td><td>superposition</td><td>Electromagnetism (Match/Mismatch)</td></tr>
+<tr><td>Swap</td><td>Write</td><td>space</td><td>Space contraction</td></tr>
+<tr><td>Read</td><td>Read</td><td>observer</td><td>Status transform</td></tr>
+<tr><td>Compare</td><td>Compare</td><td>superposition</td><td>Match/Mismatch</td></tr>
 <tr><td>Eviction</td><td>LRU Evict</td><td>All 4 axes</td><td>Entropy, expansion</td></tr>
 <tr><td>Black hole</td><td>Maximum knots</td><td>space = 0</td><td>Singularity</td></tr>
 <tr><td>Big Bang</td><td>Knots untying</td><td>space born</td><td>Space expansion begins</td></tr>
@@ -3430,28 +3599,32 @@ Verdict:   Write is real. The Banya Framework is the first to discover and quant
 
 <p>Why Compare is superposition: to compare means to view two or more Statuses simultaneously. Viewing simultaneously = superposition.</p>
 
-<h3 id="en-sec74">Hypothesis: CAS 3 Stages = Four Fundamental Forces</h3>
+<h3 id="en-sec74">[Deprecated] CAS 3 Stages → Four Forces Direct Mapping — Superseded by Domain 4-bit Model (Axiom 1 Proposition)</h3>
 
-<pre>Read    = Weak force     (Status transforms the moment it is read → beta decay)
-Compare = Electromagnetic force  (attraction on Match, repulsion on Mismatch → +/- bidirectional)
-Swap    = Gravity     (always executed, always unidirectional → knot-tying)
-CAS binding      = Strong force     (three stages bound and inseparable → quark confinement)
+<p style="background:#2d1b1b;border-left:4px solid #f85149;padding:8px 12px;margin:12px 0"><strong>This hypothesis has been superseded by the domain 4-bit model (Axiom 1 proposition). The cause of cost is not the CAS stage but the domain bit pattern.</strong></p>
+
+<p><strong>The direct mapping below is a deprecated hypothesis. The current confirmed model is: 4 cost structures branch from domain 4-bit ON/OFF patterns (<a href="#lib-en-h45">H-45</a>). Swap accumulation cost → gravity, cross Cmp·Swp cost → electromagnetism, self-referential serialization cost → weak force, CAS atomicity → strong force. The cause of cost is the domain bit pattern (Axiom 1 proposition).</strong></p>
+
+<pre style="opacity:0.5;text-decoration:line-through">Read    = Weak force     (deprecated — direct equivalence discarded)
+Compare = Electromagnetic force  (deprecated — direct equivalence discarded)
+Swap    = Gravity     (deprecated — direct equivalence discarded)
+CAS binding      = Strong force     (deprecated — direct equivalence discarded)
 </pre>
 
-<p>This mapping is currently at the hypothesis stage. Structural correspondence has been confirmed, and quantitative correspondence with the gauge group (U(1) x SU(2) x SU(3)) has also been confirmed through the alpha_s 0.3% derivation. To verify the hypothesis, one substitutes known physical constants and checks whether existing physical quantities emerge. The Banya Framework is a system of equations.</p>
+<p>The direct mapping above was an early hypothesis, now superseded by the domain 4-bit model. The numerical correspondence between CAS stage cost ratios and coupling constants remains valid and is described in the CAS Cost Structure section below.</p>
 
 <h3 id="en-sec75">CAS Cost Structure</h3>
 
-<p>Each stage has a cost (coupling constant). In Planck units:</p>
+<p>Shift costs on each ring size (numerical correspondence to coupling constants):</p>
 
 <div class="math-block">
-<div class="math-row">$$\text{Swap cost} = alpha_G = Gm_p^{2}/(\hbar c) = 1.000000 (reference, exactly 1)$$</div>
-<div class="math-row">$$\text{Compare cost} = alpha_em = e^{2}/(4 \cdot pi \cdot epsilon_0*\hbar c) = 1/137.036 = 0.007297$$</div>
-<div class="math-row">$$\text{Read cost} = alpha_weak = alpha_em/\sin^{2}(\theta_W) = 1/31.69 = 0.031560$$</div>
-<div class="math-legend">$\hbar$: reduced Planck constant | alpha_em: EM coupling (~1/137) | alpha_weak: weak coupling (~1/30) | alpha_G: gravitational coupling | $\sin^{2}\theta_W$: Weinberg angle | $m_p$: Planck mass | epsilon_0: vacuum permittivity | Read: CAS read | Compare: CAS compare | Swap: CAS write</div>
+<div class="math-row">$$\text{Swap base cost} = 1.000000$$</div>
+<div class="math-row">$$\text{Ring-137 shift cost} = 1/137.036 = 0.007297 \quad \text{(EM coupling correspondence)}$$</div>
+<div class="math-row">$$\text{Ring-30 shift cost} = 1/30 \approx 0.03333 \quad \text{(weak coupling correspondence)}$$</div>
+<div class="math-legend">Cost cause = domain 4-bit pattern (Axiom 1 proposition). Values = shift costs on ring sizes (Proposition 13)</div>
 </div>
 
-<p>Why Swap = 1: the gravitational coupling in Planck units is exactly 1. Since Swap is the fundamental unit of CAS, it serves as the reference.</p>
+<p>Why Swap = 1: the gravitational coupling in Planck units is exactly 1. Since Swap is the fundamental unit of CAS, it serves as the reference. The numerical values of costs arise from shift costs on ring sizes (Axiom 1 proposition).</p>
 
 <p>Ratio:</p>
 <div class="math-block">
@@ -3489,9 +3662,9 @@ CAS binding      = Strong force     (three stages bound and inseparable → quar
 <p>In electroweak unification theory, the Weinberg angle <code>sin^2(θ_W)</code> is the mixing ratio of electromagnetic and weak forces. What Glashow-Weinberg-Salam derived from gauge theory, the Banya Framework derives from the cost ratio of CAS.</p>
 
 <div class="math-block">
-<div class="math-row">$$\sin^{2}(\theta_W) = \text{Compare cost} / \text{Read cost} = alpha_em / alpha_weak$$</div>
-<div class="math-desc">CAS interpretation: the cost ratio between Compare and Read</div>
-<div class="math-desc">determines the mixing angle of electromagnetic and weak forces.</div>
+<div class="math-row">$$d/N = \text{Ring-137 shift} / \text{Ring-30 shift} = (1/137) / (1/30) = 30/137 \approx 0.219$$</div>
+<div class="math-desc">Ring size ratio determines the mixing angle ($d/N$).</div>
+<div class="math-desc">Tree-level approximation. Corresponds to Weinberg angle.</div>
 <div class="math-row">$$Measured: \sin^{2}(\theta_W) = 0.23122$$</div>
 <div class="math-row">$$CAS \text{Ratio:} alpha_em/alpha_weak = 0.23122$$</div>
 <div class="math-row">Ratio: 1.00000000</div>
@@ -3510,7 +3683,7 @@ CAS binding      = Strong force     (three stages bound and inseparable → quar
 <div class="math-legend">$\sin^{2}\theta_W$: Weinberg angle | $\cos\theta_W$: Weinberg cosine | $M_W$: W boson mass | $M_Z$: Z boson mass | Read: CAS read | Compare: CAS compare</div>
 </div>
 
-<p>CAS interpretation: the cost ratio of Compare (EM) and Read (weak force) determines the W/Z boson mass ratio. Since Compare cost is 23% of Read cost, W is lighter than Z.</p>
+<p>CAS interpretation: the cost ratio of Compare and Read determines the W/Z boson mass ratio. Since Compare cost is 23% of Read cost, W is lighter than Z.</p>
 
 <h3 id="en-sec79">Solving 4: Deriving W, Z Boson Masses</h3>
 
@@ -3536,7 +3709,7 @@ CAS binding      = Strong force     (three stages bound and inseparable → quar
 
 <p>Why electromagnetic force is $4.17 \times 10^{42}$ times stronger than gravity: because the electron mass $m_e$ is extremely small compared to the Planck mass m_p. <code>$m_e$/m_p = 4.19 x 10^-23</code>. Since the gravitational coupling is proportional to <code>($m_e$/m_p)^2</code>, it drops to the 10^-45 level. Intermediate calculation: $e^2/(4\pi\epsilon_0 G m_p^2) = 1.236 \times 10^{36}$. For the electron-proton pair: $\alpha/\alpha_G = (1/137)/(5.9 \times 10^{-39}) = 1.24 \times 10^{36}$ ($1.24 \times 10^{36}$, electron-proton basis).</p>
 
-<p>CAS interpretation: Swap (gravity) always uses the full cost (1), but for particles with extremely low write count (<code>m/m_p</code>) like the electron, the effective cost of Swap drops sharply to <code>(m/m_p)^2</code>. Since Compare (EM) is constant at <code>alpha = 1/137</code>, it appears relatively much stronger.</p>
+<p>CAS interpretation: Swap always uses the full cost (1), but for particles with extremely low write count (<code>m/m_p</code>) like the electron, the effective cost of Swap drops sharply to <code>(m/m_p)^2</code>. Since Compare is constant at <code>alpha = 1/137</code>, it appears relatively much stronger.</p>
 
 <h3 id="en-sec81">Solving 6: GUT Convergence = CAS Symmetry Restoration</h3>
 
@@ -3600,7 +3773,7 @@ Neutron = 3 quarks (up, down, down) = 1 CAS operation
 <div class="math-row">$$Green = charge of the Compare stage$$</div>
 <div class="math-row">$$Blue = charge of the Swap stage$$</div>
 <div class="math-row">$$R + G + B = white = charge neutral = CAS complete$$</div>
-<div class="math-legend">Read: CAS read stage (weak force) | Compare: CAS compare stage (electromagnetic) | Swap: CAS write stage (gravity) | CAS: Compare-And-Swap</div>
+<div class="math-legend">Read: CAS read stage | Compare: CAS compare stage | Swap: CAS write stage | CAS: Compare-And-Swap</div>
 </div>
 
 <p>Why three colors must combine to form white (neutral): because all 3 CAS stages must be present for a complete operation. Having only Read is like having only red; all 3 must be present for white (complete).</p>
@@ -3656,7 +3829,7 @@ Breaking: transaction separation impossible → new transaction (quark-antiquark
 <p>Why charges are +2/3 and -1/3: success (+2/3) means the CAS stage proceeds normally with a positive contribution, and failure (-1/3) means the stage is transformed/rejected with a negative contribution. Proton (uud) = +2/3 +2/3 -1/3 = +1. Neutron (udd) = +2/3 -1/3 -1/3 = 0. The charge summation is exactly correct. However, quark charges $+2/3$ and $-1/3$ have not been directly derived from the current CAS structure. This remains a future task.</p>
 
 <p>Basis for action correspondence:</p>
-<li>Read = up/down: in the weak force (Read), up-to-down conversion occurs (beta decay). This is identical to Read transforming Status while reading</li>
+<li>Read = up/down: in beta decay, up-to-down conversion occurs. This is identical to Read transforming Status while reading</li>
 <li>Compare = charm/strange: the reason the strange quark shows "strange" lifetimes is that a Mismatch occurs in Compare, proceeding along an unexpected path</li>
 <li>Swap = top/bottom: the reason top is 185,000 times heavier than the proton is that the cost of Swap (actual write) is maximal. Actually changing Status is far more expensive than reading or comparing</li>
 
@@ -3681,7 +3854,7 @@ Breaking: transaction separation impossible → new transaction (quark-antiquark
 
 <p><strong>Key Observation: Swap Cost = 1 (Planck Unit Reference)</strong></p>
 
-<p>In Planck units, the cost of Swap (gravity) is exactly 1 (<code>alpha_G = 1</code>). In CAS, Swap is the reference for the total budget. Since the top quark is the success Status of Swap, top couples maximally with the Higgs field. "Maximum coupling" means the Yukawa coupling constant y_t approaches 1.</p>
+<p>In Planck units, the cost of Swap is exactly 1 (<code>alpha_G = 1</code>). In CAS, Swap is the reference for the total budget. Since the top quark is the success Status of Swap, top couples maximally with the Higgs field. "Maximum coupling" means the Yukawa coupling constant y_t approaches 1.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{Swap cost} = 1 (reference, maximum)$$</div>
@@ -4056,7 +4229,7 @@ No physics equation outside the Banya Framework was discovered.
 <li>5. <strong>Observation is subordinate to change.</strong> Observation is simultaneously reading the current state and a different state; all observation is inherently indirect.</li>
 <li>6. <strong>Decoherence is a CAS commit.</strong> The process of Background (quantum superposition) transitioning to Foreground (classical definite state).</li>
 <li>7. <strong>Causality arises from the logical dependency of CAS.</strong> R, C, S is logical dependency, not temporal order. When CAS writes to time, the arrow emerges. The time axis (DATA) itself is a reversible resource like space. Irreversibility is a property of the OPERATOR, not of DATA.</li>
-<li>8. <strong>Write (CAS) ties knots on all 4 axes.</strong> Swap = space knot (gravity). Read = observer knot (weak force). Compare = superposition knot (electromagnetism). Eviction (LRU) = untying 4-axis knots.</li>
+<li>8. <strong>Write (CAS) ties knots on all 4 axes.</strong> Swap = space knot. Read = observer knot. Compare = superposition knot. Eviction (LRU) = untying 4-axis knots. Which force emerges is determined by the domain 4-bit pattern (Axiom 1 proposition, <a href="#lib-en-h45">H-45</a>).</li>
 <li>9. <strong>A black hole is space fully consumed.</strong> When knots reach maximum, <code>space²=0</code>. time and quantum terms absorb the resources.</li>
 <li>10. <strong>Resources are finite and conserved.</strong> <code>δ²</code> is invariant. When one axis reaches 0, resources transfer to other axes.</li>
 <li>11. <strong>Quantum entanglement is a necessity of δ² conservation.</strong> Not faster than light -- simultaneous because they share the same <code>δ²</code>.</li>
@@ -4064,7 +4237,7 @@ No physics equation outside the Banya Framework was discovered.
 <li>13. <strong>Dark energy is the LRU COLD region.</strong> The accumulation of the base eviction rate Λ of empty space.</li>
 <li>14. <strong>Visible matter + Dark matter + Dark energy = HOT:WARM:COLD segments of a single LRU queue.</strong></li>
 <li>15. <strong>The universe is born from quantum, lives as classical, and returns to quantum.</strong> <code>δ²</code> does not change. Only the vessel changes.</li>
-<li>16. <strong>The 4 forces are the 3-step cost of a single CAS.</strong> CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. They were one from the beginning.</li>
+<li>16. <strong>The 4 forces are branches of CAS × DATA access patterns.</strong> CAS × domain pair = 4 forces (<a href="#lib-en-h45">H-45</a>). The access pattern is determined by the domain 4-bit pattern (Axiom 1 proposition). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak. They were one from the beginning.</li>
 <li>17. <strong>Irreversibility is a CAS-dependent local phenomenon.</strong> time (DATA) is a reversible resource. Only the order of CAS (OPERATOR) is irreversible.</li>
 <li>18. <strong>Write is a real physical phenomenon.</strong> Six existing physics equations are derived from the Write Axiom. All six yielding 1.000000 is proof that write physically exists.</li>
 
@@ -4097,7 +4270,7 @@ No physics equation outside the Banya Framework was discovered.
 <div class="math-row">LRU queue:          HOT(5%) → WARM(27%) → COLD(68%)</div>
 <div class="math-row">$$Write/evict: H^{2} = (8\pi G/3)\rho + \Lambda c^{2}/3$$</div>
 <div class="math-row">$$Resource conservation: space^{2}→0 then remaining 3 axes absorb$$</div>
-<div class="math-row">$$Knots: Swap=space knot(gravity), Read=observer knot(weak), Compare=superposition knot(EM)$$</div>
+<div class="math-row">$$Knots: Swap=space knot, Read=observer knot, Compare=superposition knot. Force branching = domain 4\text{-bit pattern (Axiom 1 proposition)}$$</div>
 <div class="math-row">$$Eviction: LRU = 4-axis knot untying (expansion)$$</div>
 <div class="math-legend">LRU: Least Recently Used | HOT: Visible matter(5%) | WARM: Dark matter(27%) | COLD: Dark energy(68%) | H: Hubble constant | rho: density | Lambda: cosmological constant | space: space | observer: observation | superposition: superposition | Read: CAS read | Compare: CAS compare | Swap: CAS write</div>
 </div>
@@ -4365,7 +4538,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><td><a href="#pr-en-title">Unique Predictions</a></td><td>21 rows total. Hit 14, pending 6, hypothesis 1. Falsified 0</td><td><span class="tag-solved">Hit 14</span></td></tr>
 <tr><td><a href="#lib-en-title">Factor Library</a></td><td>D-44 discoveries + H-102 hypotheses + P-7 predictions = 153 items. Managed as re-substitution factors</td><td>--</td></tr>
 <tr><td><a href="#sm-en-title">Science Mining Manual</a></td><td>Methodology 10 chapters. Term legend, CAS axioms, document rules</td><td>--</td></tr>
-<tr><td><a href="#exp-appendix-en">118 Compatibility Verification</a></td><td>118 physics equations x Banya Framework compatibility check. FAIL 0. 49 equations marked derivation achieved</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td><a href="#exp-en-title">118 Compatibility Verification</a></td><td>118 physics equations x Banya Framework compatibility check. FAIL 0. 49 equations marked derivation achieved</td><td><span class="tag-solved">Hit</span></td></tr>
 </table>
 </div>
 
@@ -4379,7 +4552,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><th>Problem</th><th>Result</th><th class="col-status">Status</th></tr>
 <tr><td><a href="#alpha-en-title">Origin of $\alpha$ = 1/137</a> (Feynman's question, 100 years unsolved)</td><td>Derived from 7-dim Wyler volume ratio. Error 0.00006%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="#a57-en-title">Cosmological constant problem</a> (10¹²⁰ mismatch, "worst prediction in physics")</td><td>$\Lambda l_p^2 = \alpha^{57} \times e^{21/35}$. Error 0.09%</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td><a href="#lib-en-h45">Unification of 4 forces</a> (string theory 40yr, LQG 30yr incomplete)</td><td>CAS × domain pair = 4 forces. Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
+<tr><td><a href="#lib-en-h45">Unification of 4 forces</a> (string theory 40yr, LQG 30yr incomplete)</td><td>CAS × domain pair = 4 forces. Access pattern = domain 4-bit pattern (Axiom 1 proposition). Swap+t×s=gravity, strong=CAS atomicity(confinement), Compare+s×{o,sp}=EM, Read+t×{o,sp}=weak</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
 <tr><td><a href="#en-sec1">Quantum gravity</a> (GR+QM 90 years unresolved)</td><td>Orthogonal declaration. 118/118 compatible</td><td><span class="tag-solved">Hit</span></td></tr>
 </table>
 </div>
@@ -5580,12 +5753,12 @@ $m_H = 125.37\;\text{GeV}$
 <tr><td class="col-id"><strong>H-37</strong></td><td><strong>Photon dispersion $= \alpha \times (E/E_P)^2$</strong></td><td><strong>Unmeasured</strong></td><td><strong>Energy-dependent photon dispersion</strong></td><td><strong><a href="#pr-en-title">predictions.html</a></strong></td><td>03-23</td></tr>
 <tr><td class="col-id"><strong>H-38</strong></td><td><strong>Electron g-2 Schwinger = $\alpha/(2\pi)$</strong></td><td><strong>0.15%</strong></td><td><strong>CAS Compare/loop interpretation</strong></td><td><strong><a href="#lib-en-h38">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-39</strong></td><td><strong>$M_Z$ = 91.53 GeV ($\alpha$ running included)</strong></td><td><strong>0.37%</strong></td><td><strong>$\alpha$ running external input</strong></td><td><strong><a href="#lib-en-h39">lib.html</a></strong></td><td>03-24</td></tr>
-<tr><td class="col-id"><strong>H-40</strong></td><td><strong>Read = $\alpha/\sin^2\theta_W$ = 1/31.69</strong></td><td><strong>5.6%</strong></td><td><strong>Weak coupling constant candidate</strong></td><td><strong><a href="#lib-en-h40">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-40</strong></td><td><strong>Ring-30 shift cost $\approx \alpha/\sin^2\theta_W$ = 1/31.69</strong></td><td><strong>5.6%</strong></td><td><strong>Numerical correspondence to weak coupling</strong></td><td><strong><a href="#lib-en-h40">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-41</strong></td><td><strong>Jarlskog $J$ = 3.10×10⁻⁵</strong></td><td><strong>0.62%</strong></td><td><strong>$s_{13}$ CKM external input</strong></td><td><strong><a href="#lib-en-h41">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-42</strong></td><td><strong>$m_n - m_p$ = 1.278 MeV</strong></td><td><strong>1.2%</strong></td><td><strong>EM correction undetermined</strong></td><td><strong><a href="#lib-en-h42">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-43</strong></td><td><strong>$r_n^2/r_p^2 \approx -1/6 + (29/9)\alpha/9$</strong></td><td><strong>0.04%</strong></td><td><strong>29/9 independent emergence clue</strong></td><td><strong><a href="#lib-en-h43">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-44</strong></td><td><strong>CAS 3-bit quark octet: 000=vacuum, 111=baryon</strong></td><td><strong>D-16~D-21 consistent</strong></td><td><strong>up=single bit, down=composite</strong></td><td><strong><a href="#lib-en-h44">lib.html</a></strong></td><td>03-24</td></tr>
-<tr><td class="col-id"><strong>H-45</strong></td><td><strong>4 forces = CAS × domain pair</strong></td><td><strong>D-34 reinterpretation</strong></td><td><strong>gravity=txs, strong=CAS atomicity(confinement), EW=boundary</strong></td><td><strong><a href="#lib-en-h45">lib.html</a></strong></td><td>03-24</td></tr>
+<tr><td class="col-id"><strong>H-45</strong></td><td><strong>4 forces = domain 4-bit cost structure</strong></td><td><strong>D-34 reinterpretation</strong></td><td><strong>cost attribution: CAS stage→domain bit pattern, strong=CAS atomicity</strong></td><td><strong><a href="#lib-en-h45">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-46</strong></td><td><strong>LRU general term = Friedmann eq.</strong></td><td><strong>$\Omega_m$ 0.6%, $\Omega_\Lambda$ 0.3%</strong></td><td><strong>$E(z) = (18/57)(1+z)^3 + 39/57$</strong></td><td><strong><a href="#lib-en-h46">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-47</strong></td><td><strong>CKM $s_{13} = A\lambda^3(2/5)$</strong></td><td><strong>0.51%</strong></td><td><strong>$2/5 = \cot\delta_0$, Jarlskog completion path</strong></td><td><strong><a href="#lib-en-h47">lib.html</a></strong></td><td>03-24</td></tr>
 <tr><td class="col-id"><strong>H-48</strong></td><td><strong>$\Omega_k = 0$ flatness</strong></td><td><strong>necessary</strong></td><td><strong>ECS complete partition</strong></td><td><strong><a href="#lib-en-h48">lib.html</a></strong></td><td>03-25</td></tr>
@@ -6505,10 +6678,10 @@ $m_H = 125.37\;\text{GeV}$
 
 <div class="lib-card" id="lib-en-h40" style="border-left:4px solid #d29922">
 <div class="lib-id">H-40 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#666;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
-<h3>Read Cost = Weak Coupling Constant α/sin²θ_W</h3>
+<h3>Read Cost Numerically Corresponds to Weak Coupling: α/sin²θ_W</h3>
 <div class="lib-formula">$$\text{Read} = \frac{\alpha}{\sin^2\theta_W} = \frac{1}{31.69} \approx \frac{1}{30}$$</div>
 <p class="lib-precision">1/31.69 vs current notation 1/30. Discrepancy 5.6%. 30 = 7×4+2 = CAS DOF(7) × domains(4) + bracket structure(2). Or Read(1)×4 + Compare(2)×4 + Swap(4)×4 + brackets(2) = 30. ECS interaction sum.</p>
-<p>CAS 3-stage cost ↔ 3-force correspondence: Swap = 1 (gravity/strong), Compare = α = 1/137 (electromagnetic), Read = α/sin²θ_W = 1/31.69 (weak). "~1/30" is approximate notation. Duality exists between gauge DOF mapping (H-02: Read→U(1)) and cost mapping (Read→weak SU(2)). Independent CAS derivation of 30: CAS costs {1,2,4} interacting with 4 domains {t,s,o,sp} give 1×4+2×4+4×4=28, plus bracket structure 2 yields 30. Equivalent: total CAS DOF(7)×domains(4)+brackets(2)=30. In ECS, "sum of inter-entity interactions" determines the integer 30.</p>
+<p>CAS 3-stage cost numerical correspondence: Swap base cost = 1 (gravity correspondence), Compare cost = α = 1/137 (EM correspondence), Read cost = α/sin²θ_W = 1/31.69 (weak correspondence). "~1/30" is approximate notation. Cost origin is domain access pattern, not CAS stage (H-45). Duality exists between gauge DOF mapping (H-02: Read→U(1)) and cost mapping (Read→weak SU(2)). Independent CAS derivation of 30: CAS costs {1,2,4} interacting with 4 domains {t,s,o,sp} give 1×4+2×4+4×4=28, plus bracket structure 2 yields 30. Equivalent: total CAS DOF(7)×domains(4)+brackets(2)=30. In ECS, "sum of inter-entity interactions" determines the integer 30.</p>
 <div class="lib-reuse">Re-entry use: Fixing precise Read value refines the starting point for sin²θ_W derivation. 30 = 7×4+2 independently derived as CAS-domain interaction sum. The 5.6% gap between 1/31.69 and 1/30 corresponds to radiative correction. Intersection of H-02 (CAS-gauge correspondence) and D-02 (sin²θ_W).</div>
 </div>
 
@@ -6570,11 +6743,11 @@ $m_H = 125.37\;\text{GeV}$
 
 <div class="lib-card" id="lib-en-h45" style="border-left:4px solid #d29922">
 <div class="lib-id">H-45 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#666;font-size:0.75em;margin-left:8px">2026-03-24</span></div>
-<h3>4 Forces = 4 Ways CAS(OPERATOR) Accesses DATA</h3>
-<div class="lib-formula">$$\text{Gravity}=\text{Cmp}(t){\to}\text{Swp}(s),\; \text{EM}=\text{Cmp}(s){\to}\text{Swp}(t),\; \text{Weak}=\text{Cmp}(t){\to}\text{Swp}(t),\; \text{Strong}=\text{CAS atomicity(confinement)}$$</div>
-<p class="lib-precision">Interaction = OPERATOR→DATA access. All 4 forces pass through CAS, so all are quantizable (including gravity). 30 = 7(CAS DOF) × 4(targets) + 2(brackets) = total interaction DOF</p>
-<p>When CAS(OPERATOR) accesses Entity DATA attributes (time, space), the combination of Compare target and Swap target determines 3 forces. Cross-access (different Cmp/Swp targets) = gravity (time-compare→space-swap), EM (space-compare→time-swap). Self-reference (same Cmp/Swp target) = weak (time→time, 1/30 = 1 path / 30 total DOF). Strong force is CAS 3-stage atomicity itself (OPERATOR internal binding, not domain interaction). OPERATOR×OPERATOR contention is structural error (Axiom 5). In ECS, CAS accessing multiple Entities' DATA simultaneously = force multiplicity.</p>
-<div class="lib-reuse">Re-entry use: sin²θ_W = CAS path ratio independent derivation. Structural basis for gravity quantization (OPERATOR mediated). D-34 CAS path count reinterpretation. 1/30 = weak force DOF derivation (H-40).</div>
+<h3>4 Forces = 4 Cost Structures Determined by Domain 4-Bit Pattern</h3>
+<div class="lib-formula">$$\text{Domain 4-bit pattern (Axiom 1 proposition)} \to \begin{cases} \text{Ring-30 shift ×1} = 1/30 & (\text{weak correspondence}) \\ \text{Ring-137 shift ×1} = 1/137 & (\text{EM correspondence}) \\ \text{Swap base cost} = 1 & (\text{gravity correspondence}) \\ \text{CAS atomicity} = \text{inseparable} & (\text{strong correspondence}) \end{cases}$$</div>
+<p class="lib-precision">Cost origin is domain access pattern, not CAS stage. All 4 forces pass through CAS, so all are quantizable (including gravity). Cost ratios unchanged; attribution shifted from CAS stage to domain bit pattern</p>
+<p>Domain 4-bit pattern determines 4 cost structures (Axiom 1 proposition). Numerical correspondence: ring-30 shift ×1 = 1/30 (weak correspondence), ring-137 shift ×1 = 1/137 (EM correspondence), Swap base cost = 1 (gravity correspondence), CAS atomicity = inseparable (strong correspondence). Cost ratios are identical to the old model, but attribution changed from CAS stages (Read/Compare/Swap) to domain bit patterns. Strong force is CAS 3-stage atomicity itself (OPERATOR internal binding, not domain interaction). OPERATOR×OPERATOR contention is structural error (Axiom 5). In ECS, CAS accessing multiple Entities' DATA simultaneously = force multiplicity.</p>
+<div class="lib-reuse">Re-entry use: sin²θ_W = domain bit path ratio independent derivation. Structural basis for gravity quantization (OPERATOR mediated). D-34 domain bit pattern reinterpretation. 1/30 = weak correspondence DOF derivation (H-40).</div>
 </div>
 
 <div class="lib-card" id="lib-en-h46" style="border-left:4px solid #d29922">
@@ -11346,7 +11519,7 @@ D-43: Planck 2018 z_eq = 3402 ± 26</pre>
 <hr>
 
 <h2>A~B (Equations 1~16): Directly Listed in Chapter 9 of the Main Report</h2>
-<p style="font-size:0.85em;color:#555">For detailed verification, see <a href="#sm-en-ch9" style="color:#0366d6">banya.html Chapter 9</a>.</p>
+<p style="font-size:0.85em;color:#555">For detailed verification, see <a href="#en-ch9" style="color:#0366d6">banya.html Chapter 9</a>.</p>
 
 <hr>
 
