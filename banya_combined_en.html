@@ -311,6 +311,8 @@ hr { border-top: 1px solid #ccc !important; }
 
 <p>The Banya Framework is not a theory. It is not a hypothesis. It is an <strong>Axiom-Based Science Mining Engine</strong>. Starting from axioms, it mines physical constants through recursive substitution. The input is a single structure (7 = 4 domains + 3 internal degrees of freedom), and the output is physics.</p>
 
+<p><strong>Axiom formula rule:</strong> All formulas in axioms and propositions are derived from the internal structure of the axioms. No externally imported formulas (formulas from other theories, empirical equations) are placed in the axiom body. Mathematical symbols (π, r, N, etc.) are used as tools, but equations assembled by others are not used. Correspondence with external formulas is described only in the "Physics Correspondence Table."</p>
+
 <h2 id="en-axiom-list">Confirmed Axioms</h2>
 
 <h3 id="en-ax1">Axiom 1. Banya Equation <span class="tag-solved">Axiom</span></h3>
@@ -365,6 +367,77 @@ hr { border-top: 1px solid #ccc !important; }
 </div>
 
 <p>Without observer, there is nowhere to receive Compare results. Without superposition, CAS has nothing to reference. Both are <strong>structural requirements</strong> for the Banya Equation to operate, not metaphorical borrowings inspired by quantum mechanics.</p>
+
+<h4>4-Axis Orthogonality = 4 Bits <span class="tag-corollary">Proposition</span></h4>
+
+<p>Orthogonal = independent. If independent, each axis switches ON/OFF without interfering with others. Independent ON/OFF without interference = bit. Since 4 axes are orthogonal (Axiom 1), they are 4 bits. $2^4 = 16$ domain combinations are possible.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>bit 0</th><th>bit 1</th><th>bit 2</th><th>bit 3</th><th>Value</th><th>State</th></tr>
+<tr><td>time</td><td>space</td><td>observer</td><td>superposition</td><td></td><td></td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>All OFF</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>time only</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>space only</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>time + space (DATA bracket)</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>observer only</td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>8</td><td>superposition only</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>12</td><td>observer + superposition (OPERATOR bracket)</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>15</td><td>All ON</td></tr>
+</table>
+</div>
+
+<p style="font-size:0.85em;color:#555">Banya Equation order: (time + space) + (observer + superposition). bit 0-1 = DATA bracket, bit 2-3 = OPERATOR bracket. $2^4 = 16$ combinations. 8 representative entries shown.</p>
+
+<p>CAS (OPERATOR) is 3 bits (Axiom 5: R_LOCK, C_LOCK, S_LOCK). DATA (domains) is 4 bits. Operator in bits, operand in bits. They must speak the same language for TOCTOU_LOCK (Axiom 5) to grab and release at the junction.</p>
+
+<p>The domain 4-bit is CAS's <strong>access state flag</strong>. Which domain bits are ON determines which access path CAS takes, and the path determines the cost structure.</p>
+
+<pre>CAS 3 bits: operator progress state  (what is it doing)
+Domain 4 bits: target access state    (which domains are open)
+
+Domain 4-bit example:  1 0 1 0
+                       | | | |
+                       | | | +-- bit 0 time:          0 (closed)
+                       | | +---- bit 1 space:         1 (open)
+                       | +------ bit 2 observer:      0 (closed)
+                       +-------- bit 3 superposition: 1 (open)
+
+--> CAS can access space and superposition only
+--> access path determines cost structure</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>4-bit pattern</th><th>Open domains</th><th>Access path</th><th>Cost structure</th></tr>
+<tr><td>0011</td><td>time + space</td><td>Intra-DATA cross</td><td>Swap accumulation cost</td></tr>
+<tr><td>0110</td><td>space + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
+<tr><td>0101</td><td>time + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
+<tr><td>0001</td><td>time only</td><td>Self-reference (same axis)</td><td>Self-reference serialization cost</td></tr>
+<tr><td>1100</td><td>observer + superposition</td><td>Intra-OPERATOR</td><td>Cost 0 (same bracket)</td></tr>
+<tr><td>1111</td><td>All ON</td><td>FSM atomic occupation</td><td>CAS atomicity (111 maintenance cost)</td></tr>
+</table>
+</div>
+
+<p>The 4 cost structures (Swap accumulation / Cross Cmp-Swp / Self-reference serialization / CAS atomicity) branch from the ON/OFF combinations of the domain 4 bits. The reason there are 4 cost structures is that the bit patterns create 4 access paths.</p>
+
+<h4>Lock = Bit AND <span class="tag-corollary">Proposition</span></h4>
+
+<p>TOCTOU_LOCK (Axiom 5) is an <strong>AND operation</strong> between CAS bits and domain bits. This AND is not a separate operator — it is <strong>performed by CAS's Compare stage</strong> (Axiom 2: CAS is the sole operator). Compare checks CAS bits against domain bits; a lock is held only at junctions where both are 1. If either side is 0, no junction is formed.</p>
+
+<pre>CAS 3 bits:    0 1 1        (Compare+Read done, Swap pending)
+               S C R
+
+Domain 4 bits: 1 0 1 0      (superposition, space open)
+               s o p t
+
+AND (junction = where lock is held):
+
+  R(1) AND t(0) = 0  -- not locked
+  R(1) AND p(1) = 1  -- locked (Read occupies space)
+  C(1) AND o(0) = 0  -- not locked
+  C(1) AND s(1) = 1  -- locked (Compare occupies superposition)</pre>
+
+<p>Lock held = both CAS bit and domain bit are 1. Lock released = either side resets to 0. This is the bit-level implementation of Axiom 5: "lock exists at the junction between CAS and DATA." CAS 3 bits (Axiom 5) and domain 4 bits (Axiom 1 proposition) speak the same language (bits), making AND operation possible. <strong>This AND is performed by CAS's Compare stage (Axiom 2). Since CAS is the sole operator in the universe (Axiom 2), all bit operations including AND are CAS internal operations.</strong></p>
 
 
 <h3 id="en-ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
@@ -454,7 +527,7 @@ hr { border-top: 1px solid #ccc !important; }
 
 <h4>Cost Lower Bound Inequality <span class="tag-corollary">Proposition</span></h4>
 
-<p>This minimum cost is measured as ℏ (minimum bracket-crossing cost) in physics. The cost lower bound inequality ($\Delta x \cdot \Delta p \geq \hbar/2$) is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets.</p>
+<p>This minimum cost is the bracket-crossing minimum cost. DATA certainty and OPERATOR certainty cannot both be zero simultaneously — this cost lower bound is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets.</p>
 
 <h4>Irreversibility Terminology</h4>
 
@@ -806,29 +879,34 @@ observer (mirror, filtering/normalization)
 </table>
 </div>
 
-<p><strong>$\theta$ IS the mixing angle:</strong></p>
+<p><strong>Shift distance $d$ IS the distance between projections:</strong></p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Angle $\theta$ between two projections on sphere</th><th>Corresponding mixing angle</th></tr>
-<tr><td>Cross projection and self-reference projection</td><td>$\sin^2\theta_W$ (electroweak mixing angle)</td></tr>
-<tr><td>CAS stage 1 and stage 2 projections</td><td>$\theta_C$ (Cabibbo angle)</td></tr>
-<tr><td>Write-accumulation projection and index projection</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
-<tr><td>Between 3-generation projections</td><td>Koide $\theta = 2/9$</td></tr>
-<tr><td>Twist of the projection plane</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP phases)</td></tr>
+<tr><th>Shift distance $d$ between two projections on ring</th><th>Bit pattern</th></tr>
+<tr><td>Cross projection and self-reference projection</td><td>Cross distance between DATA bits (01) and OPERATOR bits (10)</td></tr>
+<tr><td>CAS stage 1 and stage 2 projections</td><td>Shift distance between R_LOCK (001) and C_LOCK (010)</td></tr>
+<tr><td>Write-accumulation projection and index projection</td><td>Distance between Swap bit (100) and index (superposition) bit</td></tr>
+<tr><td>Between 3-generation projections</td><td>Equal spacing across CAS 3 stages. $d/N = 2/9$</td></tr>
+<tr><td>Twist of projection plane</td><td>Asymmetric shift between cross paths</td></tr>
 </table>
 </div>
 
 <p>The complete form of the index overlap weight (Axiom 13 proposition):</p>
 
 <div class="math-block">
-<div class="math-row">$$w(r, \theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
-<div class="math-legend">$r$: distance from CAS write point to another Entity — cost magnitude | $\theta$: different per pair — cost type | $\Gamma$: CAS cost structure (Axioms 2, 4) | $f(\theta)$: projection angle function</div>
+<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
+<div class="math-legend">$d$: shift distance between two knots (number of steps on ring) | $N$: ring size (Prop. 13). $d = 0$: full overlap, $d = N$: no overlap</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">$r$: distance from CAS write point to another Entity — cost magnitude | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
 <p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $r$ is the same in all directions from the CAS write point (origin). What differs is only the angle θ between projections on the sphere.</p>
 
-<h4>$f(\theta)$ = Overlap of Knot Contraction Zones on the Sphere <span class="tag-corollary">Proposition</span></h4>
+<h4>Contraction Overlap = Shared Digit Ratio on Ring <span class="tag-corollary">Proposition</span></h4>
 
 <p>Each knot (write result, Axiom 6) sits at a point on the sphere. <strong>Swap consumes DATA(space) (Axiom 6).</strong> Consumed space shrinks. Space around the knot is contracted, and more write accumulation means more contraction. Contraction zone = the range of space contraction around the knot. Zone size is determined by the knot's CAS cost structure (Axioms 2, 4).</p>
 
@@ -843,15 +921,15 @@ With knot:  ====\               /==== (space contracted)
 
 On the sphere:
 
-  Knot A ───── θ ───── Knot B
+  Knot A ───── d ───── Knot B
   [ contraction a ]    [ contraction b ]
           \               /
            \             /
             ── overlap ──
-            = f(θ)
+            = (1 - d/N)
 
-Small θ → many overlapping DATA addresses → frequent isWritable contention → large total cost
-Large θ → few overlapping DATA addresses → rare isWritable contention → small total cost
+Small d → many overlapping DATA addresses → frequent isWritable contention → large total cost
+Large d → few overlapping DATA addresses → rare isWritable contention → small total cost
 When two contraction zones overlap → two CAS attempt simultaneous Swap on same addresses
 → isWritable contention (Axiom 2) → cost per address (Axiom 4) × number of contested addresses = total cost</pre>
 
@@ -865,7 +943,7 @@ When two contraction zones overlap → two CAS attempt simultaneous Swap on same
 </table>
 </div>
 
-<p>$f(\theta)$ = the ratio of overlap between two knots' contraction zones on the sphere. Since zone sizes are determined by CAS cost, $f(\theta)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $f(\theta)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
+<p>Contraction overlap ratio $(1 - d/N)$ = the ratio of shared digits between two knots on the ring. $d$ = shift distance between two knots on the ring. $N$ = ring size (total slots). Since zone sizes are determined by CAS cost, $(1 - d/N)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $(1 - d/N)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
 
 
 <h3 id="en-ax12">Axiom 12. The Classical Bracket Is an ECS Execution Model <span class="tag-solved">Axiom</span></h3>
@@ -927,6 +1005,91 @@ WARM (27%) ← decreasing access frequency  — decreasing CAS access
 COLD (68%) ← no recent access             — LRU base eviction rate applied</pre>
 
 <p>Observers frequently accessed (CAS executed) stay HOT; as access decreases, they are evicted WARM → COLD. The delay from this eviction process is the sole tail latency. The cause of tail latency is computation density, not data distance.</p>
+
+<h4>Minimum Cost of Sequential Access = Shift <span class="tag-corollary">Proposition</span></h4>
+
+<p>Without logical addresses (Axiom 12), the only way CAS can reach another position is sequential shift. Random access (address → jump) is impossible. Since the FSM cycles circularly (Axiom 14, 000→001→011→111→000), the shift space is a ring buffer. On a ring of size $N$, the cost of 1 shift is $1/N$ (Axiom 4, minimum cost exists).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Ring size $N$</th><th>Cost of 1 shift</th><th>Basis</th></tr>
+<tr><td>9 (complete description DOF)</td><td>1/9</td><td>Axiom 9: CAS(7) + brackets(2)</td></tr>
+<tr><td>30 (CAS access path count)</td><td>1/30</td><td>Axioms 2, 1: CAS(7) × domains(4) + brackets(2)</td></tr>
+<tr><td>137</td><td>1/137</td><td>Derived from 4-axis domain bit operations (D-31)</td></tr>
+</table>
+</div>
+
+<p>Multiple cost structures exist not because costs differ in magnitude, but because <strong>ring sizes (bases) differ</strong>. The same single shift has different costs depending on ring size. Repeated shifts replace multiplication: $k$ shifts in base-$N$ = $N^k$.</p>
+
+<h4>Ring Size = Maximum Reach of Cost <span class="tag-corollary">Proposition</span></h4>
+
+<p>In the contraction overlap ratio $(1-d/N)$, when $d = N$ the overlap is 0. $d$ is the actual distance in DATA(space), and $N$ is the ring size. The fact that the maximum value of $d$ is $N$ means <strong>ring size = the maximum distance that cost structure can reach</strong>. The ring is not a purely logical buffer but a spacetime accumulation.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Ring size $N$</th><th>Maximum reach</th><th>Meaning</th></tr>
+<tr><td>9</td><td>9</td><td>Complete description level. Shortest reach</td></tr>
+<tr><td>30</td><td>30</td><td>Access path level. Medium reach</td></tr>
+<tr><td>137</td><td>137</td><td>Comparison pair level. Longest reach</td></tr>
+</table>
+</div>
+
+<p>$d < N$: overlap exists (cost incurred). $d = N$: no overlap (unreachable). $d > N$: impossible (outside ring). As writes accumulate (more knots), more points fill the ring and the ring grows. A larger ring means longer reach. <strong>OPERATOR's ring size determines DATA's space range.</strong></p>
+
+<h4>Dimension Ladder: Ring -- Stamp -- Sphere -- Space</h4>
+
+<p>The ring buffer is an <strong>internal 1D path (circumference only)</strong> inside OPERATOR. It does not touch space. The FSM cycle (Axiom 14) traverses this ring at cost 0 (Axiom 4: OPERATOR internal).</p>
+
+<pre>Ring buffer inside OPERATOR (1D):
+
+  000 ---> 001 ---> 011 ---> 111 ---> 000
+  idle     Read     Compare   Swap     reset
+  ^                                      |
+  |           Cost 0. Does not touch     |
+  |           space.                     |
+  +--------------------------------------+</pre>
+
+<p>When the ring completes one cycle (111 = Swap), it crosses the bracket <strong>at that single moment</strong> (Axiom 4). OPERATOR to DATA. Bracket-crossing cost is incurred. <strong>A single point is stamped</strong> onto DATA(space). This point is the knot (Axiom 6). The ring itself does not enter space. Each time the ring completes, it stamps one mark on space.</p>
+
+<pre>OPERATOR (ring cycles)
+    |
+    | 111 = Swap complete
+    | Bracket crossed (cost incurred)
+    v
+DATA(space): one point stamped = knot
+
+  1 cycle  = 1 stamp = 1 knot
+  N cycles = N stamps = write accumulation count N</pre>
+
+<p>When a knot (point) is stamped, surrounding space contracts (Proposition 6). Swap consumed DATA(space) (Axiom 6). The contraction range forms a <strong>spherical cap (2D)</strong> centered on the knot. This is the contraction zone. The size of the contraction zone is determined by CAS cost structure (Proposition 6). When two knots' contraction zones overlap, that overlap is the contraction overlap ratio $(1-d/N)$.</p>
+
+<pre>Dimension ladder:
+
+  1D  Ring buffer (inside OPERATOR)  CAS FSM cycle. Cost 0. (Axiom 14)
+      |
+      | 111 = Swap (bracket crossed. cost incurred.)
+      v
+  0D  Knot (point, stamp)           Stamp on space. (Axiom 6)
+      |
+      | Contraction (Swap consumed space)
+      v
+  2D  Spherical cap                  Contraction zone. (1-d/N). (Prop. 6)
+      |
+      | Caps distributed
+      v
+  3D  Space                          3 independent lock DOFs. (Prop. 5)</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>Dimension</th><th>Structure</th><th>Axiom/Proposition</th><th>Role</th></tr>
+<tr><td><strong>1D</strong></td><td>Ring buffer (inside OPERATOR)</td><td>Axiom 14 (FSM cycle)</td><td>Path CAS traverses. Cost 0</td></tr>
+<tr><td><strong>0D</strong></td><td>Knot (point, stamp)</td><td>Axiom 6 (write = knot)</td><td>Stamp on space across the bracket</td></tr>
+<tr><td><strong>2D</strong></td><td>Spherical cap</td><td>Proposition 6 (contraction overlap)</td><td>Contraction zone around the knot</td></tr>
+<tr><td><strong>3D</strong></td><td>Space</td><td>Proposition 5 (3 lock DOFs)</td><td>The space knots exist in</td></tr>
+</table>
+</div>
+
+<p>The ring cycles inside OPERATOR; the knot is stamped on DATA. Different brackets. A shift (Proposition 13) is movement on the ring; when a shift completes one full cycle (111), it crosses the bracket and stamps one point on space. The contraction around that point (spherical cap) and the overlap of caps is $(1-d/N)$. <strong>OPERATOR's 1D cycle creates DATA's 3D structure.</strong></p>
 
 <h4>Cost Is Multiple Projection, Not Transfer <span class="tag-corollary">Proposition</span></h4>
 
@@ -992,15 +1155,15 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 <h4>Index Overlap Weight <span class="tag-corollary">Proposition</span></h4>
 
 <div class="math-block">
-<div class="math-row">$$w(r,\theta) = \frac{\Gamma \cdot f(\theta)}{4\pi r^2}$$</div>
-<div class="math-legend">$w(r,\theta)$: weight of Entity A sensing Entity B | $r$: DATA(space) distance from CAS write point to another Entity | $\theta$: angle between projections (Axiom 11 proposition) | $\Gamma$: CAS cost structure (Axioms 2, 4) | $f(\theta)$: projection angle function</div>
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">overlap weight: weight of Entity A sensing Entity B | $r$: DATA(space) distance from CAS write point to another Entity | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
-<p>When Entity A's CAS references Entity B through the superposition index, the reference weight $w(r,\theta)$ is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of $\Gamma$ distinguishes the 4 cost structures. All $\Gamma$ are determined from axioms alone — no external physics constants required:
-<br>• Swap accumulation cost: $\Gamma$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $\Gamma$ is the write count itself (Axiom 6).
-<br>• Cross Cmp/Swp cost: $\Gamma$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
-<br>• Self-reference serialization cost: $\Gamma$ = self-reference serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Self-reference path = 1/30 (Axiom 5 proposition).
-<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by $V(r) = \sigma r$. $\sigma$ = lock cost per unit distance for 111 maintenance (Axiom 2 + Axiom 5 + Axiom 14 proposition).</p>
+<p>When Entity A's CAS references Entity B through the superposition index, the overlap weight is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
+<br>• Swap accumulation cost: $C$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $C$ is the write count itself (Axiom 6).
+<br>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
+<br>• Self-reference serialization cost: $C$ = self-reference serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Self-reference path = 1/30 (Axiom 5 proposition).
+<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $r$ (Axiom 2 + Axiom 5 + Axiom 14 proposition).</p>
 
 
 <h3 id="en-ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
@@ -1045,12 +1208,12 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 <p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must simultaneously hold locks on DATA(space) (Axiom 5). If two CAS stages are separated by distance $r$ in DATA(space), <strong>simultaneous locks</strong> proportional to $r$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the simultaneous lock maintenance cost scales linearly with $r$.</p>
 
 <div class="math-block">
-<div class="math-row">$$V(r) = \sigma \cdot r$$</div>
-<div class="math-row">$$\sigma = \text{cost of 1 TOCTOU\_LOCK (Axiom 4)} \times \text{junction density per unit distance}$$</div>
-<div class="math-legend">$r$: DATA(space) distance between two CAS stages | $\sigma$: simultaneous lock maintenance cost per unit distance</div>
+<div class="math-row">$$\text{111 maintenance cost} = \text{cost per junction} \times \text{junction count}$$</div>
+<div class="math-row">$$= (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times r$$</div>
+<div class="math-legend">$r$: DATA(space) distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $r$</div>
 </div>
 
-<p>When $\sigma r$ reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
+<p>When 111 maintenance cost reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
 
 
 <h4>Physics Correspondence Table (External Reference Only)</h4>
@@ -1076,7 +1239,49 @@ COLD (68%) ← no recent access             — LRU base eviction rate applied</
 <tr><td>LRU base eviction rate</td><td>Dark energy (Λ)</td></tr>
 <tr><td>Decreasing CAS access</td><td>Dark matter</td></tr>
 <tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
+<tr><td>bracket-crossing cost > 0 (Axiom 4)</td><td>Δx·Δp ≥ ℏ/2 (uncertainty principle)</td></tr>
+<tr><td>111 maintenance cost = cost per junction × count</td><td>V(r) = σr (linear potential, confinement)</td></tr>
 </table>
+</div>
+
+
+<h4>Axiom-Derived Formula Index</h4>
+
+<p style="font-size:0.85em;color:#555">All formulas below are derived from the 14 axioms and 14 propositions. No external math functions (trigonometric functions, etc.) are used. All symbols are defined within CAS structure.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{Banya Equation} \quad \delta^{2} = (\text{time} + \text{space})^{2} + (\text{observer} + \text{superposition})^{2}$$</div>
+<div class="math-legend">Axiom 1. All change ($\delta$) is a 4-axis norm. Classical bracket (DATA) and quantum bracket (OPERATOR) are orthogonal</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{cost lower bound} = \text{bracket-crossing cost} > 0$$</div>
+<div class="math-legend">Cost lower bound (Axiom 4 proposition). DATA certainty and OPERATOR certainty cannot both be zero simultaneously. Because brackets are orthogonal (Axiom 1), narrowing one widens the other</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{cost of 1 shift} = \frac{1}{N}$$</div>
+<div class="math-legend">Minimum sequential access cost (Axiom 12 proposition). $N$: ring size. No logical address (Axiom 12) + circular FSM (Axiom 14) + cost exists (Axiom 4) = only ring shift possible</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$k \text{ shifts} = N^{k}$$</div>
+<div class="math-legend">Shift repetition = multiplication replacement (Axiom 12 proposition). Cumulative cost of $k$ shifts on a base-$N$ ring. Shifts perform multiplication</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
+<div class="math-legend">Shared digit ratio on ring (Axiom 11 proposition). $d$: shift distance between two knots (steps) | $N$: ring size | $d=0$: full overlap | $d=N$: no overlap</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
+<div class="math-legend">Index overlap weight (Axiom 13 proposition). $r$: DATA(space) distance from CAS write point to another Entity | $d/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi r^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
+</div>
+
+<div class="math-block">
+<div class="math-row">$$\text{111 maintenance cost} = (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times r$$</div>
+<div class="math-legend">111 maintenance cost (Axiom 14 proposition). $r$: DATA(space) distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $r$ | cost = Swap cost (1) means inseparable</div>
 </div>
 
 
@@ -9965,7 +10170,7 @@ n range: 0 ~ 29</pre>
 <div class="discovery-block">
 <h4>D-31: 137 = T(16) + 1</h4>
 <div class="formula">$137 = T(16) + 1 = \dfrac{16 \times 17}{2} + 1 = 136 + 1$</div>
-<p>$2^4 = 16$ = number of states of domain 4 axes (time, space, observer, superposition)</p>
+<p>$2^4 = 16$ = number of combinations of domain 4 axes (time, space, observer, superposition)</p>
 <p>Resolution of "why 137": triangular number $T(2^4) + 1$. The domain 4-axis structure determines it.</p>
 </div>
 
@@ -9980,7 +10185,7 @@ n range: 0 ~ 29</pre>
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
 
-<p>Number of CAS 4-axis domains = 4. Internal degrees of freedom per domain = CAS 3 bits (R, C, S). Domain 4-axis combinations = 2⁴ = 16. We use the 4-axis orthogonal structure from the Banya equation.</p>
+<p>Number of CAS 4-axis domains = 4. Internal degrees of freedom per domain = CAS 3 bits (R, C, S). Domain 4-axis combinations = 2^4 = 16. We use the 4-axis orthogonal structure from the Banya equation.</p>
 
 
 <h3 id="as-r1-step2-en">Step 2. Norm Substitution</h3>
@@ -10022,7 +10227,7 @@ pi = 3.141592...</pre>
 <div class="math-row">Error: 0.00006%</div>
 </div>
 
-<p>The Wyler formula is directly derived from CAS domain structure. As by-product, D-31 triangular number structure: $137 = T(16) + 1 = T(2^4) + 1$. domain 4 axes (time+space+observer+superposition) = 16 states, whose triangular number +1 determines the integer part 137.</p>
+<p>The Wyler formula is directly derived from CAS domain structure. As by-product, D-31 triangular number structure: $137 = T(16) + 1 = T(2^4) + 1$. Domain 4 axes (time+space+observer+superposition) = 16 combinations, whose triangular number +1 determines the integer part 137.</p>
 
 
 <!-- ===== 3. By-products ===== -->
