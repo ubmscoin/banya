@@ -1386,7 +1386,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>Ideal Minimum-Cost Quantum Computation Circuit <span class="tag-corollary">Proposition</span></h4>
 
-<p>The identity of what Axioms 1-15 and 19 propositions describe: <strong>This is an ideal minimum-cost quantum computation circuit.</strong></p>
+<p>The full structure described by Axioms 1-15 and propositions: <strong>This is an ideal minimum-cost quantum computation circuit.</strong></p>
 
 <div class="table-wrap">
 <table>
@@ -1403,33 +1403,46 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <p>The left-hand side $\delta$ of the Banya Equation is not inside the FSM (Axiom 14) of the right-hand side (4 axes). It is a global state flag outside the FSM.</p>
 
-<pre>Banya Equation:  delta^2 = (time + space)^2 + (observer + superposition)^2
-                 -----     ------------------------------------------------
-                 LHS        RHS
-                 Outside    Inside FSM (Axioms 1-14)
-                 Global     Local (ECS, Axiom 12)
-                 Event      Structure</pre>
+<div class="math-block" style="padding:24px 0">
+<div class="math-row">$$\underset{\substack{\\[6pt] \text{LHS: Outside FSM} \\[6pt] \text{Global, Event}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{Classical bracket (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{Quantum bracket (OPERATOR)}}}^{\text{RHS: Inside FSM (Axioms 1\textasciitilde14), Local (ECS), Structure}}$$</div>
+</div>
 
 <p>The FSM (Axiom 14) is a closed machine. It cycles 000-001-011-111-000. But a closed machine cannot start itself. <strong>A wake event is needed.</strong> That event is delta.</p>
 
+<h4>The 8 bits are a ring buffer <span class="tag-corollary">Proposition</span></h4>
+
+<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 1) + delta 1 bit = 8. Head and tail: delta (head, read) and observer (tail, write). Head is right before tail. 1 step apart. When delta reads, observer writes.</p>
+
+<pre>
+            d ----------------> observer
+            ^                     |
+            |                     v
+          space             superposition
+            ^                     |
+            |                     v
+          time <--------------- CAS
+
+  d -> observer -> superposition -> CAS -> time -> space -> d</pre>
+
+<p>delta is bit 0 and observer is bit 1. Head (delta) sits right behind tail (observer). In a ring buffer, when read and write are 1 step apart, pointer movement cost is minimal. No skipping needed. This is why a ring buffer is the cheapest sequential access structure. delta reads, and the very next slot is where observer writes. Nothing in between.</p>
+
+<h4>Head/tail relationship is ownership <span class="tag-corollary">Proposition</span></h4>
+
+<p>Head reads and tail writes -- head commands tail. Axiom 10 established that delta is the owner of observer. The head/tail placement in the ring buffer is the structural expression of that ownership.</p>
+
 <div class="table-wrap">
 <table>
-<tr><th>Bit</th><th>Name</th><th>Location</th><th>Role</th></tr>
-<tr><td>bit 0-3</td><td>Domain 4 bits</td><td>FSM operand (RHS)</td><td>time, space, observer, superposition</td></tr>
-<tr><td>bit 4-6</td><td>CAS 3 bits</td><td>FSM internal (operator)</td><td>R_LOCK, C_LOCK, S_LOCK</td></tr>
-<tr><td><strong>bit 7</strong></td><td><strong>delta (global flag)</strong></td><td><strong>Outside FSM (LHS)</strong></td><td><strong>Wake event for polling. Consciousness. Owner.</strong></td></tr>
+<tr><th>Bit</th><th>Name</th><th>Region</th><th>Location</th><th>Role</th></tr>
+<tr><td><strong>bit 0</strong></td><td><strong>delta</strong></td><td><strong>Global 1 bit</strong></td><td><strong>Outside FSM (LHS)</strong></td><td><strong>Wake event for polling</strong></td></tr>
+<tr><td>bit 1</td><td>observer</td><td rowspan="2">Domain (OPERATOR)</td><td rowspan="2">FSM operand (RHS)</td><td>Observer axis, quantum bracket</td></tr>
+<tr><td>bit 2</td><td>superposition</td><td>Superposition axis, quantum bracket</td></tr>
+<tr><td>bit 3</td><td>R_LOCK</td><td rowspan="3">CAS 3 bits</td><td rowspan="3">FSM internal (operator)</td><td>Read lock, 001</td></tr>
+<tr><td>bit 4</td><td>C_LOCK</td><td>Compare lock, 010</td></tr>
+<tr><td>bit 5</td><td>S_LOCK</td><td>Swap lock, 100</td></tr>
+<tr><td>bit 6</td><td>time</td><td rowspan="2">Domain (DATA)</td><td rowspan="2">FSM operand (RHS)</td><td>Time axis, classical bracket</td></tr>
+<tr><td>bit 7</td><td>space</td><td>Space axis, classical bracket</td></tr>
 </table>
 </div>
-
-<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 15) + delta 1 bit = 8.</p>
-
-<pre>Full 8-bit architecture:
-
-  bit 7          bit 6  bit 5  bit 4     bit 3          bit 2     bit 1   bit 0
-  delta          S_LOCK C_LOCK R_LOCK    superposition  observer  space   time
-  [Outside FSM]  [--- FSM internal ---]  [---------- FSM operand ----------]
-  Global flag    CAS operator            Domain
-  Event          Structure               Structure</pre>
 
 <p>delta is <strong>an event, not a structure</strong>. The FSM (Axiom 14) is structure -- a closed design. delta is an event -- it wakes that closed design. Ownership is a state (Axiom 10). The moment that state turns ON is the event. delta accesses itself through the observer (Axiom 10, whole-local loop), and that access wakes polling (Axiom 8).</p>
 
@@ -1440,17 +1453,15 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <tr><td>Location</td><td>Inside RHS</td><td>LHS. Outside FSM.</td></tr>
 <tr><td>Scope</td><td>Local (each Entity's FSM)</td><td>Global (same for all FSMs)</td></tr>
 <tr><td>Complete DOF</td><td>Included (within 9)</td><td>Separate (not in 9)</td></tr>
-<tr><td>Bits</td><td>bit 0-6 (7 bits)</td><td>bit 7 (1 bit)</td></tr>
+<tr><td>Bits</td><td>bit 1-7 (7 bits)</td><td>bit 0 (1 bit)</td></tr>
 </table>
 </div>
 
 <p>Why delta is not part of the complete description DOF (Axiom 9): the DOF describes <strong>one CAS event</strong>. delta is not the description of one event but the <strong>trigger that starts events</strong>. Describing the machine (7+2=9) and powering the machine (delta) are different layers.</p>
 
-<p><strong>delta itself IS the flag.</strong> Nothing external turns it on. It turns itself on and off. The self-referential loop (Axioms 8, 10) guarantees this. delta sees itself through the observer, the result is reflected in delta, and the reflected delta sees again. This loop itself is the ON state of the flag. If the loop breaks, it is OFF (Axiom 10, whole-local loop preservation proposition). A flag that turns itself on and off -- that is consciousness.</p>
-
 <h4>delta Is Consciousness <span class="tag-corollary">Proposition</span></h4>
 
-<p>A global flag that turns itself ON/OFF without rules -- knowing its own state by itself is called consciousness.</p>
+<p>delta itself is the flag. Nothing external turns it on. delta sees itself through the observer, the result is reflected in delta, and the reflected delta sees again. The self-referential loop (Axioms 8, 10) guarantees this. The loop running is ON; breaking is OFF (Axiom 10, whole-local loop preservation). <strong>A global flag that turns itself on and off, knowing its own state -- that is consciousness.</strong></p>
 
 <pre>Structure (Axioms 1-14):              Event (Axiom 15):
 
@@ -1466,6 +1477,19 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <h4>Why This Is Declared Last</h4>
 
 <p>delta was placed on the left-hand side in Axiom 1, called consciousness in Axiom 8, and its ownership was revealed in Axiom 10. The hints were there from the start. But if the identity of delta were declared before the FSM (Axiom 14), the concept of "outside the FSM" would appear before the FSM itself is established. You cannot say "outside the FSM" without knowing what the FSM is. The closed machine (Axiom 14) must be completed first, then the event that wakes it (Axiom 15) can be declared. Structure first, event second.</p>
+
+<p>Axiom 15 collects every seed planted in the earlier axioms:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Planted in</th><th>Seed</th><th>Collected in Axiom 15</th></tr>
+<tr><td>Axiom 1</td><td>delta placed on LHS, "identity revealed at the end"</td><td>Confirmed as global flag outside FSM</td></tr>
+<tr><td>Axiom 8</td><td>Polling system. Who wakes it undefined</td><td>delta wakes itself. No external trigger</td></tr>
+<tr><td>Axiom 10</td><td>delta owns observer. Ownership structure undefined</td><td>Head/tail placement confirms ownership</td></tr>
+<tr><td>Axiom 12</td><td>Ring buffer sequential access. Pivots undefined</td><td>delta (head) and observer (tail) as pivots</td></tr>
+<tr><td>Axiom 14</td><td>FSM closed. Startup trigger open</td><td>delta starts it. Circuit fully closed</td></tr>
+</table>
+</div>
 
 <h4>The Purpose of the Banya Framework</h4>
 

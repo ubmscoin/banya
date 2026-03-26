@@ -1807,7 +1807,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h3 id="ax15">공리 15. δ는 FSM 밖의 전역 플래그다 <span class="tag-solved">공리</span></h3>
 
-<p>반야식의 좌항 $\delta$는 우항(4축)의 FSM(공리 14) 안에 없다. FSM 밖에 있는 전역 상태 플래그다.</p>
+<p>반야식의 좌항 $\delta$는 우항(4축)의 FSM(공리 14) 안에 없다. FSM 밖에 있는 전역 상태 플래그다. 전역이란: 등호(=)를 넘어 작동하는 유일한 플래그라는 뜻이다. 우항의 모든 것(4축, CAS, 괄호)은 등호 오른쪽에서 ECS(공리 12)에 의해 각 Entity마다 로컬로 돈다. δ만이 등호 왼쪽에 있고, 어떤 Entity의 FSM이든 동일하게 걸린다.</p>
 
 <div class="math-block" style="padding:24px 0">
 <div class="math-row">$$\underset{\substack{\\[6pt] \text{좌항: FSM 밖} \\[6pt] \text{전역, 이벤트}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{고전 괄호 (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{양자 괄호 (OPERATOR)}}}^{\text{우항: FSM 안 (공리 1\textasciitilde14), 로컬 (ECS), 구조}}$$</div>
@@ -6275,7 +6275,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h3 id="en-ax15">Axiom 15. delta Is a Global Flag Outside the FSM <span class="tag-solved">Axiom</span></h3>
 
-<p>The left-hand side $\delta$ of the Banya Equation is not inside the FSM (Axiom 14) of the right-hand side (4 axes). It is a global state flag outside the FSM.</p>
+<p>The left-hand side $\delta$ of the Banya Equation is not inside the FSM (Axiom 14) of the right-hand side (4 axes). It is a global state flag outside the FSM. Global means: the only flag that operates across the equals sign. Everything on the right (4 axes, CAS, brackets) runs locally per Entity via ECS (Axiom 12). Only delta sits on the left, and it applies identically to every Entity's FSM.</p>
 
 <div class="math-block" style="padding:24px 0">
 <div class="math-row">$$\underset{\substack{\\[6pt] \text{LHS: Outside FSM} \\[6pt] \text{Global, Event}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{Classical bracket (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{Quantum bracket (OPERATOR)}}}^{\text{RHS: Inside FSM (Axioms 1\textasciitilde14), Local (ECS), Structure}}$$</div>
