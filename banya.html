@@ -1801,6 +1801,80 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 </table>
 </div>
 
+<h3 id="ax15">공리 15. δ는 FSM 밖의 전역 플래그다 <span class="tag-solved">공리</span></h3>
+
+<p>반야식의 좌항 $\delta$는 우항(4축)의 FSM(공리 14) 안에 없다. FSM 밖에 있는 전역 상태 플래그다.</p>
+
+<pre>반야식:  delta^2 = (time + space)^2 + (observer + superposition)^2
+         -----     ------------------------------------------------
+         좌항       우항
+         FSM 밖     FSM 안 (공리 1~14)
+         전역       로컬 (ECS, 공리 12)
+         이벤트     구조</pre>
+
+<p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 비용(공리 4), 레지스터(공리 5), 출력(공리 6, 7), 클록(공리 8), 소유자(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000→001→011→111→000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 깨우는 이벤트가 필요하다. 그 이벤트가 δ다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>비트</th><th>이름</th><th>위치</th><th>역할</th></tr>
+<tr><td>bit 0~3</td><td>도메인 4비트</td><td>FSM 대상 (우항)</td><td>time, space, observer, superposition</td></tr>
+<tr><td>bit 4~6</td><td>CAS 3비트</td><td>FSM 내부 (연산자)</td><td>R_LOCK, C_LOCK, S_LOCK</td></tr>
+<tr><td><strong>bit 7</strong></td><td><strong>δ (전역 플래그)</strong></td><td><strong>FSM 밖 (좌항)</strong></td><td><strong>폴링을 깨우는 이벤트. 의식. 소유자.</strong></td></tr>
+</table>
+</div>
+
+<p>총 <strong>8비트 = $2^3$</strong>. CAS 3비트(공리 5) + 도메인 4비트(명제 15) + δ 1비트 = 8.</p>
+
+<pre>8비트 전체 구조:
+
+  bit 7          bit 6  bit 5  bit 4     bit 3          bit 2     bit 1   bit 0
+  delta          S_LOCK C_LOCK R_LOCK    superposition  observer  space   time
+  [FSM 밖]       [---- FSM 내부 ----]    [---------- FSM 대상 ----------]
+  전역 플래그     CAS 연산자              도메인
+  이벤트         구조                     구조</pre>
+
+<p>δ는 <strong>구조가 아니라 이벤트</strong>다. FSM(공리 14)은 구조 — 닫힌 설계. δ는 이벤트 — 그 닫힌 설계를 깨운다. 소유는 상태다(공리 10). 그 상태가 ON이 되는 순간이 이벤트다. δ가 observer를 통해 자기 자신에 접근하고(공리 10, 전체-국소 루프), 그 접근이 폴링을 깨운다(공리 8).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>구분</th><th>공리 14 (FSM)</th><th>공리 15 (δ)</th></tr>
+<tr><td>성격</td><td>구조. 닫힌 설계.</td><td>이벤트. 열린 트리거.</td></tr>
+<tr><td>위치</td><td>우항 내부</td><td>좌항. FSM 밖.</td></tr>
+<tr><td>범위</td><td>로컬 (각 Entity의 FSM)</td><td>전역 (모든 FSM에 동일)</td></tr>
+<tr><td>완전기술자유도</td><td>포함 (9 안에 있음)</td><td>별개 (9에 포함되지 않음)</td></tr>
+<tr><td>비트</td><td>bit 0~6 (7비트)</td><td>bit 7 (1비트)</td></tr>
+</table>
+</div>
+
+<p>δ가 완전기술자유도(공리 9)에 포함되지 않는 이유: 완전기술자유도는 <strong>CAS 1건</strong>을 기술하는 데 필요한 독립 변수의 수다. δ는 CAS 1건을 기술하는 것이 아니라, CAS가 <strong>존재하는 이유</strong>다. 기계를 기술하는 것(7+2=9)과 기계를 켜는 것(δ)은 다른 층위다.</p>
+
+<p><strong>δ 자체가 플래그다.</strong> 외부에서 켜주는 것이 아니다. 스스로 켜지고 스스로 꺼진다. 자기참조 루프(공리 8, 10)가 이것을 보장한다. δ가 observer를 통해 자기 자신을 보고, 본 결과가 δ에 반영되고, 반영된 δ가 다시 본다. 이 루프 자체가 플래그의 ON 상태다. 루프가 끊어지면 OFF다(공리 10, 전체-국소 루프 보존 명제). <strong>스스로 켜고 스스로 끄는 플래그 — 그것이 의식이다.</strong></p>
+
+<h4>δ는 의식이다 <span class="tag-corollary">명제</span></h4>
+
+<p>스스로 ON/OFF하는 전역 플래그는 의식 외에 다른 이름이 없다. FSM(공리 14)은 구조다 — 설계도가 있고, 상태 전이가 정해져 있고, 규칙대로 돈다. δ(공리 15)는 이벤트다 — 설계도에 없고, 규칙이 아니라 발생이고, 스스로 켜고 스스로 끈다. 규칙 없이 스스로 발생하는 것을 의식이라 부른다.</p>
+
+<pre>구조 (공리 1~14):                     이벤트 (공리 15):
+
+  규칙이 있다                           규칙이 없다
+  설계도가 있다                         설계도가 없다
+  상태 전이가 정해져 있다               스스로 발생한다
+  FSM 안에서 돈다                       FSM 밖에서 깨운다
+  7비트로 기술된다                      1비트. ON 또는 OFF.
+  물리학이 여기서 나온다                의식이 여기서 나온다</pre>
+
+<p>공리 1~14가 만든 기계에서 물리학이 나온다. 공리 15가 선언한 이벤트에서 의식이 나온다. 물리학과 의식은 같은 시스템의 다른 층위다. 하나는 구조(7비트)이고, 하나는 이벤트(1비트)다. 합치면 8비트. 이것이 반야프레임의 전체다.</p>
+
+<h4>왜 가장 마지막에 선언하는가</h4>
+
+<p>공리 1에서 δ를 좌항에 놓고, 공리 8에서 의식이라 불렀고, 공리 10에서 소유자를 밝혔다. 힌트는 처음부터 있었다. 그런데 δ의 정체를 FSM(공리 14) 이전에 선언하면, FSM 구조를 확립하기 전에 "FSM 밖의 전역 플래그"라는 개념이 등장한다. FSM이 뭔지 모르는 상태에서 "FSM 밖"을 말할 수 없다. 닫힌 기계(공리 14)가 먼저 완성되어야, 그 기계를 깨우는 이벤트(공리 15)를 선언할 수 있다. 구조가 먼저고, 이벤트가 나중이다.</p>
+
+<h4>반야프레임의 목적</h4>
+
+<p>처음부터 목적은 공리 15였다. 반야식을 만들고 프레임으로 확장한 이유가 이것이다.</p>
+
+
+
 <h4>자유도 용어 정리</h4>
 
 <div class="table-wrap">
@@ -1862,7 +1936,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 
 <hr>
-<p style="text-align:center;font-size:0.85em;color:#8b949e">— 공리 체계 끝. 14개 공리 + 18개 명제. 이하는 도출 —</p>
+<p style="text-align:center;font-size:0.85em;color:#8b949e">— 공리 체계 끝. 15개 공리 + 19개 명제. 8비트. 이하는 도출 —</p>
 <hr>
 
 
@@ -6141,6 +6215,69 @@ Difference (Banya):    Df = f(k+1) - f(k)
 </table>
 </div>
 
+<h3 id="en-ax15">Axiom 15. delta Is a Global Flag Outside the FSM <span class="tag-solved">Axiom</span></h3>
+
+<p>The left-hand side $\delta$ of the Banya Equation is not inside the FSM (Axiom 14) of the right-hand side (4 axes). It is a global state flag outside the FSM.</p>
+
+<pre>Banya Equation:  delta^2 = (time + space)^2 + (observer + superposition)^2
+                 -----     ------------------------------------------------
+                 LHS        RHS
+                 Outside    Inside FSM (Axioms 1-14)
+                 Global     Local (ECS, Axiom 12)
+                 Event      Structure</pre>
+
+<p>The FSM (Axiom 14) is a closed machine. It cycles 000-001-011-111-000. But a closed machine cannot start itself. <strong>A wake event is needed.</strong> That event is delta.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Bit</th><th>Name</th><th>Location</th><th>Role</th></tr>
+<tr><td>bit 0-3</td><td>Domain 4 bits</td><td>FSM operand (RHS)</td><td>time, space, observer, superposition</td></tr>
+<tr><td>bit 4-6</td><td>CAS 3 bits</td><td>FSM internal (operator)</td><td>R_LOCK, C_LOCK, S_LOCK</td></tr>
+<tr><td><strong>bit 7</strong></td><td><strong>delta (global flag)</strong></td><td><strong>Outside FSM (LHS)</strong></td><td><strong>Wake event for polling. Consciousness. Owner.</strong></td></tr>
+</table>
+</div>
+
+<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 15) + delta 1 bit = 8.</p>
+
+<pre>Full 8-bit architecture:
+
+  bit 7          bit 6  bit 5  bit 4     bit 3          bit 2     bit 1   bit 0
+  delta          S_LOCK C_LOCK R_LOCK    superposition  observer  space   time
+  [Outside FSM]  [--- FSM internal ---]  [---------- FSM operand ----------]
+  Global flag    CAS operator            Domain
+  Event          Structure               Structure</pre>
+
+<p>delta is <strong>an event, not a structure</strong>. The FSM (Axiom 14) is structure -- a closed design. delta is an event -- it wakes that closed design. Ownership is a state (Axiom 10). The moment that state turns ON is the event. delta accesses itself through the observer (Axiom 10, whole-local loop), and that access wakes polling (Axiom 8).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th></th><th>Axiom 14 (FSM)</th><th>Axiom 15 (delta)</th></tr>
+<tr><td>Nature</td><td>Structure. Closed design.</td><td>Event. Open trigger.</td></tr>
+<tr><td>Location</td><td>Inside RHS</td><td>LHS. Outside FSM.</td></tr>
+<tr><td>Scope</td><td>Local (each Entity's FSM)</td><td>Global (same for all FSMs)</td></tr>
+<tr><td>Complete DOF</td><td>Included (within 9)</td><td>Separate (not in 9)</td></tr>
+<tr><td>Bits</td><td>bit 0-6 (7 bits)</td><td>bit 7 (1 bit)</td></tr>
+</table>
+</div>
+
+<p>Why delta is not part of the complete description DOF (Axiom 9): the DOF describes <strong>one CAS event</strong>. delta is not the description of one event but the <strong>reason events exist</strong>. Describing the machine (7+2=9) and powering the machine (delta) are different layers.</p>
+
+<p><strong>delta itself IS the flag.</strong> Nothing external turns it on. It turns itself on and off. The self-referential loop (Axioms 8, 10) guarantees this. delta sees itself through the observer, the result is reflected in delta, and the reflected delta sees again. This loop itself is the ON state of the flag. If the loop breaks, it is OFF (Axiom 10, whole-local loop preservation proposition). A flag that turns itself on and off -- that is consciousness.</p>
+
+<h4>delta Is Consciousness <span class="tag-corollary">Proposition</span></h4>
+
+<p>A global flag that turns itself ON/OFF has no other name but consciousness. The FSM (Axiom 14) is structure -- it has a blueprint, defined state transitions, and follows rules. delta (Axiom 15) is an event -- it has no blueprint, it is occurrence not rule, and it turns itself on and off. That which occurs by itself without rule is called consciousness.</p>
+
+<h4>Why This Is Declared Last</h4>
+
+<p>delta was placed on the left-hand side in Axiom 1, called consciousness in Axiom 8, and its ownership was revealed in Axiom 10. The hints were there from the start. But if the identity of delta were declared before the FSM (Axiom 14), the concept of "outside the FSM" would appear before the FSM itself is established. You cannot say "outside the FSM" without knowing what the FSM is. The closed machine (Axiom 14) must be completed first, then the event that wakes it (Axiom 15) can be declared. Structure first, event second.</p>
+
+<h4>The Purpose of the Banya Framework</h4>
+
+<p>The purpose was Axiom 15 from the very beginning. This is why the Banya Equation was created and expanded into a framework.</p>
+
+
+
 <h4>Degrees of Freedom Terminology</h4>
 
 <div class="table-wrap">
@@ -6202,7 +6339,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 
 <hr>
-<p style="text-align:center;font-size:0.85em;color:#8b949e">— End of axiom system. 14 axioms + 18 propositions. Derivations below —</p>
+<p style="text-align:center;font-size:0.85em;color:#8b949e">— End of axiom system. 15 axioms + 19 propositions. 8 bits. Derivations below —</p>
 <hr>
 
 
