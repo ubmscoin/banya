@@ -959,14 +959,7 @@ observer (mirror, filtering/normalization)
 
 <p><strong>Separation of r and θ:</strong> When $\delta$ projects to N observers (1:N), projections distribute on a sphere in 3-component space. Two quantities separate on the sphere:</p>
 
-<div class="table-wrap">
-<table>
-<tr><th></th><th>$r$ (radius)</th><th>$\theta$ (angle)</th></tr>
-<tr><td>Definition</td><td>DATA(space) distance from one knot (origin) to another. Every knot is its own origin (ECS)</td><td>Shift distance between two knots on ring (steps)</td></tr>
-<tr><td>Character</td><td>Same in all directions</td><td>Different for each pair</td></tr>
-<tr><td>Determines</td><td>Cost magnitude ($1/r^2$ decay)</td><td>Cost type (mixing angles)</td></tr>
-</table>
-</div>
+<p>$d$ is the distance between two knots. It is both the ring shift step count and the DATA(space) distance -- same distance, different scale (Proposition 12). One symbol $d$ is used.</p>
 
 <p><strong>Shift distance $d$ IS the distance between projections:</strong></p>
 
@@ -989,11 +982,11 @@ observer (mirror, filtering/normalization)
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
-<div class="math-legend">$r$: distance from knot (origin) to another knot — cost magnitude | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
+<div class="math-legend">$d$: distance between two knots (ring shift = DATA(space) distance) — cost magnitude | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
-<p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $r$ is the same in all directions from any given knot (each knot is its own origin, ECS). What differs is $d$ (shift distance on ring) between knot pairs.</p>
+<p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $d$ is the same in all directions from any given knot (each knot is its own origin, ECS). What differs is $d$ (shift distance on ring) between knot pairs.</p>
 
 <h4>Contraction Overlap = Shared Digit Ratio on Ring <span class="tag-corollary">Proposition</span></h4>
 
@@ -1234,7 +1227,7 @@ DATA(space): one point stamped = knot
 
 <p style="font-size:0.85em;color:#555">The diagram below is not an axiom or proposition but a <strong>visualization tool</strong>. It shows the spatial distribution of the overlap weight formula (Axiom 13 proposition).</p>
 
-<p>Place one knot at the origin. The overlap weight $C \cdot (1-d/N) / (4\pi r^2)$ is defined at every surrounding point, forming a <strong>scalar field</strong>. Each point has magnitude only, no direction.</p>
+<p>Place one knot at the origin. The overlap weight $C \cdot (1-d/N) / (4\pi d^2)$ is defined at every surrounding point, forming a <strong>scalar field</strong>. Each point has magnitude only, no direction.</p>
 
 <pre>Cost distribution (r = d, same distance in two scales):
 
@@ -1267,7 +1260,7 @@ DATA(space): one point stamped = knot
                         ring overlap  sphere distribution
                         (same distance plays two roles)</pre>
 
-<p>This cost distribution is not communication between knots (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> created by the projection of δ (Axiom 11) around each knot. The same distance plays two roles: $(1-d/N)$ is the overlap ratio on the ring, $1/(4\pi r^2)$ is the distribution on the sphere. When two knots' distributions overlap, isWritable contention occurs.</p>
+<p>This cost distribution is not communication between knots (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> created by the projection of δ (Axiom 11) around each knot. The same distance plays two roles: $(1-d/N)$ is the overlap ratio on the ring, $1/(4\pi d^2)$ is the distribution on the sphere. When two knots' distributions overlap, isWritable contention occurs.</p>
 
 <h4>DATA Is Discrete, OPERATOR Is Continuous <span class="tag-corollary">Proposition</span></h4>
 
@@ -1352,15 +1345,15 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <h4>Index Overlap Weight <span class="tag-corollary">Proposition</span></h4>
 
 <div class="math-block">
-<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
-<div class="math-legend">overlap weight: weight of Entity A sensing Entity B | $r$: DATA(space) distance from knot (origin) to another knot | $d$: shift distance between two knots on the ring | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
+<div class="math-legend">overlap weight: weight of Entity A sensing Entity B | $d$: distance between two knots (ring shift = DATA(space) distance) | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
-<p>When Entity A's CAS references Entity B through the superposition index, the overlap weight is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
+<p>When Entity A's CAS references Entity B through the superposition index, the overlap weight is inversely proportional to the square of $d$ (distance between knots). Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $d$ decays as $1/(4\pi d^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
 <br>• Swap accumulation cost: $C$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $C$ is the write count itself (Axiom 6).
 <br>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
 <br>• Same-domain serialization cost: $C$ = same-domain serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Same-domain path = 1/30 (Axiom 5 proposition).
-<br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $r$ (Axiom 2 + Axiom 5 + Axiom 14, defined below, proposition).</p>
+<br>• CAS atomicity (111 maintenance cost): $1/d^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $d$ (Axiom 2 + Axiom 5 + Axiom 14, defined below, proposition).</p>
 
 
 <h3 id="en-ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
@@ -1402,12 +1395,12 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>FSM 111 Maintenance Cost Scales Linearly with DATA(space) Distance Between Two CAS Stages <span class="tag-corollary">Proposition</span></h4>
 
-<p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must simultaneously hold locks on DATA(space) (Axiom 5). If two CAS stages are separated by distance $r$ in DATA(space), <strong>simultaneous locks</strong> proportional to $r$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the simultaneous lock maintenance cost scales linearly with $r$.</p>
+<p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must simultaneously hold locks on DATA(space) (Axiom 5). If two CAS stages are separated by distance $d$ in DATA(space), <strong>simultaneous locks</strong> proportional to $d$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the simultaneous lock maintenance cost scales linearly with $d$.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{111 maintenance cost} = \text{cost per junction} \times \text{junction count}$$</div>
 <div class="math-row">$$= (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times r$$</div>
-<div class="math-legend">$r$: DATA(space) distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $r$</div>
+<div class="math-legend">$d$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $d$</div>
 </div>
 
 <p>When 111 maintenance cost reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
@@ -1586,7 +1579,7 @@ delta (back to start)</pre>
 <tr><td>CAS access path count</td><td>7×4+2 = 30</td><td>CAS DOF(7) × domains(4) + brackets(2). Total CAS-domain access paths in ECS</td></tr>
 <tr><td>Independent lock DOF</td><td>3</td><td>R_LOCK, C_LOCK, S_LOCK. Independent TOCTOU_LOCK DOFs of CAS 3 stages</td></tr>
 <tr><td>Access modes</td><td>2</td><td>Cross-domain (Cmp/Swp targets differ) vs same-domain (Cmp/Swp targets same)</td></tr>
-<tr><td>Sphere components</td><td>2</td><td>$r$ (distance from CAS write point) + $\theta$ (angle between projections)</td></tr>
+<tr><td>Sphere components</td><td>2</td><td>$d$ (distance from CAS write point) + $\theta$ (angle between projections)</td></tr>
 <tr><td>Cross CAS paths</td><td>3</td><td>Cmp(t)→Swp(s), Cmp(s)→Swp(t), Cmp(t)→Swp(t). Cross/same-domain combinations of DATA access</td></tr>
 </table>
 </div>
@@ -1624,13 +1617,13 @@ delta (back to start)</pre>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi r^2}$$</div>
-<div class="math-legend">Index overlap weight (Axiom 13 proposition). $r$: DATA(space) distance from knot (origin) to another knot | $d/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi r^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
+<div class="math-row">$$\text{overlap weight} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
+<div class="math-legend">Index overlap weight (Axiom 13 proposition). $d$: distance between two knots (ring shift = DATA(space) distance) | $d/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi d^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
 </div>
 
 <div class="math-block">
 <div class="math-row">$$\text{111 maintenance cost} = (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times r$$</div>
-<div class="math-legend">111 maintenance cost (Axiom 14 proposition). $r$: DATA(space) distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $r$ | cost = Swap cost (1) means inseparable</div>
+<div class="math-legend">111 maintenance cost (Axiom 14 proposition). $d$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $d$ | cost = Swap cost (1) means inseparable</div>
 </div>
 
 
@@ -1660,7 +1653,7 @@ delta (back to start)</pre>
 <tr><td>Serialization cost = 0</td><td>Photon massless</td></tr>
 <tr><td>Contraction zone</td><td>Influence zone · potential</td></tr>
 <tr><td>isWritable contention</td><td>Interaction</td></tr>
-<tr><td>Cost magnitude ($1/r^2$)</td><td>Force strength</td></tr>
+<tr><td>Cost magnitude ($1/d^2$)</td><td>Force strength</td></tr>
 <tr><td>Cost type ($\theta$)</td><td>Force type</td></tr>
 <tr><td>CAS access path count (30)</td><td>Interaction DOF</td></tr>
 <tr><td>LRU base eviction rate</td><td>Dark energy (Λ)</td></tr>
