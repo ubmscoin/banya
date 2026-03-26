@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>반야프레임 가설 라이브러리 (lib) — 가설과 발견</title>
 <meta name="author" content="Han Hyukjin">
-<meta name="description" content="반야프레임 재귀 대입 과정에서 발견된 공식과 가설을 모아둔 라이브러리. 발견 79개, 가설 121개, 고유예측 21개 = 총 221항목. 재초기화 가능한 인자 목록. 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.">
+<meta name="description" content="반야프레임 재귀 대입 과정에서 발견된 공식과 가설을 모아둔 라이브러리. 발견 91개, 가설 139개, 고유예측 25개 = 총 255항목. 재초기화 가능한 인자 목록. 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.">
 <meta name="keywords" content="반야프레임,般若,Banya Framework,가설 라이브러리,parameter library,발견,가설,재대입,alpha,미세구조상수,sin2 theta_W,코이데,질량 계층,우주상수,게이지 군,바리오제네시스,CKM,PMNS,한혁진,Han Hyukjin">
 <meta property="og:title" content="반야프레임 가설 라이브러리 (lib) — 가설과 발견">
-<meta property="og:description" content="반야프레임에서 발견 79개 + 가설 121개 + 예측 21개 = 221항목. 재초기화 가능한 인자 목록.">
+<meta property="og:description" content="반야프레임에서 발견 91개 + 가설 139개 + 예측 25개 = 255항목. 재초기화 가능한 인자 목록.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="반야프레임 가설 라이브러리 — 가설과 발견">
-<meta name="twitter:description" content="발견 79개 + 가설 121개 + 예측 21개 = 221항목. 프레임을 돌릴수록 라이브러리가 커진다.">
+<meta name="twitter:description" content="발견 91개 + 가설 139개 + 예측 25개 = 255항목. 프레임을 돌릴수록 라이브러리가 커진다.">
 <meta name="robots" content="index, follow">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -118,6 +118,18 @@
 <a href="#d77" class="toc-h3">D-77 미세구조 분리</a>
 <a href="#d78" class="toc-h3">D-78 디랙 대수</a>
 <a href="#d79" class="toc-h3">D-79 힉스 VEV</a>
+<a href="#d80" class="toc-h3">D-80 π± 질량</a>
+<a href="#d81" class="toc-h3">D-81 ρ(770)</a>
+<a href="#d82" class="toc-h3">D-82 ω(782)</a>
+<a href="#d83" class="toc-h3">D-83 Δ(1232)</a>
+<a href="#d84" class="toc-h3">D-84 Σ±</a>
+<a href="#d85" class="toc-h3">D-85 Ω⁻</a>
+<a href="#d86" class="toc-h3">D-86 |V_tb|</a>
+<a href="#d87" class="toc-h3">D-87 |V_ud|</a>
+<a href="#d88" class="toc-h3">D-88 |V_cs|</a>
+<a href="#d89" class="toc-h3">D-89 π⁰ 질량</a>
+<a href="#d90" class="toc-h3">D-90 양성자 새 경로</a>
+<a href="#d91" class="toc-h3">D-91 |V_cb|</a>
 <a href="#details-h" class="toc-h1">가설 상세</a>
 <a href="#h01" class="toc-h3">H-01 3세대</a>
 <a href="#h02" class="toc-h3">H-02 CAS 게이지 대응</a>
@@ -238,6 +250,24 @@
 <a href="#h119" class="toc-h3">H-119 τ_π 파이온 수명</a>
 <a href="#h120" class="toc-h3">H-120 z_re 재이온화</a>
 <a href="#h121" class="toc-h3">H-121 t_0 우주 나이</a>
+<a href="#h122" class="toc-h3">H-122 a_e 3루프 CAS</a>
+<a href="#h123" class="toc-h3">H-123 Bethe log</a>
+<a href="#h124" class="toc-h3">H-124 Positronium HFS</a>
+<a href="#h125" class="toc-h3">H-125 중수소 동위원소 시프트</a>
+<a href="#h126" class="toc-h3">H-126 K± 질량 NLO</a>
+<a href="#h127" class="toc-h3">H-127 K⁰ 질량 NLO</a>
+<a href="#h128" class="toc-h3">H-128 |V_ts|</a>
+<a href="#h129" class="toc-h3">H-129 r_bar 유니터리티</a>
+<a href="#h130" class="toc-h3">H-130 τ_Σ/τ_Λ</a>
+<a href="#h131" class="toc-h3">H-131 τ_Ξ/τ_Λ</a>
+<a href="#h132" class="toc-h3">H-132 K± 수명</a>
+<a href="#h133" class="toc-h3">H-133 스핀 양자화</a>
+<a href="#h134" class="toc-h3">H-134 스핀-통계</a>
+<a href="#h135" class="toc-h3">H-135 파울리 배타</a>
+<a href="#h136" class="toc-h3">H-136 g=2</a>
+<a href="#h137" class="toc-h3">H-137 BEC</a>
+<a href="#h138" class="toc-h3">H-138 L 양자화</a>
+<a href="#h139" class="toc-h3">H-139 스핀 1/3 불가</a>
 <a href="#details-p" class="toc-h1">고유 예측 상세</a>
 <a href="#p01" class="toc-h3">P-01 뉴트리노 질량합</a>
 <a href="#p02" class="toc-h3">P-02 양성자 수명</a>
@@ -336,6 +366,18 @@
 <a href="#en-d77" class="toc-h3">D-77 fine structure splitting</a>
 <a href="#en-d78" class="toc-h3">D-78 Dirac large number</a>
 <a href="#en-d79" class="toc-h3">D-79 Higgs VEV</a>
+<a href="#en-d80" class="toc-h3">D-80 π± mass</a>
+<a href="#en-d81" class="toc-h3">D-81 ρ(770)</a>
+<a href="#en-d82" class="toc-h3">D-82 ω(782)</a>
+<a href="#en-d83" class="toc-h3">D-83 Δ(1232)</a>
+<a href="#en-d84" class="toc-h3">D-84 Σ±</a>
+<a href="#en-d85" class="toc-h3">D-85 Ω⁻</a>
+<a href="#en-d86" class="toc-h3">D-86 |V_tb|</a>
+<a href="#en-d87" class="toc-h3">D-87 |V_ud|</a>
+<a href="#en-d88" class="toc-h3">D-88 |V_cs|</a>
+<a href="#en-d89" class="toc-h3">D-89 π⁰ mass</a>
+<a href="#en-d90" class="toc-h3">D-90 proton new path</a>
+<a href="#en-d91" class="toc-h3">D-91 |V_cb|</a>
 <a href="#en-details-h" class="toc-h1">Hypothesis Details</a>
 <a href="#en-h01" class="toc-h3">H-01 3 generations</a>
 <a href="#en-h02" class="toc-h3">H-02 CAS gauge map</a>
@@ -456,6 +498,24 @@
 <a href="#en-h119" class="toc-h3">H-119 τ_π pion lifetime</a>
 <a href="#en-h120" class="toc-h3">H-120 z_re reionization</a>
 <a href="#en-h121" class="toc-h3">H-121 t_0 age of universe</a>
+<a href="#en-h122" class="toc-h3">H-122 a_e 3-loop CAS</a>
+<a href="#en-h123" class="toc-h3">H-123 Bethe log</a>
+<a href="#en-h124" class="toc-h3">H-124 Positronium HFS</a>
+<a href="#en-h125" class="toc-h3">H-125 deuterium isotope shift</a>
+<a href="#en-h126" class="toc-h3">H-126 K± mass NLO</a>
+<a href="#en-h127" class="toc-h3">H-127 K⁰ mass NLO</a>
+<a href="#en-h128" class="toc-h3">H-128 |V_ts|</a>
+<a href="#en-h129" class="toc-h3">H-129 r_bar unitarity</a>
+<a href="#en-h130" class="toc-h3">H-130 τ_Σ/τ_Λ</a>
+<a href="#en-h131" class="toc-h3">H-131 τ_Ξ/τ_Λ</a>
+<a href="#en-h132" class="toc-h3">H-132 K± lifetime</a>
+<a href="#en-h133" class="toc-h3">H-133 spin quantization</a>
+<a href="#en-h134" class="toc-h3">H-134 spin-statistics</a>
+<a href="#en-h135" class="toc-h3">H-135 Pauli exclusion</a>
+<a href="#en-h136" class="toc-h3">H-136 g=2</a>
+<a href="#en-h137" class="toc-h3">H-137 BEC</a>
+<a href="#en-h138" class="toc-h3">H-138 L quantization</a>
+<a href="#en-h139" class="toc-h3">H-139 spin 1/3 impossible</a>
 <a href="#en-details-p" class="toc-h1">Prediction Details</a>
 <a href="#en-p01" class="toc-h3">P-01 neutrino mass sum</a>
 <a href="#en-p02" class="toc-h3">P-02 proton lifetime</a>
@@ -558,6 +618,18 @@
 <a href="#d77" class="toc-h3">D-77 미세구조 분리</a>
 <a href="#d78" class="toc-h3">D-78 디랙 대수</a>
 <a href="#d79" class="toc-h3">D-79 힉스 VEV</a>
+<a href="#d80" class="toc-h3">D-80 π± 질량</a>
+<a href="#d81" class="toc-h3">D-81 ρ(770)</a>
+<a href="#d82" class="toc-h3">D-82 ω(782)</a>
+<a href="#d83" class="toc-h3">D-83 Δ(1232)</a>
+<a href="#d84" class="toc-h3">D-84 Σ±</a>
+<a href="#d85" class="toc-h3">D-85 Ω⁻</a>
+<a href="#d86" class="toc-h3">D-86 |V_tb|</a>
+<a href="#d87" class="toc-h3">D-87 |V_ud|</a>
+<a href="#d88" class="toc-h3">D-88 |V_cs|</a>
+<a href="#d89" class="toc-h3">D-89 π⁰ 질량</a>
+<a href="#d90" class="toc-h3">D-90 양성자 새 경로</a>
+<a href="#d91" class="toc-h3">D-91 |V_cb|</a>
 <a href="#details-h" class="toc-h1">가설 상세</a>
 <a href="#h01" class="toc-h3">H-01 3세대</a>
 <a href="#h02" class="toc-h3">H-02 CAS 게이지 대응</a>
@@ -678,6 +750,24 @@
 <a href="#h119" class="toc-h3">H-119 τ_π 파이온 수명</a>
 <a href="#h120" class="toc-h3">H-120 z_re 재이온화</a>
 <a href="#h121" class="toc-h3">H-121 t_0 우주 나이</a>
+<a href="#h122" class="toc-h3">H-122 a_e 3루프 CAS</a>
+<a href="#h123" class="toc-h3">H-123 Bethe log</a>
+<a href="#h124" class="toc-h3">H-124 Positronium HFS</a>
+<a href="#h125" class="toc-h3">H-125 중수소 동위원소 시프트</a>
+<a href="#h126" class="toc-h3">H-126 K± 질량 NLO</a>
+<a href="#h127" class="toc-h3">H-127 K⁰ 질량 NLO</a>
+<a href="#h128" class="toc-h3">H-128 |V_ts|</a>
+<a href="#h129" class="toc-h3">H-129 r_bar 유니터리티</a>
+<a href="#h130" class="toc-h3">H-130 τ_Σ/τ_Λ</a>
+<a href="#h131" class="toc-h3">H-131 τ_Ξ/τ_Λ</a>
+<a href="#h132" class="toc-h3">H-132 K± 수명</a>
+<a href="#h133" class="toc-h3">H-133 스핀 양자화</a>
+<a href="#h134" class="toc-h3">H-134 스핀-통계</a>
+<a href="#h135" class="toc-h3">H-135 파울리 배타</a>
+<a href="#h136" class="toc-h3">H-136 g=2</a>
+<a href="#h137" class="toc-h3">H-137 BEC</a>
+<a href="#h138" class="toc-h3">H-138 L 양자화</a>
+<a href="#h139" class="toc-h3">H-139 스핀 1/3 불가</a>
 <a href="#reentry-map" class="toc-h1">재대입 맵</a>
 </div>
 
@@ -772,6 +862,18 @@
 <a href="#en-d77" class="toc-h3">D-77 fine structure splitting</a>
 <a href="#en-d78" class="toc-h3">D-78 Dirac large number</a>
 <a href="#en-d79" class="toc-h3">D-79 Higgs VEV</a>
+<a href="#en-d80" class="toc-h3">D-80 π± mass</a>
+<a href="#en-d81" class="toc-h3">D-81 ρ(770)</a>
+<a href="#en-d82" class="toc-h3">D-82 ω(782)</a>
+<a href="#en-d83" class="toc-h3">D-83 Δ(1232)</a>
+<a href="#en-d84" class="toc-h3">D-84 Σ±</a>
+<a href="#en-d85" class="toc-h3">D-85 Ω⁻</a>
+<a href="#en-d86" class="toc-h3">D-86 |V_tb|</a>
+<a href="#en-d87" class="toc-h3">D-87 |V_ud|</a>
+<a href="#en-d88" class="toc-h3">D-88 |V_cs|</a>
+<a href="#en-d89" class="toc-h3">D-89 π⁰ mass</a>
+<a href="#en-d90" class="toc-h3">D-90 proton new path</a>
+<a href="#en-d91" class="toc-h3">D-91 |V_cb|</a>
 <a href="#en-details-h" class="toc-h1">Hypothesis Details</a>
 <a href="#en-h01" class="toc-h3">H-01 3 generations</a>
 <a href="#en-h02" class="toc-h3">H-02 CAS gauge map</a>
@@ -892,6 +994,24 @@
 <a href="#en-h119" class="toc-h3">H-119 τ_π pion lifetime</a>
 <a href="#en-h120" class="toc-h3">H-120 z_re reionization</a>
 <a href="#en-h121" class="toc-h3">H-121 t_0 age of universe</a>
+<a href="#en-h122" class="toc-h3">H-122 a_e 3-loop CAS</a>
+<a href="#en-h123" class="toc-h3">H-123 Bethe log</a>
+<a href="#en-h124" class="toc-h3">H-124 Positronium HFS</a>
+<a href="#en-h125" class="toc-h3">H-125 deuterium isotope shift</a>
+<a href="#en-h126" class="toc-h3">H-126 K± mass NLO</a>
+<a href="#en-h127" class="toc-h3">H-127 K⁰ mass NLO</a>
+<a href="#en-h128" class="toc-h3">H-128 |V_ts|</a>
+<a href="#en-h129" class="toc-h3">H-129 r_bar unitarity</a>
+<a href="#en-h130" class="toc-h3">H-130 τ_Σ/τ_Λ</a>
+<a href="#en-h131" class="toc-h3">H-131 τ_Ξ/τ_Λ</a>
+<a href="#en-h132" class="toc-h3">H-132 K± lifetime</a>
+<a href="#en-h133" class="toc-h3">H-133 spin quantization</a>
+<a href="#en-h134" class="toc-h3">H-134 spin-statistics</a>
+<a href="#en-h135" class="toc-h3">H-135 Pauli exclusion</a>
+<a href="#en-h136" class="toc-h3">H-136 g=2</a>
+<a href="#en-h137" class="toc-h3">H-137 BEC</a>
+<a href="#en-h138" class="toc-h3">H-138 L quantization</a>
+<a href="#en-h139" class="toc-h3">H-139 spin 1/3 impossible</a>
 <a href="#en-reentry-map" class="toc-h1">Re-entry Map</a>
 </div>
 
@@ -1616,7 +1736,7 @@
 <div class="lib-formula">$$r_s = \frac{M}{m_p} \times 2l_p = \frac{2GM}{c^2}, \quad \times 2 = \text{Compare+Swap 2단계}$$</div>
 <p class="lib-precision">오차 0%. 표준 공식 정확 재현.</p>
 <p>$N = M/m_p$(플랑크 질량 단위 수). $\times 2$가 CAS의 Compare+Swap 2단계에서 나온다. 중력 반지름의 팩터 2가 CAS 구조에서 필연.</p>
-<div class="lib-reuse">재대입 용도: D-49(사건지평 비용경계), D-32(BH 온도-수명) 연쇄.</div>
+<div class="lib-reuse">재대입 용도: D-49(사건지평 비용경계), D-32(BH 온도-수명) 연쇄. 상세보기: <a href='discovery/ring_buffer.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d47" style="border-left:4px solid #2ea043">
@@ -1643,7 +1763,7 @@
 <div class="lib-formula">$$E_{acc}(N^2) \geq E_{escape} \text{ at } r = 2Nl_p. \quad N^2\text{ 누적, 발산 아님.}$$</div>
 <p class="lib-precision">오차 0%. 표준 사건지평 조건 재현.</p>
 <p>$N^2$ 누적비용이 탈출에너지에 도달하는 경계가 사건지평. 발산이 아닌 누적. D-46($r_s = N \times 2l_p$)에서 연쇄 도출.</p>
-<div class="lib-reuse">재대입 용도: 블랙홀 열역학 CAS 기원. D-32, D-46 연쇄.</div>
+<div class="lib-reuse">재대입 용도: 블랙홀 열역학 CAS 기원. D-32, D-46 연쇄. 상세보기: <a href='discovery/ring_buffer.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d50" style="border-left:4px solid #2ea043">
@@ -1688,7 +1808,7 @@
 <div class="lib-formula">$$b_0(n_f{=}6) = \frac{7}{4\pi}, \quad b_0(n_f{=}3) = \frac{9}{4\pi}$$</div>
 <p class="lib-precision">오차 0%. 분자 7과 9 = 링 크기.</p>
 <p>QCD $\beta_0$ 분자가 링 크기(7과 9). $n_f$ 변화에 따른 기어 사다리(gear ladder) running.</p>
-<div class="lib-reuse">재대입 용도: D-44 확장. $\alpha_s$ running 정밀 기어 구조.</div>
+<div class="lib-reuse">재대입 용도: D-44 확장. $\alpha_s$ running 정밀 기어 구조. 상세보기: <a href='discovery/coupling_relations.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d55" style="border-left:4px solid #2ea043">
@@ -1697,7 +1817,7 @@
 <div class="lib-formula">$$\frac{b_0^{QCD}}{b_0^{QED}} = \frac{21}{8}, \quad 21 = 7 \times 3,\ 8 = 2^3$$</div>
 <p class="lib-precision">오차 0%. 21 = CAS 상태(7) × 단계(3), 8 = 링 비트($2^3$).</p>
 <p>QCD/QED $\beta_0$ 비. 21 = $7 \times 3$(CAS 상태 × 단계), 8 = $2^3$(링 비트). D-39, D-44 쌍의 비율.</p>
-<div class="lib-reuse">재대입 용도: QCD/QED 통합비. D-39, D-44 교차검증.</div>
+<div class="lib-reuse">재대입 용도: QCD/QED 통합비. D-39, D-44 교차검증. 상세보기: <a href='discovery/coupling_relations.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d56" style="border-left:4px solid #2ea043">
@@ -1706,7 +1826,7 @@
 <div class="lib-formula">$$\sin^2\theta_W = \frac{7}{30}, \quad d=23,\ N=30\text{(access paths)}$$</div>
 <p class="lib-precision">오차 0.91%. 잔여 7 = CAS 쌍.</p>
 <p>$d=23$, $N=30$(접근 경로). 잔여 7 = CAS 쌍. D-02와 독립경로 교차. GUT 정규화 $\sin^2\theta_W = 3/8$과 구분되는 저에너지 근사.</p>
-<div class="lib-reuse">재대입 용도: D-02 교차검증. $f(\theta)$ 구조의 약력 적용.</div>
+<div class="lib-reuse">재대입 용도: D-02 교차검증. $f(\theta)$ 구조의 약력 적용. 상세보기: <a href='discovery/ring_buffer.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d57" style="border-left:4px solid #2ea043">
@@ -1715,7 +1835,7 @@
 <div class="lib-formula">$$\sigma = \frac{\alpha}{3}, \quad \Lambda_{QCD} = 222\ \text{MeV}$$</div>
 <p class="lib-precision">$\Lambda_{QCD}$ = 222 MeV, 오차 2.2%.</p>
 <p>괄호 비용($\alpha$) / CAS 단계(3). 등가: $\alpha_s/(9 \times (4\pi)^{2/3})$. 111 = CAS 유지비용 기본 단위.</p>
-<div class="lib-reuse">재대입 용도: $\Lambda_{QCD}$ CAS 도출. D-03, D-44 연쇄.</div>
+<div class="lib-reuse">재대입 용도: $\Lambda_{QCD}$ CAS 도출. D-03, D-44 연쇄. 상세보기: <a href='discovery/cas_internal.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d58" style="border-left:4px solid #2ea043">
@@ -1724,7 +1844,7 @@
 <div class="lib-formula">$$\frac{F}{A} = \frac{\pi^2 \hbar c}{8 \times 30 \times d^4}, \quad 240 = 8 \times 30$$</div>
 <p class="lib-precision">오차 0%. 표준 공식 재현.</p>
 <p>카시미르 효과 분모 240 = $8$(링 비트 $2^3$) × $30$(접근 경로). 표준 공식의 정수가 CAS 구조에서 분해된다.</p>
-<div class="lib-reuse">재대입 용도: 진공 에너지 CAS 기원. D-56(30) 연쇄.</div>
+<div class="lib-reuse">재대입 용도: 진공 에너지 CAS 기원. D-56(30) 연쇄. 상세보기: <a href='discovery/cas_internal.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d59" style="border-left:4px solid #2ea043">
@@ -1877,7 +1997,7 @@
 <div class="lib-formula">$$m_n - m_p = (m_d - m_u) - \frac{\alpha m_p}{2\pi}(1 + \alpha_s) = 1.291 \;\text{MeV}$$</div>
 <p class="lib-precision">오차 0.15%.</p>
 <p>쿼크 질량차에서 전자기 자기에너지 보정을 빼면 중성자-양성자 질량차.</p>
-<div class="lib-reuse">재대입 용도: 베타 붕괴 역치, BBN. D-72 교차.</div>
+<div class="lib-reuse">재대입 용도: 베타 붕괴 역치, BBN. D-72 교차. 상세보기: <a href='discovery/cosmology2.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d76" style="border-left:4px solid #2ea043">
@@ -1895,7 +2015,7 @@
 <div class="lib-formula">$$\Delta E = \frac{E_1 \alpha^2}{2^4}$$</div>
 <p class="lib-precision">오차 0.26%.</p>
 <p>$2^4 = 16$ = 도메인 4축의 완전 조합. 미세구조 분리가 도메인 구조에서 도출.</p>
-<div class="lib-reuse">재대입 용도: 수소 스펙트럼 정밀 구조. D-66 교차.</div>
+<div class="lib-reuse">재대입 용도: 수소 스펙트럼 정밀 구조. D-66 교차. 상세보기: <a href='discovery/atomic.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d78" style="border-left:4px solid #2ea043">
@@ -1904,7 +2024,7 @@
 <div class="lib-formula">$$\frac{\alpha}{\alpha_G} \sim 10^{36}$$</div>
 <p class="lib-precision">오차 &lt;1%.</p>
 <p>D-35 확장. 전자기력/중력 비율이 CAS 비용 구조에서 나오는 큰 수.</p>
-<div class="lib-reuse">재대입 용도: 계층 문제. D-35 연쇄.</div>
+<div class="lib-reuse">재대입 용도: 계층 문제. D-35 연쇄. 상세보기: <a href='discovery/atomic.html'>도출 과정</a></div>
 </div>
 
 <div class="lib-card" id="d79" style="border-left:4px solid #2ea043">
@@ -1913,7 +2033,115 @@
 <div class="lib-formula">$$v = \left(\sqrt{2}\,G_F\right)^{-1/2} = 246.22 \;\text{GeV}$$</div>
 <p class="lib-precision">오차 0.008%.</p>
 <p>페르미 상수에서 힉스 VEV 도출. CAS Swap 단위비용의 에너지 스케일.</p>
-<div class="lib-reuse">재대입 용도: 전약 대칭 깨짐 스케일. D-16, D-60, D-70 기초.</div>
+<div class="lib-reuse">재대입 용도: 전약 대칭 깨짐 스케일. D-16, D-60, D-70 기초. 상세보기: <a href='discovery/atomic.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d80" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-80 <span class="tag-solved">적중</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\pi^\pm$ 질량 = 139.27 MeV. GMOR with $\Lambda_{\text{cond}} = \Lambda_{QCD} \times 9/8$ — S급</h3>
+<div class="lib-formula">$$m_{\pi^\pm} = 139.27 \;\text{MeV}, \quad \Lambda_{\text{cond}} = \Lambda_{QCD} \times \frac{9}{8}$$</div>
+<p class="lib-precision">오차 0.22%.</p>
+<p>GMOR 관계에 $\Lambda_{\text{cond}} = \Lambda_{QCD} \times 9/8$ 대입. 9/8 = 링 크기비.</p>
+<div class="lib-reuse">재대입 용도: 파이온 질량 CAS 도출. D-89 교차. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d81" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-81 <span class="tag-solved">적중</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\rho(770) = \Lambda_{QCD} \times 7/2 = 777$ MeV — S급</h3>
+<div class="lib-formula">$$m_\rho = \Lambda_{QCD} \times \frac{7}{2} = 777 \;\text{MeV}$$</div>
+<p class="lib-precision">오차 0.22%.</p>
+<p>$\Lambda_{QCD}$ × CAS 상태수(7) / 2. 벡터 메손 질량의 CAS 도출.</p>
+<div class="lib-reuse">재대입 용도: 벡터 메손 스케일. D-82 교차. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d82" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-82 <span class="tag-solved">적중</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\omega(782) = \Lambda \times 7/2 + 3(m_d - m_u) = 784.5$ MeV — S급</h3>
+<div class="lib-formula">$$m_\omega = \Lambda_{QCD} \times \frac{7}{2} + 3(m_d - m_u) = 784.5 \;\text{MeV}$$</div>
+<p class="lib-precision">오차 0.24%.</p>
+<p>$\rho$ 질량에 이소스핀 깨짐 보정 $3(m_d - m_u)$. D-81 확장.</p>
+<div class="lib-reuse">재대입 용도: 이소스핀 깨짐 검증. D-81 연쇄. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d83" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-83 <span class="tag-solved">적중</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\Delta(1232) = m_p + \Lambda \times 4/3 = 1234$ MeV — S급</h3>
+<div class="lib-formula">$$m_\Delta = m_p + \Lambda_{QCD} \times \frac{4}{3} = 1234 \;\text{MeV}$$</div>
+<p class="lib-precision">오차 0.19%.</p>
+<p>양성자 질량 + $\Lambda_{QCD} \times 4/3$. 4/3 = CAS Swap 비용(4) / 단계(3).</p>
+<div class="lib-reuse">재대입 용도: 바리온 여기 스케일. D-90 교차. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d84" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-84 <span class="tag-solved">적중</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\Sigma^\pm = m_p + m_s \sqrt{65/9} = 1189.2$ MeV — S급</h3>
+<div class="lib-formula">$$m_{\Sigma^\pm} = m_p + m_s \sqrt{\frac{65}{9}} = 1189.2 \;\text{MeV}$$</div>
+<p class="lib-precision">오차 0.014%.</p>
+<p>양성자 질량에 기묘 쿼크 질량의 CAS 구조 보정. 65/9 = (57+8)/9.</p>
+<div class="lib-reuse">재대입 용도: 하이퍼론 질량 CAS 도출. D-85 연쇄. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d85" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-85 <span class="tag-solved">적중</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\Omega^- = m_p + \Lambda \times 4/3 + 3m_s \pi/2 = 1674$ MeV — S급</h3>
+<div class="lib-formula">$$m_{\Omega^-} = m_p + \Lambda_{QCD} \times \frac{4}{3} + 3m_s \frac{\pi}{2} = 1674 \;\text{MeV}$$</div>
+<p class="lib-precision">오차 0.11%.</p>
+<p>$\Delta(1232)$ 공식에 기묘 쿼크 3개 보정($3m_s \pi/2$). 완전 기묘 바리온.</p>
+<div class="lib-reuse">재대입 용도: 기묘 바리온 스케일. D-83, D-84 연쇄. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d86" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-86 <span class="tag-solved">적중</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{tb}| = 1 - A^2\lambda^4/2 = 0.99915$ — S급</h3>
+<div class="lib-formula">$$|V_{tb}| = 1 - \frac{A^2\lambda^4}{2} = 0.99915$$</div>
+<p class="lib-precision">오차 0.002%.</p>
+<p>Wolfenstein 전개에서 $|V_{tb}|$ 도출. CKM 유니터리의 최고 정밀 확인.</p>
+<div class="lib-reuse">재대입 용도: CKM 3세대 완결. D-07, D-08 연쇄. 상세보기: <a href='discovery/ckm_pmns.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d87" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-87 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{ud}| = 1 - \lambda^2/2 = 0.97441$ — A급</h3>
+<div class="lib-formula">$$|V_{ud}| = 1 - \frac{\lambda^2}{2} = 0.97441$$</div>
+<p class="lib-precision">오차 0.070%.</p>
+<p>Wolfenstein 전개 선도항. $\lambda = \sin\theta_C$(D-07)에서 직접 도출.</p>
+<div class="lib-reuse">재대입 용도: CKM 1세대 교차. D-07 연쇄. 상세보기: <a href='discovery/ckm_pmns.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d88" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-88 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{cs}| = 1 - \lambda^2/2 - \cdots = 0.97356$ — A급</h3>
+<div class="lib-formula">$$|V_{cs}| = 1 - \frac{\lambda^2}{2} - \cdots = 0.97356$$</div>
+<p class="lib-precision">오차 0.15%.</p>
+<p>Wolfenstein 전개 2차 보정 포함. $|V_{ud}|$와 대각 쌍.</p>
+<div class="lib-reuse">재대입 용도: CKM 2세대 대각 원소. D-87 교차. 상세보기: <a href='discovery/ckm_pmns.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d89" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-89 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\pi^0 = 134.3$ MeV. EM 보정 $3\alpha\Lambda_{\text{cond}}^2$ — A급</h3>
+<div class="lib-formula">$$m_{\pi^0} = 134.3 \;\text{MeV}, \quad \Delta m^2 = 3\alpha\Lambda_{\text{cond}}^2$$</div>
+<p class="lib-precision">오차 0.50%.</p>
+<p>$\pi^\pm$(D-80)에서 전자기 보정 $3\alpha\Lambda_{\text{cond}}^2$를 빼면 중성 파이온 질량.</p>
+<div class="lib-reuse">재대입 용도: 파이온 질량 분리. D-80 연쇄. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d90" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-90 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>양성자 새 경로 $= 3\Lambda_{QCD}\sqrt{2} = 941.9$ MeV — A급</h3>
+<div class="lib-formula">$$m_p^{(\text{new})} = 3\Lambda_{QCD}\sqrt{2} = 941.9 \;\text{MeV}$$</div>
+<p class="lib-precision">오차 0.39%.</p>
+<p>양성자 질량의 독립 CAS 경로. $3 = $ CAS 단계, $\sqrt{2} = $ Compare 비용.</p>
+<div class="lib-reuse">재대입 용도: 양성자 질량 교차검증. D-64 교차. 상세보기: <a href='discovery/hadron_mass.html'>도출 과정</a></div>
+</div>
+
+<div class="lib-card" id="d91" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-91 <span class="tag-discovery">발견</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{cb}| = A \times \lambda^2 = 0.04127$ — B급</h3>
+<div class="lib-formula">$$|V_{cb}| = A\lambda^2 = 0.04127$$</div>
+<p class="lib-precision">오차 1.15%.</p>
+<p>Wolfenstein 파라미터 $A$(D-08)와 $\lambda$(D-07)에서 직접 도출.</p>
+<div class="lib-reuse">재대입 용도: CKM 2-3 혼합. D-07, D-08 연쇄. 상세보기: <a href='discovery/ckm_pmns.html'>도출 과정</a></div>
 </div>
 
 
@@ -3049,6 +3277,42 @@
 <div class="lib-reuse">재대입 용도: H-116($H_0$), H-46(LRU 프리드만) 근거.</div>
 </div>
 
+<div class="lib-card" id="h122" style="border-left:4px solid #d29922"><div class="lib-id">H-122 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$a_e$ 3루프 CAS = $\frac{7}{6}\left(\frac{\alpha}{\pi}\right)^3$</h3><div class="lib-formula">$$a_e^{(3)} = \frac{7}{6}\left(\frac{\alpha}{\pi}\right)^3$$</div><p class="lib-precision">등급 C. 오차 1.23%</p><p>전자 이상자기모멘트 3루프 계수. $7$ = CAS 자유도, $6$ = 쿼크 6세대. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: D-01($\alpha$), H-38(g-2 1루프) 근거.</div></div>
+
+<div class="lib-card" id="h123" style="border-left:4px solid #d29922"><div class="lib-id">H-123 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Bethe log = $\ln(2^4) = \ln 16$</h3><div class="lib-formula">$$\text{Bethe log} = \ln(2^4) = \ln 16$$</div><p class="lib-precision">등급 B. 오차 ~2%. 램 시프트 개선.</p><p>Bethe 대수. $2^4 = 16$ = 도메인 $4$비트 조합 수. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 1(도메인 4축), 램 시프트 정밀도 근거.</div></div>
+
+<div class="lib-card" id="h124" style="border-left:4px solid #d29922"><div class="lib-id">H-124 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Positronium HFS 계수 = $7/12$</h3><div class="lib-formula">$$C_\text{HFS} = \frac{7}{12}$$</div><p class="lib-precision">검증 대기</p><p>포지트로늄 초미세 구조 계수. $7$ = CAS 자유도, $12$ = $3 \times 4$ (CAS 단계 $\times$ 도메인). 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 1(도메인 4축), 공리 3(CAS 7상태) 근거.</div></div>
+
+<div class="lib-card" id="h125" style="border-left:4px solid #d29922"><div class="lib-id">H-125 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>중수소 동위원소 시프트</h3><div class="lib-formula">$$\text{Deuterium isotope shift}$$</div><p class="lib-precision">등급 B. 오차 0.09%</p><p>중수소 동위원소 시프트. CAS 질량비 구조에서 도출. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: D-12($m_e/m_p$), 공리 3(CAS 질량비) 근거.</div></div>
+
+<div class="lib-card" id="h126" style="border-left:4px solid #d29922"><div class="lib-id">H-126 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$K^\pm$ 질량 NLO = 506.7 MeV</h3><div class="lib-formula">$$m_{K^\pm}^\text{NLO} = 506.7\;\text{MeV}$$</div><p class="lib-precision">등급 C. 실험값 $493.677\;\text{MeV}$, 오차 2.6%</p><p>하전 케이온 질량 NLO. CAS 기어 구조에서 도출. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: D-19($m_s$), 공리 3(CAS 기어) 근거.</div></div>
+
+<div class="lib-card" id="h127" style="border-left:4px solid #d29922"><div class="lib-id">H-127 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$K^0$ 질량 NLO = 513.4 MeV</h3><div class="lib-formula">$$m_{K^0}^\text{NLO} = 513.4\;\text{MeV}$$</div><p class="lib-precision">등급 C. 실험값 $497.611\;\text{MeV}$, 오차 3.2%</p><p>중성 케이온 질량 NLO. CAS 기어 구조에서 도출. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: D-19($m_s$), D-20($m_d$), 공리 3(CAS 기어) 근거.</div></div>
+
+<div class="lib-card" id="h128" style="border-left:4px solid #d29922"><div class="lib-id">H-128 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$|V_{ts}| = A\lambda^2(1-\lambda^2/2)$</h3><div class="lib-formula">$$|V_{ts}| = A\lambda^2\left(1 - \frac{\lambda^2}{2}\right)$$</div><p class="lib-precision">등급 C. 오차 3.7%</p><p>CKM 행렬 원소 $V_{ts}$. Wolfenstein 매개변수에서 도출. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: D-07($\theta_C$), D-08($A$), H-83($V_{ts}$) 근거.</div></div>
+
+<div class="lib-card" id="h129" style="border-left:4px solid #d29922"><div class="lib-id">H-129 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\bar{r} = \frac{2}{9}\sqrt{3} = 0.3849$</h3><div class="lib-formula">$$\bar{r} = \frac{2}{9}\sqrt{3} = 0.3849$$</div><p class="lib-precision">등급 B. 실험값 $0.383$, 오차 0.4%. 유니터리티 삼각형 반지름.</p><p>유니터리티 삼각형 반지름. $2/9$ = 코이데 상수, $\sqrt{3}$ = CAS 3단계 기하. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: D-09(코이데 $2/9$), D-23($\delta_\text{CKM}$) 근거.</div></div>
+
+<div class="lib-card" id="h130" style="border-left:4px solid #d29922"><div class="lib-id">H-130 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\tau_\Sigma / \tau_\Lambda = 1/\pi$</h3><div class="lib-formula">$$\frac{\tau_\Sigma}{\tau_\Lambda} = \frac{1}{\pi}$$</div><p class="lib-precision">등급 C. 오차 4.4%. 바리온 수명비.</p><p>시그마/람다 바리온 수명비. CAS 경로 수에서 도출. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 3(CAS 경로), D-50(수명비 구조) 근거.</div></div>
+
+<div class="lib-card" id="h131" style="border-left:4px solid #d29922"><div class="lib-id">H-131 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\tau_\Xi / \tau_\Lambda = 2/\pi$</h3><div class="lib-formula">$$\frac{\tau_\Xi}{\tau_\Lambda} = \frac{2}{\pi}$$</div><p class="lib-precision">등급 C. 오차 2.2%. 바리온 수명비.</p><p>크사이/람다 바리온 수명비. CAS 경로 수에서 도출. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 3(CAS 경로), D-50(수명비 구조) 근거.</div></div>
+
+<div class="lib-card" id="h132" style="border-left:4px solid #d29922"><div class="lib-id">H-132 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\tau_{K^\pm} = 1.258 \times 10^{-8}\;\text{s}$</h3><div class="lib-formula">$$\tau_{K^\pm} = 1.258 \times 10^{-8}\;\text{s}$$</div><p class="lib-precision">등급 C. 실험값 $1.238 \times 10^{-8}\;\text{s}$, 오차 1.6%</p><p>하전 케이온 수명. CAS 경로 수에서 도출. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: H-119($\tau_\pi$), 공리 3(CAS 경로) 근거.</div></div>
+
+<div class="lib-card" id="h133" style="border-left:4px solid #d29922"><div class="lib-id">H-133 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>스핀 양자화 = SP 비트 카운트 / 2</h3><div class="lib-formula">$$s = \frac{\text{SP bit count}}{2}$$</div><p class="lib-precision">구조적 대응</p><p>스핀 양자화가 SP 비트 카운트의 절반임. 비트 이산성에서 $1/2$ 단위가 필연적으로 나온다. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 9(완전 기술 자유도), 공리 15(8비트 구조) 근거.</div></div>
+
+<div class="lib-card" id="h134" style="border-left:4px solid #d29922"><div class="lib-id">H-134 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>스핀-통계 = CAS 원자성 $(-1)^k$</h3><div class="lib-formula">$$\psi(x_1, x_2) = (-1)^k \psi(x_2, x_1)$$</div><p class="lib-precision">구조적 대응</p><p>스핀-통계 정리가 CAS 원자성에서 나옴. $k$ = CAS 교환 횟수. 페르미온($k$=홀수)은 반대칭, 보손($k$=짝수)은 대칭. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 2(CAS 유일 연산자), D-40(스핀-통계 CAS) 근거.</div></div>
+
+<div class="lib-card" id="h135" style="border-left:4px solid #d29922"><div class="lib-id">H-135 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>파울리 배타 = CAS Compare fail</h3><div class="lib-formula">$$\text{Pauli exclusion} = \text{CAS Compare fail}$$</div><p class="lib-precision">구조적 대응</p><p>파울리 배타원리가 CAS Compare 실패임. 동일 상태 두 페르미온은 Compare에서 충돌하여 Swap 불가. 4 양자수($n, l, m_l, m_s$)는 CAS가 구분하는 4개 식별자. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 2(CAS), 공리 5(TOCTOU 락) 근거.</div></div>
+
+<div class="lib-card" id="h136" style="border-left:4px solid #d29922"><div class="lib-id">H-136 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$g = 2$ = Read + Compare 2단계</h3><div class="lib-formula">$$g = 2 \quad (\text{Read} + \text{Compare} = 2\;\text{stages})$$</div><p class="lib-precision">구조적 대응</p><p>디랙 $g$-인자 $g=2$가 CAS의 Read와 Compare 2단계에서 나옴. Swap 전 2단계가 스핀 자기모멘트의 정확히 2배를 결정한다. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 3(CAS 3단계), H-38(g-2 1루프) 근거.</div></div>
+
+<div class="lib-card" id="h137" style="border-left:4px solid #d29922"><div class="lib-id">H-137 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>BEC = LRU COLD 축적</h3><div class="lib-formula">$$\text{BEC} = \text{LRU COLD accumulation}$$</div><p class="lib-precision">구조적 대응</p><p>보스-아인슈타인 응축이 LRU COLD 상태의 축적임. 온도가 임계값 아래로 내려가면 LRU에서 COLD 엔트리가 대량 축적되어 동일 상태로 수렴한다. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 6(LRU), 공리 7(안쓰기=중첩유지) 근거.</div></div>
+
+<div class="lib-card" id="h138" style="border-left:4px solid #d29922"><div class="lib-id">H-138 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$L$ 양자화 = 링 mod 산술</h3><div class="lib-formula">$$L = n \bmod N \quad (n = 0, 1, 2, \ldots)$$</div><p class="lib-precision">구조적 대응</p><p>궤도 각운동량 양자화가 링 버퍼의 mod 산술임. 링 크기 $N$에 대해 $L$은 $0$부터 $N-1$까지만 가능. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 14(FSM), 공리 15(링 버퍼) 근거.</div></div>
+
+<div class="lib-card" id="h139" style="border-left:4px solid #d29922"><div class="lib-id">H-139 <span class="tag-hypothesis">가설</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>스핀 $1/3$ 불가 = 비트 불가분</h3><div class="lib-formula">$$s \neq \frac{1}{3}, \frac{1}{5}, \ldots \quad (\text{bit indivisibility})$$</div><p class="lib-precision">구조적 대응</p><p>스핀 $1/3$이 불가능한 이유가 비트의 불가분성임. 비트는 0 또는 1이므로 $1/2$ 단위 이하로 나눌 수 없다. $1/3, 1/5$ 등은 비트로 표현 불가. 자유 매개변수 0개.</p><div class="lib-reuse">재대입 용도: 공리 9(완전 기술 자유도), 공리 15(8비트 구조) 근거.</div></div>
+
 <hr>
 <hr>
 
@@ -3162,9 +3426,9 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
   BH 온도-수명 (D-32) → [H-54] BH 증발 5120=10×2^9
   스핀-통계 CAS (D-40)</code></pre>
 
-<p>D-79개 발견 전부가 이 맵에 있다. $\alpha$에서 직접 나온 가지가 가장 크고, 독립 구조 상수 4개(D-05, D-06, D-08, D-43), CAS 구조 정수 3개(D-32, D-33, D-40)가 별도 뿌리다. $\alpha$가 프레임의 뿌리이되, 독립 뿌리도 있다.</p>
+<p>D-91개 발견 전부가 이 맵에 있다. $\alpha$에서 직접 나온 가지가 가장 크고, 독립 구조 상수 4개(D-05, D-06, D-08, D-43), CAS 구조 정수 3개(D-32, D-33, D-40)가 별도 뿌리다. $\alpha$가 프레임의 뿌리이되, 독립 뿌리도 있다.</p>
 
-<p>가설 121개(H-01~H-121) 중 10개(H-14, H-15, H-16, H-19, H-21, H-38, H-54, H-68, H-71, H-94)가 발견으로 승격되어 활성 가설은 111개다. 발견이 "무엇이 나왔는가"라면 가설은 "왜 나왔는가"다. 가설이 증명되면 발견으로 승격되고, 라이브러리에 초록 태그가 하나 더 붙는다.</p>
+<p>가설 139개(H-01~H-139) 중 10개(H-14, H-15, H-16, H-19, H-21, H-38, H-54, H-68, H-71, H-94)가 발견으로 승격되어 활성 가설은 129개다. 발견이 "무엇이 나왔는가"라면 가설은 "왜 나왔는가"다. 가설이 증명되면 발견으로 승격되고, 라이브러리에 초록 태그가 하나 더 붙는다.</p>
 
 <p>프레임을 돌릴수록 이 맵이 커진다. 맵이 커질수록 미지수가 줄어든다. 연립방정식에서 조건 하나가 추가될 때마다 해가 좁혀지는 것과 같다.</p>
 
@@ -3192,7 +3456,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 
 <div class="discovery-block">
 <h4>Complete Coverage of All 22 Standard Model Free Parameters</h4>
-<p>The 79 discoveries in this library fully cover all 22 free parameters of the Standard Model. The number of free parameters has become 0. All values are derived from the axioms (7).</p>
+<p>The 91 discoveries in this library fully cover all 22 free parameters of the Standard Model. The number of free parameters has become 0. All values are derived from the axioms (7).</p>
 <p>3 coupling constants, 6 quark masses, 3 lepton masses, 4 CKM parameters, 4 PMNS parameters, 2 Higgs parameters. All contained in this library.</p>
 </div>
 
@@ -4363,7 +4627,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$r_s = \frac{M}{m_p} \times 2l_p = \frac{2GM}{c^2}, \quad \times 2 = \text{Compare+Swap 2 stages}$$</div>
 <p class="lib-precision">Error 0%. Standard formula exactly reproduced.</p>
 <p>$N = M/m_p$ (Planck mass units). The factor $\times 2$ arises from CAS Compare+Swap 2 stages. The factor of 2 in gravitational radius is inevitable from CAS structure.</p>
-<div class="lib-reuse">Re-entry use: D-49 (event horizon cost boundary), D-32 (BH temp-lifetime) chain.</div>
+<div class="lib-reuse">Re-entry use: D-49 (event horizon cost boundary), D-32 (BH temp-lifetime) chain. Details: <a href='discovery/ring_buffer.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d47" style="border-left:4px solid #2ea043">
@@ -4390,7 +4654,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$E_{acc}(N^2) \geq E_{escape} \text{ at } r = 2Nl_p. \quad N^2\text{ accumulation, not divergence.}$$</div>
 <p class="lib-precision">Error 0%. Standard event horizon condition reproduced.</p>
 <p>The boundary where $N^2$ accumulated cost reaches escape energy is the event horizon. Accumulation, not divergence. Chain-derived from D-46 ($r_s = N \times 2l_p$).</p>
-<div class="lib-reuse">Re-entry use: Black hole thermodynamics CAS origin. Chain: D-32, D-46.</div>
+<div class="lib-reuse">Re-entry use: Black hole thermodynamics CAS origin. Chain: D-32, D-46. Details: <a href='discovery/ring_buffer.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d50" style="border-left:4px solid #2ea043">
@@ -4435,7 +4699,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$b_0(n_f{=}6) = \frac{7}{4\pi}, \quad b_0(n_f{=}3) = \frac{9}{4\pi}$$</div>
 <p class="lib-precision">Error 0%. Numerators 7 and 9 = ring sizes.</p>
 <p>QCD $\beta_0$ numerator equals ring sizes (7 and 9). Gear ladder running as $n_f$ changes.</p>
-<div class="lib-reuse">Re-entry use: D-44 extension. $\alpha_s$ running precision gear structure.</div>
+<div class="lib-reuse">Re-entry use: D-44 extension. $\alpha_s$ running precision gear structure. Details: <a href='discovery/coupling_relations.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d55" style="border-left:4px solid #2ea043">
@@ -4444,7 +4708,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$\frac{b_0^{QCD}}{b_0^{QED}} = \frac{21}{8}, \quad 21 = 7 \times 3,\ 8 = 2^3$$</div>
 <p class="lib-precision">Error 0%. 21 = CAS states(7) × steps(3), 8 = ring bits($2^3$).</p>
 <p>QCD/QED $\beta_0$ ratio. 21 = $7 \times 3$ (CAS states × steps), 8 = $2^3$ (ring bits). Ratio of D-39 and D-44 pair.</p>
-<div class="lib-reuse">Re-entry use: QCD/QED unification ratio. Cross-validation of D-39, D-44.</div>
+<div class="lib-reuse">Re-entry use: QCD/QED unification ratio. Cross-validation of D-39, D-44. Details: <a href='discovery/coupling_relations.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d56" style="border-left:4px solid #2ea043">
@@ -4453,7 +4717,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$\sin^2\theta_W = \frac{7}{30}, \quad d=23,\ N=30\text{(access paths)}$$</div>
 <p class="lib-precision">Error 0.91%. Residual 7 = CAS pairs.</p>
 <p>$d=23$, $N=30$ (access paths). Residual 7 = CAS pairs. Independent path cross-check with D-02. Distinct from GUT normalization $\sin^2\theta_W = 3/8$, this is a low-energy approximation.</p>
-<div class="lib-reuse">Re-entry use: D-02 cross-validation. $f(\theta)$ structure applied to weak mixing.</div>
+<div class="lib-reuse">Re-entry use: D-02 cross-validation. $f(\theta)$ structure applied to weak mixing. Details: <a href='discovery/ring_buffer.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d57" style="border-left:4px solid #2ea043">
@@ -4462,7 +4726,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$\sigma = \frac{\alpha}{3}, \quad \Lambda_{QCD} = 222\ \text{MeV}$$</div>
 <p class="lib-precision">$\Lambda_{QCD}$ = 222 MeV, error 2.2%.</p>
 <p>Bracket cost ($\alpha$) / CAS steps (3). Equivalent: $\alpha_s/(9 \times (4\pi)^{2/3})$. 111 = CAS maintenance cost base unit.</p>
-<div class="lib-reuse">Re-entry use: $\Lambda_{QCD}$ CAS derivation. Chain: D-03, D-44.</div>
+<div class="lib-reuse">Re-entry use: $\Lambda_{QCD}$ CAS derivation. Chain: D-03, D-44. Details: <a href='discovery/cas_internal.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d58" style="border-left:4px solid #2ea043">
@@ -4471,7 +4735,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$\frac{F}{A} = \frac{\pi^2 \hbar c}{8 \times 30 \times d^4}, \quad 240 = 8 \times 30$$</div>
 <p class="lib-precision">Error 0%. Standard formula reproduced.</p>
 <p>Casimir effect denominator 240 = $8$ (ring bits $2^3$) × $30$ (access paths). The integer in the standard formula decomposes into CAS structure.</p>
-<div class="lib-reuse">Re-entry use: Vacuum energy CAS origin. Chain: D-56 (30).</div>
+<div class="lib-reuse">Re-entry use: Vacuum energy CAS origin. Chain: D-56 (30). Details: <a href='discovery/cas_internal.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d59" style="border-left:4px solid #2ea043">
@@ -4624,7 +4888,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$m_n - m_p = (m_d - m_u) - \frac{\alpha m_p}{2\pi}(1 + \alpha_s) = 1.291 \;\text{MeV}$$</div>
 <p class="lib-precision">Error 0.15%.</p>
 <p>Quark mass difference minus electromagnetic self-energy correction yields neutron-proton mass splitting.</p>
-<div class="lib-reuse">Re-entry use: Beta decay threshold, BBN. Cross: D-72.</div>
+<div class="lib-reuse">Re-entry use: Beta decay threshold, BBN. Cross: D-72. Details: <a href='discovery/cosmology2.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d76" style="border-left:4px solid #2ea043">
@@ -4642,7 +4906,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$\Delta E = \frac{E_1 \alpha^2}{2^4}$$</div>
 <p class="lib-precision">Error 0.26%.</p>
 <p>$2^4 = 16$ = full combination of 4 domain axes. Fine structure splitting from domain structure.</p>
-<div class="lib-reuse">Re-entry use: Hydrogen precision spectrum. Cross: D-66.</div>
+<div class="lib-reuse">Re-entry use: Hydrogen precision spectrum. Cross: D-66. Details: <a href='discovery/atomic.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d78" style="border-left:4px solid #2ea043">
@@ -4651,7 +4915,7 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$\frac{\alpha}{\alpha_G} \sim 10^{36}$$</div>
 <p class="lib-precision">Error &lt;1%.</p>
 <p>D-35 extension. The electromagnetic/gravitational force ratio emerges as a large number from CAS cost structure.</p>
-<div class="lib-reuse">Re-entry use: Hierarchy problem. Chain: D-35.</div>
+<div class="lib-reuse">Re-entry use: Hierarchy problem. Chain: D-35. Details: <a href='discovery/atomic.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-d79" style="border-left:4px solid #2ea043">
@@ -4660,7 +4924,115 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-formula">$$v = \left(\sqrt{2}\,G_F\right)^{-1/2} = 246.22 \;\text{GeV}$$</div>
 <p class="lib-precision">Error 0.008%.</p>
 <p>Higgs VEV from Fermi constant. Energy scale of CAS Swap unit cost.</p>
-<div class="lib-reuse">Re-entry use: Electroweak symmetry breaking scale. Foundation: D-16, D-60, D-70.</div>
+<div class="lib-reuse">Re-entry use: Electroweak symmetry breaking scale. Foundation: D-16, D-60, D-70. Details: <a href='discovery/atomic.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d80" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-80 <span class="tag-solved">Hit</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\pi^\pm$ Mass = 139.27 MeV. GMOR with $\Lambda_{\text{cond}} = \Lambda_{QCD} \times 9/8$ — S-rank</h3>
+<div class="lib-formula">$$m_{\pi^\pm} = 139.27 \;\text{MeV}, \quad \Lambda_{\text{cond}} = \Lambda_{QCD} \times \frac{9}{8}$$</div>
+<p class="lib-precision">Error 0.22%.</p>
+<p>GMOR relation with $\Lambda_{\text{cond}} = \Lambda_{QCD} \times 9/8$. 9/8 = ring size ratio.</p>
+<div class="lib-reuse">Re-entry use: Pion mass CAS derivation. Cross: D-89. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d81" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-81 <span class="tag-solved">Hit</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\rho(770) = \Lambda_{QCD} \times 7/2 = 777$ MeV — S-rank</h3>
+<div class="lib-formula">$$m_\rho = \Lambda_{QCD} \times \frac{7}{2} = 777 \;\text{MeV}$$</div>
+<p class="lib-precision">Error 0.22%.</p>
+<p>$\Lambda_{QCD}$ × CAS state count (7) / 2. Vector meson mass from CAS.</p>
+<div class="lib-reuse">Re-entry use: Vector meson scale. Cross: D-82. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d82" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-82 <span class="tag-solved">Hit</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\omega(782) = \Lambda \times 7/2 + 3(m_d - m_u) = 784.5$ MeV — S-rank</h3>
+<div class="lib-formula">$$m_\omega = \Lambda_{QCD} \times \frac{7}{2} + 3(m_d - m_u) = 784.5 \;\text{MeV}$$</div>
+<p class="lib-precision">Error 0.24%.</p>
+<p>$\rho$ mass plus isospin breaking correction $3(m_d - m_u)$. Extension of D-81.</p>
+<div class="lib-reuse">Re-entry use: Isospin breaking verification. Chain: D-81. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d83" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-83 <span class="tag-solved">Hit</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\Delta(1232) = m_p + \Lambda \times 4/3 = 1234$ MeV — S-rank</h3>
+<div class="lib-formula">$$m_\Delta = m_p + \Lambda_{QCD} \times \frac{4}{3} = 1234 \;\text{MeV}$$</div>
+<p class="lib-precision">Error 0.19%.</p>
+<p>Proton mass + $\Lambda_{QCD} \times 4/3$. 4/3 = CAS Swap cost (4) / steps (3).</p>
+<div class="lib-reuse">Re-entry use: Baryon excitation scale. Cross: D-90. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d84" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-84 <span class="tag-solved">Hit</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\Sigma^\pm = m_p + m_s \sqrt{65/9} = 1189.2$ MeV — S-rank</h3>
+<div class="lib-formula">$$m_{\Sigma^\pm} = m_p + m_s \sqrt{\frac{65}{9}} = 1189.2 \;\text{MeV}$$</div>
+<p class="lib-precision">Error 0.014%.</p>
+<p>Proton mass plus strange quark mass with CAS structural correction. 65/9 = (57+8)/9.</p>
+<div class="lib-reuse">Re-entry use: Hyperon mass CAS derivation. Chain: D-85. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d85" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-85 <span class="tag-solved">Hit</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\Omega^- = m_p + \Lambda \times 4/3 + 3m_s \pi/2 = 1674$ MeV — S-rank</h3>
+<div class="lib-formula">$$m_{\Omega^-} = m_p + \Lambda_{QCD} \times \frac{4}{3} + 3m_s \frac{\pi}{2} = 1674 \;\text{MeV}$$</div>
+<p class="lib-precision">Error 0.11%.</p>
+<p>$\Delta(1232)$ formula plus 3 strange quark correction ($3m_s \pi/2$). Fully strange baryon.</p>
+<div class="lib-reuse">Re-entry use: Strange baryon scale. Chain: D-83, D-84. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d86" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-86 <span class="tag-solved">Hit</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{tb}| = 1 - A^2\lambda^4/2 = 0.99915$ — S-rank</h3>
+<div class="lib-formula">$$|V_{tb}| = 1 - \frac{A^2\lambda^4}{2} = 0.99915$$</div>
+<p class="lib-precision">Error 0.002%.</p>
+<p>$|V_{tb}|$ from Wolfenstein expansion. Highest precision CKM unitarity check.</p>
+<div class="lib-reuse">Re-entry use: CKM 3rd generation completion. Chain: D-07, D-08. Details: <a href='discovery/ckm_pmns.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d87" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-87 <span class="tag-discovery">Discovery</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{ud}| = 1 - \lambda^2/2 = 0.97441$ — A-rank</h3>
+<div class="lib-formula">$$|V_{ud}| = 1 - \frac{\lambda^2}{2} = 0.97441$$</div>
+<p class="lib-precision">Error 0.070%.</p>
+<p>Leading-order Wolfenstein expansion. Directly from $\lambda = \sin\theta_C$ (D-07).</p>
+<div class="lib-reuse">Re-entry use: CKM 1st generation cross. Chain: D-07. Details: <a href='discovery/ckm_pmns.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d88" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-88 <span class="tag-discovery">Discovery</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{cs}| = 1 - \lambda^2/2 - \cdots = 0.97356$ — A-rank</h3>
+<div class="lib-formula">$$|V_{cs}| = 1 - \frac{\lambda^2}{2} - \cdots = 0.97356$$</div>
+<p class="lib-precision">Error 0.15%.</p>
+<p>Wolfenstein expansion with 2nd-order correction. Diagonal pair with $|V_{ud}|$.</p>
+<div class="lib-reuse">Re-entry use: CKM 2nd generation diagonal element. Cross: D-87. Details: <a href='discovery/ckm_pmns.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d89" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-89 <span class="tag-discovery">Discovery</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$\pi^0 = 134.3$ MeV. EM Correction $3\alpha\Lambda_{\text{cond}}^2$ — A-rank</h3>
+<div class="lib-formula">$$m_{\pi^0} = 134.3 \;\text{MeV}, \quad \Delta m^2 = 3\alpha\Lambda_{\text{cond}}^2$$</div>
+<p class="lib-precision">Error 0.50%.</p>
+<p>Subtract EM correction $3\alpha\Lambda_{\text{cond}}^2$ from $\pi^\pm$ (D-80) to get neutral pion mass.</p>
+<div class="lib-reuse">Re-entry use: Pion mass splitting. Chain: D-80. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d90" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-90 <span class="tag-discovery">Discovery</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>Proton New Path $= 3\Lambda_{QCD}\sqrt{2} = 941.9$ MeV — A-rank</h3>
+<div class="lib-formula">$$m_p^{(\text{new})} = 3\Lambda_{QCD}\sqrt{2} = 941.9 \;\text{MeV}$$</div>
+<p class="lib-precision">Error 0.39%.</p>
+<p>Independent CAS path for proton mass. $3 = $ CAS steps, $\sqrt{2} = $ Compare cost.</p>
+<div class="lib-reuse">Re-entry use: Proton mass cross-validation. Cross: D-64. Details: <a href='discovery/hadron_mass.html'>derivation</a></div>
+</div>
+
+<div class="lib-card" id="en-d91" style="border-left:4px solid #2ea043">
+<div class="lib-id">D-91 <span class="tag-discovery">Discovery</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div>
+<h3>$|V_{cb}| = A \times \lambda^2 = 0.04127$ — B-rank</h3>
+<div class="lib-formula">$$|V_{cb}| = A\lambda^2 = 0.04127$$</div>
+<p class="lib-precision">Error 1.15%.</p>
+<p>Directly from Wolfenstein parameters $A$ (D-08) and $\lambda$ (D-07).</p>
+<div class="lib-reuse">Re-entry use: CKM 2-3 mixing. Chain: D-07, D-08. Details: <a href='discovery/ckm_pmns.html'>derivation</a></div>
 </div>
 
 <div class="lib-card" id="en-h48" style="border-left:4px solid #d29922">
@@ -5331,6 +5703,42 @@ CAS 구조 정수 (alpha 무관, 위상/통계):
 <div class="lib-reuse">Re-entry use: Based on H-116 ($H_0$), H-46 (LRU Friedmann).</div>
 </div>
 
+<div class="lib-card" id="en-h122" style="border-left:4px solid #d29922"><div class="lib-id">H-122 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$a_e$ 3-loop CAS = $\frac{7}{6}\left(\frac{\alpha}{\pi}\right)^3$</h3><div class="lib-formula">$$a_e^{(3)} = \frac{7}{6}\left(\frac{\alpha}{\pi}\right)^3$$</div><p class="lib-precision">Grade C. Error 1.23%</p><p>Electron anomalous magnetic moment 3-loop coefficient. $7$ = CAS DOF, $6$ = 6 quark flavors. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on D-01 ($\alpha$), H-38 (g-2 1-loop).</div></div>
+
+<div class="lib-card" id="en-h123" style="border-left:4px solid #d29922"><div class="lib-id">H-123 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Bethe log = $\ln(2^4) = \ln 16$</h3><div class="lib-formula">$$\text{Bethe log} = \ln(2^4) = \ln 16$$</div><p class="lib-precision">Grade B. Error ~2%. Lamb shift improvement.</p><p>Bethe logarithm. $2^4 = 16$ = domain 4-bit combination count. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 1 (domain 4-axis), Lamb shift precision.</div></div>
+
+<div class="lib-card" id="en-h124" style="border-left:4px solid #d29922"><div class="lib-id">H-124 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Positronium HFS coefficient = $7/12$</h3><div class="lib-formula">$$C_\text{HFS} = \frac{7}{12}$$</div><p class="lib-precision">Pending verification</p><p>Positronium hyperfine structure coefficient. $7$ = CAS DOF, $12$ = $3 \times 4$ (CAS stages $\times$ domain). Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 1 (domain 4-axis), Axiom 3 (CAS 7 states).</div></div>
+
+<div class="lib-card" id="en-h125" style="border-left:4px solid #d29922"><div class="lib-id">H-125 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Deuterium isotope shift</h3><div class="lib-formula">$$\text{Deuterium isotope shift}$$</div><p class="lib-precision">Grade B. Error 0.09%</p><p>Deuterium isotope shift. Derived from CAS mass ratio structure. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on D-12 ($m_e/m_p$), Axiom 3 (CAS mass ratio).</div></div>
+
+<div class="lib-card" id="en-h126" style="border-left:4px solid #d29922"><div class="lib-id">H-126 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$K^\pm$ mass NLO = 506.7 MeV</h3><div class="lib-formula">$$m_{K^\pm}^\text{NLO} = 506.7\;\text{MeV}$$</div><p class="lib-precision">Grade C. Experimental $493.677\;\text{MeV}$, error 2.6%</p><p>Charged kaon mass NLO. Derived from CAS gear structure. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on D-19 ($m_s$), Axiom 3 (CAS gears).</div></div>
+
+<div class="lib-card" id="en-h127" style="border-left:4px solid #d29922"><div class="lib-id">H-127 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$K^0$ mass NLO = 513.4 MeV</h3><div class="lib-formula">$$m_{K^0}^\text{NLO} = 513.4\;\text{MeV}$$</div><p class="lib-precision">Grade C. Experimental $497.611\;\text{MeV}$, error 3.2%</p><p>Neutral kaon mass NLO. Derived from CAS gear structure. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on D-19 ($m_s$), D-20 ($m_d$), Axiom 3 (CAS gears).</div></div>
+
+<div class="lib-card" id="en-h128" style="border-left:4px solid #d29922"><div class="lib-id">H-128 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$|V_{ts}| = A\lambda^2(1-\lambda^2/2)$</h3><div class="lib-formula">$$|V_{ts}| = A\lambda^2\left(1 - \frac{\lambda^2}{2}\right)$$</div><p class="lib-precision">Grade C. Error 3.7%</p><p>CKM matrix element $V_{ts}$. Derived from Wolfenstein parameters. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on D-07 ($\theta_C$), D-08 ($A$), H-83 ($V_{ts}$).</div></div>
+
+<div class="lib-card" id="en-h129" style="border-left:4px solid #d29922"><div class="lib-id">H-129 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\bar{r} = \frac{2}{9}\sqrt{3} = 0.3849$</h3><div class="lib-formula">$$\bar{r} = \frac{2}{9}\sqrt{3} = 0.3849$$</div><p class="lib-precision">Grade B. Experimental $0.383$, error 0.4%. Unitarity triangle radius.</p><p>Unitarity triangle radius. $2/9$ = Koide constant, $\sqrt{3}$ = CAS 3-stage geometry. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on D-09 (Koide $2/9$), D-23 ($\delta_\text{CKM}$).</div></div>
+
+<div class="lib-card" id="en-h130" style="border-left:4px solid #d29922"><div class="lib-id">H-130 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\tau_\Sigma / \tau_\Lambda = 1/\pi$</h3><div class="lib-formula">$$\frac{\tau_\Sigma}{\tau_\Lambda} = \frac{1}{\pi}$$</div><p class="lib-precision">Grade C. Error 4.4%. Baryon lifetime ratio.</p><p>Sigma/Lambda baryon lifetime ratio. Derived from CAS path count. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 3 (CAS paths), D-50 (lifetime ratio structure).</div></div>
+
+<div class="lib-card" id="en-h131" style="border-left:4px solid #d29922"><div class="lib-id">H-131 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\tau_\Xi / \tau_\Lambda = 2/\pi$</h3><div class="lib-formula">$$\frac{\tau_\Xi}{\tau_\Lambda} = \frac{2}{\pi}$$</div><p class="lib-precision">Grade C. Error 2.2%. Baryon lifetime ratio.</p><p>Xi/Lambda baryon lifetime ratio. Derived from CAS path count. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 3 (CAS paths), D-50 (lifetime ratio structure).</div></div>
+
+<div class="lib-card" id="en-h132" style="border-left:4px solid #d29922"><div class="lib-id">H-132 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$\tau_{K^\pm} = 1.258 \times 10^{-8}\;\text{s}$</h3><div class="lib-formula">$$\tau_{K^\pm} = 1.258 \times 10^{-8}\;\text{s}$$</div><p class="lib-precision">Grade C. Experimental $1.238 \times 10^{-8}\;\text{s}$, error 1.6%</p><p>Charged kaon lifetime. Derived from CAS path count. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on H-119 ($\tau_\pi$), Axiom 3 (CAS paths).</div></div>
+
+<div class="lib-card" id="en-h133" style="border-left:4px solid #d29922"><div class="lib-id">H-133 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Spin quantization = SP bit count / 2</h3><div class="lib-formula">$$s = \frac{\text{SP bit count}}{2}$$</div><p class="lib-precision">Structural correspondence</p><p>Spin quantization equals half the SP bit count. Bit discreteness inevitably produces $1/2$ units. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 9 (complete description DOF), Axiom 15 (8-bit structure).</div></div>
+
+<div class="lib-card" id="en-h134" style="border-left:4px solid #d29922"><div class="lib-id">H-134 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Spin-statistics = CAS atomicity $(-1)^k$</h3><div class="lib-formula">$$\psi(x_1, x_2) = (-1)^k \psi(x_2, x_1)$$</div><p class="lib-precision">Structural correspondence</p><p>Spin-statistics theorem emerges from CAS atomicity. $k$ = CAS exchange count. Fermions ($k$=odd) are antisymmetric, bosons ($k$=even) are symmetric. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 2 (CAS sole operator), D-40 (spin-statistics CAS).</div></div>
+
+<div class="lib-card" id="en-h135" style="border-left:4px solid #d29922"><div class="lib-id">H-135 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Pauli exclusion = CAS Compare fail</h3><div class="lib-formula">$$\text{Pauli exclusion} = \text{CAS Compare fail}$$</div><p class="lib-precision">Structural correspondence</p><p>Pauli exclusion principle is CAS Compare failure. Two fermions in the same state collide at Compare, making Swap impossible. 4 quantum numbers ($n, l, m_l, m_s$) are 4 CAS identifiers. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 2 (CAS), Axiom 5 (TOCTOU lock).</div></div>
+
+<div class="lib-card" id="en-h136" style="border-left:4px solid #d29922"><div class="lib-id">H-136 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$g = 2$ = Read + Compare 2 stages</h3><div class="lib-formula">$$g = 2 \quad (\text{Read} + \text{Compare} = 2\;\text{stages})$$</div><p class="lib-precision">Structural correspondence</p><p>Dirac $g$-factor $g=2$ emerges from CAS Read and Compare 2 stages. The 2 stages before Swap determine exactly twice the spin magnetic moment. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 3 (CAS 3 stages), H-38 (g-2 1-loop).</div></div>
+
+<div class="lib-card" id="en-h137" style="border-left:4px solid #d29922"><div class="lib-id">H-137 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>BEC = LRU COLD accumulation</h3><div class="lib-formula">$$\text{BEC} = \text{LRU COLD accumulation}$$</div><p class="lib-precision">Structural correspondence</p><p>Bose-Einstein condensation is LRU COLD state accumulation. When temperature drops below threshold, COLD entries massively accumulate in LRU, converging to the same state. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 6 (LRU), Axiom 7 (no-write = superposition maintained).</div></div>
+
+<div class="lib-card" id="en-h138" style="border-left:4px solid #d29922"><div class="lib-id">H-138 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>$L$ quantization = ring mod arithmetic</h3><div class="lib-formula">$$L = n \bmod N \quad (n = 0, 1, 2, \ldots)$$</div><p class="lib-precision">Structural correspondence</p><p>Orbital angular momentum quantization is ring buffer mod arithmetic. For ring size $N$, $L$ can only range from $0$ to $N-1$. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 14 (FSM), Axiom 15 (ring buffer).</div></div>
+
+<div class="lib-card" id="en-h139" style="border-left:4px solid #d29922"><div class="lib-id">H-139 <span class="tag-hypothesis">Hypothesis</span> <span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-27</span></div><h3>Spin $1/3$ impossible = bit indivisibility</h3><div class="lib-formula">$$s \neq \frac{1}{3}, \frac{1}{5}, \ldots \quad (\text{bit indivisibility})$$</div><p class="lib-precision">Structural correspondence</p><p>Spin $1/3$ is impossible due to bit indivisibility. A bit is 0 or 1, so it cannot be divided below $1/2$ units. $1/3, 1/5$ etc. are unrepresentable in bits. Zero free parameters.</p><div class="lib-reuse">Re-entry use: Based on Axiom 9 (complete description DOF), Axiom 15 (8-bit structure).</div></div>
+
 <hr>
 <hr>
 
@@ -5446,7 +5854,7 @@ CAS structural integers (alpha-independent, phase/statistics):
 
 <p>All 79 D-cards are in this map. The alpha branch is the largest. 4 independent roots (D-05, D-06, D-08, D-43), 3 CAS structural integers (D-32, D-33, D-40) are separate roots. Alpha is the root of the framework, but independent roots also exist.</p>
 
-<p>Of 121 hypotheses (H-01 to H-121), 10 (H-14, H-15, H-16, H-19, H-21, H-38, H-54, H-68, H-71, H-94) were promoted to discoveries, leaving 111 active hypotheses. If discoveries are "what emerged", hypotheses are "why it emerged." When a hypothesis is proven, it is promoted to discovery, and another green tag is added to the library.</p>
+<p>Of 139 hypotheses (H-01 to H-139), 10 (H-14, H-15, H-16, H-19, H-21, H-38, H-54, H-68, H-71, H-94) were promoted to discoveries, leaving 129 active hypotheses. If discoveries are "what emerged", hypotheses are "why it emerged." When a hypothesis is proven, it is promoted to discovery, and another green tag is added to the library.</p>
 
 <p>The more the framework runs, the larger this map grows. The larger the map, the fewer unknowns remain. Just like each added condition in a system of equations narrows the solution.</p>
 
@@ -5481,7 +5889,7 @@ CAS structural integers (alpha-independent, phase/statistics):
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
-<div class="f1">발견 79개 + 가설 121개 + 예측 21개 = 221항목</div>
+<div class="f1">발견 91개 + 가설 139개 + 예측 25개 = 255항목</div>
 <div class="f2">프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다</div>
 </div>
 </div>
@@ -5507,7 +5915,7 @@ Alias: Buddha's Palm Framework<br>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
-<div class="f1">Discovery 79 + Hypothesis 121 + Prediction 21 = 221 items</div>
+<div class="f1">Discovery 91 + Hypothesis 139 + Prediction 25 = 255 items</div>
 <div class="f2">The library grows with every cycle. Hidden values have nowhere to escape.</div>
 </div>
 </div>

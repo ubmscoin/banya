@@ -35,6 +35,8 @@ DOC_ORDER = [
     "discovery/quark_mass.html",
     "discovery/cosmology2.html",
     "discovery/atomic.html",
+    "discovery/hadron_mass.html",
+    "discovery/dimension_stack.html",
     "expend.html",
 ]
 
@@ -64,6 +66,8 @@ FILE_ANCHOR = {
     "discovery/quark_mass.html":        "title",
     "discovery/cosmology2.html":        "title",
     "discovery/atomic.html":            "title",
+    "discovery/hadron_mass.html":       "title",
+    "discovery/dimension_stack.html":   "title",
     "expend.html":                      "en-title",
 }
 
@@ -93,6 +97,8 @@ FILE_PREFIX = {
     "discovery/quark_mass.html":        "qm-",
     "discovery/cosmology2.html":        "co2-",
     "discovery/atomic.html":            "at-",
+    "discovery/hadron_mass.html":       "hm-",
+    "discovery/dimension_stack.html":   "ds-",
     "expend.html":                      "exp-",
 }
 
@@ -166,6 +172,8 @@ def rewrite_inter_doc_links(content, current_file):
         "quark_mass.html": "discovery/quark_mass.html",
         "cosmology2.html": "discovery/cosmology2.html",
         "atomic.html": "discovery/atomic.html",
+        "hadron_mass.html": "discovery/hadron_mass.html",
+        "dimension_stack.html": "discovery/dimension_stack.html",
     }
 
     def replace_link(m):
