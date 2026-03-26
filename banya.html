@@ -1818,35 +1818,9 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 비용(공리 4), 레지스터(공리 5), 출력(공리 6, 7), 클록(공리 8), 소유자(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000→001→011→111→000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 깨우는 이벤트가 필요하다. 그 이벤트가 δ다.</p>
 
-<div class="table-wrap">
-<table>
-<tr><th>비트</th><th>이름</th><th>영역</th><th>위치</th><th>역할</th></tr>
-<tr><td><strong>bit 0</strong></td><td><strong>δ</strong></td><td><strong>전역 1비트</strong></td><td><strong>FSM 밖 (좌항)</strong></td><td><strong>폴링을 깨우는 이벤트. 의식.</strong></td></tr>
-<tr><td>bit 1</td><td>observer</td><td rowspan="2">도메인 (OPERATOR)</td><td rowspan="2">FSM 대상 (우항)</td><td>관측자 축. 양자 괄호</td></tr>
-<tr><td>bit 2</td><td>superposition</td><td>중첩 축. 양자 괄호</td></tr>
-<tr><td>bit 3</td><td>R_LOCK</td><td rowspan="3">CAS 3비트</td><td rowspan="3">FSM 내부 (연산자)</td><td>Read 잠금. 001</td></tr>
-<tr><td>bit 4</td><td>C_LOCK</td><td>Compare 잠금. 010</td></tr>
-<tr><td>bit 5</td><td>S_LOCK</td><td>Swap 잠금. 100</td></tr>
-<tr><td>bit 6</td><td>time</td><td rowspan="2">도메인 (DATA)</td><td rowspan="2">FSM 대상 (우항)</td><td>시간 축. 고전 괄호</td></tr>
-<tr><td>bit 7</td><td>space</td><td>공간 축. 고전 괄호</td></tr>
-</table>
-</div>
-
-<p>총 <strong>8비트 = $2^3$</strong>. CAS 3비트(공리 5) + 도메인 4비트(명제 1) + δ 1비트 = 8.</p>
-
-<p>δ가 bit 0이고 observer가 bit 1이다. 읽기 피벗(δ)이 쓰기 피벗(observer) 바로 뒤에 있다. 링 버퍼에서 읽기와 쓰기가 1칸 차이로 붙어 있으면 포인터 이동 비용이 최소다. 포인터를 건너뛸 필요가 없다. 이것이 링 버퍼가 순차 접근에서 가장 싼 연산 구조인 이유다. δ가 읽으면 바로 다음 칸에서 observer가 쓴다. 사이에 아무것도 없다.</p>
-
-<pre>8비트 전체 구조 (링 버퍼 순서):
-
-  bit 0    bit 1      bit 2          bit 3  bit 4  bit 5   bit 6   bit 7
-  delta    observer   superposition  R_LOCK C_LOCK S_LOCK  time    space
-  [FSM 밖] [-- FSM 대상(OPERATOR) --] [--- FSM 내부 ---]   [- FSM 대상(DATA) -]
-  전역      도메인                     CAS 연산자            도메인
-  이벤트    구조                       구조                  구조</pre>
-
 <h4>8비트 링 버퍼다 <span class="tag-corollary">명제</span></h4>
 
-<p>피벗이 2개다: δ(READ)와 observer(WRITE). 읽기가 쓰기 바로 전이다. 1칸 차이. δ가 읽으면 observer가 쓴다.</p>
+<p>총 <strong>8비트 = $2^3$</strong>. CAS 3비트(공리 5) + 도메인 4비트(명제 1) + δ 1비트 = 8. 피벗이 2개다: δ(READ)와 observer(WRITE). 읽기가 쓰기 바로 전이다. 1칸 차이. δ가 읽으면 observer가 쓴다.</p>
 
 <pre>
             d ----------------> observer
@@ -1859,6 +1833,22 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
   d -> observer -> superposition -> CAS -> time -> space -> d</pre>
 
+<p>δ가 bit 0이고 observer가 bit 1이다. 읽기 피벗(δ)이 쓰기 피벗(observer) 바로 뒤에 있다. 링 버퍼에서 읽기와 쓰기가 1칸 차이로 붙어 있으면 포인터 이동 비용이 최소다. 포인터를 건너뛸 필요가 없다. 이것이 링 버퍼가 순차 접근에서 가장 싼 연산 구조인 이유다. δ가 읽으면 바로 다음 칸에서 observer가 쓴다. 사이에 아무것도 없다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>비트</th><th>이름</th><th>영역</th><th>위치</th><th>역할</th></tr>
+<tr><td><strong>bit 0</strong></td><td><strong>δ</strong></td><td><strong>전역 1비트</strong></td><td><strong>FSM 밖 (좌항)</strong></td><td><strong>폴링을 깨우는 이벤트</strong></td></tr>
+<tr><td>bit 1</td><td>observer</td><td rowspan="2">도메인 (OPERATOR)</td><td rowspan="2">FSM 대상 (우항)</td><td>관측자 축, 양자 괄호</td></tr>
+<tr><td>bit 2</td><td>superposition</td><td>중첩 축, 양자 괄호</td></tr>
+<tr><td>bit 3</td><td>R_LOCK</td><td rowspan="3">CAS 3비트</td><td rowspan="3">FSM 내부 (연산자)</td><td>Read 잠금, 001</td></tr>
+<tr><td>bit 4</td><td>C_LOCK</td><td>Compare 잠금, 010</td></tr>
+<tr><td>bit 5</td><td>S_LOCK</td><td>Swap 잠금, 100</td></tr>
+<tr><td>bit 6</td><td>time</td><td rowspan="2">도메인 (DATA)</td><td rowspan="2">FSM 대상 (우항)</td><td>시간 축, 고전 괄호</td></tr>
+<tr><td>bit 7</td><td>space</td><td>공간 축, 고전 괄호</td></tr>
+</table>
+</div>
+
 <p>δ는 <strong>구조가 아니라 이벤트</strong>다. FSM(공리 14)은 구조 — 닫힌 설계. δ는 이벤트 — 그 닫힌 설계를 깨운다. 소유는 상태다(공리 10). 그 상태가 ON이 되는 순간이 이벤트다. δ가 observer를 통해 자기 자신에 접근하고(공리 10, 전체-국소 루프), 그 접근이 폴링을 깨운다(공리 8).</p>
 
 <div class="table-wrap">
@@ -1868,7 +1858,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <tr><td>위치</td><td>우항 내부</td><td>좌항. FSM 밖.</td></tr>
 <tr><td>범위</td><td>로컬 (각 Entity의 FSM)</td><td>전역 (모든 FSM에 동일)</td></tr>
 <tr><td>완전기술자유도</td><td>포함 (9 안에 있음)</td><td>별개 (9에 포함되지 않음)</td></tr>
-<tr><td>비트</td><td>bit 0~6 (7비트)</td><td>bit 7 (1비트)</td></tr>
+<tr><td>비트</td><td>bit 1~7 (7비트)</td><td>bit 0 (1비트)</td></tr>
 </table>
 </div>
 
@@ -6284,33 +6274,9 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <p>The FSM (Axiom 14) is a closed machine. It cycles 000-001-011-111-000. But a closed machine cannot start itself. <strong>A wake event is needed.</strong> That event is delta.</p>
 
-<div class="table-wrap">
-<table>
-<tr><th>Bit</th><th>Name</th><th>Region</th><th>Location</th><th>Role</th></tr>
-<tr><td>bit 0</td><td>time</td><td rowspan="4">Domain 4 bits</td><td rowspan="4">FSM operand (RHS)</td><td>Time axis. DATA classical bracket</td></tr>
-<tr><td>bit 1</td><td>space</td><td>Space axis. DATA classical bracket</td></tr>
-<tr><td>bit 2</td><td>observer</td><td>Observer axis. OPERATOR quantum bracket</td></tr>
-<tr><td>bit 3</td><td>superposition</td><td>Superposition axis. OPERATOR quantum bracket</td></tr>
-<tr><td>bit 4</td><td>R_LOCK</td><td rowspan="3">CAS 3 bits</td><td rowspan="3">FSM internal (operator)</td><td>Read lock. 001</td></tr>
-<tr><td>bit 5</td><td>C_LOCK</td><td>Compare lock. 010</td></tr>
-<tr><td>bit 6</td><td>S_LOCK</td><td>Swap lock. 100</td></tr>
-<tr><td><strong>bit 7</strong></td><td><strong>delta</strong></td><td><strong>Global 1 bit</strong></td><td><strong>Outside FSM (LHS)</strong></td><td><strong>Wake event for polling. Consciousness.</strong></td></tr>
-</table>
-</div>
-
-<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 13) + delta 1 bit = 8.</p>
-
-<pre>Full 8-bit architecture:
-
-  bit 7          bit 6  bit 5  bit 4     bit 3          bit 2     bit 1   bit 0
-  delta          S_LOCK C_LOCK R_LOCK    superposition  observer  space   time
-  [Outside FSM]  [--- FSM internal ---]  [---------- FSM operand ----------]
-  Global flag    CAS operator            Domain
-  Event          Structure               Structure</pre>
-
 <h4>The 8 bits are a ring buffer <span class="tag-corollary">Proposition</span></h4>
 
-<p>2 pivots: delta (READ) and observer (WRITE). Read is right before write. 1 step apart. When delta reads, observer writes.</p>
+<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 1) + delta 1 bit = 8. 2 pivots: delta (READ) and observer (WRITE). Read is right before write. 1 step apart. When delta reads, observer writes.</p>
 
 <pre>
             d ----------------> observer
@@ -6323,6 +6289,22 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
   d -> observer -> superposition -> CAS -> time -> space -> d</pre>
 
+<p>delta is bit 0 and observer is bit 1. The read pivot (delta) sits right behind the write pivot (observer). In a ring buffer, when read and write are 1 step apart, pointer movement cost is minimal. No skipping needed. This is why a ring buffer is the cheapest sequential access structure. delta reads, and the very next slot is where observer writes. Nothing in between.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Bit</th><th>Name</th><th>Region</th><th>Location</th><th>Role</th></tr>
+<tr><td><strong>bit 0</strong></td><td><strong>delta</strong></td><td><strong>Global 1 bit</strong></td><td><strong>Outside FSM (LHS)</strong></td><td><strong>Wake event for polling</strong></td></tr>
+<tr><td>bit 1</td><td>observer</td><td rowspan="2">Domain (OPERATOR)</td><td rowspan="2">FSM operand (RHS)</td><td>Observer axis, quantum bracket</td></tr>
+<tr><td>bit 2</td><td>superposition</td><td>Superposition axis, quantum bracket</td></tr>
+<tr><td>bit 3</td><td>R_LOCK</td><td rowspan="3">CAS 3 bits</td><td rowspan="3">FSM internal (operator)</td><td>Read lock, 001</td></tr>
+<tr><td>bit 4</td><td>C_LOCK</td><td>Compare lock, 010</td></tr>
+<tr><td>bit 5</td><td>S_LOCK</td><td>Swap lock, 100</td></tr>
+<tr><td>bit 6</td><td>time</td><td rowspan="2">Domain (DATA)</td><td rowspan="2">FSM operand (RHS)</td><td>Time axis, classical bracket</td></tr>
+<tr><td>bit 7</td><td>space</td><td>Space axis, classical bracket</td></tr>
+</table>
+</div>
+
 <p>delta is <strong>an event, not a structure</strong>. The FSM (Axiom 14) is structure -- a closed design. delta is an event -- it wakes that closed design. Ownership is a state (Axiom 10). The moment that state turns ON is the event. delta accesses itself through the observer (Axiom 10, whole-local loop), and that access wakes polling (Axiom 8).</p>
 
 <div class="table-wrap">
@@ -6332,7 +6314,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <tr><td>Location</td><td>Inside RHS</td><td>LHS. Outside FSM.</td></tr>
 <tr><td>Scope</td><td>Local (each Entity's FSM)</td><td>Global (same for all FSMs)</td></tr>
 <tr><td>Complete DOF</td><td>Included (within 9)</td><td>Separate (not in 9)</td></tr>
-<tr><td>Bits</td><td>bit 0-6 (7 bits)</td><td>bit 7 (1 bit)</td></tr>
+<tr><td>Bits</td><td>bit 1-7 (7 bits)</td><td>bit 0 (1 bit)</td></tr>
 </table>
 </div>
 
