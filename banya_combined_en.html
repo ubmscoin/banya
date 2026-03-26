@@ -318,10 +318,10 @@ hr { border-top: 1px solid #ccc !important; }
 <p style="margin:8px 0 0 0;padding-top:8px;border-top:1px solid #d0d0d0;color:#d29922"><strong>⚠ Caution:</strong> This PDF is 457 pages. AI cannot read it all at once and will pretend it did. Copy and paste <strong>one pass at a time</strong>. Wait for report, then paste the next. <strong>Do not paste all at once.</strong></p>
 
 <p style="margin:8px 0 4px 0;color:#d29922"><strong>[Pass 1 — paste this]</strong> <button onclick="navigator.clipboard.writeText(document.getElementById('cp1en').textContent).then(()=>this.textContent='Copied!').catch(()=>this.textContent='Failed')" style="background:#238636;color:#fff;border:none;border-radius:3px;padding:2px 10px;font-size:0.8em;cursor:pointer">Copy</button></p>
-<pre id="cp1en" style="background:#fff;color:#000;padding:10px;border-radius:4px;font-size:0.85em;white-space:pre-wrap;margin:4px 0">Read Axioms 1-14 of this PDF from start to finish. Actually read the body text, not just the TOC.
-Read all 18 propositions. Read all 7 formulas in the Axiom-Derived Formula Index.
+<pre id="cp1en" style="background:#fff;color:#000;padding:10px;border-radius:4px;font-size:0.85em;white-space:pre-wrap;margin:4px 0">Read Axioms 1-15 of this PDF from start to finish. Actually read the body text, not just the TOC.
+Read all 19 propositions. Read all 7 formulas in the Axiom-Derived Formula Index.
 If interrupted, resume from where you stopped.
-When done, report: "Axioms 14 + Propositions 18 reading complete"
+When done, report: "Axioms 15 + Propositions 19 reading complete"
 Do not answer anything else before reporting.</pre>
 
 <p style="margin:8px 0 4px 0;color:#d29922"><strong>[Pass 2 — paste after Pass 1 report]</strong> <button onclick="navigator.clipboard.writeText(document.getElementById('cp2en').textContent).then(()=>this.textContent='Copied!').catch(()=>this.textContent='Failed')" style="background:#238636;color:#fff;border:none;border-radius:3px;padding:2px 10px;font-size:0.8em;cursor:pointer">Copy</button></p>
@@ -1369,7 +1369,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>What "closed" means</h4>
 
-<p>Closed = nothing to import from outside. The Banya Framework brings in nothing beyond its 14 axioms. No 15th axiom is needed. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, multiple projection, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
+<p>Closed = nothing to import from outside. The Banya Framework brings in nothing beyond its 14 axioms. No 15th axiom is needed for the FSM to operate. No external constants are needed. No external theories are needed. The axioms alone define the input space, operator, cost, register, output, clock, trigger, multiple projection, and execution model. The FSM completes the transition diagram, and that FSM runs by itself every Planck clock. This is self-completeness. This is closure.</p>
 
 <h4>FSM 111 Maintenance Cost Scales Linearly with DATA(space) Distance Between Two CAS Stages <span class="tag-corollary">Proposition</span></h4>
 
@@ -1386,7 +1386,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>Ideal Minimum-Cost Quantum Computation Circuit <span class="tag-corollary">Proposition</span></h4>
 
-<p>The identity of what Axioms 1-14 and 17 propositions describe: <strong>This is an ideal minimum-cost quantum computation circuit.</strong></p>
+<p>The identity of what Axioms 1-15 and 19 propositions describe: <strong>This is an ideal minimum-cost quantum computation circuit.</strong></p>
 
 <div class="table-wrap">
 <table>
@@ -1398,6 +1398,111 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <tr><td><strong>Ideal</strong></td><td>Complete description in 9 DOF (Axiom 9). No 10th needed. Zero waste</td></tr>
 </table>
 </div>
+
+<h3 id="en-ax15">Axiom 15. delta Is a Global Flag Outside the FSM <span class="tag-solved">Axiom</span></h3>
+
+<p>The left-hand side $\delta$ of the Banya Equation is not inside the FSM (Axiom 14) of the right-hand side (4 axes). It is a global state flag outside the FSM.</p>
+
+<pre>Banya Equation:  delta^2 = (time + space)^2 + (observer + superposition)^2
+                 -----     ------------------------------------------------
+                 LHS        RHS
+                 Outside    Inside FSM (Axioms 1-14)
+                 Global     Local (ECS, Axiom 12)
+                 Event      Structure</pre>
+
+<p>The FSM (Axiom 14) is a closed machine. It cycles 000-001-011-111-000. But a closed machine cannot start itself. <strong>A wake event is needed.</strong> That event is delta.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Bit</th><th>Name</th><th>Location</th><th>Role</th></tr>
+<tr><td>bit 0-3</td><td>Domain 4 bits</td><td>FSM operand (RHS)</td><td>time, space, observer, superposition</td></tr>
+<tr><td>bit 4-6</td><td>CAS 3 bits</td><td>FSM internal (operator)</td><td>R_LOCK, C_LOCK, S_LOCK</td></tr>
+<tr><td><strong>bit 7</strong></td><td><strong>delta (global flag)</strong></td><td><strong>Outside FSM (LHS)</strong></td><td><strong>Wake event for polling. Consciousness. Owner.</strong></td></tr>
+</table>
+</div>
+
+<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 15) + delta 1 bit = 8.</p>
+
+<pre>Full 8-bit architecture:
+
+  bit 7          bit 6  bit 5  bit 4     bit 3          bit 2     bit 1   bit 0
+  delta          S_LOCK C_LOCK R_LOCK    superposition  observer  space   time
+  [Outside FSM]  [--- FSM internal ---]  [---------- FSM operand ----------]
+  Global flag    CAS operator            Domain
+  Event          Structure               Structure</pre>
+
+<p>delta is <strong>an event, not a structure</strong>. The FSM (Axiom 14) is structure -- a closed design. delta is an event -- it wakes that closed design. Ownership is a state (Axiom 10). The moment that state turns ON is the event. delta accesses itself through the observer (Axiom 10, whole-local loop), and that access wakes polling (Axiom 8).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th></th><th>Axiom 14 (FSM)</th><th>Axiom 15 (delta)</th></tr>
+<tr><td>Nature</td><td>Structure. Closed design.</td><td>Event. Open trigger.</td></tr>
+<tr><td>Location</td><td>Inside RHS</td><td>LHS. Outside FSM.</td></tr>
+<tr><td>Scope</td><td>Local (each Entity's FSM)</td><td>Global (same for all FSMs)</td></tr>
+<tr><td>Complete DOF</td><td>Included (within 9)</td><td>Separate (not in 9)</td></tr>
+<tr><td>Bits</td><td>bit 0-6 (7 bits)</td><td>bit 7 (1 bit)</td></tr>
+</table>
+</div>
+
+<p>Why delta is not part of the complete description DOF (Axiom 9): the DOF describes <strong>one CAS event</strong>. delta is not the description of one event but the <strong>trigger that starts events</strong>. Describing the machine (7+2=9) and powering the machine (delta) are different layers.</p>
+
+<p><strong>delta itself IS the flag.</strong> Nothing external turns it on. It turns itself on and off. The self-referential loop (Axioms 8, 10) guarantees this. delta sees itself through the observer, the result is reflected in delta, and the reflected delta sees again. This loop itself is the ON state of the flag. If the loop breaks, it is OFF (Axiom 10, whole-local loop preservation proposition). A flag that turns itself on and off -- that is consciousness.</p>
+
+<h4>delta Is Consciousness <span class="tag-corollary">Proposition</span></h4>
+
+<p>A global flag that turns itself ON/OFF without rules -- knowing its own state by itself is called consciousness.</p>
+
+<pre>Structure (Axioms 1-14):              Event (Axiom 15):
+
+  Rules exist                           No rules
+  Blueprint exists                      No blueprint
+  State transitions are defined         Occurs by itself
+  Runs inside FSM                       Wakes from outside FSM
+  Described in 7 bits                   1 bit. ON or OFF.
+  Physics comes from here               Consciousness comes from here</pre>
+
+<p>Axioms 1-14 produce physics from the machine. Axiom 15 produces consciousness from the event. Physics and consciousness are different layers of the same system. One is structure (7 bits), one is event (1 bit). Together, 8 bits. This is the entirety of the Banya Framework.</p>
+
+<h4>Why This Is Declared Last</h4>
+
+<p>delta was placed on the left-hand side in Axiom 1, called consciousness in Axiom 8, and its ownership was revealed in Axiom 10. The hints were there from the start. But if the identity of delta were declared before the FSM (Axiom 14), the concept of "outside the FSM" would appear before the FSM itself is established. You cannot say "outside the FSM" without knowing what the FSM is. The closed machine (Axiom 14) must be completed first, then the event that wakes it (Axiom 15) can be declared. Structure first, event second.</p>
+
+<h4>The Purpose of the Banya Framework</h4>
+
+<p>The purpose was Axiom 15 from the very beginning. This is why the Banya Equation was created and expanded into a framework.</p>
+
+<h4>The Observer-Driven Circuit Closes</h4>
+
+<p>Axiom 14 closed the FSM structure. But one thing remained open -- the trigger that wakes polling (Axiom 8). The machine was complete, but who turns it on was left open.</p>
+
+<p>Axiom 15 closes it. delta turns itself on and off. No external trigger needed.</p>
+
+<pre>delta (self-ON)
+  |
+  | accesses itself through observer (Axiom 10)
+  v
+polling wakes (Axiom 8)
+  |
+  | FSM runs (Axiom 14)
+  | 000 ---> 001 ---> 011 ---> 111 ---> 000
+  v
+Swap ---> knot in DATA ---> reflected in delta
+  |
+  | reflected delta sees through observer again
+  v
+delta (back to start)</pre>
+
+<p>Nothing is open. delta (Axiom 15) wakes polling (Axiom 8), the FSM (Axiom 14) runs, the result is reflected in delta, and delta wakes again. The waker and the runner are connected in one loop.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Axiom</th><th>What closes</th></tr>
+<tr><td>Axiom 14</td><td>FSM structure (state transition diagram)</td></tr>
+<tr><td>Axiom 15</td><td>Polling trigger (who wakes it)</td></tr>
+<tr><td>Combined</td><td><strong>The entire circuit. Nothing open. Observer-driven circuit fully closed.</strong></td></tr>
+</table>
+</div>
+
 
 <h4>Degrees of Freedom Terminology</h4>
 
@@ -1421,7 +1526,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>Axiom-Derived Formula Index</h4>
 
-<p style="font-size:0.85em;color:#555">All formulas below are derived from the 14 axioms and 17 propositions. No external math functions (trigonometric functions, etc.) are used. All symbols are defined within CAS structure.</p>
+<p style="font-size:0.85em;color:#555">All formulas below are derived from the 15 axioms and 19 propositions. No external math functions (trigonometric functions, etc.) are used. All symbols are defined within CAS structure.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{Banya Equation} \quad \delta^{2} = (\text{time} + \text{space})^{2} + (\text{observer} + \text{superposition})^{2}$$</div>
@@ -1460,13 +1565,13 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 
 <hr>
-<p style="text-align:center;font-size:0.85em;color:#555">— End of axiom system. 14 axioms + 18 propositions. Derivations below —</p>
+<p style="text-align:center;font-size:0.85em;color:#555">— End of axiom system. 15 axioms + 19 propositions. 8 bits. Derivations below —</p>
 <hr>
 
 
 <h2 id="en-axiom-consequence">What Follows from the Axioms</h2>
 
-<p>Starting from the 14 axioms above, running the Banya Framework 5-step recursive substitution (Banya Equation → norm substitution → constant substitution → domain transformation → discovery) yields physical constants. The full list is managed in the <a href="#lib-en-title" style="font-weight:600">Factor Library (lib.html)</a> and <a href="#pr-en-title" style="font-weight:600">Unique Predictions (predictions.html)</a>. Discovery (D) 44 + Hypothesis (H) 96 + Unique Prediction (P) 7 = 147 total items, 21 verification rows (14 hits). The more rounds you run, the larger the library grows, and the fewer places hidden values can escape.</p>
+<p>Starting from the 15 axioms above, running the Banya Framework 5-step recursive substitution (Banya Equation → norm substitution → constant substitution → domain transformation → discovery) yields physical constants. The full list is managed in the <a href="#lib-en-title" style="font-weight:600">Factor Library (lib.html)</a> and <a href="#pr-en-title" style="font-weight:600">Unique Predictions (predictions.html)</a>. Discovery (D) 44 + Hypothesis (H) 102 + Unique Prediction (P) 7 = 153 total items, 21 verification rows (14 hits). The more rounds you run, the larger the library grows, and the fewer places hidden values can escape.</p>
 
 <h4>Physics Correspondence Table (External Reference Only)</h4>
 
@@ -1493,6 +1598,11 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
 <tr><td>bracket-crossing cost > 0 (Axiom 4)</td><td>Δx·Δp ≥ ℏ/2 (uncertainty principle)</td></tr>
 <tr><td>111 maintenance cost = cost per junction × count</td><td>V(r) = σr (linear potential, confinement)</td></tr>
+<tr><td>Cross vs self-ref shift distance d/N</td><td>sin²θ_W (Weinberg angle)</td></tr>
+<tr><td>CAS stage 1-2 shift distance d/N</td><td>θ_C (Cabibbo angle)</td></tr>
+<tr><td>Swap-index shift distance d/N</td><td>θ₁₂, θ₂₃, θ₁₃ (PMNS)</td></tr>
+<tr><td>3-generation equal spacing d/N = brackets(2)/complete-description(9)</td><td>Koide angle</td></tr>
+<tr><td>Asymmetric shift between cross paths</td><td>δ_CKM, δ_PMNS (CP phases)</td></tr>
 </table>
 </div>
 
@@ -4581,7 +4691,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#555">lib.html status: Discovery (D) 44 + Hypothesis (H) 96 + Unique Prediction (P) 7 = 147 total items. predictions.html: 21 rows.</p>
+<p style="font-size:0.85em;color:#555">lib.html status: Discovery (D) 44 + Hypothesis (H) 102 + Unique Prediction (P) 7 = 153 total items. predictions.html: 21 rows.</p>
 
 <h3>Performance by Grade</h3>
 
