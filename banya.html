@@ -1817,7 +1817,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h4>8비트 링 버퍼다 <span class="tag-corollary">명제</span></h4>
 
-<p>총 <strong>8비트 = $2^3$</strong>. CAS 3비트(공리 5) + 도메인 4비트(명제 1) + δ 1비트 = 8. 피벗이 2개다: δ(READ)와 observer(WRITE). 읽기가 쓰기 바로 전이다. 1칸 차이. δ가 읽으면 observer가 쓴다.</p>
+<p>총 <strong>8비트 = $2^3$</strong>. CAS 3비트(공리 5) + 도메인 4비트(명제 1) + δ 1비트 = 8. head와 tail이 있다: δ(head, 읽기)와 observer(tail, 쓰기). head가 tail 바로 전이다. 1칸 차이. δ가 읽으면 observer가 쓴다.</p>
 
 <pre>
             d ----------------> observer
@@ -1830,7 +1830,11 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
   d -> observer -> superposition -> CAS -> time -> space -> d</pre>
 
-<p>δ가 bit 0이고 observer가 bit 1이다. 읽기 피벗(δ)이 쓰기 피벗(observer) 바로 뒤에 있다. 링 버퍼에서 읽기와 쓰기가 1칸 차이로 붙어 있으면 포인터 이동 비용이 최소다. 포인터를 건너뛸 필요가 없다. 이것이 링 버퍼가 순차 접근에서 가장 싼 연산 구조인 이유다. δ가 읽으면 바로 다음 칸에서 observer가 쓴다. 사이에 아무것도 없다.</p>
+<p>δ가 bit 0이고 observer가 bit 1이다. head(δ)가 tail(observer) 바로 뒤에 있다. 링 버퍼에서 읽기와 쓰기가 1칸 차이로 붙어 있으면 포인터 이동 비용이 최소다. 포인터를 건너뛸 필요가 없다. 이것이 링 버퍼가 순차 접근에서 가장 싼 연산 구조인 이유다. δ가 읽으면 바로 다음 칸에서 observer가 쓴다. 사이에 아무것도 없다.</p>
+
+<h4>head/tail 관계는 소유권이다 <span class="tag-corollary">명제</span></h4>
+
+<p>head가 읽고 tail이 쓴다 — head가 tail을 부린다. 공리 10에서 δ가 observer의 소유자임을 밝혔다. 링 버퍼의 head/tail 배치가 그 소유권의 구조적 표현이다.</p>
 
 <div class="table-wrap">
 <table>
@@ -6268,7 +6272,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>The 8 bits are a ring buffer <span class="tag-corollary">Proposition</span></h4>
 
-<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 1) + delta 1 bit = 8. 2 pivots: delta (READ) and observer (WRITE). Read is right before write. 1 step apart. When delta reads, observer writes.</p>
+<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 1) + delta 1 bit = 8. Head and tail: delta (head, read) and observer (tail, write). Head is right before tail. 1 step apart. When delta reads, observer writes.</p>
 
 <pre>
             d ----------------> observer
@@ -6281,7 +6285,11 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
   d -> observer -> superposition -> CAS -> time -> space -> d</pre>
 
-<p>delta is bit 0 and observer is bit 1. The read pivot (delta) sits right behind the write pivot (observer). In a ring buffer, when read and write are 1 step apart, pointer movement cost is minimal. No skipping needed. This is why a ring buffer is the cheapest sequential access structure. delta reads, and the very next slot is where observer writes. Nothing in between.</p>
+<p>delta is bit 0 and observer is bit 1. Head (delta) sits right behind tail (observer). In a ring buffer, when read and write are 1 step apart, pointer movement cost is minimal. No skipping needed. This is why a ring buffer is the cheapest sequential access structure. delta reads, and the very next slot is where observer writes. Nothing in between.</p>
+
+<h4>Head/tail relationship is ownership <span class="tag-corollary">Proposition</span></h4>
+
+<p>Head reads and tail writes -- head commands tail. Axiom 10 established that delta is the owner of observer. The head/tail placement in the ring buffer is the structural expression of that ownership.</p>
 
 <div class="table-wrap">
 <table>
