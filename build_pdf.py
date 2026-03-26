@@ -30,6 +30,11 @@ DOC_ORDER = [
     "discovery/cas_internal.html",
     "discovery/coupling_relations.html",
     "discovery/cosmic_thermo.html",
+    "discovery/ring_buffer.html",
+    "discovery/lifetime.html",
+    "discovery/quark_mass.html",
+    "discovery/cosmology2.html",
+    "discovery/atomic.html",
     "expend.html",
 ]
 
@@ -54,6 +59,11 @@ FILE_ANCHOR = {
     "discovery/cas_internal.html":      "title",
     "discovery/coupling_relations.html":"title",
     "discovery/cosmic_thermo.html":     "title",
+    "discovery/ring_buffer.html":       "title",
+    "discovery/lifetime.html":          "title",
+    "discovery/quark_mass.html":        "title",
+    "discovery/cosmology2.html":        "title",
+    "discovery/atomic.html":            "title",
     "expend.html":                      "en-title",
 }
 
@@ -78,6 +88,11 @@ FILE_PREFIX = {
     "discovery/cas_internal.html":      "ci-",
     "discovery/coupling_relations.html":"cr-",
     "discovery/cosmic_thermo.html":     "ct-",
+    "discovery/ring_buffer.html":       "rb-",
+    "discovery/lifetime.html":          "lt-",
+    "discovery/quark_mass.html":        "qm-",
+    "discovery/cosmology2.html":        "co2-",
+    "discovery/atomic.html":            "at-",
     "expend.html":                      "exp-",
 }
 
@@ -146,6 +161,11 @@ def rewrite_inter_doc_links(content, current_file):
         "cas_internal.html": "discovery/cas_internal.html",
         "coupling_relations.html": "discovery/coupling_relations.html",
         "cosmic_thermo.html": "discovery/cosmic_thermo.html",
+        "ring_buffer.html": "discovery/ring_buffer.html",
+        "lifetime.html": "discovery/lifetime.html",
+        "quark_mass.html": "discovery/quark_mass.html",
+        "cosmology2.html": "discovery/cosmology2.html",
+        "atomic.html": "discovery/atomic.html",
     }
 
     def replace_link(m):

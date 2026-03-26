@@ -61,6 +61,8 @@
 <a href="#r6-step3" class="toc-h3">3단계. CAS 인자 대입</a>
 <a href="#r6-step4" class="toc-h3">4단계. lambda_H 계산</a>
 <a href="#r6-step5" class="toc-h3">5단계. 실험 비교</a>
+<a href="#r7" class="toc-h1">라운드 7. 공리 확장 예측</a>
+<a href="#r8" class="toc-h1">라운드 8. 정밀 검증 예측</a>
 <a href="#falsify" class="toc-h1">반박 조건</a>
 <a href="#scoreboard" class="toc-h1">종합 점수판</a>
 </div>
@@ -95,6 +97,8 @@
 <a href="#en-r6-step3" class="toc-h3">Step 3. CAS Factor Substitution</a>
 <a href="#en-r6-step4" class="toc-h3">Step 4. lambda_H Calculation</a>
 <a href="#en-r6-step5" class="toc-h3">Step 5. Experimental Comparison</a>
+<a href="#en-r7" class="toc-h1">Round 7. Axiom Extension Predictions</a>
+<a href="#en-r8" class="toc-h1">Round 8. Precision Verification Predictions</a>
 <a href="#en-falsify" class="toc-h1">Falsification Conditions</a>
 <a href="#en-scoreboard" class="toc-h1">Overall Scoreboard</a>
 </div>
@@ -133,6 +137,8 @@
 <a href="#r6-step3" class="toc-h3">3단계. CAS 인자 대입</a>
 <a href="#r6-step4" class="toc-h3">4단계. lambda_H 계산</a>
 <a href="#r6-step5" class="toc-h3">5단계. 실험 비교</a>
+<a href="#r7" class="toc-h1">라운드 7. 공리 확장 예측</a>
+<a href="#r8" class="toc-h1">라운드 8. 정밀 검증 예측</a>
 <a href="#falsify" class="toc-h1">반박 조건</a>
 <a href="#scoreboard" class="toc-h1">종합 점수판</a>
 </div>
@@ -171,6 +177,8 @@
 <a href="#en-r6-step3" class="toc-h3">Step 3. CAS Factor Substitution</a>
 <a href="#en-r6-step4" class="toc-h3">Step 4. lambda_H Calculation</a>
 <a href="#en-r6-step5" class="toc-h3">Step 5. Experimental Comparison</a>
+<a href="#en-r7" class="toc-h1">Round 7. Axiom Extension Predictions</a>
+<a href="#en-r8" class="toc-h1">Round 8. Precision Verification Predictions</a>
 <a href="#en-falsify" class="toc-h1">Falsification Conditions</a>
 <a href="#en-scoreboard" class="toc-h1">Overall Scoreboard</a>
 </div>
@@ -522,6 +530,162 @@ $m_H = 125.37\;\text{GeV}$
 </div>
 
 <p>$7/54$라는 값은 CAS 구조에서 유일하게 결정된다. 7은 CAS 위상공간 차원이고, 54는 세대구조 27의 Compare 이진 분기($\times 2$)다. 조정 가능한 매개변수가 없다. 맞든 틀리든 이 값뿐이다.</p>
+
+
+<hr>
+
+
+<h1 id="r7">라운드 7. 공리 확장 예측 (P-08 ~ P-14)</h1>
+
+<p>공리 11~15 확장에서 도출된 예측들이다. 기존 라운드 1~6이 CAS 핵심 구조(공리 1~10)에서 나왔다면, 이 라운드는 확장 공리에서 나온다. DATA 이산성, 엔티티 왜곡, 차원 스택, LRU 수명주기, head/tail 비대칭이 물리적 귀결을 만든다.</p>
+
+<div class="predict-card">
+<div class="predict-title">P-08. 극한 밀도 영역의 이산 비용 상한</div>
+<div class="predict-value">
+DATA는 이산이고, $d_\text{min} = 1$이므로 비용은 유한한 최댓값을 갖는다. 특이점은 없다.
+</div>
+<div class="predict-test">검증: ngEHT, 차세대 X선 관측 (2030~). 플랑크 스케일 이하에서 에너지 스펙트럼 컷오프.</div>
+<div class="predict-desc">반박: 유한한 영역에서 에너지 발산 관측.</div>
+<div class="predict-desc">출처: 공리 13 명제 (특이점은 존재하지 않는다).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-09. 카시미르 이산 계단</div>
+<div class="predict-value">
+엔티티 왜곡은 이산이므로, 카시미르 힘은 서브나노미터 스케일에서 연속 $1/d^4$가 아닌 계단 구조를 보인다.
+</div>
+<div class="predict-test">검증: AFM 기반 서브나노미터 카시미르 측정 (2028~).</div>
+<div class="predict-desc">반박: 모든 스케일에서 완벽한 연속 $1/d^4$.</div>
+<div class="predict-desc">출처: 공리 11 명제 (엔티티 왜곡) + 공리 12 명제 (DATA 이산).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-10. 스핀 양자화 = SP 비트 이산성</div>
+<div class="predict-value">
+차원 스택 SP는 비트 단위(0 또는 1만)로 전진한다. 중간값 없음. 따라서 스핀은 정수 또는 반정수만 가능하다. 스핀 $1/3$은 불가능.
+</div>
+<div class="predict-test">검증: 모든 입자 탐색 (LHC Run 4, FCC-hh).</div>
+<div class="predict-desc">반박: 스핀 $1/3$ 또는 $2/3$ 입자 발견.</div>
+<div class="predict-desc">출처: 공리 12 명제 (차원 스택) + 공리 5 (CAS 3비트).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-11. 불안정 입자 수명비의 CAS 경로 수</div>
+<div class="predict-value">
+불안정 입자의 수명비에 CAS 접근 경로 수(30, 7, 3)가 체계적으로 포함된다.
+</div>
+<div class="predict-test">검증: PDG 데이터 재분석. 즉시 검증 가능.</div>
+<div class="predict-desc">반박: 어떤 수명비에서도 체계적 상관관계 미발견.</div>
+<div class="predict-desc">출처: 공리 10 명제 (observer = LUT) + 공리 12 (LRU 수명주기).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-12. 극한 밀도 천체의 내부 구조 (조석 변형성 $\neq 0$)</div>
+<div class="predict-value">
+블랙홀은 내부 구조를 갖는다 (이산 $d=1$ 격자). 조석 변형성은 0이 아니다.
+</div>
+<div class="predict-test">검증: LIGO/Virgo/KAGRA O5, LISA (2025~2035).</div>
+<div class="predict-desc">반박: 조석 변형성이 정확히 0 (점 특이점 확인).</div>
+<div class="predict-desc">출처: 공리 13 명제 (특이점은 존재하지 않는다, $N^2$ 축적).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-13. 강한 CP 위반은 0이 아니다 (nEDM $\neq 0$)</div>
+<div class="predict-value">
+Head/tail 비대칭(공리 15)은 구조적이다. CP 위반은 어떤 스케일에서도 정확히 0일 수 없다. nEDM은 반드시 0이 아니다.
+</div>
+<div class="predict-test">검증: nEDM@PSI, n2EDM (2025~2030).</div>
+<div class="predict-desc">반박: nEDM이 $10^{-28}\;e \cdot \text{cm}$ 이하에서 정확히 0으로 측정.</div>
+<div class="predict-desc">출처: 공리 15 명제 (head/tail = 소유권, 읽기-쓰기 비대칭).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-14. 특이점은 존재하지 않는다 (이산 최댓값)</div>
+<div class="predict-value">
+$d=1$ (이산 최솟값)에서 개별 비용은 유한하다 ($1/1^2 = 1$). 블랙홀 = 유한 비용의 $N^2$ 축적. 무한대는 없다.
+</div>
+<div class="predict-test">검증: 블랙홀 병합의 중력파 링다운 스펙트럼. 이산 내부 구조가 GR 점 특이점 예측과 다른 특성 편차를 만든다.</div>
+<div class="predict-desc">반박: 모든 블랙홀 병합 신호가 점 특이점 GR과 편차 0으로 완벽히 일치.</div>
+<div class="predict-desc">출처: 공리 13 명제 (특이점은 존재하지 않는다).</div>
+</div>
+
+
+<hr>
+
+
+<h1 id="r8">라운드 8. 정밀 검증 예측 (P-15 ~ P-21)</h1>
+
+<p>공리 확장 이후 CAS 구조에서 직접 따라나오는 정밀 예측 7개. 각각 구체적 실험으로 검증 가능하다.</p>
+
+<div class="predict-card">
+<div class="predict-title">P-15. 쿼크 질량비 CAS 기어 구조</div>
+<div class="predict-value">
+쿼크 질량비는 CAS 기어 구조를 반영한다. 질량비에 CAS 단계 수와 도메인 축이 직접 나타난다.
+</div>
+<div class="predict-test">검증: PDG 재분석. 즉시 가능.</div>
+<div class="predict-desc">반박: 쿼크 질량비에서 CAS 기어 패턴이 통계적으로 유의미하지 않음.</div>
+<div class="predict-desc">출처: 공리 1(도메인 4축), 공리 3(CAS 7상태).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-16. 수명비에 $(2\pi/9)^5$ 포함</div>
+<div class="predict-value">
+불안정 입자 수명비에 $(2\pi/9)^5$ 인자가 포함된다. $2\pi/9$ = CAS 완전기술(9) 위의 위상(2$\pi$).
+</div>
+<div class="predict-test">검증: Belle II. 2026~.</div>
+<div class="predict-desc">반박: Belle II 정밀 측정에서 $(2\pi/9)^5$ 패턴이 $3\sigma$ 이상 벗어남.</div>
+<div class="predict-desc">출처: 공리 9(완전기술 자유도 9), CAS 경로 수.</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-17. 중력파 링다운 이산 편차</div>
+<div class="predict-value">
+블랙홀 병합 링다운에서 이산 내부 구조로 인한 GR 예측 대비 편차가 존재한다.
+</div>
+<div class="predict-test">검증: LIGO O5. 2025~.</div>
+<div class="predict-desc">반박: LIGO O5에서 링다운이 GR 점 특이점과 완벽히 일치.</div>
+<div class="predict-desc">출처: 공리 13 명제 (이산 최댓값).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-18. QCD $b_0$ 분자 = CAS 링 크기 패턴</div>
+<div class="predict-value">
+QCD $\beta$-함수의 $b_0$ 분자에 CAS 링 크기 패턴이 나타난다. $7 = $ CAS 자유도.
+</div>
+<div class="predict-test">검증: LHC 재분석. 즉시 가능.</div>
+<div class="predict-desc">반박: $b_0$ 구조에서 CAS 링 패턴이 우연의 일치로 판명.</div>
+<div class="predict-desc">출처: D-44($\beta_0 = 7/(4\pi)$), 공리 3(CAS 7상태).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-19. 양자 컴퓨터 오류율 바닥 = $\alpha$</div>
+<div class="predict-value">
+양자 오류 정정의 물리적 오류율 바닥이 $\alpha$에 의해 설정된다. CAS 쓰기 비용의 물리적 한계.
+</div>
+<div class="predict-test">검증: QEC 실험. 2026~.</div>
+<div class="predict-desc">반박: 오류율이 $\alpha$ 스케일 아래로 무한히 감소 가능.</div>
+<div class="predict-desc">출처: H-96(QEC FSM), D-01($\alpha$).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-20. 암흑물질 단면적 = LRU WARM 구조</div>
+<div class="predict-value">
+암흑물질 직접 검출 단면적이 LRU WARM 구조를 반영한다. WARM = 접근 가능하나 잠기지 않은 상태.
+</div>
+<div class="predict-test">검증: XENONnT. 2026~.</div>
+<div class="predict-desc">반박: XENONnT에서 LRU WARM 패턴과 무관한 단면적 측정.</div>
+<div class="predict-desc">출처: 공리 6(LRU), WARM 분율 $15/57$.</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-21. 중력파 분산 계수 = $\alpha$</div>
+<div class="predict-value">
+중력파 분산 계수가 $\alpha$에 의해 결정된다. 이산 시공간의 직접적 서명.
+</div>
+<div class="predict-test">검증: LISA/ET. 2030~.</div>
+<div class="predict-desc">반박: LISA/ET에서 중력파 분산이 정확히 0이거나 $\alpha$와 무관한 값.</div>
+<div class="predict-desc">출처: D-01($\alpha$), 공리 13(이산 시공간).</div>
+</div>
 
 
 <hr>
@@ -960,6 +1124,162 @@ $m_H = 125.37\;\text{GeV}$
 </div>
 
 <p>The value $7/54$ is uniquely determined by the CAS structure. 7 is the CAS phase space dimension, and 54 is the Compare binary branching ($\times 2$) of the generation structure 27. There are no adjustable parameters. Whether right or wrong, this is the only value.</p>
+
+
+<hr>
+
+
+<h1 id="en-r7">Round 7. Axiom Extension Predictions (P-08 ~ P-14)</h1>
+
+<p>Predictions derived from the Axiom 11~15 extension. While Rounds 1~6 came from the CAS core structure (Axioms 1~10), this round comes from the extended axioms. DATA discreteness, entity distortion, dimension stack, LRU lifecycle, and head/tail asymmetry produce physical consequences.</p>
+
+<div class="predict-card">
+<div class="predict-title">P-08. Discrete Cost Ceiling in Extreme Density Regions</div>
+<div class="predict-value">
+DATA is discrete, $d_\text{min} = 1$, so cost has a finite maximum. No singularity.
+</div>
+<div class="predict-test">Verification: ngEHT, next-gen X-ray (2030~). Energy spectrum cutoff below Planck scale.</div>
+<div class="predict-desc">Falsification: Energy divergence observed at any finite region.</div>
+<div class="predict-desc">Source: Axiom 13 proposition (singularity does not exist).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-09. Casimir Discrete Steps</div>
+<div class="predict-value">
+Entity distortion is discrete, so Casimir force shows step structure at sub-nm scale, not continuous $1/d^4$.
+</div>
+<div class="predict-test">Verification: AFM-based sub-nm Casimir measurement (2028~).</div>
+<div class="predict-desc">Falsification: Perfect continuous $1/d^4$ at all scales.</div>
+<div class="predict-desc">Source: Axiom 11 proposition (entity distortion) + Axiom 12 proposition (DATA discrete).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-10. Spin Quantization = SP Bit Discreteness</div>
+<div class="predict-value">
+Dimension stack SP advances in bit units (0 or 1 only). No intermediate values. Therefore spin is integer or half-integer ONLY. Spin $1/3$ impossible.
+</div>
+<div class="predict-test">Verification: All particle searches (LHC Run 4, FCC-hh).</div>
+<div class="predict-desc">Falsification: Particle with spin $1/3$ or $2/3$ found.</div>
+<div class="predict-desc">Source: Axiom 12 proposition (dimension stack) + Axiom 5 (CAS 3 bits).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-11. CAS Path Numbers in Unstable Particle Lifetime Ratios</div>
+<div class="predict-value">
+Lifetime ratios of unstable particles systematically contain CAS access path numbers (30, 7, 3).
+</div>
+<div class="predict-test">Verification: PDG data reanalysis. Immediately testable.</div>
+<div class="predict-desc">Falsification: No systematic correlation found in any lifetime ratio.</div>
+<div class="predict-desc">Source: Axiom 10 proposition (observer = LUT) + Axiom 12 (LRU lifecycle).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-12. Internal Structure of Extreme-Density Objects (Tidal Deformability $\neq 0$)</div>
+<div class="predict-value">
+Black holes have internal structure (discrete $d=1$ lattice). Tidal deformability is non-zero.
+</div>
+<div class="predict-test">Verification: LIGO/Virgo/KAGRA O5, LISA (2025~2035).</div>
+<div class="predict-desc">Falsification: Tidal deformability exactly 0 (point singularity confirmed).</div>
+<div class="predict-desc">Source: Axiom 13 proposition (singularity does not exist, $N^2$ accumulation).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-13. Strong CP Violation Is Non-Zero (nEDM $\neq 0$)</div>
+<div class="predict-value">
+Head/tail asymmetry (Axiom 15) is structural. CP violation cannot be exactly zero at any scale. nEDM must be non-zero.
+</div>
+<div class="predict-test">Verification: nEDM@PSI, n2EDM (2025~2030).</div>
+<div class="predict-desc">Falsification: nEDM measured to be exactly 0 below $10^{-28}\;e \cdot \text{cm}$.</div>
+<div class="predict-desc">Source: Axiom 15 proposition (head/tail = ownership, read-write asymmetry).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-14. Singularity Does Not Exist (Discrete Maximum)</div>
+<div class="predict-value">
+At $d=1$ (discrete minimum), individual cost is finite ($1/1^2 = 1$). Black hole = $N^2$ accumulation of finite costs. No infinity.
+</div>
+<div class="predict-test">Verification: Gravitational wave ringdown spectrum from BH mergers. Discrete internal structure produces characteristic deviations from GR point-singularity prediction.</div>
+<div class="predict-desc">Falsification: All BH merger signals perfectly match point-singularity GR with zero deviation.</div>
+<div class="predict-desc">Source: Axiom 13 proposition (singularity does not exist).</div>
+</div>
+
+
+<hr>
+
+
+<h1 id="en-r8">Round 8. Precision Verification Predictions (P-15 ~ P-21)</h1>
+
+<p>Seven precision predictions that follow directly from CAS structure after axiom extension. Each is verifiable by specific experiments.</p>
+
+<div class="predict-card">
+<div class="predict-title">P-15. Quark Mass Ratio CAS Gear Structure</div>
+<div class="predict-value">
+Quark mass ratios reflect CAS gear structure. CAS step count and domain axes appear directly in mass ratios.
+</div>
+<div class="predict-test">Verification: PDG reanalysis. Available now.</div>
+<div class="predict-desc">Falsification: CAS gear pattern in quark mass ratios is not statistically significant.</div>
+<div class="predict-desc">Source: Axiom 1 (domain 4-axis), Axiom 3 (CAS 7 states).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-16. Lifetime Ratio Contains $(2\pi/9)^5$</div>
+<div class="predict-value">
+Unstable particle lifetime ratios contain the factor $(2\pi/9)^5$. $2\pi/9$ = phase($2\pi$) over CAS complete description(9).
+</div>
+<div class="predict-test">Verification: Belle II. 2026~.</div>
+<div class="predict-desc">Falsification: Belle II precision measurement deviates from $(2\pi/9)^5$ pattern by more than $3\sigma$.</div>
+<div class="predict-desc">Source: Axiom 9 (complete description 9 DOF), CAS path count.</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-17. Gravitational Wave Ringdown Discrete Deviation</div>
+<div class="predict-value">
+Deviations from GR prediction exist in black hole merger ringdown due to discrete internal structure.
+</div>
+<div class="predict-test">Verification: LIGO O5. 2025~.</div>
+<div class="predict-desc">Falsification: LIGO O5 ringdown perfectly matches GR point-singularity.</div>
+<div class="predict-desc">Source: Axiom 13 proposition (discrete maximum).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-18. QCD $b_0$ Numerator = CAS Ring Size Pattern</div>
+<div class="predict-value">
+CAS ring size pattern appears in the $b_0$ numerator of the QCD $\beta$-function. $7 = $ CAS degrees of freedom.
+</div>
+<div class="predict-test">Verification: LHC reanalysis. Available now.</div>
+<div class="predict-desc">Falsification: CAS ring pattern in $b_0$ structure turns out to be coincidence.</div>
+<div class="predict-desc">Source: D-44 ($\beta_0 = 7/(4\pi)$), Axiom 3 (CAS 7 states).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-19. Quantum Computer Error Rate Floor = $\alpha$</div>
+<div class="predict-value">
+The physical error rate floor of quantum error correction is set by $\alpha$. Physical limit of CAS write cost.
+</div>
+<div class="predict-test">Verification: QEC experiments. 2026~.</div>
+<div class="predict-desc">Falsification: Error rate can be reduced infinitely below $\alpha$ scale.</div>
+<div class="predict-desc">Source: H-96 (QEC FSM), D-01 ($\alpha$).</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-20. Dark Matter Cross-Section = LRU WARM Structure</div>
+<div class="predict-value">
+Dark matter direct detection cross-section reflects LRU WARM structure. WARM = accessible but unlocked state.
+</div>
+<div class="predict-test">Verification: XENONnT. 2026~.</div>
+<div class="predict-desc">Falsification: XENONnT measures cross-section unrelated to LRU WARM pattern.</div>
+<div class="predict-desc">Source: Axiom 6 (LRU), WARM fraction $15/57$.</div>
+</div>
+
+<div class="predict-card">
+<div class="predict-title">P-21. Gravitational Wave Dispersion Coefficient = $\alpha$</div>
+<div class="predict-value">
+Gravitational wave dispersion coefficient is determined by $\alpha$. Direct signature of discrete spacetime.
+</div>
+<div class="predict-test">Verification: LISA/ET. 2030~.</div>
+<div class="predict-desc">Falsification: LISA/ET measures gravitational wave dispersion as exactly 0 or unrelated to $\alpha$.</div>
+<div class="predict-desc">Source: D-01 ($\alpha$), Axiom 13 (discrete spacetime).</div>
+</div>
 
 
 <hr>
