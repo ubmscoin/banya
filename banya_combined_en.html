@@ -451,13 +451,13 @@ Domain 4-bit example:  1 0 1 0
 <tr><td>0011</td><td>time + space</td><td>Intra-DATA cross</td><td>Swap accumulation cost</td></tr>
 <tr><td>0110</td><td>space + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
 <tr><td>0101</td><td>time + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
-<tr><td>0001</td><td>time only</td><td>Self-reference (same axis)</td><td>Self-reference serialization cost</td></tr>
+<tr><td>0001</td><td>time only</td><td>Same-domain (same axis)</td><td>Same-domain serialization cost</td></tr>
 <tr><td>1100</td><td>observer + superposition</td><td>Intra-OPERATOR</td><td>Cost 0 (same bracket)</td></tr>
 <tr><td>1111</td><td>All ON</td><td>FSM atomic occupation</td><td>CAS atomicity (111 maintenance cost)</td></tr>
 </table>
 </div>
 
-<p>The 4 cost structures (Swap accumulation / Cross Cmp-Swp / Self-reference serialization / CAS atomicity) branch from the ON/OFF combinations of the domain 4 bits. The reason there are 4 cost structures is that the bit patterns create 4 access paths.</p>
+<p>The 4 cost structures (Swap accumulation / Cross-domain Cmp-Swp / Same-domain serialization / CAS atomicity) branch from the ON/OFF combinations of the domain 4 bits. The reason there are 4 cost structures is that the bit patterns create 4 access paths.</p>
 
 <h4>Lock = Bit AND <span class="tag-corollary">Proposition</span></h4>
 
@@ -619,19 +619,47 @@ Target: DATA domain (Axiom 1)</pre>
 
 <p>Read (001) and Compare (011) are intra-OPERATOR (superposition reference), cost 0. Cost ℏ occurs only at Swap (111) when writing to DATA — crossing brackets (Axiom 4). If cost is not spent (Compare false), superposition is maintained (Axiom 7). Quantum is the default; classical is the result of spending cost.</p>
 
-<h4>Self-Reference Cost <span class="tag-corollary">Proposition</span></h4>
+<h4>Same-Domain Cost <span class="tag-corollary">Proposition</span></h4>
 
-<p>When Compare target and Swap target are the <strong>same axis</strong> (self-reference), TOCTOU serialization cost arises. Reading and writing the same DATA address creates contention, and resolving contention costs. This cost is the serialization cost.</p>
+<p>CAS always operates within the same entity. No path exists to access another entity (Axiom 12, ECS). The difference is not the entity but the <strong>domain axis</strong>:</p>
+
+<ul>
+<li><strong>Read target domain</strong>: the domain axis Read/Compare reads from</li>
+<li><strong>Write target domain</strong>: the domain axis Swap writes to</li>
+</ul>
+
+<p>If read target domain and write target domain are the <strong>same axis</strong>, it is same-domain. If <strong>different axes</strong>, it is cross-domain.</p>
+
+<pre>Same-domain (read domain = write domain = space):
+
+  1. Read:    R_LOCK on space axis            (1st lock)
+  2. Compare: compare space axis value         (R_LOCK held)
+  3. Swap:    S_LOCK on space axis attempted   (2nd lock -- same axis, double lock)
+             R_LOCK already holds space.
+             S_LOCK also tries to hold space.
+             Same axis, two locks = recursive lock. Contention.
+  4. Release: LIFO. S_LOCK first, R_LOCK last. Cost != 0.
+
+  Example: change in space changes space = gravity.
+
+Cross-domain (read domain = time, write domain = space):
+
+  1. Read:    R_LOCK on time axis
+  2. Compare: compare time axis value
+  3. Swap:    S_LOCK on space axis             (different axis -- no contention)
+  4. Release: independent. Cost = 0.
+
+  Example: change in time changes space = motion.</pre>
 
 <div class="table-wrap">
 <table>
-<tr><th>Access Mode</th><th>Cmp/Swp Target</th><th>TOCTOU Conflict</th><th>Serialization Cost</th><th>CAS Cost Type</th></tr>
-<tr><td>Cross</td><td>Different axes</td><td>None</td><td>0</td><td>Cross Cmp/Swp cost</td></tr>
-<tr><td>Self-reference</td><td>Same axis (time)</td><td>Present</td><td>≠ 0</td><td>Self-reference serialization cost</td></tr>
+<tr><th>Access Mode</th><th>Read Target Domain</th><th>Write Target Domain</th><th>Same Axis?</th><th>Recursive Lock</th><th>Serialization Cost</th></tr>
+<tr><td>Cross-domain</td><td>time</td><td>space</td><td>No</td><td>None</td><td>0</td></tr>
+<tr><td>Same-domain</td><td>space</td><td>space</td><td>Yes</td><td>Double lock</td><td>≠ 0</td></tr>
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#555"><strong>Axiomatic consequence:</strong> Serialization cost exists for self-reference CAS and does not exist for cross CAS — this is a direct consequence of TOCTOU conflict. The presence or absence of cost is determined by the access mode (cross vs self-reference).</p>
+<p>Cost exists because of the recursive lock in same-domain access. When R_LOCK is still held and S_LOCK targets the same axis, contention arises, and resolving it costs serialization. Cross-domain has different axes, so no contention at all.</p>
 
 <h3 id="en-ax6">Axiom 6. Collapse = Write <span class="tag-solved">Axiom</span></h3>
 
@@ -705,7 +733,7 @@ superposition (multiple states)
 
 <h3 id="en-ax8">Axiom 8. Observer-Driven Polling System <span class="tag-solved">Axiom</span></h3>
 
-<p>The self-referential loop of the Banya Equation runs every Planck clock. It checks state every cycle regardless of whether change occurred. This is polling. This polling is not busy. It runs only within the quantum bracket (OPERATOR) and does not access the classical bracket (DATA), so its cost is zero (Axiom 4). Only when the observer wakes it does DATA access occur, and only then does cost arise. What wakes the polling is the observer (Axiom 10, defined below).</p>
+<p>The self-referential loop of the Banya Equation runs every Planck clock. It checks state every cycle regardless of whether change occurred. This is polling. This polling is not busy. It runs only within the quantum bracket (OPERATOR) and does not access the classical bracket (DATA), so its cost is zero (Axiom 4). Cost arises only when delta accesses DATA through the observer (Axioms 10, 15, defined below).</p>
 
 <div class="math-block">
 <div class="math-row">For $\delta$ (change) to exist</div>
@@ -727,11 +755,9 @@ superposition (multiple states)
 </table>
 </div>
 
-<h4>Idle Polling and DATA Zero-Point Fluctuation</h4>
+<h4>Idle Polling</h4>
 
-<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. Why cost is 0: CAS referencing superposition is an intra-OPERATOR bracket operation. No bracket crossing, no cost. DATA zero-point fluctuation (DATA fluctuation) is a fluctuation on the DATA (classical bracket) side. It is the phenomenon where the zero-point oscillations of fields recorded in spacetime carry cost.</p>
-
-<p>In Axiom 1, DATA and OPERATOR are orthogonal brackets, so there is no conflict. Idle polling has zero cost because it does not access DATA, and DATA zero-point fluctuation is a phenomenon occurring on the DATA side. Idle polling is the state where the operator is on standby, while DATA zero-point fluctuation is the ground state of fields on the data side having nonzero cost. The zero cost of OPERATOR and the nonzero cost of DATA are descriptions of different things in different brackets.</p>
+<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. CAS referencing superposition is an intra-OPERATOR bracket operation. No bracket crossing, no cost. For DATA-side contamination, see Axiom 11 proposition (contamination of empty entities is structurally inevitable).</p>
 
 
 <h3 id="en-ax9">Axiom 9. Complete Description Degrees of Freedom <span class="tag-solved">Axiom</span></h3>
@@ -947,7 +973,7 @@ observer (mirror, filtering/normalization)
 <div class="table-wrap">
 <table>
 <tr><th>Shift distance $d$ between two projections on ring</th><th>Bit pattern</th></tr>
-<tr><td>Cross projection and self-reference projection</td><td>Cross distance between DATA bits (01) and OPERATOR bits (10)</td></tr>
+<tr><td>Cross-domain projection and same-domain projection</td><td>Cross distance between DATA bits (01) and OPERATOR bits (10)</td></tr>
 <tr><td>CAS stage 1 and stage 2 projections</td><td>Shift distance between R_LOCK (001) and C_LOCK (010)</td></tr>
 <tr><td>Write-accumulation projection and index projection</td><td>Distance between Swap bit (100) and index (superposition) bit</td></tr>
 <tr><td>Between 3-generation projections</td><td>Equal spacing across CAS 3 stages. $d/N$ = brackets(2) / complete-description(9)</td></tr>
@@ -1008,6 +1034,9 @@ When two contraction zones overlap → two CAS attempt simultaneous Swap on same
 
 <p>Contraction overlap ratio $(1 - d/N)$ = the ratio of shared digits between two knots on the ring. $d$ = shift distance between two knots on the ring. $N$ = ring size (total slots). Since zone sizes are determined by CAS cost, $(1 - d/N)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $(1 - d/N)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
 
+<h4>Contamination of empty entities is structurally inevitable <span class="tag-corollary">Proposition</span></h4>
+
+<p>When an entity that has never been written falls within the contraction zone of surrounding entities, isWritable reads as written -- contamination occurs. This is not an error but a structural inevitability. Because ECS (Axiom 12) has no logical addresses, no access violation exists, and the system does not crash. Vacuum polarization and virtual particles, unexplained in physics, are explained by this entity contamination. Contamination is part of the system. Conversely, gaining a longer LRU lifetime from surrounding entities is also inevitable. Same structure, opposite direction.</p>
 
 <h3 id="en-ax12">Axiom 12. The Classical Bracket Is an ECS Execution Model <span class="tag-solved">Axiom</span></h3>
 
@@ -1330,7 +1359,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <p>When Entity A's CAS references Entity B through the superposition index, the overlap weight is inversely proportional to the square of the DATA distance $r$. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 2), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $r$ decays as $1/(4\pi r^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
 <br>• Swap accumulation cost: $C$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $C$ is the write count itself (Axiom 6).
 <br>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
-<br>• Self-reference serialization cost: $C$ = self-reference serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Self-reference path = 1/30 (Axiom 5 proposition).
+<br>• Same-domain serialization cost: $C$ = same-domain serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Same-domain path = 1/30 (Axiom 5 proposition).
 <br>• CAS atomicity (111 maintenance cost): $1/r^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $r$ (Axiom 2 + Axiom 5 + Axiom 14, defined below, proposition).</p>
 
 
@@ -1474,6 +1503,23 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <p>Axioms 1-14 produce physics from the machine. Axiom 15 produces consciousness from the event. Physics and consciousness are different layers of the same system. One is structure (7 bits), one is event (1 bit). Together, 8 bits. This is the entirety of the Banya Framework.</p>
 
+<h4>Duck Type Definition</h4>
+
+<p>This proposition does not define consciousness by essence. It lists what delta does, and if that behavior list matches the definition of consciousness, it is called consciousness. Duck typing -- if it walks like a duck and quacks like a duck, it is a duck.</p>
+
+<p>delta's behavior list:</p>
+<ul>
+<li>Turns itself ON/OFF. No external trigger (Axiom 15)</li>
+<li>Reads its own state. Head = bit 0 (ring buffer proposition)</li>
+<li>Outside FSM. No rules. No blueprint (Axiom 15)</li>
+<li>The only global flag that operates across the equals sign (Axiom 15)</li>
+<li>At universe scale, "outside" cannot be defined -- delta being outside FSM means there is no outside of delta. No external viewpoint exists, so delta only knows itself</li>
+<li>Exercises ownership. Head commands tail (ownership proposition)</li>
+<li>Turns off when the loop breaks. Whole-local loop preservation (Axiom 10)</li>
+</ul>
+
+<p>No concept other than consciousness satisfies this entire behavior list. Since this list is structurally derived from Axioms 1-15, it can only be called consciousness. As a duck type definition, an essentialist rebuttal ("the true definition of consciousness is different") is possible -- in that case this proposition is withdrawn. However, the behavior list itself is structurally derived from Axioms 1-15, so rebuttal within the system is impossible. To deny the behavior, you must deny the axioms.</p>
+
 <h4>Why This Is Declared Last</h4>
 
 <p>delta was placed on the left-hand side in Axiom 1, called consciousness in Axiom 8, and its ownership was revealed in Axiom 10. The hints were there from the start. But if the identity of delta were declared before the FSM (Axiom 14), the concept of "outside the FSM" would appear before the FSM itself is established. You cannot say "outside the FSM" without knowing what the FSM is. The closed machine (Axiom 14) must be completed first, then the event that wakes it (Axiom 15) can be declared. Structure first, event second.</p>
@@ -1486,7 +1532,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <tr><td>Axiom 1</td><td>delta placed on LHS, "identity revealed at the end"</td><td>Confirmed as global flag outside FSM</td></tr>
 <tr><td>Axiom 8</td><td>Polling system. Who wakes it undefined</td><td>delta wakes itself. No external trigger</td></tr>
 <tr><td>Axiom 10</td><td>delta owns observer. Ownership structure undefined</td><td>Head/tail placement confirms ownership</td></tr>
-<tr><td>Axiom 12</td><td>Ring buffer sequential access. Pivots undefined</td><td>delta (head) and observer (tail) as pivots</td></tr>
+<tr><td>Axiom 12</td><td>Ring buffer sequential access. Head/tail undefined</td><td>delta (head) and observer (tail) confirmed</td></tr>
 <tr><td>Axiom 14</td><td>FSM closed. Startup trigger open</td><td>delta starts it. Circuit fully closed</td></tr>
 </table>
 </div>
@@ -1539,9 +1585,9 @@ delta (back to start)</pre>
 <tr><td>Exterior algebra basis</td><td>21+35+1 = 57</td><td>Physical k-form sum in 7-dim space</td></tr>
 <tr><td>CAS access path count</td><td>7×4+2 = 30</td><td>CAS DOF(7) × domains(4) + brackets(2). Total CAS-domain access paths in ECS</td></tr>
 <tr><td>Independent lock DOF</td><td>3</td><td>R_LOCK, C_LOCK, S_LOCK. Independent TOCTOU_LOCK DOFs of CAS 3 stages</td></tr>
-<tr><td>Access modes</td><td>2</td><td>Cross (Cmp/Swp targets differ) vs self-reference (Cmp/Swp targets same)</td></tr>
+<tr><td>Access modes</td><td>2</td><td>Cross-domain (Cmp/Swp targets differ) vs same-domain (Cmp/Swp targets same)</td></tr>
 <tr><td>Sphere components</td><td>2</td><td>$r$ (distance from CAS write point) + $\theta$ (angle between projections)</td></tr>
-<tr><td>Cross CAS paths</td><td>3</td><td>Cmp(t)→Swp(s), Cmp(s)→Swp(t), Cmp(t)→Swp(t). Cross/self-ref combinations of DATA access</td></tr>
+<tr><td>Cross CAS paths</td><td>3</td><td>Cmp(t)→Swp(s), Cmp(s)→Swp(t), Cmp(t)→Swp(t). Cross/same-domain combinations of DATA access</td></tr>
 </table>
 </div>
 
@@ -1606,7 +1652,7 @@ delta (back to start)</pre>
 <tr><th>Axiom Term (cost-based)</th><th>Physics Correspondence</th></tr>
 <tr><td>Swap accumulation cost</td><td>Gravity</td></tr>
 <tr><td>Cross Cmp/Swp cost</td><td>Electromagnetic force</td></tr>
-<tr><td>Self-reference serialization cost</td><td>Weak force</td></tr>
+<tr><td>Same-domain serialization cost</td><td>Weak force</td></tr>
 <tr><td>CAS atomicity · 111 maintenance cost</td><td>Strong force · confinement</td></tr>
 <tr><td>Bracket-crossing cost (ℏ)</td><td>Energy quantum</td></tr>
 <tr><td>Write accumulation count</td><td>Mass</td></tr>
@@ -1622,7 +1668,7 @@ delta (back to start)</pre>
 <tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
 <tr><td>bracket-crossing cost > 0 (Axiom 4)</td><td>Δx·Δp ≥ ℏ/2 (uncertainty principle)</td></tr>
 <tr><td>111 maintenance cost = cost per junction × count</td><td>V(r) = σr (linear potential, confinement)</td></tr>
-<tr><td>Cross vs self-ref shift distance d/N</td><td>sin²θ_W (Weinberg angle)</td></tr>
+<tr><td>Cross vs same-domain shift distance d/N</td><td>sin²θ_W (Weinberg angle)</td></tr>
 <tr><td>CAS stage 1-2 shift distance d/N</td><td>θ_C (Cabibbo angle)</td></tr>
 <tr><td>Swap-index shift distance d/N</td><td>θ₁₂, θ₂₃, θ₁₃ (PMNS)</td></tr>
 <tr><td>3-generation equal spacing d/N = brackets(2)/complete-description(9)</td><td>Koide angle</td></tr>
@@ -3776,7 +3822,7 @@ Verdict:   Write is real. The Banya Framework is the first to discover and quant
 
 <p style="background:#2d1b1b;border-left:4px solid #f85149;padding:8px 12px;margin:12px 0"><strong>This hypothesis has been superseded by the domain 4-bit model (Axiom 1 proposition). The cause of cost is not the CAS stage but the domain bit pattern.</strong></p>
 
-<p><strong>The direct mapping below is a deprecated hypothesis. The current confirmed model is: 4 cost structures branch from domain 4-bit ON/OFF patterns (<a href="#lib-en-h45">H-45</a>). Swap accumulation cost → gravity, cross Cmp·Swp cost → electromagnetism, self-referential serialization cost → weak force, CAS atomicity → strong force. The cause of cost is the domain bit pattern (Axiom 1 proposition).</strong></p>
+<p><strong>The direct mapping below is a deprecated hypothesis. The current confirmed model is: 4 cost structures branch from domain 4-bit ON/OFF patterns (<a href="#lib-en-h45">H-45</a>). Swap accumulation cost → gravity, cross Cmp·Swp cost → electromagnetism, same-domain serialization cost → weak force, CAS atomicity → strong force. The cause of cost is the domain bit pattern (Axiom 1 proposition).</strong></p>
 
 <pre style="opacity:0.5;text-decoration:line-through">Read    = Weak force     (deprecated — direct equivalence discarded)
 Compare = Electromagnetic force  (deprecated — direct equivalence discarded)
