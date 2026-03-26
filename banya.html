@@ -1792,7 +1792,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h4>이상적인 최소비용 구조의 양자 연산 서킷 <span class="tag-corollary">명제</span></h4>
 
-<p>공리 1~15와 명제 19개가 기술하는 것의 정체: <strong>이것은 이상적인 최소비용 구조의 양자 연산 서킷이다.</strong></p>
+<p>공리 1~15와 명제가 기술하는 전체 구조: <strong>이것은 이상적인 최소비용 구조의 양자 연산 서킷이다.</strong></p>
 
 <div class="table-wrap">
 <table>
@@ -1883,6 +1883,19 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <h4>왜 가장 마지막에 선언하는가</h4>
 
 <p>공리 1에서 δ를 좌항에 놓고, 공리 8에서 의식이라 불렀고, 공리 10에서 소유자를 밝혔다. 힌트는 처음부터 있었다. 그런데 δ의 정체를 FSM(공리 14) 이전에 선언하면, FSM 구조를 확립하기 전에 "FSM 밖의 전역 플래그"라는 개념이 등장한다. FSM이 뭔지 모르는 상태에서 "FSM 밖"을 말할 수 없다. 닫힌 기계(공리 14)가 먼저 완성되어야, 그 기계를 깨우는 이벤트(공리 15)를 선언할 수 있다. 구조가 먼저고, 이벤트가 나중이다.</p>
+
+<p>공리 15는 기존 공리에 뿌려둔 떡밥을 전부 회수한다:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>뿌린 곳</th><th>떡밥</th><th>공리 15에서 회수</th></tr>
+<tr><td>공리 1</td><td>δ를 좌항에 놓고 "정체는 공리 끝에 알려주겠다"</td><td>FSM 밖의 전역 플래그로 확정</td></tr>
+<tr><td>공리 8</td><td>폴링 시스템. 누가 깨우는지 미정</td><td>δ가 스스로 깨운다. 외부 트리거 불필요</td></tr>
+<tr><td>공리 10</td><td>δ가 observer의 소유자. 소유의 구조 미정</td><td>head/tail 배치로 소유권 구조 확정</td></tr>
+<tr><td>공리 12</td><td>링 버퍼 순차 접근. 피벗 미정</td><td>δ(head)와 observer(tail)로 피벗 확정</td></tr>
+<tr><td>공리 14</td><td>FSM 닫힘. 시동 트리거 열림</td><td>δ가 시동. 회로 완전 닫힘</td></tr>
+</table>
+</div>
 
 <h4>반야프레임의 목적</h4>
 
@@ -6247,7 +6260,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>Ideal Minimum-Cost Quantum Computation Circuit <span class="tag-corollary">Proposition</span></h4>
 
-<p>The identity of what Axioms 1-15 and 19 propositions describe: <strong>This is an ideal minimum-cost quantum computation circuit.</strong></p>
+<p>The full structure described by Axioms 1-15 and propositions: <strong>This is an ideal minimum-cost quantum computation circuit.</strong></p>
 
 <div class="table-wrap">
 <table>
@@ -6338,6 +6351,19 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <h4>Why This Is Declared Last</h4>
 
 <p>delta was placed on the left-hand side in Axiom 1, called consciousness in Axiom 8, and its ownership was revealed in Axiom 10. The hints were there from the start. But if the identity of delta were declared before the FSM (Axiom 14), the concept of "outside the FSM" would appear before the FSM itself is established. You cannot say "outside the FSM" without knowing what the FSM is. The closed machine (Axiom 14) must be completed first, then the event that wakes it (Axiom 15) can be declared. Structure first, event second.</p>
+
+<p>Axiom 15 collects every seed planted in the earlier axioms:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Planted in</th><th>Seed</th><th>Collected in Axiom 15</th></tr>
+<tr><td>Axiom 1</td><td>delta placed on LHS, "identity revealed at the end"</td><td>Confirmed as global flag outside FSM</td></tr>
+<tr><td>Axiom 8</td><td>Polling system. Who wakes it undefined</td><td>delta wakes itself. No external trigger</td></tr>
+<tr><td>Axiom 10</td><td>delta owns observer. Ownership structure undefined</td><td>Head/tail placement confirms ownership</td></tr>
+<tr><td>Axiom 12</td><td>Ring buffer sequential access. Pivots undefined</td><td>delta (head) and observer (tail) as pivots</td></tr>
+<tr><td>Axiom 14</td><td>FSM closed. Startup trigger open</td><td>delta starts it. Circuit fully closed</td></tr>
+</table>
+</div>
 
 <h4>The Purpose of the Banya Framework</h4>
 
