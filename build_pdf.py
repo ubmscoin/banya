@@ -37,6 +37,7 @@ DOC_ORDER = [
     "discovery/atomic.html",
     "discovery/hadron_mass.html",
     "discovery/dimension_stack.html",
+    "discovery/unification.html",
     "expend.html",
 ]
 
@@ -68,6 +69,7 @@ FILE_ANCHOR = {
     "discovery/atomic.html":            "title",
     "discovery/hadron_mass.html":       "title",
     "discovery/dimension_stack.html":   "title",
+    "discovery/unification.html":       "title",
     "expend.html":                      "en-title",
 }
 
@@ -99,6 +101,7 @@ FILE_PREFIX = {
     "discovery/atomic.html":            "at-",
     "discovery/hadron_mass.html":       "hm-",
     "discovery/dimension_stack.html":   "ds-",
+    "discovery/unification.html":       "un-",
     "expend.html":                      "exp-",
 }
 
@@ -174,6 +177,7 @@ def rewrite_inter_doc_links(content, current_file):
         "atomic.html": "discovery/atomic.html",
         "hadron_mass.html": "discovery/hadron_mass.html",
         "dimension_stack.html": "discovery/dimension_stack.html",
+        "unification.html": "discovery/unification.html",
     }
 
     def replace_link(m):
