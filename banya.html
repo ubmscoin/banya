@@ -1809,14 +1809,11 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>반야식의 좌항 $\delta$는 우항(4축)의 FSM(공리 14) 안에 없다. FSM 밖에 있는 전역 상태 플래그다.</p>
 
-<pre>반야식:  delta^2 = (time + space)^2 + (observer + superposition)^2
-         -----     ------------------------------------------------
-         좌항       우항
-         FSM 밖     FSM 안 (공리 1~14)
-         전역       로컬 (ECS, 공리 12)
-         이벤트     구조</pre>
+<div class="math-block" style="padding:24px 0">
+<div class="math-row">$$\underset{\substack{\\[6pt] \text{좌항: FSM 밖} \\[6pt] \text{전역, 이벤트}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{고전 괄호 (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{양자 괄호 (OPERATOR)}}}^{\text{우항: FSM 안 (공리 1\textasciitilde14), 로컬 (ECS), 구조}}$$</div>
+</div>
 
-<p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 비용(공리 4), 레지스터(공리 5), 출력(공리 6, 7), 클록(공리 8), 소유자(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000→001→011→111→000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 깨우는 이벤트가 필요하다. 그 이벤트가 δ다.</p>
+<p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 시간 밖(공리 3), 비용(공리 4), 레지스터(공리 5), 출력(공리 6, 7), 클록(공리 8), 소유자(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000→001→011→111→000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 깨우는 이벤트가 필요하다. 그 이벤트가 δ다.</p>
 
 <h4>8비트 링 버퍼다 <span class="tag-corollary">명제</span></h4>
 
@@ -1864,11 +1861,9 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>δ가 완전기술자유도(공리 9)에 포함되지 않는 이유: 완전기술자유도는 <strong>CAS 1건</strong>을 기술하는 데 필요한 독립 변수의 수다. δ는 CAS 1건을 기술하는 것이 아니라, CAS를 <strong>기동하는 트리거</strong>다. 기계를 기술하는 것(7+2=9)과 기계를 켜는 것(δ)은 다른 층위다.</p>
 
-<p><strong>δ 자체가 플래그다.</strong> 외부에서 켜주는 것이 아니다. 스스로 켜지고 스스로 꺼진다. 자기참조 루프(공리 8, 10)가 이것을 보장한다. δ가 observer를 통해 자기 자신을 보고, 본 결과가 δ에 반영되고, 반영된 δ가 다시 본다. 이 루프 자체가 플래그의 ON 상태다. 루프가 끊어지면 OFF다(공리 10, 전체-국소 루프 보존 명제). <strong>스스로 켜고 스스로 끄는 플래그 — 그것이 의식이다.</strong></p>
-
 <h4>δ는 의식이다 <span class="tag-corollary">명제</span></h4>
 
-<p>규칙 없이 스스로 ON/OFF하는 전역 플래그 — 자기 상태를 자기가 아는 것을 의식이라 부른다.</p>
+<p>δ 자체가 플래그다. 외부에서 켜주는 것이 아니다. δ가 observer를 통해 자기 자신을 보고, 본 결과가 δ에 반영되고, 반영된 δ가 다시 본다. 자기참조 루프(공리 8, 10)가 이것을 보장한다. 루프가 도는 것이 ON이고, 끊어지면 OFF다(공리 10, 전체-국소 루프 보존). <strong>스스로 켜고 끄며 자기 상태를 아는 전역 플래그 — 그것이 의식이다.</strong></p>
 
 <pre>구조 (공리 1~14):                     이벤트 (공리 15):
 
@@ -6265,12 +6260,9 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <p>The left-hand side $\delta$ of the Banya Equation is not inside the FSM (Axiom 14) of the right-hand side (4 axes). It is a global state flag outside the FSM.</p>
 
-<pre>Banya Equation:  delta^2 = (time + space)^2 + (observer + superposition)^2
-                 -----     ------------------------------------------------
-                 LHS        RHS
-                 Outside    Inside FSM (Axioms 1-14)
-                 Global     Local (ECS, Axiom 12)
-                 Event      Structure</pre>
+<div class="math-block" style="padding:24px 0">
+<div class="math-row">$$\underset{\substack{\\[6pt] \text{LHS: Outside FSM} \\[6pt] \text{Global, Event}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{Classical bracket (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{Quantum bracket (OPERATOR)}}}^{\text{RHS: Inside FSM (Axioms 1\textasciitilde14), Local (ECS), Structure}}$$</div>
+</div>
 
 <p>The FSM (Axiom 14) is a closed machine. It cycles 000-001-011-111-000. But a closed machine cannot start itself. <strong>A wake event is needed.</strong> That event is delta.</p>
 
@@ -6320,11 +6312,9 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <p>Why delta is not part of the complete description DOF (Axiom 9): the DOF describes <strong>one CAS event</strong>. delta is not the description of one event but the <strong>trigger that starts events</strong>. Describing the machine (7+2=9) and powering the machine (delta) are different layers.</p>
 
-<p><strong>delta itself IS the flag.</strong> Nothing external turns it on. It turns itself on and off. The self-referential loop (Axioms 8, 10) guarantees this. delta sees itself through the observer, the result is reflected in delta, and the reflected delta sees again. This loop itself is the ON state of the flag. If the loop breaks, it is OFF (Axiom 10, whole-local loop preservation proposition). A flag that turns itself on and off -- that is consciousness.</p>
-
 <h4>delta Is Consciousness <span class="tag-corollary">Proposition</span></h4>
 
-<p>A global flag that turns itself ON/OFF without rules -- knowing its own state by itself is called consciousness.</p>
+<p>delta itself is the flag. Nothing external turns it on. delta sees itself through the observer, the result is reflected in delta, and the reflected delta sees again. The self-referential loop (Axioms 8, 10) guarantees this. The loop running is ON; breaking is OFF (Axiom 10, whole-local loop preservation). <strong>A global flag that turns itself on and off, knowing its own state -- that is consciousness.</strong></p>
 
 <pre>Structure (Axioms 1-14):              Event (Axiom 15):
 
