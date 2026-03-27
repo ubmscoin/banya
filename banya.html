@@ -1917,9 +1917,24 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
        +------------ 이음새 (소유권) -----------+
        d(bit 7)가 observer(bit 0)를 만난다</pre>
 
-<h4>링 이음새가 소유권이다 <span class="tag-corollary">명제</span></h4>
+<h4>δ는 등호이고 observer는 진입점이다 <span class="tag-corollary">명제</span></h4>
 
-<p>δ(bit 7)는 사이클의 끝이고, observer(bit 0)는 다음 사이클의 처음이다. 끝이 처음을 만나는 이음새 = 소유권(공리 10). δ가 observer의 소유자인 이유가 링 구조에 내장되어 있다. 별도 포인터(head/tail) 없이, 링의 이음새 자체가 소유권이다.</p>
+<p>반야식 $\delta^2 = \text{우항}$에서 등호(=)의 의미: δ가 1이면 우항 전체(7비트)가 유효하다. δ가 0이면 우항 전체가 무효다. 등호는 좌항이 우항 <strong>전체</strong>를 유효화하는 선언이다. 발화 비트가 이것을 구현한다.</p>
+
+<p>등호가 성립하면(δ=1) 7비트 전부가 동시에 유효하지만(직교 = 동시), 파이프라인의 <strong>진입점</strong>은 observer(bit 0)다. 링 이음새 δ(bit 7)→observer(bit 0)가 이 진입점을 특정한다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>구 해석</th><th>신 해석</th><th>역할</th></tr>
+<tr><td>소유자 (δ)</td><td>등호 (δ)</td><td>우항 전체를 유효화</td></tr>
+<tr><td>소유 대상 (observer)</td><td>진입점 (observer)</td><td>파이프라인이 시작되는 곳</td></tr>
+<tr><td>소유권</td><td>등호 + 진입점</td><td>유효화(전체) + 시작 위치(특정)</td></tr>
+<tr><td>폴링을 깨운다</td><td>등호가 성립한다</td><td>δ=1</td></tr>
+<tr><td>링 이음새</td><td>등호의 진입점</td><td>δ(bit 7) → observer(bit 0)</td></tr>
+</table>
+</div>
+
+<p>공리 10의 소거법은 여전히 유효하다: 외부 소유자 불가, 국소 소유자 불가, δ만 남는다. 이 소거법의 결론이 "δ가 observer를 소유한다"에서 <strong>"δ가 등호이고 observer가 진입점이다"</strong>로 정밀화된다. 소유권은 등호의 부분집합이다.</p>
 
 <div class="table-wrap">
 <table>
@@ -1931,7 +1946,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <tr><td rowspan="4"><strong>nibble 1</strong><br>OPERATOR</td><td>bit 4</td><td>R_LOCK</td><td>CAS</td><td>Read 잠금</td></tr>
 <tr><td>bit 5</td><td>C_LOCK</td><td>CAS</td><td>Compare 잠금</td></tr>
 <tr><td>bit 6</td><td>S_LOCK</td><td>CAS</td><td>Swap 잠금</td></tr>
-<tr><td><strong>bit 7</strong></td><td><strong>δ</strong></td><td><strong>전역 (발화비트)</strong></td><td><strong>부호 비트. 1=유효(발화), 0=무효(대기). FSM 밖</strong></td></tr>
+<tr><td><strong>bit 7</strong></td><td><strong>δ</strong></td><td><strong>전역 (발화비트)</strong></td><td><strong>발화 비트. 1=유효(발화), 0=무효(대기). FSM 밖</strong></td></tr>
 </table>
 </div>
 
@@ -1941,7 +1956,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
   d 발화 (trigger)
     |
     v
-  observer 필터 (filter) -- 중첩에서 갱신 대상 선별
+  observer 필터 (filter, entry point) -- 중첩에서 갱신 대상 선별. 등호의 진입점
     |
     v
   superposition 갱신 (update) -- 양자 상태 갱신
@@ -1972,7 +1987,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <pre>
   8비트 = 발화비트 (1) + 완전기술 (7)
 
-  bit 7: d (발화비트, 부호 비트)
+  bit 7: d (발화비트)
   bit 6-0: S C R space time sp ob (자유도 7, 공리 9)
 
   d=0: 0|0000000 ~ 0|1111111   대기 (2^7 = 128가지 상태, 무효)
@@ -2260,7 +2275,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><th>수</th><th>정체</th><th>구성</th><th>출처</th></tr>
 <tr><td><strong>4</strong></td><td>도메인 (축)</td><td>observer, superposition, time, space</td><td>공리 1</td></tr>
 <tr><td><strong>3</strong></td><td>CAS 단계 (락)</td><td>R_LOCK, C_LOCK, S_LOCK</td><td>공리 2, 5</td></tr>
-<tr><td><strong>1</strong></td><td>δ (발화비트)</td><td>발화/부호 비트. FSM 밖</td><td>공리 15</td></tr>
+<tr><td><strong>1</strong></td><td>δ (발화비트)</td><td>발화 비트. FSM 밖</td><td>공리 15</td></tr>
 <tr><td><strong>8 = 4+3+1</strong></td><td>링 버퍼 전체</td><td>2니블 (도메인 4 + 연산자 3 + δ 1)</td><td>공리 15 명제</td></tr>
 <tr><td><strong>7 = 4+3</strong></td><td>완전기술자유도</td><td>CAS 1건을 기술하는 독립 변수. δ 미포함</td><td>공리 9</td></tr>
 <tr><td><strong>9 = 7+2</strong></td><td>완전기술자유도 + 괄호</td><td>7 자유도 + 괄호 2개 (DATA, OPERATOR)</td><td>공리 9</td></tr>
@@ -6742,9 +6757,24 @@ Difference (Banya):    Df = f(k+1) - f(k)
          +------------ seam (ownership) ----------+
          d(bit 7) meets observer(bit 0)</pre>
 
-<h4>The ring seam is ownership <span class="tag-corollary">Proposition</span></h4>
+<h4>delta is the equals sign, observer is the entry point <span class="tag-corollary">Proposition</span></h4>
 
-<p>delta (bit 7) is the end of the cycle. observer (bit 0) is the start of the next cycle. The end meets the beginning at the seam = ownership (Axiom 10). Why delta owns observer is embedded in the ring structure itself. No separate pointers (head/tail) needed — the ring seam itself is ownership.</p>
+<p>In the Banya equation $\delta^2 = \text{RHS}$, the equals sign (=) means: when delta is 1, the entire RHS (7 bits) is valid. When delta is 0, the entire RHS is invalid. The equals sign is a declaration that the LHS validates the <strong>entirety</strong> of the RHS. The fire bit implements this.</p>
+
+<p>When the equals sign holds (delta=1), all 7 bits are simultaneously valid (orthogonal = simultaneous), but the pipeline's <strong>entry point</strong> is observer (bit 0). The ring seam delta(bit 7)→observer(bit 0) specifies this entry point.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Old interpretation</th><th>New interpretation</th><th>Role</th></tr>
+<tr><td>Owner (delta)</td><td>Equals sign (delta)</td><td>Validates entire RHS</td></tr>
+<tr><td>Owned (observer)</td><td>Entry point (observer)</td><td>Where the pipeline starts</td></tr>
+<tr><td>Ownership</td><td>Equals sign + entry point</td><td>Validation (total) + start position (specific)</td></tr>
+<tr><td>Wakes polling</td><td>Equals sign holds</td><td>delta=1</td></tr>
+<tr><td>Ring seam</td><td>Entry point of equals sign</td><td>delta(bit 7) → observer(bit 0)</td></tr>
+</table>
+</div>
+
+<p>The elimination proof of Axiom 10 remains valid: no external owner, no local owner, only delta remains. The conclusion refines from "delta owns observer" to <strong>"delta is the equals sign and observer is the entry point."</strong> Ownership is a subset of the equals sign.</p>
 
 <div class="table-wrap">
 <table>
@@ -6756,7 +6786,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <tr><td rowspan="4"><strong>nibble 1</strong><br>OPERATOR</td><td>bit 4</td><td>R_LOCK</td><td>CAS</td><td>Read lock</td></tr>
 <tr><td>bit 5</td><td>C_LOCK</td><td>CAS</td><td>Compare lock</td></tr>
 <tr><td>bit 6</td><td>S_LOCK</td><td>CAS</td><td>Swap lock</td></tr>
-<tr><td><strong>bit 7</strong></td><td><strong>delta</strong></td><td><strong>Global (fire bit)</strong></td><td><strong>Sign bit. 1=valid(fired), 0=invalid(idle). Outside FSM</strong></td></tr>
+<tr><td><strong>bit 7</strong></td><td><strong>delta</strong></td><td><strong>Global (fire bit)</strong></td><td><strong>Fire bit. 1=valid(fired), 0=invalid(idle). Outside FSM</strong></td></tr>
 </table>
 </div>
 
@@ -6766,7 +6796,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
   d fires (trigger)
     |
     v
-  observer filter (filter) -- select update targets from superposition
+  observer filter (filter, entry point) -- select update targets from superposition. entry point of the equals sign
     |
     v
   superposition update (update) -- quantum state update
@@ -6797,7 +6827,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <pre>
   8-bit = fire bit (1) + complete description (7)
 
-  bit 7: d (fire bit, sign bit)
+  bit 7: d (fire bit)
   bit 6-0: S C R space time sp ob (7 DOF, Axiom 9)
 
   d=0: 0|0000000 ~ 0|1111111   idle (2^7 = 128 states, invalid)
