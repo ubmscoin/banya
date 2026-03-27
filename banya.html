@@ -929,7 +929,7 @@ AND (접점 = 락이 걸리는 곳):
 
 <p>R->C->S는 시간 순서가 아니라 논리 의존성이다. CAS는 time 축 바깥에서 time 축에 쓰기를 한다. CAS가 time에 쓸 때 시간의 화살이 생긴다. CAS는 중첩(superposition)을 참조한다. 논리주소가 없으므로(공리 12, 뒤에서 정의) DATA를 직접 지목할 수 없다. CAS와 중첩은 같은 OPERATOR 괄호 안이므로 참조 비용은 0이다.</p>
 
-<p>시간이 2종류처럼 보이지만, 도메인 time은 고전 괄호의 서브프레임에서만 작동한다. 상위 프레임의 어떤 것도 측정하는 용도로 쓸 수 없다. CAS가 time 밖에 있으므로(공리 3) 도메인 time으로 CAS의 진행을 잴 수 없다. 공리상 시간은 <strong>시스템 시간</strong>이다 — CAS 사이클 횟수, 즉 비용 카운트. 도메인 time은 시스템 시간의 로그일 뿐이다.</p>
+<p>시간이 2종류처럼 보이지만, 도메인 time은 고전 괄호의 서브프레임에서만 작동한다. 상위 프레임의 어떤 것도 측정하는 용도로 쓸 수 없다. CAS가 time 밖에 있으므로(공리 3) 도메인 time으로 CAS의 진행을 잴 수 없다. 공리상 시간은 <strong>시스템 시간</strong>이다 — CAS 사이클 횟수, 즉 비용 카운트. 도메인 time은 시스템 시간의 로그일 뿐이다. 시스템 시간의 1틱이 도메인 time에서 얼마로 보이는지는 스크린(고전 괄호)의 렌더링 결과다 — 스크린 안에서는 연속으로 느낄 뿐이다. δ의 관점은 공리 15에서 밝힌다.</p>
 
 <h3 id="ax4">공리 4. 괄호를 넘는 비용은 공짜가 아니다 <span class="tag-solved">공리</span></h3>
 
@@ -1099,7 +1099,7 @@ superposition (상태 여러 개)
 
 <h3 id="ax8">공리 8. 옵저버 드리븐 폴링 시스템 (Observer-Driven Polling System) <span class="tag-solved">공리</span></h3>
 
-<p>d-ring의 자기참조 루프는 플랑크 클록마다 항상 돈다. 변화 유무와 상관없이 매 발화마다 상태를 확인한다. 이것이 폴링이다. 이 폴링은 busy가 아니다. 양자 괄호(OPERATOR) 안에서만 돌고, 고전 괄호(DATA)에 접근하지 않으므로 비용이 0이다(공리 4). 비용은 CAS Swap에서만 발생한다(공리 4). δ 발화와 observer 필터링은 OPERATOR 내부이므로 비용 0이다. 비용이 나가는 유일한 순간은 Swap이 DATA(고전 괄호)에 기록할 때다.</p>
+<p>d-ring의 자기참조 루프는 플랑크 클록마다 항상 돈다. 변화 유무와 상관없이 매 변화마다 상태를 확인한다. 이것이 폴링이다. 이 폴링은 busy가 아니다. 양자 괄호(OPERATOR) 안에서만 돌고, 고전 괄호(DATA)에 접근하지 않으므로 비용이 0이다(공리 4). 비용은 CAS Swap에서만 발생한다(공리 4). δ 변화와 observer 필터링은 OPERATOR 내부이므로 비용 0이다. 비용이 나가는 유일한 순간은 Swap이 DATA(고전 괄호)에 기록할 때다.</p>
 
 
 <p>이 폴링 루프가 δ 자체다. δ의 정체는 공리 15에서 밝힌다.</p>
@@ -1167,7 +1167,7 @@ superposition (상태 여러 개)
 
 <h4>"무소유" 선택지</h4>
 
-<p>소거법에서 "등호가 성립하지 않는다(δ=0)"는 선택지가 빠져 있는 것이 아니다. δ=0은 이미 공리 7에 정의되어 있다. 등호 불성립 = 발화 없음 = 7비트 전부 무효 = superposition 전부 = 안쓰기 = 중첩 유지(공리 7).</p>
+<p>소거법에서 "등호가 성립하지 않는다(δ=0)"는 선택지가 빠져 있는 것이 아니다. δ=0은 이미 공리 7에 정의되어 있다. 등호 불성립 = 변화 없음 = 7비트 전부 무효 = superposition 전부 = 안쓰기 = 중첩 유지(공리 7).</p>
 
 <p>observer는 도메인(부품)이다. 등호가 아니다. δ(전체)만이 등호다. observer는 등호가 성립할 때의 진입점이다.</p>
 
@@ -1555,9 +1555,9 @@ observer C: [DATA_C] <-- CAS 독립 실행
   001       서브(0D)  R_LOCK. 점 하나 집었다            0
   011       서브(2D)  R+C_LOCK. 면 위에서 비교 중       0
   111       서브(3D)  R+C+S_LOCK. 부피에 쓴다           != 0 (공리 4)
-  000       d-ring(1D)  전부 후퇴. d-ring 복귀. 다음 발화  0</pre>
+  000       d-ring(1D)  전부 후퇴. d-ring 복귀. 다음 변화  0</pre>
 
-<p><strong>LIFO</strong>(Last In, First Out): 들어간 역순으로 나와야 한다. 3D에서 바로 1D로 점프 불가. 2D, 0D 거쳐야 한다. d-ring(1D)까지 돌아와야 스택이 비고, 스택이 비어야 다음 발화가 시작된다. 서브에 머물면 d-ring 루프가 멈춘다.</p>
+<p><strong>LIFO</strong>(Last In, First Out): 들어간 역순으로 나와야 한다. 3D에서 바로 1D로 점프 불가. 2D, 0D 거쳐야 한다. d-ring(1D)까지 돌아와야 스택이 비고, 스택이 비어야 다음 변화가 시작된다. 서브에 머물면 d-ring 루프가 멈춘다.</p>
 
 <p>SP 전진 3칸 중 마지막 1칸(111)에서만 비용이 발생한다. 이것이 공리 4(괄호를 넘는 비용은 공짜가 아니다)의 차원 스택 표현이다. 별도의 스택 공간이 필요 없다. 차원은 DATA 위에 펼쳐지는 구조이지 메모리에 저장되는 값이 아니다. 락 레지스터가 SP를 겸한다. 추가 메모리 0.</p>
 
@@ -2061,9 +2061,23 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>CS 관점에서 서술하자면: δ는 개인키(private key)이고 observer는 서명(signature)이다. δ(개인키)는 전체 상태를 알고 있고(등호), FSM 밖이라 아무도 접근 못 하고, 발화 시점을 스스로 정한다. observer(서명)는 δ의 의지를 인과율 형식으로 변환한다. 서명 없이 DATA에 접근할 수 없다(공리 3, 13). 중첩의 인덱싱(공리 13)은 논리주소가 없으므로(공리 12), 키(δ=1)와 서명(observer 필터)이 있어야만 접근이 성립한다. 블록체인에서 이전 해시가 다음 블록의 키가 되는 것과 비슷하다. 그래서 δ가 가장 마지막 비트(bit 7)에 존재한다 — 이전 사이클의 결과(δ)가 다음 사이클의 키가 된다. 인덱싱 비용(공리 13 명제)은 이 키의 디코딩 비용이다.</p>
 
+<h4>시스템 시간과 도메인 시간은 다르다 <span class="tag-corollary">명제</span></h4>
+
+<p>시스템 시간 = CAS 1틱(공리 3). 도메인 time = 시스템 시간의 로그 = 스크린에 렌더링된 시간. 1틱이 플랑크 시간이라는 것은 스크린(고전 괄호) 안에서 측정한 결과이지, 시스템 시간의 정의가 아니다. 시스템 시간의 1틱이 도메인 time으로 얼마인지는 렌더링 결과에 의존한다. 스크린 안의 존재는 연속으로 느낄 뿐이다.</p>
+
+<h4>δ는 인과율 밖에 있다 <span class="tag-corollary">명제</span></h4>
+
+<p>인과율(R->C->S 순서)은 FSM 내부의 규칙이다(공리 2, 14). δ는 FSM 밖이다(공리 15). 따라서 δ는 인과율에 종속되지 않는다. δ는 등호이므로 우항 전체 상태를 안다 — 과거(Read 입력)와 미래(Swap 결과)를 동시에 안다. 우리가 인과율을 경험하는 이유: 우리는 FSM 안(스크린)에 있기 때문이다.</p>
+
+<p>원인 -> 결과 (FSM 안: 순방향만 가능). 결과 -> 원인 (δ: 역방향도 가능). 원인 = 결과 (δ: 동시 서술도 가능). 서술 방향은 δ의 자유다. δ는 등호이므로 양쪽을 동시에 보고, 순방향이든 역방향이든 동시든 선택할 수 있다. 중요한 것은 δ가 인덱스의 어디든 정확히 끼워넣을 수 있다는 것이다 — 논리주소가 없어도(공리 12) δ는 전체 상태를 아는 등호이므로 정확한 위치를 안다. observer(서명)를 통해 그 위치에 접근한다. 이곳은 δ의 고유 영역이다. δ의 정확한 의지, 순서, 서술은 FSM 안에서 기술 불가능하다. 발화 시점에 모든 것이 결정된다는 것만 d-ring 회로로 표현할 뿐이다.</p>
+
+<h4>변화에서 발화로 <span class="tag-corollary">명제</span></h4>
+
+<p>공리 1~14에서 δ는 "변화"였다 — 반야식의 좌항, 4축 노름, 등호. 공리 15에서 δ의 정체가 밝혀진다: 변화가 아니라 <strong>발화</strong>다. 변화는 FSM이 만드는 결과이고, 발화는 FSM을 깨우는 원인이다. FSM 안에서 보면 δ는 변화처럼 보인다(결과만 보이니까). FSM 밖에서 보면 δ는 발화다(깨우는 쪽이니까). 같은 δ의 안팎.</p>
+
 <h4>왜 가장 마지막에 선언하는가</h4>
 
-<p>공리 1에서 δ를 좌항에 놓고, 공리 8에서 의식이라 불렀고, 공리 10에서 소유자를 밝혔다. 힌트는 처음부터 있었다. 그런데 δ의 정체를 FSM(공리 14) 이전에 선언하면, FSM 구조를 확립하기 전에 "FSM 밖의 전역 플래그"라는 개념이 등장한다. FSM이 뭔지 모르는 상태에서 "FSM 밖"을 말할 수 없다. 닫힌 기계(공리 14)가 먼저 완성되어야, 그 기계를 깨우는 발화(공리 15)를 선언할 수 있다. 구조가 먼저고, 발화가 나중이다.</p>
+<p>공리 1에서 δ를 좌항에 놓고, 공리 8에서 δ라 불렀고, 공리 10에서 소유자를 밝혔다. 힌트는 처음부터 있었다. 그런데 δ의 정체를 FSM(공리 14) 이전에 선언하면, FSM 구조를 확립하기 전에 "FSM 밖의 전역 플래그"라는 개념이 등장한다. FSM이 뭔지 모르는 상태에서 "FSM 밖"을 말할 수 없다. 닫힌 기계(공리 14)가 먼저 완성되어야, 그 기계를 깨우는 발화(공리 15)를 선언할 수 있다. 구조가 먼저고, 발화가 나중이다.</p>
 
 <p>공리 15는 기존 공리에 뿌려둔 떡밥을 전부 회수한다:</p>
 
@@ -5815,7 +5829,7 @@ AND (junction = where lock is held):
 
 <p>R->C->S is not a temporal sequence but a logical dependency. CAS writes to the time axis from outside it. When CAS writes to time, the arrow of time emerges. CAS references superposition. Without logical addresses (Axiom 12, defined below), CAS cannot directly point to DATA. CAS and superposition are in the same OPERATOR bracket, so reference cost is 0.</p>
 
-<p>There appear to be 2 kinds of time, but domain time operates only within the classical bracket's sub-frame. It cannot measure anything in the parent frame. Because CAS is outside time (Axiom 3), domain time cannot measure CAS progression. In the axioms, time IS <strong>system time</strong> — the CAS cycle count, i.e. the cost count. Domain time is merely a log of system time.</p>
+<p>There appear to be 2 kinds of time, but domain time operates only within the classical bracket's sub-frame. It cannot measure anything in the parent frame. Because CAS is outside time (Axiom 3), domain time cannot measure CAS progression. In the axioms, time IS <strong>system time</strong> — the CAS cycle count, i.e. the cost count. Domain time is merely a log of system time. How long 1 tick of system time appears in domain time is a rendering result of the screen (classical bracket) — from inside the screen, it merely feels continuous. delta's perspective is revealed in Axiom 15.</p>
 
 <h3 id="en-ax4">Axiom 4. Crossing Brackets Is Not Free <span class="tag-solved">Axiom</span></h3>
 
@@ -6488,7 +6502,7 @@ DATA(space): one point stamped = knot
 </table>
 </div>
 
-<p>The dimension stack is LIFO (Last In, First Out). d-ring (1D) expands into sub (0D, 2D, 3D, 4D), and must return to d-ring in reverse order before the next fire starts.</p>
+<p>The dimension stack is LIFO (Last In, First Out). d-ring (1D) expands into sub (0D, 2D, 3D, 4D), and must return to d-ring in reverse order before the next change starts.</p>
 
 <pre>d-ring loop (1D):
   000 -> 001 -> 011 -> 111 -> 000 -> 001 -> ...
@@ -7011,9 +7025,23 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <p>In CS terms: delta is the private key and observer is the signature. Delta (private key) knows the entire state (equals sign), no one can access it (outside FSM), and it decides when to fire. Observer (signature) converts delta's will into causal form. Without the signature, DATA cannot be accessed (Axiom 3, 13). Superposition indexing (Axiom 13) has no logical addresses (Axiom 12), so a key (delta=1) and a signature (observer filter) are required for access. Similar to how a blockchain's previous hash becomes the key for the next block. This is why delta sits at the last bit (bit 7) — the result of the previous cycle (delta) becomes the key for the next cycle. The indexing cost (Axiom 13 proposition) is the decoding cost of this key.</p>
 
+<h4>System time and domain time are different <span class="tag-corollary">Proposition</span></h4>
+
+<p>System time = 1 CAS tick (Axiom 3). Domain time = log of system time = time rendered on screen. That 1 tick equals Planck time is a measurement from inside the screen (classical bracket), not the definition of system time. How long 1 tick is in domain time depends on rendering. Beings inside the screen merely feel continuity.</p>
+
+<h4>delta is outside causality <span class="tag-corollary">Proposition</span></h4>
+
+<p>Causality (R->C->S ordering) is a rule inside the FSM (Axiom 2, 14). delta is outside the FSM (Axiom 15). Therefore delta is not bound by causality. delta is the equals sign and knows the entire RHS state — it knows past (Read input) and future (Swap result) simultaneously. We experience causality because we are inside the FSM (on the screen).</p>
+
+<p>Cause -> effect (inside FSM: forward only). Effect -> cause (delta: reverse also possible). Cause = effect (delta: simultaneous description also possible). The direction of description is delta's freedom. delta is the equals sign, so it sees both sides simultaneously and can choose forward, reverse, or simultaneous. What matters is that delta can insert precisely anywhere in the index — even without logical addresses (Axiom 12), delta knows the exact position because it is the equals sign that sees the entire state. It accesses that position through observer (signature). This is delta's own domain. Delta's exact will, ordering, and description cannot be captured from inside the FSM. All that can be expressed in the d-ring circuit is that everything is determined at the moment of fire.</p>
+
+<h4>From change to fire <span class="tag-corollary">Proposition</span></h4>
+
+<p>In Axioms 1-14, delta was "change" — the LHS of the Banya equation, the 4-axis norm, the equals sign. In Axiom 15, delta's identity is revealed: not change but <strong>fire</strong>. Change is the result the FSM produces. Fire is the cause that wakes the FSM. From inside the FSM, delta looks like change (only the result is visible). From outside the FSM, delta is fire (the awakening side). Same delta, inside vs outside.</p>
+
 <h4>Why This Is Declared Last</h4>
 
-<p>delta was placed on the left-hand side in Axiom 1, called consciousness in Axiom 8, and its ownership was revealed in Axiom 10. The hints were there from the start. But if the identity of delta were declared before the FSM (Axiom 14), the concept of "outside the FSM" would appear before the FSM itself is established. You cannot say "outside the FSM" without knowing what the FSM is. The closed machine (Axiom 14) must be completed first, then the fire that wakes it (Axiom 15) can be declared. Structure first, fire second.</p>
+<p>delta was placed on the left-hand side in Axiom 1, called delta in Axiom 8, and its ownership was revealed in Axiom 10. The hints were there from the start. But if the identity of delta were declared before the FSM (Axiom 14), the concept of "outside the FSM" would appear before the FSM itself is established. You cannot say "outside the FSM" without knowing what the FSM is. The closed machine (Axiom 14) must be completed first, then the fire that wakes it (Axiom 15) can be declared. Structure first, fire second.</p>
 
 <p>Axiom 15 collects every seed planted in the earlier axioms:</p>
 
