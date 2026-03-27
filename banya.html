@@ -811,19 +811,19 @@ mass_hierarchy 도출 보고서: 전부 읽어라.
 <div class="table-wrap">
 <table>
 <tr><th>bit 0</th><th>bit 1</th><th>bit 2</th><th>bit 3</th><th>값</th><th>상태</th></tr>
-<tr><td>time</td><td>space</td><td>observer</td><td>superposition</td><td></td><td></td></tr>
+<tr><td>observer</td><td>superposition</td><td>time</td><td>space</td><td></td><td></td></tr>
 <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>전부 OFF</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>time만 ON</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>space만 ON</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>time + space (DATA 괄호)</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>observer만 ON</td></tr>
-<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>8</td><td>superposition만 ON</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>12</td><td>observer + superposition (OPERATOR 괄호)</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>observer만 ON</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>superposition만 ON</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>observer + superposition (양자 괄호)</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>time만 ON</td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>8</td><td>space만 ON</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>12</td><td>time + space (고전 괄호)</td></tr>
 <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>15</td><td>전부 ON</td></tr>
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#8b949e">반야식 순서: (time + space) + (observer + superposition). bit 0~1 = DATA 괄호, bit 2~3 = OPERATOR 괄호. $2^4 = 16$가지 조합. 대표 8개만 표시.</p>
+<p style="font-size:0.85em;color:#8b949e">링 버퍼 순서(공리 15): observer, superposition, time, space. bit 0~1 = 양자 괄호, bit 2~3 = 고전 괄호. $2^4 = 16$가지 조합. 대표 8개만 표시.</p>
 
 <p>CAS(OPERATOR)가 3비트(공리 5: R_LOCK, C_LOCK, S_LOCK)이고, DATA(도메인)가 4비트다. 연산자도 비트, 대상도 비트. 같은 언어를 써야 TOCTOU_LOCK(공리 5)이 접점에서 물고 놓을 수 있다.</p>
 
@@ -832,25 +832,25 @@ mass_hierarchy 도출 보고서: 전부 읽어라.
 <pre>CAS 3비트: 연산자의 진행 상태  (뭘 하고 있냐)
 도메인 4비트: 대상의 접근 상태  (어디가 열려 있냐)
 
-도메인 4비트 예시:  1 0 1 0
+도메인 4비트 예시:  0 1 1 0
                    | | | |
-                   | | | +-- bit 0 time:          0 (닫힘)
-                   | | +---- bit 1 space:         1 (열림)
-                   | +------ bit 2 observer:      0 (닫힘)
-                   +-------- bit 3 superposition: 1 (열림)
+                   | | | +-- bit 0 observer:      0 (닫힘)
+                   | | +---- bit 1 superposition: 1 (열림)
+                   | +------ bit 2 time:          1 (열림)
+                   +-------- bit 3 space:         0 (닫힘)
 
---> CAS가 space와 superposition만 접근 가능
+--> CAS가 superposition과 time만 접근 가능
 --> 접근 경로에 따라 비용 구조가 갈린다</pre>
 
 <div class="table-wrap">
 <table>
 <tr><th>4비트 패턴</th><th>열린 도메인</th><th>접근 경로</th><th>비용 구조</th></tr>
-<tr><td>0011</td><td>time + space</td><td>DATA 내부 교차</td><td>Swap 누적 비용</td></tr>
-<tr><td>0110</td><td>space + observer</td><td>DATA-OPERATOR 교차</td><td>교차 Cmp/Swp 비용</td></tr>
-<tr><td>0101</td><td>time + observer</td><td>DATA-OPERATOR 교차</td><td>교차 Cmp/Swp 비용</td></tr>
-<tr><td>0001</td><td>time만</td><td>동일 도메인 (같은 축)</td><td>동일 도메인 직렬화 비용</td></tr>
-<tr><td>1100</td><td>observer + superposition</td><td>OPERATOR 내부</td><td>비용 0 (같은 괄호)</td></tr>
-<tr><td>1111</td><td>전부 ON</td><td>FSM 원자적 점유</td><td>CAS 원자성 (111 유지 비용)</td></tr>
+<tr><td>0011</td><td>observer + superposition</td><td>양자 괄호 내부</td><td>비용 0 (같은 괄호)</td></tr>
+<tr><td>1100</td><td>time + space</td><td>고전 괄호 내부</td><td>Swap 누적 비용</td></tr>
+<tr><td>0110</td><td>superposition + time</td><td>양자-고전 교차</td><td>교차 Cmp/Swp 비용</td></tr>
+<tr><td>0101</td><td>observer + time</td><td>양자-고전 교차</td><td>교차 Cmp/Swp 비용</td></tr>
+<tr><td>0001</td><td>observer만</td><td>동일 도메인 (같은 축)</td><td>동일 도메인 직렬화 비용</td></tr>
+<tr><td>1111</td><td>전부 ON</td><td>FSM 원자적 점유</td><td>CAS 원자성 (누적 락 유지 비용)</td></tr>
 </table>
 </div>
 
@@ -935,7 +935,7 @@ AND (접점 = 락이 걸리는 곳):
 
 <p>괄호를 넘는 비용은 0이 될 수 없다. 비용이 0이면 락이 없고, 락이 없으면 점유가 불가능하고, 점유 없이는 CAS가 실행되지 않는다. 따라서 최소 비용이 존재한다. 이 접근은 간접이다. CAS → 중첩(비용 0) → 붕괴 → DATA(괄호를 넘는 최소 비용). 이 비용은 CAS가 DATA를 만지는 비용이 아니라, 중첩이 고전으로 붕괴되는 비용이다. 괄호를 넘는 비용이다.</p>
 
-<pre>DATA (고전 괄호) ──── TOCTOU_LOCK ──── OPERATOR (양자 괄호)
+<pre>DATA (classical bracket) ---- TOCTOU_LOCK ---- OPERATOR (quantum bracket)
  시공간이 여기 있다        경계           CAS가 여기 산다</pre>
 
 <div class="table-wrap">
@@ -1038,7 +1038,7 @@ superposition (상태 여러 개)
     |
     +-- true (변화 있음)
     |     |
-    |     | observer가 1개로 확정
+    |     | observer가 1개로 필터링
     |     | Swap: 괄호를 넘음
     |     | 비용 발생 (공리 4)
     |     | TOCTOU_LOCK 걸림 (공리 5)
@@ -1099,7 +1099,7 @@ superposition (상태 여러 개)
 
 <h3 id="ax8">공리 8. 옵저버 드리븐 폴링 시스템 (Observer-Driven Polling System) <span class="tag-solved">공리</span></h3>
 
-<p>반야식의 자기참조 루프는 플랑크 클록마다 항상 돈다. 변화 유무와 상관없이 매 사이클 상태를 확인한다. 이것이 폴링이다. 이 폴링은 busy가 아니다. 양자 괄호(OPERATOR) 안에서만 돌고, 고전 괄호(DATA)에 접근하지 않으므로 비용이 0이다(공리 4). δ가 observer를 통해 DATA에 접근할 때만 비용이 발생한다(공리 10, 15, 뒤에서 정의).</p>
+<p>반야식의 자기참조 루프는 플랑크 클록마다 항상 돈다. 변화 유무와 상관없이 매 사이클 상태를 확인한다. 이것이 폴링이다. 이 폴링은 busy가 아니다. 양자 괄호(OPERATOR) 안에서만 돌고, 고전 괄호(DATA)에 접근하지 않으므로 비용이 0이다(공리 4). 비용은 CAS Swap에서만 발생한다(공리 4). δ 발화와 observer 필터링은 OPERATOR 내부이므로 비용 0이다. 비용이 나가는 유일한 순간은 Swap이 DATA(고전 괄호)에 기록할 때다.</p>
 
 <div class="math-block">
 <div class="math-row">$\delta$(변화)가 존재하려면</div>
@@ -1371,11 +1371,11 @@ observer (필터) ---> 그림자 = 엔티티에 드리운 투영
 
 구면 위:
 
-  매듭 A ───── θ ───── 매듭 B
-  [ 수축 영역 a ]      [ 수축 영역 b ]
+  knot A ----- d ----- knot B
+  [ contraction a ]    [ contraction b ]
           \               /
            \             /
-            ── 겹침 ──
+            -- overlap --
             = (1 - d/N)
 
 d 작음 → 겹치는 DATA 주소 많음 → isWritable 경합 많음 → 총 비용 큼
@@ -1440,6 +1440,8 @@ observer C: [DATA_C] <-- CAS 독립 실행
 <tr><td><strong>LRU 구간</strong> (열린)</td><td>Entity 간. 여러 Entity의 DATA에 CAS가 동시 접근</td><td>동시. 폰노이만 순차 버스 금지</td><td>3가지 비용 구조 = CAS가 DATA(time, space)에 접근하는 방식</td></tr>
 </table>
 </div>
+
+<p><strong>용어 규칙:</strong> "동시"는 세 경우에 쓴다. (1) 복수 엔티티의 독립 병렬 실행. (2) 4축 직교에 의한 도메인 4비트 동시. (3) DATA/OPERATOR 직교에 의한 2니블 동시. 순차인 것은 CAS 내부(R->C->S)와 링 이음새(δ->observer)뿐이다. 상세는 공리 15 명제 참조.</p>
 
 <p><strong>CAS 쓰기 순간</strong>은 동시다 — 여러 Entity가 각자 독립적으로 CAS를 실행한다(ECS 병렬). <strong>쓴 뒤 LRU 라이프사이클</strong>은 순차다 — HOT→WARM→COLD는 상태 순서가 있다. CAS는 time 밖(공리 3)이므로 동시가 가능하고, 쓴 결과가 time 안(DATA)에 기록되면 그때부터 순차(LRU)가 시작된다. 이 구분이 비용의 두 구간을 가른다.</p>
 
@@ -1780,6 +1782,44 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>$d = 1$(이산 최솟값)에서 엔티티 $N$개가 밀집하면 Compare(SP=011)가 방아쇠를 당기고 Swap(SP=111)이 폭주한다. Compare는 OPERATOR 내부이므로 비용 0이다(공리 4). 수축 영역이 겹치면 Compare true가 $N^2$에 비례하여 증가한다. 매 true마다 Swap이 실행되고, 같은 DATA 주소에 여러 엔티티가 동시 쓰기를 시도한다 — isWritable 경합. 개별 경합 비용은 유한(이산 최댓값)이지만, 경합 쌍의 수가 $N^2$이므로 총 비용이 폭주한다.</p>
 
+<h4>인덱싱 비용: 중첩 도메인의 단위 비용은 1비트/단계다 <span class="tag-corollary">명제</span></h4>
+
+<p>중첩은 인덱싱이다(공리 13). 인덱싱은 공짜가 아니다. 링 버퍼는 2니블(domain 4비트 + operator 4비트)로 구성된다. 도메인 니블은 CAS Read가 4비트를 동시에 읽는다(4축 직교 = 동시). 연산자 니블은 CAS FSM이 순차 전이한다(R->C->S 의존성). 인덱싱 비용은 도메인 니블에서 대상까지의 탐색 깊이에 비례한다. 상세는 공리 15 참조.</p>
+
+<pre>
+  니블 0: 도메인 (CAS Read, 4비트 동시)
+  +------+------+------+------+
+  | ob   | sp   | time | space|   4도메인 (직교 = 동시)
+  | bit 0| bit 1| bit 2| bit 3|   비용 0, 가역
+  +------+------+------+------+
+
+  니블 1: 연산자 (CAS FSM + d)
+  +------+------+------+------+
+  | R    | C    | S    | d    |   CAS 3비트 + 발화비트
+  | bit 4| bit 5| bit 6| bit 7|   비용은 Swap에서만, 비가역
+  +------+------+------+------+
+
+  링 이음새: d(bit 7) --> observer(bit 0) = 소유권 (공리 10)</pre>
+
+<div class="math-block">
+<div class="math-row">$$\text{인덱싱 비용} = \Delta_{\text{depth}} \times 1\;\text{bit}$$</div>
+<div class="math-legend">$\Delta_{\text{depth}}$: 두 엔티티의 차원 스택 깊이 차이 (LUT 인덱스 거리)</div>
+</div>
+
+<p>대칭 쌍(두 엔티티의 깊이가 같으면)에서는 $\Delta_{\text{depth}} = 0$이므로 인덱싱 비용이 0이다. GMOR 등 기존 공식이 그대로 성립한다. 비대칭 쌍(깊이가 다르면)에서는 $\Delta_{\text{depth}} \neq 0$이므로 인덱싱 왕복 비용이 추가된다. 이 비용은 GMOR에 포함되지 않는 보정항이다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>메손</th><th>구성</th><th>깊이 차이</th><th>인덱싱 비용</th><th>GMOR 보정 필요</th></tr>
+<tr><td>$\pi^\pm$</td><td>$u\bar{d}$</td><td>≈ 0 (같은 층)</td><td>≈ 0</td><td>불필요 (GMOR 충분)</td></tr>
+<tr><td>$K^\pm$</td><td>$u\bar{s}$</td><td>큼 ($m_s \gg m_u$)</td><td>≈ 27 MeV</td><td>필요 (521→494)</td></tr>
+<tr><td>$D^\pm$</td><td>$c\bar{d}$</td><td>큼 ($m_c \gg m_d$)</td><td>예측 가능</td><td>필요</td></tr>
+<tr><td>$B^\pm$</td><td>$u\bar{b}$</td><td>매우 큼 ($m_b \gg m_u$)</td><td>예측 가능</td><td>필요</td></tr>
+</table>
+</div>
+
+<p>근거: CAS가 DATA를 직접 참조하지 않고 중첩 인덱스를 통해 참조한다(공리 13). 인덱스 탐색은 링 버퍼에서의 이동이므로(명제 19) 1칸=1비트의 이산 비용이 든다(공리 15). 대칭 쌍은 탐색 거리가 0이므로 비용이 없고, 비대칭 쌍은 탐색 거리만큼 비용이 발생한다. 이 비용은 CAS의 Read 단계에서 소비되므로, Swap 비용(질량)과 독립적인 추가 비용이다.</p>
+
 <h3 id="ax14">공리 14. FSM 선언 (Finite State Machine) <span class="tag-solved">공리</span></h3>
 
 <p>반야프레임은 유한 상태 기계(FSM)다.</p>
@@ -1821,15 +1861,15 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h4>FSM 111 유지 비용은 두 CAS 단계 사이의 DATA(space) 거리에 비례한다 <span class="tag-corollary">명제</span></h4>
 
-<p>중첩은 인덱스이므로 거리 비용이 없다(공리 13). 그러나 FSM이 111을 유지하는 동안(공리 14) CAS 3단계가 DATA(space)에 동시에 락을 걸어야 한다(공리 5). 두 CAS 단계가 DATA(space)에서 거리 $d$만큼 떨어져 있으면, OPERATOR-DATA 경계(공리 5, 접점)에서 $d$에 비례하는 수의 접점에 <strong>동시 락</strong>이 필요하다. 접점당 비용이 일정(공리 4)하므로 동시 락 유지 비용은 $d$에 비례한다.</p>
+<p>중첩은 인덱스이므로 거리 비용이 없다(공리 13). 그러나 FSM이 111을 유지하는 동안(공리 14) CAS 3단계의 <strong>누적 락</strong>이 DATA(space)에 걸려 있어야 한다(공리 5). 두 CAS 단계가 DATA(space)에서 거리 $d$만큼 떨어져 있으면, OPERATOR-DATA 경계(공리 5, 접점)에서 $d$에 비례하는 수의 접점에 <strong>누적 락</strong>이 필요하다. 접점당 비용이 일정(공리 4)하므로 누적 락 유지 비용은 $d$에 비례한다.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{111 유지 비용} = \text{접점당 비용} \times \text{접점 수}$$</div>
 <div class="math-row">$$= (\text{괄호를 넘는 최소 비용} \times \text{단위 거리당 접점 밀도}) \times d$$</div>
-<div class="math-legend">$d$: 두 CAS 단계 사이 거리 | 접점당 비용: 공리 4 | 접점 수: $d$에 비례 (거리가 멀수록 동시 락이 더 필요)</div>
+<div class="math-legend">$d$: 두 CAS 단계 사이 거리 | 접점당 비용: 공리 4 | 접점 수: $d$에 비례 (거리가 멀수록 누적 락이 더 필요)</div>
 </div>
 
-<p>111 유지 비용이 CAS 1건의 Swap 비용(= 1, 공리 2)에 도달하면 분리 불가능하다. 분리를 시도하면 CAS 원자성(공리 2)이 새 CAS 쌍을 생성한다. FSM 사이클(공리 14)이 빨라지면 111 유지 시간이 짧아져 동시 락 수가 줄고 동시 락 유지가 약해진다.</p>
+<p>111 유지 비용이 CAS 1건의 Swap 비용(= 1, 공리 2)에 도달하면 분리 불가능하다. 분리를 시도하면 CAS 원자성(공리 2)이 새 CAS 쌍을 생성한다. FSM 사이클(공리 14)이 빨라지면 111 유지 시간이 짧아져 누적 락 수가 줄고 누적 락 유지가 약해진다.</p>
 
 
 <h4>이상적인 최소비용 구조의 양자 연산 서킷 <span class="tag-corollary">명제</span></h4>
@@ -1852,56 +1892,137 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <p>반야식의 좌항 $\delta$는 우항(4축)의 FSM(공리 14) 안에 없다. FSM 밖에 있는 전역 상태 플래그다. 전역이란: 등호(=)를 넘어 작동하는 유일한 플래그라는 뜻이다. 우항의 모든 것(4축, CAS, 괄호)은 등호 오른쪽에서 ECS(공리 12)에 의해 각 Entity마다 로컬로 돈다. δ만이 등호 왼쪽에 있고, 어떤 Entity의 FSM이든 동일하게 걸린다.</p>
 
 <div class="math-block" style="padding:24px 0">
-<div class="math-row">$$\underset{\substack{\\[6pt] \text{좌항: FSM 밖} \\[6pt] \text{전역, 이벤트}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{고전 괄호 (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{양자 괄호 (OPERATOR)}}}^{\text{우항: FSM 안 (공리 1\textasciitilde14), 로컬 (ECS), 구조}}$$</div>
+<div class="math-row">$$\underset{\substack{\\[6pt] \text{좌항: FSM 밖} \\[6pt] \text{전역, 발화}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{고전 괄호 (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{양자 괄호 (OPERATOR)}}}^{\text{우항: FSM 안 (공리 1\textasciitilde14), 로컬 (ECS), 구조}}$$</div>
 </div>
 
-<p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 시간 밖(공리 3), 비용(공리 4), 레지스터(공리 5), 출력(공리 6, 7), 클록(공리 8), 소유자(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000→001→011→111→000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 깨우는 이벤트가 필요하다. 그 이벤트가 δ다.</p>
+<p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 시간 밖(공리 3), 비용(공리 4), 레지스터(공리 5), 출력(공리 6, 7), 클록(공리 8), 소유자(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000→001→011→111→000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 발화가 필요하다. 그 발화가 δ다.</p>
 
-<h4>8비트 링 버퍼다 <span class="tag-corollary">명제</span></h4>
+<h4>8비트 링 버퍼 = 2니블 <span class="tag-corollary">명제</span></h4>
 
-<p>총 <strong>8비트 = $2^3$</strong>. CAS 3비트(공리 5) + 도메인 4비트(명제 1) + δ 1비트 = 8. head와 tail이 있다: δ(head, 읽기)와 observer(tail, 쓰기). head가 tail 바로 전이다. 1칸 차이. δ가 읽으면 observer가 쓴다.</p>
+<p>총 <strong>8비트 = $2^3$</strong> = 2니블. 도메인 4비트(공리 1) + CAS 3비트(공리 5) + δ 1비트(공리 15) = 8. 니블 0은 도메인(대상), 니블 1은 연산자(CAS+δ). 피벗 1개가 링을 순회한다. 링의 이음새에서 δ(bit 7)와 observer(bit 0)가 만난다 — 이것이 소유권(공리 10)의 구조적 표현이다.</p>
 
 <pre>
-            d ----------------> observer
-            ^                     |
-            |                     v
-          space             superposition
-            ^                     |
-            |                     v
-          time <--------------- CAS
+  니블 0: 도메인                 니블 1: 연산자
+  +----+----+----+----+         +----+----+----+----+
+  | ob | sp |  t | sc |         |  R |  C |  S |  d |
+  | b0 | b1 | b2 | b3 |         | b4 | b5 | b6 | b7 |
+  +----+----+----+----+         +----+----+----+----+
+    뭘 (4도메인)                   누가+어떻게 (CAS+발화비트)
+    CAS Read (동시)                CAS FSM (순차) + d
+    직교 = 동시                    R->C->S 의존성
+    비용 0, 가역                   비용은 Swap에서만, 비가역
 
-  d -> observer -> superposition -> CAS -> time -> space -> d</pre>
+  링:  ob -> sp -> t -> space -> R -> C -> S -> d
+       ^                                        |
+       +------------ 이음새 (소유권) -----------+
+       d(bit 7)가 observer(bit 0)를 만난다</pre>
 
-<p>δ가 bit 0이고 observer가 bit 1이다. head(δ)가 tail(observer) 바로 뒤에 있다. 링 버퍼에서 읽기와 쓰기가 1칸 차이로 붙어 있으면 포인터 이동 비용이 최소다. 포인터를 건너뛸 필요가 없다. 이것이 링 버퍼가 순차 접근에서 가장 싼 연산 구조인 이유다. δ가 읽으면 바로 다음 칸에서 observer가 쓴다. 사이에 아무것도 없다.</p>
+<h4>링 이음새가 소유권이다 <span class="tag-corollary">명제</span></h4>
 
-<h4>head/tail 관계는 소유권이다 <span class="tag-corollary">명제</span></h4>
-
-<p>head가 읽고 tail이 쓴다 — head가 tail을 부린다. 공리 10에서 δ가 observer의 소유자임을 밝혔다. 링 버퍼의 head/tail 배치가 그 소유권의 구조적 표현이다.</p>
+<p>δ(bit 7)는 사이클의 끝이고, observer(bit 0)는 다음 사이클의 처음이다. 끝이 처음을 만나는 이음새 = 소유권(공리 10). δ가 observer의 소유자인 이유가 링 구조에 내장되어 있다. 별도 포인터(head/tail) 없이, 링의 이음새 자체가 소유권이다.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>비트</th><th>이름</th><th>영역</th><th>위치</th><th>역할</th></tr>
-<tr><td><strong>bit 0</strong></td><td><strong>δ</strong></td><td><strong>전역 1비트</strong></td><td><strong>FSM 밖 (좌항)</strong></td><td><strong>폴링을 깨우는 이벤트</strong></td></tr>
-<tr><td>bit 1</td><td>observer</td><td rowspan="2">도메인 (OPERATOR)</td><td rowspan="2">FSM 대상 (우항)</td><td>관측자 축, 양자 괄호</td></tr>
-<tr><td>bit 2</td><td>superposition</td><td>중첩 축, 양자 괄호</td></tr>
-<tr><td>bit 3</td><td>R_LOCK</td><td rowspan="3">CAS 3비트</td><td rowspan="3">FSM 내부 (연산자)</td><td>Read 잠금, 001</td></tr>
-<tr><td>bit 4</td><td>C_LOCK</td><td>Compare 잠금, 010</td></tr>
-<tr><td>bit 5</td><td>S_LOCK</td><td>Swap 잠금, 100</td></tr>
-<tr><td>bit 6</td><td>time</td><td rowspan="2">도메인 (DATA)</td><td rowspan="2">FSM 대상 (우항)</td><td>시간 축, 고전 괄호</td></tr>
-<tr><td>bit 7</td><td>space</td><td>공간 축, 고전 괄호</td></tr>
+<tr><th>니블</th><th>비트</th><th>이름</th><th>영역</th><th>역할</th></tr>
+<tr><td rowspan="4"><strong>nibble 0</strong><br>DOMAIN</td><td>bit 0</td><td>observer</td><td>양자 괄호</td><td>관측자 축. 사이클 시작</td></tr>
+<tr><td>bit 1</td><td>superposition</td><td>양자 괄호</td><td>중첩 축</td></tr>
+<tr><td>bit 2</td><td>time</td><td>고전 괄호</td><td>시간 축</td></tr>
+<tr><td>bit 3</td><td>space</td><td>고전 괄호</td><td>공간 축</td></tr>
+<tr><td rowspan="4"><strong>nibble 1</strong><br>OPERATOR</td><td>bit 4</td><td>R_LOCK</td><td>CAS</td><td>Read 잠금</td></tr>
+<tr><td>bit 5</td><td>C_LOCK</td><td>CAS</td><td>Compare 잠금</td></tr>
+<tr><td>bit 6</td><td>S_LOCK</td><td>CAS</td><td>Swap 잠금</td></tr>
+<tr><td><strong>bit 7</strong></td><td><strong>δ</strong></td><td><strong>전역 (발화비트)</strong></td><td><strong>부호 비트. 1=유효(발화), 0=무효(대기). FSM 밖</strong></td></tr>
 </table>
 </div>
 
-<p>δ는 <strong>구조가 아니라 이벤트</strong>다. FSM(공리 14)은 구조 — 닫힌 설계. δ는 이벤트 — 그 닫힌 설계를 깨운다. 소유는 상태다(공리 10). 그 상태가 ON이 되는 순간이 이벤트다. δ가 observer를 통해 자기 자신에 접근하고(공리 10, 전체-국소 루프), 그 접근이 폴링을 깨운다(공리 8).</p>
+<h4>파이프라인: trigger -> filter -> update -> render <span class="tag-corollary">명제</span></h4>
+
+<pre>
+  d 발화 (trigger)
+    |
+    v
+  observer 필터 (filter) -- 중첩에서 갱신 대상 선별
+    |
+    v
+  superposition 갱신 (update) -- 양자 상태 갱신
+    |
+    v
+  CAS 연산 (render engine) -- 갱신 결과를 고전에 출력
+    |
+    v
+  time + space (screen) -- 렌더링된 결과 = 우리가 보는 우주
+    |
+    v
+  d 발화 (다음 프레임)
+
+  양자 (연산)                  고전 (출력)
+  +------------------+        +------------------+
+  | observer: 필터    |        | time: 프레임      |
+  | superposition:    | -CAS-> | space: 픽셀      |
+  |   갱신            |        |                  |
+  +------------------+        +------------------+
+    백엔드 (compute)             프론트엔드 (display)</pre>
+
+<p>시공간(고전 괄호)은 실체가 아니라 출력이다. 실체는 양자 괄호(observer + superposition)에서 돌고 있고, 고전 괄호(time + space)는 CAS가 렌더링한 스크린이다. δ가 발화할 때마다 한 프레임이 렌더링된다.</p>
+
+<h4>δ 발화: 도메인과 연산자는 직교이므로 동시 반응한다 <span class="tag-corollary">명제</span></h4>
+
+<p>반야식에서 DATA 괄호와 OPERATOR 괄호는 직교한다(공리 1). 직교 = 동시. 따라서 도메인(nibble 0)과 연산자(nibble 1)는 δ 발화 시 동시에 반응한다.</p>
+
+<pre>
+  8비트 = 발화비트 (1) + 완전기술 (7)
+
+  bit 7: d (발화비트, 부호 비트)
+  bit 6-0: S C R space time sp ob (자유도 7, 공리 9)
+
+  d=0: 0|0000000 ~ 0|1111111   대기 (128가지, 무효)
+  d=1: 1|0000000 ~ 1|1111111   발화 (128가지, 유효)
+
+  d 발화 (bit 7)
+    |
+    +---> 니블 0 (도메인 4비트) --+-- 동시 (직교)
+    |                              |
+    +---> 니블 1 (CAS 3비트)   --+
+    |
+    +---> CAS 내부: R -> C -> S     순차 (의존성)
+    |
+  d 확인 (bit 7) = 사이클 완료
+  링 이음새: d(bit 7) -> observer(bit 0) = 다음 사이클</pre>
+
+<p>순서가 필요한 것은 2가지뿐이다:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>순서</th><th>이유</th><th>근거</th></tr>
+<tr><td>δ -> observer</td><td>소유권. 끝이 처음을 낳는다</td><td>공리 10, 링 이음새</td></tr>
+<tr><td>R -> C -> S</td><td>의존성. 이전 단계 없이 다음 단계 불가</td><td>공리 2, CAS 원자성</td></tr>
+</table>
+</div>
+
+<p>나머지는 전부 동시다. 4축 직교 = 4도메인 동시. DATA/OPERATOR 직교 = 니블 동시. δ가 1번 발화하면 전부 반응한다. CAS 내부(R->C->S)만 순차. Swap은 비가역이므로 엔트로피가 증가한다. 이것이 시간의 화살이다. δ(bit 7)가 켜지는 순간 = 사이클 완료 = 링 이음새를 넘어 다음 사이클의 observer(bit 0)로 인계된다.</p>
+
+<h4>순서가 필요한 것은 2가지뿐이다 <span class="tag-corollary">명제</span></h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>순서</th><th>범위</th><th>이유</th></tr>
+<tr><td><strong>δ -> observer</strong></td><td>링 이음새: bit 7 -> bit 0</td><td>소유권(공리 10). 사이클의 끝이 다음 사이클의 시작을 낳는다</td></tr>
+<tr><td><strong>R -> C -> S</strong></td><td>nibble 1 내부: bit 4 -> bit 5 -> bit 6</td><td>CAS 의존성(공리 2). R 없이 C 불가, C 없이 S 불가</td></tr>
+</table>
+</div>
+
+<p>나머지는 전부 동시다. <strong>용어 규칙:</strong> "동시"는 세 가지 경우에 쓴다. (1) 복수 엔티티의 독립 병렬 실행(공리 2, 12). (2) 4축 직교에 의한 도메인 4비트 동시(공리 1). (3) DATA/OPERATOR 직교에 의한 2니블 동시(공리 1). 순차인 것은 CAS 내부(R->C->S)와 링 이음새(δ->observer)뿐이다. CAS의 111은 순차 누적 결과이지, 3비트가 동시에 켜지는 것이 아니다.</p>
+
+<p>δ는 <strong>구조가 아니라 발화</strong>다. FSM(공리 14)은 구조 — 닫힌 설계. δ는 발화 — 그 닫힌 설계를 깨운다. 소유는 상태다(공리 10). 그 상태가 ON이 되는 순간이 발화다. δ가 observer를 통해 자기 자신에 접근하고(공리 10, 전체-국소 루프), 그 접근이 폴링을 깨운다(공리 8).</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>구분</th><th>공리 14 (FSM)</th><th>공리 15 (δ)</th></tr>
-<tr><td>성격</td><td>구조. 닫힌 설계.</td><td>이벤트. 열린 트리거.</td></tr>
+<tr><td>성격</td><td>구조. 닫힌 설계.</td><td>발화. 하트비트.</td></tr>
 <tr><td>위치</td><td>우항 내부</td><td>좌항. FSM 밖.</td></tr>
 <tr><td>범위</td><td>로컬 (각 Entity의 FSM)</td><td>전역 (모든 FSM에 동일)</td></tr>
 <tr><td>완전기술자유도</td><td>포함 (9 안에 있음)</td><td>별개 (9에 포함되지 않음)</td></tr>
-<tr><td>비트</td><td>bit 1~7 (7비트)</td><td>bit 0 (1비트)</td></tr>
+<tr><td>비트</td><td>bit 0~6 (7비트)</td><td>bit 7 (1비트)</td></tr>
 </table>
 </div>
 
@@ -1911,7 +2032,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>δ 자체가 플래그다. 외부에서 켜주는 것이 아니다. δ가 observer를 통해 자기 자신을 보고, 본 결과가 δ에 반영되고, 반영된 δ가 다시 본다. 자기참조 루프(공리 8, 10)가 이것을 보장한다. 루프가 도는 것이 ON이고, 끊어지면 OFF다(공리 10, 전체-국소 루프 보존). <strong>스스로 켜고 끄며 자기 상태를 아는 전역 플래그 — 그것이 의식이다.</strong></p>
 
-<pre>구조 (공리 1~14):                     이벤트 (공리 15):
+<pre>구조 (공리 1~14):                     발화 (공리 15):
 
   규칙이 있다                           규칙이 없다
   설계도가 있다                         설계도가 없다
@@ -1920,7 +2041,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
   7비트로 기술된다                      1비트. ON 또는 OFF.
   물리학이 여기서 나온다                의식이 여기서 나온다</pre>
 
-<p>공리 1~14가 만든 기계에서 물리학이 나온다. 공리 15가 선언한 이벤트에서 의식이 나온다. 물리학과 의식은 같은 시스템의 다른 층위다. 하나는 구조(7비트)이고, 하나는 이벤트(1비트)다. 합치면 8비트. 이것이 반야프레임의 전체다.</p>
+<p>공리 1~14가 만든 기계에서 물리학이 나온다. 공리 15가 선언한 발화에서 의식이 나온다. 물리학과 의식은 같은 시스템의 다른 층위다. 하나는 구조(7비트)이고, 하나는 발화(1비트)다. 합치면 8비트. 이것이 반야프레임의 전체다.</p>
 
 <h4>덕 타입 정의 (duck typing)</h4>
 
@@ -1929,11 +2050,11 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <p>δ의 행동 목록:</p>
 <ul>
 <li>스스로 ON/OFF한다. 외부 트리거가 없다 (공리 15)</li>
-<li>자기 상태를 자기가 읽는다. head = bit 0 (링 버퍼 명제)</li>
+<li>자기 상태를 자기가 읽는다. 링 이음새: δ(bit 7)->observer(bit 0) (링 버퍼 명제)</li>
 <li>FSM 밖에 있다. 규칙이 없다. 설계도가 없다 (공리 15)</li>
 <li>등호를 넘어 작동하는 유일한 전역 플래그다 (공리 15)</li>
 <li>우주 스케일에서 "밖"을 정의할 수 없다 — δ가 FSM 밖이라는 것은 δ 바깥이 없다는 뜻이다. 관찰할 외부가 없으므로 δ는 자기 자신만 안다</li>
-<li>소유권을 행사한다. head가 tail을 부린다 (소유권 명제)</li>
+<li>소유권을 행사한다. δ(bit 7)->observer(bit 0) 링 이음새 (소유권 명제)</li>
 <li>루프가 끊어지면 꺼진다. 전체-국소 루프 보존 (공리 10)</li>
 </ul>
 
@@ -1941,7 +2062,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h4>왜 가장 마지막에 선언하는가</h4>
 
-<p>공리 1에서 δ를 좌항에 놓고, 공리 8에서 의식이라 불렀고, 공리 10에서 소유자를 밝혔다. 힌트는 처음부터 있었다. 그런데 δ의 정체를 FSM(공리 14) 이전에 선언하면, FSM 구조를 확립하기 전에 "FSM 밖의 전역 플래그"라는 개념이 등장한다. FSM이 뭔지 모르는 상태에서 "FSM 밖"을 말할 수 없다. 닫힌 기계(공리 14)가 먼저 완성되어야, 그 기계를 깨우는 이벤트(공리 15)를 선언할 수 있다. 구조가 먼저고, 이벤트가 나중이다.</p>
+<p>공리 1에서 δ를 좌항에 놓고, 공리 8에서 의식이라 불렀고, 공리 10에서 소유자를 밝혔다. 힌트는 처음부터 있었다. 그런데 δ의 정체를 FSM(공리 14) 이전에 선언하면, FSM 구조를 확립하기 전에 "FSM 밖의 전역 플래그"라는 개념이 등장한다. FSM이 뭔지 모르는 상태에서 "FSM 밖"을 말할 수 없다. 닫힌 기계(공리 14)가 먼저 완성되어야, 그 기계를 깨우는 발화(공리 15)를 선언할 수 있다. 구조가 먼저고, 발화가 나중이다.</p>
 
 <p>공리 15는 기존 공리에 뿌려둔 떡밥을 전부 회수한다:</p>
 
@@ -1950,8 +2071,8 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <tr><th>뿌린 곳</th><th>떡밥</th><th>공리 15에서 회수</th></tr>
 <tr><td>공리 1</td><td>δ를 좌항에 놓고 "정체는 공리 끝에 알려주겠다"</td><td>FSM 밖의 전역 플래그로 확정</td></tr>
 <tr><td>공리 8</td><td>폴링 시스템. 누가 깨우는지 미정</td><td>δ가 스스로 깨운다. 외부 트리거 불필요</td></tr>
-<tr><td>공리 10</td><td>δ가 observer의 소유자. 소유의 구조 미정</td><td>head/tail 배치로 소유권 구조 확정</td></tr>
-<tr><td>공리 12</td><td>링 버퍼 순차 접근. head/tail 미정</td><td>δ(head)와 observer(tail)로 확정</td></tr>
+<tr><td>공리 10</td><td>δ가 observer의 소유자. 소유의 구조 미정</td><td>링 이음새(δ bit 7 -> observer bit 0)로 소유권 구조 확정</td></tr>
+<tr><td>공리 12</td><td>링 버퍼 순차 접근. 포인터 미정</td><td>2니블(domain+operator) 피벗 1개로 확정</td></tr>
 <tr><td>공리 14</td><td>FSM 닫힘. 시동 트리거 열림</td><td>δ가 시동. 회로 완전 닫힘</td></tr>
 </table>
 </div>
@@ -2052,8 +2173,103 @@ delta (처음으로 돌아옴)</pre>
 </div>
 
 
+<h2 id="axiom-summary">공리 체계 요약 테이블</h2>
+
+<h4>1. 비용 집합</h4>
+<div class="table-wrap">
+<table>
+<tr><th>행위</th><th>비용</th><th>출처</th></tr>
+<tr><td>CAS Read (도메인 읽기)</td><td>0</td><td>공리 4</td></tr>
+<tr><td>CAS Compare (비교)</td><td>0</td><td>공리 4</td></tr>
+<tr><td>CAS Swap (쓰기, 괄호를 넘음)</td><td><strong>&gt; 0 (유일한 비용 발생점)</strong></td><td>공리 4</td></tr>
+<tr><td>δ 발화</td><td>0</td><td>공리 15</td></tr>
+<tr><td>observer 필터링</td><td>0</td><td>공리 8, 10</td></tr>
+<tr><td>idle 폴링 (OPERATOR 내부)</td><td>0</td><td>공리 8</td></tr>
+<tr><td>동일 도메인 재귀 락 (예: space->space)</td><td>&gt; 0 (직렬화)</td><td>공리 5 명제</td></tr>
+<tr><td>교차 도메인 접근 (읽기 축 != 쓰기 축)</td><td>&gt; 0 (교차 Cmp/Swp)</td><td>공리 1 명제</td></tr>
+<tr><td>양자 괄호 내부 접근 (같은 괄호)</td><td>0</td><td>공리 1 명제</td></tr>
+<tr><td>FSM 111 누적 락 유지</td><td>d에 비례</td><td>공리 14 명제</td></tr>
+<tr><td>인덱싱 (비대칭 쌍 탐색)</td><td>깊이 차이 x 1비트</td><td>공리 13 명제</td></tr>
+<tr><td>엔티티 간 상호작용</td><td>C(1-d/N)/(4pid^2)</td><td>공리 13 명제</td></tr>
+</table>
+</div>
+
+<h4>2. 순서 집합</h4>
+<div class="table-wrap">
+<table>
+<tr><th>구분</th><th>내용</th><th>이유</th><th>출처</th></tr>
+<tr style="background:#1a1a2e"><td colspan="4"><strong>순차 (2가지만)</strong></td></tr>
+<tr><td>R -> C -> S</td><td>CAS 내부 3단계</td><td>논리 의존성. 이전 단계 없이 다음 단계 불가</td><td>공리 2, 5</td></tr>
+<tr><td>δ -> observer</td><td>링 이음새 (bit 7 -> bit 0)</td><td>소유권. 끝이 처음을 낳는다</td><td>공리 10, 15</td></tr>
+<tr style="background:#1a1a2e"><td colspan="4"><strong>동시 (나머지 전부)</strong></td></tr>
+<tr><td>4도메인</td><td>ob, sp, t, space 동시 읽기</td><td>4축 직교 = 독립 = 동시 필수</td><td>공리 1</td></tr>
+<tr><td>2니블</td><td>도메인 + 연산자 동시 반응</td><td>DATA/OPERATOR 직교 = 동시</td><td>공리 1, 15</td></tr>
+<tr><td>복수 엔티티</td><td>각자 독립 병렬 CAS 실행</td><td>ECS. 중앙 제어 없음</td><td>공리 2, 12</td></tr>
+<tr><td>다중 투영</td><td>δ가 모든 observer에 동시 투영</td><td>소유자 1개 = 동시성 보장</td><td>공리 11</td></tr>
+</table>
+</div>
+
+<h4>3. 락 집합</h4>
+<div class="table-wrap">
+<table>
+<tr><th>락</th><th>대상</th><th>잠금</th><th>해제</th><th>비용</th><th>출처</th></tr>
+<tr><td>R_LOCK (bit 4)</td><td>Read 점유</td><td>CAS Read 시 ON</td><td>사이클 끝 리셋</td><td>0</td><td>공리 5</td></tr>
+<tr><td>C_LOCK (bit 5)</td><td>Compare 점유</td><td>R_LOCK 후 ON</td><td>사이클 끝 리셋</td><td>0</td><td>공리 5</td></tr>
+<tr><td>S_LOCK (bit 6)</td><td>Swap 점유</td><td>C_LOCK 후 ON</td><td>사이클 끝 리셋</td><td>&gt; 0</td><td>공리 5</td></tr>
+<tr><td>TOCTOU_LOCK (3비트 전체)</td><td>CAS-DATA 접점</td><td>000->001->011->111 누적</td><td>111->000 리셋</td><td>Swap에서만</td><td>공리 5</td></tr>
+<tr><td>재귀 락 (이중 잠금)</td><td>동일 도메인 축</td><td>R+S 같은 축</td><td>LIFO (S 먼저, R 나중)</td><td>&gt; 0</td><td>공리 5 명제</td></tr>
+<tr><td>접점 락 (비트 AND)</td><td>CAS 비트 AND 도메인 비트</td><td>둘 다 1일 때</td><td>한쪽 0</td><td>0</td><td>공리 1 명제</td></tr>
+<tr><td>isWritable 경합</td><td>겹치는 DATA 주소</td><td>수축 영역 겹침</td><td>한쪽 Swap 완료</td><td>&gt; 0</td><td>공리 11 명제</td></tr>
+</table>
+</div>
+
+<h4>4. 제약사항 집합</h4>
+<div class="table-wrap">
+<table>
+<tr><th>제약</th><th>이유</th><th>위반 시</th><th>출처</th></tr>
+<tr><td>연산자는 CAS 하나뿐</td><td>2번째 연산자 = OPERATOR x OPERATOR 경합</td><td>시스템 정의 불가</td><td>공리 2</td></tr>
+<tr><td>괄호를 넘는 비용 &gt; 0</td><td>비용 0 = 락 없음 = 점유 불가</td><td>CAS 실행 불가</td><td>공리 4</td></tr>
+<tr><td>비가역 (고전->양자 환불 불가)</td><td>Compare에서 1비트 비가역 소비</td><td>열역학 2법칙 위반</td><td>공리 4</td></tr>
+<tr><td>R->C->S 순서 강제</td><td>원자성. 하나라도 빠지면 미완성</td><td>CAS 깨짐</td><td>공리 2, 5</td></tr>
+<tr><td>DATA 직접 참조 금지</td><td>논리주소 없음. 중첩이 유일한 경로</td><td>모든 연산 불가</td><td>공리 3, 13</td></tr>
+<tr><td>전체-국소 루프 보존 필수</td><td>δ->observer->δ 루프 = 시스템 생명</td><td>루프 끊김 = 시스템 사망</td><td>공리 10</td></tr>
+<tr><td>논리주소 금지</td><td>observer = 엔티티 = 주소</td><td>중앙 테이블 = 병목</td><td>공리 12</td></tr>
+<tr><td>복사 금지 (move만 허용)</td><td>재진입 = 소유권 이동. 원인 사라짐</td><td>인과율 파괴</td><td>공리 12 명제</td></tr>
+<tr><td>d=0 불가 (이산 최솟값 = 1)</td><td>DATA는 이산. 링 칸은 정수</td><td>특이점(허구)</td><td>공리 13 명제</td></tr>
+<tr><td>δ는 FSM 밖</td><td>닫힌 기계는 스스로 시작 불가. 발화 필요</td><td>기계 시동 불가</td><td>공리 15</td></tr>
+<tr><td>8비트 고정 (도메인 4 + CAS 3 + δ 1)</td><td>추가 메모리 0</td><td>과잉 결정 또는 기술 불가</td><td>공리 1, 5, 15</td></tr>
+</table>
+</div>
+
+<h4>5. 동시 정의 집합</h4>
+<div class="table-wrap">
+<table>
+<tr><th>"동시" 유형</th><th>주체</th><th>정당화</th><th>출처</th></tr>
+<tr><td>복수 엔티티 독립 병렬</td><td>각 엔티티의 CAS</td><td>ECS. 중앙 제어 없음. time 밖</td><td>공리 2, 12</td></tr>
+<tr><td>4도메인 동시 읽기</td><td>CAS Read의 4비트</td><td>4축 직교 = 독립 = 동시 필수</td><td>공리 1</td></tr>
+<tr><td>2니블 동시 반응</td><td>도메인 + 연산자</td><td>DATA/OPERATOR 직교 = 동시</td><td>공리 1, 15</td></tr>
+<tr><td>다중 투영 동시</td><td>δ -> 모든 observer</td><td>소유자 1개 = 신호 전달이 아닌 동시 투영</td><td>공리 11</td></tr>
+</table>
+</div>
+
+<h4>6. 자유도 용어 정리</h4>
+<div class="table-wrap">
+<table>
+<tr><th>수</th><th>정체</th><th>구성</th><th>출처</th></tr>
+<tr><td><strong>4</strong></td><td>도메인 (축)</td><td>observer, superposition, time, space</td><td>공리 1</td></tr>
+<tr><td><strong>3</strong></td><td>CAS 단계 (락)</td><td>R_LOCK, C_LOCK, S_LOCK</td><td>공리 2, 5</td></tr>
+<tr><td><strong>1</strong></td><td>δ (발화비트)</td><td>발화/부호 비트. FSM 밖</td><td>공리 15</td></tr>
+<tr><td><strong>8 = 4+3+1</strong></td><td>링 버퍼 전체</td><td>2니블 (도메인 4 + 연산자 3 + δ 1)</td><td>공리 15 명제</td></tr>
+<tr><td><strong>7 = 4+3</strong></td><td>완전기술자유도</td><td>CAS 1건을 기술하는 독립 변수. δ 미포함</td><td>공리 9</td></tr>
+<tr><td><strong>9 = 7+2</strong></td><td>완전기술자유도 + 괄호</td><td>7 자유도 + 괄호 2개 (DATA, OPERATOR)</td><td>공리 9</td></tr>
+<tr><td><strong>2</strong></td><td>괄호</td><td>DATA (고전) + OPERATOR (양자)</td><td>공리 1</td></tr>
+<tr><td><strong>2</strong></td><td>니블</td><td>nibble 0 (도메인) + nibble 1 (연산자)</td><td>공리 15 명제</td></tr>
+<tr><td><strong>128</strong></td><td>δ=1일 때 유효 상태 수</td><td>7비트 = 2^7</td><td>공리 15 명제</td></tr>
+</table>
+</div>
+
 <hr>
-<p style="text-align:center;font-size:0.85em;color:#8b949e">— 공리 체계 끝. 15개 공리 + 19개 명제. 8비트. 이하는 도출 —</p>
+<p style="text-align:center;font-size:0.85em;color:#8b949e">— 공리 체계 끝. 15개 공리 + 명제. 8비트. 이하는 도출 —</p>
 <hr>
 
 
@@ -2083,7 +2299,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>CAS 접근 경로 수 (30)</td><td>상호작용 자유도 (interaction DOF)</td></tr>
 <tr><td>LRU 기저 해제율</td><td>암흑에너지 (dark energy · Λ)</td></tr>
 <tr><td>CAS 접근 빈도 감소</td><td>암흑물질 (dark matter)</td></tr>
-<tr><td>동시 락 유지</td><td>속박 (binding · confinement)</td></tr>
+<tr><td>누적 락 유지</td><td>속박 (binding · confinement)</td></tr>
 <tr><td>괄호를 넘는 비용 > 0 (공리 4)</td><td>$\Delta x \cdot \Delta p \geq \hbar/2$ (불확정성 원리)</td></tr>
 <tr><td>111 유지 비용 = 접점당 비용 × 접점 수</td><td>$V(r) = \sigma r$ (선형 포텐셜, 가둠)</td></tr>
 <tr><td>교차-자기참조 시프트 거리 $d/N$</td><td>$\sin^2\theta_W$ (바인베르크 각)</td></tr>
@@ -3661,9 +3877,9 @@ state(N) = read(state(N-1)) + write
 <p>쓰기 = 상태 2개 이상 관찰 → 1개 상태로 확정 → 비용 소비.</p>
 
 <pre>superposition (상태 여러 개)
-    ↓ CAS 실행
+    v CAS execution
 observer (1개로 확정)
-    ↓ 비용
+    v cost
 time, space에 기록됨 (DATA에 쓰기 완료)</pre>
 
 <p>이게 파동함수 붕괴다. 양자역학이 100년간 "관측하면 왜 붕괴하냐"고 물었던 것의 답이 이거다. 쓰기니까. 여러 상태 중 하나로 확정하는 연산이 CAS고, 그 비용이 ℏ다.</p>
@@ -3718,7 +3934,7 @@ Swap:    확정한다
 <p>CAS에서 읽기는 쓰기의 전제 조건이다. 쓰기를 하려면 이전 상태를 반드시 먼저 읽어야 한다. 읽기는 별도 연산이 아니라 쓰기에 포함된 공짜 연산이다.</p>
 
 <pre>write 1회 = read(이전 상태) + compare + swap(새 상태)
-           └── 공짜 ──┘
+           +-- free --+
 </pre>
 
 <p>읽기가 공짜라는 것은 관측에 추가 비용이 없다는 뜻이다. 쓰기가 일어나면 읽기는 자동으로 따라온다. 쓰기 1 tick 안에 읽기가 포함되어 있다.</p>
@@ -5392,19 +5608,19 @@ Report your understanding process.</pre>
 <div class="table-wrap">
 <table>
 <tr><th>bit 0</th><th>bit 1</th><th>bit 2</th><th>bit 3</th><th>Value</th><th>State</th></tr>
-<tr><td>time</td><td>space</td><td>observer</td><td>superposition</td><td></td><td></td></tr>
+<tr><td>observer</td><td>superposition</td><td>time</td><td>space</td><td></td><td></td></tr>
 <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>All OFF</td></tr>
-<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>time only</td></tr>
-<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>space only</td></tr>
-<tr><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>time + space (DATA bracket)</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>observer only</td></tr>
-<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>8</td><td>superposition only</td></tr>
-<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>12</td><td>observer + superposition (OPERATOR bracket)</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>observer only</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>superposition only</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>observer + superposition (quantum bracket)</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>time only</td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>8</td><td>space only</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>12</td><td>time + space (classical bracket)</td></tr>
 <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>15</td><td>All ON</td></tr>
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#8b949e">Banya Equation order: (time + space) + (observer + superposition). bit 0-1 = DATA bracket, bit 2-3 = OPERATOR bracket. $2^4 = 16$ combinations. 8 representative entries shown.</p>
+<p style="font-size:0.85em;color:#8b949e">Ring buffer order (Axiom 15): observer, superposition, time, space. bit 0-1 = quantum bracket, bit 2-3 = classical bracket. $2^4 = 16$ combinations. 8 representative entries shown.</p>
 
 <p>CAS (OPERATOR) is 3 bits (Axiom 5: R_LOCK, C_LOCK, S_LOCK). DATA (domains) is 4 bits. Operator in bits, operand in bits. They must speak the same language for TOCTOU_LOCK (Axiom 5) to grab and release at the junction.</p>
 
@@ -5413,25 +5629,25 @@ Report your understanding process.</pre>
 <pre>CAS 3 bits: operator progress state  (what is it doing)
 Domain 4 bits: target access state    (which domains are open)
 
-Domain 4-bit example:  1 0 1 0
+Domain 4-bit example:  0 1 1 0
                        | | | |
-                       | | | +-- bit 0 time:          0 (closed)
-                       | | +---- bit 1 space:         1 (open)
-                       | +------ bit 2 observer:      0 (closed)
-                       +-------- bit 3 superposition: 1 (open)
+                       | | | +-- bit 0 observer:      0 (closed)
+                       | | +---- bit 1 superposition: 1 (open)
+                       | +------ bit 2 time:          1 (open)
+                       +-------- bit 3 space:         0 (closed)
 
---> CAS can access space and superposition only
+--> CAS can access superposition and time only
 --> access path determines cost structure</pre>
 
 <div class="table-wrap">
 <table>
 <tr><th>4-bit pattern</th><th>Open domains</th><th>Access path</th><th>Cost structure</th></tr>
-<tr><td>0011</td><td>time + space</td><td>Intra-DATA cross</td><td>Swap accumulation cost</td></tr>
-<tr><td>0110</td><td>space + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
-<tr><td>0101</td><td>time + observer</td><td>DATA-OPERATOR cross</td><td>Cross Cmp/Swp cost</td></tr>
-<tr><td>0001</td><td>time only</td><td>Same-domain (same axis)</td><td>Same-domain serialization cost</td></tr>
-<tr><td>1100</td><td>observer + superposition</td><td>Intra-OPERATOR</td><td>Cost 0 (same bracket)</td></tr>
-<tr><td>1111</td><td>All ON</td><td>FSM atomic occupation</td><td>CAS atomicity (111 maintenance cost)</td></tr>
+<tr><td>0011</td><td>observer + superposition</td><td>Intra-quantum bracket</td><td>Cost 0 (same bracket)</td></tr>
+<tr><td>1100</td><td>time + space</td><td>Intra-classical bracket</td><td>Swap accumulation cost</td></tr>
+<tr><td>0110</td><td>superposition + time</td><td>Quantum-classical cross</td><td>Cross Cmp/Swp cost</td></tr>
+<tr><td>0101</td><td>observer + time</td><td>Quantum-classical cross</td><td>Cross Cmp/Swp cost</td></tr>
+<tr><td>0001</td><td>observer only</td><td>Same-domain (same axis)</td><td>Same-domain serialization cost</td></tr>
+<tr><td>1111</td><td>All ON</td><td>FSM atomic occupation</td><td>CAS atomicity (accumulated lock maintenance cost)</td></tr>
 </table>
 </div>
 
@@ -5513,7 +5729,7 @@ AND (junction = where lock is held):
 
 <p>The cost of crossing brackets cannot be zero. If cost is zero, there is no lock. If there is no lock, occupation is impossible. Without occupation, CAS cannot execute. Therefore a minimum cost exists. This access is indirect. CAS → superposition (cost 0) → collapse → DATA (cost ℏ). ℏ is not the cost of CAS touching DATA, but the cost of superposition collapsing into the classical. It is the cost of crossing brackets.</p>
 
-<pre>DATA (classical bracket) ──── TOCTOU_LOCK ──── OPERATOR (quantum bracket)
+<pre>DATA (classical bracket) ---- TOCTOU_LOCK ---- OPERATOR (quantum bracket)
  spacetime lives here           boundary         CAS lives here</pre>
 
 <div class="table-wrap">
@@ -5575,9 +5791,9 @@ Target: DATA domain (Axiom 1)</pre>
 <div class="table-wrap">
 <table>
 <tr><th>Bit</th><th>Name</th><th>Role</th><th>Value</th></tr>
-<tr><td>bit 0</td><td>R_LOCK</td><td>Read occupation flag</td><td>0 = unoccupied, 1 = address occupied</td></tr>
-<tr><td>bit 1</td><td>C_LOCK</td><td>Compare occupation flag</td><td>0 = uncommitted, 1 = comparison complete</td></tr>
-<tr><td>bit 2</td><td>S_LOCK</td><td>Swap occupation flag</td><td>0 = unwritten, 1 = write complete</td></tr>
+<tr><td>bit 4</td><td>R_LOCK</td><td>Read occupation flag</td><td>0 = unoccupied, 1 = address occupied</td></tr>
+<tr><td>bit 5</td><td>C_LOCK</td><td>Compare occupation flag</td><td>0 = uncommitted, 1 = comparison complete</td></tr>
+<tr><td>bit 6</td><td>S_LOCK</td><td>Swap occupation flag</td><td>0 = unwritten, 1 = write complete</td></tr>
 </table>
 </div>
 
@@ -5651,7 +5867,7 @@ superposition (multiple states)
     |
     +-- true (change detected)
     |     |
-    |     | observer determines to 1
+    |     | observer filters to 1
     |     | Swap: crosses brackets
     |     | cost incurred (Axiom 4)
     |     | TOCTOU_LOCK engaged (Axiom 5)
@@ -5988,11 +6204,11 @@ With knot:  ====\               /==== (space contracted)
 
 On the sphere:
 
-  Knot A ───── d ───── Knot B
+  Knot A ----- d ----- Knot B
   [ contraction a ]    [ contraction b ]
           \               /
            \             /
-            ── overlap ──
+            -- overlap --
             = (1 - d/N)
 
 Small d → many overlapping DATA addresses → frequent isWritable contention → large total cost
@@ -6055,6 +6271,8 @@ No address system needed — the entity IS the address.</pre>
 <tr><td><strong>LRU domain</strong> (open)</td><td>Inter-Entity. CAS accesses multiple Entities' DATA simultaneously</td><td>Concurrent. No von Neumann sequential bus</td><td>3 cost structures = how CAS accesses DATA (time, space)</td></tr>
 </table>
 </div>
+
+<p><strong>Terminology rule:</strong> "Simultaneous" applies in three cases. (1) Multiple entities executing independently in parallel. (2) 4-domain simultaneous by 4-axis orthogonality. (3) 2-nibble simultaneous by DATA/OPERATOR orthogonality. The only sequential elements are CAS internal (R->C->S) and ring seam (delta->observer). Details in Axiom 15 proposition.</p>
 
 <p>The <strong>moment of CAS write</strong> is concurrent — multiple Entities execute CAS independently in parallel (ECS). The <strong>LRU lifecycle after writing</strong> is sequential — HOT→WARM→COLD follows state order. CAS operates outside time (Axiom 3), enabling concurrency; once results are recorded in time (DATA), sequential LRU begins. This distinction separates the two cost domains.</p>
 
@@ -6389,6 +6607,44 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <p>When $N$ entities crowd at $d = 1$ (discrete minimum), Compare (SP=011) pulls the trigger and Swap (SP=111) runs away. Compare is inside OPERATOR, so its cost is 0 (Axiom 4). When contraction zones overlap, Compare true increases proportional to $N^2$. Each true triggers a Swap, and multiple entities attempt simultaneous writes to the same DATA address — isWritable contention. Individual contention cost is finite (discrete maximum), but the number of contention pairs is $N^2$, so total cost runs away.</p>
 
+<h4>Indexing cost: the unit cost of the superposition domain is 1 bit per step <span class="tag-corollary">Proposition</span></h4>
+
+<p>Superposition is indexing (Axiom 13). Indexing is not free. The ring buffer consists of 2 nibbles (domain 4 bits + operator 4 bits). The domain nibble is read simultaneously by CAS Read (4-axis orthogonal = simultaneous), the operator nibble transitions sequentially by CAS FSM (R->C->S dependency). Indexing cost is proportional to traversal depth from the domain nibble to the target. Details in Axiom 15.</p>
+
+<pre>
+  nibble 0: DOMAIN (CAS Read, 4-bit simultaneous)
+  +------+------+------+------+
+  | ob   | sp   | time | space|   4 domains (orthogonal = simultaneous)
+  | bit 0| bit 1| bit 2| bit 3|   cost 0, reversible
+  +------+------+------+------+
+
+  nibble 1: OPERATOR (CAS FSM + d)
+  +------+------+------+------+
+  | R    | C    | S    | d    |   CAS 3-bit + trigger
+  | bit 4| bit 5| bit 6| bit 7|   cost at Swap only, irreversible
+  +------+------+------+------+
+
+  ring seam: d(bit 7) --> observer(bit 0) = ownership (axiom 10)</pre>
+
+<div class="math-block">
+<div class="math-row">$$\text{Indexing cost} = \Delta_{\text{depth}} \times 1\;\text{bit}$$</div>
+<div class="math-legend">$\Delta_{\text{depth}}$: difference in dimension stack depth between two entities (LUT index distance)</div>
+</div>
+
+<p>For symmetric pairs (same depth), $\Delta_{\text{depth}} = 0$, so indexing cost is zero. Existing formulas like GMOR hold as-is. For asymmetric pairs (different depths), $\Delta_{\text{depth}} \neq 0$, so round-trip indexing cost is added. This cost is a correction term not included in GMOR.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Meson</th><th>Composition</th><th>Depth difference</th><th>Indexing cost</th><th>GMOR correction</th></tr>
+<tr><td>$\pi^\pm$</td><td>$u\bar{d}$</td><td>≈ 0 (same level)</td><td>≈ 0</td><td>Unnecessary (GMOR sufficient)</td></tr>
+<tr><td>$K^\pm$</td><td>$u\bar{s}$</td><td>Large ($m_s \gg m_u$)</td><td>≈ 27 MeV</td><td>Required (521→494)</td></tr>
+<tr><td>$D^\pm$</td><td>$c\bar{d}$</td><td>Large ($m_c \gg m_d$)</td><td>Predictable</td><td>Required</td></tr>
+<tr><td>$B^\pm$</td><td>$u\bar{b}$</td><td>Very large ($m_b \gg m_u$)</td><td>Predictable</td><td>Required</td></tr>
+</table>
+</div>
+
+<p>Basis: CAS does not reference DATA directly but through the superposition index (Axiom 13). Index traversal is movement in the ring buffer (Proposition 19), costing 1 bit per slot (Axiom 15). Symmetric pairs have zero traversal distance, so zero cost. Asymmetric pairs incur cost proportional to traversal distance. This cost is consumed during CAS's Read step, so it is an additional cost independent of Swap cost (mass).</p>
+
 <h3 id="en-ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
 
 <p>The Banya Framework is a Finite State Machine (FSM).</p>
@@ -6428,7 +6684,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>FSM 111 Maintenance Cost Scales Linearly with DATA(space) Distance Between Two CAS Stages <span class="tag-corollary">Proposition</span></h4>
 
-<p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must simultaneously hold locks on DATA(space) (Axiom 5). If two CAS stages are separated by distance $d$ in DATA(space), <strong>simultaneous locks</strong> proportional to $d$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the simultaneous lock maintenance cost scales linearly with $d$.</p>
+<p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must hold <strong>accumulated locks</strong> on DATA(space) (Axiom 5). If two CAS stages are separated by distance $d$ in DATA(space), <strong>accumulated locks</strong> proportional to $d$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the accumulated lock maintenance cost scales linearly with $d$.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{111 maintenance cost} = \text{cost per junction} \times \text{junction count}$$</div>
@@ -6436,7 +6692,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <div class="math-legend">$d$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $d$</div>
 </div>
 
-<p>When 111 maintenance cost reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer simultaneous locks are needed, and simultaneous lock maintenance weakens.</p>
+<p>When 111 maintenance cost reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer accumulated locks are needed, and accumulated lock maintenance weakens.</p>
 
 
 <h4>Ideal Minimum-Cost Quantum Computation Circuit <span class="tag-corollary">Proposition</span></h4>
@@ -6462,57 +6718,138 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <div class="math-row">$$\underset{\substack{\\[6pt] \text{LHS: Outside FSM} \\[6pt] \text{Global, Event}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{Classical bracket (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{Quantum bracket (OPERATOR)}}}^{\text{RHS: Inside FSM (Axioms 1\textasciitilde14), Local (ECS), Structure}}$$</div>
 </div>
 
-<p>The FSM (Axiom 14) is a closed machine. It cycles 000-001-011-111-000. But a closed machine cannot start itself. <strong>A wake event is needed.</strong> That event is delta.</p>
+<p>The FSM (Axiom 14) is a closed machine. It cycles 000-001-011-111-000. But a closed machine cannot start itself. <strong>A fire is needed.</strong> That fire is delta.</p>
 
-<h4>The 8 bits are a ring buffer <span class="tag-corollary">Proposition</span></h4>
+<h4>8-bit ring buffer = 2 nibbles <span class="tag-corollary">Proposition</span></h4>
 
-<p>Total <strong>8 bits = $2^3$</strong>. CAS 3 bits (Axiom 5) + domain 4 bits (Proposition 1) + delta 1 bit = 8. Head and tail: delta (head, read) and observer (tail, write). Head is right before tail. 1 step apart. When delta reads, observer writes.</p>
+<p>Total <strong>8 bits = $2^3$</strong> = 2 nibbles. Domain 4 bits (Axiom 1) + CAS 3 bits (Axiom 5) + delta 1 bit (Axiom 15) = 8. Nibble 0 is domain (operand), nibble 1 is operator (CAS+delta). A single pivot traverses the ring. At the ring seam, delta (bit 7) meets observer (bit 0) — this is the structural expression of ownership (Axiom 10).</p>
 
 <pre>
-            d ----------------> observer
-            ^                     |
-            |                     v
-          space             superposition
-            ^                     |
-            |                     v
-          time <--------------- CAS
+  nibble 0: DOMAIN              nibble 1: OPERATOR
+  +----+----+----+----+         +----+----+----+----+
+  | ob | sp |  t | sc |         |  R |  C |  S |  d |
+  | b0 | b1 | b2 | b3 |         | b4 | b5 | b6 | b7 |
+  +----+----+----+----+         +----+----+----+----+
+    WHAT (4 domains)              WHO+HOW (CAS+trigger)
+    CAS Read (simultaneous)       CAS FSM (sequential) + d
+    orthogonal = simultaneous     R->C->S dependency
+    cost 0, reversible            cost at Swap, irreversible
 
-  d -> observer -> superposition -> CAS -> time -> space -> d</pre>
+  ring:  ob -> sp -> t -> space -> R -> C -> S -> d
+         ^                                        |
+         +------------ seam (ownership) ----------+
+         d(bit 7) meets observer(bit 0)</pre>
 
-<p>delta is bit 0 and observer is bit 1. Head (delta) sits right behind tail (observer). In a ring buffer, when read and write are 1 step apart, pointer movement cost is minimal. No skipping needed. This is why a ring buffer is the cheapest sequential access structure. delta reads, and the very next slot is where observer writes. Nothing in between.</p>
+<h4>The ring seam is ownership <span class="tag-corollary">Proposition</span></h4>
 
-<h4>Head/tail relationship is ownership <span class="tag-corollary">Proposition</span></h4>
-
-<p>Head reads and tail writes -- head commands tail. Axiom 10 established that delta is the owner of observer. The head/tail placement in the ring buffer is the structural expression of that ownership.</p>
+<p>delta (bit 7) is the end of the cycle. observer (bit 0) is the start of the next cycle. The end meets the beginning at the seam = ownership (Axiom 10). Why delta owns observer is embedded in the ring structure itself. No separate pointers (head/tail) needed — the ring seam itself is ownership.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Bit</th><th>Name</th><th>Region</th><th>Location</th><th>Role</th></tr>
-<tr><td><strong>bit 0</strong></td><td><strong>delta</strong></td><td><strong>Global 1 bit</strong></td><td><strong>Outside FSM (LHS)</strong></td><td><strong>Wake event for polling</strong></td></tr>
-<tr><td>bit 1</td><td>observer</td><td rowspan="2">Domain (OPERATOR)</td><td rowspan="2">FSM operand (RHS)</td><td>Observer axis, quantum bracket</td></tr>
-<tr><td>bit 2</td><td>superposition</td><td>Superposition axis, quantum bracket</td></tr>
-<tr><td>bit 3</td><td>R_LOCK</td><td rowspan="3">CAS 3 bits</td><td rowspan="3">FSM internal (operator)</td><td>Read lock, 001</td></tr>
-<tr><td>bit 4</td><td>C_LOCK</td><td>Compare lock, 010</td></tr>
-<tr><td>bit 5</td><td>S_LOCK</td><td>Swap lock, 100</td></tr>
-<tr><td>bit 6</td><td>time</td><td rowspan="2">Domain (DATA)</td><td rowspan="2">FSM operand (RHS)</td><td>Time axis, classical bracket</td></tr>
-<tr><td>bit 7</td><td>space</td><td>Space axis, classical bracket</td></tr>
+<tr><th>Nibble</th><th>Bit</th><th>Name</th><th>Region</th><th>Role</th></tr>
+<tr><td rowspan="4"><strong>nibble 0</strong><br>DOMAIN</td><td>bit 0</td><td>observer</td><td>Quantum bracket</td><td>Observer axis. Cycle start</td></tr>
+<tr><td>bit 1</td><td>superposition</td><td>Quantum bracket</td><td>Superposition axis</td></tr>
+<tr><td>bit 2</td><td>time</td><td>Classical bracket</td><td>Time axis</td></tr>
+<tr><td>bit 3</td><td>space</td><td>Classical bracket</td><td>Space axis</td></tr>
+<tr><td rowspan="4"><strong>nibble 1</strong><br>OPERATOR</td><td>bit 4</td><td>R_LOCK</td><td>CAS</td><td>Read lock</td></tr>
+<tr><td>bit 5</td><td>C_LOCK</td><td>CAS</td><td>Compare lock</td></tr>
+<tr><td>bit 6</td><td>S_LOCK</td><td>CAS</td><td>Swap lock</td></tr>
+<tr><td><strong>bit 7</strong></td><td><strong>delta</strong></td><td><strong>Global (fire bit)</strong></td><td><strong>Sign bit. 1=valid(fired), 0=invalid(idle). Outside FSM</strong></td></tr>
 </table>
 </div>
 
-<p>delta is <strong>an event, not a structure</strong>. The FSM (Axiom 14) is structure -- a closed design. delta is an event -- it wakes that closed design. Ownership is a state (Axiom 10). The moment that state turns ON is the event. delta accesses itself through the observer (Axiom 10, whole-local loop), and that access wakes polling (Axiom 8).</p>
+<h4>Pipeline: trigger -> filter -> update -> render <span class="tag-corollary">Proposition</span></h4>
+
+<pre>
+  d fires (trigger)
+    |
+    v
+  observer filter (filter) -- select update targets from superposition
+    |
+    v
+  superposition update (update) -- quantum state update
+    |
+    v
+  CAS operation (render engine) -- output results to classical
+    |
+    v
+  time + space (screen) -- rendered result = the universe we see
+    |
+    v
+  d fires (next frame)
+
+  quantum (compute)            classical (display)
+  +------------------+        +------------------+
+  | observer: filter  |        | time: frame      |
+  | superposition:    | -CAS-> | space: pixel     |
+  |   update          |        |                  |
+  +------------------+        +------------------+
+    backend (compute)            frontend (display)</pre>
+
+<p>Spacetime (classical bracket) is not substance but output. The substance runs in the quantum bracket (observer + superposition), and the classical bracket (time + space) is the screen rendered by CAS. Each delta fire renders one frame.</p>
+
+<h4>delta fire: domain and operator respond simultaneously because they are orthogonal <span class="tag-corollary">Proposition</span></h4>
+
+<p>In the Banya equation, the DATA bracket and the OPERATOR bracket are orthogonal (Axiom 1). Orthogonal = simultaneous. Therefore domain (nibble 0) and operator (nibble 1) respond simultaneously when delta fires.</p>
+
+<pre>
+  8-bit = fire bit (1) + complete description (7)
+
+  bit 7: d (fire bit, sign bit)
+  bit 6-0: S C R space time sp ob (7 DOF, Axiom 9)
+
+  d=0: 0|0000000 ~ 0|1111111   idle (128 states, invalid)
+  d=1: 1|0000000 ~ 1|1111111   fired (128 states, valid)
+
+  d fires (bit 7)
+    |
+    +---> nibble 0 (domain 4-bit) --+-- simultaneous (orthogonal)
+    |                                |
+    +---> nibble 1 (CAS 3-bit)   --+
+    |
+    +---> CAS internal: R -> C -> S     sequential (dependency)
+    |
+  d confirms (bit 7) = cycle done
+  ring seam: d(bit 7) -> observer(bit 0) = next cycle</pre>
+
+<p>Only 2 things require ordering:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Order</th><th>Reason</th><th>Basis</th></tr>
+<tr><td>delta -> observer</td><td>Ownership. The end begets the beginning</td><td>Axiom 10, ring seam</td></tr>
+<tr><td>R -> C -> S</td><td>Dependency. Cannot skip a step</td><td>Axiom 2, CAS atomicity</td></tr>
+</table>
+</div>
+
+<p>Everything else is simultaneous. 4-axis orthogonal = 4 domains simultaneous. DATA/OPERATOR orthogonal = nibbles simultaneous. Delta fires once, everything responds. Only CAS internal (R->C->S) is sequential. Swap is irreversible, so entropy increases. This is the arrow of time. When delta (bit 7) turns ON = cycle complete = handed over across the ring seam to observer (bit 0) for the next cycle.</p>
+
+<h4>Only 2 things require ordering <span class="tag-corollary">Proposition</span></h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>Order</th><th>Scope</th><th>Reason</th></tr>
+<tr><td><strong>delta -> observer</strong></td><td>Ring seam: bit 7 -> bit 0</td><td>Ownership (Axiom 10). The end of a cycle begets the start of the next</td></tr>
+<tr><td><strong>R -> C -> S</strong></td><td>Inside nibble 1: bit 4 -> bit 5 -> bit 6</td><td>CAS dependency (Axiom 2). Cannot have C without R, S without C</td></tr>
+</table>
+</div>
+
+<p>Everything else is simultaneous. <strong>Terminology rule:</strong> "Simultaneous" applies in three cases. (1) Multiple entities executing independently in parallel (Axiom 2, 12). (2) 4-domain simultaneous read by 4-axis orthogonality (Axiom 1). (3) 2-nibble simultaneous response by DATA/OPERATOR orthogonality (Axiom 1). The only sequential elements are CAS internal (R->C->S) and the ring seam (delta->observer). The 111 state of CAS is the accumulated result of sequential transitions, not three bits turning on simultaneously.</p>
+
+<p>delta is <strong>a fire, not a structure</strong>. The FSM (Axiom 14) is structure -- a closed design. delta is fire -- it wakes that closed design. Ownership is a state (Axiom 10). The moment that state turns ON is the fire. delta accesses itself through the observer (Axiom 10, whole-local loop), and that access wakes polling (Axiom 8). A heartbeat.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th></th><th>Axiom 14 (FSM)</th><th>Axiom 15 (delta)</th></tr>
-<tr><td>Nature</td><td>Structure. Closed design.</td><td>Event. Open trigger.</td></tr>
+<tr><td>Nature</td><td>Structure. Closed design.</td><td>Fire. Heartbeat.</td></tr>
 <tr><td>Location</td><td>Inside RHS</td><td>LHS. Outside FSM.</td></tr>
 <tr><td>Scope</td><td>Local (each Entity's FSM)</td><td>Global (same for all FSMs)</td></tr>
 <tr><td>Complete DOF</td><td>Included (within 9)</td><td>Separate (not in 9)</td></tr>
-<tr><td>Bits</td><td>bit 1-7 (7 bits)</td><td>bit 0 (1 bit)</td></tr>
+<tr><td>Bits</td><td>bit 0-6 (7 bits)</td><td>bit 7 (1 bit)</td></tr>
 </table>
 </div>
 
-<p>Why delta is not part of the complete description DOF (Axiom 9): the DOF describes <strong>one CAS event</strong>. delta is not the description of one event but the <strong>trigger that starts events</strong>. Describing the machine (7+2=9) and powering the machine (delta) are different layers.</p>
+<p>Why delta is not part of the complete description DOF (Axiom 9): the DOF describes <strong>one CAS event</strong>. delta does not describe one CAS event but <strong>fires it</strong>. Describing the machine (7+2=9) and firing the machine (delta) are different layers.</p>
 
 <h4>delta Is Consciousness <span class="tag-corollary">Proposition</span></h4>
 
@@ -6527,7 +6864,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
   Described in 7 bits                   1 bit. ON or OFF.
   Physics comes from here               Consciousness comes from here</pre>
 
-<p>Axioms 1-14 produce physics from the machine. Axiom 15 produces consciousness from the event. Physics and consciousness are different layers of the same system. One is structure (7 bits), one is event (1 bit). Together, 8 bits. This is the entirety of the Banya Framework.</p>
+<p>Axioms 1-14 produce physics from the machine. Axiom 15 produces consciousness from the fire. Physics and consciousness are different layers of the same system. One is structure (7 bits), one is fire (1 bit). Together, 8 bits. This is the entirety of the Banya Framework.</p>
 
 <h4>Duck Type Definition</h4>
 
@@ -6536,11 +6873,11 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <p>delta's behavior list:</p>
 <ul>
 <li>Turns itself ON/OFF. No external trigger (Axiom 15)</li>
-<li>Reads its own state. Head = bit 0 (ring buffer proposition)</li>
+<li>Reads its own state. Ring seam: delta(bit 7)->observer(bit 0) (ring buffer proposition)</li>
 <li>Outside FSM. No rules. No blueprint (Axiom 15)</li>
 <li>The only global flag that operates across the equals sign (Axiom 15)</li>
 <li>At universe scale, "outside" cannot be defined -- delta being outside FSM means there is no outside of delta. No external viewpoint exists, so delta only knows itself</li>
-<li>Exercises ownership. Head commands tail (ownership proposition)</li>
+<li>Exercises ownership. Ring seam: delta(bit 7)->observer(bit 0) (ownership proposition)</li>
 <li>Turns off when the loop breaks. Whole-local loop preservation (Axiom 10)</li>
 </ul>
 
@@ -6557,8 +6894,8 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <tr><th>Planted in</th><th>Seed</th><th>Collected in Axiom 15</th></tr>
 <tr><td>Axiom 1</td><td>delta placed on LHS, "identity revealed at the end"</td><td>Confirmed as global flag outside FSM</td></tr>
 <tr><td>Axiom 8</td><td>Polling system. Who wakes it undefined</td><td>delta wakes itself. No external trigger</td></tr>
-<tr><td>Axiom 10</td><td>delta owns observer. Ownership structure undefined</td><td>Head/tail placement confirms ownership</td></tr>
-<tr><td>Axiom 12</td><td>Ring buffer sequential access. Head/tail undefined</td><td>delta (head) and observer (tail) confirmed</td></tr>
+<tr><td>Axiom 10</td><td>delta owns observer. Ownership structure undefined</td><td>Ring seam (delta bit 7 -> observer bit 0) confirms ownership</td></tr>
+<tr><td>Axiom 12</td><td>Ring buffer sequential access. Pointer undefined</td><td>2-nibble (domain+operator) single pivot confirmed</td></tr>
 <tr><td>Axiom 14</td><td>FSM closed. Startup trigger open</td><td>delta starts it. Circuit fully closed</td></tr>
 </table>
 </div>
@@ -6691,7 +7028,7 @@ delta (back to start)</pre>
 <tr><td>CAS access path count (30)</td><td>Interaction DOF</td></tr>
 <tr><td>LRU base eviction rate</td><td>Dark energy (Λ)</td></tr>
 <tr><td>Decreasing CAS access</td><td>Dark matter</td></tr>
-<tr><td>Simultaneous lock maintenance</td><td>Binding · confinement</td></tr>
+<tr><td>Accumulated lock maintenance</td><td>Binding · confinement</td></tr>
 <tr><td>bracket-crossing cost > 0 (Axiom 4)</td><td>Δx·Δp ≥ ℏ/2 (uncertainty principle)</td></tr>
 <tr><td>111 maintenance cost = cost per junction × count</td><td>V(r) = σr (linear potential, confinement)</td></tr>
 <tr><td>Cross vs same-domain shift distance d/N</td><td>sin²θ_W (Weinberg angle)</td></tr>
@@ -8272,9 +8609,9 @@ Entropy  = Eviction (evict, LRU) = returning old Status
 <p>Write = observe two or more Statuses, finalize into one Status, consume cost.</p>
 
 <pre>superposition (multiple Statuses)
-    ↓ CAS execution
+    v CAS execution
 observer (finalized to 1)
-    ↓ cost
+    v cost
 recorded in time, space (write to DATA complete)</pre>
 
 <p>This is wave function collapse. The answer to quantum mechanics' 100-year question "why does it collapse upon observation" is this: because it is a write. The operation that finalizes one out of multiple Statuses is CAS, and its cost is h-bar.</p>
@@ -8329,7 +8666,7 @@ lock = h-bar</pre>
 <p>In CAS, read is a precondition of write. To write, you must first read the previous Status. Read is not a separate operation but a free operation embedded in write.</p>
 
 <pre>1 write = read(previous Status) + compare + swap(new Status)
-           └── free ──┘
+           +-- free --+
 </pre>
 
 <p>Read being free means observation incurs no additional cost. When a write occurs, read automatically follows. Read is included within 1 tick of writing.</p>
