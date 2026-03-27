@@ -2179,14 +2179,14 @@ delta (처음으로 돌아옴)</pre>
 <div class="table-wrap">
 <table>
 <tr><th>행위</th><th>비용</th><th>출처</th></tr>
-<tr><td>CAS Read (도메인 읽기)</td><td>0</td><td>공리 4</td></tr>
-<tr><td>CAS Compare (비교)</td><td>0</td><td>공리 4</td></tr>
-<tr><td>CAS Swap (쓰기, 괄호를 넘음)</td><td><strong>&gt; 0 (유일한 비용 발생점)</strong></td><td>공리 4</td></tr>
+<tr><td>CAS Read (도메인 읽기)</td><td>0</td><td>공리 4, 5</td></tr>
+<tr><td>CAS Compare (비교)</td><td>0</td><td>공리 4, 5</td></tr>
+<tr><td>CAS Swap (쓰기, 괄호를 넘음)</td><td><strong>&gt; 0 (유일한 비용 발생점)</strong></td><td>공리 4, 5</td></tr>
 <tr><td>δ 발화</td><td>0</td><td>공리 15</td></tr>
 <tr><td>observer 필터링</td><td>0</td><td>공리 8, 10</td></tr>
 <tr><td>idle 폴링 (OPERATOR 내부)</td><td>0</td><td>공리 8</td></tr>
 <tr><td>동일 도메인 재귀 락 (예: space->space)</td><td>&gt; 0 (직렬화)</td><td>공리 5 명제</td></tr>
-<tr><td>교차 도메인 접근 (읽기 축 != 쓰기 축)</td><td>&gt; 0 (교차 Cmp/Swp)</td><td>공리 1 명제</td></tr>
+<tr><td>괄호 교차 접근 (양자-고전 교차)</td><td>&gt; 0 (교차 Cmp/Swp)</td><td>공리 1 명제</td></tr>
 <tr><td>양자 괄호 내부 접근 (같은 괄호)</td><td>0</td><td>공리 1 명제</td></tr>
 <tr><td>FSM 111 누적 락 유지</td><td>d에 비례</td><td>공리 14 명제</td></tr>
 <tr><td>인덱싱 (비대칭 쌍 탐색)</td><td>깊이 차이 x 1비트</td><td>공리 13 명제</td></tr>
@@ -2265,42 +2265,32 @@ delta (처음으로 돌아옴)</pre>
 <tr><td><strong>2</strong></td><td>괄호</td><td>DATA (고전) + OPERATOR (양자)</td><td>공리 1</td></tr>
 <tr><td><strong>2</strong></td><td>니블</td><td>nibble 0 (도메인) + nibble 1 (연산자)</td><td>공리 15 명제</td></tr>
 <tr><td><strong>30 = 7×4+2</strong></td><td>CAS 접근 경로 수</td><td>CAS자유도(7) × 도메인(4) + 괄호(2). CAS가 도메인에 접근하는 총 경로 수</td><td>공리 1, 9, 12</td></tr>
-<tr><td><strong>57 = 21+35+1</strong></td><td>외적 대수 기저</td><td>7차원 공간의 물리적 k-형식 합. $\binom{7}{2}+\binom{7}{3}+\binom{7}{0}$</td><td>공리 9 파생</td></tr>
+<tr><td><strong>57 = 21+35+1</strong></td><td>CAS 독립 조합 수</td><td>비교 쌍(21) + 3단계 조합(35) + 스칼라(1). $\binom{7}{2}+\binom{7}{3}+\binom{7}{0}$</td><td>공리 9 파생</td></tr>
 <tr><td><strong>128 = $2^7$</strong></td><td>δ=1일 때 유효 상태 수</td><td>완전기술자유도 7비트. CAS가 취할 수 있는 모든 가능한 상태의 수</td><td>공리 9, 15 명제</td></tr>
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#8b949e"><strong>7에서 파생되는 수의 CAS 해석:</strong></p>
+<p style="font-size:0.85em;color:#8b949e"><strong>7에서 파생되는 수:</strong></p>
 <div class="table-wrap">
 <table>
-<tr><th>수</th><th>조합론</th><th>CAS 해석</th><th>물리 대응</th></tr>
-<tr><td>7</td><td>자유도 자체</td><td>CAS 1건의 독립 변수</td><td>완전기술자유도 (공리 9)</td></tr>
-<tr><td>21 = $\binom{7}{2}$</td><td>7개에서 2개 뽑기</td><td>CAS Compare가 비교하는 독립 쌍의 수</td><td>바이벡터 (면). $\sin^2\theta_W$의 분모 구조</td></tr>
-<tr><td>35 = $\binom{7}{3}$</td><td>7개에서 3개 뽑기</td><td>CAS 3단계(R,C,S)가 7 자유도에서 조합되는 수</td><td>트라이벡터 (부피). 강결합 $\alpha_s$ 구조</td></tr>
-<tr><td>1 = $\binom{7}{0}$</td><td>아무것도 안 뽑기</td><td>δ 자체. 전체를 하나로 보는 스칼라</td><td>발화 비트. 등호</td></tr>
-<tr><td><strong>57 = 21+35+1</strong></td><td>물리적 k-형식 합</td><td>CAS가 만드는 독립적 기하 대상의 총수</td><td>$\alpha^{57} = \Lambda l_p^2$ (우주상수, 0.09%)</td></tr>
-<tr><td><strong>128 = $2^7$</strong></td><td>7비트 전체 조합 수</td><td>δ=1일 때 7비트의 모든 가능한 상태</td><td>유효 상태 수 = 발화 비트가 유효화하는 전체</td></tr>
+<tr><th>수</th><th>조합</th><th>CAS 해석</th></tr>
+<tr><td>1 = C(7,0)</td><td>아무것도 안 뽑음</td><td>δ. 전체를 하나로 보는 스칼라 = 발화 비트</td></tr>
+<tr><td>7 = C(7,1)</td><td>1개 뽑음</td><td>각 자유도 단독. CAS 1건의 독립 변수 (공리 9)</td></tr>
+<tr><td>21 = C(7,2)</td><td>2개 뽑음</td><td>Compare가 비교하는 독립 쌍의 수</td></tr>
+<tr><td>35 = C(7,3)</td><td>3개 뽑음</td><td>CAS 3단계(R,C,S)가 7 자유도에서 조합되는 수</td></tr>
+<tr><td>35 = C(7,4)</td><td>4개 뽑음</td><td>C(7,3)과 대칭</td></tr>
+<tr><td>21 = C(7,5)</td><td>5개 뽑음</td><td>C(7,2)와 대칭</td></tr>
+<tr><td>7 = C(7,6)</td><td>6개 뽑음</td><td>C(7,1)과 대칭</td></tr>
+<tr><td>1 = C(7,7)</td><td>전부 뽑음</td><td>7비트 전부 ON = CAS 완전 점유</td></tr>
+<tr style="border-top:2px solid #444"><td><strong>128 = $2^7$</strong></td><td>위 전부 합산</td><td><strong>δ=1일 때 7비트의 모든 가능한 상태</strong></td></tr>
+<tr><td><strong>57 = 1+21+35</strong></td><td>C(7,0)+C(7,2)+C(7,3)</td><td><strong>δ(스칼라) + 비교 쌍 + CAS 3단계 조합</strong></td></tr>
 </table>
 </div>
 
-<pre>
-  7개 축으로 만들 수 있는 모든 독립적 기하 대상:
-
-  아무것도 안 고름 (스칼라):  C(7,0) =  1
-  축 1개 고름 (선):          C(7,1) =  7
-  축 2개 고름 (면):          C(7,2) = 21
-  축 3개 고름 (부피):        C(7,3) = 35
-  축 4개 고름:               C(7,4) = 35
-  축 5개 고름:               C(7,5) = 21
-  축 6개 고름:               C(7,6) =  7
-  축 7개 전부 고름:          C(7,7) =  1
-  ------------------------------------------
-  전부 합치면:  1+7+21+35+35+21+7+1 = 128 = 2^7</pre>
-
-<p style="font-size:0.85em;color:#8b949e">57과 128은 같은 7에서 나온다. 공리 9(자유도 7)가 우주상수($\alpha^{57}$)와 상태 수($2^7$)를 동시에 결정한다. 추가 가정 없음.</p>
+<p style="font-size:0.85em;color:#8b949e">57과 128은 같은 7에서 나온다. 공리 9(자유도 7)에서 추가 가정 없이 파생된다.</p>
 
 <hr>
-<p style="text-align:center;font-size:0.85em;color:#8b949e">— 공리 체계 끝. 15개 공리 + 명제. 8비트. 이하는 도출 —</p>
+<p style="text-align:center;font-size:0.85em;color:#8b949e">— 공리 체계 끝. 이하는 도출 —</p>
 <hr>
 
 
