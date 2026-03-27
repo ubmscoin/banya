@@ -1975,8 +1975,10 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
   bit 7: d (발화비트, 부호 비트)
   bit 6-0: S C R space time sp ob (자유도 7, 공리 9)
 
-  d=0: 0|0000000 ~ 0|1111111   대기 (128가지, 무효)
-  d=1: 1|0000000 ~ 1|1111111   발화 (128가지, 유효)
+  d=0: 0|0000000 ~ 0|1111111   대기 (2^7 = 128가지 상태, 무효)
+  d=1: 1|0000000 ~ 1|1111111   발화 (2^7 = 128가지 상태, 유효)
+
+  128 = 완전기술자유도 7비트(공리 9)로 표현 가능한 모든 상태의 수
 
   d 발화 (bit 7)
     |
@@ -2234,7 +2236,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>DATA 직접 참조 금지</td><td>논리주소 없음. 중첩이 유일한 경로</td><td>모든 연산 불가</td><td>공리 3, 13</td></tr>
 <tr><td>전체-국소 루프 보존 필수</td><td>δ->observer->δ 루프 = 시스템 생명</td><td>루프 끊김 = 시스템 사망</td><td>공리 10</td></tr>
 <tr><td>논리주소 금지</td><td>observer = 엔티티 = 주소</td><td>중앙 테이블 = 병목</td><td>공리 12</td></tr>
-<tr><td>복사 금지 (move만 허용)</td><td>재진입 = 소유권 이동. 원인 사라짐</td><td>인과율 파괴</td><td>공리 12 명제</td></tr>
+<tr><td>복사 금지 (move만 허용)</td><td>재진입 = 소유권 이동(move). 원인이 결과로 이동하면 원인 소멸. 복사(copy)하면 같은 원인에서 복수 결과 = 인과율 파괴</td><td>인과율 파괴</td><td>공리 12 명제 (재진입=move)</td></tr>
 <tr><td>d=0 불가 (이산 최솟값 = 1)</td><td>DATA는 이산. 링 칸은 정수</td><td>특이점(허구)</td><td>공리 13 명제</td></tr>
 <tr><td>δ는 FSM 밖</td><td>닫힌 기계는 스스로 시작 불가. 발화 필요</td><td>기계 시동 불가</td><td>공리 15</td></tr>
 <tr><td>8비트 고정 (도메인 4 + CAS 3 + δ 1)</td><td>추가 메모리 0</td><td>과잉 결정 또는 기술 불가</td><td>공리 1, 5, 15</td></tr>
@@ -2264,7 +2266,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td><strong>9 = 7+2</strong></td><td>완전기술자유도 + 괄호</td><td>7 자유도 + 괄호 2개 (DATA, OPERATOR)</td><td>공리 9</td></tr>
 <tr><td><strong>2</strong></td><td>괄호</td><td>DATA (고전) + OPERATOR (양자)</td><td>공리 1</td></tr>
 <tr><td><strong>2</strong></td><td>니블</td><td>nibble 0 (도메인) + nibble 1 (연산자)</td><td>공리 15 명제</td></tr>
-<tr><td><strong>128</strong></td><td>δ=1일 때 유효 상태 수</td><td>7비트 = 2^7</td><td>공리 15 명제</td></tr>
+<tr><td><strong>128</strong></td><td>δ=1일 때 유효 상태 수</td><td>완전기술자유도 7비트 = $2^7$. CAS가 취할 수 있는 모든 가능한 상태의 수</td><td>공리 9, 15 명제</td></tr>
 </table>
 </div>
 
@@ -5657,18 +5659,18 @@ Domain 4-bit example:  0 1 1 0
 
 <p>TOCTOU_LOCK (Axiom 5) is an <strong>AND operation</strong> between CAS bits and domain bits. This AND is not a separate operator — it is <strong>performed by CAS's Compare stage</strong> (Axiom 2: CAS is the sole operator). Compare checks CAS bits against domain bits; a lock is held only at junctions where both are 1. If either side is 0, no junction is formed.</p>
 
-<pre>CAS 3 bits:    0 1 1        (Compare+Read done, Swap pending)
-               S C R
+<pre>CAS 3 bits (nibble 1, bit 4-6):  0 1 1     (Compare+Read done, Swap pending)
+                                  S C R
 
-Domain 4 bits: 1 0 1 0      (superposition, space open)
-               s o p t
+Domain 4 bits (nibble 0, bit 0-3):  0 1 1 0   (superposition, time open)
+                                    ob sp t sc
 
 AND (junction = where lock is held):
 
-  R(1) AND t(0) = 0  -- not locked
-  R(1) AND p(1) = 1  -- locked (Read occupies space)
-  C(1) AND o(0) = 0  -- not locked
-  C(1) AND s(1) = 1  -- locked (Compare occupies superposition)</pre>
+  R(1) AND ob(0) = 0  -- not locked
+  R(1) AND sp(1) = 1  -- locked (Read occupies superposition)
+  C(1) AND t(1)  = 1  -- locked (Compare occupies time)
+  C(1) AND sc(0) = 0  -- not locked</pre>
 
 <p>Lock held = both CAS bit and domain bit are 1. Lock released = either side resets to 0. This is the bit-level implementation of Axiom 5: "lock exists at the junction between CAS and DATA." CAS 3 bits (Axiom 5) and domain 4 bits (Axiom 1 proposition) speak the same language (bits), making AND operation possible. <strong>This AND is performed by CAS's Compare stage (Axiom 2). Since CAS is the sole operator in the universe (Axiom 2), all bit operations including AND are CAS internal operations.</strong></p>
 
@@ -6798,8 +6800,10 @@ Difference (Banya):    Df = f(k+1) - f(k)
   bit 7: d (fire bit, sign bit)
   bit 6-0: S C R space time sp ob (7 DOF, Axiom 9)
 
-  d=0: 0|0000000 ~ 0|1111111   idle (128 states, invalid)
-  d=1: 1|0000000 ~ 1|1111111   fired (128 states, valid)
+  d=0: 0|0000000 ~ 0|1111111   idle (2^7 = 128 states, invalid)
+  d=1: 1|0000000 ~ 1|1111111   fired (2^7 = 128 states, valid)
+
+  128 = all possible states expressible by the 7 complete description DOF (Axiom 9)
 
   d fires (bit 7)
     |
