@@ -2227,71 +2227,100 @@ delta (처음으로 돌아옴)</pre>
 <hr>
 <h2>공리에서 도출 시범: α = 1/137 (전자기 미세구조 상수)</h2>
 
-<p>아래는 공리만으로 α = 1/137.036을 도출하는 전체 과정이다. 외부 물리 상수를 넣지 않는다. 공리 구조에서 대칭군이 결정되고, 대칭군의 체적비가 α를 준다.</p>
+<p>아래는 공리만으로 α = 1/137.036을 도출하는 전체 과정이다. 외부 물리 상수를 넣지 않는다. 공리 구조에서 대칭군이 결정되고, 대칭군의 체적비가 α를 준다. 각 단계마다 근거 공리를 명시하고, 왜 다른 선택지가 없는지를 서술한다.</p>
 
-<h4>1단계. 7자유도 확정 (공리 9)</h4>
+<h4>1단계. 7자유도 확정</h4>
 
-<p>완전기술자유도 = 9 = 7 + 2 (공리 9). δ(bit 7)는 FSM 밖(공리 15)이므로 FSM 내부 자유도는 7이다.</p>
-
-<div class="table-wrap">
-<table>
-<tr><th>bit</th><th>축</th><th>소속</th></tr>
-<tr><td>0</td><td>observer</td><td>OPERATOR (양자 괄호)</td></tr>
-<tr><td>1</td><td>superposition</td><td>OPERATOR (양자 괄호)</td></tr>
-<tr><td>2</td><td>time</td><td>DATA (고전 괄호)</td></tr>
-<tr><td>3</td><td>space</td><td>DATA (고전 괄호)</td></tr>
-<tr><td>4</td><td>R_LOCK</td><td>CAS FSM</td></tr>
-<tr><td>5</td><td>C_LOCK</td><td>CAS FSM</td></tr>
-<tr><td>6</td><td>S_LOCK</td><td>CAS FSM</td></tr>
-</table>
-</div>
-
-<h4>2단계. 비가역성이 메트릭 서명을 결정한다 (공리 2 명제, 공리 4)</h4>
-
-<p>CAS는 비가역이다(공리 2 명제). R→C→S 역순 불가. +를 넘는 비용은 환불 불가(공리 4). 7축 각각에 비가역성 유무를 적용한다:</p>
-
-<div class="table-wrap">
-<table>
-<tr><th>축</th><th>CAS 개입</th><th>비가역</th><th>메트릭 서명</th></tr>
-<tr><td>observer</td><td>없음. δ→observer 릴레이션. CAS 미개입 구간(공리 15 명제)</td><td>아니다</td><td><strong>−</strong></td></tr>
-<tr><td>superposition</td><td>없음. CAS의 참조 인덱스. 방향 강제 없음</td><td>아니다</td><td><strong>−</strong></td></tr>
-<tr><td>time</td><td>있음. CAS Swap이 +를 넘어 씀</td><td>그렇다</td><td><strong>+</strong></td></tr>
-<tr><td>space</td><td>있음. CAS Swap이 +를 넘어 씀</td><td>그렇다</td><td><strong>+</strong></td></tr>
-<tr><td>R_LOCK</td><td>있음. R→C 전이, +를 넘음</td><td>그렇다</td><td><strong>+</strong></td></tr>
-<tr><td>C_LOCK</td><td>있음. C→S 전이, +를 넘음</td><td>그렇다</td><td><strong>+</strong></td></tr>
-<tr><td>S_LOCK</td><td>있음. Swap 실행, +를 넘음</td><td>그렇다</td><td><strong>+</strong></td></tr>
-</table>
-</div>
-
-<p><strong>서명 = (5, 2).</strong> 비가역 축 5개(+), 비가역 부재 축 2개(−). 이 서명은 비용 구조에서 유일하게 결정된다. 선택이 없다.</p>
-
-<h4>3단계. 서명이 대칭군을 결정한다 (군론)</h4>
-
-<p>7차원 공간 위의 (5, 2) 이차형식을 보존하는 군은 SO(5, 2)이다. SO(5, 2) 안에서 각 섹터를 보존하는 안정화 부분군은 SO(5) × SO(2)이다:</p>
+<p>반야프레임의 FSM 내부 자유도는 정확히 7이다. 이 수는 공리에서 유일하게 결정된다:</p>
 <ul>
-<li>SO(5): 비가역 축 5개의 내부 대칭. 비용 공간에서는 time에 +1이나 R에 +1이나 같은 +1이므로, 비가역 축끼리 섞여도 비용 구조가 보존된다.</li>
-<li>SO(2): 비가역 부재 축 2개(observer, superposition)의 내부 대칭.</li>
+<li><strong>공리 1 (반야식)</strong>: 4축 직교 — observer, superposition, time, space. 4개 도메인이 존재한다. 5번째 도메인은 없다(4축 노름이 반야식의 전부).</li>
+<li><strong>공리 2 (CAS)</strong>: 유일한 연산자 CAS는 3단계 — R, C, S. 각 단계가 독립 1비트(3축 직교, 공리 2 명제). 4번째 단계는 없다(CAS 단계 인덱스 최대 3).</li>
+<li><strong>공리 15 (δ)</strong>: δ(bit 7)는 FSM 밖의 전역 플래그다. δ는 FSM을 깨우는 트리거이지 FSM 내부 자유도가 아니다. 따라서 FSM 내부에서 세는 자유도에 δ는 포함되지 않는다.</li>
+<li><strong>공리 9 (완전기술자유도)</strong>: CAS 내부 자유도 7(= 도메인 4 + CAS 3) + 괄호 2(DATA, OPERATOR) = 9. 이 중 FSM 내부 = 7.</li>
 </ul>
 
-<h4>4단계. 몫공간 D₅ (군론)</h4>
+<p>d-ring 8비트에서 δ(bit 7)를 빼면 남는 7비트가 FSM 내부 자유도의 전부다. 추가 비트가 없다(공리 1, 5, 15: 8비트 고정, 추가 메모리 0).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>bit</th><th>축</th><th>소속</th><th>근거</th></tr>
+<tr><td>0</td><td>observer</td><td>OPERATOR (양자 괄호)</td><td>공리 1 (4축 중 1)</td></tr>
+<tr><td>1</td><td>superposition</td><td>OPERATOR (양자 괄호)</td><td>공리 1 (4축 중 2)</td></tr>
+<tr><td>2</td><td>time</td><td>DATA (고전 괄호)</td><td>공리 1 (4축 중 3)</td></tr>
+<tr><td>3</td><td>space</td><td>DATA (고전 괄호)</td><td>공리 1 (4축 중 4)</td></tr>
+<tr><td>4</td><td>R_LOCK</td><td>CAS FSM</td><td>공리 2, 5 (CAS 3단계 중 1)</td></tr>
+<tr><td>5</td><td>C_LOCK</td><td>CAS FSM</td><td>공리 2, 5 (CAS 3단계 중 2)</td></tr>
+<tr><td>6</td><td>S_LOCK</td><td>CAS FSM</td><td>공리 2, 5 (CAS 3단계 중 3)</td></tr>
+</table>
+</div>
+
+<p>7은 선택된 수가 아니다. 공리 1이 4를 주고, 공리 2가 3을 주고, 공리 15가 δ를 빼준다. 4 + 3 = 7. 다른 수가 나올 방법이 없다.</p>
+
+<h4>2단계. 비가역성이 메트릭 서명을 결정한다</h4>
+
+<p>7개 축 각각에 "비가역인가 아닌가"를 묻는다. 이 질문의 답은 공리에서 유일하게 결정된다.</p>
+
+<p><strong>비가역성의 정의 (공리 2 명제):</strong> CAS 연산은 방향이 있다. R→C→S 역순 불가. 한 번 지나간 단계로 되돌아갈 수 없다. <strong>비용의 정의 (공리 4):</strong> +를 넘으면 비용 > 0. 지불된 비용은 환불되지 않는다(공리 2 명제, 비가역성). 이 두 공리가 합쳐지면: CAS가 개입하는 축은 비가역이고, CAS가 개입하지 않는 축은 비가역이 아니다.</p>
+
+<p><strong>핵심 근거 — δ→observer 구간은 CAS 미개입 (공리 15 명제):</strong> δ→observer 구간은 δ와 observer의 릴레이션이다. 이 구간에 CAS는 등장하지 않는다. 비용은 CAS의 + 전이에서만 발생하므로(공리 4), CAS가 없는 이 구간에서는 비용이 정산될 수 없다. 비가역성은 CAS의 성질이므로(공리 2 명제), CAS가 없는 축에는 비가역성이 적용되지 않는다.</p>
+
+<p>이 원칙을 7축 각각에 적용한다:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>축</th><th>CAS 개입 여부</th><th>비가역 여부</th><th>근거</th><th>메트릭 서명</th></tr>
+<tr><td>observer</td><td><strong>없음.</strong> δ→observer는 CAS 미개입 구간</td><td>아니다</td><td>공리 15 명제: δ 전용 릴레이션. 비용 정산 주체(CAS) 부재</td><td><strong>−</strong></td></tr>
+<tr><td>superposition</td><td><strong>없음.</strong> CAS의 참조 인덱스(공리 13). 인덱스 자체는 연산 대상이 아니라 참조 구조</td><td>아니다</td><td>공리 13: 중첩은 인덱싱. 인덱스는 방향 강제 없음. CAS가 인덱스를 "읽지만" 인덱스 축 자체에 비가역 전이를 만들지 않음</td><td><strong>−</strong></td></tr>
+<tr><td>time</td><td><strong>있음.</strong> CAS Swap이 time에 씀</td><td>그렇다</td><td>공리 4: Swap이 +를 넘어 DATA에 씀. 공리 2 명제: 쓰기는 비가역. 환불 불가</td><td><strong>+</strong></td></tr>
+<tr><td>space</td><td><strong>있음.</strong> CAS Swap이 space에 씀</td><td>그렇다</td><td>공리 4: 동일. space는 time과 같은 DATA 괄호</td><td><strong>+</strong></td></tr>
+<tr><td>R_LOCK</td><td><strong>있음.</strong> CAS Read 시 R_LOCK ON</td><td>그렇다</td><td>공리 5: R_LOCK은 CAS FSM 전이의 첫 단계. +를 넘어 비용 +1(공리 4). 역순 불가(공리 2 명제)</td><td><strong>+</strong></td></tr>
+<tr><td>C_LOCK</td><td><strong>있음.</strong> R_LOCK 후 C_LOCK ON</td><td>그렇다</td><td>공리 5: R→C 전이. 누적 락. +를 넘어 비용 +1. 역순 불가</td><td><strong>+</strong></td></tr>
+<tr><td>S_LOCK</td><td><strong>있음.</strong> C_LOCK 후 S_LOCK ON</td><td>그렇다</td><td>공리 5: C→S 전이. +를 넘어 비용 +1. 역순 불가. Swap 실행</td><td><strong>+</strong></td></tr>
+</table>
+</div>
+
+<p><strong>서명 = (5, 2).</strong> 비가역 축 5개가 양의 서명(+)을, 비가역 부재 축 2개가 음의 서명(−)을 갖는다. 메트릭 서명에서 양(+)은 "한 방향으로만 갈 수 있는 축"을, 음(−)은 "방향 제약이 없는 축"을 인코딩한다. 민코프스키 시공간에서 시간이 음의 서명을 갖는 이유가 인과율(한 방향)을 인코딩하는 것과 같은 원리다. 반야프레임에서는 비가역성이 인과율의 근원이므로(공리 2 명제), 비가역 축 = 양의 서명, 비가역 부재 축 = 음의 서명이다.</p>
+
+<p>이 (5, 2) 분할은 자의적이지 않다. "5개를 골라서 양으로 지정한" 것이 아니라, CAS 비가역성(공리 2 명제)과 비용 구조(공리 4)와 δ→observer CAS 미개입(공리 15 명제)이 유일하게 결정한 결과다. 다른 분할이 나올 방법이 없다.</p>
+
+<h4>3단계. 서명이 대칭군을 결정한다</h4>
+
+<p>7차원 공간 위에 서명 (5, 2)의 이차형식(quadratic form)이 주어지면, 이 형식을 보존하는 변환의 군은 <strong>SO(5, 2)</strong>이다. 이것은 군론의 정의에서 자동으로 따라나온다 — 선택의 여지가 없다.</p>
+
+<p>SO(5, 2)는 "7축 위에서 비가역 구조를 깨뜨리지 않는 모든 변환의 집합"이다. 비가역 축 5개를 비가역 부재 축 2개와 섞으면 서명이 깨지므로, SO(5, 2) 안에서 각 섹터를 독립적으로 보존하는 부분군이 존재한다:</p>
+
+<ul>
+<li><strong>SO(5)</strong>: 비가역 축 5개(time, space, R, C, S)의 내부 회전. 이 5개 축은 모두 "CAS가 +를 넘어 비용 +1을 발생시키는 축"이다. 비용 공간에서 보면 time에 +1 지불하나 R에 +1 지불하나 같은 +1이므로, 이 축들 사이의 회전은 비용 구조를 보존한다. 공리 1에서 DATA와 OPERATOR는 직교하지만, 비용이라는 스칼라 양 위에서는 괄호 구분이 사라진다 — 비용은 괄호를 모른다.</li>
+<li><strong>SO(2)</strong>: 비가역 부재 축 2개(observer, superposition)의 내부 회전. 이 2개 축은 모두 "CAS가 개입하지 않는, 비용 정산 불가 구간"이다. 둘 사이의 회전은 비가역 부재 구조를 보존한다.</li>
+</ul>
+
+<p>SO(5) × SO(2)는 SO(5, 2)의 <strong>극대 콤팩트 부분군(maximal compact subgroup)</strong>이다. 이것도 군론에서 유일하게 결정된다.</p>
+
+<h4>4단계. 몫공간 D₅</h4>
 
 <div class="math-block">
 <div class="math-row">$$D_5 = \frac{SO(5,2)}{SO(5) \times SO(2)}$$</div>
 <div class="math-legend">Wyler의 유계 대칭 영역(bounded symmetric domain). 5복소차원 = 10실수차원</div>
 </div>
 
-<p>D₅는 "+를 넘는 모든 가능한 배위의 공간"이다. 전체 변환(SO(5, 2))에서 각 섹터 내부 변환(SO(5) × SO(2))을 빼면, 비가역 축과 비가역 부재 축을 <strong>건너서 연결하는</strong> 배위만 남는다. 이것이 +를 넘는 전이의 배위 공간이다.</p>
+<p>전체 변환(SO(5, 2))에서 각 섹터 내부 변환(SO(5) × SO(2))을 나누면(몫), <strong>두 섹터를 건너서 연결하는 변환만</strong> 남는다. 이것이 D₅다.</p>
 
-<h4>5단계. 체적비 = α (Wyler 1969)</h4>
+<p>반야프레임 해석: D₅는 <strong>"+를 넘는 모든 가능한 배위의 공간"</strong>이다. 비가역 축(비용이 발생하는 곳)과 비가역 부재 축(비용이 발생하지 않는 곳) 사이를 연결하는 배위 — 즉 OPERATOR에서 DATA로, 양자에서 고전으로, 읽기에서 쓰기로 건너가는 모든 가능한 경로의 공간이다. 이것은 곧 "CAS가 실행될 수 있는 모든 가능한 방법"이다.</p>
 
-<p>D₅의 체적과 그 Shilov 경계(D₅ 위에서 실제로 실현 가능한 배위)의 비율:</p>
+<p>D₅가 유계(bounded)라는 것은 이 배위 공간이 유한하다는 뜻이다. 무한한 방법이 아니라 유한한 방법만 존재한다. 이것은 공리 3(DATA는 이산)과 일관한다.</p>
+
+<h4>5단계. 체적비 = α</h4>
+
+<p>스위스 수학자 Wyler(1969)는 D₅의 체적과 그 Shilov 경계의 체적비를 계산했다. Shilov 경계는 D₅ 위에서 "극값을 달성하는 배위"의 집합이다 — 반야프레임 해석으로는 "+를 넘는 배위 중 실제로 실현되는 배위"다.</p>
 
 <div class="math-block">
 <div class="math-row">$$\alpha = \frac{V(\text{Shilov boundary of } D_5)}{V(D_5)} = \frac{8\pi^4}{9} \cdot \left(\frac{\pi^5}{2^4 \cdot 5!}\right)^{1/4} \cdot \frac{1}{120\pi^3} \approx \frac{1}{137.036}$$</div>
 <div class="math-legend">오차 0.00006%. Wyler(1969)가 계산. 반야프레임이 "왜 이 공간인가"를 제공</div>
 </div>
 
-<p>물리적 의미: <strong>"가능한 +넘기 배위" 대비 "실현되는 +넘기 배위"의 비율 = 상호작용이 실제로 일어날 확률 = α.</strong></p>
+<p>물리적 의미: α는 원래 "전자가 광자를 방출/흡수할 확률"이다. 즉 "상호작용이 실제로 일어날 확률"이다. D₅의 체적비는 "가능한 +넘기 배위" 대비 "실현되는 +넘기 배위"의 비율이다. <strong>가능한 전이 중 실현되는 전이의 비율 = 상호작용 확률 = α.</strong> 수학적 정의와 물리적 의미가 일치한다.</p>
+
+<p>Wyler가 1969년에 이 계산을 발표했을 때, 물리학계는 "왜 이 대칭공간인가"에 대한 답이 없다며 묻었다. 반야프레임은 그 답을 제공한다: <strong>공리의 비가역성 구조가 서명 (5, 2)를 유일하게 결정하고, 서명이 SO(5, 2)를 유일하게 결정하고, SO(5, 2)가 D₅를 유일하게 결정한다.</strong> 1단계에서 4단계까지 선택이 없다.</p>
 
 <h4>도출 경로 요약</h4>
 
@@ -2301,12 +2330,12 @@ delta (처음으로 돌아옴)</pre>
   + 공리 15 명제 (δ→observer CAS 미개입)
   ─────────────────────────────
   → 메트릭 서명 (5, 2)         ← 공리에서 유일하게 결정
-  → SO(5,2)                    ← 서명에서 자동
-  → D₅ = SO(5,2)/SO(5)×SO(2)  ← 안정화 부분군에서 자동
-  → 체적비 = 1/137.036         ← Wyler의 수학
+  → SO(5,2)                    ← 서명에서 자동 (군론)
+  → D₅ = SO(5,2)/SO(5)×SO(2)  ← 안정화 부분군에서 자동 (군론)
+  → 체적비 = 1/137.036         ← Wyler의 수학 (1969)
   → α = 1/137.036              ← 오차 0.00006%</pre>
 
-<p style="font-size:0.85em;color:#8b949e"><strong>공리가 제공하는 것:</strong> 1~4단계 (왜 7차원인가, 왜 (5,2)인가, 왜 SO(5,2)인가, 왜 D₅인가). <strong>Wyler의 수학이 제공하는 것:</strong> 5단계 (D₅의 체적비 계산). <strong>미해결:</strong> "왜 체적비가 결합 상수인가"의 물리적 정당화. 이것은 Wyler도 반야프레임도 아직 답하지 않았다.</p>
+<p style="font-size:0.85em;color:#8b949e"><strong>공리가 제공하는 것:</strong> 1~4단계 — 왜 7차원인가(공리 1, 2, 9, 15), 왜 (5,2)인가(공리 2 명제, 4, 15 명제), 왜 SO(5,2)인가(서명에서 자동), 왜 D₅인가(안정화 부분군에서 자동). 모든 단계에서 선택이 없다. <strong>Wyler의 수학이 제공하는 것:</strong> 5단계 — D₅의 체적비 계산. <strong>미해결:</strong> "왜 체적비가 결합 상수인가"의 물리적 정당화. D₅의 체적비와 α의 수치적 일치(오차 0.00006%)는 확인되었으나, 체적비가 결합 상수여야 하는 이유의 엄밀한 증명은 Wyler도 반야프레임도 아직 제시하지 않았다.</p>
 <hr>
 
 <h4>물리 대응 용어 표 (공리 외부 참조용)</h4>
