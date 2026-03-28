@@ -2224,6 +2224,91 @@ delta (처음으로 돌아옴)</pre>
 
 <p>위 15개 공리에서 출발하여, 반야프레임 5단계 재귀 대입(반야식->노름치환->상수대입->도메인변환->발견)을 돌리면 물리 상수가 나온다. 도출된 전체 목록은 <a href="lib.html" style="font-weight:600">가설 라이브러리(lib.html)</a>와 <a href="predictions.html" style="font-weight:600">고유 예측(predictions.html)</a>에서 관리한다. 발견(D) 150개 + 가설(H) 426개 + 고유예측(P) 120개 = 총 696항목, 검증 120행(적중 19). 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.</p>
 
+<hr>
+<h2>공리에서 도출 시범: α = 1/137 (전자기 미세구조 상수)</h2>
+
+<p>아래는 공리만으로 α = 1/137.036을 도출하는 전체 과정이다. 외부 물리 상수를 넣지 않는다. 공리 구조에서 대칭군이 결정되고, 대칭군의 체적비가 α를 준다.</p>
+
+<h4>1단계. 7자유도 확정 (공리 9)</h4>
+
+<p>완전기술자유도 = 9 = 7 + 2 (공리 9). δ(bit 7)는 FSM 밖(공리 15)이므로 FSM 내부 자유도는 7이다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>bit</th><th>축</th><th>소속</th></tr>
+<tr><td>0</td><td>observer</td><td>OPERATOR (양자 괄호)</td></tr>
+<tr><td>1</td><td>superposition</td><td>OPERATOR (양자 괄호)</td></tr>
+<tr><td>2</td><td>time</td><td>DATA (고전 괄호)</td></tr>
+<tr><td>3</td><td>space</td><td>DATA (고전 괄호)</td></tr>
+<tr><td>4</td><td>R_LOCK</td><td>CAS FSM</td></tr>
+<tr><td>5</td><td>C_LOCK</td><td>CAS FSM</td></tr>
+<tr><td>6</td><td>S_LOCK</td><td>CAS FSM</td></tr>
+</table>
+</div>
+
+<h4>2단계. 비가역성이 메트릭 서명을 결정한다 (공리 2 명제, 공리 4)</h4>
+
+<p>CAS는 비가역이다(공리 2 명제). R→C→S 역순 불가. +를 넘는 비용은 환불 불가(공리 4). 7축 각각에 비가역성 유무를 적용한다:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>축</th><th>CAS 개입</th><th>비가역</th><th>메트릭 서명</th></tr>
+<tr><td>observer</td><td>없음. δ→observer 릴레이션. CAS 미개입 구간(공리 15 명제)</td><td>아니다</td><td><strong>−</strong></td></tr>
+<tr><td>superposition</td><td>없음. CAS의 참조 인덱스. 방향 강제 없음</td><td>아니다</td><td><strong>−</strong></td></tr>
+<tr><td>time</td><td>있음. CAS Swap이 +를 넘어 씀</td><td>그렇다</td><td><strong>+</strong></td></tr>
+<tr><td>space</td><td>있음. CAS Swap이 +를 넘어 씀</td><td>그렇다</td><td><strong>+</strong></td></tr>
+<tr><td>R_LOCK</td><td>있음. R→C 전이, +를 넘음</td><td>그렇다</td><td><strong>+</strong></td></tr>
+<tr><td>C_LOCK</td><td>있음. C→S 전이, +를 넘음</td><td>그렇다</td><td><strong>+</strong></td></tr>
+<tr><td>S_LOCK</td><td>있음. Swap 실행, +를 넘음</td><td>그렇다</td><td><strong>+</strong></td></tr>
+</table>
+</div>
+
+<p><strong>서명 = (5, 2).</strong> 비가역 축 5개(+), 비가역 부재 축 2개(−). 이 서명은 비용 구조에서 유일하게 결정된다. 선택이 없다.</p>
+
+<h4>3단계. 서명이 대칭군을 결정한다 (군론)</h4>
+
+<p>7차원 공간 위의 (5, 2) 이차형식을 보존하는 군은 SO(5, 2)이다. SO(5, 2) 안에서 각 섹터를 보존하는 안정화 부분군은 SO(5) × SO(2)이다:</p>
+<ul>
+<li>SO(5): 비가역 축 5개의 내부 대칭. 비용 공간에서는 time에 +1이나 R에 +1이나 같은 +1이므로, 비가역 축끼리 섞여도 비용 구조가 보존된다.</li>
+<li>SO(2): 비가역 부재 축 2개(observer, superposition)의 내부 대칭.</li>
+</ul>
+
+<h4>4단계. 몫공간 D₅ (군론)</h4>
+
+<div class="math-block">
+<div class="math-row">$$D_5 = \frac{SO(5,2)}{SO(5) \times SO(2)}$$</div>
+<div class="math-legend">Wyler의 유계 대칭 영역(bounded symmetric domain). 5복소차원 = 10실수차원</div>
+</div>
+
+<p>D₅는 "+를 넘는 모든 가능한 배위의 공간"이다. 전체 변환(SO(5, 2))에서 각 섹터 내부 변환(SO(5) × SO(2))을 빼면, 비가역 축과 비가역 부재 축을 <strong>건너서 연결하는</strong> 배위만 남는다. 이것이 +를 넘는 전이의 배위 공간이다.</p>
+
+<h4>5단계. 체적비 = α (Wyler 1969)</h4>
+
+<p>D₅의 체적과 그 Shilov 경계(D₅ 위에서 실제로 실현 가능한 배위)의 비율:</p>
+
+<div class="math-block">
+<div class="math-row">$$\alpha = \frac{V(\text{Shilov boundary of } D_5)}{V(D_5)} = \frac{8\pi^4}{9} \cdot \left(\frac{\pi^5}{2^4 \cdot 5!}\right)^{1/4} \cdot \frac{1}{120\pi^3} \approx \frac{1}{137.036}$$</div>
+<div class="math-legend">오차 0.00006%. Wyler(1969)가 계산. 반야프레임이 "왜 이 공간인가"를 제공</div>
+</div>
+
+<p>물리적 의미: <strong>"가능한 +넘기 배위" 대비 "실현되는 +넘기 배위"의 비율 = 상호작용이 실제로 일어날 확률 = α.</strong></p>
+
+<h4>도출 경로 요약</h4>
+
+<pre>공리 9 (자유도 7)
+  + 공리 2 명제 (비가역성)
+  + 공리 4 (+를 넘는 비용)
+  + 공리 15 명제 (δ→observer CAS 미개입)
+  ─────────────────────────────
+  → 메트릭 서명 (5, 2)         ← 공리에서 유일하게 결정
+  → SO(5,2)                    ← 서명에서 자동
+  → D₅ = SO(5,2)/SO(5)×SO(2)  ← 안정화 부분군에서 자동
+  → 체적비 = 1/137.036         ← Wyler의 수학
+  → α = 1/137.036              ← 오차 0.00006%</pre>
+
+<p style="font-size:0.85em;color:#8b949e"><strong>공리가 제공하는 것:</strong> 1~4단계 (왜 7차원인가, 왜 (5,2)인가, 왜 SO(5,2)인가, 왜 D₅인가). <strong>Wyler의 수학이 제공하는 것:</strong> 5단계 (D₅의 체적비 계산). <strong>미해결:</strong> "왜 체적비가 결합 상수인가"의 물리적 정당화. 이것은 Wyler도 반야프레임도 아직 답하지 않았다.</p>
+<hr>
+
 <h4>물리 대응 용어 표 (공리 외부 참조용)</h4>
 
 <p style="font-size:0.85em;color:#8b949e">아래 표는 공리 용어가 기존 물리학에서 어떤 개념에 대응하는지 보여주는 참조 표다. 공리 본문에는 물리 용어를 사용하지 않는다.</p>
