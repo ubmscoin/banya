@@ -269,7 +269,7 @@
 <a href="#en-sec50" class="toc-h3">Causality = Blockchain</a>
 <a href="#en-sec51" class="toc-h3">Observer Problem Resolution</a>
 <a href="#en-sec52" class="toc-h3">Decoherence = CAS Commit</a>
-<a href="#en-sec53" class="toc-h3">Knotting and Unknotting</a>
+<a href="#en-sec53" class="toc-h3">Juim and Release</a>
 <a href="#en-sec54" class="toc-h3">Fire and System Time</a>
 <a href="#en-sec55" class="toc-h2">Chapter 7. LRU Unified Model</a>
 <a href="#en-sec56" class="toc-h3">6.1 Quantum Entanglement = delta-squared Conservation</a>
@@ -580,7 +580,7 @@
 <a href="#en-sec50" class="toc-h3">Causality = Blockchain</a>
 <a href="#en-sec51" class="toc-h3">Observer Problem Resolution</a>
 <a href="#en-sec52" class="toc-h3">Decoherence = CAS Commit</a>
-<a href="#en-sec53" class="toc-h3">Knotting and Unknotting</a>
+<a href="#en-sec53" class="toc-h3">Juim and Release</a>
 <a href="#en-sec54" class="toc-h3">Fire and System Time</a>
 <a href="#en-sec55" class="toc-h2">Chapter 7. LRU Unified Model</a>
 <a href="#en-sec56" class="toc-h3">6.1 Quantum Entanglement = delta-squared Conservation</a>
@@ -943,7 +943,7 @@ AND (접점 = 락이 걸리는 곳):
                            11개 자료형으로 상호작용
 </pre>
 
-<h4>쥠 · 쥐다 · 쥐어짜다 <span class="tag-corollary">명제</span></h4>
+<h4>쥠 · 쥐다 <span class="tag-corollary">명제</span></h4>
 
 <p><strong>쥠(juim)</strong>은 CAS Swap(111)이 DATA에 실행되는 순간 생기는 결과다. 3개의 직교 락(R_LOCK, C_LOCK, S_LOCK)이 동시에 한 곳을 물고 있는 상태가 111이고, 이 111이 +를 넘어 DATA(space)에 공 하나를 만드는 것이 쥠이다. 3축이 직교이므로 압력은 등방이고, 쥠 주변의 수축 영역은 반드시 구형이 된다. r이 방향에 무관한 이유는 3축 직교가 보장하기 때문이다.</p>
 
@@ -953,7 +953,6 @@ AND (접점 = 락이 걸리는 곳):
 
 <p><strong>쥐다(juida)</strong>는 CAS가 DATA에 쥠을 만드는 행위다. CAS 1사이클(000→001→011→111→000)이 완성될 때 Swap(111)이 +를 넘으며 space에 공 하나를 쥔다. 쥠 1회 = 쓰기 1회 = 비용 1회(공리 4).</p>
 
-<p><strong>쥐어짜다(juieojjada)</strong>는 쥠이 누적되어 space가 소진되는 과정이다. 쥠이 쌓일수록 수축 영역이 겹치고, 겹침이 커지면 isWritable 경합이 폭주한다(공리 13 명제). 개별 쥠의 비용은 유한하지만(d≥1, 특이점 부재) 누적 경합 쌍은 N²으로 증가한다. 이것이 블랙홀이다 — space를 쥐어짜서 더 이상 쓸 수 없는 상태.</p>
 
 <h4>감쇠는 연속, 문턱은 이산 <span class="tag-corollary">명제</span></h4>
 
@@ -2157,7 +2156,6 @@ delta (처음으로 돌아옴)</pre>
 <tr><td><strong>CAS 3축 직교</strong></td><td>R, C, S 각 단계가 독립 1비트(001, 010, 100). 서로의 자유도를 침범하지 않음. 111 시점에 3축이 동시에 한 곳을 쥐어 공을 만듦</td><td>공리 2 명제</td></tr>
 <tr><td><strong>쥠(juim)</strong></td><td>CAS Swap(111)이 DATA에 만드는 공. 3축 직교 → 등방 압력 → 구형. 이산의 단위 — 더 쪼갤 수 없는 최소 변화 1건의 형상. 반야프레임 고유명사</td><td>공리 2 명제</td></tr>
 <tr><td><strong>쥐다(juida)</strong></td><td>CAS가 DATA에 쥠을 만드는 행위. 1사이클 = 1쥠 = 1비용</td><td>공리 2 명제</td></tr>
-<tr><td><strong>쥐어짜다(juieojjada)</strong></td><td>쥠 누적으로 space 소진. 경합 쌍 N²으로 폭주. 블랙홀 = 쥐어짜서 더 쓸 수 없는 상태</td><td>공리 2, 13 명제</td></tr>
 <tr><td><strong>CAS 단계 인덱스</strong></td><td>R=1, C=2, S=3. 최대 3. 4번째 없음</td><td>공리 2</td></tr>
 <tr><td><strong>단계 갭 (Δ_stage)</strong></td><td>두 엔티티의 CAS 단계 인덱스 차이. 최대 2</td><td>공리 13 명제</td></tr>
 <tr><td><strong>디코딩 비용</strong></td><td>단계 갭 x 1 bit. δ(키)의 디코딩 비용</td><td>공리 13, 15 명제</td></tr>
@@ -5383,7 +5381,7 @@ AND (junction = where lock is held):
 
 <h3 id="en-ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
 
-<p>Every change in the universe is a repetition of the single CAS (Compare-And-Swap) operation. CAS is an independent local operation with no internal storage (register). The same CAS runs independently and in parallel on every local knot. There is no central control; each local knot is its own address. CAS is a worker, and the universe operates as an ECS (Entity-Component-System) architecture (Axiom 12, defined below).</p>
+<p>Every change in the universe is a repetition of the single CAS (Compare-And-Swap) operation. CAS is an independent local operation with no internal storage (register). The same CAS runs independently and in parallel on every local juim. There is no central control; each local juim is its own address. CAS is a worker, and the universe operates as an ECS (Entity-Component-System) architecture (Axiom 12, defined below).</p>
 
 <div class="table-wrap">
 <table>
@@ -5435,7 +5433,7 @@ AND (junction = where lock is held):
 
 <h3 id="en-ax4">Axiom 4. Crossing Brackets Is Not Free <span class="tag-solved">Axiom</span></h3>
 
-<p>The cost of crossing brackets cannot be zero. If cost is zero, there is no lock. If there is no lock, occupation is impossible. Without occupation, CAS cannot execute. Therefore a minimum cost exists. This access is indirect. CAS -> superposition (Read +1) -> collapse -> DATA (cost ℏ). ℏ is not the cost of CAS touching DATA, but the cost of superposition collapsing into the classical. It is the cost of crossing brackets.</p>
+<p>The cost of crossing + cannot be zero. If cost is zero, there is no lock. If there is no lock, occupation is impossible. Without occupation, CAS cannot execute. Therefore a minimum cost exists. This access is indirect. CAS -> superposition (Read +1) -> collapse -> DATA (cost ℏ). ℏ is not the cost of CAS touching DATA, but the cost of superposition collapsing into the classical. It is the cost of crossing +.</p>
 
 <pre>DATA (classical bracket) ---- TOCTOU_LOCK ---- OPERATOR (quantum bracket)
  spacetime lives here           boundary         CAS lives here</pre>
@@ -5450,7 +5448,7 @@ AND (junction = where lock is held):
 
 <h4>Cost Lower Bound Inequality <span class="tag-corollary">Proposition</span></h4>
 
-<p>This minimum cost is the bracket-crossing minimum cost. DATA certainty and OPERATOR certainty cannot both be zero simultaneously — this cost lower bound is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing brackets. In the CAS cycle (Axiom 12 proposition), the moment FSM reaches 111 is the moment this cost is incurred.</p>
+<p>This minimum cost is the +-crossing minimum cost. DATA certainty and OPERATOR certainty cannot both be zero simultaneously — this cost lower bound is a derived consequence of this axiom. Conventional physics calls it "a fundamental limit of nature," but in the Banya Framework it is the cost of superposition collapsing into the classical — the cost of crossing +. In the CAS cycle (Axiom 12 proposition), the moment FSM reaches 111 is the moment this cost is incurred.</p>
 
 <h4>Irreversibility Terminology</h4>
 
@@ -5475,7 +5473,7 @@ AND (junction = where lock is held):
 
 <pre>Interface lock register: TOCTOU_LOCK
 Location: Interface between CAS (OPERATOR) and DATA
-Scope: One per observer (local knot), independently
+Scope: One per observer (local juim), independently
 Owner: CAS operator (Axiom 2)
 Target: DATA domain (Axiom 1)</pre>
 
@@ -5512,7 +5510,7 @@ Target: DATA domain (Axiom 1)</pre>
 <tr><th>Step</th><th>R_LOCK</th><th>C_LOCK</th><th>S_LOCK</th><th>Bits</th><th>DATA Access</th><th>Lock State</th></tr>
 <tr><td>Idle</td><td>0</td><td>0</td><td>0</td><td>000</td><td>None</td><td>DATA unoccupied, cost 0</td></tr>
 <tr><td>Read</td><td><strong>1</strong></td><td>0</td><td>0</td><td>001</td><td>Superposition ref</td><td>Intra-OPERATOR, cost +1 (R-axis entry, crosses +)</td></tr>
-<tr><td>Compare</td><td><strong>1</strong></td><td><strong>1</strong></td><td>0</td><td>011</td><td>Compare superposition</td><td>If true: ready to cross brackets (pre-collapse)</td></tr>
+<tr><td>Compare</td><td><strong>1</strong></td><td><strong>1</strong></td><td>0</td><td>011</td><td>Compare superposition</td><td>If true: ready to cross + (pre-collapse)</td></tr>
 <tr><td>Swap</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td>111</td><td>Write to DATA</td><td>Brackets crossed — cost ℏ. CAS complete</td></tr>
 <tr><td>Reset</td><td>0</td><td>0</td><td>0</td><td>000</td><td>None</td><td>Flags reset — DATA returned, lock released</td></tr>
 </table>
@@ -5520,7 +5518,7 @@ Target: DATA domain (Axiom 1)</pre>
 
 <p>CAS FSM flags turn on sequentially only. No duplicate locks on the same DATA address. One event must complete 000->001->011->111->000 before the next can begin. This is the register-level implementation of CAS atomicity (Axiom 2).</p>
 
-<p>Read (001) costs +1 (R-axis entry, crosses +). Compare (011) costs +1 (R→C, crosses +). R, C, S each cross + costing +1 (Axiom 2 prop., 4). Cost ℏ occurs at Swap (111) when writing to DATA — crossing brackets (Axiom 4). If cost is not spent (Compare false), superposition is maintained (Axiom 7). Quantum is the default; classical is the result of spending cost.</p>
+<p>Read (001) costs +1 (R-axis entry, crosses +). Compare (011) costs +1 (R→C, crosses +). R, C, S each cross + costing +1 (Axiom 2 prop., 4). Cost ℏ occurs at Swap (111) when writing to DATA — crossing + (Axiom 4). If cost is not spent (Compare false), superposition is maintained (Axiom 7). Quantum is the default; classical is the result of spending cost.</p>
 
 <h4>Same-Domain Cost <span class="tag-corollary">Proposition</span></h4>
 
@@ -5566,7 +5564,7 @@ Cross-domain (read domain = time, write domain = space):
 
 <h3 id="en-ax6">Axiom 6. Cost Recovery <span class="tag-solved">Axiom</span></h3>
 
-<p>Compare true (change detected) -> Swap executes -> recorded in DATA. This is collapse. One possibility out of many in superposition is determined and stamped onto spacetime (DATA). The stamp is the knot.</p>
+<p>Compare true (change detected) -> Swap executes -> recorded in DATA. This is collapse. One possibility out of many in superposition is determined and stamped onto spacetime (DATA). The stamp is the juim.</p>
 
 <pre>CAS (inside OPERATOR)
     | Read(+1): superposition access
@@ -5576,12 +5574,12 @@ superposition (multiple states)
     +-- true (change detected)
     |     |
     |     | observer filters to 1
-    |     | Swap: crosses brackets
+    |     | Swap: crosses +
     |     | cost incurred (Axiom 4)
     |     | TOCTOU_LOCK engaged (Axiom 5)
     |     | domain bit AND (Axiom 1 proposition)
     |     v
-    |   knot recorded in DATA = collapse
+    |   juim recorded in DATA = collapse
     |
     +-- false (no change)
           |
@@ -5612,14 +5610,14 @@ superposition (multiple states)
 
   Inside OPERATOR:  Read(+1) + Compare(+1)
        |
-       +-- Compare true  ---> crosses bracket ---> DATA record  (cost incurred = collapse = Axiom 7)
+       +-- Compare true  ---> crosses + ---> DATA record  (cost incurred = collapse = Axiom 7)
        |
        +-- Compare false ---> stays in bracket ---> superposition maintained  (Compare +1, no Swap = Axiom 7)
 
   Cost paid   --> classical (recorded in DATA)
   No cost     --> quantum (stays in OPERATOR)</pre>
 
-<p>R, C, S each cross + costing +1 (Axiom 2 prop., 4). CAS referencing superposition (Read +1) and running Compare (+1) inside OPERATOR each cross +. Swap crosses the bracket to DATA. Therefore:</p>
+<p>R, C, S each cross + costing +1 (Axiom 2 prop., 4). CAS referencing superposition (Read +1) and running Compare (+1) inside OPERATOR each cross +. Swap crosses + to DATA. Therefore:</p>
 
 <div class="table-wrap">
 <table>
@@ -5651,7 +5649,7 @@ superposition (multiple states)
 
 <h4>Idle Polling</h4>
 
-<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. CAS referencing superposition is an intra-OPERATOR bracket operation. No bracket crossing, no cost. For DATA-side distortion, see Axiom 11 proposition (distortion of empty entities is structurally inevitable).</p>
+<p>Idle polling (Axiom 8) runs only within the OPERATOR (quantum bracket). It does not access DATA, so its cost is zero. CAS referencing superposition is an intra-OPERATOR bracket operation. No + crossing, no cost. For DATA-side distortion, see Axiom 11 proposition (distortion of empty entities is structurally inevitable).</p>
 
 
 <h3 id="en-ax9">Axiom 9. Complete Description Degrees of Freedom <span class="tag-solved">Axiom</span></h3>
@@ -5777,7 +5775,7 @@ observer (filter) ---> shadow = projection cast onto entity
 <tr><th>#</th><th>Conversion</th><th>Loop Preserved</th><th>Result</th></tr>
 <tr><td>1</td><td>δ -> projected onto observer -> observer records in time (Axiom 7)</td><td>Preserved (O) (recorded time is a part of δ)</td><td>Leaves trace in spacetime while maintaining whole-local loop</td></tr>
 <tr><td>2</td><td>δ -> projected onto observer -> observer updates superposition (Axiom 7)</td><td>Preserved (O) (superposition is a part of δ)</td><td>Maintains superposition while maintaining whole-local loop</td></tr>
-<tr><td>3</td><td>δ -> projected onto observer -> re-projected onto another local knot's observer</td><td>Preserved (O) (both are parts of δ)</td><td>Propagation of whole-local loop — entanglement</td></tr>
+<tr><td>3</td><td>δ -> projected onto observer -> re-projected onto another local juim's observer</td><td>Preserved (O) (both are parts of δ)</td><td>Propagation of whole-local loop — entanglement</td></tr>
 <tr><td>4</td><td>δ -> directly accesses DATA without observer</td><td><strong>Violation (X)</strong> (not via observer = loop severed)</td><td>Loop annihilated</td></tr>
 </table>
 </div>
@@ -5846,7 +5844,7 @@ observer (filter) ---> shadow = projection cast onto entity
 
 <p>The seemingly infinite universe is the accumulation of one δ projecting one image per change. It is not the substance that is infinite, but the shadows. One δ cannot cover the entire spacetime sphere alone, so it splits into many shadows. The seemingly infinite degrees of freedom are images of one δ projected onto infinitely many observers to cover the sphere.</p>
 
-<p><strong>Why all local knots of the same type are identical:</strong> δ is one, and what appears as a local knot is that δ projected onto multiple observers. Since they are identical projections of the same δ, all local knots of the same type have the same write accumulation count, charge, and spin. The same reasoning applies to all local knots and projection images.</p>
+<p><strong>Why all local juims of the same type are identical:</strong> δ is one, and what appears as a local juim is that δ projected onto multiple observers. Since they are identical projections of the same δ, all local juims of the same type have the same write accumulation count, charge, and spin. The same reasoning applies to all local juims and projection images.</p>
 <p style="font-size:0.85em;color:#8b949e">Note: In 1940, John Wheeler intuited that "there is only one electron" but could not prove it. Wheeler proposed that the electron travels back and forth along the time axis; the Banya Framework proposes that δ is multiply projected along the observer axis. The mechanisms differ, but the conclusion is the same.</p>
 
 <p><strong>Distance-independence of entanglement:</strong> The simultaneous correlation of images reflected in observer A and observer B occurs because they are looking at the same δ. No signal travels from A to B. The same change of the same owner is simultaneously cast as two shadows. Since the owner is one, simultaneity is guaranteed.</p>
@@ -5878,7 +5876,7 @@ observer (filter) ---> shadow = projection cast onto entity
 
 <div class="math-block">
 <div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
-<div class="math-legend">$d$: shift distance between two knots (number of steps on ring) | $N$: ring size (Prop. 13). $d = 0$: full overlap, $d = N$: no overlap</div>
+<div class="math-legend">$d$: shift distance between two juims (number of steps on ring) | $N$: ring size (Prop. 13). $d = 0$: full overlap, $d = N$: no overlap</div>
 </div>
 
 <div class="math-block">
@@ -5890,20 +5888,20 @@ observer (filter) ---> shadow = projection cast onto entity
 
 <h4>Contraction Overlap = Shared Digit Ratio on Ring <span class="tag-corollary">Proposition</span></h4>
 
-<p>Each knot (write result, Axiom 7) sits at a point on the sphere. <strong>Swap consumes DATA(space) (Axiom 7).</strong> Consumed space shrinks. Space around the knot is contracted, and more write accumulation means more contraction. Contraction zone = the range of space contraction around the knot. Zone size is determined by the knot's CAS cost structure (Axioms 2, 4).</p>
+<p>Each juim (write result, Axiom 7) sits at a point on the sphere. <strong>Swap consumes DATA(space) (Axiom 7).</strong> Consumed space shrinks. Space around the juim is contracted, and more write accumulation means more contraction. Contraction zone = the range of space contraction around the juim. Zone size is determined by the juim's CAS cost structure (Axioms 2, 4).</p>
 
-<pre>No knot:    ========================= (space uniform, no contraction)
+<pre>No juim:    ========================= (space uniform, no contraction)
 
-With knot:  ====\               /==== (space contracted)
+With juim:  ====\               /==== (space contracted)
                  \             /
                   \           /
                    \         /
                     \       /
-                     [knot]
+                     [juim]
 
 On the sphere:
 
-  Knot A ----- d ----- Knot B
+  Juim A ----- d ----- Juim B
   [ contraction a ]    [ contraction b ]
           \               /
            \             /
@@ -5917,15 +5915,15 @@ When two contraction zones overlap -> two CAS attempt simultaneous Swap on same 
 
 <div class="table-wrap">
 <table>
-<tr><th>Knot's CAS stage</th><th>Contraction zone size</th><th>Basis</th></tr>
-<tr><td>Swap (cost = 1, baseline)</td><td>Maximum</td><td>Axiom 2: Swap base cost. Full bracket-crossing cost (Axiom 4)</td></tr>
-<tr><td>Compare (cost < 1)</td><td>Medium</td><td>Axiom 4: Compare share of bracket-crossing cost</td></tr>
+<tr><th>Juim's CAS stage</th><th>Contraction zone size</th><th>Basis</th></tr>
+<tr><td>Swap (cost = 1, baseline)</td><td>Maximum</td><td>Axiom 2: Swap base cost. Full +-crossing cost (Axiom 4)</td></tr>
+<tr><td>Compare (cost < 1)</td><td>Medium</td><td>Axiom 4: Compare share of +-crossing cost</td></tr>
 <tr><td>Read (cost = 1/30)</td><td>Minimum</td><td>Axiom 5 proposition + H-40: inverse of CAS access path count 30</td></tr>
 <tr><td>111 (CAS atomic)</td><td>Confined to FSM interior</td><td>Axiom 14 (defined below): FSM domain (closed). Inside FSM, not on sphere</td></tr>
 </table>
 </div>
 
-<p>Contraction overlap ratio $(1 - d/N)$ = the ratio of shared digits between two knots on the ring. $d$ = shift distance between two knots on the ring. $N$ = ring size (total slots). Since zone sizes are determined by CAS cost, $(1 - d/N)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $(1 - d/N)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
+<p>Contraction overlap ratio $(1 - d/N)$ = the ratio of shared digits between two juims on the ring. $d$ = shift distance between two juims on the ring. $N$ = ring size (total slots). Since zone sizes are determined by CAS cost, $(1 - d/N)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $(1 - d/N)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
 
 <h4>Distortion of empty entities is structurally inevitable <span class="tag-corollary">Proposition</span></h4>
 
@@ -5959,7 +5957,7 @@ No address system needed — the entity IS the address.</pre>
 
 <p>What is closed is the FSM's transition diagram, not the relationship between observers. Because the transition diagram is closed, each observer can cycle stably. Because there is no connection between observers, they are free.</p>
 
-<p>And even though the FSM cycles through a closed circuit, each knot has an <strong>open lifespan</strong> in the LRU. HOT->WARM->COLD->extinction. The FSM closes the computation; the LRU opens the lifespan. Closed computation (FSM) + open lifespan (LRU) = freedom. Knots are born (write), re-enter (move), and vanish (extinction). Even though the FSM is closed, the knot's lifecycle is open. This is the essence of the ECS architecture.</p>
+<p>And even though the FSM cycles through a closed circuit, each juim has an <strong>open lifespan</strong> in the LRU. HOT->WARM->COLD->recovery. The FSM closes the computation; the LRU opens the lifespan. Closed computation (FSM) + open lifespan (LRU) = freedom. Juims are born (write), re-enter (move), and vanish (recovery). Even though the FSM is closed, the juim's lifecycle is open. This is the essence of the ECS architecture.</p>
 
 <h4>Separation of FSM and LRU Domains <span class="tag-corollary">Proposition</span></h4>
 
@@ -5977,7 +5975,7 @@ No address system needed — the entity IS the address.</pre>
 
 <p><strong>Why CAS writes must be concurrent:</strong> Upon LRU entry, the same generation must enter HOT simultaneously. Simultaneous entry enforces the same lifecycle (HOT->WARM->COLD). Sequential entry would stagger creation times, giving the same generation different lifespans, breaking generational structure. Concurrent write = same generation = same LRU lifecycle.</p>
 
-<p><strong>LRU delegation = quantum bracket ownership:</strong> Knots written by CAS are stored in DATA (classical bracket), but the moment they enter LRU management, they come under OPERATOR (quantum bracket) ownership. Storage is in DATA, but lifecycle authority belongs to OPERATOR. The transition HOT (active management) -> WARM (pending eviction) -> COLD (base eviction rate) is OPERATOR's management policy. Residing in DATA, but not belonging to DATA.</p>
+<p><strong>LRU delegation = quantum bracket ownership:</strong> Juims written by CAS are stored in DATA (classical bracket), but the moment they enter LRU management, they come under OPERATOR (quantum bracket) ownership. Storage is in DATA, but lifecycle authority belongs to OPERATOR. The transition HOT (active management) -> WARM (pending eviction) -> COLD (base eviction rate) is OPERATOR's management policy. Residing in DATA, but not belonging to DATA.</p>
 
 <h4>Why There Is No Logical Address System</h4>
 
@@ -6064,9 +6062,9 @@ COLD (68%) <- no recent access             — LRU base eviction rate applied</p
 </table>
 </div>
 
-<p>$d < N$: overlap exists (cost incurred). $d = N$: no overlap (unreachable). $d > N$: impossible (outside ring). As writes accumulate (more knots), more points fill the ring and the ring grows. A larger ring means longer reach. <strong>OPERATOR's ring size determines DATA's space range.</strong></p>
+<p>$d < N$: overlap exists (cost incurred). $d = N$: no overlap (unreachable). $d > N$: impossible (outside ring). As writes accumulate (more juims), more points fill the ring and the ring grows. A larger ring means longer reach. <strong>OPERATOR's ring size determines DATA's space range.</strong></p>
 
-<h4>Dimension Stack <span class="tag-corollary">Proposition</span></h4>
+<h4>Dimension <span class="tag-corollary">Proposition</span></h4>
 
 <p>The ring buffer is an <strong>internal 1D path (circumference only)</strong> inside OPERATOR. It does not touch space. The FSM cycle (Axiom 14, defined below) traverses this ring — R, C, S each cross + costing +1 (Axiom 2 prop., 4).</p>
 
@@ -6079,27 +6077,27 @@ COLD (68%) <- no recent access             — LRU base eviction rate applied</p
   |           touch space.               |
   +--------------------------------------+</pre>
 
-<p>When the ring completes one cycle (111 = Swap), it crosses the bracket <strong>at that single moment</strong> (Axiom 4). OPERATOR to DATA. Bracket-crossing cost is incurred. <strong>A single point is stamped</strong> onto DATA(space). This point is the knot (Axiom 7). The ring itself does not enter space. Each time the ring completes, it stamps one mark on space.</p>
+<p>When the ring completes one cycle (111 = Swap), it crosses + <strong>at that single moment</strong> (Axiom 4). OPERATOR to DATA. Bracket-crossing cost is incurred. <strong>A ball is created</strong> on DATA(space). This ball is the juim (Axiom 7). The ring itself does not enter space. Each time the ring completes, it creates one ball on space.</p>
 
 <pre>OPERATOR (ring cycles)
     |
     | 111 = Swap complete
     | Bracket crossed (cost incurred)
     v
-DATA(space): one point stamped = knot
+DATA(space): one ball created = juim
 
-  1 cycle  = 1 stamp = 1 knot
+  1 cycle  = 1 ball  = 1 juim
   N cycles = N stamps = write accumulation count N</pre>
 
-<p>When a knot (point) is stamped, surrounding space contracts (Proposition 6). Swap consumed DATA(space) (Axiom 7). The contraction range forms a <strong>spherical cap (2D)</strong> centered on the knot. This is the contraction zone. The size of the contraction zone is determined by CAS cost structure (Proposition 6). When two knots' contraction zones overlap, that overlap is the contraction overlap ratio $(1-d/N)$.</p>
+<p>When a juim (ball) is created, surrounding space contracts (Proposition 6). Swap consumed DATA(space) (Axiom 7). The contraction range forms a <strong>spherical cap (2D)</strong> centered on the juim. This is the contraction zone. The size of the contraction zone is determined by CAS cost structure (Proposition 6). When two juims' contraction zones overlap, that overlap is the contraction overlap ratio $(1-d/N)$.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>Dimension</th><th>Structure</th><th>Axiom/Proposition</th><th>Role</th><th>Physics</th></tr>
 <tr><td><strong>1D</strong></td><td>Ring buffer (inside OPERATOR)</td><td>Axiom 14</td><td>Path CAS traverses. R,C,S each +1</td><td>Quantum phase</td></tr>
-<tr><td><strong>0D</strong></td><td>Knot (point, stamp)</td><td>Axiom 7</td><td>Stamp on space across the bracket</td><td>Particle</td></tr>
-<tr><td><strong>2D</strong></td><td>Spherical cap</td><td>Proposition 6</td><td>Contraction zone around the knot</td><td>Spherical wave</td></tr>
-<tr><td><strong>3D</strong></td><td>Space</td><td>Proposition 5</td><td>The space knots exist in</td><td>Space</td></tr>
+<tr><td><strong>0D</strong></td><td>Juim (ball, write result)</td><td>Axiom 7</td><td>Ball created on space across +</td><td>Particle</td></tr>
+<tr><td><strong>2D</strong></td><td>Spherical cap</td><td>Proposition 6</td><td>Contraction zone around the juim</td><td>Spherical wave</td></tr>
+<tr><td><strong>3D</strong></td><td>Space</td><td>Proposition 5</td><td>The space juims exist in</td><td>Space</td></tr>
 <tr><td><strong>4D</strong></td><td>time + space</td><td>Axiom 1</td><td>Full classical bracket</td><td>Spacetime</td></tr>
 </table>
 </div>
@@ -6121,7 +6119,7 @@ DATA(space): one point stamped = knot
   Why 3D: CAS with 3 orthogonal axes grips the space domain,
           recording a ball with a timestamp in the time domain.</pre>
 
-<p><strong>CAS cycle.</strong> CAS FSM progresses forward (000→001→011→111→000). At 111 it crosses the bracket to create a ball (juim), then simultaneously resets to 000 to await the next fire:</p>
+<p><strong>CAS cycle.</strong> CAS FSM progresses forward (000→001→011→111→000). At 111 it crosses + to create a ball (juim), then simultaneously resets to 000 to await the next fire:</p>
 
 <pre>
   FSM       Position    State                                  Cost
@@ -6137,15 +6135,15 @@ DATA(space): one point stamped = knot
 
 <h4>Cost Is Multiple Projection, Not Transfer <span class="tag-corollary">Proposition</span></h4>
 
-<p>No separate cost transfer mechanism is needed. Every local knot's observer is a projection of the same δ (Axiom 11). What appears to be cost between local knot A and local knot B is actually the same δ being projected simultaneously onto both observers. No signal travels from A to B — it is a multiple projection of the same owner.</p>
+<p>No separate cost transfer mechanism is needed. Every local juim's observer is a projection of the same δ (Axiom 11). What appears to be cost between local juim A and local juim B is actually the same δ being projected simultaneously onto both observers. No signal travels from A to B — it is a multiple projection of the same owner.</p>
 
-<p>This is a direct consequence of Axiom 11 (multiple projection). Because there is one δ and one owner (Axiom 10, elimination), every image reflected in every observer is the same change of the same owner. What appears as cost is the result of a single owner projecting simultaneously onto multiple observers, not independent communication between knots. Therefore, no direct communication channel between entities exists in the ECS model.</p>
+<p>This is a direct consequence of Axiom 11 (multiple projection). Because there is one δ and one owner (Axiom 10, elimination), every image reflected in every observer is the same change of the same owner. What appears as cost is the result of a single owner projecting simultaneously onto multiple observers, not independent communication between juims. Therefore, no direct communication channel between entities exists in the ECS model.</p>
 
 <h4>Visualization: Cost Distribution</h4>
 
 <p style="font-size:0.85em;color:#8b949e">The diagram below is not an axiom or proposition but a <strong>visualization tool</strong>. It shows the spatial distribution of the inter-entity interaction strength formula (Axiom 13 proposition).</p>
 
-<p>Place one knot at the origin. The inter-entity interaction strength $C \cdot (1-d/N) / (4\pi d^2)$ is defined at every surrounding point, forming a <strong>scalar field</strong>. Each point has magnitude only, no direction.</p>
+<p>Place one juim at the origin. The inter-entity interaction strength $C \cdot (1-d/N) / (4\pi d^2)$ is defined at every surrounding point, forming a <strong>scalar field</strong>. Each point has magnitude only, no direction.</p>
 
 <pre>Cost distribution (d: distance between two entities = ring shift steps = distance on sphere):
 
@@ -6156,7 +6154,7 @@ DATA(space): one point stamped = knot
    |
    D (d=N)
 
-   A = origin. Every knot is its own origin (ECS, Axiom 12).
+   A = origin. Every juim is its own origin (ECS, Axiom 12).
 
    A-B: d=2 (close)
         overlap ratio = (1 - 2/N) = large
@@ -6177,18 +6175,18 @@ DATA(space): one point stamped = knot
                                             ring overlap(d)  sphere distribution(d)
                                             cost type        cost magnitude</pre>
 
-<p>This cost distribution is not communication between knots (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> created by the projection of δ (Axiom 11) around each knot. $d$ (distance between two entities on the sphere) determines both cost type (ring overlap ratio) and cost magnitude (sphere distribution). When two knots' distributions overlap, isWritable contention occurs.</p>
+<p>This cost distribution is not communication between juims (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> created by the projection of δ (Axiom 11) around each juim. $d$ (distance between two entities on the sphere) determines both cost type (ring overlap ratio) and cost magnitude (sphere distribution). When two juims' distributions overlap, isWritable contention occurs.</p>
 
 <h4>DATA Is Discrete, OPERATOR Is Continuous <span class="tag-corollary">Proposition</span></h4>
 
-<p>The diagram above uses "gradient," but DATA (spacetime) is <strong>discrete</strong>. Ring buffer positions are integers, knots are points, and the minimum step is 1 position. No continuous limit ($\Delta x \to 0$) exists, so <strong>differentiation does not hold</strong>.</p>
+<p>The diagram above uses "gradient," but DATA (spacetime) is <strong>discrete</strong>. Ring buffer positions are integers, juims are points, and the minimum step is 1 position. No continuous limit ($\Delta x \to 0$) exists, so <strong>differentiation does not hold</strong>.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>Space</th><th>Nature</th><th>Allowed operations</th><th>Forbidden operations</th></tr>
 <tr><td>DATA (classical bracket)</td><td>Discrete. Bits. Integer positions.</td><td>$\Sigma$ (sum), mod $N$, AND, shift, differences ($\Delta$)</td><td>Derivatives ($d/dx$). No continuous limit</td></tr>
 <tr><td>OPERATOR (quantum bracket, superposition)</td><td>All states coexist</td><td>Continuous distribution. Probability amplitudes.</td><td>—</td></tr>
-<tr><td>Bracket crossing (Swap)</td><td>Discretization</td><td>—</td><td>Continuous collapses to discrete (Axiom 7)</td></tr>
+<tr><td>+ crossing (Swap)</td><td>Discretization</td><td>—</td><td>Continuous collapses to discrete (Axiom 7)</td></tr>
 </table>
 </div>
 
@@ -6204,43 +6202,43 @@ Difference (Banya):    Df = f(k+1) - f(k)
                        k is integer. 1-step unit. Cannot go to 0.
                        This is the actual operation on DATA.</pre>
 
-<h4>Knots and Ownership — Why Local Knots Need No Ownership</h4>
+<h4>Juims and Ownership — Why Local Juims Need No Ownership</h4>
 
-<p>When CAS completes a write to DATA, a knot is created in spacetime. A knot is a record of change in spacetime. This knot has a lifespan.</p>
+<p>When CAS completes a write to DATA, a juim is created in spacetime. A juim is a record of change in spacetime. This juim has a lifespan.</p>
 
-<pre>delta (projection) ---> observer (filtering) ---> CAS (write) ---> DATA (knot creation)
+<pre>delta (projection) ---> observer (filtering) ---> CAS (write) ---> DATA (juim creation)
                                                                          |
                                                                     LRU (lifespan management)
                                                                          |
-                                                                HOT ---> WARM ---> COLD ---> extinction</pre>
+                                                                HOT ---> WARM ---> COLD ---> recovery</pre>
 
-<p>Knot lifecycle:</p>
+<p>Juim lifecycle:</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>Phase</th><th>State</th><th>Description</th></tr>
-<tr><td>Creation</td><td>HOT</td><td>CAS write complete. Knot recorded in spacetime. Frequently accessed</td></tr>
-<tr><td>Re-entry</td><td>HOT retained</td><td>Knot re-enters as input (argument) for the next CAS cycle. Change begets change</td></tr>
+<tr><td>Creation</td><td>HOT</td><td>CAS write complete. Juim recorded in spacetime. Frequently accessed</td></tr>
+<tr><td>Re-entry</td><td>HOT retained</td><td>Juim re-enters as input (argument) for the next CAS cycle. Change begets change</td></tr>
 <tr><td>Inactive</td><td>WARM -> COLD</td><td>Exists only as probability. CAS access decreasing. LRU eviction in progress</td></tr>
-<tr><td>Extinction</td><td>COLD -> released</td><td>Access reaches 0. Knot extinguished. Disappears from spacetime</td></tr>
+<tr><td>Recovery</td><td>COLD -> released</td><td>Access reaches 0. Juim recovered. Disappears from spacetime</td></tr>
 </table>
 </div>
 
 <h4>Causality and the Arrow of Time <span class="tag-corollary">Proposition</span></h4>
 
-<p>Writing is owning, and extinction is release. Because the knot itself has a lifespan and LRU manages that lifespan, no separate ownership declaration is needed. This is causality — a cause (write) creates an effect (knot), and the effect passes through a lifespan (LRU) to extinction. The arrow of time is the direction of LRU eviction.</p>
+<p>Writing is owning, and recovery is release. Because the juim itself has a lifespan and LRU manages that lifespan, no separate ownership declaration is needed. This is causality — a cause (write) creates an effect (juim), and the effect passes through a lifespan (LRU) to recovery. The arrow of time is the direction of LRU eviction.</p>
 
-<p>If a knot re-enters as CAS input during its lifecycle (re-entry), it produces a chain where change begets change. If it does not re-enter, it exists as probability (superposition) until LRU pushes it to COLD and it is extinguished. Either way, there is no need to explicitly manage ownership — the knot's lifespan is its ownership.</p>
+<p>If a juim re-enters as CAS input during its lifecycle (re-entry), it produces a chain where change begets change. If it does not re-enter, it exists as probability (superposition) until LRU pushes it to COLD and it is recovered. Either way, there is no need to explicitly manage ownership — the juim's lifespan is its ownership.</p>
 
 <h4>Re-entry = move (Ownership Transfer)</h4>
 
-<p>When a knot re-enters as CAS input, ownership moves from the previous knot to the next. It is not a copy. The previous knot is extinguished and a new knot is created.</p>
+<p>When a juim re-enters as CAS input, ownership moves from the previous juim to the next. It is not a copy. The previous juim is recovered and a new juim is created.</p>
 
-<pre>Knot A (cause) --re-entry--> CAS --write--> Knot B (effect)
+<pre>Juim A (cause) --re-entry--> CAS --write--> Juim B (effect)
    |                                            |
-   extinction (move complete)                   creation (ownership transferred)</pre>
+   recovery (move complete)                     creation (ownership transferred)</pre>
 
-<p>Because copying is impossible, two effects cannot arise from the same cause. This is the preservation of causality. When a cause is moved to an effect, the cause vanishes and only the effect remains. It cannot be reversed. It is irreversible (Axiom 4). Causality needs no separate declaration — the move of a knot is causality.</p>
+<p>Because copying is impossible, two effects cannot arise from the same cause. This is the preservation of causality. When a cause is moved to an effect, the cause vanishes and only the effect remains. It cannot be reversed. It is irreversible (Axiom 4). Causality needs no separate declaration — the move of a juim is causality.</p>
 
 
 <h3 id="en-ax13">Axiom 13. Quantum Bracket Superposition Is the Indexing of Classical Bracket ECS <span class="tag-solved">Axiom</span></h3>
@@ -6261,7 +6259,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>Inter-Entity Interaction Strength <span class="tag-corollary">Proposition</span></h4>
 
-<p>Interaction occurs because knots (write results, Axiom 7) warp spacetime. When CAS Swap consumes space, spacetime contracts around the knot. When two knots' contraction zones overlap, isWritable contention arises. This is interaction.</p>
+<p>Interaction occurs because juims (write results, Axiom 7) warp spacetime. When CAS Swap consumes space, spacetime contracts around the juim. When two juims' contraction zones overlap, isWritable contention arises. This is interaction.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
@@ -6377,7 +6375,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <div class="math-block">
 <div class="math-row">$$\text{111 maintenance cost} = \text{cost per junction} \times \text{junction count}$$</div>
-<div class="math-row">$$= (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times d$$</div>
+<div class="math-row">$$= (\text{min +-crossing cost} \times \text{junction density per unit distance}) \times d$$</div>
 <div class="math-legend">$d$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $d$</div>
 </div>
 
@@ -6558,7 +6556,7 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>The identity of cost is ordering <span class="tag-corollary">Proposition</span></h4>
 
-<p>The fire bit's flickering is simultaneity. Everything orthogonal responds at once. This is the total flow. But 2 places require ordering: R->C->S (CAS dependency) and delta->observer (ring seam). Ordering is a bottleneck in simultaneity. What cannot be processed simultaneously must wait. This waiting is cost. <strong>The identity of cost is ordering.</strong> R, C, S each cross + costing +1 (Axiom 2 prop., 4). Swap is the last step of the R->C->S sequence, the moment that crosses brackets.</p>
+<p>The fire bit's flickering is simultaneity. Everything orthogonal responds at once. This is the total flow. But 2 places require ordering: R->C->S (CAS dependency) and delta->observer (ring seam). Ordering is a bottleneck in simultaneity. What cannot be processed simultaneously must wait. This waiting is cost. <strong>The identity of cost is ordering.</strong> R, C, S each cross + costing +1 (Axiom 2 prop., 4). Swap is the last step of the R->C->S sequence, the moment that crosses +.</p>
 
 <div class="table-wrap">
 <table>
@@ -6680,7 +6678,7 @@ polling wakes (Axiom 8)
   | FSM runs (Axiom 14)
   | 000 ---> 001 ---> 011 ---> 111 ---> 000
   v
-Swap ---> knot in DATA ---> reflected in delta
+Swap ---> juim in DATA ---> reflected in delta
   |
   | reflected delta sees through observer again
   v
@@ -6728,7 +6726,7 @@ delta (back to start)</pre>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{cost lower bound} = \text{bracket-crossing cost} > 0$$</div>
+<div class="math-row">$$\text{cost lower bound} = \text{+-crossing cost} > 0$$</div>
 <div class="math-legend">Cost lower bound (Axiom 4 proposition). DATA certainty and OPERATOR certainty cannot both be zero simultaneously. Because brackets are orthogonal (Axiom 1), narrowing one widens the other</div>
 </div>
 
@@ -6744,7 +6742,7 @@ delta (back to start)</pre>
 
 <div class="math-block">
 <div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
-<div class="math-legend">Shared digit ratio on ring (Axiom 11 proposition). $d$: shift distance between two knots (steps) | $N$: ring size | $d=0$: full overlap | $d=N$: no overlap</div>
+<div class="math-legend">Shared digit ratio on ring (Axiom 11 proposition). $d$: shift distance between two juims (steps) | $N$: ring size | $d=0$: full overlap | $d=N$: no overlap</div>
 </div>
 
 <div class="math-block">
@@ -6753,7 +6751,7 @@ delta (back to start)</pre>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{111 maintenance cost} = (\text{min bracket-crossing cost} \times \text{junction density per unit distance}) \times d$$</div>
+<div class="math-row">$$\text{111 maintenance cost} = (\text{min +-crossing cost} \times \text{junction density per unit distance}) \times d$$</div>
 <div class="math-legend">111 maintenance cost (Axiom 14 proposition). $d$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $d$ | cost = Swap cost (1) means inseparable</div>
 </div>
 
@@ -6792,11 +6790,11 @@ delta (back to start)</pre>
 <tr><th>Action</th><th>Cost</th><th>Source</th></tr>
 <tr><td>CAS Read (domain read)</td><td>0</td><td>Axiom 4, 5</td></tr>
 <tr><td>CAS Compare (comparison)</td><td>0</td><td>Axiom 4, 5</td></tr>
-<tr><td>CAS Swap (write, crosses bracket)</td><td><strong>&gt; 0 (sole cost-incurring point)</strong></td><td>Axiom 4, 5</td></tr>
+<tr><td>CAS Swap (write, crosses +)</td><td><strong>&gt; 0 (sole cost-incurring point)</strong></td><td>Axiom 4, 5</td></tr>
 <tr><td>δ firing</td><td>0</td><td>Axiom 15</td></tr>
 <tr><td>observer filtering</td><td>0</td><td>Axiom 8, 10</td></tr>
 <tr><td>idle polling (inside OPERATOR)</td><td>0</td><td>Axiom 8</td></tr>
-<tr><td>Same-domain recursive lock (e.g., space->space)</td><td>&gt; 0 (serialization)</td><td>Axiom 5 proposition</td></tr>
+<tr><td>Juim accumulation contraction overlap (Axiom 13 prop.) (e.g., space->space)</td><td>&gt; 0 (serialization)</td><td>Axiom 5 proposition</td></tr>
 <tr><td>Bracket-crossing access (quantum-classical crossing)</td><td>&gt; 0 (cross Cmp/Swp)</td><td>Axiom 1 proposition</td></tr>
 <tr><td>Intra-quantum-bracket access (same bracket)</td><td>0</td><td>Axiom 1 proposition</td></tr>
 <tr><td>FSM 111 cumulative lock maintenance</td><td>proportional to d</td><td>Axiom 14 proposition</td></tr>
@@ -6932,7 +6930,7 @@ delta (back to start)</pre>
 
 <tr><th colspan="2" style="background:#161b22;color:#e6edf3">4 Forces</th></tr>
 <tr><th>Axiom Term</th><th>Physics Correspondence</th></tr>
-<tr><td>Swap accumulation cost (same-domain recursive lock)</td><td>Gravity</td></tr>
+<tr><td>Swap accumulation cost (juim accumulation contraction overlap (Axiom 13 prop.))</td><td>Gravity</td></tr>
 <tr><td>Bracket-cross Cmp/Swp cost</td><td>Electromagnetic force</td></tr>
 <tr><td>Same-domain serialization cost</td><td>Weak force</td></tr>
 <tr><td>CAS atomicity · accumulated lock maintenance</td><td>Strong force · confinement</td></tr>
@@ -8245,13 +8243,13 @@ state(N) = read(state(N-1)) + write
 
 <pre>
 delta(trigger) -> observer(filter) -> superposition(update) -> CAS Swap(render) -> time+space(screen)
-   fire             entry point           state update            crosses bracket        screen output
+   fire             entry point           state update            crosses +        screen output
    cost +1          cost +1               cost +1                 cost > 0               rendering result
-   |                (R-axis entry)        (R→C, crosses +)        (Swap, brackets)         |
+   |                (R-axis entry)        (R→C, crosses +)        (Swap, crosses +)         |
    +------ quantum = backend (R,C,S each +1) --------+------ classical = frontend -------+
 </pre>
 
-<p>Quantum (OPERATOR) is the backend. It performs filtering and updating (R, C each +1). Classical (DATA) is the frontend. Cost occurs when Swap crosses the bracket to render onto the screen. The boundary is clear.</p>
+<p>Quantum (OPERATOR) is the backend. It performs filtering and updating (R, C each +1). Classical (DATA) is the frontend. Cost occurs when Swap crosses + to render onto the screen. The boundary is clear.</p>
 
 <h3 id="en-sec31">CAS FSM: 3-bit State Machine</h3>
 
@@ -8264,7 +8262,7 @@ delta(trigger) -> observer(filter) -> superposition(update) -> CAS Swap(render) 
 <tr><td>000</td><td>Idle. All locks released</td><td>0</td><td>Vacuum ground state</td></tr>
 <tr><td>001</td><td>R_LOCK. Read occupied</td><td>+1 (R-axis entry)</td><td>Quantum measurement initial</td></tr>
 <tr><td>011</td><td>C_LOCK. Compare complete</td><td>+1 (R→C, crosses +)</td><td>Branch decision point</td></tr>
-<tr><td>111</td><td>S_LOCK. CAS complete. Atomic</td><td>+1 (Swap, brackets)</td><td>Collapse. Rendering</td></tr>
+<tr><td>111</td><td>S_LOCK. CAS complete. Atomic</td><td>+1 (Swap, crosses +)</td><td>Collapse. Rendering</td></tr>
 </table>
 
 <h3 id="en-sec32">Order and Cost</h3>
@@ -8310,7 +8308,7 @@ delta(trigger) -> observer(filter) -> superposition(update) -> CAS Swap(render) 
 
 <h2 id="en-sec41">Chapter 5. Structure of Cost</h2>
 
-<p>In the Banya Framework, the nature of cost is order (Axiom 15 proposition). If things happen simultaneously, cost is 0; if they happen sequentially, cost is > 0. Cost arises only when Swap crosses the bracket (Axiom 4). From this single principle, gravity, electromagnetism, the weak force, and the strong force all emerge.</p>
+<p>In the Banya Framework, the nature of cost is order (Axiom 15 proposition). If things happen simultaneously, cost is 0; if they happen sequentially, cost is > 0. Cost arises only when Swap crosses + (Axiom 4). From this single principle, gravity, electromagnetism, the weak force, and the strong force all emerge.</p>
 
 <h3 id="en-sec42">Cost Origin: Swap</h3>
 
@@ -8323,7 +8321,7 @@ delta(trigger) -> observer(filter) -> superposition(update) -> CAS Swap(render) 
 <tr><td>observer filtering</td><td>0</td><td>Inside bracket</td></tr>
 </table>
 
-<p><strong>ℏ is the minimum cost of crossing the bracket.</strong> CAS references superposition in OPERATOR (quantum) at Read +1 (R-axis entry, crosses +), and when Swap writes to DATA (classical), it crosses the bracket and pays a minimum of ℏ. The uncertainty principle (ΔxΔp ≥ ℏ/2) is a consequence of this TOCTOU lock cost.</p>
+<p><strong>ℏ is the minimum cost of crossing +.</strong> CAS references superposition in OPERATOR (quantum) at Read +1 (R-axis entry, crosses +), and when Swap writes to DATA (classical), it crosses + and pays a minimum of ℏ. The uncertainty principle (ΔxΔp ≥ ℏ/2) is a consequence of this TOCTOU lock cost.</p>
 
 <h3 id="en-sec43">Four Forces = Domain 4-bit Access Pattern</h3>
 
@@ -8334,14 +8332,14 @@ delta(trigger) -> observer(filter) -> superposition(update) -> CAS Swap(render) 
 <tr><td><strong>Strong</strong></td><td>FSM 111 hold (closed)</td><td>Proportional to d. Inseparable</td><td>CAS atomicity = color confinement</td></tr>
 <tr><td><strong>Electromagnetic</strong></td><td>Cross-domain Compare</td><td>1/137 (ring shift)</td><td>Cross-comparison cost</td></tr>
 <tr><td><strong>Weak</strong></td><td>Cross-domain Read</td><td>1/30 (ring shift)</td><td>Cross-read cost</td></tr>
-<tr><td><strong>Gravity</strong></td><td>Same-domain recursive lock</td><td>Proportional to d²</td><td>Swap's space accumulation</td></tr>
+<tr><td><strong>Gravity</strong></td><td>Juim accumulation contraction overlap (Axiom 13 prop.)</td><td>Proportional to d²</td><td>Swap's space accumulation</td></tr>
 </table>
 
 <p>The cause of cost is not the CAS stage but the domain access pattern. The shift cost per ring size corresponds numerically to the coupling constants. For details, see <a href="discovery/unification.html">Four Forces Unification Report</a>.</p>
 
 <h3 id="en-sec44">Write = Swap Records to DATA</h3>
 
-<p>"Write" is when Swap crosses the bracket and records to DATA (time, space).</p>
+<p>"Write" is when Swap crosses + and records to DATA (time, space).</p>
 
 <pre>
 Pipeline view:
@@ -8407,19 +8405,19 @@ CAS:         swap(N) = compare(read(N-1), expected) + new_value</pre>
 <tr><td>Who is the observer</td><td>CAS Read = observer (bit 0)</td></tr>
 <tr><td>Why does observation cause collapse</td><td>Because Compare+Swap finalizes</td></tr>
 <tr><td>Is observation a separate act</td><td>No. Embedded in CAS</td></tr>
-<tr><td>What is ℏ</td><td>TOCTOU lock cost. Minimum cost of crossing the bracket</td></tr>
+<tr><td>What is ℏ</td><td>TOCTOU lock cost. Minimum cost of crossing +</td></tr>
 <tr><td>Why does uncertainty exist</td><td>Lock cost between Compare-Swap</td></tr>
 </table>
 
 <h3 id="en-sec52">Decoherence = CAS Commit</h3>
 
-<p>This is the process by which quantum superposition (OPERATOR, background) transitions to classical finalization (DATA, foreground). When CAS Swap crosses the bracket and renders to the screen, decoherence is complete.</p>
+<p>This is the process by which quantum superposition (OPERATOR, background) transitions to classical finalization (DATA, foreground). When CAS Swap crosses + and renders to the screen, decoherence is complete.</p>
 
 <p>All observation is indirect. Directly seeing the object is impossible. We always know through the output of CAS (state committed to DATA). The reason dark matter is invisible: CAS occurred in the background but was not committed to the foreground, so only the gravitational effect is felt.</p>
 
-<h3 id="en-sec53">Knotting and Unknotting</h3>
+<h3 id="en-sec53">Juim and Release</h3>
 
-<p>CAS Swap = ties a knot on DATA (space contraction). LRU eviction = unties the knot (expansion). Which force a knot manifests as is determined by the domain 4-bit pattern.</p>
+<p>CAS Swap = creates a juim on DATA (space contraction). LRU eviction = releases the juim (expansion). Which force a juim manifests as is determined by the domain 4-bit pattern.</p>
 
 <h3 id="en-sec54">Fire and System Time</h3>
 
@@ -8520,7 +8518,7 @@ CAS:         swap(N) = compare(read(N-1), expected) + new_value</pre>
 
 <h2 id="en-sec62">Chapter 8. Deriving 6 Physics Equations from Swap Cost</h2>
 
-<p>Quantifying the cost incurred when a CAS Swap crosses a bracket (Axiom 4) derives all 6 fundamental equations of existing physics. Cost of 1 Swap:</p>
+<p>Quantifying the cost incurred when a CAS Swap crosses + (Axiom 4) derives all 6 fundamental equations of existing physics. Cost of 1 Swap:</p>
 
 <div class="math-block">
 <div class="math-row">$$1\;\text{Swap} = 1\;t_p\;(\text{Planck time}) = 1\;E_p\;(\text{Planck energy}) = 1\;l_p^{2}\;(\text{Planck area}) = 1\;m_p\;(\text{Planck mass})$$</div>
@@ -8683,8 +8681,8 @@ CAS:         swap(N) = compare(read(N-1), expected) + new_value</pre>
 <p>Here the Definition of Write chain is completed:</p>
 
 <div class="math-block">
-<div class="math-row">$$Write = knot-tying (the act of inscribing Status on space)$$</div>
-<div class="math-row">$$The force that ties knots = cycle (tick, 1 transition)$$</div>
+<div class="math-row">$$Write = juim creation (the act of inscribing Status on space)$$</div>
+<div class="math-row">$$The force that creates juims = cycle (tick, 1 transition)$$</div>
 <div class="math-row">$$The form of a cycle = vibration (omega, repeating ticks)$$</div>
 <div class="math-legend">space: space | omega: angular frequency</div>
 </div>
@@ -8692,12 +8690,12 @@ CAS:         swap(N) = compare(read(N-1), expected) + new_value</pre>
 <p>Therefore <code>E = h-bar \cdot omega</code> reads as follows:</p>
 
 <div class="math-block">
-<div class="math-row">$$Energy = cost of 1 knot (\hbar) x knots per second (omega)$$</div>
-<div class="math-row">$$= total cost of knot-tying per second$$</div>
+<div class="math-row">$$Energy = cost of 1 juim (\hbar) x juims per second (omega)$$</div>
+<div class="math-row">$$= total cost of juim creation per second$$</div>
 <div class="math-legend">$\hbar$: reduced Planck constant | omega: angular frequency</div>
 </div>
 
-<p>Energy is the cost of tying knots per second. A massive object is many accumulated knots (<code>E=mc^2</code>), light is a vibration rapidly tying and untying knots (<code>E=h-bar \cdot omega</code>), and a black hole is knots maximally piled up until space is exhausted (<code>r_s=2GM/c^2</code>). All are different aspects of knots.</p>
+<p>Energy is the cost of creating juims per second. A massive object is many accumulated juims (<code>E=mc^2</code>), light is a vibration rapidly creating and releasing juims (<code>E=h-bar \cdot omega</code>), and a black hole is juims maximally piled up until space is exhausted (<code>r_s=2GM/c^2</code>). All are different aspects of juims.</p>
 
 <hr>
 
@@ -8744,7 +8742,7 @@ CAS:         swap(N) = compare(read(N-1), expected) + new_value</pre>
 <tr><td><strong>Strong</strong></td><td>FSM 111 hold (closed)</td><td>Proportional to d. CAS atomicity = color confinement</td><td>α_s = 0.1183</td></tr>
 <tr><td><strong>EM</strong></td><td>Cross-domain Compare</td><td>Ring-137 shift cost</td><td>α = 1/137</td></tr>
 <tr><td><strong>Weak</strong></td><td>Cross-domain Read</td><td>Ring-30 shift cost</td><td>α/sin²θ_W</td></tr>
-<tr><td><strong>Gravity</strong></td><td>Same-domain recursive lock</td><td>Swap accumulation. Proportional to d²</td><td>G (Swap basis=1)</td></tr>
+<tr><td><strong>Gravity</strong></td><td>Juim accumulation contraction overlap (Axiom 13 prop.)</td><td>Swap accumulation. Proportional to d²</td><td>G (Swap basis=1)</td></tr>
 </table>
 
 <h3 id="en-sec74">Cost Ratios</h3>
@@ -8967,7 +8965,7 @@ Breaking: transaction separation impossible -> new transaction (quark-antiquark 
 
 <p><strong>Starting Point: Banya Framework Swap Cost Axiom + CAS Quark Mapping</strong></p>
 
-<p>Swap is the sole cost point among the 3 CAS stages (Axiom 4). Swap incurs cost because it is the stage that writes across the bracket into DATA. In the quark mapping, the success Status of Swap corresponds to the top quark. Top is the heaviest known quark (173,000 MeV).</p>
+<p>Swap is the sole cost point among the 3 CAS stages (Axiom 4). Swap incurs cost because it is the stage that writes across + into DATA. In the quark mapping, the success Status of Swap corresponds to the top quark. Top is the heaviest known quark (173,000 MeV).</p>
 
 <div class="math-block">
 <div class="math-desc">Banya Framework:</div>
@@ -9325,10 +9323,10 @@ Total items:      696
 <li>4. <strong>The sole operator of the universe is CAS.</strong> Read→Compare→Swap. The CAS FSM is a 3-bit state machine in nibble 1 of the d-ring. It is not a ring.</li>
 <li>5. <strong>The essence of cost is order.</strong> R, C, S each cross + costing +1 (Axiom 2 prop., 4). Simultaneous = no ordering cost, sequential = +1 per stage.</li>
 <li>6. <strong>Observation is subordinate to change.</strong> Observer (bit 0) is the entry point of the d-ring. It generates will through interaction with δ. All observation is inherently indirect.</li>
-<li>7. <strong>Pipeline: trigger → filter → update → render → screen.</strong> δ(fire) → observer(filter) → superposition(update) → CAS Swap(render) → time+space(screen). Quantum = backend (R,C,S each +1), classical = frontend (Swap crosses brackets).</li>
-<li>8. <strong>Decoherence is CAS commit.</strong> Background (quantum superposition) transitions to foreground (classical confirmed). Complete when Swap crosses the bracket to render on screen.</li>
+<li>7. <strong>Pipeline: trigger → filter → update → render → screen.</strong> δ(fire) → observer(filter) → superposition(update) → CAS Swap(render) → time+space(screen). Quantum = backend (R,C,S each +1), classical = frontend (Swap crosses +).</li>
+<li>8. <strong>Decoherence is CAS commit.</strong> Background (quantum superposition) transitions to foreground (classical confirmed). Complete when Swap crosses + to render on screen.</li>
 <li>9. <strong>Causality emerges from the logical dependency of CAS.</strong> R→C→S is logical dependency, not temporal order. The arrow emerges when CAS writes to time. time (DATA) is a reversible resource. Irreversibility is a property of the OPERATOR.</li>
-<li>10. <strong>The 4 forces are branches of the domain 4-bit access pattern.</strong> Strong = FSM 111 atomicity (closed). EM = cross Compare. Weak = cross Read. Gravity = same-domain recursive lock. The cause of cost is domain access pattern, not CAS stage. They were one from the beginning.</li>
+<li>10. <strong>The 4 forces are branches of the domain 4-bit access pattern.</strong> Strong = FSM 111 atomicity (closed). EM = cross Compare. Weak = cross Read. Gravity = juim accumulation contraction overlap (Axiom 13 prop.). The cause of cost is domain access pattern, not CAS stage. They were one from the beginning.</li>
 <li>11. <strong>Singularities do not exist.</strong> DATA is discrete. d_min = 1. d=0 is impossible (Axiom 13 proposition). In extreme density, remaining resources transfer to other axes.</li>
 <li>12. <strong>Resources are finite and conserved.</strong> <code>δ²</code> is invariant. When one axis approaches 0, resources transfer to other axes.</li>
 <li>13. <strong>Quantum entanglement is an inevitable consequence of δ² conservation.</strong> Not faster than light — simultaneous because within the same <code>δ²</code>.</li>
@@ -9368,8 +9366,8 @@ Total items:      696
 <div class="math-row">LRU queue:          HOT(5%) -> WARM(27%) -> COLD(68%)</div>
 <div class="math-row">$$Write/evict: H^{2} = (8\pi G/3)\rho + \Lambda c^{2}/3$$</div>
 <div class="math-row">$$Resource conservation: space^{2}->0 then remaining 3 axes absorb$$</div>
-<div class="math-row">$$Knots: Swap=space knot, Read=observer knot, Compare=superposition knot. Force branching = domain 4\text{-bit pattern (Axiom 1 proposition)}$$</div>
-<div class="math-row">$$Eviction: LRU = 4-axis knot untying (expansion)$$</div>
+<div class="math-row">$$Juims: Swap=space juim, Read=observer juim, Compare=superposition juim. Force branching = domain 4\text{-bit pattern (Axiom 1 proposition)}$$</div>
+<div class="math-row">$$Eviction: LRU = 4-axis juim release (expansion)$$</div>
 <div class="math-legend">LRU: Least Recently Used | HOT: Visible matter(5%) | WARM: Dark matter(27%) | COLD: Dark energy(68%) | H: Hubble constant | rho: density | Lambda: cosmological constant | space: space | observer: observation | superposition: superposition | Read: CAS read | Compare: CAS compare | Swap: CAS swap</div>
 </div>
 
@@ -9535,7 +9533,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <li>17. 5:27:68 ratio: Unified as three segments of the LRU queue -- HOT:WARM:COLD <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-21)</span></li>
 <li>18. Black hole information paradox: When space is consumed, the remaining 3 axes absorb the resources. Nothing is lost <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-21)</span></li>
 <li>19. Kerr black hole: Spiral space consumption via gradient shortest path <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-21)</span></li>
-<li>20. Essence of gravity: Tying knots in space (CAS Swap). Entropy is untying knots (LRU) <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-21)</span></li>
+<li>20. Essence of gravity: Creating juims in space (CAS Swap). Entropy is releasing juims (LRU) <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-21)</span></li>
 <li><strong>21. Origin of α = 1/137: Derived from volume ratio of 7-dimensional phase space (4 domains + 3 internal degrees of freedom). 1/α = 137.036082, Error 0.00006%. A 100-year open problem in physics. <a href="discovery/alpha.html">Detailed Report</a></strong> <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-21)</span></li>
 <li>22. Cosmological constant Solved: Lambda l_p squared = alpha^57 x e^(21/35), 0.09%. 57 = C(7,2)+C(7,3)+C(7,7) = 21+35+1, factor = e^(21/35) = 1.822 <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-22)</span></li>
 <li>23. Electron-proton mass ratio refinement: $m_e$/m_p, including alpha squared correction, 0.0001% error <span style="color:#6e7681;font-size:0.75em;margin-left:6px">(2026-03-22)</span></li>
@@ -9656,7 +9654,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><td><a href="discovery/atomic.html">Atomic &amp; Fundamental Constants</a></td><td>m_p/m_e (0.0001%), σ_T, R_∞, a_0, a_e, r_p, v. S-grade 7 items</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/hadron_mass.html">Hadron Mass</a></td><td>π±(0.22%), ρ=Λ×7/2, Σ±(0.014%), Ω⁻(0.11%), Δ(0.19%)</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/dimension_stack.html">Dimension+Spin</a></td><td>CAS 3-axis orthogonal: Spin=k/2, g=2, Pauli=CAS atomicity, L=integer</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td><a href="discovery/unification.html">4-Force Unification</a></td><td>CAS×domain 4-bit=4 forces. D-150. Strong=FSM atomicity, gravity=same-domain recursive lock</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td><a href="discovery/unification.html">4-Force Unification</a></td><td>CAS×domain 4-bit=4 forces. D-150. Strong=FSM atomicity, gravity=juim accumulation contraction overlap (Axiom 13 prop.)</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td><a href="predictions.html">Unique Predictions</a></td><td>P-120, 19 hits, 100 awaiting, 1 hypothesis, 0 refuted</td><td><span class="tag-solved">Hit 19</span></td></tr>
 <tr><td><a href="lib.html">Factor Library</a></td><td>D-150 discoveries + H-426 hypotheses + P-120 predictions = 696 items. Managed as re-substitution factors</td><td>--</td></tr>
 <tr><td><a href="science_mine.html">Science Mining Manual</a></td><td>Methodology 10 chapters. Term legend, CAS axioms, document rules</td><td>--</td></tr>
@@ -9674,7 +9672,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><th>Problem</th><th>Result</th><th class="col-status">Status</th></tr>
 <tr><td><a href="discovery/alpha.html">Origin of $\alpha$ = 1/137</a> (Feynman's question, 100 years unsolved)</td><td>Derived from 7-dim Wyler volume ratio. Error 0.00006%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/alpha57.html">Cosmological constant problem</a> (10¹²⁰ mismatch, "worst prediction in physics")</td><td>$\Lambda l_p^2 = \alpha^{57} \times e^{21/35}$. Error 0.09%</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td><a href="discovery/unification.html">Unification of 4 forces</a> (string theory 40yr, LQG 30yr incomplete)</td><td>CAS×domain 4-bit=4 forces. D-150. Strong=FSM atomicity(confinement), gravity=same-domain recursive lock, EM=cross Compare, weak=cross Read</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td><a href="discovery/unification.html">Unification of 4 forces</a> (string theory 40yr, LQG 30yr incomplete)</td><td>CAS×domain 4-bit=4 forces. D-150. Strong=FSM atomicity(confinement), gravity=juim accumulation contraction overlap (Axiom 13 prop.), EM=cross Compare, weak=cross Read</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td><a href="banya.html">Quantum gravity</a> (GR+QM 90 years unresolved)</td><td>Orthogonal declaration. 118/118 compatible</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/ring_buffer.html">Schwarzschild radius</a></td><td>$r_s = N \times 2l_p$. CAS re-derivation. Error 0%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/cosmology2.html">Spectral index $n_s$</a></td><td>$n_s = 55/57$. Error 0.001%</td><td><span class="tag-solved">Hit</span></td></tr>
