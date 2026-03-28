@@ -48,7 +48,7 @@
 <a href="#ax13" class="toc-h3">공리 13. 양자 괄호의 중첩은 고전 괄호 ECS의 인덱싱이다</a>
 <a href="#ax14" class="toc-h3">공리 14. FSM 선언</a>
 <a href="#ax15" class="toc-h3">공리 15. δ는 FSM 밖의 전역 플래그다</a>
-<a href="#axiom-consequence" class="toc-h2">공리에서 나오는 것</a>
+<a href="#axiom-consequence" class="toc-h2">도출 시범</a>
 <a href="#guide" class="toc-h1">반야프레임과 반야식 구분 가이드</a>
 <a href="#guide-what" class="toc-h2">반야식이란 / 반야프레임이란</a>
 <a href="#guide-miscon" class="toc-h2">A. 흔한 오해</a>
@@ -359,7 +359,7 @@
 <a href="#ax13" class="toc-h3">공리 13. 양자 괄호의 중첩은 고전 괄호 ECS의 인덱싱이다</a>
 <a href="#ax14" class="toc-h3">공리 14. FSM 선언</a>
 <a href="#ax15" class="toc-h3">공리 15. δ는 FSM 밖의 전역 플래그다</a>
-<a href="#axiom-consequence" class="toc-h2">공리에서 나오는 것</a>
+<a href="#axiom-consequence" class="toc-h2">도출 시범</a>
 <a href="#guide" class="toc-h1">반야프레임과 반야식 구분 가이드</a>
 <a href="#guide-what" class="toc-h2">반야식이란 / 반야프레임이란</a>
 <a href="#guide-miscon" class="toc-h2">A. 흔한 오해</a>
@@ -2245,12 +2245,12 @@ delta (처음으로 돌아옴)</pre>
 
 
 
-<h2 id="axiom-consequence">공리에서 나오는 것</h2>
+<h2 id="axiom-consequence">도출 시범</h2>
 
 <p>위 15개 공리에서 출발하여, 반야프레임 5단계 재귀 대입(반야식->노름치환->상수대입->도메인변환->발견)을 돌리면 물리 상수가 나온다. 도출된 전체 목록은 <a href="lib.html" style="font-weight:600">가설 라이브러리(lib.html)</a>와 <a href="predictions.html" style="font-weight:600">고유 예측(predictions.html)</a>에서 관리한다. 발견(D) 150개 + 가설(H) 426개 + 고유예측(P) 120개 = 총 696항목, 검증 120행(적중 19). 프레임을 돌릴수록 라이브러리가 커지고, 숨은 값이 도망칠 곳이 없어진다.</p>
 
 <hr>
-<h2>공리에서 도출 시범: α = 1/137 (전자기 미세구조 상수)</h2>
+<h2>공리에서 도출 시범 1: α = 1/137 (전자기 미세구조 상수)</h2>
 
 <p>α = 1/137은 공리에서 두 가지 독립 경로로 도출된다.</p>
 
@@ -2439,6 +2439,84 @@ delta (처음으로 돌아옴)</pre>
 </div>
 
 <p style="font-size:0.85em;color:#8b949e">공리가 1, 2, 6단계(왜 이 공간인가, 왜 체적비 = 결합 상수인가)를 제공한다. 군론과 Wyler 수학은 3, 4, 5단계에서 대입된다. Wyler가 56년간 답하지 못한 두 질문 — "왜 이 대칭공간인가"(2단계)와 "왜 체적비가 결합 상수인가"(6단계) — 에 공리 구조만으로 답한다.</p>
+<hr>
+
+<hr>
+<h2>공리에서 도출 시범 2: 쿼크 6개 질량 (CAS 3축 × Compare 분기)</h2>
+
+<p>쿼크 6개의 질량 공식이 각각 다른 함수 형태를 갖는다. 이것은 약점이 아니다 — CAS가 4개 연산을 갖고 있으므로(공리 2 명제: 자료형 도출 연산) 함수 형태가 4가지인 것이 공리 구조의 귀결이다. 각 단계마다 근거 공리를 명시한다.</p>
+
+<h4>1단계. CAS 3축 = 3세대</h4>
+
+<p>CAS는 3단계다: R, C, S(공리 2). 각 단계가 독립 1비트(3축 직교, 공리 2 명제). 4번째 단계는 없다. 쿼크가 3세대인 이유: CAS가 3단계이므로 CAS가 만드는 쥠(공리 2 명제)도 3종류다. 4세대 쿼크가 발견되면 CAS 3축 직교가 깨진다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>CAS 단계</th><th>세대</th><th>비용 누적</th><th>질량 순위</th></tr>
+<tr><td>S (Swap, 3번째)</td><td>3세대</td><td>+3 (R+C+S 전부 통과)</td><td>가장 무거움</td></tr>
+<tr><td>C (Compare, 2번째)</td><td>2세대</td><td>+2 (R+C 통과)</td><td>중간</td></tr>
+<tr><td>R (Read, 1번째)</td><td>1세대</td><td>+1 (R만 통과)</td><td>가장 가벼움</td></tr>
+</table>
+</div>
+
+<p>세대 간 질량 위계(3세대 >> 2세대 >> 1세대)는 CAS 누적 비용에서 나온다. S단계는 R→C→S를 전부 통과하므로 비용이 최대이고, R단계는 R만 통과하므로 비용이 최소다. 비용 = 질량(공리 4, 물리 대응: 쥠의 비용 = 질량)이므로 누적 비용 순서 = 질량 순서다.</p>
+
+<h4>2단계. Compare true/false = up/down 분기</h4>
+
+<p>각 세대 안에서 쿼크는 2종류다: up type과 down type. CAS Compare의 분기(공리 7: Compare true → 쓰기, Compare false → 중첩 유지)가 이 2종류를 만든다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>분기</th><th>결과</th><th>쿼크 type</th><th>비용 특성</th></tr>
+<tr><td>Compare true</td><td>Swap 실행 → DATA에 쓰기(쥐기)</td><td>up type (t, c, u)</td><td>쓰기 비용 지불. +를 넘음</td></tr>
+<tr><td>Compare false</td><td>중첩 유지 → 안쓰기</td><td>down type (b, s, d)</td><td>쓰기 비용 미지불. 되돌림 가능</td></tr>
+</table>
+</div>
+
+<p>up type은 Swap(쓰기) 비용을 지불하고, down type은 지불하지 않는다. 2·3세대에서는 up이 더 무겁다(t > b, c > s). 1세대에서는 역전된다(u < d) — 이 역전은 1세대가 R단계(최소 비용)에 위치하여 Swap 비용보다 강력 보정(CAS 원자성, 공리 14)이 지배적이 되기 때문이다. 상세는 <a href="discovery/quark_mass.html">쿼크 질량 도출 보고서</a> 참조.</p>
+
+<h4>3단계. CAS 4개 연산 = 4가지 질량 함수 형태</h4>
+
+<p>CAS의 자료형 도출 연산 4개(공리 2 명제)가 쿼크 질량 공식의 함수 형태를 결정한다. "각 공식마다 함수 형태가 다르다"는 비판은 무효다 — CAS가 4개 연산을 갖고 있으므로 형태가 4가지인 것이 구조적 귀결이다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>CAS 연산</th><th>자료형 연산</th><th>질량 공식</th><th>대상 쿼크</th><th>근거</th></tr>
+<tr><td>Swap</td><td>‖√3‖ (노름)</td><td>m_t = v/√2</td><td>top (3세대 up)</td><td>워크벤치 노름(공리 2 명제). Swap = CAS 완성. 최대 비용</td></tr>
+<tr><td>Compare</td><td>T(N)+1 (삼각수)</td><td>m_b = m_τ × 7/3</td><td>bottom (3세대 down)</td><td>7 = CAS 내부 자유도(공리 9). 3 = CAS 단계 수(공리 2). 삼각수 비율</td></tr>
+<tr><td>Shift</td><td>2^N (거듭제곱)</td><td>m_c = m_t × α<br>m_u = m_c × α_s³</td><td>charm, up (2세대, 1세대 up)</td><td>시프트 = 스케일 전환(공리 2 명제). 결합 상수의 거듭제곱으로 스케일 하강</td></tr>
+<tr><td>Read</td><td>+ (덧셈)</td><td>m_s = m_μ × (1 − α_s)<br>m_d = m_e × (9 + 3α_s/π)</td><td>strange, down (2세대, 1세대 down)</td><td>Read = 덧셈적 접근(공리 2 명제). 렙톤 질량 + 보정항</td></tr>
+</table>
+</div>
+
+<h4>4단계. 왜 렙톤 질량이 입력인가</h4>
+
+<p>쿼크 질량 공식에 렙톤 질량(m_τ, m_μ, m_e)이 입력으로 들어간다. 이것은 순환이 아니다 — 렙톤은 CAS Compare false 경로의 종착점(중첩 유지, 공리 7)이고, 쿼크는 같은 CAS 사이클의 Compare true 경로(쓰기, 공리 7)다. 같은 CAS 사이클에서 분기된 두 경로이므로, 한쪽의 비용이 다른 쪽의 기준이 된다. 렙톤 질량은 외부 입력이 아니라 <strong>같은 CAS 사이클의 다른 분기</strong>다.</p>
+
+<h4>도출 경로 요약</h4>
+
+<pre>공리 2 (CAS 3단계)
+  + 공리 2 명제 (3축 직교, 4개 연산, 워크벤치)
+  + 공리 7 (Compare true/false 분기)
+  + 공리 4 (비용 누적 = 질량)
+  ─────────────────────────────
+  → 3세대 = CAS 3축                    ← 공리에서 유일하게 결정
+  → up/down = Compare true/false        ← 공리 7에서 자동
+  → 4가지 함수 형태 = CAS 4개 연산     ← 공리 2 명제에서 자동
+  → 세대 간 위계 = 누적 비용 순서      ← 공리 4에서 자동
+  → 렙톤 = 같은 사이클 다른 분기       ← 공리 7에서 자동</pre>
+
+<div class="table-wrap">
+<table>
+<tr><th>단계</th><th>제공자</th><th>내용</th><th>선택 여부</th></tr>
+<tr><td>1단계 (3세대)</td><td>공리 2</td><td>CAS 3축 = 3세대. 4번째 없음</td><td>선택 없음</td></tr>
+<tr><td>2단계 (up/down)</td><td>공리 7</td><td>Compare true = up, false = down</td><td>선택 없음</td></tr>
+<tr><td>3단계 (함수 형태)</td><td>공리 2 명제</td><td>4개 연산 = 4가지 함수 형태</td><td>선택 없음</td></tr>
+<tr><td>4단계 (렙톤 입력)</td><td>공리 7</td><td>같은 사이클 다른 분기</td><td>선택 없음</td></tr>
+</table>
+</div>
+
+<p style="font-size:0.85em;color:#8b949e">공리가 구조(3세대, up/down 분기, 4가지 함수 형태, 렙톤-쿼크 관계)를 제공한다. 개별 질량 공식의 수치 계수(7/3, √2, α, α_s³ 등)는 각 CAS 연산의 구체적 적용이며, 상세 도출은 <a href="discovery/quark_mass.html">쿼크 질량 도출 보고서</a>에서 다룬다.</p>
 <hr>
 
 <h4>물리 대응 용어 표 (공리 외부 참조용)</h4>
