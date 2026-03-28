@@ -1160,19 +1160,36 @@ AND (접점 = 락이 걸리는 곳):
 <div class="table-wrap">
 <table>
 <tr><th>경로</th><th>읽기(접근) 비용</th><th>쓰기(쥐기) 비용</th></tr>
-<tr><td>OPERATOR → 고전 괄호</td><td>+1</td><td>—</td></tr>
-<tr><td>time → space</td><td>+1</td><td>—</td></tr>
-<tr><td>x 접근</td><td>+1</td><td>—</td></tr>
-<tr><td>x → y</td><td>+1</td><td>—</td></tr>
-<tr><td>y → z</td><td>+1</td><td>—</td></tr>
-<tr><td>time 타임스탬프 쓰기(쥐기)</td><td>—</td><td>+1</td></tr>
-<tr><td>x 쓰기(쥐기)</td><td>—</td><td>+1</td></tr>
-<tr><td>y 쓰기(쥐기)</td><td>—</td><td>+1</td></tr>
-<tr><td>z 쓰기(쥐기)</td><td>—</td><td>+1</td></tr>
+<tr><td>OPERATOR → 고전 괄호</td><td>+1</td><td>없음</td></tr>
+<tr><td>time → space</td><td>+1</td><td>없음</td></tr>
+<tr><td>x 접근</td><td>+1</td><td>없음</td></tr>
+<tr><td>x → y</td><td>+1</td><td>없음</td></tr>
+<tr><td>y → z</td><td>+1</td><td>없음</td></tr>
+<tr><td>time 타임스탬프 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>x 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>y 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>z 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
 </table>
 </div>
 
+<h4>비가역 비용 표: d-ring 구간별 비용 누적 <span class="tag-corollary">명제</span></h4>
 
+<p>비용은 CAS의 + 전이에서만 발생한다. CAS가 개입하는 축은 비가역이고(공리 2 명제: R→C→S 역순 불가, 환불 없음), CAS가 개입하지 않는 축은 비가역이 아니다. 이 이진 판정이 7축(공리 9: 완전기술자유도)의 비용 누적 구조를 유일하게 결정한다. 누적된 비용은 인덱싱(공리 13)이 관리한다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>축</th><th>CAS 개입</th><th>비가역</th><th>근거</th><th>비용</th></tr>
+<tr><td>observer</td><td>없음</td><td>아니다</td><td>공리 15 명제: δ→observer는 CAS 미개입 구간. 비용 정산 주체 부재</td><td><strong>없음</strong></td></tr>
+<tr><td>superposition</td><td>없음</td><td>아니다</td><td>공리 13: 참조 인덱스. 방향 강제 없음. 읽히지만 비가역 전이 없음</td><td><strong>없음</strong></td></tr>
+<tr><td>time</td><td>있음</td><td>그렇다</td><td>공리 4: Swap이 +를 넘어 씀. 공리 2 명제: 환불 불가</td><td><strong>+</strong></td></tr>
+<tr><td>space</td><td>있음</td><td>그렇다</td><td>공리 4: 동일. DATA 괄호</td><td><strong>+</strong></td></tr>
+<tr><td>R_LOCK</td><td>있음</td><td>그렇다</td><td>공리 5: +를 넘어 비용 +1. 역순 불가</td><td><strong>+</strong></td></tr>
+<tr><td>C_LOCK</td><td>있음</td><td>그렇다</td><td>공리 5: R→C 전이. +를 넘어 비용 +1. 역순 불가</td><td><strong>+</strong></td></tr>
+<tr><td>S_LOCK</td><td>있음</td><td>그렇다</td><td>공리 5: C→S 전이. +를 넘어 비용 +1. 역순 불가</td><td><strong>+</strong></td></tr>
+</table>
+</div>
+
+<p><strong>비용 누적 = (5, 2).</strong> 비가역 축 5개(비용 누적 +), 비가역 부재 축 2개(비용 누적 없음 −). 분할의 물리적 의미: 5축은 Compare true → 쓰기(공리 7) → 비용 누적 → 환불 불가(공리 2 명제). 2축은 Compare false → 중첩 유지(공리 7) → 비용 누적 없음 → 되돌림 가능. 공리 7의 분기(true/false)가 d-ring을 비가역 구간과 비가역 부재 구간으로 나눈다.</p>
 
 <h3 id="ax5">공리 5. TOCTOU 락 레지스터 <span class="tag-solved">공리</span></h3>
 
@@ -2401,7 +2418,19 @@ delta (처음으로 돌아옴)</pre>
 
   → α = 1/137.036              ← 오차 0.00006%</pre>
 
-<p style="font-size:0.85em;color:#8b949e"><strong>공리가 제공하는 것:</strong> 1~4단계(왜 D₅인가) + 6단계(왜 체적비 = 결합 상수인가). 전 단계에서 선택이 없다. <strong>Wyler의 수학이 제공하는 것:</strong> 5단계(D₅의 연속 체적비 계산). <strong>반야프레임의 기여:</strong> Wyler가 56년간 답하지 못한 두 질문 — "왜 이 대칭공간인가"(2단계, 비가역성 서명)와 "왜 체적비가 결합 상수인가"(6단계, 자료형 137 = Compare 후보 수) — 에 공리 구조만으로 답한다.</p>
+<div class="table-wrap">
+<table>
+<tr><th>단계</th><th>제공자</th><th>내용</th><th>선택 여부</th></tr>
+<tr><td>1단계 (자유도 7)</td><td>공리 1, 2, 9, 15</td><td>도메인 4 + CAS 3 − δ = 7</td><td>선택 없음</td></tr>
+<tr><td>2단계 (서명 (5,2))</td><td>공리 2 명제, 4, 15 명제</td><td>비가역 5축(+), 비가역 부재 2축(−)</td><td>선택 없음</td></tr>
+<tr><td>3단계 (SO(5,2))</td><td>군론 (대입)</td><td>서명 (5,2) 보존군</td><td>자동</td></tr>
+<tr><td>4단계 (D₅)</td><td>군론 (대입)</td><td>SO(5,2)/SO(5)×SO(2)</td><td>자동</td></tr>
+<tr><td>5단계 (체적비)</td><td>Wyler 수학 (대입)</td><td>D₅ 체적비 계산 → 1/137.036</td><td>Wyler(1969)</td></tr>
+<tr><td>6단계 (체적비=α)</td><td>공리 1, 2 명제, 7</td><td>자료형 137 = Compare 후보 수. 선택 확률 = 체적비</td><td>선택 없음</td></tr>
+</table>
+</div>
+
+<p style="font-size:0.85em;color:#8b949e">공리가 1, 2, 6단계(왜 이 공간인가, 왜 체적비 = 결합 상수인가)를 제공한다. 군론과 Wyler 수학은 3, 4, 5단계에서 대입된다. Wyler가 56년간 답하지 못한 두 질문 — "왜 이 대칭공간인가"(2단계)와 "왜 체적비가 결합 상수인가"(6단계) — 에 공리 구조만으로 답한다.</p>
 <hr>
 
 <h4>물리 대응 용어 표 (공리 외부 참조용)</h4>
