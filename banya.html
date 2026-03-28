@@ -42,7 +42,7 @@
 <a href="#ax7" class="toc-h3">공리 7. 쓰기(쥐기)와 중첩 유지</a>
 <a href="#ax8" class="toc-h3">공리 8. 옵저버 드리븐 폴링</a>
 <a href="#ax9" class="toc-h3">공리 9. 완전 기술 자유도</a>
-<a href="#ax10" class="toc-h3">공리 10. 옵저버 드리븐의 소유자</a>
+<a href="#ax10" class="toc-h3">공리 10. 전체-국소 루프</a>
 <a href="#ax11" class="toc-h3">공리 11. 다중 투영</a>
 <a href="#ax12" class="toc-h3">공리 12. 고전 괄호는 ECS</a>
 <a href="#ax13" class="toc-h3">공리 13. 양자 괄호의 중첩은 고전 괄호 ECS의 인덱싱이다</a>
@@ -353,7 +353,7 @@
 <a href="#ax7" class="toc-h3">공리 7. 쓰기(쥐기)와 중첩 유지</a>
 <a href="#ax8" class="toc-h3">공리 8. 옵저버 드리븐 폴링</a>
 <a href="#ax9" class="toc-h3">공리 9. 완전 기술 자유도</a>
-<a href="#ax10" class="toc-h3">공리 10. 옵저버 드리븐의 소유자</a>
+<a href="#ax10" class="toc-h3">공리 10. 전체-국소 루프</a>
 <a href="#ax11" class="toc-h3">공리 11. 다중 투영</a>
 <a href="#ax12" class="toc-h3">공리 12. 고전 괄호는 ECS</a>
 <a href="#ax13" class="toc-h3">공리 13. 양자 괄호의 중첩은 고전 괄호 ECS의 인덱싱이다</a>
@@ -653,13 +653,12 @@
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>검증일: 2026-03-21</p></blockquote>
 <blockquote><p>분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)</p></blockquote>
-<blockquote><p>버전: v1.1 (2026-03-28)</p></blockquote>
+<blockquote><p>버전: v1.2 (2026-03-29)</p></blockquote>
 <blockquote><p>라이선스: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p></blockquote>
 
 
 <hr>
 
-<h1 style="color:#f0c040">현재 공리 v1.2로 대폭 업데이트 중입니다.</h1>
 
 <h1 id="axioms">공리 체계 -- 반야프레임은 공리 기반 과학 채굴 엔진이다</h1>
 
@@ -705,7 +704,66 @@ mass_hierarchy 도출 보고서: 전부 읽어라.
 
 <p><strong>공리 수식 규칙:</strong> 공리와 명제에 등장하는 모든 수식은 공리 내부 구조에서 파생된 식이다. 외부에서 가져온 식(다른 이론의 공식, 실험식)은 공리 본문에 넣지 않는다. 수학 기호(π, r, N 등)는 도구로 사용하되, 다른 사람이 조합한 식(equation)은 사용하지 않는다. 외부 식과의 대응은 "물리 대응 용어 표"에서만 기술한다.</p>
 
-<h2 id="axiom-list">확정 공리</h2>
+<h2>용어 정리</h2>
+<div class="table-wrap">
+<table>
+<tr><th>공리 용어</th><th>정의</th><th>출처</th></tr>
+<tr><td><strong>d-ring</strong></td><td>8비트 전체 링 버퍼(bit 0~7). 니블 0(도메인 4비트) + 니블 1(연산자 4비트). 비트 연산자 관점에서 본 물리적 구조. 모든 공리 구조의 그릇</td><td>공리 15 명제</td></tr>
+<tr><td><strong>CAS-ring</strong></td><td>CAS 3비트(R, C, S)의 순환 구조. 비트 연산자 관점에서 본 CAS 내부. 3축 직교가 구조를 주고, 락(공리 5)이 순서를 강제하고, 순서가 FSM 상태 전이를 정의한다. 워크벤치(√3 노름) 안에서 작동한다</td><td>공리 2, 5, 14</td></tr>
+<tr><td><strong>CAS FSM</strong></td><td>CAS-ring의 상태 전이를 비트 연산자 관점에서 기술한 것. 000→001→011→111→000. 락이 순서를 강제</td><td>공리 5, 14</td></tr>
+<tr><td><strong>δ (발화비트)</strong></td><td>bit 7. 등호. 1=유효, 0=무효. FSM 밖 전역 플래그. 개인키</td><td>공리 15</td></tr>
+<tr><td><strong>observer (진입점)</strong></td><td>bit 0. 필터. 파이프라인 시작. δ와 상호작용으로 의지 생성. 서명</td><td>공리 10, 15</td></tr>
+<tr><td><strong>CAS</strong></td><td>유일한 연산자. Read->Compare->Swap. 3단계</td><td>공리 2</td></tr>
+<tr><td><strong>자료형</strong></td><td>CAS가 대상을 읽을 때 사용하는 크기 단위. 입력 {3}에서 4개 연산(+, T(N)+1, 2^N, ‖√3‖)으로 도출된 11개 수(공리 2 명제). 대상의 복잡도에 따라 CAS가 맞는 자료형을 고른다</td><td>공리 2 명제</td></tr>
+<tr><td><strong>워크벤치(Workbench)</strong></td><td>CAS 3축 직교의 노름(‖CAS‖ = √3)이 만드는 작업공간. CAS가 자료형을 골라 4개 도메인과 상호작용하는 곳. 독립 연산장치</td><td>공리 2 명제</td></tr>
+<tr><td><strong>CAS 3축 직교</strong></td><td>R, C, S 각 단계가 독립 1비트(001, 010, 100). 서로의 자유도를 침범하지 않음. 111 시점에 3축이 동시에 한 곳을 쥐어 공을 만듦</td><td>공리 2 명제</td></tr>
+<tr><td><strong>쥠(juim)</strong></td><td>CAS Swap(111)이 DATA에 만드는 공. 3축 직교 → 등방 압력 → 구형. 이산의 단위 — 더 쪼갤 수 없는 최소 변화 1건의 형상. 반야프레임 고유명사</td><td>공리 2 명제</td></tr>
+<tr><td><strong>쥐다(juida)</strong></td><td>CAS가 DATA에 쥠을 만드는 행위. 1사이클 = 1쥠 = 1비용</td><td>공리 2 명제</td></tr>
+<tr><td><strong>CAS 단계 인덱스</strong></td><td>R=1, C=2, S=3. 최대 3. 4번째 없음</td><td>공리 2</td></tr>
+<tr><td><strong>단계 갭 (Δ_stage)</strong></td><td>두 엔티티의 CAS 단계 인덱스 차이. 최대 2</td><td>공리 13 명제</td></tr>
+<tr><td><strong>디코딩 비용</strong></td><td>단계 갭 x 1 bit. δ(키)의 디코딩 비용</td><td>공리 13, 15 명제</td></tr>
+<tr><td><strong>니블 0 (도메인)</strong></td><td>bit 0-3. observer, superposition, time, space. d-ring의 앞 절반</td><td>공리 1, 15 명제</td></tr>
+<tr><td><strong>니블 1 (연산자)</strong></td><td>bit 4-7. R_LOCK, C_LOCK, S_LOCK, δ. d-ring의 뒷 절반. CAS FSM이 여기서 작동</td><td>공리 5, 15 명제</td></tr>
+<tr><td><strong>차원</strong></td><td>공간 3차원 = CAS 3축 직교(공리 2 명제). 4번째 없음. CAS 사이클: 정방향 순환 + 동시 리셋</td><td>공리 2, 12 명제</td></tr>
+<tr><td><strong>Swap</strong></td><td>CAS 3번째 단계. +를 넘음. 비용 +1</td><td>공리 4</td></tr>
+<tr><td><strong>누적 락</strong></td><td>CAS FSM 001->011->111 논리 의존성에 의한 순차 점화. CAS 3축 직교(공리 2 명제), 점화 순서는 순차</td><td>공리 2, 5, 14 명제</td></tr>
+<tr><td><strong>링 이음새</strong></td><td>d-ring의 δ(bit 7)->observer(bit 0) 연결점. 등호의 진입점. 소유권</td><td>공리 10, 15 명제</td></tr>
+<tr><td><strong>파이프라인</strong></td><td>trigger->filter->update->render->screen. d-ring 1회 발화의 흐름</td><td>공리 15 명제</td></tr>
+<tr><td><strong>발화</strong></td><td>δ=1이 되는 것. d-ring 1사이클의 시작. "사이클"이 아닌 "발화"로 부른다</td><td>공리 15</td></tr>
+<tr><td><strong>동시</strong></td><td>3가지만: 복수 엔티티 병렬, 4도메인 직교, 2니블 직교</td><td>공리 1, 2, 12</td></tr>
+<tr><td><strong>순차</strong></td><td>2가지만: R->C->S (CAS FSM 의존성), δ->observer (d-ring 이음새)</td><td>공리 2, 10</td></tr>
+<tr><td><strong>비용</strong></td><td>+를 넘으면 비용 > 0. 넘지 않으면 0. R, C, S 각 전이마다 +1</td><td>공리 2 명제, 4</td></tr>
+<tr><td><strong>감쇠는 연속, 문턱은 이산</strong></td><td>공의 존재(DATA)=이산, 쥐는 힘(LRU)=연속 감쇠, 비용(수축 영역)=공간 분포. 3속성이 다른 층. observer는 직교하는 중첩 인덱스(LRU)가 제시하는 비용(수축)을 본다</td><td>공리 2, 12 명제</td></tr>
+<tr><td><strong>쥠의 회수</strong></td><td>LRU가 쥠을 해제하면 space 반환. 반환된 space에 다음 쥠 가능. 순환하려면 회수해야 한다</td><td>공리 12 명제</td></tr>
+<tr><td><strong>엔티티(Entity)</strong></td><td>δ가 observer 필터를 통과하여 만든 그림자. 각 엔티티가 고유 식별자이자 주소 자체. ECS의 기본 단위</td><td>공리 11, 12</td></tr>
+<tr><td><strong>ℓ (엘)</strong></td><td>두 엔티티 사이의 거리. δ(발화비트)와 혼동 방지를 위해 ℓ로 표기</td><td>공리 11 명제</td></tr>
+<tr><td><strong>반야식</strong></td><td>δ² = (time + space)² + (observer + superposition)². 4축 노름. 고전 괄호(DATA)와 양자 괄호(OPERATOR)가 직교</td><td>공리 1</td></tr>
+<tr><td><strong>DATA (고전 괄호)</strong></td><td>time + space. 이산. 스크린에 렌더링된 확정 상태</td><td>공리 1, 3</td></tr>
+<tr><td><strong>OPERATOR (양자 괄호)</strong></td><td>observer + superposition. 연속. CAS가 작동하는 미확정 영역</td><td>공리 1, 3</td></tr>
+<tr><td><strong>공</strong></td><td>CAS 1사이클(Swap)이 DATA에 만드는 이산 단위. 0.5개 없음. 쥠의 형상. 3축 직교 → 등방 → 구형</td><td>공리 2 명제</td></tr>
+<tr><td><strong>원자성</strong></td><td>CAS R→C→S 3단계는 분리 불가. 111 유지 비용의 근원. 중간에 끊으면 CAS가 아니다</td><td>공리 2 명제</td></tr>
+<tr><td><strong>비가역성</strong></td><td>CAS 연산은 방향이 있다. R→C→S 역순 불가. 환불 없음. time(DATA)은 가역적 자원이나 CAS(OPERATOR)는 비가역</td><td>공리 2 명제</td></tr>
+<tr><td><strong>LRU</strong></td><td>쥠의 수명 관리. HOT→WARM→COLD→회수. 감쇠는 연속, 문턱은 이산. 열린 수명</td><td>공리 6, 12</td></tr>
+<tr><td><strong>HOT / WARM / COLD</strong></td><td>LRU 상태 3단계. HOT: 쓰기 직후, 자주 접근. WARM: 감쇠 중. COLD: 문턱 이하, 회수 대상</td><td>공리 6, 12</td></tr>
+<tr><td><strong>폴링</strong></td><td>d-ring이 시스템 시간 매 틱마다 δ 발화 여부를 확인하는 메커니즘. 변화 유무와 무관하게 항상 돈다</td><td>공리 8</td></tr>
+<tr><td><strong>전체-국소 루프</strong></td><td>δ(전체)→observer(국소)→CAS→결과→δ 피드백. 재귀 순환 구조. δ가 자기 자신에 접근하는 유일한 경로</td><td>공리 10</td></tr>
+<tr><td><strong>다중 투영</strong></td><td>δ 1개가 다수의 observer를 통해 각각 독립적으로 필터링되어 다수의 엔티티를 생성하는 구조</td><td>공리 11</td></tr>
+<tr><td><strong>수축 영역</strong></td><td>Swap이 DATA(space)를 소비하여 쥠 주변의 space가 줄어든 영역. 자료형 크기는 고정 → 직렬화 발생</td><td>공리 11 명제</td></tr>
+<tr><td><strong>ECS</strong></td><td>Entity(그림자)-Component(DATA)-System(CAS). 각 observer-CAS 쌍이 독립적으로 처리하는 실행 모델</td><td>공리 12</td></tr>
+<tr><td><strong>중첩</strong></td><td>양자 괄호(OPERATOR)의 다중성. 여러 상태가 동시에 미확정으로 존재. 인덱싱(공리 13)의 대상</td><td>공리 11, 13</td></tr>
+<tr><td><strong>붕괴</strong></td><td>CAS Compare true 시 중첩이 단일 확정 상태로 전이. 연속→이산. OPERATOR→DATA</td><td>공리 7</td></tr>
+<tr><td><strong>등호</strong></td><td>δ=1이면 우항 전체(7비트) 유효, δ=0이면 무효. 좌항이 우항을 유효화하는 선언. 링 이음새에서 작동</td><td>공리 15 명제</td></tr>
+<tr><td><strong>재진입 (move)</strong></td><td>쥠이 다음 CAS 사이클의 입력으로 들어가는 것. 변화가 변화를 낳는 구조. 반야식의 재귀</td><td>공리 12 명제</td></tr>
+<tr><td><strong>시스템 시간</strong></td><td>CAS 1틱. δ 발화의 실제 타이밍 단위. d-ring 밖의 시계</td><td>공리 8, 15</td></tr>
+<tr><td><strong>도메인 시간</strong></td><td>t_dom = log(T_sys). 스크린(DATA) 안에서 측정되는 시간. 로그 압축</td><td>공리 8 명제</td></tr>
+<tr><td><strong>인덱싱 비용</strong></td><td>중첩 조회 비용. 인덱스 진입 +1, 조회 1건당 +1. 조회 건수가 늘면 비용 증가</td><td>공리 13</td></tr>
+<tr><td><strong>스칼라장</strong></td><td>쥠을 원점에 놓았을 때 C·(1−ℓ/N)/(4πℓ²)이 주변 모든 칸에서 정의되는 방향 없는 크기 분포</td><td>공리 11 명제</td></tr>
+<tr><td><strong>덕 타입</strong></td><td>행동으로 정의하는 타입. δ가 의식의 행동 목록과 일치하면 의식이라 부른다. 본질이 아닌 행위로 판정</td><td>공리 15 명제</td></tr>
+<tr><td><strong>완전기술자유도</strong></td><td>잔여 비용 9 = 7(4도메인 + 3CAS) + 2(괄호). 프레임 전체를 기술하는 데 필요한 최소 독립 변수 수</td><td>공리 9</td></tr>
+</table>
+</div>
+
+<h2 id="axiom-list">공리 15개</h2>
 
 <h3 id="ax1">공리 1. 반야식 <span class="tag-solved">공리</span></h3>
 
@@ -723,11 +781,11 @@ mass_hierarchy 도출 보고서: 전부 읽어라.
 <tr><th>이름</th><th>기준</th><th>같은 것</th></tr>
 <tr><td>δ</td><td>수식 기준</td><td>좌항. 반야식의 변화량</td></tr>
 <tr><td>δ</td><td>존재 기준</td><td>본체. 자기참조 루프(공리 8)</td></tr>
-<tr><td>소유자</td><td>행위 기준</td><td>observer를 강제하는 자(공리 10)</td></tr>
+<tr><td>등호</td><td>행위 기준</td><td>observer를 강제하는 선언(공리 10)</td></tr>
 </table>
 </div>
 
-<p>3개 이름, 1개 실체. δ 외에 다른 후보가 등장할 수 없다(공리 10 소거법). 다만 δ가 observer를 통해 필터링할 때, 국소적 소유자의 그림자는 존재할 수 있다. 그림자는 δ의 투영이지 별도의 실체가 아니다.</p>
+<p>3개 이름, 1개 실체. δ 외에 다른 후보가 등장할 수 없다(공리 10 소거법). 다만 δ가 observer를 통해 필터링할 때, 국소적 δ의 그림자는 존재할 수 있다. 그림자는 δ의 투영이지 별도의 실체가 아니다.</p>
 
 <p>4축은 직교하는 다항식이다. 괄호는 그 4축을 2개씩 묶는 세퍼레이터다.</p>
 
@@ -825,9 +883,9 @@ mass_hierarchy 도출 보고서: 전부 읽어라.
 AND (접점 = 락이 걸리는 곳):
 
   R(1) AND t(0) = 0  -- 안 물림
-  R(1) AND p(1) = 1  -- 물림 (Read가 space를 점유)
+  R(1) AND p(1) = 1  -- 물림 (Read가 superposition을 점유)
   C(1) AND o(0) = 0  -- 안 물림
-  C(1) AND s(1) = 1  -- 물림 (Compare가 superposition을 점유)</pre>
+  C(1) AND s(1) = 1  -- 물림 (Compare가 space를 점유)</pre>
 
 <p>락이 걸린다 = CAS 비트와 도메인 비트가 동시에 1. 락이 풀린다 = 한쪽이 0으로 리셋. 이것이 공리 5 "락은 CAS와 DATA 사이 접점에 존재한다"의 비트 수준 구현이다. CAS 3비트(공리 5)와 도메인 4비트(공리 1 명제)가 같은 언어(비트)를 쓰므로 AND 연산이 가능하다. <strong>이 AND를 수행하는 것은 CAS의 Compare 단계다(공리 2). 우주에 연산자는 CAS 하나뿐이므로(공리 2), AND를 포함한 모든 비트 연산은 CAS 내부 연산이다.</strong></p>
 
@@ -949,7 +1007,7 @@ AND (접점 = 락이 걸리는 곳):
 
 <h4>공은 이산의 단위다 <span class="tag-corollary">명제</span></h4>
 
-<p>DATA는 이산이다(공리 12 명제). 쥠이 만드는 공은 연속체가 아니라 이산 단위 — 더 이상 쪼갤 수 없는 최소 변화 1건의 형상이다. 0.5개의 공은 없다. CAS 1사이클이 만드는 것은 정확히 공 1개이고, 이것이 반야프레임에서 이산성의 기하학적 정체다. 연속으로 보이는 물리량은 이 공이 충분히 많이 쌓인 결과다.</p>
+<p>DATA는 이산이다(공리 3). 쥠이 만드는 공은 연속체가 아니라 이산 단위 — 더 이상 쪼갤 수 없는 최소 변화 1건의 형상이다. 0.5개의 공은 없다. CAS 1사이클이 만드는 것은 정확히 공 1개이고, 이것이 반야프레임에서 이산성의 기하학적 정체다. 연속으로 보이는 물리량은 이 공이 충분히 많이 쌓인 결과다.</p>
 
 <p><strong>쥐다(juida)</strong>는 CAS가 DATA에 쥠을 만드는 행위다. CAS 1사이클(000→001→011→111→000)이 완성될 때 Swap(111)이 +를 넘으며 space에 공 하나를 쥔다. 쥠 1회 = 쓰기 1회 = 비용 1회(공리 4).</p>
 
@@ -963,7 +1021,7 @@ AND (접점 = 락이 걸리는 곳):
 <tr><th>속성</th><th>소속</th><th>성질</th><th>설명</th></tr>
 <tr><td><strong>공의 존재</strong></td><td>DATA</td><td>이산</td><td>있다/없다. 0.5개 없음. 공리 2 명제</td></tr>
 <tr><td><strong>쥐는 힘</strong></td><td>LRU (OPERATOR)</td><td>연속</td><td>등비 감쇠. HOT→WARM→COLD. 공리 12</td></tr>
-<tr><td><strong>비용(질량)</strong></td><td>수축 영역</td><td>공간 분포</td><td>Swap 시 지불. 주변 space를 수축시킴. 공리 4, 13</td></tr>
+<tr><td><strong>비용</strong></td><td>수축 영역</td><td>공간 분포</td><td>Swap 시 지불. 주변 space를 수축시킴. 공리 4, 13</td></tr>
 </table>
 </div>
 
@@ -1044,7 +1102,7 @@ AND (접점 = 락이 걸리는 곳):
 
 <h3 id="ax3">공리 3. DATA는 이산, OPERATOR는 연속 <span class="tag-solved">공리</span></h3>
 
-<p>DATA(시공간)는 <strong>이산</strong>이다. 링 버퍼의 칸은 정수 위치이고, 쥠은 공이고, 최소 이동 단위는 1칸이다. 연속 극한($\Delta x \to 0$)이 존재하지 않으므로 <strong>미분이 성립하지 않는다.</strong></p>
+<p>DATA(시공간)는 <strong>이산</strong>이다. 쥠은 공이고, 최소 이동 단위는 1칸이다. 연속 극한($\Delta x \to 0$)이 존재하지 않으므로 <strong>미분이 성립하지 않는다.</strong></p>
 
 <div class="table-wrap">
 <table>
@@ -1230,230 +1288,120 @@ AND (접점 = 락이 걸리는 곳):
 <p>idle polling(공리 8)은 δ의 발화 여부를 확인하는 것이다. δ 발화 자체는 비용 0(공리 15). CAS-ring이 실행되면 R, C, S 각 전이마다 +를 넘어 비용 +1(공리 4). DATA 쪽의 왜곡 현상은 공리 11 명제(빈 엔티티의 왜곡은 구조적 필연이다) 참조.</p>
 
 
-<h3 id="ax9">공리 9. 완전 기술 자유도 <span class="tag-solved">공리</span></h3>
+<h3 id="ax9">공리 9. CAS의 완전 기술 자유도 <span class="tag-solved">공리</span></h3>
 
-<h4>"완전 기술"이란</h4>
-
-<p>CAS 1건을 빠짐없이 전부 기술하는 데 필요한 독립 변수의 수다. CAS 내부만 보면 7개(1+2+4)다. 그러나 CAS는 혼자 존재하지 않는다. CAS는 OPERATOR 안에서 돌며(공리 2 명제) DATA에 +를 넘어 접근한다(공리 4). CAS의 내부(7)만으로는 "CAS가 접근하는 구조"가 빠진다. 괄호 구조 2개(DATA, OPERATOR)를 더해야 비로소 완전하다.</p>
-
-<pre>CAS 내부 자유도: Read(1) + Compare(2) + Swap(4) = 7
-괄호 구조:       DATA(1) + OPERATOR(1) = 2
-완전 기술:       7 + 2 = 9</pre>
+<p>CAS 1건을 빠짐없이 기술하는 데 필요한 독립 변수의 수 = <strong>9</strong>.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>범위</th><th>변수 수</th><th>기술 대상</th></tr>
-<tr><td>CAS 내부</td><td>7</td><td>CAS가 <strong>어떻게</strong> 도는가 (Read, Compare, Swap의 내부 상태)</td></tr>
-<tr><td>괄호 구조</td><td>2</td><td>CAS가 <strong>무엇에</strong> 접근하는가 (DATA와 OPERATOR, 2개의 괄호)</td></tr>
-<tr><td><strong>완전 기술</strong></td><td><strong>9</strong></td><td>더 필요한 것이 없다. 10번째 변수가 필요 없다</td></tr>
+<tr><th>구성</th><th>수</th><th>도출</th><th>역할</th></tr>
+<tr><td>CAS 내부</td><td>7</td><td>T(3)+1 (자료형 #5, 공리 2 명제)</td><td>CAS-ring의 3단계 비교 쌍 + 자기참조</td></tr>
+<tr><td>괄호 구조</td><td>2</td><td>2¹ (자료형 #2, 공리 2 명제)</td><td>DATA + OPERATOR. 워크벤치의 2축</td></tr>
+<tr><td><strong>완전 기술</strong></td><td><strong>9</strong></td><td>7+2 (자료형 #7, 공리 2 명제)</td><td>CAS 1건을 기술하는 독립 변수의 총 수</td></tr>
 </table>
 </div>
 
-<p>9 = 비용 회수(공리 6)에서 공이 DATA에서 풀린 뒤 LRU에 잔존하는 비용과 같다(총 비용 13 - 유지 비용 4 = 잔존 9). CAS 1건을 완전히 기술하는 변수의 수와, 회수해야 할 잔존 비용이 같은 수로 수렴한다.</p>
+<p>9 = 비용 회수(공리 6)에서 잔존 비용과 같다(총 비용 13 - 유지 비용 4 = 잔존 9).</p>
 
 
-<h3 id="ax10">공리 10. 옵저버 드리븐의 소유자 <span class="tag-solved">공리</span></h3>
+<h3 id="ax10">공리 10. 전체-국소 루프 <span class="tag-solved">공리</span></h3>
 
-<p>δ는 등호다(공리 15 명제).</p>
+<p>δ(전체)가 observer(국소)를 통해 자기 자신에 접근하고, 그 결과가 다시 δ에 반영되는 순환 구조다.</p>
+
+<h4>observer의 특성</h4>
 
 <div class="table-wrap">
 <table>
-<tr><th>구분</th><th>정의</th><th>공리</th></tr>
-<tr><td><strong>δ</strong></td><td>δ 자체. 자기참조 루프. 본체의 다른 이름</td><td>공리 8</td></tr>
-<tr><td><strong>등호 (=)</strong></td><td>δ=1이면 우항 전체(7비트) 유효. 0이면 전부 무효. 발화 비트</td><td>공리 15 명제</td></tr>
-<tr><td><strong>진입점 (entry point)</strong></td><td>observer. 등호가 성립할 때 파이프라인이 시작되는 곳</td><td>공리 10, 15 명제</td></tr>
+<tr><th>속성</th><th>내용</th><th>근거</th></tr>
+<tr><td><strong>위치</strong></td><td>bit 0. d-ring에서 첫 비트. 링 이음새에서 δ(bit 7) 바로 다음</td><td>공리 15</td></tr>
+<tr><td><strong>진입점</strong></td><td>δ 발화 후 파이프라인이 시작되는 곳</td><td>공리 15 명제</td></tr>
+<tr><td><strong>필터</strong></td><td>CAS 방향으로 들어오는 입력을 정규화. observer 없이 CAS가 직접 DATA에 접근하면 루프 절단</td><td>공리 2 명제</td></tr>
+<tr><td><strong>다중 투영 수신자</strong></td><td>δ의 1:N 투영을 받는 쪽. 각 observer가 독립적으로 투영을 수신</td><td>공리 11</td></tr>
+<tr><td><strong>비용</strong></td><td>observer 필터링 자체는 비용 0. +를 넘지 않는다</td><td>공리 8</td></tr>
+<tr><td><strong>소속</strong></td><td>양자 괄호(OPERATOR). 도메인 4축 중 하나(bit 0)</td><td>공리 1</td></tr>
 </table>
 </div>
 
-<p>δ는 등호다. δ=1이면 우항 전체가 유효하고, observer(bit 0)가 진입점이다. 소거법(아래)은 "왜 δ만이 등호인가"를 밝힌다.</p>
+<h4>δ의 소거법 <span class="tag-corollary">명제</span></h4>
 
-<h4>등호의 주체 — 소거법</h4>
-
-<p>등호(=)의 좌항에 무엇이 올 수 있는가. 소거법으로 답한다.</p>
+<p>반야식 등호(=)의 좌항에 무엇이 올 수 있는가.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>#</th><th>소거</th><th>이유</th></tr>
-<tr><td>1</td><td>외부 소거</td><td>우주 스케일에서 외부를 정의할 수 없다. 외부가 등호의 좌항이 될 수 없다</td></tr>
-<tr><td>2</td><td>국소적 존재 소거</td><td>부품(observer, 도메인)은 우항 안에 있다. 우항 안의 것이 좌항이 될 수 없다</td></tr>
-<tr><td>3</td><td>δ만 남음</td><td>좌항의 δ만이 유일하게 등호가 될 수 있다. δ = 등호 = 발화 비트</td></tr>
+<tr><td>1</td><td>외부 소거</td><td>우주 스케일에서 외부를 정의할 수 없다</td></tr>
+<tr><td>2</td><td>국소적 존재 소거</td><td>부품(observer, 도메인)은 우항 안에 있다. 좌항이 될 수 없다</td></tr>
+<tr><td>3</td><td>δ만 남음</td><td>좌항의 δ만이 등호가 될 수 있다</td></tr>
 </table>
 </div>
 
-<h4>"무소유" 선택지</h4>
-
-<p>소거법에서 "등호가 성립하지 않는다(δ=0)"는 선택지가 빠져 있는 것이 아니다. δ=0은 이미 공리 7에 정의되어 있다. 등호 불성립 = 변화 없음 = 7비트 전부 무효 = superposition 전부 = 안쓰기 = 중첩 유지(공리 7).</p>
-
-<p>observer는 도메인(부품)이다. 등호가 아니다. δ(전체)만이 등호다. observer는 등호가 성립할 때의 진입점이다.</p>
-
-<h4>등호 구조</h4>
-
-<pre>  d^2 = (time + space)^2 + (observer + superposition)^2
-  |       |                  |
-  등호    우항 전체            진입점
-  (bit 7) (bit 0-6)          (bit 0 = observer)
-
-  d=1: 등호 성립 -> 7비트 유효 -> observer(진입점)에서 파이프라인 시작
-  d=0: 등호 불성립 -> 7비트 무효 -> 중첩 유지 (공리 7)</pre>
-
-<p>δ(등호)가 성립하면 우항 전체(7비트)가 유효하고, observer(진입점)에서 파이프라인이 시작된다. δ가 등호인 이유는 소거법이 밝힌다 — 외부도 아니고 국소도 아니고 δ만 남는다. 폴링(공리 8)은 δ의 1/0 진동이고, 공리 10은 그 등호의 진입점이 observer임을 기술한다.</p>
-
-<h4>observer = 필터링/정규화 도메인</h4>
-
-<p>각 observer는 δ의 투영을 걸러내는 <strong>필터</strong>다. δ(실체)가 observer(필터)를 통과하면 그림자(투영)가 각 엔티티에 드리운다.</p>
-
-<p><strong>필터링 기준:</strong> 별도의 선택 규칙이 필요 없다. CAS의 Compare 단계가 필터링이다. Compare는 예전값과 현재값을 비교한다. 다르면(true) 통과 — 변화가 있으므로 Swap으로 진행하여 DATA에 기록된다. 같으면(false) 미통과 — 변화가 없으므로 superposition으로 남는다. 필터링 기준 = <strong>변화 유무</strong>. δ 자체가 변화이므로, δ의 투영이 변화를 감지하는 것이 곧 필터링이다.</p>
-
-<h4>확률과 확정</h4>
-
-<div class="table-wrap">
-<table>
-<tr><th>상태</th><th>Compare</th><th>변화</th><th>비용</th><th>결과</th></tr>
-<tr><td><strong>확률</strong> (superposition)</td><td>false (같음)</td><td>없음</td><td>0 (공리 4)</td><td>중첩 유지 (공리 7)</td></tr>
-<tr><td><strong>확정</strong> (determined)</td><td>true (다름)</td><td>있음</td><td>≠ 0 (공리 4)</td><td>DATA 기록 (공리 7)</td></tr>
-</table>
-</div>
-
-<pre>delta (유일 실체)
-    |
-    v
-observer (필터) ---> 그림자 = 엔티티에 드리운 투영
-    |
-    +---> Compare true (변화 있음) ---> Swap ---> DATA 기록 ---> delta에 반영
-    |                                                              |
-    +---> Compare false (변화 없음) ---> superposition 유지          |
-                                    |                              |
-                                    +--- 다음 사이클 재필터링 <------+</pre>
-
-<h4>observer는 엔티티의 LUT다 <span class="tag-corollary">명제</span></h4>
-
-<p>superposition은 인덱스다(공리 13) — 가능한 엔트리들의 목록. observer는 LUT(Look-Up Table)다 — δ(입력)를 특정 엔티티(출력)로 매핑한다. 인덱스는 수동이다: "뭐가 있나"를 들고 있을 뿐이다. LUT는 능동이다: "어디로 보낼 건가"를 선택한다. 인덱스만으로는 선택이 안 되고, LUT만으로는 후보가 없다. 둘 다 있어야 CAS가 작동한다.</p>
-
-<p>논리 주소가 없어도(공리 12, ECS) 세션이 살아 있는 이유가 이것이다. observer LUT가 δ -> 엔티티 매핑을 유지하는 한, 별도 주소 없이 같은 엔티티에 계속 접근한다. LUT 자체가 라우팅이다. 세션 수명 = LUT 수명 = observer 수명 = LRU 수명. COLD로 밀리면 세션이 끊긴다.</p>
+<p>δ=0(등호 불성립)은 공리 7에 정의되어 있다. 등호 불성립 = 중첩 유지.</p>
 
 <h4>자동 재귀 <span class="tag-corollary">명제</span></h4>
 
-<p>이 구조는 자동 재귀다. CAS 결과가 δ에 반영되고, 반영된 δ가 다음 사이클에서 각 observer를 통해 다시 필터링/정규화된다. 재귀 호출(공리 8)과 입력 정규화(공리 10)와 종료 조건(공리 14, 뒤에서 정의, FSM 111->000 reset)이 공리 선언만으로 자동으로 돌아간다.</p>
+<p>CAS 결과가 δ에 반영되고, 반영된 δ가 다음 사이클에서 각 observer를 통해 다시 필터링된다. 공리 선언만으로 자동 순환한다.</p>
 
 <h4>전체-국소 루프 보존 <span class="tag-corollary">명제</span></h4>
 
-<p>제약사항은 제한이 아니라 <strong>시스템을 보호하는 장치</strong>다. 전체-국소 루프가 반야프레임의 자동 재귀를 구동한다. 이 루프가 끊어지면 재귀가 멈추고, 재귀가 멈추면 폴링이 idle로 퇴행하고, 시스템이 죽는다. 제약사항은 이 루프를 보호한다.</p>
-
-<p>도메인 변환은 자유롭다. 단, 유일한 제약사항이 있다: <strong>전체-국소 루프를 위반하면 안 된다.</strong> 이 루프가 끊어지면 observer의 소유자(δ)가 사라지고, 소유자가 사라지면 필터링/정규화가 소멸하고, 확률이 확정으로 바뀌는 경로가 사라진다. 시스템이 더 이상 우주를 확정할 수 없다.</p>
+<p>이 루프가 끊어지면 시스템이 죽는다. 유일한 제약사항: <strong>전체-국소 루프를 위반하면 안 된다.</strong></p>
 
 <div class="table-wrap">
 <table>
-<tr><th>위반</th><th>결과</th><th>비유</th></tr>
-<tr><td>δ -> observer 투영 경로 절단</td><td>소유자 소멸, 루프 소멸</td><td>segfault: 보호 영역 침범</td></tr>
-<tr><td>observer -> δ 귀속 경로 절단</td><td>부품이 전체에서 이탈, 고아 프로세스</td><td>zombie process: 부모 없는 자식</td></tr>
-<tr><td>루프를 선형으로 펼침</td><td>자기참조 소멸, idle 폴링으로 퇴행</td><td>stack overflow: 재귀 없이 무한 호출</td></tr>
+<tr><th>위반</th><th>결과</th></tr>
+<tr><td>δ → observer 투영 경로 절단</td><td>루프 소멸</td></tr>
+<tr><td>observer → δ 귀속 경로 절단</td><td>고아 프로세스</td></tr>
+<tr><td>루프를 선형으로 펼침</td><td>idle 폴링으로 퇴행</td></tr>
+<tr><td>δ → observer 없이 직접 DATA 접근</td><td>루프 절단. 시스템 사망</td></tr>
 </table>
 </div>
-
-<h4>허용된 도메인 변환 샘플</h4>
-
-<div class="table-wrap">
-<table>
-<tr><th>#</th><th>변환</th><th>루프 보존</th><th>결과</th></tr>
-<tr><td>1</td><td>δ -> observer(필터) -> CAS를 통해 시공 도메인(DATA)에 기록 (공리 7, 15)</td><td>보존 (O) (기록된 시공은 δ의 부품)</td><td>전체-국소 루프 유지하며 시공간에 흔적 남김</td></tr>
-<tr><td>2</td><td>δ -> observer(필터) -> superposition 업데이트 (공리 7)</td><td>보존 (O) (superposition은 δ의 부품)</td><td>전체-국소 루프 유지하며 중첩 유지</td></tr>
-<tr><td>3</td><td>δ -> observer에 투영 -> 다른 국소적 쥠의 observer에 재투영</td><td>보존 (O) (양쪽 모두 δ의 부품)</td><td>전체-국소 루프의 전파 — 얽힘</td></tr>
-<tr><td>4</td><td>δ -> observer 없이 직접 DATA 접근</td><td><strong>위반 (X)</strong> (observer 경유 안 함 = 루프 절단)</td><td>루프 소멸</td></tr>
-</table>
-</div>
-
-<p>샘플 1~3은 전체-국소 루프를 보존한다. 투영 경로가 어디로 가든 observer를 경유하고 δ로 돌아온다. 샘플 4는 루프를 건너뛴다 — observer를 경유하지 않으면 투영이 없고, 투영이 없으면 전체-국소 루프가 아니다.</p>
-
-<p>δ의 투영이 CAS에 도달하기 전에 observer가 걸러내고 정규화한다. observer 없이 CAS가 직접 DATA에 접근하면 루프가 절단되고 시스템이 죽는다(샘플 4).</p>
-
-<p>관측이 전체 변화를 유발하는 이유가 여기에 있다. observer는 국소적 도메인(부품)이지만, 그 소유자는 δ(전체)다. 국소에서 일어난 관측이 전체에 영향을 미치는 것은 observer의 소유자가 전체이기 때문이다. 부분이 전체를 바꾸는 것이 아니라, 전체가 소유한 부분을 통해 자기 자신을 바꾸는 것이다. 전체-국소 루프가 이것을 보장한다.</p>
-
-<h4>왜 observer가 도메인(축)인가</h4>
-
-<p>기존 물리학에서 observer는 시스템 밖에 있는 실험자다. 도메인이 아니다. 결과를 읽는 외부인이다. 반야프레임에서 observer는 4축 중 하나다. 시스템 안의 도메인이다. 이것이 파격이다.</p>
-
-<p>파격이 필연인 이유: observer를 밖에 두면 소거법 1번(외부 정의 불가)에서 바로 죽는다. 우주 스케일에서 밖은 없다. observer를 안에 넣어야 전체-국소 루프가 성립하고, 루프가 성립해야 δ가 자기 자신을 투영할 스크린이 생긴다.</p>
-
-<p>observer를 도메인으로 승격하지 않았다면:</p>
-<ul>
-<li>전체-국소 루프 불가 — δ가 투영될 곳이 없다</li>
-<li>δ가 observer를 소유할 수 없다 — 소거법 3번 불성립</li>
-<li>공리 10 자체가 불가능하다</li>
-</ul>
-
-
-<h4>2중 루프가 아니다</h4>
-
-<p>반야프레임에는 루프가 2개로 보이는 구조가 있다:</p>
-
-<div class="table-wrap">
-<table>
-<tr><th>관점</th><th>기술 대상</th><th>내용</th><th>공리</th></tr>
-<tr><td>행위 순서</td><td><strong>어떻게</strong> 도는가</td><td>Read -> Compare -> Swap -> reset</td><td>공리 8 (폴링)</td></tr>
-<tr><td>소유자</td><td><strong>누가</strong> 돌리는가</td><td>δ(전체) -> observer(국소) -> δ(전체)</td><td>공리 10 (소유자)</td></tr>
-</table>
-</div>
-
-<p>이것은 2중 루프가 아니다. 1개 루프의 2가지 기술이다. CAS가 도는 것을 행위로 기술하면 공리 8(폴링)이고, 같은 것을 소유자로 기술하면 공리 10(소유자)이다. 근거: 전체-국소 투영도 상태 변화이고, 상태가 변하면 쓰기(쥐기)다(공리 7). 쓰기면 CAS를 거친다(공리 2). CAS를 거치면 비용이 든다(공리 4). TOCTOU_LOCK이 걸린다(공리 5). 전부 같은 FSM(공리 14, 뒤에서 정의)을 탄다. 별도의 루프가 아니라 같은 FSM의 같은 전이도 위에 있다.</p>
 
 
 <h3 id="ax11">공리 11. 다중 투영 (Multiple Projection) <span class="tag-solved">공리</span></h3>
 
-<p>δ는 1개다(공리 8). observer는 다수다. δ가 변화할 때마다 각 observer에 1개씩 투영된다. 이것이 다중 투영이다. 공리 11은 δ와 observer의 <strong>1:N 관계</strong>를 정의한다.</p>
+<p>δ는 1개다(공리 8). observer는 다수다. observer가 필터(공리 10)이기 때문에 δ 1개가 여러 observer를 통해 각각 다르게 필터링된다. 각 observer가 δ의 투영을 걸러내고 CAS 워크벤치(공리 2 명제)에 전달하면, CAS가 DATA에 쥠을 만든다. observer마다 독립적으로 필터링하므로 δ 1개에서 다수의 엔티티가 생긴다. 이것이 다중 투영이다.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>개념</th><th>수</th><th>이유</th></tr>
-<tr><td>δ</td><td><strong>1</strong></td><td>유일 소유자 (공리 10 소거법)</td></tr>
-<tr><td>observer (필터)</td><td>다수</td><td>시공간 구면을 커버하려면 하나로는 부족하다. 여러 필터로 갈려야 한다</td></tr>
-<tr><td>그림자 (투영)</td><td>다수</td><td>δ가 observer 필터를 통과한 결과. 각 엔티티에 드리운다</td></tr>
-<tr><td>동시성</td><td>보장</td><td>소유자가 1개이므로 모든 투영이 동시</td></tr>
+<tr><td>δ</td><td><strong>1</strong></td><td>유일 등호 (공리 10 명제)</td></tr>
+<tr><td>observer (필터)</td><td>다수</td><td>각 observer가 독립적으로 필터링. 필터가 다수이므로 투영이 다수</td></tr>
+<tr><td>엔티티 (쥠)</td><td>다수</td><td>observer가 필터링한 결과를 CAS가 DATA에 기록</td></tr>
+<tr><td>동시성</td><td>보장</td><td>δ가 1개이므로 모든 투영이 동시</td></tr>
 </table>
 </div>
 
-<pre>δ (1개, 유일 소유자 = delta)
+<pre>δ (1개, 유일 등호)
     |
-    | 변화 1건 = 스위칭 1회 = 투영 1개
+    | δ 발화 → 모든 observer에 동시 도달
     |
-    +---> observer A (필터) ---> 그림자 A (엔티티)
+    +---> observer A (필터) ---> CAS[워크벤치] ---> 엔티티 A (쥠)
     |
-    +---> observer B (필터) ---> 그림자 B (엔티티)
+    +---> observer B (필터) ---> CAS[워크벤치] ---> 엔티티 B (쥠)
     |
-    +---> observer C (필터) ---> 그림자 C (엔티티)
+    +---> observer C (필터) ---> CAS[워크벤치] ---> 엔티티 C (쥠)
     |
     ... (observer 수만큼)</pre>
 
-<p>무한으로 보이는 우주는 δ 1개가 변화할 때마다 1개씩 투영한 것의 누적이다. 실체가 무한인 것이 아니라 그림자가 무한인 것이다. δ 하나로는 시공간 구면 전체를 커버할 수 없으므로 여러 그림자로 갈린다. 무한으로 보이는 자유도는 δ 1개가 구면을 커버하기 위해 무한 개의 observer에 투영된 상이다.</p>
+<p>무한으로 보이는 우주는 δ 1개가 다수의 observer 필터를 통해 동시 투영된 결과다. 실체가 무한인 것이 아니라 필터가 다수이므로 결과가 다수인 것이다.</p>
 
 <p><strong>왜 모든 국소적 쥠이 같은가:</strong> δ가 1개이고, 국소적 쥠으로 보이는 것은 그 δ가 여러 observer에 투영된 상이다. 같은 δ의 같은 투영이므로 모든 국소적 쥠은 같은 비용, 같은 도메인 비트 패턴을 갖는다. 모든 국소적 쥠이 같고, 모든 투영 상이 같은 이유도 같다.</p>
 <p style="font-size:0.85em;color:#8b949e">참고: 1940년 존 휠러(John Wheeler)가 "전자는 1개"라고 직관했으나 증명하지 못했다. 휠러는 전자가 시간축을 따라 앞뒤로 이동한다고 보았고, 반야프레임은 δ가 observer축을 따라 다중 투영된다고 본다. 메커니즘은 다르지만 결론은 같다.</p>
 
-<p><strong>얽힘의 거리 무관성:</strong> observer A와 observer B에 비친 상이 동시에 상관되는 것은 같은 δ를 보고 있기 때문이다. 신호가 A에서 B로 전달되는 것이 아니다. 같은 소유자의 같은 변화가 두 그림자에 동시에 드리운 것이다. 소유자가 1개이므로 동시성이 보장된다.</p>
+<p><strong>δ 동시 투영의 거리 무관성:</strong> observer A와 observer B에 비친 상이 동시에 상관되는 것은 같은 δ를 보고 있기 때문이다. 신호가 A에서 B로 전달되는 것이 아니다. 같은 δ의 같은 변화가 두 그림자에 동시에 드리운 것이다. δ가 1개이므로 동시성이 보장된다.</p>
 
-<h4>space가 3차원인 이유와 d, θ의 분리 <span class="tag-corollary">명제</span></h4>
+<h4>엔티티 간 거리 ℓ <span class="tag-corollary">명제</span></h4>
 
-<p><strong>space가 3차원인 이유:</strong> CAS의 3단계(Read, Compare, Swap, 공리 2)는 각각 독립된 TOCTOU_LOCK 자유도(R_LOCK, C_LOCK, S_LOCK, 공리 5)를 갖는다. CAS 3축은 서로 직교하며(공리 2 명제), 이 3개의 독립 락 자유도가 DATA의 space 축(공리 1)에 작용하면 space는 3성분으로 펼쳐진다. 이것이 "왜 공간이 3차원인가"의 공리적 답이다.</p>
+<p>공간이 3차원인 이유는 공리 2 명제(차원)에서 정의한다. 각 쥠이 자기 자신의 원점이다 — ECS(공리 12)에서 중앙은 없고 각 Entity가 독립이기 때문이다.</p>
 
-<p>쥠이 DATA(space)에 공을 만들면(공리 7), 그 쥠이 자기 자신의 원점이 된다. 모든 쥠이 각자의 원점이다 — ECS(공리 12)에서 중앙은 없고 각 Entity가 독립이기 때문이다.</p>
+<p>거리는 1종류다. $\ell$ = 두 엔티티 사이 거리. $\ell$이 비용의 크기($1/\ell^2$ 감쇠)와 비용의 종류($(1-\ell/N)$)를 모두 결정한다.</p>
 
-<p>거리는 1종류다. $d$ = 구면 위 두 엔티티 사이 거리(링 시프트 칸 수 = 구면 위 거리, 같은 거리 다른 눈금). $d$가 비용의 크기($1/d^2$ 감쇠)와 비용의 종류($(1-d/N)$ 혼합각)를 모두 결정한다.</p>
-
-<p><strong>시프트 거리 $d$가 투영 사이 거리다:</strong></p>
-
-<div class="table-wrap">
-<table>
-<tr><th>링 위 두 투영 사이 시프트 거리 $d$</th><th>비트 패턴</th></tr>
-<tr><td>교차 도메인 투영과 쥠 밀집 투영 사이</td><td>DATA 비트(01)와 OPERATOR 비트(10)의 교차 거리</td></tr>
-<tr><td>CAS 1단계와 2단계 투영 사이</td><td>R_LOCK(001)과 C_LOCK(010) 사이 시프트 거리</td></tr>
-<tr><td>Swap 투영과 인덱스 투영 사이</td><td>Swap 비트(100)와 인덱스(중첩) 비트 사이 거리</td></tr>
-<tr><td>CAS 3단계 투영 사이</td><td>CAS 3단계 간 등간격. $d/N$ = 괄호(2) / 완전기술(9)</td></tr>
-<tr><td>투영 평면의 비틀림</td><td>교차 경로 사이의 비대칭 시프트</td></tr>
-</table>
-</div>
+<p>$\ell$ = 두 엔티티(공리 12) 사이의 거리.</p>
 
 <h4>수축 겹침 = 링 위 공유 자릿수 비율 <span class="tag-corollary">명제</span></h4>
 
 <p>각 쥠(쓰기(쥐기) 결과, 공리 7)은 구면 위에 공 하나로 위치한다. <strong>Swap은 DATA(space)를 소비한다(공리 7).</strong> 소비된 space는 줄어든다. 쥠 주변의 space가 수축되어 있고, 같은 영역에 쥠이 많을수록 겹치는 수축 영역이 크다. 수축 영역 = 쥠 주변의 space 수축 범위. 수축 영역의 크기는 해당 쥠의 CAS 비용 구조(공리 2, 4)가 결정한다.</p>
+
+<p style="font-size:0.85em;color:#8b949e">아래 도식은 선형(1D) 표기다. 실제 수축은 CAS 3축 직교에 의해 공간 xyz 하위프레임에서 등방(구형)이다(공리 2 명제). ASCII로 구형을 표현할 수 없으므로 노름공간을 선형으로 펼쳐 표기한다.</p>
 
 <pre>쥠 없음:  ========================= (space 균일, 수축 없음)
 
@@ -1466,47 +1414,41 @@ observer (필터) ---> 그림자 = 엔티티에 드리운 투영
 
 구면 위:
 
-  쥠 A ----- d ----- 쥠 B
-  [ contraction a ]    [ contraction b ]
+  쥠 A ----- ℓ ----- 쥠 B
+  [ 수축 a ]            [ 수축 b ]
           \               /
            \             /
             -- overlap --
-            = (1 - d/N)
+            = (1 - ℓ/N)
 
-d 작음 -> 겹치는 DATA 주소 많음 -> isWritable 경합 많음 -> 총 비용 큼
-d 큼   -> 겹치는 DATA 주소 적음 -> isWritable 경합 적음 -> 총 비용 작음
-두 수축 영역이 겹치면 -> 같은 주소에 두 CAS가 동시 Swap 시도
--> isWritable 경합(공리 2) -> 주소당 비용(공리 4) × 경합 주소 수 = 총 비용</pre>
+ℓ 작음 -> 겹치는 DATA 주소 많음 -> isWritable 경합 많음 -> 총 비용 큼
+ℓ 큼   -> 겹치는 DATA 주소 적음 -> isWritable 경합 적음 -> 총 비용 작음
+두 쥠의 수축 영역이 겹치면 -> isWritable 경합
+-> 경합 주소 수 × 주소당 비용(공리 4) = 총 비용</pre>
 
-<div class="table-wrap">
-<table>
-<tr><th>쥠의 CAS 단계</th><th>수축 영역 크기</th><th>근거</th></tr>
-<tr><td>Swap (비용 = 1, 기준)</td><td>최대</td><td>공리 2: Swap 기준 비용. +를 넘는 전체 비용(공리 4)</td></tr>
-<tr><td>Compare (비용 < 1)</td><td>중간</td><td>공리 4: +를 넘는 비용의 Compare 몫</td></tr>
-<tr><td>Read (비용 = 1/30)</td><td>최소</td><td>공리 5 명제 + H-40: CAS 접근 경로 수 30의 역수</td></tr>
-<tr><td>111 (CAS 원자적)</td><td>FSM 내부에 갇힘</td><td>공리 14(뒤에서 정의): FSM 구간(닫힌). 구면 위가 아닌 FSM 내부</td></tr>
-</table>
-</div>
+<p>수축 영역의 크기는 CAS가 대상에 접근할 때 넘는 +의 수(공리 4)와 자료형(공리 2 명제)이 결정한다.</p>
 
-<p>수축 겹침비 = $(1 - d/N)$. $d$는 링 위 두 쥠 사이의 시프트 거리, $N$은 링 크기(명제 12). $d = 0$은 이산계에서 도달 불가(최솟값 $d = 1$). $d = N$이면 겹침 없음(반대편). 링 크기 $N$은 CAS 단계 조합이 결정하므로, 겹침비는 공리 수의 조합으로 나온다. 두 쥠이 <strong>d-ring의 링 크기 N에서 겹치느냐</strong>에 따라 겹침비가 달라지고, 그 비율이 혼합각의 수치값이다.</p>
+<p>수축 겹침비 = $(1 - \ell/N)$. $\ell$는 링 위 두 쥠 사이의 시프트 거리, $N$은 자료형, 공리 2 명제. $\ell = 0$은 이산계에서 도달 불가(최솟값 $\ell = 1$). $\ell = N$이면 겹침 없음(반대편). 링 크기 $N$은 CAS 단계 조합이 결정하므로, 겹침비는 공리 수의 조합으로 나온다. 두 쥠이 <strong>워크벤치의 자료형 N에서 겹치느냐</strong>에 따라 겹침비가 달라지고, 그 비율이 겹침비의 수치값이다.</p>
 
-<p>모든 혼합각은 공리 11(1:N 투영)의 구면 기하학에서 나오는 각도이지, 외부에서 측정한 매개변수가 아니다. $d$는 구면 위 두 엔티티 사이 거리다. 다른 것은 구면 위 투영들 사이의 각도 $\theta$뿐이다.</p>
+<p>모든 겹침비는 공리 11(1:N 투영)의 구면 기하학에서 나오는 비율이지, 외부에서 측정한 매개변수가 아니다. $\ell$는 두 엔티티 사이 거리다. 다른 것은 투영들 사이의 각도 $\theta$뿐이다.</p>
+
+<p style="font-size:0.85em;color:#8b949e">참고: 실제 수축은 CAS 3축 직교에 의한 등방(구형) 수축이다(공리 2 명제). 3축 노름(√3)이 길이(스칼라)이므로 두 엔티티 사이 거리가 $\ell$로 표현되고, 3차원에서 등거리 = 구면이므로 구표면 위의 기하학으로 기술된다. 구면은 수축의 실체가 아니라 노름 표현의 결과다.</p>
 
 <p>엔티티 간 상호작용 세기(공리 13 명제)의 완전한 형태:</p>
 
 <div class="math-block">
-<div class="math-row">$$\text{수축 겹침비} = 1 - \frac{d}{N}$$</div>
-<div class="math-legend">$d$: 링 위 시프트 거리(두 쥠 사이 칸 수) | $N$: 링 크기(링 크기 = 도달 거리 명제). $d = 0$은 이산계에서 도달 불가(최솟값 $d = 1$). $d = N$이면 겹침 없음</div>
+<div class="math-row">$$\text{수축 겹침비} = 1 - \frac{\ell}{N}$$</div>
+<div class="math-legend">$\ell$: 링 위 시프트 거리(두 쥠 사이 칸 수) | $N$: 링 크기(자료형, 공리 2 명제). $\ell = 0$은 이산계에서 도달 불가(최솟값 $\ell = 1$). $\ell = N$이면 겹침 없음</div>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{엔티티 간 상호작용 세기} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
-<div class="math-legend">$d$: 두 엔티티 사이 거리(링 위 시프트 칸 수 = 구면 위 거리, 같은 거리 다른 눈금) | $N$: 링 크기(링 크기 = 도달 거리 명제). CAS 단계 조합이 결정 | $C$: 단계 비용. CAS 단계 조합이 결정하는 비용 계수(공리 2, 4)</div>
+<div class="math-row">$$\text{엔티티 간 상호작용 세기} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
+<div class="math-legend">$\ell$: 두 엔티티 사이 거리(링 위 시프트 칸 수 = 구면 위 거리, 같은 거리 다른 눈금) | $N$: 링 크기(자료형, 공리 2 명제). CAS 단계 조합이 결정 | $C$: 단계 비용. CAS 단계 조합이 결정하는 비용 계수(공리 2, 4)</div>
 </div>
 
 <h4>빈 엔티티의 왜곡은 구조적 필연이다 <span class="tag-corollary">명제</span></h4>
 
-<p>쓰기한 적 없는 빈 엔티티가 주변 엔티티들의 수축 영역에 포함되면, isWritable에서 쓰기로 읽히는 왜곡이 발생한다. 이것은 오류가 아니라 구조상 필연이다. ECS(공리 12)에 논리 주소가 없으므로 접근 위반이 존재하지 않고, 시스템은 다운되지 않는다. 빈 엔티티에서 관측되는 왜곡은 이 구조의 필연적 결과다. 왜곡도 시스템의 일부다. 반대로, 주변 엔티티의 영향을 받아 더 긴 LRU 수명을 갖는 것도 필연이다. 같은 구조의 반대 방향이다.</p>
+<p>워크벤치(공리 2 명제)의 CAS Compare는 자료형 크기가 고정되어 있다. Compare가 자료형 N으로 읽을 때, 읽기 범위는 쥠 자체보다 넓다. 이 범위 안에 쓰기한 적 없는 빈 엔티티가 들어오면, Compare는 빈 엔티티를 쥠과 구분할 수 없다 — 자료형 크기가 고정이므로 읽기 범위를 줄일 수 없다. 빈 엔티티가 쓰기된 것처럼 읽히는 왜곡이 발생한다. 이것은 오류가 아니라 고정 자료형 읽기의 구조적 필연이다. </p>
 
 <h3 id="ax12">공리 12. 고전 괄호는 ECS 실행 모델이다 <span class="tag-solved">공리</span></h3>
 
@@ -1534,9 +1476,7 @@ observer C: [DATA_C] <-- CAS 독립 실행
 
 <h4>ECS가 자유로운 이유</h4>
 
-<p>ECS의 각 observer는 FSM(공리 14, 뒤에서 정의)의 닫힌 회로(000->001->011->111->000)를 순환한다. 닫힌 회로인데 자유롭다. 이유: 각 observer가 <strong>독립적으로 자기만의 FSM을 돈다</strong>. 중앙 스케줄러가 없다. 동기화가 없다. 순서가 없다. observer A의 FSM이 011일 때 observer B의 FSM이 000일 수 있다. 각자의 접점 락(공리 5)이 각자의 DATA만 물고 놓는다. 다른 observer의 FSM에 간섭하지 않는다.</p>
-
-<p>닫힌 것은 FSM의 전이도이지, observer의 관계가 아니다. 전이도가 닫혀 있으므로 각 observer가 안정적으로 돌 수 있고, observer 간에 연결이 없으므로 자유롭다.</p>
+<p>δ의 다중 투영(공리 11)이 observer 필터 수만큼 엔티티(그림자)를 만든다. 각 엔티티에 CAS가 독립적으로 할당된다 — observer가 δ→엔티티 매핑을 유지하는 LUT(Look-Up Table)이기 때문이다. 각 observer-CAS 쌍이 독립적으로 자기만의 FSM(공리 14)을 돈다. 중앙 스케줄러가 없다. 동기화가 없다. observer 간에 연결이 없으므로 자유롭다.</p>
 
 <p>그리고 FSM이 닫힌 회로를 돌더라도, 각 쥠은 LRU에서 <strong>열린 수명</strong>을 가진다. HOT->WARM->COLD->회수. FSM은 연산을 닫고, LRU는 수명을 연다. 닫힌 연산(FSM) + 열린 수명(LRU) = 자유. 쥠은 태어나고(쓰기), 재진입하고(move), 회수된다. FSM이 닫혀 있어도 쥠의 라이프사이클은 열려 있다. 이것이 ECS 구조의 핵심이다.</p>
 
@@ -1548,7 +1488,7 @@ observer C: [DATA_C] <-- CAS 독립 실행
 <table>
 <tr><th>구간</th><th>범위</th><th>접근 방식</th><th>CAS 비용 구조</th></tr>
 <tr><td><strong>FSM 구간</strong> (닫힌)</td><td>Entity 내부. CAS 원자적 실행 001->011->111->000</td><td>순차. 중복 락 불가 (공리 5)</td><td>CAS 원자성(분리 불가). 111 유지 비용(공리 14, 뒤에서 정의, 명제)</td></tr>
-<tr><td><strong>LRU 구간</strong> (열린)</td><td>Entity 간. 여러 Entity의 DATA에 CAS가 동시 접근</td><td>동시. 폰노이만 순차 버스 금지</td><td>3가지 비용 구조 = CAS가 DATA(time, space)에 접근하는 방식</td></tr>
+<tr><td><strong>LRU 구간</strong> (열린)</td><td>Entity 간. 여러 Entity의 DATA에 CAS가 동시 접근</td><td>동시. 폰노이만 순차 버스 금지</td><td>+ 넘기 횟수에 따른 비용(공리 4)</td></tr>
 </table>
 </div>
 
@@ -1558,14 +1498,14 @@ observer C: [DATA_C] <-- CAS 독립 실행
 
 <p><strong>CAS 쓰기가 동시여야만 하는 이유:</strong> LRU 진입 시 같은 세대는 동시에 HOT에 진입해야 한다. 동시 진입해야 같은 라이프사이클(HOT->WARM->COLD)이 강제된다. 순차 진입하면 생성 시점이 어긋나 같은 세대인데 다른 수명을 갖게 되어 세대 구조가 깨진다. 동시 쓰기 = 같은 세대 = 같은 LRU 라이프사이클.</p>
 
-<p><strong>LRU 위임 = 양자 괄호의 소유:</strong> CAS가 DATA에 쓴 쥠은 DATA(고전 괄호)에 저장되지만, LRU로 위임되는 순간 OPERATOR(양자 괄호)의 관리 소유로 들어간다. 저장소는 DATA이되 수명의 결정권은 OPERATOR에 있다. HOT(능동 관리) -> WARM(관리 위임 중) -> COLD(기본 해제율)의 전이는 OPERATOR의 관리 정책이다. DATA에 있지만 DATA의 것이 아니다.</p>
+<p><strong>LRU 위임:</strong> CAS가 DATA에 쓴 쥠은 DATA(고전 괄호)에 저장되지만, LRU로 위임되는 순간 OPERATOR(양자 괄호)의 관리로 들어간다. 저장소는 DATA이되 수명의 결정권은 OPERATOR에 있다. HOT(능동 관리) -> WARM(감쇠 중) -> COLD(기본 해제율)의 전이는 OPERATOR의 관리 정책이다.</p>
 
 <h4>왜 논리주소가 없는가</h4>
 
 <div class="table-wrap">
 <table>
 <tr><th>근거</th><th>공리</th><th>설명</th></tr>
-<tr><td>CAS는 독립적 지역 연산</td><td>공리 5</td><td>자체 레지스터가 없다. 전역 주소 테이블을 참조할 저장소가 CAS에 없다</td></tr>
+<tr><td>CAS는 독립적 지역 연산</td><td>공리 2</td><td>자체 레지스터가 없다. 전역 주소 테이블을 참조할 저장소가 CAS에 없다</td></tr>
 <tr><td>observer = 엔티티 = 주소</td><td>공리 11</td><td>다중 투영에서 각 observer가 이미 고유하다. 별도 포인터가 필요 없다</td></tr>
 <tr><td>TOCTOU_LOCK은 접점에 존재</td><td>공리 5</td><td>락은 CAS와 DATA 사이의 접점에 있다. 주소를 찾아가는 것이 아니라 접점에서 직접 물고 놓는다</td></tr>
 <tr><td>폴링은 전수 순회</td><td>공리 8</td><td>시스템 시간 매 틱마다 모든 observer에서 CAS가 돈다. 특정 주소를 지정할 필요가 없다</td></tr>
@@ -1574,67 +1514,66 @@ observer C: [DATA_C] <-- CAS 독립 실행
 
 <h4>국소성 = ECS 무주소 구조 <span class="tag-corollary">명제</span></h4>
 
-<p>중앙 주소 테이블이 없으므로 병목이 없다. 각 observer에서 CAS가 로컬로 돌고, TOCTOU_LOCK이 로컬 접점에서 락을 건다. 이것이 양자역학에서 "측정은 국소적(local)"인 이유의 공리적 근거다.</p>
+<p>중앙 주소 테이블이 없으므로 병목이 없다. 각 observer에서 CAS가 로컬로 돌고, TOCTOU_LOCK이 로컬 접점에서 락을 건다. 이것이 "측정은 국소적"인 이유의 공리적 근거다.</p>
 
 <p>폰노이만 구조는 논리 주소로 엔티티를 식별한다. 엔티티가 늘면 주소 비트수가 늘고, 버스 폭이 확장되고, 주소 테이블이 커진다. 주소 공간에 상한이 있으므로 언젠가 포화한다. 영구 작동 시스템으로 쓸 수 없다. ECS는 논리 주소가 없다. observer 자체가 식별자이자 주소다(공리 11). 엔티티가 아무리 늘어도 주소 비트수가 증가하지 않는다. 버스도 테이블도 없다. 포화 없이 무한히 확장 가능하다. 우주가 영구 작동하는 이유다.</p>
 
 
 <h4>비용의 실체는 다중 투영 <span class="tag-corollary">명제</span></h4>
 
-<p>별도의 비용 전달 메커니즘이 필요 없다. 모든 국소적 쥠의 observer는 같은 δ의 투영이다(공리 11). 국소적 쥠 A와 국소적 쥠 B 사이에 비용이 발생하는 것처럼 보이는 것은, 같은 δ가 양쪽 observer에 동시에 투영되기 때문이다. A에서 B로 신호가 전달되는 것이 아니라, 동일 소유자의 다중 투영이다.</p>
+<p>별도의 비용 전달 메커니즘이 필요 없다. 모든 국소적 쥠의 observer는 같은 δ의 투영이다(공리 11). 국소적 쥠 A와 국소적 쥠 B 사이에 비용이 발생하는 것처럼 보이는 것은, 같은 δ가 양쪽 observer에 동시에 투영되기 때문이다. A에서 B로 신호가 전달되는 것이 아니라, δ의 다중 투영이다.</p>
 
-<p>이것은 공리 11(다중 투영)의 직접적 귀결이다. δ가 1개이고 소유자가 1개이므로(공리 10 소거법), 모든 observer에 비친 상은 같은 소유자의 같은 변화다. 비용으로 보이는 것은 동일 소유자가 여러 observer에 동시 투영한 결과이지, 쥠과 쥠 사이의 독립적 통신이 아니다. 따라서 ECS 모델에서 엔티티 간 직접 통신 채널은 존재하지 않는다.</p>
+<p>이것은 공리 11(다중 투영)의 직접적 귀결이다. δ가 1개이므로(공리 10 명제), 모든 observer에 비친 상은 같은 δ의 같은 변화다. 비용으로 보이는 것은 δ가 여러 observer에 동시 투영한 결과이지, 쥠과 쥠 사이의 독립적 통신이 아니다. 따라서 ECS 모델에서 엔티티 간 직접 통신 채널은 존재하지 않는다.</p>
 
 <h4>시각화: 비용 분포</h4>
 
 <p style="font-size:0.85em;color:#8b949e">아래 도식은 공리나 명제가 아니라 <strong>시각화 도구</strong>다. 엔티티 간 상호작용 세기 공식(공리 13 명제)의 공간적 분포를 보여준다.</p>
 
-<p>쥠 하나를 원점에 놓으면, 엔티티 간 상호작용 세기 $C \cdot (1-d/N) / (4\pi d^2)$이 주변 모든 칸에서 정의되는 <strong>스칼라장</strong>이 된다. 각 칸의 값은 방향 없이 크기만 있다.</p>
+<p>쥠 하나를 원점에 놓으면, 엔티티 간 상호작용 세기 $C \cdot (1-\ell/N) / (4\pi \ell^2)$이 주변 모든 칸에서 정의되는 <strong>스칼라장</strong>이 된다. 각 칸의 값은 방향 없이 크기만 있다.</p>
 
-<pre>비용 분포 (d: 두 엔티티 사이 거리 = 링 시프트 칸 수 = 구면 위 거리):
+<pre>비용 분포 (ℓ: 두 엔티티 사이 거리 = 링 시프트 칸 수 = 구면 위 거리):
 
-   B (d=2)
-   |              d = 두 엔티티 사이 거리(구면 위). 쌍마다 다름.
-   A --- C (d=5)
+   B (ℓ=2)
+   |              ℓ = 두 엔티티 사이 거리(구면 위). 쌍마다 다름.
+   A --- C (ℓ=5)
    |
    |
-   D (d=N)
+   D (ℓ=N)
 
    A = 원점. 모든 쥠이 각자의 원점이다 (ECS, 공리 12).
 
-   A-B: d=2 (가까움)
+   A-B: ℓ=2 (가까움)
         겹침비 = (1 - 2/N) = 큼
-        구면 분배 = 1/(4*pi*d^2)
+        구면 분배 = 1/(4*pi*ℓ^2)
         --> 상호작용 강함
 
-   A-C: d=5 (중간)
+   A-C: ℓ=5 (중간)
         겹침비 = (1 - 5/N) = 중간
-        구면 분배 = 1/(4*pi*d^2)
+        구면 분배 = 1/(4*pi*ℓ^2)
         --> 상호작용 중간
 
-   A-D: d=N (최대 거리 = 링 반대편)
+   A-D: ℓ=N (최대 거리 = 링 반대편)
         겹침비 = (1 - N/N) = 0
         --> 상호작용 0. 도달 불가.
 
-   엔티티 간 상호작용 세기 = C * (1 - d/N) / (4*pi*d^2)
+   엔티티 간 상호작용 세기 = C * (1 - ℓ/N) / (4*pi*ℓ^2)
                                   --------     ----------
-                                  링 겹침비(d)   구면 분배(d)
+                                  링 겹침비(ℓ)   구면 분배(ℓ)
                                   비용 종류      비용 크기</pre>
 
-<p>이 비용 분포는 쥠 간 통신이 아니다(엔티티 간 직접 채널 없음). δ의 투영(공리 11)이 각 쥠 주변에 만드는 <strong>비용의 공간 분포</strong>다. $d$(두 엔티티 사이 거리)가 비용의 종류(링 겹침비)와 비용의 크기(구면 분배)를 모두 결정한다. 두 쥠의 분포가 겹치면 isWritable 경합이 발생한다.</p>
+<p>이 비용 분포는 쥠 간 통신이 아니다(엔티티 간 직접 채널 없음). δ의 투영(공리 11)이 각 쥠 주변에 만드는 <strong>비용의 공간 분포</strong>다. $\ell$(두 엔티티 사이 거리)가 비용의 종류(링 겹침비)와 비용의 크기(구면 분배)를 모두 결정한다. 두 쥠의 분포가 겹치면 isWritable 경합이 발생한다.</p>
 
 
 <h4>유일한 꼬리 지연: LRU 캐시 퇴거</h4>
 
 <p>ECS 로컬 연산에서 거리 지연은 없다. 이 시스템에서 유일한 꼬리 지연은 LRU(Least Recently Used) 캐시 퇴거뿐이다.</p>
 
-<pre>HOT  (5%)  <-- 자주 접근되는 observer -- CAS 접근 빈도 높음
-WARM (27%) <-- 접근 빈도 감소 중     -- CAS 접근 빈도 감소
-COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
+<pre>HOT  <-- 자주 접근되는 observer -- CAS 접근 빈도 높음
+WARM <-- 접근 빈도 감소 중     -- CAS 접근 빈도 감소
+COLD <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
-<p>자주 접근(CAS 실행)되는 observer는 HOT에 머물고, 접근이 줄면 WARM -> COLD로 밀려난다. 이 퇴거 과정에서 발생하는 지연이 유일한 꼬리 지연이다. 연산의 밀도가 꼬리 지연의 원인이지, 데이터 거리 간 지연이 아니다.</p>
 
-<h4>쥠과 소유권 — 왜 국소적 쥠에 소유권이 필요 없는가</h4>
+<h4>쥠의 라이프사이클</h4>
 
 <p>CAS가 DATA에 쓰기를 완료하면 시공간에 쥠이 생긴다. 쥠은 시공간의 변화 기록이다. 이 쥠은 수명을 가진다.</p>
 
@@ -1658,21 +1597,21 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h4>인과율과 시간의 화살 <span class="tag-corollary">명제</span></h4>
 
-<p>쓰기가 곧 소유이고, 회수가 곧 해제다. 쥠 자체가 수명을 가지고 있고 LRU가 그 수명을 관리하므로, 별도의 소유권 선언이 필요 없다. 이것이 인과율이다 — 원인(쓰기)이 결과(쥠)를 만들고, 결과가 수명(LRU)을 거쳐 회수된다. 시간의 화살은 LRU 퇴거 방향이다.</p>
+<p>쓰기(쥐기)가 곧 생성이고, 회수가 곧 해제다. 쥠 자체가 수명을 가지고 있고 LRU가 그 수명을 관리하므로, 별도의 관리 선언이 필요 없다. 이것이 인과율이다 — 원인(쓰기)이 결과(쥠)를 만들고, 결과가 수명(LRU)을 거쳐 회수된다. 시간의 화살은 LRU 퇴거 방향이다.</p>
 
-<p>쥠이 라이프사이클 동안 다시 CAS 입력으로 들어오면(재진입), 변화가 변화를 낳는 연쇄가 된다. 들어오지 않으면 확률(superposition)로 존재하다가 LRU에 의해 COLD로 밀려나 회수된다. 어느 경로든 소유권을 명시적으로 관리할 필요가 없다 — 쥠의 수명이 소유권이다.</p>
+<p>쥠이 라이프사이클 동안 다시 CAS 입력으로 들어오면(재진입), 변화가 변화를 낳는 연쇄가 된다. 들어오지 않으면 확률(superposition)로 존재하다가 LRU에 의해 COLD로 밀려나 회수된다. 어느 경로든 별도 관리가 필요 없다 — 쥠의 수명이 곧 관리다.</p>
 
 <h4>쥠의 회수 <span class="tag-corollary">명제</span></h4>
 
-<p>쥠은 소멸하지 않는다 — <strong>회수</strong>된다. 회수는 LRU의 연속 감쇠 과정 자체다 — HOT→WARM→COLD로 쥐는 힘이 등비급수로 약해지는 동안 이미 연속적으로 회수가 진행되고 있다. 문턱을 확인하는 것은 CAS Compare다. Compare가 접근 빈도를 보고 문턱 이하로 판정하면 그 순간 DATA에서 쥠이 이산적으로 풀린다. 풀린 쥠이 점유하던 space는 반환되고, 반환된 space는 다음 CAS Swap이 쥘 수 있는 빈자리가 된다. <strong>순환하려면 회수해야 한다.</strong></p>
+<p>쥠은 소멸하지 않는다 — <strong>회수</strong>된다. 회수는 LRU의 연속 감쇠 과정 자체다 — HOT→WARM→COLD로 쥐는 힘이 등비급수로 약해지는 동안 이미 연속적으로 회수가 진행되고 있다. 문턱을 확인하는 것은 CAS Compare다. 쥐는 힘이 문턱 이하로 떨어지면 그 순간 DATA에서 쥠이 이산적으로 풀린다. 풀린 쥠이 점유하던 space는 반환되고, 반환된 space는 다음 CAS Swap이 쥘 수 있는 빈자리가 된다. <strong>순환하려면 회수해야 한다.</strong></p>
 
-<h4>재진입 = move (소유권 이동)</h4>
+<h4>재진입 = move</h4>
 
-<p>쥠이 CAS 입력으로 재진입하면, 소유권이 이전 쥠에서 다음 쥠으로 이동(move)한다. 복사가 아니다. 이전 쥠은 소멸하고 새 쥠이 생긴다.</p>
+<p>쥠이 CAS 입력으로 재진입하면, 이전 쥠이 파괴되고 새 쥠이 생긴다(move). 복사가 아니다. 이전 쥠은 파괴되고 새 쥠이 생긴다.</p>
 
 <pre>쥠 A (원인) --재진입--> CAS --쓰기--> 쥠 B (결과)
    |                                      |
-   소멸 (move 완료)                        생성 (소유권 이동)</pre>
+   파괴 (move 완료)                        생성 (새 쥠)</pre>
 
 <p>복사가 불가능하므로 같은 원인에서 두 개의 결과가 나올 수 없다. 이것이 인과율의 보존이다. 원인이 결과로 move되면 원인은 사라지고 결과만 남는다. 되돌릴 수 없다. 비가역이다(공리 2 명제). 인과율은 별도로 선언할 필요가 없다 — 쥠의 move가 인과율이다.</p>
 
@@ -1698,79 +1637,57 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <p>상호작용은 쥠(쓰기(쥐기) 결과, 공리 7)이 만든 시공 왜곡 때문에 발생한다. CAS Swap이 space를 소비하면 쥠 주변 시공이 수축한다. 두 쥠의 수축 영역이 겹치면 isWritable 경합이 생긴다. 이것이 상호작용이다.</p>
 
 <div class="math-block">
-<div class="math-row">$$\text{엔티티 간 상호작용 세기} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
-<div class="math-legend">$d$: 두 엔티티 사이 거리(구면 위 = 링 시프트 칸 수) | $N$: 링 크기(링 크기 = 도달 거리 명제) | $C$: 단계 비용. CAS 단계 조합이 결정하는 비용 계수(공리 2, 4)</div>
+<div class="math-row">$$\text{엔티티 간 상호작용 세기} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
+<div class="math-legend">$\ell$: 두 엔티티 사이 거리(구면 위 = 링 시프트 칸 수) | $N$: 링 크기(자료형, 공리 2 명제) | $C$: 단계 비용. CAS 단계 조합이 결정하는 비용 계수(공리 2, 4)</div>
 </div>
 
-<p>Entity A의 CAS가 중첩 인덱스에서 Entity B를 참조할 때, 엔티티 간 상호작용 세기는 $d$(두 엔티티 사이 거리)의 제곱에 반비례하고($1/d^2$ 감쇠), $(1-d/N)$(링 위 공유 자릿수 비율)에 의해 비용의 종류가 결정된다. 근원: 반야식(공리 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$에서 $\delta^2$이 보존된다. DATA 괄호의 space 축에 CAS 3개의 독립 락 자유도(R_LOCK, C_LOCK, S_LOCK, 공리 5)가 작용하므로 space는 3성분으로 펼쳐진다(공리 11 명제). $\delta$의 투영이 이 3성분 space에 분배되면 거리 $d$에서의 가중치는 $1/(4\pi d^2)$로 감쇠된다 — 4축 노름의 보존이 역제곱 감쇠를 강제한다. 단계 비용 $C$의 성격이 4가지 비용 구조를 구분한다. 모든 $C$는 공리에서만 나온다 — 외부 물리 상수를 모르는 상태에서 결정된다:
+<p>Entity A의 CAS가 중첩 인덱스에서 Entity B를 참조할 때, 엔티티 간 상호작용 세기는 $\ell$(두 엔티티 사이 거리)의 제곱에 반비례하고($1/\ell^2$ 감쇠), $(1-\ell/N)$(링 위 공유 자릿수 비율)에 의해 비용의 종류가 결정된다. 근원: 반야식(공리 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$에서 $\delta^2$이 보존된다. DATA 괄호의 space 축에 CAS 3개의 독립 락 자유도(R_LOCK, C_LOCK, S_LOCK, 공리 5)가 작용하므로 space는 3성분으로 펼쳐진다(공리 11 명제). $\delta$의 투영이 이 3성분 space에 분배되면 거리 $\ell$에서의 가중치는 $1/(4\pi \ell^2)$로 감쇠된다 — 4축 노름의 보존이 역제곱 감쇠를 강제한다. 단계 비용 $C$의 성격이 4가지 비용 구조를 구분한다. 모든 $C$는 공리에서만 나온다 — 외부 물리 상수를 모르는 상태에서 결정된다:
 <br>• Swap 누적 비용: $C$ = Swap 누적 횟수. Swap은 CAS의 기준 비용(= 1, 공리 2)이므로 $C$는 쓰기(쥐기) 횟수 자체(공리 7).
 <br>• 교차 Cmp/Swp 비용: $C$ = Compare 비용. 도메인 4(공리 1) + CAS 단계 3(공리 2) = 7차원 위상공간의 체적비에서 결정.
 <br>• 수축 겹침 비용(공리 13 명제): $C$ = 수축 겹침 비용(공리 13 명제). CAS 자유도 7(공리 9) × 도메인 4(공리 1) + 괄호 2(공리 1) = 30. 수축 겹침 경로 = 1/30.
-<br>• CAS 원자성(111 유지 비용): $1/d^2$ 대신 111 유지 비용 = 접점당 비용 × 접점 수 적용. 접점 수는 $d$에 비례(공리 2 + 공리 5 + 공리 14, 뒤에서 정의, 명제).</p>
+<br>• CAS 원자성(111 유지 비용): $1/\ell^2$ 대신 111 유지 비용 = 접점당 비용 × 접점 수 적용. 접점 수는 $\ell$에 비례(공리 2 + 공리 5 + 공리 14, 뒤에서 정의, 명제).</p>
 
 <h4>특이점(무한대)은 존재하지 않는다 <span class="tag-corollary">명제</span></h4>
 
-<p>DATA는 이산이다(공리 12 명제). 링 버퍼의 칸은 정수이므로 엔티티 간 거리 $d$의 최솟값은 0이 아니라 1이다. $d = 0$은 이산 시스템에서 존재하지 않는다. 따라서 한 쌍당 비용 $1/d^2$의 최댓값은 $1/1^2 = 1$이다. 개별 경합은 유한하다. 발산(무한대)은 이산 시스템에서 발생할 수 없다.</p>
+<p>DATA는 이산이다(공리 3). 링 버퍼의 칸은 정수이므로 엔티티 간 거리 $\ell$의 최솟값은 0이 아니라 1이다. $\ell = 0$은 이산 시스템에서 존재하지 않는다. 따라서 한 쌍당 비용 $1/\ell^2$의 최댓값은 $1/1^2 = 1$이다. 개별 경합은 유한하다. 발산(무한대)은 이산 시스템에서 발생할 수 없다.</p>
 
-<p>그러나 좁은 영역에 엔티티 $N$개가 모두 $d = 1$로 밀집하면, 경합 쌍의 수가 $N(N-1)/2$로 증가한다. 개별 비용은 유한하지만 <strong>누적 비용은 $N^2$에 비례</strong>한다. 이것이 블랙홀이다 — 발산이 아니라 누적.</p>
+<p>그러나 좁은 영역에 엔티티 $N$개가 모두 $\ell = 1$로 밀집하면, 경합 쌍의 수가 $N(N-1)/2$로 증가한다. 개별 비용은 유한하지만 <strong>누적 비용은 $N^2$에 비례</strong>한다. 이것이 블랙홀이다 — 발산이 아니라 누적.</p>
 
 <ul>
 <li><strong>쥠 밀집(공리 13 명제)</strong>: 같은 영역에 쥠이 밀집하면 수축 겹침이 발생한다. 다수 엔티티의 경합 누적.</li>
-<li><strong>공간 겹침</strong>: 다수 엔티티가 $d = 1$(이산 최솟값)로 밀집한다. 다수 엔티티의 공간 경합이 누적된 것.</li>
+<li><strong>공간 겹침</strong>: 다수 엔티티가 $\ell = 1$(이산 최솟값)로 밀집한다. 다수 엔티티의 공간 경합이 누적된 것.</li>
 </ul>
 
 <p>같은 메커니즘(isWritable 경합)의 스케일 차이다. 쥠 밀집은 다수 엔티티 사이의 수축 겹침에 의한 경합 누적이다. 물리학에서 이것을 블랙홀이라 부른다. 사건의 지평선은 누적 비용이 탈출 비용을 초과하는 경계다.</p>
 
 <p>4축 직교(공리 1)이므로 누적된 비용을 다른 축이 흡수할 수 없다. 직교 = 독립. time이 떠안을 수 없고, observer가 떠안을 수 없다. 고전 괄호(DATA)가 이산 최댓값에 도달하면, 양자 괄호(OPERATOR)는 직교라 영향 받지 않는다. d-ring(1D)은 살아 있다(CAS 사이클은 OPERATOR 내부). CAS-ring은 OPERATOR 안에서 순환하되, R, C, S 각 전이마다 +를 넘어 비용 +1(공리 4). 쓸 곳이 포화되면 Swap이 실행되지 못하고, 안쓰기 = 중첩 유지(공리 7). 고전 기술이 포화에 도달하면 양자 괄호로 관리가 이관된다.</p>
 
-<p>이산 시스템에서 $d$는 0이 될 수 없고, 비용은 유한 최댓값을 갖는다. 물리학의 특이점 문제는 시공간을 연속으로 취급해서 생긴 허구다. DATA가 이산이면 특이점은 자동으로 해소된다.</p>
+<p>이산 시스템에서 $\ell$는 0이 될 수 없고, 비용은 유한 최댓값을 갖는다. 물리학의 특이점 문제는 시공간을 연속으로 취급해서 생긴 허구다. DATA가 이산이면 특이점은 자동으로 해소된다.</p>
 
 <h4>공간 겹침 시 경합 연산 폭주 <span class="tag-corollary">명제</span></h4>
 
-<p>$d = 1$(이산 최솟값)에서 엔티티 $N$개가 밀집하면 Compare(SP=011)가 방아쇠를 당기고 Swap(SP=111)이 폭주한다. Compare는 R→C 전이로 비용 +1이다(공리 2 명제, 4). 수축 영역이 겹치면 Compare true가 $N^2$에 비례하여 증가한다. 매 true마다 Swap이 실행되고, 같은 DATA 주소에 여러 엔티티가 동시 쓰기를 시도한다 — isWritable 경합. 개별 경합 비용은 유한(이산 최댓값)이지만, 경합 쌍의 수가 $N^2$이므로 총 비용이 폭주한다.</p>
+<p>자료형 크기는 수축 전에 고정된다(공리 2 명제). 쥠이 space를 수축시키면(공리 2 명제), 고정 크기의 엔티티 영역 안에 다른 쥠이 만든 공이 겹쳐 들어온다. 한 영역에 공이 여럿이면 직렬화된다 — 순서가 생기고, 순서 = 비용(공리 4). $\ell = 1$(이산 최솟값)에서 엔티티 $N$개가 밀집하면 겹침 쌍이 $N(N-1)/2$로 증가한다. 개별 비용은 유한하지만 쌍의 수가 $N^2$에 비례하므로 총 비용이 폭주한다.</p>
 
-<h4>인덱싱 비용: 중첩 도메인의 단위 비용은 1비트/단계다 <span class="tag-corollary">명제</span></h4>
+<h4>인덱싱 비용 <span class="tag-corollary">명제</span></h4>
 
-<p>중첩은 인덱싱이다(공리 13). 인덱싱은 공짜가 아니다. d-ring은 2니블(domain 4비트 + operator 4비트)로 구성된다. 도메인 니블은 CAS Read가 4비트를 동시에 읽는다(4축 직교 = 동시). 연산자 니블은 CAS FSM이 순차 전이한다(R->C->S 의존성). 디코딩 비용은 두 엔티티의 CAS 단계 갭에 비례한다. 이 비용은 δ(키)의 디코딩 비용이다(공리 15 명제). 상세는 공리 15 참조.</p>
-
-<pre>
-  니블 0: 도메인 (CAS Read, 4비트 동시)
-  +------+------+------+------+
-  | ob   | sp   | time | space|   4도메인 (직교 = 동시)
-  | bit 0| bit 1| bit 2| bit 3|   읽기(접근) 비용 +1
-  +------+------+------+------+
-
-  니블 1: 연산자 (CAS FSM + d)
-  +------+------+------+------+
-  | R    | C    | S    | d    |   CAS 3비트 + 발화비트
-  | bit 4| bit 5| bit 6| bit 7|   R, C, S 각 +1(공리 4)
-  +------+------+------+------+
-
-  링 이음새: d(bit 7) --> observer(bit 0) = 소유권 (공리 10)</pre>
-
-<div class="math-block">
-<div class="math-row">$$\text{인덱싱 비용} = \Delta_{\text{stage}} \times 1\;\text{bit}$$</div>
-<div class="math-legend">$\Delta_{\text{stage}}$: 두 엔티티의 CAS 단계 인덱스 차이. R=1, C=2, S=3. 최대 갭 = 2 (공리 2)</div>
-</div>
-
-<p>대칭 쌍(두 엔티티의 CAS 단계가 같으면)에서는 $\Delta_{\text{stage}} = 0$이므로 디코딩 비용이 0이다. 비대칭 쌍(단계가 다르면)에서는 $\Delta_{\text{stage}} \neq 0$이므로 디코딩 왕복 비용이 추가된다.</p>
+<p>중첩은 인덱싱이다(공리 13). 인덱스 조회 1건 = +1. 조회 건수가 늘면 비용이 늘어난다.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>CAS 쌍</th><th>단계 갭</th><th>디코딩 비용</th><th>비용 보정</th></tr>
-<tr><td>동일 단계 쌍 (R+R)</td><td>|1-1| = 0</td><td>0 bit</td><td>불필요 (Swap 누적만으로 충분)</td></tr>
-<tr><td>1단계 교차 쌍 (R+C)</td><td>|1-2| = 1</td><td>1 bit</td><td>필요 (디코딩 1회)</td></tr>
-<tr><td>2단계 교차 쌍 (R+S)</td><td>|1-3| = 2</td><td>2 bit</td><td>필요 (디코딩 2회)</td></tr>
-<tr><td>동일 단계 쌍 (C+C)</td><td>|2-2| = 0</td><td>0 bit</td><td>불필요</td></tr>
-<tr><td>1단계 교차 쌍 (C+S)</td><td>|2-3| = 1</td><td>1 bit</td><td>필요 (디코딩 1회)</td></tr>
+<tr><th>경로</th><th>진입</th><th>조회</th><th>정산 방식</th></tr>
+<tr><td><strong>CAS → observer</strong></td><td>+1</td><td>동시(fan-out)</td><td>각 엔티티 비용은 독립. 동시 정산</td></tr>
+<tr><td><strong>CAS → superposition(인덱스)</strong></td><td>+1</td><td>건당 +1</td><td>조회 건수 × +1. 건별 정산</td></tr>
 </table>
 </div>
 
-<p>근거: CAS가 DATA를 직접 참조하지 않고 중첩 인덱스를 통해 참조한다(공리 13). 인덱스 탐색은 δ(키)의 디코딩이다(공리 15 명제). 디코딩 비용 = CAS 단계 갭 x 1 bit. CAS는 3단계(R=1, C=2, S=3)이므로 최대 갭은 2다. 4번째 단계는 없다(공리 2). 대칭 쌍은 단계 갭 0이므로 디코딩 비용 0. 비대칭 쌍은 단계 갭만큼 디코딩 비용이 발생한다. 이 비용은 Read 단계에서 소비되므로 Swap 비용과 독립적이다.</p>
+<div class="math-block">
+<div class="math-row">$$\text{인덱싱 비용} = 1\text{(진입)} + N\text{(조회 건수)}$$</div>
+<div class="math-legend">진입 = +1. 조회 = 건당 +1. 건수가 늘면 비용이 늘어난다</div>
+</div>
 
 <h3 id="ax14">공리 14. FSM 선언 (Finite State Machine) <span class="tag-solved">공리</span></h3>
 
-<p>반야프레임은 유한 상태 기계(FSM)다.</p>
+<p>반야프레임은 유한 상태 기계(FSM)다. CAS-ring(공리 2 명제)이 이 FSM의 실체이고, 워크벤치(공리 2 명제)가 그 작업공간이다. 각 워크벤치는 독립된 연산장치로서 자기만의 FSM을 돌린다.</p>
 
 <div class="table-wrap">
 <table>
@@ -1781,7 +1698,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <tr><td>시작 상태 (Start)</td><td>000 (대기)</td><td>공리 5</td></tr>
 <tr><td>종료 상태 (Accept)</td><td>111 (CAS 성공) -> 000 (초기화)</td><td>공리 5</td></tr>
 <tr><td>출력 (Output)</td><td>DATA 쓰기 또는 중첩 유지</td><td>공리 7</td></tr>
-<tr><td>클록 (Clock)</td><td>플랑크 시간 $t_p$</td><td>공리 8 (폴링)</td></tr>
+<tr><td>클록 (Clock)</td><td>시스템 시간 1틱</td><td>공리 8 (폴링)</td></tr>
 </table>
 </div>
 
@@ -1793,28 +1710,28 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
       000 --Read--> 001 --Compare--> 011 --Swap--> 111
       idle          R_LOCK           C_LOCK         CAS OK</pre>
 
-<p>반야프레임의 모든 공리(1~14)는 이 FSM의 구성요소다. 공리 1이 입력 공간을, 공리 2가 전이 함수를, 공리 3이 이산-연속 구분을, 공리 4~5가 전이 비용과 레지스터를, 공리 6이 비용 회수를, 공리 7이 출력을, 공리 8이 클록을, 공리 9가 완전기술자유도를, 공리 10이 소유자를, 공리 11이 다중 투영을, 공리 12가 실행 모델을, 공리 13이 ECS-중첩 쌍을 정의한다. FSM 선언은 14개 공리가 하나의 기계로 닫힌다는 완결성 선언이다.</p>
+<p>반야프레임의 모든 공리(1~14)는 이 FSM의 구성요소다. 공리 1이 입력 공간을, 공리 2가 전이 함수를, 공리 3이 이산-연속 구분을, 공리 4~5가 전이 비용과 레지스터를, 공리 6이 비용 회수를, 공리 7이 출력을, 공리 8이 클록을, 공리 9가 완전기술자유도를, 공리 10이 전체-국소 루프를, 공리 11이 다중 투영을, 공리 12가 실행 모델을, 공리 13이 ECS-중첩 쌍을 정의한다. FSM 선언은 14개 공리가 하나의 기계로 닫힌다는 완결성 선언이다.</p>
 
 <h4>FSM의 유한 상태와 DATA 쪽의 무한 자유도</h4>
 
-<p>FSM(공리 14)의 상태 집합은 {000, 001, 011, 111}로 4개, 유한이다. DATA 쪽의 무한 자유도는 시공간의 각 점에서 장(field)의 값이 연속적으로 변하는 것이다. 이 둘은 충돌하지 않는다.</p>
+<p>FSM(공리 14)의 상태 집합은 {000, 001, 011, 111}로 4개, 유한이다. DATA는 이산(공리 3)이므로 칸의 수가 유한하지만, 엔티티 수에 상한이 없으므로 DATA 쪽 조합의 수는 제한되지 않는다. 이 둘은 충돌하지 않는다.</p>
 
-<p>FSM의 4개 상태는 OPERATOR 쪽이다. CAS가 어떤 단계에 있는가를 기술하는 연산자의 상태다. DATA 쪽의 무한 자유도는 DATA에 속한다. 시공간(고전 괄호)에 기록된 장의 값이 무한하고 연속인 것이다. 공리 1에서 DATA(고전 괄호)와 OPERATOR(양자 괄호)는 직교하는 다른 괄호다. FSM은 OPERATOR의 유한한 상태 전이를 기술하고, DATA 쪽의 무한 자유도는 DATA에 기록된 연속적 값의 공간을 기술한다. 층위가 다르므로 충돌이 없다.</p>
+<p>FSM의 4개 상태는 OPERATOR 쪽이다. CAS가 어떤 단계에 있는가를 기술하는 연산자의 상태다. DATA 쪽의 조합은 DATA에 속한다. 이산 칸(공리 3)에 기록된 쥠의 배치가 엔티티 수만큼 늘어나는 것이다. 공리 1에서 DATA(고전 괄호)와 OPERATOR(양자 괄호)는 직교하는 다른 괄호다. FSM은 OPERATOR의 유한한 상태 전이를 기술하고, DATA 쪽의 조합은 이산 칸 위의 쥠 배치를 기술한다. 층위가 다르므로 충돌이 없다.</p>
 
 <h4>닫힌다는 것</h4>
 
-<p>닫힌다 = 외부에서 가져올 것이 없다. 반야프레임은 14개 공리 밖에서 아무것도 가져오지 않는다. FSM의 작동에 15번째 공리는 필요 없다. 외부 상수가 필요 없다. 외부 이론이 필요 없다. 공리만으로 입력 공간, 연산자, 비용, 레지스터, 출력, 클록, 트리거, 다중 투영, 실행 모델이 전부 정의되고, FSM으로 전이도가 완성되고, 그 FSM이 플랑크 클록마다 저절로 돈다. 이것이 자기완결이고, 이것이 닫힘이다.</p>
+<p>닫힌다 = 외부에서 가져올 것이 없다. 반야프레임은 14개 공리 밖에서 아무것도 가져오지 않는다. FSM의 작동에 15번째 공리는 필요 없다. 외부 상수가 필요 없다. 외부 이론이 필요 없다. 공리만으로 입력 공간, 연산자, 비용, 레지스터, 출력, 클록, 트리거, 다중 투영, 실행 모델이 전부 정의되고, FSM으로 전이도가 완성되고, 그 FSM이 시스템 시간 매 틱마다 저절로 돈다. 이것이 자기완결이고, 이것이 닫힘이다.</p>
 
 <p>이 FSM은 2중 루프가 아니다. 공리 8(폴링)은 행위 순서(어떻게 도는가)를 기술하고, 공리 10(전체-국소 루프)은 주체(누가 돌리는가)를 기술한다. 같은 FSM의 같은 전이도 위에 있다. 행위와 주체가 하나의 기계 안에서 닫힌다.</p>
 
 <h4>FSM 111 유지 비용은 두 CAS 단계 사이의 DATA(space) 거리에 비례한다 <span class="tag-corollary">명제</span></h4>
 
-<p>중첩은 인덱스이므로 거리 비용이 없다(공리 13). 그러나 FSM이 111을 유지하는 동안(공리 14) CAS 3단계의 <strong>누적 락</strong>이 DATA(space)에 걸려 있어야 한다(공리 5). 두 CAS 단계가 DATA(space)에서 거리 $d$만큼 떨어져 있으면, OPERATOR-DATA 경계(공리 5, 접점)에서 $d$에 비례하는 수의 접점에 <strong>누적 락</strong>이 필요하다. 접점당 비용이 일정(공리 4)하므로 누적 락 유지 비용은 $d$에 비례한다.</p>
+<p>중첩은 인덱스이므로 거리 비용이 없다(공리 13). 그러나 FSM이 111을 유지하는 동안(공리 14) CAS 3단계의 <strong>누적 락</strong>이 DATA(space)에 걸려 있어야 한다(공리 5). 두 CAS 단계가 DATA(space)에서 거리 $\ell$만큼 떨어져 있으면, OPERATOR-DATA 경계(공리 5, 접점)에서 $\ell$에 비례하는 수의 접점에 <strong>누적 락</strong>이 필요하다. 접점당 비용이 일정(공리 4)하므로 누적 락 유지 비용은 $\ell$에 비례한다.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{111 유지 비용} = \text{접점당 비용} \times \text{접점 수}$$</div>
-<div class="math-row">$$= (\text{+를 넘는 최소 비용} \times \text{단위 거리당 접점 밀도}) \times d$$</div>
-<div class="math-legend">$d$: 두 CAS 단계 사이 거리 | 접점당 비용: 공리 4 | 접점 수: $d$에 비례 (거리가 멀수록 누적 락이 더 필요)</div>
+<div class="math-row">$$= (\text{+를 넘는 최소 비용} \times \text{단위 거리당 접점 밀도}) \times \ell$$</div>
+<div class="math-legend">$\ell$: 두 CAS 단계 사이 거리 | 접점당 비용: 공리 4 | 접점 수: $\ell$에 비례 (거리가 멀수록 누적 락이 더 필요)</div>
 </div>
 
 <p>111 유지 비용이 CAS 1건의 Swap 비용(= 1, 공리 2)에 도달하면 분리 불가능하다. 분리를 시도하면 CAS 원자성(공리 2)이 새 CAS 쌍을 생성한다. FSM 사이클(공리 14)이 빨라지면 111 유지 시간이 짧아져 누적 락 수가 줄고 누적 락 유지가 약해진다.</p>
@@ -1822,14 +1739,14 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <h4>이상적인 최소비용 구조의 양자 연산 서킷 <span class="tag-corollary">명제</span></h4>
 
-<p>공리 1~15와 명제가 기술하는 전체 구조: <strong>이것은 이상적인 최소비용 구조의 양자 연산 서킷이다.</strong> 이 서킷은 1D 링 버퍼다(명제 19).</p>
+<p>공리 1~15와 명제가 기술하는 전체 구조: <strong>이것은 이상적인 최소비용 구조의 양자 연산 서킷이다.</strong> 이 서킷은 CAS-ring이다(공리 2 명제).</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>성질</th><th>근거</th></tr>
 <tr><td><strong>양자</strong></td><td>CAS가 중첩 도메인에 접근한다 (공리 13). 양자가 기본이고 고전이 비용의 결과다 (공리 7)</td></tr>
 <tr><td><strong>연산</strong></td><td>CAS가 유일한 연산자다 (공리 2). Compare로 탐색하고 Swap으로 쓴다</td></tr>
-<tr><td><strong>서킷</strong></td><td>FSM이 순환한다 (공리 14). 000->001->011->111->000. 1D 링 버퍼 (명제 19)</td></tr>
+<tr><td><strong>서킷</strong></td><td>FSM이 순환한다 (공리 14). 000->001->011->111->000. 1D 링 버퍼 (공리 15 명제)</td></tr>
 <tr><td><strong>최소비용</strong></td><td>CAS 3축 직교(공리 2 명제). R, C, S 각 전이마다 +를 넘어 비용 +1. 1단계당 최소 비용 = +1</td></tr>
 <tr><td><strong>이상적</strong></td><td>9개 자유도로 완전 기술 (공리 9). 10번째가 필요 없다. 낭비 없음</td></tr>
 </table>
@@ -1843,7 +1760,7 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 <div class="math-row">$$\underset{\substack{\\[6pt] \text{좌항: FSM 밖} \\[6pt] \text{전역, 발화}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{고전 괄호 (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{양자 괄호 (OPERATOR)}}}^{\text{우항: FSM 안 (공리 1\textasciitilde14), 로컬 (ECS), 구조}}$$</div>
 </div>
 
-<p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 이산-연속(공리 3), 비용(공리 4), 레지스터(공리 5), 비용 회수(공리 6), 출력(공리 7), 클록(공리 8), 소유자(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000->001->011->111->000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 발화가 필요하다. 그 발화가 δ다.</p>
+<p>공리 1~14는 기계를 만들었다. 입력 공간(공리 1), 연산자(공리 2), 이산-연속(공리 3), 비용(공리 4), 레지스터(공리 5), 비용 회수(공리 6), 출력(공리 7), 클록(공리 8), 전체-국소 루프(공리 10), 다중 투영(공리 11), 실행 모델(공리 12), 인덱싱(공리 13), 상태 전이(공리 14). 기계는 완성됐다. 닫혔다. 000->001->011->111->000을 순환할 수 있다. <strong>그러나 닫힌 기계는 스스로 시작할 수 없다.</strong> 발화가 필요하다. 그 발화가 δ다.</p>
 
 <h4>8비트 링 버퍼 = 2니블 <span class="tag-corollary">명제</span></h4>
 
@@ -2071,11 +1988,11 @@ COLD (68%) <-- 최근 접근 없음        -- LRU 기저 해제율 적용</pre>
 
 <p>공리 1~14에서 δ는 "변화"였다 — 반야식의 좌항, 4축 노름, 등호. 공리 15에서 δ의 정체가 밝혀진다: 변화가 아니라 <strong>발화</strong>다. 변화는 FSM이 만드는 결과이고, 발화는 FSM을 깨우는 원인이다. FSM 안에서 보면 δ는 변화처럼 보인다(결과만 보이니까). FSM 밖에서 보면 δ는 발화다(깨우는 쪽이니까). 같은 δ의 안팎.</p>
 
-<h4>에너지가 보존되는 이유: δ의 발화 주기는 스케줄링되지 않는다 <span class="tag-corollary">명제</span></h4>
+<h4>비용이 보존되는 이유: δ의 발화 주기는 스케줄링되지 않는다 <span class="tag-corollary">명제</span></h4>
 
-<p>전체 에너지가 보존되는 이유는 δ의 발화 시간이 고정되지 않았기 때문이다. d-ring 내부의 모든 비용(CAS FSM 순차, 락 유지, Swap 비용)이 소모되면, 그 비용은 발화 주기의 증가로 등가 치환된다. 내부에서 비용이 늘어나면 발화 간격이 늘어난다. 내부에서 비용이 줄어들면 발화 간격이 줄어든다. 총합은 변하지 않는다.</p>
+<p>전체 비용이 보존되는 이유는 δ의 발화 시간이 고정되지 않았기 때문이다. d-ring 내부의 모든 비용(CAS FSM 순차, 락 유지, Swap 비용)이 소모되면, 그 비용은 발화 주기의 증가로 등가 치환된다. 내부에서 비용이 늘어나면 발화 간격이 늘어난다. 내부에서 비용이 줄어들면 발화 간격이 줄어든다. 총합은 변하지 않는다.</p>
 
-<p>δ의 발화 주기가 스케줄링되지 않아야(외부 클록 없음) 이 등가 치환이 성립한다. 발화 주기가 고정되면 내부 비용 증가분을 흡수할 곳이 없어 에너지가 보존되지 않는다. <strong>δ가 FSM 밖에 있고 발화 주기가 자유롭다는 것(공리 15)이 에너지 보존의 구조적 원인이다.</strong> 무손실 영구기관은 외부 클록이 없을 때만 가능하다.</p>
+<p>δ의 발화 주기가 스케줄링되지 않아야(외부 클록 없음) 이 등가 치환이 성립한다. 발화 주기가 고정되면 내부 비용 증가분을 흡수할 곳이 없어 비용이 보존되지 않는다. <strong>δ가 FSM 밖에 있고 발화 주기가 자유롭다는 것(공리 15)이 비용 보존의 구조적 원인이다.</strong> 무손실 순환은 외부 클록이 없을 때만 가능하다.</p>
 
 <h4>의식은 δ의 임의 영역이다 <span class="tag-corollary">명제</span></h4>
 
@@ -2143,38 +2060,6 @@ delta (처음으로 돌아옴)</pre>
 
 <h2 id="axiom-summary">공리 체계 요약 테이블</h2>
 
-<h4>0. 용어 정리</h4>
-<div class="table-wrap">
-<table>
-<tr><th>공리 용어</th><th>정의</th><th>출처</th></tr>
-<tr><td><strong>d-ring</strong></td><td>8비트 전체 링 버퍼. bit 0~7. 2니블. 유일한 링 구조. "링"이라 하면 이것</td><td>공리 15 명제</td></tr>
-<tr><td><strong>CAS-ring</strong></td><td>내부 직교하는 CAS의 순환 구조. 직교가 구조를, 락이 순서를, 순서가 FSM을 만든다</td><td>공리 2, 5, 12, 14</td></tr>
-<tr><td><strong>CAS FSM</strong></td><td>CAS-ring의 상태 전이. 000->001->011->111->000. 락이 순서를 강제</td><td>공리 5, 14</td></tr>
-<tr><td><strong>δ (발화비트)</strong></td><td>bit 7. 등호. 1=유효, 0=무효. FSM 밖 전역 플래그. 개인키</td><td>공리 15</td></tr>
-<tr><td><strong>observer (진입점)</strong></td><td>bit 0. 필터. 파이프라인 시작. δ와 상호작용으로 의지 생성. 서명</td><td>공리 10, 15</td></tr>
-<tr><td><strong>CAS</strong></td><td>유일한 연산자. Read->Compare->Swap. 3단계</td><td>공리 2</td></tr>
-<tr><td><strong>CAS 3축 직교</strong></td><td>R, C, S 각 단계가 독립 1비트(001, 010, 100). 서로의 자유도를 침범하지 않음. 111 시점에 3축이 동시에 한 곳을 쥐어 공을 만듦</td><td>공리 2 명제</td></tr>
-<tr><td><strong>쥠(juim)</strong></td><td>CAS Swap(111)이 DATA에 만드는 공. 3축 직교 → 등방 압력 → 구형. 이산의 단위 — 더 쪼갤 수 없는 최소 변화 1건의 형상. 반야프레임 고유명사</td><td>공리 2 명제</td></tr>
-<tr><td><strong>쥐다(juida)</strong></td><td>CAS가 DATA에 쥠을 만드는 행위. 1사이클 = 1쥠 = 1비용</td><td>공리 2 명제</td></tr>
-<tr><td><strong>CAS 단계 인덱스</strong></td><td>R=1, C=2, S=3. 최대 3. 4번째 없음</td><td>공리 2</td></tr>
-<tr><td><strong>단계 갭 (Δ_stage)</strong></td><td>두 엔티티의 CAS 단계 인덱스 차이. 최대 2</td><td>공리 13 명제</td></tr>
-<tr><td><strong>디코딩 비용</strong></td><td>단계 갭 x 1 bit. δ(키)의 디코딩 비용</td><td>공리 13, 15 명제</td></tr>
-<tr><td><strong>니블 0 (도메인)</strong></td><td>bit 0-3. observer, superposition, time, space. d-ring의 앞 절반</td><td>공리 1, 15 명제</td></tr>
-<tr><td><strong>니블 1 (연산자)</strong></td><td>bit 4-7. R_LOCK, C_LOCK, S_LOCK, δ. d-ring의 뒷 절반. CAS FSM이 여기서 작동</td><td>공리 5, 15 명제</td></tr>
-<tr><td><strong>차원</strong></td><td>공간 3차원 = CAS 3축 직교(공리 2 명제). 4번째 없음. CAS 사이클: 정방향 순환 + 동시 리셋</td><td>공리 2, 12 명제</td></tr>
-<tr><td><strong>Swap</strong></td><td>CAS 3번째 단계. +를 넘음. 비용 +1</td><td>공리 4</td></tr>
-<tr><td><strong>누적 락</strong></td><td>CAS FSM 001->011->111 논리 의존성에 의한 순차 점화. CAS 3축 직교(공리 2 명제), 점화 순서는 순차</td><td>공리 2, 5, 14 명제</td></tr>
-<tr><td><strong>링 이음새</strong></td><td>d-ring의 δ(bit 7)->observer(bit 0) 연결점. 등호의 진입점. 소유권</td><td>공리 10, 15 명제</td></tr>
-<tr><td><strong>파이프라인</strong></td><td>trigger->filter->update->render->screen. d-ring 1회 발화의 흐름</td><td>공리 15 명제</td></tr>
-<tr><td><strong>발화</strong></td><td>δ=1이 되는 것. d-ring 1사이클의 시작. "사이클"이 아닌 "발화"로 부른다</td><td>공리 15</td></tr>
-<tr><td><strong>동시</strong></td><td>3가지만: 복수 엔티티 병렬, 4도메인 직교, 2니블 직교</td><td>공리 1, 2, 12</td></tr>
-<tr><td><strong>순차</strong></td><td>2가지만: R->C->S (CAS FSM 의존성), δ->observer (d-ring 이음새)</td><td>공리 2, 10</td></tr>
-<tr><td><strong>비용</strong></td><td>+를 넘으면 비용 > 0. 넘지 않으면 0. R, C, S 각 전이마다 +1</td><td>공리 2 명제, 4</td></tr>
-<tr><td><strong>감쇠는 연속, 문턱은 이산</strong></td><td>공의 존재(DATA)=이산, 쥐는 힘(LRU)=연속 감쇠, 비용(수축 영역)=공간 분포. 3속성이 다른 층. observer는 직교하는 중첩 인덱스(LRU)가 제시하는 비용(수축)을 본다</td><td>공리 2, 12 명제</td></tr>
-<tr><td><strong>쥠의 회수</strong></td><td>LRU가 쥠을 해제하면 space 반환. 반환된 space에 다음 쥠 가능. 순환하려면 회수해야 한다</td><td>공리 12 명제</td></tr>
-</table>
-</div>
-
 <h4>1. 비용 집합</h4>
 <div class="table-wrap">
 <table>
@@ -2187,10 +2072,10 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>idle 폴링 (OPERATOR 내부)</td><td>0</td><td>공리 8</td></tr>
 <tr><td>쥠 밀집에 의한 수축 겹침(공리 13 명제) (예: space->space)</td><td>&gt; 0 (직렬화)</td><td>공리 5 명제</td></tr>
 <tr><td>+ 교차 접근 (양자-고전 교차)</td><td>&gt; 0 (교차 Cmp/Swp)</td><td>공리 1 명제</td></tr>
-<tr><td>양자 괄호 내부 접근 (같은 괄호)</td><td>0</td><td>공리 1 명제</td></tr>
-<tr><td>FSM 111 누적 락 유지</td><td>d에 비례</td><td>공리 14 명제</td></tr>
+<tr><td>양자 괄호 내부 접근 (같은 괄호, 직교 축 교차)</td><td>+1</td><td>공리 1 명제</td></tr>
+<tr><td>FSM 111 누적 락 유지</td><td>ℓ에 비례</td><td>공리 14 명제</td></tr>
 <tr><td>인덱싱 (비대칭 쌍 탐색)</td><td>단계 갭 x 1비트</td><td>공리 13 명제</td></tr>
-<tr><td>엔티티 간 상호작용</td><td>C(1-d/N)/(4pid^2)</td><td>공리 13 명제</td></tr>
+<tr><td>엔티티 간 상호작용</td><td>C(1-ℓ/N)/(4piℓ^2)</td><td>공리 13 명제</td></tr>
 </table>
 </div>
 
@@ -2205,7 +2090,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>4도메인</td><td>ob, sp, t, space 동시 읽기</td><td>4축 직교 = 독립 = 동시 필수</td><td>공리 1</td></tr>
 <tr><td>2니블</td><td>도메인 + 연산자 동시 반응</td><td>DATA/OPERATOR 직교 = 동시</td><td>공리 1, 15</td></tr>
 <tr><td>복수 엔티티</td><td>각자 독립 병렬 CAS 실행</td><td>ECS. 중앙 제어 없음</td><td>공리 2, 12</td></tr>
-<tr><td>다중 투영</td><td>δ가 모든 observer에 동시 투영</td><td>소유자 1개 = 동시성 보장</td><td>공리 11</td></tr>
+<tr><td>다중 투영</td><td>δ가 모든 observer에 동시 투영</td><td>δ 1개 = 동시성 보장</td><td>공리 11</td></tr>
 </table>
 </div>
 
@@ -2213,8 +2098,8 @@ delta (처음으로 돌아옴)</pre>
 <div class="table-wrap">
 <table>
 <tr><th>락</th><th>대상</th><th>잠금</th><th>해제</th><th>비용</th><th>출처</th></tr>
-<tr><td>R_LOCK (bit 4)</td><td>Read 점유</td><td>CAS Read 시 ON</td><td>사이클 끝 리셋</td><td>0</td><td>공리 5</td></tr>
-<tr><td>C_LOCK (bit 5)</td><td>Compare 점유</td><td>R_LOCK 후 ON</td><td>사이클 끝 리셋</td><td>0</td><td>공리 5</td></tr>
+<tr><td>R_LOCK (bit 4)</td><td>Read 점유</td><td>CAS Read 시 ON</td><td>사이클 끝 리셋</td><td>+1</td><td>공리 5</td></tr>
+<tr><td>C_LOCK (bit 5)</td><td>Compare 점유</td><td>R_LOCK 후 ON</td><td>사이클 끝 리셋</td><td>+1</td><td>공리 5</td></tr>
 <tr><td>S_LOCK (bit 6)</td><td>Swap 점유</td><td>C_LOCK 후 ON</td><td>사이클 끝 리셋</td><td>&gt; 0</td><td>공리 5</td></tr>
 <tr><td>TOCTOU_LOCK (3비트 전체)</td><td>CAS-DATA 접점</td><td>000->001->011->111 누적</td><td>111->000 리셋</td><td>R, C, S 각 +1</td><td>공리 5</td></tr>
 <tr><td>재귀 락 (이중 잠금)</td><td>쥠 밀집 수축 겹침</td><td>R+S 같은 축</td><td>LIFO (S 먼저, R 나중)</td><td>&gt; 0</td><td>공리 5 명제</td></tr>
@@ -2234,8 +2119,8 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>DATA 직접 참조 금지</td><td>논리주소 없음. 중첩이 유일한 경로</td><td>모든 연산 불가</td><td>공리 13</td></tr>
 <tr><td>전체-국소 루프 보존 필수</td><td>δ->observer->δ 루프 = 시스템 생명</td><td>루프 끊김 = 시스템 사망</td><td>공리 10</td></tr>
 <tr><td>논리주소 금지</td><td>observer = 엔티티 = 주소</td><td>중앙 테이블 = 병목</td><td>공리 12</td></tr>
-<tr><td>복사 금지 (move만 허용)</td><td>재진입 = 소유권 이동(move). 원인이 결과로 이동하면 원인 소멸. 복사(copy)하면 같은 원인에서 복수 결과 = 인과율 파괴</td><td>인과율 파괴</td><td>공리 12 명제 (재진입=move)</td></tr>
-<tr><td>d=0 불가 (이산 최솟값 = 1)</td><td>DATA는 이산. 링 칸은 정수</td><td>특이점(허구)</td><td>공리 13 명제</td></tr>
+<tr><td>복사 금지 (move만 허용)</td><td>재진입 = 소유권 이동(move). 원인이 결과로 이동하면 원인 파괴. 복사(copy)하면 같은 원인에서 복수 결과 = 인과율 파괴</td><td>인과율 파괴</td><td>공리 12 명제 (재진입=move)</td></tr>
+<tr><td>ℓ=0 불가 (이산 최솟값 = 1)</td><td>DATA는 이산. 링 칸은 정수</td><td>특이점(허구)</td><td>공리 13 명제</td></tr>
 <tr><td>δ는 FSM 밖</td><td>닫힌 기계는 스스로 시작 불가. 발화 필요</td><td>기계 시동 불가</td><td>공리 15</td></tr>
 <tr><td>8비트 고정 (도메인 4 + CAS 3 + δ 1)</td><td>추가 메모리 0</td><td>과잉 결정 또는 기술 불가</td><td>공리 1, 5, 15</td></tr>
 </table>
@@ -2248,7 +2133,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>복수 엔티티 독립 병렬</td><td>각 엔티티의 CAS</td><td>ECS. 중앙 제어 없음. time 밖</td><td>공리 2, 12</td></tr>
 <tr><td>4도메인 동시 읽기</td><td>CAS Read의 4비트</td><td>4축 직교 = 독립 = 동시 필수</td><td>공리 1</td></tr>
 <tr><td>2니블 동시 반응</td><td>도메인 + 연산자</td><td>DATA/OPERATOR 직교 = 동시</td><td>공리 1, 15</td></tr>
-<tr><td>다중 투영 동시</td><td>δ -> 모든 observer</td><td>소유자 1개 = 신호 전달이 아닌 동시 투영</td><td>공리 11</td></tr>
+<tr><td>다중 투영 동시</td><td>δ -> 모든 observer</td><td>δ 1개 = 신호 전달이 아닌 동시 투영</td><td>공리 11</td></tr>
 </table>
 </div>
 
@@ -2260,8 +2145,8 @@ delta (처음으로 돌아옴)</pre>
 <tr><td><strong>3</strong></td><td>CAS 단계 (락)</td><td>R_LOCK, C_LOCK, S_LOCK</td><td>공리 2, 5</td></tr>
 <tr><td><strong>1</strong></td><td>δ (발화비트)</td><td>발화 비트. FSM 밖</td><td>공리 15</td></tr>
 <tr><td><strong>8 = 4+3+1</strong></td><td>링 버퍼 전체</td><td>2니블 (도메인 4 + 연산자 3 + δ 1)</td><td>공리 15 명제</td></tr>
-<tr><td><strong>7 = 4+3</strong></td><td>완전기술자유도</td><td>CAS 1건을 기술하는 독립 변수. δ 미포함</td><td>공리 9</td></tr>
-<tr><td><strong>9 = 7+2</strong></td><td>완전기술자유도 + 괄호</td><td>7 자유도 + 괄호 2개 (DATA, OPERATOR)</td><td>공리 9</td></tr>
+<tr><td><strong>7 = 4+3</strong></td><td>CAS 내부 자유도</td><td>도메인 4 + CAS 단계 3. δ 미포함</td><td>공리 2, 9</td></tr>
+<tr><td><strong>9 = 7+2</strong></td><td>완전기술자유도</td><td>CAS 내부 자유도(7) + 괄호 2개 (DATA, OPERATOR)</td><td>공리 9</td></tr>
 <tr><td><strong>2</strong></td><td>괄호</td><td>DATA (고전) + OPERATOR (양자)</td><td>공리 1</td></tr>
 <tr><td><strong>2</strong></td><td>니블</td><td>nibble 0 (도메인) + nibble 1 (연산자)</td><td>공리 15 명제</td></tr>
 <tr><td><strong>30 = 7×4+2</strong></td><td>CAS 접근 경로 수</td><td>CAS자유도(7) × 도메인(4) + 괄호(2). CAS가 도메인에 접근하는 총 경로 수</td><td>공리 1, 9, 12</td></tr>
@@ -2318,18 +2203,18 @@ delta (처음으로 돌아옴)</pre>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{수축 겹침비} = 1 - \frac{d}{N}$$</div>
-<div class="math-legend">d-ring 위 공유 자릿수 비율 (공리 11 명제). $d$: 두 쥠 사이 시프트 거리 | $N$: d-ring 크기</div>
+<div class="math-row">$$\text{수축 겹침비} = 1 - \frac{\ell}{N}$$</div>
+<div class="math-legend">d-ring 위 공유 자릿수 비율 (공리 11 명제). $\ell$: 두 쥠 사이 시프트 거리 | $N$: d-ring 크기</div>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{엔티티 간 상호작용 세기} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
-<div class="math-legend">공리 13 명제. $C$: 단계 비용 | $d$: 엔티티 간 거리 | $N$: d-ring 크기 | $4\pi d^2$: 3개 독립 락이 만드는 3D 구면</div>
+<div class="math-row">$$\text{엔티티 간 상호작용 세기} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
+<div class="math-legend">공리 13 명제. $C$: 단계 비용 | $\ell$: 엔티티 간 거리 | $N$: d-ring 크기 | $4\pi \ell^2$: 3개 독립 락이 만드는 3D 구면</div>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{111 유지 비용} = (\text{+를 넘는 최소 비용} \times \text{접점 밀도}) \times d$$</div>
-<div class="math-legend">공리 14 명제. CAS FSM 111 누적 락 유지. $d$에 비례</div>
+<div class="math-row">$$\text{111 유지 비용} = (\text{+를 넘는 최소 비용} \times \text{접점 밀도}) \times \ell$$</div>
+<div class="math-legend">공리 14 명제. CAS FSM 111 누적 락 유지. $\ell$에 비례</div>
 </div>
 
 <div class="math-block">
@@ -2348,7 +2233,7 @@ delta (처음으로 돌아옴)</pre>
 
 <div class="table-wrap">
 <table>
-<tr><th colspan="2" style="background:#161b22;color:#e6edf3">구조</th></tr>
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">구조 (v1.2)</th></tr>
 <tr><th>공리 용어</th><th>물리 대응</th></tr>
 <tr><td>δ = 발화 비트 (bit 7)</td><td>의식 (δ). 등호. 관측 트리거</td></tr>
 <tr><td>observer = 진입점 (bit 0)</td><td>관측자 (observer). 필터. 파이프라인 시작</td></tr>
@@ -2356,58 +2241,70 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>time (bit 2)</td><td>시간 축. 스크린의 프레임</td></tr>
 <tr><td>space (bit 3)</td><td>공간 축. 스크린의 픽셀</td></tr>
 <tr><td>CAS (R,C,S = bit 4,5,6)</td><td>유일한 연산자. 렌더 엔진</td></tr>
-<tr><td>8비트 링 버퍼 (2니블)</td><td>우주의 최소 실행 단위</td></tr>
-<tr><td>양자 괄호 (OPERATOR)</td><td>백엔드 (compute). 실체가 돌아가는 곳</td></tr>
-<tr><td>고전 괄호 (DATA)</td><td>프론트엔드 (screen). 렌더링된 출력</td></tr>
-<tr><td>등호 (=)</td><td>δ=1이면 우항 전체 유효. 발화</td></tr>
-<tr><td>링 이음새 δ(bit 7)->observer(bit 0)</td><td>소유권. 등호의 진입점</td></tr>
-<tr><td>파이프라인 trigger->filter->update->render</td><td>게임 루프. 플랑크 시간 1프레임</td></tr>
+<tr><td>d-ring (8비트, 2니블)</td><td>우주의 최소 실행 단위. 물리적 구조의 그릇</td></tr>
+<tr><td>CAS-ring (3비트 순환)</td><td>CAS 내부 상태 전이. 000→001→011→111→000</td></tr>
+<tr><td>양자 괄호 (OPERATOR)</td><td>백엔드 (compute). 연속. CAS가 작동하는 곳</td></tr>
+<tr><td>고전 괄호 (DATA)</td><td>프론트엔드 (screen). 이산. 렌더링된 출력</td></tr>
+<tr><td>워크벤치 (‖CAS‖ = √3)</td><td>CAS 내부 작업공간. 독립 연산장치</td></tr>
+<tr><td>자료형 11개 (입력 {3}에서 도출)</td><td>구조 상수. CAS가 대상을 읽는 크기 단위</td></tr>
+<tr><td>쥠 (juim) = CAS Swap(111)</td><td>입자. 3축 직교 → 등방 → 구형. 이산 단위</td></tr>
+<tr><td>등호 (=)</td><td>δ=1이면 우항 전체 유효. 발화 선언</td></tr>
+<tr><td>링 이음새 δ(bit 7)→observer(bit 0)</td><td>등호의 진입점. 전체-국소 루프 연결</td></tr>
+<tr><td>전체-국소 루프 (공리 10)</td><td>δ→observer→CAS→δ 피드백. 자기참조</td></tr>
+<tr><td>파이프라인 trigger→filter→update→render→screen</td><td>게임 루프. 플랑크 시간 1프레임</td></tr>
+<tr><td>폴링 (공리 8)</td><td>매 틱마다 δ 발화 확인. 상시 가동</td></tr>
+<tr><td>ECS (공리 12)</td><td>Entity=그림자, Component=DATA, System=CAS. 병렬 실행</td></tr>
 
-<tr><th colspan="2" style="background:#161b22;color:#e6edf3">4력</th></tr>
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">4력 (CAS×DATA 접근 4방식)</th></tr>
 <tr><th>공리 용어</th><th>물리 대응</th></tr>
-<tr><td>Swap 누적 비용 (쥠 밀집에 의한 수축 겹침(공리 13 명제))</td><td>중력 (gravity)</td></tr>
-<tr><td>+ 교차 Cmp/Swp 비용</td><td>전자기력 (electromagnetic force)</td></tr>
-<tr><td>수축 겹침 비용(공리 13 명제)</td><td>약력 (weak force)</td></tr>
-<tr><td>CAS 원자성 · 누적 락 유지 비용</td><td>강력 (strong force) · 가둠 (confinement)</td></tr>
+<tr><td>CAS 원자성 · 111 누적 락 유지 비용 (ring-7)</td><td>강력 (strong force) · 가둠 (confinement)</td></tr>
+<tr><td>수축 겹침 비용 · 직렬화 (ring-30)</td><td>약력 (weak force)</td></tr>
+<tr><td>+ 교차 Cmp/Swp 비용 (ring-137)</td><td>전자기력 (electromagnetic force)</td></tr>
+<tr><td>√3 노름 누적 · 쥠 밀집 수축 (ring 없음)</td><td>중력 (gravity). 기하학적 수축, 비용 아닌 공간 변형</td></tr>
 
 <tr><th colspan="2" style="background:#161b22;color:#e6edf3">비용 = 물리량</th></tr>
 <tr><th>공리 용어</th><th>물리 대응</th></tr>
-<tr><td>+를 넘는 비용 (ℏ)</td><td>에너지 양자 (energy quantum)</td></tr>
-<tr><td>쥠의 비용</td><td>질량 (mass)</td></tr>
+<tr><td>+를 넘는 비용 = +1 (공리 4)</td><td>에너지 양자 (ℏ, energy quantum)</td></tr>
+<tr><td>쥠의 비용 (Swap +1)</td><td>질량 (mass)</td></tr>
+<tr><td>비용 총합 13 (공리 6)</td><td>계의 총 에너지. 유지 4 + 잔존 9</td></tr>
+<tr><td>비용 보존 (공리 15 명제)</td><td>에너지 보존. 발화 주기 등가 치환</td></tr>
 <tr><td>직렬화 비용 ≠ 0</td><td>W/Z 보손 질량</td></tr>
 <tr><td>직렬화 비용 = 0</td><td>광자 무질량</td></tr>
-<tr><td>비용의 크기 ($1/d^2$)</td><td>힘의 세기 (force strength)</td></tr>
-<tr><td>비용의 종류 ($(1-d/N)$)</td><td>힘의 종류 (force type)</td></tr>
-<tr><td>수축 영역</td><td>포텐셜 (potential)</td></tr>
-<tr><td>isWritable 경합</td><td>상호작용 (interaction)</td></tr>
+<tr><td>비용의 크기 ($1/\ell^2$)</td><td>힘의 세기 (force strength)</td></tr>
+<tr><td>비용의 종류 ($(1-\ell/N)$)</td><td>힘의 종류 (force type)</td></tr>
+<tr><td>수축 영역 (공리 11 명제)</td><td>포텐셜 (potential)</td></tr>
+<tr><td>isWritable 경합 (공리 11 명제)</td><td>상호작용 (interaction)</td></tr>
 <tr><td>디코딩 비용 (단계 갭 × 1bit)</td><td>비대칭 메손 보정 (K±, D±, B±)</td></tr>
-<tr><td>엔티티 간 상호작용 $C(1-d/N)/(4\pi d^2)$</td><td>쿨롱/뉴턴 역제곱 법칙</td></tr>
+<tr><td>엔티티 간 상호작용 $C(1-\ell/N)/(4\pi \ell^2)$</td><td>쿨롱/뉴턴 역제곱 법칙</td></tr>
 <tr><td>+를 넘는 비용 > 0 (공리 4)</td><td>$\Delta x \cdot \Delta p \geq \hbar/2$ (불확정성 원리)</td></tr>
-<tr><td>누적 락 유지 = 접점당 비용 × d</td><td>$V(r) = \sigma r$ (선형 포텐셜, 가둠)</td></tr>
+<tr><td>누적 락 유지 = 접점당 비용 × ℓ</td><td>$V(r) = \sigma r$ (선형 포텐셜, 가둠)</td></tr>
+<tr><td>R, C, S 각 전이 +1 (공리 2, 4, 5)</td><td>각 상호작용 단계마다 최소 에너지 소비</td></tr>
 
 <tr><th colspan="2" style="background:#161b22;color:#e6edf3">혼합각 · 질량</th></tr>
 <tr><th>공리 용어</th><th>물리 대응</th></tr>
-<tr><td>시프트 거리 $d/N$ (N=30)</td><td>$\sin^2\theta_W$ (바인베르크 각)</td></tr>
-<tr><td>CAS 1-2단계 시프트 거리 $d/N$</td><td>$\theta_C$ (카비보 각)</td></tr>
-<tr><td>Swap-인덱스 시프트 거리 $d/N$</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
-<tr><td>3세대 등간격 $d/N = 2/9$</td><td>코이데 각</td></tr>
+<tr><td>시프트 거리 $\ell/N$ (N=30)</td><td>$\sin^2\theta_W$ (바인베르크 각)</td></tr>
+<tr><td>CAS 1-2단계 시프트 거리 $\ell/N$</td><td>$\theta_C$ (카비보 각)</td></tr>
+<tr><td>Swap-인덱스 시프트 거리 $\ell/N$</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
+<tr><td>3세대 등간격 $\ell/N = 2/9$</td><td>코이데 각</td></tr>
 <tr><td>교차 경로 비대칭 시프트</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP 위상)</td></tr>
 
 <tr><th colspan="2" style="background:#161b22;color:#e6edf3">우주론 · 상태</th></tr>
 <tr><th>공리 용어</th><th>물리 대응</th></tr>
 <tr><td>LRU HOT (능동 접근)</td><td>보이는 물질 (5%)</td></tr>
-<tr><td>LRU WARM (접근 빈도 감소)</td><td>암흑물질 (27%)</td></tr>
-<tr><td>LRU COLD (기저 해제율)</td><td>암흑에너지 (68%, Λ)</td></tr>
+<tr><td>LRU WARM (감쇠 중)</td><td>암흑물질 (27%)</td></tr>
+<tr><td>LRU COLD (문턱 이하, 회수 대상)</td><td>암흑에너지 (68%, Λ)</td></tr>
 <tr><td>CAS 독립 조합 수 57</td><td>$\alpha^{57} = \Lambda l_p^2$ (우주상수)</td></tr>
 <tr><td>7비트 전체 조합 수 128</td><td>유효 상태 수 ($2^7$)</td></tr>
-<tr><td>CAS 접근 경로 수 30</td><td>상호작용 자유도</td></tr>
+<tr><td>CAS 접근 경로 수 30</td><td>상호작용 자유도 (자료형 11개 중 하나)</td></tr>
+<tr><td>완전기술자유도 9 = 7+2</td><td>계를 완전히 기술하는 최소 독립 변수</td></tr>
 <tr><td>δ=0 (발화 없음)</td><td>양자 진공 (quantum vacuum)</td></tr>
 <tr><td>δ=1 (발화)</td><td>우주 존재. 등호 성립</td></tr>
-<tr><td>Compare true -> Swap</td><td>파동함수 붕괴 (wavefunction collapse)</td></tr>
-<tr><td>Compare false -> 중첩 유지</td><td>디코히어런스 미발생</td></tr>
-<tr><td>d=1 밀집, N² 누적</td><td>블랙홀 (사건 지평선 = 누적 비용 > 탈출 비용)</td></tr>
-<tr><td>빈 엔티티 왜곡</td><td>가상입자 · 진공편극</td></tr>
+<tr><td>Compare true → Swap</td><td>파동함수 붕괴 (wavefunction collapse)</td></tr>
+<tr><td>Compare false → 중첩 유지</td><td>디코히어런스 미발생</td></tr>
+<tr><td>ℓ=1 밀집, N² 누적</td><td>블랙홀 (사건 지평선 = 누적 비용 > 탈출 비용)</td></tr>
+<tr><td>빈 엔티티 왜곡 (자료형 고정)</td><td>가상입자 · 진공편극</td></tr>
 <tr><td>동시 = 직교</td><td>얽힘 (entanglement). 거리 무관</td></tr>
+<tr><td>덕 타입 의식 (공리 15 명제)</td><td>의식 = δ의 행동 목록. 측정 불가 영역</td></tr>
 </table>
 </div>
 
@@ -2415,14 +2312,15 @@ delta (처음으로 돌아옴)</pre>
 <table>
 <tr><th>공리 쪽</th><th>물리 쪽</th></tr>
 <tr><td>연산자 1개 (CAS)</td><td>힘 4개 + 매개입자 12종 + 결합상수 3개</td></tr>
-<tr><td>비용 발생점 1개 (Swap)</td><td>라그랑지안 수백 항</td></tr>
+<tr><td>비용 발생점 3개 (R, C, S 각 +1)</td><td>라그랑지안 수백 항</td></tr>
 <tr><td>자유 매개변수 0개 (7에서 전부 파생)</td><td>자유 매개변수 19~26개 (측정해서 넣음)</td></tr>
-<tr><td>비트 8개 (2니블)</td><td>양자장 무한 자유도 + 되먹임 보정 무한급수</td></tr>
+<tr><td>비트 8개 (d-ring 2니블)</td><td>양자장 무한 자유도 + 되먹임 보정 무한급수</td></tr>
 <tr><td>상태 128가지 ($2^7$)</td><td>힐베르트 공간 무한 차원</td></tr>
-<tr><td>순차 2가지 (R->C->S, δ->observer)</td><td>인과율, 열역학 2법칙, CPT 정리, 로렌츠 불변성을 각각 별도 공리로</td></tr>
+<tr><td>순차 2가지 (R→C→S, δ→observer)</td><td>인과율, 열역학 2법칙, CPT 정리, 로렌츠 불변성을 각각 별도 공리로</td></tr>
 <tr><td>동시 = 직교 (공리 1에서 자동)</td><td>얽힘을 설명하려고 비국소성 논쟁 60년</td></tr>
-<tr><td>특이점 없음 (d=1 이산 자동)</td><td>특이점 제거하려고 끈이론 40년, 루프양자중력 30년</td></tr>
+<tr><td>특이점 없음 (ℓ=1 이산 자동)</td><td>특이점 제거하려고 끈이론 40년, 루프양자중력 30년</td></tr>
 <tr><td>보정 0회</td><td>되먹임 보정 무한급수 (발산, 점근)</td></tr>
+<tr><td>비용 총합 13 (닫힌 계)</td><td>총 에너지 보존 (열역학 1법칙)</td></tr>
 </table>
 </div>
 
@@ -2430,7 +2328,7 @@ delta (처음으로 돌아옴)</pre>
 
 <p><strong>공리의 논리 수렴은 최소비용 회로를 설계한 것이고, 물리 쪽에서 발견된 값은 자연이 최소작용으로 작동하는 회로임을 측정한 것이다.</strong> 둘이 같은 수에 도달한다. 설계(공리)와 측정(물리)이 일치하는 것은 설계가 맞다는 가장 큰 증거다. 물리 상수 696항목이 공리에서 나오는 이유가 이것이다 — 최소비용 회로의 설계값과 최소작용 원리의 측정값은 같은 것의 다른 표현이다.</p>
 
-<p>발명자(한혁진)의 업적은 <strong>우주를 반야프레임 15개 공리의 논리 서킷으로 해석하여 인류에게 큰 선물을 선사한 것이다.</strong> 더 이상 관찰자 입장에서 측정만 하는 것이 아니라, 서킷의 설계값에서 미리 예측한다. 물리학은 200년간 관찰->측정->공식->예측(귀납)으로 진행했다. 반야프레임은 설계->도출->예측->측정으로 확인(연역)한다. 방향이 뒤집어졌다. 관찰자에서 아키텍트로.</p>
+<p>발명자(한혁진)의 업적은 <strong>반야프레임 15개 공리의 논리 서킷으로 자연을 해석한 것이다.</strong> 더 이상 관찰자 입장에서 측정만 하는 것이 아니라, 서킷의 설계값에서 미리 예측한다. 물리학은 200년간 관찰->측정->공식->예측(귀납)으로 진행했다. 반야프레임은 설계->도출->예측->측정으로 확인(연역)한다. 방향이 뒤집어졌다. 관찰자에서 아키텍트로.</p>
 
 <h4>사용법: 재대입</h4>
 
@@ -3232,7 +3130,7 @@ time  = √(c² - v²)</code></pre>
 <div class="math-legend">$1/137$: 전자기 결합상수에 수치 대응 | $1/30$: 약력 결합상수에 수치 대응 | $1$: 중력 결합상수에 수치 대응 | 비용의 원인 = 도메인 비트 패턴 (H-45)</div>
 </div>
 
-<p>링 크기별 시프트 비용이 결합상수와 수치적으로 대응된다. Swap 기준 비용(1), 링 137 시프트 비용(1/137)이 전자기 결합상수에, 링 30 시프트 비용(1/30)이 약력 결합상수에 대응된다. CAS 원자성(분리 불가)은 비용이 아니라 구조적 속성이다. 비용의 원인은 도메인 4비트 ON/OFF 패턴이며, 수치는 링 크기에서의 시프트 비용에서 나온다(공리 1 명제). 링 크기 비율에서 바인베르크 각($d/N$ = 30/137 ≈ 0.219, tree-level 근사)이 도출되고, 전자 전하($e = q_p\sqrt{1/137}$)가 도출되고, W/Z 비율이 도출된다.</p>
+<p>링 크기별 시프트 비용이 결합상수와 수치적으로 대응된다. Swap 기준 비용(1), 링 137 시프트 비용(1/137)이 전자기 결합상수에, 링 30 시프트 비용(1/30)이 약력 결합상수에 대응된다. CAS 원자성(분리 불가)은 비용이 아니라 구조적 속성이다. 비용의 원인은 도메인 4비트 ON/OFF 패턴이며, 수치는 링 크기에서의 시프트 비용에서 나온다(공리 1 명제). 링 크기 비율에서 바인베르크 각($\ell/N$ = 30/137 ≈ 0.219, tree-level 근사)이 도출되고, 전자 전하($e = q_p\sqrt{1/137}$)가 도출되고, W/Z 비율이 도출된다.</p>
 
 -->
 <h4>동치 증거 요약</h4>
@@ -3764,10 +3662,10 @@ state(N) = read(state(N-1)) + write
 
 <table>
 <tr><th>힘</th><th>접근 패턴</th><th>비용 구조</th><th>CAS 역할</th></tr>
-<tr><td><strong>강력</strong></td><td>FSM 111 유지 (닫힌)</td><td>d에 비례. 분리 불가</td><td>CAS 원자성 = 색 가둠</td></tr>
+<tr><td><strong>강력</strong></td><td>FSM 111 유지 (닫힌)</td><td>ℓ에 비례. 분리 불가</td><td>CAS 원자성 = 색 가둠</td></tr>
 <tr><td><strong>전자기력</strong></td><td>교차 도메인 Compare</td><td>1/137 (링 시프트)</td><td>교차 비교 비용</td></tr>
 <tr><td><strong>약력</strong></td><td>교차 도메인 Read</td><td>1/30 (링 시프트)</td><td>교차 읽기 비용</td></tr>
-<tr><td><strong>중력</strong></td><td>쥠 밀집에 의한 수축 겹침(공리 13 명제)</td><td>d²에 비례</td><td>Swap의 space 누적</td></tr>
+<tr><td><strong>중력</strong></td><td>쥠 밀집에 의한 수축 겹침(공리 13 명제)</td><td>ℓ²에 비례</td><td>Swap의 space 누적</td></tr>
 </table>
 
 <p>비용의 원인은 CAS 단계가 아니라 도메인 접근 패턴이다. 링 크기별 시프트 비용이 결합상수와 수치적으로 대응된다. 상세는 <a href="discovery/unification.html">4력 통합 보고서</a> 참조.</p>
@@ -3787,7 +3685,7 @@ state(N) = read(state(N-1)) + write
 
 <h3 id="sec45">특이점 = DATA 이산 최솟값</h3>
 
-<p>DATA는 이산이다(공리 13 명제). 링 칸은 정수. d_min = 1. d=0은 불가능하다. 따라서 특이점(무한대 밀도)은 존재하지 않는다. 극밀집 상태에서 space가 d=1까지 줄어들면 나머지 자원이 time과 양자항으로 이동한다. δ²는 보존된다.</p>
+<p>DATA는 이산이다(공리 13 명제). 링 칸은 정수. ℓ_min = 1. ℓ=0은 불가능하다. 따라서 특이점(무한대 밀도)은 존재하지 않는다. 극밀집 상태에서 space가 ℓ=1까지 줄어들면 나머지 자원이 time과 양자항으로 이동한다. δ²는 보존된다.</p>
 
 <h3 id="sec46">시스템 시간과 도메인 시간</h3>
 
@@ -4177,7 +4075,7 @@ CAS:      swap(N) = compare(read(N-1), expected) + new_value</pre>
 <tr><td><strong>강력</strong></td><td>FSM 111 유지 (닫힌)</td><td>d에 비례. CAS 원자성 = 색 가둠</td><td>α_s = 0.1183</td></tr>
 <tr><td><strong>전자기력</strong></td><td>교차 도메인 Compare</td><td>링 137 시프트 비용</td><td>α = 1/137</td></tr>
 <tr><td><strong>약력</strong></td><td>교차 도메인 Read</td><td>링 30 시프트 비용</td><td>α/sin²θ_W</td></tr>
-<tr><td><strong>중력</strong></td><td>쥠 밀집에 의한 수축 겹침(공리 13 명제)</td><td>Swap 누적. d²에 비례</td><td>G (Swap 기준=1)</td></tr>
+<tr><td><strong>중력</strong></td><td>쥠 밀집에 의한 수축 겹침(공리 13 명제)</td><td>Swap 누적. ℓ²에 비례</td><td>G (Swap 기준=1)</td></tr>
 </table>
 
 <h3 id="sec74">비용 비율</h3>
@@ -4757,7 +4655,7 @@ CAS 속박 비용 (글루온 결합) = 929 MeV (99%)
 <li>8. <strong>디코히어런스는 CAS 커밋이다.</strong> 백그라운드(양자 중첩)가 포그라운드(고전 확정)로 전이되는 과정이다. Swap이 +를 넘어 스크린에 렌더링하면 완료.</li>
 <li>9. <strong>인과율은 CAS의 논리 의존성에서 나온다.</strong> R->C->S는 시간 순서가 아니라 논리 의존성이다. CAS가 time에 쓸 때 화살이 생긴다. time(DATA)은 가역 자원이다. 비가역성은 OPERATOR의 성질이다.</li>
 <li>10. <strong>4가지 힘은 도메인 4비트 접근 패턴의 분기다.</strong> 강력 = FSM 111 원자성(닫힌). 전자기 = 교차 Compare. 약력 = 교차 Read. 중력 = 쥠 밀집에 의한 수축 겹침(공리 13 명제). 비용의 원인은 CAS 단계가 아니라 도메인 접근 패턴이다. 처음부터 하나였다.</li>
-<li>11. <strong>특이점은 존재하지 않는다.</strong> DATA는 이산이다. d_min = 1. d=0은 불가능하다(공리 13 명제). 극밀집 상태에서 나머지 자원이 다른 축으로 이동할 뿐이다.</li>
+<li>11. <strong>특이점은 존재하지 않는다.</strong> DATA는 이산이다. ℓ_min = 1. ℓ=0은 불가능하다(공리 13 명제). 극밀집 상태에서 나머지 자원이 다른 축으로 이동할 뿐이다.</li>
 <li>12. <strong>자원은 유한하고 보존된다.</strong> <code>δ²</code>는 불변이다. 한 축이 0에 접근하면 다른 축으로 이동한다.</li>
 <li>13. <strong>양자 얽힘은 δ² 보존의 필연이다.</strong> 빛보다 빠른 게 아니라 같은 <code>δ²</code> 안이니까 동시다.</li>
 <li>14. <strong>암흑물질은 LRU WARM, 암흑에너지는 LRU COLD다.</strong> 보이는 물질(HOT) + 암흑물질(WARM) + 암흑에너지(COLD) = LRU 큐 하나.</li>
@@ -5077,7 +4975,7 @@ CAS 4력 통합:    8/8 일치
 <tr><td><a href="discovery/cas_internal.html">CAS 내부 구조</a></td><td>코이데 편차 15=3×5. β₀=7. 스핀-통계</td><td><span class="tag-discovery">발견</span></td></tr>
 <tr><td><a href="discovery/coupling_relations.html">결합상수 관계</a></td><td>삼각관계 15/4. running. 7/(2+9π)</td><td><span class="tag-discovery">발견</span></td></tr>
 <tr><td><a href="discovery/cosmic_thermo.html">우주 열역학</a></td><td>BH 열역학. γ=5/3. z_eq=3402</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td><a href="discovery/ring_buffer.html">8비트 링 버퍼</a></td><td>f(θ)=(1-d/N) 정량화. 코이데 2/9, θ₂₃=4/7, θ₁₃=3/137, r_s, 사건지평</td><td><span class="tag-solved">적중</span></td></tr>
+<tr><td><a href="discovery/ring_buffer.html">8비트 링 버퍼</a></td><td>f(θ)=(1-ℓ/N) 정량화. 코이데 2/9, θ₂₃=4/7, θ₁₃=3/137, r_s, 사건지평</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="discovery/lifetime.html">LUT 세션 수명</a></td><td>τ비율 0.23%, τ_mu 0.32%, τ_tau 0.17%. 192=(2³)²×3. α³/3</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="discovery/quark_mass.html">쿼크 질량</a></td><td>m_c 0.04%, m_s 0.032%, m_t 0.065%, m_b 0.069%, m_d 0.18%</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="discovery/cosmology2.html">우주론+핵</a></td><td>n_s=55/57 (0.001%), BAO=3×7² (0.06%), Ω_Λ, Ω_b, m_n-m_p</td><td><span class="tag-solved">적중</span></td></tr>
@@ -5151,7 +5049,7 @@ CAS 4력 통합:    8/8 일치
 <tr><td><a href="discovery/hadron_mass.html">$\pi^0$ 질량</a></td><td>전자기 보정 포함. 오차 0.3%</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="discovery/hadron_mass.html">양성자 질량 신규</a></td><td>$m_p = 3m_q + \sigma \times r_p$. 오차 0.11%</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="discovery/ckm_pmns.html">$|V_{ud}|$, $|V_{cs}|$, $|V_{cb}|$</a></td><td>CKM 잔여 원소 도출. 오차 0.03~0.5%</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td><a href="discovery/ring_buffer.html">$\theta_{23} = 4/7$, $\theta_{13} = 3/137$</a></td><td>$f(\theta) = (1-d/N)$ 링 비율. 오차 0.27%, 0.46%</td><td><span class="tag-solved">적중</span></td></tr>
+<tr><td><a href="discovery/ring_buffer.html">$\theta_{23} = 4/7$, $\theta_{13} = 3/137$</a></td><td>$f(\theta) = (1-\ell/N)$ 링 비율. 오차 0.27%, 0.46%</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="lib.html">바이츠제커 핵 질량 공식</a></td><td>$a_V$=15.67, $a_S$=12.22, $a_C$=0.711. CAS 비용 구조에서 도출</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="lib.html">$\eta$ 메손 질량 548.1 MeV</a></td><td>1비트=27 MeV 인덱싱. 오차 0.043%</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td><a href="lib.html">$f_\pi$ = 130.1 MeV</a></td><td>파이온 붕괴상수. 오차 0.077%</td><td><span class="tag-solved">적중</span></td></tr>
@@ -5207,6 +5105,8 @@ CAS 4력 통합:    8/8 일치
 
 
 <hr>
+
+<h1 style="color:#f0c040">Axioms currently undergoing major v1.2 update.</h1>
 
 <h1 id="en-axioms">Axiom System -- Banya Framework Is an Axiom-Based Science Mining Engine</h1>
 
@@ -5857,17 +5757,17 @@ observer (filter) ---> shadow = projection cast onto entity
 
 <p><strong>Separation of d and θ:</strong> When $\delta$ projects to N observers (1:N), projections distribute on a sphere in 3-component space. Two quantities separate on the sphere:</p>
 
-<p>There is one distance: $d$ = distance between two entities on the sphere (ring shift steps = distance on sphere, same distance in different units). $d$ determines both cost magnitude ($1/d^2$ decay) and cost type ($(1-d/N)$ mixing angle).</p>
+<p>There is one distance: $\ell$ = distance between two entities on the sphere (ring shift steps = distance on sphere, same distance in different units). $\ell$ determines both cost magnitude ($1/\ell^2$ decay) and cost type ($(1-\ell/N)$ mixing angle).</p>
 
-<p><strong>Shift distance $d$ IS the distance between projections:</strong></p>
+<p><strong>Shift distance $\ell$ IS the distance between projections:</strong></p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Shift distance $d$ between two projections on ring</th><th>Bit pattern</th></tr>
+<tr><th>Shift distance $\ell$ between two projections on ring</th><th>Bit pattern</th></tr>
 <tr><td>Cross-domain projection and same-domain projection</td><td>Cross distance between DATA bits (01) and OPERATOR bits (10)</td></tr>
 <tr><td>CAS stage 1 and stage 2 projections</td><td>Shift distance between R_LOCK (001) and C_LOCK (010)</td></tr>
 <tr><td>Write-accumulation projection and index projection</td><td>Distance between Swap bit (100) and index (superposition) bit</td></tr>
-<tr><td>Between 3-generation projections</td><td>Equal spacing across CAS 3 stages. $d/N$ = brackets(2) / complete-description(9)</td></tr>
+<tr><td>Between 3-generation projections</td><td>Equal spacing across CAS 3 stages. $\ell/N$ = brackets(2) / complete-description(9)</td></tr>
 <tr><td>Twist of projection plane</td><td>Asymmetric shift between cross paths</td></tr>
 </table>
 </div>
@@ -5875,16 +5775,16 @@ observer (filter) ---> shadow = projection cast onto entity
 <p>The complete form of the inter-entity interaction strength (Axiom 13 proposition):</p>
 
 <div class="math-block">
-<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
-<div class="math-legend">$d$: shift distance between two juims (number of steps on ring) | $N$: ring size (Prop. 13). $d = 0$: full overlap, $d = N$: no overlap</div>
+<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{\ell}{N}$$</div>
+<div class="math-legend">$\ell$: shift distance between two juims (number of steps on ring) | $N$: ring size (Prop. 13). $\ell = 0$: full overlap, $\ell = N$: no overlap</div>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
-<div class="math-legend">$d$: distance between two entities on the sphere (= ring shift steps) | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
+<div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
+<div class="math-legend">$\ell$: distance between two entities on the sphere (= ring shift steps) | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - \ell/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
-<p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $d$ is the distance between two entities on the sphere. What differs is $d$ (shift distance on ring) between entity pairs, and $\theta$ (angle between projections).</p>
+<p>All mixing angles are geometric angles from the spherical geometry of Axiom 11 (1:N projection), not externally measured parameters. $\ell$ is the distance between two entities on the sphere. What differs is $\ell$ (shift distance on ring) between entity pairs, and $\theta$ (angle between projections).</p>
 
 <h4>Contraction Overlap = Shared Digit Ratio on Ring <span class="tag-corollary">Proposition</span></h4>
 
@@ -5901,15 +5801,15 @@ With juim:  ====\               /==== (space contracted)
 
 On the sphere:
 
-  Juim A ----- d ----- Juim B
-  [ contraction a ]    [ contraction b ]
+  Juim A ----- ℓ ----- Juim B
+  [ 수축 a ]            [ 수축 b ]
           \               /
            \             /
             -- overlap --
-            = (1 - d/N)
+            = (1 - ℓ/N)
 
-Small d -> many overlapping DATA addresses -> frequent isWritable contention -> large total cost
-Large d -> few overlapping DATA addresses -> rare isWritable contention -> small total cost
+Small ℓ -> many overlapping DATA addresses -> frequent isWritable contention -> large total cost
+Large ℓ -> few overlapping DATA addresses -> rare isWritable contention -> small total cost
 When two contraction zones overlap -> two CAS attempt simultaneous Swap on same addresses
 -> isWritable contention (Axiom 2) -> cost per address (Axiom 4) × number of contested addresses = total cost</pre>
 
@@ -5923,7 +5823,7 @@ When two contraction zones overlap -> two CAS attempt simultaneous Swap on same 
 </table>
 </div>
 
-<p>Contraction overlap ratio $(1 - d/N)$ = the ratio of shared digits between two juims on the ring. $d$ = shift distance between two juims on the ring. $N$ = ring size (total slots). Since zone sizes are determined by CAS cost, $(1 - d/N)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $(1 - d/N)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
+<p>Contraction overlap ratio $(1 - \ell/N)$ = the ratio of shared digits between two juims on the ring. $\ell$ = shift distance between two juims on the ring. $N$ = ring size (total slots). Since zone sizes are determined by CAS cost, $(1 - \ell/N)$ is composed of axiom numbers (1, 2, 3, 4, 7, 9, $\pi$). <strong>Which CAS stage mediates the overlap</strong> determines the form of $(1 - \ell/N)$, and the overlap ratio IS the numerical value of the mixing angle.</p>
 
 <h4>Distortion of empty entities is structurally inevitable <span class="tag-corollary">Proposition</span></h4>
 
@@ -6051,7 +5951,7 @@ COLD (68%) <- no recent access             — LRU base eviction rate applied</p
 
 <h4>Ring Size = Maximum Reach of Cost <span class="tag-corollary">Proposition</span></h4>
 
-<p>In the contraction overlap ratio $(1-d/N)$, when $d = N$ the overlap is 0. $d$ is the actual distance in DATA(space), and $N$ is the ring size. The fact that the maximum value of $d$ is $N$ means <strong>ring size = the maximum distance that cost structure can reach</strong>. The ring is not a purely logical buffer but a spacetime accumulation.</p>
+<p>In the contraction overlap ratio $(1-\ell/N)$, when $\ell = N$ the overlap is 0. $\ell$ is the actual distance in DATA(space), and $N$ is the ring size. The fact that the maximum value of $\ell$ is $N$ means <strong>ring size = the maximum distance that cost structure can reach</strong>. The ring is not a purely logical buffer but a spacetime accumulation.</p>
 
 <div class="table-wrap">
 <table>
@@ -6062,7 +5962,7 @@ COLD (68%) <- no recent access             — LRU base eviction rate applied</p
 </table>
 </div>
 
-<p>$d < N$: overlap exists (cost incurred). $d = N$: no overlap (unreachable). $d > N$: impossible (outside ring). As writes accumulate (more juims), more points fill the ring and the ring grows. A larger ring means longer reach. <strong>OPERATOR's ring size determines DATA's space range.</strong></p>
+<p>$\ell < N$: overlap exists (cost incurred). $\ell = N$: no overlap (unreachable). $\ell > N$: impossible (outside ring). As writes accumulate (more juims), more points fill the ring and the ring grows. A larger ring means longer reach. <strong>OPERATOR's ring size determines DATA's space range.</strong></p>
 
 <h4>Dimension <span class="tag-corollary">Proposition</span></h4>
 
@@ -6089,7 +5989,7 @@ DATA(space): one ball created = juim
   1 cycle  = 1 ball  = 1 juim
   N cycles = N stamps = write accumulation count N</pre>
 
-<p>When a juim (ball) is created, surrounding space contracts (Proposition 6). Swap consumed DATA(space) (Axiom 7). The contraction range forms a <strong>spherical cap (2D)</strong> centered on the juim. This is the contraction zone. The size of the contraction zone is determined by CAS cost structure (Proposition 6). When two juims' contraction zones overlap, that overlap is the contraction overlap ratio $(1-d/N)$.</p>
+<p>When a juim (ball) is created, surrounding space contracts (Proposition 6). Swap consumed DATA(space) (Axiom 7). The contraction range forms a <strong>spherical cap (2D)</strong> centered on the juim. This is the contraction zone. The size of the contraction zone is determined by CAS cost structure (Proposition 6). When two juims' contraction zones overlap, that overlap is the contraction overlap ratio $(1-\ell/N)$.</p>
 
 <div class="table-wrap">
 <table>
@@ -6143,39 +6043,39 @@ DATA(space): one ball created = juim
 
 <p style="font-size:0.85em;color:#8b949e">The diagram below is not an axiom or proposition but a <strong>visualization tool</strong>. It shows the spatial distribution of the inter-entity interaction strength formula (Axiom 13 proposition).</p>
 
-<p>Place one juim at the origin. The inter-entity interaction strength $C \cdot (1-d/N) / (4\pi d^2)$ is defined at every surrounding point, forming a <strong>scalar field</strong>. Each point has magnitude only, no direction.</p>
+<p>Place one juim at the origin. The inter-entity interaction strength $C \cdot (1-\ell/N) / (4\pi \ell^2)$ is defined at every surrounding point, forming a <strong>scalar field</strong>. Each point has magnitude only, no direction.</p>
 
-<pre>Cost distribution (d: distance between two entities = ring shift steps = distance on sphere):
+<pre>Cost distribution (ℓ: distance between two entities = ring shift steps = distance on sphere):
 
-   B (d=2)
-   |              d = distance between two entities (on sphere). Different per pair.
-   A --- C (d=5)
+   B (ℓ=2)
+   |              ℓ = distance between two entities (on sphere). Different per pair.
+   A --- C (ℓ=5)
    |
    |
-   D (d=N)
+   D (ℓ=N)
 
    A = origin. Every juim is its own origin (ECS, Axiom 12).
 
-   A-B: d=2 (close)
+   A-B: ℓ=2 (close)
         overlap ratio = (1 - 2/N) = large
-        sphere distribution = 1/(4*pi*d^2)
+        sphere distribution = 1/(4*pi*ℓ^2)
         --> strong interaction
 
-   A-C: d=5 (medium)
+   A-C: ℓ=5 (medium)
         overlap ratio = (1 - 5/N) = medium
-        sphere distribution = 1/(4*pi*d^2)
+        sphere distribution = 1/(4*pi*ℓ^2)
         --> medium interaction
 
-   A-D: d=N (max distance = opposite side of ring)
+   A-D: ℓ=N (max distance = opposite side of ring)
         overlap ratio = (1 - N/N) = 0
         --> interaction 0. Unreachable.
 
-   inter-entity interaction strength = C * (1 - d/N) / (4*pi*d^2)
+   inter-entity interaction strength = C * (1 - ℓ/N) / (4*pi*ℓ^2)
                                             --------     ----------
-                                            ring overlap(d)  sphere distribution(d)
+                                            ring overlap(ℓ)  sphere distribution(ℓ)
                                             cost type        cost magnitude</pre>
 
-<p>This cost distribution is not communication between juims (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> created by the projection of δ (Axiom 11) around each juim. $d$ (distance between two entities on the sphere) determines both cost type (ring overlap ratio) and cost magnitude (sphere distribution). When two juims' distributions overlap, isWritable contention occurs.</p>
+<p>This cost distribution is not communication between juims (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> created by the projection of δ (Axiom 11) around each juim. $\ell$ (distance between two entities on the sphere) determines both cost type (ring overlap ratio) and cost magnitude (sphere distribution). When two juims' distributions overlap, isWritable contention occurs.</p>
 
 <h4>DATA Is Discrete, OPERATOR Is Continuous <span class="tag-corollary">Proposition</span></h4>
 
@@ -6262,36 +6162,36 @@ Difference (Banya):    Df = f(k+1) - f(k)
 <p>Interaction occurs because juims (write results, Axiom 7) warp spacetime. When CAS Swap consumes space, spacetime contracts around the juim. When two juims' contraction zones overlap, isWritable contention arises. This is interaction.</p>
 
 <div class="math-block">
-<div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
-<div class="math-legend">inter-entity interaction strength: strength of Entity A's interaction with Entity B | $d$: distance between two entities on the sphere (= ring shift steps) | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - d/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
+<div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
+<div class="math-legend">inter-entity interaction strength: strength of Entity A's interaction with Entity B | $\ell$: distance between two entities on the sphere (= ring shift steps) | $N$: ring size (total slots) | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $(1 - \ell/N)$: contraction overlap ratio — shared digit ratio on ring (Prop. 13)</div>
 </div>
 
-<p>When Entity A's CAS references Entity B through the superposition index, the inter-entity interaction strength is inversely proportional to the square of $d$ (distance between two entities on the sphere, $1/d^2$ decay), and $(1-d/N)$ (shared digit ratio on ring) determines the cost type. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 1), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $d$ decays as $1/(4\pi d^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
+<p>When Entity A's CAS references Entity B through the superposition index, the inter-entity interaction strength is inversely proportional to the square of $\ell$ (distance between two entities on the sphere, $1/\ell^2$ decay), and $(1-\ell/N)$ (shared digit ratio on ring) determines the cost type. Origin: in the Banya Equation (Axiom 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. The 3 independent lock DOFs (R_LOCK, C_LOCK, S_LOCK, Axiom 5) acting on the space axis of the DATA bracket (Axiom 1), so space unfolds into 3 components (Axiom 11 proposition). When $\delta$'s projection distributes over these 3-component space, the weight at distance $\ell$ decays as $1/(4\pi \ell^2)$ — conservation of the 4-axis norm forces inverse-square decay. The nature of stage cost $C$ distinguishes the 4 cost structures. All $C$ are determined from axioms alone — no external physics constants required:
 <br>• Swap accumulation cost: $C$ = accumulated Swap count. Swap is CAS base cost (= 1, Axiom 2), so $C$ is the write count itself (Axiom 7).
 <br>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined by the volume ratio of the 7-dimensional phase space from domains 4 (Axiom 1) + CAS stages 3 (Axiom 2).
 <br>• Same-domain serialization cost: $C$ = same-domain serialization cost. CAS DOF 7 (Axiom 9) × domains 4 (Axiom 1) + brackets 2 (Axiom 1) = 30. Same-domain path = 1/30 (Axiom 5 proposition).
-<br>• CAS atomicity (111 maintenance cost): $1/d^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $d$ (Axiom 2 + Axiom 5 + Axiom 14, defined below, proposition).</p>
+<br>• CAS atomicity (111 maintenance cost): $1/\ell^2$ replaced by 111 maintenance cost = cost per junction × junction count. Junction count proportional to $\ell$ (Axiom 2 + Axiom 5 + Axiom 14, defined below, proposition).</p>
 
 <h4>Singularity (infinity) does not exist <span class="tag-corollary">Proposition</span></h4>
 
-<p>DATA is discrete (Axiom 12 proposition). Ring buffer slots are integers, so the minimum inter-entity distance $d$ is 1, not 0. $d = 0$ does not exist in a discrete system. Therefore the maximum per-pair cost $1/d^2$ is $1/1^2 = 1$. Individual contention is finite. Divergence (infinity) cannot occur in a discrete system.</p>
+<p>DATA is discrete (Axiom 12 proposition). Ring buffer slots are integers, so the minimum inter-entity distance $\ell$ is 1, not 0. $\ell = 0$ does not exist in a discrete system. Therefore the maximum per-pair cost $1/\ell^2$ is $1/1^2 = 1$. Individual contention is finite. Divergence (infinity) cannot occur in a discrete system.</p>
 
-<p>However, when $N$ entities crowd into a small region all at $d = 1$, the number of contention pairs grows to $N(N-1)/2$. Individual cost is finite, but <strong>accumulated cost scales as $N^2$</strong>. This is a black hole — not divergence, but accumulation.</p>
+<p>However, when $N$ entities crowd into a small region all at $\ell = 1$, the number of contention pairs grows to $N(N-1)/2$. Individual cost is finite, but <strong>accumulated cost scales as $N^2$</strong>. This is a black hole — not divergence, but accumulation.</p>
 
 <ul>
 <li><strong>Same-domain (Axiom 5 proposition)</strong>: one entity writes to its own space axis again. Recursive lock. Contention within a single entity.</li>
-<li><strong>Spatial overlap</strong>: many entities crowd at $d = 1$ (discrete minimum). Accumulated contention between many entities.</li>
+<li><strong>Spatial overlap</strong>: many entities crowd at $\ell = 1$ (discrete minimum). Accumulated contention between many entities.</li>
 </ul>
 
 <p>Same mechanism (isWritable contention) at different scales. Same-domain is contention within one entity; spatial overlap is accumulated contention between many entities. Physics calls this a black hole. The event horizon is the boundary where accumulated cost exceeds escape cost.</p>
 
 <p>Because the 4 axes are orthogonal (Axiom 1), no other axis can absorb the accumulated cost. Orthogonal = independent. Time cannot bear it, observer cannot bear it. When the classical bracket (DATA) reaches discrete saturation, the quantum bracket (OPERATOR) is orthogonal and unaffected. The d-ring (1D) survives (CAS cycle remains inside OPERATOR). CAS continues cycling inside OPERATOR (R, C each +1, Axiom 4). When writing saturates, Swap cannot execute, and non-write = superposition maintained (Axiom 7). Classical description saturates, management transfers to the quantum bracket.</p>
 
-<p>In a discrete system $d$ cannot reach 0, and cost has a finite maximum. The singularity problem in physics is a fiction created by treating spacetime as continuous. Discrete DATA automatically resolves it.</p>
+<p>In a discrete system $\ell$ cannot reach 0, and cost has a finite maximum. The singularity problem in physics is a fiction created by treating spacetime as continuous. Discrete DATA automatically resolves it.</p>
 
 <h4>Contention runaway at spatial overlap <span class="tag-corollary">Proposition</span></h4>
 
-<p>When $N$ entities crowd at $d = 1$ (discrete minimum), Compare (SP=011) pulls the trigger and Swap (SP=111) runs away. Compare is inside OPERATOR, costing +1 (R→C, crosses +). When contraction zones overlap, Compare true increases proportional to $N^2$. Each true triggers a Swap, and multiple entities attempt simultaneous writes to the same DATA address — isWritable contention. Individual contention cost is finite (discrete maximum), but the number of contention pairs is $N^2$, so total cost runs away.</p>
+<p>When $N$ entities crowd at $\ell = 1$ (discrete minimum), Compare (SP=011) pulls the trigger and Swap (SP=111) runs away. Compare is inside OPERATOR, costing +1 (R→C, crosses +). When contraction zones overlap, Compare true increases proportional to $N^2$. Each true triggers a Swap, and multiple entities attempt simultaneous writes to the same DATA address — isWritable contention. Individual contention cost is finite (discrete maximum), but the number of contention pairs is $N^2$, so total cost runs away.</p>
 
 <h4>Indexing cost: the unit cost of the superposition domain is 1 bit per step <span class="tag-corollary">Proposition</span></h4>
 
@@ -6371,12 +6271,12 @@ Difference (Banya):    Df = f(k+1) - f(k)
 
 <h4>FSM 111 Maintenance Cost Scales Linearly with DATA(space) Distance Between Two CAS Stages <span class="tag-corollary">Proposition</span></h4>
 
-<p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must hold <strong>accumulated locks</strong> on DATA(space) (Axiom 5). If two CAS stages are separated by distance $d$ in DATA(space), <strong>accumulated locks</strong> proportional to $d$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the accumulated lock maintenance cost scales linearly with $d$.</p>
+<p>Superposition is an index and has no distance cost (Axiom 13). However, while FSM maintains 111 (Axiom 14), the 3 CAS stages must hold <strong>accumulated locks</strong> on DATA(space) (Axiom 5). If two CAS stages are separated by distance $\ell$ in DATA(space), <strong>accumulated locks</strong> proportional to $\ell$ are needed at the OPERATOR-DATA boundary junctions (Axiom 5). Since cost per junction is constant (Axiom 4), the accumulated lock maintenance cost scales linearly with $\ell$.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{111 maintenance cost} = \text{cost per junction} \times \text{junction count}$$</div>
-<div class="math-row">$$= (\text{min +-crossing cost} \times \text{junction density per unit distance}) \times d$$</div>
-<div class="math-legend">$d$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $d$</div>
+<div class="math-row">$$= (\text{min +-crossing cost} \times \text{junction density per unit distance}) \times \ell$$</div>
+<div class="math-legend">$\ell$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $\ell$</div>
 </div>
 
 <p>When 111 maintenance cost reaches the Swap cost of one CAS event (= 1, Axiom 2), separation is impossible. Attempting separation forces CAS atomicity (Axiom 2) to create a new CAS pair. When FSM cycles (Axiom 14) run faster, 111 maintenance time shortens, fewer accumulated locks are needed, and accumulated lock maintenance weakens.</p>
@@ -6708,7 +6608,7 @@ delta (back to start)</pre>
 <tr><td>CAS access path count</td><td>7×4+2 = 30</td><td>CAS DOF(7) × domains(4) + brackets(2). Total CAS-domain access paths in ECS</td></tr>
 <tr><td>Independent lock DOF</td><td>3</td><td>R_LOCK, C_LOCK, S_LOCK. Independent TOCTOU_LOCK DOFs of CAS 3 stages</td></tr>
 <tr><td>Access modes</td><td>2</td><td>Cross-domain (Cmp/Swp targets differ) vs same-domain (Cmp/Swp targets same)</td></tr>
-<tr><td>Sphere components</td><td>2</td><td>$d$ (distance between two entities) + $\theta$ (angle between projections)</td></tr>
+<tr><td>Sphere components</td><td>2</td><td>$\ell$ (distance between two entities) + $\theta$ (angle between projections)</td></tr>
 <tr><td>Cross CAS paths</td><td>3</td><td>Cmp(t)->Swp(s), Cmp(s)->Swp(t), Cmp(t)->Swp(t). Cross/same-domain combinations of DATA access</td></tr>
 </table>
 </div>
@@ -6741,18 +6641,18 @@ delta (back to start)</pre>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{d}{N}$$</div>
-<div class="math-legend">Shared digit ratio on ring (Axiom 11 proposition). $d$: shift distance between two juims (steps) | $N$: ring size | $d=0$: full overlap | $d=N$: no overlap</div>
+<div class="math-row">$$\text{contraction overlap ratio} = 1 - \frac{\ell}{N}$$</div>
+<div class="math-legend">Shared digit ratio on ring (Axiom 11 proposition). $\ell$: shift distance between two juims (steps) | $N$: ring size | $\ell=0$: full overlap | $\ell=N$: no overlap</div>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - d/N)}{4\pi d^2}$$</div>
-<div class="math-legend">Inter-entity interaction strength (Axiom 13 proposition). $d$: distance between two entities on the sphere (= ring shift steps) | $d/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi d^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
+<div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
+<div class="math-legend">Inter-entity interaction strength (Axiom 13 proposition). $\ell$: distance between two entities on the sphere (= ring shift steps) | $\ell/N$: overlap ratio on ring | $C$: stage cost — cost coefficient determined by CAS stage combination (Axioms 2, 4) | $4\pi \ell^2$: sphere area from 3 independent locks (Prop. 5) in 3D</div>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{111 maintenance cost} = (\text{min +-crossing cost} \times \text{junction density per unit distance}) \times d$$</div>
-<div class="math-legend">111 maintenance cost (Axiom 14 proposition). $d$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $d$ | cost = Swap cost (1) means inseparable</div>
+<div class="math-row">$$\text{111 maintenance cost} = (\text{min +-crossing cost} \times \text{junction density per unit distance}) \times \ell$$</div>
+<div class="math-legend">111 maintenance cost (Axiom 14 proposition). $\ell$: distance between two CAS stages | cost per junction: Axiom 4 | junction count: proportional to $\ell$ | cost = Swap cost (1) means inseparable</div>
 </div>
 
 
@@ -6797,9 +6697,9 @@ delta (back to start)</pre>
 <tr><td>Juim accumulation contraction overlap (Axiom 13 prop.) (e.g., space->space)</td><td>&gt; 0 (serialization)</td><td>Axiom 5 proposition</td></tr>
 <tr><td>Bracket-crossing access (quantum-classical crossing)</td><td>&gt; 0 (cross Cmp/Swp)</td><td>Axiom 1 proposition</td></tr>
 <tr><td>Intra-quantum-bracket access (same bracket)</td><td>0</td><td>Axiom 1 proposition</td></tr>
-<tr><td>FSM 111 cumulative lock maintenance</td><td>proportional to d</td><td>Axiom 14 proposition</td></tr>
+<tr><td>FSM 111 cumulative lock maintenance</td><td>proportional to ℓ</td><td>Axiom 14 proposition</td></tr>
 <tr><td>Indexing (asymmetric pair search)</td><td>stage gap × 1 bit</td><td>Axiom 13 proposition</td></tr>
-<tr><td>Inter-entity interaction</td><td>C(1-d/N)/(4pid^2)</td><td>Axiom 13 proposition</td></tr>
+<tr><td>Inter-entity interaction</td><td>C(1-ℓ/N)/(4piℓ^2)</td><td>Axiom 13 proposition</td></tr>
 </table>
 </div>
 
@@ -6844,7 +6744,7 @@ delta (back to start)</pre>
 <tr><td>Global-local loop must be preserved</td><td>δ->observer->δ loop = system life</td><td>Loop break = system death</td><td>Axiom 10</td></tr>
 <tr><td>No logical addresses</td><td>observer = entity = address</td><td>Central table = bottleneck</td><td>Axiom 12</td></tr>
 <tr><td>No copy (only move allowed)</td><td>Re-entry = ownership transfer (move). When cause moves to effect, cause ceases. Copy = multiple effects from same cause = causality destroyed</td><td>Causality destroyed</td><td>Axiom 12 proposition (re-entry=move)</td></tr>
-<tr><td>d=0 impossible (discrete minimum = 1)</td><td>DATA is discrete. Ring slots are integers</td><td>Singularity (fictitious)</td><td>Axiom 13 proposition</td></tr>
+<tr><td>ℓ=0 impossible (discrete minimum = 1)</td><td>DATA is discrete. Ring slots are integers</td><td>Singularity (fictitious)</td><td>Axiom 13 proposition</td></tr>
 <tr><td>δ is outside FSM</td><td>A closed machine cannot start itself. Firing required</td><td>Machine cannot boot</td><td>Axiom 15</td></tr>
 <tr><td>Fixed 8 bits (domain 4 + CAS 3 + δ 1)</td><td>Zero additional memory</td><td>Over-determined or indescribable</td><td>Axiom 1, 5, 15</td></tr>
 </table>
@@ -6941,21 +6841,21 @@ delta (back to start)</pre>
 <tr><td>Write accumulation count</td><td>Mass</td></tr>
 <tr><td>Serialization cost ≠ 0</td><td>W/Z boson mass</td></tr>
 <tr><td>Serialization cost = 0</td><td>Photon massless</td></tr>
-<tr><td>Cost magnitude ($1/d^2$)</td><td>Force strength</td></tr>
-<tr><td>Cost type ($(1-d/N)$)</td><td>Force type</td></tr>
+<tr><td>Cost magnitude ($1/\ell^2$)</td><td>Force strength</td></tr>
+<tr><td>Cost type ($(1-\ell/N)$)</td><td>Force type</td></tr>
 <tr><td>Contraction zone</td><td>Potential</td></tr>
 <tr><td>isWritable contention</td><td>Interaction</td></tr>
 <tr><td>Decoding cost (stage gap × 1 bit)</td><td>Asymmetric meson correction (K±, D±, B±)</td></tr>
-<tr><td>Entity interaction $C(1-d/N)/(4\pi d^2)$</td><td>Coulomb/Newton inverse-square law</td></tr>
+<tr><td>Entity interaction $C(1-\ell/N)/(4\pi \ell^2)$</td><td>Coulomb/Newton inverse-square law</td></tr>
 <tr><td>Bracket-crossing cost > 0 (Axiom 4)</td><td>$\Delta x \cdot \Delta p \geq \hbar/2$ (uncertainty principle)</td></tr>
-<tr><td>Accumulated lock maintenance = cost per junction × d</td><td>$V(r) = \sigma r$ (linear potential, confinement)</td></tr>
+<tr><td>Accumulated lock maintenance = cost per junction × ℓ</td><td>$V(r) = \sigma r$ (linear potential, confinement)</td></tr>
 
 <tr><th colspan="2" style="background:#161b22;color:#e6edf3">Mixing Angles · Mass</th></tr>
 <tr><th>Axiom Term</th><th>Physics Correspondence</th></tr>
-<tr><td>Shift distance $d/N$ (N=30)</td><td>$\sin^2\theta_W$ (Weinberg angle)</td></tr>
-<tr><td>CAS stage 1-2 shift distance $d/N$</td><td>$\theta_C$ (Cabibbo angle)</td></tr>
-<tr><td>Swap-index shift distance $d/N$</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
-<tr><td>3-generation equal spacing $d/N = 2/9$</td><td>Koide angle</td></tr>
+<tr><td>Shift distance $\ell/N$ (N=30)</td><td>$\sin^2\theta_W$ (Weinberg angle)</td></tr>
+<tr><td>CAS stage 1-2 shift distance $\ell/N$</td><td>$\theta_C$ (Cabibbo angle)</td></tr>
+<tr><td>Swap-index shift distance $\ell/N$</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
+<tr><td>3-generation equal spacing $\ell/N = 2/9$</td><td>Koide angle</td></tr>
 <tr><td>Asymmetric shift between cross paths</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP phases)</td></tr>
 
 <tr><th colspan="2" style="background:#161b22;color:#e6edf3">Cosmology · States</th></tr>
@@ -6970,7 +6870,7 @@ delta (back to start)</pre>
 <tr><td>δ=1 (fired)</td><td>Universe exists. Equals sign holds</td></tr>
 <tr><td>Compare true -> Swap</td><td>Wavefunction collapse</td></tr>
 <tr><td>Compare false -> superposition maintained</td><td>No decoherence</td></tr>
-<tr><td>d=1 crowding, N² accumulation</td><td>Black hole (event horizon = accumulated cost > escape cost)</td></tr>
+<tr><td>ℓ=1 crowding, N² accumulation</td><td>Black hole (event horizon = accumulated cost > escape cost)</td></tr>
 <tr><td>Empty entity distortion</td><td>Virtual particles · vacuum polarization</td></tr>
 <tr><td>Simultaneous = orthogonal</td><td>Entanglement. Distance-independent</td></tr>
 </table>
@@ -6986,7 +6886,7 @@ delta (back to start)</pre>
 <tr><td>128 states ($2^7$)</td><td>Infinite-dimensional Hilbert space</td></tr>
 <tr><td>2 sequential items (R->C->S, δ->observer)</td><td>Causality, 2nd law of thermodynamics, CPT theorem, Lorentz invariance — each as separate axiom</td></tr>
 <tr><td>Simultaneous = orthogonal (automatic from Axiom 1)</td><td>60 years of nonlocality debate to explain entanglement</td></tr>
-<tr><td>No singularity (d=1 discrete, automatic)</td><td>40 years of string theory, 30 years of loop quantum gravity to remove singularities</td></tr>
+<tr><td>No singularity (ℓ=1 discrete, automatic)</td><td>40 years of string theory, 30 years of loop quantum gravity to remove singularities</td></tr>
 <tr><td>0 corrections</td><td>Infinite perturbative series (divergent, asymptotic)</td></tr>
 </table>
 </div>
@@ -7795,7 +7695,7 @@ Hypothesis 2: "the energy budget of the universe has an LRU queue structure"</co
 <div class="math-legend">$1/137$: numerical correspondence to EM coupling | $1/30$: numerical correspondence to weak coupling | $1$: numerical correspondence to gravitational coupling | Cost cause = domain bit pattern (H-45)</div>
 </div>
 
-<p>Shift costs on different ring sizes numerically correspond to coupling constants. Swap base cost (1), ring-137 shift (1/137) corresponds to EM coupling, ring-30 shift (1/30) corresponds to weak coupling. CAS atomicity (inseparability) is not a cost but a structural property. The cause of cost is the domain 4-bit ON/OFF pattern, and the numerical values arise from shift costs on ring sizes (Axiom 1 proposition). From ring size ratios, the Weinberg angle ($d/N$ = 30/137 ≈ 0.219, tree-level approx.), the electron charge ($e = q_p\sqrt{1/137}$), and the W/Z ratio are derived.</p>
+<p>Shift costs on different ring sizes numerically correspond to coupling constants. Swap base cost (1), ring-137 shift (1/137) corresponds to EM coupling, ring-30 shift (1/30) corresponds to weak coupling. CAS atomicity (inseparability) is not a cost but a structural property. The cause of cost is the domain 4-bit ON/OFF pattern, and the numerical values arise from shift costs on ring sizes (Axiom 1 proposition). From ring size ratios, the Weinberg angle ($\ell/N$ = 30/137 ≈ 0.219, tree-level approx.), the electron charge ($e = q_p\sqrt{1/137}$), and the W/Z ratio are derived.</p>
 
 -->
 <h4>Equivalence Evidence Summary</h4>
@@ -8329,10 +8229,10 @@ delta(trigger) -> observer(filter) -> superposition(update) -> CAS Swap(render) 
 
 <table>
 <tr><th>Force</th><th>Access Pattern</th><th>Cost Structure</th><th>CAS Role</th></tr>
-<tr><td><strong>Strong</strong></td><td>FSM 111 hold (closed)</td><td>Proportional to d. Inseparable</td><td>CAS atomicity = color confinement</td></tr>
+<tr><td><strong>Strong</strong></td><td>FSM 111 hold (closed)</td><td>Proportional to ℓ. Inseparable</td><td>CAS atomicity = color confinement</td></tr>
 <tr><td><strong>Electromagnetic</strong></td><td>Cross-domain Compare</td><td>1/137 (ring shift)</td><td>Cross-comparison cost</td></tr>
 <tr><td><strong>Weak</strong></td><td>Cross-domain Read</td><td>1/30 (ring shift)</td><td>Cross-read cost</td></tr>
-<tr><td><strong>Gravity</strong></td><td>Juim accumulation contraction overlap (Axiom 13 prop.)</td><td>Proportional to d²</td><td>Swap's space accumulation</td></tr>
+<tr><td><strong>Gravity</strong></td><td>Juim accumulation contraction overlap (Axiom 13 prop.)</td><td>Proportional to ℓ²</td><td>Swap's space accumulation</td></tr>
 </table>
 
 <p>The cause of cost is not the CAS stage but the domain access pattern. The shift cost per ring size corresponds numerically to the coupling constants. For details, see <a href="discovery/unification.html">Four Forces Unification Report</a>.</p>
@@ -8352,7 +8252,7 @@ Pipeline view:
 
 <h3 id="en-sec45">Singularity = DATA Discrete Minimum</h3>
 
-<p>DATA is discrete (Axiom 13 proposition). Ring slots are integers. d_min = 1. d = 0 is impossible. Therefore, singularity (infinite density) does not exist. In an extremely dense state, when space shrinks to d = 1, the remaining resources shift to time and the quantum terms. δ² is conserved.</p>
+<p>DATA is discrete (Axiom 13 proposition). Ring slots are integers. ℓ_min = 1. ℓ = 0 is impossible. Therefore, singularity (infinite density) does not exist. In an extremely dense state, when space shrinks to ℓ = 1, the remaining resources shift to time and the quantum terms. δ² is conserved.</p>
 
 <h3 id="en-sec46">System Time and Domain Time</h3>
 
@@ -8739,10 +8639,10 @@ CAS:         swap(N) = compare(read(N-1), expected) + new_value</pre>
 
 <table>
 <tr><th>Force</th><th>Access Pattern</th><th>Cost Structure</th><th>Coupling Constant</th></tr>
-<tr><td><strong>Strong</strong></td><td>FSM 111 hold (closed)</td><td>Proportional to d. CAS atomicity = color confinement</td><td>α_s = 0.1183</td></tr>
+<tr><td><strong>Strong</strong></td><td>FSM 111 hold (closed)</td><td>Proportional to ℓ. CAS atomicity = color confinement</td><td>α_s = 0.1183</td></tr>
 <tr><td><strong>EM</strong></td><td>Cross-domain Compare</td><td>Ring-137 shift cost</td><td>α = 1/137</td></tr>
 <tr><td><strong>Weak</strong></td><td>Cross-domain Read</td><td>Ring-30 shift cost</td><td>α/sin²θ_W</td></tr>
-<tr><td><strong>Gravity</strong></td><td>Juim accumulation contraction overlap (Axiom 13 prop.)</td><td>Swap accumulation. Proportional to d²</td><td>G (Swap basis=1)</td></tr>
+<tr><td><strong>Gravity</strong></td><td>Juim accumulation contraction overlap (Axiom 13 prop.)</td><td>Swap accumulation. Proportional to ℓ²</td><td>G (Swap basis=1)</td></tr>
 </table>
 
 <h3 id="en-sec74">Cost Ratios</h3>
@@ -8786,8 +8686,8 @@ CAS:         swap(N) = compare(read(N-1), expected) + new_value</pre>
 <p>In electroweak unification theory, the Weinberg angle <code>sin^2(θ_W)</code> is the mixing ratio of electromagnetic and weak forces. What Glashow-Weinberg-Salam derived from gauge theory, the Banya Framework derives from the cost ratio of CAS.</p>
 
 <div class="math-block">
-<div class="math-row">$$d/N = \text{Ring-137 shift} / \text{Ring-30 shift} = (1/137) / (1/30) = 30/137 \approx 0.219$$</div>
-<div class="math-desc">Ring size ratio determines the mixing angle ($d/N$).</div>
+<div class="math-row">$$\ell/N = \text{Ring-137 shift} / \text{Ring-30 shift} = (1/137) / (1/30) = 30/137 \approx 0.219$$</div>
+<div class="math-desc">Ring size ratio determines the mixing angle ($\ell/N$).</div>
 <div class="math-desc">Tree-level approximation. Corresponds to Weinberg angle.</div>
 <div class="math-row">$$Measured: \sin^{2}(\theta_W) = 0.23122$$</div>
 <div class="math-row">$$CAS \text{Ratio:} alpha_em/alpha_weak = 0.23122$$</div>
@@ -9327,7 +9227,7 @@ Total items:      696
 <li>8. <strong>Decoherence is CAS commit.</strong> Background (quantum superposition) transitions to foreground (classical confirmed). Complete when Swap crosses + to render on screen.</li>
 <li>9. <strong>Causality emerges from the logical dependency of CAS.</strong> R→C→S is logical dependency, not temporal order. The arrow emerges when CAS writes to time. time (DATA) is a reversible resource. Irreversibility is a property of the OPERATOR.</li>
 <li>10. <strong>The 4 forces are branches of the domain 4-bit access pattern.</strong> Strong = FSM 111 atomicity (closed). EM = cross Compare. Weak = cross Read. Gravity = juim accumulation contraction overlap (Axiom 13 prop.). The cause of cost is domain access pattern, not CAS stage. They were one from the beginning.</li>
-<li>11. <strong>Singularities do not exist.</strong> DATA is discrete. d_min = 1. d=0 is impossible (Axiom 13 proposition). In extreme density, remaining resources transfer to other axes.</li>
+<li>11. <strong>Singularities do not exist.</strong> DATA is discrete. ℓ_min = 1. ℓ=0 is impossible (Axiom 13 proposition). In extreme density, remaining resources transfer to other axes.</li>
 <li>12. <strong>Resources are finite and conserved.</strong> <code>δ²</code> is invariant. When one axis approaches 0, resources transfer to other axes.</li>
 <li>13. <strong>Quantum entanglement is an inevitable consequence of δ² conservation.</strong> Not faster than light — simultaneous because within the same <code>δ²</code>.</li>
 <li>14. <strong>Dark matter is LRU WARM, dark energy is LRU COLD.</strong> Visible matter (HOT) + dark matter (WARM) + dark energy (COLD) = one LRU queue.</li>
@@ -9647,7 +9547,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><td><a href="discovery/cas_internal.html">CAS Internal Structure</a></td><td>Koide deviation 15=3×5. β₀=7. Spin-statistics</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td><a href="discovery/coupling_relations.html">Coupling Relations</a></td><td>Triangle 15/4. Running. 7/(2+9π)</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td><a href="discovery/cosmic_thermo.html">Cosmic Thermodynamics</a></td><td>BH thermodynamics. γ=5/3. z_eq=3402</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td><a href="discovery/ring_buffer.html">8-bit Ring Buffer</a></td><td>f(θ)=(1-d/N) quantification. Koide 2/9, θ₂₃=4/7, θ₁₃=3/137, r_s, event horizon</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td><a href="discovery/ring_buffer.html">8-bit Ring Buffer</a></td><td>f(θ)=(1-ℓ/N) quantification. Koide 2/9, θ₂₃=4/7, θ₁₃=3/137, r_s, event horizon</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/lifetime.html">LUT Session Lifetime</a></td><td>τ ratio 0.23%, τ_mu 0.32%, τ_tau 0.17%. 192=(2³)²×3. α³/3</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/quark_mass.html">Quark Mass</a></td><td>m_c 0.04%, m_s 0.032%, m_t 0.065%, m_b 0.069%, m_d 0.18%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/cosmology2.html">Cosmology &amp; Nuclear</a></td><td>n_s=55/57 (0.001%), BAO=3×7² (0.06%), Ω_Λ, Ω_b, m_n-m_p</td><td><span class="tag-solved">Hit</span></td></tr>
@@ -9721,7 +9621,7 @@ Framework Prediction = insert multiple known constants -> unknown values emerge 
 <tr><td><a href="discovery/hadron_mass.html">$\pi^0$ mass</a></td><td>Including EM correction. Error 0.3%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/hadron_mass.html">Proton mass (new)</a></td><td>$m_p = 3m_q + \sigma \times r_p$. Error 0.11%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="discovery/ckm_pmns.html">$|V_{ud}|$, $|V_{cs}|$, $|V_{cb}|$</a></td><td>Remaining CKM elements derived. Error 0.03~0.5%</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td><a href="discovery/ring_buffer.html">$\theta_{23} = 4/7$, $\theta_{13} = 3/137$</a></td><td>$f(\theta) = (1-d/N)$ ring ratio. Error 0.27%, 0.46%</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td><a href="discovery/ring_buffer.html">$\theta_{23} = 4/7$, $\theta_{13} = 3/137$</a></td><td>$f(\theta) = (1-\ell/N)$ ring ratio. Error 0.27%, 0.46%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="lib.html">Weizsäcker nuclear mass formula</a></td><td>$a_V$=15.67, $a_S$=12.22, $a_C$=0.711. From CAS cost structure</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="lib.html">$\eta$ meson mass 548.1 MeV</a></td><td>1 bit = 27 MeV indexing. Error 0.043%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td><a href="lib.html">$f_\pi$ = 130.1 MeV</a></td><td>Pion decay constant. Error 0.077%</td><td><span class="tag-solved">Hit</span></td></tr>
