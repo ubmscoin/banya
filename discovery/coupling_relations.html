@@ -26,10 +26,7 @@
 <body>
 
 <!-- ===== 언어 토글 ===== -->
-<div class="lang-switch">
-<button class="lang-btn active" data-lang="ko" onclick="switchLang('ko')">KR</button>
-<button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
-</div>
+<div class="lang-switch"><a href="../en/discovery/coupling_relations.html" class="lang-btn">EN</a></div>
 
 
 <!-- ========== 한국어 본문 ========== -->
@@ -224,194 +221,6 @@ sin²θ_W = 0.23122 (관측값)
 
 
 <!-- ========== English Version ========== -->
-<div class="lang-en" style="display:none">
-
-<!-- ===== TOC Sidebar (Desktop) ===== -->
-<div class="toc-side">
-<a href="#title-en" class="toc-h1">Coupling Relations</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-<!-- ===== TOC Mobile Bar ===== -->
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-en .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">Coupling Relations</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.lang-en .toc-bar').classList.remove('open')">
-<a href="#title-en" class="toc-h1">Coupling Relations</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-
-<!-- ===== Sub-report notice ===== -->
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
-
-
-<!-- ===== 1. Introduction ===== -->
-
-<h1 id="title-en">Coupling Relations</h1>
-
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
-<blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-25</p></blockquote>
-
-
-<!-- 1-1. Question -->
-<h2 id="question-en">Question: How are three cost structures (Swap accumulation / cross Cmp-Swp / self-referential serialization) connected?</h2>
-
-<p>The three coupling constants of the Standard Model -- electromagnetic $\alpha$, weak $\sin^2\theta_W$, and strong $\alpha_s$ -- are each measured independently. Grand Unified Theory (GUT) predicts they merge at high energy, but no precise low-energy relation is known. Banya Framework shows that CAS's three cost structures (Swap accumulation, cross Compare-Swap, self-referential serialization) correspond to these three coupling constants, and derives concrete numerical relations.</p>
-
-
-<!-- 1-2. Status -->
-<h2 id="status-en">Status</h2>
-
-<p><span class="tag-discovery">Discovery</span></p>
-
-<p>All 4 items at discovery grade. Error range: 0.0004% to 0.37%.</p>
-
-
-<!-- 1-3. Key Discovery -->
-<h2 id="discovery-en">Key Discovery</h2>
-
-<div class="discovery-block">
-<h4>D-28: sin squared theta_W Running Formula</h4>
-<div class="formula">$\sin^2\theta_W^{\text{run}} = \dfrac{3}{8} \cdot \dfrac{2}{\pi} \cdot \left(1 - \left(4 + \dfrac{1}{\pi}\right)\alpha\right) = 0.23121$</div>
-<p>Observed: $0.23122$, Error: <span class="tag-solved">0.005%</span></p>
-<p>CAS running from GUT value $3/8$. $4 + 1/\pi$ = CAS 4 domains + circumference correction.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-29: GUT Energy Scale</h4>
-<div class="formula">$M_{\text{GUT}} = M_Z \cdot \alpha^{-19/3}$</div>
-<p>$19$ = SM free parameters, $3$ = CAS domains. Within GUT range.</p>
-<p>Grand unification energy expressed using only $\alpha$ and $M_Z$.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-30: sin squared theta_W Most Compact Form</h4>
-<div class="formula">$\sin^2\theta_W = \dfrac{7}{2 + 9\pi} = 0.23122$</div>
-<p>Observed: $0.23122$, Error: <span class="tag-solved">0.0004%</span></p>
-<p>$7$ = CAS internal states, $9$ = complete description, $2$ = parenthesis. Most compact form.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-34: Triangular Relation of Three Coupling Constants</h4>
-<div class="formula">$\dfrac{\alpha_s \cdot \sin^2\theta_W}{\alpha} = \dfrac{15}{4}$</div>
-<p>Observed: $3.736$, Derived: $15/4 = 3.75$, Error: <span class="tag-discovery">0.37%</span></p>
-<p>$15 = 3(\text{CAS}) \times 5(9-4)$. Triangular relation of three cost structures.</p>
-</div>
-
-
-<!-- ===== 2. Body: Round 1 ===== -->
-
-<h1 id="r1-en">Round 1. Coupling Relations from CAS Cost Structure</h1>
-
-<h3 id="r1-step1-en">Step 1. Banya Equation</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>We use three cost paths of CAS operations: (1) Swap accumulation cost $\to \alpha$, (2) cross Compare-Swap cost $\to \sin^2\theta_W$, (3) self-referential serialization cost $\to \alpha_s$.</p>
-
-
-<h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
-
-<p>Apply CAS running correction from the GUT reference point $\sin^2\theta_W = 3/8$.</p>
-
-<div class="math-block">
-<div class="math-row">$\sin^2\theta_W^{\text{run}} = \dfrac{3}{8} \cdot \dfrac{2}{\pi} \cdot (1 - c \cdot \alpha)$</div>
-<div class="math-legend">$c = 4 + 1/\pi$: CAS 4-domain + circumference correction coefficient</div>
-</div>
-
-
-<h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
-
-<p>Insert known physical constants.</p>
-
-<pre>alpha = 1/137.036 (fine-structure constant)
-M_Z = 91.1876 GeV (Z boson mass)
-alpha_s(M_Z) = 0.1179 (strong coupling constant)
-sin^2 theta_W = 0.23122 (observed)
-3/8 = 0.375 (GUT reference)
-19 = number of SM free parameters
-3 = number of CAS domains</pre>
-
-
-<h3 id="r1-step4-en">Step 4. Domain Transform</h3>
-
-<p>Compute numerical results for each discovery.</p>
-
-<div class="math-block">
-<div class="math-row">D-28: $(3/8)(2/\pi)(1-(4+1/\pi)/137.036) = 0.23121$</div>
-<div class="math-row">D-29: $M_Z \cdot \alpha^{-19/3} = 91.19 \cdot 137.036^{19/3} \approx 10^{16}$ GeV</div>
-<div class="math-row">D-30: $7/(2+9\pi) = 7/30.274 = 0.23122$</div>
-<div class="math-row">D-34: $\alpha_s \cdot \sin^2\theta_W / \alpha = 0.1179 \times 0.23122 \times 137.036 = 3.736$</div>
-<div class="math-desc">D-28 and D-30 derive the same sin^2 theta_W via different paths. D-34 is the ratio of all three constants.</div>
-</div>
-
-
-<h3 id="r1-step5-en">Step 5. Discovery</h3>
-
-<div class="math-block">
-<div class="math-row">D-28: Derived $0.23121$, Measured $0.23122$, Error 0.005%</div>
-<div class="math-row">D-29: $M_{\text{GUT}} \sim 10^{16}$ GeV, within GUT range</div>
-<div class="math-row">D-30: Derived $0.23122$, Measured $0.23122$, Error 0.0004%</div>
-<div class="math-row">D-34: Derived $15/4 = 3.75$, Observed $3.736$, Error 0.37%</div>
-</div>
-
-<p>All 4 items at discovery grade. CAS cost structure determines the relations among three coupling constants.</p>
-
-
-<!-- ===== 3. By-products ===== -->
-
-<h1 id="byproduct-en">By-products</h1>
-
-<p>None</p>
-
-
-<!-- ===== 4. Incomplete Tasks ===== -->
-
-<h1 id="incomplete-en">Incomplete Tasks</h1>
-
-<p>None</p>
-
-
-<!-- ===== 5. Summary ===== -->
-
-<h1 id="summary-en">Summary</h1>
-
-<table>
-<tr><th>Card</th><th>Item</th><th>Result</th><th>Status</th></tr>
-<tr><td>D-28</td><td>sin²θ_W running</td><td>$(3/8)(2/\pi)(1-(4+1/\pi)\alpha) = 0.23121$, error 0.005%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>D-29</td><td>M_GUT scale</td><td>$M_Z \cdot \alpha^{-19/3}$, within GUT range</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>D-30</td><td>sin²θ_W most compact</td><td>$7/(2+9\pi) = 0.23122$, error 0.0004%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>D-34</td><td>Triangular relation</td><td>$(\alpha_s \cdot \sin^2\theta_W)/\alpha = 15/4$, error 0.37%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-</table>
-
-</div><!-- /lang-en -->
 
 
 <!-- ===== page-nav ===== -->
@@ -421,14 +230,6 @@ sin^2 theta_W = 0.23122 (observed)
 <a href="../lib.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
-<div class="page-nav lang-en" style="display:none">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
-<a href="../science_mine.html">Mining Manual</a>
-</div>
-
-
 <!-- ===== 푸터 ===== -->
 <div class="doc-footer lang-ko">
 <div class="f-top">
@@ -456,44 +257,6 @@ BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동�
 </div>
 </div>
 </div>
-<div class="doc-footer lang-en" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
-Classification: Axiom-Based Science Mining Engine
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">Coupling relations: triangular relation of three cost structures derived</div>
-</div>
-</div>
-<div class="f-bottom">
-<a href="../banya.html">Master Report</a>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
-<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
-
-
-<script>
-function switchLang(lang){
-document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
-document.querySelectorAll('.lang-ko,.lang-en').forEach(function(e){
-var show=e.classList.contains('lang-'+lang);
-if(e.classList.contains('toc-side')||e.classList.contains('toc-overlay')||e.classList.contains('page-nav')||e.classList.contains('doc-footer')){e.style.display=show?'':'none'}
-else{e.style.display=show?'block':'none'}
-});
-}
-</script>
 <script>
 (function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
 </script>

@@ -373,13 +373,20 @@ def build_combined_html():
 
     for idx, filename in enumerate(DOC_ORDER):
         print(f"Processing [{idx+1}/{len(DOC_ORDER)}] {filename} ...")
-        html = read_file(filename)
-
-        # Extract English content
-        en_content = extract_lang_en(html, filename)
-        if not en_content:
-            print(f"  SKIP: no English content in {filename}")
+        # Read from en/ folder (standalone English files)
+        en_filepath = os.path.join(BASE, "en", filename)
+        if not os.path.exists(en_filepath):
+            print(f"  SKIP: {en_filepath} not found")
             continue
+        with open(en_filepath, "r", encoding="utf-8") as f:
+            html = f.read()
+
+        # Extract body content
+        body_match = re.search(r'<body[^>]*>(.*)</body>', html, re.DOTALL)
+        if not body_match:
+            print(f"  SKIP: no <body> in {filename}")
+            continue
+        en_content = body_match.group(1)
 
         prefix = FILE_PREFIX[filename]
 

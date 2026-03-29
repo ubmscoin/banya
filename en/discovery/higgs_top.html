@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>힉스-톱 비용 구조 — 반야프레임 운영 보고서</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="힉스 자기결합 lambda_H = 7/54, 힉스 질량 m_H = 125.37 GeV, 힉스-톱 질량비 m_H/m_t = sqrt(14/27)을 반야프레임 CAS 비용 구조에서 도출. D-24 오차 0.16%, D-25 오차 0.10%, D-37 오차 0.73%. 발명자 한혁진.">
+<meta name="keywords" content="반야프레임,般若,Banya Framework,Axiom-Based Science Mining Engine,공리 기반 과학 채굴 엔진,한혁진,Han Hyukjin,bokkamsun,힉스,Higgs,힉스 자기결합,Higgs self-coupling,lambda_H,7/54,힉스 질량,Higgs mass,125.37 GeV,125.25 GeV,톱 쿼크,top quark,힉스-톱 질량비,Higgs-top mass ratio,sqrt(14/27),CAS,Compare-And-Swap,쓰기 이론,Write theory,비용 구조,cost structure,표준모형,Standard Model,LHC,ATLAS,CMS">
+<meta property="og:title" content="힉스-톱 비용 구조 — 반야프레임 운영 보고서">
+<meta property="og:description" content="힉스 자기결합 7/54, 힉스 질량 125.37 GeV, 힉스-톱 비율 sqrt(14/27). CAS 비용 구조에서 도출.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="힉스-톱 비용 구조 — 반야프레임">
+<meta name="twitter:description" content="힉스 자기결합 7/54, 힉스 질량 125.37 GeV, 힉스-톱 비율 sqrt(14/27). CAS 수에서 결정.">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../common.css">
+<link rel="stylesheet" href="../../print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="../../discovery/higgs_top.html" class="lang-btn">KR</a></div>
+
+<!-- ===== TOC-SIDE 한글 ===== -->
+<div class="toc-side lang-ko" style="display:none">
+<a href="#title" class="toc-h1">힉스-톱 비용 구조</a>
+<a href="#question" class="toc-h2">질문</a>
+<a href="#status" class="toc-h2">상태</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1</a>
+<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
+<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
+<a href="#byproduct" class="toc-h1">부산물</a>
+<a href="#incomplete" class="toc-h1">미완</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+
+<!-- ===== TOC 모바일 바 ===== -->
+<div class="toc-bar lang-ko" style="display:none" onclick="this.classList.toggle('open');document.querySelector('.lang-ko.toc-overlay').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">힉스-톱 비용 구조</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-ko" style="display:none" onclick="this.classList.remove('show');document.querySelector('.lang-ko.toc-bar').classList.remove('open')">
+<a href="#title" class="toc-h1">힉스-톱 비용 구조</a>
+<a href="#question" class="toc-h2">질문</a>
+<a href="#status" class="toc-h2">상태</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1</a>
+<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
+<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
+<a href="#byproduct" class="toc-h1">부산물</a>
+<a href="#incomplete" class="toc-h1">미완</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+
+
+<!-- ========== 한국어 본문 ========== -->
+<div class="lang-ko" style="display:none">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 종합 보고서</a>의 부속 보고서다.</p>
+
+
+<!-- ===== 1. 서두 ===== -->
+
+<h1 id="title">힉스-톱 비용 구조</h1>
+
+<blockquote><p>반야프레임 운영 보고서</p></blockquote>
+<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>실행일: 2026-03-25</p></blockquote>
+
+
+<h2 id="question">질문: 힉스 자기결합과 힉스-톱 질량비는 왜 이 값인가</h2>
+
+<p>힉스 보손은 2012년 LHC에서 발견됐지만, 힉스 자기결합 상수 $\lambda_H$의 값이 왜 ~0.13인지는 표준모형이 설명하지 못한다. 표준모형은 $\lambda_H$를 자유 매개변수로 남겨둔다. 힉스 질량 $m_H \approx 125$ GeV가 왜 이 값인지, 톱 쿼크 질량 $m_t \approx 172$ GeV와의 비율이 왜 $\approx 0.72$인지도 마찬가지다. 이 세 값은 서로 관련돼 있으면서도 근원이 알려지지 않았다.</p>
+
+<p>비유하면: 건물의 방 크기(힉스 질량)와 기둥 굵기(톱 질량)와 벽 두께(자기결합)가 정해져 있는데, 왜 이 비율인지 설계도가 없는 상태다.</p>
+
+
+<h2 id="status">상태</h2>
+
+<p><span class="tag-solved">적중</span></p>
+
+<p>D-24 오차 0.16%, D-25 오차 0.10% (0.7$\sigma$), D-37 오차 0.73% (D-24, D-16 가정). 세 값 모두 CAS 수 $7$과 $27=3^3$으로 결정됨.</p>
+
+
+<h2 id="discovery">핵심 발견</h2>
+
+<div class="discovery-block">
+<h4>D-24: 힉스 자기결합 상수</h4>
+<div class="formula">$\lambda_H = \dfrac{7}{54} = \dfrac{7}{2 \cdot 3^3} = 0.12963$</div>
+<p>관측값: 0.1293, 오차: <span class="tag-solved">0.16%</span></p>
+<p>$7$ = CAS 완전값, $54 = 2 \times 27 = 2 \times 3^3$. 힉스 자기결합이 CAS 수의 비율로 결정된다.</p>
+</div>
+
+<div class="discovery-block">
+<h4>D-25: 힉스 보손 질량</h4>
+<div class="formula">$m_H = v\sqrt{\dfrac{7}{27}} = 125.37\;\text{GeV}$</div>
+<p>관측값: 125.25 GeV, 오차: <span class="tag-solved">0.10% (0.7$\sigma$)</span></p>
+<p>D-24에서 직접 도출. 진공 기대값 $v = 246.22$ GeV에 $\sqrt{7/27}$을 곱하면 힉스 질량이 나온다.</p>
+</div>
+
+<div class="discovery-block">
+<h4>D-37: 힉스-톱 질량비</h4>
+<div class="formula">$\dfrac{m_H}{m_t} = \sqrt{\dfrac{14}{27}}$</div>
+<p>도출값: $\sqrt{14/27} = 0.7200$, 관측값: $125.25/172.69 = 0.7253$, 오차: <span class="tag-solved">0.73% (D-24, D-16 가정)</span></p>
+<p>$14 = 2 \times 7$, $27 = 3^3$. 힉스-톱 비용비가 CAS 수로 결정된다.</p>
+</div>
+
+
+<!-- ===== 2. 본문: 라운드 1 ===== -->
+
+<h1 id="r1">라운드 1. CAS 비용 구조에서 힉스 매개변수 도출</h1>
+
+<h3 id="r1-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+</div>
+
+<p>이 라운드에서는 CAS 연산의 비용 구조를 사용한다. 반야식에서 observer가 상태를 쓰는 행위(CAS)의 비용이 힉스 자기결합으로 나타난다.</p>
+
+
+<h3 id="r1-step2">2단계. 노름 치환</h3>
+
+<p>CAS 비용 구조에서 완전값 $7$과 격자 부피 $3^3 = 27$을 물리적 결합 상수로 치환한다.</p>
+
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{\text{CAS 완전값}}{\text{2} \times \text{격자 부피}} = \dfrac{7}{2 \times 3^3}$</div>
+<div class="math-legend">$7$: CAS 완전값 | $3^3$: 3차원 격자의 부피 | $2$: 이중 축 비용</div>
+</div>
+
+
+<h3 id="r1-step3">3단계. 상수 대입</h3>
+
+<pre>CAS 완전값: 7
+격자 부피: 3^3 = 27
+이중 축 비용: 2
+진공 기대값: v = 246.22 GeV
+힉스 질량 관계: m_H = v * sqrt(2 * lambda_H)
+톱 쿼크 질량: m_t = 172.69 GeV (관측값)</pre>
+
+
+<h3 id="r1-step4">4단계. 도메인 변환</h3>
+
+<p>$\lambda_H = 7/54$에서 힉스 질량과 힉스-톱 비율을 도출한다.</p>
+
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{7}{54} = 0.12963$</div>
+<div class="math-row">$m_H = v\sqrt{2\lambda_H} = 246.22 \times \sqrt{\dfrac{7}{27}} = 125.37\;\text{GeV}$</div>
+<div class="math-row">$\dfrac{m_H}{m_t}$: 도출값 $\sqrt{\dfrac{14}{27}} = 0.7200$, 관측값 $\dfrac{125.25}{172.69} = 0.7253$</div>
+<div class="math-desc">세 값 모두 $7$과 $27$이라는 CAS 수에서 나온다.</div>
+</div>
+
+
+<h3 id="r1-step5">5단계. 발견</h3>
+
+<div class="math-block">
+<div class="math-row">D-24: 도출값 $\lambda_H = 0.12963$ | 관측값 $0.1293$ | 오차 $0.16\%$</div>
+<div class="math-row">D-25: 도출값 $m_H = 125.37$ GeV | 관측값 $125.25$ GeV | 오차 $0.10\%$ ($0.7\sigma$)</div>
+<div class="math-row">D-37: $m_H/m_t = \sqrt{14/27} = 0.7200$ | 관측값 $0.7253$ | 오차 $0.73\%$ (D-24, D-16 가정)</div>
+</div>
+
+<p>세 도출 모두 CAS 완전값 $7$과 격자 부피 $27 = 3^3$만으로 결정된다. 힉스 섹터의 자유 매개변수가 CAS 비용 구조의 필연적 결과임을 보인다.</p>
+
+
+<!-- ===== 3. 부산물 ===== -->
+
+<h1 id="byproduct">부산물</h1>
+
+<p>$2\lambda_H = 7/27$이라는 비율이 반복 등장한다. $7/27$은 CAS 완전값 대 3차원 격자 부피의 비율이며, 힉스 섹터 전체를 지배하는 단일 비율이다.</p>
+
+
+<!-- ===== 4. 미완 ===== -->
+
+<h1 id="incomplete">미완</h1>
+
+<table>
+<tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr>
+<tr><td>$\lambda_H$ 직접 측정</td><td>LHC Run 3 진행 중, 아직 정밀 측정 미달</td><td>HL-LHC 결과 대기</td></tr>
+<tr><td>D-37 비율의 실험 검증</td><td>$m_H/m_t$ 비율의 정밀도 향상 필요</td><td>$m_t$ 정밀 측정 개선 시 검증 가능</td></tr>
+</table>
+
+
+<!-- ===== 5. 총괄 ===== -->
+
+<h1 id="summary">총괄</h1>
+
+<table>
+<tr><th>항목</th><th>결과</th><th>상태</th></tr>
+<tr><td>D-24: $\lambda_H = 7/54$</td><td>$0.12963$, 오차 $0.16\%$</td><td><span class="tag-solved">적중</span></td></tr>
+<tr><td>D-25: $m_H = v\sqrt{7/27}$</td><td>$125.37$ GeV, 오차 $0.10\%$</td><td><span class="tag-solved">적중</span></td></tr>
+<tr><td>D-37: $m_H/m_t = \sqrt{14/27}$</td><td>도출 $0.7200$, 관측 $0.7253$, 오차 $0.73\%$ (D-24, D-16 가정)</td><td><span class="tag-solved">적중</span></td></tr>
+</table>
+
+</div><!-- /lang-ko -->
+
+
+<!-- ========== English Version ========== -->
+<div class="lang-en">
+
+<!-- ===== TOC Sidebar (Desktop) ===== -->
+<div class="toc-side lang-en">
+<a href="#title-en" class="toc-h1">Higgs-Top Cost Structure</a>
+<a href="#question-en" class="toc-h2">Question</a>
+<a href="#status-en" class="toc-h2">Status</a>
+<a href="#discovery-en" class="toc-h2">Key Discovery</a>
+<a href="#r1-en" class="toc-h1">Round 1</a>
+<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
+<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
+<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
+<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
+<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
+<a href="#byproduct-en" class="toc-h1">By-products</a>
+<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
+<a href="#summary-en" class="toc-h1">Summary</a>
+</div>
+
+<!-- ===== TOC Mobile Bar ===== -->
+<div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.lang-en.toc-overlay').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">Higgs-Top Cost Structure</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.lang-en.toc-bar').classList.remove('open')">
+<a href="#title-en" class="toc-h1">Higgs-Top Cost Structure</a>
+<a href="#question-en" class="toc-h2">Question</a>
+<a href="#status-en" class="toc-h2">Status</a>
+<a href="#discovery-en" class="toc-h2">Key Discovery</a>
+<a href="#r1-en" class="toc-h1">Round 1</a>
+<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
+<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
+<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
+<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
+<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
+<a href="#byproduct-en" class="toc-h1">By-products</a>
+<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
+<a href="#summary-en" class="toc-h1">Summary</a>
+</div>
+
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
+
+
+<!-- ===== 1. Introduction ===== -->
+
+<h1 id="title-en">Higgs-Top Cost Structure</h1>
+
+<blockquote><p>Banya Framework Operation Report</p></blockquote>
+<blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>Date: 2026-03-25</p></blockquote>
+
+
+<h2 id="question-en">Question: Why do the Higgs self-coupling and Higgs-top mass ratio have these values</h2>
+
+<p>The Higgs boson was discovered at the LHC in 2012, but the Standard Model cannot explain why the Higgs self-coupling constant $\lambda_H$ is approximately 0.13. The Standard Model leaves $\lambda_H$ as a free parameter. Likewise, why $m_H \approx 125$ GeV and why the ratio to the top quark mass $m_t \approx 172$ GeV is $\approx 0.72$ remain unexplained. These three values are interrelated yet their origin is unknown.</p>
+
+<p>Analogy: the room size (Higgs mass), pillar thickness (top mass), and wall thickness (self-coupling) of a building are fixed, but there is no blueprint explaining why these proportions.</p>
+
+
+<h2 id="status-en">Status</h2>
+
+<p><span class="tag-solved">Hit</span></p>
+
+<p>D-24 error 0.16%, D-25 error 0.10% (0.7$\sigma$), D-37 error 0.73% (D-24, D-16 assumed). All three values determined by CAS numbers $7$ and $27=3^3$.</p>
+
+
+<h2 id="discovery-en">Key Discovery</h2>
+
+<div class="discovery-block">
+<h4>D-24: Higgs Self-Coupling Constant</h4>
+<div class="formula">$\lambda_H = \dfrac{7}{54} = \dfrac{7}{2 \cdot 3^3} = 0.12963$</div>
+<p>Observed: 0.1293, Error: <span class="tag-solved">0.16%</span></p>
+<p>$7$ = CAS complete value, $54 = 2 \times 27 = 2 \times 3^3$. The Higgs self-coupling is determined by the ratio of CAS numbers.</p>
+</div>
+
+<div class="discovery-block">
+<h4>D-25: Higgs Boson Mass</h4>
+<div class="formula">$m_H = v\sqrt{\dfrac{7}{27}} = 125.37\;\text{GeV}$</div>
+<p>Observed: 125.25 GeV, Error: <span class="tag-solved">0.10% (0.7$\sigma$)</span></p>
+<p>Directly derived from D-24. Multiplying the vacuum expectation value $v = 246.22$ GeV by $\sqrt{7/27}$ yields the Higgs mass.</p>
+</div>
+
+<div class="discovery-block">
+<h4>D-37: Higgs-Top Mass Ratio</h4>
+<div class="formula">$\dfrac{m_H}{m_t} = \sqrt{\dfrac{14}{27}}$</div>
+<p>Derived: $\sqrt{14/27} = 0.7200$, Observed: $125.25/172.69 = 0.7253$, Error: <span class="tag-solved">0.73% (D-24, D-16 assumed)</span></p>
+<p>$14 = 2 \times 7$, $27 = 3^3$. The Higgs-top cost ratio is determined by CAS numbers.</p>
+</div>
+
+
+<!-- ===== 2. Body: Round 1 ===== -->
+
+<h1 id="r1-en">Round 1. Deriving Higgs Parameters from CAS Cost Structure</h1>
+
+<h3 id="r1-step1-en">Step 1. Banya Equation</h3>
+
+<div class="math-block">
+<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+</div>
+
+<p>This round uses the cost structure of CAS operations. In the Banya equation, the cost of the observer writing state (CAS) manifests as the Higgs self-coupling.</p>
+
+
+<h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
+
+<p>From the CAS cost structure, substitute complete value $7$ and lattice volume $3^3 = 27$ into physical coupling constants.</p>
+
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{\text{CAS complete value}}{2 \times \text{lattice volume}} = \dfrac{7}{2 \times 3^3}$</div>
+<div class="math-legend">$7$: CAS complete value | $3^3$: 3D lattice volume | $2$: dual-axis cost</div>
+</div>
+
+
+<h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
+
+<pre>CAS complete value: 7
+Lattice volume: 3^3 = 27
+Dual-axis cost: 2
+Vacuum expectation value: v = 246.22 GeV
+Higgs mass relation: m_H = v * sqrt(2 * lambda_H)
+Top quark mass: m_t = 172.69 GeV (observed)</pre>
+
+
+<h3 id="r1-step4-en">Step 4. Domain Transform</h3>
+
+<p>From $\lambda_H = 7/54$, derive the Higgs mass and Higgs-top ratio.</p>
+
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{7}{54} = 0.12963$</div>
+<div class="math-row">$m_H = v\sqrt{2\lambda_H} = 246.22 \times \sqrt{\dfrac{7}{27}} = 125.37\;\text{GeV}$</div>
+<div class="math-row">$\dfrac{m_H}{m_t}$: Derived $\sqrt{\dfrac{14}{27}} = 0.7200$, Observed $\dfrac{125.25}{172.69} = 0.7253$</div>
+<div class="math-desc">All three values emerge from the CAS numbers $7$ and $27$.</div>
+</div>
+
+
+<h3 id="r1-step5-en">Step 5. Discovery</h3>
+
+<div class="math-block">
+<div class="math-row">D-24: Derived $\lambda_H = 0.12963$ | Observed $0.1293$ | Error $0.16\%$</div>
+<div class="math-row">D-25: Derived $m_H = 125.37$ GeV | Observed $125.25$ GeV | Error $0.10\%$ ($0.7\sigma$)</div>
+<div class="math-row">D-37: $m_H/m_t = \sqrt{14/27} = 0.7200$ | Observed $0.7253$ | Error $0.73\%$ (D-24, D-16 assumed)</div>
+</div>
+
+<p>All three derivations are determined solely by CAS complete value $7$ and lattice volume $27 = 3^3$. This shows the free parameters of the Higgs sector are inevitable consequences of the CAS cost structure.</p>
+
+
+<!-- ===== 3. By-products ===== -->
+
+<h1 id="byproduct-en">By-products</h1>
+
+<p>The ratio $2\lambda_H = 7/27$ appears repeatedly. $7/27$ is the ratio of CAS complete value to 3D lattice volume, and it is the single ratio governing the entire Higgs sector.</p>
+
+
+<!-- ===== 4. Incomplete Tasks ===== -->
+
+<h1 id="incomplete-en">Incomplete Tasks</h1>
+
+<table>
+<tr><th>Item</th><th>Current State</th><th>Resolution Path</th></tr>
+<tr><td>Direct $\lambda_H$ measurement</td><td>LHC Run 3 ongoing, precision not yet sufficient</td><td>Await HL-LHC results</td></tr>
+<tr><td>D-37 ratio experimental verification</td><td>$m_H/m_t$ ratio precision needs improvement</td><td>Verifiable with improved $m_t$ precision measurement</td></tr>
+</table>
+
+
+<!-- ===== 5. Summary ===== -->
+
+<h1 id="summary-en">Summary</h1>
+
+<table>
+<tr><th>Item</th><th>Result</th><th>Status</th></tr>
+<tr><td>D-24: $\lambda_H = 7/54$</td><td>$0.12963$, error $0.16\%$</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>D-25: $m_H = v\sqrt{7/27}$</td><td>$125.37$ GeV, error $0.10\%$</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>D-37: $m_H/m_t = \sqrt{14/27}$</td><td>Derived $0.7200$, Observed $0.7253$, error $0.73\%$ (D-24, D-16 assumed)</td><td><span class="tag-solved">Hit</span></td></tr>
+</table>
+
+</div><!-- /lang-en -->
+
+
+<div class="page-nav lang-ko" style="display:none">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+</div>
+<div class="page-nav lang-en">
+<a href="../banya.html">Master Report</a>
+<a href="../predictions.html">Predictions</a>
+<a href="../lib.html">Factor Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+</div>
+
+
+<div class="doc-footer lang-ko" style="display:none">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br>
+발명자: 한혁진 (Han Hyukjin)<br>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+별칭: 부처님 손바닥 프레임<br>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">힉스 자기결합 $\lambda_H = 7/54$, 힉스 질량 $m_H = 125.37$ GeV</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+<div class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若 Framework)</b><br>
+Inventor: Han Hyukjin (한혁진)<br>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+Alias: Buddha's Palm Framework<br>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">Higgs self-coupling $\lambda_H = 7/54$, Higgs mass $m_H = 125.37$ GeV</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
+Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+
+
+
+<script>
+(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>

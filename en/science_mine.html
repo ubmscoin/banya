@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>과학 채굴 방법 -- 반야프레임 운영 메뉴얼</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="반야프레임으로 물리 상수와 법칙을 도출하는 구체적인 작업 방법. 반야프레임 5단계 재귀 대입, 전문가 병렬 검증, 감독 검수, 라이브러리 축적의 4단계 루프. 한혁진과 AI(Claude)가 실제로 사용한 방법 그대로. 누구든 따라하면 같은 결과를 재현할 수 있다.">
+<meta name="keywords" content="반야프레임,般若,Banya Framework,과학 채굴,science mining,운영 메뉴얼,재귀 대입,recursive substitution,전문가 병렬 검증,감독 검수,numerology 필터링,라이브러리 축적,CAS,Compare-And-Swap,한혁진,Han Hyukjin,alpha 도출,미세구조상수,물리 상수 도출,Axiom-Based Science Mining Engine">
+<meta property="og:title" content="과학 채굴 방법 -- 반야프레임 운영 메뉴얼">
+<meta property="og:description" content="반야프레임으로 물리 상수를 도출하는 구체적인 작업 방법. 5단계 재귀 대입 + 전문가 병렬 검증 + 감독 검수 + 라이브러리 축적.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="과학 채굴 방법 -- 반야프레임 운영 메뉴얼">
+<meta name="twitter:description" content="반야프레임 과학 채굴 4단계 루프. 누구든 따라하면 같은 결과를 재현할 수 있다.">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="../print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="../science_mine.html" class="lang-btn">KR</a></div>
+
+<div class="toc-side lang-ko" style="display:none">
+<a href="#title" class="toc-h1">과학 채굴 방법</a>
+<a href="#ch1" class="toc-h1">1. 전체 구조</a>
+<a href="#ch1-loop" class="toc-h2">4단계 루프</a>
+<a href="#ch1-why" class="toc-h2">왜 루프인가</a>
+<a href="#ch2" class="toc-h1">2. 반야프레임 5단계</a>
+<a href="#ch2-s1" class="toc-h3">1단계: 반야식에서 출발</a>
+<a href="#ch2-s2" class="toc-h3">2단계: 노름 치환</a>
+<a href="#ch2-s3" class="toc-h3">3단계: 상수 + 가설 대입</a>
+<a href="#ch2-s4" class="toc-h3">4단계: 도메인 변환</a>
+<a href="#ch2-s5" class="toc-h3">5단계: 발견 + 판정</a>
+<a href="#ch2-repeat" class="toc-h2">라운드 반복</a>
+<a href="#ch3" class="toc-h1">3. 전문가 병렬 검증</a>
+<a href="#ch3-why" class="toc-h3">왜 병렬인가</a>
+<a href="#ch3-example" class="toc-h3">배정 예시</a>
+<a href="#ch3-input" class="toc-h3">전문가에게 주는 것</a>
+<a href="#ch4" class="toc-h1">4. 감독 검수</a>
+<a href="#ch4-criteria" class="toc-h3">검수 기준</a>
+<a href="#ch4-numerology" class="toc-h3">numerology 필터링</a>
+<a href="#ch4-grade" class="toc-h3">검수 등급</a>
+<a href="#ch5" class="toc-h1">5. 라이브러리 축적</a>
+<a href="#ch5-register" class="toc-h3">등록 기준</a>
+<a href="#ch5-usage" class="toc-h3">사용법</a>
+<a href="#ch5-map" class="toc-h3">재대입 맵</a>
+<a href="#ch6" class="toc-h1">6. CAS 공리</a>
+<a href="#ch6-a1" class="toc-h3">필수 1: 시간 밖 연산자 (공리 3)</a>
+<a href="#ch6-a2" class="toc-h3">필수 2: DATA 접근 비용 (공리 4,5)</a>
+<a href="#ch6-a3" class="toc-h3">필수 3: 붕괴 = 쓰기 (공리 6)</a>
+<a href="#ch6-a4" class="toc-h3">필수 4: 자기참조 (공리 8)</a>
+<a href="#ch7" class="toc-h1">7. 문서 규칙</a>
+<a href="#ch8" class="toc-h1">8. 실전 사이클 예시</a>
+<a href="#ch8-r1" class="toc-h3">라운드 1: 0차 근사</a>
+<a href="#ch8-r2" class="toc-h3">라운드 2: 정밀 도출</a>
+<a href="#ch8-r3" class="toc-h3">라운드 3: 정보이론</a>
+<a href="#ch8-r4" class="toc-h3">라운드 4: 우주 스케일</a>
+<a href="#ch9" class="toc-h1">9. 주의사항</a>
+<a href="#ch10" class="toc-h1">10. 도구</a>
+</div>
+
+<div class="toc-side lang-en">
+<a href="#en-title" class="toc-h1">Science Mining Method</a>
+<a href="#en-ch1" class="toc-h1">1. Overall Structure</a>
+<a href="#en-ch1-loop" class="toc-h2">4-Step Loop</a>
+<a href="#en-ch1-why" class="toc-h2">Why a Loop</a>
+<a href="#en-ch2" class="toc-h1">2. Banya Framework 5 Steps</a>
+<a href="#en-ch2-s1" class="toc-h3">Step 1: Start from Banya Equation</a>
+<a href="#en-ch2-s2" class="toc-h3">Step 2: Norm Substitution</a>
+<a href="#en-ch2-s3" class="toc-h3">Step 3: Constants + Hypothesis</a>
+<a href="#en-ch2-s4" class="toc-h3">Step 4: Domain Transform</a>
+<a href="#en-ch2-s5" class="toc-h3">Step 5: Discovery + Verdict</a>
+<a href="#en-ch2-repeat" class="toc-h2">Round Repetition</a>
+<a href="#en-ch3" class="toc-h1">3. Parallel Expert Verification</a>
+<a href="#en-ch3-why" class="toc-h3">Why Parallel</a>
+<a href="#en-ch3-example" class="toc-h3">Assignment Example</a>
+<a href="#en-ch3-input" class="toc-h3">What Experts Receive</a>
+<a href="#en-ch4" class="toc-h1">4. Supervisor Review</a>
+<a href="#en-ch4-criteria" class="toc-h3">Review Criteria</a>
+<a href="#en-ch4-numerology" class="toc-h3">Numerology Filtering</a>
+<a href="#en-ch4-grade" class="toc-h3">Review Grades</a>
+<a href="#en-ch5" class="toc-h1">5. Library Accumulation</a>
+<a href="#en-ch5-register" class="toc-h3">Registration Criteria</a>
+<a href="#en-ch5-usage" class="toc-h3">Usage</a>
+<a href="#en-ch5-map" class="toc-h3">Re-substitution Map</a>
+<a href="#en-ch6" class="toc-h1">6. CAS Axioms</a>
+<a href="#en-ch6-a1" class="toc-h3">Essential 1: Operator Outside Time (Axiom 3)</a>
+<a href="#en-ch6-a2" class="toc-h3">Essential 2: DATA Access Cost (Axiom 4,5)</a>
+<a href="#en-ch6-a3" class="toc-h3">Essential 3: Collapse = Write (Axiom 6)</a>
+<a href="#en-ch6-a4" class="toc-h3">Essential 4: Self-Reference (Axiom 8)</a>
+<a href="#en-ch7" class="toc-h1">7. Document Rules</a>
+<a href="#en-ch8" class="toc-h1">8. Practical Cycle Example</a>
+<a href="#en-ch8-r1" class="toc-h3">Round 1: Zeroth-Order</a>
+<a href="#en-ch8-r2" class="toc-h3">Round 2: Precision Derivation</a>
+<a href="#en-ch8-r3" class="toc-h3">Round 3: Information Theory</a>
+<a href="#en-ch8-r4" class="toc-h3">Round 4: Cosmic Scale</a>
+<a href="#en-ch9" class="toc-h1">9. Precautions</a>
+<a href="#en-ch10" class="toc-h1">10. Tools</a>
+</div>
+
+<div class="toc-bar lang-ko" style="display:none" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">과학 채굴 방법</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-ko" style="display:none" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
+<a href="#title" class="toc-h1">과학 채굴 방법</a>
+<a href="#ch1" class="toc-h1">1. 전체 구조</a>
+<a href="#ch1-loop" class="toc-h2">4단계 루프</a>
+<a href="#ch1-why" class="toc-h2">왜 루프인가</a>
+<a href="#ch2" class="toc-h1">2. 반야프레임 5단계</a>
+<a href="#ch2-s1" class="toc-h3">1단계: 반야식에서 출발</a>
+<a href="#ch2-s2" class="toc-h3">2단계: 노름 치환</a>
+<a href="#ch2-s3" class="toc-h3">3단계: 상수 + 가설 대입</a>
+<a href="#ch2-s4" class="toc-h3">4단계: 도메인 변환</a>
+<a href="#ch2-s5" class="toc-h3">5단계: 발견 + 판정</a>
+<a href="#ch2-repeat" class="toc-h2">라운드 반복</a>
+<a href="#ch3" class="toc-h1">3. 전문가 병렬 검증</a>
+<a href="#ch3-why" class="toc-h3">왜 병렬인가</a>
+<a href="#ch3-example" class="toc-h3">배정 예시</a>
+<a href="#ch3-input" class="toc-h3">전문가에게 주는 것</a>
+<a href="#ch4" class="toc-h1">4. 감독 검수</a>
+<a href="#ch4-criteria" class="toc-h3">검수 기준</a>
+<a href="#ch4-numerology" class="toc-h3">numerology 필터링</a>
+<a href="#ch4-grade" class="toc-h3">검수 등급</a>
+<a href="#ch5" class="toc-h1">5. 라이브러리 축적</a>
+<a href="#ch5-register" class="toc-h3">등록 기준</a>
+<a href="#ch5-usage" class="toc-h3">사용법</a>
+<a href="#ch5-map" class="toc-h3">재대입 맵</a>
+<a href="#ch6" class="toc-h1">6. CAS 공리</a>
+<a href="#ch6-a1" class="toc-h3">필수 1: 시간 밖 연산자 (공리 3)</a>
+<a href="#ch6-a2" class="toc-h3">필수 2: DATA 접근 비용 (공리 4,5)</a>
+<a href="#ch6-a3" class="toc-h3">필수 3: 붕괴 = 쓰기 (공리 6)</a>
+<a href="#ch6-a4" class="toc-h3">필수 4: 자기참조 (공리 8)</a>
+<a href="#ch7" class="toc-h1">7. 문서 규칙</a>
+<a href="#ch8" class="toc-h1">8. 실전 사이클 예시</a>
+<a href="#ch8-r1" class="toc-h3">라운드 1: 0차 근사</a>
+<a href="#ch8-r2" class="toc-h3">라운드 2: 정밀 도출</a>
+<a href="#ch8-r3" class="toc-h3">라운드 3: 정보이론</a>
+<a href="#ch8-r4" class="toc-h3">라운드 4: 우주 스케일</a>
+<a href="#ch9" class="toc-h1">9. 주의사항</a>
+<a href="#ch10" class="toc-h1">10. 도구</a>
+</div>
+
+<div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">Science Mining Method</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
+<a href="#en-title" class="toc-h1">Science Mining Method</a>
+<a href="#en-ch1" class="toc-h1">1. Overall Structure</a>
+<a href="#en-ch1-loop" class="toc-h2">4-Step Loop</a>
+<a href="#en-ch1-why" class="toc-h2">Why a Loop</a>
+<a href="#en-ch2" class="toc-h1">2. Banya Framework 5 Steps</a>
+<a href="#en-ch2-s1" class="toc-h3">Step 1: Start from Banya Equation</a>
+<a href="#en-ch2-s2" class="toc-h3">Step 2: Norm Substitution</a>
+<a href="#en-ch2-s3" class="toc-h3">Step 3: Constants + Hypothesis</a>
+<a href="#en-ch2-s4" class="toc-h3">Step 4: Domain Transform</a>
+<a href="#en-ch2-s5" class="toc-h3">Step 5: Discovery + Verdict</a>
+<a href="#en-ch2-repeat" class="toc-h2">Round Repetition</a>
+<a href="#en-ch3" class="toc-h1">3. Parallel Expert Verification</a>
+<a href="#en-ch3-why" class="toc-h3">Why Parallel</a>
+<a href="#en-ch3-example" class="toc-h3">Assignment Example</a>
+<a href="#en-ch3-input" class="toc-h3">What Experts Receive</a>
+<a href="#en-ch4" class="toc-h1">4. Supervisor Review</a>
+<a href="#en-ch4-criteria" class="toc-h3">Review Criteria</a>
+<a href="#en-ch4-numerology" class="toc-h3">Numerology Filtering</a>
+<a href="#en-ch4-grade" class="toc-h3">Review Grades</a>
+<a href="#en-ch5" class="toc-h1">5. Library Accumulation</a>
+<a href="#en-ch5-register" class="toc-h3">Registration Criteria</a>
+<a href="#en-ch5-usage" class="toc-h3">Usage</a>
+<a href="#en-ch5-map" class="toc-h3">Re-substitution Map</a>
+<a href="#en-ch6" class="toc-h1">6. CAS Axioms</a>
+<a href="#en-ch6-a1" class="toc-h3">Essential 1: Operator Outside Time (Axiom 3)</a>
+<a href="#en-ch6-a2" class="toc-h3">Essential 2: DATA Access Cost (Axiom 4,5)</a>
+<a href="#en-ch6-a3" class="toc-h3">Essential 3: Collapse = Write (Axiom 6)</a>
+<a href="#en-ch6-a4" class="toc-h3">Essential 4: Self-Reference (Axiom 8)</a>
+<a href="#en-ch7" class="toc-h1">7. Document Rules</a>
+<a href="#en-ch8" class="toc-h1">8. Practical Cycle Example</a>
+<a href="#en-ch8-r1" class="toc-h3">Round 1: Zeroth-Order</a>
+<a href="#en-ch8-r2" class="toc-h3">Round 2: Precision Derivation</a>
+<a href="#en-ch8-r3" class="toc-h3">Round 3: Information Theory</a>
+<a href="#en-ch8-r4" class="toc-h3">Round 4: Cosmic Scale</a>
+<a href="#en-ch9" class="toc-h1">9. Precautions</a>
+<a href="#en-ch10" class="toc-h1">10. Tools</a>
+</div>
+
+
+<div class="lang-ko" style="display:none">
+
+<p style="margin-bottom:24px;font-size:0.85em">이 문서는 <a href="banya.html" style="font-weight:600">반야프레임 Master Report</a>의 부속 문서다. 반야프레임으로 물리 상수와 법칙을 도출하는 구체적인 작업 방법을 기술한 운영 메뉴얼이다. 한혁진과 AI(Claude)가 실제로 사용한 방법 그대로다. 누구든 이 메뉴얼을 따라하면 같은 결과를 재현할 수 있다.</p>
+
+<h1 id="title">과학 채굴 방법</h1>
+
+<blockquote><p>반야프레임 운영 메뉴얼</p></blockquote>
+<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>작성일: 2026-03-23</p></blockquote>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch1">제1장. 전체 구조</h1>
+
+<p>반야프레임 과학 채굴은 4단계 루프다. 이 루프를 반복할수록 라이브러리가 커지고, 라이브러리가 커질수록 숨은 값이 도망칠 곳이 없어진다.</p>
+
+<h2 id="ch1-loop">4단계 루프</h2>
+
+<div class="flow-block">
+<div><strong style="color:#58a6ff;font-size:1.1em">반야프레임 5단계 재귀 대입</strong></div>
+<div style="color:#8b949e;font-size:0.85em">핵심 엔진</div>
+<div class="flow-arrow">|</div>
+<div><strong style="color:#58a6ff;font-size:1.1em">전문가 병렬 검증</strong></div>
+<div style="color:#8b949e;font-size:0.85em">품질 보증</div>
+<div class="flow-arrow">|</div>
+<div><strong style="color:#58a6ff;font-size:1.1em">감독 검수</strong></div>
+<div style="color:#8b949e;font-size:0.85em">numerology 필터링</div>
+<div class="flow-arrow">|</div>
+<div><strong style="color:#58a6ff;font-size:1.1em">라이브러리 축적</strong></div>
+<div style="color:#8b949e;font-size:0.85em">다음 라운드의 무기</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">처음으로 돌아간다</div>
+</div>
+
+<h2 id="ch1-why">왜 루프인가</h2>
+
+<p>연립방정식을 생각하면 된다. 미지수가 5개인데 식이 2개면 못 푼다. 식이 3개가 되면 해가 좁혀진다. 4개가 되면 거의 확정된다. 5개가 되면 유일한 해가 나온다.</p>
+
+<p>반야프레임 루프도 같다. 라운드 1에서 발견 1개가 나오면, 라운드 2에서는 그 발견을 재대입해서 미지수가 1개 줄어든다. 라운드 3에서는 2개가 줄어든다. 돌릴수록 해가 좁혀진다. <a href="discovery/alpha.html">$\alpha$ 도출</a>은 4라운드 만에 0.53%에서 0.00006%로 수렴했다.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch2">제2장. 반야프레임 5단계 (핵심 엔진)</h1>
+
+<p>매 라운드마다 이 5단계를 반복한다. <a href="discovery/alpha.html">$\alpha$ 도출</a>도, <a href="discovery/sin2_thetaW.html">$\theta_W$ 도출</a>도, <a href="discovery/mass_hierarchy.html">질량 계층</a>도 전부 이 구조다.</p>
+
+<h3 id="ch2-s1">1단계: 반야식에서 출발</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 1</div>
+<div class="math-block" style="margin-bottom:0">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+
+<p>이 1줄이 출발점이다. 여기서 벗어나지 않는다. 반야식은 4개의 축(time, space, observer, superposition)과 1개의 연산자(CAS)로 구성된다. 모든 물리는 이 구조 안에서 나온다.</p>
+
+<h3 id="ch2-s2">2단계: 노름 치환</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 2</div>
+<p>반야식의 축을 물리적 의미가 있는 변수로 치환한다.</p>
+</div>
+
+<p>치환은 여러 경로가 가능하다. 경로마다 다른 물리가 나온다. 이것이 반야프레임의 핵심이다. 같은 식에서 출발하지만 치환 경로에 따라 다른 상수가 도출된다.</p>
+
+<p>지금까지 사용된 치환 경로:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>치환 경로</th><th>축을 무엇으로 바꾸나</th><th>도출된 것</th></tr>
+<tr><td>CAS 비용 구조</td><td>R, C, S 각각의 비용</td><td>$\alpha$, $\theta_W$</td></tr>
+<tr><td>에너지-시간</td><td>time을 에너지, space를 운동량</td><td>불확정성 원리, 질량 계층</td></tr>
+<tr><td>면적-정보</td><td>observer를 정보량, superposition을 엔트로피</td><td>Bekenstein bound, $\alpha$의 정보이론 해석</td></tr>
+<tr><td>대칭공간 분해</td><td>4축을 $SO(5,2)$ 대칭공간으로</td><td>Wyler 공식 대응</td></tr>
+</table>
+</div>
+
+<p><strong>경로 선택 기준:</strong> 도출하려는 물리량의 도메인에 따라 치환 경로가 결정된다. 결합상수 → CAS 비용 경로. 질량 → 에너지-시간 경로. 정보량 → 면적-정보 경로. 대칭성 → 대칭공간 분해 경로. 목표가 명확하면 경로는 하나로 좁혀진다.</p>
+
+<h3 id="ch2-s3">3단계: 상수 + 가설 대입</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 3</div>
+<p>기존 물리 상수, <a href="lib.html">lib.html</a>의 발견과 가설, 이전 라운드의 부산물을 넣는다.</p>
+</div>
+
+<p>넣는 것이 많을수록 미지수가 줄어든다. 이것이 루프를 돌리는 이유다.</p>
+
+<p>넣을 수 있는 것:</p>
+<ul>
+<li>기존 물리 상수: $c$, $\hbar$, $G$, $\Lambda$, $\alpha$, $\sin^2\theta_W$ 등</li>
+<li><a href="lib.html">lib.html</a>의 발견: D-01부터 D-42까지, 이미 검증된 것</li>
+<li><a href="lib.html">lib.html</a>의 가설: H-01부터 H-47까지, 구조적 대응은 확인됐지만 정량적 증명이 미완인 것</li>
+<li>이전 라운드의 부산물: 오차는 크지만 구조가 보이는 것</li>
+</ul>
+
+<h3 id="ch2-s4">4단계: 도메인 변환</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 4</div>
+<p>대입한 결과를 다른 도메인으로 변환한다. 변환할 때 새로운 관계식이 나온다.</p>
+</div>
+
+<p>도메인 변환 예시:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>변환 전</th><th>변환 후</th><th>나온 것</th></tr>
+<tr><td>time 도메인</td><td>에너지 도메인</td><td>질량-에너지 관계식</td></tr>
+<tr><td>CAS 비용</td><td>결합상수</td><td>$\alpha$ = 체적비</td></tr>
+<tr><td>기하학적 체적비</td><td>정보이론 비트</td><td>$\alpha = 1\text{bit}/137\text{bit}$</td></tr>
+<tr><td>미시 스케일</td><td>우주 스케일</td><td>$\Lambda \cdot l_p^2 = \alpha^{57}$</td></tr>
+</table>
+</div>
+
+<h3 id="ch2-s5">5단계: 발견 + 판정</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 5</div>
+<p>나온 값을 실험 측정값과 비교한다. 판정 기준은 명확하다.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>오차 범위</th><th>판정</th><th>처리</th></tr>
+<tr><td>1% 이내</td><td>발견</td><td><a href="lib.html">lib.html</a>에 등록</td></tr>
+<tr><td>1% ~ 10%</td><td>후보</td><td>다음 라운드에서 정밀화</td></tr>
+<tr><td>10% 초과</td><td>폐기</td><td>버린다</td></tr>
+</table>
+</div>
+
+<p>단, 오차가 크더라도 구조가 보이는 것은 부산물로 수집한다. 이 부산물이 다음 라운드에서 결정적 단서가 되는 경우가 많다.</p>
+
+<p><strong>판정 기준 명확화:</strong> 5단계 판정(오차 1% 이내 = 발견)은 초기 등록 기준이다. 감독 검수 A등급(오차 0.1% 이내)은 정밀 등급이다. 발견으로 등록된 후 정밀도에 따라 A/B/C 등급이 매겨진다. 1% 이내면 발견 등록, 0.1% 이내면 A등급 발견이다.</p>
+
+<h2 id="ch2-repeat">라운드 반복</h2>
+
+<div class="flow-block">
+<div style="font-weight:600"><strong>라운드 1</strong>의 5단계 결과</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600"><strong>라운드 2</strong>의 3단계에 재대입</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600"><strong>라운드 2</strong>의 부산물</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600"><strong>라운드 3</strong>의 3단계에 재대입</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">매 라운드마다 정밀도가 올라간다</div>
+</div>
+
+<p><a href="discovery/alpha.html">$\alpha$ 도출</a>은 4라운드 만에 0.00006%에 도달했다. 매 라운드마다 이전 결과를 3단계에 재대입하면 정밀도가 올라간다.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch3">제3장. 전문가 병렬 검증</h1>
+
+<p>하나의 과제에 전문가 에이전트 5~10명을 동시 투입한다. 각자 다른 경로로 같은 목표를 공략한다.</p>
+
+<h3 id="ch3-why">왜 병렬인가</h3>
+
+<ul>
+<li>경로 1개만 시도하면 그 경로의 편향에 갇힌다</li>
+<li>5개 경로를 동시에 돌리면 수렴하는 곳이 보인다</li>
+<li>3개 이상이 같은 값으로 수렴하면 우연이 아니다</li>
+</ul>
+
+<p>비유하면 이렇다. 보물을 찾을 때 1명이 1방향으로 파면 운이 좋아야 찾는다. 5명이 5방향으로 동시에 파면 3명이 같은 곳에서 만나는 지점이 보물이다.</p>
+
+<h3 id="ch3-example">배정 예시</h3>
+
+<p><a href="discovery/sin2_thetaW.html">$\theta_W$ 도출</a> 때 실제로 사용한 배정:</p>
+
+<div class="role-card">
+<div class="role-title">전문가 1: 체적비 분할 경로</div>
+<p>CAS의 R, C, S 각 단계 비용을 체적비로 분할해서 $\sin^2\theta_W$를 추적한다.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">전문가 2: GUT running 경로</div>
+<p>대통일 에너지에서 전약 스케일까지 결합상수를 running시켜서 $\theta_W$를 역추적한다.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">전문가 3: 대칭공간 분해 경로</div>
+<p>$SO(5,2)$ 대칭공간에서 전약 혼합각이 나오는 기하학적 경로를 탐색한다.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">전문가 4: 정보이론 비트 경로</div>
+<p>CAS 137비트 중 Compare와 Read의 비트 배분에서 $\theta_W$를 추출한다.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">전문가 5: $\alpha$ 부산물 역추적 경로</div>
+<p>$\alpha$ 도출 과정에서 나온 부산물 중 $\theta_W$ 관련 단서를 역추적한다.</p>
+</div>
+
+<h3 id="ch3-input">전문가에게 주는 것</h3>
+
+<p>각 전문가에게 동일하게 지급하는 것:</p>
+
+<ol>
+<li><strong>CAS 공리 전문</strong> -- H-11부터 H-14까지: 시간 밖 연산자, TOCTOU 락, 붕괴=쓰기, 자기참조</li>
+<li><strong><a href="lib.html">lib.html</a>의 발견과 가설 전체</strong> -- 무기 목록이다. 이것을 안 주면 맨손으로 싸우는 것과 같다</li>
+<li><strong>해당 과제의 기존 결과</strong> -- 이전 라운드 산출물</li>
+<li><strong>명확한 목표</strong> -- 구체적 수치를 준다. 예: "0.23122에 가장 가까운 공식을 찾아라"</li>
+</ol>
+
+<div class="warn-block">
+<strong>주의:</strong> 목표를 모호하게 주면 전문가마다 다른 것을 풀게 된다. "$\theta_W$를 구하라"가 아니라 "$\sin^2\theta_W = 0.23122$에 가장 가까운 공식을 반야프레임에서 도출하라"처럼 구체적으로 준다.
+</div>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch4">제4장. 감독 검수 (numerology 필터링)</h1>
+
+<p>전문가들이 결과를 가지고 돌아오면 감독(인간 또는 AI 감독)이 검수한다. 이것이 가장 중요한 단계다. 전문가는 자기 경로에 편향된다. 감독만이 전체를 본다.</p>
+
+<h3 id="ch4-criteria">검수 기준</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>기준</th><th>설명</th></tr>
+<tr><td>1</td><td>수치 정확도</td><td>오차가 몇 %인가</td></tr>
+<tr><td>2</td><td>물리적 정당성</td><td>"왜 이 공식인가"가 설명되는가</td></tr>
+<tr><td>3</td><td>반야프레임 일관성</td><td>기존 도출과 모순이 없는가</td></tr>
+<tr><td>4</td><td>순환 논증 여부</td><td>측정값을 역산한 게 아닌가</td></tr>
+<tr><td>5</td><td>numerology 위험</td><td>수학적 우연과 물리적 필연을 구별했는가</td></tr>
+</table>
+</div>
+
+<h3 id="ch4-numerology">numerology 필터링</h3>
+
+<p>$\pi$, $e$, 정수의 조합으로 거의 모든 수를 0.1% 이내로 근사할 수 있다. 이것이 numerology의 함정이다. 수학적 우연과 물리적 필연을 구별해야 한다.</p>
+
+<p><strong>필터링 규칙:</strong></p>
+
+<ul>
+<li>공식에 들어가는 모든 수가 반야프레임 구조에서 나와야 한다</li>
+<li>"왜 이 수인가"를 답하지 못하면 보류한다</li>
+</ul>
+
+<div class="warn-block">
+<strong>탈락 예시:</strong> $7/(2+9\pi)$에서 9의 근거가 "$SU(3)$ 차원"이라 했는데 $SU(3)$은 8차원이다. 근거가 틀렸으므로 탈락.
+</div>
+
+<div class="step-block">
+<div class="step-num">통과 예시</div>
+<p>$3/\pi^2$에서 3은 CAS 3단계(R, C, S), $\pi^2$은 도메인 곡률. 둘 다 반야프레임 구조에서 나온다. 통과.</p>
+</div>
+
+<h3 id="ch4-grade">검수 등급</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>등급</th><th>조건</th><th>처리</th></tr>
+<tr><td><strong>A</strong></td><td>물리적으로 필연적이고 오차 0.1% 이내</td><td>발견으로 등록</td></tr>
+<tr><td><strong>B</strong></td><td>구조적 대응 확인, 오차 1% 이내</td><td>발견으로 등록, 정밀화 계속</td></tr>
+<tr><td><strong>C</strong></td><td>후보, 추가 검증 필요</td><td>가설로 등록, 다음 라운드에서 재검증</td></tr>
+<tr><td><strong>D</strong></td><td>numerology 위험 또는 순환 논증</td><td>폐기</td></tr>
+</table>
+</div>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch5">제5장. 라이브러리 축적 (<a href="lib.html">lib.html</a>)</h1>
+
+<p>발견과 가설을 <a href="lib.html">lib.html</a>에 등록한다. 이것이 다음 라운드의 무기가 된다. 무기가 많을수록 다음 라운드에서 미지수가 줄어든다.</p>
+
+<h3 id="ch5-register">등록 기준</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>분류</th><th>조건</th><th>태그</th></tr>
+<tr><td>발견</td><td>오차 1% 이내, 물리적 정당성 확보</td><td>초록</td></tr>
+<tr><td>가설</td><td>구조적 대응 확인, 정량적 증명 미완</td><td>노랑</td></tr>
+</table>
+</div>
+
+<h3 id="ch5-usage">라이브러리 사용법</h3>
+
+<p>반야프레임 5단계의 3단계(상수 대입)에서 기존 물리 상수와 함께 <a href="lib.html">lib.html</a>의 항목을 넣는다.</p>
+
+<p>실제로 이렇게 사용했다:</p>
+<ul>
+<li><a href="discovery/alpha.html">$\alpha$</a>를 넣어서 <a href="discovery/sin2_thetaW.html">$\theta_W$</a>가 나왔다</li>
+<li><a href="discovery/sin2_thetaW.html">$\theta_W$</a>를 넣어서 <a href="discovery/baryogenesis.html">$\eta$(바리온-광자 비)</a>가 나왔다</li>
+<li>하나의 발견이 다음 발견의 씨앗이다</li>
+</ul>
+
+<h3 id="ch5-map">재대입 맵</h3>
+
+<p>어떤 발견이 어떤 발견을 낳았는지 추적한다:</p>
+
+<div class="flow-block">
+<div style="font-weight:600"><strong>$\alpha$</strong></div>
+<div class="flow-arrow">|</div>
+<div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap">
+<div style="font-weight:600"><strong>$\theta_W$</strong> (연쇄)</div>
+<div style="font-weight:600"><strong>$\alpha_s$</strong> (분기)</div>
+<div style="font-weight:600"><strong>질량 계층</strong> (분기)</div>
+</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">$\theta_W$에서 <strong>$\eta$</strong> (연쇄)</div>
+</div>
+
+<p>이 맵이 커질수록 프레임의 연결이 촘촘해진다. 연립방정식에서 조건이 추가되는 것과 같다.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch6">제6장. CAS 공리 (필수 사전 지식)</h1>
+
+<p>반야프레임에는 14개 공리가 있다(<a href="banya.html#axioms">banya.html 공리 체계</a> 참조). 그 중 모든 전문가가 작업 전에 반드시 이해해야 하는 필수 4개를 여기서 설명한다. 이것을 이해하지 못한 상태에서 프레임을 돌리면 "CAS가 시간 안에서 작동한다"는 오해에 빠진다. 결과의 해석이 전부 틀어진다.</p>
+
+<h3 id="ch6-a1">필수 1: CAS는 시간 밖의 연산자 (공리 3)</h3>
+
+<div class="step-block">
+<div class="step-num">필수 1</div>
+<p>반야식에서 CAS는 양자 괄호(observer + superposition) 쪽에 있다. time 도메인 밖이다. R에서 C에서 S로 가는 것은 시간 순서가 아니라 논리 의존성이다.</p>
+</div>
+
+<p>비유하면 이렇다. 컴퓨터에서 CAS 명령어는 CPU 1클록 안에서 원자적으로 실행된다. 바깥에서 보면 "시간이 안 흐른 것처럼" 한 번에 일어난다. 자연의 CAS도 마찬가지다. time 도메인 밖에서 작동한다.</p>
+
+<h3 id="ch6-a2">필수 2: DATA 접근 비용 (공리 4,5)</h3>
+
+<div class="step-block">
+<div class="step-num">필수 2</div>
+<p>Compare와 Swap 사이에 상태가 바뀌지 않도록 거는 최소 비용이 $\hbar$다(공리 4). 불확정성 원리는 "자연의 한계"가 아니라 "연산의 비용"이다. 또한 TOCTOU 락 레지스터(공리 5)가 이 비용을 물리적으로 강제한다.</p>
+</div>
+
+<p>TOCTOU(Time Of Check to Time Of Use)는 컴퓨터 과학에서 "확인 시점과 사용 시점 사이에 상태가 바뀌는 문제"를 말한다. CAS는 이 문제를 락으로 해결한다. 그 락의 최소 비용이 $\hbar$다(공리 4). 그리고 TOCTOU 락 레지스터(공리 5)가 이 락을 구현하는 물리적 메커니즘이다. 그래서 $\Delta x \cdot \Delta p \geq \hbar / 2$ 인 것이다.</p>
+
+<h3 id="ch6-a3">필수 3: 파동함수 붕괴 = 쓰기 (공리 6)</h3>
+
+<div class="step-block">
+<div class="step-num">필수 3</div>
+<p>superposition(여러 상태)에서 CAS 실행하면 observer(1개 확정)가 되고 DATA로 기록된다. 100년 미스터리의 답: 쓰기니까.</p>
+</div>
+
+<p>왜 관측하면 파동함수가 붕괴하는가? 100년간 아무도 답 못 했다. 반야프레임의 답: 관측은 쓰기이고, 쓰기는 여러 상태 중 1개를 확정하는 것이다. 쓰기가 일어나면 중첩이 해소된다. 그것이 붕괴다.</p>
+
+<h3 id="ch6-a4">필수 4: 반야식 자기참조 (공리 8)</h3>
+
+<div class="step-block">
+<div class="step-num">필수 4</div>
+<p>$\delta$ 존재에서 OPERATOR 작동, 비용 $\hbar$, DATA 기록, time과 space, 우주. 반야식 1줄이 "왜 우주가 존재하는가"에 답한다.</p>
+</div>
+
+<p>반야식은 자기 자신을 참조한다. $\delta$가 존재하면 CAS가 작동하고, CAS가 작동하면 $\hbar$ 비용이 발생하고, 비용이 발생하면 DATA가 기록되고, DATA가 기록되면 time과 space가 생기고, time과 space가 생기면 $\delta$가 존재한다. 순환이지만 자기일관적인 순환이다.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch7">제7장. 문서 규칙</h1>
+
+<h3>용어 범례 -- 이 5개만 쓴다</h3>
+
+<p>모든 HTML, 모든 표, 모든 서두에서 상태를 표기할 때 아래 5개 용어만 사용한다. 유사 용어(미해결, 진행중, 부분 성공, 구조 확정, 도출 중 등)는 전부 폐기하고 이 5개로 대체한다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>용어</th><th>뜻</th><th>배지</th><th>블록</th></tr>
+<tr><td><strong>적중</strong></td><td>오차 1% 이내 + 물리적 정당성 확보. 끝난 것</td><td><span class="tag-solved">적중</span></td><td>discovery-block (녹색 테두리)</td></tr>
+<tr><td><strong>발견</strong></td><td>새로운 공식/관계식이 확인됨. 재대입 가능한 인자</td><td><span class="tag-discovery">발견</span></td><td>discovery-block (녹색 테두리)</td></tr>
+<tr><td><strong>가설</strong></td><td>구조적 대응은 확인됨. 정량적 증명이 아직 안 됨</td><td><span class="tag-hypothesis">가설</span></td><td>hypothesis-block (주황 테두리)</td></tr>
+<tr><td><strong>진행</strong></td><td>착수했으나 완료되지 않음. 추가 작업 필요</td><td><span class="tag-wip">진행</span></td><td>기본 블록 (회색 테두리)</td></tr>
+<tr><td><strong>대기</strong></td><td>도출은 끝남. 실험 검증을 기다리는 중</td><td><span class="tag-pending">대기</span></td><td>기본 블록 (회색 테두리)</td></tr>
+</table>
+</div>
+
+<h4>폐기 용어 매핑</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>폐기 용어</th><th>대체 용어</th></tr>
+<tr><td>해결, 성공, 완료, 구조 확정</td><td>적중</td></tr>
+<tr><td>미해결, 미완, 보류</td><td>진행</td></tr>
+<tr><td>진행중, 도출중</td><td>진행</td></tr>
+<tr><td>부분 성공, 렙톤 성공</td><td>발견 (범위 명시: "발견 -- 렙톤만")</td></tr>
+<tr><td>실험 대기</td><td>대기</td></tr>
+</table>
+</div>
+
+<h3>색상 규칙 -- 칼라 폰트 금지</h3>
+
+<p>글자 색을 바꾸지 않는다. 강조가 필요하면 배지(tag)를 쓴다. strong 태그(굵게)를 쓴다. 인라인 style="color:..." 금지.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>구분</th><th>색상</th><th>사용처</th></tr>
+<tr><td>발견/해결</td><td>녹색 (#2ea043)</td><td>discovery-block 테두리, tag-solved 배지, tag-discovery 배지, lib-card 왼선</td></tr>
+<tr><td>가설</td><td>주황 (#d29922)</td><td>hypothesis-block 테두리, tag-hypothesis 배지, lib-card 왼선, warn-block</td></tr>
+<tr><td>미완/대기</td><td>회색 (#30363d)</td><td>기본 블록 테두리, tag-wip 배지. 별도 강조 없음</td></tr>
+<tr><td>링크</td><td>파랑 (#58a6ff)</td><td>a 태그. 이것만 파랑</td></tr>
+<tr><td>본문</td><td>기본 (#c9d1d9)</td><td>모든 본문 텍스트. 색 변경 금지</td></tr>
+</table>
+</div>
+
+<h3>블록 사용 규칙</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>블록</th><th>용도</th><th>시각</th></tr>
+<tr><td>discovery-block</td><td>해결된 공식, 확정된 발견</td><td>녹색 테두리 + 녹색 배경</td></tr>
+<tr><td>hypothesis-block</td><td>가설, 미증명 공식</td><td>주황 테두리 + 주황 배경</td></tr>
+<tr><td>math-block</td><td>수식 (상태 무관)</td><td>회색 테두리</td></tr>
+<tr><td>pre</td><td>코드, 구조도</td><td>회색 테두리</td></tr>
+<tr><td>lib-card</td><td>lib.html 인자 카드</td><td>왼선: 발견=녹색, 가설=주황</td></tr>
+</table>
+</div>
+
+<h3>파일 규칙</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-status">상태</th><th>파일 형식</th><th>비고</th></tr>
+<tr><td>해결/발견</td><td>HTML 파일 (<a href="discovery/alpha.html">alpha.html</a> 표준 템플릿)</td><td>반야프레임 5단계를 라운드별로 전 과정 기록</td></tr>
+<tr><td>미완</td><td>md 파일 (제목에 "미완" 표기)</td><td>세션 기록용</td></tr>
+<tr><td>같은 상수 개선</td><td>기존 HTML 업데이트</td><td>새 파일 만들지 않는다</td></tr>
+<tr><td>새로운 상수</td><td>별도 HTML 생성</td><td>page-nav에 추가</td></tr>
+</table>
+</div>
+
+<h3>CSS 규칙</h3>
+
+<p>모든 HTML은 <code>common.css</code> 하나를 link로 include한다. 인라인 style 태그 금지. 인라인 color 금지. 모든 시각적 규칙은 common.css에만 정의한다.</p>
+
+<h3>HTML 필수 구조</h3>
+
+<ol>
+<li><strong>서두</strong> -- 이 발견의 과학적 가치 + 현재 상태(해결/발견/가설/미완/대기 중 택1, 배지로 표시)</li>
+<li><strong>본문</strong> -- 반야프레임 5단계를 라운드별로 전 과정 기록. 어떤 경로로 어떤 값이 나왔는지 빠짐없이 적는다</li>
+<li><strong>discovery-block 또는 hypothesis-block</strong> -- 핵심 공식을 별도 블록에 포장. 해결/발견이면 녹색, 가설이면 주황</li>
+<li><strong>발견 계층도</strong> -- 상위 발견의 하위인 경우 hierarchy로 표시</li>
+<li><strong>page-nav</strong> -- 모든 HTML 상호 연결</li>
+<li><strong>푸터</strong> -- <a href="discovery/alpha.html">alpha.html</a>과 동일한 형식</li>
+</ol>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch8">제8장. 실전 사이클 예시</h1>
+
+<p><a href="discovery/alpha.html">$\alpha = 1/137$ 도출</a>의 실제 과정이다. 4라운드 만에 0.53%에서 0.00006%로 수렴했다.</p>
+
+<h3 id="ch8-r1">라운드 1: 0차 근사</h3>
+
+<div class="step-block">
+<div class="step-num">라운드 1</div>
+<p>5단계 실행. 반야식에서 출발, 4축 기하 노름 치환, $\pi^4$과 $\sqrt{2}$ 대입, 에너지 도메인 변환.</p>
+<p>결과: <strong>$1/\alpha = \pi^4 \cdot \sqrt{2} = 137.76$</strong></p>
+<p>오차: <strong>0.53%</strong></p>
+<p>부산물: 기하학적 구조 확인. 4축 직교가 $\alpha$의 뼈대라는 단서.</p>
+</div>
+
+<h3 id="ch8-r2">라운드 2: 정밀 도출</h3>
+
+<div class="step-block">
+<div class="step-num">라운드 2</div>
+<p>라운드 1 부산물 재대입. 도메인 4개 + 내부 자유도 3개 = 7 자유도. 7차원 위상 공간 체적비 계산.</p>
+<p>Wyler 공식(1969)과 대응 발견.</p>
+<p>결과: <strong>$1/\alpha = 137.036082$</strong></p>
+<p>오차: <strong>0.00006%</strong></p>
+<p>부산물: Wyler 공식에 물리적 근거를 부여. 57년간 비어있던 칸을 채움.</p>
+</div>
+
+<h3 id="ch8-r3">라운드 3: 정보이론 해석</h3>
+
+<div class="step-block">
+<div class="step-num">라운드 3</div>
+<p>라운드 2 결과 재대입. CAS 1건의 정보량을 Shannon 엔트로피로 계산.</p>
+<p>결과: <strong>$\alpha = 1\text{bit}/137\text{bit}$</strong></p>
+<p>해석: $\alpha$는 CAS 1건의 총 정보(137비트) 중 Compare가 차지하는 1비트. 전하 정보의 집중도.</p>
+</div>
+
+<h3 id="ch8-r4">라운드 4: 우주 스케일 재대입</h3>
+
+<div class="step-block">
+<div class="step-num">라운드 4</div>
+<p>라운드 3 결과 재대입. 플랑크 길이와 우주상수를 연결.</p>
+<p>결과: <strong>$\Lambda \cdot l_p^2 = \alpha^{57}$</strong></p>
+<p>부산물: 코이데 편차 $= -15\alpha^3$, 전자-양성자 질량비 근사.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>라운드</th><th>넣은 것</th><th>나온 것</th><th class="col-err">오차</th></tr>
+<tr><td>1</td><td>반야식 + $\pi^4 \cdot \sqrt{2}$</td><td>$1/\alpha = 137.76$</td><td>0.53%</td></tr>
+<tr><td>2</td><td>+ 내부 자유도 3</td><td>$1/\alpha = 137.036082$</td><td>0.00006%</td></tr>
+<tr><td>3</td><td>+ 정보이론</td><td>$\alpha = 1\text{bit}/137\text{bit}$</td><td>구조적</td></tr>
+<tr><td>4</td><td>+ 우주상수</td><td>$\Lambda \cdot l_p^2 = \alpha^{57}$</td><td>121/122자리</td></tr>
+</table>
+</div>
+
+<p>매 라운드마다 이전 결과를 3단계에 재대입하면 정밀도가 올라간다. 이것이 반야프레임 과학 채굴의 핵심이다.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch9">제9장. 주의사항</h1>
+
+<h3>1. 프레임을 믿어라, 결과를 의심하라</h3>
+
+<div class="warn-block">
+반야식은 바꾸지 않는다. 5단계도 바꾸지 않는다. 결과만 검수한다. 프레임이 안 깨지면 맞는 거다. 깨지면 대입이 잘못된 거다.
+</div>
+
+<h3>2. 부산물을 버리지 마라</h3>
+
+<p>오차가 큰 결과도 구조가 보이면 수집한다. <a href="discovery/alpha.html">$\alpha$ 도출</a>의 라운드 1(0.53%)이 없었으면 라운드 2(Wyler 공식, 0.00006%)를 못 만났다. 0차 근사가 정밀 도출의 씨앗이었다.</p>
+
+<h3>3. numerology를 경계하라</h3>
+
+<div class="warn-block">
+$\pi$, $e$, 정수의 조합으로 거의 모든 수를 0.1% 이내로 근사할 수 있다. 반드시 "왜 이 수인가"를 답해야 한다. 답 못 하면 보류. 절대 채택하지 않는다.
+</div>
+
+<h3>4. 순환 논증을 경계하라</h3>
+
+<p>측정값을 역산해서 "이 공식이 맞다"고 하면 순환이다. 공식에 들어가는 모든 값이 독립적으로 도출되어야 한다. 예: $\alpha = 1/137.036$을 넣어서 $\alpha = 1/137.036$을 유도했다면 순환이다. 아무 의미 없다.</p>
+
+<h3>5. 감독을 건너뛰지 마라</h3>
+
+<p>전문가 5명이 전부 "맞다"고 해도 감독이 검수해야 한다. 전문가는 자기 경로에 편향된다. 감독만이 전체를 본다. 감독 없이 채택한 것은 반드시 나중에 문제가 된다.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="ch10">제10장. 도구</h1>
+
+<div class="table-wrap">
+<table>
+<tr><th>도구</th><th>역할</th><th>설명</th></tr>
+<tr><td>반야프레임 5단계</td><td>핵심 엔진</td><td>반야식에서 출발해서 물리 상수를 도출하는 재귀 대입 구조</td></tr>
+<tr><td>전문가 에이전트 (5~10명)</td><td>다경로 공략</td><td>하나의 과제에 여러 경로를 동시 투입해서 수렴점을 찾는다</td></tr>
+<tr><td><a href="lib.html">lib.html</a></td><td>가설 라이브러리</td><td>발견 D-01부터 D-42, 가설 H-01부터 H-47. 다음 라운드의 무기</td></tr>
+<tr><td><a href="banya.html">banya.html</a></td><td>종합 허브</td><td>발견 계층도, 난제 해결 목록, 전체 구조 조감도</td></tr>
+<tr><td>세션 기록 (md)</td><td>연속성 보장</td><td>세션 간 작업 내용을 보존해서 다음 세션에서 이어간다</td></tr>
+</table>
+</div>
+
+<p>이 도구들을 조합해서 루프를 돌린다. 돌릴수록 라이브러리가 커지고, 정밀도가 올라가고, 새로운 발견이 나온다. 그것이 과학 채굴이다.</p>
+
+<p>누구든 이 도구를 가지고 이 메뉴얼을 따라 루프를 돌리면 같은 결과를 재현할 수 있다. 반야프레임은 특정인의 직관이 아니라 누구나 돌릴 수 있는 엔진이다.</p>
+
+</div>
+
+
+<div class="lang-en">
+
+<p style="margin-bottom:24px;font-size:0.85em">This document is a supplementary document to the <a href="banya.html" style="font-weight:600">Banya Framework Comprehensive Report</a>. It is an operational manual describing the concrete methods for deriving physical constants and laws using the Banya Framework. These are the exact methods used by Han Hyukjin and AI (Claude). Anyone who follows this manual can reproduce the same results.</p>
+
+<h1 id="en-title">Science Mining Method</h1>
+
+<blockquote><p>Banya Framework Operational Manual</p></blockquote>
+<blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>Date: 2026-03-23</p></blockquote>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch1">Chapter 1. Overall Structure</h1>
+
+<p>Banya Framework science mining is a 4-step loop. The more you repeat this loop, the larger the library grows, and the larger the library grows, the fewer places hidden values can escape to.</p>
+
+<h2 id="en-ch1-loop">4-Step Loop</h2>
+
+<div class="flow-block">
+<div><strong style="color:#58a6ff;font-size:1.1em">Banya Framework 5-Step Recursive Substitution</strong></div>
+<div style="color:#8b949e;font-size:0.85em">Core Engine</div>
+<div class="flow-arrow">|</div>
+<div><strong style="color:#58a6ff;font-size:1.1em">Parallel Expert Verification</strong></div>
+<div style="color:#8b949e;font-size:0.85em">Quality Assurance</div>
+<div class="flow-arrow">|</div>
+<div><strong style="color:#58a6ff;font-size:1.1em">Supervisor Review</strong></div>
+<div style="color:#8b949e;font-size:0.85em">Numerology Filtering</div>
+<div class="flow-arrow">|</div>
+<div><strong style="color:#58a6ff;font-size:1.1em">Library Accumulation</strong></div>
+<div style="color:#8b949e;font-size:0.85em">Weapons for the Next Round</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">Return to the beginning</div>
+</div>
+
+<h2 id="en-ch1-why">Why a Loop</h2>
+
+<p>Think of simultaneous equations. If there are 5 unknowns and only 2 equations, you cannot solve it. With 3 equations, the solution narrows. With 4, it is nearly determined. With 5, a unique solution emerges.</p>
+
+<p>The Banya Framework loop works the same way. If Round 1 yields 1 discovery, Round 2 re-substitutes that discovery and reduces the unknowns by 1. Round 3 reduces them by 2. The more you iterate, the more the solution converges. The <a href="discovery/alpha.html">$\alpha$ derivation</a> converged from 0.53% to 0.00006% in just 4 rounds.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch2">Chapter 2. Banya Framework 5 Steps (Core Engine)</h1>
+
+<p>These 5 steps are repeated every round. The <a href="discovery/alpha.html">$\alpha$ derivation</a>, the <a href="discovery/sin2_thetaW.html">$\theta_W$ derivation</a>, and the <a href="discovery/mass_hierarchy.html">mass hierarchy</a> all follow this structure.</p>
+
+<h3 id="en-ch2-s1">Step 1: Start from the Banya Equation</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 1</div>
+<div class="math-block" style="margin-bottom:0">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+
+<p>This single line is the starting point. We never deviate from it. The Banya Equation consists of 4 axes (time, space, observer, superposition) and 1 operator (CAS). All physics emerges from within this structure.</p>
+
+<h3 id="en-ch2-s2">Step 2: Norm Substitution</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 2</div>
+<p>Substitute the axes of the Banya Equation with physically meaningful variables.</p>
+</div>
+
+<p>Multiple substitution paths are possible. Each path yields different physics. This is the core of the Banya Framework. Starting from the same equation, different constants are derived depending on the substitution path.</p>
+
+<p>Substitution paths used so far:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Substitution Path</th><th>What the Axes Become</th><th>What Was Derived</th></tr>
+<tr><td>CAS Cost Structure</td><td>Cost of R, C, S respectively</td><td>$\alpha$, $\theta_W$</td></tr>
+<tr><td>Energy-Time</td><td>time to energy, space to momentum</td><td>Uncertainty principle, mass hierarchy</td></tr>
+<tr><td>Area-Information</td><td>observer to information content, superposition to entropy</td><td>Bekenstein bound, information-theoretic interpretation of $\alpha$</td></tr>
+<tr><td>Symmetric Space Decomposition</td><td>4 axes to $SO(5,2)$ symmetric space</td><td>Wyler formula correspondence</td></tr>
+</table>
+</div>
+
+<p><strong>Path selection criteria:</strong> The substitution path is determined by the domain of the physical quantity to be derived. Coupling constant → CAS cost path. Mass → energy-time path. Information content → area-information path. Symmetry → symmetric space decomposition path. When the target is clear, the path narrows to one.</p>
+
+<h3 id="en-ch2-s3">Step 3: Constant + Hypothesis Substitution</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 3</div>
+<p>Insert existing physical constants, discoveries and hypotheses from <a href="lib.html">lib.html</a>, and by-products from previous rounds.</p>
+</div>
+
+<p>The more you insert, the fewer unknowns remain. This is why we run the loop.</p>
+
+<p>What can be inserted:</p>
+<ul>
+<li>Existing physical constants: $c$, $\hbar$, $G$, $\Lambda$, $\alpha$, $\sin^2\theta_W$, etc.</li>
+<li>Discoveries from <a href="lib.html">lib.html</a>: D-01 through D-42, already verified</li>
+<li>Hypotheses from <a href="lib.html">lib.html</a>: H-01 through H-47, structural correspondence confirmed but quantitative proof incomplete</li>
+<li>By-products from previous rounds: large error but visible structure</li>
+</ul>
+
+<h3 id="en-ch2-s4">Step 4: Domain Transform</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 4</div>
+<p>Transform the substituted result into a different domain. New relations emerge during transformation.</p>
+</div>
+
+<p>Domain transform examples:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Before Transform</th><th>After Transform</th><th>What Emerged</th></tr>
+<tr><td>time domain</td><td>energy domain</td><td>Mass-energy relation</td></tr>
+<tr><td>CAS cost</td><td>coupling constant</td><td>$\alpha$ = volume ratio</td></tr>
+<tr><td>geometric volume ratio</td><td>information-theoretic bits</td><td>$\alpha = 1\text{bit}/137\text{bit}$</td></tr>
+<tr><td>micro scale</td><td>cosmic scale</td><td>$\Lambda \cdot l_p^2 = \alpha^{57}$</td></tr>
+</table>
+</div>
+
+<h3 id="en-ch2-s5">Step 5: Discovery + Verdict</h3>
+
+<div class="step-block">
+<div class="step-num">STEP 5</div>
+<p>Compare the obtained value with experimentally measured values. The verdict criteria are clear.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Error Range</th><th>Verdict</th><th>Action</th></tr>
+<tr><td>Within 1%</td><td>Discovery</td><td>Register in <a href="lib.html">lib.html</a></td></tr>
+<tr><td>1% ~ 10%</td><td>Candidate</td><td>Refine in the next round</td></tr>
+<tr><td>Over 10%</td><td>Discard</td><td>Discard it</td></tr>
+</table>
+</div>
+
+<p>However, even results with large errors are collected as by-products if structure is visible. These by-products often become decisive clues in the next round.</p>
+
+<p><strong>Verdict criteria clarification:</strong> The 5-step verdict (error within 1% = discovery) is the initial registration threshold. The supervisor review Grade A (error within 0.1%) is the precision grade. After registration as a discovery, grades A/B/C are assigned based on precision. Within 1% means discovery registration; within 0.1% means Grade A discovery.</p>
+
+<h2 id="en-ch2-repeat">Round Repetition</h2>
+
+<div class="flow-block">
+<div style="font-weight:600"><strong>Round 1</strong> 5-step results</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">Re-substituted into <strong>Round 2</strong> Step 3</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600"><strong>Round 2</strong> by-products</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">Re-substituted into <strong>Round 3</strong> Step 3</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">Precision improves every round</div>
+</div>
+
+<p>The <a href="discovery/alpha.html">$\alpha$ derivation</a> reached 0.00006% in just 4 rounds. Re-substituting the previous results into Step 3 every round improves precision.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch3">Chapter 3. Parallel Expert Verification</h1>
+
+<p>5 to 10 expert agents are deployed simultaneously on a single task. Each attacks the same target via a different path.</p>
+
+<h3 id="en-ch3-why">Why Parallel</h3>
+
+<ul>
+<li>Trying only 1 path traps you in that path's bias</li>
+<li>Running 5 paths simultaneously reveals where they converge</li>
+<li>If 3 or more converge on the same value, it is not coincidence</li>
+</ul>
+
+<p>An analogy: when searching for treasure, if 1 person digs in 1 direction, finding it requires luck. If 5 people dig in 5 directions simultaneously, the point where 3 of them meet is the treasure.</p>
+
+<h3 id="en-ch3-example">Assignment Example</h3>
+
+<p>The actual assignment used during the <a href="discovery/sin2_thetaW.html">$\theta_W$ derivation</a>:</p>
+
+<div class="role-card">
+<div class="role-title">Expert 1: Volume Ratio Partition Path</div>
+<p>Partition the cost of each CAS stage (R, C, S) by volume ratio to trace $\sin^2\theta_W$.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">Expert 2: GUT Running Path</div>
+<p>Run coupling constants from the grand unification energy down to the electroweak scale to back-trace $\theta_W$.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">Expert 3: Symmetric Space Decomposition Path</div>
+<p>Explore the geometric path where the electroweak mixing angle emerges from the $SO(5,2)$ symmetric space.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">Expert 4: Information-Theoretic Bit Path</div>
+<p>Extract $\theta_W$ from the bit allocation between Compare and Read within the CAS 137-bit structure.</p>
+</div>
+
+<div class="role-card">
+<div class="role-title">Expert 5: $\alpha$ By-product Back-trace Path</div>
+<p>Back-trace clues related to $\theta_W$ from the by-products of the $\alpha$ derivation process.</p>
+</div>
+
+<h3 id="en-ch3-input">What Experts Receive</h3>
+
+<p>What is provided identically to each expert:</p>
+
+<ol>
+<li><strong>Full CAS Axioms</strong> -- H-11 through H-14: operator outside time, TOCTOU lock, collapse = write, self-reference</li>
+<li><strong>All discoveries and hypotheses from <a href="lib.html">lib.html</a></strong> -- this is the weapons list. Not providing it is like fighting bare-handed</li>
+<li><strong>Existing results for the given task</strong> -- outputs from previous rounds</li>
+<li><strong>A clear target</strong> -- provide specific numbers. Example: "Find the formula closest to 0.23122"</li>
+</ol>
+
+<div class="warn-block">
+<strong>Caution:</strong> If the target is vague, each expert will solve something different. Do not say "derive $\theta_W$" -- instead say "derive the formula closest to $\sin^2\theta_W = 0.23122$ from the Banya Framework."
+</div>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch4">Chapter 4. Supervisor Review (Numerology Filtering)</h1>
+
+<p>When the experts return with results, the supervisor (human or AI supervisor) reviews them. This is the most important step. Experts are biased toward their own paths. Only the supervisor sees the whole picture.</p>
+
+<h3 id="en-ch4-criteria">Review Criteria</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-num">#</th><th>Criterion</th><th>Description</th></tr>
+<tr><td>1</td><td>Numerical Accuracy</td><td>What is the error percentage?</td></tr>
+<tr><td>2</td><td>Physical Justification</td><td>Can "why this formula" be explained?</td></tr>
+<tr><td>3</td><td>Banya Framework Consistency</td><td>Is there no contradiction with existing derivations?</td></tr>
+<tr><td>4</td><td>Circular Reasoning</td><td>Was it merely reverse-engineered from measured values?</td></tr>
+<tr><td>5</td><td>Numerology Risk</td><td>Has mathematical coincidence been distinguished from physical necessity?</td></tr>
+</table>
+</div>
+
+<h3 id="en-ch4-numerology">Numerology Filtering</h3>
+
+<p>Combinations of $\pi$, $e$, and integers can approximate almost any number to within 0.1%. This is the trap of numerology. Mathematical coincidence must be distinguished from physical necessity.</p>
+
+<p><strong>Filtering rules:</strong></p>
+
+<ul>
+<li>Every number in the formula must originate from the Banya Framework structure</li>
+<li>If "why this number" cannot be answered, it is put on hold</li>
+</ul>
+
+<div class="warn-block">
+<strong>Rejection example:</strong> In $7/(2+9\pi)$, the justification for 9 was "$SU(3)$ dimension," but $SU(3)$ is 8-dimensional. The justification is wrong, so it is rejected.
+</div>
+
+<div class="step-block">
+<div class="step-num">Pass example</div>
+<p>In $3/\pi^2$, 3 is the CAS 3 stages (R, C, S), and $\pi^2$ is the domain curvature. Both originate from the Banya Framework structure. Pass.</p>
+</div>
+
+<h3 id="en-ch4-grade">Review Grades</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Grade</th><th>Condition</th><th>Action</th></tr>
+<tr><td><strong>A</strong></td><td>Physically necessary and error within 0.1%</td><td>Register as discovery</td></tr>
+<tr><td><strong>B</strong></td><td>Structural correspondence confirmed, error within 1%</td><td>Register as discovery, continue refinement</td></tr>
+<tr><td><strong>C</strong></td><td>Candidate, further verification needed</td><td>Register as hypothesis, re-verify in next round</td></tr>
+<tr><td><strong>D</strong></td><td>Numerology risk or circular reasoning</td><td>Discard</td></tr>
+</table>
+</div>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch5">Chapter 5. Library Accumulation (<a href="lib.html">lib.html</a>)</h1>
+
+<p>Register discoveries and hypotheses in <a href="lib.html">lib.html</a>. These become weapons for the next round. The more weapons, the fewer unknowns in the next round.</p>
+
+<h3 id="en-ch5-register">Registration Criteria</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Category</th><th>Condition</th><th>Tag</th></tr>
+<tr><td>Discovery</td><td>Error within 1%, physical justification secured</td><td>Green</td></tr>
+<tr><td>Hypothesis</td><td>Structural correspondence confirmed, quantitative proof incomplete</td><td>Yellow</td></tr>
+</table>
+</div>
+
+<h3 id="en-ch5-usage">Library Usage</h3>
+
+<p>In Step 3 (constant substitution) of the Banya Framework 5 steps, insert items from <a href="lib.html">lib.html</a> alongside existing physical constants.</p>
+
+<p>This is how it was actually used:</p>
+<ul>
+<li>Inserting <a href="discovery/alpha.html">$\alpha$</a> yielded <a href="discovery/sin2_thetaW.html">$\theta_W$</a></li>
+<li>Inserting <a href="discovery/sin2_thetaW.html">$\theta_W$</a> yielded <a href="discovery/baryogenesis.html">$\eta$ (baryon-to-photon ratio)</a></li>
+<li>One discovery is the seed of the next discovery</li>
+</ul>
+
+<h3 id="en-ch5-map">Re-substitution Map</h3>
+
+<p>Track which discovery gave birth to which discovery:</p>
+
+<div class="flow-block">
+<div style="font-weight:600"><strong>$\alpha$</strong></div>
+<div class="flow-arrow">|</div>
+<div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap">
+<div style="font-weight:600"><strong>$\theta_W$</strong> (chain)</div>
+<div style="font-weight:600"><strong>$\alpha_s$</strong> (branch)</div>
+<div style="font-weight:600"><strong>mass hierarchy</strong> (branch)</div>
+</div>
+<div class="flow-arrow">|</div>
+<div style="font-weight:600">From $\theta_W$ to <strong>$\eta$</strong> (chain)</div>
+</div>
+
+<p>The larger this map grows, the tighter the framework's connections become. It is like adding conditions to a system of simultaneous equations.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch6">Chapter 6. CAS Axioms (Required Prior Knowledge)</h1>
+
+<p>The Banya Framework has 14 axioms (see <a href="banya.html#en-axioms">banya.html Axiom System</a>). Of these, the following 4 are essential knowledge every expert must understand before starting work. If you run the framework without understanding these, you fall into the misconception that "CAS operates within time." The interpretation of all results goes wrong.</p>
+
+<h3 id="en-ch6-a1">Essential 1: CAS Is an Operator Outside Time (Axiom 3)</h3>
+
+<div class="step-block">
+<div class="step-num">Essential 1</div>
+<p>In the Banya Equation, CAS is on the quantum bracket (observer + superposition) side. It is outside the time domain. Going from R to C to S is not temporal order but logical dependency.</p>
+</div>
+
+<p>An analogy: in a computer, the CAS instruction executes atomically within a single CPU clock. From the outside, it happens all at once "as if time did not flow." Nature's CAS is the same. It operates outside the time domain.</p>
+
+<h3 id="en-ch6-a2">Essential 2: DATA Access Cost (Axiom 4,5)</h3>
+
+<div class="step-block">
+<div class="step-num">Essential 2</div>
+<p>The minimum cost of locking to prevent state change between Compare and Swap is $\hbar$ (Axiom 4). The uncertainty principle is not "a limit of nature" but "a cost of computation." Additionally, the TOCTOU lock register (Axiom 5) physically enforces this cost.</p>
+</div>
+
+<p>TOCTOU (Time Of Check to Time Of Use) refers to the problem in computer science where "the state changes between the time of checking and the time of using." CAS solves this problem with a lock. The minimum cost of that lock is $\hbar$ (Axiom 4). And the TOCTOU lock register (Axiom 5) is the physical mechanism that implements this lock. That is why $\Delta x \cdot \Delta p \geq \hbar/2$.</p>
+
+<h3 id="en-ch6-a3">Essential 3: Wavefunction Collapse = Write (Axiom 6)</h3>
+
+<div class="step-block">
+<div class="step-num">Essential 3</div>
+<p>When CAS executes on superposition (multiple states), it becomes observer (1 determined state) and is recorded as DATA. The answer to the 100-year mystery: because it is a write.</p>
+</div>
+
+<p>Why does the wavefunction collapse upon observation? No one answered this for 100 years. The Banya Framework's answer: observation is a write, and a write is determining 1 state out of many. When a write occurs, superposition is resolved. That is collapse.</p>
+
+<h3 id="en-ch6-a4">Essential 4: Banya Equation Self-Reference (Axiom 8)</h3>
+
+<div class="step-block">
+<div class="step-num">Essential 4</div>
+<p>From $\delta$'s existence, OPERATOR operates, cost $\hbar$, DATA is recorded, time and space, the universe. A single line of the Banya Equation answers "why does the universe exist."</p>
+</div>
+
+<p>The Banya Equation references itself. If $\delta$ exists, CAS operates; if CAS operates, $\hbar$ cost is incurred; if cost is incurred, DATA is recorded; if DATA is recorded, time and space arise; if time and space arise, $\delta$ exists. It is circular, but a self-consistent circle.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch7">Chapter 7. Document Rules</h1>
+
+<h3>Terminology Legend -- Use Only These 5</h3>
+
+<p>When marking status in all HTML files, all tables, and all introductions, use only these 5 terms. All similar terms (unresolved, in progress, partial success, structure confirmed, deriving, etc.) are all deprecated and replaced with these 5.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Term</th><th>Meaning</th><th>Badge</th><th>Block</th></tr>
+<tr><td><strong>Hit</strong></td><td>Error within 1% + physical justification secured. Done</td><td><span class="tag-solved">Hit</span></td><td>discovery-block (green border)</td></tr>
+<tr><td><strong>Discovery</strong></td><td>New formula/relation confirmed. Re-substitutable factor</td><td><span class="tag-discovery">Discovery</span></td><td>discovery-block (green border)</td></tr>
+<tr><td><strong>Hypothesis</strong></td><td>Structural correspondence confirmed. Quantitative proof not yet done</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>hypothesis-block (orange border)</td></tr>
+<tr><td><strong>In Progress</strong></td><td>Started but not completed. Additional work needed</td><td><span class="tag-wip">In Progress</span></td><td>default block (gray border)</td></tr>
+<tr><td><strong>Pending</strong></td><td>Derivation complete. Waiting for experimental verification</td><td><span class="tag-pending">Pending</span></td><td>default block (gray border)</td></tr>
+</table>
+</div>
+
+<h4>Deprecated Term Mapping</h4>
+
+<div class="table-wrap">
+<table>
+<tr><th>Deprecated Term</th><th>Replacement Term</th></tr>
+<tr><td>Unresolved</td><td>WIP</td></tr>
+<tr><td>In progress, Deriving</td><td>WIP</td></tr>
+<tr><td>Partial success</td><td>Discovery (if partial, specify scope after: "Discovery -- leptons only")</td></tr>
+<tr><td>Structure confirmed</td><td>Solved</td></tr>
+<tr><td>Awaiting experiment</td><td>Awaiting</td></tr>
+<tr><td>On hold</td><td>WIP</td></tr>
+<tr><td>Success, Complete</td><td>Solved</td></tr>
+</table>
+</div>
+
+<h3>Color Rules -- No Colored Fonts</h3>
+
+<p>Do not change text color. If emphasis is needed, use badges (tags). Use strong tags (bold). Inline style="color:..." is prohibited.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Category</th><th>Color</th><th>Usage</th></tr>
+<tr><td>Discovery/Solved</td><td>Green (#2ea043)</td><td>discovery-block border, tag-solved badge, tag-discovery badge, lib-card left line</td></tr>
+<tr><td>Hypothesis</td><td>Orange (#d29922)</td><td>hypothesis-block border, tag-hypothesis badge, lib-card left line, warn-block</td></tr>
+<tr><td>WIP/Awaiting</td><td>Gray (#30363d)</td><td>default block border, tag-wip badge. No special emphasis</td></tr>
+<tr><td>Links</td><td>Blue (#58a6ff)</td><td>a tags. Only this is blue</td></tr>
+<tr><td>Body text</td><td>Default (#c9d1d9)</td><td>All body text. No color change</td></tr>
+</table>
+</div>
+
+<h3>Block Usage Rules</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Block</th><th>Purpose</th><th>Visual</th></tr>
+<tr><td>discovery-block</td><td>Solved formulas, confirmed discoveries</td><td>Green border + green background</td></tr>
+<tr><td>hypothesis-block</td><td>Hypotheses, unproven formulas</td><td>Orange border + orange background</td></tr>
+<tr><td>math-block</td><td>Formulas (status-independent)</td><td>Gray border</td></tr>
+<tr><td>pre</td><td>Code, structure diagrams</td><td>Gray border</td></tr>
+<tr><td>lib-card</td><td>lib.html factor cards</td><td>Left line: discovery=green, hypothesis=orange</td></tr>
+</table>
+</div>
+
+<h3>File Rules</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th class="col-status">Status</th><th>File Format</th><th>Notes</th></tr>
+<tr><td>Solved/Discovery</td><td>HTML file (<a href="discovery/alpha.html">alpha.html</a> standard template)</td><td>Record the full Banya Framework 5-step process by round</td></tr>
+<tr><td>WIP</td><td>md file (mark "WIP" in title)</td><td>For session records</td></tr>
+<tr><td>Same constant improved</td><td>Update existing HTML</td><td>Do not create a new file</td></tr>
+<tr><td>New constant</td><td>Create separate HTML</td><td>Add to page-nav</td></tr>
+</table>
+</div>
+
+<h3>CSS Rules</h3>
+
+<p>All HTML files include a single <code>common.css</code> via link. Inline style tags prohibited. Inline color prohibited. All visual rules are defined only in common.css.</p>
+
+<h3>Required HTML Structure</h3>
+
+<ol>
+<li><strong>Introduction</strong> -- Scientific value of this discovery + current status (choose one of solved/discovery/hypothesis/WIP/awaiting, displayed as badge)</li>
+<li><strong>Body</strong> -- Record the full Banya Framework 5-step process by round. Document every path and every value without omission</li>
+<li><strong>discovery-block or hypothesis-block</strong> -- Package core formulas in separate blocks. Green for solved/discovery, orange for hypothesis</li>
+<li><strong>Discovery hierarchy</strong> -- If subordinate to a parent discovery, display as hierarchy</li>
+<li><strong>page-nav</strong> -- Interconnect all HTML files</li>
+<li><strong>Footer</strong> -- Same format as <a href="discovery/alpha.html">alpha.html</a></li>
+</ol>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch8">Chapter 8. Practical Cycle Example</h1>
+
+<p>This is the actual process of <a href="discovery/alpha.html">$\alpha = 1/137$ derivation</a>. It converged from 0.53% to 0.00006% in just 4 rounds.</p>
+
+<h3 id="en-ch8-r1">Round 1: Zeroth-Order Approximation</h3>
+
+<div class="step-block">
+<div class="step-num">Round 1</div>
+<p>Execute 5 steps. Start from the Banya Equation, 4-axis geometric norm substitution, substitute $\pi^4$ and $\sqrt{2}$, energy domain transform.</p>
+<p>Result: <strong>$1/\alpha = \pi^4 \cdot \sqrt{2} = 137.76$</strong></p>
+<p>Error: <strong>0.53%</strong></p>
+<p>By-product: Geometric structure confirmed. Clue that 4-axis orthogonality is the skeleton of $\alpha$.</p>
+</div>
+
+<h3 id="en-ch8-r2">Round 2: Precision Derivation</h3>
+
+<div class="step-block">
+<div class="step-num">Round 2</div>
+<p>Re-substitute Round 1 by-products. 4 domains + 3 internal degrees of freedom = 7 degrees of freedom. Calculate 7-dimensional phase space volume ratio.</p>
+<p>Correspondence with Wyler's formula (1969) discovered.</p>
+<p>Result: <strong>$1/\alpha = 137.036082$</strong></p>
+<p>Error: <strong>0.00006%</strong></p>
+<p>By-product: Provided physical basis for Wyler's formula. Filled a gap that had been empty for 57 years.</p>
+</div>
+
+<h3 id="en-ch8-r3">Round 3: Information-Theoretic Interpretation</h3>
+
+<div class="step-block">
+<div class="step-num">Round 3</div>
+<p>Re-substitute Round 2 results. Calculate the information content of 1 CAS event as Shannon entropy.</p>
+<p>Result: <strong>$\alpha = 1\text{bit}/137\text{bit}$</strong></p>
+<p>Interpretation: $\alpha$ is the 1 bit occupied by Compare out of the total 137 bits of information in 1 CAS event. The concentration of charge information.</p>
+</div>
+
+<h3 id="en-ch8-r4">Round 4: Cosmic Scale Re-substitution</h3>
+
+<div class="step-block">
+<div class="step-num">Round 4</div>
+<p>Re-substitute Round 3 results. Connect Planck length and cosmological constant.</p>
+<p>Result: <strong>$\Lambda \cdot l_p^2 = \alpha^{57}$</strong></p>
+<p>By-product: Koide deviation $= -15\alpha^3$, electron-proton mass ratio approximation.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Round</th><th>Input</th><th>Output</th><th class="col-err">Error</th></tr>
+<tr><td>1</td><td>Banya Eq. + $\pi^4 \cdot \sqrt{2}$</td><td>$1/\alpha = 137.76$</td><td>0.53%</td></tr>
+<tr><td>2</td><td>+ 3 internal DOF</td><td>$1/\alpha = 137.036082$</td><td>0.00006%</td></tr>
+<tr><td>3</td><td>+ information theory</td><td>$\alpha = 1\text{bit}/137\text{bit}$</td><td>structural</td></tr>
+<tr><td>4</td><td>+ cosmological constant</td><td>$\Lambda \cdot l_p^2 = \alpha^{57}$</td><td>121/122 digits</td></tr>
+</table>
+</div>
+
+<p>Re-substituting the previous results into Step 3 every round improves precision. This is the core of Banya Framework science mining.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch9">Chapter 9. Precautions</h1>
+
+<h3>1. Trust the Framework, Doubt the Results</h3>
+
+<div class="warn-block">
+Do not change the Banya Equation. Do not change the 5 steps. Only review the results. If the framework does not break, it is correct. If it breaks, the substitution was wrong.
+</div>
+
+<h3>2. Do Not Discard By-products</h3>
+
+<p>Collect results even if the error is large, as long as structure is visible. Without Round 1 (0.53%) of the <a href="discovery/alpha.html">$\alpha$ derivation</a>, Round 2 (Wyler's formula, 0.00006%) would never have been reached. The zeroth-order approximation was the seed of the precision derivation.</p>
+
+<h3>3. Beware of Numerology</h3>
+
+<div class="warn-block">
+Combinations of $\pi$, $e$, and integers can approximate almost any number to within 0.1%. You must always answer "why this number." If you cannot answer, put it on hold. Never adopt it.
+</div>
+
+<h3>4. Beware of Circular Reasoning</h3>
+
+<p>If you reverse-engineer a measured value and claim "this formula is correct," that is circular. Every value in the formula must be independently derived. Example: if you insert $\alpha = 1/137.036$ and derive $\alpha = 1/137.036$, that is circular. It is completely meaningless.</p>
+
+<h3>5. Never Skip the Supervisor</h3>
+
+<p>Even if all 5 experts say "correct," the supervisor must still review. Experts are biased toward their own paths. Only the supervisor sees the whole picture. Anything adopted without supervisor review will inevitably cause problems later.</p>
+
+
+<hr>
+<hr>
+
+
+<h1 id="en-ch10">Chapter 10. Tools</h1>
+
+<div class="table-wrap">
+<table>
+<tr><th>Tool</th><th>Role</th><th>Description</th></tr>
+<tr><td>Banya Framework 5 Steps</td><td>Core Engine</td><td>Recursive substitution structure that derives physical constants starting from the Banya Equation</td></tr>
+<tr><td>Expert Agents (5~10)</td><td>Multi-path Attack</td><td>Deploy multiple paths simultaneously on a single task to find the convergence point</td></tr>
+<tr><td><a href="lib.html">lib.html</a></td><td>Factor Library</td><td>Discoveries D-01 through D-42, hypotheses H-01 through H-47. Weapons for the next round</td></tr>
+<tr><td><a href="banya.html">banya.html</a></td><td>Comprehensive Hub</td><td>Discovery hierarchy, challenge resolution list, overall structure overview</td></tr>
+<tr><td>Session Records (md)</td><td>Continuity Assurance</td><td>Preserve work contents across sessions so the next session can continue</td></tr>
+</table>
+</div>
+
+<p>Combine these tools and run the loop. The more you run, the larger the library grows, the higher the precision, and the more new discoveries emerge. That is science mining.</p>
+
+<p>Anyone who takes these tools and follows this manual to run the loop can reproduce the same results. The Banya Framework is not the intuition of a specific person, but an engine anyone can run.</p>
+
+</div>
+
+
+<div class="page-nav lang-ko" style="display:none">
+<a href="banya.html">종합 보고서</a>
+<a href="predictions.html">고유 예측</a>
+<a href="lib.html">가설 라이브러리</a>
+<a href="science_mine.html">과학 채굴 메뉴얼</a>
+</div>
+<div class="page-nav lang-en">
+<a href="banya.html">Master Report</a>
+<a href="predictions.html">Predictions</a>
+<a href="lib.html">Factor Library</a>
+<a href="science_mine.html">Mining Manual</a>
+</div>
+
+<div class="doc-footer lang-ko" style="display:none">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br>
+발명자: 한혁진 (Han Hyukjin)<br>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+별칭: 부처님 손바닥 프레임<br>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">과학 채굴 방법 -- 반야프레임 운영 메뉴얼</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">관련 문서: <a href="banya.html">종합 보고서</a> | <a href="expend.html">118개 상세검증 부록</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+<div class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若 Framework)</b><br>
+Inventor: Han Hyukjin (한혁진)<br>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+Alias: Buddha's Palm Framework<br>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">과학 채굴 방법 -- 반야프레임 운영 메뉴얼</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">Related: <a href="banya.html">Master Report</a> | <a href="discovery/alpha.html">$\alpha$ 도출</a> | <a href="lib.html">가설 라이브러리</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
+Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+
+
+<script>
+(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>

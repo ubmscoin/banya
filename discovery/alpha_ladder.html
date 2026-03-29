@@ -27,10 +27,7 @@
 <body>
 
 <!-- ===== 언어 토글 ===== -->
-<div class="lang-switch">
-<button class="lang-btn active" data-lang="ko" onclick="switchLang('ko')">KR</button>
-<button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
-</div>
+<div class="lang-switch"><a href="../en/discovery/alpha_ladder.html" class="lang-btn">EN</a></div>
 
 
 <!-- ========== 한국어 본문 ========== -->
@@ -208,177 +205,6 @@ n 범위: 0 ~ 29</pre>
 
 
 <!-- ========== English Version ========== -->
-<div class="lang-en" style="display:none">
-
-<!-- ===== TOC Sidebar (Desktop) ===== -->
-<div class="toc-side">
-<a href="#title-en" class="toc-h1">&alpha; Length Ladder</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-<!-- ===== TOC Mobile Bar ===== -->
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-en .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">&alpha; Length Ladder</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.lang-en .toc-bar').classList.remove('open')">
-<a href="#title-en" class="toc-h1">&alpha; Length Ladder</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-
-<!-- ===== Sub-report notice ===== -->
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
-
-
-<!-- ===== 1. Introduction ===== -->
-
-<h1 id="title-en">&alpha; Length Ladder</h1>
-
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
-<blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-25</p></blockquote>
-
-
-<!-- 1-1. Question -->
-<h2 id="question-en">Question: Why Are Length Scales Powers of &alpha; from Planck to Hubble</h2>
-
-<p>In physics, length scales span from the Planck length ($l_P \approx 1.616 \times 10^{-35}$ m) to the Hubble radius of the observable universe ($R_H \approx 4.4 \times 10^{26}$ m), covering roughly 61 orders of magnitude. That this enormous range forms a 29-rung ladder of powers of a single constant &alpha;, with each rung spacing being exactly the integer 1, is not a coincidence.</p>
-
-
-<!-- 1-2. Status -->
-<h2 id="status-en">Status</h2>
-
-<p><span class="tag-discovery">Discovery</span></p>
-
-<p>Rung spacing &Delta;n = 1, 1. Error 0% (identity). The &alpha; power ladder reflects the discrete CAS cost structure.</p>
-
-
-<!-- 1-3. Key Discovery -->
-<h2 id="discovery-en">Key Discovery</h2>
-
-<div class="discovery-block">
-<h4>D-42: &alpha; Length Ladder Integer Spacing</h4>
-<div class="formula">$l_P \cdot \alpha^{-n}$ forms a 29-rung ladder. $\Delta n = 1, 1$</div>
-<p>Error: <span class="tag-solved">0%</span> (identity)</p>
-<p>A 29-rung ladder structure from Planck length to Hubble radius via powers of &alpha;. The integer spacing (1) of each rung means CAS cost is discrete.</p>
-</div>
-
-
-<!-- ===== 2. Body: Round 1 ===== -->
-
-<h1 id="r1-en">Round 1. Constructing the &alpha; Power Ladder</h1>
-
-<h3 id="r1-step1-en">Step 1. Banya Equation</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>The norm on the space axis of the Banya equation determines length scales. Since &alpha; is the cost of one CAS operation, discretizing the space axis by powers of &alpha; yields the length ladder.</p>
-
-
-<h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
-
-<p>Substitute the space axis length scale with powers of &alpha;.</p>
-
-<div class="math-block">
-<div class="math-row">$L_n = l_P \cdot \alpha^{-n}$</div>
-<div class="math-legend">$L_n$: length at rung n, $l_P$: Planck length, $\alpha$: fine structure constant, $n$: integer rung number</div>
-</div>
-
-
-<h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
-
-<p>Insert fundamental constants.</p>
-
-<pre>l_P = 1.616255 × 10⁻³⁵ m (Planck length)
-α = 1/137.035999 (fine structure constant)
-R_H ≈ 4.4 × 10²⁶ m (Hubble radius)
-n range: 0 ~ 29</pre>
-
-
-<h3 id="r1-step4-en">Step 4. Domain Transform</h3>
-
-<p>Starting from the Planck length and multiplying by the inverse of &alpha; one rung at a time constructs the length ladder.</p>
-
-<div class="math-block">
-<div class="math-row">$n=0$: $l_P \approx 1.6 \times 10^{-35}$ m (Planck length)</div>
-<div class="math-row">$n=1$: $l_P \cdot \alpha^{-1} \approx 2.2 \times 10^{-33}$ m</div>
-<div class="math-row">$\vdots$</div>
-<div class="math-row">$n=29$: $l_P \cdot \alpha^{-29} \approx 4.4 \times 10^{26}$ m (Hubble radius)</div>
-<div class="math-desc">Spacing between each rung: $\Delta n = 1$. Integer spacing. The entire ladder is composed of discrete powers of $\alpha$.</div>
-</div>
-
-<div class="math-block">
-<div class="math-row">$\frac{R_H}{l_P} \approx \frac{4.4 \times 10^{26}}{1.6 \times 10^{-35}} \approx 2.7 \times 10^{61}$</div>
-<div class="math-row">$\alpha^{-29} = 137.036^{29} \approx 2.7 \times 10^{61}$</div>
-<div class="math-desc">Hubble radius / Planck length = $\alpha^{-29}$. Exactly 29 rungs.</div>
-</div>
-
-
-<h3 id="r1-step5-en">Step 5. Discovery</h3>
-
-<div class="math-block">
-<div class="math-row">Derived: Rung spacing $\Delta n = 1$ (integer)</div>
-<div class="math-row">Measured: Identity (integer by definition)</div>
-<div class="math-row">Error: 0%</div>
-</div>
-
-<p>Powers of &alpha; connect the Planck length to the Hubble radius in exactly 29 rungs. The fact that each rung spacing is the integer 1 means CAS operation cost is discrete. The hierarchy of cosmic length scales is organized not continuously but as discrete powers of a single constant &alpha;.</p>
-
-
-<!-- ===== 3. By-products ===== -->
-
-<h1 id="byproduct-en">By-products</h1>
-
-<p>The intermediate rungs of the 29-rung ladder may correspond to physically meaningful length scales. For example: whether the Bohr radius, Compton wavelength, classical electron radius, etc., sit at specific rung numbers needs verification.</p>
-
-
-<!-- ===== 4. Incomplete Tasks ===== -->
-
-<h1 id="incomplete-en">Incomplete Tasks</h1>
-
-<table>
-<tr><th>Item</th><th>Current State</th><th>Resolution Path</th></tr>
-<tr><td>Intermediate rung physics mapping</td><td>Unverified</td><td>Map physical length scales to each rung n</td></tr>
-<tr><td>Time ladder extension</td><td>Only length verified</td><td>Verify if the same &alpha; ladder holds on the time axis</td></tr>
-</table>
-
-
-<!-- ===== 5. Summary ===== -->
-
-<h1 id="summary-en">Summary</h1>
-
-<table>
-<tr><th>Item</th><th>Result</th><th>Status</th></tr>
-<tr><td>D-42: &alpha; length ladder</td><td>$\Delta n = 1$, 29 rungs, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>Intermediate rung mapping</td><td>Unverified</td><td><span class="tag-wip">In Progress</span></td></tr>
-</table>
-
-</div><!-- /lang-en -->
 
 
 <!-- ===== page-nav ===== -->
@@ -388,14 +214,6 @@ n range: 0 ~ 29</pre>
 <a href="../lib.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
-<div class="page-nav lang-en" style="display:none">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
-<a href="../science_mine.html">Mining Manual</a>
-</div>
-
-
 <!-- ===== 푸터 ===== -->
 <div class="doc-footer lang-ko">
 <div class="f-top">
@@ -423,43 +241,6 @@ BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동�
 </div>
 </div>
 </div>
-<div class="doc-footer lang-en" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
-Classification: Axiom-Based Science Mining Engine
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">$\alpha$ length ladder: Planck length &rarr; Hubble radius, 29 rungs, $\Delta n = 1$</div>
-</div>
-</div>
-<div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
-<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
-
-<script>
-function switchLang(lang){
-document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
-document.querySelectorAll('.lang-ko,.lang-en').forEach(function(e){
-var show=e.classList.contains('lang-'+lang);
-if(e.classList.contains('toc-side')||e.classList.contains('toc-overlay')||e.classList.contains('page-nav')||e.classList.contains('doc-footer')){e.style.display=show?'':'none'}
-else{e.style.display=show?'block':'none'}
-});
-}
-</script>
 <script>
 (function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
 </script>

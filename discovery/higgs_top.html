@@ -26,10 +26,7 @@
 </head>
 <body>
 
-<div class="lang-switch">
-<button class="lang-btn active" data-lang="ko" onclick="switchLang('ko')">KR</button>
-<button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
-</div>
+<div class="lang-switch"><a href="../en/discovery/higgs_top.html" class="lang-btn">EN</a></div>
 
 <!-- ===== TOC-SIDE 한글 ===== -->
 <div class="toc-side lang-ko">
@@ -212,183 +209,6 @@
 
 
 <!-- ========== English Version ========== -->
-<div class="lang-en" style="display:none">
-
-<!-- ===== TOC Sidebar (Desktop) ===== -->
-<div class="toc-side lang-en" style="display:none">
-<a href="#title-en" class="toc-h1">Higgs-Top Cost Structure</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-<!-- ===== TOC Mobile Bar ===== -->
-<div class="toc-bar lang-en" style="display:none" onclick="this.classList.toggle('open');document.querySelector('.lang-en.toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">Higgs-Top Cost Structure</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-en" style="display:none" onclick="this.classList.remove('show');document.querySelector('.lang-en.toc-bar').classList.remove('open')">
-<a href="#title-en" class="toc-h1">Higgs-Top Cost Structure</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
-
-
-<!-- ===== 1. Introduction ===== -->
-
-<h1 id="title-en">Higgs-Top Cost Structure</h1>
-
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
-<blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-25</p></blockquote>
-
-
-<h2 id="question-en">Question: Why do the Higgs self-coupling and Higgs-top mass ratio have these values</h2>
-
-<p>The Higgs boson was discovered at the LHC in 2012, but the Standard Model cannot explain why the Higgs self-coupling constant $\lambda_H$ is approximately 0.13. The Standard Model leaves $\lambda_H$ as a free parameter. Likewise, why $m_H \approx 125$ GeV and why the ratio to the top quark mass $m_t \approx 172$ GeV is $\approx 0.72$ remain unexplained. These three values are interrelated yet their origin is unknown.</p>
-
-<p>Analogy: the room size (Higgs mass), pillar thickness (top mass), and wall thickness (self-coupling) of a building are fixed, but there is no blueprint explaining why these proportions.</p>
-
-
-<h2 id="status-en">Status</h2>
-
-<p><span class="tag-solved">Hit</span></p>
-
-<p>D-24 error 0.16%, D-25 error 0.10% (0.7$\sigma$), D-37 error 0.73% (D-24, D-16 assumed). All three values determined by CAS numbers $7$ and $27=3^3$.</p>
-
-
-<h2 id="discovery-en">Key Discovery</h2>
-
-<div class="discovery-block">
-<h4>D-24: Higgs Self-Coupling Constant</h4>
-<div class="formula">$\lambda_H = \dfrac{7}{54} = \dfrac{7}{2 \cdot 3^3} = 0.12963$</div>
-<p>Observed: 0.1293, Error: <span class="tag-solved">0.16%</span></p>
-<p>$7$ = CAS complete value, $54 = 2 \times 27 = 2 \times 3^3$. The Higgs self-coupling is determined by the ratio of CAS numbers.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-25: Higgs Boson Mass</h4>
-<div class="formula">$m_H = v\sqrt{\dfrac{7}{27}} = 125.37\;\text{GeV}$</div>
-<p>Observed: 125.25 GeV, Error: <span class="tag-solved">0.10% (0.7$\sigma$)</span></p>
-<p>Directly derived from D-24. Multiplying the vacuum expectation value $v = 246.22$ GeV by $\sqrt{7/27}$ yields the Higgs mass.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-37: Higgs-Top Mass Ratio</h4>
-<div class="formula">$\dfrac{m_H}{m_t} = \sqrt{\dfrac{14}{27}}$</div>
-<p>Derived: $\sqrt{14/27} = 0.7200$, Observed: $125.25/172.69 = 0.7253$, Error: <span class="tag-solved">0.73% (D-24, D-16 assumed)</span></p>
-<p>$14 = 2 \times 7$, $27 = 3^3$. The Higgs-top cost ratio is determined by CAS numbers.</p>
-</div>
-
-
-<!-- ===== 2. Body: Round 1 ===== -->
-
-<h1 id="r1-en">Round 1. Deriving Higgs Parameters from CAS Cost Structure</h1>
-
-<h3 id="r1-step1-en">Step 1. Banya Equation</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>This round uses the cost structure of CAS operations. In the Banya equation, the cost of the observer writing state (CAS) manifests as the Higgs self-coupling.</p>
-
-
-<h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
-
-<p>From the CAS cost structure, substitute complete value $7$ and lattice volume $3^3 = 27$ into physical coupling constants.</p>
-
-<div class="math-block">
-<div class="math-row">$\lambda_H = \dfrac{\text{CAS complete value}}{2 \times \text{lattice volume}} = \dfrac{7}{2 \times 3^3}$</div>
-<div class="math-legend">$7$: CAS complete value | $3^3$: 3D lattice volume | $2$: dual-axis cost</div>
-</div>
-
-
-<h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
-
-<pre>CAS complete value: 7
-Lattice volume: 3^3 = 27
-Dual-axis cost: 2
-Vacuum expectation value: v = 246.22 GeV
-Higgs mass relation: m_H = v * sqrt(2 * lambda_H)
-Top quark mass: m_t = 172.69 GeV (observed)</pre>
-
-
-<h3 id="r1-step4-en">Step 4. Domain Transform</h3>
-
-<p>From $\lambda_H = 7/54$, derive the Higgs mass and Higgs-top ratio.</p>
-
-<div class="math-block">
-<div class="math-row">$\lambda_H = \dfrac{7}{54} = 0.12963$</div>
-<div class="math-row">$m_H = v\sqrt{2\lambda_H} = 246.22 \times \sqrt{\dfrac{7}{27}} = 125.37\;\text{GeV}$</div>
-<div class="math-row">$\dfrac{m_H}{m_t}$: Derived $\sqrt{\dfrac{14}{27}} = 0.7200$, Observed $\dfrac{125.25}{172.69} = 0.7253$</div>
-<div class="math-desc">All three values emerge from the CAS numbers $7$ and $27$.</div>
-</div>
-
-
-<h3 id="r1-step5-en">Step 5. Discovery</h3>
-
-<div class="math-block">
-<div class="math-row">D-24: Derived $\lambda_H = 0.12963$ | Observed $0.1293$ | Error $0.16\%$</div>
-<div class="math-row">D-25: Derived $m_H = 125.37$ GeV | Observed $125.25$ GeV | Error $0.10\%$ ($0.7\sigma$)</div>
-<div class="math-row">D-37: $m_H/m_t = \sqrt{14/27} = 0.7200$ | Observed $0.7253$ | Error $0.73\%$ (D-24, D-16 assumed)</div>
-</div>
-
-<p>All three derivations are determined solely by CAS complete value $7$ and lattice volume $27 = 3^3$. This shows the free parameters of the Higgs sector are inevitable consequences of the CAS cost structure.</p>
-
-
-<!-- ===== 3. By-products ===== -->
-
-<h1 id="byproduct-en">By-products</h1>
-
-<p>The ratio $2\lambda_H = 7/27$ appears repeatedly. $7/27$ is the ratio of CAS complete value to 3D lattice volume, and it is the single ratio governing the entire Higgs sector.</p>
-
-
-<!-- ===== 4. Incomplete Tasks ===== -->
-
-<h1 id="incomplete-en">Incomplete Tasks</h1>
-
-<table>
-<tr><th>Item</th><th>Current State</th><th>Resolution Path</th></tr>
-<tr><td>Direct $\lambda_H$ measurement</td><td>LHC Run 3 ongoing, precision not yet sufficient</td><td>Await HL-LHC results</td></tr>
-<tr><td>D-37 ratio experimental verification</td><td>$m_H/m_t$ ratio precision needs improvement</td><td>Verifiable with improved $m_t$ precision measurement</td></tr>
-</table>
-
-
-<!-- ===== 5. Summary ===== -->
-
-<h1 id="summary-en">Summary</h1>
-
-<table>
-<tr><th>Item</th><th>Result</th><th>Status</th></tr>
-<tr><td>D-24: $\lambda_H = 7/54$</td><td>$0.12963$, error $0.16\%$</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>D-25: $m_H = v\sqrt{7/27}$</td><td>$125.37$ GeV, error $0.10\%$</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>D-37: $m_H/m_t = \sqrt{14/27}$</td><td>Derived $0.7200$, Observed $0.7253$, error $0.73\%$ (D-24, D-16 assumed)</td><td><span class="tag-solved">Hit</span></td></tr>
-</table>
-
-</div><!-- /lang-en -->
 
 
 <div class="page-nav lang-ko">
@@ -397,14 +217,6 @@ Top quark mass: m_t = 172.69 GeV (observed)</pre>
 <a href="../lib.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
-<div class="page-nav lang-en" style="display:none">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
-<a href="../science_mine.html">Mining Manual</a>
-</div>
-
-
 <div class="doc-footer lang-ko">
 <div class="f-top">
 <div class="f-corp">
@@ -430,43 +242,6 @@ BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동�
 </div>
 </div>
 </div>
-<div class="doc-footer lang-en" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
-Classification: Axiom-Based Science Mining Engine
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">Higgs self-coupling $\lambda_H = 7/54$, Higgs mass $m_H = 125.37$ GeV</div>
-</div>
-</div>
-<div class="f-bottom">
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
-<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
-
-<script>
-function switchLang(lang){
-document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
-document.querySelectorAll('.lang-ko,.lang-en').forEach(function(e){
-var show=e.classList.contains('lang-'+lang);
-if(e.classList.contains('toc-side')||e.classList.contains('toc-overlay')||e.classList.contains('page-nav')||e.classList.contains('doc-footer')){e.style.display=show?'':'none'}
-else{e.style.display=show?'block':'none'}
-});
-}
-</script>
-
 <script>
 (function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
 </script>
