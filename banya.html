@@ -710,6 +710,7 @@ AND (접점 = 락이 걸리는 곳):
 
 <p>이 11개가 공리 구조를 서술하는 자료형이다. 시프트(2^N)와 CAS Compare 비교 쌍 함수(T(N)+1)만으로 도출된다. 공리 구조에서 쓰이지 않는 수는 포함하지 않는다.</p>
 
+
 <h4>워크벤치(Workbench)가 CAS의 작업공간이다 <span class="tag-corollary">명제</span></h4>
 
 <p>CAS 내부 3축(R, C, S)은 직교한다(공리 2 명제). 이 3축의 노름 ‖CAS‖ = √3이 만드는 공간이 <strong>워크벤치</strong>다. 워크벤치는 CAS가 자료형(공리 2 명제)을 골라 읽고, 비교하고, 쥠을 만드는 작업공간이다.</p>
@@ -724,6 +725,48 @@ AND (접점 = 락이 걸리는 곳):
                                     +--- space
 
                            11개 자료형으로 상호작용
+</pre>
+
+<h4>가장 정밀한 자료형 137을 이용한 작업 샘플 <span class="tag-corollary">명제</span></h4>
+
+<p>자료형 137(T(16)+1, 공리 2 명제)은 CAS가 사용하는 가장 정밀한 자료형이다. 137비트를 분해하면 d-ring(CPU), 상태 공간, 등호로 나뉜다.</p>
+
+<div class="math-block">
+<div class="math-row">$$137 = 8 + 128 + 1$$</div>
+<div class="math-legend">기계(8) + 가능한 모든 상태(128) + "이것이 유효하다"는 선언(1)</div>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>비트</th><th>크기</th><th>정체</th><th>역할</th><th>근거</th></tr>
+<tr><td><strong>8</strong></td><td>d-ring</td><td>클록 + 레지스터</td><td>bit 0-3: 도메인(주소). bit 4-6: CAS(옵코드 R,C,S). bit 7: δ(발화 트리거)</td><td>공리 1, 2, 5, 15</td></tr>
+<tr><td><strong>128</strong></td><td>2⁷</td><td>상태 공간</td><td>7비트 완전기술자유도의 모든 가능한 상태. CAS가 옵코드를 돌리는 작업 대상</td><td>공리 9, 15 (자료형 #10)</td></tr>
+<tr><td><strong>1</strong></td><td>+1</td><td>등호</td><td>T(16)+1의 +1. 128개 상태 전체를 유효화하는 선언. δ의 자기참조</td><td>공리 15 명제</td></tr>
+</table>
+</div>
+
+<pre>
+  137비트 워크벤치 배치도 (샘플, 정확한 작동을 알 수 없어 추측함):
+
+  bit     역할              소속            크기
+  -----   ---------------   -------------   --------
+  [0]     observer          레지스터
+  [1]     superposition     레지스터         d-ring
+  [2]     time              레지스터         8비트
+  [3]     space             레지스터         (클록)
+  [4]     R_LOCK            레지스터 (Read)
+  [5]     C_LOCK            레지스터 (Compare)
+  [6]     S_LOCK            레지스터 (Swap)
+  [7]     delta             클록 (1=발화, 0=리셋)
+  -----
+  [8]     슬롯 0            상태 공간
+  [9]     슬롯 1            상태 공간        128비트
+  ...     ...               ...              (2^7)
+  [135]   슬롯 127          상태 공간
+  -----
+  [136]   메모리 오더(락)   순서 강제         1비트
+
+  137 = 8(클록) + 128(상태 공간) + 1(락)
 </pre>
 
 <h4>쥠 · 쥐다 <span class="tag-corollary">명제</span></h4>
@@ -819,6 +862,7 @@ AND (접점 = 락이 걸리는 곳):
 <div class="table-wrap">
 <table>
 <tr><th>CAS 상태</th><th>활성 축</th><th>노름</th><th>물리적 의미</th></tr>
+<tr><td>000</td><td>없음</td><td>0</td><td>idle. 대기. 비용 0</td></tr>
 <tr><td>001</td><td>R</td><td>√1 = 1</td><td>Read 진입. 최소 비용. 1축만 활성</td></tr>
 <tr><td>011</td><td>R+C</td><td>√2</td><td>+를 넘어 읽는 순간. Compare 시점. 2축 활성</td></tr>
 <tr><td>111</td><td>R+C+S</td><td>√3</td><td>워크벤치. CAS 완성. Swap. 3축 전부 활성</td></tr>
@@ -2247,6 +2291,7 @@ delta (처음으로 돌아옴)</pre>
 <div class="table-wrap">
 <table>
 <tr><th>CAS 상태</th><th>활성 축</th><th>노름</th><th>물리적 의미</th></tr>
+<tr><td>000</td><td>없음</td><td>0</td><td>idle. 대기. 비용 0</td></tr>
 <tr><td>001</td><td>R</td><td>√1 = 1</td><td>Read 진입. 최소 비용. 1축만 활성</td></tr>
 <tr><td>011</td><td>R+C</td><td>√2</td><td>+를 넘어 읽는 순간. Compare 시점. 2축 활성</td></tr>
 <tr><td>111</td><td>R+C+S</td><td>√3</td><td>워크벤치. CAS 완성. Swap. 3축 전부 활성</td></tr>
