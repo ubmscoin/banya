@@ -765,6 +765,7 @@ AND (접점 = 락이 걸리는 곳):
   [135]   슬롯 127          상태 공간
   -----
   [136]   ret(등호)         복귀              1비트
+  --------------------------------------------------
 
   137 = 8(클록) + 128(상태 공간) + 1(ret)
 </pre>
@@ -5871,25 +5872,25 @@ delta (back to start)</pre>
 <h4>Step 1. Total cost 13 (Axiom 6)</h4>
 <p>Total cost to create one ball (juim) on spacetime = exactly 13. CAS R→C→S transition(+3) + bracket boundary(+1) + domain traversal(+3) + 4 writes(+4) + Swap→DATA commit(+1) + timestamp(+1) = 13. No freedom.</p>
 
-<h4>Step 2. Ball cost 4 vs Overhead 9 (Axiom 6)</h4>
+<h4>Step 2. Ball cost 4 vs Misc cost 9 (Axiom 6)</h4>
 <div class="table-wrap">
 <table>
 <tr><th>Cost type</th><th>Value</th><th>Composition</th><th>Role</th></tr>
-<tr><td><strong>Maintenance</strong></td><td><strong>4</strong></td><td>3-axis grip(3) + timestamp(1)</td><td>Keeps ball on DATA. Release 4 → ball disappears</td></tr>
-<tr><td><strong>Overhead</strong></td><td><strong>9</strong></td><td>CAS transition(3) + domain traversal(5) + Swap commit(1)</td><td>Path cost. Remains in LRU after ball disappears</td></tr>
+<tr><td><strong>Ball cost</strong></td><td><strong>4</strong></td><td>3-axis grip(3) + timestamp(1)</td><td>Keeps ball on DATA. Release 4 → ball disappears</td></tr>
+<tr><td><strong>Misc cost</strong></td><td><strong>9</strong></td><td>CAS transition(3) + domain traversal(5) + Swap commit(1)</td><td>Path cost. Remains in LRU after ball disappears</td></tr>
 <tr><td><strong>Total</strong></td><td><strong>13</strong></td><td></td><td></td></tr>
 </table>
 </div>
 
-<p>When ball releases from DATA (maintenance 4 freed), overhead 9 does NOT vanish instantly. It is continuously recovered by LRU (Axiom 6, Axiom 2 prop.: attenuation is continuous, threshold is discrete). Residual cost is invisible on screen (DATA) but felt as cost (gravity).</p>
+<p>When ball releases from DATA (ball cost 4 freed), misc cost 9 does NOT vanish instantly. It is continuously recovered by LRU (Axiom 6, Axiom 2 prop.: attenuation is continuous, threshold is discrete). Residual cost is invisible on screen (DATA) but felt as cost (gravity).</p>
 
 <h4>Step 3. LRU 3 zones = Cosmic energy 3 components (Axiom 12)</h4>
 <div class="table-wrap">
 <table>
 <tr><th>LRU state</th><th>Cost state</th><th>Screen (DATA)</th><th>Gravity</th><th>Cosmic mapping</th></tr>
 <tr><td><strong>HOT</strong></td><td>All 13 active</td><td>Visible</td><td>Felt</td><td>Visible matter (5%)</td></tr>
-<tr><td><strong>WARM</strong></td><td>Ball cost 4 released. Overhead 9 recovering</td><td>Invisible</td><td>Felt</td><td>Dark matter (27%)</td></tr>
-<tr><td><strong>COLD</strong></td><td>Overhead 9 nearly recovered. Base eviction rate</td><td>Invisible</td><td>Faintly felt</td><td>Dark energy (68%)</td></tr>
+<tr><td><strong>WARM</strong></td><td>Ball cost 4 released. Misc cost 9 recovering</td><td>Invisible</td><td>Felt</td><td>Dark matter (27%)</td></tr>
+<tr><td><strong>COLD</strong></td><td>Misc cost 9 nearly recovered. Base eviction rate</td><td>Invisible</td><td>Faintly felt</td><td>Dark energy (68%)</td></tr>
 </table>
 </div>
 
@@ -5898,7 +5899,7 @@ delta (back to start)</pre>
 <table>
 <tr><th>Category</th><th>Axiom derivation</th><th>Observed</th><th>Error</th></tr>
 <tr><td>Writing (maintenance/total = 4/13)</td><td><strong>30.77%</strong></td><td>32% (visible 5% + dark matter 27%)</td><td><strong>1.2%</strong></td></tr>
-<tr><td>Recovering (overhead/total = 9/13)</td><td><strong>69.23%</strong></td><td>68% (dark energy)</td><td><strong>1.2%</strong></td></tr>
+<tr><td>Recovering (misc cost/total = 9/13)</td><td><strong>69.23%</strong></td><td>68% (dark energy)</td><td><strong>1.2%</strong></td></tr>
 </table>
 </div>
 
@@ -5906,7 +5907,7 @@ delta (back to start)</pre>
 <table>
 <tr><th>Step</th><th>Provider</th><th>Content</th><th>Choice</th></tr>
 <tr><td>Step 1 (Total 13)</td><td>Axiom 6</td><td>Row-by-row sum. No freedom</td><td>None</td></tr>
-<tr><td>Step 2 (4 vs 9)</td><td>Axiom 6</td><td>Maintenance (ball existence) vs Overhead (path cost)</td><td>None</td></tr>
+<tr><td>Step 2 (4 vs 9)</td><td>Axiom 6</td><td>Ball cost (ball existence) vs Misc cost (labor + shipping)</td><td>None</td></tr>
 <tr><td>Step 3 (LRU 3 zones)</td><td>Axiom 12</td><td>HOT/WARM/COLD = visible/dark matter/dark energy</td><td>None</td></tr>
 <tr><td>Step 4 (Numerical)</td><td>Axiom 6 + observation</td><td>4/13=30.77% vs 32%, 9/13=69.23% vs 68%</td><td>Error 1.2%</td></tr>
 </table>
@@ -5917,7 +5918,7 @@ delta (back to start)</pre>
 <table>
 <tr><th>Issue</th><th>Answer</th><th>Basis</th><th>Status</th></tr>
 <tr><td>13 is arbitrary</td><td>Row-by-row sum from Axiom 6 cost table. Adding/removing rows contradicts Axiom 4</td><td>Axiom 6</td><td><strong>Closed</strong></td></tr>
-<tr><td>4 vs 9 split is arbitrary</td><td>Maintenance = conditions for ball existence on DATA. Remainder = overhead. Split criterion: "does ball exist or not"</td><td>Axiom 6, 7</td><td><strong>Closed</strong></td></tr>
+<tr><td>4 vs 9 split is arbitrary</td><td>Ball cost = conditions for ball existence on DATA. Remainder = misc cost. Split criterion: "does ball exist or not"</td><td>Axiom 6, 7</td><td><strong>Closed</strong></td></tr>
 <tr><td>LRU mapping is fitting</td><td>LRU defined independently in Axiom 12 for juim lifecycle management, not created to match dark matter/energy</td><td>Axiom 12</td><td><strong>Closed</strong></td></tr>
 <tr><td>1.2% error source</td><td>Axiom derivation is discrete (integer ratio 4/13, 9/13). Observation is continuous measurement. Discrete/continuous gap (Axiom 3)</td><td>Axiom 3</td><td><strong>Closed</strong></td></tr>
 </table>
