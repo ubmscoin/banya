@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>반야프레임 샌드박스</title>
     <link rel="stylesheet" href="css/engine.css">
+    <script>document.querySelector('link[href*="engine.css"]').href='css/engine.css?v='+Date.now();</script>
     <style>
         #panels {
             display: grid;
@@ -126,7 +130,7 @@
     </div>
     <div id="panels">
         <div class="panel" id="panel-sphere" style="display:flex;flex-direction:column">
-            <div class="panel-body" style="padding:0;overflow:hidden;flex:1">
+            <div class="panel-body" style="padding:0;overflow:hidden;flex:1;min-height:0">
                 <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab"></canvas>
             </div>
             <div id="canvas-controls" style="height:40px;background:rgba(0,0,0,0.6);display:flex;align-items:center;padding:0 10px;gap:8px">
@@ -143,8 +147,9 @@
     </div>
 </div>
 <script type="module">
-    import { Pipeline } from './js/engine/pipeline.js';
-    import { Renderer } from './js/ui/renderer.js';
+    const _v = '?v=' + Date.now();
+    const { Pipeline } = await import('./js/engine/pipeline.js' + _v);
+    const { Renderer } = await import('./js/ui/renderer.js' + _v);
 
     const renderer = new Renderer();
     const pipeline = new Pipeline({

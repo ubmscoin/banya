@@ -289,14 +289,8 @@ class Renderer {
         _ctx.fillStyle = '#ffffff';
         _ctx.font = 'bold 13px monospace';
         _ctx.fillText('LRU \uBE44\uAC00\uC5ED\uC801 \uAC10\uC1E0', _cx, _cy + _sphereR + 24);
-        _ctx.textAlign = 'left';
-
-        // 공리 1 반야식: 캔버스 맨 하단
-        _ctx.textAlign = 'center';
-        _ctx.fillStyle = '#ffffff';
-        _ctx.font = 'bold 18px monospace';
-        _ctx.fillText('\u03B4\u00B2 = (time + space)\u00B2 + (observer + superposition)\u00B2', _cx, _h - 38);
-        _ctx.font = '10px monospace';
+        _ctx.font = 'bold 15px monospace';
+        _ctx.fillText('\u03B4\u00B2 = (time + space)\u00B2 + (observer + superposition)\u00B2', _cx, _cy + _sphereR + 44);
         _ctx.textAlign = 'left';
 
         // 우측 상단 200x200: 엔티티 격자 (상호작용 세기 시각화)
