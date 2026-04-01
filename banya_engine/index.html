@@ -160,9 +160,11 @@
 
     function resizeCanvas() {
         const c = document.getElementById('sphere-canvas');
-        const p = c.parentElement;
-        c.width = p.clientWidth;
-        c.height = p.clientHeight;
+        // 뷰포트에서 툴바(48px) + 컨트롤바(40px) 빼고 캔버스에 강제 피팅
+        const _vw = window.innerWidth;
+        const _vh = window.innerHeight - 88;  // 48 toolbar + 40 controls
+        c.width = _vw;
+        c.height = Math.max(200, _vh);
         renderer.m_canvasW = c.width;
         renderer.m_canvasH = c.height;
     }

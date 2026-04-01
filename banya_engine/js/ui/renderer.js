@@ -289,8 +289,11 @@ class Renderer {
         _ctx.fillStyle = '#ffffff';
         _ctx.font = 'bold 13px monospace';
         _ctx.fillText('LRU \uBE44\uAC00\uC5ED\uC801 \uAC10\uC1E0', _cx, _cy + _sphereR + 24);
-        _ctx.font = 'bold 15px monospace';
-        _ctx.fillText('\u03B4\u00B2 = (time + space)\u00B2 + (observer + superposition)\u00B2', _cx, _cy + _sphereR + 44);
+        // 반야식: 캔버스 너비에 맞게 폰트 조절. 파란색
+        _ctx.fillStyle = '#3b82f6';
+        let _banyaFont = Math.min(15, _w / 42);
+        _ctx.font = 'bold ' + Math.round(_banyaFont) + 'px monospace';
+        _ctx.fillText('\u03B4\u00B2 = (time+space)\u00B2 + (observer+superposition)\u00B2', _cx, _cy + _sphereR + 44);
         _ctx.textAlign = 'left';
 
         // 우측 상단 200x200: 엔티티 격자 (상호작용 세기 시각화)
