@@ -128,7 +128,14 @@
         <span style="flex:1"></span>
         <a href="https://ubmscoin.github.io/banya/banya_main.html" target="_blank" onclick="if(window.pauseEngine){window.pauseEngine();}" style="background:#f59e0b;color:#000;font-size:11px;text-decoration:none;font-weight:700;padding:4px 12px;border-radius:4px;font-family:monospace">반야프레임 채굴하기</a>
     </div>
-    <div id="canvas-controls" style="height:36px;background:rgba(0,0,0,0.9);display:flex;align-items:center;padding:0 10px;gap:8px;flex-shrink:0">
+    <div id="panels">
+        <div class="panel" id="panel-sphere" style="overflow:hidden;min-height:0">
+            <div class="panel-body" style="padding:0;overflow:hidden;width:100%;height:100%">
+                <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab;width:100%;height:100%;display:block"></canvas>
+            </div>
+        </div>
+    </div>
+    <div id="canvas-controls" style="position:fixed;bottom:0;left:0;right:0;height:36px;background:rgba(0,0,0,0.9);display:flex;align-items:center;padding:0 10px;gap:8px;z-index:9999;transform:translateY(0)">
         <button id="ctrl-play" onclick="ctrlPlay()" style="background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:4px 8px">&#9654;</button>
         <div style="flex:1;height:3px;background:rgba(255,255,255,0.15);border-radius:2px">
             <div id="ctrl-progress" style="height:100%;background:#3b82f6;border-radius:2px;width:0%"></div>
@@ -137,13 +144,6 @@
         <span style="color:#fff;font-size:12px;font-weight:700;font-family:monospace">속도</span>
         <input type="range" id="speed-slider" min="16" max="500" value="16" step="1" oninput="setSpeed(this.value)" style="width:60px;accent-color:#3b82f6">
         <button id="ctrl-step" onclick="doStep()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:4px;cursor:pointer;color:#fff;font-size:12px;font-weight:700;font-family:monospace;padding:5px 12px;display:none">1틱 ▶</button>
-    </div>
-    <div id="panels">
-        <div class="panel" id="panel-sphere" style="overflow:hidden;min-height:0">
-            <div class="panel-body" style="padding:0;overflow:hidden;width:100%;height:100%">
-                <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab;width:100%;height:100%;display:block"></canvas>
-            </div>
-        </div>
     </div>
 </div>
 <script type="module">
@@ -156,6 +156,22 @@
         tickInterval: 16,  // 매 프레임 1틱. 60fps = 초당 60틱. 1000틱 수명 = 약 16초
         onTick: (snapshot) => { renderer.render(snapshot); renderInfo(snapshot); }
     });
+
+    // 모바일 실제 화면 높이 측정하여 컨트롤바 배치
+    // visualViewport: 모바일 브라우저 주소창/네비바 제외한 실제 보이는 영역
+    // 이걸로 하면 어떤 기종이든 정확히 하단에 붙음
+    function positionControls() {
+        let _ctrl = document.getElementById('canvas-controls');
+        if (!_ctrl) { return; }
+        // visualViewport 지원하면 실제 보이는 높이 사용
+        if (window.visualViewport) {
+            let _vh = window.visualViewport.height;
+            let _top = window.visualViewport.offsetTop;
+            _ctrl.style.position = 'fixed';
+            _ctrl.style.top = (_top + _vh - 36) + 'px';
+            _ctrl.style.bottom = 'auto';
+        }
+    }
 
     function resizeCanvas() {
         const c = document.getElementById('sphere-canvas');
@@ -209,7 +225,12 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         resizeCanvas();
-        window.addEventListener('resize', () => { resizeCanvas(); renderer.render(pipeline.snapshot()); });
+        positionControls();
+        window.addEventListener('resize', () => { resizeCanvas(); positionControls(); renderer.render(pipeline.snapshot()); });
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', positionControls);
+            window.visualViewport.addEventListener('scroll', positionControls);
+        }
         renderer.init();
         renderer.m_onDragRender = function() { renderer.render(pipeline.snapshot()); };
         setDebug(true);  // 시작부터 내부작동 활성
