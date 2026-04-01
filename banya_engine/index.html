@@ -126,22 +126,22 @@
     <div id="toolbar">
         <h1>반야프레임</h1>
         <span style="flex:1"></span>
-        <a href="https://ubmscoin.github.io/banya/banya.html" target="_blank" onclick="if(window.pauseEngine){window.pauseEngine();}" style="background:#f59e0b;color:#000;font-size:11px;text-decoration:none;font-weight:700;padding:4px 12px;border-radius:4px;font-family:monospace">반야프레임 채굴하기</a>
+        <a href="https://ubmscoin.github.io/banya/banya_main.html" target="_blank" onclick="if(window.pauseEngine){window.pauseEngine();}" style="background:#f59e0b;color:#000;font-size:11px;text-decoration:none;font-weight:700;padding:4px 12px;border-radius:4px;font-family:monospace">반야프레임 채굴하기</a>
+    </div>
+    <div id="canvas-controls" style="height:36px;background:rgba(0,0,0,0.9);display:flex;align-items:center;padding:0 10px;gap:8px;flex-shrink:0">
+        <button id="ctrl-play" onclick="ctrlPlay()" style="background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:4px 8px">&#9654;</button>
+        <div style="flex:1;height:3px;background:rgba(255,255,255,0.15);border-radius:2px">
+            <div id="ctrl-progress" style="height:100%;background:#3b82f6;border-radius:2px;width:0%"></div>
+        </div>
+        <span id="ctrl-status" style="color:#94a3b8;font-size:10px;font-family:monospace;min-width:30px">정지</span>
+        <span style="color:#fff;font-size:12px;font-weight:700;font-family:monospace">속도</span>
+        <input type="range" id="speed-slider" min="16" max="500" value="16" step="1" oninput="setSpeed(this.value)" style="width:60px;accent-color:#3b82f6">
+        <button id="ctrl-step" onclick="doStep()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:4px;cursor:pointer;color:#fff;font-size:12px;font-weight:700;font-family:monospace;padding:5px 12px;display:none">1틱 ▶</button>
     </div>
     <div id="panels">
-        <div class="panel" id="panel-sphere" style="position:relative;overflow:hidden;min-height:0">
+        <div class="panel" id="panel-sphere" style="overflow:hidden;min-height:0">
             <div class="panel-body" style="padding:0;overflow:hidden;width:100%;height:100%">
                 <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab;width:100%;height:100%;display:block"></canvas>
-            </div>
-            <div id="canvas-controls" style="position:fixed;bottom:0;left:0;right:0;height:36px;background:rgba(0,0,0,0.9);display:flex;align-items:center;padding:0 10px;padding-bottom:env(safe-area-inset-bottom,0);gap:8px;z-index:9999">
-                <button id="ctrl-play" onclick="ctrlPlay()" style="background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:4px 8px">&#9654;</button>
-                <div style="flex:1;height:3px;background:rgba(255,255,255,0.15);border-radius:2px">
-                    <div id="ctrl-progress" style="height:100%;background:#3b82f6;border-radius:2px;width:0%"></div>
-                </div>
-                <span id="ctrl-status" style="color:#94a3b8;font-size:10px;font-family:monospace;min-width:30px">정지</span>
-                <span style="color:#fff;font-size:12px;font-weight:700;font-family:monospace">속도</span>
-                <input type="range" id="speed-slider" min="16" max="500" value="16" step="1" oninput="setSpeed(this.value)" style="width:60px;accent-color:#3b82f6">
-                <button id="ctrl-step" onclick="doStep()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:4px;cursor:pointer;color:#fff;font-size:12px;font-weight:700;font-family:monospace;padding:5px 12px;display:none">1틱 ▶</button>
             </div>
         </div>
     </div>
