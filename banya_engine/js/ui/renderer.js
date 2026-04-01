@@ -11,7 +11,7 @@ class Renderer {
         this.m_rotX = 0.4;
         this.m_rotY = 0.0;
         this.m_showPlayButton = true;
-        this.m_debugMode = false;
+        this.m_debugMode = true;
     }
 
     init() {
@@ -405,7 +405,7 @@ class Renderer {
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 1; ctx.strokeRect(ox, _y, _chkSize, _chkSize);
         if (this.m_debugMode) { ctx.fillStyle = 'rgba(59,130,246,0.8)'; ctx.fillRect(ox + 2, _y + 2, _chkSize - 4, _chkSize - 4); }
-        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('\uB0B4\uBD80\uC791\uB3D9 \uBCF4\uAE30 \uCCB4\uD06C\uBC15\uC2A4', ox + _chkSize + 5, _y + 9);
+        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('\uB0B4\uBD80\uC791\uB3D9 \uBCF4\uAE30 (\uB290\uB824\uC9D0)', ox + _chkSize + 5, _y + 9);
         this.m_hudCheckbox = { x: ox, y: _y, w: _chkSize + 100, h: _chkSize + 4 };
         _y += 35;
 
