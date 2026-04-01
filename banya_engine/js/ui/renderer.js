@@ -421,8 +421,7 @@ class Renderer {
         ctx.fillStyle = _fc; ctx.fillText('CAS \uC0AC\uC774\uD074', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_ecs.tickCount||0), _vx, _y); _y += _lineH;
         ctx.fillStyle = _fc; ctx.fillText('\uBE45\uBC45 \uC608\uC0B0', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13*100=1300', _vx, _y); _y += _lineH;
         ctx.fillStyle = _fc; ctx.fillText('\uACF5 1\uAC1C \uBE44\uC6A9', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13', _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('HOT \uBA74\uC801', ox, _y); ctx.fillStyle = _fv; ctx.fillText('5%', _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('FOCUS \uBC18\uC9C0\uB984', ox, _y); ctx.fillStyle = _fv; ctx.fillText('0.451 rad', _vx, _y);
+        ctx.fillStyle = _fc; ctx.fillText('HOT \uBA74\uC801', ox, _y); ctx.fillStyle = _fv; ctx.fillText('5%', _vx, _y);
     }
 
     // 엔티티 공간 격자 (Entity Space)
