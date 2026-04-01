@@ -8,7 +8,6 @@
     <meta http-equiv="Expires" content="0">
     <title>반야프레임 샌드박스</title>
     <link rel="stylesheet" href="css/engine.css">
-    <script>document.querySelector('link[href*="engine.css"]').href='css/engine.css?v='+Date.now();</script>
     <style>
         #panels {
             display: grid;
@@ -147,9 +146,8 @@
     </div>
 </div>
 <script type="module">
-    const _v = '?v=' + Date.now();
-    const { Pipeline } = await import('./js/engine/pipeline.js' + _v);
-    const { Renderer } = await import('./js/ui/renderer.js' + _v);
+    import { Pipeline } from './js/engine/pipeline.js';
+    import { Renderer } from './js/ui/renderer.js';
 
     const renderer = new Renderer();
     const pipeline = new Pipeline({
