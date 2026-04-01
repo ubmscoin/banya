@@ -8,10 +8,9 @@
     <style>
         #panels {
             display: grid;
-            grid-template-columns: 1fr 280px;
+            grid-template-columns: 1fr;
             grid-template-rows: 1fr;
-            gap: 1px;
-            background: var(--border);
+            gap: 0;
             overflow: hidden;
         }
         #panel-sphere {
@@ -22,12 +21,11 @@
             width: 100%;
             height: 100%;
             display: block;
-            cursor: crosshair;
         }
-        #panel-info {
-            grid-column: 2;
-            grid-row: 1;
-            overflow-y: auto;
+
+        @media (max-width: 768px) {
+            #toolbar { flex-wrap: wrap; gap: 6px; padding: 0 8px; }
+            #toolbar h1 { font-size: 13px; }
         }
         .info-section {
             padding: 8px 10px;
@@ -123,91 +121,24 @@
 <div id="app">
     <div id="toolbar">
         <h1>반야프레임 샌드박스</h1>
-        <span class="tick-display" id="tick-display">틱: 0</span>
-        <button class="btn" id="btn-play" onclick="togglePlay()">재생</button>
-        <button class="btn" onclick="doStep()">1틱 (발화)</button>
-        <div class="speed-control">
-            <span>속도</span>
-            <input type="range" id="speed-slider" min="16" max="500" value="16" step="1" oninput="setSpeed(this.value)">
-            <span id="speed-value">16ms</span>
-        </div>
-        <button class="btn" onclick="doReset()">초기화</button>
+        <a href="https://ubmscoin.github.io/banya" target="_blank" onclick="if(window.pauseEngine){window.pauseEngine();}" style="color:#f59e0b;font-size:12px;text-decoration:none;font-weight:600">반야프레임 채굴하기 클릭</a>
+        <span style="flex:1"></span>
+        <button class="btn" onclick="doReset()" style="font-size:11px">초기화</button>
     </div>
     <div id="panels">
-        <div class="panel" id="panel-sphere">
-            <div class="panel-body" style="padding:0;overflow:hidden">
-                <canvas id="sphere-canvas" width="800" height="600"></canvas>
+        <div class="panel" id="panel-sphere" style="display:flex;flex-direction:column">
+            <div class="panel-body" style="padding:0;overflow:hidden;flex:1">
+                <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab"></canvas>
             </div>
-        </div>
-        <div class="panel" id="panel-info">
-            <div class="panel-body" style="padding:0">
-                <!-- budget + tick -->
-                <div class="info-section">
-                    <h3>엔진 상태</h3>
-                    <div class="info-row"><span class="label">예산 (budget)</span><span class="value budget" id="i-budget">1300</span></div>
-                    <div class="info-row"><span class="label">공 수</span><span class="value" id="i-alive">0 / 0</span></div>
+            <div id="canvas-controls" style="height:40px;background:rgba(0,0,0,0.6);display:flex;align-items:center;padding:0 10px;gap:8px">
+                <button id="ctrl-play" onclick="ctrlPlay()" style="background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:4px 8px">&#9654;</button>
+                <div style="flex:1;height:3px;background:rgba(255,255,255,0.15);border-radius:2px">
+                    <div id="ctrl-progress" style="height:100%;background:#3b82f6;border-radius:2px;width:0%"></div>
                 </div>
-
-                <div class="info-section">
-                    <h3>LRU 수명</h3>
-                    <div class="info-row"><span class="label">HOT 5%</span><span class="value hot" id="i-hot">0</span></div>
-                    <div class="info-row"><span class="label">WARM 27%</span><span class="value warm" id="i-warm">0</span></div>
-                    <div class="info-row"><span class="label">COLD 68%</span><span class="value cold" id="i-cold">0</span></div>
-                </div>
-
-                <div class="info-section">
-                    <h3>비용 (공리 6: 13=8+5)</h3>
-                    <div class="info-row"><span class="label">읽기 (Read)</span><span class="value" id="i-cread">8</span></div>
-                    <div class="info-row"><span class="label">쓰기 (Write)</span><span class="value" id="i-cwrite">5</span></div>
-                    <div class="info-row"><span class="label">총 소비</span><span class="value" id="i-ctotal">0</span></div>
-                    <div class="info-row"><span class="label">CAS 사이클</span><span class="value" id="i-ccycles">0</span></div>
-                </div>
-
-                <div class="info-section">
-                    <h3 style="display:flex;justify-content:space-between;align-items:center">d-ring 8비트<input type="checkbox" id="chk-debug" style="accent-color:var(--bit-on)" title="체크 시 갱신" onchange="setDebug(this.checked)"></h3>
-                    <div id="debug-panel">
-                    <div style="margin-top:4px;font-size:10px;color:#cbd5e1">d-ring 8비트</div>
-                    <div class="dring-mini" id="i-dring"></div>
-                    <div style="font-size:9px;color:var(--text-dim);margin-top:3px" id="i-draw"></div>
-                </div>
-
-                <div id="debug-cas">
-                <div class="info-section">
-                    <h3>CAS FSM 상태</h3>
-                    <div class="fsm-mini" id="i-fsm"></div>
-                    <div style="margin-top:6px">
-                        <div style="font-size:10px;color:#cbd5e1;margin-bottom:3px">예산 충전 (13 = 공 1개)</div>
-                        <div id="i-budget-bar" style="width:100%;height:14px;background:#ef4444;border-radius:3px;overflow:hidden">
-                            <div id="i-budget-fill" style="height:100%;background:#f59e0b;border-radius:3px;width:0%;transition:width 0.1s"></div>
-                        </div>
-                        <div style="font-size:9px;color:#cbd5e1;margin-top:2px;text-align:right" id="i-budget-text">0 / 13</div>
-                    </div>
-                </div>
-
-                <div class="info-section">
-                    <h3>워크벤치 (||CAS|| = &radic;3, 137bit)</h3>
-                    <div style="margin-top:4px">
-                        <div id="wb-bar" style="width:100%;height:16px;background:var(--bit-off);border-radius:3px;overflow:hidden;border:1px solid var(--border);position:relative">
-                            <div id="wb-fill" style="height:100%;background:var(--bit-on);border-radius:3px;width:0%;transition:width 0.1s;opacity:0.8"></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;margin-top:2px">
-                            <span style="font-size:7px;color:var(--text-dim)">0</span>
-                            <span style="font-size:7px;color:var(--text-dim)" id="wb-type">자료형: 7</span>
-                            <span style="font-size:7px;color:var(--text-dim)">137</span>
-                        </div>
-                    </div>
-                    <div style="font-size:8px;color:var(--text-dim);margin-top:2px" id="wb-status">대기</div>
-                </div>
-                </div>
-
-                <div class="info-section">
-                    <h3>공리 상수</h3>
-                    <div class="info-row"><span class="label">빅뱅 예산</span><span class="value">13*100=1300</span></div>
-                    <div class="info-row"><span class="label">공 1개 비용</span><span class="value">13</span></div>
-                    <div class="info-row"><span class="label">HOT 면적</span><span class="value">5%</span></div>
-                    <div class="info-row"><span class="label">FOCUS 반지름</span><span class="value">0.451 rad</span></div>
-                    <div style="font-size:10px;color:var(--accent-observer);margin-top:4px">화살표 키 = 구면 회전</div>
-                </div>
+                <span id="ctrl-status" style="color:#94a3b8;font-size:10px;font-family:monospace;min-width:30px">정지</span>
+                <span style="color:#fff;font-size:12px;font-weight:700;font-family:monospace">속도</span>
+                <input type="range" id="speed-slider" min="16" max="500" value="16" step="1" oninput="setSpeed(this.value)" style="width:60px;accent-color:#3b82f6">
+                <button id="ctrl-step" onclick="doStep()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:4px;cursor:pointer;color:#fff;font-size:12px;font-weight:700;font-family:monospace;padding:5px 12px;display:none">1틱 ▶</button>
             </div>
         </div>
     </div>
@@ -232,110 +163,61 @@
         renderer.m_canvasH = c.height;
     }
 
-    function renderInfo(s) {
-        const e = (id) => document.getElementById(id);
-        if (!s) return;
-
-        e('i-budget').textContent = s.ecs.budget;
-        let lru = s.ecs.lru.statusCounts || {};
-        let _lruTotal = (lru.HOT||0) + (lru.WARM||0) + (lru.COLD||0) + (lru.REMNANT||0);
-        e('i-alive').textContent = s.ecs.totalEntities + ' / ' + _lruTotal;
-        e('i-hot').textContent = lru.HOT || 0;
-        e('i-warm').textContent = lru.WARM || 0;
-        // COLD = COLD + REMNANT (잔해는 암흑에너지 = COLD 구간)
-        e('i-cold').textContent = (lru.COLD || 0) + (lru.REMNANT || 0);
-
-        e('i-ctotal').textContent = s.cost.totalCost;
-        e('i-ccycles').textContent = s.cost.cycleCount;
-
-        let latest = s.cost.recentHistory && s.cost.recentHistory.length > 0 ? s.cost.recentHistory[s.cost.recentHistory.length-1] : null;
-        if (latest) {
-            e('i-cread').textContent = latest.read.total;
-            e('i-cwrite').textContent = latest.write.total;
-            let bar = `<div class="seg" style="flex:${latest.read.total};background:var(--accent-cas)"></div><div class="seg" style="flex:${latest.write.total};background:var(--accent-delta)"></div>`;
-        }
-
-        // 예산 막대 (항상 갱신)
-        let _budgetVal = Math.min(13, s.ecs.budget);
-        let _pct = Math.max(0, Math.min(100, (_budgetVal / 13) * 100));
-        let _bfill = document.getElementById('i-budget-fill');
-        let _btext = document.getElementById('i-budget-text');
-        if (_bfill) { _bfill.style.width = _pct + '%'; }
-        if (_btext) { _btext.textContent = _budgetVal.toFixed(1) + ' / 13'; }
-
-        // 체크 안 하면 d-ring/CAS/워크벤치 매 프레임 갱신 건너뜀 (속도)
-        // 체크 해야 갱신. 안 해도 항목은 보임 (초기값 유지)
-        let _chk = document.getElementById('chk-debug');
-        if (_chk && !_chk.checked && window._dbgInit) { return; }
-        window._dbgInit = true;
-
-        // d-ring
-        let bits = s.dring.binary.split('').reverse();
-        let names = ['ob','sp','t','s','R','C','S','d'];
-        let dh = '';
-        for (let i = 0; i < 8; i++) {
-            let on = bits[i] === '1';
-            dh += `<div class="bit ${on?'on':'off'}">${names[i]}</div>`;
-        }
-        e('i-dring').innerHTML = dh;
-        e('i-draw').textContent = '0x' + s.dring.raw.toString(16).padStart(2,'0') + ' = ' + s.dring.binary;
-
-        // FSM
-        let fsmStates = [{n:'000',s:0},{n:'001',s:1},{n:'011',s:3},{n:'111',s:7}];
-        let fh = '';
-        for (let f of fsmStates) {
-            let cur = s.fsm.state === f.s;
-            fh += `<div class="st ${cur?'cur':''}">${f.n}</div>`;
-            if (f.s !== 7) fh += '<span class="ar">&rarr;</span>';
-        }
-        e('i-fsm').innerHTML = fh;
-        // 예산 막대그래프: 13까지 차면 소모하고 공 생성
-        // 워크벤치: 상시 작동하는 논리연산 회로. OPERATOR 양자 공간의 상주 프로그램
-        // 옵코드를 배열에 올리고 실행하는 회로. 예산 유무와 관계없이 항상 돌아감
-        // 자료형 11개: [1,2,3,4,7,8,9,16,30,128,137]
-        let _wbFill = document.getElementById('wb-fill');
-        let _wbType = document.getElementById('wb-type');
-        let _wbStat = document.getElementById('wb-status');
-
-        if (_wbFill) {
-            let _dr = s.dring;
-            let _fired = _dr.delta === 1;
-
-            // 상시 작동. 발화 시에만 깜빡임(밝게)
-            _wbFill.style.width = '100%';
-            _wbFill.style.opacity = _fired ? '1' : '0.3';
-
-            let _typeSize = 7;
-            if (_dr.cas.S_LOCK === 1) { _typeSize = 137; }
-            else if (_dr.cas.C_LOCK === 1) { _typeSize = 30; }
-            else if (_dr.cas.R_LOCK === 1) { _typeSize = 7; }
-
-            if (_wbType) { _wbType.textContent = '\uC790\uB8CC\uD615: ' + _typeSize + ' / 137'; }
-            _wbStat.textContent = '\uC0C1\uC2DC \uC791\uB3D9';
-            _wbStat.style.color = _fired ? '#f59e0b' : '#3b82f6';
-        }
-    }
+    // 전부 캔버스 HUD로 이동됨. renderInfo는 빈 함수
+    function renderInfo(s) {}
 
     window.togglePlay = function() {
-        if (pipeline.m_running) { pipeline.pause(); } else { pipeline.play(); }
+        if (pipeline.m_running) { pipeline.pause(); } else { renderer.m_showPlayButton = false; pipeline.play(); }
         renderer.render(pipeline.snapshot());
+        p_updateCtrl();
         renderInfo(pipeline.snapshot());
     };
     window.doStep = function() {
         if (pipeline.m_running) { pipeline.pause(); }
+        renderer.m_showPlayButton = false;
         pipeline.fireDelta();
         pipeline.step();
+        renderer.render(pipeline.snapshot());
+        renderInfo(pipeline.snapshot());
+        p_updateCtrl();
     };
     window.setSpeed = function(val) { pipeline.setSpeed(parseInt(val)); document.getElementById('speed-value').textContent = val + 'ms'; };
-    window.doReset = function() { pipeline.reset(); renderer.render(pipeline.snapshot()); renderInfo(pipeline.snapshot()); };
-    window.setDebug = function(on) { pipeline.m_debugMode = on; };
+    window.doReset = function() { pipeline.reset(); renderer.m_showPlayButton = true; renderer.render(pipeline.snapshot()); renderInfo(pipeline.snapshot()); p_updateCtrl(); };
+    window.setDebug = function(on) { pipeline.m_debugMode = on; renderer.m_debugMode = on; };
+    window.pauseEngine = function() { pipeline.pause(); renderer.m_showPlayButton = true; renderer.render(pipeline.snapshot()); p_updateCtrl(); };
+    window.ctrlPlay = function() {
+        if (pipeline.m_running) {
+            pipeline.pause();
+        } else {
+            renderer.m_showPlayButton = false;
+            pipeline.play();
+        }
+        p_updateCtrl();
+    };
+    function p_updateCtrl() {
+        let _btn = document.getElementById('ctrl-play');
+        let _step = document.getElementById('ctrl-step');
+        let _status = document.getElementById('ctrl-status');
+        let _running = pipeline.m_running;
+        if (_btn) { _btn.textContent = _running ? '\u23F8' : '\u25B6'; }
+        if (_step) { _step.style.display = _running ? 'none' : 'inline-block'; }
+        if (_status) { _status.textContent = _running ? '\uC7AC\uC0DD' : '\uC815\uC9C0'; }
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         resizeCanvas();
         window.addEventListener('resize', () => { resizeCanvas(); renderer.render(pipeline.snapshot()); });
         renderer.init();
+        renderer.m_onDragRender = function() { renderer.render(pipeline.snapshot()); };
         renderer.render(pipeline.snapshot());
-        renderInfo(pipeline.snapshot());
+
+        // 캔버스 클릭 시 빅뱅 + 자동 재생
+        renderer.m_onPlayClick = function() {
+            pipeline.play();
+            renderer.render(pipeline.snapshot());
+            renderInfo(pipeline.snapshot());
+            p_updateCtrl();
+        };
     });
 </script>
 </body>

@@ -10,6 +10,8 @@ class Renderer {
         this.m_initialized = false;
         this.m_rotX = 0.4;
         this.m_rotY = 0.0;
+        this.m_showPlayButton = true;
+        this.m_debugMode = false;
     }
 
     init() {
@@ -19,6 +21,50 @@ class Renderer {
             this.m_canvasW = _canvas.width;
             this.m_canvasH = _canvas.height;
             _canvas.addEventListener('wheel', (e) => e.preventDefault());
+            _canvas.addEventListener('click', (e) => {
+                // 체크박스 영역 클릭 확인
+                if (this.m_hudCheckbox) {
+                    let _rect = _canvas.getBoundingClientRect();
+                    let _mx = (e.clientX - _rect.left) * (_canvas.width / _rect.width);
+                    let _my = (e.clientY - _rect.top) * (_canvas.height / _rect.height);
+                    let _cb = this.m_hudCheckbox;
+                    if (_mx >= _cb.x && _mx <= _cb.x + _cb.w && _my >= _cb.y && _my <= _cb.y + _cb.h) {
+                        this.m_debugMode = !this.m_debugMode;
+                        if (window.setDebug) { window.setDebug(this.m_debugMode); }
+                        return;
+                    }
+                }
+                if (this.m_showPlayButton) {
+                    this.m_showPlayButton = false;
+                    if (this.m_onPlayClick) { this.m_onPlayClick(); }
+                }
+            });
+            // 마우스 드래그: 구면 회전 (모바일 터치도 대응)
+            _canvas.addEventListener('mousedown', (e) => { this.m_dragging = true; this.m_dragX = e.clientX; this.m_dragY = e.clientY; });
+            _canvas.addEventListener('mousemove', (e) => {
+                if (!this.m_dragging) { return; }
+                this.m_rotY -= (e.clientX - this.m_dragX) * 0.005;
+                this.m_rotX += (e.clientY - this.m_dragY) * 0.005;
+                this.m_rotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, this.m_rotX));
+                this.m_dragX = e.clientX;
+                this.m_dragY = e.clientY;
+                if (this.m_onDragRender) { this.m_onDragRender(); }
+            });
+            _canvas.addEventListener('mouseup', () => { this.m_dragging = false; });
+            _canvas.addEventListener('mouseleave', () => { this.m_dragging = false; });
+            // 터치 (모바일)
+            _canvas.addEventListener('touchstart', (e) => { this.m_dragging = true; this.m_dragX = e.touches[0].clientX; this.m_dragY = e.touches[0].clientY; });
+            _canvas.addEventListener('touchmove', (e) => {
+                if (!this.m_dragging) { return; }
+                this.m_rotY -= (e.touches[0].clientX - this.m_dragX) * 0.005;
+                this.m_rotX += (e.touches[0].clientY - this.m_dragY) * 0.005;
+                this.m_rotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, this.m_rotX));
+                this.m_dragX = e.touches[0].clientX;
+                this.m_dragY = e.touches[0].clientY;
+                e.preventDefault();
+                if (this.m_onDragRender) { this.m_onDragRender(); }
+            }, { passive: false });
+            _canvas.addEventListener('touchend', () => { this.m_dragging = false; });
             document.addEventListener('keydown', (e) => this.p_onKeyDown(e));
         }
 
@@ -53,6 +99,53 @@ class Renderer {
     render(snapshot) {
         if (!this.m_initialized) { return; }
         this.p_renderSphere(snapshot);
+        if (this.m_showPlayButton) {
+            this.p_renderPlayOverlay();
+        }
+    }
+
+    // 오버레이: 구면 위에 30% 투명 + 플레이 삼각형
+    p_renderPlayOverlay() {
+        let _ctx = this.m_ctx;
+        if (!_ctx) { return; }
+        let _w = this.m_canvasW, _h = this.m_canvasH;
+        let _cx = _w / 2, _cy = _h / 2;
+
+        // 반투명 오버레이 (30%)
+        _ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        _ctx.fillRect(0, 0, _w, _h);
+
+        // 플레이 버튼 원
+        let _btnR = 50;
+        _ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        _ctx.beginPath();
+        _ctx.arc(_cx, _cy, _btnR, 0, Math.PI * 2);
+        _ctx.fill();
+        _ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+        _ctx.lineWidth = 2;
+        _ctx.beginPath();
+        _ctx.arc(_cx, _cy, _btnR, 0, Math.PI * 2);
+        _ctx.stroke();
+
+        // 삼각형
+        let _triSize = 25;
+        _ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        _ctx.beginPath();
+        _ctx.moveTo(_cx - _triSize * 0.4, _cy - _triSize);
+        _ctx.lineTo(_cx - _triSize * 0.4, _cy + _triSize);
+        _ctx.lineTo(_cx + _triSize * 0.8, _cy);
+        _ctx.closePath();
+        _ctx.fill();
+
+        // 텍스트
+        _ctx.fillStyle = '#ffffff';
+        _ctx.font = 'bold 18px monospace';
+        _ctx.textAlign = 'center';
+        _ctx.fillText('\uBE45\uBC45', _cx, _cy + _btnR + 30);
+        _ctx.font = '12px monospace';
+        _ctx.fillStyle = '#ffffff';
+        _ctx.fillText('\uBC18\uC57C\uC0CC\uB4DC\uBC15\uC2A4\uC18D\uC5D0\uC11C \uBE45\uBC45\uC774 \uC2DC\uC791\uB429\uB2C8\uB2E4', _cx, _cy + _btnR + 52);
+        _ctx.textAlign = 'left';
     }
 
     p_renderSphere(snapshot) {
@@ -188,24 +281,157 @@ class Renderer {
         }
 
         let _ecs = snapshot.ecs || {};
-        _ctx.fillStyle = '#cbd5e1';
+        _ctx.fillStyle = '#ffffff';
         _ctx.font = '10px monospace';
-        _ctx.fillText('\uC0DD\uC874:' + (_ecs.filledSlots || 0) + '  \uC794\uD574:' + (_ecs.remnantCount || 0) + '  \uC608\uC0B0:' + (_ecs.budget || 0), 8, 14);
 
-        // 큰 구 하단 라벨
+        // LRU 라벨
         _ctx.textAlign = 'center';
-        _ctx.fillStyle = '#e2e8f0';
-        _ctx.font = 'bold 14px monospace';
-        _ctx.fillText('LRU 비가역적 감쇠', _cx, _cy + _sphereR + 22);
-        _ctx.fillStyle = '#cbd5e1';
-        _ctx.font = '12px monospace';
-        _ctx.fillText('N(탄생) \u2192 S(소멸)  |  \u03B4\u00B2 = (t+s)\u00B2 + (ob+sp)\u00B2  |  공리 4, 6', _cx, _cy + _sphereR + 40);
+        _ctx.fillStyle = '#ffffff';
+        _ctx.font = 'bold 13px monospace';
+        _ctx.fillText('LRU \uBE44\uAC00\uC5ED\uC801 \uAC10\uC1E0', _cx, _cy + _sphereR + 24);
+        _ctx.textAlign = 'left';
+
+        // 공리 1 반야식: 캔버스 맨 하단
+        _ctx.textAlign = 'center';
+        _ctx.fillStyle = '#ffffff';
+        _ctx.font = 'bold 18px monospace';
+        _ctx.fillText('\u03B4\u00B2 = (time + space)\u00B2 + (observer + superposition)\u00B2', _cx, _h - 38);
+        _ctx.font = '10px monospace';
         _ctx.textAlign = 'left';
 
         // 우측 상단 200x200: 엔티티 격자 (상호작용 세기 시각화)
         // 4x4 격자. 공이 생기면 격자가 수축한다
         // 공리 13: 수축 겹침비 = 1-l/N, 상호작용 세기 = C*(1-l/N)/(4*pi*l^2)
-        this.p_renderEntityGrid(_ctx, _w - 410, 30, 400, snapshot);
+        // 격자: 항상 우상단. 캔버스 비례로 크기 조절
+        // 벡터 격자: 우상단 고정. 좌측 HUD(약 300px)와 겹치지 않게 크기 조절
+        let _hudRight = 310;  // 좌측 HUD가 차지하는 폭
+        let _available = _w - _hudRight - 20;  // 격자가 쓸 수 있는 폭
+        let _gridSize = Math.min(400, _available, _h * 0.45);
+        _gridSize = Math.max(80, _gridSize);  // 최소 80px
+        let _gridX = _w - _gridSize - 10;
+        let _gridY = 30;
+        this.p_renderEntityGrid(_ctx, _gridX, _gridY, _gridSize, snapshot);
+
+        // 좌상단 HUD: 상시 표시. 체크 시에만 갱신(작동)
+        this.p_renderHUD(_ctx, 10, 30, snapshot);
+    }
+
+    // 좌상단 캔버스 HUD
+    // 상단 4개(d-ring,CAS,예산바,워크벤치): 체크 시에만 갱신
+    // 하단 정보항목: 항상 갱신
+    p_renderHUD(ctx, ox, oy, snapshot) {
+        let _f = 'bold 10px monospace';       // 통일 폰트
+        let _fc = '#ffffff';    // 라벨 색
+        let _fv = '#ffffff';    // 값 색
+        let _boxW = 28, _boxH = 20, _gap = 2;
+        let _labelW = 60;
+        let _barW = 8 * (_boxW + _gap);
+        let _barH = 12;
+        let _barX = ox + _labelW;
+        let _lineH = 15;
+        let _y = oy;
+
+        // 상단 4개: 체크 시에만 데이터 갱신
+        if (this.m_debugMode) {
+            this.m_hudCache = { dr: snapshot.dring || {}, fsm: snapshot.fsm || {}, ecs: snapshot.ecs || {} };
+        }
+        if (!this.m_hudCache) {
+            this.m_hudCache = { dr: snapshot.dring || {}, fsm: snapshot.fsm || {}, ecs: snapshot.ecs || {} };
+        }
+        let _dr = this.m_hudCache.dr;
+        let _fsm = this.m_hudCache.fsm;
+
+        // === D-RING ===
+        ctx.fillStyle = _fc; ctx.font = _f;
+        ctx.fillText('D-RING', ox, _y + 14);
+        let _bits = (_dr.binary || '00000000').split('').reverse();
+        let _names = ['OB','SP','T','S','R','C','S','D'];
+        for (let i = 0; i < 8; i++) {
+            let _on = _bits[i] === '1';
+            let _bx = ox + _labelW + i * (_boxW + _gap);
+            ctx.fillStyle = _on ? 'rgba(59,130,246,0.8)' : 'rgba(30,41,59,0.7)';
+            ctx.fillRect(_bx, _y, _boxW, _boxH);
+            ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.lineWidth = 0.5;
+            ctx.strokeRect(_bx, _y, _boxW, _boxH);
+            ctx.fillStyle = _on ? '#ffffff' : '#ffffff';
+            ctx.font = _f; ctx.textAlign = 'center';
+            ctx.fillText(_names[i], _bx + _boxW / 2, _y + 14);
+        }
+        ctx.textAlign = 'left';
+        _y += _boxH + 8;
+
+        // === CAS ===
+        ctx.fillStyle = _fc; ctx.font = _f;
+        ctx.fillText('CAS', ox, _y + 14);
+        let _fsmS = ['000','001','011','111'], _fsmV = [0,1,3,7];
+        for (let i = 0; i < 4; i++) {
+            let _cur = _fsm.state === _fsmV[i];
+            let _bx = ox + _labelW + i * (_boxW + _gap);
+            ctx.fillStyle = _cur ? 'rgba(59,130,246,0.8)' : 'rgba(30,41,59,0.7)';
+            ctx.fillRect(_bx, _y, _boxW, _boxH);
+            ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.lineWidth = 0.5;
+            ctx.strokeRect(_bx, _y, _boxW, _boxH);
+            ctx.fillStyle = _cur ? '#ffffff' : '#ffffff';
+            ctx.font = _f; ctx.textAlign = 'center';
+            ctx.fillText(_fsmS[i], _bx + _boxW / 2, _y + 14);
+        }
+        ctx.textAlign = 'left';
+        _y += _boxH + 8;
+
+        // === 예산 바 ===
+        let _budgetVal = Math.min(13, (this.m_hudCache.ecs.budget || 0));
+        ctx.fillStyle = _fc; ctx.font = _f;
+        ctx.fillText('\uBE44\uC6A9 \uD68C\uC218', ox, _y + 9);
+        ctx.fillStyle = 'rgba(239,68,68,0.4)'; ctx.fillRect(_barX, _y, _barW, _barH);
+        ctx.fillStyle = 'rgba(245,158,11,0.8)'; ctx.fillRect(_barX, _y, _barW * (_budgetVal / 13), _barH);
+        ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.lineWidth = 0.5; ctx.strokeRect(_barX, _y, _barW, _barH);
+        ctx.fillStyle = '#ffffff'; ctx.font = _f; ctx.textAlign = 'center';
+        ctx.fillText(_budgetVal.toFixed(1) + '/13', _barX + _barW / 2, _y + 9);
+        ctx.textAlign = 'left';
+        _y += _barH + 8;
+
+        // === 워크벤치 ===
+        let _wbFired = _dr.delta === 1;
+        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('\uC6CC\uD06C\uBCA4\uCE58', ox, _y + 9);
+        ctx.fillStyle = _wbFired ? 'rgba(59,130,246,0.6)' : 'rgba(30,41,59,0.5)';
+        ctx.fillRect(_barX, _y, _barW, _barH);
+        ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.lineWidth = 0.5; ctx.strokeRect(_barX, _y, _barW, _barH);
+        ctx.fillStyle = _wbFired ? '#ffffff' : '#ffffff';
+        ctx.font = _f; ctx.textAlign = 'center'; ctx.fillText('137bit', _barX + _barW / 2, _y + 9); ctx.textAlign = 'left';
+        _y += _barH + 10;
+
+        // === 체크박스 ===
+        let _chkSize = 10;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1; ctx.strokeRect(ox, _y, _chkSize, _chkSize);
+        if (this.m_debugMode) { ctx.fillStyle = 'rgba(59,130,246,0.8)'; ctx.fillRect(ox + 2, _y + 2, _chkSize - 4, _chkSize - 4); }
+        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('\uB0B4\uBD80\uC791\uB3D9 \uBCF4\uAE30 \uCCB4\uD06C\uBC15\uC2A4', ox + _chkSize + 5, _y + 9);
+        this.m_hudCheckbox = { x: ox, y: _y, w: _chkSize + 100, h: _chkSize + 4 };
+        _y += 35;
+
+        // 우주 총 예산 시작 Y 저장 (벡터 격자와 높이 맞춤)
+        this.m_infoStartY = _y;
+
+        // === 하단 정보 (항상 갱신, 체크 무관) ===
+        let _ecs = snapshot.ecs || {};
+        let _lru = _ecs.lru || {};
+        let _lc = _lru.statusCounts || {};
+        let _lruTotal = (_lc.HOT||0) + (_lc.WARM||0) + (_lc.COLD||0) + (_lc.REMNANT||0);
+
+        let _vx = ox + _labelW + 30;
+        ctx.font = _f;
+
+        ctx.fillStyle = _fc; ctx.fillText('\uC6B0\uC8FC \uCD1D \uC608\uC0B0', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + Math.round(_ecs.budget || 0), _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('\uACF5 \uC218', ox, _y); ctx.fillStyle = _fv; ctx.fillText((_ecs.totalEntities||0) + ' / ' + _lruTotal, _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('LRU \uC218\uBA85', ox, _y); _y += _lineH;
+        ctx.fillStyle = '#ef4444'; ctx.fillText('HOT 5%', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_lc.HOT||0), _vx, _y); _y += _lineH;
+        ctx.fillStyle = '#f59e0b'; ctx.fillText('WARM 27%', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_lc.WARM||0), _vx, _y); _y += _lineH;
+        ctx.fillStyle = '#8ca0ff'; ctx.fillText('COLD 68%', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + ((_lc.COLD||0)+(_lc.REMNANT||0)), _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('CAS \uC0AC\uC774\uD074', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_ecs.tickCount||0), _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('\uBE45\uBC45 \uC608\uC0B0', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13*100=1300', _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('\uACF5 1\uAC1C \uBE44\uC6A9', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13', _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('HOT \uBA74\uC801', ox, _y); ctx.fillStyle = _fv; ctx.fillText('5%', _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('FOCUS \uBC18\uC9C0\uB984', ox, _y); ctx.fillStyle = _fv; ctx.fillText('0.451 rad', _vx, _y);
     }
 
     // 엔티티 공간 격자 (Entity Space)
@@ -230,6 +456,7 @@ class Renderer {
     p_renderEntityGrid(ctx, ox, oy, size, snapshot) {
         let _gridN = 8;
         let _cellSize = size / _gridN;
+        let _gridScale = size / 400;  // 격자 축소 비율. 공 크기도 이 비율로
         let _balls = (snapshot.ecs && snapshot.ecs.entities) || [];
         let _remnants = (snapshot.ecs && snapshot.ecs.remnants) || [];
 
@@ -387,7 +614,7 @@ class Renderer {
             if (_item.alive) {
                 // 크기 = LRU strength 직접. 1.0->0
                 let _strength = _b.shrinkRadius || 0;
-                _sz = Math.max(1, _strength * _strength * 12);
+                _sz = Math.max(1, _strength * _strength * 12 * _gridScale);
                 _alpha = Math.max(0.2, _strength);
 
                 // 색상은 LRU 상태별
@@ -398,7 +625,7 @@ class Renderer {
             else {
                 // 잔해: COLD 색상. 질량 비례 크기
                 _r = 140; _g = 160; _b2 = 255;
-                _sz = Math.max(0.5, (_b.mass || 0) / 4 * 3);
+                _sz = Math.max(0.5, (_b.mass || 0) / 4 * 3 * _gridScale);
                 _alpha = Math.max(0.15, (_b.mass || 0) / 4 * 0.5);
             }
 
@@ -414,12 +641,9 @@ class Renderer {
 
         // 하단 라벨 (구면 하단과 동일 형식)
         ctx.textAlign = 'center';
-        ctx.fillStyle = '#e2e8f0';
-        ctx.font = 'bold 14px monospace';
-        ctx.fillText('Entity 공간 상호작용', ox + size / 2, oy + size + 20);
-        ctx.fillStyle = '#cbd5e1';
-        ctx.font = '12px monospace';
-        ctx.fillText('C\u00B7(1\u2013\u2113/N) / 4\u03C0\u2113\u00B2 \u00D7 strength  |  \uACF5\uB9AC 13', ox + size / 2, oy + size + 38);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13px monospace';
+        ctx.fillText('Entity \uACF5\uAC04 \uC0C1\uD638\uC791\uC6A9', ox + size / 2, oy + size + 20);
         ctx.textAlign = 'left';
     }
 
