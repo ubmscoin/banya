@@ -30,6 +30,7 @@ class Pipeline {
 
         // 샌드박스 플래그: 웹이 켜지면 true. 모든 것은 이 안에서 일어난다
         this.m_sandboxAlive = true;
+        this.m_debugMode = true;
 
         // 핵심 컴포넌트 생성
         this.m_dring = new DRing();

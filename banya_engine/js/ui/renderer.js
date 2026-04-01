@@ -331,15 +331,9 @@ class Renderer {
         let _lineH = 15;
         let _y = oy;
 
-        // 상단 4개: 체크 시에만 데이터 갱신
-        if (this.m_debugMode) {
-            this.m_hudCache = { dr: snapshot.dring || {}, fsm: snapshot.fsm || {}, ecs: snapshot.ecs || {} };
-        }
-        if (!this.m_hudCache) {
-            this.m_hudCache = { dr: snapshot.dring || {}, fsm: snapshot.fsm || {}, ecs: snapshot.ecs || {} };
-        }
-        let _dr = this.m_hudCache.dr;
-        let _fsm = this.m_hudCache.fsm;
+        // 상시 갱신. debugMode면 6서브스텝이라 점등 애니 보임
+        let _dr = snapshot.dring || {};
+        let _fsm = snapshot.fsm || {};
 
         // === D-RING ===
         ctx.fillStyle = _fc; ctx.font = _f;
