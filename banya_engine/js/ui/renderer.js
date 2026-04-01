@@ -373,7 +373,7 @@ class Renderer {
         _y += _boxH + 8;
 
         // === 예산 바 ===
-        let _budgetVal = Math.min(13, (this.m_hudCache.ecs.budget || 0));
+        let _budgetVal = Math.min(13, (snapshot.ecs ? snapshot.ecs.budget || 0 : 0));
         ctx.fillStyle = _fc; ctx.font = _f;
         ctx.fillText('\uBE44\uC6A9 \uD68C\uC218', ox, _y + 9);
         ctx.fillStyle = 'rgba(239,68,68,0.4)'; ctx.fillRect(_barX, _y, _barW, _barH);

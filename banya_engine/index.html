@@ -208,6 +208,7 @@
         window.addEventListener('resize', () => { resizeCanvas(); renderer.render(pipeline.snapshot()); });
         renderer.init();
         renderer.m_onDragRender = function() { renderer.render(pipeline.snapshot()); };
+        setDebug(true);  // 시작부터 내부작동 활성
         renderer.render(pipeline.snapshot());
 
         // 캔버스 클릭 시 빅뱅 + 자동 재생
