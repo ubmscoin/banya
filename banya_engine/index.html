@@ -15,6 +15,7 @@
             grid-template-rows: 1fr;
             gap: 0;
             overflow: hidden;
+            min-height: 0;
         }
         #panel-sphere {
             grid-column: 1;
@@ -22,15 +23,14 @@
         }
         #sphere-canvas {
             width: 100%;
-            height: 100%;
             display: block;
+            flex: 1;
+            min-height: 0;
         }
 
         @media (max-width: 768px) {
             #toolbar { flex-wrap: wrap; gap: 6px; padding: 0 8px; }
             #toolbar h1 { font-size: 13px; }
-            #panel-sphere { max-height: calc(100vh - 50px); }
-            #panel-sphere .panel-body { max-height: calc(100vh - 90px); }
         }
         .info-section {
             padding: 8px 10px;
@@ -130,8 +130,8 @@
         <a href="https://ubmscoin.github.io/banya/banya.html" target="_blank" onclick="if(window.pauseEngine){window.pauseEngine();}" style="background:#f59e0b;color:#000;font-size:11px;text-decoration:none;font-weight:700;padding:4px 12px;border-radius:4px;font-family:monospace">반야프레임 채굴하기</a>
     </div>
     <div id="panels">
-        <div class="panel" id="panel-sphere" style="display:flex;flex-direction:column">
-            <div class="panel-body" style="padding:0;overflow:hidden;flex:1;min-height:0">
+        <div class="panel" id="panel-sphere" style="display:flex;flex-direction:column;overflow:hidden;min-height:0">
+            <div class="panel-body" style="padding:0;overflow:hidden;flex:1;min-height:0;display:flex;flex-direction:column">
                 <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab"></canvas>
             </div>
             <div id="canvas-controls" style="height:40px;background:rgba(0,0,0,0.6);display:flex;align-items:center;padding:0 10px;gap:8px">
