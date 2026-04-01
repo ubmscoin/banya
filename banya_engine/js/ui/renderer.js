@@ -293,7 +293,7 @@ class Renderer {
         _ctx.fillStyle = '#3b82f6';
         let _banyaFont = Math.min(15, _w / 42);
         _ctx.font = 'bold ' + Math.round(_banyaFont) + 'px monospace';
-        _ctx.fillText('\u03B4\u00B2 = (time+space)\u00B2 + (observer+superposition)\u00B2', _cx, _cy + _sphereR + 44);
+        _ctx.fillText('\u03B4\u00B2 = (time+space)\u00B2 + (observer+superposition)\u00B2', _cx, _h - 50);
         _ctx.textAlign = 'left';
 
         // 우측 상단 200x200: 엔티티 격자 (상호작용 세기 시각화)
