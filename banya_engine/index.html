@@ -23,9 +23,8 @@
         }
         #sphere-canvas {
             width: 100%;
+            height: 100%;
             display: block;
-            flex: 1;
-            min-height: 0;
         }
 
         @media (max-width: 768px) {
@@ -130,11 +129,11 @@
         <a href="https://ubmscoin.github.io/banya/banya.html" target="_blank" onclick="if(window.pauseEngine){window.pauseEngine();}" style="background:#f59e0b;color:#000;font-size:11px;text-decoration:none;font-weight:700;padding:4px 12px;border-radius:4px;font-family:monospace">반야프레임 채굴하기</a>
     </div>
     <div id="panels">
-        <div class="panel" id="panel-sphere" style="display:flex;flex-direction:column;overflow:hidden;min-height:0">
-            <div class="panel-body" style="padding:0;overflow:hidden;flex:1;min-height:0;display:flex;flex-direction:column">
-                <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab"></canvas>
+        <div class="panel" id="panel-sphere" style="position:relative;overflow:hidden;min-height:0">
+            <div class="panel-body" style="padding:0;overflow:hidden;width:100%;height:100%">
+                <canvas id="sphere-canvas" width="800" height="480" style="cursor:grab;width:100%;height:100%;display:block"></canvas>
             </div>
-            <div id="canvas-controls" style="height:40px;background:rgba(0,0,0,0.6);display:flex;align-items:center;padding:0 10px;gap:8px">
+            <div id="canvas-controls" style="position:absolute;bottom:0;left:0;right:0;height:40px;background:rgba(0,0,0,0.6);display:flex;align-items:center;padding:0 10px;gap:8px;z-index:10">
                 <button id="ctrl-play" onclick="ctrlPlay()" style="background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:4px 8px">&#9654;</button>
                 <div style="flex:1;height:3px;background:rgba(255,255,255,0.15);border-radius:2px">
                     <div id="ctrl-progress" style="height:100%;background:#3b82f6;border-radius:2px;width:0%"></div>
@@ -160,11 +159,9 @@
 
     function resizeCanvas() {
         const c = document.getElementById('sphere-canvas');
-        // 뷰포트에서 툴바(48px) + 컨트롤바(40px) 빼고 캔버스에 강제 피팅
-        const _vw = window.innerWidth;
-        const _vh = window.innerHeight - 88;  // 48 toolbar + 40 controls
-        c.width = _vw;
-        c.height = Math.max(200, _vh);
+        const p = c.parentElement;
+        c.width = p.clientWidth;
+        c.height = p.clientHeight;
         renderer.m_canvasW = c.width;
         renderer.m_canvasH = c.height;
     }
