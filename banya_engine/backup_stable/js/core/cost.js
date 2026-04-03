@@ -1,7 +1,7 @@
 // 반야프레임 비용 추적기
 // 공리 4: +를 넘을 때마다 비용 1이 발생한다. +를 넘지 않으면 비용은 0
 // 공리 6: CAS 1회 총 비용 13 = 읽기 8 + 쓰기 5
-//         공 유지 비용 4, 잔존 비용 9 = LRU가 연속 회수
+//         공 유지 비용 4, 잔존 비용 9 = RLU가 연속 회수
 
 class CostTracker {
     // 공리 6: 비용의 전체 구조
@@ -17,11 +17,11 @@ class CostTracker {
     // 합계 13
     //
     // 유지 비용 4 = 3축 쓰기(3) + 타임스탬프(1) -> DATA에 점으로 남음
-    // 잔존 비용 9 = 13 - 4 = LRU 인덱스(중첩)에 기록 -> LRU가 연속 회수
+    // 잔존 비용 9 = 13 - 4 = RLU 인덱스(중첩)에 기록 -> RLU가 연속 회수
 
     static TOTAL_PER_CYCLE = 13;
     static MAINTAIN_COST   = 4;   // DATA에 남는 유지 비용
-    static RESIDUAL_COST   = 9;   // LRU가 회수할 잔존 비용
+    static RESIDUAL_COST   = 9;   // RLU가 회수할 잔존 비용
 
     constructor() {
         this.m_totalCost = 0;         // 누적 총 비용

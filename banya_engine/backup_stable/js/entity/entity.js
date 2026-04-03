@@ -1,5 +1,5 @@
 // 반야프레임 Entity: observer 투영 결과
-import { AXIOM, LRU_CONST } from '../core/constants.js';
+import { AXIOM, RLU_CONST } from '../core/constants.js';
 
 class Entity {
     static nextId = 0;
@@ -16,7 +16,7 @@ class Entity {
         this.m_mass = 0;
         this.m_shrinkRadius = 0;
         this.m_totalCost = 0;
-        this.m_lruStatus = 'HOT';
+        this.m_rluStatus = 'HOT';
         this.m_createdTick = 0;
         this.m_lastUpdateTick = 0;
         this.m_alive = true;
@@ -76,7 +76,7 @@ class Entity {
     decayMass(remnantLife) {
         if (!this.m_alive && this.m_mass > 0) {
             let _init = this.m_remnantInitMass || this.m_mass;
-            let _amount = _init / (remnantLife || LRU_CONST.REMNANT_LIFE);
+            let _amount = _init / (remnantLife || RLU_CONST.REMNANT_LIFE);
             let _decayed = Math.min(_amount, this.m_mass);
             this.m_mass -= _decayed;
             this.m_shrinkRadius = Math.sqrt(Math.max(0, this.m_mass));
@@ -97,7 +97,7 @@ class Entity {
             ballValue: this.m_ballValue,
             mass: Math.round(this.m_mass * 100) / 100,
             shrinkRadius: Math.round(this.m_shrinkRadius * 1000) / 1000,
-            totalCost: this.m_totalCost, lruStatus: this.m_lruStatus,
+            totalCost: this.m_totalCost, rluStatus: this.m_rluStatus,
             alive: this.m_alive, remnant: this.isRemnant(),
             gridCol: this.m_gridCol, gridRow: this.m_gridRow
         };

@@ -1,21 +1,21 @@
-// 반야프레임 LRU: 점의 수명 관리
-// 공리 6: 잔존 비용을 LRU가 연속적으로 회수
+// 반야프레임 RLU: 점의 수명 관리
+// 공리 6: 잔존 비용을 RLU가 연속적으로 회수
 // 1000단계 선형감쇠. 비용 13을 1000등분
 
-import { AXIOM, LRU_CONST } from './constants.js';
+import { AXIOM, RLU_CONST } from './constants.js';
 
-class LRU {
+class RLU {
     static STATUS_HOT  = 'HOT';
     static STATUS_WARM = 'WARM';
     static STATUS_COLD = 'COLD';
     static STATUS_REMNANT = 'REMNANT';
 
-    static MAX_LIFE = LRU_CONST.MAX_LIFE;
-    static BALL_LIFE = LRU_CONST.BALL_LIFE;
-    static REMNANT_LIFE = LRU_CONST.REMNANT_LIFE;
-    static HOT_END = LRU_CONST.HOT_END;
-    static WARM_END = LRU_CONST.WARM_END;
-    static DECAY_PER_TICK = LRU_CONST.DECAY_PER_TICK;
+    static MAX_LIFE = RLU_CONST.MAX_LIFE;
+    static BALL_LIFE = RLU_CONST.BALL_LIFE;
+    static REMNANT_LIFE = RLU_CONST.REMNANT_LIFE;
+    static HOT_END = RLU_CONST.HOT_END;
+    static WARM_END = RLU_CONST.WARM_END;
+    static DECAY_PER_TICK = RLU_CONST.DECAY_PER_TICK;
 
     constructor(ringSize) {
         this.m_ringSize = ringSize || 30;
@@ -27,7 +27,7 @@ class LRU {
     admit(entityId, costData) {
         this.m_entries.set(entityId, {
             entityId: entityId,
-            status: LRU.STATUS_HOT,
+            status: RLU.STATUS_HOT,
             strength: 1.0,
             age: 0,
             residualCost: costData.residual || AXIOM.COST_RESIDUAL,
@@ -39,7 +39,7 @@ class LRU {
     reenter(entityId, newCostData) {
         let _entry = this.m_entries.get(entityId);
         if (!_entry) { this.admit(entityId, newCostData); return; }
-        _entry.status = LRU.STATUS_HOT;
+        _entry.status = RLU.STATUS_HOT;
         _entry.strength = 1.0;
         _entry.age = 0;
         _entry.residualCost = newCostData.residual || AXIOM.COST_RESIDUAL;
@@ -53,9 +53,9 @@ class LRU {
 
         for (let [_id, _entry] of this.m_entries) {
             _entry.age++;
-            _entry.strength -= LRU.DECAY_PER_TICK;
+            _entry.strength -= RLU.DECAY_PER_TICK;
 
-            let _reclaimAmount = _entry.residualCost / LRU.BALL_LIFE;
+            let _reclaimAmount = _entry.residualCost / RLU.BALL_LIFE;
             _entry.reclaimedCost += _reclaimAmount;
             _tickReclaim += _reclaimAmount;
 
@@ -70,10 +70,10 @@ class LRU {
             // 5% 줄면 HOT->WARM (strength < 0.95)
             // 32% 줄면 WARM->COLD (strength < 0.68)
             else if (_entry.strength < 0.68) {
-                _entry.status = LRU.STATUS_COLD;
+                _entry.status = RLU.STATUS_COLD;
             }
             else if (_entry.strength < 0.95) {
-                _entry.status = LRU.STATUS_WARM;
+                _entry.status = RLU.STATUS_WARM;
             }
         }
 
@@ -83,7 +83,7 @@ class LRU {
             this.m_remnants.set(_evict.entityId, {
                 entityId: _evict.entityId,
                 position: _evict.position,
-                status: LRU.STATUS_REMNANT,
+                status: RLU.STATUS_REMNANT,
                 remnantAge: 0
             });
         }
@@ -131,7 +131,7 @@ class LRU {
             remnantCount: this.m_remnants.size,
             statusCounts: this.getStatusCounts(),
             totalReclaimed: Math.round(this.m_totalReclaimed * 100) / 100,
-            constants: { maxLife: LRU.MAX_LIFE, ballLife: LRU.BALL_LIFE, remnantLife: LRU.REMNANT_LIFE, decayPerTick: LRU.DECAY_PER_TICK },
+            constants: { maxLife: RLU.MAX_LIFE, ballLife: RLU.BALL_LIFE, remnantLife: RLU.REMNANT_LIFE, decayPerTick: RLU.DECAY_PER_TICK },
             entries: this.getAllEntries().map(_e => ({
                 entityId: _e.entityId, status: _e.status,
                 strength: Math.round(_e.strength * 1000) / 1000,
@@ -145,4 +145,4 @@ class LRU {
     reset() { this.m_entries.clear(); this.m_remnants.clear(); this.m_totalReclaimed = 0; }
 }
 
-export { LRU };
+export { RLU };

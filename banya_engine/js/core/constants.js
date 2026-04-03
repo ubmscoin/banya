@@ -11,7 +11,7 @@ export const AXIOM = {
     COST_READ: 8,            // 읽기 비용: CAS전이3 + 괄호경계1 + 도메인경계1 + 축접근3
     COST_WRITE: 5,           // 쓰기 비용: 3축쓰기3 + 타임스탬프1 + Swap커밋1
     COST_MAINTAIN: 4,        // 유지 비용: DATA에 점으로 남는 에너지 (3축쓰기+타임스탬프)
-    COST_RESIDUAL: 9,        // 잔존 비용: LRU가 회수할 에너지 (13-4)
+    COST_RESIDUAL: 9,        // 잔존 비용: RLU가 회수할 에너지 (13-4)
     BIGBANG_BUDGET: 1300,    // 빅뱅 예산: 13*100. 우주 전체 에너지
     CAS_TRANSITION: 3,       // CAS R+C+S 전이비용: 각 +1씩 (공리 4)
     FREEDOM_TOTAL: 9,        // 완전기술자유도: CAS내부7 + 괄호2 (공리 9)
@@ -20,10 +20,10 @@ export const AXIOM = {
 };
 
 // ========================================
-// LRU: 수명 체계 (1000단계 = 비용13을 1000등분)
+// RLU: 수명 체계 (1000단계 = 비용13을 1000등분)
 // HOT 5% / WARM 27% / COLD 68% (청구항 15)
 // ========================================
-export const LRU_CONST = {
+export const RLU_CONST = {
     MAX_LIFE: 1000,          // 총 수명
     BALL_LIFE: 1000,         // 공 수명 = 총 수명. 끊김 없이 연속 감쇠
     REMNANT_LIFE: 0,         // 잔해 개념 없음. 공이 1000틱 동안 연속 존재
@@ -42,7 +42,7 @@ export const OBSERVER = {
 };
 
 // ========================================
-// COLOR: LRU 상태별 색상 (구면 + 격자 통일)
+// COLOR: RLU 상태별 색상 (구면 + 격자 통일)
 // ========================================
 export const COLOR = {
     HOT:     { r: 239, g: 68,  b: 68  },   // 빨강

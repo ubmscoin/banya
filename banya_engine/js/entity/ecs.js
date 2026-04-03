@@ -1,17 +1,17 @@
 // 반야프레임 ECS: 공 생성, 이동, 소멸, 예산 순환
 import { CAS } from '../core/cas.js';
 import { Entity } from './entity.js';
-import { LRU } from '../core/lru.js';
-import { AXIOM, LRU_CONST } from '../core/constants.js';
+import { RLU } from '../core/rlu.js';
+import { AXIOM, RLU_CONST } from '../core/constants.js';
 
 class ECS {
     static COST_PER_CYCLE = AXIOM.COST_TOTAL;
     static TOTAL_SLOTS = 100;
 
-    constructor(dring, costTracker, lru) {
+    constructor(dring, costTracker, rlu) {
         this.m_dring = dring;
         this.m_costTracker = costTracker;
-        this.m_lru = lru;
+        this.m_rlu = rlu;
         this.m_workers = new Map();
         this.m_balls = [];
         this.m_remnants = [];
@@ -73,9 +73,9 @@ class ECS {
         let _entity = new Entity(observer.m_id, domainBits, _position);
         _entity.writeData(_casResult.juim, tick);
         _entity.updateShrinkRadius(AXIOM.COST_TOTAL);
-        _entity.m_shrinkRadius = 1.0;  // LRU strength 시작값
+        _entity.m_shrinkRadius = 1.0;  // RLU strength 시작값
         _entity.m_createdTick = tick;
-        _entity.m_lruStatus = 'HOT';
+        _entity.m_rluStatus = 'HOT';
         _entity.m_travelPhi = _phi;
         _entity.m_birthTheta = _theta;
 
@@ -83,20 +83,20 @@ class ECS {
         observer.registerEntity(_entity);
         this.m_totalCreated++;
 
-        this.m_lru.admit(_entity.m_id, { residual: AXIOM.COST_RESIDUAL, position: _position });
+        this.m_rlu.admit(_entity.m_id, { residual: AXIOM.COST_RESIDUAL, position: _position });
 
         return { observerId: observer.m_id, domainPattern: domainBits, casResult: _casResult, entity: _entity, tick: tick, inFocus: true, action: 'create' };
     }
 
-    processLRU(tick) {
-        let _result = this.m_lru.tick(tick);
+    processRLU(tick) {
+        let _result = this.m_rlu.tick(tick);
         this.m_budget += _result.tickReclaim;
         this.p_moveBalls();
         for (let _evict of _result.evicted) { this.p_evictBall(_evict.entityId); }
-        for (let [_id, _entry] of this.m_lru.m_entries) {
+        for (let [_id, _entry] of this.m_rlu.m_entries) {
             let _ball = this.m_balls.find(_b => _b.m_id === _id);
             if (_ball) {
-                _ball.m_lruStatus = _entry.status;
+                _ball.m_rluStatus = _entry.status;
                 _ball.m_shrinkRadius = Math.max(0, _entry.strength);
             }
         }
@@ -107,9 +107,9 @@ class ECS {
     p_moveBalls() {
         for (let _ball of this.m_balls) {
             if (!_ball.m_alive) { continue; }
-            let _lruEntry = this.m_lru.getEntry(_ball.m_id);
-            if (!_lruEntry) { continue; }
-            let _progress = _lruEntry.age / LRU_CONST.BALL_LIFE;
+            let _rluEntry = this.m_rlu.getEntry(_ball.m_id);
+            if (!_rluEntry) { continue; }
+            let _progress = _rluEntry.age / RLU_CONST.BALL_LIFE;
             let _theta = _progress * Math.PI * 0.4 + (_ball.m_birthTheta || 0);
             _theta = Math.min(Math.PI, _theta);
             let _phi = _ball.m_travelPhi || 0;
@@ -135,12 +135,12 @@ class ECS {
         let _toRemove = [];
         for (let i = 0; i < this.m_remnants.length; i++) {
             let _entity = this.m_remnants[i];
-            let _decayed = _entity.decayMass(LRU_CONST.REMNANT_LIFE);
-            this.m_lru.m_totalReclaimed += _decayed;
+            let _decayed = _entity.decayMass(RLU_CONST.REMNANT_LIFE);
+            this.m_rlu.m_totalReclaimed += _decayed;
             this.m_budget += _decayed;
             if (_entity.m_remnantAge === undefined) { _entity.m_remnantAge = 0; }
             _entity.m_remnantAge++;
-            let _totalProgress = (LRU_CONST.BALL_LIFE + _entity.m_remnantAge) / LRU_CONST.MAX_LIFE;
+            let _totalProgress = (RLU_CONST.BALL_LIFE + _entity.m_remnantAge) / RLU_CONST.MAX_LIFE;
             let _theta = _totalProgress * Math.PI;
             _theta = Math.min(Math.PI, _theta);
             let _phi = _entity.m_travelPhi || 0;
@@ -150,7 +150,7 @@ class ECS {
                 y: Math.round(_r * Math.sin(_theta) * Math.sin(_phi) * 100) / 100,
                 z: Math.round(_r * Math.cos(_theta) * 100) / 100
             };
-            if (_entity.isFullyDead()) { _toRemove.push(i); this.m_lru.removeRemnant(_entity.m_id); }
+            if (_entity.isFullyDead()) { _toRemove.push(i); this.m_rlu.removeRemnant(_entity.m_id); }
         }
         for (let i = _toRemove.length - 1; i >= 0; i--) { this.m_remnants.splice(_toRemove[i], 1); }
     }
@@ -175,7 +175,7 @@ class ECS {
             entityCountByObserver: { 0: _alive.length },
             entities: _alive.map(_e => _e.snapshot()),
             remnants: this.m_remnants.map(_e => _e.snapshot()),
-            lru: this.m_lru.snapshot()
+            rlu: this.m_rlu.snapshot()
         };
     }
 
@@ -189,7 +189,7 @@ class ECS {
         for (let i = 0; i < _remLimit; i++) {
             let _r = this.m_remnants[i];
             let _sph = _r.getSphericalCoords();
-            _all.push({ id: _r.m_id, theta: _sph.theta, phi: _sph.phi, position: _r.m_position, filled: false, alive: false, entity: { id: _r.m_id, lruStatus: 'REMNANT', alive: false, remnant: true, mass: _r.m_mass, shrinkRadius: _r.m_shrinkRadius } });
+            _all.push({ id: _r.m_id, theta: _sph.theta, phi: _sph.phi, position: _r.m_position, filled: false, alive: false, entity: { id: _r.m_id, rluStatus: 'REMNANT', alive: false, remnant: true, mass: _r.m_mass, shrinkRadius: _r.m_shrinkRadius } });
         }
         return _all;
     }

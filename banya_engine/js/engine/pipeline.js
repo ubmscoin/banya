@@ -10,7 +10,7 @@
 import { DRing } from '../core/dring.js';
 import { FSM } from '../core/fsm.js';
 import { CostTracker } from '../core/cost.js';
-import { LRU } from '../core/lru.js';
+import { RLU } from '../core/rlu.js';
 import { Observer } from '../entity/observer.js';
 import { ECS } from '../entity/ecs.js';
 import { Delta } from './delta.js';
@@ -36,9 +36,9 @@ class Pipeline {
         this.m_dring = new DRing();
         this.m_fsm = new FSM();
         this.m_costTracker = new CostTracker();
-        this.m_lru = new LRU(_cfg.ringSize || 30);
+        this.m_rlu = new RLU(_cfg.ringSize || 30);
         this.m_delta = new Delta(this.m_dring);
-        this.m_ecs = new ECS(this.m_dring, this.m_costTracker, this.m_lru);
+        this.m_ecs = new ECS(this.m_dring, this.m_costTracker, this.m_rlu);
 
         // 이벤트 로그 (addObserver보다 먼저 초기화)
         this.m_log = [];
@@ -90,7 +90,7 @@ class Pipeline {
     //   1: 도메인 활성화 (bit 0~3 동시)
     //   2: R_LOCK (bit 4)
     //   3: C_LOCK (bit 5)
-    //   4: S_LOCK (bit 6) + CAS 실행 + LRU
+    //   4: S_LOCK (bit 6) + CAS 실행 + RLU
     //   5: 리셋 (전부 OFF)
     // m_debugMode: 체크박스 체크시 6서브스텝, 아니면 1스텝으로 빠르게
     step() {
@@ -125,8 +125,8 @@ class Pipeline {
             this.m_ecs.executeTick(this.m_observers, _domainBits, this.m_tick);
         }
 
-        // LRU 항상
-        this.m_ecs.processLRU(this.m_tick);
+        // RLU 항상
+        this.m_ecs.processRLU(this.m_tick);
 
         // 리셋
         this.m_delta.extinguish();
@@ -180,7 +180,7 @@ class Pipeline {
             }
             this.m_fsm.reset();
             this.m_stage = Pipeline.STAGE_SCREEN;
-            this.m_ecs.processLRU(this.m_tick);
+            this.m_ecs.processRLU(this.m_tick);
             this.m_delta.extinguish();
             this.m_dring.setBit(DRing.BIT_OBSERVER, 0);
             this.m_dring.setBit(DRing.BIT_SUPERPOSITION, 0);
@@ -298,7 +298,7 @@ class Pipeline {
         this.m_dring.reset();
         this.m_fsm.reset();
         this.m_costTracker.reset();
-        this.m_lru.reset();
+        this.m_rlu.reset();
         this.m_delta.reset();
         this.m_ecs.reset();
 

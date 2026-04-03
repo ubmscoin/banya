@@ -141,10 +141,10 @@ class Renderer {
         _ctx.fillStyle = '#ffffff';
         _ctx.font = 'bold 18px monospace';
         _ctx.textAlign = 'center';
-        _ctx.fillText('\uBE45\uBC45', _cx, _cy + _btnR + 30);
+        _ctx.fillText('빅뱅', _cx, _cy + _btnR + 30);
         _ctx.font = '12px monospace';
         _ctx.fillStyle = '#ffffff';
-        _ctx.fillText('\uBC18\uC57C\uC0CC\uB4DC\uBC15\uC2A4\uC18D\uC5D0\uC11C \uBE45\uBC45\uC774 \uC2DC\uC791\uB429\uB2C8\uB2E4', _cx, _cy + _btnR + 52);
+        _ctx.fillText('반야샌드박스속에서 빅뱅이 시작됩니다', _cx, _cy + _btnR + 52);
         _ctx.textAlign = 'left';
     }
 
@@ -246,20 +246,20 @@ class Renderer {
                 _ctx.fillStyle = `rgba(140,160,255,${Math.max(0.1, 0.3 * _br * (_mass / 4))})`;
                 _ctx.beginPath(); _ctx.arc(_proj.x, _proj.y, _sz, 0, Math.PI * 2); _ctx.fill();
             } else if (_e) {
-                // 크기 = LRU strength (0~1) 직접 매핑
+                // 크기 = RLU strength (0~1) 직접 매핑
                 let _strength = _e.shrinkRadius || 0;
-                let _lruSize = Math.max(1, _strength * _strength * 12);
+                let _rluSize = Math.max(1, _strength * _strength * 12);
 
                 let _r = 100, _g = 130, _b2 = 170;
-                if (_e.lruStatus === 'HOT') { _r = 239; _g = 68; _b2 = 68; }
-                else if (_e.lruStatus === 'WARM') { _r = 245; _g = 158; _b2 = 11; }
-                else if (_e.lruStatus === 'COLD') { _r = 140; _g = 160; _b2 = 255; }
+                if (_e.rluStatus === 'HOT') { _r = 239; _g = 68; _b2 = 68; }
+                else if (_e.rluStatus === 'WARM') { _r = 245; _g = 158; _b2 = 11; }
+                else if (_e.rluStatus === 'COLD') { _r = 140; _g = 160; _b2 = 255; }
                 else { _r = 34; _g = 211; _b2 = 238; }
 
-                let _size = Math.max(1, _lruSize * _br);
+                let _size = Math.max(1, _rluSize * _br);
                 let _alpha = Math.max(0.05, 0.5 + _br * 0.5);
                 _ctx.shadowColor = `rgb(${_r},${_g},${_b2})`;
-                _ctx.shadowBlur = Math.max(0, _lruSize * _br * 0.8);
+                _ctx.shadowBlur = Math.max(0, _rluSize * _br * 0.8);
                 _ctx.fillStyle = `rgba(${_r},${_g},${_b2},${_alpha * _br})`;
                 _ctx.beginPath(); _ctx.arc(_proj.x, _proj.y, _size, 0, Math.PI * 2); _ctx.fill();
                 _ctx.shadowBlur = 0;
@@ -277,23 +277,23 @@ class Renderer {
             _ctx.beginPath(); _ctx.arc(_fx, _fy, _fR, 0, Math.PI * 2); _ctx.stroke();
             _ctx.fillStyle = '#ffffff';
             _ctx.font = 'bold 10px monospace';
-            _ctx.fillText('\uC635\uC800\uBC84', _fx + _fR + 4, _fy + 3);
+            _ctx.fillText('옵저버', _fx + _fR + 4, _fy + 3);
         }
 
         let _ecs = snapshot.ecs || {};
         _ctx.fillStyle = '#ffffff';
         _ctx.font = '10px monospace';
 
-        // LRU 라벨
+        // RLU 라벨
         _ctx.textAlign = 'center';
         _ctx.fillStyle = '#ffffff';
         _ctx.font = 'bold 13px monospace';
-        _ctx.fillText('LRU \uBE44\uAC00\uC5ED\uC801 \uAC10\uC1E0', _cx, _cy + _sphereR + 24);
+        _ctx.fillText('RLU 비가역적 감쇠 — 논리주소 없이 방향과 거리로 매핑', _cx, _cy + _sphereR + 24);
         // 반야식: 캔버스 너비에 맞게 폰트 조절. 파란색
         _ctx.fillStyle = '#3b82f6';
         let _banyaFont = Math.min(15, _w / 42);
         _ctx.font = 'bold ' + Math.round(_banyaFont) + 'px monospace';
-        _ctx.fillText('\u03B4\u00B2 = (time+space)\u00B2 + (observer+superposition)\u00B2', _cx, _cy + _sphereR + 44);
+        _ctx.fillText('δ² = (time+space)² + (observer+superposition)²', _cx, _cy + _sphereR + 44);
         _ctx.textAlign = 'left';
 
         // 우측 상단 200x200: 엔티티 격자 (상호작용 세기 시각화)
@@ -372,7 +372,7 @@ class Renderer {
         // === 예산 바 ===
         let _budgetVal = Math.min(13, (snapshot.ecs ? snapshot.ecs.budget || 0 : 0));
         ctx.fillStyle = _fc; ctx.font = _f;
-        ctx.fillText('\uBE44\uC6A9 \uD68C\uC218', ox, _y + 9);
+        ctx.fillText('비용 회수', ox, _y + 9);
         ctx.fillStyle = 'rgba(239,68,68,0.4)'; ctx.fillRect(_barX, _y, _barW, _barH);
         ctx.fillStyle = 'rgba(245,158,11,0.8)'; ctx.fillRect(_barX, _y, _barW * (_budgetVal / 13), _barH);
         ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.lineWidth = 0.5; ctx.strokeRect(_barX, _y, _barW, _barH);
@@ -383,7 +383,7 @@ class Renderer {
 
         // === 워크벤치 ===
         let _wbFired = _dr.delta === 1;
-        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('\uC6CC\uD06C\uBCA4\uCE58', ox, _y + 9);
+        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('워크벤치', ox, _y + 9);
         ctx.fillStyle = _wbFired ? 'rgba(59,130,246,0.6)' : 'rgba(30,41,59,0.5)';
         ctx.fillRect(_barX, _y, _barW, _barH);
         ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.lineWidth = 0.5; ctx.strokeRect(_barX, _y, _barW, _barH);
@@ -396,7 +396,7 @@ class Renderer {
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 1; ctx.strokeRect(ox, _y, _chkSize, _chkSize);
         if (this.m_debugMode) { ctx.fillStyle = 'rgba(59,130,246,0.8)'; ctx.fillRect(ox + 2, _y + 2, _chkSize - 4, _chkSize - 4); }
-        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('\uB0B4\uBD80\uC791\uB3D9 \uBCF4\uAE30 (\uB290\uB824\uC9D0)', ox + _chkSize + 5, _y + 9);
+        ctx.fillStyle = _fc; ctx.font = _f; ctx.fillText('내부작동 보기 (느려짐)', ox + _chkSize + 5, _y + 9);
         this.m_hudCheckbox = { x: ox, y: _y, w: _chkSize + 100, h: _chkSize + 4 };
         _y += 35;
 
@@ -405,23 +405,23 @@ class Renderer {
 
         // === 하단 정보 (항상 갱신, 체크 무관) ===
         let _ecs = snapshot.ecs || {};
-        let _lru = _ecs.lru || {};
-        let _lc = _lru.statusCounts || {};
-        let _lruTotal = (_lc.HOT||0) + (_lc.WARM||0) + (_lc.COLD||0) + (_lc.REMNANT||0);
+        let _rlu = _ecs.rlu || {};
+        let _lc = _rlu.statusCounts || {};
+        let _rluTotal = (_lc.HOT||0) + (_lc.WARM||0) + (_lc.COLD||0) + (_lc.REMNANT||0);
 
         let _vx = ox + _labelW + 30;
         ctx.font = _f;
 
-        ctx.fillStyle = _fc; ctx.fillText('\uC6B0\uC8FC \uCD1D \uC608\uC0B0', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + Math.round(_ecs.budget || 0), _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('\uACF5 \uC218', ox, _y); ctx.fillStyle = _fv; ctx.fillText((_ecs.totalEntities||0) + ' / ' + _lruTotal, _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('LRU \uC218\uBA85', ox, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('우주 총 예산', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + Math.round(_ecs.budget || 0), _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('공 수', ox, _y); ctx.fillStyle = _fv; ctx.fillText((_ecs.totalEntities||0) + ' / ' + _rluTotal, _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('RLU 수명', ox, _y); _y += _lineH;
         ctx.fillStyle = '#ef4444'; ctx.fillText('HOT 5%', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_lc.HOT||0), _vx, _y); _y += _lineH;
         ctx.fillStyle = '#f59e0b'; ctx.fillText('WARM 27%', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_lc.WARM||0), _vx, _y); _y += _lineH;
         ctx.fillStyle = '#8ca0ff'; ctx.fillText('COLD 68%', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + ((_lc.COLD||0)+(_lc.REMNANT||0)), _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('CAS \uC0AC\uC774\uD074', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_ecs.tickCount||0), _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('\uBE45\uBC45 \uC608\uC0B0', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13*100=1300', _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('\uACF5 1\uAC1C \uBE44\uC6A9', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13', _vx, _y); _y += _lineH;
-        ctx.fillStyle = _fc; ctx.fillText('HOT \uBA74\uC801', ox, _y); ctx.fillStyle = _fv; ctx.fillText('5%', _vx, _y);
+        ctx.fillStyle = _fc; ctx.fillText('CAS 사이클', ox, _y); ctx.fillStyle = _fv; ctx.fillText('' + (_ecs.tickCount||0), _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('빅뱅 예산', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13*100=1300', _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('공 1개 비용', ox, _y); ctx.fillStyle = _fv; ctx.fillText('13', _vx, _y); _y += _lineH;
+        ctx.fillStyle = _fc; ctx.fillText('HOT 면적', ox, _y); ctx.fillStyle = _fv; ctx.fillText('5%', _vx, _y);
     }
 
     // 엔티티 공간 격자 (Entity Space)
@@ -602,15 +602,15 @@ class Renderer {
             let _alpha = 0.3;
 
             if (_item.alive) {
-                // 크기 = LRU strength 직접. 1.0->0
+                // 크기 = RLU strength 직접. 1.0->0
                 let _strength = _b.shrinkRadius || 0;
                 _sz = Math.max(1, _strength * _strength * 12 * _gridScale);
                 _alpha = Math.max(0.2, _strength);
 
-                // 색상은 LRU 상태별
-                if (_b.lruStatus === 'HOT') { _r = 239; _g = 68; _b2 = 68; }
-                else if (_b.lruStatus === 'WARM') { _r = 245; _g = 158; _b2 = 11; }
-                else if (_b.lruStatus === 'COLD') { _r = 140; _g = 160; _b2 = 255; }
+                // 색상은 RLU 상태별
+                if (_b.rluStatus === 'HOT') { _r = 239; _g = 68; _b2 = 68; }
+                else if (_b.rluStatus === 'WARM') { _r = 245; _g = 158; _b2 = 11; }
+                else if (_b.rluStatus === 'COLD') { _r = 140; _g = 160; _b2 = 255; }
             }
             else {
                 // 잔해: COLD 색상. 질량 비례 크기
@@ -619,7 +619,7 @@ class Renderer {
                 _alpha = Math.max(0.15, (_b.mass || 0) / 4 * 0.5);
             }
 
-            // 글로우 효과: LRU 상태에 맞는 색으로 빛남
+            // 글로우 효과: RLU 상태에 맞는 색으로 빛남
             ctx.shadowColor = `rgb(${_r},${_g},${_b2})`;
             ctx.shadowBlur = Math.max(0, _sz * 0.8);
             ctx.fillStyle = `rgba(${_r},${_g},${_b2},${_alpha})`;
@@ -633,7 +633,7 @@ class Renderer {
         ctx.textAlign = 'center';
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 13px monospace';
-        ctx.fillText('Entity \uACF5\uAC04 \uC0C1\uD638\uC791\uC6A9', ox + size / 2, oy + size + 20);
+        ctx.fillText('엔티티 공간 상호작용', ox + size / 2, oy + size + 20);
         ctx.textAlign = 'left';
     }
 
@@ -720,9 +720,9 @@ class Renderer {
         let _ents = focusedEntities || [];
         let _html = '';
         if (_ents.length === 0) { _html = '<div style="color:var(--text-dim);padding:8px">no entities in focus</div>'; }
-        else { for (let _e of _ents.slice(-20)) { let _sc = _e.lruStatus||'HOT'; _html += `<div class="entity-item"><span class="entity-id">#${_e.id}</span><span class="entity-observer">obs:${_e.observerId}</span><span class="entity-status ${_sc}">${_sc}</span><span class="entity-pos">(${_e.position.x},${_e.position.y},${_e.position.z})</span><span class="entity-cost">m:${_e.mass}</span></div>`; } }
+        else { for (let _e of _ents.slice(-20)) { let _sc = _e.rluStatus||'HOT'; _html += `<div class="entity-item"><span class="entity-id">#${_e.id}</span><span class="entity-observer">obs:${_e.observerId}</span><span class="entity-status ${_sc}">${_sc}</span><span class="entity-pos">(${_e.position.x},${_e.position.y},${_e.position.z})</span><span class="entity-cost">m:${_e.mass}</span></div>`; } }
         this.m_elements.focusedList.innerHTML = _html;
-        if (this.m_elements.focusedSummary) { let _l = ecs.lru||{}, _c = _l.statusCounts||{}; this.m_elements.focusedSummary.textContent = `focused:${_ents.length} total:${ecs.totalEntities} rem:${ecs.remnantCount} HOT:${_c.HOT||0} WARM:${_c.WARM||0} COLD:${_c.COLD||0}`; }
+        if (this.m_elements.focusedSummary) { let _l = ecs.rlu||{}, _c = _l.statusCounts||{}; this.m_elements.focusedSummary.textContent = `focused:${_ents.length} total:${ecs.totalEntities} rem:${ecs.remnantCount} HOT:${_c.HOT||0} WARM:${_c.WARM||0} COLD:${_c.COLD||0}`; }
     }
 
     p_renderCost(cost, budget) {
@@ -751,8 +751,8 @@ class Renderer {
     }
 
     p_renderToolbar(snapshot) {
-        if (this.m_elements.tickDisplay) { this.m_elements.tickDisplay.textContent = `\uD2F1:${snapshot.tick} \uC608\uC0B0:${snapshot.budget}`; }
-        if (this.m_elements.btnPlay) { this.m_elements.btnPlay.classList.toggle('active', snapshot.running); this.m_elements.btnPlay.textContent = snapshot.running ? '\uC77C\uC2DC\uC815\uC9C0' : '\uC7AC\uC0DD'; }
+        if (this.m_elements.tickDisplay) { this.m_elements.tickDisplay.textContent = `틱:${snapshot.tick} 예산:${snapshot.budget}`; }
+        if (this.m_elements.btnPlay) { this.m_elements.btnPlay.classList.toggle('active', snapshot.running); this.m_elements.btnPlay.textContent = snapshot.running ? '일시정지' : '재생'; }
     }
 }
 
