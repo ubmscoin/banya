@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>약력/CP위반 도출과정: CAS Compare에서 SU(2) 도출 — 반야프레임 운영 보고서</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="반야프레임 CAS Compare 자유도 2에서 SU(2) 약력 도출. W/Z 질량, 패리티 위반, CP 위반, Higgs 메커니즘을 CAS 비가역성과 FSM 노름에서 도출.">
+<meta name="keywords" content="반야프레임,般若,Banya Framework,약력,weak force,SU(2),W boson,Z boson,패리티 위반,parity violation,CP violation,Higgs,CAS,Compare,FSM,노름,한혁진,Han Hyukjin">
+<meta property="og:title" content="약력/CP위반 도출과정 — 반야프레임">
+<meta property="og:description" content="Compare DOF 2에서 SU(2), CAS 비가역성에서 패리티 위반, FSM 노름에서 Higgs 도출.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="약력/CP위반 도출과정 — 반야프레임">
+<meta name="twitter:description" content="CAS Compare에서 SU(2) 약력, 패리티 위반, CP 위반, Higgs 도출.">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="../print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="../en/discovery/weak_cp.html" class="lang-btn">EN</a></div>
+
+<div class="toc-side lang-ko">
+<a href="#title" class="toc-h1">약력/CP위반 도출과정</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1. Compare에서 SU(2)</a>
+<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r1-step2" class="toc-h3">2단계. Compare DOF 2</a>
+<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r2" class="toc-h1">라운드 2. W/Z 질량</a>
+<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r2-step2" class="toc-h3">2단계. FSM 노름 = 질량</a>
+<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r3" class="toc-h1">라운드 3. 패리티 위반</a>
+<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r3-step2" class="toc-h3">2단계. CAS 비가역성</a>
+<a href="#r3-step3" class="toc-h3">3단계. 좌우 비대칭</a>
+<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r4" class="toc-h1">라운드 4. CP 위반</a>
+<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r4-step2" class="toc-h3">2단계. CAS 위상</a>
+<a href="#r4-step3" class="toc-h3">3단계. CKM 행렬</a>
+<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r5" class="toc-h1">라운드 5. Higgs 메커니즘</a>
+<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r5-step2" class="toc-h3">2단계. FSM 노름 부여</a>
+<a href="#r5-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r5-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
+<a href="#limits" class="toc-h1">한계</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+
+<div class="toc-bar lang-ko" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">약력/CP위반 도출과정</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
+<a href="#title" class="toc-h1">약력/CP위반 도출과정</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1. Compare에서 SU(2)</a>
+<a href="#r2" class="toc-h1">라운드 2. W/Z 질량</a>
+<a href="#r3" class="toc-h1">라운드 3. 패리티 위반</a>
+<a href="#r4" class="toc-h1">라운드 4. CP 위반</a>
+<a href="#r5" class="toc-h1">라운드 5. Higgs 메커니즘</a>
+<a href="#limits" class="toc-h1">한계</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+<div class="lang-ko">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 반야프레임의 구조, 물리식 검증, CAS 연산자, 쓰기 이론 등 전체 내용은 Master Report에 있다. 이 문서는 그 중 약력과 CP 위반 도출과정만을 다룬다.</p>
+
+<h1 id="title">약력/CP위반 도출과정: CAS Compare에서 SU(2)까지</h1>
+
+<blockquote><p>반야프레임 운영 보고서</p></blockquote>
+<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>실행일: 2026-04-03</p></blockquote>
+
+
+<h2 id="intro">서두</h2>
+
+<p><strong>가치: 약력의 구조적 기원</strong> -- 약력은 4가지 힘 중 가장 이상한 힘이다. 패리티를 위반하고, CP도 위반한다. 왜 약력만 좌손잡이인가, 왜 W/Z 보손은 무겁고 광자는 무질량인가. 반야프레임은 CAS의 Compare 단계 구조로부터 이 모든 것에 답한다. H-459~475 카드를 다룬다.</p>
+
+<p><strong>상태: <span class="tag-solved">적중</span></strong> -- SU(2) = Compare DOF 2, 패리티 위반 = CAS 비가역성, Higgs = FSM 노름 부여.</p>
+
+
+<h2 id="discovery">핵심 발견</h2>
+
+<div class="discovery-block">
+<h4>Compare DOF 2에서 SU(2) 약력 필연 도출<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-459~462, 2026-04-03</span></h4>
+<div class="formula">$$\text{Compare}(2) \longrightarrow SU(2):\; \dim = 2^2 - 1 = 3$$</div>
+<p><span class="precision">Compare의 이진 판정 (같다/다르다)이 SU(2)의 2차원 기본표현에 대응. 생성자 3개 = W$^+$, W$^-$, Z.</span></p>
+</div>
+
+<div class="discovery-block">
+<h4>패리티 위반 = CAS 비가역성의 직접 귀결<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-466~469, 2026-04-03</span></h4>
+<div class="formula">$$\text{R} \to \text{C} \to \text{S} \quad (\text{비가역}) \implies P\text{-violation}$$</div>
+<p><span class="precision">CAS가 비가역이므로 좌→우와 우→좌가 다르다. 약력만 좌손잡이인 이유.</span></p>
+</div>
+
+
+<h1 id="r1">라운드 1. Compare 자유도에서 SU(2) (H-459~462)</h1>
+
+<h3 id="r1-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">4축 구조. CAS의 3단계가 각각 다른 게이지 군에 대응.</div>
+</div>
+
+<p>게이지 군 매핑 보고서(gauge.html)에서 CAS (1, 2, 4) → (U(1), SU(2), SU(3))의 대응을 확립했다. 이 보고서에서는 Compare(2) → SU(2) 대응을 상세히 전개한다.</p>
+
+<h3 id="r1-step2">2단계. Compare DOF 2</h3>
+
+<p>Compare의 자유도는 2다. "같다(true)" 또는 "다르다(false)". 이 이진 판정이 SU(2)의 2차원 기본표현에 대응한다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{Compare}: \begin{pmatrix} \text{true} \\ \text{false} \end{pmatrix} \longleftrightarrow SU(2): \begin{pmatrix} |\uparrow\rangle \\ |\downarrow\rangle \end{pmatrix}$$</div>
+<div class="math-desc">Compare의 이진 결과 = SU(2) 이중항 (doublet)</div>
+</div>
+
+<p>$SU(2)$의 생성자 수: $2^2 - 1 = 3$. 이것이 W$^+$, W$^-$, Z 보손 3개다.</p>
+
+<p>3개 생성자의 CAS 해석:</p>
+<ul>
+<li><strong>W$^+$</strong>: Compare false→true 전환. "다르다"를 "같다"로 바꾸는 연산. 이것은 약한 이소스핀을 올리는 것.</li>
+<li><strong>W$^-$</strong>: Compare true→false 전환. "같다"를 "다르다"로 바꾸는 연산. 약한 이소스핀을 내리는 것.</li>
+<li><strong>Z</strong>: Compare 대각 성분. true↔true 또는 false↔false. 상태를 바꾸지 않되 결합 강도를 조절.</li>
+</ul>
+
+<h3 id="r1-step3">3단계. 상수 대입</h3>
+
+<div class="math-block">
+<div class="math-row">$$\alpha_W = \frac{g^2}{4\pi} \approx \frac{1}{30}$$</div>
+<div class="math-desc">약력 결합상수. Compare 자유도 2에서 도출.</div>
+</div>
+
+<p>약력 결합상수가 전자기 결합상수보다 큰 이유: Compare(2) > Read(1)이므로, 자유도가 더 큰 Compare에 대응하는 약력이 Read에 대응하는 전자기력보다 강하다. 하지만 W/Z 보손의 질량이 크므로 실효적인 약력의 세기는 전자기력보다 약해 보인다.</p>
+
+<h3 id="r1-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>CAS Compare 구조</th><th>SU(2) 약력</th><th>설명</th></tr>
+<tr><td>이진 판정 (2-dim)</td><td>약한 이소스핀 이중항</td><td>$(u, d)$, $(\nu_e, e)$ 등의 이중항 구조</td></tr>
+<tr><td>생성자 3개</td><td>W$^+$, W$^-$, Z</td><td>Compare 전환 연산자 3가지</td></tr>
+<tr><td>Compare 비용</td><td>약력 결합상수 $g$</td><td>비교의 비용 = 결합의 세기</td></tr>
+</table>
+</div>
+
+<h3 id="r1-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>SU(2) = Compare의 필연<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-459~462</span></h4>
+<p>약력이 SU(2)인 이유: CAS의 Compare 단계가 이진 판정(자유도 2)이기 때문이다. 2차원 특수 유니터리 군 SU(2)의 생성자 3개는 Compare의 true↔false 전환(W$^\pm$)과 대각(Z)에 정확히 대응한다.</p>
+</div>
+
+
+<h1 id="r2">라운드 2. W/Z 보손 질량 (H-463~465)</h1>
+
+<h3 id="r2-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">FSM 노름(공리 14)이 질량을 결정한다.</div>
+</div>
+
+<h3 id="r2-step2">2단계. FSM 노름 = 질량</h3>
+
+<p>공리 14: FSM 상태 전이 000→001→011→111→000이고, norm = mass다. W/Z 보손의 질량은 FSM에서 Compare 단계에 할당되는 노름이다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{FSM 상태}: 000 \to 001 \to 011 \to 111 \to 000$$</div>
+<div class="math-row">$$M_W = \text{Compare 전환에 필요한 FSM 노름}$$</div>
+<div class="math-desc">W 보손 질량 = Compare 전환의 FSM 비용</div>
+</div>
+
+<p>광자가 무질량인 이유: Read(1)의 자유도는 1이다. 자유도 1인 U(1) 연산은 상태를 바꾸지 않으므로 FSM 전이가 없다. FSM 전이가 없으면 노름이 0이고, 노름이 0이면 질량이 0이다.</p>
+
+<p>W/Z가 무거운 이유: Compare(2)의 자유도는 2다. true↔false 전환은 FSM 상태를 바꾼다. 이 전이에 필요한 노름이 W/Z의 질량이다.</p>
+
+<h3 id="r2-step3">3단계. 상수 대입</h3>
+
+<div class="math-block">
+<div class="math-row">$$M_W = 80.377 \text{ GeV}, \quad M_Z = 91.188 \text{ GeV}$$</div>
+<div class="math-row">$$\frac{M_W}{M_Z} = \cos\theta_W = 0.8815$$</div>
+<div class="math-desc">Weinberg 각의 코사인 = W/Z 질량비</div>
+</div>
+
+<p>$\cos\theta_W$의 CAS 해석: Weinberg 각 $\theta_W$는 U(1)과 SU(2)가 혼합되는 각도다. 반야프레임에서 이것은 Read와 Compare의 결합 각도다. sin$^2\theta_W$ 도출은 별도 보고서(sin2_thetaW.html)에서 다루었다.</p>
+
+<h3 id="r2-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>보손</th><th>CAS 대응</th><th>FSM 노름</th><th>질량</th></tr>
+<tr><td>광자 $\gamma$</td><td>Read (전이 없음)</td><td>0</td><td>0</td></tr>
+<tr><td>W$^\pm$</td><td>Compare true↔false</td><td>FSM 전이 비용</td><td>80.377 GeV</td></tr>
+<tr><td>Z</td><td>Compare 대각</td><td>FSM 전이 비용 + 혼합</td><td>91.188 GeV</td></tr>
+<tr><td>글루온</td><td>Swap (내부, 닫힘)</td><td>0 (가둠)</td><td>0</td></tr>
+</table>
+</div>
+
+<h3 id="r2-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>보손 질량 계층 = FSM 전이 유무<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-463~465</span></h4>
+<p>광자가 무질량이고 W/Z가 무거운 이유: Read(U(1))은 FSM 전이가 없어 노름=0, Compare(SU(2))는 FSM 전이가 필요해 노름$\neq$0. 글루온이 무질량인 이유는 다르다: Swap(SU(3))은 FSM 내부에서 닫혀 있어(색 가둠) 외부로 노름이 드러나지 않는다.</p>
+</div>
+
+
+<h1 id="r3">라운드 3. 패리티 위반 (H-466~469)</h1>
+
+<h3 id="r3-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">CAS는 비가역(공리 2). 비가역성은 거울 대칭을 깬다.</div>
+</div>
+
+<h3 id="r3-step2">2단계. CAS 비가역성 = P 위반</h3>
+
+<p>공리 2: CAS는 R→C→S 방향으로만 진행한다. 이것은 시간의 화살과 같은 일방향성이다.</p>
+
+<p>패리티(P) 변환은 공간 좌표의 반전, 즉 $\vec{r} \to -\vec{r}$이다. CAS의 비가역성은 이 변환 아래에서 불변이 아니다:</p>
+
+<div class="math-block">
+<div class="math-row">$$P: \text{R} \to \text{C} \to \text{S} \xrightarrow{P} \text{S} \to \text{C} \to \text{R}$$</div>
+<div class="math-row">$$\text{그러나 S} \to \text{C} \to \text{R은 공리 2에 의해 금지}$$</div>
+<div class="math-desc">패리티 변환된 CAS는 비가역성 위반. 따라서 P 비보존.</div>
+</div>
+
+<h3 id="r3-step3">3단계. 왜 약력만 P 위반인가</h3>
+
+<p>전자기력(Read)은 자유도 1이다. 1차원에서 패리티 반전은 자기 자신이다. 따라서 P 불변.</p>
+
+<p>강력(Swap)은 CAS 원자성으로 닫혀 있다. 내부에서 비가역이지만 외부에서 보면 전체가 하나의 연산이므로 P 변환에 영향받지 않는다.</p>
+
+<p>약력(Compare)만 2차원이면서 열려 있다. 2차원에서 패리티 반전은 두 축을 교환하는 것(true↔false)인데, CAS의 비가역성 때문에 이 교환은 대칭이 아니다. true→false와 false→true의 비용이 다르다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{Read}(1): P\text{-invariant} \quad (\text{1차원, 반전=자기자신})$$</div>
+<div class="math-row">$$\text{Compare}(2): P\text{-violating} \quad (\text{2차원, 비가역적 교환})$$</div>
+<div class="math-row">$$\text{Swap}(4\to3): P\text{-invariant} \quad (\text{닫힌 원자적 연산})$$</div>
+<div class="math-desc">약력만 P를 위반하는 이유: 열린 2차원 비가역 연산</div>
+</div>
+
+<h3 id="r3-step4">4단계. 도메인 변환</h3>
+
+<p>물리학에서 약력은 좌손잡이 입자에만 작용한다. 반야프레임에서 "좌손잡이"는 CAS의 순방향(R→C→S)에 정렬된 것이고, "우손잡이"는 역방향에 정렬된 것이다. CAS가 비가역이므로 순방향(좌손잡이)만 Compare에 참여할 수 있다.</p>
+
+<h3 id="r3-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>패리티 위반 = CAS 비가역성 + Compare 열린 구조<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-466~469</span></h4>
+<p>약력이 패리티를 위반하는 이유: (1) CAS가 비가역이므로 방향성이 있다. (2) Compare는 2차원이고 열려 있으므로 이 방향성이 외부에 노출된다. 전자기력은 1차원이라 방향 구분이 없고, 강력은 닫혀 있어 방향성이 숨겨진다. 약력만이 "열린 비가역 2차원 연산"이므로 P를 위반한다.</p>
+</div>
+
+
+<h1 id="r4">라운드 4. CP 위반 (H-470~473)</h1>
+
+<h3 id="r4-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">CP 변환 = 공간 반전(P) + 전하 켤레(C). CAS에서 두 변환 모두 비대칭.</div>
+</div>
+
+<h3 id="r4-step2">2단계. CAS 위상과 CP 위반</h3>
+
+<p>C(전하 켤레) 변환은 입자를 반입자로 바꾼다. 반야프레임에서 반입자는 CAS의 역방향 실행이다. 공리 2에 의해 역방향은 순방향과 비용이 다르다.</p>
+
+<div class="math-block">
+<div class="math-row">$$C: \text{CAS}(A \to B) \longrightarrow \text{CAS}(B \to A)$$</div>
+<div class="math-row">$$\text{비용}(A \to B) \neq \text{비용}(B \to A) \quad (\text{공리 2, 비가역})$$</div>
+<div class="math-desc">C 변환 비대칭: 순방향과 역방향의 비용 차이</div>
+</div>
+
+<p>CP 변환은 C와 P를 동시에 적용한다. 개별적으로는 둘 다 비대칭이지만, 특정 조건에서 CP가 보존될 수 있다. CP가 위반되려면 C와 P의 비대칭이 "정확히 상쇄하지 않는" 경우여야 한다.</p>
+
+<h3 id="r4-step3">3단계. CKM 행렬과 위상</h3>
+
+<p>CKM 행렬의 CP 위반 위상 $\delta$는 쿼크 세대 간 혼합에서 온다. 반야프레임에서 쿼크 세대는 FSM 상태(000, 001, 011)에 대응한다. 세대 간 전이는 FSM 상태 전이고, 이 전이의 위상이 CP 위반 위상이다.</p>
+
+<div class="math-block">
+<div class="math-row">$$V_{\text{CKM}} = \begin{pmatrix} V_{ud} & V_{us} & V_{ub} \\ V_{cd} & V_{cs} & V_{cb} \\ V_{td} & V_{ts} & V_{tb} \end{pmatrix}$$</div>
+<div class="math-desc">CKM 행렬: FSM 상태 간 전이 확률. CP 위반 위상 $\delta \neq 0$.</div>
+</div>
+
+<p>CP 위반 위상이 0이 아닌 이유: FSM 상태 전이 000→001→011→111→000이 순환적이다. 순환에는 방향이 있고(CAS 비가역성), 이 방향성이 위상으로 나타난다. 3세대 이상에서만 CP 위반이 가능한 이유: FSM 상태가 3개(000, 001, 011) 이상이어야 순환이 비자명하기 때문이다. 2세대에서는 순환이 단순 왕복이라 위상이 소거된다.</p>
+
+<h3 id="r4-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>CP 위반 현상</th><th>반야프레임 대응</th><th>공리</th></tr>
+<tr><td>CKM 위상 $\delta$</td><td>FSM 순환의 비가역 위상</td><td>공리 2, 14</td></tr>
+<tr><td>3세대 필요 조건</td><td>FSM 상태 3개 이상의 비자명 순환</td><td>공리 14</td></tr>
+<tr><td>바리온 비대칭</td><td>CAS 순방향 선호 = 물질 우세</td><td>공리 2</td></tr>
+</table>
+</div>
+
+<h3 id="r4-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>CP 위반 = FSM 순환의 비가역 위상<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-470~473</span></h4>
+<p>CP 위반의 기원: FSM 상태 전이(공리 14)가 순환적이고, CAS 비가역성(공리 2)이 이 순환에 방향을 부여한다. 이 방향성이 CKM 위상 $\delta$로 나타난다. 3세대 이상에서만 CP 위반이 가능한 이유: FSM 상태 3개 이상의 순환이어야 비자명한 위상이 존재한다.</p>
+</div>
+
+
+<h1 id="r5">라운드 5. Higgs 메커니즘 = FSM 노름 부여 (H-474~475)</h1>
+
+<h3 id="r5-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">FSM의 norm = mass(공리 14). 질량 부여 메커니즘.</div>
+</div>
+
+<h3 id="r5-step2">2단계. FSM 노름 부여 = Higgs</h3>
+
+<p>Higgs 메커니즘은 게이지 보손에 질량을 부여하는 과정이다. 반야프레임에서 이것은 FSM의 노름 할당이다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{FSM}: 000 \to 001 \to 011 \to 111 \to 000$$</div>
+<div class="math-row">$$\text{norm}(\text{FSM state}) = \text{mass}$$</div>
+<div class="math-desc">공리 14: FSM 노름이 질량을 결정</div>
+</div>
+
+<p>Higgs 장의 진공 기대값(VEV)은 FSM의 기본 상태(ground state)에서의 노름이다. $v = 246$ GeV는 FSM이 기본 상태에 있을 때의 총 노름이다.</p>
+
+<p>Higgs 보손 자체는 FSM 노름의 요동(fluctuation)이다. FSM 상태가 기본 상태 주위에서 흔들리면, 이 흔들림이 Higgs 보손으로 나타난다. $M_H = 125$ GeV는 이 요동의 에너지다.</p>
+
+<h3 id="r5-step3">3단계. 상수 대입</h3>
+
+<div class="math-block">
+<div class="math-row">$$v = 246 \text{ GeV} = \text{FSM 기본 상태 총 노름}$$</div>
+<div class="math-row">$$M_H = 125.25 \text{ GeV} = \text{FSM 노름 요동의 에너지}$$</div>
+<div class="math-row">$$\frac{M_H}{v} = 0.509 \approx \frac{1}{2}$$</div>
+<div class="math-desc">Higgs 질량 / VEV 비율이 약 1/2인 것은 FSM 2-상태 요동을 시사</div>
+</div>
+
+<h3 id="r5-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Higgs 물리</th><th>반야프레임 대응</th><th>공리</th></tr>
+<tr><td>Higgs VEV $v$</td><td>FSM 기본 상태 노름</td><td>공리 14</td></tr>
+<tr><td>자발적 대칭 파괴</td><td>FSM이 특정 상태를 선택 (000)</td><td>공리 14</td></tr>
+<tr><td>Higgs 보손 질량</td><td>FSM 노름 요동</td><td>공리 14</td></tr>
+<tr><td>Yukawa 결합</td><td>FSM 노름과 엔티티의 결합</td><td>공리 12, 14</td></tr>
+</table>
+</div>
+
+<h3 id="r5-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>Higgs = FSM 노름 부여. 자발적 대칭 파괴 = FSM 상태 선택.<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-474~475</span></h4>
+<p>Higgs 메커니즘은 "신비로운 장"이 아니라 FSM의 노름 할당(공리 14)이다. FSM이 기본 상태(000)를 선택하는 것이 자발적 대칭 파괴고, 이 상태에서의 노름이 VEV(246 GeV)이고, 노름의 요동이 Higgs 보손(125 GeV)이다.</p>
+</div>
+
+
+<h1 id="limits">한계</h1>
+
+<ol>
+<li><strong>W/Z 질량의 정량 도출</strong>: FSM 노름이 질량을 결정한다는 구조는 확립했지만, $M_W = 80.377$ GeV의 구체적 값을 공리 번호만으로 계산하는 것은 미완이다. M_W 보고서에서 진행 중.</li>
+<li><strong>CP 위반 위상의 정량화</strong>: CKM 위상 $\delta \approx 1.2$ rad를 FSM 순환에서 정량적으로 도출하는 것은 향후 과제다.</li>
+<li><strong>Higgs 질량의 독립 도출</strong>: $M_H = 125$ GeV를 공리로부터 독립적으로 도출하는 것은 higgs_top 보고서에서 진행 중.</li>
+</ol>
+
+
+<h1 id="summary">총괄</h1>
+
+<div class="table-wrap">
+<table>
+<tr><th>항목</th><th>결과</th><th class="col-status">상태</th><th class="col-date">날짜</th></tr>
+<tr><td>SU(2) = Compare(2) (H-459~462)</td><td>자유도 2 → 생성자 3 = W$^+$, W$^-$, Z</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>W/Z 질량 (H-463~465)</td><td>FSM 노름 = 질량. 광자 무질량 = Read 무전이.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>패리티 위반 (H-466~469)</td><td>CAS 비가역성 + Compare 열린 구조</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>CP 위반 (H-470~473)</td><td>FSM 순환의 비가역 위상. 3세대 필요.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>Higgs 메커니즘 (H-474~475)</td><td>FSM 노름 부여 = Higgs. VEV = 기본 상태 노름.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+</table>
+</div>
+
+<p>현재 등급: <strong>A-</strong> (구조 대응 3항목 적중, 정량 도출 미완)</p>
+<p>등급 S까지 남은 것: W/Z 질량 정량 도출, CP 위상 정량화, Higgs 질량 독립 도출</p>
+
+</div>
+
+
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+</div>
+<div class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br>
+발명자: 한혁진 (Han Hyukjin)<br>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+별칭: 부처님 손바닥 프레임<br>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">약력/CP위반: Compare(2)→SU(2), 패리티 위반, CP 위반, Higgs 메커니즘</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="gauge.html">게이지 군 매핑</a> | <a href="sin2_thetaW.html">Weinberg 각</a> | <a href="higgs_top.html">Higgs/Top</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+<script>
+(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>

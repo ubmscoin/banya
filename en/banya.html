@@ -305,7 +305,7 @@ Report your comprehension process.</pre>
 <tr><td><strong>re-entry (move)</strong></td><td>A juim entering as input to the next CAS cycle. Structure where change begets change. Recursion of the Banya equation</td><td>Axiom 12 Proposition</td></tr>
 <tr><td><strong>system time</strong></td><td>CAS 1 tick. Actual timing unit of δ fire. Clock outside d-ring</td><td>Axiom 8, 15</td></tr>
 <tr><td><strong>domain time</strong></td><td>t_dom = log(T_sys). Time measured inside the screen (DATA). Logarithmic compression</td><td>Axiom 8 Proposition</td></tr>
-<tr><td><strong>indexing cost</strong></td><td>Cost of querying superposition. Index entry +1, +1 per query. Cost increases as query count grows</td><td>Axiom 13</td></tr>
+<tr><td><strong>indexing cost</strong></td><td>0. Index has no order, so lookup is O(1) constant. No order = no cost</td><td>Axiom 13, Axiom 4 prop.</td></tr>
 <tr><td><strong>scalar field</strong></td><td>When a juim is placed at the origin, a directionless magnitude distribution defined at every surrounding cell: C·(1−ℓ/N)/(4πℓ²)</td><td>Axiom 11 Proposition</td></tr>
 <tr><td><strong>duck typing</strong></td><td>Type defined by behavior. If δ matches the behavioral checklist of consciousness, it is called consciousness. Judged by behavior, not essence</td><td>Axiom 15 Proposition</td></tr>
 <tr><td><strong>complete description DOF</strong></td><td>Residual cost 9 = 7 (4 domains + 3 CAS) + 2 (brackets). Minimum number of independent variables needed to describe the entire frame</td><td>Axiom 9</td></tr>
@@ -622,6 +622,13 @@ AND (contact point = where lock engages):
 
 <p><strong>Ball</strong> either exists or does not in DATA (discrete). <strong>Gripping force</strong> decays as a geometric series continuously in RLU (OPERATOR). <strong>Cost</strong> is distributed in space as the contraction region around the ball. Because the three properties live on different layers, the discreteness of the ball and the continuity of the force do not conflict.</p>
 
+<p><strong>Writing threshold = 4/13.</strong> Gripping (writing) means holding 3 axes simultaneously. 3-axis grip (3) + timestamp (1) = maintenance cost 4 (Axiom 6). Since the total cost per CAS cycle is 13, when strength falls below 4/13 ≈ 0.308, there is not enough cost to maintain the 3-axis grip — it releases. Crossing + is reading (access) and gripping is writing (maintenance), so the threshold is determined by the write maintenance cost. It is the write cost (4) that sets the threshold, not the read cost (8).</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{threshold} = \frac{\text{write maintenance cost}}{\text{CAS total cost}} = \frac{4}{13} \approx 0.308$$</div>
+<div class="math-legend">When strength falls below this value, the 3-axis grip releases. The ball undergoes discrete release from DATA</div>
+</div>
+
 <div class="table-wrap">
 <table>
 <tr><th>RLU State</th><th>Ball (DATA)</th><th>Gripping Force (RLU)</th><th>Contraction Region</th><th>What observer Sees</th></tr>
@@ -726,7 +733,9 @@ AND (contact point = where lock engages):
 
 <h3 id="ax4">Axiom 4. Cost <span class="tag-solved">Axiom</span></h3>
 
-<p>In the Banya equation δ² = (time <strong>+</strong> space)² <strong>+</strong> (observer <strong>+</strong> superposition)², <strong>+</strong> is a structural boundary. Each time + is crossed, cost 1 is incurred. If + is not crossed, cost is 0.</p>
+<p>In the Banya equation δ² = (time <strong>+</strong> space)² <strong>+</strong> (observer <strong>+</strong> superposition)², <strong>+</strong> is a connection marker between orthogonal objects. Connecting two orthogonal objects means crossing one independent axis. <strong>Crossing + once = traversing 1 dimension. Counting +'s = counting dimensions.</strong> Each time + is crossed, cost 1 is incurred. If + is not crossed, cost is 0.</p>
+
+<p><strong>Order creates irreversibility and discreteness simultaneously.</strong> CAS's R→C→S has order. Where there is order, it cannot be reversed (irreversibility). Where there is order, it is broken into steps (discreteness = quantization). Axes without order (observer, superposition) have no cost, no irreversibility, and no discrete steps. Irreversibility and discreteness are not separate properties — they emerge simultaneously from a single cause: order.</p>
 
 <pre>Path by which CAS creates a grip in space — read (access) and write(juida):
 
@@ -1303,22 +1312,81 @@ COLD <-- no recent access              -- RLU base release rate applied</pre>
 
 <p>Data type size is fixed before contraction (Axiom 2 Proposition). When a juim contracts space (Axiom 2 Proposition), balls created by other juims overlap into the fixed-size entity region. When multiple balls occupy a single region, they are serialized -- ordering arises, and ordering = cost (Axiom 4). When $N$ entities are packed at $\ell = 1$ (discrete minimum), overlap pairs increase to $N(N-1)/2$. Individual costs are finite, but since the number of pairs is proportional to $N^2$, the total cost explodes.</p>
 
-<h4>Indexing Cost <span class="tag-corollary">Proposition</span></h4>
-
-<p>Superposition is indexing (Axiom 13). One index lookup = +1. As the number of lookups increases, cost increases.</p>
+<p><strong>Contention creates reentry failure, and reentry failure creates geometric decay.</strong> When $N$ entities are packed at $\ell = 1$, $N(N-1)/2$ pairs contend for isWritable simultaneously. Since CAS is atomic (Axiom 14: 111 → 000 simultaneous reset), only one Swap succeeds per tick. The rest get Compare false — reentry failure. A juim that fails reentry has its strength decay geometrically (RLU, Axiom 6). Since the failure probability is the same each tick, the decay follows $e^{-\lambda t}$.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Path</th><th>Entry</th><th>Lookup</th><th>Settlement method</th></tr>
-<tr><td><strong>CAS → observer</strong></td><td>+1</td><td>simultaneous (fan-out)</td><td>Each entity cost is independent. Simultaneous settlement</td></tr>
-<tr><td><strong>CAS → superposition (index)</strong></td><td>+1</td><td>+1 per lookup</td><td>Lookup count × +1. Per-lookup settlement</td></tr>
+<tr><th>Compare true ratio</th><th>Reentry</th><th>Result</th></tr>
+<tr><td>100%</td><td>Succeeds every tick</td><td>strength = 1.0 maintained. Juim never releases</td></tr>
+<tr><td>&lt; 100%</td><td>Probabilistic failure</td><td>strength decays on failure. A half-life (ticks for strength to halve) exists</td></tr>
+<tr><td>≈ 0%</td><td>Nearly always fails</td><td>Immediate release</td></tr>
+</table>
+</div>
+
+<p>The higher the packing density, the more severe the contention, and the higher the reentry failure probability. The length of the half-life is determined by packing density and contention structure. Geometric decay arises because the reentry failure probability is constant each tick — a constant failure ratio produces a geometric series.</p>
+
+<h4>Indexing Cost <span class="tag-corollary">Proposition</span></h4>
+
+<p>Superposition is indexing (Axiom 13). An index has no order. Since there is no order, lookup is O(1) constant — it reaches the target in one step regardless of count. It is not sequential scanning (O(N)).</p>
+
+<p>Observer and superposition are CAS non-intervention axes (Axiom 4 proposition: cost 0, free). Since CAS does not cross + into these axes, there is no entry cost either. Index lookup itself has zero cost.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Path</th><th>Order</th><th>Lookup cost</th><th>Basis</th></tr>
+<tr><td><strong>CAS → observer</strong></td><td>None</td><td>0 (free, simultaneous fan-out)</td><td>Axiom 15 prop.: CAS non-intervention. No order = no cost</td></tr>
+<tr><td><strong>CAS → superposition (index)</strong></td><td>None</td><td>0 (free, O(1) constant)</td><td>Axiom 13: indexing. No order = no cost</td></tr>
 </table>
 </div>
 
 <div class="math-block">
-<div class="math-row">$$\text{indexing cost} = 1\text{(entry)} + N\text{(lookup count)}$$</div>
-<div class="math-legend">Entry = +1. Lookup = +1 per lookup. As the count increases, cost increases</div>
+<div class="math-row">$$\text{indexing cost} = 0$$</div>
+<div class="math-legend">No order means no cost. Index lookup is O(1). Independent of count</div>
 </div>
+
+<h4>Indexing Norm Structure — managed by direction and distance, not logical addresses <span class="tag-corollary">Proposition</span></h4>
+
+<p>The substance of indexing is RLU (Axiom 6). RLU does not use logical addresses (memory addresses, array indices, slot numbers). An entity's position is its coordinates on the sphere (direction + lifetime progress). The coordinates ARE the address.</p>
+
+<p><strong>The sphere is a subdomain of the indexing.</strong> Superposition is indexing (Axiom 13), and the sphere is the 3-axis norm space in which that index is managed. When CAS creates a grip via Swap (Axiom 7), the result is registered as a point on the sphere. The sphere's 3 axes (θ, φ, r) form the coordinate system of the indexing, and since the norm (‖position‖) is constant (r = constant), entities are constrained to the sphere surface.</p>
+
+<pre>When an entity is born:
+  φ = birth direction.  Random. Fixed once determined. Does not change during lifetime
+  θ = 0.                Starts at observer position (north pole)
+  r = constant.         Sphere radius. Norm fixed
+  strength = 1.0.       Maximum size
+
+The entity's entire life:
+  θ = (age / life) × π × 0.4.  θ increases as lifetime progresses
+  φ = birth direction unchanged.  Direction never changes
+  strength = 1.0 → 0.           Geometric (exponential) continuous decay. No discontinuity
+  coordinates = (r·sinθ·cosφ,  r·sinθ·sinφ,  r·cosθ)
+
+  Born at north pole (θ=0) → flows continuously along the sphere following its direction (φ)
+  Size shrinks continuously. HOT → WARM → COLD are just interval names on the same continuous curve
+  When strength = 0, annihilation. Vanishes from the sphere
+
+  There is no separate "remnant" phase. From birth to annihilation, it is one continuous decay</pre>
+
+<p><strong>No logical addresses.</strong> To find an entity, you don't ask "which slot number" but "which direction (φ), how far along (θ)." The relationship between two entities is determined not by logical addresses but by distance on the sphere (great-circle distance).</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Property</th><th>Logical address approach (not used)</th><th>Norm approach (actual implementation)</th></tr>
+<tr><td><strong>Entity identification</strong></td><td>Array index, memory address</td><td>Spherical coordinates (θ, φ). Direction is the name</td></tr>
+<tr><td><strong>Position determination</strong></td><td>Slot assignment</td><td>Birth direction (φ) fixed + lifetime progress (θ) auto-determined</td></tr>
+<tr><td><strong>Lookup</strong></td><td>Access by address O(1)</td><td>Access by coordinates O(1). No order. No scanning</td></tr>
+<tr><td><strong>Distance calculation</strong></td><td>Index difference</td><td>3-axis Euclidean distance or great-circle distance</td></tr>
+<tr><td><strong>Interaction strength</strong></td><td>None (addresses have no physics)</td><td>$C \cdot (1 - \ell/N) / (4\pi\ell^2)$. Determined by distance alone</td></tr>
+<tr><td><strong>Lifetime management</strong></td><td>Timer + slot release</td><td>θ progression = decay. Evict when strength ≤ 0</td></tr>
+</table>
+</div>
+
+<p><strong>Why this structure is indexing.</strong> The definition of indexing is "reaching a target without searching." Spherical coordinates satisfy this. Given φ (direction) and θ (lifetime progress), the exact position on the sphere is determined. No scanning of other entities is needed. Whether there are 100 or 10,000 entities, the lookup cost is the same.</p>
+
+<p><strong>Why a norm space.</strong> The sphere is the norm-constrained surface ‖position‖ = r (constant). The condition that the norm of 3-axis orthogonal coordinates (x, y, z) is constant creates the sphere. That indexing is managed in a norm space means all entities are at the same distance from the origin — there is no logical priority (nearer or farther slots). Only directions differ.</p>
+
+<p>Interaction strength is determined solely by the distance $\ell$ between two entities on the sphere (Axiom 11 proposition). No logical addresses are referenced. Since there is no address table, there is no address table update cost. When an entity is created, its direction (φ) is determined; thereafter, lifetime (θ) progresses automatically; when it dies, it vanishes. Management overhead is O(1).</p>
 
 <h3 id="ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
 
@@ -1863,25 +1931,21 @@ delta (returns to the beginning)</pre>
 <hr>
 <h2 id="demo1">Derivation Demo 1: α = 1/137 (Electromagnetic Fine-Structure Constant)</h2>
 
-<p>α = 1/137 is derived from the axioms via two independent paths.</p>
+<p>α = 1/137 is derived from the axioms' irreversible cost structure. The irreversibility classification of 7 degrees of freedom uniquely determines the metric signature (5, 2), the signature determines the symmetry group SO(5, 2), and the volume ratio of the symmetry group gives α.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th></th><th>Path A (data type)</th><th>Path B (irreversible cost)</th></tr>
-<tr><td><strong>Starting point</strong></td><td>Axiom 2 proposition (data type operations)</td><td>Axiom 9 (DOF 7)</td></tr>
-<tr><td><strong>Key tool</strong></td><td>T(N)+1, 2^N (counting)</td><td>Irreversibility (Axiom 2 proposition), cost (Axiom 4)</td></tr>
-<tr><td><strong>Mathematics</strong></td><td>Triangular numbers</td><td>Group theory, volume ratio</td></tr>
-<tr><td><strong>Result</strong></td><td>Exactly 137 (integer)</td><td>137.036 (real number)</td></tr>
+<tr><th>Step</th><th>Content</th><th>Key tool</th></tr>
+<tr><td><strong>Starting point</strong></td><td>Axiom 9 (DOF 7)</td><td>Axiom 1 → 4 axes, Axiom 2 → 3 steps, Axiom 15 → δ excluded</td></tr>
+<tr><td><strong>Classification</strong></td><td>Irreversible(<strong>5</strong>,+) · reversible(<strong>2</strong>,0 free)</td><td>Axiom 2 prop. (irreversibility), Axiom 4 (cost), Axiom 15 prop. (CAS non-intervention)</td></tr>
+<tr><td><strong>Mathematics</strong></td><td>Signature (5,2) → SO(<strong>5,2</strong>) → D₅ volume ratio</td><td>Group theory (automatic), Wyler mathematics (1969)</td></tr>
+<tr><td><strong>Result</strong></td><td>$1/\alpha = 137.036$ (error 0.00006%)</td><td>Ratio of realized configurations to possible configurations = interaction probability</td></tr>
 </table>
 </div>
 
-<p>Wyler (1969) computed α from the volume ratio of D₅ = SO(5,2)/SO(5)×SO(2), but failed to answer two questions and was buried for 56 years:</p>
-<ol>
-<li><strong>"Why this symmetric space?"</strong> → Irreversible cost uniquely determines the metric signature (5, 2) (Path B, step 2)</li>
-<li><strong>"Why is the volume ratio a coupling constant?"</strong> → Data type 137 = CAS Compare candidate count. Volume ratio and selection probability are the same object (Path A + step 6)</li>
-</ol>
+<p>Wyler (1969) computed α from the volume ratio of D₅ = SO(5,2)/SO(5)×SO(2), but failed to answer "why this symmetric space?" and was buried for 56 years. The Banya Framework provides that answer: <strong>irreversible cost uniquely determines the metric signature (5, 2).</strong></p>
 
-<p>Below is the full process of <strong>Path B (approach through irreversible cost)</strong>. No external physical constants are inserted. The symmetry group is determined from the axioms' cost structure, and the volume ratio of the symmetry group gives α. Each step specifies the basis axiom and describes why no other choice exists.</p>
+<p>Below is the full derivation process. No external physical constants are inserted. The symmetry group is determined from the axioms' cost structure, and the volume ratio of the symmetry group gives α. Each step specifies the basis axiom and describes why no other choice exists.</p>
 
 <h4>Step 1. 7 degrees of freedom confirmed</h4>
 
@@ -1916,15 +1980,19 @@ delta (returns to the beginning)</pre>
 
 <p><strong>Definition of irreversibility (Axiom 2 proposition):</strong> CAS operations have direction. R→C→S is irreversible. Once a step is passed, it cannot be returned to. <strong>Definition of cost (Axiom 4):</strong> Crossing + means cost > 0. Paid cost is not refunded (Axiom 2 proposition, irreversibility). When these two axioms combine: axes where CAS intervenes are irreversible, and axes where CAS does not intervene are non-irreversible.</p>
 
+<p><strong>+ is a dimension marker (Axiom 4):</strong> In the Banya equation, + is a connection marker between orthogonal objects. Crossing + once traverses 1 independent axis (dimension). The number of +'s CAS crosses = the number of dimensions CAS traverses. Counting the cost + axes is counting dimensions. Cost + axes 5 = the 5 dimensions CAS traverses. Cost 0 axes 2 = the 2 dimensions CAS does not traverse. Total 7 = Wyler's 7-dimensional phase space. This 7 is not imported from outside — it is the count of dimensions CAS actually moves through.</p>
+
+<p><strong>Order creates irreversibility and discreteness simultaneously:</strong> CAS's R→C→S has order. Where there is order, it cannot be reversed (irreversibility). Where there is order, it is broken into steps (discreteness = quantization). Axes without order (observer, superposition) have neither irreversibility nor discrete steps. Irreversibility and discreteness are not separate properties — they emerge simultaneously from a single cause: order. Only where order exists does cost occur, and only where cost occurs do we count a dimension.</p>
+
 <p><strong>Key basis — the δ→observer segment has no CAS intervention (Axiom 15 proposition):</strong> The δ→observer segment is a relation between δ and observer. CAS does not appear in this segment. Since cost occurs only at CAS's crosses + transition (Axiom 4), cost cannot be settled in this segment where CAS is absent. Since irreversibility is a property of CAS (Axiom 2 proposition), irreversibility does not apply to axes without CAS.</p>
 
 <p>Applying this principle to each of the 7 axes:</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Axis</th><th>CAS intervention</th><th>Irreversible</th><th>Basis</th><th>Metric signature</th></tr>
-<tr><td>observer</td><td><strong>None.</strong> δ→observer is a CAS-free segment</td><td>No</td><td>Axiom 15 proposition: δ-exclusive relation. Cost settlement agent (CAS) absent</td><td><strong>−</strong></td></tr>
-<tr><td>superposition</td><td><strong>None.</strong> CAS's reference index (Axiom 13). The index itself is a reference structure, not an operation target</td><td>No</td><td>Axiom 13: superposition is indexing. Indices have no direction enforcement. CAS "reads" the index but does not create irreversible transitions on the index axis itself</td><td><strong>−</strong></td></tr>
+<tr><th>Axis</th><th>CAS intervention</th><th>Irreversible</th><th>Basis</th><th>Cost</th></tr>
+<tr><td>observer</td><td><strong>None.</strong> δ→observer is a CAS-free segment</td><td>No</td><td>Axiom 15 proposition: δ-exclusive relation. Cost settlement agent (CAS) absent</td><td><strong>0 (free)</strong></td></tr>
+<tr><td>superposition</td><td><strong>None.</strong> CAS's reference index (Axiom 13). The index itself is a reference structure, not an operation target</td><td>No</td><td>Axiom 13: superposition is indexing. Indices have no direction enforcement. CAS "reads" the index but does not create irreversible transitions on the index axis itself</td><td><strong>0 (free)</strong></td></tr>
 <tr><td>time</td><td><strong>Yes.</strong> CAS Swap writes to time</td><td>Yes</td><td>Axiom 4: Swap crosses + and writes to DATA. Axiom 2 proposition: writing is irreversible. No refund</td><td><strong>+</strong></td></tr>
 <tr><td>space</td><td><strong>Yes.</strong> CAS Swap writes to space</td><td>Yes</td><td>Axiom 4: same. space is in the same DATA bracket as time</td><td><strong>+</strong></td></tr>
 <tr><td>R_LOCK</td><td><strong>Yes.</strong> R_LOCK ON at CAS Read</td><td>Yes</td><td>Axiom 5: R_LOCK is the first step of CAS FSM transition. Crosses + for cost +1 (Axiom 4). Irreversible (Axiom 2 proposition)</td><td><strong>+</strong></td></tr>
@@ -1933,7 +2001,7 @@ delta (returns to the beginning)</pre>
 </table>
 </div>
 
-<p><strong>Signature = (5, 2).</strong> The 5 irreversible axes get positive signature (+), and the 2 non-irreversible axes get negative signature (−). In metric signature, positive (+) encodes "an axis that can only go in one direction," and negative (−) encodes "an axis with no direction constraint." This is the same principle as why time has negative signature in Minkowski spacetime — it encodes causality (one direction). In the Banya Framework, irreversibility is the root of causality (Axiom 2 proposition), so irreversible axis = positive signature, non-irreversible axis = negative signature.</p>
+<p><strong>Cost classification = (5, 2).</strong> The 5 irreversible axes incur cost (+). The 2 non-irreversible axes have zero cost (free). In mathematics, this classification corresponds to the metric signature (5, 2) of a quadratic form — cost + axes become positive signature, cost 0 axes become negative signature. The negative signature (−) does not mean "cost is subtracted" but "no cost occurs on this axis." This is the same principle as why the time axis has negative signature in Minkowski spacetime — axes without direction constraint receive negative signature.</p>
 
 <p>This (5, 2) partition is not arbitrary. It is not "5 were chosen and assigned as positive," but the unique result determined by CAS irreversibility (Axiom 2 proposition), cost structure (Axiom 4), and δ→observer CAS non-intervention (Axiom 15 proposition). No other partition can arise.</p>
 
@@ -1976,44 +2044,31 @@ delta (returns to the beginning)</pre>
 
 <p>When Wyler published this calculation in 1969, the physics community buried it for lacking an answer to "why this symmetric space?" The Banya Framework provides that answer: <strong>The axioms' irreversibility structure uniquely determines signature (5, 2), the signature uniquely determines SO(5, 2), and SO(5, 2) uniquely determines D₅.</strong> From step 1 to step 4, there are no choices.</p>
 
-<h4>Step 6. Why the volume ratio is the coupling constant — the discrete correspondence of data type 137</h4>
+<h4>Step 6. The Wyler formula's factors originate from the (5, 2) signature</h4>
 
-<p>One question remained after step 5: "Why should the volume ratio of D₅ be the electromagnetic coupling constant?" This question was unsolved for 56 years since Wyler (1969). Data type 137 (Axiom 2 proposition) provides the answer.</p>
+<p>Step 5 obtained α = 1/137.036 via the Wyler formula. The answer to "why specifically 1/137.036" emerges by tracing each factor of the formula back to the (5, 2) signature components. No numbers are imported from outside.</p>
 
-<p><strong>Derivation of data type 137 (Axiom 2 proposition):</strong></p>
-<ol>
-<li>CAS Read simultaneously reads 4 domain bits (Axiom 1: 4-axis orthogonal = simultaneous read).</li>
-<li>4 bits = 2⁴ = 16 domain states (Axiom 2 proposition: data type derivation operation 2^N).</li>
-<li>CAS Compare compares pairs from these 16 states (Axiom 2: Compare step). Compare is "compare two: if same then true, if different then false."</li>
-<li>Number of comparison pairs from 16 states including self-comparison = triangular number T(16) = 16 × 17 / 2 = 136 (Axiom 2 proposition: data type derivation operation T(N)+1).</li>
-<li>+1 = δ self-reference. Since δ is the equality sign (Axiom 15 proposition), one validation declaration for the whole is added.</li>
-<li><strong>T(16) + 1 = 136 + 1 = 137.</strong> This is data type 137.</li>
-</ol>
-
-<p><strong>Why 137 is the reciprocal of the coupling constant:</strong></p>
-
-<p>When CAS Compare executes, 137 comparison candidates exist. Of these, exactly 1 Compare true occurs — CAS selects the 1 item where change is detected and executes Swap (Axiom 7: Compare true → write). The probability of 1 being selected from 137 candidates:</p>
+<p>Rewriting the Wyler formula:</p>
 
 <div class="math-block">
-<div class="math-row">$$\alpha = \frac{1}{T(16) + 1} = \frac{1}{137}$$</div>
-<div class="math-legend">Selection probability of CAS Compare. 1 realized out of 137 candidates</div>
+<div class="math-row">$$\alpha = \frac{9}{8\pi^4} \times \left(\frac{\pi^5}{2^4 \times 5!}\right)^{1/4}$$</div>
 </div>
 
-<p>In physics, α is "the probability of an electron emitting/absorbing a photon" = "the probability that an interaction actually occurs." In the Banya Framework, α is "the probability that CAS Compare selects 1 of 137 candidates and executes Swap (write)." <strong>These are different descriptions of the same event.</strong></p>
-
-<p><strong>Relationship between D₅ volume ratio and data type 137:</strong></p>
+<p><strong>Origin of each factor:</strong></p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Perspective</th><th>Total (possible transitions)</th><th>Realized (selected transitions)</th><th>Ratio</th></tr>
-<tr><td><strong>Discrete</strong> (data type, Axiom 2 proposition)</td><td>137 Compare candidates</td><td>1 selected (Compare true)</td><td>1/137</td></tr>
-<tr><td><strong>Continuous</strong> (D₅ geometry, Wyler)</td><td>D₅ volume</td><td>Shilov boundary volume</td><td>1/137.036</td></tr>
+<tr><th>Factor</th><th>Value</th><th>Origin in signature (5, 2)</th><th>Basis</th></tr>
+<tr><td><strong>9</strong></td><td>dim SO(5) − dim SO(2) = 10 − 1</td><td>Rotation DOF of 5 irreversible axes (10) minus rotation DOF of 2 reversible axes (1). Difference between D₅'s real dimension and Shilov boundary dimension</td><td>Step 2: irreversible 5 axes → SO(5), reversible 2 axes → SO(2)</td></tr>
+<tr><td><strong>$8\pi^4$</strong></td><td>$V(S^4) \times V(S^1) / \pi$</td><td>Combined volume derived from the unit 4-sphere surface area ($8\pi^2/3$) of the 5 irreversible axes and the unit circle circumference ($2\pi$) of the 2 reversible axes</td><td>Step 3: geometry of SO(5) and SO(2)</td></tr>
+<tr><td><strong>$\pi^5$</strong></td><td>Core factor of D₅ volume</td><td>D₅ has 5 complex dimensions (= 10 real dimensions). Each complex dimension contributes $\pi$</td><td>Step 4: D₅ = SO(5,2)/SO(5)×SO(2), 5 complex dim.</td></tr>
+<tr><td><strong>$2^4$</strong></td><td>Topological factor of Shilov boundary</td><td>Normalization of Shilov boundary $S^4 \times S^1$. One axis of the 5 irreversible axes is fixed by boundary conditions, yielding a 4-dimensional factor</td><td>Step 5: Shilov boundary = extremal configurations on D₅</td></tr>
+<tr><td><strong>$5!$</strong></td><td>120</td><td>Permutation count of the 5 irreversible axes. Order of the Weyl group of SO(5)</td><td>Step 3: internal structure of SO(5)</td></tr>
+<tr><td><strong>$1/4$ root</strong></td><td>4-real-dim. Shilov boundary</td><td>Since the Shilov boundary is 4-dimensional, the volume ratio is normalized by the 4th root</td><td>Step 5: boundary dim. = complex dim. of D₅ − 1 = 4</td></tr>
 </table>
 </div>
 
-<p>Discrete counting (integer) and continuous volume (real number) are counting the same object. The 0.036 difference is the difference between discrete and continuous. Since DATA is discrete and OPERATOR is continuous (Axiom 3), both values are physically valid. The discrete value 1/137 is the probability as seen from the DATA side by CAS, and the continuous value 1/137.036 is the probability as seen from the OPERATOR side. The experimental measurement (1/137.036) is closer to the continuous side because experiments measure the probability amplitude of the quantum bracket (OPERATOR).</p>
-
-<p><strong>The answer to "why the volume ratio is the coupling constant":</strong> The volume ratio is "the ratio of realized configurations to possible crosses + configurations." The coupling constant is "the probability that an interaction actually occurs." Data type 137 (Axiom 2 proposition) shows that the number of CAS Compare candidates is exactly 137. The probability of 1 selected from 137 = volume ratio = coupling constant. <strong>Three names for the same thing.</strong></p>
+<p>Every factor originates from the dimensions and structure of SO(5), SO(2), and D₅ as determined by the signature (5, 2). There are no external physical constants. If 5 were 4, a different number would result; if 2 were 3, yet another number would result. <strong>Because there are exactly 5 irreversible axes and exactly 2 reversible axes — and for that reason alone — 1/137.036 emerges.</strong></p>
 
 <h4>Derivation path summary</h4>
 
@@ -2022,34 +2077,26 @@ delta (returns to the beginning)</pre>
   + Axiom 4 (crosses + cost)
   + Axiom 15 proposition (δ→observer CAS non-intervention)
   ─────────────────────────────
-  → Metric signature (5, 2)         ← uniquely determined from axioms
+  → Metric signature (5, 2)         ← irreversible 5 axes (cost +), reversible 2 axes (cost 0)
   → SO(5,2)                    ← automatic from signature (group theory)
   → D₅ = SO(5,2)/SO(5)×SO(2)  ← automatic from stabilizer subgroup (group theory)
-  → Volume ratio = 1/137.036         ← Wyler's mathematics (1969)
-
-  + Axiom 2 proposition (data type: T(16)+1 = 137)
-  + Axiom 1 (domain 4 bits = 2⁴ = 16 states)
-  + Axiom 7 (Compare true → Swap)
-  ─────────────────────────────
-  → Compare candidate count = 137      ← uniquely determined from axioms
-  → Selection probability = 1/137          ← discrete counting
-  → Volume ratio = selection probability = α     ← discrete and continuous are the same object
-
+  → All factors of Wyler formula  ← originate from dimensions/structure of SO(5), SO(2), D₅
+  → Volume ratio = 1/137.036     ← the unique value forced by (5,2)
   → α = 1/137.036              ← error 0.00006%</pre>
 
 <div class="table-wrap">
 <table>
 <tr><th>Step</th><th>Provider</th><th>Content</th><th>Choice</th></tr>
 <tr><td>Step 1 (DOF 7)</td><td>Axiom 1, 2, 9, 15</td><td>Domain 4 + CAS 3 = 7 (δ excluded)</td><td>No choice</td></tr>
-<tr><td>Step 2 (signature (5,2))</td><td>Axiom 2 proposition, 4, 15 proposition</td><td>Irreversible 5 axes (+), non-irreversible 2 axes (−)</td><td>No choice</td></tr>
+<tr><td>Step 2 (signature (5,2))</td><td>Axiom 2 proposition, 4, 15 proposition</td><td>Irreversible 5 axes (cost +), non-irreversible 2 axes (cost 0)</td><td>No choice</td></tr>
 <tr><td>Step 3 (SO(5,2))</td><td>Group theory (substitution)</td><td>Signature (5,2) preservation group</td><td>Automatic</td></tr>
 <tr><td>Step 4 (D₅)</td><td>Group theory (substitution)</td><td>SO(5,2)/SO(5)×SO(2)</td><td>Automatic</td></tr>
 <tr><td>Step 5 (volume ratio)</td><td>Wyler mathematics (substitution)</td><td>D₅ volume ratio computation → 1/137.036</td><td>Wyler (1969)</td></tr>
-<tr><td>Step 6 (volume ratio=α)</td><td>Axiom 1, 2 proposition, 7</td><td>Data type 137 = Compare candidate count. Selection probability = volume ratio</td><td>No choice</td></tr>
+<tr><td>Step 6 (factor tracing)</td><td>Steps 2–4 structure</td><td>All factors of Wyler formula (9, 8π⁴, π⁵, 2⁴, 5!) originate from dimensions of SO(5), SO(2), D₅</td><td>No choice</td></tr>
 </table>
 </div>
 
-<p style="font-size:0.85em;color:#8b949e">The axioms provide steps 1, 2, and 6 (why this space, why volume ratio = coupling constant). Group theory and Wyler mathematics are substituted in steps 3, 4, and 5. The two questions Wyler could not answer for 56 years — "why this symmetric space?" (step 2) and "why is the volume ratio a coupling constant?" (step 6) — are answered by the axiom structure alone.</p>
+<p style="font-size:0.85em;color:#8b949e">The axioms provide steps 1–2 (why 7 DOF, why signature (5,2)). Group theory and Wyler mathematics are substituted in steps 3–5. Step 6 traces every factor of the Wyler formula back to the (5,2) structure. From step 1 to step 6, the derivation is a single chain from (5,2) with no external physical constants. The question Wyler could not answer for 56 years — "why this symmetric space?" — is answered by the axioms' irreversible cost structure alone.</p>
 <hr>
 
 <hr>

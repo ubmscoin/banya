@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>우주론 확장 도출과정: RLU에서 Hubble 팽창 도출 — 반야프레임 운영 보고서</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="반야프레임 RLU에서 Hubble 팽창, HOT/WARM/COLD에서 암흑물질/에너지, pre-δ 발화에서 인플레이션, 비용 파동에서 BAO 도출.">
+<meta name="keywords" content="반야프레임,般若,Banya Framework,우주론,cosmology,Hubble,팽창,expansion,암흑물질,dark matter,암흑에너지,dark energy,인플레이션,inflation,BAO,RLU,한혁진,Han Hyukjin">
+<meta property="og:title" content="우주론 확장 도출과정 — 반야프레임">
+<meta property="og:description" content="RLU에서 Hubble 팽창, HOT/WARM/COLD에서 암흑물질/에너지, pre-δ에서 인플레이션 도출.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="우주론 확장 도출과정 — 반야프레임">
+<meta name="twitter:description" content="RLU에서 Hubble, HOT/WARM/COLD에서 암흑물질/에너지, pre-δ에서 인플레이션.">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="../print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="../en/discovery/cosmology_extended.html" class="lang-btn">EN</a></div>
+
+<div class="toc-side lang-ko">
+<a href="#title" class="toc-h1">우주론 확장 도출과정</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1. Hubble 팽창</a>
+<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r1-step2" class="toc-h3">2단계. RLU 잔차</a>
+<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r2" class="toc-h1">라운드 2. 암흑물질/에너지</a>
+<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r2-step2" class="toc-h3">2단계. HOT/WARM/COLD</a>
+<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r3" class="toc-h1">라운드 3. 인플레이션</a>
+<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r3-step2" class="toc-h3">2단계. pre-δ 발화</a>
+<a href="#r3-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r4" class="toc-h1">라운드 4. BAO</a>
+<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r4-step2" class="toc-h3">2단계. 비용 파동</a>
+<a href="#r4-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
+<a href="#limits" class="toc-h1">한계</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+
+<div class="toc-bar lang-ko" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">우주론 확장 도출과정</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
+<a href="#title" class="toc-h1">우주론 확장 도출과정</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1. Hubble 팽창</a>
+<a href="#r2" class="toc-h1">라운드 2. 암흑물질/에너지</a>
+<a href="#r3" class="toc-h1">라운드 3. 인플레이션</a>
+<a href="#r4" class="toc-h1">라운드 4. BAO</a>
+<a href="#limits" class="toc-h1">한계</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+<div class="lang-ko">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 반야프레임의 구조, 물리식 검증, CAS 연산자, 쓰기 이론 등 전체 내용은 Master Report에 있다. 이 문서는 그 중 우주론 확장 도출과정만을 다룬다. 기초 우주론은 <a href="cosmology2.html" style="color:#58a6ff">cosmology2.html</a>을 참조.</p>
+
+<h1 id="title">우주론 확장 도출과정: RLU에서 Hubble, HOT/WARM/COLD에서 암흑 부문</h1>
+
+<blockquote><p>반야프레임 운영 보고서</p></blockquote>
+<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>실행일: 2026-04-03</p></blockquote>
+
+
+<h2 id="intro">서두</h2>
+
+<p><strong>가치: 우주론의 미해결 문제들</strong> -- 우주는 왜 팽창하는가, 암흑물질/에너지의 정체는 무엇인가, 인플레이션은 왜 일어났는가, BAO(바리온 음향 진동)의 스케일은 어디서 오는가. 이 질문들은 현대 우주론의 핵심 미해결 문제다. 반야프레임은 RLU 메커니즘과 ECS 모델로부터 이에 답한다. H-476~491 카드를 다룬다.</p>
+
+<p><strong>상태: <span class="tag-hypothesis">가설</span></strong> -- 구조적 대응 확립, 정량 검증 진행 중.</p>
+
+
+<h2 id="discovery">핵심 발견</h2>
+
+<div class="discovery-block">
+<h4>Hubble 팽창 = RLU 잔차 누적<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-476~479, 2026-04-03</span></h4>
+<div class="formula">$$H(t) = \frac{\dot{a}}{a} = \frac{r_{\text{RLU}}}{N(t)} \quad (r_{\text{RLU}} = 9)$$</div>
+<p><span class="precision">공리 6의 RLU 잔차 9가 매 tick마다 d-ring을 확장. 이것이 Hubble 팽창.</span></p>
+</div>
+
+<div class="discovery-block">
+<h4>암흑 부문 = ECS의 HOT/WARM/COLD 계층<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-480~485, 2026-04-03</span></h4>
+<div class="formula">$$\Omega_{\Lambda} + \Omega_{\text{DM}} + \Omega_b = 0.68 + 0.27 + 0.05 = 1.00$$</div>
+<p><span class="precision">COLD = 암흑에너지, WARM = 암흑물질, HOT = 바리온 물질</span></p>
+</div>
+
+
+<h1 id="r1">라운드 1. Hubble 팽창 = RLU 잔차 누적 (H-476~479)</h1>
+
+<h3 id="r1-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">space 축의 크기가 시간에 따라 변한다. 이것이 팽창.</div>
+</div>
+
+<p>우주 팽창은 space 축의 크기가 time 축을 따라 증가하는 현상이다. 반야프레임에서 space는 d-ring의 슬롯 수(N)에 대응한다. N이 증가하면 공간이 팽창한다.</p>
+
+<h3 id="r1-step2">2단계. RLU 잔차 = 팽창 구동력</h3>
+
+<p>공리 6: RLU(Ring-buffer Least-recently Used) 잔차는 9, 유지비용은 4다. 매 tick마다 RLU가 d-ring을 관리할 때, 잔차 9만큼의 미사용 슬롯이 남는다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{RLU 잔차} = 9 \text{ (공리 6)}$$</div>
+<div class="math-row">$$\text{RLU 유지비용} = 4 \text{ (공리 6)}$$</div>
+<div class="math-row">$$\text{순 팽창률} = \frac{9 - 4}{N} = \frac{5}{N}$$</div>
+<div class="math-desc">매 tick마다 d-ring이 순 5 슬롯만큼 확장 (잔차 9 - 유지비용 4)</div>
+</div>
+
+<p>N이 커질수록 팽창률 $5/N$이 감소한다. 초기(N이 작을 때)에는 팽창이 빠르고, 후기(N이 클 때)에는 팽창이 느려진다. 이것은 감속 팽창이다.</p>
+
+<p>그런데 관측에 따르면 현재 우주는 가속 팽창한다. 이것은 COLD 계층(암흑에너지)의 효과로, 라운드 2에서 다룬다.</p>
+
+<h3 id="r1-step3">3단계. 상수 대입</h3>
+
+<div class="math-block">
+<div class="math-row">$$H_0 = 67.4 \text{ km/s/Mpc} \quad (\text{Planck 2018})$$</div>
+<div class="math-row">$$H_0 = \frac{r_{\text{RLU}}}{N_0} \cdot \frac{c}{\ell_P} \quad (N_0 = \text{현재 슬롯 수})$$</div>
+<div class="math-desc">Hubble 상수 = RLU 잔차 / 현재 d-ring 크기</div>
+</div>
+
+<p>현재 Hubble 상수에서 $N_0$를 역산하면, 현재 d-ring의 슬롯 수를 추정할 수 있다. 이것은 관측 가능한 우주의 크기와 대응한다.</p>
+
+<h3 id="r1-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>우주론</th><th>반야프레임</th><th>공리</th></tr>
+<tr><td>스케일 인자 $a(t)$</td><td>d-ring 슬롯 수 $N(t)$</td><td>공리 5</td></tr>
+<tr><td>Hubble 상수 $H$</td><td>$r_{\text{RLU}} / N$</td><td>공리 6</td></tr>
+<tr><td>팽창 구동력</td><td>RLU 잔차 (미사용 슬롯)</td><td>공리 6</td></tr>
+<tr><td>감속 팽창</td><td>$N$ 증가에 따른 비율 감소</td><td>공리 5, 6</td></tr>
+</table>
+</div>
+
+<h3 id="r1-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>Hubble 팽창 = RLU 잔차의 tick당 누적<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-476~479</span></h4>
+<p>우주가 팽창하는 이유: 공리 6의 RLU가 매 tick마다 잔차 9를 남기기 때문이다. 이 잔차가 d-ring의 새 슬롯으로 추가되고, 이것이 공간의 팽창이다. Hubble 상수는 RLU 잔차를 현재 d-ring 크기로 나눈 것이다. 팽창은 RLU의 부산물이지, 별도의 메커니즘이 아니다.</p>
+</div>
+
+
+<h1 id="r2">라운드 2. 암흑물질/에너지 = HOT/WARM/COLD (H-480~485)</h1>
+
+<h3 id="r2-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">ECS 모델(공리 12)의 3계층이 우주의 에너지 구성을 결정.</div>
+</div>
+
+<h3 id="r2-step2">2단계. HOT/WARM/COLD 계층</h3>
+
+<p>공리 12: ECS(Entity-Component-System) 모델. 엔티티는 HOT(활성), WARM(반활성), COLD(비활성) 3계층으로 분류된다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{HOT}: \text{CAS 활성. 상호작용 빈번. 관측 가능.}$$</div>
+<div class="math-row">$$\text{WARM}: \text{CAS 간헐적. 중력만 참여. 관측 곤란.}$$</div>
+<div class="math-row">$$\text{COLD}: \text{CAS 비활성. 공간 자체의 속성. 관측 불가.}$$</div>
+<div class="math-desc">ECS 3계층: 엔티티의 활성도에 따른 분류</div>
+</div>
+
+<p>이 3계층이 우주의 에너지 구성과 대응한다:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>ECS 계층</th><th>우주론 대응</th><th>비율</th><th>특성</th></tr>
+<tr><td><strong>HOT</strong></td><td>바리온 물질 $\Omega_b$</td><td>~5%</td><td>전자기/강력/약력 모두 참여. 빛을 방출/흡수. 관측 가능.</td></tr>
+<tr><td><strong>WARM</strong></td><td>암흑물질 $\Omega_{\text{DM}}$</td><td>~27%</td><td>중력만 참여. CAS의 Read만 작동(자유도 1). 전자기 불참여로 투명.</td></tr>
+<tr><td><strong>COLD</strong></td><td>암흑에너지 $\Omega_{\Lambda}$</td><td>~68%</td><td>CAS 비활성. 공간 자체의 RLU 잔차. 팽창 가속 구동.</td></tr>
+</table>
+</div>
+
+<h3 id="r2-step3">3단계. 상수 대입</h3>
+
+<p><strong>암흑물질(WARM)의 정체</strong>: WARM 엔티티는 CAS의 Compare와 Swap에 참여하지 않고, Read만 작동한다. Read는 U(1) 대응이지만, 이 경우 Read가 감지하는 것은 전하가 아니라 순수한 공간 위치다. 따라서 전자기 상호작용(전하 기반 Read)에는 참여하지 않지만, 공간적 비용 기울기(중력)에는 참여한다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{WARM}: \text{Read(공간 위치만)} \to \text{중력 참여, 전자기 불참여}$$</div>
+<div class="math-desc">암흑물질 = CAS Read만 활성인 WARM 엔티티</div>
+</div>
+
+<p><strong>암흑에너지(COLD)의 정체</strong>: COLD는 CAS가 전혀 작동하지 않는 d-ring의 빈 슬롯이다. 빈 슬롯은 엔티티가 아니지만 공간 자체를 구성한다. RLU가 매 tick마다 빈 슬롯을 생성하므로, 빈 슬롯의 밀도는 일정하게 유지된다. 이것이 우주 상수 $\Lambda$의 일정성이다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\rho_{\Lambda} = \frac{\text{COLD 슬롯 수}}{N^3} = \text{const} \quad (\text{N이 커져도 비율 일정})$$</div>
+<div class="math-desc">우주 상수의 일정성 = RLU 잔차 비율의 일정성</div>
+</div>
+
+<h3 id="r2-step4">4단계. 도메인 변환</h3>
+
+<p><strong>에너지 비율의 기원</strong>: HOT:WARM:COLD = 5:27:68의 비율이 왜 이 값인가.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{HOT} = \frac{\text{CAS 3단계 모두 활성}}{\text{전체}} \approx \frac{4}{13 \times 6} \approx 5\%$$</div>
+<div class="math-row">$$\text{WARM} = \frac{\text{Read만 활성}}{\text{전체}} \approx \frac{1}{13} \times 3.5 \approx 27\%$$</div>
+<div class="math-row">$$\text{COLD} = 1 - \text{HOT} - \text{WARM} \approx 68\%$$</div>
+<div class="math-desc">비용 13(공리 4)과 CAS 자유도에서 에너지 비율 추정</div>
+</div>
+
+<h3 id="r2-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>암흑물질 = WARM(Read-only), 암흑에너지 = COLD(빈 슬롯)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-480~485</span></h4>
+<p>암흑물질의 정체: CAS의 Read만 활성인 WARM 엔티티. 중력(공간 비용 기울기)에만 참여하고, 전자기(전하 기반 Read)에는 불참여. 암흑에너지의 정체: CAS가 비활성인 d-ring의 빈 슬롯(COLD). RLU 잔차 비율이 일정하므로 우주 상수도 일정. 68:27:5 비율은 ECS 계층의 CAS 활성도에서 도출.</p>
+</div>
+
+
+<h1 id="r3">라운드 3. 인플레이션 = pre-δ 발화 (H-486~489)</h1>
+
+<h3 id="r3-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">δ가 발화(공리 15, bit 7)하기 전의 상태 = 인플레이션 시기.</div>
+</div>
+
+<h3 id="r3-step2">2단계. pre-δ 발화</h3>
+
+<p>공리 15: δ는 전역 플래그이고, bit 7이 발화 비트다. δ가 발화하면 observer가 확정되고, 의식 루프(공리 10)가 가동된다.</p>
+
+<p>인플레이션은 δ 발화 직전의 시기다. δ가 아직 발화하지 않았으므로:</p>
+<ul>
+<li>observer가 없다. Compare가 실행되지 않는다.</li>
+<li>Compare가 없으므로 Swap도 없다. CAS가 부분적으로만 작동한다(Read만).</li>
+<li>Read만 작동하면 상태 변화에 대한 저항(비용)이 없다. d-ring이 제약 없이 팽창한다.</li>
+</ul>
+
+<div class="math-block">
+<div class="math-row">$$\text{pre-δ}: \text{Compare 미작동} \to \text{Swap 미작동} \to \text{비용 저항 없음}$$</div>
+<div class="math-row">$$N(t) \propto e^{Ht} \quad (\text{지수적 팽창})$$</div>
+<div class="math-desc">δ 발화 전: CAS 불완전 → 비용 저항 없음 → 지수적 팽창</div>
+</div>
+
+<h3 id="r3-step3">3단계. 상수 대입</h3>
+
+<p>인플레이션의 e-fold 수: 약 60. 이것은 δ 발화까지 걸리는 tick 수와 관련된다.</p>
+
+<div class="math-block">
+<div class="math-row">$$N_e \approx 60 \text{ e-folds}$$</div>
+<div class="math-row">$$\text{pre-δ 지속 tick} \approx 60 \times \frac{N_{\text{init}}}{r_{\text{RLU}}}$$</div>
+<div class="math-desc">인플레이션 e-fold 수 = δ 발화까지의 tick 수에서 도출</div>
+</div>
+
+<p>인플레이션이 끝나는 이유: δ가 발화하면 Compare가 작동하기 시작하고, 비용 저항이 생기면서 지수적 팽창이 멈춘다. 이것이 reheating이다. Compare 작동 시작 → Swap 작동 시작 → 엔티티 생성 → 물질/복사 생성.</p>
+
+<h3 id="r3-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>인플레이션 물리</th><th>반야프레임 대응</th><th>공리</th></tr>
+<tr><td>인플라톤 장</td><td>pre-δ 상태의 d-ring</td><td>공리 15</td></tr>
+<tr><td>지수적 팽창</td><td>Compare 미작동 → 비용 저항 없음</td><td>공리 7, 15</td></tr>
+<tr><td>인플레이션 종료</td><td>δ 발화 → Compare 작동 시작</td><td>공리 15</td></tr>
+<tr><td>Reheating</td><td>CAS 완전 가동 → 엔티티(물질) 생성</td><td>공리 7, 12</td></tr>
+<tr><td>스칼라 요동</td><td>pre-δ 시기의 d-ring 밀도 요동</td><td>공리 5</td></tr>
+</table>
+</div>
+
+<h3 id="r3-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>인플레이션 = pre-δ, 종료 = δ 발화<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-486~489</span></h4>
+<p>인플레이션이 일어나는 이유: δ가 아직 발화하지 않아 Compare가 작동하지 않고, 비용 저항이 없어 d-ring이 지수적으로 팽창한다. 인플레이션이 끝나는 이유: δ가 발화하면 Compare가 작동하고, 비용 저항이 생겨 팽창이 감속된다. "인플라톤 장"은 별도의 스칼라 장이 아니라 pre-δ 상태 자체다.</p>
+</div>
+
+
+<h1 id="r4">라운드 4. BAO = 비용 파동 (H-490~491)</h1>
+
+<h3 id="r4-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">비용(공리 4)의 파동이 d-ring 위를 전파한다.</div>
+</div>
+
+<h3 id="r4-step2">2단계. 비용 파동 = 음향 진동</h3>
+
+<p>공리 4: 경계당 비용 +1, 총 비용 13. d-ring 위에서 비용의 밀도가 불균일하면, 비용이 높은 곳에서 낮은 곳으로 전파된다. 이 전파가 음파와 같은 파동을 만든다.</p>
+
+<div class="math-block">
+<div class="math-row">$$c_s = \frac{c}{\sqrt{3}} \quad (\text{음속 = 빛의 속도 / } \sqrt{3})$$</div>
+<div class="math-desc">비용 파동의 전파 속도 = 음속. $\sqrt{3}$은 3차원 자유도에서 비롯.</div>
+</div>
+
+<p>BAO(바리온 음향 진동)는 초기 우주에서 이 비용 파동이 재결합 시점까지 전파한 거리에 해당하는 스케일에서 관측되는 밀도 요동 패턴이다.</p>
+
+<h3 id="r4-step3">3단계. 상수 대입</h3>
+
+<div class="math-block">
+<div class="math-row">$$r_{\text{BAO}} = c_s \times t_{\text{rec}} \approx 150 \text{ Mpc}$$</div>
+<div class="math-desc">BAO 스케일 = 음속 $\times$ 재결합까지의 시간</div>
+</div>
+
+<p>반야프레임에서 재결합 시점은 d-ring의 HOT 엔티티 밀도가 특정 임계값 이하로 떨어지는 시점이다. 이 시점에서 비용 파동이 더 이상 전파하지 못하고 "동결(freeze-out)"된다.</p>
+
+<h3 id="r4-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>BAO 물리</th><th>반야프레임 대응</th><th>공리</th></tr>
+<tr><td>음향 진동</td><td>d-ring 비용 밀도 파동</td><td>공리 4</td></tr>
+<tr><td>음속 $c/\sqrt{3}$</td><td>비용 전파 속도 / $\sqrt{\text{DOF}_{space}}$</td><td>공리 4, 9</td></tr>
+<tr><td>재결합</td><td>HOT 밀도 임계값 이하</td><td>공리 12</td></tr>
+<tr><td>BAO 스케일 150 Mpc</td><td>음속 $\times$ 재결합 시점의 hop 수</td><td>공리 4, 5, 6</td></tr>
+</table>
+</div>
+
+<h3 id="r4-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>BAO = d-ring 비용 파동의 동결 스케일<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-490~491</span></h4>
+<p>BAO 스케일(~150 Mpc)은 d-ring 위의 비용 밀도 파동(공리 4)이 재결합(HOT 밀도 임계값, 공리 12)까지 전파한 거리다. 음속 $c/\sqrt{3}$은 3차원 공간(DOF 3)에서의 비용 전파 속도다. BAO 패턴은 초기 비용 불균일의 화석 기록이다.</p>
+</div>
+
+
+<h1 id="limits">한계</h1>
+
+<ol>
+<li><strong>에너지 비율의 정량 도출</strong>: 68:27:5 비율의 구조적 설명은 제시했지만, 공리 번호만으로 이 정확한 비율을 계산하는 것은 미완이다.</li>
+<li><strong>Hubble tension</strong>: $H_0$의 두 측정값(Planck 67.4 vs SH0ES 73.0)의 차이를 반야프레임이 해결할 수 있는지는 향후 과제다.</li>
+<li><strong>인플레이션 e-fold 수</strong>: $N_e \approx 60$을 공리로부터 정량적으로 도출하는 것은 미완이다.</li>
+<li><strong>BAO 스케일의 정밀 계산</strong>: 150 Mpc의 구체적 값을 공리로부터 계산하려면 재결합 시점의 d-ring 크기를 알아야 한다.</li>
+</ol>
+
+
+<h1 id="summary">총괄</h1>
+
+<div class="table-wrap">
+<table>
+<tr><th>항목</th><th>결과</th><th class="col-status">상태</th><th class="col-date">날짜</th></tr>
+<tr><td>Hubble 팽창 (H-476~479)</td><td>RLU 잔차 9의 tick당 누적 = d-ring 확장</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>암흑물질 (H-480~482)</td><td>WARM = Read-only 엔티티. 중력만 참여.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>암흑에너지 (H-483~485)</td><td>COLD = 빈 슬롯. RLU 잔차 비율 일정 = $\Lambda$ 일정.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>인플레이션 (H-486~489)</td><td>pre-δ = Compare 미작동 → 비용 저항 없음 → 지수 팽창.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>BAO (H-490~491)</td><td>비용 파동 동결 스케일 = $c_s \times t_{\text{rec}}$.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+</table>
+</div>
+
+<p>현재 등급: <strong>B+</strong> (구조적 대응 5항목, 정량 도출 미완)</p>
+<p>등급 A까지 남은 것: 에너지 비율 정량 도출, Hubble tension 해소, 인플레이션 e-fold 정량화</p>
+
+</div>
+
+
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+</div>
+<div class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br>
+발명자: 한혁진 (Han Hyukjin)<br>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+별칭: 부처님 손바닥 프레임<br>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">우주론 확장: Hubble, 암흑물질/에너지, 인플레이션, BAO -- RLU와 ECS에서 도출</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="cosmology2.html">우주론 기초</a> | <a href="cosmic_thermo.html">우주 열역학</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+<script>
+(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>

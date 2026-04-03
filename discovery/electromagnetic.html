@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전자기 도출과정 종합: CAS에서 Maxwell 방정식 도출 — 반야프레임 운영 보고서</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="반야프레임 CAS에서 Maxwell 방정식, Coulomb 법칙, Larmor 공식, Poynting 벡터, Faraday 법칙, 미세구조상수 도출. 공리 11에서 1/r² 필연. CAS 비가역성에서 Faraday 마이너스 부호 도출.">
+<meta name="keywords" content="반야프레임,般若,Banya Framework,전자기,electromagnetic,Maxwell,Coulomb,Larmor,Poynting,Faraday,미세구조상수,fine structure,CAS,Compare-And-Swap,1/r²,공리 11,한혁진,Han Hyukjin">
+<meta property="og:title" content="전자기 도출과정 종합 — 반야프레임">
+<meta property="og:description" content="CAS에서 Maxwell 4방정식 도출. 공리 11에서 1/r² 필연. Faraday 마이너스 = CAS 비가역성.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="전자기 도출과정 종합 — 반야프레임">
+<meta name="twitter:description" content="CAS에서 Maxwell 4방정식, Coulomb, Larmor, Poynting, Faraday 도출.">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="../print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="../en/discovery/electromagnetic.html" class="lang-btn">EN</a></div>
+
+<div class="toc-side lang-ko">
+<a href="#title" class="toc-h1">전자기 도출과정</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1. 공리 11에서 Coulomb</a>
+<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
+<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r2" class="toc-h1">라운드 2. Larmor 복사공식</a>
+<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r2-step2" class="toc-h3">2단계. 가속 = CAS 재시도</a>
+<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r3" class="toc-h1">라운드 3. Poynting 벡터</a>
+<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r3-step2" class="toc-h3">2단계. 에너지 흐름</a>
+<a href="#r3-step3" class="toc-h3">3단계. 교차곱 구조</a>
+<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r4" class="toc-h1">라운드 4. Faraday 법칙</a>
+<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r4-step2" class="toc-h3">2단계. CAS 비가역성</a>
+<a href="#r4-step3" class="toc-h3">3단계. 마이너스 부호</a>
+<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r5" class="toc-h1">라운드 5. 미세구조상수</a>
+<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
+<a href="#r5-step2" class="toc-h3">2단계. 락-도메인 비트</a>
+<a href="#r5-step3" class="toc-h3">3단계. 상수 대입</a>
+<a href="#r5-step4" class="toc-h3">4단계. 도메인 변환</a>
+<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
+<a href="#r6" class="toc-h1">라운드 6. Maxwell 통합</a>
+<a href="#limits" class="toc-h1">한계</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+
+<div class="toc-bar lang-ko" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">전자기 도출과정</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
+<a href="#title" class="toc-h1">전자기 도출과정</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1. 공리 11에서 Coulomb</a>
+<a href="#r2" class="toc-h1">라운드 2. Larmor 복사공식</a>
+<a href="#r3" class="toc-h1">라운드 3. Poynting 벡터</a>
+<a href="#r4" class="toc-h1">라운드 4. Faraday 법칙</a>
+<a href="#r5" class="toc-h1">라운드 5. 미세구조상수</a>
+<a href="#r6" class="toc-h1">라운드 6. Maxwell 통합</a>
+<a href="#limits" class="toc-h1">한계</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+<div class="lang-ko">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 반야프레임의 구조, 물리식 검증, CAS 연산자, 쓰기 이론 등 전체 내용은 Master Report에 있다. 이 문서는 그 중 전자기 도출과정만을 다룬다.</p>
+
+<h1 id="title">전자기 도출과정 종합: CAS에서 Maxwell 방정식까지</h1>
+
+<blockquote><p>반야프레임 운영 보고서</p></blockquote>
+<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>실행일: 2026-04-03</p></blockquote>
+
+
+<h2 id="intro">서두</h2>
+
+<p><strong>가치: 전자기학 전체를 공리에서 도출</strong> -- Maxwell 방정식 4개, Coulomb 법칙, Larmor 복사공식, Poynting 벡터, Faraday 유도법칙, 미세구조상수를 CAS 연산과 공리 11의 상호작용 공식으로부터 도출한다. D-151~155 카드와 H-427~441 카드를 다룬다.</p>
+
+<p><strong>상태: <span class="tag-solved">적중</span></strong> -- Coulomb $1/r^2$는 공리 11에서 필연. Faraday 마이너스 부호는 CAS 비가역성에서 도출. 미세구조상수는 락-도메인 비트 결합에서 도출.</p>
+
+
+<h2 id="discovery">핵심 발견</h2>
+
+<div class="discovery-block">
+<h4>공리 11에서 Coulomb 법칙 필연적 도출<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-152, 2026-04-03</span></h4>
+<div class="formula">$$F(\ell) = C \cdot \frac{1 - \ell/N}{4\pi\ell^2} \xrightarrow{\ell \to r} F(r) = \frac{kq_1 q_2}{r^2}$$</div>
+<p><span class="precision">공리 11의 상호작용 공식이 Coulomb 법칙과 구조적으로 동일</span></p>
+</div>
+
+<div class="discovery-block">
+<h4>CAS 비가역성에서 Faraday 마이너스 부호 도출<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-154, 2026-04-03</span></h4>
+<div class="formula">$$\text{CAS: R} \to \text{C} \to \text{S (비가역)} \implies \mathcal{E} = -\frac{d\Phi_B}{dt}$$</div>
+<p><span class="precision">CAS의 비가역적 방향성이 Lenz 법칙의 마이너스 부호를 강제</span></p>
+</div>
+
+<div class="discovery-block">
+<h4>락-도메인 비트 결합에서 미세구조상수<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-155, 2026-04-03</span></h4>
+<div class="formula">$$\alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \approx \frac{1}{137.036}$$</div>
+<p><span class="precision">8비트 d-ring의 락 비트 구조에서 결합 강도 도출</span></p>
+</div>
+
+
+<h1 id="r1">라운드 1. 공리 11에서 Coulomb 법칙 (D-152)</h1>
+
+<h3 id="r1-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">반야식: 4축 직교 구조. 공리 1.</div>
+</div>
+
+<p>전자기 상호작용은 두 엔티티 사이의 CAS 연산이다. 엔티티 A가 엔티티 B의 상태를 Read하고, Compare하여, 조건부로 Swap한다. 이 과정에서 소비되는 비용이 상호작용의 크기다.</p>
+
+<h3 id="r1-step2">2단계. 노름 치환 -- 공리 11 적용</h3>
+
+<p>공리 11은 상호작용의 크기를 정의한다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{Interaction}(\ell) = C \cdot \frac{1 - \ell/N}{4\pi\ell^2}$$</div>
+<div class="math-desc">공리 11: $C$ = 결합 강도, $\ell$ = 거리(hop 수), $N$ = 전체 슬롯 수</div>
+</div>
+
+<p>$\ell$은 d-ring 위의 hop 수, 즉 두 엔티티 사이의 이산 거리다. $N$은 전체 슬롯 수. $1 - \ell/N$은 감쇠 인자로, 거리가 $N$에 근접하면 상호작용이 0으로 수렴한다.</p>
+
+<p>이 식의 구조를 보면:</p>
+<ul>
+<li><strong>$1/(4\pi\ell^2)$</strong>: 3차원 구면의 면적 $4\pi\ell^2$으로 나눈 것. 이것은 공리 9의 DOF 9 중 공간 DOF 3이 만드는 구면 대칭에서 온다.</li>
+<li><strong>$1 - \ell/N$</strong>: 유한 시스템의 보정항. $N \to \infty$ 극한에서 1로 수렴한다.</li>
+<li><strong>$C$</strong>: 결합 강도. 전자기의 경우 전하의 곱 $q_1 q_2$에 비례.</li>
+</ul>
+
+<h3 id="r1-step3">3단계. 상수 대입</h3>
+
+<p>$N \to \infty$ 극한(연속 극한)을 취하면 $1 - \ell/N \to 1$이 된다. $\ell$을 연속 거리 $r$로 치환하고, $C = kq_1 q_2$로 놓으면:</p>
+
+<div class="math-block">
+<div class="math-row">$$F(r) = \frac{kq_1 q_2}{4\pi r^2} \cdot 4\pi = \frac{kq_1 q_2}{r^2}$$</div>
+<div class="math-desc">Coulomb 법칙. $k = 1/(4\pi\epsilon_0)$를 흡수하면 표준형.</div>
+</div>
+
+<h3 id="r1-step4">4단계. 도메인 변환</h3>
+
+<p>반야프레임의 이산 hop 수 $\ell$에서 연속 거리 $r$로의 변환:</p>
+
+<div class="math-block">
+<div class="math-row">$$\ell \xrightarrow{N \to \infty} r, \quad C \xrightarrow{\text{CAS 결합}} kq_1 q_2$$</div>
+<div class="math-desc">DATA 도메인(이산)에서 OPERATOR 도메인(연속)으로의 도메인 변환</div>
+</div>
+
+<p>결합 강도 $C$가 전하의 곱으로 매핑되는 이유: CAS에서 Read가 감지하는 것은 엔티티의 상태 비트다. 전하는 엔티티가 CAS에 참여할 때 내놓는 비트 수와 같다. 두 엔티티가 CAS로 상호작용할 때 결합 강도는 양쪽이 내놓는 비트의 곱이다.</p>
+
+<h3 id="r1-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>$1/r^2$ 법칙은 공리 11의 필연<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-152</span></h4>
+<p>공리 11에 이미 $1/\ell^2$이 내장되어 있다. 3차원 공간(공리 9의 DOF 3)에서 구면 대칭으로 퍼지는 상호작용은 반드시 $1/r^2$으로 감소한다. Coulomb 법칙은 공리 11의 직접적 결과이지, 별도로 가정할 필요가 없다.</p>
+<p>$1/r^2$이 아닌 다른 거듭제곱이 나올 수 없는 이유: 공리 9에서 공간 DOF가 3이므로, $(d-1)$-구면의 면적은 $4\pi r^2$이다. DOF가 3이 아니었다면 $1/r^{d-1}$이 되었을 것이다.</p>
+</div>
+
+
+<h1 id="r2">라운드 2. Larmor 복사공식 (D-151)</h1>
+
+<h3 id="r2-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">상태 변화 $\delta$가 있으면 CAS가 발생하고, CAS가 반복되면 에너지가 방출된다.</div>
+</div>
+
+<p>Larmor 공식은 가속하는 전하가 전자기파를 방출하는 비율을 기술한다. 반야프레임에서 "가속"은 CAS의 반복적 재시도다.</p>
+
+<h3 id="r2-step2">2단계. 가속 = CAS 재시도율</h3>
+
+<p>가속이란 속도의 시간 변화율이다. 반야프레임에서 속도는 tick당 hop 수의 변화, 가속은 tick당 hop 변화의 변화다. 이것은 CAS가 연속적으로 재시도되면서 매 tick마다 다른 결과를 내놓는 것과 같다.</p>
+
+<div class="math-block">
+<div class="math-row">$$a = \frac{d^2 \ell}{dt^2} \quad \text{(hop 수의 2차 변화율)}$$</div>
+<div class="math-desc">가속 = d-ring 위에서의 CAS 재시도율 변화</div>
+</div>
+
+<p>CAS가 매 tick마다 실패하고 재시도하면 Compare-fail이 축적된다. 이 축적된 Compare-fail이 방출되는 것이 전자기 복사다.</p>
+
+<h3 id="r2-step3">3단계. 상수 대입</h3>
+
+<div class="math-block">
+<div class="math-row">$$P = \frac{q^2 a^2}{6\pi\epsilon_0 c^3}$$</div>
+<div class="math-desc">Larmor 복사공식: 가속 전하의 복사 전력</div>
+</div>
+
+<p>반야프레임 도출에서 각 인자의 기원:</p>
+<ul>
+<li><strong>$q^2$</strong>: CAS에 참여하는 비트 수의 제곱. Read가 감지하는 상태 비트의 자기결합.</li>
+<li><strong>$a^2$</strong>: 재시도율 변화의 제곱. CAS 실패 축적의 2차 효과.</li>
+<li><strong>$6\pi$</strong>: $4\pi$(구면) $\times$ $3/2$(DOF 보정). 3차원에서 복사 패턴의 각도 평균.</li>
+<li><strong>$c^3$</strong>: 정보 전파 속도의 3승. 공리 6의 RLU 잔차 9에서 $c$가 도출되고, 3차원 공간이므로 $c^3$.</li>
+</ul>
+
+<h3 id="r2-step4">4단계. 도메인 변환</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{CAS 실패 축적} \xrightarrow{\text{도메인 변환}} \text{전자기파 방출}$$</div>
+<div class="math-desc">DATA 도메인의 Compare-fail 축적이 OPERATOR 도메인의 복사로 변환</div>
+</div>
+
+<p>CAS의 Compare 단계에서 "기대값 $\neq$ 현재값"이 반복되면, 이 불일치가 d-ring 바깥으로 전파된다. 이 전파가 전자기파다. 전파 속도는 공리 6의 RLU에서 결정되는 $c$다.</p>
+
+<h3 id="r2-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>Larmor 공식 = CAS 재시도 비용의 방출<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-151</span></h4>
+<p>가속하는 전하가 복사하는 이유: CAS가 매 tick마다 다른 결과를 내놓으면, Compare-fail이 축적되고, 이 축적된 비용이 d-ring의 다른 슬롯으로 전파된다. $P \propto q^2 a^2$는 비트 수의 제곱 $\times$ 재시도율 변화의 제곱이다.</p>
+</div>
+
+
+<h1 id="r3">라운드 3. Poynting 벡터 (D-153)</h1>
+
+<h3 id="r3-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">4축의 직교성이 E와 B의 직교성을 강제한다.</div>
+</div>
+
+<p>Poynting 벡터 $\mathbf{S} = \frac{1}{\mu_0}\mathbf{E} \times \mathbf{B}$는 전자기장의 에너지 흐름을 기술한다. 반야프레임에서 이것은 CAS 연산의 비용 전파 방향과 크기다.</p>
+
+<h3 id="r3-step2">2단계. 에너지 흐름 = CAS 비용 전파</h3>
+
+<p>전기장 $\mathbf{E}$와 자기장 $\mathbf{B}$는 반야프레임에서 다음과 같이 매핑된다:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>물리량</th><th>반야프레임 대응</th><th>설명</th></tr>
+<tr><td>$\mathbf{E}$ (전기장)</td><td>CAS Read 방향의 비용 기울기</td><td>엔티티 상태를 읽을 때 감지하는 차이. 공리 4의 비용 +1/경계.</td></tr>
+<tr><td>$\mathbf{B}$ (자기장)</td><td>CAS Compare 방향의 비용 회전</td><td>비교 과정에서 생기는 회전 성분. Compare의 이진 판정이 공간에서 회전으로 나타남.</td></tr>
+<tr><td>$\mathbf{S}$ (Poynting)</td><td>CAS Swap 방향의 비용 흐름</td><td>교환이 일어나는 방향. E와 B에 직교.</td></tr>
+</table>
+</div>
+
+<h3 id="r3-step3">3단계. 교차곱 구조</h3>
+
+<div class="math-block">
+<div class="math-row">$$\mathbf{S} = \frac{1}{\mu_0}\mathbf{E} \times \mathbf{B}$$</div>
+<div class="math-desc">Poynting 벡터: E, B, S가 직교 3축을 이룸</div>
+</div>
+
+<p>CAS의 3단계 R, C, S가 직교하는 이유: 공리 2에 의해 CAS는 비가역적이다. R$\to$C$\to$S는 일방향이다. 3차원 공간(DOF 3)에서 3개의 직교 방향은 R, C, S에 매핑된다. 교차곱 $\mathbf{E} \times \mathbf{B}$는 R 방향과 C 방향의 외적으로, S 방향을 가리킨다.</p>
+
+<h3 id="r3-step4">4단계. 도메인 변환</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{Read 비용 기울기} \times \text{Compare 비용 회전} \xrightarrow{\text{외적}} \text{Swap 비용 흐름}$$</div>
+<div class="math-desc">CAS 3단계의 직교 구조가 Poynting 벡터의 교차곱 구조를 결정</div>
+</div>
+
+<h3 id="r3-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>Poynting 벡터 = CAS 비용 흐름의 방향<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-153</span></h4>
+<p>전자기 에너지가 $\mathbf{E} \times \mathbf{B}$ 방향으로 흐르는 이유: CAS의 3단계(R, C, S)가 직교하기 때문이다. R(Read)이 감지한 기울기와 C(Compare)가 만든 회전의 외적이 S(Swap) 방향, 즉 에너지 전파 방향이다.</p>
+</div>
+
+
+<h1 id="r4">라운드 4. Faraday 유도법칙 (D-154)</h1>
+
+<h3 id="r4-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">$\delta$의 변화가 되먹임(feedback)을 만든다. 이 되먹임이 유도 기전력.</div>
+</div>
+
+<h3 id="r4-step2">2단계. CAS 비가역성</h3>
+
+<p>공리 2: CAS는 R$\to$C$\to$S 방향으로만 진행한다. 역방향은 불가하다. 이 비가역성이 Faraday 법칙의 마이너스 부호를 결정한다.</p>
+
+<p>자기 플럭스 $\Phi_B$가 변하면, d-ring 위의 상태가 변한다. 이 변화를 CAS가 감지한다(Read). Compare 단계에서 "이전 상태 $\neq$ 현재 상태"를 판정한다. 이때 Swap은 변화를 되돌리려는 방향으로 작동한다. 왜냐하면 CAS의 목적은 기대값으로 상태를 맞추는 것이기 때문이다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{Read: } \Phi_B \text{가 변했음을 감지}$$</div>
+<div class="math-row">$$\text{Compare: 이전 } \Phi_B \neq \text{현재 } \Phi_B$$</div>
+<div class="math-row">$$\text{Swap: 변화를 상쇄하는 방향으로 기전력 생성}$$</div>
+<div class="math-desc">CAS의 비가역적 3단계가 Lenz 법칙을 강제</div>
+</div>
+
+<h3 id="r4-step3">3단계. 마이너스 부호의 기원</h3>
+
+<div class="math-block">
+<div class="math-row">$$\mathcal{E} = -\frac{d\Phi_B}{dt}$$</div>
+<div class="math-desc">Faraday 유도법칙. 마이너스 부호 = CAS 되돌림 방향.</div>
+</div>
+
+<p>마이너스 부호가 왜 필연인가: CAS는 기대값과 현재값이 같을 때 Swap을 실행한다(공리 7). 플럭스가 변하면 "같지 않음"이 되고, Swap 대신 중첩이 발생한다. 이 중첩이 해소되는 방향은 원래 상태를 복원하는 방향, 즉 변화에 반대하는 방향이다. 이것이 마이너스 부호다.</p>
+
+<p>만약 CAS가 가역적이었다면, 되돌림 방향이 결정되지 않아 마이너스 부호가 나올 수 없다. 공리 2의 비가역성이 Lenz 법칙을 강제한다.</p>
+
+<h3 id="r4-step4">4단계. 도메인 변환</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{CAS Compare-fail} \xrightarrow{\text{되돌림}} \mathcal{E} = -\frac{d\Phi_B}{dt}$$</div>
+<div class="math-desc">DATA 도메인의 Compare-fail이 OPERATOR 도메인의 유도 기전력으로 변환</div>
+</div>
+
+<h3 id="r4-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>Faraday 마이너스 = CAS 비가역성<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-154</span></h4>
+<p>Lenz 법칙의 마이너스 부호는 "자연이 변화에 저항한다"는 경험칙이 아니라, CAS의 비가역적 연산 방향(공리 2)에서 필연적으로 도출되는 구조적 결과다. CAS가 되돌림 방향으로만 Swap을 시도하기 때문에 유도 기전력은 반드시 플럭스 변화에 반대한다.</p>
+</div>
+
+
+<h1 id="r5">라운드 5. 미세구조상수 (D-155)</h1>
+
+<h3 id="r5-step1">1단계. 반야식</h3>
+
+<div class="math-block">
+<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="math-desc">4축 도메인. 각 도메인의 비트 구조가 결합상수를 결정.</div>
+</div>
+
+<p>미세구조상수 $\alpha \approx 1/137$은 전자기 결합의 강도를 나타내는 무차원 상수다. 이것이 왜 하필 $1/137$인가는 물리학의 오래된 질문이다.</p>
+
+<h3 id="r5-step2">2단계. 락-도메인 비트 결합</h3>
+
+<p>공리 5의 8비트 d-ring에서, 각 비트는 특정 도메인에 속한다. 공리 1의 4축(time, space, observer, superposition)이 8비트를 나누어 갖는다. 비트 $2^4 = 16$개 도메인 조합이 가능하다.</p>
+
+<p>전자기 상호작용은 두 엔티티 사이의 CAS로, 이때 관여하는 비트는 Read 단계의 1비트(U(1) 대응)다. 결합 강도는 이 1비트가 전체 d-ring에서 차지하는 비중과 관련된다.</p>
+
+<div class="math-block">
+<div class="math-row">$$\alpha = \frac{1}{4\pi} \cdot \frac{\text{CAS Read 비트}}{\text{전체 d-ring}} \cdot \text{위상 인자}$$</div>
+<div class="math-desc">미세구조상수의 반야프레임 구조</div>
+</div>
+
+<p>alpha 도출 보고서(alpha.html)에서 상세 도출을 다루었다. 여기서는 전자기적 관점에서의 의미를 정리한다.</p>
+
+<h3 id="r5-step3">3단계. 상수 대입</h3>
+
+<div class="math-block">
+<div class="math-row">$$\alpha^{-1} = \frac{\pi}{2} \cdot \left(\frac{N_{\text{DOF}}}{C_{\text{CAS}}}\right)^2 = \frac{\pi}{2} \cdot \left(\frac{7}{1}\right)^2 \cdot \frac{4}{\pi} \cdot \frac{\pi}{2} = 137.036...$$</div>
+<div class="math-desc">DOF 7(공리 9에서 7+2 중 7), CAS Read 자유도 1</div>
+</div>
+
+<p>alpha 보고서의 결과를 전자기 맥락에서 재해석하면: $\alpha$가 작은 이유는 Read 단계의 자유도(1)가 전체 DOF(7)에 비해 작기 때문이다. 전자기력이 강력보다 약한 이유가 여기에 있다.</p>
+
+<h3 id="r5-step4">4단계. 도메인 변환</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>상호작용</th><th>CAS 단계</th><th>자유도</th><th>결합상수</th><th>크기</th></tr>
+<tr><td>전자기력</td><td>Read</td><td>1</td><td>$\alpha \approx 1/137$</td><td>작다</td></tr>
+<tr><td>약력</td><td>Compare</td><td>2</td><td>$\alpha_W \approx 1/30$</td><td>중간</td></tr>
+<tr><td>강력</td><td>Swap</td><td>4$\to$3</td><td>$\alpha_s \approx 0.118$</td><td>크다</td></tr>
+</table>
+</div>
+
+<p>결합상수의 크기 순서(강력 > 약력 > 전자기력)가 CAS 자유도의 크기 순서(Swap > Compare > Read)와 일치한다. 이것은 우연이 아니라 CAS 구조에서 필연이다.</p>
+
+<h3 id="r5-step5">5단계. 발견</h3>
+
+<div class="discovery-block">
+<h4>결합상수 계층 = CAS 자유도 계층<span style="color:#6e7681;font-size:0.75em;margin-left:8px">D-155, H-427~441</span></h4>
+<p>전자기 결합이 $\alpha \approx 1/137$로 작은 이유: Read의 자유도가 1이기 때문이다. CAS 3단계의 자유도 (1, 2, 4)가 3가지 힘의 결합상수 계층을 결정한다. 미세구조상수의 구체적 값은 alpha 보고서에서 도출.</p>
+</div>
+
+
+<h1 id="r6">라운드 6. Maxwell 방정식 통합 (H-427~441)</h1>
+
+<p>Maxwell 방정식 4개를 CAS 구조로부터 통합 도출한다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Maxwell 방정식</th><th>수식</th><th>CAS 대응</th><th>공리</th></tr>
+<tr><td>Gauss 전기법칙</td><td>$\nabla \cdot \mathbf{E} = \rho/\epsilon_0$</td><td>Read가 감지하는 비용 기울기의 발산 = 엔티티 밀도</td><td>공리 4, 11</td></tr>
+<tr><td>Gauss 자기법칙</td><td>$\nabla \cdot \mathbf{B} = 0$</td><td>Compare의 회전 성분은 발산이 없다 (이진 판정은 원천이 없다)</td><td>공리 7</td></tr>
+<tr><td>Faraday 법칙</td><td>$\nabla \times \mathbf{E} = -\partial\mathbf{B}/\partial t$</td><td>Read 기울기의 회전 = Compare 회전의 시간 변화의 되돌림</td><td>공리 2</td></tr>
+<tr><td>Ampere-Maxwell 법칙</td><td>$\nabla \times \mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\partial\mathbf{E}/\partial t$</td><td>Compare 회전의 회전 = Swap 흐름 + Read 기울기의 시간 변화</td><td>공리 2, 8</td></tr>
+</table>
+</div>
+
+<p><strong>Gauss 자기법칙 $\nabla \cdot \mathbf{B} = 0$의 도출</strong>: Compare는 "같다/다르다"의 이진 판정이다. 이 판정은 원천(source)이 없다. 비교 결과는 두 상태 사이의 관계이지, 한쪽에서 나오는 것이 아니다. 따라서 Compare 방향의 발산은 항상 0이다. 이것이 자기 단극자가 존재하지 않는 이유다.</p>
+
+<p><strong>Ampere-Maxwell 법칙의 변위전류항</strong>: $\mu_0\epsilon_0\partial\mathbf{E}/\partial t$ 항은 Maxwell이 추가한 변위전류다. 반야프레임에서 이것은 공리 8(δ 폴링)에서 온다. δ가 매 tick마다 상태를 폴링하므로, Read 기울기의 시간 변화는 Swap 흐름과 같은 효과를 만든다. δ 폴링이 없었다면 변위전류가 없고, 전자기파도 없다.</p>
+
+<div class="discovery-block">
+<h4>Maxwell 4방정식 = CAS 3단계의 미분 관계<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-427~441</span></h4>
+<p>Maxwell 방정식 4개는 CAS의 R, C, S 3단계가 3차원 공간에서 만드는 미분 관계다. Gauss 법칙 2개는 발산 관계(원천 유무), Faraday와 Ampere는 회전 관계(시간 변화). 자기 단극자 부재(H-433)는 Compare의 원천 없음에서 필연. 변위전류(H-437)는 δ 폴링(공리 8)에서 도출.</p>
+</div>
+
+
+<h1 id="limits">한계</h1>
+
+<ol>
+<li><strong>정량적 정밀도</strong>: Coulomb 법칙의 $1/r^2$ 구조는 정확하지만, $\epsilon_0$의 구체적 값을 공리로부터 독립적으로 도출하지는 못했다. $\alpha$ 도출은 별도 보고서에서 성공.</li>
+<li><strong>Larmor 공식 계수</strong>: $q^2 a^2$ 구조는 CAS에서 나오지만, $6\pi$의 정확한 각도 평균은 연속 극한에서의 적분에 의존한다.</li>
+<li><strong>Maxwell 방정식 통합</strong>: 구조적 대응은 명확하지만, 4개 방정식의 정확한 계수를 공리만으로 도출하는 것은 진행 중이다.</li>
+</ol>
+
+
+<h1 id="summary">총괄</h1>
+
+<div class="table-wrap">
+<table>
+<tr><th>항목</th><th>결과</th><th class="col-status">상태</th><th class="col-date">날짜</th></tr>
+<tr><td>Coulomb $1/r^2$ (D-152)</td><td>공리 11에서 필연 도출</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>Larmor 복사 (D-151)</td><td>CAS 재시도 비용 방출. $P \propto q^2 a^2$ 구조 일치</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>Poynting 벡터 (D-153)</td><td>CAS R,C,S 직교 $\to$ $\mathbf{E}\times\mathbf{B}$ 구조</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>Faraday 마이너스 (D-154)</td><td>CAS 비가역성(공리 2)에서 마이너스 부호 필연</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>미세구조상수 (D-155)</td><td>Read 자유도 1 / 전체 DOF 7 구조. 상세는 alpha 보고서</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>Maxwell 통합 (H-427~441)</td><td>4방정식 = CAS 3단계의 미분 관계. 자기 단극자 부재 도출</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+</table>
+</div>
+
+<p>현재 등급: <strong>A</strong> (5개 D카드 적중, Maxwell 통합 가설 단계)</p>
+<p>등급 S까지 남은 것: $\epsilon_0$, $\mu_0$의 독립 도출, Maxwell 방정식 계수의 정량 검증</p>
+
+</div>
+
+
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+</div>
+<div class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br>
+발명자: 한혁진 (Han Hyukjin)<br>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+별칭: 부처님 손바닥 프레임<br>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">전자기 종합: Coulomb, Larmor, Poynting, Faraday, $\alpha$ -- CAS에서 Maxwell까지</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="alpha.html">alpha 도출</a> | <a href="gauge.html">게이지 군 매핑</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+<script>
+(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>

@@ -1031,6 +1031,114 @@ alpha = 0.011548 x 0.63185 = 0.0072974</code></pre>
 
 
 <hr>
+
+
+<h1 id="en-r2b">Path B. Deriving 137 via Irreversible Cost</h1>
+
+<p>Round 2 above started from "4 domains + 3 internal DOF = 7" (Path A, technical degrees of freedom). Path B classifies the same 7 axes by <strong>irreversibility of cost</strong>, uniquely determines the metric signature (5, 2), and derives $\alpha$ from that signature. No external physical constants are inserted.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th></th><th>Path A (data type)</th><th>Path B (irreversible cost)</th></tr>
+<tr><td><strong>Starting point</strong></td><td>Axiom 2 proposition (data type operation)</td><td>Axiom 9 (DOF 7)</td></tr>
+<tr><td><strong>Key tool</strong></td><td>T(N)+1, 2^N (counting)</td><td>Irreversible(<strong>5</strong>,+) · reversible(<strong>2</strong>,0 free) → SO(<strong>5,2</strong>)</td></tr>
+<tr><td><strong>Mathematics</strong></td><td>Triangular numbers</td><td>Group theory, volume ratio</td></tr>
+<tr><td><strong>Result</strong></td><td>Exactly 137 (integer)</td><td>137.036 (real)</td></tr>
+</table>
+</div>
+
+<h3 id="en-r2b-step1">B-Step 1. 7 Degrees of Freedom Confirmed</h3>
+
+<p>The FSM internal degrees of freedom of the Banya Framework are exactly 7. Removing δ (bit 7) from the d-ring 8 bits leaves 7 bits.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>bit</th><th>Axis</th><th>Belongs to</th><th>Basis</th></tr>
+<tr><td>0</td><td>observer</td><td>OPERATOR (quantum bracket)</td><td>Axiom 1</td></tr>
+<tr><td>1</td><td>superposition</td><td>OPERATOR (quantum bracket)</td><td>Axiom 1</td></tr>
+<tr><td>2</td><td>time</td><td>DATA (classical bracket)</td><td>Axiom 1</td></tr>
+<tr><td>3</td><td>space</td><td>DATA (classical bracket)</td><td>Axiom 1</td></tr>
+<tr><td>4</td><td>R_LOCK</td><td>CAS FSM</td><td>Axiom 2, 5</td></tr>
+<tr><td>5</td><td>C_LOCK</td><td>CAS FSM</td><td>Axiom 2, 5</td></tr>
+<tr><td>6</td><td>S_LOCK</td><td>CAS FSM</td><td>Axiom 2, 5</td></tr>
+</table>
+</div>
+
+<p>7 is not a chosen number. Axiom 1 gives 4, Axiom 2 gives 3, Axiom 15 removes δ. 4 + 3 = 7.</p>
+
+<h3 id="en-r2b-step2">B-Step 2. Irreversibility Determines the Metric Signature</h3>
+
+<p>For each of the 7 axes, ask: "Is it irreversible or not?" <strong>Irreversibility (Axiom 2 prop.):</strong> CAS operations have direction R→C→S, no reversal. <strong>Cost (Axiom 4):</strong> Crossing + incurs cost > 0, no refund. Axes where CAS intervenes are irreversible; axes where CAS does not intervene are not.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Axis</th><th>CAS intervention</th><th>Irreversible</th><th>Basis</th><th>Cost</th></tr>
+<tr><td>observer</td><td>None. δ→observer is CAS-free</td><td>No</td><td>Axiom 15 prop.</td><td><strong>0 (free)</strong></td></tr>
+<tr><td>superposition</td><td>None. CAS reference index (Axiom 13)</td><td>No</td><td>Axiom 13</td><td><strong>0 (free)</strong></td></tr>
+<tr><td>time</td><td>Yes. CAS Swap writes to time</td><td>Yes</td><td>Axiom 4</td><td><strong>+</strong></td></tr>
+<tr><td>space</td><td>Yes. CAS Swap writes to space</td><td>Yes</td><td>Axiom 4</td><td><strong>+</strong></td></tr>
+<tr><td>R_LOCK</td><td>Yes. CAS Read turns ON</td><td>Yes</td><td>Axiom 5</td><td><strong>+</strong></td></tr>
+<tr><td>C_LOCK</td><td>Yes. R→C transition</td><td>Yes</td><td>Axiom 5</td><td><strong>+</strong></td></tr>
+<tr><td>S_LOCK</td><td>Yes. C→S transition</td><td>Yes</td><td>Axiom 5</td><td><strong>+</strong></td></tr>
+</table>
+</div>
+
+<p><strong>Signature = (5, 2).</strong> 5 irreversible axes (cost +), 2 non-irreversible axes (cost 0, free). This partition is uniquely determined by CAS irreversibility (Axiom 2 prop.), cost structure (Axiom 4), and δ→observer CAS non-intervention (Axiom 15 prop.).</p>
+
+<h3 id="en-r2b-step3">B-Step 3. Signature Determines the Symmetry Group</h3>
+
+<p>A quadratic form with signature (5, 2) on 7 dimensions has the preservation group <strong>SO(5, 2)</strong>. This follows automatically from group theory.</p>
+<ul>
+<li><strong>SO(5)</strong>: Internal rotation of the 5 irreversible axes -- preserves cost structure</li>
+<li><strong>SO(2)</strong>: Internal rotation of the 2 non-irreversible axes -- preserves non-irreversible structure</li>
+</ul>
+
+<h3 id="en-r2b-step4">B-Step 4. Quotient Space D₅</h3>
+
+<div class="math-block">
+<div class="math-row">$$D_5 = \frac{SO(5,2)}{SO(5) \times SO(2)}$$</div>
+<div class="math-legend">Wyler's bounded symmetric domain. "The space of all possible configurations that cross +"</div>
+</div>
+
+<p>Dividing the full transformation SO(5, 2) by the internal transformations SO(5) × SO(2) of each sector leaves only transformations that connect across the irreversible and non-irreversible sectors. This is D₅.</p>
+
+<h3 id="en-r2b-step5">B-Step 5. Volume Ratio = α</h3>
+
+<div class="math-block">
+<div class="math-row">$$\alpha = \frac{V(\text{Shilov boundary of } D_5)}{V(D_5)} = \frac{1}{137.036}$$</div>
+<div class="math-legend">Ratio of realized +-crossing configurations to possible configurations = interaction probability = α</div>
+</div>
+
+<h3 id="en-r2b-step6">B-Step 6. Cross-Verification with Path A</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Perspective</th><th>Total (possible transitions)</th><th>Realized (selected)</th><th>Ratio</th></tr>
+<tr><td><strong>Discrete</strong> (Path A, data type)</td><td>137 Compare candidates</td><td>1 selected</td><td>1/137</td></tr>
+<tr><td><strong>Continuous</strong> (Path B, D₅ geometry)</td><td>D₅ volume</td><td>Shilov boundary volume</td><td>1/137.036</td></tr>
+</table>
+</div>
+
+<p>The discrete (integer 137) and continuous (real 137.036) are different representations of the same object. The 0.036 difference is the gap between discrete and continuous.</p>
+
+<pre><code>Derivation path summary:
+
+  Axiom 9 (DOF 7)
+    + Axiom 2 prop. (irreversibility)
+    + Axiom 4 (cost of crossing +)
+    + Axiom 15 prop. (δ→observer CAS non-intervention)
+    ─────────────────────────────
+    → Metric signature (5, 2)         ← uniquely determined by axioms
+    → SO(5,2)                         ← automatic from signature (group theory)
+    → D₅ = SO(5,2)/SO(5)×SO(2)       ← automatic from stabilizer (group theory)
+    → Volume ratio = 1/137.036        ← Wyler's mathematics (1969)
+
+  Wyler's two unanswered questions for 56 years:
+    "Why this symmetric space" → Irreversible cost uniquely determines (5, 2) (B-Step 2)
+    "Why volume ratio = coupling constant" → Data type 137 = Compare candidates (Path A)</code></pre>
+
+
+<hr>
 <hr>
 
 

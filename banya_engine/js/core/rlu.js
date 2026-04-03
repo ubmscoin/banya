@@ -15,7 +15,8 @@ class RLU {
     static REMNANT_LIFE = RLU_CONST.REMNANT_LIFE;
     static HOT_END = RLU_CONST.HOT_END;
     static WARM_END = RLU_CONST.WARM_END;
-    static DECAY_PER_TICK = RLU_CONST.DECAY_PER_TICK;
+    static DECAY_RATIO = RLU_CONST.DECAY_RATIO;
+    static DECAY_THRESHOLD = RLU_CONST.DECAY_THRESHOLD;
 
     constructor(ringSize) {
         this.m_ringSize = ringSize || 30;
@@ -53,26 +54,27 @@ class RLU {
 
         for (let [_id, _entry] of this.m_entries) {
             _entry.age++;
-            _entry.strength -= RLU.DECAY_PER_TICK;
+            // 등비급수 감쇠: 매 틱 같은 비율을 곱한다
+            _entry.strength *= RLU.DECAY_RATIO;
 
             let _reclaimAmount = _entry.residualCost / RLU.BALL_LIFE;
             _entry.reclaimedCost += _reclaimAmount;
             _tickReclaim += _reclaimAmount;
 
-            if (_entry.strength <= 0) {
+            if (_entry.strength <= RLU.DECAY_THRESHOLD) {
                 _evicted.push({
                     entityId: _id,
                     reclaimedCost: _entry.reclaimedCost,
                     position: _entry.position
                 });
             }
-            // 공 크기(strength) 기준 상태 전이:
-            // 5% 줄면 HOT->WARM (strength < 0.95)
-            // 32% 줄면 WARM->COLD (strength < 0.68)
-            else if (_entry.strength < 0.68) {
+            // 등비급수 감쇠 경계 (문턱 4/13, 1000틱 수명):
+            // t=50 (5%):  strength = 0.943 → HOT→WARM
+            // t=320 (32%): strength = 0.686 → WARM→COLD
+            else if (_entry.strength < 0.686) {
                 _entry.status = RLU.STATUS_COLD;
             }
-            else if (_entry.strength < 0.95) {
+            else if (_entry.strength < 0.943) {
                 _entry.status = RLU.STATUS_WARM;
             }
         }
@@ -131,7 +133,7 @@ class RLU {
             remnantCount: this.m_remnants.size,
             statusCounts: this.getStatusCounts(),
             totalReclaimed: Math.round(this.m_totalReclaimed * 100) / 100,
-            constants: { maxLife: RLU.MAX_LIFE, ballLife: RLU.BALL_LIFE, remnantLife: RLU.REMNANT_LIFE, decayPerTick: RLU.DECAY_PER_TICK },
+            constants: { maxLife: RLU.MAX_LIFE, ballLife: RLU.BALL_LIFE, remnantLife: RLU.REMNANT_LIFE, decayRatio: RLU.DECAY_RATIO },
             entries: this.getAllEntries().map(_e => ({
                 entityId: _e.entityId, status: _e.status,
                 strength: Math.round(_e.strength * 1000) / 1000,

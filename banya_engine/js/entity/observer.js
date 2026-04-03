@@ -84,7 +84,7 @@ class Observer {
     }
 
     // 포커스 크기는 공리가 결정한다. 사용자가 바꿀 수 없다
-    // 청구항 15: HOT 5% = arccos(0.90) = 0.451 rad
+    // 공리 6, 15: HOT 5% = arccos(0.90) = 0.451 rad
 
     // 엔티티 등록
     registerEntity(entity) {

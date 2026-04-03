@@ -364,6 +364,114 @@ n차원 단위초구의 표면적: S(n) = 2π^(n/2) / Gamma(n/2)
 
 
 <hr>
+
+
+<h1 id="r2b">경로 B. 비가역 비용을 통한 137 도출</h1>
+
+<p>위의 라운드 2는 "도메인 4 + 내부 자유도 3 = 7"이라는 기술 자유도에서 출발했다 (경로 A). 경로 B는 같은 7축을 <strong>비용의 비가역성</strong>으로 분류하여 메트릭 서명 (5, 2)를 유일하게 결정하고, 그 서명에서 $\alpha$를 도출한다. 외부 물리 상수를 넣지 않는다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th></th><th>경로 A (자료형)</th><th>경로 B (비가역 비용)</th></tr>
+<tr><td><strong>출발</strong></td><td>공리 2 명제 (자료형 연산)</td><td>공리 9 (자유도 7)</td></tr>
+<tr><td><strong>핵심 도구</strong></td><td>T(N)+1, 2^N (카운팅)</td><td>비가역(<strong>5</strong>,+) · 비가역 부재(<strong>2</strong>,0 무료) → SO(<strong>5,2</strong>)</td></tr>
+<tr><td><strong>수학</strong></td><td>삼각수</td><td>군론, 체적비</td></tr>
+<tr><td><strong>결과</strong></td><td>정확히 137 (정수)</td><td>137.036 (실수)</td></tr>
+</table>
+</div>
+
+<h3 id="r2b-step1">B-1단계. 7자유도 확정</h3>
+
+<p>반야프레임의 FSM 내부 자유도는 정확히 7이다. d-ring 8비트에서 δ(bit 7)를 빼면 남는 7비트가 전부다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>bit</th><th>축</th><th>소속</th><th>근거</th></tr>
+<tr><td>0</td><td>observer</td><td>OPERATOR (양자 괄호)</td><td>공리 1</td></tr>
+<tr><td>1</td><td>superposition</td><td>OPERATOR (양자 괄호)</td><td>공리 1</td></tr>
+<tr><td>2</td><td>time</td><td>DATA (고전 괄호)</td><td>공리 1</td></tr>
+<tr><td>3</td><td>space</td><td>DATA (고전 괄호)</td><td>공리 1</td></tr>
+<tr><td>4</td><td>R_LOCK</td><td>CAS FSM</td><td>공리 2, 5</td></tr>
+<tr><td>5</td><td>C_LOCK</td><td>CAS FSM</td><td>공리 2, 5</td></tr>
+<tr><td>6</td><td>S_LOCK</td><td>CAS FSM</td><td>공리 2, 5</td></tr>
+</table>
+</div>
+
+<p>7은 선택된 수가 아니다. 공리 1이 4를 주고, 공리 2가 3을 주고, 공리 15가 δ를 빼준다. 4 + 3 = 7.</p>
+
+<h3 id="r2b-step2">B-2단계. 비가역성이 메트릭 서명을 결정한다</h3>
+
+<p>7개 축 각각에 "비가역인가 아닌가"를 묻는다. <strong>비가역성(공리 2 명제):</strong> CAS 연산은 R→C→S 역순 불가. <strong>비용(공리 4):</strong> +를 넘으면 비용 > 0, 환불 불가. CAS가 개입하는 축은 비가역이고, CAS가 개입하지 않는 축은 비가역이 아니다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>축</th><th>CAS 개입</th><th>비가역</th><th>근거</th><th>비용</th></tr>
+<tr><td>observer</td><td>없음. δ→observer는 CAS 미개입 구간</td><td>아니다</td><td>공리 15 명제</td><td><strong>0 (무료)</strong></td></tr>
+<tr><td>superposition</td><td>없음. CAS 참조 인덱스(공리 13)</td><td>아니다</td><td>공리 13</td><td><strong>0 (무료)</strong></td></tr>
+<tr><td>time</td><td>있음. CAS Swap이 time에 씀</td><td>그렇다</td><td>공리 4</td><td><strong>+</strong></td></tr>
+<tr><td>space</td><td>있음. CAS Swap이 space에 씀</td><td>그렇다</td><td>공리 4</td><td><strong>+</strong></td></tr>
+<tr><td>R_LOCK</td><td>있음. CAS Read 시 ON</td><td>그렇다</td><td>공리 5</td><td><strong>+</strong></td></tr>
+<tr><td>C_LOCK</td><td>있음. R→C 전이</td><td>그렇다</td><td>공리 5</td><td><strong>+</strong></td></tr>
+<tr><td>S_LOCK</td><td>있음. C→S 전이</td><td>그렇다</td><td>공리 5</td><td><strong>+</strong></td></tr>
+</table>
+</div>
+
+<p><strong>서명 = (5, 2).</strong> 비가역 축 5개(비용 +), 비가역 부재 축 2개(비용 0, 무료). 이 분할은 CAS 비가역성(공리 2 명제)과 비용 구조(공리 4)와 δ→observer CAS 미개입(공리 15 명제)이 유일하게 결정한 결과다.</p>
+
+<h3 id="r2b-step3">B-3단계. 서명이 대칭군을 결정한다</h3>
+
+<p>서명 (5, 2)의 이차형식을 보존하는 변환의 군은 <strong>SO(5, 2)</strong>이다. 군론에서 자동으로 따라나온다.</p>
+<ul>
+<li><strong>SO(5)</strong>: 비가역 축 5개의 내부 회전 — 비용 구조를 보존</li>
+<li><strong>SO(2)</strong>: 비가역 부재 축 2개의 내부 회전 — 비가역 부재 구조를 보존</li>
+</ul>
+
+<h3 id="r2b-step4">B-4단계. 몫공간 D₅</h3>
+
+<div class="math-block">
+<div class="math-row">$$D_5 = \frac{SO(5,2)}{SO(5) \times SO(2)}$$</div>
+<div class="math-legend">Wyler의 유계 대칭 영역. "+를 넘는 모든 가능한 배위의 공간"</div>
+</div>
+
+<p>전체 변환 SO(5, 2)에서 각 섹터 내부 변환 SO(5) × SO(2)를 나누면, 비가역 축과 비가역 부재 축을 건너서 연결하는 변환만 남는다. 이것이 D₅다.</p>
+
+<h3 id="r2b-step5">B-5단계. 체적비 = α</h3>
+
+<div class="math-block">
+<div class="math-row">$$\alpha = \frac{V(\text{Shilov boundary of } D_5)}{V(D_5)} = \frac{1}{137.036}$$</div>
+<div class="math-legend">가능한 +넘기 배위 중 실현되는 배위의 비율 = 상호작용 확률 = α</div>
+</div>
+
+<h3 id="r2b-step6">B-6단계. 경로 A와의 교차 검증</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>관점</th><th>전체 (가능한 전이)</th><th>실현 (선택된 전이)</th><th>비율</th></tr>
+<tr><td><strong>이산</strong> (경로 A, 자료형)</td><td>137개 Compare 후보</td><td>1개 선택</td><td>1/137</td></tr>
+<tr><td><strong>연속</strong> (경로 B, D₅ 기하)</td><td>D₅ 체적</td><td>Shilov 경계 체적</td><td>1/137.036</td></tr>
+</table>
+</div>
+
+<p>이산(정수 137)과 연속(실수 137.036)이 같은 대상의 다른 표현이다. 0.036의 차이는 이산과 연속의 차이다.</p>
+
+<pre><code>도출 경로 요약:
+
+  공리 9 (자유도 7)
+    + 공리 2 명제 (비가역성)
+    + 공리 4 (+를 넘는 비용)
+    + 공리 15 명제 (δ→observer CAS 미개입)
+    ─────────────────────────────
+    → 메트릭 서명 (5, 2)         ← 공리에서 유일하게 결정
+    → SO(5,2)                    ← 서명에서 자동 (군론)
+    → D₅ = SO(5,2)/SO(5)×SO(2)  ← 안정화 부분군에서 자동 (군론)
+    → 체적비 = 1/137.036         ← Wyler의 수학 (1969)
+
+  Wyler가 56년간 답하지 못한 두 질문:
+    "왜 이 대칭공간인가" → 비가역 비용이 서명 (5, 2)를 유일하게 결정 (B-2단계)
+    "왜 체적비가 결합 상수인가" → 자료형 137 = Compare 후보 수 (경로 A)</code></pre>
+
+
+<hr>
 <hr>
 
 

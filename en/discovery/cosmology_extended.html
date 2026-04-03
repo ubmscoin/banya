@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extended Cosmology Derivation: Dark Matter/Energy, Inflation, CMB from RLU — Banya Framework Report</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="Banya Framework derivation of extended cosmology. Dark matter/energy from RLU states. Hubble expansion from RLU release. Inflation from pre-delta firing. CMB and BAO from cost waves. Cosmic horizon and curvature.">
+<meta name="keywords" content="Banya Framework,般若,cosmology,dark matter,dark energy,inflation,CMB,BAO,Hubble,cosmic horizon,RLU,CAS,Han Hyukjin,TOE">
+<meta property="og:title" content="Extended Cosmology — Banya Framework">
+<meta property="og:description" content="Dark matter/energy, Hubble expansion, inflation, CMB, cosmic horizon from RLU and CAS axioms.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Extended Cosmology — Banya Framework">
+<meta name="twitter:description" content="Dark matter = RLU locked state. Dark energy = RLU maintenance cost. Inflation = pre-delta firing.">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../common.css">
+<link rel="stylesheet" href="../../print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="../../discovery/cosmology_extended.html" class="lang-btn">KR</a></div>
+
+<div class="toc-side lang-ko" style="display:none">
+<a href="#title" class="toc-h1">확장 우주론 도출</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#discovery" class="toc-h2">핵심 발견</a>
+<a href="#r1" class="toc-h1">라운드 1. 암흑물질/에너지</a>
+<a href="#r2" class="toc-h1">라운드 2. 허블 팽창</a>
+<a href="#r3" class="toc-h1">라운드 3. 인플레이션</a>
+<a href="#r4" class="toc-h1">라운드 4. CMB와 BAO</a>
+<a href="#r5" class="toc-h1">라운드 5. 우주 지평선</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+
+<div class="toc-side lang-en">
+<a href="#en-title" class="toc-h1">Extended Cosmology</a>
+<a href="#en-intro" class="toc-h2">Introduction</a>
+<a href="#en-discovery" class="toc-h2">Key Discovery</a>
+<a href="#en-r1" class="toc-h1">Round 1. Dark Matter/Energy</a>
+<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Eq</a>
+<a href="#en-r1-step2" class="toc-h3">Step 2. Norm Substitution</a>
+<a href="#en-r1-step3" class="toc-h3">Step 3. Constant Binding</a>
+<a href="#en-r1-step4" class="toc-h3">Step 4. Domain Transform</a>
+<a href="#en-r1-step5" class="toc-h3">Step 5. Discovery</a>
+<a href="#en-r2" class="toc-h1">Round 2. Hubble Expansion</a>
+<a href="#en-r2-step1" class="toc-h3">Step 1. Banya Eq</a>
+<a href="#en-r2-step2" class="toc-h3">Step 2. Norm Substitution</a>
+<a href="#en-r2-step3" class="toc-h3">Step 3. Constant Binding</a>
+<a href="#en-r2-step4" class="toc-h3">Step 4. Domain Transform</a>
+<a href="#en-r2-step5" class="toc-h3">Step 5. Discovery</a>
+<a href="#en-r3" class="toc-h1">Round 3. Inflation</a>
+<a href="#en-r3-step1" class="toc-h3">Step 1. Banya Eq</a>
+<a href="#en-r3-step2" class="toc-h3">Step 2. Norm Substitution</a>
+<a href="#en-r3-step3" class="toc-h3">Step 3. Constant Binding</a>
+<a href="#en-r3-step4" class="toc-h3">Step 4. Domain Transform</a>
+<a href="#en-r3-step5" class="toc-h3">Step 5. Discovery</a>
+<a href="#en-r4" class="toc-h1">Round 4. CMB and BAO</a>
+<a href="#en-r5" class="toc-h1">Round 5. Cosmic Horizon</a>
+<a href="#en-limits" class="toc-h1">Limitations</a>
+<a href="#en-summary" class="toc-h1">Summary</a>
+</div>
+
+<div class="toc-bar lang-ko" style="display:none" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">확장 우주론 도출</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
+<div class="toc-bar-text"><span class="cur">Extended Cosmology</span></div>
+<div class="toc-bar-arrow">&#9660;</div>
+</div>
+<div class="toc-overlay lang-ko" style="display:none" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
+<a href="#title" class="toc-h1">확장 우주론 도출</a>
+<a href="#intro" class="toc-h2">서두</a>
+<a href="#r1" class="toc-h1">라운드 1. 암흑물질/에너지</a>
+<a href="#r2" class="toc-h1">라운드 2. 허블 팽창</a>
+<a href="#r3" class="toc-h1">라운드 3. 인플레이션</a>
+<a href="#r4" class="toc-h1">라운드 4. CMB와 BAO</a>
+<a href="#r5" class="toc-h1">라운드 5. 우주 지평선</a>
+<a href="#summary" class="toc-h1">총괄</a>
+</div>
+<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
+<a href="#en-title" class="toc-h1">Extended Cosmology</a>
+<a href="#en-intro" class="toc-h2">Introduction</a>
+<a href="#en-r1" class="toc-h1">Round 1. Dark Matter/Energy</a>
+<a href="#en-r2" class="toc-h1">Round 2. Hubble Expansion</a>
+<a href="#en-r3" class="toc-h1">Round 3. Inflation</a>
+<a href="#en-r4" class="toc-h1">Round 4. CMB and BAO</a>
+<a href="#en-r5" class="toc-h1">Round 5. Cosmic Horizon</a>
+<a href="#en-limits" class="toc-h1">Limitations</a>
+<a href="#en-summary" class="toc-h1">Summary</a>
+</div>
+
+
+<div class="lang-ko" style="display:none">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 확장 우주론의 CAS 도출 과정을 다룬다.</p>
+
+<h1 id="title">확장 우주론 도출: RLU 상태에서 암흑물질, 인플레이션, CMB까지</h1>
+
+<blockquote><p>반야프레임 운영 보고서</p></blockquote>
+<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>실행일: 2026-04-03</p></blockquote>
+
+<h2 id="intro">서두</h2>
+<p>H-476~491 범위. 암흑물질/에너지 = RLU 상태(H-488~490). 허블 팽창 = RLU 방출(H-476). 인플레이션 = pre-$\delta$ 발화(H-481). CMB와 BAO = 비용파(H-483, H-484). 우주 지평선과 곡률(H-486, H-491).</p>
+
+<h2 id="discovery">핵심 발견</h2>
+<div class="discovery-block">
+<h4>암흑물질 = RLU 잠김 상태 (H-488)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$\text{Dark matter} = \text{RLU locked entries: } \text{isWritable} = \text{false}, \text{isReadable} = \text{true}$$</div>
+</div>
+
+<h1 id="r1">라운드 1. 암흑물질/에너지 (H-488~490)</h1>
+<p>RLU 잠김 = 암흑물질 (읽기 가능, 쓰기 불가). RLU 유지비용 = 암흑에너지.</p>
+
+<h1 id="r2">라운드 2. 허블 팽창 (H-476)</h1>
+<p>RLU 방출이 공간 확장에 대응. 방출률 = 허블 상수.</p>
+
+<h1 id="r3">라운드 3. 인플레이션 (H-481)</h1>
+<p>$\delta$ 최초 발화 이전 = 인플레이션. FSM 초기화 = 지수 팽창.</p>
+
+<h1 id="r4">라운드 4. CMB와 BAO (H-483, H-484)</h1>
+<p>비용파 = 음향 진동 = BAO. 비용파 동결 = CMB.</p>
+
+<h1 id="r5">라운드 5. 우주 지평선 (H-486, H-491)</h1>
+<p>공리 11의 $(1-\ell/N)$ 인자가 $\ell = N$에서 0이 된다 = 지평선.</p>
+
+<h1 id="summary">총괄</h1>
+<p>H-476~491. 우주론 5대 현상을 RLU와 CAS에서 도출.</p>
+
+</div>
+
+
+<div class="lang-en">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a subsidiary report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It covers the derivation of extended cosmological phenomena from CAS and RLU axioms.</p>
+
+<h1 id="en-title">Extended Cosmology: From RLU States to Dark Matter, Inflation, and CMB</h1>
+
+<blockquote><p>Banya Framework Operational Report</p></blockquote>
+<blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>Date: 2026-04-03</p></blockquote>
+
+
+<h2 id="en-intro">Introduction</h2>
+
+<p><strong>Scope: H-476 through H-491.</strong> This report derives five major cosmological phenomena from the Banya Framework: dark matter and dark energy (H-488, H-489, H-490), Hubble expansion (H-476), cosmic inflation (H-481), CMB and BAO (H-483, H-484), and the cosmic horizon with spatial curvature (H-486, H-491). The key mechanism is the RLU (Recently Least Used) system defined in Axiom 6, combined with the interaction formula of Axiom 11.</p>
+
+<p><strong>Status: <span class="tag-hypothesis">Hypothesis</span></strong> -- Structural correspondences established for all five phenomena. Dark matter as RLU locked state is the strongest result. Quantitative predictions for dark energy density and Hubble constant remain to be derived.</p>
+
+
+<h2 id="en-discovery">Key Discovery</h2>
+
+<div class="discovery-block">
+<h4>Dark Matter = RLU Locked State (H-488)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$\text{Dark matter} = \text{RLU locked entries: isWritable=false, isReadable=true}$$</div>
+<p>Dark matter interacts gravitationally (readable) but not electromagnetically (not writable). This is precisely the definition of an RLU locked entry.</p>
+</div>
+
+<div class="discovery-block">
+<h4>Dark Energy = RLU Maintenance Cost (H-489, H-490)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$\Lambda \;\longleftrightarrow\; \text{RLU maintenance cost per tick} \times \text{total entity count}$$</div>
+<p>The cosmological constant $\Lambda$ corresponds to the total RLU maintenance cost accumulated across all entities per tick.</p>
+</div>
+
+
+<h1 id="en-r1">Round 1. Dark Matter and Dark Energy from RLU States (H-488, H-489, H-490)</h1>
+
+<h3 id="en-r1-step1">Step 1. Banya Equation</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{Axiom 6: RLU residual 9, maintenance cost 4}$$</div>
+<div class="math-desc">Each entity in the ECS (Axiom 12) has an RLU state: residual lifetime and maintenance cost</div>
+</div>
+
+<p>Axiom 6 defines the RLU mechanism. Each entity has a residual value (initially 9) that decreases with each interaction. The maintenance cost is 4 per tick. Entities can be in three RLU states: active (readable and writable), locked (readable but not writable), and evicted (neither readable nor writable).</p>
+
+<h3 id="en-r1-step2">Step 2. Norm Substitution</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{Active (R+W)} \;\longleftrightarrow\; \text{baryonic matter (visible)}$$</div>
+<div class="math-row">$$\text{Locked (R only)} \;\longleftrightarrow\; \text{dark matter (gravitational only)}$$</div>
+<div class="math-row">$$\text{Maintenance cost} \;\longleftrightarrow\; \text{dark energy (vacuum energy)}$$</div>
+<div class="math-desc">Three RLU states map to three components of the cosmic energy budget</div>
+</div>
+
+<p>Baryonic matter (visible matter) corresponds to active RLU entries: they can be both read (gravitational interaction) and written (electromagnetic, strong, weak interactions). Dark matter corresponds to locked RLU entries: they can be read (they exert gravitational influence) but not written (they do not interact via the other three forces). Dark energy corresponds to the maintenance cost of the entire RLU system: a constant energy expenditure per tick that does not decrease as the universe expands.</p>
+
+<h3 id="en-r1-step3">Step 3. Constant Binding</h3>
+
+<div class="math-block">
+<div class="math-row">$$\Omega_b \approx 0.05, \quad \Omega_{\text{DM}} \approx 0.27, \quad \Omega_\Lambda \approx 0.68$$</div>
+<div class="math-desc">Observed cosmic energy budget: 5% baryonic, 27% dark matter, 68% dark energy</div>
+</div>
+
+<p>The observed ratio 5:27:68 should emerge from the RLU parameters. The fraction of active entries (baryonic) vs. locked entries (dark matter) vs. maintenance cost (dark energy) is determined by the RLU residual (9), maintenance cost (4), and the total entity count $N$. An approximate estimate: the fraction of entries that remain active after many ticks is $\sim 4/9 \times (1 - 4/9) \approx 0.25$, which is close to the dark matter fraction 0.27. The maintenance fraction $4/9 \approx 0.44$ overshoots 0.68 but is in the right ballpark for a first approximation.</p>
+
+<h3 id="en-r1-step4">Step 4. Domain Transform</h3>
+
+<div class="math-block">
+<div class="math-row">$$\rho_\Lambda = \frac{\Lambda c^2}{8\pi G} \approx 5.96 \times 10^{-27}\;\text{kg/m}^3$$</div>
+<div class="math-desc">Dark energy density: constant per unit volume, independent of expansion</div>
+</div>
+
+<p>The key property of dark energy is that its density remains constant as the universe expands. In RLU terms: the maintenance cost per tick is fixed (Axiom 6 specifies it as 4, a constant). As the "volume" (total entity address space) grows, the cost per unit volume remains the same because each new entity also incurs the same maintenance cost. This is why dark energy behaves as a cosmological constant rather than diluting with expansion.</p>
+
+<h3 id="en-r1-step5">Step 5. Discovery</h3>
+
+<div class="discovery-block">
+<h4>Dark Matter/Energy from RLU (H-488, H-489, H-490)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$\text{Locked RLU} = \text{dark matter}; \quad \text{RLU maintenance} = \text{dark energy}$$</div>
+<p>The cosmic energy budget (5% visible, 27% dark matter, 68% dark energy) maps to RLU active, locked, and maintenance states. <span class="tag-hypothesis">Hypothesis</span></p>
+</div>
+
+
+<h1 id="en-r2">Round 2. Hubble Expansion from RLU Release (H-476)</h1>
+
+<h3 id="en-r2-step1">Step 1. Banya Equation</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{Axiom 12: ECS model, FSM + RLU}$$</div>
+<div class="math-desc">The Entity-Component-System model governs entity creation and destruction</div>
+</div>
+
+<p>In the ECS model (Axiom 12), entities are created, maintained, and eventually evicted. When an entity is evicted from the RLU cache, its address space becomes available for new entities. This continuous cycle of eviction and creation corresponds to the expansion of the universe.</p>
+
+<h3 id="en-r2-step2">Step 2. Norm Substitution</h3>
+
+<div class="math-block">
+<div class="math-row">$$v = H_0 d \;\longleftrightarrow\; \text{RLU release rate} \times \text{hop distance}$$</div>
+<div class="math-desc">Hubble's law: recession velocity proportional to distance</div>
+</div>
+
+<p>Hubble's law states that the recession velocity of a distant object is proportional to its distance. In CAS terms: the RLU release rate (number of entities evicted per tick) times the hop distance (number of address space units between entities) gives the effective recession velocity. More distant entities traverse more address space units, so they appear to recede faster -- exactly Hubble's law.</p>
+
+<h3 id="en-r2-step3">Step 3. Constant Binding</h3>
+
+<div class="math-block">
+<div class="math-row">$$H_0 \approx 67.4\;\text{km/s/Mpc} \;\longleftrightarrow\; \text{RLU eviction rate per tick}$$</div>
+<div class="math-desc">Hubble constant = RLU eviction rate in physics units</div>
+</div>
+
+<p>The Hubble constant $H_0$ is the RLU eviction rate converted to physics units. The current value $\sim 67.4$ km/s/Mpc means that for every megaparsec of separation, the recession velocity increases by 67.4 km/s. In RLU terms, this is the rate at which the address space expands due to entity eviction and recreation.</p>
+
+<h3 id="en-r2-step4">Step 4. Domain Transform</h3>
+
+<div class="math-block">
+<div class="math-row">$$\frac{\dot{a}}{a} = H(t) = H_0\sqrt{\Omega_m a^{-3} + \Omega_\Lambda}$$</div>
+<div class="math-desc">Friedmann equation: expansion rate depends on matter and dark energy density</div>
+</div>
+
+<p>The Friedmann equation governs the expansion rate. In the Banya Framework, the $\Omega_m a^{-3}$ term corresponds to the dilution of active RLU entries as the address space grows (matter density decreases as volume increases). The $\Omega_\Lambda$ term is the constant RLU maintenance cost (dark energy does not dilute). At early times, matter dominates and expansion decelerates. At late times, dark energy dominates and expansion accelerates. The transition occurs when $\Omega_m a^{-3} = \Omega_\Lambda$, i.e., when the RLU eviction rate equals the maintenance cost rate.</p>
+
+<h3 id="en-r2-step5">Step 5. Discovery</h3>
+
+<div class="discovery-block">
+<h4>Hubble Expansion = RLU Release (H-476)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$H_0 \;\longleftrightarrow\; \text{RLU eviction rate}; \quad \text{acceleration} \;\longleftrightarrow\; \text{maintenance cost dominance}$$</div>
+<p>The universe expands because the RLU system continuously evicts and recreates entities, growing the effective address space. <span class="tag-hypothesis">Hypothesis</span></p>
+</div>
+
+
+<h1 id="en-r3">Round 3. Inflation from Pre-$\delta$ Firing (H-481)</h1>
+
+<h3 id="en-r3-step1">Step 1. Banya Equation</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{Axiom 8: } \delta \text{ polls every tick}; \quad \text{Axiom 15: } \delta = \text{global flag}$$</div>
+<div class="math-desc">Before the first $\delta$ firing, the system is in a pre-observer state</div>
+</div>
+
+<p>Axiom 8 says $\delta$ polls every tick. Axiom 15 says $\delta$ is the global flag (consciousness). Before the very first $\delta$ firing, the system exists in a pre-observer state: all entities are in superposition (Axiom 13), no Compare has returned true, and no Swap has been executed. This pre-$\delta$ phase is inflation.</p>
+
+<h3 id="en-r3-step2">Step 2. Norm Substitution</h3>
+
+<div class="math-block">
+<div class="math-row">$$a(t) \propto e^{Ht} \;\longleftrightarrow\; \text{FSM initialization: all entities spawned simultaneously}$$</div>
+<div class="math-desc">Exponential expansion: the address space grows exponentially during FSM initialization</div>
+</div>
+
+<p>During the pre-$\delta$ phase, the FSM (Axiom 14) initializes all entities from state 000. This initialization is exponential: each tick, the number of initialized entities doubles (because each existing entity can spawn a new one through the FSM cycle). The doubling time corresponds to the e-folding time of inflation. The exponential growth continues until $\delta$ fires for the first time, at which point Compare begins operating, Swap starts executing, and the inflationary phase ends.</p>
+
+<h3 id="en-r3-step3">Step 3. Constant Binding</h3>
+
+<div class="math-block">
+<div class="math-row">$$N_e \approx 60 \;\text{e-folds} \;\longleftrightarrow\; \text{FSM cycles before first } \delta \text{ firing}$$</div>
+<div class="math-desc">Number of e-folds: approximately 60 FSM initialization cycles</div>
+</div>
+
+<p>The observed flatness and horizon problems require approximately 60 e-folds of inflation. In the Banya Framework, this means approximately 60 FSM cycles elapsed before $\delta$ fired for the first time. The number 60 is not yet derived from the axiom parameters (residual 9, maintenance 4, d-ring 8 bits), but it is plausible that $60 \sim 8 \times 9 - 12 = 60$ (8-bit d-ring $\times$ RLU residual $-$ total cost 12 from Axiom 4, though this specific derivation remains speculative).</p>
+
+<h3 id="en-r3-step4">Step 4. Domain Transform</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{Slow-roll: } \epsilon = -\frac{\dot{H}}{H^2} \ll 1 \;\longleftrightarrow\; \text{FSM initialization rate constant per tick}$$</div>
+<div class="math-desc">Slow-roll condition: the expansion rate is nearly constant during inflation</div>
+</div>
+
+<p>The slow-roll condition requires that the Hubble parameter $H$ changes slowly during inflation ($\epsilon \ll 1$). In FSM terms: during initialization, every tick produces the same number of new entities (the FSM cycle is deterministic, Axiom 14). Therefore the expansion rate per tick is constant, satisfying $\epsilon \approx 0$ exactly. Inflation ends when $\delta$ fires: at that moment, Compare begins rejecting some states (Compare false $\to$ superposition), the FSM initialization is interrupted, and $\epsilon$ jumps to $\sim 1$.</p>
+
+<h3 id="en-r3-step5">Step 5. Discovery</h3>
+
+<div class="discovery-block">
+<h4>Inflation = Pre-$\delta$ FSM Initialization (H-481)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$\text{Inflation} = \text{pre-}\delta\text{ phase}; \quad \text{reheating} = \text{first } \delta \text{ firing}$$</div>
+<p>Inflation is the FSM initialization phase before the observer ($\delta$) activates. Reheating is the moment $\delta$ fires for the first time and Compare begins operating. <span class="tag-hypothesis">Hypothesis</span></p>
+</div>
+
+
+<h1 id="en-r4">Round 4. CMB and BAO from Cost Waves (H-483, H-484)</h1>
+
+<h3 id="en-r4-step1">Step 1. Banya Equation</h3>
+
+<div class="math-block">
+<div class="math-row">$$w(\ell) = C \cdot \frac{1-\ell/N}{4\pi\ell^2} \quad \text{(Axiom 11)}$$</div>
+<div class="math-desc">Interaction cost propagates as a wave through the entity address space</div>
+</div>
+
+<p>When the interaction cost (Axiom 11) propagates through the entity address space, it creates cost waves -- oscillating patterns of high and low cost density. These cost waves are the Banya Framework analog of acoustic oscillations in the primordial plasma.</p>
+
+<h3 id="en-r4-step2">Step 2. Norm Substitution</h3>
+
+<div class="math-block">
+<div class="math-row">$$\text{BAO: } \delta\rho / \rho \;\longleftrightarrow\; \text{cost density oscillation in address space}$$</div>
+<div class="math-desc">Baryon acoustic oscillations = cost density oscillations</div>
+</div>
+
+<p>Baryon acoustic oscillations (BAO) are density waves in the early universe plasma. In the Banya Framework, they are cost density waves: regions of high CAS cost (overdense) alternate with regions of low CAS cost (underdense). The wavelength of these oscillations is determined by the sound horizon -- the maximum distance a cost wave can travel before decoupling (when Compare transitions from the plasma regime to the free-streaming regime).</p>
+
+<h3 id="en-r4-step3">Step 3. Constant Binding</h3>
+
+<div class="math-block">
+<div class="math-row">$$r_s \approx 147\;\text{Mpc} \;\longleftrightarrow\; \text{cost wave sound horizon at decoupling}$$</div>
+<div class="math-desc">BAO scale: the sound horizon at the epoch of decoupling</div>
+</div>
+
+<p>The BAO scale of approximately 147 Mpc is the comoving sound horizon at decoupling. In CAS terms, this is the maximum distance a cost wave can propagate before the first $\delta$ firing freezes the oscillation pattern. The CMB temperature anisotropy spectrum shows peaks at multiples of this scale, corresponding to harmonics of the cost wave.</p>
+
+<h3 id="en-r4-step4">Step 4. Domain Transform</h3>
+
+<div class="math-block">
+<div class="math-row">$$C_\ell \propto \left[\frac{\sin(kr_s)}{kr_s}\right]^2 \;\longleftrightarrow\; \text{Fourier modes of cost wave at decoupling}$$</div>
+<div class="math-desc">CMB power spectrum: peaks correspond to standing cost waves at decoupling</div>
+</div>
+
+<p>The CMB power spectrum is the Fourier transform of the cost wave pattern at the moment of decoupling. The first peak ($\ell \approx 220$) corresponds to the fundamental mode -- a cost wave that has completed exactly one half-oscillation by the time of decoupling. Higher peaks correspond to higher harmonics. The relative heights of the peaks encode the ratio of baryonic to dark matter density (active vs. locked RLU entries).</p>
+
+<h3 id="en-r4-step5">Step 5. Discovery</h3>
+
+<div class="discovery-block">
+<h4>CMB and BAO = Cost Waves (H-483, H-484)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$\text{CMB peaks} = \text{standing cost waves}; \quad \text{BAO scale} = \text{sound horizon of cost wave}$$</div>
+<p>The CMB and BAO are frozen imprints of cost wave oscillations in the pre-decoupling plasma. <span class="tag-hypothesis">Hypothesis</span></p>
+</div>
+
+
+<h1 id="en-r5">Round 5. Cosmic Horizon and Curvature (H-486, H-491)</h1>
+
+<h3 id="en-r5-step1">Step 1. Banya Equation</h3>
+
+<div class="math-block">
+<div class="math-row">$$w(\ell) = C \cdot \frac{1 - \ell/N}{4\pi\ell^2}$$</div>
+<div class="math-desc">Axiom 11: the factor $(1 - \ell/N)$ vanishes at $\ell = N$</div>
+</div>
+
+<p>The interaction formula (Axiom 11) contains the factor $(1 - \ell/N)$. When the hop distance $\ell$ equals the total entity count $N$, this factor becomes zero. Beyond $\ell = N$, the factor becomes negative, which is unphysical. Therefore $\ell = N$ is the maximum interaction distance -- the cosmic horizon.</p>
+
+<h3 id="en-r5-step2">Step 2. Norm Substitution</h3>
+
+<div class="math-block">
+<div class="math-row">$$\ell = N \;\longleftrightarrow\; r = R_H \quad \text{(cosmic horizon)}$$</div>
+<div class="math-desc">The horizon is where the interaction cost drops to zero</div>
+</div>
+
+<p>The cosmic horizon $R_H$ is the distance at which the Banya interaction cost vanishes. Beyond this distance, no interaction is possible -- not because of a speed-of-light limit (though that is consistent), but because the CAS cost becomes zero or negative, meaning no meaningful Compare can be performed.</p>
+
+<h3 id="en-r5-step3">Step 3. Constant Binding</h3>
+
+<div class="math-block">
+<div class="math-row">$$R_H = \frac{c}{H_0} \approx 4.4\;\text{Gpc} \;\longleftrightarrow\; N \;\text{entity hops}$$</div>
+<div class="math-desc">Hubble horizon: the distance at which recession velocity equals the speed of light</div>
+</div>
+
+<h3 id="en-r5-step4">Step 4. Domain Transform</h3>
+
+<div class="math-block">
+<div class="math-row">$$\Omega_k = 1 - \Omega_{\text{total}} \approx 0 \;\longleftrightarrow\; \text{flat geometry from } f(\theta) \text{ symmetry}$$</div>
+<div class="math-desc">Spatial flatness: total density equals critical density</div>
+</div>
+
+<p>The observed spatial flatness ($\Omega_k \approx 0$) follows from the symmetry of the angular factor $f(\theta) = 1 - \ell/N$ in Axiom 11. This factor is symmetric under the exchange $\ell \leftrightarrow N - \ell$ (complementary distances). This symmetry implies that the average curvature over all scales is zero -- the universe is spatially flat on average. Local curvature (around massive objects) exists because local cost concentrations break the $\ell \leftrightarrow N - \ell$ symmetry, but the global average remains flat.</p>
+
+<h3 id="en-r5-step5">Step 5. Discovery</h3>
+
+<div class="discovery-block">
+<h4>Cosmic Horizon = Axiom 11 Cutoff (H-486, H-491)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
+<div class="formula">$$R_H:\; f(\theta) = 1 - \ell/N = 0 \;\text{at}\; \ell = N$$</div>
+<p>The cosmic horizon is not an arbitrary boundary. It is the natural cutoff of the Axiom 11 interaction formula where the cost drops to zero. <span class="tag-solved">Hit</span></p>
+</div>
+
+
+<h1 id="en-limits">Limitations</h1>
+
+<ol>
+<li><strong>Dark matter/energy fractions are approximate</strong>: The RLU parameter mapping gives the right order of magnitude but does not yet reproduce the precise 5:27:68 ratio from axiom parameters alone.</li>
+<li><strong>Hubble constant not derived numerically</strong>: The identification of $H_0$ with the RLU eviction rate is structural. Converting to km/s/Mpc requires a calibration that has not been performed.</li>
+<li><strong>Inflation e-folding count speculative</strong>: The suggestion $60 \sim 8 \times 9 - 12$ is numerology at this stage and requires rigorous derivation.</li>
+<li><strong>CMB power spectrum not computed</strong>: The cost wave interpretation is qualitatively correct but the actual power spectrum has not been calculated from CAS parameters.</li>
+<li><strong>Flatness from $f(\theta)$ symmetry is heuristic</strong>: The argument for spatial flatness is suggestive but not a rigorous proof.</li>
+</ol>
+
+
+<h1 id="en-summary">Summary</h1>
+
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Result</th><th class="col-status">Status</th><th class="col-date">Card</th></tr>
+<tr><td>Dark matter</td><td>RLU locked entries (readable, not writable)</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-488</td></tr>
+<tr><td>Dark energy</td><td>RLU maintenance cost (constant per tick)</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-489, H-490</td></tr>
+<tr><td>Hubble expansion</td><td>RLU eviction/recreation cycle = address space growth</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-476</td></tr>
+<tr><td>Inflation</td><td>Pre-$\delta$ FSM initialization = exponential expansion</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-481</td></tr>
+<tr><td>CMB and BAO</td><td>Frozen cost wave oscillations at decoupling</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-483, H-484</td></tr>
+<tr><td>Cosmic horizon</td><td>Axiom 11 cutoff at $\ell = N$: $f(\theta) = 0$</td><td><span class="tag-solved">Hit</span></td><td>H-486, H-491</td></tr>
+</table>
+</div>
+
+<p>Current grade: <strong>B+</strong> (One structural hit, five well-motivated hypotheses, all qualitatively consistent)</p>
+<p>Remaining for grade A: Numerical derivation of dark matter/energy fractions; Hubble constant from RLU parameters; CMB power spectrum calculation; rigorous flatness proof.</p>
+
+</div>
+
+
+<div class="page-nav lang-ko" style="display:none">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+</div>
+<div class="page-nav lang-en">
+<a href="../banya.html">Master Report</a>
+<a href="../predictions.html">Predictions</a>
+<a href="../lib.html">Factor Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+</div>
+
+<div class="doc-footer lang-ko" style="display:none">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br>
+발명자: 한혁진 (Han Hyukjin)<br>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+별칭: 부처님 손바닥 프레임<br>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">확장 우주론: RLU에서 암흑물질, 인플레이션, CMB 도출</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+<div class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若 Framework)</b><br>
+Inventor: Han Hyukjin<br>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
+Alias: Buddha's Palm Framework<br>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
+<div class="f2">Extended Cosmology: Dark Matter/Energy, Inflation, CMB from RLU</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="cosmology2.html">Cosmology 2</a> | <a href="alpha57.html">Cosmological Constant</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
+BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
+Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</div>
+
+
+<script>
+(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>

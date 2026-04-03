@@ -197,7 +197,7 @@ class Renderer {
             this.p_drawLonLine(_ctx, _cx, _cy, _sphereR, _lon * Math.PI / 180);
         }
 
-        // 법선 N극(빨강) S극(파랑) 고정
+        // 법선 IN(빨강, 진입) OUT(파랑, 퇴거) 고정
         let _nSurf = this.p_project(0, 0, 10, _sphereR, _cx, _cy);
         let _sSurf = this.p_project(Math.PI, 0, 10, _sphereR, _cx, _cy);
         let _nTip = this.p_project(0, 0, 10, _sphereR * 1.35, _cx, _cy);
@@ -210,7 +210,7 @@ class Renderer {
             _ctx.beginPath(); _ctx.moveTo(_nSurf.x, _nSurf.y); _ctx.lineTo(_nTip.x, _nTip.y); _ctx.stroke();
             _ctx.fillStyle = `rgba(239,68,68,${_a})`;
             _ctx.beginPath(); _ctx.arc(_nTip.x, _nTip.y, 5, 0, Math.PI * 2); _ctx.fill();
-            _ctx.font = 'bold 11px monospace'; _ctx.fillText('N', _nTip.x + 8, _nTip.y + 4);
+            _ctx.font = 'bold 11px monospace'; _ctx.fillText('IN', _nTip.x + 8, _nTip.y + 4);
         }
         if (_sSurf.depth > -0.3) {
             let _a = 0.4 + Math.max(0, _sSurf.depth) * 0.6;
@@ -219,7 +219,7 @@ class Renderer {
             _ctx.beginPath(); _ctx.moveTo(_sSurf.x, _sSurf.y); _ctx.lineTo(_sTip.x, _sTip.y); _ctx.stroke();
             _ctx.fillStyle = `rgba(59,130,246,${_a})`;
             _ctx.beginPath(); _ctx.arc(_sTip.x, _sTip.y, 5, 0, Math.PI * 2); _ctx.fill();
-            _ctx.font = 'bold 11px monospace'; _ctx.fillText('S', _sTip.x + 8, _sTip.y + 4);
+            _ctx.font = 'bold 11px monospace'; _ctx.fillText('OUT', _sTip.x + 8, _sTip.y + 4);
         }
 
         // 공 렌더링
@@ -266,7 +266,7 @@ class Renderer {
             }
         }
 
-        // 옵저버 원: N극 표면 고정. 흰색 원 + 흰색 라벨
+        // 옵저버 원: IN극 표면 고정. 흰색 원 + 흰색 라벨
         if (_nSurf.depth > -0.1) {
             let _fx = _nSurf.x, _fy = _nSurf.y;
             let _fR = _sphereR * 0.05;
