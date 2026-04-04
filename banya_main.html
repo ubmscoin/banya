@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="반야프레임 종합 보고서 — 한혁진">
 <meta name="twitter:description" content="δ²=(time+space)²+(observer+superposition)². 118개 물리식 호환 확인. α=1/137 근원 도출.">
 <meta name="robots" content="index, follow">
-<meta name="version" content="v1.3">
+<meta name="version" content="v1.4">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
@@ -203,7 +203,7 @@
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>검증일: 2026-03-21</p></blockquote>
 <blockquote><p>분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)</p></blockquote>
-<blockquote><p>버전: v1.3 (2026-03-29)</p></blockquote>
+<blockquote><p>버전: v1.4 (2026-04-04)</p></blockquote>
 <blockquote><p>라이선스: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p></blockquote>
 
 
@@ -410,7 +410,7 @@ mass_hierarchy 도출 보고서: 전부 읽어라.
 <div class="table-wrap">
 <table>
 <tr><th>4비트 패턴</th><th>열린 도메인</th><th>접근 경로</th><th>비용 구조</th></tr>
-<tr><td>0011</td><td>observer + superposition</td><td>양자 괄호 내부</td><td>비용 +1 (같은 괄호, 직교 축 교차)</td></tr>
+<tr><td>0011</td><td>observer + superposition</td><td>양자 괄호 내부</td><td>비용 0 (같은 괄호, 순서 없음 = 공짜 참조)</td></tr>
 <tr><td>1100</td><td>time + space</td><td>고전 괄호 내부</td><td>Swap 누적 비용</td></tr>
 <tr><td>0110</td><td>superposition + time</td><td>양자-고전 교차</td><td>교차 Cmp/Swp 비용</td></tr>
 <tr><td>0101</td><td>observer + time</td><td>양자-고전 교차</td><td>교차 Cmp/Swp 비용</td></tr>
@@ -622,11 +622,11 @@ AND (접점 = 락이 걸리는 곳):
 
 <p><strong>공</strong>은 DATA에서 있거나 없다(이산). <strong>쥐는 힘</strong>은 RLU에서 등비급수로 연속 감쇠한다(OPERATOR). <strong>비용</strong>은 공 주변의 수축 영역으로 space에 분포한다. 세 속성의 층이 다르므로 공의 이산성과 힘의 연속성은 충돌하지 않는다.</p>
 
-<p><strong>쓰기의 문턱 = 4/13.</strong> 쥐기(쓰기)는 3축을 동시에 물고 있는 것이다. 3축 쥐기(3) + 타임스탬프(1) = 유지 비용 4(공리 6). CAS 1사이클 총 비용은 13이므로 strength가 4/13 ≈ 0.308 이하로 떨어지면 3축 쥐기를 유지할 비용이 없다 — 풀린다. +를 넘는 것이 읽기(접근)이고 쥐기가 쓰기(유지)이므로, 문턱은 쓰기 유지 비용이 결정한다. 읽기 비용(8)이 아니라 쓰기 비용(4)이 문턱이다.</p>
+<p><strong>쓰기의 문턱 = 4/13.</strong> 쥐기(쓰기)는 3축을 동시에 물고 있는 것이다. 3축 쥐기(3) + 타임스탬프(1) = 유지 비용 4(공리 6). CAS 1사이클 총 비용은 13이므로 쥐는 힘이 4/13 이하로 떨어지면 3축 쥐기를 유지할 비용이 없다 — 풀린다. +를 넘는 것이 읽기(접근)이고 쥐기가 쓰기(유지)이므로, 문턱은 쓰기 유지 비용이 결정한다. 읽기 비용(8)이 아니라 쓰기 비용(4)이 문턱이다.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{문턱} = \frac{\text{쓰기 유지 비용}}{\text{CAS 총 비용}} = \frac{4}{13} \approx 0.308$$</div>
-<div class="math-legend">strength가 이 값 이하로 떨어지면 3축 쥐기가 풀린다. 공이 DATA에서 이산 해제된다</div>
+<div class="math-legend">쥐는 힘이 이 값 이하로 떨어지면 3축 쥐기가 풀린다. 공이 DATA에서 이산 해제된다</div>
 </div>
 
 <div class="table-wrap">
@@ -733,9 +733,22 @@ AND (접점 = 락이 걸리는 곳):
 
 <h3 id="ax4">공리 4. 비용 <span class="tag-solved">공리</span></h3>
 
-<p>반야식 δ² = (time <strong>+</strong> space)² <strong>+</strong> (observer <strong>+</strong> superposition)²에서 <strong>+</strong>는 직교하는 대상 사이의 연결 표시다. 직교하는 두 대상을 연결한다는 것은 독립 축을 하나 건너간다는 뜻이다. <strong>+를 1번 넘으면 차원 1개를 횡단한다. +를 세는 것이 차원을 세는 것이다.</strong> +를 넘을 때마다 비용 1이 발생한다. +를 넘지 않으면 비용은 0이다.</p>
+<p>반야식 δ² = (time <strong>+</strong> space)² <strong>+</strong> (observer <strong>+</strong> superposition)²에서 <strong>+</strong>는 직교하는 대상 사이의 연결 표시다. 직교하는 두 대상을 연결한다는 것은 독립 축을 하나 건너간다는 뜻이다. <strong>+를 1번 넘으면 차원 1개를 횡단한다. +를 세는 것이 차원을 세는 것이다.</strong></p>
 
-<p><strong>순서가 비가역과 이산을 만든다.</strong> CAS의 R→C→S에는 순서가 있다. 순서가 있으면 되돌릴 수 없다(비가역). 순서가 있으면 한 단계씩 끊어진다(이산, 양자화). 순서가 없는 축(observer, superposition)에는 비용도 없고, 비가역도 없고, 이산 단계도 없다. 비가역성과 이산성은 별개가 아니다 — 순서라는 하나의 원인에서 동시에 나온다.</p>
+<p><strong>+를 순서를 따라 넘을 때</strong> 비용 1이 발생한다. 순서가 없으면 +가 있어도 비용은 0이다. +는 직교성(구조)을 표시할 뿐이고, 비용은 순서가 있을 때만 발생한다.</p>
+
+<p><strong>순서가 비가역과 이산을 만든다.</strong> CAS의 R→C→S에는 순서가 있다(공리 5: 락이 순서를 강제). 순서가 있으면 되돌릴 수 없다(비가역). 순서가 있으면 한 단계씩 끊어진다(이산, 양자화). 순서가 없는 축(observer, superposition)에는 비용도 없고, 비가역도 없고, 이산 단계도 없다. 비가역성과 이산성은 별개가 아니다 — 순서라는 하나의 원인에서 동시에 나온다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>+ 위치</th><th>순서</th><th>비용</th><th>이유</th></tr>
+<tr><td>CAS R→C→S</td><td><strong>있음</strong></td><td>+3</td><td>락이 순서 강제(공리 5). R 없이 C 불가</td></tr>
+<tr><td>OPERATOR → DATA 괄호</td><td><strong>있음</strong></td><td>+1</td><td>CAS가 쓰기 위해 +를 넘는다. 방향 있음</td></tr>
+<tr><td>time → space</td><td><strong>있음</strong></td><td>+1</td><td>타임스탬프 먼저, 그 다음 space 접근. 순서 있음</td></tr>
+<tr><td>x → y → z</td><td><strong>있음</strong></td><td>+3</td><td>3축 순차 접근. 락 순서(공리 5)</td></tr>
+<tr><td>observer ↔ superposition</td><td><strong>없음</strong></td><td>0</td><td>CAS와 같은 OPERATOR 괄호. 동시 참조. 순서 없음 = 비용 없음</td></tr>
+</table>
+</div>
 
 <pre>CAS가 공간에 쥠을 만드는 경로 — 읽기(접근)와 쓰기(쥐기):
 
@@ -779,6 +792,9 @@ AND (접점 = 락이 걸리는 곳):
 <div class="table-wrap">
 <table>
 <tr><th>경로</th><th>읽기(접근) 비용</th><th>쓰기(쥐기) 비용</th></tr>
+<tr><td>CAS R 진입</td><td>+1</td><td>없음</td></tr>
+<tr><td>CAS R → C 전이</td><td>+1</td><td>없음</td></tr>
+<tr><td>CAS C → S 전이</td><td>+1</td><td>없음</td></tr>
 <tr><td>OPERATOR → 고전 괄호</td><td>+1</td><td>없음</td></tr>
 <tr><td>time → space</td><td>+1</td><td>없음</td></tr>
 <tr><td>x 접근</td><td>+1</td><td>없음</td></tr>
@@ -788,6 +804,8 @@ AND (접점 = 락이 걸리는 곳):
 <tr><td>x 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
 <tr><td>y 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
 <tr><td>z 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>Swap → DATA 커밋</td><td>없음</td><td>+1</td></tr>
+<tr><td><strong>총</strong></td><td><strong>8</strong></td><td><strong>5</strong></td></tr>
 </table>
 </div>
 
@@ -798,8 +816,8 @@ AND (접점 = 락이 걸리는 곳):
 <div class="table-wrap">
 <table>
 <tr><th>축</th><th>CAS 개입</th><th>비가역</th><th>근거</th><th>비용</th></tr>
-<tr><td>observer</td><td>없음</td><td>아니다</td><td>공리 15 명제: δ→observer는 CAS 미개입 구간. 비용 정산 주체 부재</td><td><strong>없음</strong></td></tr>
-<tr><td>superposition</td><td>없음</td><td>아니다</td><td>공리 13: 참조 인덱스. 방향 강제 없음. 읽히지만 비가역 전이 없음</td><td><strong>없음</strong></td></tr>
+<tr><td>observer</td><td>내부 참조</td><td>아니다</td><td>CAS와 같은 OPERATOR 괄호 안. +를 넘지 않으므로 비용 0. CAS가 공짜로 참조</td><td><strong>0 (무료)</strong></td></tr>
+<tr><td>superposition</td><td>내부 참조</td><td>아니다</td><td>CAS와 같은 OPERATOR 괄호 안. 인덱싱(공리 13). +를 넘지 않으므로 비용 0. CAS가 공짜로 참조</td><td><strong>0 (무료)</strong></td></tr>
 <tr><td>time</td><td>있음</td><td>그렇다</td><td>공리 4: Swap이 +를 넘어 씀. 공리 2 명제: 환불 불가</td><td><strong>+</strong></td></tr>
 <tr><td>space</td><td>있음</td><td>그렇다</td><td>공리 4: 동일. DATA 괄호</td><td><strong>+</strong></td></tr>
 <tr><td>R_LOCK</td><td>있음</td><td>그렇다</td><td>공리 5: +를 넘어 비용 +1. 역순 불가</td><td><strong>+</strong></td></tr>
@@ -843,19 +861,21 @@ AND (접점 = 락이 걸리는 곳):
 
 <div class="table-wrap">
 <table>
-<tr><th>비용 항목</th><th>값</th><th>소속</th></tr>
-<tr><td>CAS R→C→S 전이</td><td>+3</td><td>CAS-ring 내부 + 넘기</td></tr>
-<tr><td>OPERATOR→고전 괄호 + 넘기</td><td>+1</td><td>괄호 경계</td></tr>
-<tr><td>time→space + 넘기</td><td>+1</td><td>도메인 경계</td></tr>
-<tr><td>x 접근(읽기)</td><td>+1</td><td>space 하위프레임</td></tr>
-<tr><td>x→y 접근(읽기)</td><td>+1</td><td>space 하위프레임</td></tr>
-<tr><td>y→z 접근(읽기)</td><td>+1</td><td>space 하위프레임</td></tr>
-<tr><td>time 타임스탬프 쓰기(쥐기)</td><td>+1</td><td>time 도메인</td></tr>
-<tr><td>x 쓰기(쥐기)</td><td>+1</td><td>space 도메인</td></tr>
-<tr><td>y 쓰기(쥐기)</td><td>+1</td><td>space 도메인</td></tr>
-<tr><td>z 쓰기(쥐기)</td><td>+1</td><td>space 도메인</td></tr>
-<tr><td>Swap→DATA 커밋</td><td>+1</td><td>쓰기(쥐기). Swap이 DATA에 기록하는 행위</td></tr>
-<tr><td><strong>총</strong></td><td><strong>13</strong></td><td></td></tr>
+<tr><th>경로</th><th>읽기(접근) 비용</th><th>쓰기(쥐기) 비용</th></tr>
+<tr><td>CAS R 진입</td><td>+1</td><td>없음</td></tr>
+<tr><td>CAS R → C 전이</td><td>+1</td><td>없음</td></tr>
+<tr><td>CAS C → S 전이</td><td>+1</td><td>없음</td></tr>
+<tr><td>OPERATOR → 고전 괄호</td><td>+1</td><td>없음</td></tr>
+<tr><td>time → space</td><td>+1</td><td>없음</td></tr>
+<tr><td>x 접근</td><td>+1</td><td>없음</td></tr>
+<tr><td>x → y</td><td>+1</td><td>없음</td></tr>
+<tr><td>y → z</td><td>+1</td><td>없음</td></tr>
+<tr><td>time 타임스탬프 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>x 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>y 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>z 쓰기(쥐기)</td><td>없음</td><td>+1</td></tr>
+<tr><td>Swap → DATA 커밋</td><td>없음</td><td>+1</td></tr>
+<tr><td><strong>총</strong></td><td><strong>8</strong></td><td><strong>5</strong></td></tr>
 </table>
 </div>
 
@@ -944,7 +964,7 @@ AND (접점 = 락이 걸리는 곳):
 </table>
 </div>
 
-<p>9 = 비용 회수(공리 6)에서 잔존 비용과 같다(총 비용 13 - 공값 4 = 잡비 9).</p>
+<p>9 = 비용 회수(공리 6)에서 잔존 비용과 같다(총 비용 13 - 공값 4(시간 1 + 공간 3) = 잡비 9(+ 넘기 비용)).</p>
 
 
 <h3 id="ax10">공리 10. 전체-국소 루프 <span class="tag-solved">공리</span></h3>
@@ -1064,9 +1084,9 @@ AND (접점 = 락이 걸리는 곳):
             -- overlap --
             = (1 - ℓ/N)
 
-ℓ 작음 -> 겹치는 DATA 주소 많음 -> isWritable 경합 많음 -> 총 비용 큼
-ℓ 큼   -> 겹치는 DATA 주소 적음 -> isWritable 경합 적음 -> 총 비용 작음
-두 쥠의 수축 영역이 겹치면 -> isWritable 경합
+ℓ 작음 -> 겹치는 DATA 주소 많음 -> 읽기 경합 많음 -> 총 비용 큼
+ℓ 큼   -> 겹치는 DATA 주소 적음 -> 읽기 경합 적음 -> 총 비용 작음
+두 쥠의 수축 영역이 겹치면 -> 읽기 경합
 -> 경합 주소 수 × 주소당 비용(공리 4) = 총 비용</pre>
 
 <p>수축 영역의 크기는 CAS가 대상에 접근할 때 넘는 +의 수(공리 4)와 자료형(공리 2 명제)이 결정한다.</p>
@@ -1204,7 +1224,7 @@ observer C: [DATA_C] <-- CAS 독립 실행
                                   링 겹침비(ℓ)   구면 분배(ℓ)
                                   비용 종류      비용 크기</pre>
 
-<p>이 비용 분포는 쥠 간 통신이 아니다(엔티티 간 직접 채널 없음). δ의 투영(공리 11)이 각 쥠 주변에 만드는 <strong>비용의 공간 분포</strong>다. $\ell$(두 엔티티 사이 거리)가 비용의 종류(링 겹침비)와 비용의 크기(구면 분배)를 모두 결정한다. 두 쥠의 분포가 겹치면 isWritable 경합이 발생한다.</p>
+<p>이 비용 분포는 쥠 간 통신이 아니다(엔티티 간 직접 채널 없음). δ의 투영(공리 11)이 각 쥠 주변에 만드는 <strong>비용의 공간 분포</strong>다. $\ell$(두 엔티티 사이 거리)가 비용의 종류(링 겹침비)와 비용의 크기(구면 분배)를 모두 결정한다. 두 쥠의 분포가 겹치면 읽기 경합이 발생한다.</p>
 
 
 <h4>유일한 꼬리 지연: RLU 캐시 퇴거</h4>
@@ -1273,11 +1293,13 @@ COLD <-- 최근 접근 없음        -- RLU 기저 해제율 적용</pre>
 </table>
 </div>
 
-<p>CAS가 이 쌍을 잇는다. Compare true = 양자 중첩이 붕괴되면서 고전 Entity가 갱신된다. Compare false = 양자 중첩이 유지되면서 고전 Entity도 그대로다. 붕괴와 갱신이 동시 사건이고, 유지와 불변이 동시 사건이다. ECS 없이 중첩만 있으면 확정될 곳이 없고, 중첩 없이 ECS만 있으면 변화의 원천이 없다. 둘은 분리 불가능한 쌍이다. CAS는 쌍의 양자 쪽(중첩)을 참조하고, Compare true 시 고전 쪽(ECS Entity)에 붕괴시킨다. CAS가 DATA를 직접 참조하지 않는 이유: 논리주소가 없다(공리 12). 중첩이 CAS의 유일한 접근 경로다. 중첩은 인덱싱이다. 논리주소가 없는 ECS에서, 중첩이 모든 가능한 상태를 동시에 펼쳐놓는 것이 곧 주소 없는 인덱스다. CAS는 이 인덱스를 Compare로 탐색하고, 변화가 감지된 항목만 DATA에 붕괴시킨다.</p>
+<p>CAS가 이 쌍을 잇는다. Compare true = 양자 중첩이 붕괴되면서 고전 Entity가 갱신된다. Compare false = 양자 중첩이 유지되면서 고전 Entity도 그대로다. 붕괴와 갱신이 동시 사건이고, 유지와 불변이 동시 사건이다. ECS 없이 중첩만 있으면 확정될 곳이 없고, 중첩 없이 ECS만 있으면 변화의 원천이 없다. 둘은 분리 불가능한 쌍이다. CAS는 쌍의 양자 쪽(중첩)을 참조하고, Compare true 시 고전 쪽(ECS Entity)에 붕괴시킨다. CAS가 DATA에 도달하는 방식: +를 소모하여 접근한다(읽기, 공리 4). 논리주소가 없으므로(공리 12) 주소로 찾아가는 것이 아니라 +를 넘어 도달한다. 중첩(인덱싱)이 CAS의 접근 경로다. 중첩은 인덱싱이다. 논리주소가 없는 ECS에서, 중첩이 모든 가능한 상태를 동시에 펼쳐놓는 것이 곧 주소 없는 인덱스다. CAS는 이 인덱스를 Compare로 참조하고, 변화가 감지된 항목만 DATA에 쓴다.</p>
+
+<p><strong>CAS는 observer 포커스 안의 엔티티를 대상으로 작업한다.</strong> CAS가 +를 소모하여 DATA(시공)에 도달하면, 대상 엔티티에 공이 있든 없든 Read → Compare → Swap을 실행한다. 공이 있으면 move — 기존 공을 반환하고 새 공을 만든다. 공이 없으면 새 공을 만든다. 대상 영역에 RLU 수명이 남아 있으면 그것도 반환한다. observer 포커스 밖은 CAS의 작업 범위 밖이다. RLU가 남은 비용을 등비급수로 회수할 뿐이다.</p>
 
 <h4>엔티티 간 상호작용 세기 <span class="tag-corollary">명제</span></h4>
 
-<p>상호작용은 쥠(쓰기(쥐기) 결과, 공리 7)이 만든 시공 왜곡 때문에 발생한다. CAS Swap이 space를 소비하면 쥠 주변 시공이 수축한다. 두 쥠의 수축 영역이 겹치면 isWritable 경합이 생긴다. 이것이 상호작용이다.</p>
+<p>상호작용은 쥠(쓰기(쥐기) 결과, 공리 7)이 만든 시공 왜곡 때문에 발생한다. CAS Swap이 space를 소비하면 쥠 주변 시공이 수축한다. 두 쥠의 수축 영역이 겹치면 읽기 경합이 생긴다. 이것이 상호작용이다.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{엔티티 간 상호작용 세기} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
@@ -1292,48 +1314,41 @@ COLD <-- 최근 접근 없음        -- RLU 기저 해제율 적용</pre>
 
 <h4>특이점(무한대)은 존재하지 않는다 <span class="tag-corollary">명제</span></h4>
 
-<p>DATA는 이산이다(공리 3). 링 버퍼의 칸은 정수이므로 엔티티 간 거리 $\ell$의 최솟값은 0이 아니라 1이다. $\ell = 0$은 이산 시스템에서 존재하지 않는다. 따라서 한 쌍당 비용 $1/\ell^2$의 최댓값은 $1/1^2 = 1$이다. 개별 경합은 유한하다. 발산(무한대)은 이산 시스템에서 발생할 수 없다.</p>
+<p>DATA는 이산이다(공리 3). 링 버퍼의 칸은 정수이므로 엔티티 간 거리 $\ell$의 최솟값은 0이 아니라 1이다. $\ell = 0$은 이산 시스템에서 존재하지 않는다. 따라서 한 쌍당 비용 $1/\ell^2$의 최댓값은 $1/1^2 = 1$이다. 개별 비용은 유한하다. 발산(무한대)은 이산 시스템에서 발생할 수 없다. DATA가 이산이면 특이점은 자동으로 해소된다.</p>
 
-<p>그러나 좁은 영역에 엔티티 $N$개가 모두 $\ell = 1$로 밀집하면, 경합 쌍의 수가 $N(N-1)/2$로 증가한다. 개별 비용은 유한하지만 <strong>누적 비용은 $N^2$에 비례</strong>한다. 이것이 블랙홀이다 — 발산이 아니라 누적.</p>
+<h4>공간 겹침 시 읽기 경합 <span class="tag-corollary">명제</span></h4>
 
-<ul>
-<li><strong>쥠 밀집(공리 13 명제)</strong>: 같은 영역에 쥠이 밀집하면 수축 겹침이 발생한다. 다수 엔티티의 경합 누적.</li>
-<li><strong>공간 겹침</strong>: 다수 엔티티가 $\ell = 1$(이산 최솟값)로 밀집한다. 다수 엔티티의 공간 경합이 누적된 것.</li>
-</ul>
-
-<p>같은 메커니즘(isWritable 경합)의 스케일 차이다. 쥠 밀집은 다수 엔티티 사이의 수축 겹침에 의한 경합 누적이다. 물리학에서 이것을 블랙홀이라 부른다. 사건의 지평선은 누적 비용이 탈출 비용을 초과하는 경계다.</p>
-
-<p>4축 직교(공리 1)이므로 누적된 비용을 다른 축이 흡수할 수 없다. 직교 = 독립. time이 떠안을 수 없고, observer가 떠안을 수 없다. 고전 괄호(DATA)가 이산 최댓값에 도달하면, 양자 괄호(OPERATOR)는 직교라 영향 받지 않는다. d-ring(1D)은 살아 있다(CAS 사이클은 OPERATOR 내부). CAS-ring은 OPERATOR 안에서 순환하되, R, C, S 각 전이마다 +를 넘어 비용 +1(공리 4). 쓸 곳이 포화되면 Swap이 실행되지 못하고, 안쓰기 = 중첩 유지(공리 7). 고전 기술이 포화에 도달하면 양자 괄호로 관리가 이관된다.</p>
-
-<p>이산 시스템에서 $\ell$는 0이 될 수 없고, 비용은 유한 최댓값을 갖는다. 물리학의 특이점 문제는 시공간을 연속으로 취급해서 생긴 허구다. DATA가 이산이면 특이점은 자동으로 해소된다.</p>
-
-<h4>공간 겹침 시 경합 연산 폭주 <span class="tag-corollary">명제</span></h4>
-
-<p>자료형 크기는 수축 전에 고정된다(공리 2 명제). 쥠이 space를 수축시키면(공리 2 명제), 고정 크기의 엔티티 영역 안에 다른 쥠이 만든 공이 겹쳐 들어온다. 한 영역에 공이 여럿이면 직렬화된다 — 순서가 생기고, 순서 = 비용(공리 4). $\ell = 1$(이산 최솟값)에서 엔티티 $N$개가 밀집하면 겹침 쌍이 $N(N-1)/2$로 증가한다. 개별 비용은 유한하지만 쌍의 수가 $N^2$에 비례하므로 총 비용이 폭주한다.</p>
-
-<p><strong>경합이 재진입 실패를 만들고, 재진입 실패가 등비급수 감쇠를 만든다.</strong> $N$개가 $\ell = 1$에 모이면 $N(N-1)/2$ 쌍이 동시에 isWritable을 경합한다. CAS는 원자적이므로(공리 14: 111 → 000 동시 리셋) 한 틱에 하나만 Swap에 성공한다. 나머지는 Compare false — 재진입 실패다. 재진입에 실패한 쥠은 strength가 등비급수로 감쇠한다(RLU, 공리 6). 매 틱 같은 확률로 실패하므로 감쇠는 $e^{-\lambda t}$가 된다.</p>
+<p>자료형 크기는 수축 전에 고정된다(공리 2 명제). 쥠이 space를 수축시키면(공리 2 명제), 고정 크기의 엔티티 영역 안에 다른 쥠이 만든 공이 겹쳐 들어온다. 한 영역에 공이 여럿이면 읽기 경합이 발생한다 — 순서가 생기고, 순서 = 비용(공리 4). 각 CAS는 자기 엔티티를 독립적으로 정상 처리한다(ECS, 공리 12). 경합은 개별 CAS를 막지 않는다.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Compare true 비율</th><th>재진입</th><th>결과</th></tr>
-<tr><td>100%</td><td>매 틱 성공</td><td>strength = 1.0 유지. 쥠이 풀리지 않는다</td></tr>
-<tr><td>&lt; 100%</td><td>확률적 실패</td><td>실패 시 strength 감쇠. strength가 절반이 되는 틱 수(반감기) 존재</td></tr>
-<tr><td>≈ 0%</td><td>거의 실패</td><td>즉시 풀림</td></tr>
+<tr><th>단계</th><th>내용</th><th>근거</th></tr>
+<tr><td>δ 발화</td><td>1틱. 모든 CAS 동시 시작</td><td>공리 8, 15</td></tr>
+<tr><td>접근</td><td>같은 공간의 N개 CAS가 각자 +1 지불하고 자기 엔티티에 접근</td><td>공리 4 (+ 넘기 = 비용)</td></tr>
+<tr><td>직렬화</td><td>같은 공간 영역에 락이 겹침. 순서가 생김</td><td>공리 5 (TOCTOU 락은 접점에 존재)</td></tr>
+<tr><td>처리</td><td>1틱 안에서 순서대로 전부 처리됨. 실패 없음</td><td>공리 14 (CAS 원자적), 공리 12 (ECS 독립)</td></tr>
+<tr><td>결과</td><td>각자 지불한 비용이 그 영역에 N개만큼 존재할 뿐</td><td>공리 4 (비용은 + 넘기 횟수)</td></tr>
 </table>
 </div>
 
-<p>밀집도가 높을수록 경합이 심하고, 재진입 실패 확률이 올라간다. 반감기의 길이는 밀집도와 경합 구조가 결정한다. 등비급수 감쇠가 나오는 이유는 재진입 실패 확률이 매 틱 일정하기 때문이다 — 같은 비율로 실패하면 등비급수가 된다.</p>
+<h4>직렬화 프리징 <span class="tag-corollary">명제</span></h4>
+
+<p>$\ell$이 1에 수렴하면 상호작용 세기 $C \cdot (1-\ell/N)/(4\pi\ell^2)$가 최대에 수렴한다. 상호작용이 최대이면 읽기 경합에 의한 직렬화가 극대화된다.</p>
+
+<p>안쪽: 각 CAS는 자기 엔티티를 독립 정상 처리한다(ECS, 공리 12). 바깥: 직렬화가 극단적이므로 결과가 나오지 않는 것처럼 보인다. 프리징은 렌더링이 멈춘 듯한 현상이다. 실제로 멈춘 것은 아니다 — 안쪽에서는 모든 CAS가 정상 작동하고 있다.</p>
+
+<p>공간은 붕괴하지 않는다. $\ell = 1$이 이산 최솟값이므로 버틴다(공리 3). 직렬화가 극단적일 뿐이다. $\ell = 0$은 존재하지 않으므로(공리 3) 특이점(무한대)은 없다. 직렬화가 풀리려면 쥐는 힘이 문턱(4/13) 이하로 감쇠해야 한다(공리 6). 감쇠는 등비급수이므로 반드시 문턱에 도달한다. 영원히 프리징되지 않는다.</p>
 
 <h4>인덱싱 비용 <span class="tag-corollary">명제</span></h4>
 
 <p>중첩은 인덱싱이다(공리 13). 인덱스는 순서가 없다. 순서가 없으므로 조회는 O(1) 상수다 — 건수와 무관하게 1회에 도달한다. 순차 탐색(O(N))이 아니다.</p>
 
-<p>observer와 superposition은 CAS 미개입 축이다(공리 4 명제: 비용 0, 무료). CAS가 이 축들에 +를 넘어 진입하지 않으므로 진입 비용도 없다. 인덱스 조회 자체는 비용 0이다.</p>
+<p>observer와 superposition은 CAS와 같은 OPERATOR 괄호 안이다(공리 4 명제: 순서 없음 = 비용 0). CAS가 공짜로 참조한다. 인덱스 조회 자체는 비용 0이다.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>경로</th><th>순서</th><th>조회 비용</th><th>근거</th></tr>
-<tr><td><strong>CAS → observer</strong></td><td>없음</td><td>0 (무료, 동시 fan-out)</td><td>공리 15 명제: CAS 미개입. 순서 없음 = 비용 없음</td></tr>
+<tr><td><strong>CAS → observer</strong></td><td>없음</td><td>0 (무료, 동시 fan-out)</td><td>같은 OPERATOR 괄호. 내부 참조. 순서 없음 = 비용 없음</td></tr>
 <tr><td><strong>CAS → superposition(인덱스)</strong></td><td>없음</td><td>0 (무료, O(1) 상수)</td><td>공리 13: 인덱싱. 순서 없음 = 비용 없음</td></tr>
 </table>
 </div>
@@ -1353,17 +1368,17 @@ COLD <-- 최근 접근 없음        -- RLU 기저 해제율 적용</pre>
   φ = 탄생 방향.  무작위. 한 번 결정되면 고정. 수명 동안 바뀌지 않는다
   θ = 0.          observer 위치(북극)에서 출발
   r = 상수.       구면 반지름. 노름 고정
-  strength = 1.0. 최대 크기
+  쥐는 힘 = 1.0. 최대
 
 엔티티의 전 생애:
   θ = (age / life) × π × 0.4.  수명이 진행될수록 θ가 커진다
   φ = 탄생 방향 그대로.         방향은 변하지 않는다
-  strength = 1.0 → 0.          등비급수 연속 감쇠. 끊기는 지점 없음
+  쥐는 힘 = 1.0 → 0.          등비급수 연속 감쇠. 끊기는 지점 없음
   좌표 = (r·sinθ·cosφ,  r·sinθ·sinφ,  r·cosθ)
 
   북극(θ=0)에서 태어나 → 자기 방향(φ)을 따라 구면을 연속으로 흘러간다
   크기가 연속으로 줄어든다. HOT → WARM → COLD는 같은 연속 곡선의 구간 이름일 뿐
-  strength = 0이 되면 소멸. 구면에서 사라진다
+  쥐는 힘 = 0이 되면 소멸. 구면에서 사라진다
 
   잔해(remnant)라는 별도 단계는 없다. 태어남부터 소멸까지 하나의 연속 감쇠다</pre>
 
@@ -1377,7 +1392,7 @@ COLD <-- 최근 접근 없음        -- RLU 기저 해제율 적용</pre>
 <tr><td><strong>조회</strong></td><td>주소로 접근 O(1)</td><td>좌표로 접근 O(1). 순서 없음. 스캔 없음</td></tr>
 <tr><td><strong>거리 계산</strong></td><td>인덱스 차이</td><td>3축 유클리드 거리 또는 대원거리</td></tr>
 <tr><td><strong>상호작용 세기</strong></td><td>없음 (주소에 물리량 없음)</td><td>$C \cdot (1 - \ell/N) / (4\pi\ell^2)$. 거리만으로 결정</td></tr>
-<tr><td><strong>수명 관리</strong></td><td>타이머 + 슬롯 해제</td><td>θ 진행 = 감쇠. strength ≤ 0이면 퇴거</td></tr>
+<tr><td><strong>수명 관리</strong></td><td>타이머 + 슬롯 해제</td><td>θ 진행 = 감쇠. 쥐는 힘이 문턱(4/13) 이하면 풀림</td></tr>
 </table>
 </div>
 
@@ -1776,9 +1791,9 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>idle 폴링 (OPERATOR 내부)</td><td>0</td><td>공리 8</td></tr>
 <tr><td>쥠 밀집에 의한 수축 겹침(공리 13 명제) (예: space->space)</td><td>&gt; 0 (직렬화)</td><td>공리 5 명제</td></tr>
 <tr><td>+ 교차 접근 (양자-고전 교차)</td><td>&gt; 0 (교차 Cmp/Swp)</td><td>공리 1 명제</td></tr>
-<tr><td>양자 괄호 내부 접근 (같은 괄호, 직교 축 교차)</td><td>+1</td><td>공리 1 명제</td></tr>
+<tr><td>양자 괄호 내부 접근 (같은 괄호, 직교하지만 순서 없음)</td><td>0</td><td>공리 4: 순서 없으면 비용 0</td></tr>
 <tr><td>FSM 111 누적 락 유지</td><td>ℓ에 비례</td><td>공리 14 명제</td></tr>
-<tr><td>인덱싱 (중첩 조회)</td><td>진입 +1, 건당 +1</td><td>공리 13 명제</td></tr>
+<tr><td>인덱싱 (중첩 조회)</td><td>0. 내부 참조. 순서 없음 = 비용 없음. O(1)</td><td>공리 13 명제</td></tr>
 <tr><td>엔티티 간 상호작용</td><td>C(1-ℓ/N)/(4piℓ^2)</td><td>공리 13 명제</td></tr>
 </table>
 </div>
@@ -1808,7 +1823,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>TOCTOU_LOCK (3비트 전체)</td><td>CAS-DATA 접점</td><td>000->001->011->111 누적</td><td>111->000 리셋</td><td>R, C, S 각 +1</td><td>공리 5</td></tr>
 <tr><td>재귀 락 (이중 잠금)</td><td>쥠 밀집 수축 겹침</td><td>R+S 같은 축</td><td>LIFO (S 먼저, R 나중)</td><td>&gt; 0</td><td>공리 5 명제</td></tr>
 <tr><td>접점 락 (비트 AND)</td><td>CAS 비트 AND 도메인 비트</td><td>둘 다 1일 때</td><td>한쪽 0</td><td>0</td><td>공리 1 명제</td></tr>
-<tr><td>isWritable 경합</td><td>겹치는 DATA 주소</td><td>수축 영역 겹침</td><td>한쪽 Swap 완료</td><td>&gt; 0</td><td>공리 11 명제</td></tr>
+<tr><td>읽기 경합</td><td>겹치는 DATA 주소</td><td>수축 영역 겹침</td><td>한쪽 Swap 완료</td><td>&gt; 0</td><td>공리 11 명제</td></tr>
 </table>
 </div>
 
@@ -1936,7 +1951,7 @@ delta (처음으로 돌아옴)</pre>
 <table>
 <tr><th>단계</th><th>내용</th><th>핵심 도구</th></tr>
 <tr><td><strong>출발</strong></td><td>공리 9 (자유도 7)</td><td>공리 1 → 4축, 공리 2 → 3단계, 공리 15 → δ 제외</td></tr>
-<tr><td><strong>분류</strong></td><td>비가역(<strong>5</strong>,+) · 비가역 부재(<strong>2</strong>,0 무료)</td><td>공리 2 명제 (비가역성), 공리 4 (비용), 공리 15 명제 (CAS 미개입)</td></tr>
+<tr><td><strong>분류</strong></td><td>비가역(<strong>5</strong>,+) · 비가역 부재(<strong>2</strong>,0 무료)</td><td>공리 2 명제 (비가역성), 공리 4 (비용, 순서 없으면 0), 공리 15 명제 (내부 참조)</td></tr>
 <tr><td><strong>수학</strong></td><td>서명 (5,2) → SO(<strong>5,2</strong>) → D₅ 체적비</td><td>군론 (자동), Wyler 수학 (1969)</td></tr>
 <tr><td><strong>결과</strong></td><td>$1/\alpha = 137.036$ (오차 0.00006%)</td><td>가능한 배위 대비 실현 배위의 비율 = 상호작용 확률</td></tr>
 </table>
@@ -1983,15 +1998,15 @@ delta (처음으로 돌아옴)</pre>
 
 <p><strong>순서가 비가역과 이산을 동시에 만든다:</strong> CAS의 R→C→S에는 순서가 있다. 순서가 있으면 되돌릴 수 없다(비가역). 순서가 있으면 한 단계씩 끊어진다(이산 = 양자화). 순서가 없는 축(observer, superposition)에는 비가역도 없고 이산 단계도 없다. 비가역성과 이산성은 별개의 성질이 아니다 — 순서라는 하나의 원인에서 동시에 나온다. 순서가 있는 곳만 비용이 발생하고, 비용이 발생하는 곳만 차원으로 센다.</p>
 
-<p><strong>핵심 근거 — δ→observer 구간은 CAS 미개입 (공리 15 명제):</strong> δ→observer 구간은 δ와 observer의 릴레이션이다. 이 구간에 CAS는 등장하지 않는다. 비용은 CAS의 + 전이에서만 발생하므로(공리 4), CAS가 없는 이 구간에서는 비용이 정산될 수 없다. 비가역성은 CAS의 성질이므로(공리 2 명제), CAS가 없는 축에는 비가역성이 적용되지 않는다.</p>
+<p><strong>핵심 근거 — observer와 superposition은 CAS 내부 참조 (공리 15 명제):</strong> observer와 superposition은 CAS와 같은 OPERATOR 괄호 안에 있다. 같은 괄호 안이므로 +를 넘지 않는다. +를 넘지 않으므로 순서가 없다. 순서가 없으므로 비용이 0이고 비가역이 아니다.</p>
 
 <p>이 원칙을 7축 각각에 적용한다:</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>축</th><th>CAS 개입 여부</th><th>비가역 여부</th><th>근거</th><th>비용</th></tr>
-<tr><td>observer</td><td><strong>없음.</strong> δ→observer는 CAS 미개입 구간</td><td>아니다</td><td>공리 15 명제: δ 전용 릴레이션. 비용 정산 주체(CAS) 부재</td><td><strong>0 (무료)</strong></td></tr>
-<tr><td>superposition</td><td><strong>없음.</strong> CAS의 참조 인덱스(공리 13). 인덱스 자체는 연산 대상이 아니라 참조 구조</td><td>아니다</td><td>공리 13: 중첩은 인덱싱. 인덱스는 방향 강제 없음. CAS가 인덱스를 "읽지만" 인덱스 축 자체에 비가역 전이를 만들지 않음</td><td><strong>0 (무료)</strong></td></tr>
+<tr><td>observer</td><td><strong>내부 참조.</strong> CAS와 같은 OPERATOR 괄호 안</td><td>아니다</td><td>+를 넘지 않으므로 비용 0. CAS가 공짜로 참조</td><td><strong>0 (무료)</strong></td></tr>
+<tr><td>superposition</td><td><strong>내부 참조.</strong> CAS와 같은 OPERATOR 괄호 안. 인덱싱(공리 13)</td><td>아니다</td><td>+를 넘지 않으므로 비용 0. CAS가 공짜로 참조</td><td><strong>0 (무료)</strong></td></tr>
 <tr><td>time</td><td><strong>있음.</strong> CAS Swap이 time에 씀</td><td>그렇다</td><td>공리 4: Swap이 +를 넘어 DATA에 씀. 공리 2 명제: 쓰기는 비가역. 환불 불가</td><td><strong>+</strong></td></tr>
 <tr><td>space</td><td><strong>있음.</strong> CAS Swap이 space에 씀</td><td>그렇다</td><td>공리 4: 동일. space는 time과 같은 DATA 괄호</td><td><strong>+</strong></td></tr>
 <tr><td>R_LOCK</td><td><strong>있음.</strong> CAS Read 시 R_LOCK ON</td><td>그렇다</td><td>공리 5: R_LOCK은 CAS FSM 전이의 첫 단계. +를 넘어 비용 +1(공리 4). 역순 불가(공리 2 명제)</td><td><strong>+</strong></td></tr>
@@ -2002,7 +2017,7 @@ delta (처음으로 돌아옴)</pre>
 
 <p><strong>비용 분류 = (5, 2).</strong> 비가역 축 5개는 비용이 발생한다(+). 비가역 부재 축 2개는 비용이 0이다(무료). 수학에서 이 분류는 이차형식의 메트릭 서명 (5, 2)에 대응한다 — 비용 + 축이 양의 서명, 비용 0 축이 음의 서명이 된다. 음의 서명(−)은 "비용을 빼간다"가 아니라 "비용이 발생하지 않는 축"이라는 뜻이다. 민코프스키 시공간에서 시간 축이 음의 서명을 갖는 것도 같은 원리다 — 방향 제약이 없는 축이 음의 서명을 받는다.</p>
 
-<p>이 (5, 2) 분할은 자의적이지 않다. "5개를 골라서 양으로 지정한" 것이 아니라, CAS 비가역성(공리 2 명제)과 비용 구조(공리 4)와 δ→observer CAS 미개입(공리 15 명제)이 유일하게 결정한 결과다. 다른 분할이 나올 방법이 없다.</p>
+<p>이 (5, 2) 분할은 자의적이지 않다. "5개를 골라서 양으로 지정한" 것이 아니라, CAS 비가역성(공리 2 명제)과 비용 구조(공리 4: 순서 없으면 0)와 observer/superposition 내부 참조(공리 15 명제)가 유일하게 결정한 결과다. 다른 분할이 나올 방법이 없다.</p>
 
 <h4>3단계. 서명이 대칭군을 결정한다</h4>
 
@@ -2074,7 +2089,7 @@ delta (처음으로 돌아옴)</pre>
 <pre>공리 9 (자유도 7)
   + 공리 2 명제 (비가역성)
   + 공리 4 (+를 넘는 비용)
-  + 공리 15 명제 (δ→observer CAS 미개입)
+  + 공리 15 명제 (observer/superposition 내부 참조, 순서 없음 = 비용 0)
   ─────────────────────────────
   → 메트릭 서명 (5, 2)         ← 비가역 5축(비용 +), 비가역 부재 2축(비용 0)
   → SO(5,2)                    ← 서명에서 자동 (군론)
@@ -2275,7 +2290,7 @@ delta (처음으로 돌아옴)</pre>
 
 <h4>1단계. 비용 총합 13 확정 (공리 6)</h4>
 
-<p>CAS가 시공간에 공(쥠) 하나를 만드는 총 비용은 정확히 13이다(공리 6). 비용 하나하나 비용 공리(공리 4)에 따라 나온 것이라 자유도가 없다: CAS R→C→S 전이(+3) + 괄호 경계(+1) + 도메인 이동(+3) + 쓰기 4건(+4) + Swap→DATA 커밋(+1) + time 타임스탬프(+1) = 13.</p>
+<p>CAS가 시공간에 공(쥠) 하나를 만드는 총 비용은 정확히 13이다(공리 6). 읽기 8(CAS R진입 +1, R→C +1, C→S +1, 괄호 경계 +1, time→space +1, x접근 +1, x→y +1, y→z +1) + 쓰기 5(타임스탬프 +1, x쓰기 +1, y쓰기 +1, z쓰기 +1, Swap→DATA 커밋 +1) = 13. 비용 하나하나가 공리 4에 따라 나온 것이라 자유도가 없다.</p>
 
 <h4>2단계. 공값 4 + 잡비(인건비 3 + 운임비 6) = 13 (공리 6)</h4>
 
@@ -2284,10 +2299,10 @@ delta (처음으로 돌아옴)</pre>
 <div class="table-wrap">
 <table>
 <tr><th>비용 구분</th><th>값</th><th>구성</th><th>역할</th></tr>
-<tr><td><strong>공값</strong></td><td><strong>4</strong></td><td>3축 쥐기(3) + 타임스탬프(1)</td><td>공을 DATA에 유지하는 비용. 이 4가 풀리면 공이 사라진다(이산 해제)</td></tr>
-<tr><td><strong>인건비</strong></td><td><strong>3</strong></td><td>CAS R→C→S 전이(+3)</td><td>CAS가 일한 비용. 연산자의 노동 비용</td></tr>
-<tr><td><strong>운임비</strong></td><td><strong>6</strong></td><td>괄호 경계(+1) + 도메인 이동(+3) + Swap 커밋(+1) + 타임스탬프 외 경로(+1)</td><td>공을 만들기까지의 경로 비용. 배송비</td></tr>
-<tr><td><strong>총</strong></td><td><strong>13</strong></td><td>공값 4 + 인건비 3 + 운임비 6</td><td></td></tr>
+<tr><td><strong>공값</strong></td><td><strong>4</strong></td><td>3축 쥐기(3) + 타임스탬프(1)</td><td>쓰기 유지 비용. 이 4가 풀리면 공이 사라진다(이산 해제)</td></tr>
+<tr><td><strong>인건비</strong></td><td><strong>3</strong></td><td>CAS R진입(+1) + R→C(+1) + C→S(+1)</td><td>CAS 전이 비용. 연산자의 + 넘기</td></tr>
+<tr><td><strong>운임비</strong></td><td><strong>6</strong></td><td>괄호 경계(+1) + time→space(+1) + x접근(+1) + x→y(+1) + y→z(+1) + Swap→DATA 커밋(+1)</td><td>경로 비용. DATA까지 도달 + 커밋</td></tr>
+<tr><td><strong>총</strong></td><td><strong>13</strong></td><td>공값 4 + 인건비 3 + 운임비 6 = 쓰기 5 + 읽기 8</td><td></td></tr>
 </table>
 </div>
 
@@ -2388,7 +2403,7 @@ delta (처음으로 돌아옴)</pre>
 
 <div class="table-wrap">
 <table>
-<tr><th colspan="2" style="background:#161b22;color:#e6edf3">구조 (v1.3)</th></tr>
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">구조 (v1.4)</th></tr>
 <tr><th>공리 용어</th><th>물리 대응</th></tr>
 <tr><td>δ = 발화 비트 (bit 7)</td><td>의식 (δ). 등호. 관측 트리거</td></tr>
 <tr><td>observer = 진입점 (bit 0)</td><td>관측자 (observer). 필터. 파이프라인 시작</td></tr>
@@ -2425,10 +2440,10 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>비용 보존 (공리 15 명제)</td><td>에너지 보존. 발화 주기 등가 치환</td></tr>
 <tr><td>직렬화 비용 ≠ 0</td><td>W/Z 보손 질량</td></tr>
 <tr><td>직렬화 비용 = 0</td><td>광자 무질량</td></tr>
-<tr><td>비용의 크기 ($1/\ell^2$)</td><td>힘의 세기 (force strength)</td></tr>
+<tr><td>비용의 크기 ($1/\ell^2$)</td><td>힘의 세기 (쥐는 힘)</td></tr>
 <tr><td>비용의 종류 ($(1-\ell/N)$)</td><td>힘의 종류 (force type)</td></tr>
 <tr><td>수축 영역 (공리 11 명제)</td><td>포텐셜 (potential)</td></tr>
-<tr><td>isWritable 경합 (공리 11 명제)</td><td>상호작용 (interaction)</td></tr>
+<tr><td>읽기 경합 (공리 11 명제)</td><td>상호작용 (interaction)</td></tr>
 <tr><td>단계 비용 계수 C의 비대칭 (단계 갭)</td><td>비대칭 메손 보정 (K±, D±, B±)</td></tr>
 <tr><td>엔티티 간 상호작용 $C(1-\ell/N)/(4\pi \ell^2)$</td><td>쿨롱/뉴턴 역제곱 법칙</td></tr>
 <tr><td>+를 넘는 비용 > 0 (공리 4)</td><td>$\Delta x \cdot \Delta p \geq \hbar/2$ (불확정성 원리)</td></tr>
@@ -2470,7 +2485,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>δ=1 (발화)</td><td>우주 존재. 등호 성립</td></tr>
 <tr><td>Compare true → Swap</td><td>파동함수 붕괴 (wavefunction collapse)</td></tr>
 <tr><td>Compare false → 중첩 유지</td><td>디코히어런스 미발생</td></tr>
-<tr><td>ℓ=1 밀집, N² 누적</td><td>블랙홀 (사건 지평선 = 누적 비용 > 탈출 비용)</td></tr>
+<tr><td>ℓ=1 밀집, N² 누적</td><td>블랙홀 (직렬화 프리징 (ℓ→1, 읽기 경합 극대))</td></tr>
 <tr><td>빈 엔티티 왜곡 (자료형 고정)</td><td>가상입자 · 진공편극</td></tr>
 <tr><td>동시 = 직교</td><td>얽힘 (entanglement). 거리 무관</td></tr>
 <tr><td>덕 타입 의식 (공리 15 명제)</td><td>의식 = δ의 행동 목록. 측정 불가 영역</td></tr>

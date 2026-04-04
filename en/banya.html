@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="Banya Framework Comprehensive Report — Han Hyukjin">
 <meta name="twitter:description" content="δ²=(time+space)²+(observer+superposition)². 118 physics equations compatibility verified. Origin of α=1/137 derived.">
 <meta name="robots" content="index, follow">
-<meta name="version" content="v1.3">
+<meta name="version" content="v1.4">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
@@ -203,7 +203,7 @@
 <blockquote><p>Inventor: Hyukjin Han (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>Verification Date: 2026-03-21</p></blockquote>
 <blockquote><p>Classification: Axiom-Based Science Mining Engine</p></blockquote>
-<blockquote><p>Version: v1.3 (2026-03-29)</p></blockquote>
+<blockquote><p>Version: v1.4 (2026-04-04)</p></blockquote>
 <blockquote><p>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p></blockquote>
 
 
@@ -410,7 +410,7 @@ Domain 4-bit example:  0 1 1 0
 <div class="table-wrap">
 <table>
 <tr><th>4-bit Pattern</th><th>Open Domain</th><th>Access Path</th><th>Cost Structure</th></tr>
-<tr><td>0011</td><td>observer + superposition</td><td>Inside quantum bracket</td><td>Cost +1 (same bracket, orthogonal axis crossing)</td></tr>
+<tr><td>0011</td><td>observer + superposition</td><td>Inside quantum bracket</td><td>Cost 0 (same bracket, no order = free reference)</td></tr>
 <tr><td>1100</td><td>time + space</td><td>Inside classical bracket</td><td>Cumulative Swap cost</td></tr>
 <tr><td>0110</td><td>superposition + time</td><td>Quantum-classical crossing</td><td>Crossing Cmp/Swp cost</td></tr>
 <tr><td>0101</td><td>observer + time</td><td>Quantum-classical crossing</td><td>Crossing Cmp/Swp cost</td></tr>
@@ -419,7 +419,7 @@ Domain 4-bit example:  0 1 1 0
 </table>
 </div>
 
-<p>Cost = the number of times a + boundary is crossed in the access path. If only one axis is ON, crossing = 0; if orthogonal axes within the same bracket, crossing = 1; if it crosses +, crossing >= 2. The ON/OFF combination of domain 4 bits determines the + crossing count, and the crossing count is the cost.</p>
+<p>Cost = the number of times a + boundary is crossed in order in the access path. If only one axis is ON, crossing = 0; if orthogonal axes within the same bracket, no order exists so cost = 0; if it crosses + in order, cost >= 1. The ON/OFF combination of domain 4 bits determines the + crossing count, and the crossing count is the cost.</p>
 
 <h4>Lock = Bitwise AND <span class="tag-corollary">Proposition</span></h4>
 
@@ -622,11 +622,11 @@ AND (contact point = where lock engages):
 
 <p><strong>Ball</strong> either exists or does not in DATA (discrete). <strong>Gripping force</strong> decays as a geometric series continuously in RLU (OPERATOR). <strong>Cost</strong> is distributed in space as the contraction region around the ball. Because the three properties live on different layers, the discreteness of the ball and the continuity of the force do not conflict.</p>
 
-<p><strong>Writing threshold = 4/13.</strong> Gripping (writing) means holding 3 axes simultaneously. 3-axis grip (3) + timestamp (1) = maintenance cost 4 (Axiom 6). Since the total cost per CAS cycle is 13, when strength falls below 4/13 ≈ 0.308, there is not enough cost to maintain the 3-axis grip — it releases. Crossing + is reading (access) and gripping is writing (maintenance), so the threshold is determined by the write maintenance cost. It is the write cost (4) that sets the threshold, not the read cost (8).</p>
+<p><strong>Writing threshold = 4/13.</strong> Gripping (writing) means holding 3 axes simultaneously. 3-axis grip (3) + timestamp (1) = maintenance cost 4 (Axiom 6). Since the total cost per CAS cycle is 13, when gripping force falls below 4/13, there is not enough cost to maintain the 3-axis grip — it releases. Crossing + is reading (access) and gripping is writing (maintenance), so the threshold is determined by the write maintenance cost. It is the write cost (4) that sets the threshold, not the read cost (8).</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{threshold} = \frac{\text{write maintenance cost}}{\text{CAS total cost}} = \frac{4}{13} \approx 0.308$$</div>
-<div class="math-legend">When strength falls below this value, the 3-axis grip releases. The ball undergoes discrete release from DATA</div>
+<div class="math-legend">When gripping force falls below this value, the 3-axis grip releases. The ball undergoes discrete release from DATA</div>
 </div>
 
 <div class="table-wrap">
@@ -733,9 +733,22 @@ AND (contact point = where lock engages):
 
 <h3 id="ax4">Axiom 4. Cost <span class="tag-solved">Axiom</span></h3>
 
-<p>In the Banya equation δ² = (time <strong>+</strong> space)² <strong>+</strong> (observer <strong>+</strong> superposition)², <strong>+</strong> is a connection marker between orthogonal objects. Connecting two orthogonal objects means crossing one independent axis. <strong>Crossing + once = traversing 1 dimension. Counting +'s = counting dimensions.</strong> Each time + is crossed, cost 1 is incurred. If + is not crossed, cost is 0.</p>
+<p>In the Banya equation δ² = (time <strong>+</strong> space)² <strong>+</strong> (observer <strong>+</strong> superposition)², <strong>+</strong> is a connection marker between orthogonal objects. Connecting two orthogonal objects means crossing one independent axis. <strong>Crossing + once = traversing 1 dimension. Counting +'s = counting dimensions.</strong></p>
 
-<p><strong>Order creates irreversibility and discreteness simultaneously.</strong> CAS's R→C→S has order. Where there is order, it cannot be reversed (irreversibility). Where there is order, it is broken into steps (discreteness = quantization). Axes without order (observer, superposition) have no cost, no irreversibility, and no discrete steps. Irreversibility and discreteness are not separate properties — they emerge simultaneously from a single cause: order.</p>
+<p><strong>Cost 1 is incurred when + is crossed in order.</strong> If there is no order, cost is 0 even if + exists. The + marks orthogonality (structure) only; cost arises only when order exists.</p>
+
+<p><strong>Order creates irreversibility and discreteness simultaneously.</strong> CAS's R→C→S has order (Axiom 5: locks enforce order). Where there is order, it cannot be reversed (irreversibility). Where there is order, it is broken into steps (discreteness = quantization). Axes without order (observer, superposition) have no cost, no irreversibility, and no discrete steps. Irreversibility and discreteness are not separate properties — they emerge simultaneously from a single cause: order.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>+ location</th><th>Order</th><th>Cost</th><th>Reason</th></tr>
+<tr><td>CAS R→C→S</td><td><strong>Yes</strong></td><td>+3</td><td>Locks enforce order (Axiom 5). C impossible without R</td></tr>
+<tr><td>OPERATOR → DATA bracket</td><td><strong>Yes</strong></td><td>+1</td><td>CAS crosses + to write. Direction exists</td></tr>
+<tr><td>time → space</td><td><strong>Yes</strong></td><td>+1</td><td>Timestamp first, then space access. Order exists</td></tr>
+<tr><td>x → y → z</td><td><strong>Yes</strong></td><td>+3</td><td>3-axis sequential access. Lock order (Axiom 5)</td></tr>
+<tr><td>observer ↔ superposition</td><td><strong>No</strong></td><td>0</td><td>Same OPERATOR bracket as CAS. Simultaneous reference. No order = no cost</td></tr>
+</table>
+</div>
 
 <pre>Path by which CAS creates a grip in space — read (access) and write(juida):
 
@@ -779,6 +792,9 @@ Within the same group = no + crossing = cost 0.</pre>
 <div class="table-wrap">
 <table>
 <tr><th>Path</th><th>Read (access) Cost</th><th>Write(juida) Cost</th></tr>
+<tr><td>CAS R entry</td><td>+1</td><td>None</td></tr>
+<tr><td>CAS R → C transition</td><td>+1</td><td>None</td></tr>
+<tr><td>CAS C → S transition</td><td>+1</td><td>None</td></tr>
 <tr><td>OPERATOR → classical bracket</td><td>+1</td><td>None</td></tr>
 <tr><td>time → space</td><td>+1</td><td>None</td></tr>
 <tr><td>x access</td><td>+1</td><td>None</td></tr>
@@ -788,6 +804,8 @@ Within the same group = no + crossing = cost 0.</pre>
 <tr><td>x write(juida)</td><td>None</td><td>+1</td></tr>
 <tr><td>y write(juida)</td><td>None</td><td>+1</td></tr>
 <tr><td>z write(juida)</td><td>None</td><td>+1</td></tr>
+<tr><td>Swap → DATA commit</td><td>None</td><td>+1</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>8</strong></td><td><strong>5</strong></td></tr>
 </table>
 </div>
 
@@ -798,8 +816,8 @@ Within the same group = no + crossing = cost 0.</pre>
 <div class="table-wrap">
 <table>
 <tr><th>Axis</th><th>CAS Intervention</th><th>Irreversible</th><th>Basis</th><th>Cost</th></tr>
-<tr><td>observer</td><td>None</td><td>No</td><td>Axiom 15 Proposition: δ→observer is a CAS-free segment. No cost settlement agent</td><td><strong>None</strong></td></tr>
-<tr><td>superposition</td><td>None</td><td>No</td><td>Axiom 13: reference index. No direction enforcement. Read but no irreversible transition</td><td><strong>None</strong></td></tr>
+<tr><td>observer</td><td>Internal ref.</td><td>No</td><td>Inside same OPERATOR bracket as CAS. No + crossing needed = cost 0. CAS references for free</td><td><strong>0 (free)</strong></td></tr>
+<tr><td>superposition</td><td>Internal ref.</td><td>No</td><td>Inside same OPERATOR bracket as CAS. Indexing (Axiom 13). No + crossing needed = cost 0. CAS references for free</td><td><strong>0 (free)</strong></td></tr>
 <tr><td>time</td><td>Yes</td><td>Yes</td><td>Axiom 4: Swap writes by crossing +. Axiom 2 Proposition: no refund</td><td><strong>+</strong></td></tr>
 <tr><td>space</td><td>Yes</td><td>Yes</td><td>Axiom 4: same. DATA bracket</td><td><strong>+</strong></td></tr>
 <tr><td>R_LOCK</td><td>Yes</td><td>Yes</td><td>Axiom 5: crosses + for cost +1. Reverse impossible</td><td><strong>+</strong></td></tr>
@@ -843,19 +861,21 @@ Within the same group = no + crossing = cost 0.</pre>
 
 <div class="table-wrap">
 <table>
-<tr><th>Cost Item</th><th>Value</th><th>Belonging</th></tr>
-<tr><td>CAS R→C→S transition</td><td>+3</td><td>CAS-ring internal + crossing</td></tr>
-<tr><td>OPERATOR→classical bracket + crossing</td><td>+1</td><td>Bracket boundary</td></tr>
-<tr><td>time→space + crossing</td><td>+1</td><td>Domain boundary</td></tr>
-<tr><td>x access (read)</td><td>+1</td><td>space sub-frame</td></tr>
-<tr><td>x→y access (read)</td><td>+1</td><td>space sub-frame</td></tr>
-<tr><td>y→z access (read)</td><td>+1</td><td>space sub-frame</td></tr>
-<tr><td>time timestamp write(juida)</td><td>+1</td><td>time domain</td></tr>
-<tr><td>x write(juida)</td><td>+1</td><td>space domain</td></tr>
-<tr><td>y write(juida)</td><td>+1</td><td>space domain</td></tr>
-<tr><td>z write(juida)</td><td>+1</td><td>space domain</td></tr>
-<tr><td>Swap→DATA commit</td><td>+1</td><td>Write(juida). The act of Swap recording to DATA</td></tr>
-<tr><td><strong>Total</strong></td><td><strong>13</strong></td><td></td></tr>
+<tr><th>Path</th><th>Read (access) cost</th><th>Write (grip) cost</th></tr>
+<tr><td>CAS R entry</td><td>+1</td><td>none</td></tr>
+<tr><td>CAS R → C transition</td><td>+1</td><td>none</td></tr>
+<tr><td>CAS C → S transition</td><td>+1</td><td>none</td></tr>
+<tr><td>OPERATOR → classical bracket</td><td>+1</td><td>none</td></tr>
+<tr><td>time → space</td><td>+1</td><td>none</td></tr>
+<tr><td>x access</td><td>+1</td><td>none</td></tr>
+<tr><td>x → y</td><td>+1</td><td>none</td></tr>
+<tr><td>y → z</td><td>+1</td><td>none</td></tr>
+<tr><td>time timestamp write(juida)</td><td>none</td><td>+1</td></tr>
+<tr><td>x write(juida)</td><td>none</td><td>+1</td></tr>
+<tr><td>y write(juida)</td><td>none</td><td>+1</td></tr>
+<tr><td>z write(juida)</td><td>none</td><td>+1</td></tr>
+<tr><td>Swap → DATA commit</td><td>none</td><td>+1</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>8</strong></td><td><strong>5</strong></td></tr>
 </table>
 </div>
 
@@ -1064,9 +1084,9 @@ On sphere:
             -- overlap --
             = (1 - ℓ/N)
 
-ℓ small -> many overlapping DATA addresses -> much isWritable contention -> total cost large
-ℓ large -> few overlapping DATA addresses  -> little isWritable contention -> total cost small
-When contraction regions of two juims overlap -> isWritable contention
+ℓ small -> many overlapping DATA addresses -> much read contention -> total cost large
+ℓ large -> few overlapping DATA addresses  -> little read contention -> total cost small
+When contraction regions of two juims overlap -> read contention
 -> number of contended addresses × cost per address (Axiom 4) = total cost</pre>
 
 <p>The size of the contraction region is determined by the number of + crossings when CAS accesses the target (Axiom 4) and the type (Axiom 2 Proposition).</p>
@@ -1205,7 +1225,7 @@ No logical address needed -- entity is the address.</pre>
                                           ratio(ℓ)      distribution(ℓ)
                                           cost type     cost magnitude</pre>
 
-<p>This cost distribution is not communication between juims (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> that δ's projection (Axiom 11) creates around each juim. $\ell$ (distance between two entities) determines both the cost type (ring overlap ratio) and the cost magnitude (spherical distribution). When the distributions of two juims overlap, isWritable contention occurs.</p>
+<p>This cost distribution is not communication between juims (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> that δ's projection (Axiom 11) creates around each juim. $\ell$ (distance between two entities) determines both the cost type (ring overlap ratio) and the cost magnitude (spherical distribution). When the distributions of two juims overlap, read contention occurs.</p>
 
 
 <h4>The Only Tail Latency: RLU Cache Eviction</h4>
@@ -1274,11 +1294,13 @@ COLD <-- no recent access              -- RLU base release rate applied</pre>
 </table>
 </div>
 
-<p>CAS bridges this pair. Compare true = quantum superposition collapses while the classical Entity is updated. Compare false = quantum superposition is maintained while the classical Entity remains unchanged. Collapse and update are simultaneous events, and maintenance and invariance are simultaneous events. With superposition alone and no ECS, there is nowhere to determine; with ECS alone and no superposition, there is no source of change. The two are an inseparable pair. CAS references the quantum side (superposition) of the pair, and upon Compare true, collapses it onto the classical side (ECS Entity). Why CAS does not directly reference DATA: there is no logical address (Axiom 12). Superposition is the only access path for CAS. Superposition is indexing. In an ECS without logical addresses, superposition spreading all possible states simultaneously is itself an address-free index. CAS searches this index via Compare, and collapses only the items where change is detected into DATA.</p>
+<p>CAS bridges this pair. Compare true = quantum superposition collapses while the classical Entity is updated. Compare false = quantum superposition is maintained while the classical Entity remains unchanged. Collapse and update are simultaneous events, and maintenance and invariance are simultaneous events. With superposition alone and no ECS, there is nowhere to determine; with ECS alone and no superposition, there is no source of change. The two are an inseparable pair. CAS references the quantum side (superposition) of the pair, and upon Compare true, collapses it onto the classical side (ECS Entity). How CAS reaches DATA: by consuming + to access it (reading, Axiom 4). Since there is no logical address (Axiom 12), CAS does not look up an address but arrives by crossing +. Superposition (indexing) is the access path for CAS. Superposition is indexing. In an ECS without logical addresses, superposition spreading all possible states simultaneously is itself an address-free index. CAS references this index via Compare, and writes only the items where change is detected into DATA.</p>
+
+<p><strong>CAS operates on entities within the observer's focus.</strong> When CAS consumes + to reach DATA (spacetime), it executes Read → Compare → Swap on the target entity regardless of whether a ball exists. If a ball exists — move: return the existing ball and create a new one. If no ball exists — create a new one. If RLU lifetime remains in the target region, that is also returned. Outside the observer's focus is outside CAS's operating range. RLU simply recovers the remaining cost via geometric decay.</p>
 
 <h4>Inter-Entity Interaction Strength <span class="tag-corollary">Proposition</span></h4>
 
-<p>Interaction occurs because of spacetime distortion created by juims (results of writing (juida), Axiom 7). When CAS Swap consumes space, spacetime around the juim contracts. When the contraction regions of two juims overlap, isWritable contention arises. This is interaction.</p>
+<p>Interaction occurs because of spacetime distortion created by juims (results of writing (juida), Axiom 7). When CAS Swap consumes space, spacetime around the juim contracts. When the contraction regions of two juims overlap, read contention arises. This is interaction.</p>
 
 <div class="math-block">
 <div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
@@ -1293,48 +1315,41 @@ COLD <-- no recent access              -- RLU base release rate applied</pre>
 
 <h4>Singularity (Infinity) Does Not Exist <span class="tag-corollary">Proposition</span></h4>
 
-<p>DATA is discrete (Axiom 3). Since ring buffer slots are integers, the minimum inter-entity distance $\ell$ is not 0 but 1. $\ell = 0$ does not exist in a discrete system. Therefore the maximum per-pair cost $1/\ell^2$ is $1/1^2 = 1$. Individual contention is finite. Divergence (infinity) cannot occur in a discrete system.</p>
+<p>DATA is discrete (Axiom 3). Since ring buffer slots are integers, the minimum inter-entity distance $\ell$ is not 0 but 1. $\ell = 0$ does not exist in a discrete system. Therefore the maximum per-pair cost $1/\ell^2$ is $1/1^2 = 1$. Individual cost is finite. Divergence (infinity) cannot occur in a discrete system. If DATA is discrete, singularity is automatically resolved.</p>
 
-<p>However, if all $N$ entities are packed at $\ell = 1$ in a narrow region, the number of contention pairs increases to $N(N-1)/2$. Individual costs are finite, but <strong>cumulative cost is proportional to $N^2$</strong>. This is a black hole -- not divergence, but accumulation.</p>
+<h4>Read Contention upon Spatial Overlap <span class="tag-corollary">Proposition</span></h4>
 
-<ul>
-<li><strong>Juim density (Axiom 13 Proposition)</strong>: when juims are densely packed in the same region, contraction overlap occurs. Cumulative contention of multiple entities.</li>
-<li><strong>Spatial overlap</strong>: multiple entities are packed at $\ell = 1$ (discrete minimum). Cumulative spatial contention of multiple entities.</li>
-</ul>
-
-<p>It is a scale difference of the same mechanism (isWritable contention). Juim density is cumulative contention from contraction overlap between multiple entities. Physics calls this a black hole. The event horizon is the boundary where cumulative cost exceeds escape cost.</p>
-
-<p>Because of 4-axis orthogonality (Axiom 1), no other axis can absorb the accumulated cost. Orthogonal = independent. time cannot bear it, observer cannot bear it. When the classical bracket (DATA) reaches its discrete maximum, the quantum bracket (OPERATOR) is unaffected because it is orthogonal. The d-ring (1D) remains alive (CAS cycle is inside OPERATOR). The CAS-ring circulates within OPERATOR, with each R, C, S transition crossing + at cost +1 (Axiom 4). When there is nowhere to write, Swap cannot execute, and not-writing = superposition maintained (Axiom 7). When the classical description reaches saturation, management is transferred to the quantum bracket.</p>
-
-<p>In a discrete system, $\ell$ cannot be 0 and cost has a finite maximum. The singularity problem in physics is a fiction created by treating spacetime as continuous. If DATA is discrete, singularity is automatically resolved.</p>
-
-<h4>Contention Computation Explosion upon Spatial Overlap <span class="tag-corollary">Proposition</span></h4>
-
-<p>Data type size is fixed before contraction (Axiom 2 Proposition). When a juim contracts space (Axiom 2 Proposition), balls created by other juims overlap into the fixed-size entity region. When multiple balls occupy a single region, they are serialized -- ordering arises, and ordering = cost (Axiom 4). When $N$ entities are packed at $\ell = 1$ (discrete minimum), overlap pairs increase to $N(N-1)/2$. Individual costs are finite, but since the number of pairs is proportional to $N^2$, the total cost explodes.</p>
-
-<p><strong>Contention creates reentry failure, and reentry failure creates geometric decay.</strong> When $N$ entities are packed at $\ell = 1$, $N(N-1)/2$ pairs contend for isWritable simultaneously. Since CAS is atomic (Axiom 14: 111 → 000 simultaneous reset), only one Swap succeeds per tick. The rest get Compare false — reentry failure. A juim that fails reentry has its strength decay geometrically (RLU, Axiom 6). Since the failure probability is the same each tick, the decay follows $e^{-\lambda t}$.</p>
+<p>Data type size is fixed before contraction (Axiom 2 Proposition). When a juim contracts space (Axiom 2 Proposition), balls created by other juims overlap into the fixed-size entity region. When multiple balls occupy a single region, read contention arises — ordering appears, and ordering = cost (Axiom 4). Each CAS independently processes its own entity as normal (ECS, Axiom 12). Contention does not block individual CAS.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>Compare true ratio</th><th>Reentry</th><th>Result</th></tr>
-<tr><td>100%</td><td>Succeeds every tick</td><td>strength = 1.0 maintained. Juim never releases</td></tr>
-<tr><td>&lt; 100%</td><td>Probabilistic failure</td><td>strength decays on failure. A half-life (ticks for strength to halve) exists</td></tr>
-<tr><td>≈ 0%</td><td>Nearly always fails</td><td>Immediate release</td></tr>
+<tr><th>Step</th><th>Content</th><th>Basis</th></tr>
+<tr><td>δ firing</td><td>1 tick. All CAS start simultaneously</td><td>Axiom 8, 15</td></tr>
+<tr><td>Access</td><td>N CAS in the same space each pay +1 and access their own entity</td><td>Axiom 4 (crossing + = cost)</td></tr>
+<tr><td>Serialization</td><td>Locks overlap on the same space region. Order arises</td><td>Axiom 5 (TOCTOU lock exists at contact point)</td></tr>
+<tr><td>Processing</td><td>All processed in order within 1 tick. No failure</td><td>Axiom 14 (CAS atomic), Axiom 12 (ECS independent)</td></tr>
+<tr><td>Result</td><td>Each CAS's paid cost simply exists N times in that region</td><td>Axiom 4 (cost = number of + crossings)</td></tr>
 </table>
 </div>
 
-<p>The higher the packing density, the more severe the contention, and the higher the reentry failure probability. The length of the half-life is determined by packing density and contention structure. Geometric decay arises because the reentry failure probability is constant each tick — a constant failure ratio produces a geometric series.</p>
+<h4>Serialization Freezing <span class="tag-corollary">Proposition</span></h4>
+
+<p>As $\ell$ converges to 1, the interaction strength $C \cdot (1-\ell/N)/(4\pi\ell^2)$ converges to its maximum. When interaction is maximum, serialization from read contention is maximized.</p>
+
+<p>Inside: each CAS independently processes its own entity as normal (ECS, Axiom 12). Outside: serialization is so extreme that no results appear to emerge. Freezing is the phenomenon of rendering appearing to stop. It has not actually stopped — inside, all CAS are operating normally.</p>
+
+<p>Space does not collapse. $\ell = 1$ is the discrete minimum and holds (Axiom 3). Serialization is simply extreme. $\ell = 0$ does not exist (Axiom 3), so there is no singularity (infinity). For serialization to unwind, gripping force must decay below the threshold (4/13) (Axiom 6). Since decay is geometric, the threshold is always reached. Freezing is never permanent.</p>
 
 <h4>Indexing Cost <span class="tag-corollary">Proposition</span></h4>
 
 <p>Superposition is indexing (Axiom 13). An index has no order. Since there is no order, lookup is O(1) constant — it reaches the target in one step regardless of count. It is not sequential scanning (O(N)).</p>
 
-<p>Observer and superposition are CAS non-intervention axes (Axiom 4 proposition: cost 0, free). Since CAS does not cross + into these axes, there is no entry cost either. Index lookup itself has zero cost.</p>
+<p>Observer and superposition are inside the same OPERATOR bracket as CAS (Axiom 4 proposition: no order = cost 0). CAS references them for free. Index lookup itself has zero cost.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>Path</th><th>Order</th><th>Lookup cost</th><th>Basis</th></tr>
-<tr><td><strong>CAS → observer</strong></td><td>None</td><td>0 (free, simultaneous fan-out)</td><td>Axiom 15 prop.: CAS non-intervention. No order = no cost</td></tr>
+<tr><td><strong>CAS → observer</strong></td><td>None</td><td>0 (free, simultaneous fan-out)</td><td>Same OPERATOR bracket. Internal reference. No order = no cost</td></tr>
 <tr><td><strong>CAS → superposition (index)</strong></td><td>None</td><td>0 (free, O(1) constant)</td><td>Axiom 13: indexing. No order = no cost</td></tr>
 </table>
 </div>
@@ -1354,17 +1369,17 @@ COLD <-- no recent access              -- RLU base release rate applied</pre>
   φ = birth direction.  Random. Fixed once determined. Does not change during lifetime
   θ = 0.                Starts at observer position (north pole)
   r = constant.         Sphere radius. Norm fixed
-  strength = 1.0.       Maximum size
+  gripping force = 1.0 (maximum)
 
 The entity's entire life:
   θ = (age / life) × π × 0.4.  θ increases as lifetime progresses
   φ = birth direction unchanged.  Direction never changes
-  strength = 1.0 → 0.           Geometric (exponential) continuous decay. No discontinuity
+  gripping force = 1.0 → 0.     Geometric (exponential) continuous decay. No discontinuity
   coordinates = (r·sinθ·cosφ,  r·sinθ·sinφ,  r·cosθ)
 
   Born at north pole (θ=0) → flows continuously along the sphere following its direction (φ)
   Size shrinks continuously. HOT → WARM → COLD are just interval names on the same continuous curve
-  When strength = 0, annihilation. Vanishes from the sphere
+  When gripping force = 0, annihilation. Vanishes from the sphere
 
   There is no separate "remnant" phase. From birth to annihilation, it is one continuous decay</pre>
 
@@ -1378,7 +1393,7 @@ The entity's entire life:
 <tr><td><strong>Lookup</strong></td><td>Access by address O(1)</td><td>Access by coordinates O(1). No order. No scanning</td></tr>
 <tr><td><strong>Distance calculation</strong></td><td>Index difference</td><td>3-axis Euclidean distance or great-circle distance</td></tr>
 <tr><td><strong>Interaction strength</strong></td><td>None (addresses have no physics)</td><td>$C \cdot (1 - \ell/N) / (4\pi\ell^2)$. Determined by distance alone</td></tr>
-<tr><td><strong>Lifetime management</strong></td><td>Timer + slot release</td><td>θ progression = decay. Evict when strength ≤ 0</td></tr>
+<tr><td><strong>Lifetime management</strong></td><td>Timer + slot release</td><td>θ progression = decay. Releases when gripping force ≤ threshold (4/13)</td></tr>
 </table>
 </div>
 
@@ -1777,9 +1792,9 @@ delta (returns to the beginning)</pre>
 <tr><td>idle polling (OPERATOR internal)</td><td>0</td><td>Axiom 8</td></tr>
 <tr><td>Serialization from juim density contraction overlap (Axiom 13 proposition) (e.g., space->space)</td><td>&gt; 0 (serialization)</td><td>Axiom 5 proposition</td></tr>
 <tr><td>+ cross access (quantum-classical cross)</td><td>&gt; 0 (cross Cmp/Swp)</td><td>Axiom 1 proposition</td></tr>
-<tr><td>Quantum bracket internal access (same bracket, orthogonal axis cross)</td><td>+1</td><td>Axiom 1 proposition</td></tr>
+<tr><td>Quantum bracket internal access (same bracket, orthogonal but no order)</td><td>0</td><td>Axiom 4: no order = cost 0</td></tr>
 <tr><td>FSM 111 accumulated lock maintenance</td><td>proportional to ℓ</td><td>Axiom 14 proposition</td></tr>
-<tr><td>Indexing (superposition query)</td><td>entry +1, per item +1</td><td>Axiom 13 proposition</td></tr>
+<tr><td>Indexing (superposition query)</td><td>0. Internal reference. No order = no cost. O(1)</td><td>Axiom 13 proposition</td></tr>
 <tr><td>Inter-entity interaction</td><td>C(1-ℓ/N)/(4piℓ^2)</td><td>Axiom 13 proposition</td></tr>
 </table>
 </div>
@@ -1809,7 +1824,7 @@ delta (returns to the beginning)</pre>
 <tr><td>TOCTOU_LOCK (full 3 bits)</td><td>CAS-DATA junction</td><td>000->001->011->111 accumulated</td><td>111->000 reset</td><td>R, C, S each +1</td><td>Axiom 5</td></tr>
 <tr><td>Recursive lock (double lock)</td><td>Juim density contraction overlap</td><td>R+S same axis</td><td>LIFO (S first, R last)</td><td>&gt; 0</td><td>Axiom 5 proposition</td></tr>
 <tr><td>Junction lock (bit AND)</td><td>CAS bit AND domain bit</td><td>When both are 1</td><td>One side 0</td><td>0</td><td>Axiom 1 proposition</td></tr>
-<tr><td>isWritable contention</td><td>Overlapping DATA address</td><td>Contraction area overlap</td><td>One side Swap complete</td><td>&gt; 0</td><td>Axiom 11 proposition</td></tr>
+<tr><td>read contention</td><td>Overlapping DATA address</td><td>Contraction area overlap</td><td>One side Swap complete</td><td>&gt; 0</td><td>Axiom 11 proposition</td></tr>
 </table>
 </div>
 
@@ -1937,7 +1952,7 @@ delta (returns to the beginning)</pre>
 <table>
 <tr><th>Step</th><th>Content</th><th>Key tool</th></tr>
 <tr><td><strong>Starting point</strong></td><td>Axiom 9 (DOF 7)</td><td>Axiom 1 → 4 axes, Axiom 2 → 3 steps, Axiom 15 → δ excluded</td></tr>
-<tr><td><strong>Classification</strong></td><td>Irreversible(<strong>5</strong>,+) · reversible(<strong>2</strong>,0 free)</td><td>Axiom 2 prop. (irreversibility), Axiom 4 (cost), Axiom 15 prop. (CAS non-intervention)</td></tr>
+<tr><td><strong>Classification</strong></td><td>Irreversible(<strong>5</strong>,+) · non-irreversible(<strong>2</strong>,0 free)</td><td>Axiom 2 prop. (irreversibility), Axiom 4 (cost, no order = 0), Axiom 15 prop. (internal reference)</td></tr>
 <tr><td><strong>Mathematics</strong></td><td>Signature (5,2) → SO(<strong>5,2</strong>) → D₅ volume ratio</td><td>Group theory (automatic), Wyler mathematics (1969)</td></tr>
 <tr><td><strong>Result</strong></td><td>$1/\alpha = 137.036$ (error 0.00006%)</td><td>Ratio of realized configurations to possible configurations = interaction probability</td></tr>
 </table>
@@ -1984,15 +1999,15 @@ delta (returns to the beginning)</pre>
 
 <p><strong>Order creates irreversibility and discreteness simultaneously:</strong> CAS's R→C→S has order. Where there is order, it cannot be reversed (irreversibility). Where there is order, it is broken into steps (discreteness = quantization). Axes without order (observer, superposition) have neither irreversibility nor discrete steps. Irreversibility and discreteness are not separate properties — they emerge simultaneously from a single cause: order. Only where order exists does cost occur, and only where cost occurs do we count a dimension.</p>
 
-<p><strong>Key basis — the δ→observer segment has no CAS intervention (Axiom 15 proposition):</strong> The δ→observer segment is a relation between δ and observer. CAS does not appear in this segment. Since cost occurs only at CAS's crosses + transition (Axiom 4), cost cannot be settled in this segment where CAS is absent. Since irreversibility is a property of CAS (Axiom 2 proposition), irreversibility does not apply to axes without CAS.</p>
+<p><strong>Key basis — observer and superposition are CAS internal references (Axiom 15 proposition):</strong> Observer and superposition are inside the same OPERATOR bracket as CAS. Since they are inside the same bracket, + is not crossed. Since + is not crossed, there is no order. Since there is no order, cost is 0 and they are not irreversible.</p>
 
 <p>Applying this principle to each of the 7 axes:</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>Axis</th><th>CAS intervention</th><th>Irreversible</th><th>Basis</th><th>Cost</th></tr>
-<tr><td>observer</td><td><strong>None.</strong> δ→observer is a CAS-free segment</td><td>No</td><td>Axiom 15 proposition: δ-exclusive relation. Cost settlement agent (CAS) absent</td><td><strong>0 (free)</strong></td></tr>
-<tr><td>superposition</td><td><strong>None.</strong> CAS's reference index (Axiom 13). The index itself is a reference structure, not an operation target</td><td>No</td><td>Axiom 13: superposition is indexing. Indices have no direction enforcement. CAS "reads" the index but does not create irreversible transitions on the index axis itself</td><td><strong>0 (free)</strong></td></tr>
+<tr><td>observer</td><td><strong>Internal ref.</strong> Inside same OPERATOR bracket as CAS</td><td>No</td><td>No + crossing needed = cost 0. CAS references for free</td><td><strong>0 (free)</strong></td></tr>
+<tr><td>superposition</td><td><strong>Internal ref.</strong> Inside same OPERATOR bracket as CAS. Indexing (Axiom 13)</td><td>No</td><td>No + crossing needed = cost 0. CAS references for free</td><td><strong>0 (free)</strong></td></tr>
 <tr><td>time</td><td><strong>Yes.</strong> CAS Swap writes to time</td><td>Yes</td><td>Axiom 4: Swap crosses + and writes to DATA. Axiom 2 proposition: writing is irreversible. No refund</td><td><strong>+</strong></td></tr>
 <tr><td>space</td><td><strong>Yes.</strong> CAS Swap writes to space</td><td>Yes</td><td>Axiom 4: same. space is in the same DATA bracket as time</td><td><strong>+</strong></td></tr>
 <tr><td>R_LOCK</td><td><strong>Yes.</strong> R_LOCK ON at CAS Read</td><td>Yes</td><td>Axiom 5: R_LOCK is the first step of CAS FSM transition. Crosses + for cost +1 (Axiom 4). Irreversible (Axiom 2 proposition)</td><td><strong>+</strong></td></tr>
@@ -2003,7 +2018,7 @@ delta (returns to the beginning)</pre>
 
 <p><strong>Cost classification = (5, 2).</strong> The 5 irreversible axes incur cost (+). The 2 non-irreversible axes have zero cost (free). In mathematics, this classification corresponds to the metric signature (5, 2) of a quadratic form — cost + axes become positive signature, cost 0 axes become negative signature. The negative signature (−) does not mean "cost is subtracted" but "no cost occurs on this axis." This is the same principle as why the time axis has negative signature in Minkowski spacetime — axes without direction constraint receive negative signature.</p>
 
-<p>This (5, 2) partition is not arbitrary. It is not "5 were chosen and assigned as positive," but the unique result determined by CAS irreversibility (Axiom 2 proposition), cost structure (Axiom 4), and δ→observer CAS non-intervention (Axiom 15 proposition). No other partition can arise.</p>
+<p>This (5, 2) partition is not arbitrary. It is not "5 were chosen and assigned as positive," but the unique result determined by CAS irreversibility (Axiom 2 proposition), cost structure (Axiom 4: no order = 0), and observer/superposition internal reference (Axiom 15 proposition). No other partition can arise.</p>
 
 <h4>Step 3. The signature determines the symmetry group</h4>
 
@@ -2013,7 +2028,7 @@ delta (returns to the beginning)</pre>
 
 <ul>
 <li><strong>SO(5)</strong>: Internal rotation of the 5 irreversible axes (time, space, R, C, S). All 5 axes are "axes where CAS crosses + to generate cost +1." In cost space, paying +1 to time or +1 to R is the same +1, so rotations among these axes preserve the cost structure. In Axiom 1, DATA and OPERATOR are orthogonal, but on the scalar quantity of cost, the bracket distinction vanishes — cost does not know brackets.</li>
-<li><strong>SO(2)</strong>: Internal rotation of the 2 non-irreversible axes (observer, superposition). Both axes are "CAS-free, cost-unsettleable segments." Rotation between them preserves the non-irreversible structure.</li>
+<li><strong>SO(2)</strong>: Internal rotation of the 2 non-irreversible axes (observer, superposition). Both axes are "CAS does not intervene, cost-unsettleable segments." Rotation between them preserves the non-irreversible structure.</li>
 </ul>
 
 <p>SO(5) × SO(2) is the <strong>maximal compact subgroup</strong> of SO(5, 2). This too is uniquely determined by group theory.</p>
@@ -2075,7 +2090,7 @@ delta (returns to the beginning)</pre>
 <pre>Axiom 9 (DOF 7)
   + Axiom 2 proposition (irreversibility)
   + Axiom 4 (crosses + cost)
-  + Axiom 15 proposition (δ→observer CAS non-intervention)
+  + Axiom 15 proposition (observer/superposition internal reference, no order = cost 0)
   ─────────────────────────────
   → Metric signature (5, 2)         ← irreversible 5 axes (cost +), reversible 2 axes (cost 0)
   → SO(5,2)                    ← automatic from signature (group theory)
@@ -2276,7 +2291,7 @@ delta (returns to the beginning)</pre>
 
 <h4>Step 1. Total cost 13 confirmed (Axiom 6)</h4>
 
-<p>The total cost for CAS to create one ball (juim) in spacetime is exactly 13 (Axiom 6). Each cost comes from the cost axiom (Axiom 4), so there is no freedom: CAS R→C→S transition (+3) + bracket boundary (+1) + domain transfer (+3) + 4 writes (+4) + Swap→DATA commit (+1) + time timestamp (+1) = 13.</p>
+<p>The total cost for CAS to create one ball (juim) in spacetime is exactly 13 (Axiom 6). Read 8 (CAS R entry +1, R→C +1, C→S +1, bracket boundary +1, time→space +1, x access +1, x→y +1, y→z +1) + Write 5 (timestamp +1, x write +1, y write +1, z write +1, Swap→DATA commit +1) = 13. Each cost comes from the cost axiom (Axiom 4), so there is no freedom.</p>
 
 <h4>Step 2. Ball cost 4 + misc cost (labor 3 + transport 6) = 13 (Axiom 6)</h4>
 
@@ -2286,9 +2301,9 @@ delta (returns to the beginning)</pre>
 <table>
 <tr><th>Cost category</th><th>Value</th><th>Composition</th><th>Role</th></tr>
 <tr><td><strong>Ball cost</strong></td><td><strong>4</strong></td><td>3-axis juida (3) + timestamp (1)</td><td>Cost to maintain the ball in DATA. If this 4 is released, the ball vanishes (discrete release)</td></tr>
-<tr><td><strong>Labor cost</strong></td><td><strong>3</strong></td><td>CAS R→C→S transition (+3)</td><td>Cost of CAS's work. Operator's labor cost</td></tr>
-<tr><td><strong>Transport cost</strong></td><td><strong>6</strong></td><td>Bracket boundary (+1) + domain transfer (+3) + Swap commit (+1) + non-timestamp path (+1)</td><td>Path cost to create the ball. Shipping cost</td></tr>
-<tr><td><strong>Total</strong></td><td><strong>13</strong></td><td>Ball cost 4 + labor 3 + transport 6</td><td></td></tr>
+<tr><td><strong>Labor cost</strong></td><td><strong>3</strong></td><td>CAS R entry (+1) + R→C (+1) + C→S (+1)</td><td>CAS transition cost. Operator's + crossing</td></tr>
+<tr><td><strong>Transport cost</strong></td><td><strong>6</strong></td><td>Bracket boundary (+1) + time→space (+1) + x access (+1) + x→y (+1) + y→z (+1) + Swap→DATA commit (+1)</td><td>Path cost. Reaching DATA + commit</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>13</strong></td><td>Ball cost 4 + labor 3 + transport 6 = write 5 + read 8</td><td></td></tr>
 </table>
 </div>
 
@@ -2389,7 +2404,7 @@ delta (returns to the beginning)</pre>
 
 <div class="table-wrap">
 <table>
-<tr><th colspan="2" style="background:#161b22;color:#e6edf3">Structure (v1.3)</th></tr>
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">Structure (v1.4)</th></tr>
 <tr><th>Axiom term</th><th>Physics correspondence</th></tr>
 <tr><td>δ = firing bit (bit 7)</td><td>Consciousness (δ). Equality sign. Observation trigger</td></tr>
 <tr><td>observer = entry point (bit 0)</td><td>Observer. Filter. Pipeline start</td></tr>
@@ -2429,7 +2444,7 @@ delta (returns to the beginning)</pre>
 <tr><td>Magnitude of cost ($1/\ell^2$)</td><td>Force strength</td></tr>
 <tr><td>Type of cost ($(1-\ell/N)$)</td><td>Force type</td></tr>
 <tr><td>Contraction region (Axiom 11 proposition)</td><td>Potential</td></tr>
-<tr><td>isWritable contention (Axiom 11 proposition)</td><td>Interaction</td></tr>
+<tr><td>read contention (Axiom 11 proposition)</td><td>Interaction</td></tr>
 <tr><td>Asymmetry in step cost coefficient C (step gap)</td><td>Asymmetric meson correction (K±, D±, B±)</td></tr>
 <tr><td>Inter-entity interaction $C(1-\ell/N)/(4\pi \ell^2)$</td><td>Coulomb/Newton inverse-square law</td></tr>
 <tr><td>Crosses + cost > 0 (Axiom 4)</td><td>$\Delta x \cdot \Delta p \geq \hbar/2$ (uncertainty principle)</td></tr>
@@ -2471,7 +2486,7 @@ delta (returns to the beginning)</pre>
 <tr><td>δ=1 (firing)</td><td>Universe exists. Equality sign holds</td></tr>
 <tr><td>Compare true → Swap</td><td>Wavefunction collapse</td></tr>
 <tr><td>Compare false → superposition maintained</td><td>No decoherence</td></tr>
-<tr><td>ℓ=1 dense, N² accumulated</td><td>Black hole (event horizon = accumulated cost > escape cost)</td></tr>
+<tr><td>ℓ=1 dense, N² accumulated</td><td>Serialization freezing (ℓ→1, read contention maximum)</td></tr>
 <tr><td>Empty entity distortion (data type fixed)</td><td>Virtual particles / vacuum polarization</td></tr>
 <tr><td>Simultaneous = orthogonal</td><td>Entanglement. Distance-independent</td></tr>
 <tr><td>Duck typing consciousness (Axiom 15 proposition)</td><td>Consciousness = δ's behavior list. Unmeasurable domain</td></tr>
