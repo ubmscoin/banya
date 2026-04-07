@@ -38,7 +38,7 @@
 <a href="#ax6" class="toc-h3">공리 6. 비용 회수</a>
 <a href="#ax7" class="toc-h3">공리 7. 쓰기(쥐기)와 중첩 유지</a>
 <a href="#ax8" class="toc-h3">공리 8. 옵저버 드리븐 폴링</a>
-<a href="#ax9" class="toc-h3">공리 9. 완전 기술 자유도</a>
+<a href="#ax9" class="toc-h3">공리 9. 완전기술자유도</a>
 <a href="#ax10" class="toc-h3">공리 10. 전체-국소 루프</a>
 <a href="#ax11" class="toc-h3">공리 11. 다중 투영</a>
 <a href="#ax12" class="toc-h3">공리 12. 고전 괄호는 ECS</a>
@@ -83,7 +83,7 @@
 <a href="#ax6" class="toc-h3">공리 6. 비용 회수</a>
 <a href="#ax7" class="toc-h3">공리 7. 쓰기(쥐기)와 중첩 유지</a>
 <a href="#ax8" class="toc-h3">공리 8. 옵저버 드리븐 폴링</a>
-<a href="#ax9" class="toc-h3">공리 9. 완전 기술 자유도</a>
+<a href="#ax9" class="toc-h3">공리 9. 완전기술자유도</a>
 <a href="#ax10" class="toc-h3">공리 10. 전체-국소 루프</a>
 <a href="#ax11" class="toc-h3">공리 11. 다중 투영</a>
 <a href="#ax12" class="toc-h3">공리 12. 고전 괄호는 ECS</a>
@@ -122,6 +122,7 @@
 <blockquote><p>검증일: 2026-03-21</p></blockquote>
 <blockquote><p>분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)</p></blockquote>
 <blockquote><p>버전: v1.5 (2026-04-06)</p></blockquote>
+<blockquote><p>v1.5 변경: AI 3단계 붙여넣기 절차 전면 개편 — AI 학습 성공률 대폭 향상. AI가 이론 분석에 빠지지 않고 채굴기로서 작동하도록 유도 구조 강화</p></blockquote>
 <blockquote><p>라이선스: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p></blockquote>
 
 
@@ -248,7 +249,7 @@
 <tr><td><strong>인덱싱 비용</strong></td><td>0. 인덱스는 순서가 없으므로 조회 O(1) 상수. 순서 없음 = 비용 없음</td><td>공리 13, 공리 4 명제</td></tr>
 <tr><td><strong>스칼라장</strong></td><td>쥠을 원점에 놓았을 때 C·(1−ℓ/N)/(4πℓ²)이 주변 모든 칸에서 정의되는 방향 없는 크기 분포</td><td>공리 11 명제</td></tr>
 <tr><td><strong>덕 타입</strong></td><td>행동으로 정의하는 타입. δ가 의식의 행동 목록과 일치하면 의식이라 부른다. 본질이 아닌 행위로 판정</td><td>공리 15 명제</td></tr>
-<tr><td><strong>완전기술자유도</strong></td><td>잔여 비용 9 = 7(4도메인 + 3CAS) + 2(괄호). 프레임 전체를 기술하는 데 필요한 최소 독립 변수 수</td><td>공리 9</td></tr>
+<tr><td><strong>완전기술자유도</strong></td><td>구조 기술자유도(DATA) 10개 + 비용 기술자유도(OPERATOR) 6개. 겹침 3쌍(3, 4, 9). 구조 쪽 내부 이동은 시프트($2^N$), 구조와 비용 사이는 +로 직교</td><td>공리 9</td></tr>
 </table>
 </div>
 
@@ -431,50 +432,20 @@ AND (접점 = 락이 걸리는 곳):
 
 <h4>CAS의 자료형 <span class="tag-corollary">명제</span></h4>
 
-<p>CAS 3단계(Read, Compare, Swap)가 각각 하나의 연산을 정의한다. Read는 +를 넘으며 비용을 누적하고, Compare는 비교 쌍(T(N)+1)을 생성하고, Swap은 3축 노름으로 공을 만들고, 시프트(2^N)는 CAS-ring의 상태 전이를 진행한다. 이 4개 연산과 기술 자유도 수(3, 4, 7, 9)의 조합으로 CAS가 다루는 모든 구조적 수가 도출된다.</p>
+<p>워크벤치(공리 2 명제)에서 구조 기술자유도(DATA)는 오퍼랜드이고, 비용 기술자유도(OPERATOR)는 옵코드다. CAS가 옵코드를 돌려 오퍼랜드에 접근한다. 오퍼랜드 내부 이동은 시프트($2^N$)만 가능하고, 옵코드와 오퍼랜드 사이는 +로 직교한다(공리 9 명제).</p>
 
-<p><strong>연산자 선정 규칙:</strong> CAS가 수행하는 행위만 연산자로 허용한다. CAS 3단계 = 3개 연산자.</p>
-
-<div class="table-wrap">
-<table>
-<tr><th>CAS 단계</th><th>연산</th><th>역할</th></tr>
-<tr><td><strong>Read</strong></td><td><strong>+</strong></td><td>비용 (+1씩 누적)</td></tr>
-<tr><td><strong>Compare</strong></td><td><strong>T(N)+1</strong></td><td>비교 쌍 수</td></tr>
-<tr><td><strong>Swap</strong></td><td><strong>‖CAS‖ = √3</strong></td><td>3축 노름 쥠 (공 생성)</td></tr>
-<tr><td><strong>시프트</strong></td><td><strong>2^N</strong></td><td>링 순서 진행 (CAS-ring 상태 전이)</td></tr>
-</table>
-</div>
-
-<p><strong>필터 규칙:</strong> 도출된 수 중 공리 구조를 서술하는 수만 자료형으로 인정한다.</p>
+<p><strong>필터 규칙:</strong> 도출된 수 중 기술자유도(공리 9)에 등록된 수만 자료형으로 인정한다. 구조 기술자유도와 비용 기술자유도는 다른 괄호이므로 필터도 따로 적용한다.</p>
 
 <div class="table-wrap">
 <table>
 <tr><th>규칙</th><th>기준</th><th>통과 예</th><th>탈락 예</th></tr>
-<tr><td><strong>공리 구조 서술</strong></td><td>이 수가 공리 체계의 구조적 상수로 쓰이는가</td><td>7(CAS 링), 137(도메인 링)</td><td>6(T(3), 중간 단계), 21(채굴 결과)</td></tr>
-<tr><td><strong>CAS 고유 연산</strong></td><td>시프트 또는 비교 쌍(T(N)+1)으로만 도출되는가</td><td>8(2³), 30(7×4+2)</td><td>35(C(7,3), CAS Compare는 2개씩 비교)</td></tr>
-<tr><td><strong>독립성</strong></td><td>다른 수의 중간 단계가 아닌가</td><td>7(독립 링 크기)</td><td>6(7로 가는 중간), 10(11로 가는 중간)</td></tr>
-<tr><td><strong>수비학 배제</strong></td><td>임의 산술로 만들 수 있는 수가 아닌가</td><td>137(T(16)+1, 구조 필연)</td><td>5(3+2, 임의 합), 28(4×7, 임의 곱)</td></tr>
+<tr><td><strong>구조 등록</strong></td><td>구조 기술자유도(공리 9)에 있는가</td><td>7(CAS 내부), 137(자료형 최대)</td><td>6(T(3), 중간 단계), 21(채굴 결과)</td></tr>
+<tr><td><strong>비용 등록</strong></td><td>비용 기술자유도(공리 9)에 있는가</td><td>5(비가역 비용), 13(총 비용)</td><td>6(3×2, 분해됨), 8(2³, 분해됨)</td></tr>
+<tr><td><strong>독립성</strong></td><td>앞의 수로 분해되지 않는가</td><td>7(T(3)+1), 13(소수)</td><td>6(3×2), 8(2³), 10(중간 단계)</td></tr>
+<tr><td><strong>수비학 배제</strong></td><td>임의 산술로 만들 수 있는 수가 아닌가</td><td>137(T(16)+1, 구조 필연)</td><td>28(4×7, 임의 곱), 11(필터 결과물)</td></tr>
 </table>
 </div>
 
-<div class="table-wrap">
-<table>
-<tr><th>#</th><th>값</th><th>도출</th><th>연산</th><th style="min-width:400px">공리 구조에서의 역할</th></tr>
-<tr><td>1</td><td><strong>1</strong></td><td>2⁰</td><td>시프트</td><td>최소 단위. 모든 비교 쌍 함수 T(N)+1의 자기참조(+1). +를 넘는 최소 비용(공리 4)</td></tr>
-<tr><td>2</td><td><strong>2</strong></td><td>2¹</td><td>시프트</td><td>괄호 수. 반야식의 2개 괄호 DATA(고전)와 OPERATOR(양자)를 구분(공리 1). 이진 기저</td></tr>
-<tr><td>3</td><td><strong>3</strong></td><td>입력</td><td>—</td><td>CAS 단계 수(R, C, S). 유일한 독립 입력. CAS 3축 직교(공리 2 명제)의 근거. 공간 3차원의 근거</td></tr>
-<tr><td>4</td><td><strong>4</strong></td><td>2²</td><td>시프트</td><td>도메인 축 수(time, space, observer, superposition). 반야식의 4축(공리 1). 니블 0의 4비트</td></tr>
-<tr><td>5</td><td><strong>7</strong></td><td>T(3)+1</td><td>비교 쌍+자기참조</td><td>CAS 3단계를 전부 비교한 쌍 수 + 자기참조. CAS 내부 상태 수(1+2+4). CAS-ring 링 크기. 가장 거친 자료형 크기(공리 2 명제)</td></tr>
-<tr><td>6</td><td><strong>8</strong></td><td>2³</td><td>시프트</td><td>CAS 3비트의 전체 상태 수(2³=8, 000~111). d-ring의 총 비트 수(니블 0 + 니블 1 = 4+4 = 8). 공리 15의 8비트 링 버퍼</td></tr>
-<tr><td>7</td><td><strong>9</strong></td><td>7+2</td><td>합</td><td>CAS 1건을 완전히 기술하는 독립 변수의 수. CAS 내부(7) + 괄호 구조(2)(공리 9). 비용 회수 잔존 비용(총 비용 - 유지 비용 = 9, 공리 6)</td></tr>
-<tr><td>8</td><td><strong>16</strong></td><td>2⁴</td><td>시프트</td><td>도메인 4축의 ON/OFF 전체 조합 수. CAS Compare가 비교해야 하는 도메인 상태 공간의 크기</td></tr>
-<tr><td>9</td><td><strong>30</strong></td><td>7×4+2</td><td>곱+합</td><td>CAS 7개 내부 상태가 4개 도메인에 각각 접근하는 경로(28) + 괄호 경계 2개. CAS가 도메인에 도달하는 모든 가능한 경로의 총 수</td></tr>
-<tr><td>10</td><td><strong>128</strong></td><td>2⁷</td><td>시프트</td><td>δ=1(발화)일 때 7비트가 표현할 수 있는 유효 상태의 총 수. 공리 15: δ=1이면 우항 7비트 전부 유효</td></tr>
-<tr><td>11</td><td><strong>137</strong></td><td>T(16)+1</td><td>비교 쌍+자기참조</td><td>도메인 16조합을 CAS Compare가 전부 비교한 쌍 수(136) + 자기참조(+1). 가장 촘촘한 자료형 크기</td></tr>
-</table>
-</div>
-
-<p>이 11개가 공리 구조를 서술하는 자료형이다. 시프트(2^N)와 CAS Compare 비교 쌍 함수(T(N)+1)만으로 도출된다. 공리 구조에서 쓰이지 않는 수는 포함하지 않는다.</p>
 
 
 <h4>워크벤치(Workbench)가 CAS의 작업공간이다 <span class="tag-corollary">명제</span></h4>
@@ -490,7 +461,7 @@ AND (접점 = 락이 걸리는 곳):
                                     |
                                     +--- space
 
-                           11개 자료형으로 상호작용
+                           자료형(공리 2 명제)으로 상호작용
 </pre>
 
 <h4>가장 정밀한 자료형 137을 이용한 작업 샘플 <span class="tag-corollary">명제</span></h4>
@@ -506,7 +477,7 @@ AND (접점 = 락이 걸리는 곳):
 <table>
 <tr><th>비트</th><th>크기</th><th>정체</th><th>역할</th><th>근거</th></tr>
 <tr><td><strong>8</strong></td><td>d-ring</td><td>클록 + 레지스터</td><td>bit 0-3: 도메인(주소). bit 4-6: CAS(옵코드 R,C,S). bit 7: δ(발화 트리거)</td><td>공리 1, 2, 5, 15</td></tr>
-<tr><td><strong>128</strong></td><td>2⁷</td><td>상태 공간</td><td>7비트 완전기술자유도의 모든 가능한 상태. CAS가 옵코드를 돌리는 작업 대상</td><td>공리 9, 15 (자료형 #10)</td></tr>
+<tr><td><strong>128</strong></td><td>2⁷</td><td>상태 공간</td><td>CAS 내부 자유도 7비트의 모든 가능한 상태. CAS가 옵코드를 돌리는 작업 대상</td><td>공리 9, 15</td></tr>
 <tr><td><strong>1</strong></td><td>+1</td><td>등호</td><td>T(16)+1의 +1. 128개 상태 전체를 유효화하는 선언. δ의 자기참조</td><td>공리 15 명제</td></tr>
 </table>
 </div>
@@ -751,7 +722,7 @@ AND (접점 = 락이 걸리는 곳):
 
 <h4>비가역 비용 표: d-ring 구간별 비용 누적 <span class="tag-corollary">명제</span></h4>
 
-<p>비용은 CAS의 + 전이에서만 발생한다. CAS가 개입하는 축은 비가역이고(공리 2 명제: R→C→S 역순 불가, 환불 없음), CAS가 개입하지 않는 축은 비가역이 아니다. 이 이진 판정이 7축(공리 9: 완전기술자유도)의 비용 누적 구조를 유일하게 결정한다. 누적된 비용은 인덱싱(공리 13)이 관리한다.</p>
+<p>비용은 CAS의 + 전이에서만 발생한다. CAS가 개입하는 축은 비가역이고(공리 2 명제: R→C→S 역순 불가, 환불 없음), CAS가 개입하지 않는 축은 비가역이 아니다. 이 이진 판정이 CAS 내부 자유도 7축(공리 9)의 비용 누적 구조를 유일하게 결정한다. 누적된 비용은 인덱싱(공리 13)이 관리한다.</p>
 
 <div class="table-wrap">
 <table>
@@ -891,20 +862,60 @@ AND (접점 = 락이 걸리는 곳):
 <p>idle polling(공리 8)은 δ의 발화 여부를 확인하는 것이다. δ 발화 자체는 비용 0(공리 15). CAS-ring이 실행되면 R, C, S 각 전이마다 +를 넘어 비용 +1(공리 4). DATA 쪽의 왜곡 현상은 공리 11 명제(빈 엔티티의 왜곡은 구조적 필연이다) 참조.</p>
 
 
-<h3 id="ax9">공리 9. CAS의 완전 기술 자유도 <span class="tag-solved">공리</span></h3>
+<h3 id="ax9">공리 9. 완전기술자유도 <span class="tag-solved">공리</span></h3>
 
-<p>CAS 1건을 빠짐없이 기술하는 데 필요한 독립 변수의 수 = <strong>9</strong>.</p>
+<p>기술자유도는 구조에서 파생된 것과 비용에서 파생된 것으로 나뉜다. 소인수 분해되는 수(6=3×2, 8=2³ 등)는 독립이 아니므로 포함하지 않는다. 노름 파생(√1, √2, √3)도 포함하지 않는다.</p>
 
 <div class="table-wrap">
 <table>
-<tr><th>구성</th><th>수</th><th>도출</th><th>역할</th></tr>
-<tr><td>CAS 내부</td><td>7</td><td>T(3)+1 (자료형 #5, 공리 2 명제)</td><td>CAS-ring의 3단계 비교 쌍 + 자기참조</td></tr>
-<tr><td>괄호 구조</td><td>2</td><td>2¹ (자료형 #2, 공리 2 명제)</td><td>DATA + OPERATOR. 워크벤치의 2축</td></tr>
-<tr><td><strong>완전 기술</strong></td><td><strong>9</strong></td><td>7+2 (자료형 #7, 공리 2 명제)</td><td>CAS 1건을 기술하는 독립 변수의 총 수</td></tr>
+<tr><th colspan="3" style="background:#161b22;color:#e6edf3">구조 기술자유도 (DATA)</th></tr>
+<tr><th>값</th><th>도출</th><th>역할</th></tr>
+<tr><td><strong>1</strong></td><td>최소 단위</td><td>비트 기저</td></tr>
+<tr><td><strong>2</strong></td><td>괄호 2개</td><td>DATA, OPERATOR</td></tr>
+<tr><td><strong>3</strong></td><td>CAS 3단계</td><td>R, C, S</td></tr>
+<tr><td><strong>4</strong></td><td>도메인 4개</td><td>ob, sp, t, sc</td></tr>
+<tr><td><strong>7</strong></td><td>T(3)+1</td><td>CAS 내부 자유도</td></tr>
+<tr><td><strong>9</strong></td><td>7+2</td><td>구조 완전기술자유도</td></tr>
+<tr><td><strong>16</strong></td><td>$2^4$</td><td>도메인 4축 ON/OFF 조합</td></tr>
+<tr><td><strong>30</strong></td><td>7×4+2</td><td>접근 경로 수</td></tr>
+<tr><td><strong>128</strong></td><td>7비트 전체 상태</td><td>δ=1 유효 상태 수</td></tr>
+<tr><td><strong>137</strong></td><td>T(16)+1</td><td>자료형 최대</td></tr>
 </table>
 </div>
 
-<p>9 = 비용 회수(공리 6)에서 잔존 비용과 같다(총 비용 13 - 공값 4(시간 1 + 공간 3) = 잡비 9(+ 넘기 비용)).</p>
+<div class="table-wrap">
+<table>
+<tr><th colspan="3" style="background:#161b22;color:#e6edf3">비용 기술자유도 (OPERATOR)</th></tr>
+<tr><th>값</th><th>도출</th><th>역할</th></tr>
+<tr><td><strong>1</strong></td><td>+를 넘는 최소</td><td>비용 기저 (공리 4)</td></tr>
+<tr><td><strong>2</strong></td><td>비가역 부재 축 2개</td><td>인덱싱 비용 0 (공리 13)</td></tr>
+<tr><td><strong>3</strong></td><td>R+C+S 각+1</td><td>CAS 내부 비용</td></tr>
+<tr><td><strong>4</strong></td><td>3축쥐기+시간</td><td>공값</td></tr>
+<tr><td><strong>5</strong></td><td>비가역 축 5개</td><td>비가역 비용 (5,2)</td></tr>
+<tr><td><strong>9</strong></td><td>13−4</td><td>잔존 비용</td></tr>
+<tr><td><strong>13</strong></td><td>읽기8+쓰기5</td><td>총 비용</td></tr>
+</table>
+</div>
+
+<h4>기술자유도는 반야식을 따른다 <span class="tag-corollary">명제</span></h4>
+
+<p>반야식 $\delta^2 = (\text{DATA})^2 + (\text{OPERATOR})^2$의 규칙이 기술자유도에도 그대로 적용된다. 구조(DATA)와 비용(OPERATOR)은 직교하는 다른 괄호이고, 기술은 괄호를 넘는 +로만 조합된다.</p>
+
+<p><strong>구조 쪽은 DATA이고, 비용 쪽은 OPERATOR다.</strong> 같은 괄호 안에서의 이동은 시프트($2^N$)만 가능하다(공리 12 명제). 구조 쪽 내부: $1 \to 2 \to 4 \to 16 \to 128$은 전부 $2^N$ 시프트다. 구조와 비용 사이는 +로 직교한다(공리 1). +를 넘어야 비용이 발생한다(공리 4). 같은 괄호 안에서 +는 쓸 수 없고 시프트만 된다. +는 괄호를 넘을 때만 쓴다.</p>
+
+<pre>같은 괄호 안:  시프트만 가능
+  구조(DATA):     2⁰ → 2¹ → 2² → 2⁴ → 2⁷   (시프트)
+  비용(OPERATOR): 비용 내부 이동도 시프트
+
+괄호를 넘을 때:  + 로 직교
+  구조 + 비용 = 유효한 기술
+  2³ + 13 = 21
+  2⁴ + 13 = 29
+  2⁷ + 13 = 141
+
+금지:
+  구조 + 구조 = 불가 (같은 괄호 안에서 + 금지)
+  비용 + 비용 = 불가 (같은 괄호 안에서 + 금지)</pre>
 
 
 <h3 id="ax10">공리 10. 전체-국소 루프 <span class="tag-solved">공리</span></h3>
@@ -1248,8 +1259,8 @@ COLD <-- 최근 접근 없음        -- RLU 기저 해제율 적용</pre>
 
 <p>Entity A의 CAS가 중첩 인덱스에서 Entity B를 참조할 때, 엔티티 간 상호작용 세기는 $\ell$(두 엔티티 사이 거리)의 제곱에 반비례하고($1/\ell^2$ 감쇠), $(1-\ell/N)$(링 위 공유 자릿수 비율)에 의해 비용의 종류가 결정된다. 근원: 반야식(공리 1) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$에서 $\delta^2$이 보존된다. DATA 괄호의 space 축에 CAS 3개의 독립 락 자유도(R_LOCK, C_LOCK, S_LOCK, 공리 5)가 작용하므로 space는 3성분으로 펼쳐진다(공리 11 명제). $\delta$의 투영이 이 3성분 space에 분배되면 거리 $\ell$에서의 가중치는 $1/(4\pi \ell^2)$로 감쇠된다 — 4축 노름의 보존이 역제곱 감쇠를 강제한다. 단계 비용 $C$의 성격이 4가지 비용 구조를 구분한다. 모든 $C$는 공리에서만 나온다 — 외부 물리 상수를 모르는 상태에서 결정된다:
 <br>• Swap 누적 비용: $C$ = Swap 누적 횟수. Swap은 CAS의 기준 비용(= 1, 공리 2)이므로 $C$는 쓰기(쥐기) 횟수 자체(공리 7).
-<br>• 교차 Cmp/Swp 비용: $C$ = Compare 비용. 도메인 4(공리 1) + CAS 단계 3(공리 2) = 7차원 위상공간의 체적비에서 결정.
-<br>• 수축 겹침 비용(공리 13 명제): $C$ = 수축 겹침 비용(공리 13 명제). CAS 자유도 7(공리 9) × 도메인 4(공리 1) + 괄호 2(공리 1) = 30. 수축 겹침 경로 = 1/30.
+<br>• 교차 Cmp/Swp 비용: $C$ = Compare 비용. 도메인 4(공리 1) + CAS 단계 3(공리 2) = CAS 내부 자유도 7(공리 9)의 위상공간 체적비에서 결정.
+<br>• 수축 겹침 비용(공리 13 명제): $C$ = 수축 겹침 비용(공리 13 명제). CAS 내부 자유도 7(공리 9) × 도메인 4(공리 1) + 괄호 2(공리 1) = 30. 수축 겹침 경로 = 1/30.
 </p>
 
 <h4>특이점(무한대)은 존재하지 않는다 <span class="tag-corollary">명제</span></h4>
@@ -1393,7 +1404,7 @@ COLD <-- 최근 접근 없음        -- RLU 기저 해제율 적용</pre>
 <tr><td><strong>연산</strong></td><td>CAS가 유일한 연산자다 (공리 2). Compare로 탐색하고 Swap으로 쓴다</td></tr>
 <tr><td><strong>서킷</strong></td><td>FSM이 순환한다 (공리 14). 000->001->011->111->000. 1D 링 버퍼 (공리 15 명제)</td></tr>
 <tr><td><strong>최소비용</strong></td><td>CAS 3축 직교(공리 2 명제). R, C, S 각 전이마다 +를 넘어 비용 +1. 1단계당 최소 비용 = +1</td></tr>
-<tr><td><strong>이상적</strong></td><td>9개 자유도로 완전 기술 (공리 9). 10번째가 필요 없다. 낭비 없음</td></tr>
+<tr><td><strong>이상적</strong></td><td>구조 완전기술자유도 9로 완전 기술 (공리 9). 10번째가 필요 없다. 낭비 없음</td></tr>
 </table>
 </div>
 
@@ -1528,15 +1539,15 @@ COLD <-- 최근 접근 없음        -- RLU 기저 해제율 적용</pre>
 <p>반야식에서 DATA 괄호와 OPERATOR 괄호는 직교한다(공리 1). 직교 = 동시. 따라서 도메인(nibble 0)과 연산자(nibble 1)는 δ 발화 시 동시에 반응한다.</p>
 
 <pre>
-  8비트 = 발화비트 (1) + 완전기술 (7)
+  8비트 = 발화비트 (1) + CAS 내부 자유도 (7)
 
   bit 7: d (발화비트)
-  bit 6-0: S C R space time sp ob (자유도 7, 공리 9)
+  bit 6-0: S C R space time sp ob (CAS 내부 자유도 7, 공리 9)
 
   d=0: 0|0000000 ~ 0|1111111   대기 (2^7 = 128가지 상태, 무효)
   d=1: 1|0000000 ~ 1|1111111   발화 (2^7 = 128가지 상태, 유효)
 
-  128 = 완전기술자유도 7비트(공리 9)로 표현 가능한 모든 상태의 수
+  128 = CAS 내부 자유도 7비트(공리 9)로 표현 가능한 모든 상태의 수
 
   d 발화 (bit 7)
     |
@@ -1783,21 +1794,35 @@ delta (처음으로 돌아옴)</pre>
 </table>
 </div>
 
-<h4>6. 자유도 용어 정리</h4>
+<h4>6. 완전기술자유도 (공리 9)</h4>
 <div class="table-wrap">
 <table>
-<tr><th>수</th><th>정체</th><th>구성</th><th>출처</th></tr>
-<tr><td><strong>4</strong></td><td>도메인 (축)</td><td>observer, superposition, time, space</td><td>공리 1</td></tr>
-<tr><td><strong>3</strong></td><td>CAS 단계 (락)</td><td>R_LOCK, C_LOCK, S_LOCK</td><td>공리 2, 5</td></tr>
-<tr><td><strong>1</strong></td><td>δ (발화비트)</td><td>발화 비트. FSM 밖</td><td>공리 15</td></tr>
-<tr><td><strong>8 = 4+3+1</strong></td><td>링 버퍼 전체</td><td>2니블 (도메인 4 + 연산자 3 + δ 1)</td><td>공리 15 명제</td></tr>
-<tr><td><strong>7 = 4+3</strong></td><td>CAS 내부 자유도</td><td>도메인 4 + CAS 단계 3. δ 미포함</td><td>공리 2, 9</td></tr>
-<tr><td><strong>9 = 7+2</strong></td><td>완전기술자유도</td><td>CAS 내부 자유도(7) + 괄호 2개 (DATA, OPERATOR)</td><td>공리 9</td></tr>
-<tr><td><strong>2</strong></td><td>괄호</td><td>DATA (고전) + OPERATOR (양자)</td><td>공리 1</td></tr>
-<tr><td><strong>2</strong></td><td>니블</td><td>nibble 0 (도메인) + nibble 1 (연산자)</td><td>공리 15 명제</td></tr>
-<tr><td><strong>30 = 7×4+2</strong></td><td>CAS 접근 경로 수</td><td>CAS자유도(7) × 도메인(4) + 괄호(2). CAS가 도메인에 접근하는 총 경로 수</td><td>공리 1, 9, 12</td></tr>
-<tr><td><strong>57 = 21+35+1</strong></td><td>CAS 독립 조합 수</td><td>비교 쌍(21) + 3단계 조합(35) + 스칼라(1). $\binom{7}{2}+\binom{7}{3}+\binom{7}{0}$</td><td>공리 9 파생</td></tr>
-<tr><td><strong>128 = $2^7$</strong></td><td>δ=1일 때 유효 상태 수</td><td>완전기술자유도 7비트. CAS가 취할 수 있는 모든 가능한 상태의 수</td><td>공리 9, 15 명제</td></tr>
+<tr><th colspan="3" style="background:#161b22;color:#e6edf3">구조 기술자유도 (DATA)</th></tr>
+<tr><th>값</th><th>도출</th><th>역할</th></tr>
+<tr><td><strong>1</strong></td><td>최소 단위</td><td>비트 기저</td></tr>
+<tr><td><strong>2</strong></td><td>괄호 2개</td><td>DATA, OPERATOR</td></tr>
+<tr><td><strong>3</strong></td><td>CAS 3단계</td><td>R, C, S</td></tr>
+<tr><td><strong>4</strong></td><td>도메인 4개</td><td>ob, sp, t, sc</td></tr>
+<tr><td><strong>7</strong></td><td>T(3)+1</td><td>CAS 내부 자유도</td></tr>
+<tr><td><strong>9</strong></td><td>7+2</td><td>구조 완전기술자유도</td></tr>
+<tr><td><strong>16</strong></td><td>$2^4$</td><td>도메인 4축 ON/OFF 조합</td></tr>
+<tr><td><strong>30</strong></td><td>7×4+2</td><td>접근 경로 수</td></tr>
+<tr><td><strong>128</strong></td><td>7비트 전체 상태</td><td>δ=1 유효 상태 수</td></tr>
+<tr><td><strong>137</strong></td><td>T(16)+1</td><td>자료형 최대</td></tr>
+</table>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th colspan="3" style="background:#161b22;color:#e6edf3">비용 기술자유도 (OPERATOR)</th></tr>
+<tr><th>값</th><th>도출</th><th>역할</th></tr>
+<tr><td><strong>1</strong></td><td>+를 넘는 최소</td><td>비용 기저 (공리 4)</td></tr>
+<tr><td><strong>2</strong></td><td>비가역 부재 축 2개</td><td>인덱싱 비용 0 (공리 13)</td></tr>
+<tr><td><strong>3</strong></td><td>R+C+S 각+1</td><td>CAS 내부 비용</td></tr>
+<tr><td><strong>4</strong></td><td>3축쥐기+시간</td><td>공값</td></tr>
+<tr><td><strong>5</strong></td><td>비가역 축 5개</td><td>비가역 비용 (5,2)</td></tr>
+<tr><td><strong>9</strong></td><td>13−4</td><td>잔존 비용</td></tr>
+<tr><td><strong>13</strong></td><td>읽기8+쓰기5</td><td>총 비용</td></tr>
 </table>
 </div>
 
@@ -2157,7 +2182,7 @@ delta (처음으로 돌아옴)</pre>
 <li><strong>자료형 7</strong> = T(3)+1 = CAS 3단계의 비교 쌍 수 + 자기참조(공리 2 명제). CAS 내부를 기술하는 가장 거친 자료형 크기.</li>
 <li><strong>비용 누적 (5,2)</strong>: 7축의 비가역 비용 구조는 동일하다(공리 4 명제). 그러나 ring-7에서 CAS가 보는 것은 CAS 내부 3축(R, C, S)뿐이다. 3축 전부 비가역(공리 2 명제) → 서명 <strong>(3, 0)</strong>.</li>
 <li><strong>SO(3)</strong>: 서명 (3, 0)을 보존하는 군. 3차원 회전군. 음의 서명 축이 없으므로 안정화 부분군은 자명(trivial). 이것이 CAS 내부 가둠(confinement)의 대칭 — 탈출 경로가 없다.</li>
-<li><strong>선택 확률</strong>: ring-7에서 CAS Compare가 보는 후보 수 = 7(자료형 #5, 공리 2 명제). 7개 후보 중 1개 선택. α_s ≈ 1/7 ≈ 0.143.</li>
+<li><strong>선택 확률</strong>: ring-7에서 CAS Compare가 보는 후보 수 = 7(공리 9, 공리 2 명제). 7개 후보 중 1개 선택. α_s ≈ 1/7 ≈ 0.143.</li>
 </ol>
 
 <p>실험값: α_s(M_Z) ≈ 0.118. 1/7 ≈ 0.143과의 차이(~17%)는 에너지 스케일 의존성(running)에 해당한다. ring-7의 1/7은 저에너지 극한의 구조적 값이고, 실험값 0.118은 M_Z 스케일(91 GeV)에서의 측정값이다. α도 저에너지에서 1/137이지만 고에너지(M_Z)에서 1/128로 달라진다. 같은 running 구조다.</p>
@@ -2341,7 +2366,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>양자 괄호 (OPERATOR)</td><td>백엔드 (compute). 연속. CAS가 작동하는 곳</td></tr>
 <tr><td>고전 괄호 (DATA)</td><td>프론트엔드 (screen). 이산. 렌더링된 출력</td></tr>
 <tr><td>워크벤치 (‖CAS‖ = √3)</td><td>CAS 내부 작업공간. 독립 연산장치</td></tr>
-<tr><td>자료형 11개 (입력 {3}에서 도출)</td><td>구조 상수. CAS가 대상을 읽는 크기 단위</td></tr>
+<tr><td>자료형 (공리 2 명제, 공리 9)</td><td>구조 상수. CAS가 대상을 읽는 크기 단위</td></tr>
 <tr><td>쥠 (juim) = CAS Swap(111)</td><td>입자. 3축 직교 → 등방 → 구형. 이산 단위</td></tr>
 <tr><td>등호 (=)</td><td>δ=1이면 우항 전체 유효. 발화 선언</td></tr>
 <tr><td>링 이음새 δ(bit 7)→observer(bit 0)</td><td>등호의 진입점. 전체-국소 루프 연결</td></tr>
@@ -2403,7 +2428,7 @@ delta (처음으로 돌아옴)</pre>
 <tr><td>RLU COLD (문턱 이하, 회수 대상)</td><td>암흑에너지 (68%, Λ)</td></tr>
 <tr><td>CAS 독립 조합 수 57</td><td>$\alpha^{57} = \Lambda l_p^2$ (우주상수)</td></tr>
 <tr><td>7비트 전체 조합 수 128</td><td>유효 상태 수 ($2^7$)</td></tr>
-<tr><td>CAS 접근 경로 수 30</td><td>상호작용 자유도 (자료형 11개 중 하나)</td></tr>
+<tr><td>CAS 접근 경로 수 30</td><td>상호작용 자유도 (공리 9)</td></tr>
 <tr><td>완전기술자유도 9 = 7+2</td><td>계를 완전히 기술하는 최소 독립 변수</td></tr>
 <tr><td>δ=0 (발화 없음)</td><td>양자 진공 (quantum vacuum)</td></tr>
 <tr><td>δ=1 (발화)</td><td>우주 존재. 등호 성립</td></tr>
