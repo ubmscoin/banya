@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko" translate="no">
+<html lang="en" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>결합상수 관계 -- 반야프레임 운영 보고서</title>
+<title>-- </title>
 <meta name="author" content="Han Hyukjin">
-<meta name="description" content="3개 비용 구조(Swap 누적/교차 Cmp·Swp/자기참조 직렬화)의 연결. D-28: sin²θ_W running(오차 0.005%). D-29: M_GUT = M_Z·α^(-19/3). D-30: 7/(2+9π) sin²θ_W 최간결(오차 0.0004%). D-34: (α_s·sin²θ_W)/α = 15/4(오차 0.37%). 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,결합상수,coupling constant,sin²θ_W,Weinberg angle,바인베르크 각,GUT,대통일,M_GUT,alpha_s,강결합상수,strong coupling,CAS,한혁진,Han Hyukjin">
-<meta property="og:title" content="결합상수 관계 -- 반야프레임">
-<meta property="og:description" content="3개 비용 구조의 삼각관계. sin²θ_W running 0.005%, 최간결 형태 0.0004%, 삼각관계 0.37%.">
+<meta name="description" content="3(Swap /Cmp·Swp/). D-28: sin²θ_W running(0.005%). D-29: M_GUT = M_Z·α^(-19/3). D-30: 7/(2+9π) sin²θ_W (0.0004%). D-34: (α_s·sin²θ_W)/α = 15/4(0.37%). .">
+<meta name="keywords" content="Banya,Banya Framework,coupling constant,sin²θ_W,Weinberg angle,GUT,M_GUT,alpha_s,strong coupling,CAS,Han Hyukjin">
+<meta property="og:title" content="-- ">
+<meta property="og:description" content="3. sin²θ_W running 0.005%, 0.0004%, 0.37%.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="결합상수 관계 -- 반야프레임">
-<meta name="twitter:description" content="결합상수 3개의 삼각관계를 CAS 비용 구조로 도출.">
+<meta name="twitter:title" content="-- ">
+<meta name="twitter:description" content="3CAS .">
 <meta name="robots" content="index, follow">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -30,199 +30,7 @@
 
 
 <!-- ========== 한국어 본문 ========== -->
-<div class="lang-ko" style="display:none">
-
-<!-- ===== TOC 사이드바 (데스크톱) ===== -->
-<div class="toc-side">
-<a href="#title" class="toc-h1">결합상수 관계</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<!-- ===== TOC 모바일 바 ===== -->
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-ko .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">결합상수 관계</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.lang-ko .toc-bar').classList.remove('open')">
-<a href="#title" class="toc-h1">결합상수 관계</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-
-<!-- ===== 부속 보고서 안내 ===== -->
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 종합 보고서</a>의 부속 보고서다.</p>
-
-
-<!-- ===== 1. 서두 ===== -->
-
-<h1 id="title">결합상수 관계</h1>
-
-<blockquote><p>반야프레임 운영 보고서</p></blockquote>
-<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>실행일: 2026-03-25</p></blockquote>
-
-
-<!-- 1-1. 질문 -->
-<h2 id="question">질문: 3개 비용 구조(Swap 누적 / 교차 Cmp·Swp / 자기참조 직렬화)는 어떻게 연결되는가?</h2>
-
-<p>표준모형의 3개 결합상수 -- 전자기력 $\alpha$, 약력 $\sin^2\theta_W$, 강력 $\alpha_s$ -- 는 각각 독립적으로 측정된다. 대통일이론(GUT)은 이들이 고에너지에서 하나로 합쳐진다고 예측하지만, 저에너지에서의 정확한 관계식은 알려져 있지 않다. 반야프레임은 CAS의 3개 비용 구조(Swap 누적, 교차 Compare-Swap, 자기참조 직렬화)가 이 3개 결합상수에 대응하며, 구체적 수치 관계를 도출한다.</p>
-
-
-<!-- 1-2. 상태 -->
-<h2 id="status">상태</h2>
-
-<p><span class="tag-discovery">발견</span></p>
-
-<p>4건 모두 발견 등급. 오차 범위: 0.0004% ~ 0.37%.</p>
-
-
-<!-- 1-3. 핵심 발견 -->
-<h2 id="discovery">핵심 발견</h2>
-
-<div class="discovery-block">
-<h4>D-28: sin²θ_W running 공식</h4>
-<div class="formula">$\sin^2\theta_W^{\text{run}} = \dfrac{3}{8} \cdot \dfrac{2}{\pi} \cdot \left(1 - \left(4 + \dfrac{1}{\pi}\right)\alpha\right) = 0.23121$</div>
-<p>관측값: $0.23122$, 오차: <span class="tag-solved">0.005%</span></p>
-<p>GUT 값 $3/8$에서 CAS running. $4 + 1/\pi$는 CAS 4도메인 + 원주 보정.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-29: GUT 에너지 스케일</h4>
-<div class="formula">$M_{\text{GUT}} = M_Z \cdot \alpha^{-19/3}$</div>
-<p>$19$ = SM 자유매개변수, $3$ = CAS 도메인. GUT 범위 내.</p>
-<p>대통일 에너지를 $\alpha$와 $M_Z$만으로 표현.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-30: sin²θ_W 최간결 형태</h4>
-<div class="formula">$\sin^2\theta_W = \dfrac{7}{2 + 9\pi} = 0.23122$</div>
-<p>관측값: $0.23122$, 오차: <span class="tag-solved">0.0004%</span></p>
-<p>$7$ = CAS 내부 상태, $9$ = 완전기술, $2$ = 괄호. 가장 간결한 형태.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-34: 세 결합상수의 삼각관계</h4>
-<div class="formula">$\dfrac{\alpha_s \cdot \sin^2\theta_W}{\alpha} = \dfrac{15}{4}$</div>
-<p>관측값: $3.736$, 도출값: $15/4 = 3.75$, 오차: <span class="tag-discovery">0.37%</span></p>
-<p>$15 = 3(\text{CAS}) \times 5(9-4)$. 세 비용 구조의 삼각관계.</p>
-</div>
-
-
-<!-- ===== 2. 본문: 라운드 1 ===== -->
-
-<h1 id="r1">라운드 1. CAS 비용 구조에서 결합상수 관계 도출</h1>
-
-<h3 id="r1-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>CAS 연산의 3개 비용 경로를 사용한다: (1) Swap 누적 비용 $\to \alpha$, (2) 교차 Compare-Swap 비용 $\to \sin^2\theta_W$, (3) 자기참조 직렬화 비용 $\to \alpha_s$.</p>
-
-
-<h3 id="r1-step2">2단계. 노름 치환</h3>
-
-<p>GUT 기준점 $\sin^2\theta_W = 3/8$에서 CAS running 보정을 적용한다.</p>
-
-<div class="math-block">
-<div class="math-row">$\sin^2\theta_W^{\text{run}} = \dfrac{3}{8} \cdot \dfrac{2}{\pi} \cdot (1 - c \cdot \alpha)$</div>
-<div class="math-legend">$c = 4 + 1/\pi$: CAS 4도메인 + 원주 보정 계수</div>
-</div>
-
-
-<h3 id="r1-step3">3단계. 상수 대입</h3>
-
-<p>기존 물리 상수를 대입한다.</p>
-
-<pre>α = 1/137.036 (미세구조상수)
-M_Z = 91.1876 GeV (Z 보손 질량)
-α_s(M_Z) = 0.1179 (강결합상수)
-sin²θ_W = 0.23122 (관측값)
-3/8 = 0.375 (GUT 기준값)
-19 = SM 자유매개변수 수
-3 = CAS 도메인 수</pre>
-
-
-<h3 id="r1-step4">4단계. 도메인 변환</h3>
-
-<p>각 발견의 수치를 계산한다.</p>
-
-<div class="math-block">
-<div class="math-row">D-28: $(3/8)(2/\pi)(1-(4+1/\pi)/137.036) = 0.23121$</div>
-<div class="math-row">D-29: $M_Z \cdot \alpha^{-19/3} = 91.19 \cdot 137.036^{19/3} \approx 10^{16}$ GeV</div>
-<div class="math-row">D-30: $7/(2+9\pi) = 7/30.274 = 0.23122$</div>
-<div class="math-row">D-34: $\alpha_s \cdot \sin^2\theta_W / \alpha = 0.1179 \times 0.23122 \times 137.036 = 3.736$</div>
-<div class="math-desc">D-28과 D-30은 동일한 $\sin^2\theta_W$를 서로 다른 경로로 도출. D-34는 세 상수의 비.</div>
-</div>
-
-
-<h3 id="r1-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">D-28: 도출 $0.23121$, 측정 $0.23122$, 오차 0.005%</div>
-<div class="math-row">D-29: $M_{\text{GUT}} \sim 10^{16}$ GeV, GUT 범위 내</div>
-<div class="math-row">D-30: 도출 $0.23122$, 측정 $0.23122$, 오차 0.0004%</div>
-<div class="math-row">D-34: 도출 $15/4 = 3.75$, 관측 $3.736$, 오차 0.37%</div>
-</div>
-
-<p>4건 모두 발견 등급. CAS 비용 구조가 3개 결합상수의 관계를 결정한다.</p>
-
-
-<!-- ===== 3. 부산물 ===== -->
-
-<h1 id="byproduct">부산물</h1>
-
-<p>없음</p>
-
-
-<!-- ===== 4. 미완 ===== -->
-
-<h1 id="incomplete">미완</h1>
-
-<p>없음</p>
-
-
-<!-- ===== 5. 총괄 ===== -->
-
-<h1 id="summary">총괄</h1>
-
-<table>
-<tr><th>카드</th><th>항목</th><th>결과</th><th>상태</th></tr>
-<tr><td>D-28</td><td>sin²θ_W running</td><td>$(3/8)(2/\pi)(1-(4+1/\pi)\alpha) = 0.23121$, 오차 0.005%</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-29</td><td>M_GUT 스케일</td><td>$M_Z \cdot \alpha^{-19/3}$, GUT 범위 내</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-30</td><td>sin²θ_W 최간결</td><td>$7/(2+9\pi) = 0.23122$, 오차 0.0004%</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-34</td><td>삼각관계</td><td>$(\alpha_s \cdot \sin^2\theta_W)/\alpha = 15/4$, 오차 0.37%</td><td><span class="tag-discovery">발견</span></td></tr>
-</table>
-
-</div><!-- /lang-ko -->
-
-
 <!-- ========== English Version ========== -->
-<div class="lang-en">
-
 <!-- ===== TOC Sidebar (Desktop) ===== -->
 <div class="toc-side">
 <a href="#title-en" class="toc-h1">Coupling Relations</a>
@@ -408,16 +216,8 @@ sin^2 theta_W = 0.23122 (observed)
 <tr><td>D-34</td><td>Triangular relation</td><td>$(\alpha_s \cdot \sin^2\theta_W)/\alpha = 15/4$, error 0.37%</td><td><span class="tag-discovery">Discovery</span></td></tr>
 </table>
 
-</div><!-- /lang-en -->
-
-
 <!-- ===== page-nav ===== -->
-<div class="page-nav lang-ko" style="display:none">
-<a href="../banya.html">종합 보고서</a>
-<a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
-<a href="../science_mine.html">과학 채굴 메뉴얼</a>
-</div>
+
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
 <a href="../predictions.html">Predictions</a>
@@ -427,37 +227,12 @@ sin^2 theta_W = 0.23122 (observed)
 
 
 <!-- ===== 푸터 ===== -->
-<div class="doc-footer lang-ko" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
-분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">결합상수 관계: 세 비용 구조의 삼각관계 도출</div>
-</div>
-</div>
-<div class="f-bottom">
-<a href="../banya.html">종합 보고서</a>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
-기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
-<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
+
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
+<b>Banya Framework (Banya Framework)</b><br>
+Inventor: Han Hyukjin (Hyukjin Han)<br>
 Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
 Alias: Buddha's Palm Framework<br>
 Classification: Axiom-Based Science Mining Engine

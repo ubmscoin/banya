@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko" translate="no">
+<html lang="en" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>α 내부 구조 -- 반야프레임 운영 보고서</title>
+<title>α -- </title>
 <meta name="author" content="Han Hyukjin">
-<meta name="description" content="왜 α = 1/137인가? Wyler 공식의 내부 구조. D-26: 9/(8π⁴) Wyler 공식 CAS 자체 유도(오차 0.00006%). D-31: 137 = T(16)+1 = T(2⁴)+1, 삼각수 구조 해명. 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,α 내부 구조,alpha structure,Wyler formula,Wyler 공식,9/(8π⁴),미세구조상수,fine structure constant,1/137,삼각수,triangular number,T(16),CAS,3비트,도메인 4축,한혁진,Han Hyukjin">
-<meta property="og:title" content="α 내부 구조 -- 반야프레임">
-<meta property="og:description" content="Wyler 공식 CAS 자체 유도(오차 0.00006%). 137 = T(16)+1 삼각수 구조 해명.">
+<meta name="description" content="α = 1/137? Wyler . D-26: 9/(8π⁴) Wyler CAS (0.00006%). D-31: 137 = T(16)+1 = T(2⁴)+1, . .">
+<meta name="keywords" content="Banya,Banya Framework,α alpha structure,Wyler formula,Wyler 9/(8π⁴),fine structure constant,1/137,triangular number,T(16),CAS,34Han Hyukjin">
+<meta property="og:title" content="α -- ">
+<meta property="og:description" content="Wyler CAS (0.00006%). 137 = T(16)+1 .">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="α 내부 구조 -- 반야프레임">
-<meta name="twitter:description" content="Wyler 공식 CAS 자체 유도. 137 = T(2⁴)+1 삼각수 구조.">
+<meta name="twitter:title" content="α -- ">
+<meta name="twitter:description" content="Wyler CAS . 137 = T(2⁴)+1 .">
 <meta name="robots" content="index, follow">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -30,177 +30,7 @@
 
 
 <!-- ========== 한국어 본문 ========== -->
-<div class="lang-ko" style="display:none">
-
-<!-- ===== TOC 사이드바 (데스크톱) ===== -->
-<div class="toc-side">
-<a href="#title" class="toc-h1">α 내부 구조</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<!-- ===== TOC 모바일 바 ===== -->
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-ko .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">α 내부 구조</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.lang-ko .toc-bar').classList.remove('open')">
-<a href="#title" class="toc-h1">α 내부 구조</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-
-<!-- ===== 부속 보고서 안내 ===== -->
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 종합 보고서</a>의 부속 보고서다.</p>
-
-
-<!-- ===== 1. 서두 ===== -->
-
-<h1 id="title">α 내부 구조</h1>
-
-<blockquote><p>반야프레임 운영 보고서</p></blockquote>
-<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>실행일: 2026-03-25</p></blockquote>
-
-
-<!-- 1-1. 질문 -->
-<h2 id="question">질문: 왜 α = 1/137인가? Wyler 공식의 내부 구조는 무엇인가?</h2>
-
-<p>미세구조상수 $\alpha \approx 1/137.036$은 전자기력의 세기를 결정하는 무차원 상수다. 파인만은 이 숫자를 "물리학 최대의 미스터리"라 불렀다. 1969년 Armand Wyler가 $\alpha$를 기하학적 체적비로 유도하는 공식을 제시했으나, 그 내부 구조 -- 왜 하필 그런 조합인지 -- 는 설명되지 않았다. 반야프레임은 CAS 도메인 구조에서 Wyler 공식이 자연스럽게 나오며, 137이라는 숫자가 도메인 4축의 삼각수 구조임을 보인다.</p>
-
-
-<!-- 1-2. 상태 -->
-<h2 id="status">상태</h2>
-
-<p><span class="tag-discovery">발견</span></p>
-
-<p>D-26: Wyler 공식 CAS 자체 유도, 오차 0.00006%. D-31: 137 = T(16)+1, 도메인 4축 삼각수 구조 해명.</p>
-
-
-<!-- 1-3. 핵심 발견 -->
-<h2 id="discovery">핵심 발견</h2>
-
-<div class="discovery-block">
-<h4>D-26: Wyler 공식 CAS 자체 유도</h4>
-<div class="formula">$\alpha = \dfrac{9}{8\pi^4} \cdot \dfrac{\pi^{5/2} \cdot 2^4}{[\Gamma(1/4)]^4}$</div>
-<p>관측값: $1/\alpha = 137.035\,999\,177$, 도출값: $1/\alpha = 137.036\,082$, 오차: <span class="tag-solved">0.00006%</span></p>
-<p>CAS 도메인 4 + 내부 자유도 3 = 7차원 위상공간의 체적비로 Wyler 공식이 CAS 구조에서 직접 나온다.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-31: 137 = T(16) + 1</h4>
-<div class="formula">$137 = T(16) + 1 = \dfrac{16 \times 17}{2} + 1 = 136 + 1$</div>
-<p>$2^4 = 16$ = 도메인 4축(time, space, observer, superposition)의 조합 수</p>
-<p>"왜 137인가"에 대한 해명: 삼각수 $T(2^4) + 1$. 도메인 4축 구조가 결정한다.</p>
-</div>
-
-
-<!-- ===== 2. 본문: 라운드 1 ===== -->
-
-<h1 id="r1">라운드 1. Wyler 공식의 CAS 구조 유도</h1>
-
-<h3 id="r1-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>CAS 4축 구조의 도메인 수 = 4. 각 도메인의 내부 자유도 = CAS 3비트(R, C, S). 도메인 4축 조합 = 2⁴ = 16. 반야식에서 4축 직교 구조를 사용한다.</p>
-
-
-<h3 id="r1-step2">2단계. 노름 치환</h3>
-
-<p>CAS 4도메인을 D=4, 내부 자유도 n=3으로 치환. 위상공간 차원 = D + n = 7.</p>
-
-<div class="math-block">
-<div class="math-row">$\alpha = \dfrac{V(\text{SO}(5,2)/\text{SO}(5) \times \text{SO}(2))}{V(S^5)}$</div>
-<div class="math-legend">SO(5,2): 7차원 대칭공간, $S^5$: 5차원 구면</div>
-</div>
-
-
-<h3 id="r1-step3">3단계. 상수 대입</h3>
-
-<p>체적비 계산에 필요한 감마함수 값을 대입한다.</p>
-
-<pre>D = 4 (CAS 도메인 수)
-n = 3 (내부 자유도: R, C, S)
-D + n = 7 (위상공간 차원)
-Γ(1/4) = 3.625610...
-π = 3.141592...</pre>
-
-
-<h3 id="r1-step4">4단계. 도메인 변환</h3>
-
-<p>체적비를 Wyler 공식 형태로 정리한다.</p>
-
-<div class="math-block">
-<div class="math-row">$\alpha = \dfrac{9}{8\pi^4} \cdot \dfrac{\pi^{5/2} \cdot 2^4}{[\Gamma(1/4)]^4}$</div>
-<div class="math-desc">9/(8π⁴): CAS 구조 계수. π^(5/2): 구면 체적. 2⁴: 도메인 4축 조합 수. [Γ(1/4)]⁴: 4도메인 경계.</div>
-</div>
-
-
-<h3 id="r1-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">도출값: $1/\alpha = 137.036\,082$</div>
-<div class="math-row">측정값: $1/\alpha = 137.035\,999\,177$</div>
-<div class="math-row">오차: 0.00006%</div>
-</div>
-
-<p>Wyler 공식이 CAS 도메인 구조에서 직접 유도된다. 부산물로 D-31 삼각수 구조: $137 = T(16) + 1 = T(2^4) + 1$. 도메인 4축(time+space+observer+superposition) = 16개 조합의 삼각수 +1이 정수부 137을 결정한다.</p>
-
-
-<!-- ===== 3. 부산물 ===== -->
-
-<h1 id="byproduct">부산물</h1>
-
-<p>없음</p>
-
-
-<!-- ===== 4. 미완 ===== -->
-
-<h1 id="incomplete">미완</h1>
-
-<p>없음</p>
-
-
-<!-- ===== 5. 총괄 ===== -->
-
-<h1 id="summary">총괄</h1>
-
-<table>
-<tr><th>카드</th><th>항목</th><th>결과</th><th>상태</th></tr>
-<tr><td>D-26</td><td>Wyler 공식 CAS 자체 유도</td><td>$1/\alpha = 137.036\,082$, 오차 0.00006%</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-31</td><td>137 = T(16)+1 삼각수 구조</td><td>$137 = T(2^4)+1$, 도메인 4축 해명</td><td><span class="tag-discovery">발견</span></td></tr>
-</table>
-
-</div><!-- /lang-ko -->
-
-
 <!-- ========== English Version ========== -->
-<div class="lang-en">
-
 <!-- ===== TOC Sidebar (Desktop) ===== -->
 <div class="toc-side">
 <a href="#title-en" class="toc-h1">Alpha Internal Structure</a>
@@ -364,16 +194,8 @@ pi = 3.141592...</pre>
 <tr><td>D-31</td><td>137 = T(16)+1 triangular number structure</td><td>$137 = T(2^4)+1$, domain 4-axis explained</td><td><span class="tag-discovery">Discovery</span></td></tr>
 </table>
 
-</div><!-- /lang-en -->
-
-
 <!-- ===== page-nav ===== -->
-<div class="page-nav lang-ko" style="display:none">
-<a href="../banya.html">종합 보고서</a>
-<a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
-<a href="../science_mine.html">과학 채굴 메뉴얼</a>
-</div>
+
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
 <a href="../predictions.html">Predictions</a>
@@ -383,37 +205,12 @@ pi = 3.141592...</pre>
 
 
 <!-- ===== 푸터 ===== -->
-<div class="doc-footer lang-ko" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
-분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">$\alpha$ 내부 구조: Wyler 공식 CAS 자체 유도, 오차 0.00006%</div>
-</div>
-</div>
-<div class="f-bottom">
-<a href="../banya.html">종합 보고서</a>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
-기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
-<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
+
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
+<b>Banya Framework (Banya Framework)</b><br>
+Inventor: Han Hyukjin (Hyukjin Han)<br>
 Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
 Alias: Buddha's Palm Framework<br>
 Classification: Axiom-Based Science Mining Engine

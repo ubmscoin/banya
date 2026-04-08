@@ -438,7 +438,7 @@ def generate_pdf(html_path):
 
     cmd = [
         "google-chrome",
-        "--headless",
+        "--headless=new",
         "--disable-gpu",
         "--no-sandbox",
         "--disable-software-rasterizer",

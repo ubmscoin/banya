@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko" translate="no">
+<html lang="en" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>d-ring 차원 테이블과 스핀 양자화 — 반야프레임 운영 보고서</title>
+<title>d-ring — </title>
 <meta name="author" content="Han Hyukjin">
-<meta name="description" content="CAS 3비트 TOCTOU_LOCK에서 스핀 양자화, 스핀-통계, 파울리 배타, g=2, 궤도 양자수를 도출. SP=TOCTOU_LOCK, k참여 비트→spin=k/2. 페르미온=CAS(0,1), 보존=CAS(N,N+1). g=2는 Read+Compare 2단계. 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,Axiom-Based Science Mining Engine,한혁진,Han Hyukjin,spin quantization,스핀 양자화,spin-statistics theorem,스핀-통계 정리,Pauli exclusion,파울리 배타 원리,g-factor,g인자,g=2,orbital angular momentum,궤도 각운동량,angular momentum quantization,각운동량 양자화,TOCTOU,CAS,Compare-And-Swap,fermion,페르미온,boson,보존,ring buffer,링 버퍼,d-ring dimension table,d-ring 차원 테이블,spin 1/3,fractional spin">
-<meta property="og:title" content="d-ring 차원 테이블과 스핀 양자화 — 반야프레임">
-<meta property="og:description" content="CAS 3비트에서 스핀 양자화 도출. SP=TOCTOU_LOCK. g=2=Read+Compare. 궤도각운동량=링 정수 랩.">
+<meta name="description" content="CAS 3TOCTOU_LOCK-g=2, . SP=TOCTOU_LOCK, k→spin=k/2. =CAS(0,1), =CAS(N,N+1). g=2Read+Compare 2. .">
+<meta name="keywords" content="Banya,Banya Framework,Axiom-Based Science Mining Engine,Han Hyukjin,spin quantization,spin-statistics theorem,-Pauli exclusion,g-factor,gg=2,orbital angular momentum,angular momentum quantization,TOCTOU,CAS,Compare-And-Swap,fermion,boson,ring buffer,d-ring dimension table,d-ring spin 1/3,fractional spin">
+<meta property="og:title" content="d-ring — ">
+<meta property="og:description" content="CAS 3. SP=TOCTOU_LOCK. g=2=Read+Compare. =.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="d-ring 차원 테이블과 스핀 양자화 — 반야프레임">
-<meta name="twitter:description" content="SP=TOCTOU_LOCK 3비트. spin=k/2. g=2=Read+Compare. L=정수 랩.">
+<meta name="twitter:title" content="d-ring — ">
+<meta name="twitter:description" content="SP=TOCTOU_LOCK 3. spin=k/2. g=2=Read+Compare. L=.">
 <meta name="robots" content="index, follow">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -28,48 +28,7 @@
 
 <div class="lang-switch"><a href="../../discovery/dimension_stack.html" class="lang-btn">KR</a></div>
 
-<div class="toc-side lang-ko" style="display:none">
-<a href="#title" class="toc-h1">d-ring 차원 테이블과 스핀 양자화</a>
-<a href="#question" class="toc-h2">질문: 왜 스핀은 반정수인가</a>
-<a href="#status" class="toc-h2">현재 상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">R1. 스핀 양자화</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r2" class="toc-h1">R2. 스핀-통계 정리</a>
-<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r2-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r3" class="toc-h1">R3. 파울리 배타 원리</a>
-<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r3-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r3-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r4" class="toc-h1">R4. 스핀 1/3 불가능</a>
-<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r4-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r5" class="toc-h1">R5. g=2 (Read+Compare)</a>
-<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r5-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r5-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r5-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r6" class="toc-h1">R6. 궤도 양자수 L</a>
-<a href="#r6-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r6-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r6-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r6-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r6-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+
 
 <div class="toc-side lang-en">
 <a href="#en-title" class="toc-h1">Dimension Stack & Spin Quantization</a>
@@ -114,24 +73,7 @@
 <a href="#en-summary" class="toc-h1">Summary</a>
 </div>
 
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">d-ring 차원 테이블과 스핀 양자화</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" style="display:none" onclick="this.classList.remove('show');document.querySelector('.toc-bar').classList.remove('open')">
-<a href="#title" class="toc-h1">d-ring 차원 테이블과 스핀 양자화</a>
-<a href="#question" class="toc-h2">질문: 왜 스핀은 반정수인가</a>
-<a href="#status" class="toc-h2">현재 상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">R1. 스핀 양자화</a>
-<a href="#r2" class="toc-h1">R2. 스핀-통계 정리</a>
-<a href="#r3" class="toc-h1">R3. 파울리 배타 원리</a>
-<a href="#r4" class="toc-h1">R4. 스핀 1/3 불가능</a>
-<a href="#r5" class="toc-h1">R5. g=2</a>
-<a href="#r6" class="toc-h1">R6. 궤도 양자수 L</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+
 <div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar').classList.remove('open')">
 <a href="#en-title" class="toc-h1">Dimension Stack & Spin Quantization</a>
 <a href="#en-question" class="toc-h2">Question</a>
@@ -149,370 +91,7 @@
 
 
 <!-- ========== 한국어 본문 ========== -->
-<div class="lang-ko" style="display:none">
-
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 스핀 양자화와 관련 양자역학 구조의 CAS 기원을 다룬다.</p>
-
-
-<!-- ===== 1. 서두 ===== -->
-
-<h1 id="title">d-ring 차원 테이블과 스핀 양자화</h1>
-
-<blockquote><p>반야프레임 운영 보고서</p></blockquote>
-<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>실행일: 2026-03-27</p></blockquote>
-<blockquote><p>방법: 반야프레임 5단계 재귀 대입, 6라운드 실행</p></blockquote>
-<blockquote><p>대상: 스핀 양자화, 스핀-통계, 파울리 배타, 스핀 1/3 불가능, g=2, 궤도 양자수 L</p></blockquote>
-
-
-<h2 id="question">질문: 왜 스핀은 반정수인가</h2>
-
-<p>양자역학에서 스핀은 $0, 1/2, 1, 3/2, 2, \ldots$만 허용된다. 왜 1/3이나 0.7은 없는가? 표준 답변은 "회전군 SU(2)의 표현론"이지만, 이것은 수학적 기술이지 물리적 이유가 아니다. 페르미온은 왜 배타적이고, 보존은 왜 누적되는가? g인자는 왜 정확히 2인가? 100년간 "그렇게 관측된다"는 것 외에 구조적 이유는 없었다.</p>
-
-<p>반야프레임은 이 모든 것을 CAS(Compare-And-Swap) 연산의 비트 구조로 설명한다. SP(Spin Pointer) = TOCTOU_LOCK이며 3비트이고, 각 비트는 0 또는 1이다. k개의 비트가 참여하면 spin = k/2이다.</p>
-
-
-<h2 id="status">현재 상태</h2>
-
-<p><span class="tag-discovery">발견</span></p>
-
-<p>스핀 양자화, 스핀-통계, 파울리 배타, g=2, 궤도 양자수 모두 CAS 비트 구조에서 도출. 스핀 1/3이 불가능한 이유 확정.</p>
-
-
-<h2 id="discovery">핵심 발견</h2>
-
-<div class="discovery-block">
-<h4>스핀 양자화: spin = k/2</h4>
-<div class="formula">SP = TOCTOU_LOCK, 3 bits, each $\in \{0, 1\}$. $k$ participating bits $\Rightarrow$ spin $= k/2$</div>
-<p>비트는 0 또는 1만 가능. 따라서 스핀은 0, 1/2, 1, 3/2만 허용. 연속값 불가능.</p>
-</div>
-
-<div class="discovery-block">
-<h4>스핀-통계: CAS 원자성</h4>
-<div class="formula">Fermion: CAS(expected=0, new=1) = exclusive. Boson: CAS(expected=N, new=N+1) = cumulative.</div>
-<p>반정수 스핀 = CAS가 빈 슬롯(0)에만 쓰기 가능 = 배타적. 정수 스핀 = CAS가 기존 값(N)에 누적 가능.</p>
-</div>
-
-<div class="discovery-block">
-<h4>파울리 배타: CAS Compare 실패</h4>
-<div class="formula">CAS(expected=0, new=1): if current $\neq$ 0, Compare fails $\Rightarrow$ Swap rejected</div>
-<p>같은 양자 상태에 두 페르미온 = 두 번째 CAS의 Compare가 실패. 이미 1인 슬롯에 0을 기대하므로.</p>
-</div>
-
-<div class="discovery-block">
-<h4>스핀 1/3 불가능</h4>
-<div class="formula">SP 3 bits: $k \in \{0, 1, 2, 3\}$ $\Rightarrow$ spin $\in \{0, 1/2, 1, 3/2\}$. $k=2/3$ is not an integer $\Rightarrow$ impossible.</div>
-<p>비트의 참여 수는 정수만 가능. 1/3 비트가 참여하는 것은 물리적으로 무의미.</p>
-</div>
-
-<div class="discovery-block">
-<h4>g=2: Read + Compare</h4>
-<div class="formula">CAS cycle: Read → Compare → Swap. 스핀을 관측하는 단계 = Read + Compare = 2단계. Swap은 관측하지 않는다.</div>
-<p>g인자 = 스핀을 관측하는 CAS 단계 수 = 2. 디랙 방정식의 g=2가 CAS의 Read+Compare에서 나온다.</p>
-</div>
-
-<div class="discovery-block">
-<h4>궤도 양자수 L: 링 정수 랩</h4>
-<div class="formula">$L = 0, 1, 2, \ldots$ = 링 버퍼 위의 닫힌 경로 = 정수 바퀴</div>
-<p>링 버퍼에서 닫힌 경로는 정수 바퀴만 가능. 반바퀴(1/2 랩)는 닫히지 않는다. 따라서 L은 정수.</p>
-</div>
-
-
-<!-- ===== R1. 스핀 양자화 ===== -->
-
-<h1 id="r1">라운드 1. 스핀 양자화: spin = k/2</h1>
-
-<h3 id="r1-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>스핀은 observer 축의 내부 자유도이다. observer가 상태를 읽을 때 사용하는 락(lock)의 구조가 스핀을 결정한다.</p>
-
-<h3 id="r1-step2">2단계. 노름 치환</h3>
-
-<div class="math-block">
-<div class="math-row">$\text{observer} \to \text{SP}(\text{TOCTOU\_LOCK})$</div>
-<div class="math-row">$\text{SP} = [b_2, b_1, b_0]$, &nbsp; $b_i \in \{0, 1\}$</div>
-<div class="math-legend">SP = Spin Pointer. TOCTOU = Time-Of-Check-To-Time-Of-Use. 3비트 락.</div>
-</div>
-
-<p>observer가 상태를 읽고(Check) 쓰는(Use) 사이의 원자성을 보장하는 락이 SP이다. 이 락은 3비트이다.</p>
-
-<h3 id="r1-step3">3단계. 상수 대입</h3>
-
-<pre>SP bits = 3
-각 비트: 0 또는 1 (참여/비참여)
-참여 비트 수 k = 0, 1, 2, 3
-스핀 단위 = 1/2 (기본 양자)</pre>
-
-<h3 id="r1-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$\text{spin} = \dfrac{k}{2}$, &nbsp; $k \in \{0, 1, 2, 3\}$</div>
-<div class="math-desc">k개의 비트가 TOCTOU_LOCK에 참여 → 스핀 = k/2.</div>
-<div class="math-row">$k=0 \Rightarrow$ spin $0$ (스칼라, 힉스)</div>
-<div class="math-row">$k=1 \Rightarrow$ spin $1/2$ (페르미온: 전자, 쿼크)</div>
-<div class="math-row">$k=2 \Rightarrow$ spin $1$ (게이지 보존: 광자, W, Z, 글루온)</div>
-<div class="math-row">$k=3 \Rightarrow$ spin $3/2$ (Δ 바리온, 그래비티노)</div>
-</div>
-
-<h3 id="r1-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">도출: spin $\in \{0, 1/2, 1, 3/2\}$ (3비트 한계)</div>
-<div class="math-row">관측: 자연에서 발견된 기본 입자의 스핀 = $\{0, 1/2, 1, 3/2, 2\}$</div>
-<div class="math-row">spin $2$ = 중력자 = SP 3비트를 넘어서는 복합 구조</div>
-</div>
-
-<p>3비트 SP로 spin 0~3/2을 커버한다. spin 2(중력자)는 두 SP의 결합($3/2 + 1/2$ 또는 $1 + 1$)으로 설명 가능. 핵심은 비트의 이산성이 스핀의 양자화를 강제한다는 것이다.</p>
-
-
-<!-- ===== R2. 스핀-통계 ===== -->
-
-<h1 id="r2">라운드 2. 스핀-통계 정리: CAS 원자성</h1>
-
-<h3 id="r2-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>스핀-통계 연결은 observer(관측)와 superposition(겹침)의 관계에서 나온다. CAS의 원자성 유형이 통계를 결정한다.</p>
-
-<h3 id="r2-step2">2단계. 노름 치환</h3>
-
-<div class="math-block">
-<div class="math-row">Fermion: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$</div>
-<div class="math-row">Boson: $\text{CAS}(\text{expected}=N, \;\text{new}=N+1)$</div>
-<div class="math-legend">expected = Compare 단계의 기대값. new = Swap 단계의 새 값.</div>
-</div>
-
-<p>페르미온의 CAS는 "빈 슬롯(0)을 기대하고 1을 쓴다." 보존의 CAS는 "현재값(N)을 기대하고 N+1을 쓴다."</p>
-
-<h3 id="r2-step3">3단계. 상수 대입</h3>
-
-<pre>페르미온 CAS: expected = 0 (빈 상태만 허용)
-              new = 1 (단일 점유)
-보존 CAS:    expected = N (현재 점유수)
-              new = N+1 (누적 가능)</pre>
-
-<h3 id="r2-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">Fermion CAS: 빈 슬롯에만 쓰기 $\Rightarrow$ 하나의 양자 상태에 최대 1개 $\Rightarrow$ 페르미-디랙 통계</div>
-<div class="math-row">Boson CAS: 기존 위에 누적 $\Rightarrow$ 하나의 양자 상태에 무한 개 $\Rightarrow$ 보즈-아인슈타인 통계</div>
-<div class="math-desc">CAS의 expected 값이 통계를 결정한다. 0이면 배타적, N이면 누적적.</div>
-</div>
-
-<h3 id="r2-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">도출: 반정수 스핀 ↔ CAS(0,1) ↔ 페르미-디랙</div>
-<div class="math-row">도출: 정수 스핀 ↔ CAS(N,N+1) ↔ 보즈-아인슈타인</div>
-<div class="math-row">관측: 스핀-통계 정리 (실험적으로 예외 없음)</div>
-</div>
-
-<p>스핀-통계 연결의 CAS 기원: 반정수 스핀 = 홀수 비트 참여 = 빈 슬롯만 기대(배타적). 정수 스핀 = 짝수 비트 참여 = 현재값 위에 누적 가능. CAS의 expected 파라미터가 통계를 결정한다.</p>
-
-
-<!-- ===== R3. 파울리 배타 ===== -->
-
-<h1 id="r3">라운드 3. 파울리 배타 원리: CAS Compare 실패</h1>
-
-<h3 id="r3-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>파울리 배타 = observer가 같은 상태를 두 번 점유하려 할 때 실패. CAS의 Compare 단계에서 거부된다.</p>
-
-<h3 id="r3-step2">2단계. 노름 치환</h3>
-
-<div class="math-block">
-<div class="math-row">첫 번째 페르미온: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$ → 성공. 슬롯이 0→1.</div>
-<div class="math-row">두 번째 페르미온: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$ → 실패. 현재값 = 1 ≠ expected = 0.</div>
-<div class="math-legend">Compare 단계: current vs expected. 불일치 시 Swap 거부.</div>
-</div>
-
-<h3 id="r3-step3">3단계. 상수 대입</h3>
-
-<pre>양자 상태 |n, l, m_l, m_s⟩ = CAS 주소
-첫 번째 전자: CAS(0, 1) → 성공 → 슬롯 = 1
-두 번째 전자 (같은 상태): CAS(0, 1) → Compare 실패 → 거부</pre>
-
-<h3 id="r3-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$\text{Compare}(\text{current}=1, \;\text{expected}=0) \Rightarrow 1 \neq 0 \Rightarrow \text{Swap rejected}$</div>
-<div class="math-desc">CAS의 원자적 Compare 실패 = 파울리 배타 원리. 같은 양자수에 두 번째 페르미온이 들어갈 수 없다.</div>
-</div>
-
-<h3 id="r3-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">도출: 같은 양자 상태에 CAS(0,1) 두 번 실행 → 두 번째 Compare 실패</div>
-<div class="math-row">관측: 파울리 배타 원리 (실험적으로 예외 없음)</div>
-</div>
-
-<p>파울리 배타 원리는 공리가 아니라 CAS 연산의 필연적 결과이다. Compare-And-Swap에서 Compare가 실패하면 Swap은 일어나지 않는다. 이것이 "두 페르미온이 같은 양자 상태를 공유할 수 없다"의 구조적 이유이다.</p>
-
-
-<!-- ===== R4. 스핀 1/3 불가능 ===== -->
-
-<h1 id="r4">라운드 4. 스핀 1/3 불가능</h1>
-
-<h3 id="r4-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>SP는 3비트이며 각 비트는 0 또는 1이다. "2/3개의 비트가 참여한다"는 것은 의미가 없다.</p>
-
-<h3 id="r4-step2">2단계. 노름 치환</h3>
-
-<div class="math-block">
-<div class="math-row">spin $= k/2$, &nbsp; $k \in \mathbb{Z}$, &nbsp; $0 \leq k \leq 3$</div>
-<div class="math-row">spin $= 1/3 \Rightarrow k = 2/3 \notin \mathbb{Z}$ → 불가능</div>
-<div class="math-legend">비트 참여 수 k는 반드시 정수. 분수 비트는 존재하지 않는다.</div>
-</div>
-
-<h3 id="r4-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">도출: spin $\notin \{1/3, 1/4, 1/5, 2/5, \ldots\}$ (비정수 k 불가)</div>
-<div class="math-row">관측: 자연에서 스핀 1/3 입자는 단 한 번도 발견되지 않았다</div>
-</div>
-
-<p>SU(2) 표현론은 "스핀 1/3이 허용되지 않는다"고 말하지만 그 이유는 설명하지 않는다. CAS 비트 구조는 이유를 제공한다: 비트의 참여는 0개 또는 1개이지, 0.67개가 아니다.</p>
-
-
-<!-- ===== R5. g=2 ===== -->
-
-<h1 id="r5">라운드 5. g=2: Read + Compare</h1>
-
-<h3 id="r5-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>g인자는 observer가 스핀을 관측하는 강도를 나타낸다. CAS의 3단계 중 스핀을 "보는" 단계가 몇 개인지를 센다.</p>
-
-<h3 id="r5-step2">2단계. 노름 치환</h3>
-
-<div class="math-block">
-<div class="math-row">CAS cycle: Read → Compare → Swap</div>
-<div class="math-row">Read: 스핀 상태를 읽는다 → 스핀을 관측한다 ✓</div>
-<div class="math-row">Compare: 기대값과 비교한다 → 스핀을 참조한다 ✓</div>
-<div class="math-row">Swap: 새 값을 쓴다 → 스핀을 관측하지 않는다 ✗</div>
-<div class="math-legend">관측 = Read + Compare = 2단계. Swap은 쓰기만 하므로 관측 아님.</div>
-</div>
-
-<h3 id="r5-step3">3단계. 상수 대입</h3>
-
-<pre>CAS 총 단계 = 3 (Read, Compare, Swap)
-스핀 관측 단계 = 2 (Read, Compare)
-비관측 단계 = 1 (Swap)</pre>
-
-<h3 id="r5-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$g = \dfrac{\text{스핀 관측 단계}}{\text{스핀 단위}} = \dfrac{2}{1} = 2$</div>
-<div class="math-desc">전자의 g인자 = CAS에서 스핀을 관측하는 단계 수 = Read + Compare = 2.</div>
-</div>
-
-<h3 id="r5-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">도출: $g = 2$ (CAS Read + Compare)</div>
-<div class="math-row">디랙 방정식 예측: $g = 2$</div>
-<div class="math-row">실험 측정: $g = 2.00231930436256 \ldots$ (QED 보정 포함)</div>
-</div>
-
-<p>디랙 방정식의 g=2는 공리가 아니라 CAS의 구조적 결과이다. 3단계 중 2단계가 스핀을 관측한다. QED 보정($g-2$ 이상 자기 모멘트)은 CAS의 고차 루프에 대응한다.</p>
-
-
-<!-- ===== R6. 궤도 양자수 L ===== -->
-
-<h1 id="r6">라운드 6. 궤도 양자수 L: 링 정수 랩</h1>
-
-<h3 id="r6-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>궤도 각운동량은 space 축의 닫힌 경로에서 나온다. 링 버퍼 위의 경로가 닫히려면 정수 바퀴를 돌아야 한다.</p>
-
-<h3 id="r6-step2">2단계. 노름 치환</h3>
-
-<div class="math-block">
-<div class="math-row">$\text{space} \to \text{ring buffer}$, &nbsp; 닫힌 경로 $= 2\pi L$, &nbsp; $L \in \mathbb{Z}_{\geq 0}$</div>
-<div class="math-legend">링 버퍼 위의 닫힌 경로 = 시작점으로 돌아오는 경로 = 정수 바퀴.</div>
-</div>
-
-<h3 id="r6-step3">3단계. 상수 대입</h3>
-
-<pre>링 버퍼 둘레 = 2π (정규화)
-닫힌 경로 조건: 경로 길이 = 2πL, L = 0, 1, 2, ...
-L = 0: 경로 없음 (s 오비탈)
-L = 1: 1바퀴 (p 오비탈)
-L = 2: 2바퀴 (d 오비탈)
-...</pre>
-
-<h3 id="r6-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$L = 0, 1, 2, \ldots$ (링 위의 닫힌 경로 = 정수 랩)</div>
-<div class="math-row">$m_L = -L, -L+1, \ldots, L-1, L$ (링 mod 연산의 잔여)</div>
-<div class="math-desc">링 버퍼의 mod 연산: 위치 = offset mod N. 닫힌 경로의 방향 = $m_L$의 부호.</div>
-</div>
-
-<h3 id="r6-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">도출: $L \in \{0, 1, 2, \ldots\}$, &nbsp; $m_L \in \{-L, \ldots, +L\}$</div>
-<div class="math-row">관측: 원자 오비탈의 L = 0(s), 1(p), 2(d), 3(f), ...</div>
-</div>
-
-<p>궤도 양자수 L이 정수인 이유: 링 버퍼 위의 닫힌 경로는 정수 바퀴만 가능. 반바퀴(L=1/2)는 시작점으로 돌아오지 않으므로 닫힌 경로가 아니다. 이것이 스핀(반정수 가능)과 궤도 각운동량(정수만)의 차이 기원이다.</p>
-
-
-<!-- ===== 부산물 ===== -->
-
-<h1 id="byproduct">부산물</h1>
-
-<p><b>B-1. spin 2의 복합 구조.</b> SP 3비트로 최대 spin 3/2. 중력자(spin 2)는 두 SP의 결합이다. 이는 중력이 다른 힘과 달리 복합적인 이유를 시사한다.</p>
-
-<p><b>B-2. g-2 이상 자기 모멘트의 CAS 루프 대응.</b> $g - 2 = \alpha/(2\pi) + \ldots$에서 $\alpha/(2\pi)$는 CAS의 1차 재귀 루프(observer가 자기 자신을 다시 관측)에 대응한다. 루프 차수 = QED 섭동 차수.</p>
-
-<p><b>B-3. anyons(에니온)의 CAS 해석.</b> 2차원 계에서 분수 통계를 가지는 에니온은 CAS 비트가 아닌 링 버퍼의 위상적 감김수에서 나온다. 이는 3차원에서 불가능하고 2차원에서만 가능한 이유를 설명한다.</p>
-
-
-<!-- ===== 총괄 ===== -->
-
-<h1 id="summary">총괄</h1>
-
-<table>
-<tr><th>항목</th><th>CAS 구조</th><th>물리적 결과</th><th>상태</th></tr>
-<tr><td>스핀 양자화</td><td>SP 3비트, k참여 → k/2</td><td>spin = 0, 1/2, 1, 3/2</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>스핀-통계</td><td>CAS(0,1) vs CAS(N,N+1)</td><td>페르미-디랙 vs 보즈-아인슈타인</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>파울리 배타</td><td>CAS Compare 실패</td><td>같은 양자수 2 페르미온 불가</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>스핀 1/3 불가</td><td>k=2/3 비정수</td><td>분수 스핀 입자 미발견</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>g=2</td><td>Read + Compare = 2단계</td><td>디랙 g인자 = 2</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>궤도 양자수 L</td><td>링 닫힌 경로 = 정수 랩</td><td>L = 0, 1, 2, ...</td><td><span class="tag-solved">적중</span></td></tr>
-</table>
-
-</div><!-- /lang-ko -->
-
-
 <!-- ========== English Version ========== -->
-<div class="lang-en">
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It covers the CAS origin of spin quantization and related quantum mechanical structures.</p>
 
 
@@ -867,16 +446,8 @@ L = 2: 2 laps (d orbital)
 <tr><td>Orbital quantum number L</td><td>Ring closed paths = integer laps</td><td>L = 0, 1, 2, ...</td><td><span class="tag-solved">Hit</span></td></tr>
 </table>
 
-</div><!-- /lang-en -->
-
-
 <!-- ===== page-nav ===== -->
-<div class="page-nav lang-ko" style="display:none">
-<a href="../banya.html">종합 보고서</a>
-<a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
-<a href="../science_mine.html">과학 채굴 메뉴얼</a>
-</div>
+
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
 <a href="../predictions.html">Predictions</a>
@@ -886,37 +457,12 @@ L = 2: 2 laps (d orbital)
 
 
 <!-- ===== 푸터 ===== -->
-<div class="doc-footer lang-ko" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
-분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">스핀 양자화: SP=TOCTOU_LOCK 3비트, spin=k/2, g=2=Read+Compare</div>
-</div>
-</div>
-<div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="cas_internal.html">CAS 내부 구조</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
-기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
-<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
+
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
+<b>Banya Framework (Banya Framework)</b><br>
+Inventor: Han Hyukjin (Hyukjin Han)<br>
 Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
 Alias: Buddha's Palm Framework<br>
 Classification: Axiom-Based Science Mining Engine

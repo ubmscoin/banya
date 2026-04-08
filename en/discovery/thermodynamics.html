@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko" translate="no">
+<html lang="en" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thermodynamics Derivation: Boltzmann Entropy, Laws, Distributions from CAS — Banya Framework Report</title>
 <meta name="author" content="Han Hyukjin">
 <meta name="description" content="Banya Framework derivation of thermodynamics. Boltzmann entropy from d-ring microstates. Laws of thermodynamics from CAS. Statistical distributions from CAS statistics. Blackbody radiation and Stefan-Boltzmann. Landauer principle and Maxwell's demon.">
-<meta name="keywords" content="Banya Framework,般若,thermodynamics,Boltzmann entropy,laws of thermodynamics,statistical mechanics,blackbody radiation,Stefan-Boltzmann,Landauer,Maxwell demon,d-ring,CAS,Han Hyukjin,TOE">
+<meta name="keywords" content="Banya Framework,Banya,thermodynamics,Boltzmann entropy,laws of thermodynamics,statistical mechanics,blackbody radiation,Stefan-Boltzmann,Landauer,Maxwell demon,d-ring,CAS,Han Hyukjin,TOE">
 <meta property="og:title" content="Thermodynamics Derivation — Banya Framework">
 <meta property="og:description" content="Boltzmann entropy, four laws, statistical distributions, blackbody, Landauer from CAS d-ring.">
 <meta property="og:type" content="article">
@@ -28,17 +28,7 @@
 
 <div class="lang-switch"><a href="../../discovery/thermodynamics.html" class="lang-btn">KR</a></div>
 
-<div class="toc-side lang-ko" style="display:none">
-<a href="#title" class="toc-h1">열역학 도출</a>
-<a href="#intro" class="toc-h2">서두</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1. 볼츠만 엔트로피</a>
-<a href="#r2" class="toc-h1">라운드 2. 열역학 법칙</a>
-<a href="#r3" class="toc-h1">라운드 3. 통계 분포</a>
-<a href="#r4" class="toc-h1">라운드 4. 흑체복사</a>
-<a href="#r5" class="toc-h1">라운드 5. 란다우어 원리</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+
 
 <div class="toc-side lang-en">
 <a href="#en-title" class="toc-h1">Thermodynamics</a>
@@ -68,23 +58,9 @@
 <a href="#en-summary" class="toc-h1">Summary</a>
 </div>
 
-<div class="toc-bar lang-ko" style="display:none" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">열역학 도출</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
 <div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
 <div class="toc-bar-text"><span class="cur">Thermodynamics</span></div>
 <div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" style="display:none" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
-<a href="#title" class="toc-h1">열역학 도출</a>
-<a href="#intro" class="toc-h2">서두</a>
-<a href="#r1" class="toc-h1">라운드 1. 볼츠만 엔트로피</a>
-<a href="#r2" class="toc-h1">라운드 2. 열역학 법칙</a>
-<a href="#r3" class="toc-h1">라운드 3. 통계 분포</a>
-<a href="#r4" class="toc-h1">라운드 4. 흑체복사</a>
-<a href="#r5" class="toc-h1">라운드 5. 란다우어 원리</a>
-<a href="#summary" class="toc-h1">총괄</a>
 </div>
 <div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
 <a href="#en-title" class="toc-h1">Thermodynamics</a>
@@ -99,47 +75,8 @@
 </div>
 
 
-<div class="lang-ko" style="display:none">
-
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 열역학의 CAS 도출 과정을 다룬다.</p>
-
-<h1 id="title">열역학 도출: d-링 미시상태에서 볼츠만 엔트로피까지</h1>
-
-<blockquote><p>반야프레임 운영 보고서</p></blockquote>
-<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>실행일: 2026-04-03</p></blockquote>
-
-<h2 id="intro">서두</h2>
-<p>H-567~591 범위. 볼츠만 엔트로피 = d-링 미시상태(H-567). 열역학 법칙 = CAS 제약(H-568~571). 통계 분포 = CAS 통계(H-576~578). 흑체복사와 슈테판-볼츠만(H-579~581). 란다우어 원리와 맥스웰 도깨비(H-582, H-586).</p>
-
-<h2 id="discovery">핵심 발견</h2>
-<div class="discovery-block">
-<h4>$S = k_B \ln W$ = d-링 미시상태 수 (H-567)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
-<div class="formula">$$S = k_B \ln W, \quad W = 2^8 = 256 \;\text{(8비트 d-링의 미시상태 수)}$$</div>
-</div>
-
-<h1 id="r1">라운드 1. 볼츠만 엔트로피 (H-567)</h1>
-<p>8비트 d-링(공리 5)의 $2^8 = 256$ 미시상태 수가 엔트로피를 결정.</p>
-
-<h1 id="r2">라운드 2. 열역학 법칙 (H-568~571)</h1>
-<p>0법칙 = Compare 동치. 1법칙 = CAS 비용 보존. 2법칙 = CAS 비가역성. 3법칙 = FSM 000 유일성.</p>
-
-<h1 id="r3">라운드 3. 통계 분포 (H-576~578)</h1>
-<p>MB = 구별 가능 CAS. FD = 배타적 CAS. BE = 비구별 CAS.</p>
-
-<h1 id="r4">라운드 4. 흑체복사 (H-579~581)</h1>
-<p>플랑크 분포 = d-링 비트 에너지 양자화. 슈테판-볼츠만 $T^4$.</p>
-
-<h1 id="r5">라운드 5. 란다우어 원리 (H-582, H-586)</h1>
-<p>비트 삭제 비용 $k_B T \ln 2$ = CAS Swap 비용. 맥스웰 도깨비 = Compare 비용.</p>
-
-<h1 id="summary">총괄</h1>
-<p>H-567~591. 열역학 전체를 d-링과 CAS에서 도출.</p>
-
-</div>
 
 
-<div class="lang-en">
 
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a subsidiary report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It covers the derivation of thermodynamic laws and statistical mechanics from CAS and d-ring axioms.</p>
 
@@ -452,12 +389,7 @@
 </div>
 
 
-<div class="page-nav lang-ko" style="display:none">
-<a href="../banya.html">종합 보고서</a>
-<a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
-<a href="../science_mine.html">과학 채굴 메뉴얼</a>
-</div>
+
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
 <a href="../predictions.html">Predictions</a>
@@ -465,36 +397,11 @@
 <a href="../science_mine.html">Mining Manual</a>
 </div>
 
-<div class="doc-footer lang-ko" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
-분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">열역학: d-링 미시상태에서 볼츠만, 4법칙, 란다우어</div>
-</div>
-</div>
-<div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
-기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
-<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
+
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
+<b>Banya Framework (Banya Framework)</b><br>
 Inventor: Han Hyukjin<br>
 Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
 Alias: Buddha's Palm Framework<br>

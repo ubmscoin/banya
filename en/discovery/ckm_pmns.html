@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko" translate="no">
+<html lang="en" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CKM/PMNS 혼합각 도출 — 반야프레임 운영 보고서</title>
+<title>CKM/PMNS — </title>
 <meta name="author" content="Han Hyukjin">
-<meta name="description" content="반야프레임 재귀 대입으로 CKM/PMNS 혼합각 8개 도출. sin^2(theta_12) = 3/pi^2 (오차 0.013%), sin(theta_13) = 4/27 (오차 0.23%), delta_CKM = arctan(5/2+alpha_s/pi) (오차 0.053%). 정규순서(NO) 예측. 입력 3개로 출력 8개. 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,CKM,PMNS,혼합각,mixing angle,카비보 각,Cabibbo angle,뉴트리노 진동,neutrino oscillation,쿼크 혼합,quark mixing,렙톤 혼합,lepton mixing,코이데,Koide,한혁진,Han Hyukjin,bokkamsun,CAS,Compare-And-Swap,theta_12,theta_23,theta_13">
-<meta property="og:title" content="CKM/PMNS 혼합각 도출 — 반야프레임 운영 보고서">
-<meta property="og:description" content="반야프레임으로 CKM/PMNS 혼합각 8개 도출. sin^2(theta_12) = 3/pi^2, 오차 0.013%. 자유 매개변수 2개로 8개 혼합각 기술.">
+<meta name="description" content="CKM/PMNS 8. sin^2(theta_12) = 3/pi^2 (0.013%), sin(theta_13) = 4/27 (0.23%), delta_CKM = arctan(5/2+alpha_s/pi) (0.053%). (NO) . 38. .">
+<meta name="keywords" content="Banya,Banya Framework,CKM,PMNS,mixing angle,Cabibbo angle,neutrino oscillation,quark mixing,lepton mixing,Koide,Han Hyukjin,bokkamsun,CAS,Compare-And-Swap,theta_12,theta_23,theta_13">
+<meta property="og:title" content="CKM/PMNS — ">
+<meta property="og:description" content="CKM/PMNS 8. sin^2(theta_12) = 3/pi^2, 0.013%. 28.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CKM/PMNS 혼합각 — 반야프레임">
-<meta name="twitter:description" content="태양 뉴트리노 혼합각을 순수 수학 상수로 표현. sin^2(theta_12) = 3/pi^2, 오차 0.013%.">
+<meta name="twitter:title" content="CKM/PMNS — ">
+<meta name="twitter:description" content=". sin^2(theta_12) = 3/pi^2, 0.013%.">
 <meta name="robots" content="index, follow">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -28,39 +28,7 @@
 
 <div class="lang-switch"><a href="../../discovery/ckm_pmns.html" class="lang-btn">KR</a></div>
 
-<div class="toc-side lang-ko" style="display:none">
-<a href="#title" class="toc-h1">CKM/PMNS 혼합각</a>
-<a href="#value" class="toc-h2">가치</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#why" class="toc-h2">왜 중요한가</a>
-<a href="#r1" class="toc-h1">라운드 1. PMNS theta_12</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 3세대 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 곡률 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 계산</a>
-<a href="#r1-step5" class="toc-h3">5단계. 검증</a>
-<a href="#r2" class="toc-h1">라운드 2. PMNS theta_23</a>
-<a href="#r2-derive" class="toc-h3">도출</a>
-<a href="#r2-meaning" class="toc-h3">물리적 의미</a>
-<a href="#r3" class="toc-h1">라운드 3. CKM 카비보 각</a>
-<a href="#r3-derive" class="toc-h3">도출</a>
-<a href="#r3-koide" class="toc-h3">코이데와의 연결</a>
-<a href="#r4" class="toc-h1">라운드 4. CKM 전체</a>
-<a href="#r4-wolfenstein" class="toc-h3">울펜슈타인 A</a>
-<a href="#r4-cross" class="toc-h3">CKM-PMNS 교차</a>
-<a href="#r4-table" class="toc-h3">혼합각 총괄표</a>
-<a href="#r5" class="toc-h1">라운드 5. PMNS theta_13</a>
-<a href="#r5-derive" class="toc-h3">직접 도출</a>
-<a href="#r6" class="toc-h1">라운드 6. delta_CKM 정밀화</a>
-<a href="#r6-derive" class="toc-h3">도출</a>
-<a href="#r7" class="toc-h1">라운드 7. 정규순서 예측</a>
-<a href="#r7-derive" class="toc-h3">delta_PMNS 도출</a>
-<a href="#r7-falsify" class="toc-h3">반박 가능성</a>
-<a href="#r-table" class="toc-h1">총괄표</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+
 
 <div class="toc-side lang-en">
 <a href="#en-title" class="toc-h1">CKM/PMNS Mixing Angles</a>
@@ -94,44 +62,6 @@
 <a href="#en-r-table" class="toc-h1">Summary Table</a>
 <a href="#en-incomplete" class="toc-h1">Incomplete</a>
 <a href="#en-summary" class="toc-h1">Conclusion</a>
-</div>
-
-<div class="toc-bar lang-ko" style="display:none" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">CKM/PMNS 혼합각</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" style="display:none" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
-<a href="#title" class="toc-h1">CKM/PMNS 혼합각</a>
-<a href="#value" class="toc-h2">가치</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#why" class="toc-h2">왜 중요한가</a>
-<a href="#r1" class="toc-h1">라운드 1. PMNS theta_12</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 3세대 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 곡률 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 계산</a>
-<a href="#r1-step5" class="toc-h3">5단계. 검증</a>
-<a href="#r2" class="toc-h1">라운드 2. PMNS theta_23</a>
-<a href="#r2-derive" class="toc-h3">도출</a>
-<a href="#r2-meaning" class="toc-h3">물리적 의미</a>
-<a href="#r3" class="toc-h1">라운드 3. CKM 카비보 각</a>
-<a href="#r3-derive" class="toc-h3">도출</a>
-<a href="#r3-koide" class="toc-h3">코이데와의 연결</a>
-<a href="#r4" class="toc-h1">라운드 4. CKM 전체</a>
-<a href="#r4-wolfenstein" class="toc-h3">울펜슈타인 A</a>
-<a href="#r4-cross" class="toc-h3">CKM-PMNS 교차</a>
-<a href="#r4-table" class="toc-h3">혼합각 총괄표</a>
-<a href="#r5" class="toc-h1">라운드 5. PMNS theta_13</a>
-<a href="#r5-derive" class="toc-h3">직접 도출</a>
-<a href="#r6" class="toc-h1">라운드 6. delta_CKM 정밀화</a>
-<a href="#r6-derive" class="toc-h3">도출</a>
-<a href="#r7" class="toc-h1">라운드 7. 정규순서 예측</a>
-<a href="#r7-derive" class="toc-h3">delta_PMNS 도출</a>
-<a href="#r7-falsify" class="toc-h3">반박 가능성</a>
-<a href="#r-table" class="toc-h1">총괄표</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
 </div>
 
 <div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
@@ -173,369 +103,8 @@
 </div>
 
 
-<div class="lang-ko" style="display:none">
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 반야프레임의 구조, 118개 물리식 검증, CAS 연산자, 쓰기 이론 등 전체 내용은 Master Report에 있다. 이 문서는 그 중 CKM/PMNS 혼합각의 도출 과정만을 다룬다.</p>
 
-<h1 id="title">CKM/PMNS 혼합각 도출</h1>
 
-<blockquote><p>반야프레임 운영 보고서</p></blockquote>
-<blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>실행일: 2026-03-23</p></blockquote>
-<blockquote><p>주제: 쿼크와 렙톤의 세대 간 혼합</p></blockquote>
-
-<hr>
-
-<h2 id="value">가치</h2>
-
-<p>표준모형에는 자유 매개변수가 19개 있다. 이론이 예측하지 못하고, 실험에서 측정해서 넣어야 하는 숫자들이다. 그 중 8개가 혼합각이다. CKM 행렬에 4개, PMNS 행렬에 4개.</p>
-
-<p>반야프레임은 이 8개 혼합각을 입력 2개($\alpha$, $2/9$)만으로 기술한다. 입력 2개로 출력 8개를 내면, 6개는 독립적인 예측이다. 맞추려고 끼워 넣은 게 아니라 프레임에서 자동으로 나온 것이다.</p>
-
-<p>입력 수 표기 안내: 프레임 근본 입력은 3개($\alpha$, $\alpha_s$, $2/9$)이다. 이 중 $\alpha_s$는 게이지 군 도출(D-03)에서 $\alpha$로부터 도출되므로, 독립 입력은 2개($\alpha$, $2/9$)로 줄어든다. 문맥에 따라 2개(독립) 또는 3개(직접 사용)로 표기한다.</p>
-
-<p>쉽게 설명하면 이렇다. 쿼크에는 3세대가 있다(up/down, charm/strange, top/bottom). 렙톤에도 3세대가 있다(전자, 뮤온, 타우). 이 세대들이 서로 섞인다. 얼마나 섞이는지를 나타내는 각도가 혼합각이다. 아무도 이 각도가 왜 그 값인지 설명하지 못했다. 반야프레임이 설명한다.</p>
-
-<h2 id="status">상태</h2>
-
-<p><span class="tag-solved">적중</span> -- $\theta_{13}$ 직접 도출(0.23%), $\delta_{\text{CKM}}$ 정밀화(0.053%), 정규순서 예측 완료. PMNS CP 위상은 JUNO/DUNE 검증 대기.</p>
-
-<hr>
-
-<h2 id="discovery">핵심 발견</h2>
-
-<div class="discovery-block">
-<h4>태양 뉴트리노 혼합각<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
-<div class="formula">$$\sin^2(\theta_{12})_{\text{PMNS}} = \frac{3}{\pi^2} = 0.30396$$</div>
-<p style="text-align:center;margin-bottom:8px">관측값: 0.304</p>
-<p style="text-align:center;margin-bottom:8px">오차: <span class="precision">0.013%</span></p>
-<p style="text-align:center;margin-bottom:0">해석: CAS 3단계 / 도메인 곡률 $\pi^2$</p>
-</div>
-
-<div class="discovery-block">
-<h4>PMNS theta_13 직접 도출<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-23</span></h4>
-<div class="formula">$$\sin(\theta_{13}) = \frac{4}{27} = \frac{2}{9} \times \frac{2}{3} = 0.1481$$</div>
-<p style="text-align:center;margin-bottom:8px">$\sin^2(\theta_{13}) = \frac{16}{729} = 0.02195$</p>
-<p style="text-align:center;margin-bottom:8px">관측값: $\sin^2 = 0.02200$ (PDG 2024)</p>
-<p style="text-align:center;margin-bottom:8px">오차: <span class="precision">0.23%</span></p>
-<p style="text-align:center;margin-bottom:0">해석: $2/9$ = Compare/완전기술(코이데 비율), $2/3$ = CAS 중 Swap 참여 비율. 1세대와 3세대를 잇는 가장 약한 통로.</p>
-</div>
-
-<div class="hypothesis-block">
-<h4>CKM-PMNS CP 위상 통합<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-23</span></h4>
-<div class="formula">$$\delta_{\text{PMNS}} = \pi + \frac{2}{9} \times \delta_{\text{CKM}} = \pi + \frac{2}{9} \times \arctan\!\left(\frac{5}{2} + \frac{\alpha_s}{\pi}\right) = 3.407 \text{ rad}$$</div>
-<p style="text-align:center;margin-bottom:8px">관측값: 3.400 rad (정규순서 $1.08\pi$)</p>
-<p style="text-align:center;margin-bottom:8px">오차: <span class="precision">0.18%</span></p>
-<p style="text-align:center;margin-bottom:0">해석: $\pi$ = 색 락 없는 렙톤의 위상 자유 회전. $2/9$ = 코이데 각도가 CP 위상에서도 쿼크-렙톤 연결을 만든다. 정규순서(NO) $1.08\pi$와 0.42% 일치, 역순서(IO) $1.58\pi$와 31% 불일치로 IO 배제. JUNO/DUNE으로 검증 가능한 반박 가능 예측.</p>
-</div>
-
-<h2 id="why">왜 중요한가</h2>
-
-<p>이 공식의 의미를 풀어보자.</p>
-
-<p>태양 뉴트리노 혼합각은 태양에서 나온 뉴트리노가 지구에 도착할 때까지 얼마나 변하는지를 결정하는 각도다. 1998년 슈퍼카미오칸데가 뉴트리노 진동을 발견한 이래, 이 각도는 실험에서 정밀하게 측정됐지만 이론에서 도출된 적이 없었다.</p>
-
-<p>반야프레임은 이것을 순수 수학 상수로 표현한다. $3/\pi^2$. 숫자 3은 CAS의 3단계(R, C, S)에서 나온다. $\pi^2$는 도메인 4의 곡률이다. 이 두 개를 나누면 끝이다. 자유 매개변수가 없다.</p>
-
-<p>더 중요한 것은, 이 혼합각이 다른 혼합각들과 연결된다는 점이다. 반야프레임에서 하나의 혼합각을 도출하면, 그것을 재대입해서 다음 혼합각을 얻는다. 씨앗이 씨앗을 낳는다. 결국 입력 2개($\alpha$, $2/9$)로 혼합각 8개 전부를 기술하게 된다.</p>
-
-<p>이것이 뉴트리노 질량 예측의 씨앗이 된다. 혼합각을 알면 질량 차이를 역산할 수 있고, 질량 차이를 알면 절대 질량에 다가갈 수 있다.</p>
-
-<hr>
-
-<h1 id="r1">라운드 1. PMNS theta_12 (태양 뉴트리노 혼합각)</h1>
-
-<h3 id="r1-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
-<div class="math-desc">4개 축, 1개 연산자(CAS), 3단계(R, C, S)</div>
-</div>
-
-<p>출발점은 항상 반야식이다.</p>
-
-<h3 id="r1-step2">2단계. CAS 3단계에서 3세대 치환</h3>
-
-<p>CAS는 R, C, S 세 단계로 돌아간다. 쿼크와 렙톤에도 3세대가 있다. 이것은 우연이 아니다.</p>
-
-<p>CAS의 각 단계가 입자의 한 세대에 대응한다. R은 1세대(가장 가벼운), C는 2세대(중간), S는 3세대(가장 무거운)에 대응한다. 세대 간 혼합은 CAS 단계 간의 전이 확률이다.</p>
-
-<h3 id="r1-step3">3단계. 도메인 4의 곡률 $\pi^2$ 대입</h3>
-
-<p>반야프레임에는 4개 도메인이 있다. 이 도메인들이 만드는 위상 공간의 곡률은 $\pi^2$이다.</p>
-
-<p>왜 $\pi^2$인가? 4차원 공간에서 구의 표면적은 $2\pi^2 r^3$이다. 단위 구의 곡률이 $\pi^2$에 비례한다. 도메인 4개가 만드는 공간이 바로 이 구조다.</p>
-
-<p>보충: 여기서 $\pi^2$는 $S^3$의 스칼라 곡률(= 6)이 아니라, $S^3$ 표면적 $2\pi^2$를 확률 정규화한 위상 면적이다. "곡률"이라는 표현은 직관적 편의를 위한 것이고, 엄밀히는 "위상 면적"이다.</p>
-
-<h3 id="r1-step4">4단계. 계산</h3>
-
-<div class="math-block">
-<div class="math-row">$$\sin^2(\theta_{12}) = \frac{3}{\pi^2}$$</div>
-<div class="math-row">$$= \frac{3}{9.8696}$$</div>
-<div class="math-row">$$= 0.30396$$</div>
-<div class="math-desc">CAS 3단계 / 도메인 곡률</div>
-</div>
-
-<p>3은 CAS의 단계 수다. $\pi^2$는 도메인의 곡률이다. 3을 $\pi^2$로 나누면 세대 간 전이 확률이 나온다. 그것이 태양 뉴트리노 혼합각이다.</p>
-
-<p>도출: CAS 3단계가 4차원 위상공간(도메인 4개) 위에서 작동한다. 4차원 단위구 $S^3$의 표면적은 $2\pi^2$이다. CAS 3단계가 이 표면 위에 등간격으로 배치되면, 각 단계가 차지하는 입체각 비율은 $3/(2\pi^2)$다. 이것의 제곱 노름(확률)을 구하면 $\sin^2\theta_{12} = 3/\pi^2$이다. 여기서 $2$가 사라지는 이유: 혼합각은 상태 간 전이 확률이다. $S^3$ 표면적 $2\pi^2$ 위에 3개 CAS 단계가 배치되면, 전이 확률의 분모는 $S^3$의 위상 면적 $\pi^2$(전체 표면적 $2\pi^2$를 확률 정규화하면 $\pi^2$)이 된다.</p>
-
-<h3 id="r1-step5">5단계. 검증</h3>
-
-<div class="table-wrap">
-<table>
-<tr><th>항목</th><th>반야프레임</th><th>관측값</th><th class="col-err">오차</th></tr>
-<tr><td>$\sin^2(\theta_{12})$ PMNS</td><td>$3/\pi^2 = 0.30396$</td><td>0.304</td><td><span class="tag-solved">적중</span> 0.013%</td></tr>
-</table>
-</div>
-
-<p>0.013% 오차. 자유 매개변수 0개. 순수 수학 상수만으로 물리 상수를 맞췄다.</p>
-
-<hr>
-
-<h1 id="r2">라운드 2. PMNS theta_23 (대기 뉴트리노 혼합각)</h1>
-
-<h3 id="r2-derive">도출</h3>
-
-<div class="math-block">
-<div class="math-row">$$\sin^2(\theta_{23}) = \frac{4}{7}$$</div>
-<div class="math-row">$$= \frac{\text{Swap}(4)}{\text{전체}(7)}$$</div>
-<div class="math-row">$$= 0.5714$$</div>
-<div class="math-desc">관측값: 0.573 -- 오차 0.28%</div>
-</div>
-
-<p>theta_23은 대기 뉴트리노 혼합각이다. 뮤 뉴트리노가 타우 뉴트리노로 변하는 확률을 결정한다.</p>
-
-<p>반야프레임에서 도출 방법은 이렇다.</p>
-
-<ul>
-<li><strong>4</strong> -- CAS Swap이 성공하는 도메인 수. 4개 도메인 전부에서 Swap이 작동한다.</li>
-<li><strong>7</strong> -- 전체 자유도. 도메인 4 + 내부 자유도 3 = 7. 이것은 alpha 도출에서 이미 나온 숫자다.</li>
-</ul>
-
-<p>Swap이 성공하는 비율이 4/7이다. 그것이 2세대와 3세대 사이의 혼합 확률이다.</p>
-
-<h3 id="r2-meaning">물리적 의미</h3>
-
-<p>$\theta_{23}$이 거의 45도(maximal mixing)에 가까운 이유를 반야프레임은 이렇게 설명한다. $4/7 = 0.5714$는 $1/2$에서 약간 벗어나 있다. 정확히 $1/2$이면 2세대와 3세대가 완전히 대칭이라는 뜻이다. 하지만 CAS에는 내부 자유도 3이 있어서 완전 대칭을 약간 깨뜨린다. 그 깨짐의 정도가 정확히 $4/7$이다.</p>
-
-<hr>
-
-<h1 id="r3">라운드 3. CKM 카비보 각</h1>
-
-<h3 id="r3-derive">도출</h3>
-
-<div class="math-block">
-<div class="math-row">$$\sin(\theta_C) = \frac{2}{9}\left(1 + \frac{\pi \alpha}{2}\right)$$</div>
-<div class="math-row">$$= 0.2222 \times (1 + 0.01146)$$</div>
-<div class="math-row">$$= 0.2222 \times 1.01146$$</div>
-<div class="math-row">$$= 0.2248$$</div>
-<div class="math-desc">관측값: 0.2253 -- 오차 0.24%</div>
-</div>
-
-<p>카비보 각 $\theta_C$는 CKM 행렬에서 가장 큰 비대각 성분이다. 쿼크의 1세대(up/down)와 2세대(charm/strange)가 얼마나 섞이는지를 결정한다.</p>
-
-<p>도출 과정을 풀어보면 이렇다.</p>
-
-<ul>
-<li><strong>$2/9$</strong> -- 코이데 각도. 반야프레임의 3개 입력 중 하나다. 3세대 입자의 질량 관계를 지배하는 비율이다.</li>
-<li><strong>$(1 + \pi\alpha/2)$</strong> -- 1차 복사 보정. 쿼크가 글루온을 주고받으면서 혼합각이 약간 수정된다.</li>
-</ul>
-
-<h3 id="r3-koide">코이데 각도와의 연결</h3>
-
-<p>카비보 각의 기저가 코이데 각도 $2/9$라는 것은 매우 중요한 발견이다.</p>
-
-<p>코이데 공식은 전자-뮤온-타우 세 입자의 질량 관계를 기술한다. 카비보 각은 쿼크의 세대 간 혼합을 기술한다. 이 둘이 같은 숫자 $2/9$에서 출발한다는 것은, 렙톤의 질량 구조와 쿼크의 혼합 구조가 같은 뿌리에서 나온다는 뜻이다.</p>
-
-<p>반야프레임에서는 이것이 자연스럽다. 세대 구조는 CAS의 3단계에서 나오고, 질량도 혼합도 모두 같은 CAS에서 나오기 때문이다.</p>
-
-<hr>
-
-<h1 id="r4">라운드 4. CKM 전체</h1>
-
-<h3 id="r4-wolfenstein">울펜슈타인 매개변수 A</h3>
-
-<div class="math-block">
-<div class="math-row">$$A = \sqrt{\frac{2}{3}} = 0.8165$$</div>
-<div class="math-desc">관측값: 0.8180 -- 오차 0.18%</div>
-</div>
-
-<p>울펜슈타인 매개변수 $A$는 CKM 행렬의 2-3 세대 혼합 크기를 결정한다. 반야프레임에서 이 값은 $2/3$의 제곱근이다.</p>
-
-<p>왜 $2/3$인가? CAS 3단계 중 Swap에 참여하는 2단계(C와 S)의 비율이 $2/3$이다. 그것의 제곱근이 혼합 진폭이 된다.</p>
-
-<h3 id="r4-cross">CKM-PMNS 교차 관계</h3>
-
-<div class="math-block">
-<div class="math-row">$$\sin(\theta_C) = \frac{3}{2} \times \sin(\theta_{13}^{\text{PMNS}})$$</div>
-<div class="math-row">$$0.2253 \;\text{vs}\; \frac{3}{2} \times 0.1496 = 0.2244$$</div>
-<div class="math-desc">오차 0.79%</div>
-</div>
-
-<p>이것은 쿼크의 혼합각(카비보)과 렙톤의 혼합각($\theta_{13}$ PMNS)이 직접 연결된다는 뜻이다. 표준모형에서는 이 둘이 완전히 독립적인 매개변수다. 아무 관련이 없어야 한다. 그런데 $3/2$를 곱하면 맞아떨어진다.</p>
-
-<p>$3/2$는 CAS에서 나온다. CAS 3단계 대 Compare 후 남은 2단계의 비율이다. 이 비율이 쿼크 섹터와 렙톤 섹터를 잇는 다리다.</p>
-
-<p>$3/2$ 재사용 안내: 질량비($m_\mu/m_e$)의 $3/2$와 혼합각 교차 관계($\sin\theta_C = \frac{3}{2}\sin\theta_{13}$)의 $3/2$는 같은 근원이다. CAS 3단계 중 비자명 2단계의 비율 $3/2$가 질량 도메인과 혼합 도메인 양쪽에 작용한다.</p>
-
-<h3 id="r4-table">혼합각 총괄표</h3>
-
-<div class="table-wrap">
-<table>
-<tr><th>혼합각</th><th>반야프레임 공식</th><th>반야프레임 값</th><th>관측값</th><th class="col-err">오차</th></tr>
-<tr><td>PMNS $\sin^2(\theta_{12})$</td><td>$3/\pi^2$</td><td>0.30396</td><td>0.304</td><td><span class="tag-solved">적중</span> 0.013%</td></tr>
-<tr><td>PMNS $\sin^2(\theta_{23})$</td><td>$4/7$</td><td>0.5714</td><td>0.573</td><td><span class="tag-solved">적중</span> 0.28%</td></tr>
-<tr><td>CKM $\sin(\theta_C)$</td><td>$\frac{2}{9}(1+\pi\alpha/2)$</td><td>0.2248</td><td>0.2253</td><td><span class="tag-solved">적중</span> 0.24%</td></tr>
-<tr><td>CKM $A$ (울펜슈타인)</td><td>$\sqrt{2/3}$</td><td>0.8165</td><td>0.8180</td><td><span class="tag-solved">적중</span> 0.18%</td></tr>
-<tr><td>CKM-PMNS 교차</td><td>$\sin(\theta_C) = \frac{3}{2}\sin(\theta_{13})$</td><td>0.2244</td><td>0.2253</td><td><span class="tag-solved">적중</span> 0.79%</td></tr>
-</table>
-</div>
-
-<p>5개 공식, 전부 1% 이내. 최고 정밀도 0.013%. 자유 매개변수는 $\alpha$와 $2/9$ 단 2개다.</p>
-
-<hr>
-
-<h1 id="r5">라운드 5. PMNS theta_13 (반응기 뉴트리노 혼합각)</h1>
-
-<h3 id="r5-derive">직접 도출</h3>
-
-<div class="math-block">
-<div class="math-row">$$\sin(\theta_{13}) = \frac{4}{27} = \frac{2}{9} \times \frac{2}{3}$$</div>
-<div class="math-row">$$= 0.14815$$</div>
-<div class="math-row">$$\sin^2(\theta_{13}) = \frac{16}{729} = 0.02195$$</div>
-<div class="math-desc">관측값: $\sin^2 = 0.02200$ (PDG 2024) -- 오차 0.23%</div>
-</div>
-
-<p>theta_13은 1세대와 3세대 뉴트리노를 잇는 가장 약한 통로다. 다야 베이 실험이 2012년에 이 각도가 0이 아님을 발견했고, 뉴트리노 물리학의 전환점이 됐다.</p>
-
-<p>반야프레임에서 도출은 이렇다.</p>
-
-<ul>
-<li><strong>$2/9$</strong> -- Compare/완전기술. 코이데 각도다. 카비보 각의 기저이기도 하다.</li>
-<li><strong>$2/3$</strong> -- CAS 3단계 중 Swap에 참여하는 2단계의 비율. 울펜슈타인 $A$($\sqrt{2/3}$)의 기저이기도 하다.</li>
-<li><strong>$4/27$</strong> -- 이 둘의 곱. 4 = Swap 도메인 수, $27 = 3^3$ = 완전기술의 세제곱. 1세대에서 3세대까지 3단계를 거쳐야 하므로 세제곱이 나온다.</li>
-</ul>
-
-<p>이전에는 CKM-PMNS 교차 관계($\sin(\theta_C) = \frac{3}{2}\sin(\theta_{13})$)로 간접 도출만 가능했다. 이제 직접 공식이 있다. 교차 관계를 역산하면 $\sin(\theta_{13}) = \frac{2}{3}\sin(\theta_C) = \frac{2}{3} \cdot \frac{2}{9}(1+\text{보정})$ 이 되는데, 0차에서 $\frac{2}{3} \cdot \frac{2}{9} = \frac{4}{27}$이 정확히 일치한다. 두 경로가 같은 값에 수렴한다.</p>
-
-<hr>
-
-<h1 id="r6">라운드 6. delta_CKM 정밀화</h1>
-
-<h3 id="r6-derive">도출</h3>
-
-<div class="math-block">
-<div class="math-row">$$\delta_{\text{CKM}} = \arctan\!\left(\frac{5}{2} + \frac{\alpha_s}{\pi}\right)$$</div>
-<div class="math-row">$$= \arctan(2.5 + 0.1183/3.14159)$$</div>
-<div class="math-row">$$= \arctan(2.5 + 0.03765)$$</div>
-<div class="math-row">$$= \arctan(2.53765)$$</div>
-<div class="math-row">$$= 1.19536 \text{ rad}$$</div>
-<div class="math-desc">관측값: 1.196 rad -- 오차 0.053%</div>
-</div>
-
-<p>이전 버전에서는 보정항이 $\pi\alpha$(QED 결합상수)였다. 이것을 $\alpha_s/\pi$(QCD 결합상수)로 교체한다. 쿼크 섹터의 CP 위상이므로 QCD가 올바른 보정이다.</p>
-
-<p>기저 $5/2$의 의미를 풀어보면 이렇다.</p>
-
-<ul>
-<li><strong>5</strong> -- 완전기술 9에서 Swap 4를 뺀 값. $9 - 4 = 5$. CAS에서 Swap이 아닌 나머지 경로의 수다.</li>
-<li><strong>2</strong> -- Compare 단계. CAS의 두 번째 단계에서 비교가 일어난다.</li>
-<li><strong>$5/2$</strong> -- 비교 후 남은 경로의 밀도. CP 위반은 경로 간 간섭에서 발생하므로, 이 비율이 위상 크기를 결정한다.</li>
-</ul>
-
-<p>왜 arctan 형태인가. CP 위상은 복소 평면에서 두 경로의 간섭으로 정의된다. 간섭 위상은 $\arg(z) = \arctan(\text{Im}/\text{Re})$로 계산된다. 여기서 Im = 비Swap 경로(5), Re = Compare 단계(2)이므로 기저값 $\arctan(5/2)$이 자연스럽다.</p>
-
-<p>보정항 $\alpha_s/\pi = 0.03778$은 QCD 1루프 보정이다. 쿼크가 글루온을 교환하면서 CP 위상이 미세하게 수정된다. QED 보정($\pi\alpha = 0.02293$)보다 크고, 이것이 실험값에 더 가깝다.</p>
-
-<hr>
-
-<h1 id="r7">라운드 7. 뉴트리노 질량 정규순서(NO) 예측</h1>
-
-<h3 id="r7-derive">delta_PMNS 도출</h3>
-
-<div class="math-block">
-<div class="math-row">$$\delta_{\text{PMNS}} = \pi + \frac{2}{9} \times \delta_{\text{CKM}}$$</div>
-<div class="math-row">$$= 3.14159 + \frac{2}{9} \times 1.19536$$</div>
-<div class="math-row">$$= 3.14159 + 0.26564$$</div>
-<div class="math-row">$$= 3.407 \text{ rad} = 1.085\pi$$</div>
-<div class="math-desc">정규순서(NO) 실험값: $1.08\pi$ -- 오차 0.42%</div>
-</div>
-
-<p>반야프레임의 $\delta_{\text{PMNS}}$ 예측값 $1.085\pi$를 두 가지 실험 시나리오와 비교한다.</p>
-
-<ul>
-<li><strong>정규순서(NO)</strong> -- 실험값 약 $1.08\pi$. 반야프레임 $1.085\pi$와 <strong>0.42% 일치</strong>.</li>
-<li><strong>역순서(IO)</strong> -- 실험값 약 $1.58\pi$. 반야프레임 $1.085\pi$와 <strong>31% 불일치</strong>.</li>
-</ul>
-
-<p>반야프레임은 정규순서(NO)를 강하게 선호한다. 역순서(IO)는 31% 불일치로 사실상 배제된다.</p>
-
-<h3 id="r7-falsify">반박 가능성</h3>
-
-<p>이것은 반박 가능한 예측이다. 반야프레임이 틀렸는지 맞았는지를 실험으로 판정할 수 있다.</p>
-
-<ul>
-<li><strong>JUNO</strong> -- 중국 광둥성의 반응기 뉴트리노 실험. 질량 순서를 직접 측정한다. 2024년부터 가동 중이며, 수 년 내 결과가 나온다.</li>
-<li><strong>DUNE</strong> -- 미국 페르미랩에서 사우스다코타까지 1,300km 베이스라인의 장거리 뉴트리노 실험. CP 위상과 질량 순서를 동시에 측정한다.</li>
-</ul>
-
-<p>JUNO 또는 DUNE이 역순서(IO)를 확정하면, 반야프레임의 이 예측은 틀린 것이다. 정규순서(NO)를 확정하면, 반야프레임의 예측이 검증된다.</p>
-
-<hr>
-
-<h1 id="r-table">혼합각 총괄표</h1>
-
-<div class="table-wrap">
-<table>
-<tr><th>혼합각</th><th>반야프레임 공식</th><th>반야프레임 값</th><th>관측값</th><th class="col-err">오차</th><th class="col-date">날짜</th></tr>
-<tr><td>PMNS $\sin^2(\theta_{12})$</td><td>$3/\pi^2$</td><td>0.30396</td><td>0.304</td><td><span class="tag-solved">적중</span> 0.013%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>PMNS $\sin^2(\theta_{23})$</td><td>$4/7$</td><td>0.5714</td><td>0.573</td><td><span class="tag-solved">적중</span> 0.28%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>PMNS $\sin^2(\theta_{13})$</td><td>$16/729 = (4/27)^2$</td><td>0.02195</td><td>0.02200 (PDG 2024)</td><td><span class="tag-solved">적중</span> 0.23%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
-<tr><td>CKM $\sin(\theta_C)$</td><td>$\frac{2}{9}(1+\pi\alpha/2)$</td><td>0.2248</td><td>0.2253</td><td><span class="tag-solved">적중</span> 0.24%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>CKM $A$ (울펜슈타인)</td><td>$\sqrt{2/3}$</td><td>0.8165</td><td>0.8180</td><td><span class="tag-solved">적중</span> 0.18%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>CKM $\delta_{\text{CKM}}$</td><td>$\arctan(5/2 + \alpha_s/\pi)$</td><td>1.19536 rad</td><td>1.196 rad</td><td><span class="tag-solved">적중</span> 0.053%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
-<tr><td>PMNS $\delta_{\text{PMNS}}$</td><td>$\pi + \frac{2}{9}\delta_{\text{CKM}}$</td><td>$3.407$ rad ($1.085\pi$)</td><td>${\sim}3.39$ rad ($1.08\pi$, NO)</td><td><span class="tag-solved">적중</span> 0.42%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-23</span></td></tr>
-<tr><td>CKM-PMNS 교차</td><td>$\sin(\theta_C) = \frac{3}{2}\sin(\theta_{13})$</td><td>0.2244</td><td>0.2253</td><td><span class="tag-solved">적중</span> 0.79%</td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-</table>
-</div>
-
-<p>8개 공식, 전부 1% 이내. 최고 정밀도 0.013%(태양 뉴트리노). 최고 정밀 신규 결과 0.053%($\delta_{\text{CKM}}$). 자유 매개변수는 $\alpha$, $\alpha_s$, $2/9$ 총 3개. 출력 8개에서 입력 3개를 빼면 독립 예측 5개다.</p>
-
-<hr>
-
-<h1 id="incomplete">미완</h1>
-
-<div class="table-wrap">
-<table>
-<tr><th class="col-num">#</th><th>미완 항목</th><th>현재 상태</th><th>필요한 작업</th></tr>
-<tr><td>1</td><td><del>쿼크 CP 위상 ($\delta_{\text{CKM}}$)</del></td><td><span class="tag-solved">적중</span> $\arctan(5/2 + \alpha_s/\pi) = 1.19536$ rad, 오차 0.053%</td><td>라운드 6에서 완료</td></tr>
-<tr><td>2</td><td>PMNS CP 위상 ($\delta_{\text{PMNS}}$) 실험 확정</td><td>반야 예측 $1.085\pi$는 NO와 0.42% 일치. 실험 확정 대기</td><td>JUNO/DUNE 결과로 NO/IO 판정</td></tr>
-<tr><td>3</td><td><del>PMNS $\theta_{13}$의 독립 공식</del></td><td><span class="tag-solved">적중</span> $\sin(\theta_{13}) = 4/27$, 오차 0.23% ($\sin^2$ 기준)</td><td>라운드 5에서 완료</td></tr>
-</table>
-</div>
-
-<p>현재 등급: <strong>A-</strong> (8개 공식 전부 1% 이내, $\theta_{13}$ 직접도출 + $\delta_{\text{CKM}}$ 정밀화 완료)</p>
-<p>등급 A까지 남은 것: JUNO/DUNE이 정규순서를 확정하면 A.</p>
-
-<hr>
-
-<h1 id="summary">총괄</h1>
-
-<p>표준모형의 19개 자유 매개변수 중 8개가 혼합각(4 CKM + 4 PMNS)이다. 반야프레임은 입력 3개($\alpha$, $\alpha_s$, $2/9$)로 이 8개를 기술한다. 출력 8개에서 입력 3개를 빼면 독립 예측 5개다.</p>
-
-<p>가장 정밀한 결과는 태양 뉴트리노 혼합각이다. $\sin^2(\theta_{12}) = 3/\pi^2$. 순수 수학 상수만으로 물리 상수를 표현했고, 오차는 0.013%다.</p>
-
-<p>신규 정밀 결과로 $\delta_{\text{CKM}} = \arctan(5/2 + \alpha_s/\pi)$가 0.053% 오차를 달성했다. 보정항을 QED($\pi\alpha$)에서 QCD($\alpha_s/\pi$)로 교체한 것이 핵심이다. 쿼크 섹터이므로 QCD가 올바르다.</p>
-
-<p>$\theta_{13} = 4/27 = (2/9)(2/3)$은 직접 도출 공식이다. 이전에 CKM-PMNS 교차로만 간접 도출되던 것이 이제 독립 공식을 갖는다. $2/9$가 질량(코이데), 혼합각(카비보, $\theta_{13}$), CP 위상($\delta_{\text{PMNS}}$) 세 곳에 나타나므로 구조 상수로 확정된다.</p>
-
-<p>가장 의미 있는 결과는 정규순서(NO) 예측이다. $\delta_{\text{PMNS}} = \pi + (2/9)\delta_{\text{CKM}} = 1.085\pi$가 NO 실험값 $1.08\pi$와 0.42% 일치하고, IO $1.58\pi$와는 31% 불일치한다. JUNO/DUNE으로 검증 가능한 반박 가능 예측이다.</p>
-
-<p>씨앗 3개가 혼합각 8개를 만들었다. 다음은 이 혼합각들을 재대입해서 뉴트리노 질량을 예측하는 것이다.</p>
-</div>
-
-<div class="lang-en">
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>. The overall structure of the Banya Framework, verification of 118 physics formulas, the CAS operator, and the theory of writing are all in the comprehensive report. This document covers only the derivation process for CKM/PMNS mixing angles.</p>
 
 <h1 id="en-title">Derivation of CKM/PMNS Mixing Angles</h1>
@@ -897,12 +466,7 @@
 <p>3 seeds produced 8 mixing angles. The next step is to re-substitute these mixing angles to predict neutrino masses.</p>
 </div>
 
-<div class="page-nav lang-ko" style="display:none">
-<a href="../banya.html">종합 보고서</a>
-<a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
-<a href="../science_mine.html">과학 채굴 메뉴얼</a>
-</div>
+
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
 <a href="../predictions.html">Predictions</a>
@@ -910,48 +474,23 @@
 <a href="../science_mine.html">Mining Manual</a>
 </div>
 
-<div class="doc-footer lang-ko" style="display:none">
-<div class="f-top">
-<div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
-분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
-</div>
-<div class="f-right">
-<div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">CKM/PMNS 혼합각 8개 도출: 최고 정밀도 0.013%, $\delta_{\text{CKM}}$ 0.053%, 정규순서(NO) 예측</div>
-</div>
-</div>
-<div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="../expend.html">118개 상세검증 부록</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license">
-<div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
-기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
-<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
-</div>
-</div>
-</div>
+
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (般若 Framework)</b><br>
-Inventor: Han Hyukjin (한혁진)<br>
+<b>Banya Framework (Banya Framework)</b><br>
+Inventor: Han Hyukjin (Hyukjin Han)<br>
 Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
 Alias: Buddha's Palm Framework<br>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
 <div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">CKM/PMNS 혼합각 8개 도출: 최고 정밀도 0.013%, $\delta_{\text{CKM}}$ 0.053%, 정규순서(NO) 예측</div>
+<div class="f2">CKM/PMNS 혼합각 8개 Derivation: 최고 정밀도 0.013%, $\delta_{\text{CKM}}$ 0.053%, 정규순서(NO) 예측</div>
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="alpha.html">alpha 도출</a> | <a href="baryogenesis.html">바리오제네시스</a> | <a href="../expend.html">118 Compatibility Verification Appendix</a></div>
+<div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="alpha.html">alpha Derivation</a> | <a href="baryogenesis.html">바리오제네시스</a> | <a href="../expend.html">118 Compatibility Verification Appendix</a></div>
 <div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
