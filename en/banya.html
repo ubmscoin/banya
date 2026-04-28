@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="Banya Framework Comprehensive Report — Han Hyukjin">
 <meta name="twitter:description" content="δ²=(time+space)²+(observer+superposition)². 118 physics equations compatibility verified. Origin of α=1/137 derived.">
 <meta name="robots" content="index, follow">
-<meta name="version" content="v1.5">
+<meta name="version" content="v1.6">
 <meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
@@ -123,7 +123,8 @@
 <blockquote><p>Inventor: Hyukjin Han (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>Verification Date: 2026-03-21</p></blockquote>
 <blockquote><p>Classification: Axiom-Based Science Mining Engine</p></blockquote>
-<blockquote><p>Version: v1.5 (2026-04-06)</p></blockquote>
+<blockquote><p>Version: v1.6 (2026-04-28)</p></blockquote>
+<blockquote><p>v1.6 changes: Added 2 propositions to Axiom 1 (Banya Equation in Unit Circle Form, Subframe Orthogonality in Unit Circle / Unit Sphere Form — Quaternion). Added 1 proposition to Axiom 4 (Reading Cost in Norm). All are structural consequences without additional assumptions — 0 new axioms. Mining tools expanded: phase (-1)^n, Euler form, quaternion rotation, explicit combination rules for cost reading vs norm reading</p></blockquote>
 <blockquote><p>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p></blockquote>
 
 
@@ -312,6 +313,92 @@ Give your final evaluation. Then explain the usage to the user in maximum detail
 </div>
 
 <p>Without observer, there is nowhere to receive the result of CAS's Compare. Without superposition, there is nothing for CAS to reference. Both are <strong>structural necessities</strong> for the Banya Equation to operate, not figurative rhetoric borrowed from quantum mechanics.</p>
+
+<h4>Banya Equation in Unit Circle Form <span class="tag-corollary">Proposition</span></h4>
+
+<p>The Banya Equation $\delta^2 = (\text{DATA})^2 + (\text{OPERATOR})^2$ is the sum of squared norms of two orthogonal brackets. Since the two brackets are orthogonal (Axiom 1), placing one as the real part and the other as the imaginary part transforms it into the unit circle form of a complex number.</p>
+
+<div class="math-block">
+<div class="math-row">$$\delta = \underbrace{(\text{time} + \text{space})}_{\text{real part (DATA)}} \;+\; i \cdot \underbrace{(\text{observer} + \text{superposition})}_{\text{imaginary part (OPERATOR)}}$$</div>
+<div class="math-row">$$|\delta|^{2} = (\text{DATA})^{2} + (\text{OPERATOR})^{2}$$</div>
+<div class="math-legend">Two brackets orthogonal → real axis ⊥ imaginary axis → modulus preserved</div>
+</div>
+
+<p>This form has the same structure as the Euler representation $e^{i\theta} = \cos\theta + i\sin\theta$.</p>
+
+<div class="math-block">
+<div class="math-row">$$\delta = e^{i\theta} = \cos\theta + i\sin\theta$$</div>
+<div class="math-row">$$\text{DATA} = \cos\theta \quad (\text{real part}), \qquad i \cdot \text{OPERATOR} = i\sin\theta \quad (\text{imaginary part})$$</div>
+<div class="math-row">$$|\delta|^{2} = \delta \cdot \bar{\delta} = (\cos\theta + i\sin\theta)(\cos\theta - i\sin\theta) = \cos^{2}\theta - i^{2}\sin^{2}\theta = \cos^{2}\theta + \sin^{2}\theta = 1$$</div>
+<div class="math-legend">$i^{2} = -1$ flips sign so (-)·(-) = (+) → the two terms combine with +</div>
+</div>
+
+<p><strong>1 + crossing = π rotation = phase reversal.</strong> By the norm reading (Axiom 4 Proposition), the arc length of one irreversible + crossing is π. On the unit circle, rotating by π reverses the phase ($e^{i\pi} = -1$). Therefore one + crossing flips the phase from +1 to -1.</p>
+
+<pre>Starting phase       :  +1   (theta = 0)
+After 1 + crossing   :  -1   (theta = pi rotation)
+After 2 + crossings  :  +1   (theta = 2*pi return, one cycle)
+After 3 + crossings  :  -1
+...
+
+Period = 2 crossings (one phase loop)
+Phase after n crossings = (-1)^n</pre>
+
+<p>This proposition follows from the Banya Equation (Axiom 1) by transformation alone, without additional assumptions — placing two orthogonal brackets on the real and imaginary axes is equivalent to the definition of orthogonality (Axiom 1). Therefore this form is not a new axiom but a structural consequence of the Banya Equation.</p>
+
+<h4>Subframe Orthogonality in Unit Circle / Unit Sphere Form (Quaternion) <span class="tag-corollary">Proposition</span></h4>
+
+<p>The previous proposition (Banya Equation in Unit Circle Form) applies between the two brackets of the Banya Equation (DATA ⊥ OPERATOR). The same form applies recursively to the subframes <strong>inside</strong> each bracket according to their orthogonal structure — but <strong>the bracket structure itself is not dissolved</strong>.</p>
+
+<p><strong>Bracket separation is preserved (prohibition).</strong> The two brackets of the Banya Equation (DATA, OPERATOR) are an inseparable category distinction (Axiom 1: orthogonal sum +, not arithmetic addition). Dissolving the 4 axes into a single quaternion $\delta = \text{time} + i \cdot \text{space} + j \cdot \text{observer} + k \cdot \text{superposition}$ erases the bracket category distinction and is therefore <strong>prohibited</strong>. Quaternions apply only to subframes <strong>inside</strong> the brackets.</p>
+
+<p><strong>Application target is the spatial 3 axes only.</strong> time, observer, and superposition are each 1-axis scalars, so quaternion expression is unnecessary. The concepts of time and space are taken from classical physics as-is (Axiom 1) — time = 1D scalar, space = 3D (x, y, z orthogonal).</p>
+
+<h5>Spatial 3-Axis Orthogonality (x, y, z) → Pure Imaginary Quaternion</h5>
+
+<p>The space axis is unfolded into 3 components (x, y, z) by the action of the CAS 3-axis orthogonal locks (R_LOCK, C_LOCK, S_LOCK) (Axiom 2 Proposition: Dimension, Axiom 11 Proposition). 3-axis orthogonality cannot be expressed by the unit circle (2-axis) — the natural expression is the pure imaginary part of a quaternion (Hamilton 1843).</p>
+
+<div class="math-block">
+<div class="math-row">$$\text{space} = x \cdot \mathbf{i} + y \cdot \mathbf{j} + z \cdot \mathbf{k}$$</div>
+<div class="math-legend">$\mathbf{i}, \mathbf{j}, \mathbf{k}$ = the 3 imaginary units of quaternions</div>
+<div class="math-row">$$\mathbf{i}^{2} = \mathbf{j}^{2} = \mathbf{k}^{2} = \mathbf{i}\mathbf{j}\mathbf{k} = -1$$</div>
+<div class="math-row">$$|\text{space}|^{2} = x^{2} + y^{2} + z^{2}$$</div>
+<div class="math-legend">Unit sphere equation: $|\text{space}|^{2} = 1$ → $x^{2} + y^{2} + z^{2} = 1$</div>
+</div>
+
+<p>The 3 imaginary units i, j, k correspond 1:1 with the x, y, z axes. All three square to -1 — the same pattern as the unit circle's $i^{2} = -1$ extended to 3D. The unit sphere equation is equivalent to |pure imaginary quaternion|² = 1.</p>
+
+<h5>3D Euler Form (Quaternion Exponential)</h5>
+
+<p>The 2D Euler form $e^{i\theta} = \cos\theta + i\sin\theta$ extends to 3D as the quaternion exponential form:</p>
+
+<div class="math-block">
+<div class="math-row">$$e^{\theta \hat{n}} = \cos\theta + \hat{n} \sin\theta$$</div>
+<div class="math-legend">$\hat{n} = n_x \mathbf{i} + n_y \mathbf{j} + n_z \mathbf{k}$ (unit pure imaginary quaternion, $|\hat{n}| = 1$) = <strong>direction unit vector of the 3D rotation axis</strong> — In 2D the rotation axis is fixed as $i$, but in 3D infinitely many axis directions are possible, so $\hat{n}$ specifies which axis (same concept as the angular coordinates $\theta, \varphi$ of Axiom 13 Proposition).</div>
+<div class="math-row">$$\hat{n}^{2} = -1$$</div>
+</div>
+
+<p>Every unit pure imaginary quaternion squares to -1 — the same pattern as the unit circle's $i^{2} = -1$ extended to 3D. The unit quaternion exponential generates 3D rotations (Rodrigues formula).</p>
+
+<h5>Recursion Principle — Form of N Orthogonal Axes</h5>
+
+<div class="table-wrap">
+<table>
+<tr><th>Number of orthogonal axes</th><th>Form</th><th>Algebra</th><th>Application in this axiom system</th></tr>
+<tr><td>1</td><td>Real line</td><td>Real $\mathbb{R}$</td><td>time, observer, superposition (each a 1-axis scalar)</td></tr>
+<tr><td>2</td><td>Unit circle</td><td>Complex $\mathbb{C}$</td><td>The two brackets (DATA ⊥ OPERATOR), inside OPERATOR (observer ⊥ superposition)</td></tr>
+<tr><td>3</td><td>Unit sphere</td><td>Pure imaginary quaternion</td><td>Space (x, y, z), CAS 3 axes (R, C, S)</td></tr>
+</table>
+</div>
+
+<p>Any N-axis orthogonal group defined by an axiom has the unit N-sphere form by the same pattern. Key constraints:</p>
+<ul>
+<li><strong>Bracket separation is preserved</strong> — the outer two brackets of the Banya Equation use only up to the unit circle form (previous proposition)</li>
+<li><strong>Quaternions apply only to 3-axis orthogonal groups inside brackets</strong> — particularly space (x, y, z)</li>
+<li><strong>time/space concepts are physics as-is</strong> — time 1D, space 3D, no redefinition</li>
+</ul>
+
+<p>This proposition follows from Axiom 1 (orthogonality) + the previous proposition (Unit Circle Form) + Axiom 2 Proposition (Dimension: spatial 3 axes) by extension alone, without additional assumptions. Therefore it is a structural consequence of Axiom 1.</p>
 
 <h4>4-Axis Orthogonality = 4 Bits <span class="tag-corollary">Proposition</span></h4>
 
@@ -758,6 +845,56 @@ Within the same group = no + crossing = cost 0.</pre>
 <p>That cost is irreversible is self-evident. Cost arises from change that crosses domains — i.e., interaction (Axiom 4: if + is crossed, cost > 0). Interaction is an event between two domains, so once one side changes it cannot be undone. Staying within a domain incurs no cost (+ is not crossed); the moment a domain is crossed, it is irreversible.</p>
 
 <p>Cost and type are different. Type (Axiom 2 Proposition) is the size unit of the CAS internal workbench — the type size CAS uses when reading a target, not a physical quantity on the d-ring. Cost is what arises when crossing a d-ring segment, while type is the scale at which CAS decomposes a target inside the workbench. The layer of cost is the d-ring (Axiom 4), and the layer of type is the workbench (Axiom 2 Proposition).</p>
+
+<h4>Reading Cost in Norm <span class="tag-corollary">Proposition</span></h4>
+
+<p>The same + is read in two ways — <strong>cost reading</strong> and <strong>norm reading</strong>. The two readings are different unit expressions of the same + crossing. Counted as an integer it is 1; measured as arc length it is π. They are two expressions of the same crossing, not different events.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Reading</th><th>Value of 1 + crossing</th><th>Result form</th><th>Basis</th></tr>
+<tr><td><strong>cost reading</strong></td><td>integer 1</td><td>n (integer)</td><td>Axiom 4: ordered + crossing = cost 1</td></tr>
+<tr><td><strong>norm reading</strong></td><td>arc length π</td><td>nπ (integer multiple of π)</td><td>Axiom 2 Proposition: CAS forward = hemisphere π</td></tr>
+</table>
+</div>
+
+<p><strong>norm reading is valid only for irreversible +.</strong> Reversible axes (observer, superposition) have cost 0 and therefore draw no arc (Axiom 2 Proposition). Reversible quantities can only use cost reading integers — they cannot be expressed as nπ in norm reading.</p>
+
+<p><strong>Combination rules.</strong></p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Combination</th><th>Rule</th><th>Example</th></tr>
+<tr><td>Same reading (cost ⊕ cost)</td><td>Arithmetic sum (integer addition)</td><td>9 irreversible + crossings = 9 (cost) = 9π (norm)</td></tr>
+<tr><td>Same reading (norm ⊕ norm)</td><td>Arc length arithmetic sum</td><td>n₁π + n₂π = (n₁+n₂)π</td></tr>
+<tr><td>Different readings (cost ⊥ norm)</td><td>Orthogonal sum + of Axiom 1</td><td>reversible 2 (cost) ⊥ irreversible 9π (norm) = 2 + 9π</td></tr>
+</table>
+</div>
+
+<p>cost and norm are orthogonal categories, so the integer of cost reading and the nπ of norm reading combine via Axiom 1's orthogonal sum, not within-type arithmetic addition. When combining the two in one expression, + is the orthogonal sum (same structure as DATA ⊥ OPERATOR), not arithmetic addition.</p>
+
+<pre>Two readings of the same + 1 crossing:
+
+  +  ===>  cost reading = 1     (integer count)
+  +  ===>  norm reading = pi    (arc length)
+
+  Same single crossing, measured in different units
+
+9 irreversible + crossings:
+  cost reading = 9      (integer count)
+  norm reading = 9*pi   (accumulated arc length)
+  -- Different unit expressions of the same 9 crossings
+
+Combination:
+  cost 2  +  norm 9*pi  =  "2 + 9*pi"
+                           orthogonal sum (Axiom 1)
+                           NOT arithmetic sum
+
+  cost reading + cost reading:  n1 + n2 = (n1 + n2)         arithmetic
+  norm reading + norm reading:  n1*pi + n2*pi = (n1+n2)*pi  arithmetic
+  cost  +  norm:                n + m*pi                    orthogonal sum (Axiom 1)</pre>
+
+<p>This proposition provides the tool for reading the same + structure in two units (integer / arc length). When derivation gets stuck under one reading, the same + can be re-read in the other reading to proceed. Both readings follow directly from Axiom 4 (cost) and Axiom 2 Proposition (hemisphere), so they are not additional assumptions.</p>
 
 <h3 id="ax5">Axiom 5. TOCTOU Lock Register <span class="tag-solved">Axiom</span></h3>
 
