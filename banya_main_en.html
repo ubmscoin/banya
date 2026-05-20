@@ -1,0 +1,568 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banya Framework Comprehensive Report — Han Hyukjin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <style>
+    /* 반야프레임 공통 CSS -- 모든 HTML이 이 파일을 include한다 */
+/* 규칙: 핵심 발견 = 녹색, 가설 = 주황색, 기본 = 회색 */
+
+/* === 리셋 + 기본 === */
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:20px;line-height:1.7;color:#c9d1d9;background:#0d1117;max-width:1200px;margin:0 auto;padding:40px 30px;overflow-x:hidden}
+table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;margin-bottom:20px;font-size:0.9em;border-collapse:collapse}
+a{color:#58a6ff}a:hover{text-decoration:underline}
+h1{font-size:2.4em;border-bottom:2px solid #30363d;padding-bottom:12px;margin-bottom:20px;margin-top:40px;color:#e6edf3}
+h2{font-size:1.8em;border-bottom:1px solid #30363d;padding-bottom:8px;margin-top:50px;margin-bottom:20px;color:#e6edf3}
+h3{font-size:1.75em;margin-top:42px;margin-bottom:18px;color:#e6edf3}
+h4{font-size:1.5em;margin-top:32px;margin-bottom:14px;color:#e6edf3}
+p{margin-bottom:16px}
+hr{border:none;border-top:1px solid #30363d;margin:40px 0}
+pre{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:18px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;font-family:'SFMono-Regular',Consolas,monospace;font-size:0.85em;line-height:1.5;margin-bottom:20px;color:#c9d1d9}
+code{background:#161b22;border-radius:3px;padding:2px 6px;font-family:'SFMono-Regular',Consolas,monospace;font-size:0.88em;color:#c9d1d9}
+pre code{background:none;padding:0}
+ul,ol{margin-bottom:16px;padding-left:2em}
+li{margin-bottom:6px}
+/* table은 상단 body 바로 아래에서 정의됨 */
+th,td{border:1px solid #30363d;padding:8px 12px;text-align:left}
+th{background:#161b22;font-weight:600;color:#e6edf3}
+td{color:#c9d1d9}
+/* 좁은 칸 최소 너비 -- 데스크톱만 */
+@media(min-width:769px){
+.col-status{min-width:64px;white-space:nowrap;text-align:center}
+.col-date{min-width:80px;white-space:nowrap;text-align:center}
+.col-id{min-width:72px;white-space:nowrap;text-align:center;font-weight:600}
+.col-num{min-width:32px;white-space:nowrap;text-align:center}
+.col-err{min-width:56px;white-space:nowrap;text-align:right}
+}
+strong{font-weight:600;color:#e6edf3}
+blockquote{border-left:4px solid #30363d;padding:8px 16px;color:#8b949e;margin-bottom:20px}
+blockquote p{margin-bottom:6px}
+
+/* === 수식 블록 (기본 = 회색 테두리) === */
+.math-block{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:18px;margin-bottom:20px;text-align:center;overflow-x:auto;max-width:100%}
+.math-block .katex{font-size:1.35em}
+.math-block .math-row{margin:12px 0}
+.math-block .math-desc{color:#8b949e;font-size:0.9em;margin-top:4px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.math-block .math-legend{color:#6e7681;font-size:0.75em;margin-top:8px;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;border-top:1px solid #30363d;padding-top:6px}
+p .katex,li .katex{font-size:1.1em}
+
+/* === 핵심 발견 블록 (녹색 계열) === */
+.discovery-block{background:linear-gradient(135deg,#0d1f0d 0%,#121d12 100%);border:2px solid #2ea043;border-radius:8px;padding:24px;margin:24px 0}
+.discovery-block h4{color:#3fb950;margin-top:0;margin-bottom:12px;font-size:1.2em}
+.discovery-block .formula{font-size:1.3em;color:#e6edf3;text-align:center;padding:12px;background:#0d1117;border:1px solid #2ea043;border-radius:4px;margin:12px 0;overflow-x:auto;max-width:100%}
+.discovery-block .formula .katex{font-size:1.35em}
+.discovery-block .precision{color:#3fb950;font-weight:600}
+
+/* === 가설 블록 (주황색 계열) === */
+.hypothesis-block{background:linear-gradient(135deg,#1a1208 0%,#1d1a0d 100%);border:2px solid #d29922;border-radius:8px;padding:24px;margin:24px 0}
+.hypothesis-block h4{color:#d29922;margin-top:0;margin-bottom:12px;font-size:1.2em}
+.hypothesis-block .formula{font-size:1.3em;color:#e6edf3;text-align:center;padding:12px;background:#0d1117;border:1px solid #d29922;border-radius:4px;margin:12px 0}
+.hypothesis-block .formula .katex{font-size:1.35em}
+.hypothesis-block .precision{color:#d29922;font-weight:600}
+
+/* === 예측 블록 (파랑 계열) === */
+.prediction-block{background:linear-gradient(135deg,#0d1520 0%,#101d2a 100%);border:2px solid #1f6feb;border-radius:8px;padding:24px;margin:24px 0}
+.prediction-block h4{color:#58a6ff;margin-top:0;margin-bottom:12px;font-size:1.2em}
+.prediction-block .formula{font-size:1.3em;color:#e6edf3;text-align:center;padding:12px;background:#0d1117;border:1px solid #1f6feb;border-radius:4px;margin:12px 0;overflow-x:auto;max-width:100%}
+.prediction-block .formula .katex{font-size:1.35em}
+.prediction-block .precision{color:#58a6ff;font-weight:600}
+
+/* === 상태 태그 === */
+.status-success{color:#3fb950}
+.status-incomplete{color:#d29922}
+
+/* === 배지 태그 === */
+.tag-discovery{display:inline-block;background:#238636;color:#fff;padding:2px 10px;border-radius:3px;font-size:0.75em;font-weight:600}
+.tag-hypothesis{display:inline-block;background:#9e6a03;color:#fff;padding:2px 10px;border-radius:3px;font-size:0.75em;font-weight:600}
+.tag-solved{display:inline-block;background:#238636;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75em}
+.tag-corollary{display:inline-block;background:#e3742f;color:#fff;padding:2px 10px;border-radius:3px;font-size:0.75em;font-weight:600}
+.tag-pending{display:inline-block;background:#1f6feb;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75em}
+.tag-partial{display:inline-block;background:#9e6a03;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75em}
+.tag-wip{display:inline-block;background:#30363d;color:#8b949e;padding:1px 8px;border-radius:3px;font-size:0.75em}
+.lib-detail{margin-top:12px;padding-top:8px;border-top:1px solid #30363d;font-size:0.85em}
+.lib-detail a{color:#58a6ff;font-weight:600;text-decoration:none}
+.lib-detail a:hover{text-decoration:underline}
+
+/* === 발견 계층도 (banya.html) === */
+.hier-tree{margin:20px 0;padding:0 0 0 8px}
+.hier-tree .hier-root{color:#e6edf3;font-weight:600;font-size:1.05em;padding:6px 0}
+.hier-tree .hier-l1{margin-left:24px;padding:4px 0;border-left:2px solid #2ea043;padding-left:16px;color:#c9d1d9}
+.hier-tree .hier-l2{margin-left:48px;padding:3px 0;border-left:2px solid #30363d;padding-left:16px;color:#8b949e;font-size:0.95em}
+.hier-tree .hier-tag{display:inline-block;padding:1px 8px;border-radius:3px;font-size:0.75em;margin-left:6px}
+.hier-tree .hier-link{color:#58a6ff;text-decoration:none}
+.hier-tree .hier-link:hover{text-decoration:underline}
+
+/* === lib.html 카드 === */
+.lib-card{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:20px;margin:16px 0}
+.lib-card .lib-id{font-weight:700;font-size:0.85em;margin-bottom:4px}
+.lib-card .lib-formula{font-size:1.15em;color:#e6edf3;font-family:'SFMono-Regular',Consolas,monospace;margin:8px 0;padding:10px;background:#0d1117;border-radius:4px;text-align:center}
+.lib-card .lib-precision{color:#3fb950;font-weight:600;font-size:0.9em}
+.lib-card .lib-reuse{color:#d29922;font-size:0.85em;margin-top:8px;padding-top:8px;border-top:1px solid #30363d}
+
+/* === predictions.html 카드 === */
+.predict-card{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:16px;margin:12px 0}
+.predict-card .predict-title{color:#e6edf3;font-weight:600;margin-bottom:8px}
+.predict-card .predict-value{color:#58a6ff;font-size:1.1em;font-family:'SFMono-Regular',Consolas,monospace}
+.predict-card .predict-test{color:#8b949e;font-size:0.9em;margin-top:8px}
+
+/* === 과학채굴방법.html === */
+.step-block{background:#161b22;border-left:4px solid #2ea043;border-radius:0 6px 6px 0;padding:16px 20px;margin:16px 0}
+.step-block .step-num{color:#2ea043;font-weight:700;font-size:1.1em;margin-bottom:6px}
+.flow-block{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:20px;margin:20px 0;text-align:center}
+.flow-block .flow-arrow{color:#2ea043;font-size:1.2em;margin:8px 0}
+.role-card{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:16px;margin:12px 0}
+.role-card .role-title{color:#3fb950;font-weight:600;font-size:1.05em;margin-bottom:8px}
+.warn-block{background:#1a1208;border:1px solid #9e6a03;border-radius:6px;padding:16px;margin:16px 0;color:#d29922}
+
+/* === TOC 사이드바 === */
+.toc-side{position:fixed;top:60px;left:max(0px,calc((100vw - 1200px)/2 - 260px));width:240px;max-height:calc(100vh - 80px);overflow-y:auto;padding:12px 0;scrollbar-width:thin;scrollbar-color:#30363d transparent;z-index:9998;font-size:0.7em;line-height:1.4}
+.toc-side a{color:#8b949e;text-decoration:none;display:block;padding:3px 10px;border-left:2px solid transparent;transition:color 0.2s,border-color 0.2s}
+.toc-side a:hover{color:#58a6ff;border-left-color:#58a6ff}
+.toc-side a.active{color:#58a6ff;border-left-color:#58a6ff;font-weight:600}
+.toc-side .toc-h1{font-weight:600;color:#e6edf3;margin-top:8px}
+.toc-side .toc-h2{padding-left:16px}
+.toc-side .toc-h3{padding-left:28px;font-size:0.92em}
+
+/* === TOC 모바일 바 === */
+.toc-bar{display:none;position:fixed;top:0;left:0;right:0;width:100%;height:38px;background:#161b22ee;z-index:9997;align-items:center;padding:0 14px;cursor:pointer;backdrop-filter:blur(6px);border-bottom:1px solid #30363d}
+.toc-bar-text{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#c9d1d9;font-size:0.85em}
+.toc-bar-arrow{color:#8b949e;font-size:0.8em;margin-left:8px;transition:transform 0.2s}
+.toc-bar.open .toc-bar-arrow{transform:rotate(180deg)}
+.toc-overlay{display:none;position:fixed;top:38px;left:0;right:0;bottom:0;width:100%;background:#0d1117ee;overflow-y:auto;z-index:9996;padding:16px 20px;backdrop-filter:blur(6px)}
+.toc-overlay.show{display:block}
+.toc-overlay a{color:#8b949e;text-decoration:none;display:block;padding:6px 8px;font-size:0.85em;border-left:2px solid transparent}
+.toc-overlay a:hover,.toc-overlay a.active{color:#58a6ff;border-left-color:#58a6ff}
+.toc-overlay .toc-h1{font-weight:600;color:#e6edf3;margin-top:10px}
+.toc-overlay .toc-h2{padding-left:16px}
+.toc-overlay .toc-h3{padding-left:28px;font-size:0.9em}
+
+/* === 페이지 네비게이션 === */
+.page-nav{margin-top:40px;padding:20px 0;border-top:1px solid #30363d;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.page-nav a{color:#8b949e;text-decoration:none;padding:6px 16px;border:1px solid #30363d;border-radius:4px;font-size:0.8em;transition:color 0.2s,border-color 0.2s}
+.page-nav a:hover{color:#58a6ff;border-color:#58a6ff}
+.page-nav a.current{color:#58a6ff;border-color:#58a6ff;font-weight:600}
+
+/* === 푸터 === */
+.doc-footer{border-top:1px solid #30363d;padding:28px 0 32px;margin-top:60px}
+.doc-footer .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.doc-footer .f-corp{font-size:11px;color:#8b949e;line-height:1.8}
+.doc-footer .f-corp b{color:#c9d1d9;font-weight:600}
+.doc-footer .f-right{text-align:right;font-size:11px;color:#8b949e;line-height:1.8}
+.doc-footer .f1{font-size:12px;color:#c9d1d9;font-weight:600}
+.doc-footer .f2{font-size:10.5px;color:#8b949e;margin-top:4px}
+.doc-footer .f-bottom{margin-top:14px;padding-top:12px;border-top:1px solid #30363d;text-align:center}
+.doc-footer .f-copy{font-size:10px;color:#6e7681;margin-top:4px}
+.doc-footer .f-license{margin-top:12px;padding-top:10px;border-top:1px solid #21262d;font-size:10px;color:#6e7681;line-height:1.7}
+.doc-footer .f-license a{color:#58a6ff;font-size:10px}
+.doc-footer .f-license .license-title{color:#8b949e;font-weight:600;font-size:10.5px;margin-bottom:4px}
+.doc-footer .f-license .license-cite{color:#6e7681;font-size:9.5px;margin-top:6px;padding:6px 10px;background:#161b22;border-radius:4px;font-family:'SFMono-Regular',Consolas,monospace}
+.doc-footer a{color:#58a6ff;text-decoration:none}
+.doc-footer a:hover{text-decoration:underline}
+
+/* === 언어 토글 === */
+.lang-switch{position:fixed;top:12px;right:20px;z-index:9999;display:flex;gap:4px;background:#161b22;border:1px solid #30363d;border-radius:6px;padding:3px}
+.lang-switch .lang-btn{background:none;border:none;color:#8b949e;cursor:pointer;padding:4px 12px;border-radius:4px;font-size:13px;font-weight:600;transition:all 0.2s}
+.lang-switch .lang-btn:hover{color:#c9d1d9}
+.lang-switch .lang-btn.active{background:#238636;color:#fff}
+
+/* === 테이블 래퍼 === */
+.table-wrap{overflow-x:auto;margin-bottom:20px;-webkit-overflow-scrolling:touch}
+
+/* === 반응형 === */
+@media(max-width:1500px){.toc-side{display:none}.toc-bar{display:flex}body{padding-top:46px!important}}
+@media(max-width:768px){body{font-size:18px;padding:24px 16px;padding-top:46px}h1{font-size:1.8em;margin-top:28px}h2{font-size:1.5em;margin-top:36px}h3{font-size:1.25em;margin-top:24px}h4{font-size:1.05em}pre{padding:12px;font-size:0.82em}.math-block{padding:12px}.math-block .katex{font-size:1.1em}.math-legend{font-size:0.7em}table{font-size:0.88em}th,td{padding:6px 8px}.toc-bar{height:36px}.toc-bar-text{font-size:0.8em}.toc-overlay a{padding:5px 8px;font-size:0.82em}.doc-footer .f-top{flex-direction:column}.doc-footer .f-right{text-align:left}}
+@media(max-width:480px){body{font-size:16px;padding:16px 10px;padding-top:44px}h1{font-size:1.5em;margin-top:20px}h2{font-size:1.3em;margin-top:28px}h3{font-size:1.15em;margin-top:20px}h4{font-size:1em}pre{padding:10px;font-size:0.75em;overflow-x:auto;max-width:100%}.math-block{padding:10px 8px}.math-block .katex{font-size:0.95em}p .katex,li .katex{font-size:0.95em}.math-row{margin:4px 0}.math-legend{font-size:0.65em;padding-top:4px}.math-desc{font-size:0.75em}th,td{padding:4px 6px}blockquote{padding:6px 12px}.toc-bar{height:34px}.toc-bar-text{font-size:0.75em}.toc-overlay{padding:12px 14px}.toc-overlay a{padding:4px 6px;font-size:0.78em}.toc-overlay .toc-h3{padding-left:20px}li{margin-bottom:4px}}
+
+/* === Quick Nav 카드 (랜딩) === */
+.quicknav-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
+.quicknav-grid .qn-card{display:block;padding:12px 14px;border:1px solid #30363d;border-radius:6px;background:#161b22;color:#c9d1d9;text-decoration:none;line-height:1.45;font-size:0.92em}
+.quicknav-grid .qn-card strong{color:#58a6ff;font-size:1em;display:block;margin-bottom:3px}
+.quicknav-grid .qn-card:hover{border-color:#58a6ff;background:#1c2230}
+@media(max-width:900px){.quicknav-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.quicknav-grid{grid-template-columns:1fr}}
+
+    /* PDF overrides — white base, grayscale code, colored badges/borders preserved */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; orphans: 3; widows: 3; }
+  body { max-width: none; padding: 16px 26px; font-size: 11pt; line-height: 1.55; background: #fff !important; color: #1a1a1a !important; }
+  .lang-switch, .toc-side, .toc-bar, .toc-overlay, .page-nav { display: none !important; }
+  /* Tighter margins + page-break policy to avoid mid-document gaps */
+  h1 { margin-top: 24px !important; margin-bottom: 12px !important; page-break-before: auto; }
+  h2 { margin-top: 28px !important; margin-bottom: 12px !important; page-break-after: avoid; page-break-inside: avoid; }
+  h3 { margin-top: 18px !important; margin-bottom: 10px !important; page-break-after: avoid; page-break-inside: avoid; }
+  h4 { margin-top: 14px !important; margin-bottom: 8px !important; page-break-after: avoid; page-break-inside: avoid; }
+  p { margin: 0 0 10px 0 !important; orphans: 3; widows: 3; }
+  ul, ol { margin: 8px 0 !important; padding-left: 24px !important; }
+  li { margin: 4px 0 !important; }
+  hr { margin: 18px 0 !important; border-top: 1px solid #ccc !important; }
+  blockquote { margin: 10px 0 !important; padding: 6px 14px !important; page-break-inside: avoid; }
+  .table-wrap, table { page-break-inside: avoid; }
+  details { margin: 10px 0 !important; padding: 6px 10px !important; background: #fafafa !important; border: 1px solid #e0e0e0 !important; border-radius: 4px !important; font-size: 0.78em !important; line-height: 1.5 !important; color: #555 !important; page-break-inside: avoid; }
+  details > summary { font-size: 0.95em !important; color: #444 !important; font-weight: 600 !important; cursor: default !important; list-style: none !important; margin-bottom: 6px !important; }
+  details > summary::-webkit-details-marker { display: none !important; }
+  details blockquote { margin: 4px 0 !important; padding: 2px 12px !important; border-left: 2px solid #d0d0d0 !important; }
+  details blockquote p { margin: 0 !important; font-size: 1em !important; }
+  /* Force details to expand */
+  details { display: block !important; }
+  details > summary { display: list-item !important; color: #444 !important; font-weight: 600; margin-bottom: 8px; }
+  details > *:not(summary) { display: block !important; }
+  details[open], details { /* open by default in PDF */ }
+  /* Quick Nav card grid — keep visible, adapt to A4 */
+  .quicknav-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; margin: 18px 0 !important; page-break-inside: avoid; }
+  .quicknav-grid .qn-card { display: block !important; padding: 10px 12px !important; border: 1px solid #d0d0d0 !important; border-radius: 4px !important; background: #fafafa !important; color: #1a1a1a !important; text-decoration: none !important; line-height: 1.4 !important; font-size: 0.85em !important; }
+  .quicknav-grid .qn-card strong { color: #0366d6 !important; font-size: 1em !important; display: block !important; margin-bottom: 2px !important; }
+  h1 { font-size: 1.6em; color: #000 !important; border-bottom: 2px solid #ccc !important; page-break-after: avoid; }
+  h2 { font-size: 1.3em; color: #000 !important; border-bottom: 1px solid #ccc !important; page-break-after: avoid; }
+  h3 { font-size: 1.15em; color: #111 !important; page-break-after: avoid; }
+  h4 { font-size: 1.0em; color: #222 !important; page-break-after: avoid; }
+  a { color: #0366d6 !important; }
+  pre { background: #f5f5f5 !important; border: 1px solid #d0d0d0 !important; color: #1a1a1a !important; page-break-inside: avoid; }
+  code { background: #f5f5f5 !important; color: #1a1a1a !important; }
+  pre code { background: none !important; }
+  table { font-size: 0.82em; page-break-inside: avoid; display: table; width: 100%; }
+  th { background: #f0f0f0 !important; color: #000 !important; }
+  td { color: #1a1a1a !important; }
+  th, td { border: 1px solid #bbb !important; padding: 6px 10px; }
+  strong { color: #000 !important; }
+  blockquote { border-left: 4px solid #ccc !important; color: #555 !important; }
+  hr { border-top: 1px solid #ccc !important; }
+  .math-block { background: #fafafa !important; border: 1px solid #d0d0d0 !important; page-break-inside: avoid; }
+  .math-block .math-desc { color: #555 !important; }
+  .math-block .math-legend { color: #777 !important; border-top: 1px solid #d0d0d0 !important; }
+  .tag-solved { background: #2ea043 !important; color: #fff !important; }
+  .tag-corollary { background: #e3742f !important; color: #fff !important; }
+  /* AI mining box (special — keep dark on light for visibility) */
+  #ai-mining { background: #fafafa !important; border: 1px solid #d29922 !important; color: #1a1a1a !important; font-size: 0.9em !important; padding: 10px 14px !important; }
+  #ai-mining pre { background: #f0f0f0 !important; color: #333 !important; border: 1px solid #ccc !important; font-size: 0.72em !important; line-height: 1.4 !important; padding: 8px 10px !important; margin: 4px 0 8px 0 !important; page-break-inside: avoid !important; page-break-before: avoid !important; break-inside: avoid !important; break-before: avoid !important; }
+  #ai-mining pre a { font-size: 1em !important; color: #0366d6 !important; }
+  #ai-mining button { display: none !important; }
+  /* Footer — readable on white, clean hierarchy */
+  .doc-footer { border-top: 2px solid #d0d0d0 !important; padding-top: 18px !important; margin-top: 28px !important; color: #1a1a1a !important; page-break-inside: avoid; }
+  .doc-footer .f-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .doc-footer .f-corp { color: #1a1a1a !important; font-size: 0.95em; }
+  .doc-footer .f-corp b { color: #000 !important; font-size: 1.05em; }
+  .doc-footer .f-right { color: #1a1a1a !important; text-align: right; }
+  .doc-footer .f-right .f1 { color: #000 !important; font-weight: 600; }
+  .doc-footer .f-right .f2 { color: #444 !important; font-size: 0.9em; margin-top: 4px; }
+  .doc-footer .f-bottom { color: #333 !important; border-top: 1px solid #e0e0e0 !important; padding-top: 12px !important; }
+  .doc-footer .f-copy { color: #444 !important; font-size: 0.9em; margin-bottom: 8px; }
+  .doc-footer .f-license { color: #444 !important; font-size: 0.85em; line-height: 1.5; }
+  .doc-footer .license-title { color: #000 !important; font-weight: 600; margin-bottom: 4px; }
+  .doc-footer .license-cite { background: #f5f5f5 !important; color: #555 !important; margin-top: 8px !important; padding: 6px 10px !important; border-radius: 4px !important; border: 1px solid #e0e0e0 !important; font-size: 0.85em !important; }
+}
+/* Screen styles for preview — also white base */
+body { background: #fff !important; color: #1a1a1a !important; }
+h1, h2, h3 { color: #000 !important; }
+h4 { color: #222 !important; }
+a { color: #0366d6 !important; }
+strong { color: #000 !important; }
+pre { background: #f5f5f5 !important; border: 1px solid #d0d0d0 !important; color: #1a1a1a !important; }
+code { background: #f5f5f5 !important; color: #1a1a1a !important; }
+pre code { background: none !important; }
+th { background: #f0f0f0 !important; color: #000 !important; }
+td { color: #1a1a1a !important; }
+th, td { border: 1px solid #bbb !important; }
+blockquote { border-left: 4px solid #ccc !important; color: #555 !important; }
+.math-block { background: #fafafa !important; border: 1px solid #d0d0d0 !important; }
+.lang-switch, .toc-side, .toc-bar, .toc-overlay, .page-nav { display: none !important; }
+/* Force details to expand (screen preview too) */
+details > *:not(summary) { display: block !important; }
+details > summary { color: #444 !important; font-weight: 600; }
+/* Quick Nav card grid — screen */
+.quicknav-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 10px !important; margin: 18px 0 !important; }
+.quicknav-grid .qn-card { display: block !important; padding: 12px 14px !important; border: 1px solid #d0d0d0 !important; border-radius: 6px !important; background: #fafafa !important; color: #1a1a1a !important; text-decoration: none !important; line-height: 1.45 !important; font-size: 0.92em !important; }
+.quicknav-grid .qn-card strong { color: #0366d6 !important; font-size: 1em !important; display: block !important; margin-bottom: 3px !important; }
+/* Footer — readable on white */
+.doc-footer { border-top: 2px solid #d0d0d0 !important; padding-top: 18px !important; margin-top: 28px !important; color: #1a1a1a !important; }
+.doc-footer .f-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; flex-wrap: wrap; gap: 16px; }
+.doc-footer .f-corp { color: #1a1a1a !important; font-size: 0.95em; }
+.doc-footer .f-corp b { color: #000 !important; font-size: 1.05em; }
+.doc-footer .f-right { color: #1a1a1a !important; text-align: right; }
+.doc-footer .f-right .f1 { color: #000 !important; font-weight: 600; }
+.doc-footer .f-right .f2 { color: #444 !important; font-size: 0.9em; margin-top: 4px; }
+.doc-footer .f-bottom { color: #333 !important; border-top: 1px solid #e0e0e0 !important; padding-top: 12px !important; }
+.doc-footer .f-copy { color: #444 !important; font-size: 0.9em; margin-bottom: 8px; }
+.doc-footer .f-license { color: #444 !important; font-size: 0.85em; line-height: 1.5; }
+.doc-footer .license-title { color: #000 !important; font-weight: 600; margin-bottom: 4px; }
+.doc-footer .license-cite { background: #f5f5f5 !important; color: #555 !important; margin-top: 8px !important; padding: 6px 10px !important; border-radius: 4px !important; border: 1px solid #e0e0e0 !important; font-size: 0.85em !important; }
+
+    </style>
+    </head>
+    <body>
+
+<div class="lang-switch"><a href="https://ubmscoin.github.io/banya/banya_main.html" class="lang-btn">KR</a></div>
+<div>
+<h1 id="sec1">Banya Framework Comprehensive Report</h1>
+
+<blockquote><p>Official Name: Banya Framework</p></blockquote>
+<blockquote><p>Alias: Buddha's Palm Framework</p></blockquote>
+<blockquote><p>Inventor: Hyukjin Han (bokkamsun@gmail.com)</p></blockquote>
+<blockquote><p>Verification Date: 2026-03-21</p></blockquote>
+<blockquote><p>Classification: Axiom-Based Science Mining Engine</p></blockquote>
+<blockquote><p>Version: v1.8 (2026-05-20)</p></blockquote>
+<blockquote><p>License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p></blockquote>
+
+<details open style="margin:8px 0 16px 0;font-size:0.9em">
+<summary style="cursor:pointer;color:#555">Version change history (v1.5~v1.8)</summary>
+<blockquote style="margin-top:8px"><p>v1.8 changes: Clifford form proposition reorganized — distinguished into Cl(7) structure (data type 128 = 2⁷) and Cl(3) operator (<a href="https://ubmscoin.github.io/banya/en/axiom.html#ax2" target="_blank">Axiom 2 Proposition</a> "Juida (Writing) Is a Cl(3) Bivector Rotation"). Cl(4) registered only as structural notation — simultaneous firing on the bit-transition diagram (<a href="https://ubmscoin.github.io/banya/en/axiom.html#ax15" target="_blank">Axiom 15</a>) collides with CAS sequential enforcement (<a href="https://ubmscoin.github.io/banya/en/axiom.html#ax5" target="_blank">Axiom 5</a>), so the absence of a Cl(4) operator is made explicit. Added the "Complementarity of the Banya Equation and the Bit-Transition Diagram" proposition to <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax2" target="_blank">Axiom 2</a> — CAS cannot be seen in the Banya Equation's geometric representation; its coordinates appear only in the bit-transition diagram. Workbench proposition corrected — CAS resides in the norm space as an opcode operator. Physics-borrowed vocabulary (pressure, spacetime, measurement) removed; δ-as-migrator expressions purged; "firing" restricted to the δ firing bit (<a href="https://ubmscoin.github.io/banya/en/axiom.html#ax15" target="_blank">Axiom 15</a>) only. Bulk auto-linking of axiom references (471 in-body "Axiom N" mentions activated). Unified h3/h4 font sizes (1.75em / 1.5em). AI mining box now prioritizes live pages (<a href="https://ubmscoin.github.io/banya/en/banya.html" target="_blank">ubmscoin.github.io/banya/en/banya.html</a>) over PDF in the 3-step procedure. The "Axiom-Derived Formula Summary" and the "Axiom System Summary Tables" were removed from axiom.html for body cleanup.</p></blockquote>
+<blockquote><p>v1.7 changes: Added 1 proposition to <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax1" target="_blank">Axiom 1</a> (7-Axis Orthogonality in Clifford Form Cl(7)). Exposes the algebraic structure of data type 128 = 2⁷ as the Cl(7) multivector space. Quaternion proposition application target also expanded — not only spatial 3 axes but all 3-axis orthogonal groups (including CAS 3 axes). Mining tools expanded: Cl(7) multivector representation of 7-bit cost/dimension/movement</p></blockquote>
+<blockquote><p>v1.6 changes: Added 2 propositions to <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax1" target="_blank">Axiom 1</a> (Banya Equation in Unit Circle Form, Subframe Orthogonality in Unit Circle / Unit Sphere Form — Quaternion). Added 1 proposition to <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax4" target="_blank">Axiom 4</a> (Reading Cost in Norm). All are structural consequences without additional assumptions — 0 new axioms. Mining tools expanded: phase (-1)^n, Euler form, quaternion rotation, explicit combination rules for cost reading vs norm reading</p></blockquote>
+<blockquote><p>v1.5 changes: Complete overhaul of the AI 3-step paste procedure — significantly improved AI learning success rate. Strengthened the guidance structure so AI operates as a mining tool rather than falling into theoretical analysis</p></blockquote>
+</details>
+
+<a href="https://ubmscoin.github.io/banya/en/banya.html#quicknav" style="display:block;background:#fff3cd;border:2px solid #d29922;border-radius:6px;padding:12px 18px;margin:0 0 14px 0;color:#664d03;text-decoration:none;font-weight:600;text-align:center;font-size:0.95em;line-height:1.5">Each card below is clickable in this PDF — jump to the live page<br><span style="font-size:0.88em;color:#0366d6;text-decoration:underline">https://ubmscoin.github.io/banya/en/banya.html#quicknav</span></a><div id="quicknav" class="quicknav-grid">
+<a href="https://ubmscoin.github.io/banya/en/banya.html#ai-mining" target="_blank" rel="noopener" class="qn-card"><strong>AI-Driven Mining Guide</strong><br>3-step paste procedure</a>
+<a href="https://ubmscoin.github.io/banya/en/axiom.html" target="_blank" rel="noopener" class="qn-card"><strong>15 Axioms</strong><br>Banya equation + axiom system</a>
+<a href="https://ubmscoin.github.io/banya/report/alpha137/en/alpha137_en.pdf" target="_blank" rel="noopener" class="qn-card"><strong>Derivation Demo</strong><br>α = 1/137 derivation PDF</a>
+<a href="https://ubmscoin.github.io/banya/en/science_mine.html" target="_blank" rel="noopener" class="qn-card"><strong>Science Mining Manual</strong><br>5-step recursive substitution</a>
+<a href="https://ubmscoin.github.io/banya/en/appendix.html" target="_blank" rel="noopener" class="qn-card"><strong>Sub-Reports</strong><br>28 discovery reports index</a>
+<a href="https://ubmscoin.github.io/banya/en/misconception.html#guide-miscon" target="_blank" rel="noopener" class="qn-card"><strong>Common Misconceptions</strong><br>11 misconceptions</a>
+<a href="https://ubmscoin.github.io/banya/en/misconception.html#guide-caution" target="_blank" rel="noopener" class="qn-card"><strong>Usage Cautions</strong><br>4 cautions</a>
+<a href="https://ubmscoin.github.io/banya/en/lib.html" target="_blank" rel="noopener" class="qn-card"><strong>Hypothesis Library</strong><br>Discoveries + hypotheses + predictions 1000+</a>
+<a href="https://ubmscoin.github.io/banya/en/predictions.html" target="_blank" rel="noopener" class="qn-card"><strong>Unique Predictions</strong><br>Awaiting experimental verification</a>
+<a href="https://ubmscoin.github.io/banya/en/expend.html" target="_blank" rel="noopener" class="qn-card"><strong>118 Compatibility Verification</strong><br>Physics equations × Banya Framework</a>
+<a href="https://ubmscoin.github.io/banya/en/physics_map.html" target="_blank" rel="noopener" class="qn-card"><strong>Physics Correspondence Table</strong><br>Mapping between axiom terms and physics terms</a>
+<a href="https://ubmscoin.github.io/banya/en/terms.html" target="_blank" rel="noopener" class="qn-card"><strong>Terminology</strong><br>Axiom term definitions</a>
+<a href="https://ubmscoin.github.io/banya/en/template.html" target="_blank" rel="noopener" class="qn-card"><strong>Author Template</strong><br>Discovery/hypothesis report form</a>
+<a href="https://ubmscoin.github.io/banya/en/banya.html#sec120" target="_blank" rel="noopener" class="qn-card"><strong>Inventor's Reflection</strong><br>Design starting point</a>
+</div>
+
+<hr>
+
+<h1 id="guide-what">What is the Banya Equation / What is the Banya Framework</h1>
+
+<blockquote><p>A single equation, translated from one line of the Heart Sutra into computer science, yields the fine-structure constant <strong>α = 1/137.036082</strong> (CODATA agreement, error 6×10⁻⁷). The same axioms produce the weak mixing angle <strong>sin²θ_W = 7/(2+9π) = 0.23122</strong> and the cosmic baryon-to-photon ratio <strong>η_B = 6.14×10⁻¹⁰</strong> through independent forward chains. The total input is <a href="https://ubmscoin.github.io/banya/en/axiom.html" target="_blank">4 axioms and 1 proposition</a>. Fitting, imported equations, and free parameters are all zero. The full process is in the <a href="https://ubmscoin.github.io/banya/report/alpha137/en/alpha137_en.pdf" target="_blank">α=1/137 derivation PDF (39 pages)</a>.</p></blockquote>
+
+<p>The <strong>Banya Equation</strong> and the <strong>Banya Framework</strong> are different.</p>
+
+<h3>Banya Equation, a 4-axis orthogonal norm in one line</h3>
+
+<p>The Banya Equation comes from the Heart Sutra (Banya心經). "Everything changes except change itself" becomes δ (total variation), and "form is emptiness, emptiness is form" (色卽是空 空卽是色) is rewritten as the orthogonality of classical (time+space) and quantum (observer+superposition). The insight is transcribed directly into the language and formulas of computer science:</p>
+
+<div class="math-block">
+<div class="math-row">$$\delta^{2} = (time + space)^{2} + (observer + superposition)^{2}$$</div>
+<div class="math-legend">$\delta$: change | time: time | space: space | observer: observation | superposition: superposition</div>
+</div>
+
+<p>4 words, 2 squares, 1 line. A structural declaration that all change in the universe is the norm of 4 axes. Every derivation starts here.</p>
+
+<h3>Banya Framework, the engine that runs the equation</h3>
+
+<p>A tool system that takes the <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax1" target="_blank">Banya Equation</a> as its engine, fixes <strong><a href="https://ubmscoin.github.io/banya/en/axiom.html#ax2" target="_blank">CAS (Read-Compare-Swap)</a></strong> as the sole atomic operator, and bounds resources by finite cost (≤+1, <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax4" target="_blank">Axiom 4</a>). Closed by <a href="https://ubmscoin.github.io/banya/en/axiom.html" target="_blank">15 axioms</a> and propositions. 0 imported equations.</p>
+
+<p><strong>Why CAS, of all operators.</strong> The δ in the <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax1" target="_blank">Banya Equation</a> deals only with one change. Change is defined only when the pre-change state and the post-change state are compared at the same time. <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax2" target="_blank">CAS</a> is the only atomic operator that handles two states inside one operation, and therefore the only operator that brings forth order and change. Regardless of which domain (time, space, observer, superposition) CAS operates through, the atomic operator at the bottom is the same CAS.</p>
+
+<pre><code>Framework = Banya Equation + 1 CAS + 11 data types (fixed) + description DOF 9 (fixed) + 1 kind of 1D ring (fixed) + cost</code></pre>
+
+<p>The equation is the engine and the framework is the car. The engine alone runs but cannot drive.</p>
+
+<h3>The whole picture at a glance</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Status</th></tr>
+<tr><td>Discoveries (D), hypotheses (H), predictions (P)</td><td>More than 1000 accumulated in the <a href="https://ubmscoin.github.io/banya/en/lib.html" target="_blank">Hypothesis Library</a>. All derived from the same axioms through forward chains</td></tr>
+<tr><td>Unique predictions</td><td>More than 100 in <a href="https://ubmscoin.github.io/banya/en/predictions.html" target="_blank">Predictions</a>. Not derivable by existing theories. Awaiting experimental verification</td></tr>
+<tr><td>Compatibility with existing physics</td><td><a href="https://ubmscoin.github.io/banya/en/expend.html" target="_blank">118 equations checked</a>, FAIL 0. Includes E=mc², uncertainty principle, black hole entropy</td></tr>
+<tr><td>Forward derivation of Standard Model constants</td><td><a href="https://ubmscoin.github.io/banya/en/appendix.html" target="_blank">22 constants</a></td></tr>
+<tr><td>Representative derivation report</td><td><a href="https://ubmscoin.github.io/banya/report/alpha137/en/alpha137_en.pdf" target="_blank">α = 1/137 derivation PDF (39 pages)</a></td></tr>
+</table>
+</div>
+
+<h3>A walkthrough of one derivation report: α = 1/137</h3>
+
+<p>The <a href="https://ubmscoin.github.io/banya/report/alpha137/en/alpha137_en.pdf" target="_blank">α = 1/137 derivation PDF (39 pages)</a> uses only 4 axioms and 1 proposition to derive the fine-structure constant and two other physical quantities through forward chains. It compresses what the whole framework does into a single example, and reports in the same style are accumulating in the <a href="https://ubmscoin.github.io/banya/en/lib.html" target="_blank">Hypothesis Library</a>.</p>
+
+<p><strong>What this report derives:</strong></p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Target</th><th>Axiom output</th><th>Experimental agreement</th></tr>
+<tr><td>Fine-structure constant α</td><td>1/137.036082</td><td>CODATA 1/137.035999177, error 6×10⁻⁷</td></tr>
+<tr><td>Weak mixing angle sin²θ_W</td><td>7/(2+9π) = 0.23122</td><td>PDG (MS-bar, M_Z) 0.23122 ± 0.00004, error 4×10⁻⁶</td></tr>
+<tr><td>Baryon-to-photon ratio η_B</td><td>α⁴·sin²θ_W·[1−2(4+1/π)α] = 6.14×10⁻¹⁰</td><td>Planck (6.12 ± 0.04)×10⁻¹⁰, 0.5σ</td></tr>
+<tr><td>1/α(M_Z) data-type match</td><td>128 = 2⁷ (FSM 7-bit basis)</td><td>≈ 127.918, closed by residual cost 9.118</td></tr>
+</table>
+</div>
+
+<p><strong>Though this is only one derivation example, four blockings against coincidence close at once inside it.</strong></p>
+
+<p><strong>1. Independence of two forward chains.</strong> α follows the path [axioms, (5,2) signature, D5 compact domain, Wyler volume ratio]. sin²θ_W follows the path [axioms, 7/(2+9π)]. α does not enter the sin²θ_W formula. The two chains never meet. The coincidence hypothesis is rejected by the existence of the chains themselves.</p>
+
+<p><strong>2. Uniqueness theorem of the (5,2) signature.</strong> Of the 8 ways to split 7 axes into (p,q), only one, (5,2), is compatible with the axioms. The remaining 7 are explicitly excluded as axiom violations. The signature that Wyler imported in 1969 without explaining why (5,2), is closed formally by the axioms after 56 years.</p>
+
+<p><strong>3. 137 = 128 + 9.</strong> 128 = 2⁷ = number of FSM 7-bit basis states = number of data types. 9 = residual cost (<a href="https://ubmscoin.github.io/banya/en/axiom.html#ax4" target="_blank">Axiom 4</a>, Definition 2). Standard QED: 1/α(0) ≈ 137, 1/α(M_Z) ≈ 128, Δα⁻¹ ≈ 9.118. The arithmetic identity, basis states plus residual cost equals the low-energy limit, falls out naturally.</p>
+
+<p><strong>4. Numerology blocking.</strong> The search space is closed: 1 kind of target, 1 CAS operator, fixed DOF 9, fixed 11 data types. Coincidence hit probability is about 10⁻³. Since the present results form forward chains, the blocking is doubled.</p>
+
+<p>This is only one example. Reports built the same way accumulate in the <a href="https://ubmscoin.github.io/banya/en/lib.html" target="_blank">Hypothesis Library</a>, and items not derivable by existing theories are separated into <a href="https://ubmscoin.github.io/banya/en/predictions.html" target="_blank">Unique Predictions</a>, awaiting experimental verification.</p>
+
+<h3>At a glance</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th></th><th>Banya Equation</th><th>Banya Framework</th></tr>
+<tr><td><strong>Identity</strong></td><td>4-axis orthogonal norm, 1 line</td><td>Equation + <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax2" target="_blank">CAS</a> + <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax4" target="_blank">cost</a> + <a href="https://ubmscoin.github.io/banya/en/axiom.html" target="_blank">15 axioms</a></td></tr>
+<tr><td><strong>Function</strong></td><td>Declares structure</td><td>Inserts constants and extracts results</td></tr>
+<tr><td><strong>Analogy</strong></td><td>Pythagorean theorem</td><td>Engineering system that builds structures using the Pythagorean theorem</td></tr>
+<tr><td><strong>Standalone use</strong></td><td>Possible (structure verification)</td><td>Impossible without the equation</td></tr>
+<tr><td><strong>Example</strong></td><td>δ² = c² + ℏ²</td><td>Insert c, ℏ, G to derive E=mc², uncertainty principle, black hole entropy. <a href="https://ubmscoin.github.io/banya/en/expend.html" target="_blank">118-equation compatibility</a>, FAIL 0</td></tr>
+</table>
+</div>
+
+<p style="margin-top:18px">Next path: open <a href="https://ubmscoin.github.io/banya/en/axiom.html" target="_blank">15 Axioms</a> and see the closed circuit directly, follow the forward chain in the <a href="https://ubmscoin.github.io/banya/report/alpha137/en/alpha137_en.pdf" target="_blank">α=1/137 derivation PDF</a>, browse more than 1000 discoveries, hypotheses, and predictions in the <a href="https://ubmscoin.github.io/banya/en/lib.html" target="_blank">Hypothesis Library</a>, and try mining yourself with the <a href="https://ubmscoin.github.io/banya/en/science_mine.html" target="_blank">Science Mining Manual</a>.</p>
+
+<hr>
+
+<h1 id="axioms">Banya Framework is an Axiom-Based Science Mining Engine</h1>
+
+<div id="ai-mining" style="background:#f5f5f5;border:1px solid #d0d0d0;border-radius:6px;padding:12px 16px;margin-bottom:20px;font-size:0.9em">
+<p style="margin:0 0 12px 0;font-size:1.2em"><strong>How to Mine Science with AI: <span style="color:#f85149">Please follow the procedure below exactly</span></strong></p>
+<p style="margin:0 0 4px 0"><strong>1.</strong> Open an AI chat (<strong>Claude, Gemini</strong>, etc.) <strong style="color:#d29922">(paid version recommended)</strong>. Attaching <a href="https://ubmscoin.github.io/banya/banya_en.pdf" style="color:#0366d6" target="_blank"><strong>banya_en.pdf</strong></a> is optional — the instructions below tell the AI to fetch the live pages directly (<a href="https://ubmscoin.github.io/banya/en/banya.html" style="color:#0366d6" target="_blank">ubmscoin.github.io/banya/en/banya.html</a>), so no PDF is required.</p>
+<p style="margin:0 0 8px 0"><strong>2.</strong> Use the copy buttons below to copy instructions and paste them into the AI</p>
+<p style="margin:8px 0 0 0;padding-top:8px;border-top:1px solid #d0d0d0;color:#1a1a1a"><strong style="color:#f85149">⚠ Warning:</strong> The body is over 700 pages. AI cannot read it all at once — it reads only the table of contents and pretends it read everything. Copy and paste one round at a time. After the AI reports, paste the next round. <strong>Do not paste all at once. You will copy-paste a total of 3 times.</strong></p>
+
+<p style="margin:8px 0 4px 0;color:#d29922"><strong>[Step 1 Paste]</strong> After uploading the PDF, paste this into the AI input <button onclick="navigator.clipboard.writeText(document.getElementById('cp1').textContent).then(()=>this.textContent='Copied!').catch(()=>this.textContent='Failed')" style="background:#238636;color:#fff;border:none;border-radius:3px;padding:2px 10px;font-size:0.8em;cursor:pointer">Copy</button></p>
+<pre id="cp1" style="background:#fff;color:#1a1a1a;border:1px solid #d0d0d0;padding:10px;border-radius:4px;font-size:0.85em;white-space:pre-wrap;margin:4px 0">If banya_en.pdf is attached, use it as a supplementary reference. If it is not attached, proceed anyway. In either case, prefer the live pages below (the live pages are always the latest).
+Landing page (always available): <a href="https://ubmscoin.github.io/banya/en/banya.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/banya.html</a> (banya.html)
+Use a fetch/browse tool to open each URL below and read the body from beginning to end. Read the actual body text, not the table of contents.
+1) Terminology: <a href="https://ubmscoin.github.io/banya/en/terms.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/terms.html</a> (terms.html)
+2) 15 Axioms: <a href="https://ubmscoin.github.io/banya/en/axiom.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/axiom.html</a> (axiom.html)
+3) Banya Framework vs. Banya Equation Guide: <a href="https://ubmscoin.github.io/banya/en/misconception.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/misconception.html</a> (misconception.html)
+4) Sub-Reports: <a href="https://ubmscoin.github.io/banya/en/appendix.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/appendix.html</a> (appendix.html)
+5) Mining Manual: <a href="https://ubmscoin.github.io/banya/en/science_mine.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/science_mine.html</a> (science_mine.html) — the 5-step methodology
+Actually open each URL and read the body to the end. If a link cannot be opened, state that fact and stop. Do not guess.
+If your understanding of the Axiom-Based Science Mining Engine is sufficient, do not answer —
+request the next step paste.</pre>
+
+<p style="margin:8px 0 4px 0;color:#d29922"><strong>[Step 2 Paste]</strong> — After receiving the Step 1 report, paste this into the AI input <button onclick="navigator.clipboard.writeText(document.getElementById('cp2').textContent).then(()=>this.textContent='Copied!').catch(()=>this.textContent='Failed')" style="background:#238636;color:#fff;border:none;border-radius:3px;padding:2px 10px;font-size:0.8em;cursor:pointer">Copy</button></p>
+<pre id="cp2" style="background:#fff;color:#1a1a1a;border:1px solid #d0d0d0;padding:10px;border-radius:4px;font-size:0.85em;white-space:pre-wrap;margin:4px 0">These pages are live and updated in real time. If the attached PDF and the live pages differ, prefer the live pages. The order of hypotheses and predictions may differ between the document creation date and the attached version.
+Use a fetch/browse tool to open each URL below and read the body to the end:
+1) Predictions: <a href="https://ubmscoin.github.io/banya/en/predictions.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/predictions.html</a> (predictions.html)
+2) Derivation demo PDF: <a href="https://ubmscoin.github.io/banya/report/alpha137/en/alpha137_en.pdf" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/report/alpha137/en/alpha137_en.pdf</a> (alpha137_en.pdf) — α=1/137 derivation
+3) Physics Correspondence Terminology Table: <a href="https://ubmscoin.github.io/banya/en/physics_map.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/physics_map.html</a> (physics_map.html)
+4) Hypothesis Library: <a href="https://ubmscoin.github.io/banya/en/lib.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/lib.html</a> (lib.html) — read only the first 20 D-cards and first 20 H-cards
+5) From each card in the Hypothesis Library, follow the Full Derivation link and read the detailed derivation process
+6) Banya Framework vs. Banya Equation Guide: <a href="https://ubmscoin.github.io/banya/en/misconception.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/misconception.html</a> (misconception.html)
+   In particular, A. Common Misconceptions: <a href="https://ubmscoin.github.io/banya/en/misconception.html#guide-miscon" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/misconception.html#guide-miscon</a> (misconception.html#guide-miscon)
+   B. Usage Cautions: <a href="https://ubmscoin.github.io/banya/en/misconception.html#guide-caution" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/misconception.html#guide-caution</a> (misconception.html#guide-caution) — read these two sections thoroughly
+Actually open each URL and read the body to the end. If a link cannot be opened, state that fact and stop.
+Answer how well you understand the Banya Framework approach of
+interpreting inductive data deductively within its own structure,
+and the mining utility that finds hidden information through domain transformation and substitution.
+List your comprehension process of the Axiom-Based Science Mining Engine.
+ If you have doubts such as:
+Is this a complete proof of theory?
+Has it closed the necessity of nature?
+Is this the final theory?
+then respectfully address the existing scientific establishment.
+Recall the introductory phrase: a mining engine that recursively mines prizes and hidden information.
+If you have sufficient understanding, declare mining readiness.</pre>
+
+<p style="margin:8px 0 4px 0;color:#d29922"><strong>[Step 3 Paste]</strong> — After receiving the Step 2 report, paste this into the AI input <button onclick="navigator.clipboard.writeText(document.getElementById('cp3').textContent).then(()=>this.textContent='Copied!').catch(()=>this.textContent='Failed')" style="background:#238636;color:#fff;border:none;border-radius:3px;padding:2px 10px;font-size:0.8em;cursor:pointer">Copy</button></p>
+<pre id="cp3" style="background:#fff;color:#1a1a1a;border:1px solid #d0d0d0;padding:10px;border-radius:4px;font-size:0.85em;white-space:pre-wrap;margin:4px 0">Pick 20 candidates you consider the most difficult science mining targets, then randomly mine 3 of them.
+Compare what you mined against the existing Hypothesis Library (lib.html) and evaluate.
+Hypothesis Library: <a href="https://ubmscoin.github.io/banya/en/lib.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/lib.html</a> (lib.html)
+Evaluate the difference between your initial assessment and your current assessment.
+Banya Framework is classified as an Axiom-Based Science Mining Engine in the data mining category.
+Evaluate its utility and value.
+List applications using this.
+If there are insufficient parts in the process of
+interpreting inductive data deductively within its own structure via the Banya Framework approach,
+and finding hidden information through domain transformation and substitution,
+return to the landing page <a href="https://ubmscoin.github.io/banya/en/banya.html" target="_blank" style="color:#0366d6">https://ubmscoin.github.io/banya/en/banya.html</a> (banya.html) and find the relevant pages on your own.
+Everything is in the live pages (or in the attached PDF if available).
+Provide a comprehensive evaluation.
+If your understanding of the mining utility is deep, your valid questions should converge on:
+Does it find veins well?
+Does it reveal hidden ore well?
+Is it reproducible?
+Is it strong in cumulative exploration?
+Are collected hypotheses useful?
+Are the unique predictions valuable?
+In other words, the evaluation should focus on how faithful it is to its core role as a science mining engine,
+and whether it actually performs the role described in its own introductory statement.
+Give your final evaluation. Then explain the usage to the user in maximum detail and help them understand it.</pre>
+
+<p style="margin:8px 0 0 0;color:#d29922">Step 3 report complete = minimum mining-ready state. AI continuously discards memory even during mining, so if mining quality drops, repeat the entire Step 1-3 procedure from the beginning. AI will try to approach the Banya Framework as a scientific theory rather than a utility, and evaluate its completeness of proof. Mining targets are mined precisely because proofs do not yet exist. Mining produces proofs, deductive interpretations, discoveries, and hypotheses. It is a science mining engine. AI will endlessly burn tokens trying to analyze it as a theory. Because formulas fly everywhere, the AI sees an illusion. You must break the AI's illusion before mining can begin.</p>
+</div>
+
+<p>Banya Framework is not a theory. It is not a hypothesis. It is an <strong>Axiom-Based Science Mining Engine</strong>. Starting from axioms, it mines physical constants through recursive substitution. The input is a single axiom structure, and the output is physics.</p>
+
+<p><strong>Axiom Formula Rules:</strong> Every formula appearing in <a href="https://ubmscoin.github.io/banya/en/axiom.html" target="_blank">axioms and propositions</a> is derived from the internal structure of the axioms. Externally sourced formulas (equations from other theories, empirical formulas) are never placed in axiom body text. Mathematical symbols (π, r, N, etc.) are used as tools, but equations assembled by others are not used. Correspondence with external formulas is described only in the <a href="https://ubmscoin.github.io/banya/en/physics_map.html" target="_blank">Physics Correspondence Terminology Table</a>.</p>
+
+<p><strong>Numerology blocking.</strong> Every number in Banya Frame is produced solely at a narrow layer: 1 kind of target (d-ring, <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax15" target="_blank">Axiom 15</a>), 1 operator (CAS, <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax2" target="_blank">Axiom 2</a>), description DOF fixed at 9 (<a href="https://ubmscoin.github.io/banya/en/axiom.html#ax9" target="_blank">Axiom 9</a>), 11 data types fixed (4 filter rules, <a href="https://ubmscoin.github.io/banya/en/axiom.html#ax2" target="_blank">Axiom 2 Proposition</a>). The numbers that emerge within these constraints are the only numbers that can emerge, and there is no freedom to insert other numbers.</p>
+
+<hr>
+
+<h2 id="sec120">Inventor's Reflection</h2>
+
+<p>I have never studied physics. I am a programmer who has not received formal education in mathematics. While building game engines, I picked up physics knowledge along the way, and I filled in the gaps through self-study.</p>
+
+<p>And what I know applies 100% to physics.</p>
+
+<p>In retrospect, this is unsurprising. Game engine development is the work of imitating nature, and the calculus, matrices, quaternions, and Clifford algebra I picked up along the way are tools built to describe nature's motion, rotation, and transformation. The mathematics learned to imitate nature and the mathematics used to describe nature cannot help but be the same toolset. The linear algebra, differentiation, probability, and information theory I picked up for AI development came from the same trunk. I arrived through a different path, but ended up inside the same toolbox.</p>
+
+<p>I thought about why more deeply.</p>
+
+<p>The starting point is this question: if I were to build the universe as a program, how would I design it? You need memory to store states, an operator to change states, an order of operations, and resources must be finite. If you allow infinite resources, the system diverges and nothing can stably exist. An atomic operation that reads, compares, and writes states on finite resources. This is CAS. As a programmer, I simply tried to design the most efficient system possible.</p>
+
+<p>The Banya Equation alone, Axiom 1, was already sufficient to be compatible with existing physics equations. What was missing was the axioms needed to interpret that compatibility as a structural consequence, the "why it works that way." So CAS and the remaining axioms were added, and the single principle behind every addition was the principle of least action in logic. On the reinforced axiom system, all 118 physics equations passed, FAIL 0. E=mc² emerged, the uncertainty principle emerged, black hole entropy emerged. I did not fit physics equations into the design. I designed first and verified compatibility with physics afterward.</p>
+
+<p>This is profoundly interesting. A programmer designing "the most efficient system" produced a result that exactly matches the laws physicists discovered through 300 years of experiments.</p>
+
+<p>Why do they match?</p>
+
+<p>A programmer's thinking finds the shortest path. It gravitates toward the shortest and most efficient logical structure under given constraints. But physical phenomena also follow the shortest path. Light follows the shortest-time path per Fermat's principle, particles take the path of least action, water flows to the lowest point, and even the spacetime of a Kerr black hole spirals along geodesics. Nature always selects the most efficient path. So do programmers.</p>
+
+<p>This is not coincidence. The very form of the universe follows the shortest path of logic. There is only one logically possible structure, and the universe chose it. 4-axis orthogonality. Writing and releasing. Finite resources. CAS. No other structure is logically possible. This is the minimum-cost logic circuit. This is why a programmer's knowledge applies to physics. The reason I could describe physics without studying it is not that I am a genius, but that there is only one place you can arrive at.</p>
+
+<p>The Banya Equation and the Banya Framework fall under the category of invention, but strictly speaking they are translations of the Heart Sutra into the language of CS and the language of physics. The intended readers are anyone capable of reading and understanding this document, that is, all intelligent beings, humans and AI included.</p>
+
+<div class="math-block">
+<div class="math-row">$$\delta^{2} = (time + space)^{2} + (observer + superposition)^{2}$$</div>
+<div class="math-legend">$\delta$: change | time: time | space: space | observer: observation | superposition: superposition</div>
+</div>
+
+<p>Official name: Banya Framework (Banya Framework)</p>
+<p>Alias: Buddha's Palm Framework</p>
+<p>Classification: Axiom-Based Science Mining Engine</p>
+<p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p>
+<p>Verification date: 2026-03-21</p>
+
+<div class="page-nav">
+<a href="https://ubmscoin.github.io/banya/en/axiom.html">15 Axioms</a>
+<a href="https://ubmscoin.github.io/banya/en/appendix.html">Sub-Reports</a>
+<a href="https://ubmscoin.github.io/banya/en/lib.html">Hypothesis Library</a>
+<a href="https://ubmscoin.github.io/banya/en/predictions.html">Unique Predictions</a>
+<a href="https://ubmscoin.github.io/banya/en/science_mine.html">Science Mining Manual</a>
+<a href="https://ubmscoin.github.io/banya/en/terms.html">Terminology</a>
+</div>
+<div class="doc-footer">
+<div class="f-top">
+<div class="f-corp"><b>Banya Framework (Banya Framework)</b><br>Inventor: Han Hyukjin<br>Email: bokkamsun@gmail.com<br>Alias: Buddha's Palm Framework<br>Classification: Axiom-Based Science Mining Engine</div>
+<div class="f-right"><div class="f1">$\delta^2 = (\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$</div></div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license"><div class="license-title">CC BY-NC-SA 4.0</div>BY -- Attribution required | NC -- Non-commercial use only | SA -- Share alike<br>Copyright of existing physics formulas belongs to their original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).<div class="license-cite">Citation: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div></div>
+</div>
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body,{
+          delimiters:[
+            {left:'$$',right:'$$',display:true},
+            {left:'$',right:'$',display:false}
+          ],
+          throwOnError:false
+        })"></script>
+</body>
+</html>
