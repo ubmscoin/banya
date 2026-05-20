@@ -1,0 +1,1680 @@
+%  LaTeX support: latex@mdpi.com
+%=================================================================
+\documentclass[entropy,article,submit,pdftex,oneauthor]{Definitions/mdpi}
+
+% 한글 지원
+\usepackage{kotex}
+
+% Axiom 환경 정의
+\newtheorem{Axiom}{Axiom}
+% Lemma는 MDPI 템플릿에 이미 정의됨
+
+% QED 기호: kotex 충돌 방지. 텍스트로 대체
+\renewcommand{\qedsymbol}{\textnormal{Q.E.D.}}
+
+% Preprint 모드: MDPI submit 자동 출력 텍스트 제거
+\makeatletter
+\AtBeginDocument{%
+  % 사이드 패널 "Submitted to Entropy..." 제거
+  \renewcommand{\cright}{%
+    \fontdimen2\font=1.2pt
+    \raggedright\textbf{Copyright:} \copyright\ \the\year\ by the author.
+    Preprint released under the Creative Commons Attribution
+    (\href{https://creativecommons.org/licenses/by/4.0/}{CC~BY}) license.%
+  }%
+  % 헤더/푸터 "Version ... submitted to Entropy" 및 DOI placeholder 제거
+  \fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+    \fancyhead{}%
+    \fancyfoot[L]{\fontsize{8}{8}\selectfont Preprint --- \today}%
+    \fancyfoot[C]{\thepage}%
+    \fancyfoot[R]{}%
+  }%
+  \fancypagestyle{fancy}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+    \fancyhead{}%
+    \fancyfoot[L]{\fontsize{8}{8}\selectfont Preprint --- \today}%
+    \fancyfoot[C]{\thepage}%
+    \fancyfoot[R]{}%
+  }%
+  \pagestyle{plain}%
+}
+\makeatother
+
+%=================================================================
+% MDPI internal commands - do not modify
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{}
+\daterevised{}
+\dateaccepted{}
+\datepublished{}
+
+%=================================================================
+\Title{공리 모형: Wyler 미세구조상수 공식의 $(5,2)$ 부호수에 대한 공리적 도출과 해석}
+
+\newcommand{\orcidauthorA}{0009-0007-4132-1707}
+\Author{한혁진 (Hyukjin Han) \orcidA{}}
+
+\AuthorNames{Hyukjin Han}
+
+\address{%
+독립 연구자, 경기도 화성, 대한민국; bokkamsun@gmail.com}
+
+\corres{Correspondence: bokkamsun@gmail.com}
+
+%=================================================================
+\abstract{4개 공리(직교성, 원자성, 최소 비용, 인과율 보존)와 1개 명제가 이산 계산 체계를 정의한다. 자유 파라미터가 연역에 들어오지 않으므로 피팅이 배제되고, 공리가 탐색 공간을 닫으므로 수비학적 조율의 여지가 차단된다. 완전한 공리 체계는 15개이며~\cite{han2026}, 본 논문은 그 중 \emph{4개 공리와 1개 명제만으로} 다음을 산출한다. 비용의 비가역/가역 분류가 이차형식의 부호와 대응하여 (정리~\ref{thm:cost-signature}) 부호 분할 $(5,2)$가 강제되고, $\mathrm{SO}(7)$과 $\mathrm{SO}(4,3)$은 배제된다. Wyler 공식의 4개 인수 전부가 공리 구조에서 설명되나, 인식론적 지위는 다르다(I/II/III). 결과: $1/\alpha = 137.036\,082$ ($6 \times 10^{-7}$), $\sin^2\theta_W = 0.23122$ ($4 \times 10^{-6}$), baryon-광자 비 $\eta_B = 6.14 \times 10^{-10}$ ($0.5\sigma$)는 공리 내적 서술(분류~III) 수준의 forward 검증 가능한 독립 산출이다. 내부 자유도 $7 = 4+3$은 Hamming $[7,4,3]$과 일치하며, 완전 체계 v1.6 의 \emph{Cl(0,7) Clifford 형식 명제}~\cite{han2026} 에 의해 본 일치는 algebraic isomorphism (자료형 $128 = 2^7 = \dim \mathrm{Cl}(0,7)$ 다중벡터 공간) 으로 격상된다. 표~\ref{tab:axiom-results}에 총 38건의 본 공리 모형의 산출물을 분류한다 (I: 13, II: 9, III: 15, IV: 1). 기존 공리적 재구성 학파는 양자역학의 구조를 재구성하지만 물리 상수를 산출하지 않는다. 본 공리 체계는 공리에서 물리 상수를 산출하도록 고안된 모형이다. 도출 과정에서 5건의 고유 예측(Z' 부재, $\beta$-함수 고차 계수의 CAS 패턴, $1/\alpha(M_Z)$ 최근접 정수 $= 2^7$ 등)이 산출되며, 각각 구체적 실험으로 반증 가능하다 (표~\ref{tab:predictions}).}
+
+\keyword{quantum information; Compare-And-Swap; fine-structure constant; Wyler formula; metric signature SO(5,2); Weinberg angle; quantum measurement; Landauer principle; Hamming error correcting code; computational primitives in physics}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{서론}
+\label{sec:intro}
+
+미세구조상수는
+\begin{linenomath}
+\begin{equation}
+\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} \approx \frac{1}{137.036}
+\label{eq:alpha-def}
+\end{equation}
+\end{linenomath}
+으로 정의되며, 전자기 상호작용의 세기를 결정한다. 이 값은 운동량 전달 $q^2 \to 0$인 저에너지 극한(Thomson 한계)에서의 값이다. QED 재규격화에 의해 $\alpha$는 에너지 스케일에 따라 달라지며($\alpha(M_Z) \approx 1/128$), 본 논문에서 도출하는 것은 이 저에너지 극한값이다.
+
+왜 이 값인지는 물리학의 가장 깊은 미해결 문제 중 하나로 남아 있다. Feynman은 이를 ``물리학의 가장 큰 빌어먹을 미스터리 중 하나: 인간이 이해하지 못한 채 다가온 마법의 수''라 불렀다~\cite{feynman1985}.
+1969년 Wyler는 유계 대칭 영역 $D_5 = \mathrm{SO}_0(5,2)/[\mathrm{SO}(5)\times\mathrm{SO}(2)]$ ($\mathrm{SO}_0$은 항등성분)의 체적비로 $\alpha$를 재현하는 기하학적 공식을 제안했다~\cite{wyler1969,wyler1971}. $1/\alpha = 137.036\,082$로, 정수부 너머 다섯 자릿수까지 일치한다. 그러나 이 공식은 세 가지 비판을 받았다~\cite{robertson1971,gilmore1972}:
+
+\begin{itemize}
+\item \textbf{(R1) 물리적 동기 부재}: 왜 $D_5$가 전자기력과 관련되는가?
+\item \textbf{(R2) 군 선택의 임의성}: 왜 $\mathrm{SO}(5,2)$이고 다른 군이 아닌가?
+\item \textbf{(R3) 측도 선택의 비유일성}: 다른 대칭공간을 선택하면 다른 값이 나올 수 있다(Gilmore).
+\end{itemize}
+
+이 비판들은 반세기 이상 미해결이었다.
+
+본 논문은 세 비판 모두에 답한다. 4개 공리가 비용의 비가역/가역 분류를 통해 서명 $(5,2)$가 강제됨을 보이고 (정리~\ref{thm:cost-signature}), 같은 공리 체계에서 $\alpha$, $\sin^2\theta_W$, $\eta_B$를 독립적으로 산출한다. 표~\ref{tab:axiom-results}에 38건의 전체 산출물을 정리한다.
+
+
+\textbf{본 논문의 위치}. 완전한 공리 체계는 15개이다~\cite{han2026}. 본 논문은 그 중 \emph{4개 공리와 1개 명제만으로} 다음을 산출한다. Compare-And-Swap(CAS) 원자 연산을 기본 객체로 하는 공리적 계산 체계에서 $(5,2)$ 메트릭 부호수가 강제됨을 보이고, Wyler 공식의 4개 인수 전부를 공리 구조에서 설명하며, $\alpha$, $\sin^2\theta_W$, $\eta_B$를 실험값과 일치하는 정밀도로 얻는다. 표~\ref{tab:axiom-results}에 총 38건의 본 공리 모형의 산출물을 정리한다.
+
+Wyler 공식 4개 인수의 공리 체계 내적 지위: $9$는 공리에서 자체 도출되고 (분류~I), $\pi^5/(2^4 \cdot 5!)$는 공리가 강제하는 시그니처 $(5,2)$에서 수학적 항등식으로 자동 확정되며 (분류~II), $(\cdot)^{1/4}$는 4축 직교 독립의 기하평균으로 자동 확정되며 (분류~II), $8\pi^4$는 $(5,2)$에서 결정되는 군 부피로 수학적으로 자동 확정된다 (분류~II). 4개 인수 전부가 공리 구조에서 설명되나, 인식론적 지위는 다르다 (표~\ref{tab:factors} 참조).
+
+Robertson--Gilmore의 세 비판 (R1: 물리적 동기 부재, R2: 군 선택의 임의성, R3: 측도 비유일성) 모두에 답한다. R1과 R2는 공리에서 직접 답하며, R3는 정리~\ref{thm:cost-signature}이 대칭공간 선택의 자유도를 제거한다. 기존 공리적 재구성 학파는 양자역학의 구조를 재구성하지만 물리 상수를 산출하지 않는다. 본 공리 체계는 공리에서 물리 상수를 산출하도록 고안된 모형이다 (표~\ref{tab:comparison} 참조). 표~\ref{tab:axiom-results}의 분류가 보여주듯, 형식적 도출(I)과 공리 내적 서술(III)의 지위는 다르며, 본 논문은 이 구분을 명시한다.
+
+논문의 구성: 제\ref{sec:axioms}절에서 설계 원리, 방법론적 투명성, 4개 공리 + 1개 명제를 제시한다. 제\ref{sec:theorem}절에서 비용--서명 대응을 정의하고 비용 분류의 유일성을 증명한다. 제\ref{sec:derivation}절에서 $\alpha$를 도출한다. 제\ref{sec:prediction}절에서 구조적 일관성 확인 $\sin^2\theta_W$를 제시한다. 제\ref{sec:robertson}절에서 Robertson/Gilmore 비판에 항목별로 답한다. 제\ref{sec:auxiliary}절에서 보조 결과(Hamming 코드, $\eta_B$)를 제시한다. 제\ref{sec:discussion}절에서 논의한다. 제\ref{sec:conclusion}절에서 결론을 맺는다.
+
+
+\textbf{공리에 가한 제약은 강력하다.} 본 공리 체계의 4개 공리는 각각 최소 비용, 원자성, 직교성, 인과율 보존이라는 제약을 선언한다. 이 제약들은 논리적 최소 수렴을 강제한다: 제약을 만족하는 구조가 하나로 수렴하며, 그 수렴점이 물리 상수와 일치한다. 제약에서 출발한 연역은 자유 파라미터가 없으므로 피팅(fitting)이 불가능하고, 탐색 공간이 공리에 의해 닫혀 있으므로 수비학(numerology)이 차단된다. 제약이 출력을 결정한다.
+
+\textbf{공리가 자연을 설명함을 보인다.} 반야식은 기존 물리학과 호환되도록 설계되었다 (아래 방법론적 투명성, 항목~6 참조). 이 호환은 설계 기준이지 발견이 아니다. 비자명한 주장은, 이 방정식의 비용 구조가 \emph{피팅 없이} 실험과 일치하는 특정 수치를 산출한다는 것이다. 본 공리 체계는 정확히 이 질문에 답한다: 최소 작용 원리를 이산적 비용 언어로 충실히 옮기면, 물리 상수가 공리로부터 창발하는가? 답은 그렇다. 표~\ref{tab:axiom-results}는 4개 공리와 1개 명제가 산출하는 전체 결과를 요약한다. 각 결과의 지위를 4단계로 분류한다: \emph{I.~공리 도출}(형식적 증명 또는 forward chain 완료), \emph{II.~공리 자동 확정}(공리가 구조를 강제하여 수학적으로 자동 확정), \emph{III.~공리 내적 서술}(도출 경로와 해석이 본문에 있으나 공리 내적 서술 완비 --- 형식적 증명의 독립 제시는 후속), \emph{IV.~범위 밖}(본 논문의 scope에 포함하지 않음).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{공리 체계}
+\label{sec:axioms}
+
+\subsection{설계 원리}
+\label{sec:framework}
+
+본 절에서는 공리 체계가 무엇을 모형화하며, 왜 이 형태를 취하는지를 설명한다. 이 설명은 독자가 공리를 읽기 전에 전체 구조를 파악할 수 있도록 돕는다.
+
+\subsection{최소작용과 최소비용}
+
+물리학의 최소작용 원리는 ``자연은 작용(action)을 극값으로 만드는 경로를 선택한다''고 선언한다. 본 공리 체계는 이 원리를 이산적 비용 언어로 재구성한다: ``모든 변화는 비용을 최소화하는 연산 경로를 따른다.'' 여기서 비용이란, 직교 경계를 순서대로 넘을 때 지불하는 최소 단위($+1$)이다.
+
+이 재구성에서 가장 중요한 귀결은 \emph{경합이 순서를 만들고, 순서가 이산성을 만든다}는 것이다. 다수의 국소 상태가 동시에 존재하면 경합이 발생하고, 인과율 보존을 위해 순서가 강제되며, 순서가 있으면 단계로 끊기므로 이산이 된다. 이것이 공리 체계 전체를 관통하는 핵심 원리이다.
+
+이 원리의 직접적 이점은 비용의 유무($0$ 또는 $>0$)가 자동으로 7개 자유도를 두 범주---가역과 비가역---로 분류한다는 것이다. 이 분류가 메트릭 서명을 결정하며, 이것이 본 논문의 핵심 결과이다.
+
+표~\ref{tab:least-cost-action}은 이 대응을 요약한다. 핵심은 마지막 행이다: 논리적 최소 수렴---공리 체계의 최소 조건들을 모으면 하나의 구조로 수렴하는 것---은 자연이 최소 작용을 따를 때 특정 물리 구조에 수렴하는 것과 동일한 논리이다. \emph{공리의 수렴점이 곧 자연의 수렴점이다.}
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{최소 비용(공리 체계)과 최소 작용(자연)의 대응.\label{tab:least-cost-action}}
+\small
+\begin{tabularx}{\fulllength}{p{4.8cm}p{4.8cm}X}
+\toprule
+\textbf{공리 체계 (최소 비용)} & \textbf{자연 (최소 작용)} & \textbf{비고} \\
+\midrule
+비용 최소화 경로를 따른다 (공리~\ref{ax:cost}) & 작용을 극값으로 만드는 경로 선택 & 동일 원리의 이산/연속 표현 \\
+경합 $\to$ 순서 강제 $\to$ 이산 & 다수 상태 공존 $\to$ 측정 $\to$ 양자 이산 & 인과율 보존이 이산성을 만듦 \\
+CAS = 유일한 최소 비용 연산 (공리 2) & 자연의 상태 변경은 원자적 & 3단계 미만은 인과율 위반, 초과는 최소 비용 위반 \\
+비용 $\{0,+1\}$ 이진 분류 & 비가역/가역 분류 & 순서 유무가 유일한 기준 \\
+7 자유도 $\to$ $(5,2)$ 유일 수렴 & 메트릭 서명 $(5,2)$ & 최소 조건을 모으면 하나로 수렴 \\
+\textbf{논리적 최소 수렴 $\to$ $\alpha$, $\sin^2\theta_W$} & \textbf{자연의 최소 작용 $\to$ 물리 상수} & \textbf{공리의 수렴점 = 자연의 수렴점} \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+\subsection{용어 주의: ``비가역''의 의미}
+
+본 논문에서 ``비가역(irreversible)''은 \emph{순서가 강제된 전이}(ordered transition)를 의미한다. 이것은 열역학적 비가역성(엔트로피 생성을 수반하는 과정)과 관련되지만 동일하지는 않다. Landauer~\cite{landauer1961}와 Bennett~\cite{bennett1973}은 각각 논리적 비가역성(정보 소거)이 열역학적 비용($kT\ln 2$)을 수반함을, 그리고 논리적으로 가역적인 계산이 원리적으로 열역학적 비용 없이 수행 가능함을 보였다. 본 논문에서 ``비가역''이 등장할 때는 ``순서가 강제되어 되돌릴 수 없는 전이''로 읽어야 한다.
+
+\textit{비용 $+1$과 정보 소거의 구조적 대응.} 완전한 공리 체계~\cite{han2026}에서 CAS의 Swap 단계(Compare true 시)는 DATA의 이전 상태를 새 상태로 덮어쓴다. 이전 상태는 복구 불가능하다---이것이 Landauer가 정의한 정보 소거(information erasure)의 정확한 구조이다. CAS의 이진 인코딩(001$\to$011$\to$111)에서 각 전이는 1비트 플립이며, 이 플립은 이전 단계의 비트 상태를 비가역적으로 변경한다. 따라서 비용 $+1$은 1비트의 비가역적 정보 소거에 대응한다. 반대로, Compare가 false이면 Swap이 실행되지 않아 정보 소거가 발생하지 않으므로 비용은 $0$이고 가역이다. 이 대응은 세 층위로 구성된다.
+
+\begin{center}
+\small
+\begin{tabular}{clp{7.2cm}l}
+\toprule
+\textbf{층위} & \textbf{범주} & \textbf{비용 $+1$의 의미} & \textbf{지위} \\
+\midrule
+1 & 공리 내부 & 순서 강제 횡단을 세는 무차원 계수. 에너지 단위가 아니다 & 확립 \\
+2 & 구조적 대응 & CAS Swap의 상태 덮어쓰기 $=$ Landauer 1비트 정보 소거. 비가역 5축은 소거 발생, 가역 2축은 소거 없음 ($c=0$) & 확립 \\
+3 & 열역학적 귀결 & 층위 2 성립 시 $kT\ln 2$/비트 $\to$ CAS 1사이클당 열 방출 하한 $5 \times kT\ln 2$ & 조건부 (III) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+본 논문이 확립하는 것은 층위 1과 2이며, 층위 3은 층위 2의 구조적 대응을 조건으로 하는 귀결이다 (분류~III, 표~\ref{tab:axiom-results}).
+
+\textit{정보이론적 관점 (Hartley 정보).} CAS 1사이클에서 7축 각각이 독립 이진 자유도(0 또는 1)를 점유한다(공리~\ref{ax:cas}: 3단계 상호 직교, 공리~\ref{ax:banya}: 4축 상호 직교). 직교 = 독립이므로, 최대 엔트로피 가정(균등 사전분포) 하에서 사이클 전 상태 공간은 $2^7 = 128$가지이다.
+
+Compare true 시 비가역 5축이 확정되어 소거되면, 남는 불확실성은 가역 2축뿐이다. Hartley 정보~\cite{hartley1928}(균등 사전분포 하의 최대 엔트로피, Shannon 엔트로피의 특수 경우)로 표현하면 $\Delta H = \log_2(128) - \log_2(4) = 7 - 2 = 5$ 비트이다. 이 소거량 5비트는 정리~\ref{thm:cost-signature}의 비가역 축 5개와 정확히 일치한다---소거되는 축의 수가 곧 소거되는 비트 수이다. 가역 2축(observer, superposition)은 정보가 소거되지 않으므로 $\Delta H$에 기여하지 않으며, 이는 비용 $0$과 대응한다.
+
+\emph{Cl(0,7) algebra 와의 정합 — 완전 체계 v1.6}. $2^7 = 128$ 의 algebraic 정체는 완전 체계~\cite{han2026} v1.6 의 \emph{7축 직교 Clifford 형식 명제} 에 의해 \emph{Cl(0,7) Clifford algebra 의 다중벡터 공간 차원} 으로 식별된다 (식~\eqref{eq:cl7-dimension} 참조 ; 제\ref{sec:predictions}절). 본 Hartley 정보 5비트 (소거된 비가역 5축) 는 Cl(0,7) 의 5-vector 부분공간 (차원 $\binom{7}{5} = 21$) 또는 정리~\ref{thm:cost-signature} 의 (5,2) 부호 분할의 비가역 5 부분과 별개 layer 에서 동일 7축 위에 배치된다. 자료형 128 의 algebraic 본질이 Cl(0,7) 임은 정리~\ref{thm:cost-signature} 의 비용 → 부호 사상 (cost-signature mapping) 과 다른 layer 의 분류이며 , 두 layer (algebra structure vs metric signature) 모두 동일 7 generators 위에서 작동한다.
+
+본 용어는 Hartley의 원래 공식화(균등 사전분포 하의 $\log_2 N$)를 따르며, Shannon의 일반 엔트로피 공식 $-\sum p_i \log_2 p_i$의 균등분포 특수 경우에 해당한다.
+
+\subsection{용어 안내}
+
+본 논문의 공리 체계는 ``조건부 상태 전이''라는 이산적 연산 구조를 사용한다. 이 구조는 병렬 컴퓨팅에서 Compare-And-Swap(CAS)으로 알려진 것과 형식적으로 동일하지만, 본 논문에서는 물리적 맥락에서 다음과 같이 번역하여 사용한다:
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{연산 용어의 물리학적 번역.\label{tab:glossary}}
+\small
+\begin{tabularx}{\fulllength}{p{3.8cm}p{4cm}X}
+\toprule
+\textbf{물리학 용어 (본 논문)} & \textbf{컴퓨터과학 대응어} & \textbf{비고} \\
+\midrule
+조건부 상태 전이 & Compare-And-Swap (CAS) & 관측$\to$판정$\to$기록의 불가분 연산 \\
+관측 (Read) & Read & 현재 상태를 가져옴 \\
+판정 (Compare) & Compare & 기대값과 대조 \\
+기록 (Swap) & Swap & 조건 충족 시 상태 변경 \\
+국소 상태 & entity & 시공간 한 점의 물리 상태 \\
+순서 강제 장치 & lock & 전이 순서를 보장하는 구속 \\
+인과율 위반 & race condition & 확인 없는 동시 기록에 의한 비결정성 \\
+불가분 연산 & atomic operation & 중간에 끊길 수 없는 단일 전이 \\
+주기적 상태 확인 & polling & 매 틱마다 상태를 점검 \\
+순환 레지스터 & ring buffer & 유한 차원의 순환 구조 \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+이하 본문에서 ``CAS''는 ``조건부 상태 전이''의 약어로, ``entity''는 ``국소 상태''로 사용한다.
+
+\subsection{세 가지 구성 요소}
+
+공리 체계는 세 가지로 구성된다:
+\begin{enumerate}
+\item \emph{구조}: 4개 직교 축(time, space, observer, superposition)이 두 괄호---고전 괄호(DATA)와 양자 괄호(OPERATOR)---로 나뉜다.
+\item \emph{연산자}: 단일 불가분 연산 CAS(조건부 상태 전이)가 3단계---관측(Read), 판정(Compare), 기록(Swap)---로 진행된다. CAS는 OPERATOR 괄호 쪽에서 작동하며, DATA 괄호에 결과를 기록한다.
+\item \emph{비용}: 직교 경계 $+$를 순서대로 넘으면 비용 $+1$, 순서가 없으면 비용 $0$.
+\end{enumerate}
+
+이 세 가지를 조합하면 7개 내부 자유도(4개 도메인 축 $+$ 3개 CAS 단계)가 생기고, 비용 규칙이 각 축을 비가역(비용 $> 0$) 또는 가역(비용 $= 0$)으로 분류한다. 이 분류가 메트릭 서명을 결정한다.
+
+\subsection{왜 이 연산인가}
+
+왜 기본 연산이 ``관측$\to$판정$\to$기록''의 3단계 불가분 연산이어야 하는가? 이 선택은 물리적 필연이다.
+
+시공간에 다수의 국소 상태가 동시에 존재한다. 하나의 전역 변화($\delta$)가 다수의 observer를 통해 다수의 국소 상태로 투영된다. 이 다수의 국소 상태에 \emph{인과율을 보존하면서} 변경을 기록하려면, 현재 상태를 먼저 확인(판정)한 뒤 조건부로 기록해야 한다. 확인 없이 기록하면 동시 기록에 의한 비결정성---인과율 위반---이 발생한다.
+
+CAS는 이 요구를 만족하는 \emph{최소 비용 불가분 연산}이다:
+\begin{itemize}
+\item 관측(Read): 현재 상태를 가져온다 (비용 $+1$, 불가피).
+\item 판정(Compare): 기대값과 대조한다 (비용 $+1$, 인과율 보존에 필수).
+\item 기록(Swap): 일치하면 상태를 변경한다 (비용 $+1$, 상태 변경의 유일한 경로).
+\end{itemize}
+3단계보다 적으면 인과율을 보존할 수 없고(확인 없는 기록), 3단계보다 많으면 최소 비용이 아니다. ``관측$\to$판정$\to$기록''은 인과율을 보존하는 최소 비용 불가분 연산이다: 하한(2단계 이하는 인과율 위반)과 상한(4단계 이상은 최소 비용 위반)이 3단계를 강제하고, LL/SC는 동일한 3단계 동형이며, TAS는 Compare 부재로 탈락한다. 다중 워드 연산(DCAS, k-CAS 등)은 단일 CAS의 병렬 실행이며 최소 비용 위반이다. 공리 구조 안에서 이 3단계는 유일하다. 외부 후보군의 완전 분류는 모든 공리 체계가 공유하는 메타 문제이다.
+
+Herlihy~\cite{herlihy1991}는 공유 메모리 모델에서 CAS가 대기 없는 동기화(wait-free synchronization)를 달성할 수 있는 보편적 원시연산임을 증명했다. 이 보편성은 레지스터 기반 계산 모델 내에서의 동기화 능력에 관한 것이며, 물리적 상호작용 일반의 보편성을 주장하는 것이 아니다. 본 논문에서 CAS를 유일한 연산자로 선택하는 근거는 Herlihy의 CS 정리가 아니라, 인과율 보존을 위한 최소 비용 요구(위의 3단계 논증)이다.
+
+Bennett~\cite{bennett1973}은 논리적으로 가역적인 계산이 원리적으로 열역학적 비용 없이 수행 가능함을 보였으며, Landauer~\cite{landauer1961}는 논리적 비가역성(정보 소거)이 열역학적 비용 $kT\ln 2$를 수반함을 보였다. 본 공리 체계의 비용 구조(공리~\ref{ax:cost})는 이 Landauer 원리의 구조적 대응이다. 제\ref{sec:framework}절(층위 2)의 구조적 대응에 의해, 각 $+$ 횡단은 1비트의 비가역적 정보 소거에 해당하며, Landauer~\cite{landauer1961}의 $kT\ln 2$와의 대응이 따라 나온다(층위 3, 조건부; 제\ref{sec:framework}절 참조).
+
+\emph{대안 원시연산에 대한 주.} 병렬 컴퓨팅에서 CAS와 동등한 합의 능력(consensus number $\infty$)을 갖는 LL/SC(Load-Linked/Store-Conditional)가 존재한다. LL/SC의 논리적 분해는 Read$\to$(암묵적 Compare)$\to$Conditional Write로서 CAS와 동일한 3단계 구조이며, 본 프레임워크에 적용하면 동일한 비용 구조(5+2)가 산출된다. 따라서 CAS와 LL/SC는 본 프레임워크에서 논리적으로 동형(isomorphic)이다. 반면 Test-And-Set(TAS)은 2단계(Read$\to$Set)로서 Compare 단계가 없으므로, 기대값 대조 없이 상태를 덮어쓴다---이는 확인 없는 기록에 의한 비결정성(인과율 위반)을 초래하며, 인과율 보존 조건을 충족하지 못한다. ``유일한 연산자''란 CAS라는 특정 이름이 아니라, ``관측$\to$판정$\to$기록''이라는 3단계 논리 구조가 유일하다는 의미이다.
+
+\emph{최소비용 원리가 관통하는 CAS의 다중 동작.} 위의 3단계 유일성은 CAS의 \emph{구조}에 대한 것이다. 그러나 CAS의 최소비용 성격은 구조에 그치지 않는다---CAS는 접근 대상에 따라 최소비용 경로를 선택하는 연산 체계이며, 이 선택이 논문 전체의 수치 결과를 결정한다.
+
+\begin{center}
+\small
+\begin{tabular}{p{2.8cm}p{4.5cm}l}
+\toprule
+\textbf{동작} & \textbf{최소비용이 강제하는 것} & \textbf{참조} \\
+\midrule
+대상 등록 (공 만들기) & 직교 경계 최소 횡단 수 $= 13$. 빼면 공 미완성, 더하면 최소비용 위반 & 정의~\ref{lem:cost13} \\
+대상 식별 (인덱싱) & RLU coupled access ($1{+}1/\pi \approx 1.3$) $<$ raw access ($4$). 약 $70\%$ 절감 $\to$ coupled 강제 & §\ref{sec:baryogenesis} \\
+내부 구조 비율 & cost reading + norm reading이 같은 $+$ 횡단의 두 표현. 결합이 $\sin^2\theta_W$ 결정 & §\ref{sec:prediction} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+세 동작 모두 같은 최소비용 원리의 다른 적용이다. CAS가 유일한 연산자인 이유는 3단계 구조의 유일성뿐 아니라, 이 다중 동작 전체가 하나의 최소비용 원리로 관통된다는 데 있다.
+
+\emph{CAS의 존재론적 지위 --- 두 층위의 구분.} CAS의 지위는 두 층위로 나뉜다.
+
+\emph{공리 내부}: ``관측$\to$판정$\to$기록''의 3단계 구조는 공리 안에서 유일하다 (하한: 인과율 위반, 상한: 최소비용 위반, 대안 배제: TAS 탈락, LL/SC 동형, DCAS 최소비용 위반). 이 유일성은 공리 구조의 귀결이지 외부 선택이 아니다.
+
+\emph{공리 외부}: ``왜 이 공리인가''는 모든 공리 체계가 공유하는 메타 질문이다. Euclid의 5공리, Zermelo--Fraenkel, von Neumann 양자 공리 모두 같은 질문을 받는다. CAS를 기본 연산으로 놓는 것은 ``최소작용''이나 ``최소 엔트로피 생성''을 물리 원리로 놓는 것과 같은 층위의 선택이며, 그 정당성은 결과(물리 상수와의 일치)에 의해 사후적으로 검증된다.
+
+두 층위는 충돌하지 않는다: 공리 안에서 CAS 3단계가 유일하다는 것과, 공리 자체의 선택이 메타 질문이라는 것은 다른 층위이다.
+
+\subsection{본 논문의 범위}
+
+완전한 체계는 15개 공리로 구성되어~\cite{han2026} 미세구조상수 외에도 쿼크 질량, 우주 에너지 분배 등 다수의 물리 상수를 다룬다. 본 논문에서는 $\alpha$ 도출에 필요한 \emph{4개 공리(공리~\ref{ax:banya}, \ref{ax:cas}, \ref{ax:cost}, \ref{ax:delta})와 1개 명제(명제~\ref{ax:dof})}만을 사용하며, 구조적 일관성 확인으로 $\sin^2\theta_W$를 추가 도출한다. 이는 4개 공리만으로 충분함을 보이는 자기완결적 도출이며, 검증 가능성을 최대화한다.
+
+\emph{이산/연속 구분에 대한 주.} 완전한 공리 체계의 공리 3~\cite{han2026}은 DATA/OPERATOR의 이산/연속 구분을 명시적으로 선언한다: DATA(고전 괄호)는 이산이고 OPERATOR(양자 괄호)는 연속이다 (분류~I, 표~\ref{tab:axiom-results}). 본 논문에서 이 구분이 작용하는 지점은 제\ref{sec:prediction}절의 $\sin^2\theta_W$ 도출이다: CAS 3축 직교(OPERATOR 괄호 내부)가 연속 구면을 정의하고, 이 구면의 기하학적 상수 $\pi$가 공식에 진입한다. OPERATOR가 연속이 아니면 구면이 정의되지 않고 $\pi$가 나올 수 없다.
+
+\subsection{독자 안내: 흔한 오해 4가지}
+
+본 공리 체계의 표기와 용어가 표준 물리학과 다른 4가지 항목을 미리 명시한다:
+\begin{enumerate}
+\item \emph{4축은 4D 시공간이 아니다}: 본 공리 체계의 4축 (time, space, observer, superposition)은 Minkowski 4D 시공간과 다르다. 시공간은 time + space의 \emph{2축} (DATA 괄호)이며, observer + superposition은 양자 영역의 \emph{2축} (OPERATOR 괄호)이다. 4축 전부가 시공간을 구성하지 않는다.
+\item \emph{$\delta$는 에너지가 아니라 ``변화''}: 식~\eqref{eq:banya}의 $\delta$는 unit-free 변화량이며, 에너지/거리/확률 등은 모두 $\delta$의 측정 방식이다. $\delta$ 자체에 단위가 부여되는 것은 노름에 상수를 대입한 \emph{이후}이다.
+\item \emph{$+$는 직교 합성 + 두 가지 reading}: 식~\eqref{eq:banya}의 $+$는 ``서로 직교하는 두 축이 같은 괄호에 속한다''는 구조 표기다. 본 공리 체계에서 $+$ 기호는 추가로 두 가지 \emph{reading} 방식을 갖는다: (i) \emph{비용 reading (cost reading)}: $+$ 횡단을 공리~\ref{ax:cost}의 단위 비용으로 읽음 → \emph{정수} (예: 9개 + 횡단 = 9). (ii) \emph{노름 reading (norm reading)}: 같은 + 횡단을 직교 노름의 dimension으로 읽음 → \emph{기하학적 측도} $\pi$ (예: 9개 비가역 + 횡단 = $9\pi$, 정의~\ref{def:residual} 직후 ``기하학적 측도'' 단락 참조).
+두 reading은 \emph{같은 실체}의 다른 표현이다. 단, 노름 reading은 \emph{비가역 + 횡단}에만 valid 하다 (가역은 cost = 0이므로 호 표현 없음 — 가역 양은 cost reading 정수만 가능). 본 논문 곳곳의 $+$ 사용은 두 의미와 두 reading을 \emph{문맥에 따라} 갖는다 (제\ref{sec:prediction}절 5단계 step (4) 참조).
+\item \emph{observer 축의 위상}: ``관측자(observer)''를 공리 체계의 기본 축으로 두는 것은 양자역학 측정 문제 100년 미해결을 ``설명해야 할 대상''에서 ``구조의 한 축''으로 승격하는 전략적 선택이다. 일반상대성에서 ``중력''을 시공간 곡률로 정의한 전략과 유사하다.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{방법론적 투명성}
+\label{sec:transparency}
+
+
+\begin{enumerate}
+\item \emph{12개 항목 vs ``4공리 + 1명제''.} ``4공리 + 1명제''는 논리적 뼈대이다. 실제 도출에는 4공리 + 1명제에 더해 작동 정의 2개, 공리 구조 귀결 5개(A1a--A1d, A2a)가 사용되어 총 $4{+}1{+}2{+}5 = 12$개 항목이 있다 (표~\ref{tab:assumptions}에 전수 나열). 이것은 숨긴 입력이 아니라 \emph{명시된 입력}이다. Euclid가 5공준 외에 정의와 공통 관념을 사용한 것과 같은 구조이다: 공준이 논리적 핵심이지만, 도출에는 전체 목록이 필요하다. 결정적으로, 12개 항목 중 자유 파라미터는 하나도 없다: 각 항목은 공리의 논리적 귀결이거나, 공리가 정의하는 양에 표준 수학 연산을 적용한 것이거나, 명시적으로 선언된 관측 사실이다. 탐색 공간은 닫혀 있고 피팅은 불가능하다.
+
+\item \emph{3차원 공간성은 가져온 관측 사실이다.} 3차원 공간은 공리에서 도출되지 않는다. 공리~\ref{ax:banya}의 고전 괄호는 고전 물리학을 가져와 시공간을 선언하며, 3차원성은 관측 사실로서 들어온다 (정의~\ref{lem:cost13}: $\mathrm{space} = x+y+z$). 이것은 설계 선택이다: 공리 체계가 설명하는 것과 전제하는 것의 경계를 명시한다.
+
+\item \emph{모든 항목은 공리에 기반한다.} 표~\ref{tab:assumptions}의 모든 항목은 명시 공리, 명제, 작동 정의, 또는 공리 구조 귀결이다. 공리 너머의 독립 항목은 사용되지 않는다.
+
+\item \emph{Wyler 공식 4개 인수는 같은 급이 아니다.} $9$는 공리 도출(I), $8\pi^4$와 $\pi^5/(2^4 \cdot 5!)$는 공리 자동 확정(II), $(\cdot)^{1/4}$는 공리 자동 확정(II)이다. ``4개 인수 전부가 공리 구조에서 산출된다''는 4개 전부가 공리 체계 안에서 \emph{설명}을 받는다는 뜻이지, 4개 전부가 형식적으로 \emph{도출}된다는 뜻이 아니다. 이 구분이 표~\ref{tab:axiom-results}의 존재 이유이다: 4단계 분류(I--IV)가 모든 결과의 인식론적 지위를 명시한다.
+
+\item \emph{$\eta_B$는 공리 내적 서술(분류~III) 수준의 forward 검증 가능한 독립 산출이다.} 바리온-광자 비는 RLU coupled access 메커니즘에 의존하며, RLU 메커니즘의 형식적 체계화는 후속이다.
+
+\item \emph{설계된 것과 설계되지 않은 것.} 반야식(공리~\ref{ax:banya})은 기존 물리식들과 치환 가능하도록 설계되었다---고전 괄호는 고전 시공간을 가져오고, 양자 괄호는 관측자와 중첩을 가져온다. 알려진 물리량을 직교 노름에 대입하면 기존 물리 방정식이 복원된다. 따라서 공리가 기존 물리학과 \emph{호환}되는 것은 설계 기준이지 발견이 아니다. 설계\emph{되지 않은} 것은, 이 치환 호환적 방정식의 비용 구조가 실험과 일치하는 특정 수치($\alpha = 1/137.036\ldots$, $\sin^2\theta_W = 0.23122$)를 산출한다는 사실이다. 설계 입력은 ``최소 작용을 이산 비용으로 충실히 번역하라''이며, 수치 출력은 그 번역의 창발적 귀결이지 피팅 목표가 아니다.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{항목 목록}
+\label{sec:assumption-list}
+
+본 공리 체계는 표제로 ``4공리 + 1명제''라 부르나, $\alpha$, $\sin^2\theta_W$, $\eta_B$의 도출에 실제로 사용되는 \emph{모든} 항목을 평등하게 나열하면 다음과 같다. 표~\ref{tab:assumptions}는 본 논문 결과를 도출하는 데 필요한 \emph{전체 항목 표}이며, 논문의 ``4공리'' 표제가 \emph{완전한 항목 목록}이 아님을 명시한다.
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{본 논문 결과의 도출에 사용되는 항목 목록.\label{tab:assumptions}}
+\small
+\begin{tabularx}{\fulllength}{p{1.0cm}p{3.8cm}X}
+\toprule
+\textbf{ID} & \textbf{이름} & \textbf{비고} \\
+\midrule
+A1 & 공리 1 (반야식) & 명시 공리. $\delta^2$ 식 (공리~\ref{ax:banya}) \\
+A2 & 공리 2 (CAS 3단계) & 명시 공리. R--C--S (공리~\ref{ax:cas}) \\
+A3 & 공리 3 (비용 +1) & 명시 공리 (공리~\ref{ax:cost}) \\
+A4 & 공리 4 ($\delta$ 플래그) & 명시 공리 (공리~\ref{ax:delta}) \\
+P1 & 명제 1 (완전기술자유도) & A1+A2 귀결 (Lemma). 본문 ``Lemma 강등'' 명시 (명제~\ref{ax:dof}) \\
+D1 & 정의 1 ($13 = 8 + 5$) & 작동 정의. 비용 열거 (정의~\ref{lem:cost13}) \\
+D2 & 정의 2 (공값 $4 = 1 + 3$) & 작동 정의. 공리~\ref{ax:banya}의 space 축 3차원 분해 (정의~\ref{def:residual}) \\
+A1c & prefactor 2 ($\eta_B$) & 공리~\ref{ax:banya}의 괄호 수 $= 2$. 공리 구조 귀결 (§\ref{sec:baryogenesis}) \\
+A1d & 두 reading 원리 & 공리~\ref{ax:banya}(노름 reading) + 공리~\ref{ax:cost}(비용 reading)이 같은 $+$에 적용. 공리 구조 귀결 (§\ref{sec:prediction}) \\
+A2a & RLU $1/\pi$ 결합 & 공리~\ref{ax:cas} (RLU 필요) + \ref{ax:banya} (4축) + \ref{ax:cost} (비가역 반구). $(4+1/\pi)$는 pointer-dereference 구조. 공리 구조 귀결 (§\ref{sec:baryogenesis}) \\
+A1a & 3차원 공간성 & 공리~\ref{ax:banya}이 선언하는 space 축의 관측적 분해. 정의~\ref{lem:cost13}에서 $x+y+z$로 명시 \\
+A1b & Wyler-Robertson 형식 & $8\pi^4$는 $(5,2)$ 군 부피에서 자동 확정(II). $(\cdot)^{1/4}$는 4축 직교 독립의 기하평균으로 자동 확정(II) (표~\ref{tab:factors}) \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+즉 논문의 ``4공리 + 1명제'' 표제 뒤에는 실제로 \emph{명시 공리 4개 + 명제 1개 + 작동 정의 2개 + 공리 구조 귀결 5개(A1a--A1d, A2a) = 12개 항목}이 있다. A1a(3차원 공간)는 공리~\ref{ax:banya}의 space 축 분해이며, A1b(Wyler-Robertson 형식)는 $(5,2)$ 군 부피(II)와 4축 기하평균(II)으로 공리 구조에서 나온다. 본 표는 이 12개 항목을 한 곳에 모은 것이다.
+
+\textit{공리 구조 귀결에 대한 주}. A1a--A1d와 A2a는 명시 공리의 귀결이다: A1a(3차원)는 공리~\ref{ax:banya}에서, A1b(Wyler-Robertson 형식)는 $(5,2)$에서, A1c(prefactor 2)는 괄호 수에서, A1d(두 reading)는 공리~\ref{ax:banya}(노름) + 공리~\ref{ax:cost}(비용)이 같은 $+$에 적용된 것에서, A2a(RLU 결합)는 공리~\ref{ax:cas},~\ref{ax:banya},~\ref{ax:cost}에서 나온다. 공리 너머의 독립 가정은 사용되지 않는다.
+
+\subsection{4 명시 공리 + 1 명제}
+
+다음 4개 명시 공리 + 1개 명제는 $\alpha$ 도출의 핵심 골격이며, 위의 표~\ref{tab:assumptions}의 다른 항목 (D1, D2, A1a--A1d, A2a)과 함께 사용된다. 완전한 공리 체계~\cite{han2026}는 15개 공리로 구성되며, 본 논문이 사용하는 4개의 번호 대응은 다음과 같다:
+
+\begin{center}
+\small
+\begin{tabular}{ccl}
+\toprule
+\textbf{본 논문} & \textbf{완전 체계} & \textbf{내용} \\
+\midrule
+공리 1 & 공리 1 & 반야식 (4축 직교 노름) \\
+공리 2 & 공리 2 & CAS 유일 연산자 \\
+공리 3 & 공리 4 & 비용 \\
+공리 4 & 공리 15 & $\delta$ 전역 플래그 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent 본 논문에서 반복 참조되는 ``완전 체계 공리 3''~\cite{han2026}은 \emph{DATA(고전 괄호)는 이산이고 OPERATOR(양자 괄호)는 연속}임을 선언하는 공리이다. 본 논문의 공리 3(비용)과는 다른 공리이다.
+
+\begin{Axiom}[반야식 — 4축 직교 노름]\label{ax:banya}
+우주의 모든 변화 $\delta$는 4개 상호 직교 축의 노름이다 (이 식을 \emph{반야식}이라 한다):
+\begin{linenomath}
+\begin{equation}
+\delta^2 = (\mathrm{time} + \mathrm{space})^2 + (\mathrm{observer} + \mathrm{superposition})^2.
+\label{eq:banya}
+\end{equation}
+\end{linenomath}
+첫 번째 괄호 $(\mathrm{time} + \mathrm{space})$를 \emph{고전 괄호}(DATA), 두 번째 $(\mathrm{observer} + \mathrm{superposition})$를 \emph{양자 괄호}(OPERATOR)라 한다. 두 괄호는 직교한다. $+$는 산술적 덧셈이 아니라 직교 합성을 의미한다: 같은 괄호 내의 두 축은 직교하지만 하나의 부분공간을 공유하고, 괄호 간의 $+$는 서로 다른 부분공간의 직교 합을 나타낸다.
+
+\emph{4축의 필수성.} observer와 superposition은 비유가 아니라 구조적 필수 부품이다. observer가 없으면 CAS(공리~\ref{ax:cas})의 Compare 분기 결과를 받을 곳이 없어 CAS가 실행 불가능하다. superposition이 없으면 CAS가 DATA를 참조할 경로가 없어 모든 연산이 불가능하다. 따라서 양자 괄호에 최소 2축(observer, superposition)이 필요하며, 고전 괄호에도 최소 2축(time, space)이 필요하다 --- 4축은 최소 구성이다.
+\end{Axiom}
+
+\emph{반야식의 구성 원리.} 식~\eqref{eq:banya}의 두 괄호는 각각 실존하는 물리학을 가져온 것이다. 고전 괄호 $(\mathrm{time} + \mathrm{space})$는 고전 물리학의 시공간을 그대로 가져왔다 --- 시간과 3차원 공간은 관측된 사실이며 공리가 증명하는 것이 아니라 선언하는 것이다. 양자 괄호 $(\mathrm{observer} + \mathrm{superposition})$는 양자 물리학이 발견한 현상 --- 관측자 효과와 중첩 --- 을 가져왔다. 둘 다 실존하는 물리 현상이며, 공리~\ref{ax:banya}은 이 둘을 직교시킨다. 좌변의 $\delta$는 기존 물리학에 없는 새로운 물리량이다: 고전과 양자를 직교 합성한 \emph{변화량}이며, 에너지도 거리도 확률도 아닌 unit-free 변화 자체이다. 에너지, 질량, 거리 등은 $\delta$에 단위를 부여한 이후의 측정 방식이다.
+
+\emph{시스템 시간과 도메인 시간의 분리 --- 공리~\ref{ax:banya}의 즉시 귀결.}\label{rem:two-times} 식~\eqref{eq:banya}는 \emph{두 종류의 시간}을 구조적으로 분리한다. 좌변의 $\delta$는 식 전체를 관통하는 \emph{전역 변화량}(시스템 시간: 1사이클 = 1틱)이고, 우변의 time 축은 고전 괄호 안의 \emph{국소 도메인 축} 하나이다. $\delta$가 우변 전체의 노름이므로 $\delta$와 time은 다른 층위이다---$\delta$는 time을 \emph{포함}하지만 time과 \emph{같지 않다}. 이 분리는 공리~\ref{ax:banya}를 읽는 순간 강제되며, 추가 공리가 필요하지 않다. 완전 체계의 공리 3~\cite{han2026}(DATA 이산 / OPERATOR 연속)은 이 분리를 더 구체화하지만, 분리 자체는 공리~\ref{ax:banya}의 즉시 귀결이다 (분류~I). 본 논문 이후의 모든 ``시스템 시간'' 및 ``도메인 시간'' 참조는 본 단락을 기준으로 한다.
+
+\begin{Axiom}[조건부 상태 전이(CAS)는 유일한 연산자]\label{ax:cas}
+우주의 모든 변화는 단일 조건부 상태 전이(CAS: Compare-And-Swap) 연산의 반복이다. CAS는 3단계로 진행된다:
+\begin{linenomath}
+\begin{equation}
+\underset{\text{관측}}{\mathrm{Read}}\ (001) \;\longrightarrow\; \underset{\text{판정}}{\mathrm{Compare}}\ (011) \;\longrightarrow\; \underset{\text{기록}}{\mathrm{Swap}}\ (111).
+\label{eq:cas-stages}
+\end{equation}
+\end{linenomath}
+각 단계는 독립적인 이진 자유도를 점유한다 (각 단계의 독립 비트는 001, 010, 100이며, 식~\eqref{eq:cas-stages}의 표기는 누적 상태를 나타낸다). 3단계는 상호 직교한다: $\mathrm{R} \perp \mathrm{C} \perp \mathrm{S}$. CAS는 OPERATOR 괄호에서 작동하며, 기록(Swap) 단계에서 DATA 괄호에 결과를 기록한다. 전이 $\mathrm{R} \to \mathrm{C} \to \mathrm{S}$는 논리적 의존성에 의해 순서가 강제된다: 판정은 관측 결과 없이 실행할 수 없고, 기록은 판정 결과 없이 실행할 수 없다.
+\end{Axiom}
+
+\emph{CAS 3축 직교, 구면, RLU.} CAS의 3단계(R, C, S)는 상호 직교한다. 3개의 독립 직교 축이 만드는 노름 공간에서 노름이 일정한 구속면은 구면이다. CAS가 DATA의 space 축에 Swap을 실행하면, 그 결과는 3축 직교에 의해 등방(구형)으로 기록된다.
+
+\emph{RLU}는 이 구면 위에서 작동하는 \emph{논리 주소 없는 가상의 인덱싱 장치(addressless virtual indexing unit)}이다. 표준 CS의 LRU(Least Recently Used) 캐시 관리 기법에서 명칭을 참고하되, 무주소(addressless) 성질을 강조하기 위해 첫 글자를 R로 바꾼다. RLU는 OPERATOR 괄호 안에 위치하며, DATA 슬롯에 등록된 대상의 4 도메인 좌표 --- 2개는 DATA 측, 2개는 OPERATOR 측 --- 모두에 접근 가능하다. CAS는 RLU를 참조해서 작동하며, 본 공리 체계에서 모든 인과율은 RLU가 관리한다.
+
+\emph{왜 무주소인가.} 구면 위에서 논리 주소(메모리 주소, 슬롯 번호)는 존재하지 않는다 --- 대상은 각도 좌표($\theta$, $\varphi$)로만 식별된다. RLU는 표준 컴퓨터과학의 pointer index와 달리 논리 주소를 사용하지 않으며, 대상을 OPERATOR 괄호의 각도 좌표로 구분하는 \emph{addressless angular index}이다~\cite{han2026}.
+
+\emph{왜 $1/\pi$인가.} 비가역 $+$ 횡단은 정방향만 허용되므로(공리~\ref{ax:cas}) 구면의 반쪽, 즉 호 길이 $\pi$만 접근 가능하다. RLU가 이 반구면 위에서 1개 대상을 식별하는 기본 단위는 $1/\pi$이다. 이것은 $\pi$의 산술적 역수가 아니라 RLU 메커니즘 자체가 공리 체계에 도입하는 식별 비율이며, cost reading 또는 norm reading 어느 쪽에도 속하지 않는 별개 카테고리이다. $\eta_B$ 보정 $(4 + 1/\pi)$에 등장하는 $1/\pi$의 기원이 이것이다.
+
+\begin{Axiom}[비용]\label{ax:cost}
+직교 경계 $+$를 정해진 순서로 넘으면 비용 $+1$이 발생한다. 순서가 없으면 비용은 $0$이다. 비용은 순서 강제 횟수를 세는 무차원 계수(dimensionless counting measure)이며, 에너지나 온도 단위가 아니다.
+\begin{itemize}
+\item CAS 전이 $\mathrm{R} \to \mathrm{C} \to \mathrm{S}$는 순서가 강제되므로(공리~\ref{ax:cas}) 각 전이마다 비용 $+1$.
+\item CAS가 DATA 괄호에 기록할 때 OPERATOR$\to$DATA 괄호 경계를 넘으므로 비용 $+1$.
+\item CAS가 자신과 같은 OPERATOR 괄호 안의 축(observer, superposition)에 접근할 때는 괄호 경계를 넘지 않으므로 비용 $= 0$.
+\end{itemize}
+비용 $> 0$인 연산은 순서가 있으므로 비가역이다. 비용 $= 0$인 접근은 순서가 없으므로 가역이다. 이 분기가 비가역 5축과 가역 2축의 분할 $(5,2)$를 결정한다: CAS의 Compare가 true이면 Swap이 실행되어 비용 $+1$을 지불하고 DATA에 확정 상태가 기록된다 (붕괴). Compare가 false이면 Swap이 실행되지 않아 비용 $0$이고 중첩이 유지된다. \emph{양자가 기본이고 고전이 비용의 결과이다.}
+
+\textit{비용은 본 공리 체계에서 통용되는 유일한 물리량이다.} 에너지, 질량, 힘, 엔트로피는 전부 비용의 다른 이름이다~\cite{han2026}. 비용 외에 다른 물리량이 공리 체계 내부에 존재하지 않는다.
+\end{Axiom}
+
+\begin{Lemma}[완전기술자유도]\label{ax:dof}
+체계의 내부 자유도의 총 수는 \emph{구조}(DATA)와 \emph{비용}(OPERATOR)으로 나뉘며, 공리~\ref{ax:banya}(4축)와 공리~\ref{ax:cas}(3단계)의 직접적 귀결이다:
+\begin{linenomath}
+\begin{equation}
+\underbrace{4}_{\text{도메인 축}} \;+\; \underbrace{3}_{\text{CAS 단계}} = 7.
+\label{eq:dof7}
+\end{equation}
+\end{linenomath}
+$+$는 공리~\ref{ax:banya}의 직교 합성과 동일한 의미이다. 서로 다른 괄호에 속하므로 직교($+$)로 합산된다.
+\end{Lemma}
+
+\begin{proof}
+공리~\ref{ax:banya}은 4개의 상호 직교 축(time, space, observer, superposition)을 선언한다. 공리~\ref{ax:cas}는 CAS가 상호 직교하는 3개의 단계(Read, Compare, Swap)로 구성됨을 선언한다. 두 집합은 서로 다른 괄호에 속하므로(도메인 축은 공리~\ref{ax:banya}의 정의역, CAS 단계는 연산자 영역), 합산 시 직교($+$)로 결합된다. 총 내부 자유도는 $4 + 3 = 7$이다.
+\end{proof}
+
+\emph{주}: 본 명제는 공리~\ref{ax:banya}와 공리~\ref{ax:cas}의 직접적 논리적 귀결이므로 독립 공리가 아니라 보조명제(Lemma)이다. 본 논문의 공리 수는 4개이다: 공리~\ref{ax:banya}(반야식), 공리~\ref{ax:cas}(CAS 유일 연산자), 공리~\ref{ax:cost}(비용), 공리~\ref{ax:delta}($\delta$ 전역 플래그).
+
+표~\ref{tab:dof}는 7개 내부 자유도에서 파생되는 기술자유도를 구조(DATA)와 비용(OPERATOR) 카테고리로 분류한다. 본 논문의 도출에 등장하는 수는 이 표에서 나온다.
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{기술자유도 --- 구조(DATA)와 비용(OPERATOR).\label{tab:dof}}
+\small
+\begin{tabularx}{\fulllength}{p{1.2cm}p{3.5cm}X}
+\toprule
+\multicolumn{3}{l}{\textbf{구조 기술자유도 (DATA 카테고리)}} \\
+\midrule
+\textbf{값} & \textbf{도출} & \textbf{비고} \\
+\midrule
+$1$ & 최소 단위 & 비트 기저 \\
+$2$ & 괄호 2개 & DATA, OPERATOR (공리~\ref{ax:banya}) \\
+$3$ & CAS 3단계 & R, C, S (공리~\ref{ax:cas}) \\
+$4$ & 도메인 4개 & time, space, observer, superposition (공리~\ref{ax:banya}) \\
+$7$ & $4+3$ & CAS 내부 자유도 (명제~\ref{ax:dof}). $\sin^2\theta_W$ 분자 \\
+\midrule
+\multicolumn{3}{l}{\textbf{비용 기술자유도 (OPERATOR 카테고리)}} \\
+\midrule
+$1$ & $+$를 넘는 최소 비용 & 비용 기저 (공리~\ref{ax:cost}) \\
+$2$ & 가역 축 2개 & observer, superposition. 비용 $0$ (정리~\ref{thm:cost-signature}) \\
+$4$ & 공값 $1+3$ & time 쓰기 $1$ + space 쓰기 $3$ (정의~\ref{def:residual}) \\
+$5$ & 비가역 축 5개 & $(5,2)$ 분할 (정리~\ref{thm:cost-signature}). $\pi^5$의 지수 \\
+$9$ & 잔존 비용 $13-4$ & $\sin^2\theta_W$ 분모의 $9\pi$ (정의~\ref{def:residual}) \\
+$13$ & 총 비용 $8+5$ & 읽기 $8$ + 쓰기 $5$ (정의~\ref{lem:cost13}) \\
+\bottomrule
+\end{tabularx}
+\parbox{\fulllength}{구조와 비용은 직교하는 다른 괄호이다 (공리~\ref{ax:banya}). 같은 괄호 안에서는 시프트($2^N$)만 가능하고, 괄호를 넘을 때만 $+$로 조합된다. 본 논문의 $\alpha$, $\sin^2\theta_W$, $\eta_B$ 도출에 등장하는 모든 수는 이 표에서 나온다.}
+\end{adjustwidth}
+\end{table}
+
+\begin{Definition}[CAS 1사이클의 비용 enumeration --- 작동 정의]\label{lem:cost13}
+공간(space) 축은 3차원 직교 부분축 $(x, y, z)$를 갖는다---공리~\ref{ax:banya}의 `space'는 이 3차원의 macro 표기이며, CAS가 space에 접근할 때는 3개 부분축에 순차적으로 접근한다(우리 우주의 관측 사실, 본 논문의 작동 가정).
+
+본 공리 체계에서 \emph{공(ball)}은 시공간에 등록된 물질의 단일 단위 (질량 차원에서 \emph{플랑크 질량} 스케일의 입자 — 공리 체계의 \emph{minimum mass 단위})이며, \emph{쥠 (juim, grasp)}은 CAS가 DATA 슬롯에 공 1개를 등록하는 행위 — 즉 CAS Swap 1회의 결과물이다. 공 1개 생성에 필요한 비용은 본 정의의 $13$ + 횡단이며, ``minimum cost 단위''($+1$, 1회 + 횡단)와 ``minimum mass 단위''(공, 13 + 횡단의 결과)는 다른 양임에 주의한다. 본 논문의 cost calculation은 이 ``공 1개 등록''에 필요한 무차원 + 횡단 횟수를 셈할 뿐이며, mass scale은 공리 체계의 dimensional context이고 본 논문 범위 외이다.
+
+이 미시적 분해 위에서, CAS 1사이클(쥠 1회 생성: 휴식 $\to$ R $\to$ C $\to$ S $\to$ DATA 커밋)이 횡단하는 직교 경계 $+$의 총 수를 정확히 $13$으로 \emph{정의}한다:
+\begin{linenomath}
+\begin{equation}
+13 = \underbrace{8}_{\text{읽기(이동하기)}} \;+\; \underbrace{5}_{\text{쓰기(쥐기)}}.
+\label{eq:cost13}
+\end{equation}
+\end{linenomath}
+각 $+$ 횡단은 공리~\ref{ax:cost}에 의해 비용 $+1$을 발생시킨다. 아래 표는 CAS 1사이클의 전체 경로를 열거한다. 각 행은 공리가 강제하는 경로의 한 단계이며, 빼면 공이 완성되지 않고 더하면 최소비용이 아니므로 열거는 유일하다.
+
+\begin{center}
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{경로} & \textbf{읽기(접근)} & \textbf{쓰기(쥐기)} \\
+\midrule
+CAS R 진입 & $+1$ & --- \\
+CAS R $\to$ C 전이 & $+1$ & --- \\
+CAS C $\to$ S 전이 & $+1$ & --- \\
+OPERATOR $\to$ DATA 괄호 경계 & $+1$ & --- \\
+time $\to$ space & $+1$ & --- \\
+$x$ 접근 & $+1$ & --- \\
+$x \to y$ & $+1$ & --- \\
+$y \to z$ & $+1$ & --- \\
+time 타임스탬프 쓰기 & --- & $+1$ \\
+$x$ 쓰기 & --- & $+1$ \\
+$y$ 쓰기 & --- & $+1$ \\
+$z$ 쓰기 & --- & $+1$ \\
+Swap $\to$ DATA 커밋 & --- & $+1$ \\
+\midrule
+\textbf{합계} & \textbf{8} & \textbf{5} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textit{지위 주석}: 본 정의는 반야 완전 공리 체계~\cite{han2026}의 cost 회계를 본 논문의 7축 (4 도메인 + 3 CAS) system + 공리~\ref{ax:banya}의 space 축 3차원 분해 위에 적용한 \emph{작동 정의(working definition)}이다. 13개 boundary의 형식적 구분은 열거 완료 (분류~I, 표~\ref{tab:axiom-results}).
+\end{Definition}
+
+\emph{층위 주석}: 본 명제의 미시적 분해(space $= x + y + z$)는 비용 회계(cost accounting) 목적이며, 정리~\ref{thm:cost-signature}의 부호수 $(5,2)$ 분류에는 영향을 주지 않는다. 정리~\ref{thm:cost-signature}는 공리~\ref{ax:banya}의 4 macro 축과 공리~\ref{ax:cas}의 3 CAS 단계 = 7 macro DOF에 비용 함수를 적용하여 부호수를 결정하며, space의 미시 분해와 독립적으로 작동한다. 두 층위(macro 부호수, micro enumeration)는 동일한 공리 체계의 서로 다른 입자도(granularity)에서의 기술이다.
+
+\emph{3차원 공간성}. (1)~공리~\ref{ax:banya}의 고전 괄호 $(\mathrm{time} + \mathrm{space})$는 고전 물리학의 시공간을 그대로 받는다. (2)~고전 물리학에서 공간이 3차원이므로, space를 선언하는 순간 3차원 구조를 함께 가져온다. (3)~CAS가 공을 만들 때 time 1축 + space 3축 = 4차원 시공간에 쓰기한다. 따라서 정의~\ref{def:residual}의 ``공값 4 = 1 + 3''과 ``잔존 비용 9 = 13-4''는 이 4차원 시공간 구조에 의존한다.
+
+\begin{Definition}[공값과 잔존 비용]\label{def:residual}
+정의~\ref{lem:cost13}의 13개 $+$ 횡단을 다음과 같이 분할한다:
+\begin{linenomath}
+\begin{align}
+\text{공값} &= 4 = \underbrace{1}_{\text{time 쓰기}} + \underbrace{3}_{x,y,z\text{ 쓰기}}, \\
+\text{잔존 비용} &= 9 = 13 - 4.
+\end{align}
+\end{linenomath}
+\emph{공값(ball value)} $4$는 정확히 \emph{공 하나를 만드는 데 사용된 비용}이다 — time 1 + space 3 (4축 좌표의 등록 cost). 공값 $4$가 회수되면 공이 DATA에서 해제된다.
+
+잔존 비용 $9$는 RLU 인덱스(공리~\ref{ax:cas} 직후에서 정의)에 기록되어 점진적으로 회수되며, $8$개의 읽기 횡단과 $1$개의 커밋 쓰기로 구성된다.
+\end{Definition}
+
+\emph{잔존 비용의 기하학적 측도}\label{rem:geometric-measure}. 각 $+$ 횡단은 공리~\ref{ax:cas}의 $\mathrm{R} \to \mathrm{C} \to \mathrm{S}$ 정방향성에 의해 비가역이다(역순 횡단은 공리에서 정의되지 않음). 비가역 $+$ 횡단 $1$회의 기하학적 측도는 단위 구면의 \emph{반구면 호 길이} $\pi$다---가역(양방향) 횡단이라면 전구면 $2\pi$이나, 정방향만 허용되므로 절반이다. 따라서 정의~\ref{def:residual}의 잔존 비용 $9$의 기하학적 호 길이 합은 $9\pi$이며, 이는 $9$개 독립 $+$ 횡단의 가산 측도다($1$차원 호 길이의 sum).
+
+이 측도는 $D_5$의 $5$차원 복소 ball 체적 $\pi^5/5!$(곱셈적 측도)과 종류가 다르다---호 길이 vs 체적은 미분기하학에서 서로 다른 차원의 측도이며, 가산 vs 곱셈은 각각의 자연스러운 결합 규칙이다.
+
+RLU의 잔존 비용 회수는 이 호 위에서 \emph{등비감쇠(geometric decay)}로 진행된다. \emph{등비 형태인 이유}: RLU 속의 대상들은 RLU 외부의 어떤 것도 참조할 수 없고, 오직 \emph{자기 자신}만 참조 가능하다 (self-reference). 자기 참조는 다음 단계가 이전 단계의 자신에만 의존하는 형태 ($a_{n+1} = r \cdot a_n$)이며, 이것이 등비급수(geometric series)를 자연스럽게 발생시킨다. 다른 형태의 decay (linear, exponential 등)는 외부 참조를 필요로 하므로 RLU의 self-reference 제약과 양립 불가능. 본 메커니즘은 LRU(Least Recently Used) 캐시 퇴거 규칙과 유사하며, 제\ref{sec:baryogenesis}절의 RLU coupled access 해석에서 더 상세히 사용된다.
+
+\emph{본 메커니즘의 논문 결과와의 관계}: 본 등비감쇠 메커니즘은 RLU의 \emph{동작 설명}용이며, 논문의 정량 결과 ($\alpha$, $\sin^2\theta_W$, $\eta_B$)에는 직접 사용되지 않는다 — 단지 RLU coupled access의 존재 motivation으로만 등장한다. 따라서 본 단락은 RLU 메커니즘 이해를 위한 \emph{supplement}이며, 논문 본문 결과 도출과는 무관하다. 등비감쇠 메커니즘은 본 논문의 정량 결과에 사용되지 않으며, 공리 내적 서술(분류~III)로 제시된다.
+
+\begin{Axiom}[$\delta$는 전역 플래그]\label{ax:delta}
+식~\eqref{eq:banya}의 좌변 $\delta$는 우변이 정의하는 7비트 내부 기계 바깥에 있다. $\delta = 1$이면 우변 전체가 유효하고, $\delta = 0$이면 무효하다. 따라서 내부 자유도는 $8$이 아니라 정확히 $7$이다.
+\end{Axiom}
+
+\textit{Use case 분류 — Raw vs Coupled}\label{rem:stage-classification}. 본 공리 체계의 $+$ 두 reading 원리 (제\ref{sec:framework}절 Reader's note의 흔한 오해 \#3 참조)를 사용해 물리량을 산출할 때 두 가지 use case가 등장한다:
+\begin{itemize}
+\item \emph{Raw use case}: cost reading과 norm reading만으로 + 횡단을 직접 표현. 형태는 $n\pi$ (norm reading) 또는 $n + m$ (cost reading 합) — 예: 제\ref{sec:prediction}절의 $\sin^2\theta_W$ 분모 $9\pi$ (잔존 비용 9의 norm reading).
+\item \emph{Coupled use case}: 최소비용 원리(제\ref{sec:framework}절)에 의해 강제되는 RLU coupled access 메커니즘을 추가로 사용. 형태는 $(m + 1/\pi)$ 또는 유사 — 두 reading 외에 RLU 메커니즘이 추가됨. 예: 제\ref{sec:baryogenesis}절의 $\eta_B$ 보정 $(4 + 1/\pi)$.
+\end{itemize}
+Raw use case는 두 reading 원리만으로 충족되어 forward chain에 자연스럽고, coupled use case는 RLU 메커니즘 추가로 공리 내적 서술(분류~III) 위상에 속한다 (RLU 자체는 CAS에 공리적 필수이며, $(4+1/\pi)$의 $+$ 결합은 공리~\ref{ax:banya}의 직교 합성에 의해 유일하다 --- 제\ref{sec:prediction}절 단계~(4) 및 제\ref{sec:baryogenesis}절 참조). 본 논문에서 $\sin^2\theta_W$ (raw use case)와 $\eta_B$ (coupled use case)는 이 분류에 따라 서로 다른 위상을 갖는다.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{비용--서명 대응 정리}
+\label{sec:theorem}
+
+본 절에서 논문의 핵심 결과를 정리로 제시하고 증명한다.
+
+\begin{Definition}[비용 함수]
+공리~\ref{ax:cost}에 의해 정의되는 비용 함수 $c: \{x_1, \ldots, x_7\} \to \{0, +1\}$을 다음과 같이 표기한다. 각 축 $x_i$에 대해, CAS가 $x_i$에 접근할 때 괄호 경계 $+$를 순서대로 넘어야 하면 $c(x_i) = +1$, 넘지 않으면 $c(x_i) = 0$.
+\end{Definition}
+
+\begin{Definition}[서명 함수]
+7차원 실벡터 공간의 이차형식 $Q = \sum_{i=1}^{7} \sigma_i x_i^2$에서, 각 축의 부호 $\sigma_i \in \{+1, -1\}$를 서명 함수 $\sigma: \{x_1, \ldots, x_7\} \to \{+1, -1\}$로 표기한다. 양($+1$) 부호의 수를 $p$, 음($-1$) 부호의 수를 $q$라 하면, $(p,q)$가 이차형식의 서명이다.
+\end{Definition}
+
+\begin{Definition}[비용--서명 사상]\label{def:cost-sig}
+공리~\ref{ax:banya}--\ref{ax:delta}를 만족하는 7차원 내부 공간에서, 비용 함수 $c$로부터 서명 함수 $\sigma$를 다음과 같이 정의한다:
+\begin{linenomath}
+\begin{equation}
+\sigma(x_i) = \begin{cases} +1 & \text{if } c(x_i) > 0 \quad (\text{비가역}) \\ -1 & \text{if } c(x_i) = 0 \quad (\text{가역}) \end{cases}
+\label{eq:cost-sig}
+\end{equation}
+\end{linenomath}
+물리적 동기: 비가역 축은 $c > 0$이며 공리 체계가 \emph{기록}하는 \emph{데이터 차원}(data axes)이다 --- 양($+$) 부호로 마킹된다. 가역 축은 $c = 0$이며 공리 체계가 기록하지 않고 CAS의 \emph{필터 차원}(filter axes)으로 작동한다 --- 음($-$) 부호로 마킹된다. 본 논문의 $\sin^2\theta_W$ 도출(제\ref{sec:prediction}절, ``집합 차집합 = filter'' 단락)에서 음 부호의 \emph{필터} 해석이 명시적으로 사용됨을 참고한다. \emph{음($-$) 부호는 산술 뺄셈이 아니라 \emph{타입 마커}(category marker)이다}: 이차형식 $Q = \sum \sigma_i x_i^2$에서 $(-3)^2 = (+3)^2 = 9$로서 $\sigma_i x_i^2$의 절대값은 같으며, 부호는 단조 증가/감소가 아니라 SO($p,q$) 군 구조에서 \emph{데이터 카테고리} 대 \emph{필터 카테고리}를 구분하는 마커이다.
+\end{Definition}
+
+\emph{왜 이차형식인가}: 7개 축의 이진 분류(비용 유/무)를 연속 기하학적 객체(대칭공간)로 연결하는 표준 수학적 장치는 이차형식의 서명이 유일하다. 이진 분류 $\{c > 0, c = 0\}$가 주어지면, 이를 연속 군으로 보내는 유일한 표준 경로가 이차형식 $Q = \sum \sigma_i x_i^2$의 서명 $(p,q)$ $\to$ $\mathrm{SO}(p,q)$이다. 다른 경로가 존재하지 않으므로, 정의~\ref{def:cost-sig}는 선택이 아니라 필연이다.
+
+\begin{Theorem}[비용 분할의 유일성]\label{thm:cost-signature}
+공리~\ref{ax:banya}--\ref{ax:delta} 하에서, 7개 축의 비용 분류 $c(x_i)$는 공리에 의해 결정되며, 비가역 축 5개와 가역 축 2개로의 분할 $(5,2)$는 유일하다. 비용 속성이 다른 축 사이의 회전은 비용 속성 경계를 위반하므로, 이 분할을 보존하는 유일한 극대 콤팩트 부분군은 $\mathrm{SO}(5) \times \mathrm{SO}(2)$이다. 따라서 유계 대칭 영역 $D_5 = \mathrm{SO}_0(5,2)/[\mathrm{SO}(5) \times \mathrm{SO}(2)]$ (여기서 $\mathrm{SO}_0(5,2)$는 항등성분)가 결정된다.
+\end{Theorem}
+
+\textit{정의와 정리의 지위에 대한 주}: 정의~\ref{def:cost-sig}(비용$\to$부호 사상)은 비가역 축에 양($+$), 가역 축에 음($-$) 부호를 할당한다. $\mathrm{SO}(5,2) \cong \mathrm{SO}(2,5)$이므로 부호 방향을 반전시켜도 동일한 $D_5$가 산출된다. 정리~\ref{thm:cost-signature}가 확립하는 것은 \emph{분할} $(5,2)$의 유일성이며, 이 분할만으로 $D_5$와 $\alpha$가 결정된다.
+
+\textit{정리의 형식적 위상}: 본 정리는 공리~\ref{ax:banya}--\ref{ax:delta}의 제약을 7개 축에 적용하여 분할 $(5,2)$가 강제됨을 증명한다. 공리에 가한 제약이 강력하므로, 8개 가능한 분할 중 하나만 살아남는다 --- 이것이 공리적 도출(분류~I)의 핵심이다.
+
+\begin{proof}
+세 부분으로 나눈다: (A) 비용 분류의 유일성, (B) 비용과 메트릭 부호의 대응, (C) 다른 분할의 형식적 배제. (사상 $\sigma$의 well-definedness는 (A), (C)의 직접 귀결로 증명 후 주석에서 다룬다.)
+
+\emph{(A) 비용 분류의 유일성.} 7개 축 각각에 대해 $c(x_i)$를 결정한다:
+\begin{itemize}
+\item \emph{time, space}: 공리~\ref{ax:banya}에 의해 DATA 괄호에 속한다. CAS는 OPERATOR 괄호에서 작동하므로(공리~\ref{ax:cas}), DATA에 접근하려면 괄호 경계 $+$를 넘어야 한다. 공리~\ref{ax:cost}에 의해 $c = +1$. 비가역.
+\item \emph{R, C, S} (CAS의 3단계, 각각 독립 이진 자유도): 공리~\ref{ax:cas}에 의해 $\mathrm{R} \to \mathrm{C} \to \mathrm{S}$ 순서가 논리적 의존성으로 강제된다. 각 단계는 독립 이진 자유도를 점유하며(001, 011, 111), 순서가 강제된 전이는 공리~\ref{ax:cost}에 의해 각각 $c = +1$. 비가역.
+\item \emph{observer, superposition}: 공리~\ref{ax:banya}에 의해 OPERATOR 괄호에 속한다. CAS도 OPERATOR에서 작동하므로(공리~\ref{ax:cas}), 같은 괄호 내부 접근은 $+$를 넘지 않는다. 공리~\ref{ax:cost}에 의해 $c = 0$. 가역.
+\end{itemize}
+각 축의 분류는 해당 축이 속하는 괄호(공리~\ref{ax:banya})와 CAS의 위치(공리~\ref{ax:cas})에 의해 완전히 결정된다. 어떤 축도 다른 괄호로 이동할 수 없으므로 분류는 유일하다. 결과: $c > 0$인 축 5개, $c = 0$인 축 2개.
+
+\emph{(B) 비용과 메트릭 부호의 대응 (데이터/필터 카테고리 마커).} 이차형식 $Q = \sum \sigma_i x_i^2$에서 부호 $\sigma_i$의 물리적 의미는 ``해당 축이 \emph{데이터 차원}인가, \emph{필터 차원}인가''이다.
+
+본 체계에서 비용 함수 $c$는 이 구분을 직접 결정한다:
+\begin{itemize}
+\item \emph{비가역 축}($c > 0$): 공리 체계가 \emph{기록}하는 데이터 차원. CAS의 Swap 결과가 DATA 슬롯에 영구히 등록된다. time과 space는 각각 timestamp와 좌표 기록의 대상이며, R/C/S CAS 단계는 그 기록을 \emph{수행}하는 비가역 단계들이다. 따라서 $\sigma_i = +1$ --- 데이터 차원의 카테고리 마커.
+\item \emph{가역 축}($c = 0$): 공리 체계가 \emph{기록하지 않고} CAS의 \emph{필터/선택자} 역할을 하는 차원. observer 도메인은 CAS의 \emph{분기 필터}이며, superposition 도메인은 CAS의 \emph{RLU 인덱스 필터}로 작동한다(공리~\ref{ax:cas} 직후 RLU 정의 참조) --- 둘 다 \emph{어느 데이터를 가져올지 또는 어느 분기로 갈지} 선택할 뿐, 그 자체가 데이터로 기록되지 않는다. 따라서 $\sigma_i = -1$ --- 필터 차원의 카테고리 마커.
+\end{itemize}
+
+핵심을 강조한다: \emph{음($-$) 부호는 ``빼기''나 ``단조 감소''가 아니라 ``필터 차원''의 카테고리 마커이다}. $(-3)^2 = (+3)^2 = 9$로서 어느 부호든 $\sigma_i x_i^2$의 절대값은 같으며, 부호는 SO($p,q$) 군 구조에서 데이터 차원 ($p$개) 대 필터 차원 ($q$개)을 구분하는 \emph{타입 마커}일 뿐 산술적 의미가 아니다. 본 논문의 $\sin^2\theta_W$ 도출(제\ref{sec:prediction}절, ``집합 차집합 = filter'' 단락)에서도 음 부호 해석이 \emph{집합 필터} 연산으로 사용되며, 본 정리의 $(5,2)$ 부호 할당과 일관된다 --- 양쪽 모두에서 음 부호는 ``뺄셈''이 아니라 ``필터/선택''을 의미한다.
+
+민코프스키 시공간과의 비교. 민코프스키 메트릭에서도 두 다른 카테고리(시간 vs 공간)가 다른 부호를 받지만, 본 공리 체계의 $(5, 2)$ 부호 할당은 \emph{cost 카테고리}(데이터 vs 필터)에 의한 것이지 운동학적 인과 구조에 의한 것이 아니다. 본 체계의 음 부호는 ``필터 차원''(가역, $c = 0$)을 표시하며, 민코프스키의 공간 음 부호와는 의미가 다르다 --- 비유적 유사성이 있을 뿐 동일하지 않다.
+
+\emph{(C) 다른 분할의 형식적 배제.} (A)에서 도출된 분할 $(5,2)$가 \emph{유일}함을 다른 가능한 분할과 명시적으로 비교하여 보인다. 7개 축의 분할은 $(p, q)$로 $p + q = 7$이며, 가능한 분할은 $(7,0), (6,1), (5,2), (4,3), (3,4), (2,5), (1,6), (0,7)$의 8개이다. $(5,2)$와 동형 $(2,5)$를 제외한 나머지 6개가 모두 공리 체계 공리에 의해 배제된다:
+\begin{center}
+\small
+\begin{tabular}{ccp{8.5cm}}
+\toprule
+\textbf{분할} & \textbf{판정} & \textbf{배제 근거} \\
+\midrule
+$(7,0)$ & 배제 & observer, superposition $\in$ OPERATOR $\Rightarrow$ 괄호 경계 안 넘음 $\Rightarrow$ $c=0$ 강제. 공리~\ref{ax:banya}와 \ref{ax:cost} 동시 위반 \\
+$(0,7)$ & 배제 & time, space $\in$ DATA, CAS $\in$ OPERATOR $\Rightarrow$ 괄호 경계 넘어야 함 $\Rightarrow$ $c=+1$ 강제. 공리~\ref{ax:banya}와 \ref{ax:cost} 동시 위반 \\
+$(6,1)$ & 배제 & OPERATOR 축 중 하나가 $c>0$을 받아야 하나 (A)에서 $c=0$ 확정. 공리 위반 \\
+$(4,3)$ & 배제 & DATA 축 또는 CAS 단계 중 하나가 $c=0$을 받아야 하나 (A)에서 $c=+1$ 확정. 공리 위반 \\
+$(3,4)$ & 배제 & $(4,3)$과 동일 논리 \\
+$(1,6)$ & 배제 & $(6,1)$과 동일 논리 \\
+$(5,2)$ & \textbf{채택} & (A)의 비용 분류와 유일하게 양립. 동형 $(2,5)$ 포함 \\
+\bottomrule
+\end{tabular}
+\end{center}
+결과: 8개 가능한 분할 중 본 공리 체계의 공리~\ref{ax:banya}, \ref{ax:cas}, \ref{ax:cost}와 양립하는 유일한 분할은 $(5,2)$ (동형 $(2,5)$ 포함)이다. $\mathrm{SO}(5,2) \cong \mathrm{SO}(2,5)$이므로 부호 방향 선택은 결과에 영향을 미치지 않으며, 본 정리가 확립하는 것은 \emph{분할 자체의 유일성}이다.
+
+(A), (B), (C)에서 비가역 5개, 가역 2개로 결정되므로, $(p, q) = (5, 2)$.
+\end{proof}
+
+\emph{주석 (사상의 well-definedness)}. 정의~\ref{def:cost-sig}의 사상 $\sigma: c \to \{+1, -1\}$은 (A), (C)의 직접 귀결로 다음 세 형식적 성질을 갖는다: (i) \emph{Total}: 사상은 7개 모든 축에 정의됨; (ii) \emph{Deterministic}: 각 축의 $c$값이 주어지면 $\sigma$값이 결정됨 (외부 입력 없음); (iii) \emph{Count-bijective}: 결과 분할 $(p,q)$는 $c=+1$ 축의 수와 $c=0$ 축의 수로 결정됨. ``비용 분류와 이차형식 부호의 구조적 동치''란 이 세 성질을 의미한다.
+
+\textit{대안 21차원 군의 배제: 카테고리적 구별}. SO(5,2)는 차원 21의 비콤팩트 단순 리 군이지만, 같은 차원 21을 갖는 다른 단순 리 군 — SO(7)(콤팩트 형, 서명 $(7,0)$)과 SO(4,3)(서명 $(4,3)$ 또는 $(3,4)$) — 도 존재한다. 본 공리 체계에서 이 셋의 차이는 어느 \emph{자유도 카테고리}(명제~\ref{ax:dof}: 구조 vs 비용)에서 메트릭 부호를 도출하는가에 있다.
+
+\begin{itemize}
+\item \emph{SO(5,2)는 \emph{비용 자유도}에서 도출된다}: 정의~\ref{def:cost-sig}는 cost 함수가 두 다른 카테고리($c > 0$ 비가역과 $c = 0$ 가역)를 산출함을 명시하며, 두 카테고리에 다른 부호를 할당한다. 정리~\ref{thm:cost-signature}이 두 카테고리의 크기를 5와 2로 도출하므로 서명 $(5,2)$가 강제된다.
+
+\item \emph{SO(7)은 \emph{구조 자유도}의 콤팩트 형이다}: SO(7)은 모든 7축이 동일 부호를 갖는 콤팩트 군이며, 이는 7축을 \emph{구조적으로 동등}한 객체로 다루는 것이다. 그러나 본 공리 체계는 메트릭 부호를 구조 카테고리가 아닌 \emph{비용 카테고리}에서 도출하며, 비용 카테고리는 두 다른 부호를 강제한다(위 항목). 따라서 SO(7)은 본 공리 체계의 metric signature 도출 원리와 양립하지 않는다.
+
+\item \emph{SO(4,3)은 \emph{구조 자유도}의 분할 형이다}: SO(4,3)에 필요한 분할 $(4,3)$은 명제~\ref{ax:dof}의 구조 분해(4 도메인 축 $+$ 3 CAS 단계 $= 7$)와 수치적으로 일치하지만, 이는 \emph{구조} 카테고리의 분할이지 \emph{비용} 카테고리의 분할이 아니다. 본 공리 체계가 메트릭 부호를 비용 카테고리에서 도출하므로(정의~\ref{def:cost-sig} 및 정리~\ref{thm:cost-signature}), 구조 분할 $(4,3)$은 부호 도출의 입력이 아니다. 정리~\ref{thm:cost-signature}이 \emph{비용} 분할 $(5,2)$를 강제하므로, SO(4,3)는 본 공리 체계와 양립하지 않는다.
+\end{itemize}
+
+따라서 21차원 단순 리 군 중 본 공리 체계의 \emph{signature-from-cost} 원리와 양립하는 유일한 군은 SO(5,2)(동형 SO(2,5) 포함)이다. SO(7)과 SO(4,3)는 공리 체계 내부에 존재하는 다른 카테고리(구조)의 객체이며, 메트릭 부호 도출 자체에는 사용되지 않는다.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$\alpha$의 도출}
+\label{sec:derivation}
+
+정리~\ref{thm:cost-signature}에서 서명 $(5,2)$가 결정되면, 이후 $\mathrm{SO}_0(5,2) \to D_5 \to$ Wyler 공식 \eqref{eq:wyler-formula}의 인수에 도달한다. 표~\ref{tab:factors}는 각 인수의 공리적 지위를 분류한다: $9$는 공리에서 자체 도출(I), $\pi^5/(2^4 \cdot 5!)$는 공리가 자동 확정(II), $(\cdot)^{1/4}$는 4축 직교 기하평균으로 자동 확정(II), $8\pi^4$는 $(5,2)$에서 결정되는 군 부피로 수학적으로 자동 확정(II)이다. 4개 인수 전부가 공리 구조에서 산출된다.
+
+\subsection{SO(5,2)와 극대 콤팩트 부분군}
+
+서명 $(5,2)$의 이차형식을 보존하는 선형 변환군은 $\mathrm{SO}(5,2)$이며, 그 항등성분 $\mathrm{SO}_0(5,2)$가 유계 대칭 영역 $D_5$의 자연스러운 작용군이다~\cite{helgason1978}. 극대 콤팩트 부분군은 $\mathrm{SO}(5) \times \mathrm{SO}(2)$이다.
+
+이 부분군의 선택이 왜 유일한가: 비용 분류에 의해 7개 축은 $\{$비가역 5개$\} \cup \{$가역 2개$\}$로 나뉜다. 비가역 5개끼리는 동일한 속성(비용 $> 0$)을 공유하므로 서로 회전 가능하다---이것이 $\mathrm{SO}(5)$이다. 가역 2개끼리도 동일한 속성(비용 $= 0$)을 공유하므로 서로 회전 가능하다---이것이 $\mathrm{SO}(2)$이다. 그러나 비가역 축과 가역 축 사이의 회전은 비용 속성이 다르므로(비용 $> 0 \not\leftrightarrow$ 비용 $= 0$) 허용되지 않는다. 따라서 극대 콤팩트 부분군은 $\mathrm{SO}(5) \times \mathrm{SO}(2)$이고, $\mathrm{U}(5)$나 $\mathrm{Sp}(4) \times \mathrm{U}(1)$ 같은 다른 부분군은 비용 속성 경계를 위반하므로 배제된다.
+
+\subsection{몫공간 $D_5$}
+
+몫공간
+\begin{linenomath}
+\begin{equation}
+D_5 = \frac{\mathrm{SO}_0(5,2)}{\mathrm{SO}(5) \times \mathrm{SO}(2)}
+\label{eq:d5}
+\end{equation}
+\end{linenomath}
+은 복소 차원 5의 Cartan IV형 유계 대칭 영역이다~\cite{helgason1978,hua1963}. 전체 변환군에서 각 영역의 내부 회전을 제거하면, 남는 것은 비가역 영역과 가역 영역을 \emph{연결하는} 변환---즉, 괄호 경계 $+$를 넘는 변환---만이다. $D_5$는 ``비용을 발생시키는 모든 가능한 배위의 공간''이다.
+
+\subsection{Wyler 체적비}
+
+$D_5$의 Shilov 경계 체적과 $D_5$ 체적의 비가 $\alpha$를 결정한다~\cite{wyler1969,wyler1971,hua1963}:
+\begin{linenomath}
+\begin{equation}
+\alpha = \frac{9}{8\pi^4} \left( \frac{\pi^5}{2^4 \cdot 5!} \right)^{1/4}.
+\label{eq:wyler-formula}
+\end{equation}
+\end{linenomath}
+
+물리적 해석: $\alpha$는 CAS 연산이 괄호 경계 $+$를 넘어 상호작용을 산출할 확률이다. 가능한 배위($D_5$) 전체에 대한 실현된 배위(Shilov 경계)의 비율이 곧 저에너지 전자기 결합상수이다.
+
+\textit{Shilov 경계의 유일성에 대한 주}: Shilov 경계는 유계 영역에서 최대값 원리를 만족하는 최소 닫힌 부분집합으로서 유일하게 정의된다~\cite{hua1963}. Bergman 경계나 distinguished boundary 등의 대안적 경계 개념이 존재하나, Wyler~\cite{wyler1969}의 원래 구성에서 결합상수가 Shilov 경계의 체적비로 주어지는 것은 이 경계가 ``해석함수의 값이 결정되는 최소 집합''이라는 물리적 의미---즉, 실현된 배위를 규정하는 최소 경계---와 부합하기 때문이다. 본 논문의 기여는 경계 선택의 정당화를 넘어서, 서명 $(5,2)$ 자체의 유일한 결정(정리~\ref{thm:cost-signature})에 있다.
+
+\textit{왜 Shilov 경계의 체적비가 $\alpha$와 같은 값인가---반야 방정식의 자기서술적 구조.} 이 질문은 Wyler(1969) 이래 미해결로 남아 있었으며, Robertson의 비판 R1(``왜 $D_5$가 전자기와 관련되는가'')의 핵심이다. 본 공리 체계에서 이 일치는 추가 가정이 아니라 공리~\ref{ax:banya}(반야 방정식)의 자기서술적 구조로부터 따라온다.
+
+반야 방정식 $\delta^2 = (\mathrm{time} + \mathrm{space})^2 + (\mathrm{observer} + \mathrm{superposition})^2$에서 좌변 $\delta$는 단일한 변화량이다. 이 $\delta$는 구조 도메인(기하학적 체적비)에서 기술될 수도 있고, 비용 도메인(결합상수)에서 기술될 수도 있다. 두 기술은 서로 다른 도메인의 표현이지만 동일한 $\delta$를 가리키므로, 동일한 수치를 산출한다. 이것이 도메인 변환(domain transformation)의 원리이다.
+
+구체적으로: (i)~기하학적 도메인에서, $(5,2)$에 의해 결정된 $D_5$의 Shilov 경계 체적비는 ``비용이 발생하는 가능한 배위의 비율''이다(§\ref{sec:derivation}). (ii)~비용 도메인에서, $\alpha$는 ``CAS 연산이 괄호 경계를 넘을 확률''이다. (iii)~두 기술은 동일한 $\delta$(변화량)의 서로 다른 도메인 투영이다. 따라서 두 값의 일치는 우연이 아니라 반야 방정식의 자기서술적 구조의 필연적 귀결이다.
+
+이 구조는 본 공리 체계의 방법론 자체를 반영한다: 반야 방정식은 다양한 도메인에서 대상을 바라보는 도구이며, 도메인이 달라도 $\delta$ 값은 보존된다. 이것이 ``공리 채굴(axiom mining)''의 원리---도메인 변환과 치환을 통해 숨겨진 정보를 찾는 과정---이다. Shilov 경계 체적비가 $\alpha$와 같은 것은 이 보존 원리의 한 사례이다.
+
+\subsection{수치 결과}
+
+\begin{linenomath}
+\begin{equation}
+\frac{1}{\alpha} = 137.036\,082.
+\label{eq:result}
+\end{equation}
+\end{linenomath}
+
+CODATA 2022 실험값~\cite{codata2022}: $1/\alpha_{\mathrm{exp}} = 137.035\,999\,177(21)$.
+
+\begin{linenomath}
+\begin{equation}
+\frac{|\alpha^{-1}_{\mathrm{derived}} - \alpha^{-1}_{\mathrm{exp}}|}{\alpha^{-1}_{\mathrm{exp}}} = 6 \times 10^{-7}.
+\label{eq:error}
+\end{equation}
+\end{linenomath}
+
+\subsection{인수 추적}
+
+Wyler 공식의 모든 수치 인수는 서명 $(5,2)$로 추적된다:
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{Wyler 공식 각 인수의 공리적 지위.\label{tab:factors}}
+\small
+\begin{tabularx}{\fulllength}{cp{2.2cm}X}
+\toprule
+\textbf{분류} & \textbf{인수} & \textbf{비고} \\
+\midrule
+\textbf{I} & $9$ & 잔존 비용 $13{-}4{=}9$. dim\,SO(5)$-$dim\,SO(2)${}=10{-}1$과 해석적 대응. 공리 체계 유일 산출 인수 (정의~\ref{def:residual}) \\
+\textbf{II} & $\pi^5/(2^4 \cdot 5!)$ & $D_5$의 Hua 체적. 정리~\ref{thm:cost-signature}${}\to{}$(5,2)${}\to{}D_5{}\to{}$Hua Ch.\,IV 항등식. 수학적 항등식으로 확정 (§\ref{sec:derivation}) \\
+\textbf{II} & $(\cdot)^{1/4}$ & 공리~\ref{ax:banya}의 4축 직교 $\to$ 독립 $\to$ 기하평균 $= (\cdot)^{1/4}$. 수학적 항등식이며 도출 완료 (§\ref{sec:derivation}, §\ref{sec:prediction}) \\
+\textbf{II} & $8\pi^4$ & $(5,2) \to \mathrm{SO}(5)\times\mathrm{SO}(2)$ 군 부피에서 수학적으로 자동 확정 (§\ref{sec:derivation}) \\
+\bottomrule
+\end{tabularx}
+\parbox{\fulllength}{4개 인수 전부가 공리 구조에서 산출된다. 분류 기준은 표~\ref{tab:axiom-results} 참조.}
+\end{adjustwidth}
+\end{table}
+
+\subsubsection{$\pi^5/5!$의 forward chain (강한 결과)}
+
+\textit{$\pi^5$의 지수 $5$는 비가역 축의 개수와 동일하다.} 이는 우연이 아니라 Cartan 분류의 정의적 결과이다. 도출 사슬을 명시한다:
+\begin{enumerate}
+\item 정리~\ref{thm:cost-signature}(비용 분할의 유일성)에 의해 7축이 비가역 5축 $+$ 가역 2축으로 분할된다.
+\item 이 분할이 이차형식의 서명 $(p, q) = (5, 2)$를 결정한다.
+\item $\mathrm{SO}(p, q) = \mathrm{SO}(5, 2)$의 극대 콤팩트 부분군이 $\mathrm{SO}(5) \times \mathrm{SO}(2)$이다.
+\item 몫공간 $D_p = D_5 = \mathrm{SO}_0(5,2)/[\mathrm{SO}(5)\times\mathrm{SO}(2)]$ (여기서 $\mathrm{SO}_0(5,2)$는 $\mathrm{SO}(5,2)$의 항등성분)는 Cartan type IV 유계 대칭 영역이며, \emph{복소 차원은 정확히 $n = 5$}이다(Helgason~\cite{helgason1978}, Hua~\cite{hua1963} Ch.~IV).
+\item Hua~\cite{hua1963} Ch.~IV의 type IV$_n$ Hua 체적 공식 $\mathrm{Vol}_{\text{Hua}}(D_n^{\text{IV}}) = \pi^n/(2^{n-1} n!)$에서 $n = 5$ 대입 시 $\pi^5/(2^4 \cdot 5!) = \pi^5/1920$이 얻어진다 (식~\eqref{eq:hua-volume}).
+\end{enumerate}
+
+각 단계에서 ``$5$''는 동일한 수---\emph{비가역 축의 개수}---이며, 수학적 추상화 (signature $\to$ 군 $\to$ 몫공간 $\to$ 부피) 를 거쳐 전달된다. 따라서 Wyler 공식의 $\pi^5$는 순수 기하학적 상수가 아니라, 본 공리 체계에서 \emph{비가역 5축이 집단적으로 차지하는 복소 5차원 공간의 단위 구 부피}로서 직접적 물리 해석을 갖는다. 각 복소 차원이 개별적으로 $\pi$를 기여하는 것이 아니라, 5축 전체가 하나의 5차원 공간을 구성하고 그 공간의 부피가 $\pi^5 / 5!$를 낳는다. 표의 다른 인수 $9$, $8\pi^4$도 같은 방식으로 정리~\ref{thm:cost-signature}와 군론적 자동 귀결을 통해 공리 구조에서 설명된다 ($2^4$는 별도 인수가 아니라 직후 단락에서 명시되듯 $\pi^5/(2^4\cdot 5!) = D_5$ Hua 체적의 일부).
+
+\textit{$\pi^5/(2^4 \cdot 5!) = D_5$ Hua 체적 직접 동일성 (Hua Ch.~IV)}. Wyler 공식 \eqref{eq:wyler-formula}의 괄호 안 인자 $\pi^5/(2^4 \cdot 5!)$는 \emph{$D_5$의 Hua 체적과 직접 일치}한다.
+
+\textit{용어 주}: 본 논문에서 ``Hua 체적''은 Hua~\cite{hua1963} Ch.~IV \S1.4 Theorem 1.1.2에서 Lie ball $R_{IV}(n)$의 \emph{Hua-정규화 Euclidean volume}으로 제시된 양을 가리킨다. Wyler-Robertson 문헌~\cite{wyler1969,robertson1971}에서는 ``Bergman volume''으로도 혼용되며, 두 명명은 동일 객체를 가리키나, 본 논문은 Hua 원본의 명명을 따른다.
+
+Hua Ch.~IV의 type IV$_n$ (Lie ball, $D_n^{\text{IV}} = \mathrm{SO}_0(n,2)/[\mathrm{SO}(n)\times\mathrm{SO}(2)]$)에 대한 Hua 체적 공식은
+\begin{linenomath}
+\begin{equation}
+\mathrm{Vol}_{\text{Hua}}(D_n^{\text{IV}}) = \frac{\pi^n}{2^{n-1} \cdot n!},
+\label{eq:hua-volume}
+\end{equation}
+\end{linenomath}
+이며, $n=5$ 대입 시 정확히 $\pi^5/(2^4 \cdot 5!) = \pi^5/1920$이다 — 이는 Wyler 식 괄호 안 인자와 \emph{문자 그대로 같다}. 따라서 $\pi^5/5!$와 $2^4$를 표~\ref{tab:factors}에서 분리한 두 인수로 다루는 것은 \emph{해석적으로 부정확}하며, 실제로는 \emph{단일 객체} $\pi^5/(2^4 \cdot 5!) = D_5$의 Hua 체적이다.
+
+\textit{공리 체계의 위치}. 본 공리 체계는 정리~\ref{thm:cost-signature}에 의해 비가역 5축 + 가역 2축이라는 분할을 강제하며, 이것이 군 $\mathrm{SO}_0(5,2)$와 그 몫공간 $D_5$를 결정한다. $D_5$의 Hua 체적은 표준 Lie 군 이론(Hua Ch.~IV, Helgason~\cite{helgason1978})의 수학적 항등식이며, 공리가 $(5,2) \to D_5$를 강제하면 자동으로 확정된다 (분류~II).
+
+그러나 공리 체계의 ``비가역 5축이 집단적으로 차지하는 복소 5차원 공간의 부피'' 해석은 Hua의 Hua 체적 $\pi^5/(2^4 \cdot 5!)$와 \emph{같은 객체}를 가리킨다 — 이것은 ``수치 일치''가 아니라 \emph{직접 동일성}이다 (\emph{왜} 비가역 5축이 type IV$_5$ 영역을 구성해야 하는지의 axiom-level 증명은 정리~\ref{thm:cost-signature}가 제공한다).
+
+따라서 표~\ref{tab:factors}에서 $\pi^5/(2^4 \cdot 5!)$는 단일 인수이며 \emph{$D_5$의 Hua 체적으로 직접 동일시}된다 (Hua~\cite{hua1963} Ch.~IV 식~\eqref{eq:hua-volume}). 이 인수는 공리 체계의 ``서명 $(5,2)$ → $D_5$'' 사슬에 의해 공리 체계 내적 동기를 갖는다 (Hua의 외부 수학과 공리 체계의 cost-signature 사슬이 \emph{같은 객체}에 대한 두 path).
+
+\textit{4개 인수의 공리적 지위}. Wyler 공식 \eqref{eq:wyler-formula}의 4개 인수 전부가 공리 구조에서 산출된다 (표~\ref{tab:factors}): $9$는 cost 회계에서 자체 도출(I), $\pi^5/(2^4 \cdot 5!)$는 $D_5$ Hua 체적으로 자동 확정(II), $8\pi^4$는 $(5,2) \to \mathrm{SO}(5)\times\mathrm{SO}(2)$ 군 부피에서 결정되는 수학적으로 자동 확정(II), $(\cdot)^{1/4}$는 4축 직교 독립의 기하평균으로 자동 확정(II)된다.
+
+\subsubsection{$(\cdot)^{1/4}$ 거듭제곱의 지위 --- 직교 독립 축의 기하평균}
+
+\textit{$1/4$ 거듭제곱의 지위}. 공리~\ref{ax:banya}는 4개 도메인 축의 상호 직교를 선언한다. 직교 = 독립 (제\ref{sec:framework}절 Hartley 정보 단락에서 명시). 독립인 $n$개 축의 축당 기여는 기하평균 $= (\text{total})^{1/n}$이다 --- 이것은 독립의 정의에서 따르는 수학적 항등식이며 가정이 아니다. $n = 4$ (도메인 축 수)이므로 $1/4$ 거듭제곱은 공리~\ref{ax:banya}의 직교성에 의해 수학적으로 자동 확정된다 (분류~II). Wyler가 dimensional analysis로 채택한 $1/4$는 본 공리 체계에서 독립적으로 도출된다.
+
+\emph{비율 해석: $\alpha$ = 비용 / 구조 (거듭제곱 나누기).} 명제~\ref{ax:dof}(완전기술자유도)에 의해 공리 체계의 자유도는 \emph{구조}(DATA 카테고리, $\{1, 2, 3, 4, 7\}$)와 \emph{비용}(OPERATOR 카테고리, $\{1, 4, 5, 9, 13\}$)의 두 직교 카테고리로 나뉜다. 4 도메인 축(공리~\ref{ax:banya})은 \emph{구조 카테고리의 4}이며, 본 공리 체계의 cost ratio 해석에서 이 4축이 곱셈으로 결합한다고 가정하면, 4축에 누적된 총 cost는 축당 cost의 4승이며, 역으로 축당 cost는 총 cost의 $1/4$승이다:
+\begin{linenomath}
+\begin{equation}
+\alpha = (\text{4축 누적 cost})^{1/\text{구조 4}}.
+\label{eq:cost-ratio}
+\end{equation}
+\end{linenomath}
+이 관점에서 Wyler 공식의 $(\cdot)^{1/4}$ 거듭제곱은 \emph{4 도메인 축 곱셈 결합의 역연산}이며, 다른 거듭제곱 ($1/2$, $1/3$, $1/5$, $\ldots$)은 공리 체계의 도메인 축 수 $4$와 일치하지 않는다. Wyler가 dimensional analysis로 채택한 $1/4$ 거듭제곱은 본 공리 체계의 cost ratio 해석에서 \emph{독립적으로 재발견}되며, 두 독립 경로의 수렴이 거듭제곱의 우연성 가설을 약화한다 (제\ref{sec:baryogenesis}절 식~\eqref{eq:eta-B} 직후 $\alpha^4$ 인수 해석도 같은 4 도메인 축 곱셈 결합 가정에 기초).
+
+\textit{카테고리 구별: 왜 7-폴드가 아니라 4-폴드인가}. 본 공리 체계의 internal DOF 총 카운트는 $7 = 4 + 3$(명제~\ref{ax:dof})이지만, 위의 곱셈 결합 가정은 \emph{대상 공간 차원}(4 도메인 축)에만 적용되며 \emph{접근 행위}(3 CAS 단계, sequential 합산)에는 적용되지 않는다.
+
+4 도메인 축(공리~\ref{ax:banya})은 CAS의 \emph{접근 대상} (target space)이며 곱셈 결합 후보이다 --- observer 도메인은 CAS의 분기 필터 대상, superposition 도메인은 CAS의 RLU 인덱스 대상(공리~\ref{ax:cas} 직후 RLU 정의), time과 space 도메인은 CAS의 쓰기 대상이다. 반면 3 CAS 단계(공리~\ref{ax:cas})는 sequential 합산으로 결합한다 (정의~\ref{lem:cost13}의 cost enumeration이 $13 = 8\text{ reads} + 5\text{ writes}$로 덧셈 카운트인 이유).
+
+따라서 ``7-폴드 대안 $(\cdot)^{1/7}$''은 두 다른 결합 법칙을 혼동하는 범주 오류이며, $(\cdot)^{1/n}$의 $n$은 \emph{대상 공간 차원의 수} ($= 4$ 도메인 축)로 자연스럽게 한정된다.
+
+\textit{곱셈 결합의 수학적 근거}. 반야식(공리~\ref{ax:banya})의 노름은 덧셈 구조($\delta^2 = (\cdot)^2 + (\cdot)^2$)이지만, 체적은 독립 차원의 곱이다---이것은 층위가 다르다. 직교 = 독립이고, 독립인 $n$개 차원의 체적 기여는 기하평균 $= (\cdot)^{1/n}$이다. 이는 직교 공간의 수학적 성질이며 추가 가정이 아니다. $n = 4$(도메인 축 수)이므로 $(\cdot)^{1/4}$는 공리~\ref{ax:banya}의 4축 직교에서 수학적으로 자동 확정된다 (분류~II). Wyler 공식의 $2^4$는 별도 인수가 아니라 Hua 체적 $\pi^n/(2^{n-1} \cdot n!)$에서 $n=5$ 대입 시 $2^{5-1} = 2^4$로 자동 산출되는 Hua 체적의 일부이다 (줄~\eqref{eq:hua-volume} 및 ``$\pi^5/(2^4 \cdot 5!) = D_5$ Hua 체적 직접 동일성'' 단락 참조). 따라서 $2^4$의 별도 mapping은 불필요하다.
+
+\subsubsection{도출 체인 종합}
+
+Wyler 공식 인수의 공리 체계 내적 지위는 다음과 같이 분류된다.
+
+(i) $9 = \dim\mathrm{SO}(5)-\dim\mathrm{SO}(2)$는 공리 체계 cost 회계의 잔존 비용과 해석적으로 대응한다 (자체 도출).
+
+(ii) $\pi^5/(2^4 \cdot 5!)$는 Hua~\cite{hua1963} Ch.~IV의 type IV$_5$ Hua 체적 (식~\eqref{eq:hua-volume})와 \emph{직접 동일}하며, 정리~\ref{thm:cost-signature}이 $\mathrm{SO}_0(5,2) \to D_5$를 강제하므로 공리 체계 내적 동기를 보유한다 — 이전 표기에서 $\pi^5/5!$와 $2^4$를 분리한 것은 해석적으로 부정확하며 단일 객체이다 (위의 ``$\pi^5/(2^4 \cdot 5!) = D_5$ Hua 체적 직접 동일성'' 단락 참조).
+
+(iii) 분모 $8\pi^4$는 $(5,2) \to \mathrm{SO}(5)\times\mathrm{SO}(2)$ 군 부피에서 결정되는 수학적으로 자동 확정된다 (분류~II).
+
+(iv) $(\cdot)^{1/4}$ 거듭제곱은 4축 직교 독립의 기하평균으로 수학적으로 자동 확정된다 (분류~II). 도출 체인:
+\begin{linenomath}
+\begin{equation}
+\text{공리~1--4 + 명제~1} \;\xrightarrow{\text{정리~1}}\; (5,2) \;\xrightarrow{\text{군론}}\; D_5 \;\xrightarrow{\text{Wyler}}\; \alpha.
+\end{equation}
+\end{linenomath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{구조적 일관성 확인: Weinberg 각도}
+\label{sec:prediction}
+
+같은 공리 체계에서 독립적인 제2의 물리 상수를 도출하여 체계적 일관성을 확인한다. 여기서는 Weinberg 각도 $\sin^2\theta_W$를 도출한다.
+
+\subsection{주 결과: 최소 형태}
+
+본 공리 체계에서 $\sin^2\theta_W$의 forward 도출은 다음이다:
+\begin{linenomath}
+\begin{equation}
+\boxed{\sin^2\theta_W = \frac{7}{2 + 9\pi} = 0.23122.}
+\label{eq:weinberg-main}
+\end{equation}
+\end{linenomath}
+
+4개 구조 상수의 기원을 표~\ref{tab:weinberg-constants}에 정리한다. 분모의 $+$ ($2 + 9\pi$)는 cost reading의 가역 2와 norm reading의 비가역 $9\pi$의 \emph{직교 합성}이다 — 공리~\ref{ax:banya}의 직교 합 $+$와 일치하며, 이중 카운팅 없음. 본 cost reading 과 norm reading 의 결합 규칙은 완전 체계~\cite{han2026} 의 \emph{공리 4 명제 ``비용을 노름으로 읽는 법'' (v1.6)} 에 형식화되어 있다 (cost ⊥ norm 직교 합 = standard arithmetic 덧셈으로 표현 , framework $+$ 와 정합).
+
+\begin{table}[H]
+\caption{$\sin^2\theta_W = 7/(2+9\pi)$의 4개 구조 상수.\label{tab:weinberg-constants}}
+\small
+\begin{tabular}{clll}
+\toprule
+\textbf{기호} & \textbf{값} & \textbf{기원} & \textbf{Reading 유형} \\
+\midrule
+$7$ & 내부 자유도 & 정리~\ref{thm:cost-signature}: $5$ 비가역 $+$ $2$ 가역 & cost reading (정수) \\
+$2$ & 가역 축 수 & 정리~\ref{thm:cost-signature}: observer, superposition & cost reading (정수) \\
+$9$ & 잔존 비용 & 정의~\ref{def:residual}: $13-4$ (비가역) & cost reading (정수) \\
+$\pi$ & 반구면 호 길이 & 공리~\ref{ax:cost}$+$\ref{ax:cas}: 비가역 $\to$ 정방향만 & norm reading (기하) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+$M_Z$ 스케일 실험값 ($\overline{\mathrm{MS}}$ 방식, PDG 2024 ``Electroweak model and constraints on new physics'' 절의 $\hat s_Z^2 = \sin^2\hat\theta_W(M_Z)_{\overline{\mathrm{MS}}}$): $\sin^2\theta_W = 0.23122 \pm 0.00004$~\cite{pdg2024}. 실험 불확도: $0.017\%$; 이론--실험 상대 편차: $4 \times 10^{-6}$. 비교 대상이 \emph{on-shell} 정의 $1 - M_W^2/M_Z^2 \approx 0.22337$나 \emph{effective leptonic} 정의 $\sin^2\theta_{\text{eff}}^{\text{lept}} \approx 0.23155$가 아닌 $\overline{\mathrm{MS}}$ at $M_Z$ 한 가지에 한정됨을 명시한다. PDG 2024 ``$\sin^2\theta$ values'' 표의 effective leptonic 측 다른 fit 행 ($\bar s_Z^2 \approx 0.23129$ 전체 데이터 fit, $0.23122$ LHC fit 등)은 \emph{effective leptonic} 정의이므로 본 비교 대상이 아니다 ($\hat s_Z^2$ 와 $\bar s_Z^2$ 는 서로 다른 정의).
+
+\emph{에너지 스케일과 재규격화 스킴에 대한 주}.
+$\sin^2\theta_W$의 실험값은 에너지 스케일과 재규격화 방식에 따라 달라진다 — on-shell 정의는 약 $0.2234$, $\overline{\mathrm{MS}}$ at $M_Z$는 약 $0.23122$로 두 값 사이에 약 $3.5\%$ 차이가 존재한다. 본 공식의 수치 $0.23122$는 후자 ($\overline{\mathrm{MS}}$ at $M_Z$)와 일치한다. 이 일치를 본 공리 체계 안에서 어떻게 위치시킬 수 있는지 4개 항목으로 정리한다.
+
+\begin{enumerate}
+\item \emph{공리 체계에는 에너지 스케일이 없다 — 사실}. 본 논문의 공리~\ref{ax:banya}--\ref{ax:delta}에는 에너지, 질량, 길이 등 차원이 있는 양이 등장하지 않는다. 비용은 무차원 정수이고(공리~\ref{ax:cost}), 구조 상수도 무차원이다(명제~\ref{ax:dof}, 정의~\ref{lem:cost13}, 정의~\ref{def:residual}). 따라서 공리에서 산출되는 모든 양은 에너지 스케일 이전의 무차원 비율이다.
+
+\item \emph{시스템 시간 vs 도메인 시간의 구분 — 해석적 위치}. 반야식(공리~\ref{ax:banya})은 $\delta$(시스템 시간)와 time 축(도메인 시간)을 구조적으로 분리한다 (제\ref{sec:axioms}절, ``시스템 시간과 도메인 시간의 분리'' 단락 참조). CAS 1사이클(휴식 $\to$ R $\to$ C $\to$ S $\to$ DATA 커밋)은 시스템 시간의 1틱이며, 정의~\ref{lem:cost13}의 13개 + 횡단이 이 1틱 안에서 발생한다. 반면 우리가 측정하는 ``에너지 스케일''(예: $M_Z = 91.2$ GeV)은 DATA(고전 괄호)에 렌더링된 후 도메인 시간 위에서 정의되는 양이다. 두 시간 층위는 다른 입자도(granularity)이며, 본 공리 체계는 시스템 시간 층위에서만 작동한다.
+
+\item \emph{$\overline{\mathrm{MS}}$ at $M_Z$와의 일치}. 시스템 시간 층위에서 산출되는 구조적 비율 $7/(2+9\pi)$가 도메인 시간의 어떤 측정 스킴과 일치할지는 공리에서 자동으로 따라 나오지 않는다. 이 일치의 공리 체계 내적 동기를 제시한다: $\overline{\mathrm{MS}}$ 방식은 물리적 입자 질량 임계치를 명시적으로 제거한 ``임계치 무관(threshold-free)'' 정의이며, 이는 본 공리 체계의 시스템 시간 층위(임계치 개념이 부재)와 \emph{형식적으로 가까운 자리}에 있다. on-shell 정의는 물리적 입자 질량을 임계치로 포함하므로 도메인 시간 측에 더 가깝다. 본 공식이 on-shell이 아니라 $\overline{\mathrm{MS}}$ at $M_Z$와 일치하는 것은 이 framework 위치와 정합적이다. 시스템/도메인 시간 분리 자체는 공리~\ref{ax:banya}의 즉시 귀결이다 (분류~I, 제\ref{sec:axioms}절 참조). 완전 체계의 공리 3~\cite{han2026}은 이 분리를 DATA(이산)/OPERATOR(연속)로 더 구체화한다.
+
+\item \emph{시스템$\to$도메인 시간 사상}. 시스템 시간($\delta$)과 도메인 시간(time 축)의 분리는 공리~\ref{ax:banya}의 즉시 귀결이다 (제\ref{sec:axioms}절 참조). 구체적 물리식에서의 대응은 반야식에 알려진 물리량을 치환하면 도출된다.
+\end{enumerate}
+
+본 결과는 ``공리 체계가 산출하는 무차원 비율이 측정값의 한 정의($\overline{\mathrm{MS}}$ at $M_Z$)와 4자릿수 일치한다''는 사실이다.
+
+\subsection{공식의 구조적 유일성}
+
+``왜 $7/(2+9\pi)$라는 특정 조합인가?''라는 질문에 공리 체계 내적으로 답한다. 다섯 단계로 연산 선택의 자유도가 공리 체계의 두 reading 원리 + standard arithmetic에 의해 좁혀짐을 보인다. \emph{단계 (1)--(3)}은 직교 구조 → 단위 구면 → 비가역 반구면 호 → 잔존 비용 9의 norm reading $9\pi$로 자동 진행된다. \emph{단계 (4)}는 공리 체계의 두 reading 원리(cost reading vs norm reading)의 결합 규칙으로 직교 합성 $+$가 사용된다 — 이 결합 규칙은 공리~\ref{ax:banya}(노름 reading)과 공리~\ref{ax:cost}(비용 reading)이 같은 $+$에 적용된 것이다. \emph{단계 (5)}는 standard arithmetic의 비율 (ratio = division)이 적용되는 자연 귀결이다.
+
+\emph{(1) $\pi$는 유일하다.} CAS의 3축 직교(공리~\ref{ax:cas}: $\mathrm{R} \perp \mathrm{C} \perp \mathrm{S}$)는 유클리드 내적공간을 정의한다. 유한차원 실내적공간의 단위 구면에서 나올 수 있는 초월 상수는 $\pi$뿐이다---이것은 구면 측도 공식 $\mathrm{Vol}(S^{n-1}) = 2\pi^{n/2}/\Gamma(n/2)$의 직접적 귀결이다. 다른 초월 상수($e$, $\ln 2$ 등)는 직교 노름 구조에서 나올 수 없다.
+
+\emph{(2) 반구면($\pi$, $2\pi$ 아님)은 유일하다.} 본 정의~\ref{lem:cost13}와 정의~\ref{def:residual} 직후의 ``잔존 비용의 기하학적 측도'' 단락에서 보였듯, 각 $+$ 횡단은 공리~\ref{ax:cas}의 정방향성에 의해 비가역이며, 비가역 횡단 1회의 호 길이는 반구면 $\pi$다(가역이라면 전구면 $2\pi$지만 정방향만 허용되므로 절반). $\pi/2$는 1축 부분 횡단이므로 1개 $+$ 횡단의 완전한 측도가 아니다. 따라서 $+$ 횡단 1회의 기하학적 비용은 정확히 $\pi$다.
+
+\emph{(3) $9 \times \pi$는 유일하다.} 잔존 비용 $9$ (정의~\ref{def:residual})는 9개의 독립적 비가역 $+$ 횡단으로 구성된다($8$ reads + $1$ commit). 각 횡단의 호 길이는 단계 (2)에 의해 $\pi$다. $9$개 독립 호의 결합은 호 길이의 sum이며($1$차원 측도), 결과는 $9\pi$다.
+
+이는 $\alpha$ 도출에서 등장하는 $D_5$의 $5$차원 복소 ball 체적 $\pi^5/5!$(곱셈적 측도)와 \emph{종류가 다른 기하학적 양}이다---호 길이는 $1$차원 측도이므로 가산이 자연스럽고, 체적은 차원 곱 측도이므로 곱셈이 자연스럽다. 미분기하학에서 두 결합 규칙(가산/곱셈)은 측도의 차원에 따라 결정되며, 같은 공리 체계가 \emph{다른 기하학적 객체}에 적용될 때 다른 결합 규칙이 등장하는 것은 모순이 아니다.
+
+\emph{Forward reference}: 본 $9\pi$는 공리 체계의 \emph{raw use case} (cost reading 9를 norm reading $9\pi$로 표현)이며, 본 논문 제\ref{sec:baryogenesis}절에서 도입되는 RLU coupled access 형태($(4 + 1/\pi)$)는 공리 체계의 \emph{coupled use case} (대상 식별을 위한 RLU 메커니즘 추가)에 속한다 (정의~\ref{lem:cost13} 직후 ``Use case 분류'' 참조). 두 형태는 framework 메커니즘의 자연 분류이며 모순 아님.
+
+\emph{(4) $2 + 9\pi$의 $+$ (산술 덧셈, framework + 와 정합)}. 분모의 두 항은 두 다른 reading category에 속한다: $2$는 가역 축 수 (\emph{cost reading} 정수, 정리~\ref{thm:cost-signature}), $9\pi$는 비가역 잔존 비용의 \emph{norm reading} (호 길이, 정의~\ref{def:residual} + ``기하학적 측도''). 두 다른 reading의 결합은 \emph{standard arithmetic 덧셈} ($+$)으로 표현되며, 이는 공리 체계 공리의 직교 합성 $+$와 \emph{정합}한다 — 공리 체계의 + (orthogonal composition, 공리~\ref{ax:banya})가 standard 산술 + 의 framework 차원에서의 자연스러운 표현이기 때문 (Reader's note 흔한 오해 \#3 참조). 곱셈은 같은 축을 공유함을 함의하므로 직교 reading 결합에 부적합하다.
+
+\emph{(5) 나눗셈 (비율, standard arithmetic)}. $\sin^2\theta_W$는 무차원 혼합비 (mixing ratio)이며 $[0, 1]$에 있어야 한다. \emph{비율}은 표준 수학에서 나눗셈으로 표현되며, 이는 공리 체계 공리에서 ``정의''되는 것이 아니라 \emph{상식적 산술 연산}이다 — 본 공리 체계는 분자와 분모의 \emph{quantities} ($7$과 $2 + 9\pi$)를 제공하고, 나눗셈 자체는 standard arithmetic이다. 가산 ($7 + (2+9\pi) \approx 30.3$)과 곱셈 ($7 \times (2+9\pi) \approx 212$)은 둘 다 $[0,1]$ 범위가 아니므로 배제된다 (산술 사실). 분모가 분자보다 크므로 ($2 + 9\pi \approx 30.27 > 7$) 결과는 자연스럽게 $[0,1]$ 범위에 있다. 표준 mixing angle ($\sin^2\theta_W$ = ``one component² / total²''라는 share)이 share/ratio 형태인 것과 정확히 일치한다.
+
+\emph{대안의 배제.}
+
+$(7-2)/(9\pi) = 0.177$: $(7-2)$는 산술 뺄셈이 아니라 \emph{집합 차집합 (set subtraction = filter)}이다 — standard 집합 연산이며, 7 (= 5 비가역 + 2 가역, 정리~\ref{thm:cost-signature})에서 가역 부분 2를 \emph{필터링}하여 비가역 5만 남기는 것. 본 차집합/필터 연산은 공리 체계 공리에서 정의되는 것이 아니라 \emph{상식적 집합 연산}이며, 공리 체계의 quantity (7, 2)에 standard set theory가 적용된 것이다.
+
+그러나 본 형태는 가역 부분 (2)을 결과에서 \emph{버린다} — 이는 mixing angle의 ``비가역/가역 비율'' 의미를 손상시킨다 (mixing은 두 영역의 비율이지 한 영역만의 양이 아님). 논문의 정상 형식 $7/(2+9\pi)$는 분자에 전체 7 (cost reading)을 보존하고 분모에 가역 2 (cost reading) + 비가역 $9\pi$ (norm reading) 모두 포함하여 공리 체계 전체 quantity 구조를 \emph{보존}한다. 따라서 $(7-2)/(9\pi)$는 산술적으로는 valid하나 mixing 의미와 부합하지 않아 배제된다.
+
+$7/(9\pi - 2) = 0.260$: norm reading의 비가역 $9\pi$에서 cost reading의 가역 $2$를 빼는 것은 \emph{cross-reading 필터}이며, 같은 reading 안의 차집합과 달리 의미가 없다 (필터는 한 set 안에서 subset을 제거하는 것). 분모에서 $2$ 또는 $9\pi$를 제거하면 완전기술자유도의 일부가 누락되어 불완전하다.
+
+결론: 공식 $7/(2+9\pi)$에서 각 숫자의 출처(공리), 기하학적 상수의 유일성($\pi$), 반구면의 필연성(비가역), 호 길이 가산성, 범주 결합 규칙($+$의 두 reading 직교 합성), 비율 연산(standard arithmetic ratio)---이 모두가 공리 체계의 두 reading 원리 + standard 산술 위에서 강제된다. \emph{5단계 모두 forward chain}이며, 어느 단계도 ``선택''을 포함하지 않는다. ``공리에서 이 비율이 자동으로 산출되는 메커니즘''은 두 reading 원리 + standard 산술의 결합이며, 이는 $\alpha$ 도출에서 Wyler 체적비가 결합상수를 준다는 forward chain과 동등한 강도다.
+
+\emph{본 논문의 도출 경로와 다른 후보의 관계}. 완전한 공리 체계~\cite{han2026}에는 $\sin^2\theta_W$에 대해 본 논문의 $7/(2+9\pi)$ 외에 몇 가지 다른 무차원 표현 후보가 기록되어 있다(예: 순수 기하학적 형태 $(4\pi^2-3)/(16\pi^2)$, 정보이론적 형태 $1/\log_2 20$ 등). 이들 후보 또한 실험값 0.23122에 0.1\% 이내로 근접한다.
+
+그러나 본 논문의 도출은 정의~\ref{lem:cost13}의 비용 enumeration과 정의~\ref{def:residual}의 잔존 비용 $9$에 \emph{명시적으로} 기반한다. 다른 후보들은 이 enumeration을 사용하지 않으며, 본 논문의 axiomatic chain (공리~\ref{ax:cost} $\to$ 정의~\ref{lem:cost13} $\to$ 정의~\ref{def:residual} $\to$ 잔존 비용 $9 \times$ 반구면 $\pi$)과는 다른 도출 경로에 속한다. 본 논문은 이 enumeration-기반 경로 위에서 강제되는 형태를 제시하며, 다른 후보의 평가는 본 논문 범위 외이다.
+
+도출 경로는 정의~\ref{lem:cost13}와 정의~\ref{def:residual}의 cost enumeration 한 가지에 묶여 있으며, 이 묶임 안에서 자유 선택이 없다.
+
+\subsection{독립성의 의미}
+
+$\alpha$와 $\sin^2\theta_W$는 같은 공리 체계의 \emph{서로 다른 forward chain}에서 나온다:
+\begin{itemize}
+\item $\alpha$: 부호수 $(5,2) \to \mathrm{SO}_0(5,2) \to D_5$ 체적비. 4개 인수 전부 공리 구조에서 산출: $9$ 자체 도출(I), $\pi^5/(2^4 \cdot 5!)$ Hua 체적 자동 확정(II), $8\pi^4$ 군 부피 자동 확정(II), $(\cdot)^{1/4}$ 기하평균 자동 확정(II) (표~\ref{tab:factors} 참조).
+\item $\sin^2\theta_W$: cost reading의 7 (= 5 비가역 + 2 가역, 정리~\ref{thm:cost-signature})과 분모의 cost+norm reading 결합 $2 + 9\pi$의 standard arithmetic 비율 $7/(2 + 9\pi)$.
+\end{itemize}
+도출 경로가 독립적이다. $\alpha$가 $\sin^2\theta_W$ 공식에 들어가지 않으므로 완전 독립이다. 두 forward chain 결과가 하나의 공리 집합에서 각각 상대 편차 $6 \times 10^{-7}$과 $4 \times 10^{-6}$으로 실험값에 수렴하는 것은 수비학적 우연으로 설명하기 어렵다.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Robertson/Gilmore 비판에 대한 답변}
+\label{sec:robertson}
+
+Wyler 공식에 대한 세 가지 비판~\cite{robertson1971,gilmore1972}에 항목별로 답한다.
+
+\subsection{(R1) 물리적 동기 부재: ``왜 $D_5$가 전자기력과 관련되는가?''~\cite{robertson1971}}
+
+\emph{답변}: $D_5$는 비가역 영역(비용 발생)과 가역 영역(비용 없음)을 연결하는 변환의 공간이다. 전자기 상호작용이란, CAS가 OPERATOR에서 DATA로 괄호 경계를 넘어 상태를 변경하는 과정이다. $D_5$는 이 과정의 모든 가능한 배위를 나타내며, $\alpha$는 그 중 실제로 실현되는 비율이다. 물리적 동기는 ``비용을 지불하는 모든 가능한 방식''이라는 해석이다.
+
+\subsection{(R2) 군 선택의 임의성: ``왜 $\mathrm{SO}(5,2)$인가?''~\cite{robertson1971}}
+
+\emph{답변}: 정리~\ref{thm:cost-signature}에 의해, 서명 $(5,2)$는 공리로부터 강제된다. 서명이 결정되면 보존군은 $\mathrm{SO}(5,2)$밖에 없다. 군이 임의적이지 않다---공리가 서명을 강제하고, 서명이 군을 강제한다.
+
+\subsection{(R3) 측도 선택의 비유일성: ``다른 대칭공간 선택 시 다른 값''~\cite{gilmore1972}}
+
+\emph{답변}: Gilmore의 비판은 ``대칭공간 선택에 자유도가 있다''는 것이다. 본 체계에서는 대칭공간이 선택되지 않는다---공리로부터 도출된다. 비가역 비용 분류(정리~\ref{thm:cost-signature} 증명 A)가 공리에 의해 완전히 고정되므로, 서명 $(5,2)$와 그에 따른 $D_5$는 유일한 결과이다. ``다른 대칭공간''을 선택할 자유도가 없다.
+
+구체적으로: Gilmore의 반례는 ``7차원이 아닌 다른 차원'' 또는 ``(5,2)가 아닌 다른 서명''을 가정할 때 성립한다. 그러나 본 체계에서 차원 7은 명제~\ref{ax:dof}(완전기술자유도: 공리~\ref{ax:banya}의 4 도메인 축 + 공리~\ref{ax:cas}의 3 CAS 단계)에 의해 고정되고, 서명 $(5,2)$는 정리~\ref{thm:cost-signature}에 의해 고정된다. Gilmore의 자유도가 모두 소거된다.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{보조 결과}
+\label{sec:auxiliary}
+
+\subsection{독립 구조적 일치: Hamming 오류정정 코드}
+\label{sec:predictions}
+
+본 논문은 $\alpha$와 $\sin^2\theta_W$의 도출에 초점을 맞추고 있다. 이 두 도출이 단일 상수 맞추기(single-constant fit)가 아님을 보이려면, 동일한 공리 체계의 핵심 수가 두 도출과 무관한 다른 정보 영역에서도 등장함을 확인하는 것이 가장 직접적이다. 본 절에서는 $\alpha$도 $\sin^2\theta_W$도 사용하지 않는 정보이론 학계의 독립적 결과 한 가지를 제시한다.
+
+명제~\ref{ax:dof}(완전기술자유도)에 의해 본 공리 체계의 내부 자유도의 총 수는 4(도메인 축) $+$ 3(CAS 단계) $= 7$이다. 이 수 7은 고전 정보이론의 잘 확립된 결과---4 비트 메시지를 단일 비트 오류로부터 보호하기 위한 최소 코드 길이---와 정확히 일치한다~\cite{hamming1950}:
+\begin{linenomath}
+\begin{equation}
+n_{\mathrm{Hamming}} = 7.
+\end{equation}
+\end{linenomath}
+Hamming 코드 $[7, 4, 3]$은 4개의 정보(message) 비트와 3개의 패리티(parity) 비트로 구성된다. 이 분해는 본 공리 체계의 $7 = 4 + 3$ 분해(공리~\ref{ax:banya}의 4개 도메인 축 $+$ 공리~\ref{ax:cas}의 3개 CAS 단계)와 구조적으로 동일하다. Hamming(1950)의 도출은 패리티 검사 행렬(parity check matrix)과 최소 거리 분석에 기초하며, CAS 또는 본 공리 체계와는 어떤 인과적 연결도 없다. 따라서 이 일치는 인과적 차용이 아니라 두 독립적 도출이 동일한 분해 $4+3=7$로 수렴한 사실이다. 수비학 가설(작은 정수의 우연한 일치)로는 4와 3으로의 분해까지 일치하는 이유를 설명할 수 없다.
+
+\emph{양자 학계로의 자연스러운 확장}. 양자정보 학계의 Steane 코드 $[[7,1,3]]$~\cite{steane1996}는 본 Hamming 코드 $[7,4,3]$ 위에 CSS(Calderbank-Shor-Steane) 구성으로 만들어진 양자 오류정정 코드이며, 7개의 물리 큐빗에 1개의 논리 큐빗을 인코딩한다. 즉 본 공리 체계의 $7 = 4+3$ 분해는 \emph{고전 Hamming 층위}에서 일치하며, Steane는 이 고전 구조의 \emph{양자화}이다. 따라서 본 일치는 고전 정보이론(Hamming, 1950)에서 양자정보(Steane, 1996)로 자연스럽게 확장된다.
+
+본 사례는 정량적 수치 검증이 아닌 \emph{구조적 일치}이다. 본 공리 체계의 핵심 수와 분해가 독립적 학문 분야에서도 동일한 형태로 등장하며, 정량적 검증은 제\ref{sec:derivation}절($\alpha$)과 \ref{sec:prediction}절($\sin^2\theta_W$)에 한정된다.
+
+\emph{고전 vs 양자 층위 명시}. 본 일치는 고전 Hamming 코드 $[7,4,3]$의 \emph{4 정보 + 3 패리티 분해}와 공리 체계의 \emph{4 도메인 + 3 CAS 단계 분해} 사이에 한정된다. 양자 Steane 코드 $[[7,1,3]]$은 위에서 언급했듯이 이 고전 Hamming 위에 CSS 구성으로 만들어지며, 그 \emph{양자 층위}의 분해는 1 logical qubit + 6 stabilizer generators (3 X-type + 3 Z-type)로 공리 체계의 $4+3$과 구조가 다르다. 따라서 본 공리 체계의 $7 = 4+3$ 일치는 \emph{고전 정보이론 층위}의 cost enumeration 측면과의 구조적 매칭이며, 공리 체계의 양자역학적 내용을 직접 검증하는 것은 아니다 --- 공리 체계의 양자 측면 (특히 Born rule)은 본 논문의 4공리 범위 밖이나, 완전 체계~\cite{han2026}에서 도출 완료되어 있다 (공리 15 $\to$ 공리 3 $\to$ 공리 2; 제\ref{sec:discussion}절 참조).
+
+\emph{Cl(0,7) algebraic deepening — 완전 체계 v1.6 통합}. 완전 공리 체계~\cite{han2026} v1.6 에 추가된 \emph{7축 직교 Clifford 형식 명제} (공리 1 의 구조귀결) 에 의해 , 본 공리 체계의 7 자유도는 단순한 dimension count 가 아닌 \emph{Cl(0,7) Clifford algebra 의 7 generators} 임이 명시된다. 즉 $\{\gamma_1, \ldots, \gamma_7\}$ 이 4 도메인 generator (time, space, observer, superposition; 공리~\ref{ax:banya}) 와 3 CAS 단계 generator (R, C, S; 공리~\ref{ax:cas}) 로 분해되며, $\gamma_k^2 = -1$ 와 $\gamma_i \gamma_j = -\gamma_j \gamma_i$ ($i \ne j$) 를 만족한다. 이 algebra 의 다중벡터 (multivector) 차원은
+\begin{linenomath}
+\begin{equation}
+\dim \mathrm{Cl}(0,7) = \sum_{k=0}^{7} \binom{7}{k} = 1 + 7 + 21 + 35 + 35 + 21 + 7 + 1 = 2^7 = 128,
+\label{eq:cl7-dimension}
+\end{equation}
+\end{linenomath}
+이는 본 공리 체계의 \emph{자료형 128 = T(16) + 1 = 8 + 128 + 1 의 128 부분} (공리 9 명제, 자료형 137 의 상태 공간 차원) 과 정확히 일치한다.
+
+이 매핑에 의해 Hamming 코드 $[7,4,3]$ 와의 일치는 단순 \emph{구조적 매칭} (numerology resistance level: $4+3$ 분해까지 일치) 에서 \emph{algebraic isomorphism} 으로 강화된다. 즉 (i) Hamming 7-bit code space 의 7 코드 비트 ↔ Cl(0,7) 의 7 generators , (ii) Hamming 코드의 4 정보 비트 ↔ 본 공리 체계의 4 도메인 generators , (iii) Hamming 의 3 패리티 비트 ↔ 본 공리 체계의 3 CAS 단계 generators , (iv) Hamming code space 의 $2^7 = 128$ 가지 코드워드 (정보 + 패리티) ↔ Cl(0,7) 다중벡터 공간 차원 128 가지 객체 모두가 1:1 대응한다. 본 동형성은 본 논문 분류~III 의 ``구조적 일치'' 에서 분류~II 의 ``공리가 자동 확정하는 algebraic identity'' 로 잠재 승격 후보이며 , 정식 형식 증명 (Hamming code 의 syndrome decoding 와 Cl(0,7) 의 grade projection 의 동등성 등) 은 후속 논문에서 다룬다. 이 deepening 은 본 논문의 4 공리 범위를 벗어나지 않는다 (Cl(0,7) 명제는 공리 1 의 구조귀결로 도출된 명제이며 새 공리 추가 아님).
+
+
+\subsection{독립 산출 후보: 바리온-광자 비 ($\eta_B$)}
+\label{sec:baryogenesis}
+
+표준모형은 우주의 바리온-광자 비 $\eta_B \approx 6 \times 10^{-10}$---즉 ``왜 광자 약 $10^9$개당 바리온 1개가 살아남았는가''---를 자연스럽게 산출하지 못한다. 물질-반물질 비대칭의 세 필요 조건(바리온 수 위반, C/CP 위반, 열평형 이탈)이 알려져 있으나, 이로부터 $\eta_B$의 정확한 수치를 도출하는 메커니즘은 표준모형 안에서 해결되지 않았다. 본 절에서는 본 공리 체계에서 산출된 두 양 ($\alpha$ 및 $\sin^2\theta_W$, 둘 다 forward chain)만으로 $\eta_B$의 산출 후보를 제시한다. 이 결과는 RLU coupled access의 공리 내적 서술(분류~III) 위상으로 한정된다 ($\alpha$, $\sin^2\theta_W$는 forward이며, $\eta_B$의 보정 $(4+1/\pi)$의 $+$ 결합은 공리~\ref{ax:banya}의 직교 합성에 의해 유일하다; RLU 메커니즘 전체의 형식적 체계화가 분류~III이다; prefactor 2는 공리 체계의 meta-level 직교 카테고리 수에서 직접 도출된다 (A1c)).
+
+\emph{공식}.
+\begin{linenomath}
+\begin{equation}
+\eta_B = \alpha^4 \cdot \sin^2\theta_W \cdot \left[ 1 - 2\!\left(4 + \frac{1}{\pi}\right)\alpha \right] = 6.14 \times 10^{-10}.
+\label{eq:eta-B}
+\end{equation}
+\end{linenomath}
+
+\emph{인수의 논문 어휘 출처}:
+\begin{itemize}
+\item $\alpha$: 제\ref{sec:derivation}절에서 부호수 $(5,2) \to D_5 \to$ Wyler 공식. 4개 인수 전부 공리 구조에서 산출 (표~\ref{tab:factors}).
+\item $\alpha^4$의 지수 $4$: 공리~\ref{ax:cas} (CAS)에서 \emph{두 가지 보완적 해석}으로 직접 도출되며, 둘 다 공리 체계의 동일한 4를 가리킨다 (상세 정당화는 본 절의 ``$\alpha^4$의 구조적 의미'' 단락 참조).
+\item $\sin^2\theta_W$: 제\ref{sec:prediction}절에서 산출 (forward chain 5단계).
+\item 보정 $(4 + 1/\pi)$: 본 공리 체계에서 RLU(공리~\ref{ax:cas} 직후 정의)와 DATA 슬롯에 등록된 대상(``공'') 사이의 \emph{coupled access} 식이다. $4$ = 한 access가 cover하는 도메인 component 수 (공리~\ref{ax:banya}의 4 직교 축; 1축이라도 빠지면 다른 대상 식별, \emph{cost reading} 정수); $1/\pi$ = \emph{RLU의 식별식 그 자체} (공리~\ref{ax:cas} 직후 참조): 각도 범위 $\pi$ 위에서 1개 대상을 구별하는 RLU 메커니즘의 기본 단위로, 호 길이의 산술 역수가 아니라 RLU 정의에 내재된 식별 비율이며 cost/norm reading 어느 쪽에도 속하지 않는 \emph{별개 카테고리}이다. 두 항의 결합 ($+$)은 두 \emph{직교 카테고리}(cost-readable 도메인 카운트와 RLU 식별식)를 공리~\ref{ax:banya}의 직교 합으로 결합한다 --- 산술 덧셈이 아니다. 본 해석의 상세 정당화는 본 절의 ``RLU coupled access 해석'' 단락에서 제공한다.
+\item $-2 \times (\ldots) \alpha$의 prefactor $\mathbf{2}$: 공리 체계의 \emph{meta-level 직교 카테고리 수}이다. 두 동등한 해석이 있으며 둘 다 framework axiom에서 직접 도출된다: \emph{(i)} 공리~\ref{ax:banya}의 \emph{두 괄호 직교성}: DATA 괄호 $\perp$ OPERATOR 괄호 $\Rightarrow$ 괄호 카운트 $= 2$. \emph{(ii)} 명제~\ref{ax:dof}의 \emph{구조 $\perp$ 비용 직교성}: 자유도가 구조 카테고리(DATA)와 비용 카테고리(OPERATOR)로 직교 분할 $\Rightarrow$ meta 카테고리 카운트 $= 2$. 두 해석은 같은 framework 직교성의 다른 표현이며 같은 결과 ($2$)를 산출한다. RLU coupled access는 한 access 안에서 두 직교 측면 모두를 cover해야 하므로 (구조 component와 비용 component 둘 다, 또는 동등하게 DATA 측 정보와 OPERATOR 측 정보 둘 다), 보정의 기여가 \emph{2배}로 누적된다 --- 이것이 prefactor $2$의 공리 체계 내적 강제이다.
+\end{itemize}
+
+\emph{$\alpha^4$의 구조적 의미: 공값 4와 CAS 상태 공간의 2가지 공리 체계 해석}.
+
+$\alpha^4$의 지수 $4$는 공리~\ref{ax:cas} (CAS)에서 \emph{두 가지 보완적 해석}으로 직접 도출되며, 두 해석 모두 공리 체계의 동일한 4를 가리킨다.
+
+\emph{해석 (i): 공값 view (cost 측)}. 정의~\ref{def:residual}에 의해 1개 ``공''(공리 체계의 minimum mass 단위)을 만들려면 4번의 쓰기가 필요하다: time 쓰기 1회 (timestamp) + space 쓰기 3회 ($x, y, z$ 좌표). 이것이 \emph{공값 4}이다 (정의~\ref{def:residual} 참조). 즉 4는 \emph{1개 ball 완성의 cost 카운트}이다.
+
+\emph{해석 (ii): CAS 상태 공간 view (state 측)}. CAS 3 단계 ($\mathrm{R}, \mathrm{C}, \mathrm{S}$)의 monotone 비트 진행은 $000 \to 001 \to 011 \to 111$의 \emph{4개 상태}를 통과한다 ($000$은 CAS 휴식 상태이며 정의~\ref{lem:cost13}의 ``휴식$\to$R$\to$C$\to$S$\to$DATA 커밋'' 사이클의 시작점). 가능한 monotone 진행 상태의 카운트는 정확히 \emph{4}이다. 즉 4는 \emph{CAS의 ball-완성 진행 상태 공간의 카운트}이다.
+
+\emph{공리 2와의 관계}: 공리~\ref{ax:cas}는 R, C, S \emph{3 단계}만 명시하며, $000$ ``휴식 상태''는 이 사이클의 시작점으로 정의~\ref{lem:cost13}에서 도입되는 작동 정의이지 공리~\ref{ax:cas}의 추가 단계가 아니다. 따라서 본 해석 (ii)는 해석 (i)의 공값 view를 ``출발점 + 3 단계 = 4 위치''로 \emph{재진술}이다 (분류~III).
+
+두 해석은 \emph{수치 4로 수렴}하지만 공리 체계의 구조 $\perp$ 비용 직교성 (제\ref{sec:discussion}절 ``탐색 공간의 제한'' 단락 참조)에 의해 \emph{서로 다른 카테고리의 양}이다 --- (i)는 비용 카테고리의 4 (공값, 정의~\ref{def:residual}), (ii)는 상태 공간 측면의 4 (CAS monotone 상태 카운트). 둘 다 공리~\ref{ax:cas}에서 직접 도출되며, 두 독립 routes가 \emph{같은 수치 4로 수렴}한다는 사실이 $\alpha^4$의 지수 $4$의 공리 체계 내적 동기를 강화한다. 두 경로가 같은 수치 4로 수렴한다는 사실이 $\alpha^4$ 지수의 공리 체계 내적 동기를 구성한다 (4 도메인 축의 곱셈 결합 가정에 대한 이전 한정 참조).
+
+\emph{Baryon과 $111$ 상태}. CAS Swap은 ``물질을 DATA에 등록하는 마지막 단계''(공리~\ref{ax:cas})이며, 이 단계가 완료되면 CAS 상태는 $111$에 도달한다. 이 $111$ 상태가 공리 체계에서 \emph{완성된 ball}이며, 물리학의 baryon (질량을 갖고 지속하는 입자)에 대응한다 --- 즉 baryon $\equiv$ $111$ CAS 상태 $\equiv$ 공값 4를 모두 소모하여 등록된 객체.
+
+\emph{$\alpha^4$의 물리적 해석}. $\alpha$는 한 사이클의 cost 비율이며 (제\ref{sec:derivation}절 ``비율 해석'' 참조), $\alpha^4$는 이 비율의 4승 = \emph{공값 4의 결합 cost 비율} = \emph{4-state CAS 진행을 완료한 1개 ball의 cost 비율}이다. 이것은 표준 물리학의 \emph{rare event 패턴} ($\sim (\text{small parameter})^N$, $N$ = process 완료 step 수)과 호환된다 --- baryon survival은 4-step 완성을 요구하므로 그 cost 비율은 $\alpha^4$로 등장한다. 다른 거듭제곱 ($\alpha, \alpha^2, \alpha^3, \ldots$)은 공리 체계의 공값 4와 일치하지 않으므로 axiom-level에서 허용되지 않는다.
+
+\emph{Baryon 대 photon}. $\eta_B$는 \emph{baryon-photon ratio}이다. baryon은 DATA-등록 객체 ($111$ 상태에 도달하여 공값 4 소모)이고, photon은 OPERATOR-통과 객체 (DATA 등록 없이 공리 체계를 횡단)이다. 두 객체는 서로 다른 카테고리에 속하므로, 그 비율인 $\eta_B$는 \emph{DATA 측 등록 비용 비율}을 표현하며 자연스럽게 $\alpha^4$ (공값 4의 4승)을 포함한다.
+
+\emph{표준 baryogenesis와의 관계 --- Sakharov 3조건의 CAS 매핑}. 완전한 공리 체계~\cite{han2026}에서 Sakharov~\cite{sakharov1967}의 3가지 필요조건은 CAS 구조에서 자동으로 충족된다:
+\begin{enumerate}
+\item \emph{바리온 수 비보존 (B 위반)}: CAS Swap이 도메인 경계(+)를 넘을 때 FSM 상태가 재배열되며, 바리온 수가 보존되지 않는 경로가 열린다 (공리~\ref{ax:cost}).
+\item \emph{C/CP 위반}: CAS는 비가역이다 --- $\mathrm{R} \to \mathrm{C} \to \mathrm{S}$ 순서가 강제되며 역연산 $\mathrm{S} \to \mathrm{C} \to \mathrm{R}$은 정의되지 않는다 (공리~\ref{ax:cas}). CAS$^{-1}$이 존재하지 않으므로 CP 대칭이 복원될 수 없다.
+\item \emph{열적 비평형}: RLU의 잔존 비용 $9$ 회수는 즉각적이지 않으며 등비감쇠로 진행된다 (제\ref{sec:axioms}절). 이 지연이 열적 평형 이탈에 대응한다.
+\end{enumerate}
+3조건이 3개의 서로 다른 공리에서 각각 나온다. CAS가 존재하면 Sakharov 3조건은 구조적으로 내장되어 있다.
+
+\emph{고유 예측}: (a)~CP 위반의 크기 $J_\text{CKM} \approx 3 \times 10^{-5}$가 CAS 비가역 사이클의 위상 체적에서 도출되어야 한다 --- 완전한 공리 체계~\cite{han2026}에서 $J_\text{CKM} = 3.10 \times 10^{-5}$ (실험값 $(3.08 \pm 0.15) \times 10^{-5}$, 오차 $0.62\%$)로 산출되어 있다. (b)~$2^3 = 8$ 가능 CAS 상태와 baryon octet의 수치적 일치가 구조적인지 여부는 구조적 대응의 후보로 기록한다.
+
+\emph{RLU coupled access 해석}.
+
+위 보정 $(4 + 1/\pi)$의 \emph{왜 이 형태인가}에 대한 공리 체계 내적 설명을 제시한다. 본 해석은 ``동역학에서 (4+1/π)가 도출된다''는 의미가 아니라, ``$(4 + 1/\pi)$ 자체가 RLU와 도메인 대상 사이의 coupled access의 수식 표현''이라는 의미이다 — 마치 ``$qE$가 전기력 커플링의 정의 그 자체''인 것과 동일한 의미에서.
+
+\emph{최소 작용 원리에 의한 강제}. 본 공리 체계는 제\ref{sec:framework}절의 ``최소작용과 최소비용'' subsection에서 명시한 바와 같이, 모든 변화가 \emph{최소 비용 경로}를 따르는 것을 핵심 원리로 한다. 이는 물리학의 최소 작용 법칙(principle of least action)의 본 공리 체계 어휘 표현이다. 이 원리가 RLU 커플링을 \emph{강제}한다:
+
+\begin{itemize}
+\item \emph{Raw access (커플링 없이)}: 한 대상의 4 도메인 component를 읽으려면 각 component마다 $+$ 횡단 1회 = 총 $4$개 $+$ 횡단 = 비용 $4$.
+\item \emph{Coupled access (RLU 통해)}: RLU 인덱스가 4 component를 단일 객체로 묶음. 이 단일 객체에 $+$ 횡단 \emph{1회}로 4 component 모두 접근. 비용 $\approx 1$ 핵심 access $+ \, 1/\pi$ 기하 weight $\approx 1.318$.
+\item \emph{비용 차이}: $4 \to 1.318$ — 약 $70\%$ 비용 절감.
+\end{itemize}
+
+최소 작용 (= 최소 비용) 원리가 raw access보다 coupled access를 \emph{강제 선택}한다. 따라서 RLU 커플링은 공리 체계에서 \emph{선택}이 아니라 \emph{필수}이다.
+
+\emph{컴퓨터과학 비유와 핵심 차이}. 본 메커니즘은 컴퓨터과학의 \emph{포인터 역참조(pointer dereference)} 최적화와 \emph{비용 절감 구조는 동일}하지만, \emph{식별 메커니즘은 다르다}. C 언어에서:
+\begin{itemize}
+\item Raw 방식: 4개 component 각각을 별도 메모리 access로 읽음 (4 reads).
+\item 역참조 방식: 포인터 1회 dereference (\texttt{*ptr})로 전체 struct에 접근 (1 read + small overhead).
+\end{itemize}
+RLU의 인덱스는 이 ``포인터'' 역할로 1회 $+$ 횡단으로 4 도메인 component에 접근한다. \emph{핵심 차이}: CS pointer는 \emph{논리 주소(logical address)}를 사용하지만, RLU는 \emph{논리 주소를 사용하지 않는다}. 대신 RLU는 OPERATOR 괄호의 \emph{각도 좌표(theta angle)}로 대상을 구분하는 \emph{addressless angular index}이다 (공리~\ref{ax:cas} 직후 RLU 정의 참조). 두 경우 모두 4 component를 1회 access로 cover하는 cost saving이 핵심이지만, RLU는 공리 체계의 ``addressless'' 특성에 의해 angular distinction을 사용한다 — 이것이 $1/\pi$의 등장 이유이다 (각도 단위 $\pi$ 위에서 1 unit distinction). 본 공리 체계의 minimum cost, 물리학의 최소 작용, 컴퓨터과학의 dereference 최적화 — 세 영역이 \emph{같은 cost-saving 원리}의 다른 표현이지만, 식별 메커니즘 (addressless angular vs addressed integer)은 framework마다 다르다.
+
+\emph{$(4 + 1/\pi)$의 분해}. 이 강제된 coupled access의 비용 인코딩:
+\begin{itemize}
+\item $4$ = ``cover되는 도메인 component 수'' (\emph{cost reading}: 공리~\ref{ax:banya}의 4축 정수) — 4축이 한 access 안에 모두 포함되어야 대상 식별 가능.
+\item $1/\pi$ = \emph{RLU의 식별식 그 자체}: RLU가 논리 주소 없이 각도 좌표(theta angle)로 대상을 구분하는 메커니즘의 \emph{본질적 정의}이다 (공리~\ref{ax:cas} 직후 RLU 정의 참조). 즉 각도 범위 $\pi$ 위에서 1개 대상을 식별하는 단위 비율이며, 산술적으로 ``호 길이의 역수''로 도출된 것이 아니라 RLU 메커니즘 자체가 공리 체계에 도입하는 양이다. 본 양은 cost reading 또는 norm reading 어느 쪽에도 속하지 않는 \emph{별개 카테고리}(RLU 메커니즘 정의 카테고리)이며, 두 reading 원리와 함께 공리 체계의 quantity 산출 도구를 구성한다.
+\item $+$ = 한 coupled access의 두 \emph{서로 다른 카테고리}($4$는 cost reading의 도메인 축 카운트, $1/\pi$는 RLU 메커니즘이 정의하는 식별식)를 결합. 공리~\ref{ax:banya}의 \emph{직교 합} $+$로 결합되며 산술 덧셈이 아니다 --- 두 항은 같은 type의 두 양이 아니라 두 \emph{직교 카테고리}의 양이므로, 양자정보 학계의 ``type error'' 우려는 발생하지 않는다 (산술 덧셈은 같은 type 안에서, 본 공리 체계의 $+$는 직교 카테고리 사이에서 작동한다 --- Reader's note 흔한 오해 \#3 참조).
+\end{itemize}
+
+\emph{$\sin^2\theta_W$의 $9\pi$와의 차이 — 같은 공리 체계의 다른 use case}. 본 절의 $(4 + 1/\pi)$와 제\ref{sec:prediction}절의 $\sin^2\theta_W = 7/(2 + 9\pi)$의 $9\pi$는 \emph{다른 형태}로 보일 수 있으나, 두 결과는 공리 체계의 \emph{다른 use case}를 표현한다:
+
+\begin{itemize}
+\item $\sin^2\theta_W$의 $9\pi$ = \emph{raw + 횡단의 합}. $9$개 비가역 $+$ 횡단 각각의 호 길이 $\pi$를 단순 누적 ($9 \times \pi$). 커플링 \emph{이전}의 raw cost. mixing angle은 공리 체계의 \emph{내부 구조 비율}이므로 raw 형태가 자연스럽다.
+\item $\eta_B$의 $(4 + 1/\pi)$ = \emph{coupled 1-access의 인코딩}. RLU 통해 4 도메인 component를 1회 + 횡단으로 접근. 커플링 \emph{이후}의 minimum cost. baryogenesis는 \emph{대상 (살아남은 바리온) 식별}이 핵심이므로 RLU coupled 형태가 자연스럽다.
+\end{itemize}
+
+따라서 두 형태의 차이는 결함이 아니라 공리 체계의 \emph{메커니즘 자연 분류}이다: \emph{내부 구조 비율}은 raw $n\pi$ 형태, \emph{대상 식별 관련 양}은 coupled $(m + 1/\pi)$ 형태.
+
+\emph{지위}. $(4+1/\pi)$의 각 성분은 공리 구조에서 강제된다: $4$는 공리~\ref{ax:banya}의 도메인 축 수, $1/\pi$는 공리~\ref{ax:cas} 직후 RLU 정의의 식별 단위, $+$는 공리~\ref{ax:banya}의 직교 합이다. 결합 규칙도 공리의 $+$(직교 합) 외에 다른 연산이 공리 체계에 존재하지 않으므로 이 형태는 공리 구조 안에서 유일하다. 최소비용 원리가 coupled access를 강제하고 (제\ref{sec:framework}절), 수치가 측정값과 $0.5\sigma$로 일치한다. Prefactor 2는 공리~\ref{ax:banya}의 두 괄호 직교성에서 직접 도출된다 (분류~II).
+
+\emph{수치 결과 및 비교}:
+\begin{linenomath}
+\begin{align}
+\alpha^4 &= (1/137.036)^4 = 2.834 \times 10^{-9}, \nonumber \\
+\alpha^4 \cdot \sin^2\theta_W &= 6.55 \times 10^{-10}, \nonumber \\
+1 - 2(4+1/\pi)\alpha &= 1 - 0.0630 = 0.937, \nonumber \\
+\eta_B^{\text{derived}} &= 6.55 \times 10^{-10} \times 0.937 = 6.14 \times 10^{-10}.
+\end{align}
+\end{linenomath}
+
+Planck 2018 측정값~\cite{pdg2024}: $\eta_B^{\text{exp}} = (6.12 \pm 0.04) \times 10^{-10}$ ($\Omega_b h^2$로부터 변환). 본 산출값과 측정값의 차이는 $0.5\sigma$이다.
+
+\textit{위상 한정}. 본 산출은 공리 내적 서술(분류~III)이다. RLU 자체는 CAS에 공리적 필수이고, $(4+1/\pi)$ 결합 형태의 각 성분은 공리 구조에서 나오며, 최소비용 원리가 coupled access를 강제하고, 수치가 측정값과 $0.5\sigma$로 일치한다. $(4+1/\pi)$의 $+$ 결합은 공리~\ref{ax:banya}의 직교 합성에 의해 유일하다 (제\ref{sec:prediction}절 단계~(4), 곱셈 배제는 직교성 위반에 의함). RLU 메커니즘 전체의 형식적 체계화가 분류~III이다. 구체:
+
+\begin{enumerate}
+\item \emph{Forward 부분}: $\alpha^4 \cdot \sin^2\theta_W$의 곱 자체는 논문 도출 두 양의 직접 곱이며, $4 = $ 도메인 축 수의 거듭제곱은 자연스럽다 (forward chain).
+
+\item \emph{RLU 메커니즘 확장 부분 (RLU 자체는 CAS에 공리적 필수)}: 보정 $(4 + 1/\pi)$의 $1/\pi$는 $\sin^2\theta_W$의 $9\pi$ (norm reading)와 달리 RLU의 angular discrimination density로 해석되며, 두 reading 원리의 \emph{확장}이 필요하다 (norm reading의 역수는 표준 두 reading에 직접 들어맞지 않음). 이 확장은 공리 내적 서술(분류~III) 위상에 속한다 (RLU 자체는 CAS에 공리적 필수이며, $+$ 결합의 유일성은 공리~\ref{ax:banya}에 의해 확보된다).
+
+\item \emph{Prefactor 2의 공리 체계 내적 해석}: prefactor $2$는 공리 체계의 \emph{meta-level 직교 카테고리 수}에서 동기를 얻는다. 두 동등한 해석: (i) 공리~\ref{ax:banya}의 두 괄호 직교성 (DATA $\perp$ OPERATOR $\Rightarrow$ 괄호 수 $= 2$), 또는 (ii) 명제~\ref{ax:dof}의 구조 $\perp$ 비용 직교성 (meta 카테고리 수 $= 2$). RLU coupled access가 두 직교 측면 모두를 cover해야 하므로 보정 기여가 \emph{2배} 누적된다는 해석이다. ``두 측면 cover ⇒ 2배 누적''의 곱셈 결합은 $(\cdot)^{1/4}$ 기하평균과 동일한 ``직교$\to$독립$\to$곱셈'' 패턴이며, 직교 공간에서 독립 차원의 기여가 곱으로 결합하는 것은 수학적 성질이다 (분류~II, 표~\ref{tab:axiom-results}).
+
+\item \emph{종합 위상}: $\eta_B$ 산출은 ``$\alpha^4 \times \sin^2\theta_W$ 부분은 forward chain ($\alpha$, $\sin^2\theta_W$ 모두 forward), 보정 $(4 + 1/\pi)$의 각 성분은 공리 구조에서 강제되고 결합 형태는 공리의 직교 합에 의해 유일하다''.
+
+\item \emph{잔존 한계}: 외부 후보 공리 집합의 완전 분류(rule selection problem)는 디지털 물리학 일반의 미해결 과제이다 (분류~IV). 본 논문의 공리 구조 안에서는 $(4+1/\pi)$의 각 성분과 결합 형태가 강제되며, $\alpha$, $\sin^2\theta_W$, $\eta_B$ 모두 공리 구조의 산출물이다.
+\end{enumerate}
+
+\emph{Forward-testability}. $\eta_B$ 측정은 향후 우주배경복사 정밀화 (CMB-S4, LiteBIRD 등 차세대 실험) 및 빅뱅 핵합성 정밀 측정으로 정밀도가 개선될 것이다. 현재 $0.5\sigma$ 일치는 미래 정밀화에 의해 검증/반증 가능하다. $\eta_B$는 본 논문의 forward-testable 항목 중 하나이며 (추가 4건은 표~\ref{tab:predictions} 참조), 분류~III 위상에도 불구하고 $\eta_B$가 표준모형이 자연스럽게 산출하지 못한 우주론 초기 조건임을 고려할 때, 본 공리 체계가 논문 도출 두 양 ($\alpha$, $\sin^2\theta_W$)만으로 측정값에 $0.5\sigma$ 이내로 도달한다는 것은 후속 forward 검증을 요구한다.
+
+\emph{Forward-testable의 의미와 한계 (falsifiability)}.
+본 논문의 결과는 세 종류로 분류된다.
+
+\begin{center}
+\small
+\begin{tabular}{p{2.2cm}p{3.5cm}p{2.5cm}p{3.2cm}}
+\toprule
+\textbf{분류} & \textbf{결과} & \textbf{유형} & \textbf{검증 방법} \\
+\midrule
+Forward chain 도출 & $\alpha = 1/137.036$, $\sin^2\theta_W = 0.23122$ & post-dictive matching & 이미 측정된 값과 일치 ($6 \times 10^{-7}$, $4 \times 10^{-6}$) \\
+구조적 일치 & Hamming $[7,4,3]$: $7 = 4+3$ 분해 일치 & post-dictive matching & 정량 도출이 아닌 구조적 매칭 \\
+공리 내적 서술 (III) & $\eta_B = 6.14 \times 10^{-10}$ & forward-testable & 미래 CMB 정밀화로 검증/반증 가능. 현재 $0.5\sigma$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Popper의 falsifiability 기준에서 (i)와 (ii)는 ``공리 체계가 알려진 값을 재현''(forward derivation 또는 구조 일치)이고 (iii)는 ``공리 체계가 미래 측정에 의해 검증 가능''이다. 본 논문이 ``curve fitting과 다르다''는 주장의 근거는 (a)~제\ref{sec:discussion}절의 탐색 공간 제한 논증, (b)~두 forward chain 도출 ($\alpha$, $\sin^2\theta_W$)의 axiom-내 강제력, 그리고 (c)~$\eta_B$의 미래 검증 가능성이다. 완전한 framework~\cite{han2026}에는 130개의 고유 예측이 기록되어 있으며, 추가 forward 항목은 후속 논문에서 제시한다.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{논의}
+\label{sec:discussion}
+
+\subsection{에너지 스케일 문제}
+
+본 도출은 저에너지 극한($q^2 \to 0$)의 $\alpha$에 해당한다. 이유는 다음과 같다: 공리 체계는 CAS 연산의 ``기본 비용''을 계산하며, 이 기본 비용은 저에너지 극한의 관측값에 대응한다. QED에서 실험적으로 측정되는 $\alpha = 1/137.036$은 재규격화된 결합상수이며, 에너지에 따라 running하여 $\alpha(M_Z) \approx 1/128$이 된다. 본 도출이 이 저에너지 극한값을 재현하는 것은, Wyler 체적비가 $D_5$의 전체 기하학적 구조를 반영하기 때문이다. 시스템/도메인 시간 분리는 공리~\ref{ax:banya}의 즉시 귀결이며 (분류~I, 제\ref{sec:axioms}절 참조), 완전 체계의 공리 3~\cite{han2026}이 DATA(이산)/OPERATOR(연속)를 선언하여 이를 구체화한다.
+
+\emph{$\sin^2\theta_W$의 스킴 의존성에 대한 주.} 본 공리 체계에서 도출한 값 $\sin^2\theta_W = 7/(2+9\pi) = 0.23122$는 $\overline{\mathrm{MS}}$ @ $M_Z$ 스킴의 실험값(약 $0.23122$)과 약 $4 \times 10^{-6}$의 상대 편차로 일치한다. 반면 on-shell 스킴 값은 약 $0.2234$로 약 3.5\% 차이가 난다.
+
+$\overline{\mathrm{MS}}$ 스킴은 물리적 입자 질량 임계값을 제거한 ``threshold-free'' 값을 제공하며, 본 공리 체계의 구조적 비율은 에너지 스케일 정의 이전 층위에서 작동한다. 완전한 공리 체계의 공리 3~\cite{han2026}이 DATA(이산)/OPERATOR(연속)를 선언하므로, threshold-free 스킴과의 대응은 공리 구조와 정합적이다. 시스템/도메인 시간 분리는 공리~\ref{ax:banya}의 즉시 귀결이며 (제\ref{sec:axioms}절 참조), 구체적 물리식에서의 대응은 반야식에 알려진 물리량을 치환하면 도출된다.
+
+\subsubsection{$\alpha$ running의 CAS 비용 메커니즘}
+\label{sec:running}
+
+완전한 공리 체계~\cite{han2026}에서 $\alpha$의 에너지 의존성(running)은 CAS Compare 단계의 false 누적으로 서술된다. CAS가 Compare에서 false를 반환할 때마다 가상 쌍이 1루프 생성되며, 이 누적 횟수 $N$이 에너지 스케일에 대응한다:
+\begin{linenomath}
+\begin{equation}
+\alpha(N) = \frac{\alpha}{1 - \frac{\alpha N}{3\pi}}.
+\label{eq:running}
+\end{equation}
+\end{linenomath}
+분모의 $3 =$ CAS 3단계(R, C, S)이고 $\pi =$ d-ring 1주기 위상이다. 표준 QED 1-loop $\beta$-함수의 계수는 $2/(3\pi)$이며, 분모의 $3$이 CAS 단계 수이다. 식~\eqref{eq:running}에서 $N$은 전하 자유도를 포함한 유효 누적 횟수로서, $2\sum_f Q_f^2 \ln(\mu/m_f)$에 대응한다. 2-loop 계수 $\beta_1 = -1/4$는 Swap이 작용하는 도메인 축 수의 역수 $-1/4$와 정확히 일치한다~\cite{han2026}.
+
+QCD에서는 1-loop $\beta_0 = 7/(4\pi)$의 분자 $7$이 CAS 완전기술자유도(명제~\ref{ax:dof})와 정확히 일치하며, $11N_c - 2n_f = 21 = 3 \times 7$은 CAS 3단계 $\times$ 자유도 7이다~\cite{han2026}.
+
+\emph{고유 예측}: $\beta$-함수의 $n$-loop 계수가 CAS 구조수의 함수라면, $\beta_2$, $\beta_3$ 이상의 고차 계수에서도 CAS 구조수(3, 4, 7, 9, 13)가 체계적으로 나타나야 한다. 이 패턴이 확인되면 running coupling의 CAS 기원이 확립되고, 불일치하면 본 대응의 한계가 드러난다.
+
+\subsubsection{$137 = 128 + 9$의 CAS 구조적 해석}
+
+본 공리 체계의 내부 자유도는 7비트로 표현 가능하며 (명제~\ref{ax:dof}: 4 도메인 축 + 3 CAS 단계 $= 7$, 공리~\ref{ax:delta}: $\delta$는 이 7비트 \emph{유한 상태 기계 (Finite State Machine, FSM)} 밖의 전역 플래그). 본 공리 체계는 다음 세 framework-내부 정수 invariant를 갖는다: (i) $128 = 2^7$ (7비트 FSM의 가능 상태 수); (ii) $9 = 13 - 4$ (잔존 cost 산술, 정의~\ref{def:residual}); (iii) Wyler 도출(\S\ref{sec:derivation})의 $1/\alpha$ 정수부 $137$. 세 정수는 산술 관계 $137 = 128 + 9$를 만족한다. 완전 체계 v1.6~\cite{han2026} 의 \emph{Cl(0,7) Clifford 형식 명제} 에 의해 (i) 의 $128 = 2^7$ 은 7비트 상태 카운트를 넘어 \emph{Cl(0,7) 다중벡터 공간 차원} (식~\eqref{eq:cl7-dimension}) 으로 algebraically 동일시된다 — 즉 자료형 128 의 algebra 본질은 7 generators 위의 다중벡터 algebra 임이 명시된다 (제\ref{sec:predictions}절 ``Cl(0,7) algebraic deepening'' 참조).
+
+표준 QED RG running~\cite{pdg2024}은 $1/\alpha(0) \approx 137.036$ (Thomson 한계), $1/\alpha(M_Z) \approx 127.918$ ($M_Z$ 스케일), $\Delta\alpha^{-1} \approx 9.118$ (vacuum polarization)이며, $1/\alpha(0) = 1/\alpha(M_Z) + \Delta\alpha^{-1}$의 관계를 따른다. 정수부에서 $128 + 9 = 137$로 공리 체계의 산술과 일치한다.
+
+\emph{CAS running에 의한 해석}. 제\ref{sec:running}절의 CAS running 메커니즘 \eqref{eq:running}에서 Compare false 누적 $N$회가 $\Delta\alpha^{-1}$에 대응한다. 잔존 비용 $9$ (정의~\ref{def:residual})가 Compare false로 소진될 때 $\Delta\alpha^{-1} = 9$이며, $1/\alpha(0) - 9 = 128 = 2^7$은 FSM 7비트 상태 수이다. 즉 $128$은 잔존 비용이 전부 소진된 후 남는 FSM의 \emph{기저 상태 수}이며, $9$는 소진되는 \emph{비용 총량}이다. $137 = 128 + 9$는 ``기저 상태 + 잔존 비용 = 저에너지 극한''으로 읽힌다.
+
+\emph{고유 예측}: $1/\alpha(M_Z) \approx 127.9$의 최근접 정수 $128 = 2^7$이 FSM 7비트 구조의 귀결이다. 향후 $\alpha(M_Z)$ 정밀 측정에서 $1/\alpha(M_Z)$의 최근접 정수가 $128$에서 벗어나면 본 해석은 반증된다.
+
+\subsection{탐색 공간의 제한: 수비학 차단}
+
+수비학과의 구별에서 핵심은 ``얼마나 많은 후보를 탐색한 뒤 맞는 것을 골랐는가''이다. 본 체계에서 탐색 공간은 열려 있지 않다---공리에 의해 닫혀 있다.
+
+명제~\ref{ax:dof}의 완전기술자유도는 두 범주로 나뉘며, 각 범주에서 허용되는 수는 다음 필터링 규칙에 의해 제한된다:
+\begin{enumerate}
+\item \emph{구조 등록}(DATA 범주): 공리 구조(축 수, 단계 수, 괄호 수)에서 직접 파생된 수. 유효 구조 수: $\{1, 2, 3, 4, 7\}$ ($1$ 비트 기저, $2$ 괄호, $3$ CAS 단계, $4$ 도메인 축, $7$ 내부 자유도).
+\item \emph{비용 등록}(OPERATOR 범주): 정의~\ref{lem:cost13}와 정의~\ref{def:residual}에서 파생된 수. 유효 비용 수: $\{1, 4, 5, 9, 13\}$ ($1$ 단위 횡단 비용, $4$ 공값, $5$ 비가역 축 수 또는 쓰기 횡단 수, $9$ 잔존 비용, $13$ 총 비용).
+\item \emph{범주 분리}: 같은 수치라도 범주가 다르면 다른 양이다(예: 구조 $9 = 7+2$와 비용 $9 = 13-4$는 다른 양; 본 논문의 $\sin^2\theta_W$ 공식은 후자 즉 비용 $9$를 사용한다).
+\item \emph{독립성}: 선행 수로 인수분해되는 수는 제외(예: $6 = 2 \times 3$이므로 독립 DOF가 아님).
+\item \emph{연속량 차단}: 노름공간의 무한소는 이산적이지 않으므로 자유도로 등록되지 않는다.
+\end{enumerate}
+
+이 규칙에 의해 본 논문에서 허용되는 수는 총 $10$개뿐이다(구조 $5$ + 비용 $5$). $\pi$, $e$, 정수의 임의 조합이 아니라, 공리에서 파생된 유한 집합 내에서만 수식이 구성된다. 탐색 공간이 닫혀 있으므로 사후 적합(overfitting)이 불가능하다.
+
+\emph{사후 확률 추정}. 숫자 집합이 닫혀 있어도 연산 선택(사칙연산, 거듭제곱, $\pi$ 포함 여부)에 자유도가 있으므로, 공식 공간의 크기를 추정해야 한다. $10$개 구조/비용 상수에서 이항 연산 4종(가감승제) $\times$ 중첩 깊이 2--3 $\times$ $\pi$ 포함/미포함 $= O(10^3)$ 후보 공식이 가능하다. 우연한 hit의 확률은 $\sim 10^{-3}$이다. 그러나, $\alpha$ 도출은 정리~\ref{thm:cost-signature}에서 출발하는 forward chain (공리 → 부호수 → $D_5$ → Wyler 체적비)이므로 이 우연 가설은 forward chain 존재 자체에 의해 기각된다.
+
+$\sin^2\theta_W$ 결과 또한 forward chain (5단계 모두 공리 체계의 두 reading 원리에 의해 강제, 제\ref{sec:prediction}절 참조)이며, $\alpha$ 도출과 \emph{동일한 강도}의 forward chain 위상을 가진다. 두 결과 모두 $O(10^3)$ 후보 공식 공간에서 우연 hit한 것이 아니라 공리 체계의 forward derivation에서 따라 나온 것이며, 두 독립 forward 도출이 동시에 실험값과 일치하는 우연 가설은 추가로 강하게 기각된다. 이 추정은 상한(order-of-magnitude)이다.
+
+\emph{공리 선택의 지위와 순환논증 비판에 대한 답.} 정리~\ref{thm:cost-signature}가 공리로부터 ``자동으로'' 따라 나온다는 점은 공리 체계의 구조적 강점이다. 모든 공리 체계에서 정리는 공리의 논리적 귀결이다---이것을 순환논증이라 부르면, 유클리드의 평행선 공리에서 ``삼각형 내각의 합 = 180°''가 따라 나오는 것도 순환논증이 된다. 공리에 답이 ``내장되어 있다''는 비판은 공리 체계 일반에 적용되는 메타 비판이지, 본 논문에 해당하지 않는다.
+
+본 논문의 기여는 $(5,2)$ 분할이 공리에서 나온다는 사실 자체가 아니라, \emph{왜 이 공리들이 물리적으로 정당한가}이다. 정당화는 세 가지이다: (a)~CAS 3단계는 인과율을 보존하는 최소비용 원자적 연산이다: 하한(2단계 이하는 인과율 위반)과 상한(4단계 이상은 최소비용 위반)이 3단계를 강제하고, LL/SC는 동일 3단계 동형이며, TAS는 Compare 부재로 탈락한다(제\ref{sec:framework}절). 공리 구조 안에서 이 3단계는 유일하다. (b)~DATA/OPERATOR 분리는 ``이산적 기록 공간''과 ``연속적 연산 영역''의 구분으로서, 공리 체계가 이산(DATA)과 연속(OPERATOR)을 구별하는 순간 이 분리는 필연이다. (c)~산출된 $\alpha$와 $\sin^2\theta_W$가 각각 실험값 대비 $6 \times 10^{-7}$과 $4 \times 10^{-6}$의 상대 편차로 수렴한다.
+
+\emph{논리적 최소수렴.} 본 공리 체계의 각 공리는 최소비용 원리의 논리적 최소수렴(minimal convergence) 후보이다. 인과율을 보존하면서 상태를 변경하려면 ``확인$\to$판정$\to$기록''의 3단계가 최소이다(2단계는 확인 없는 기록으로 인과율 위반). 3단계 연산자가 작동하려면 연산 대상과 연산 영역이 분리되어야 하므로 DATA/OPERATOR 구분이 필연이다. 연산 대상(DATA)에는 최소 2축(time, space)이, 연산 영역(OPERATOR)에도 최소 2축(observer, superposition)이 필요하다---observer가 없으면 Compare의 분기를 받을 곳이 없고, superposition이 없으면 CAS가 DATA를 참조할 경로가 없다. 비용은 원자성과 직교성에 의해 $\{0, +1\}$만 가능하다. 이 모든 최소 조건을 합치면 $4 + 3 = 7$ 자유도와 비가역/가역 분할 $(5,2)$로 수렴한다.
+
+\emph{수렴 논증의 지위에 대한 주.} 본 수렴 논증의 각 단계---2축 최소, 이진 원자성, DATA/OPERATOR 분리---는 공리 구조에 의해 강제되며, 이 최소 조건들의 합이 $(5,2)$로 수렴한다. 외부 후보군 분류 문제에 대해서는 제\ref{sec:limitations}절 참조. 공리 구조 안에서의 수렴은 Theorem~\ref{thm:cost-signature}이 증명한다. 공리를 $(5,2)$에 맞춰 역설계한 것이 아니라, 최소비용 원리를 따라간 결과 $(5,2)$가 유일한 수렴점이다. 이 수렴을 사후적으로 검증하는 것이 $\alpha$와 $\sin^2\theta_W$의 실험값 일치이다.
+
+Robertson의 비판 ``왜 $\mathrm{SO}(5,2)$인가''는 본 논문에서 ``왜 이 공리인가''로 한 단계 올라간다. 이것은 Euclid의 5공리, Zermelo--Fraenkel 공리, 양자역학의 von Neumann 공리 등 모든 공리 체계가 공유하는 메타 질문이다. 공리의 필연성은 증명할 수 없다---그러나 공리의 결과가 실험과 일치하면 그 공리계는 사후적으로 정당화된다.
+
+\subsection{이산 공리에서 연속 물리량으로의 전환}
+
+본 공리 체계는 이산적(비용 $+1$, 비트 단위)이지만, 최종 결과인 $\alpha$, $\sin^2\theta_W$ 등은 연속적 실수값이다. 이 전환이 어디서 일어나는가?
+
+전환점은 정리~\ref{thm:cost-signature}의 2단계→3단계이다. 비용 분류(이산: 5개 vs 2개)가 메트릭 서명 $(5,2)$를 결정하면, 그 서명을 보존하는 군 $\mathrm{SO}(5,2)$ (몫공간 $D_5$ 정의 시에는 항등성분 $\mathrm{SO}_0(5,2)$)는 연속 리 군이다. 즉, \emph{이산 분류가 연속 군을 선택}한다. 이후의 몫공간 $D_5$와 체적비 계산은 모두 연속 수학이다.
+
+이것은 격자 게이지이론(lattice gauge theory)에서 이산 격자가 연속 한계(continuum limit)를 취하는 것과 유사하다.
+
+이산 구조에서 물리 법칙이 발현된다는 관점은 Zuse~\cite{zuse1969}, Fredkin~\cite{fredkin2003}, Wolfram~\cite{wolfram2002}의 계산적 우주론, Wheeler의 ``it from bit''~\cite{wheeler1990}, Lloyd의 계산 용량 추정~\cite{lloyd2002}, Tegmark의 수학적 우주 가설~\cite{tegmark2008}과 맥을 같이한다. 특히 't~Hooft~\cite{thooft2016}의 세포 자동자 양자역학 해석(cellular automaton interpretation of QM)은 이산 결정론적 모형에서 양자역학을 도출하려는 가장 직접적 비교 대상이다. 차이점은 't~Hooft가 양자역학의 재현을 목표로 하는 반면, 본 체계는 비가역 비용 구조에서 메트릭 서명을 도출하는 것을 목표로 한다---출발점과 도착점이 모두 다르다. 비가역 연산의 열역학적 비용에 대해서는 Landauer~\cite{landauer1961}를 참조하라. 무차원 상수의 근본 지위에 대한 논의는 Duff 등~\cite{duff2002}을 따른다.
+
+차이점은: 격자 게이지에서는 격자 간격 $a \to 0$의 극한이 필요하지만, 본 체계에서는 극한이 아니라 \emph{분류}(5+2)가 군을 결정한다. 이산 구조가 연속 군의 정수 매개변수(차원, 서명)를 고정하고, 연속적 세부 구조(체적비)는 군론이 자동으로 산출한다.
+
+완전한 공리 체계의 공리 3~\cite{han2026}이 DATA(이산)/OPERATOR(연속) 구분을 선언하므로 이 전환은 공리 구조의 일부이다 (분류~I). 이산(DATA)에서 연속(OPERATOR)으로의 전환은 CAS가 OPERATOR의 구면 위에서 RLU를 통해 각도 좌표로 관리하는 것이며, 연속에서 이산으로의 전환은 CAS Swap이 DATA에 기록하는 것이다. 두 전환 모두 공리~\ref{ax:banya}(DATA/OPERATOR 구분), 공리~\ref{ax:cas}(CAS + RLU), 공리~\ref{ax:cost}(비용 발생 = 이산화) 안에 이미 있다.
+
+\subsection{구조 상수의 공리적 기원}
+
+$\alpha$ 및 $\sin^2\theta_W$ 도출에 등장하는 구조 상수의 공리적 기원을 명시한다. 모든 수는 공리~\ref{ax:banya}--\ref{ax:delta}의 구조에서 나온다:
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{$\alpha$ 및 $\sin^2\theta_W$ 도출에 등장하는 구조 상수와 그 공리적 기원.\label{tab:constants}}
+\small
+\begin{tabularx}{\fulllength}{p{2.5cm}p{3.5cm}X}
+\toprule
+\emph{수 (카테고리)} & \emph{역할} & \textbf{비고} \\
+\midrule
+$2$ (구조) & 괄호 수, $\sin^2\theta_W$ 분모 & DATA/OPERATOR 두 괄호 (공리~\ref{ax:banya}) \\
+$3$ (구조) & CAS 단계 수 & R, C, S (공리~\ref{ax:cas}) \\
+$4$ (구조/비용) & $2^4$ 도메인 축; 공값 & 구조: 도메인 축 수 (공리~\ref{ax:banya}). 비용: 1 time + 3 space writes (정의~\ref{def:residual}). 두 4는 다른 카테고리의 양 \\
+$5$ (비용) & 비가역 축 수 & $= 7-2$ (정리~\ref{thm:cost-signature}) \\
+$7$ (구조/비용) & $\sin^2\theta_W$ 분자 & 구조: $4+3$ (명제~\ref{ax:dof}). 비용: $5+2$ (정리~\ref{thm:cost-signature}) \\
+$9$ (비용) & $\sin^2\theta_W$ 분모 & 잔존 비용 $13-4$ (정의~\ref{def:residual}) \\
+$13$ (비용) & 비용 enumeration & $8$ reads + $5$ writes (정의~\ref{lem:cost13}) \\
+$\pi$ & Wyler 공식, $\sin^2\theta_W$ & 비가역 횡단의 반구면 호 길이 (공리~\ref{ax:cost} + 공리~\ref{ax:cas}) \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+\subsection{Eddington과의 차이}
+
+$\alpha$를 제1원리에서 도출하려는 시도가 여럿 존재한다. 표~\ref{tab:prior-art}에 주요 선행 연구와 본 논문의 위치를 비교한다. $\alpha$의 가장 정밀한 측정은 Morel 등~\cite{morel2020}에 의해 $81$\,ppt 불확도로 수행되었다.
+
+\begin{table}[H]
+\caption{$\alpha$ 도출 선행 연구 비교.\label{tab:prior-art}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\small
+\begin{tabularx}{\fulllength}{p{2.5cm}p{3.5cm}p{3.0cm}X}
+\toprule
+\textbf{접근법} & \textbf{방법} & \textbf{결과} & \textbf{실패/차이 원인} \\
+\midrule
+Eddington~\cite{eddington1946} & 16-fold 대수 조합론 & $\alpha^{-1} = 136 \to 137$ & 역산 의심, 독립 검증 없음, 공리 필연성 부재 \\
+Koide~\cite{koide1983} & 렙톤 질량비 패턴 & 수치 일치 발견 & 기원 미제시 \\
+Connes~\cite{connes1996} & 비가환기하학 & 대칭 구조에서 상수 도출 시도 & $\alpha$ 수치 재현 미달 \\
+Lisi~\cite{lisi2007} & $E_8$ 통일 & 모든 입자 매립 시도 & Distler--Garibaldi~\cite{distler2010}에 의해 반박 \\
+Bars~\cite{bars2006} & 2T-물리학 $(d,2)$ & 같은 $\mathrm{SO}(5,2)$ 사용 & $(5,2)$가 시공간 서명; 본 논문은 비용 카테고리. $\alpha$ 미도출 \\
+\midrule
+\textbf{본 논문} & CAS 비용 구조 & $1/\alpha = 137.036\,082$ & (i) 서명 선행 도출, (ii) $\sin^2\theta_W$ 독립 검증, (iii) 탐색 공간 차단 \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+\subsection{범위와 한계}
+\label{sec:limitations}
+
+본 논문은 본문 곳곳에 한계를 명시한다. 본 절은 그 모든 한계를 분류하여 정리한다.
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{범위와 한계 --- 분류별 정리.\label{tab:limitations}}
+\small
+\begin{tabularx}{\fulllength}{cp{4.2cm}X}
+\toprule
+\textbf{분류} & \emph{항목} & \textbf{비고} \\
+\midrule
+\multicolumn{3}{l}{\emph{III. 공리 내적 서술 완비 --- 형식적 증명의 독립 제시는 후속}} \\
+\midrule
+III & RLU mechanism 형식적 체계화 & 전체 메커니즘 서술 완료. $(4+1/\pi)$의 $+$ 유일성은 공리~\ref{ax:banya}에 의해 확보. RLU 체계화 후속 (§\ref{sec:baryogenesis}) \\
+III & $\sin^2\theta_W$ 다른 후보 존재 & $1/\log_2 20$ 등 기록. 본 논문의 $7/(2+9\pi)$는 5단계 유일성 논증 완료 (§\ref{sec:prediction}). 다른 후보의 배제만 후속 \\
+III & $\alpha$ 정밀도 $\Delta = 0.000\,083$ & $\alpha^3$ 차수 보정 (잔차 $\Delta \sim \alpha^3$) (§\ref{sec:limitations}) \\
+III & CAS 3단계 유일성 & 하한(인과율)+상한(최소비용)이 3단계 강제 (§\ref{sec:framework}). 외부 후보군 완전 분류만 후속 \\
+III & $\sin^2\theta_W$/$\eta_B$ form 차이 & raw use case ($9\pi$) vs coupled use case ($(4+1/\pi)$). 모순 아님 (§\ref{sec:prediction}, §\ref{sec:baryogenesis}) \\
+III & SU(3)$\times$SU(2)$\times$U(1) 대응 & R,C,S $\to$ U(1),SU(2),SU(3) 매핑 완료. 게이지 보손 12개 도출. 결합상수 비율 정량 도출만 후속 (§\ref{sec:discussion}) \\
+\midrule
+\multicolumn{3}{l}{\emph{IV. 범위 밖 --- 본 논문의 scope에 포함하지 않음}} \\
+\midrule
+IV & 규칙 선택 문제 & 디지털 물리학 일반의 미해결 메타 문제 (§\ref{sec:limitations}) \\
+\bottomrule
+\end{tabularx}
+\parbox{\fulllength}{분류 기준은 표~\ref{tab:axiom-results} 참조.}
+\end{adjustwidth}
+\end{table}
+
+본 논문은 ``명시적 한정 + 검증 가능한 부분 결과''의 형태를 채택한다. 표의 마지막 항목 ``$\alpha$ 측정 정밀도 $\Delta$''의 상세는 직후 단락에서 분석한다.
+
+\textit{$\alpha$ 정밀도 $\Delta$ 상세 분석}. Wyler 공식이 산출하는 $1/\alpha = 137.036\,082$와 실험값 $137.035\,999\,177$ 사이의 차이 $\Delta = 0.000\,083$은 소수점 아래 4번째 자리에서 발생한다. 이 불일치의 가능한 기원은 두 가지이다:
+\begin{enumerate}
+\item \emph{이산-연속 간극}: 본 공리 체계는 이산적(비용 $+1$)인데, Wyler 체적비는 연속 기하학이다. 이산 구조에서 연속 체적비로의 전환 과정에서 고차 보정이 예상된다.
+\item \emph{고차 비용 보정}: 체계 내에서 $\alpha^3 \approx 4 \times 10^{-7}$ 차수의 보정이 존재하며, 이는 $\Delta$의 크기($6 \times 10^{-7}$)와 일치한다.
+\end{enumerate}
+$\Delta$의 크기($6 \times 10^{-7}$)가 $\alpha^3 \approx 4 \times 10^{-7}$과 같은 차수이다. 본 공리 체계는 이산적이고 실험 측정은 연속 실수이므로, 이산-연속 간극에 의한 잔차는 이산 공리 체계의 구조적 특성이다. 잔차의 차수가 $\alpha^3$과 일치하는 것은 고차 비용 보정의 존재와 정합한다.
+
+\emph{규칙 선택 문제(Rule Selection Problem).} 본 공리 체계는 디지털 물리학의 모든 공리적 접근법---Zuse의 \textit{Rechnender Raum}~\cite{zuse1969}, 't Hooft의 세포 자동자 해석~\cite{thooft2016}, Wolfram의 하이퍼그래프 재작성~\cite{wolfram2002}---과 공통된 근본 문제에 직면한다: \emph{왜 이 공리인가? 왜 다른 공리가 아닌가?}
+
+본 논문이 제시한 답---최소비용 + 인과율 보존---은 공리 체계의 설계 원리이며, 그 결과($\alpha$, $\sin^2\theta_W$의 실험값 수렴)로 검증된다. 본 논문은 이 문제에 두 가지 부분 답변을 제공한다: (a) 탐색 공간이 구조 5개 + 비용 5개 = 10개 수로 제한되어 공리 선택의 자유도가 닫혀 있다 (제\ref{sec:discussion}절), (b) $\alpha$와 $\sin^2\theta_W$가 각각 $6 \times 10^{-7}$과 $4 \times 10^{-6}$의 상대 편차로 실험값에 수렴하는 것이 이 공리 집합의 실증적 검증이다. 외부 후보 공리 집합의 완전 분류는 디지털 물리학 일반의 미해결 과제이며 본 논문의 범위 밖이다.
+
+\subsection{본 공리 체계의 지위: 기존 물리학과의 관계}
+
+본 공리 체계에 대한 예상 가능한 비판과 그에 대한 답을 명시한다. 먼저 표~\ref{tab:comparison}에서 기존 공리적 재구성 학파와의 위치를 정리한다. 본 공리 체계의 고유한 특징은 \emph{공리에서 수치를 산출}한다는 점이다. 다른 학파는 양자역학의 구조를 재구성하지만 물리 상수를 산출하지 않는다.
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{공리적 재구성 학파 비교 --- 본 공리 체계의 위치.\label{tab:comparison}}
+\small
+\begin{tabularx}{\fulllength}{p{3.2cm}p{2.3cm}p{2.3cm}p{2.3cm}p{2.5cm}X}
+\toprule
+ & \emph{Hardy 2001} & \emph{CDP 2011} & \emph{Spekkens 2007} & \emph{Masanes--M\"uller 2011} & \emph{본 공리 체계} \\
+\midrule
+공리 수 & 5 & 6 & 2 & 5 & \emph{4+1} \\
+핵심 원리 & 연속 가역성 & purification & knowledge balance & 물리적 요구 & \emph{최소 비용 = 최소 작용} \\
+재구성 대상 & QM 전체 & QM 전체 & QM 현상론 일부 & QM 정보 한계 & \emph{결합상수 $\alpha$, $\sin^2\theta_W$} \\
+수치 출력 & 없음 & 없음 & 없음 & 없음 & \emph{$\alpha$, $\sin^2\theta_W$, $\eta_B$} \\
+실험 대조 & 없음 & 없음 & 없음 & 없음 & \emph{$6 \times 10^{-7}$, $4 \times 10^{-6}$, $0.5\sigma$} \\
+자유 파라미터 & 0 & 0 & 0 & 0 & \emph{0} \\
+학파 위치 & full reconstruction & full reconstruction & partial & partial & \emph{cost-theoretic branch} \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+\subsubsection{``힐베르트 공간은 어디 있는가''}
+
+본 공리 체계는 양자역학의 힐베르트 공간 형식론을 재현할 의무가 없다. 이유는 다음과 같다.
+
+반야프레임은 자연의 최소작용 원리를 최소비용 연산으로 모사한 \emph{가상 실험 우주}이다. 이 가상 우주의 설계 목표는 ``기존 물리 형식론을 내부에 재현하는 것''이 아니라, ``공리적 구속 조건 하에서 최소비용 회로를 구성하고, 그 회로의 비용 패턴이 실제 물리 상수와 일치하는지 확인하는 것''이다.
+
+비유하면: 항공기 시뮬레이터는 실제 항공기의 금속 합금이나 유체역학 방정식을 내부에 재현하지 않는다. 시뮬레이터의 목표는 입력(조종간)에 대한 출력(비행 궤적)이 실제 항공기와 일치하는 것이다. 내부 구현이 실제 항공기와 다르더라도, 입출력이 일치하면 시뮬레이션은 성공이다.
+
+마찬가지로: 본 공리 체계의 내부 구현은 CAS(조건부 상태 전이)와 비용 구조이다. 이것은 힐베르트 공간, 라그랑지안, 게이지 군과 \emph{다른 언어}이다. 그러나 출력---물리 상수의 수치---가 실험과 일치한다면, 이 모사는 성공이다. 힐베르트 공간은 자연을 서술하는 \emph{하나의 언어}이지 \emph{유일한 언어}가 아니다.
+
+Zurek~\cite{zurek2009}의 양자 다윈주의(quantum Darwinism)도 관측자와 환경의 정보 구조에서 고전성을 도출하며, 힐베르트 공간을 경유하지 않는 서술이 물리적으로 유효할 수 있음을 보인다. 보다 일반적으로, Hardy~\cite{hardy2001}의 ``Quantum Theory From Five Reasonable Axioms''와 Chiribella, D'Ariano, Perinotti~\cite{cdp2011}의 ``Informational derivation of quantum theory''는 양자역학 전체를 정보론적 원시연산으로부터 \emph{도출}하는 axiomatic 프로그램이다 --- 본 공리 체계의 ``CAS 비용에서 알파 도출''은 같은 학술 전통(정보론적 axiomatization)에 속하며, 알파라는 특정 결합상수에 집중한 것이 차이점이다.
+
+\subsubsection{``게이지 군 SU(3)$\times$SU(2)$\times$U(1)은 어디서 나오는가''}
+
+정성적 매핑은 아래에서 제시한다. 결합상수 비율의 정량적 도출은 완전한 공리 체계~\cite{han2026}에서 산출 완료되어 있으며, 학술적 제시는 후속 논문에서 다룬다.
+
+반야식 $\delta^2 = (\mathrm{time}+\mathrm{space})^2 + (\mathrm{observer}+\mathrm{superposition})^2$은 도메인 변환 구조이다. 같은 공리를 다른 도메인에 투영하면 다른 물리 영역이 나온다. $\alpha$는 CAS 비용 경로를 전자기 도메인에 투영한 결과이고, $\alpha_s$는 같은 비용 경로를 강력 도메인에 투영한 결과이다. 게이지 군 구조는 이 도메인 변환의 유효 서술(effective description)이다---공리가 재현해야 할 대상이 아니라, 공리의 도메인 투영이 산출하는 관측 측 기술이다.
+
+구체적으로: 완전한 공리 체계~\cite{han2026}에서 CAS의 3단계가 표준모형 게이지 군에 대응한다: Read(내부 자유도 1) $\to$ U(1) (생성원 $1^2 - 1 = 0$, 광자 자기상호작용 없음), Compare(내부 자유도 2) $\to$ SU(2) (생성원 $2^2 - 1 = 3$: $W^+, W^-, Z$), Swap(내부 자유도 3) $\to$ SU(3) (생성원 $3^2 - 1 = 8$: 글루온 8개). 게이지 보손 총수 $= 0 + 3 + 8 + 1(\text{광자}) = 12 = \binom{4}{2} \times 2$ (도메인 4축에서 2축 선택 $\times$ 방향 2)이다~\cite{han2026}. \emph{고유 예측}: 4번째 게이지 상호작용(Z' 등)은 CAS에 4번째 단계가 없으므로 존재하지 않는다 --- LHC Run 3/4에서 10~TeV 이하 Z' 또는 W'가 발견되면 이 대응은 반증된다. 결합상수 비율의 정량적 도출은 완전한 공리 체계~\cite{han2026}에서 산출 완료되어 있으며, 학술적 제시는 후속 논문에서 다룬다.
+
+\subsubsection{``이것은 물리 이론인가, 계산 모형인가''}
+
+둘 다이다. 정확히 말하면: 자연의 연산이 최소비용을 따른다는 가정 하에 구성된 \emph{계산적 물리 모형}이다.
+
+기존 물리학은 연속 다양체, 미분방정식, 힐베르트 공간이라는 수학적 언어로 자연을 서술한다. 본 공리 체계는 이산 연산, 비용 함수, 상태 전이라는 \emph{다른 수학적 언어}로 같은 자연을 서술한다. 두 언어는 서로 번역되지 않을 수 있다---미분방정식을 이산 연산으로 ``재현''하는 것은 목표가 아니다. 목표는 두 서술이 같은 수치 출력(물리 상수)을 산출하는지 확인하는 것이다.
+
+이 차이가 불가피한 이유는 다음과 같다. 최소비용 원리에 충실한 회로를 설계하면, 그 회로의 내부 구조는 필연적으로 이산적이고 순서 의존적이다---비용을 세려면 단계가 있어야 하고, 단계에는 순서가 있어야 하며, 순서가 있으면 연속이 아니라 이산이다. 따라서 최소비용 회로의 언어는 필연적으로 연속 물리학의 언어와 다르다. 이 차이는 결함이 아니라, 최소비용 원리에 충실한 모사의 구조적 귀결이다.
+
+\subsubsection{``왜 관측/판정/기록인가---이것은 양자 측정과 다르다''}
+
+맞다. 다르다. 그리고 이 다름이 핵심이다.
+
+양자역학에서 ``측정''은 파동함수 붕괴를 수반하는 비가역 과정이다. 본 체계에서 ``관측(Read)→판정(Compare)→기록(Swap)''은 CAS의 3단계 불가분 연산이다. 이 두 서술은 다른 언어로서 \emph{구조적 유사성(structural analogy)}을 가지며, 형식적 동형(formal isomorphism)은 완전 공리 체계~\cite{han2026}에서 도출 완료되어 있다: Born 규칙 $|\psi|^2$는 공리 15($\delta$ 128상태) $\to$ 공리 3(FSM) $\to$ 공리 2(CAS) 체인에서 ``$\delta$의 자유 선택에 대한 FSM 안 집계''로 도출되며, Gleason 정리의 CAS 버전에 해당한다~\cite{han2026}. 본 논문의 4개 공리에는 공리 15($\delta$의 128상태 구조)가 포함되지 않으므로 Born 규칙의 형식적 도출은 본 논문 범위 밖이다.
+
+차이점을 표~\ref{tab:qm-cas}에 명시한다.
+
+\begin{table}[H]
+\caption{양자역학과 본 공리 체계의 구조적 비교.\label{tab:qm-cas}}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{차원} & \textbf{양자역학} & \textbf{본 공리 체계} \\
+\midrule
+측정 연산 & 사영 연산자 $P_k$ & Read $\to$ Compare $\to$ Swap \\
+확률/비용 규칙 & $|\langle k|\psi\rangle|^2$ & 비용 $\{0, +1\}$ \\
+상태 공간 & 연속 힐베르트 공간 & 이산 FSM (7비트) \\
+붕괴 메커니즘 & 파동함수 붕괴 & $\delta$ 발화의 스크린 렌더링 완료 \\
+비가역성 기원 & 측정 공리 & CAS 순서 강제 (공리~\ref{ax:cas}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+두 서술은 번역 관계가 아니다. 둘은 같은 자연 현상의 \emph{다른 축 투영}이다---반야식에서 고전 괄호(DATA)로 투영하면 힐베르트 공간 서술이 나오고, 양자 괄호(OPERATOR)로 투영하면 CAS 서술이 나온다. 어느 쪽이 ``진짜''인가는 질문 자체가 잘못되었다---두 투영 모두 같은 $\delta$의 서로 다른 측면이다.
+
+보다 구체적으로, 본 논문의 공리~\ref{ax:cas}와 \ref{ax:cost}에서 CAS의 분기 구조는 다음과 같다: Compare가 참(true)이면 Swap이 실행되어 비용 $+1$을 지불하고 DATA에 확정 상태가 기록된다---이것이 파동함수 붕괴에 대응한다. Compare가 거짓(false)이면 Swap이 실행되지 않고 중첩이 유지된다---비용 $0$, 가역. 즉, 중첩 유지 $=$ Compare false $=$ 비용 $0$이고, 붕괴 $=$ Compare true $=$ 비용 $+1$이다. 양자 상태가 기본(default)이고 고전 상태가 비용의 결과라는 것이 이 구조의 핵심이다.
+
+\emph{양자 비파괴 측정(QND)과의 대응}: 완전한 공리 체계에서 Swap의 실행 조건은 두 가지이다---Compare true \emph{AND} isWriteAble(기록 가능)~\cite{han2026}. Compare가 참이지만 isWriteAble이 거짓인 경우, 상태가 관측되었으나 변경되지 않는다. 이것이 QND 측정의 구조적 대응이다.
+
+\subsubsection{이산에서 연속은 어떻게 창발하는가}
+
+(\emph{주}: 본 subsubsection은 제\ref{sec:discussion}절의 ``이산 공리에서 연속 물리량으로의 전환'' subsection과 연관된 주제이지만, 두 곳이 \emph{다른 측면}을 다룬다 — 앞 subsection은 \emph{수학적} 전환 (Theorem 1 → Lie group $\mathrm{SO}(5,2)$ → 연속 체적비)이고, 본 subsubsection은 \emph{물리적} 창발 (OPERATOR 괄호의 연속 영역에서 RLU 비용 회수가 연속으로 진행되어 DATA의 이산 기록을 발생)이다.)
+
+경합이 순서를 만들고, 순서가 이산을 만든다(제\ref{sec:framework}절). 다수의 국소 상태가 동시에 존재하면 인과율 보존을 위해 순서 강제 장치(lock)가 작동하고, CAS의 $\mathrm{R} \to \mathrm{C} \to \mathrm{S}$ 순서가 강제되는 곳에서 비용 $+1$이 발생하며, 비용이 발생하면 DATA에 이산 슬롯 단위로 기록된다.
+
+그러면 연속은 어디서 오는가? OPERATOR 괄호에서 온다. 공리~\ref{ax:banya}에서 OPERATOR(양자 괄호)는 모든 상태가 동시에 공존하는 연속 영역이다. CAS가 누적시키는 비용(공리~\ref{ax:cost})은 OPERATOR 층위에서 RLU의 퇴거 규칙(LRU 유사)에 따라 회수되며, 이 회수 과정 자체는 연속이다. 연속 비용 분포가 CAS Swap을 거쳐 DATA에 기록될 때 이산화된다(공리~\ref{ax:cost}: $+$를 넘으면 이산화). 본 공리 체계에는 ``힘(force)''이라는 양이 정의되지 않는다 — 유일한 물리량은 \emph{변화량}이며, 변화량의 표현이 \emph{비용}이다.
+
+물리학에서 사용하는 미분은 이 과정의 근사이다: 충분히 많은 이산 기록(국소 상태)이 쌓이면 이산 분포가 연속처럼 보이고, 미분이 유효한 근사가 된다. 이것은 격자 게이지이론에서 격자 간격이 충분히 작으면 연속 한계가 회복되는 것과 동일한 논리이다. 차이점은: 본 체계에서 이산은 ``근사의 출발점''이 아니라 ``순서에 의해 생성된 구조적 결과''라는 것이다. 인과집합 이론(causal set theory)도 이산 인과 구조에서 연속 시공간이 창발한다는 같은 방향의 프로그램이다.
+
+\subsubsection{중첩과 붕괴의 구조적 대응}
+
+양자역학의 상태벡터(힐베르트 공간)와 본 체계의 구조적 대응을 명시한다.
+
+공리~\ref{ax:banya}에서 양자 괄호(OPERATOR)의 superposition은 ``동시에 모든 상태가 퍼져 있는 주소 없는 인덱스''이다. 힐베르트 공간에서 상태벡터 $|\psi\rangle = \sum c_k |k\rangle$이 모든 기저 $|k\rangle$에 동시에 퍼져 있는 것과 구조적으로 동형이다. 본 ``addressless index'' 특성은 RLU 인덱싱 메커니즘(공리~\ref{ax:cas} 직후 정의)에서 \emph{각도 좌표 (theta angle) 식별}로 구체화된다 — RLU는 논리 주소 없이 OPERATOR 괄호의 각도 위치로 대상을 구분하며, 이것이 본 공리 체계의 인덱싱이 cost를 호 길이 $\pi$ 위에 분포시키는 이유이다.
+
+공리~\ref{ax:cost}의 비용 규칙이 ``붕괴'' 메커니즘을 제공한다. CAS의 판정(Compare)이 참이면 비용 $+1$을 지불하고 기록(Swap)이 실행되어 DATA에 확정 상태가 기록된다---이것이 파동함수 붕괴에 대응한다. 판정이 거짓이면 기록이 실행되지 않고 중첩이 유지된다---비용 $0$, 가역. 즉:
+\begin{itemize}
+\item 중첩 유지 $=$ Compare false $=$ 비용 $0$ $=$ OPERATOR에 머무름.
+\item 붕괴(기록) $=$ Compare true $=$ 비용 $+1$ $=$ DATA에 기록.
+\end{itemize}
+
+\emph{Born rule과의 식 구조 동형 --- 완전 체계에서 도출 완료}. 본 논문의 4공리는 Born rule을 \emph{직접} 도출하지 않으며, 본 단락은 완전 공리 체계와의 형식적 다리를 보여주는 범위 외 관측으로 기록된다.
+
+\emph{식 구조의 외형 일치}. 표준 양자역학에서 측정 확률은 $P(k) = |c_k|^2 = a_k^2 + b_k^2$ (복소 진폭 $c_k = a_k + i b_k$)이며, 이는 \emph{두 직교 실성분의 노름 제곱}이다. 본 공리 체계의 반야식 (공리~\ref{ax:banya}) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$은 \emph{두 직교 카테고리의 노름 제곱 합}으로, $|c_k|^2 = a_k^2 + b_k^2$ 형태와 \emph{식 구조 외형이 일치}한다 (단, 본 일치는 $n=2$ (두 카테고리/괄호) 한정이며, 일반 $n$-차원 힐베르트 공간으로의 확장은 본 단락에서 보이지 않는다).
+
+\emph{본 논문 범위 명시}. 본 논문은 4공리 + 1명제로 한정된 \emph{$\alpha$ 도출의 자기완결성}에 집중한다. Born rule의 형식적 도출은 완전 체계~\cite{han2026}에서 완료되어 있다 (공리 15 $\to$ 공리 3 $\to$ 공리 2, Gleason 정리의 CAS 버전). 본 논문의 4공리에는 공리 15가 포함되지 않으므로, Born rule은 본 논문의 4공리 범위 밖이다.
+
+\emph{관련 prior art와 형식적 차이}. 양자역학의 ``측정 문제''는 100년간 미해결이며, Born rule을 \emph{기본 가정}이 아닌 \emph{도출 가능한 결과}로 만드는 시도는 활발한 연구 영역이다. 본 공리 체계의 학파 위치는 \emph{Hardy/CDP의 full reconstruction 학파}와 \emph{Spekkens/Masanes/Pawlowski의 partial reconstruction 학파}의 사이에 \emph{인접}하나, 어느 쪽과도 직접 일치하지 않는 \emph{cost-theoretic branch}이다.
+
+(i) \emph{Full reconstruction 학파}: Hardy~\cite{hardy2001}의 ``Quantum Theory From Five Reasonable Axioms''는 5개 조작적 공리로 \emph{유한 차원 QM 전체} (상태 공간, 측정, 시간 발전)를 \emph{완전 재구성}한다. Chiribella, D'Ariano, Perinotti~\cite{cdp2011}는 6개 informational 공리에 ``purification''을 추가하여 같은 결과를 얻는다. Hardy의 5번째 공리\footnote{Hardy 2001 원문: ``Continuity: there exists a continuous reversible transformation on a system between any two pure states of that system.''} (``순수 상태 사이의 연속 가역 변환'')는 Masanes--M\"uller의 continuous reversibility와 동일한 방식으로 본 공리 체계의 CAS 3단계 비가역 진행과 충돌하며, 이는 \emph{Hardy와 Masanes--M\"uller 양측에} 공통으로 작용하는 카테고리적 경계이다.
+
+(ii) \emph{Partial reconstruction 학파}: Spekkens~\cite{spekkens2007}의 epistemic toy model은 2개 원리 (knowledge balance + 4-state classical)로 QM phenomenology의 큰 부분 (no-cloning, interference, teleportation, entanglement monogamy)을 \emph{부분 재현}한다. Masanes--M\"uller~\cite{masanes2011}는 5개 물리적 요구로 QM을 도출한다. Pawlowski et al.~\cite{pawlowski2009}의 information causality는 단일 원리로 QM의 정보 한계를 도출한다.
+
+\emph{Spekkens 4-state vs 본 공리 체계 $4+3$의 구조 비교}. Spekkens의 ``4 states''는 \emph{단일 element system의 ontic state space} (예: 동전이 가질 수 있는 4개 epistemic 상태)이며, knowledge balance 원리에 의해 1 question of knowledge per system이 강제된다. 본 공리 체계의 ``$4+3 = 7$''은 \emph{단일 CAS 사이클}의 internal DOF (4 도메인 축 + 3 CAS 단계)이며, 두 4의 카테고리가 다르다 — Spekkens의 4는 \emph{외부 ontic 상태 카운트}, 본 공리 체계의 4는 \emph{내부 자유도 카운트}. 두 4의 \emph{수치 일치}는 우연이 아니라 ``2-bit ontic 상태 공간''과 ``2-차원 DATA 괄호 + 2-차원 OPERATOR 괄호''의 \emph{같은 binary 분할 구조}에서 나오며, 이는 후속 작업의 비교 대상이다 (본 논문 범위 외). 마찬가지로 Masanes--M\"uller~\cite{masanes2011}의 5 요구 중 \emph{continuous reversibility} 원리는 본 공리 체계의 CAS 원자성 (3단계 비가역 진행)과 직접 충돌하며, 본 공리 체계가 connected continuous 변환군이 아닌 discrete CAS 사이클에서 출발한다는 본질적 차이를 드러낸다.
+
+(iii) \emph{본 공리 체계의 위치}: 본 공리 체계는 두 학파 어느 쪽과도 직접 일치하지 않는다 — \emph{재현 대상}이 다르다. Hardy/CDP는 QM의 \emph{형식 구조}를 재구성하고, Spekkens/Masanes는 QM의 \emph{phenomenology의 부분}을 재현하나, 본 공리 체계는 \emph{단일 결합상수 $\alpha$와 그 cost-theoretic 동기}를 제공한다. 즉 ``재구성 대상이 이론 → phenomenology → 단일 상수''의 세 다른 카테고리이며, 본 공리 체계는 \emph{cost classification $\leftrightarrow$ metric signature 대응}이라는 \emph{제3의 출발점}에서 작동한다.
+
+(iv) \emph{형식적 한계}: 본 공리 체계는 (a) operational framework(조작적 틀) 미정립, (b) GPT (generalized probabilistic theory)로의 명시 번역 없음, (c) convex/probabilistic 구조 부재 — Hardy/CDP의 \emph{full reconstruction}과 카테고리적으로 다르며, 물리 상수를 산출하는 \emph{cost-theoretic branch}로서 고유한 위치를 갖는다.
+
+(v) Hardy/CDP의 공리는 모두 \emph{조작적 측정 결과}로 직접 환원되는 반면, 본 공리 체계의 CAS 공리는 \emph{컴퓨터과학 추상화}이며 조작적 동기는 Landauer 한계~\cite{landauer1961}와의 구조적 동형(\S\ref{sec:axioms})에 의존한다. 본 단락의 식 구조 동형은 완전 공리 체계와의 형식적 다리를 보여주며, 위 학파들과의 정밀 비교의 확장은 후속 논문에서 다룬다.
+
+\subsubsection{비용 함수 $\{0, +1\}$의 유일성}
+
+비용이 왜 $+0.5$나 $+2$가 아니라 정확히 $\{0, +1\}$인가?
+
+$+0.5$가 불가능한 이유: CAS의 각 단계는 원자적(불가분)이다(공리~\ref{ax:cas}). 원자성이란 중간 상태가 관측 불가능하다는 것이다---외부에서 분할할 수 없는 단계를 내부에서 0.5로 쪼개는 것은 원자성의 정의에 모순된다. 이 논증은 ``DATA가 이산이므로''가 아니라 ``CAS 단계가 원자적이므로''에 기초한다. DATA의 이산성 자체는 공리~\ref{ax:banya}의 선언이나, 원자성은 공리~\ref{ax:cas}에서 독립적으로 정의된 구조적 성질이다.
+
+$+2$ 이상이 불가능한 이유: 한 번의 $+$ 횡단은 정확히 하나의 직교축 전이이다(공리~\ref{ax:cost}). CAS의 3축은 상호 직교하고(공리~\ref{ax:cas}: $\mathrm{R} \perp \mathrm{C} \perp \mathrm{S}$), 순서 강제 장치(lock)가 한 번에 하나의 전이만 허용한다. 한 전이에서 두 축이 동시에 켜지면 직교성이 깨지고, ``판정은 관측 없이 실행할 수 없다''(공리~\ref{ax:cas})는 순서 의존성을 위반한다. 따라서 $+$ 횡단당 비용은 정확히 $+1$이다.
+
+결과: 비용 함수의 치역은 $\{0, +1\}$이며, 이 형태는 공리~\ref{ax:banya}(DATA 이산), 공리~\ref{ax:cas}(원자성+직교성), 공리~\ref{ax:cost}(순서$=$비용)에 의해 강제된다. 다른 형태의 비용 함수는 이 세 공리 중 적어도 하나를 위반한다.
+
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\caption{공리 체계의 전체 산출물 --- 4개 공리 + 1개 명제가 만드는 결과.\label{tab:axiom-results}}
+\scriptsize
+\begin{tabularx}{\fulllength}{cp{3.2cm}X}
+\toprule
+\textbf{분류} & \textbf{결과} & \textbf{비고} \\
+\midrule
+\textbf{I} & $(5,2)$ 시그니처 유일성 & 공리 1--4 $\to$ 정리 1 (§\ref{sec:theorem}) \\
+\textbf{I} & $7 = 4+3$ 내부 자유도 & 공리 1+2 $\to$ 명제 1. Hamming $[7,4,3]$ 일치 (§\ref{sec:axioms}) \\
+\textbf{I} & 비용 함수 $\{0,+1\}$ 유일성 & 공리 1,2,3: 원자성+직교성+순서 (§\ref{sec:discussion}) \\
+\textbf{I} & SO(7), SO(4,3) 등 6개 배제 & 정리 1 Part (C) (§\ref{sec:theorem}) \\
+\textbf{I} & $1/\alpha = 137.036\,082$ & 정리 1 $\to$ $D_5$ $\to$ Wyler 체적비. CODATA 대비 $6 \times 10^{-7}$ (§\ref{sec:derivation}) \\
+\textbf{I} & $\sin^2\theta_W = 0.23122$ & 5단계 forward chain. $\overline{\text{MS}}$ at $M_Z$ 대비 $4 \times 10^{-6}$ (§\ref{sec:prediction}) \\
+\textbf{I} & $9$, $13 = 8+5$, 공값 $4 = 1+3$ & 잔존 비용 $13-4$, cost accounting (정의~\ref{lem:cost13}, 정의~\ref{def:residual}) \\
+\textbf{I} & $\pi$, $9\pi$, $7/(2+9\pi)$ 유일성 & CAS 직교 $\to$ cost+norm reading + 산술 (§\ref{sec:prediction}) \\
+\textbf{I} & $\alpha$와 $\sin^2\theta_W$ 독립성 & 서로 다른 forward chain (§\ref{sec:prediction}) \\
+\textbf{I} & 3차원 공간 ($x+y+z$) & 공리 1이 선언하는 space 축의 관측적 분해. 정의~\ref{lem:cost13}에서 명시 (§\ref{sec:axioms}) \\
+\textbf{I} & $\alpha$ = 상호작용 확률 & 정리 1$\to$$D_5$$\to$Shilov/$D_5$ 체적비 = 괄호 경계 $+$ 횡단 확률. 공리 용어의 직접 읽기 (§\ref{sec:derivation}) \\
+\textbf{I} & 13개 boundary distinction & $8$ reads $+$ $5$ writes. 공리가 강제하는 경로의 유일한 열거 (정의~\ref{lem:cost13}) \\
+\textbf{I} & energy scale $\leftrightarrow$ domain time & 공리~\ref{ax:banya}의 즉시 귀결: $\delta$(시스템 시간) $\neq$ time 축(도메인 시간). 완전 체계 공리 3~\cite{han2026}이 구체화 (§\ref{sec:axioms}) \\
+\midrule
+\textbf{II} & $\pi^5/(2^4 \cdot 5!) = D_5$ Hua 체적 & $(5,2) \to D_5 \to$ Hua Ch.\,IV 항등식. 수학적 항등식 (§\ref{sec:derivation}) \\
+\textbf{II} & $D_5$, $\mathrm{SO}(5)\times\mathrm{SO}(2)$ 결정 & $(5,2) \to$ 유일한 bounded symmetric domain (§\ref{sec:derivation}) \\
+\textbf{II} & $8\pi^4$ & $(5,2) \to \mathrm{SO}(5)\times\mathrm{SO}(2)$ 군 부피에서 수학적으로 자동 확정 (표~\ref{tab:factors}) \\
+\textbf{II} & $(\cdot)^{1/4}$ 4축 기하평균 & 공리~\ref{ax:banya} 직교 $\to$ 독립 $\to$ 기하평균 $= (\cdot)^{1/4}$. 수학적으로 자동 확정 (§\ref{sec:derivation}) \\
+\textbf{II} & Hartley 정보 $\Delta H = 5$비트 & 공리~\ref{ax:banya} (직교 독립) + 정리~\ref{thm:cost-signature} (비가역 5축) $\to$ Hartley 공식: $\log_2 128 - \log_2 4 = 5$. 수학적으로 자동 확정 (§\ref{sec:framework}) \\
+\textbf{II} & Hamming $[7,4,3]$ 구조적 대응 & 명제 1: $4{+}3{=}7$(I) $\to$ Hamming bound: 유일 완전 코드. Hua 체적과 동일 패턴 (§\ref{sec:predictions}) \\
+\textbf{II} & Steane $[[7,1,3]]$ 양자 확장 & Hamming(II) $\to$ CSS 구성 $\to$ $[[7,1,3]]$. 선택 없음 (§\ref{sec:predictions}) \\
+\textbf{II} & CAS $\leftrightarrow$ Landauer 정보 소거 & CAS Swap이 이전 상태를 덮어씀(공리~\ref{ax:cas}) $=$ Landauer 정보 소거의 정의. 정의적 동형 (§\ref{sec:framework}) \\
+\textbf{II} & $\eta_B$ prefactor 2 & 괄호 수 $= 2$ (공리~\ref{ax:banya}); 직교 $=$ 독립 $\to$ 곱셈 결합. $(\cdot)^{1/4}$ 기하평균과 동일 패턴 (§\ref{sec:baryogenesis}) \\
+\midrule
+\textbf{III} & $\eta_B = 6.14 \times 10^{-10}$ & $\alpha^4 \sin^2\theta_W [1{-}2(4{+}1/\pi)\alpha]$. 식과 입력 전부 본문에 완비. Planck 대비 $0.5\sigma$. RLU 체계화만 후속 (§\ref{sec:baryogenesis}) \\
+\textbf{III} & 양자측정 $\leftrightarrow$ R$\to$C$\to$S & Compare true $\to$ Swap $\to$ DATA 기록 (§\ref{sec:discussion}) \\
+\textbf{III} & Born rule $|c_k|^2$ 외형 일치 & $\delta^2 \leftrightarrow |c_k|^2 = a_k^2+b_k^2$ (§\ref{sec:discussion}) \\
+\textbf{III} & R,C,S $\to$ U(1),SU(2),SU(3) & CAS 3단계 $\to$ 3 게이지 보손 타입 (§\ref{sec:discussion}) \\
+\textbf{III} & $128 = 2^7 \to 137 = 128+9$ & 7비트 FSM + 잔존 비용 9. QED RG 정수부 일치 (§\ref{sec:discussion}) \\
+\textbf{III} & SU(3)$\times$SU(2)$\times$U(1) 대응 & R,C,S $\to$ U(1),SU(2),SU(3) 매핑 완료. 게이지 보손 12개 도출. 결합상수 비율 정량 도출만 후속 (§\ref{sec:discussion}) \\
+\textbf{III} & $\sin^2\theta_W$ 다른 후보 존재 & $1/\log_2 20$ 등 기록. cost enumeration 경로 채택 (§\ref{sec:prediction}) \\
+\textbf{III} & CAS 3단계 유일성 & 하한(인과율)+상한(최소비용)이 3단계 강제. 외부 후보군 완전 분류는 후속 (§\ref{sec:framework}) \\
+\textbf{III} & $\sin^2\theta_W$/$\eta_B$ form 차이 & raw ($9\pi$) vs coupled ($(4{+}1/\pi)$). 모순 아님 (§\ref{sec:prediction}, §\ref{sec:baryogenesis}) \\
+\textbf{III} & $\alpha$ 정밀도 $\Delta = 0.000\,083$ & $\alpha^3$ 차수 보정 (잔차 $\Delta \sim \alpha^3$) (§\ref{sec:limitations}) \\
+\textbf{III} & Landauer 열 방출 하한 $5 \times kT\ln 2$ & 층위 2 구조적 대응 성립 시 CAS 1사이클당 최소 열 방출 (§\ref{sec:framework}) \\
+\textbf{III} & QND 측정 대응 & Compare true $+$ isWriteAble false $=$ 관측되었으나 변경 안 됨 (§\ref{sec:discussion}) \\
+\textbf{III} & CAS running 메커니즘 & $\alpha(N) = \alpha/(1-\alpha N/(3\pi))$. $\beta$ 계수의 분모 $3$ = CAS 단계, QCD 분자 $7$ = 완전기술자유도. 고유 예측: $\beta_2$, $\beta_3$에 CAS 구조수 출현 (§\ref{sec:running}) \\
+\textbf{III} & Sakharov 3조건 = CAS 자동 내장 & B 위반 $\leftarrow$ Swap 도메인 교차(공리~\ref{ax:cost}), CP 위반 $\leftarrow$ CAS 비가역(공리~\ref{ax:cas}), 비평형 $\leftarrow$ RLU 비용 회수 지연 (§\ref{sec:baryogenesis}) \\
+\textbf{III} & $J_\text{CKM} = 3.10 \times 10^{-5}$ & CAS 비가역 사이클 위상 체적에서 도출. 실험값 $(3.08 \pm 0.15) \times 10^{-5}$, 오차 $0.62\%$~\cite{han2026} (§\ref{sec:baryogenesis}) \\
+\midrule
+\textbf{IV} & 규칙 선택 문제 & 디지털 물리학 일반의 미해결 메타 문제 (§\ref{sec:limitations}) \\
+\bottomrule
+\end{tabularx}
+\parbox{\fulllength}{\emph{분류 기준} --- I: 공리에서 형식적으로 도출 완료. II: 공리가 구조를 강제하여 수학적으로 자동 확정. III: 공리 내적 서술 완비 --- 형식적 증명의 독립 제시는 후속. IV: 본 논문의 범위에 포함하지 않음. 이하 모든 표의 분류 기준은 본 표와 동일하다.}
+\end{adjustwidth}
+\end{table}
+
+\section{결론}
+\label{sec:conclusion}
+
+4개 공리와 1개 명제가 미세구조상수 $\alpha$와 Weinberg 각도 $\sin^2\theta_W$를 독립적으로 산출했다; baryon-광자 비 $\eta_B$는 공리 내적 서술(분류~III) 수준의 forward 검증 가능한 독립 산출이다. \textbf{공리가 자연을 설명함을 보인다.}
+
+CAS 연산을 기본 객체로 하는 공리 체계에서 저에너지 극한값 $\alpha = 1/137.036\,082$에 도달하는 구조적 사슬을 보였다. Wyler 공식 4개 인수 전부가 공리 구조에서 산출된다: $9$는 공리에서 자체 도출(I), $\pi^5/(2^4 \cdot 5!)$는 공리가 자동 확정(II), $(\cdot)^{1/4}$는 4축 직교 기하평균으로 자동 확정(II), $8\pi^4$는 $(5,2)$에서 결정되는 군 부피로 수학적으로 자동 확정(II)이다.
+
+도출의 인과 사슬은: 경합$\to$순서$\to$이산$\to$비용 분류$\to$서명 $(5,2)$$\to$$\mathrm{SO}_0(5,2) \to D_5 \to$ Wyler 공식 (각 인수의 인식론적 지위에서 산출) $\to \alpha$이다. 핵심은 비용--서명 대응(정의~\ref{def:cost-sig} 및 정리~\ref{thm:cost-signature})이다: 비용의 비가역/가역 분류가 이차형식의 양/음 부호에 자연스럽게 대응하며, 이 분류가 공리에 의해 결정되므로 서명 $(5,2)$가 따라 나온다. 결과: $\alpha = 1/137.036\,082$ (실험값 대비 상대 편차 $6 \times 10^{-7}$).
+
+Robertson(1971)과 Gilmore(1972)의 세 가지 비판---물리적 동기 부재, 군 선택의 임의성, 측도 선택의 비유일성---에 항목별로 답했다. 특히 정리~\ref{thm:cost-signature}의 (C) 부분에서 가능한 8개 분할 중 $(5,2)$가 유일함을 형식적으로 배제 증명하고, 21차원 단순 리 군 중 $(7,0)$ (SO(7), 구조 카테고리 콤팩트 형)과 $(4,3)$ (SO(4,3), 구조 카테고리 분할 형)이 공리 체계의 \emph{비용 카테고리}에서 부호 도출하는 원리와 양립하지 않음을 명시 배제했다 — 이것이 Robertson (R2) ``군 선택의 임의성'' 비판에 대한 직접 답변이다.
+
+같은 공리 체계의 다른 구조 상수 조합으로 Weinberg 각도 $\sin^2\theta_W = 7/(2+9\pi) = 0.23122$ (실험값 대비 상대 편차 $4 \times 10^{-6}$)를 산출했다. 시스템/도메인 시간의 분리는 공리~\ref{ax:banya}의 즉시 귀결이다 (분류~I, 제\ref{sec:axioms}절 참조).
+
+나아가 제\ref{sec:predictions}절에서 본 공리 체계의 내부 자유도 $7 = 4 + 3$이 고전 정보이론의 Hamming 코드 $[7,4,3]$의 4 정보 + 3 패리티 분해와 구조적으로 일치함을 확인했다 (양자정보 학계의 Steane $[[7,1,3]]$는 이 Hamming 위 CSS 구성으로 자연스럽게 확장).
+
+마지막으로 제\ref{sec:baryogenesis}절에서 논문 도출 두 양 $\alpha$와 $\sin^2\theta_W$ (둘 다 forward chain)만으로 바리온-광자 비 $\eta_B = 6.14 \times 10^{-10}$를 산출하여 Planck 측정값과 $0.5\sigma$로 일치함을 보였다 — 이는 미래 CMB 정밀화로 검증/반증 가능한 forward 항목이다 ($(4+1/\pi)$의 $+$ 결합은 공리~\ref{ax:banya}의 직교 합성에 의해 유일하며, RLU 메커니즘 전체의 형식적 체계화는 분류~III이다).
+
+본 논문의 $\alpha$ 도출 과정에서 5건의 고유 예측이 산출되었다 (표~\ref{tab:predictions}). 이 예측들은 $\alpha$를 맞추기 위해 추가한 것이 아니라, 동일한 CAS 비용 구조에서 자동으로 따라 나온 연역적 귀결이다. 각 예측은 구체적 실험과 명시적 반증 조건을 갖는다. 하나라도 반증되면 해당 CAS 구조가 부정된다.
+
+\begin{table}[H]
+\caption{본 논문의 고유 예측 --- CAS 비용 구조의 연역적 귀결.\label{tab:predictions}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\small
+\begin{tabularx}{\fulllength}{p{0.4cm}Xp{3.0cm}p{4.0cm}}
+\toprule
+\textbf{\#} & \textbf{예측 (공리적 근거)} & \textbf{출처} & \textbf{반증 조건} \\
+\midrule
+1 & \textbf{$\beta$-함수 고차 계수에 CAS 구조수 출현 ($\overline{\mathrm{MS}}$, $\mu = M_Z$).} 1-loop: QED 분모 $3$ = CAS 단계, QCD 분자 $7$ = 완전기술자유도. 2-loop: $\beta_1 = -1/4$ = $-1/$(도메인 4). 본 예측 = $\overline{\mathrm{MS}}$ scheme , $\mu = M_Z$, 표준 PDG normalization 하에서 $\beta_2, \beta_3$ 의 분수형 (rational form) 분모/분자가 CAS 집합 $\{3, 4, 7, 9, 13\}$ 의 곱/합/차 조합으로 표현되어야 한다 (외부 소수 prime 자연 출현 금지). & §\ref{sec:running} & $\overline{\mathrm{MS}}$ $\beta_2$ 또는 $\beta_3$ 의 표준형 분수에 $\{3,4,7,9,13\}$ 외 prime ($\geq 11$, 단 13 제외) 이 자연 출현 \\
+\midrule
+2 & \textbf{$1/\alpha(M_Z)$의 최근접 정수 $= 128 = 2^7$.} CAS running에서 잔존 비용 $9$가 Compare false로 소진되면 $137 - 9 = 128$. $128 = 2^7$은 FSM 7비트의 기저 상태 수이다. ``기저 상태 + 잔존 비용 = 저에너지 극한.'' & §\ref{sec:discussion} & $\alpha(M_Z)$ 정밀 측정에서 $1/\alpha(M_Z)$의 최근접 정수 $\neq 128$ \\
+\midrule
+3 & \textbf{Jarlskog 불변량 $J_\text{CKM} = 3.10 \times 10^{-5}$.} CAS 비가역 사이클(R$\to$C$\to$S, 역연산 미정의)의 위상 체적에서 CP 위반 크기가 결정된다. 완전 체계~\cite{han2026}에서 산출. 실험값 $(3.08 \pm 0.15) \times 10^{-5}$, 오차 $0.62\%$. & §\ref{sec:baryogenesis}, \cite{han2026} & 실험값이 $3.10 \times 10^{-5}$에서 $3\sigma$ 이상 이탈 \\
+\midrule
+4 & \textbf{4번째 게이지 상호작용(Z' 등) 부재.} CAS = 3단계(R, C, S). Read$\to$U(1), Compare$\to$SU(2), Swap$\to$SU(3). 4번째 단계가 없으므로 4번째 게이지 군이 존재하지 않는다. 게이지 보손 총수 $= 12 = \binom{4}{2} \times 2$. & §\ref{sec:discussion} & LHC Run 3/4에서 10~TeV 이하 Z' 또는 W' 발견 \\
+\midrule
+5 & \textbf{Sakharov 3조건이 CAS에 자동 내장.} B 위반 $\leftarrow$ FSM Swap 도메인 교차(공리~\ref{ax:cost}). CP 위반 $\leftarrow$ CAS 비가역(공리~\ref{ax:cas}). 비평형 $\leftarrow$ RLU 비용 회수 지연. 3조건이 3개의 서로 다른 공리에서 각각 나온다. & §\ref{sec:baryogenesis} & 3조건 중 하나라도 CAS 밖의 독립 메커니즘이 필요한 경우 \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+표~\ref{tab:scope}은 본 논문(4개 공리 + 1개 명제)과 완전한 공리 체계~\cite{han2026}(15개 공리)의 산출 범위를 비교한다. 본 논문은 $\alpha$ 도출에 필요한 최소 공리 집합만을 다루었다. 완전한 공리 체계~\cite{han2026}에서는 결합상수 계층($\alpha_s = 0.1183$, 오차 $0.3\%$), 쿼크 질량 6개, 우주상수($\Lambda l_p^2 \sim \alpha^{57}$) 등이 이미 산출되어 있으며, 이들의 학술적 제시는 후속 논문의 과제이다.
+
+\begin{table}[H]
+\caption{산출 범위 --- 본 논문과 완전한 공리 체계.\label{tab:scope}}
+\begin{tabular}{lrr}
+\toprule
+\textbf{항목} & \textbf{본 논문} & \textbf{완전 체계~\cite{han2026}} \\
+\midrule
+공리 수 & 4 + 명제 1 & 15 \\
+\midrule
+\multicolumn{3}{l}{\emph{산출 항목 (표~\ref{tab:axiom-results} 분류)}} \\
+\quad 실험 정합 (1\% 이내 일치) & 3 & 155 \\
+\quad 구조적/수학적 결과 & 35 & --- \\
+\quad 검증 대기 & --- & 941 \\
+\quad 소계 & 38 & 1,096 \\
+\midrule
+\multicolumn{3}{l}{\emph{고유 예측 (실험 검증 가능)}} \\
+\quad 실험 정합 & --- & 18 \\
+\quad 검증 대기 & 5 & 111 \\
+\quad 가설 & --- & 1 \\
+\quad 소계 & 5 & 130 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{6pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\authorcontributions{개념화, 방법론, 형식 분석, 조사, 원고 작성 및 편집: 한혁진. 저자는 원고의 출판 버전을 읽고 동의하였다.}
+
+\funding{본 연구는 외부 자금 지원을 받지 않았다.}
+
+\institutionalreview{해당 없음.}
+
+\informedconsent{해당 없음.}
+
+\dataavailability{본 연구에서 새로운 데이터가 생성되거나 분석되지 않았다. 완전한 공리 체계와 모든 도출은 \url{https://doi.org/10.5281/zenodo.19850973}에서 이용 가능하다.}
+
+\acknowledgments{본 원고 준비 과정에서 저자는 Claude(Anthropic)를 LaTeX 조판 및 원고 서식 작성 보조에 사용하였다. 모든 공리, 정리, 증명, 도출, 결론은 저자에 의해 개발되었으며, 저자는 본 출판물의 내용에 대해 전적으로 책임진다.}
+
+\conflictsofinterest{저자는 이해 상충이 없음을 선언한다.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abbreviations{약어}{
+본 원고에서 사용된 약어:
+\\
+
+\noindent
+\begin{tabular}{@{}ll}
+CAS & 조건부 상태 전이 (Compare-And-Swap) \\
+DOF & 자유도 (Degrees of freedom) \\
+QED & 양자전기역학 (Quantum electrodynamics) \\
+R, C, S & 관측(Read), 판정(Compare), 기록(Swap) \\
+RLU & 무주소 가상 인덱싱 장치 (Addressless virtual indexing unit) \\
+FSM & 유한 상태 기계 (Finite state machine)
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{}
+\subsection{Wyler 공식의 명시적 계산}
+\label{app:computation}
+
+식~\eqref{eq:wyler-formula}의 단계별 수치 평가:
+
+$9/(8\pi^4) = 9/779.273 = 0.011\,549$. \quad $\pi^5/(2^4 \cdot 5!) = 306.020/1920 = 0.159\,385$. \quad $(0.159\,385)^{1/4} = 0.631\,85$. \quad $\alpha = 0.011\,549 \times 0.631\,85 = 0.007\,297\,4$. \quad $1/\alpha = 137.036\,082$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+
+\reftitle{References}
+
+\begin{thebibliography}{999}
+
+\bibitem{feynman1985}
+Feynman,~R.P. \textit{QED: The Strange Theory of Light and Matter}; Princeton University Press: Princeton, NJ, USA, 1985; p.~129.
+
+\bibitem{wyler1969}
+Wyler,~A. L'espace sym\'{e}trique du groupe des \'{e}quations de Maxwell. \textit{C. R. Acad. Sci. Paris} \emph{1969}, \textit{269A}, 743--745.
+
+\bibitem{wyler1971}
+Wyler,~A. Les groupes des potentiels de Coulomb et de Yukawa. \textit{C. R. Acad. Sci. Paris} \emph{1971}, \textit{272A}, 186--188.
+
+\bibitem{robertson1971}
+Robertson,~B. Wyler's expression for the fine-structure constant. \textit{Phys. Rev. Lett.} \emph{1971}, \textit{27}, 1545--1547.
+
+\bibitem{gilmore1972}
+Gilmore,~R. Scaling of Wyler's expression for $\alpha$. \textit{Phys. Rev. Lett.} \emph{1972}, \textit{28}, 462--464.
+
+\bibitem{helgason1978}
+Helgason,~S. \textit{Differential Geometry, Lie Groups, and Symmetric Spaces}; Academic Press: New York, NY, USA, 1978.
+
+\bibitem{hua1963}
+Hua,~L.K. \textit{Harmonic Analysis of Functions of Several Complex Variables in the Classical Domains}; American Mathematical Society: Providence, RI, USA, 1963.
+
+\bibitem{codata2022}
+Tiesinga,~E.; Mohr,~P.J.; Newell,~D.B.; Taylor,~B.N. CODATA Recommended Values of the Fundamental Physical Constants: 2022. \textit{J. Phys. Chem. Ref. Data} \emph{2024}, \textit{53}, 031301.
+
+\bibitem{eddington1946}
+Eddington,~A.S. \textit{Fundamental Theory}; Cambridge University Press: Cambridge, UK, 1946.
+
+\bibitem{han2026}
+Han,~H. Banya Framework: Axiom-Based Science Mining Engine---Comprehensive Report, v1.6. 2026. Available online: \url{https://doi.org/10.5281/zenodo.19850973} (accessed on 28 April 2026).
+
+\bibitem{pdg2024}
+Workman,~R.L.; et~al. Review of Particle Physics. \textit{Phys. Rev. D} \emph{2024}, \textit{110}, 030001.
+
+\bibitem{koide1983}
+Koide,~Y. New view of quark and lepton mass hierarchy. \textit{Phys. Rev. D} \emph{1983}, \textit{28}, 252--254.
+
+\bibitem{zuse1969}
+Zuse,~K. \textit{Rechnender Raum (Calculating Space)}; MIT Technical Translation, 1970.
+
+\bibitem{fredkin2003}
+Fredkin,~E. An introduction to digital philosophy. \textit{Int. J. Theor. Phys.} \emph{2003}, \textit{42}, 189--247.
+
+\bibitem{lloyd2002}
+Lloyd,~S. Computational capacity of the universe. \textit{Phys. Rev. Lett.} \emph{2002}, \textit{88}, 237901.
+
+\bibitem{wheeler1990}
+Wheeler,~J.A. Information, physics, quantum: The search for links. In \textit{Complexity, Entropy, and the Physics of Information}; Zurek, W.H., Ed.; Addison-Wesley: Redwood City, CA, USA, 1990; pp.~3--28.
+
+\bibitem{landauer1961}
+Landauer,~R. Irreversibility and heat generation in the computing process. \textit{IBM J. Res. Dev.} \emph{1961}, \textit{5}, 183--191.
+
+\bibitem{duff2002}
+Duff,~M.J.; Okun,~L.B.; Veneziano,~G. Trialogue on the number of fundamental constants. \textit{J. High Energy Phys.} \emph{2002}, \textit{2002}, 023.
+
+\bibitem{bars2006}
+Bars,~I. Two-time physics in field theory. \textit{Phys. Rev. D} \emph{2006}, \textit{74}, 085019.
+
+\bibitem{connes1996}
+Connes,~A. Gravity coupled with matter and the foundation of non-commutative geometry. \textit{Commun. Math. Phys.} \emph{1996}, \textit{182}, 155--176.
+
+\bibitem{lisi2007}
+Lisi,~A.G. An exceptionally simple theory of everything. arXiv:0711.0770, 2007.
+
+\bibitem{distler2010}
+Distler,~J.; Garibaldi,~S. There is no ``Theory of Everything'' inside $E_8$. \textit{Commun. Math. Phys.} \emph{2010}, \textit{298}, 419--436.
+
+\bibitem{morel2020}
+Morel,~L.; Yao,~Z.; Clad\'{e},~P.; Guellati-Kh\'{e}lifa,~S. Determination of the fine-structure constant with an accuracy of 81 parts per trillion. \textit{Nature} \emph{2020}, \textit{588}, 61--65.
+
+\bibitem{thooft2016}
+'t~Hooft,~G. \textit{The Cellular Automaton Interpretation of Quantum Mechanics}; Springer: Cham, Switzerland, 2016.
+
+\bibitem{wolfram2002}
+Wolfram,~S. \textit{A New Kind of Science}; Wolfram Media: Champaign, IL, USA, 2002.
+
+\bibitem{tegmark2008}
+Tegmark,~M. The mathematical universe. \textit{Found. Phys.} \emph{2008}, \textit{38}, 101--150.
+
+\bibitem{bennett1973}
+Bennett,~C.H. Logical reversibility of computation. \textit{IBM J. Res. Dev.} \emph{1973}, \textit{17}, 525--532.
+
+\bibitem{herlihy1991}
+Herlihy,~M. Wait-free synchronization. \textit{ACM Trans. Program. Lang. Syst.} \emph{1991}, \textit{13}, 124--149.
+
+\bibitem{zurek2009}
+Zurek,~W.H. Quantum Darwinism. \textit{Nat. Phys.} \emph{2009}, \textit{5}, 181--188.
+
+\bibitem{hamming1950}
+Hamming,~R.W. Error detecting and error correcting codes. \textit{Bell Syst. Tech. J.} \emph{1950}, \textit{29}, 147--160.
+
+\bibitem{steane1996}
+Steane,~A.M. Error Correcting Codes in Quantum Theory. \textit{Phys. Rev. Lett.} \emph{1996}, \textit{77}, 793--797.
+
+\bibitem{hardy2001}
+Hardy,~L. Quantum Theory From Five Reasonable Axioms. \textit{arXiv preprint} \emph{2001}, quant-ph/0101012.
+
+\bibitem{cdp2011}
+Chiribella,~G.; D'Ariano,~G.M.; Perinotti,~P. Informational derivation of quantum theory. \textit{Phys. Rev. A} \emph{2011}, \textit{84}, 012311.
+
+\bibitem{spekkens2007}
+Spekkens,~R.W. Evidence for the epistemic view of quantum states: A toy theory. \textit{Phys. Rev. A} \emph{2007}, \textit{75}, 032110.
+
+\bibitem{masanes2011}
+Masanes,~L.; M\"uller,~M.P. A derivation of quantum theory from physical requirements. \textit{New J. Phys.} \emph{2011}, \textit{13}, 063001.
+
+\bibitem{pawlowski2009}
+Paw\l owski,~M.; Paterek,~T.; Kaszlikowski,~D.; Scarani,~V.; Winter,~A.; \.Zukowski,~M. Information causality as a physical principle. \textit{Nature} \emph{2009}, \textit{461}, 1101--1104.
+
+\bibitem{hartley1928}
+Hartley,~R.V.L. Transmission of Information. \textit{Bell Syst. Tech. J.} \emph{1928}, \textit{7}, 535--563.
+
+\bibitem{sakharov1967}
+Sakharov,~A.D. Violation of CP invariance, C asymmetry, and baryon asymmetry of the universe. \textit{JETP Lett.} \emph{1967}, \textit{5}, 24--27.
+
+\end{thebibliography}
+
+% Preprint mode: skip MDPI Publisher's Note
+% \PublishersNote{}
+\end{adjustwidth}
+\end{document}

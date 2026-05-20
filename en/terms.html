@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminology — Banya Framework</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="Banya Framework axiom term definitions. d-ring, CAS, δ, Workbench, juim, data type and 50+ axiom terms with their definitions and sources.">
+<meta name="keywords" content="Banya Framework,般若,Terminology,Han Hyukjin">
+<meta property="og:title" content="Terminology — Banya Framework">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="../print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="../terms.html" class="lang-btn">KO</a></div>
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is the Terminology portion of the <a href="banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>.</p>
+
+<h2 id="terms">Terminology</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Axiom Term</th><th>Definition</th><th>Source</th></tr>
+<tr><td><strong>d-ring</strong></td><td>8-bit full ring buffer (bit 0–7). Nibble 0 (domain 4 bits) + nibble 1 (operator 4 bits). Physical structure seen from the bitwise-operator perspective. The vessel of all axiom structures</td><td>Axiom 15 Proposition</td></tr>
+<tr><td><strong>CAS-ring</strong></td><td>Cyclic structure of CAS 3 bits (R, C, S). CAS internals seen from the bitwise-operator perspective. 3-axis orthogonality gives structure, lock (Axiom 5) enforces order, and order defines FSM state transitions. Operates inside Workbench (√3 norm)</td><td>Axiom 2, 5, 14</td></tr>
+<tr><td><strong>CAS FSM</strong></td><td>State transitions of the CAS-ring described from the bitwise-operator perspective. 000→001→011→111→000. Lock enforces order</td><td>Axiom 5, 14</td></tr>
+<tr><td><strong>δ (fire bit)</strong></td><td>bit 7. Equality sign. 1=valid, 0=invalid. Global flag outside FSM. Private key</td><td>Axiom 15</td></tr>
+<tr><td><strong>observer (entry point)</strong></td><td>bit 0. Filter. Pipeline start. Generates will through interaction with δ. Signature</td><td>Axiom 10, 15</td></tr>
+<tr><td><strong>CAS</strong></td><td>The sole operator. Read->Compare->Swap. 3 stages</td><td>Axiom 2</td></tr>
+<tr><td><strong>data type</strong></td><td>Size unit CAS uses when reading a target. 11 numbers derived from input {3} via 4 operations (+, T(N)+1, 2^N, ‖√3‖) (Axiom 2 Proposition). CAS picks the matching data type according to the target's complexity</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>Workbench</strong></td><td>Workspace created by the norm of CAS 3-axis orthogonality (‖CAS‖ = √3). Where CAS picks a data type and interacts with 4 domains. Independent computation unit</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>CAS 3-axis orthogonality</strong></td><td>Each stage R, C, S is an independent 1 bit (001, 010, 100). They do not invade each other's DOF. At 111, all 3 axes simultaneously grip one spot to create a ball</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>juim</strong></td><td>The ball that CAS Swap (111) creates in DATA. 3-axis orthogonality → isotropic pressure → spherical. The unit of the discrete — the shape of one minimal change that cannot be split further. Banya Frame proper noun</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>juida</strong></td><td>The act of CAS creating a juim in DATA. 1 cycle = 1 juim = 1 cost</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>CAS stage index</strong></td><td>R=1, C=2, S=3. Maximum 3. No 4th</td><td>Axiom 2</td></tr>
+<tr><td><strong>stage gap (Δ_stage)</strong></td><td>Difference in CAS stage index between two entities. Maximum 2</td><td>Axiom 13 Proposition</td></tr>
+<tr><td><strong>nibble 0 (domain)</strong></td><td>bit 0-3. observer, superposition, time, space. Front half of d-ring</td><td>Axiom 1, 15 Proposition</td></tr>
+<tr><td><strong>nibble 1 (operator)</strong></td><td>bit 4-7. R_LOCK, C_LOCK, S_LOCK, δ. Back half of d-ring. CAS FSM operates here</td><td>Axiom 5, 15 Proposition</td></tr>
+<tr><td><strong>dimension</strong></td><td>Spatial 3 dimensions = CAS 3-axis orthogonality (Axiom 2 Proposition). No 4th. CAS cycle: forward circulation + simultaneous reset</td><td>Axiom 2, 12 Proposition</td></tr>
+<tr><td><strong>Swap</strong></td><td>CAS 3rd stage. Crosses +. Cost +1</td><td>Axiom 4</td></tr>
+<tr><td><strong>accumulated lock</strong></td><td>Sequential ignition by logical dependency of CAS FSM 001->011->111. CAS 3-axis orthogonality (Axiom 2 Proposition); ignition order is sequential</td><td>Axiom 2, 5, 14 Proposition</td></tr>
+<tr><td><strong>ring seam</strong></td><td>Connection point of d-ring's δ (bit 7)->observer (bit 0). Entry point of the equality sign. Ownership</td><td>Axiom 10, 15 Proposition</td></tr>
+<tr><td><strong>pipeline</strong></td><td>trigger->filter->update->render->screen. The flow of one d-ring fire</td><td>Axiom 15 Proposition</td></tr>
+<tr><td><strong>fire</strong></td><td>δ becoming 1. The start of one d-ring cycle. Called "fire," not "cycle"</td><td>Axiom 15</td></tr>
+<tr><td><strong>simultaneous</strong></td><td>Only 3 kinds: multiple entities in parallel, 4-domain orthogonality, 2-nibble orthogonality</td><td>Axiom 1, 2, 12</td></tr>
+<tr><td><strong>sequential</strong></td><td>Only 2 kinds: R->C->S (CAS FSM dependency), δ->observer (d-ring seam)</td><td>Axiom 2, 10</td></tr>
+<tr><td><strong>cost</strong></td><td>If + is crossed, cost > 0. If not crossed, 0. +1 per each R, C, S transition</td><td>Axiom 2 Proposition, 4</td></tr>
+<tr><td><strong>attenuation is continuous, threshold is discrete</strong></td><td>Ball existence (DATA) = discrete, gripping force (RLU) = continuous attenuation, cost (contraction region) = spatial distribution. 3 attributes in different layers. Observer sees the cost (contraction) presented by orthogonal superposition index (RLU)</td><td>Axiom 2, 12 Proposition</td></tr>
+<tr><td><strong>recovery of juim</strong></td><td>When RLU releases a juim, space is returned. Next juim possible in returned space. Must recover to circulate</td><td>Axiom 12 Proposition</td></tr>
+<tr><td><strong>entity</strong></td><td>Shadow created when δ passes through the observer filter. Each entity is both a unique identifier and an address itself. Basic unit of ECS</td><td>Axiom 11, 12</td></tr>
+<tr><td><strong>ℓ (ell)</strong></td><td>Distance between two entities. Notated as ℓ to avoid confusion with δ (fire bit)</td><td>Axiom 11 Proposition</td></tr>
+<tr><td><strong>Banya equation</strong></td><td>δ² = (time + space)² + (observer + superposition)². 4-axis norm. Classical bracket (DATA) and quantum bracket (OPERATOR) are orthogonal</td><td>Axiom 1</td></tr>
+<tr><td><strong>DATA (classical bracket)</strong></td><td>time + space. Discrete. Determined state rendered on screen</td><td>Axiom 1, 3</td></tr>
+<tr><td><strong>OPERATOR (quantum bracket)</strong></td><td>observer + superposition. Continuous. Undetermined region where CAS operates</td><td>Axiom 1, 3</td></tr>
+<tr><td><strong>ball</strong></td><td>Discrete unit that CAS 1 cycle (Swap) creates in DATA. No 0.5. Shape of juim. 3-axis orthogonality → isotropic → spherical</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>atomicity</strong></td><td>CAS R→C→S 3 stages are inseparable. If interrupted midway, it is not CAS</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>irreversibility</strong></td><td>CAS operations have direction. R→C→S cannot be reversed. No refund. time (DATA) is a reversible resource, but CAS (OPERATOR) is irreversible</td><td>Axiom 2 Proposition</td></tr>
+<tr><td><strong>RLU</strong></td><td>Lifetime management of juim. HOT→WARM→COLD→recovery. Attenuation is continuous, threshold is discrete. Open lifetime</td><td>Axiom 6, 12</td></tr>
+<tr><td><strong>HOT / WARM / COLD</strong></td><td>3 RLU states. HOT: right after write, frequently accessed. WARM: attenuating. COLD: below threshold, recovery target</td><td>Axiom 6, 12</td></tr>
+<tr><td><strong>polling</strong></td><td>Mechanism by which d-ring checks whether δ fires at every tick of system time. Always runs regardless of whether change occurs</td><td>Axiom 8</td></tr>
+<tr><td><strong>global-local loop</strong></td><td>δ (global)→observer (local)→CAS→result→δ feedback. Recursive cyclic structure. The only path for δ to access itself</td><td>Axiom 10</td></tr>
+<tr><td><strong>multiple projection</strong></td><td>Structure where a single δ is independently filtered through multiple observers to generate multiple entities</td><td>Axiom 11</td></tr>
+<tr><td><strong>contraction region</strong></td><td>Region where space around a juim has decreased because Swap consumed DATA (space). Data type size is fixed → serialization occurs</td><td>Axiom 11 Proposition</td></tr>
+<tr><td><strong>ECS</strong></td><td>Entity (shadow)-Component (DATA)-System (CAS). Execution model where each observer-CAS pair processes independently</td><td>Axiom 12</td></tr>
+<tr><td><strong>superposition</strong></td><td>Multiplicity of the quantum bracket (OPERATOR). Multiple states exist simultaneously as undetermined. Target of indexing (Axiom 13)</td><td>Axiom 11, 13</td></tr>
+<tr><td><strong>collapse</strong></td><td>When CAS Compare is true, superposition transitions to a single determined state. Continuous→discrete. OPERATOR→DATA</td><td>Axiom 7</td></tr>
+<tr><td><strong>equality sign</strong></td><td>If δ=1, the entire right-hand side (7 bits) is valid; if δ=0, invalid. Declaration where the left-hand side validates the right-hand side. Operates at the ring seam</td><td>Axiom 15 Proposition</td></tr>
+<tr><td><strong>re-entry (move)</strong></td><td>A juim entering as input to the next CAS cycle. Structure where change begets change. Recursion of the Banya equation</td><td>Axiom 12 Proposition</td></tr>
+<tr><td><strong>system time</strong></td><td>CAS 1 tick. Actual timing unit of δ fire. Clock outside d-ring</td><td>Axiom 8, 15</td></tr>
+<tr><td><strong>domain time</strong></td><td>t_dom = log(T_sys). Time measured inside the screen (DATA). Logarithmic compression</td><td>Axiom 8 Proposition</td></tr>
+<tr><td><strong>indexing cost</strong></td><td>0. Index has no order, so lookup is O(1) constant. No order = no cost</td><td>Axiom 13, Axiom 4 prop.</td></tr>
+<tr><td><strong>scalar field</strong></td><td>When a juim is placed at the origin, a directionless magnitude distribution defined at every surrounding cell: C·(1−ℓ/N)/(4πℓ²)</td><td>Axiom 11 Proposition</td></tr>
+<tr><td><strong>duck typing</strong></td><td>Type defined by behavior. If δ matches the behavioral checklist of consciousness, it is called consciousness. Judged by behavior, not essence</td><td>Axiom 15 Proposition</td></tr>
+<tr><td><strong>complete description DOF</strong></td><td>Structure DOF (DATA) 10 + cost DOF (OPERATOR) 6. Overlap 3 pairs (3, 4, 9). Internal movement within structure side = shift ($2^N$), between structure and cost = orthogonal via +</td><td>Axiom 9</td></tr>
+</table>
+</div>
+
+</div>
+
+<div class="page-nav">
+<a href="banya.html">Comprehensive Report</a>
+<a href="axiom.html">15 Axioms</a>
+<a href="appendix.html">Sub-Reports</a>
+<a href="misconception.html">Misconceptions · Cautions</a>
+<a href="physics_map.html">Physics Correspondence Table</a>
+</div>
+<div class="doc-footer">
+<div class="f-top">
+<div class="f-corp"><b>Banya Framework (般若 Framework)</b><br>Inventor: Han Hyukjin<br>Email: bokkamsun@gmail.com<br>Alias: Buddha's Palm Framework<br>Class: Axiom-Based Science Mining Engine</div>
+<div class="f-right"><div class="f1">$\delta^2 = (\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$</div></div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license"><div class="license-title">CC BY-NC-SA 4.0</div>BY -- attribution required | NC -- non-commercial use only | SA -- share-alike<br>Copyrights of existing physics formulas belong to their original authors; Banya Framework interpretations and newly derived formulas are attributed to Han Hyukjin (2026).<div class="license-cite">Citation: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div></div>
+</div>
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>

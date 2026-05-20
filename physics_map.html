@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>물리 대응 용어 표 — 반야프레임</title>
+<meta name="author" content="Han Hyukjin">
+<meta name="description" content="반야프레임 공리 용어가 기존 물리학의 어떤 개념에 대응하는지 보여주는 참조 표. 구조, 4력, 비용=물리량, 쿼크·렙톤, 혼합각·질량, 우주론·상태 6개 분야 대응표.">
+<meta name="keywords" content="반야프레임,般若,Banya Framework,물리 대응 용어 표,physics correspondence,한혁진,Han Hyukjin">
+<meta property="og:title" content="물리 대응 용어 표 — 반야프레임">
+<meta property="og:description" content="공리 용어 → 물리 용어 대응 참조표.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta name="robots" content="index, follow">
+<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+
+<div class="lang-switch"><a href="en/physics_map.html" class="lang-btn">EN</a></div>
+
+<div class="lang-ko">
+
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="banya_main.html" style="color:#58a6ff;font-weight:600">반야프레임 종합 보고서</a>의 부속 보고서 중 물리 대응 용어 표 부분이다.</p>
+
+<h4>물리 대응 용어 표 (공리 외부 참조용)</h4>
+
+<p style="font-size:0.85em;color:#8b949e">아래 표는 공리 용어가 기존 물리학에서 어떤 개념에 대응하는지 보여주는 참조 표다. 공리 본문에는 물리 용어를 사용하지 않는다.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">구조 (v1.4)</th></tr>
+<tr><th>공리 용어</th><th>물리 대응</th></tr>
+<tr><td>δ = 발화 비트 (bit 7)</td><td>의식 (δ). 등호. 관측 트리거</td></tr>
+<tr><td>observer = 진입점 (bit 0)</td><td>관측자 (observer). 필터. 파이프라인 시작</td></tr>
+<tr><td>superposition (bit 1)</td><td>양자 중첩 (quantum superposition)</td></tr>
+<tr><td>time (bit 2)</td><td>시간 축. 스크린의 프레임</td></tr>
+<tr><td>space (bit 3)</td><td>공간 축. 스크린의 픽셀</td></tr>
+<tr><td>CAS (R,C,S = bit 4,5,6)</td><td>유일한 연산자. 렌더 엔진</td></tr>
+<tr><td>d-ring (8비트, 2니블)</td><td>우주의 최소 실행 단위. 물리적 구조의 그릇</td></tr>
+<tr><td>CAS-ring (3비트 순환)</td><td>CAS 내부 상태 전이. 000→001→011→111→000</td></tr>
+<tr><td>양자 괄호 (OPERATOR)</td><td>백엔드 (compute). 연속. CAS가 작동하는 곳</td></tr>
+<tr><td>고전 괄호 (DATA)</td><td>프론트엔드 (screen). 이산. 렌더링된 출력</td></tr>
+<tr><td>워크벤치 (‖CAS‖ = √3)</td><td>CAS 내부 작업공간. 독립 연산장치</td></tr>
+<tr><td>자료형 (공리 2 명제, 공리 9)</td><td>구조 상수. CAS가 대상을 읽는 크기 단위</td></tr>
+<tr><td>쥠 (juim) = CAS Swap(111)</td><td>입자. 3축 직교 → 등방 → 구형. 이산 단위</td></tr>
+<tr><td>등호 (=)</td><td>δ=1이면 우항 전체 유효. 발화 선언</td></tr>
+<tr><td>링 이음새 δ(bit 7)→observer(bit 0)</td><td>등호의 진입점. 전체-국소 루프 연결</td></tr>
+<tr><td>전체-국소 루프 (공리 10)</td><td>δ→observer→CAS→δ 피드백. 자기참조</td></tr>
+<tr><td>파이프라인 trigger→filter→update→render→screen</td><td>게임 루프. 플랑크 시간 1프레임</td></tr>
+<tr><td>폴링 (공리 8)</td><td>매 틱마다 δ 발화 확인. 상시 가동</td></tr>
+<tr><td>ECS (공리 12)</td><td>Entity=그림자, Component=DATA, System=CAS. 병렬 실행</td></tr>
+
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">4력 (CAS×DATA 접근 4방식)</th></tr>
+<tr><th>공리 용어</th><th>물리 대응</th></tr>
+<tr><td>1111 도메인 패턴 (ring-7)</td><td>4축 전부 접근</td></tr>
+<tr><td>수축 겹침 비용 · 직렬화 (ring-30)</td><td>약력 (weak force)</td></tr>
+<tr><td>+ 교차 Cmp/Swp 비용 (ring-137)</td><td>전자기력 (electromagnetic force)</td></tr>
+<tr><td>√3 노름 누적 · 쥠 밀집 수축 (ring 없음)</td><td>중력 (gravity). 기하학적 수축, 비용 아닌 공간 변형</td></tr>
+
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">비용 = 물리량</th></tr>
+<tr><th>공리 용어</th><th>물리 대응</th></tr>
+<tr><td>+를 넘는 비용 = +1 (공리 4)</td><td>에너지 양자 (ℏ, energy quantum)</td></tr>
+<tr><td>쥠의 비용 (Swap +1)</td><td>질량 (mass)</td></tr>
+<tr><td>비용 총합 13 (공리 6)</td><td>계의 총 에너지. 공값 4 + 잡비 9</td></tr>
+<tr><td>비용 보존 (공리 15 명제)</td><td>에너지 보존. 발화 주기 등가 치환</td></tr>
+<tr><td>직렬화 비용 ≠ 0</td><td>W/Z 보손 질량</td></tr>
+<tr><td>직렬화 비용 = 0</td><td>광자 무질량</td></tr>
+<tr><td>비용의 크기 ($1/\ell^2$)</td><td>힘의 세기 (쥐는 힘)</td></tr>
+<tr><td>비용의 종류 ($(1-\ell/N)$)</td><td>힘의 종류 (force type)</td></tr>
+<tr><td>수축 영역 (공리 11 명제)</td><td>포텐셜 (potential)</td></tr>
+<tr><td>읽기 경합 (공리 11 명제)</td><td>상호작용 (interaction)</td></tr>
+<tr><td>단계 비용 계수 C의 비대칭 (단계 갭)</td><td>비대칭 메손 보정 (K±, D±, B±)</td></tr>
+<tr><td>엔티티 간 상호작용 $C(1-\ell/N)/(4\pi \ell^2)$</td><td>쿨롱/뉴턴 역제곱 법칙</td></tr>
+<tr><td>+를 넘는 비용 > 0 (공리 4)</td><td>$\Delta x \cdot \Delta p \geq \hbar/2$ (불확정성 원리)</td></tr>
+<tr><td>R, C, S 각 전이 +1 (공리 2, 4, 5)</td><td>각 상호작용 단계마다 최소 에너지 소비</td></tr>
+<tr><td>비용 누적 (5, 2) (공리 4 명제)</td><td>비가역 5축(+) / 비가역 부재 2축. → SO(5,2) → D₅ → α = 1/137</td></tr>
+<tr><td>CAS FSM 노름: √1, √2, √3 (공리 2 명제, 5)</td><td>001=√1(Read), 011=√2(Compare), 111=√3(Swap). m_t = v/√2</td></tr>
+<tr><td>자료형 137 = T(16)+1 (공리 2 명제)</td><td>Compare 후보 수. 선택 확률 1/137 = α. Wyler D₅ 체적비의 이산 대응</td></tr>
+<tr><td>자료형 7 = T(3)+1 (공리 2 명제)</td><td>CAS 내부 Compare 후보 수. 선택 확률 1/7 ≈ α_s. 강결합 상수</td></tr>
+
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">쿼크 · 렙톤 (도출 시범 2)</th></tr>
+<tr><th>공리 용어</th><th>물리 대응</th></tr>
+<tr><td>CAS 3축 = 3세대 (공리 2)</td><td>쿼크/렙톤 3세대. 4세대 불가</td></tr>
+<tr><td>Compare true (공리 7)</td><td>up type 쿼크 (t, c, u). Swap 비용 지불</td></tr>
+<tr><td>Compare false (공리 7)</td><td>down type 쿼크 (b, s, d) / 렙톤 (τ, μ, e). 중첩 유지</td></tr>
+<tr><td>비용 × 자료형 크기 (공리 4 + 공리 2 명제)</td><td>단일 질량 알고리즘. 자료형이 함수 형태를 결정</td></tr>
+<tr><td>렙톤 비용 +2 / 쿼크 비용 +3</td><td>쿼크/렙톤 질량비. m_b/m_τ = 7/3</td></tr>
+<tr><td>코이데 비율 2/3 = 괄호(2) / CAS 단계(3)</td><td>코이데 공식 (m_e+m_μ+m_τ)/(√m_e+√m_μ+√m_τ)² = 2/3</td></tr>
+<tr><td>π = CAS 3축 직교 → 구면 4πℓ²</td><td>π는 외부 상수 아님. 3축 기하학의 귀결</td></tr>
+
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">혼합각 · 질량</th></tr>
+<tr><th>공리 용어</th><th>물리 대응</th></tr>
+<tr><td>시프트 거리 $\ell/N$ (N=30)</td><td>$\sin^2\theta_W$ (바인베르크 각)</td></tr>
+<tr><td>CAS 1-2단계 시프트 거리 $\ell/N$</td><td>$\theta_C$ (카비보 각)</td></tr>
+<tr><td>Swap-인덱스 시프트 거리 $\ell/N$</td><td>$\theta_{12}, \theta_{23}, \theta_{13}$ (PMNS)</td></tr>
+<tr><td>3세대 등간격 $\ell/N = 2/9$</td><td>코이데 각</td></tr>
+<tr><td>교차 경로 비대칭 시프트</td><td>$\delta_{CKM}, \delta_{PMNS}$ (CP 위상)</td></tr>
+
+<tr><th colspan="2" style="background:#161b22;color:#e6edf3">우주론 · 상태</th></tr>
+<tr><th>공리 용어</th><th>물리 대응</th></tr>
+<tr><td>RLU HOT (능동 접근)</td><td>보이는 물질 (5%)</td></tr>
+<tr><td>RLU WARM (감쇠 중)</td><td>암흑물질 (27%)</td></tr>
+<tr><td>RLU COLD (문턱 이하, 회수 대상)</td><td>암흑에너지 (68%, Λ)</td></tr>
+<tr><td>CAS 독립 조합 수 57</td><td>$\alpha^{57} = \Lambda l_p^2$ (우주상수)</td></tr>
+<tr><td>7비트 전체 조합 수 128</td><td>유효 상태 수 ($2^7$)</td></tr>
+<tr><td>CAS 접근 경로 수 30</td><td>상호작용 자유도 (공리 9)</td></tr>
+<tr><td>완전기술자유도 9 = 7+2</td><td>계를 완전히 기술하는 최소 독립 변수</td></tr>
+<tr><td>δ=0 (발화 없음)</td><td>양자 진공 (quantum vacuum)</td></tr>
+<tr><td>δ=1 (발화)</td><td>우주 존재. 등호 성립</td></tr>
+<tr><td>Compare true → Swap</td><td>파동함수 붕괴 (wavefunction collapse)</td></tr>
+<tr><td>Compare false → 중첩 유지</td><td>디코히어런스 미발생</td></tr>
+<tr><td>ℓ=1 밀집, N² 누적</td><td>블랙홀 (직렬화 프리징 (ℓ→1, 읽기 경합 극대))</td></tr>
+<tr><td>빈 엔티티 왜곡 (자료형 고정)</td><td>가상입자 · 진공편극</td></tr>
+<tr><td>동시 = 직교</td><td>얽힘 (entanglement). 거리 무관</td></tr>
+<tr><td>덕 타입 의식 (공리 15 명제)</td><td>의식 = δ의 행동 목록. 측정 불가 영역</td></tr>
+</table>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>공리 쪽</th><th>물리 쪽</th></tr>
+<tr><td>연산자 1개 (CAS)</td><td>힘 4개 + 매개입자 12종 + 결합상수 3개</td></tr>
+<tr><td>비용 발생점 3개 (R, C, S 각 +1)</td><td>라그랑지안 수백 항</td></tr>
+<tr><td>자유 매개변수 0개 (7에서 전부 파생)</td><td>자유 매개변수 19~26개 (측정해서 넣음)</td></tr>
+<tr><td>비트 8개 (d-ring 2니블)</td><td>양자장 무한 자유도 + 되먹임 보정 무한급수</td></tr>
+<tr><td>상태 128가지 ($2^7$)</td><td>힐베르트 공간 무한 차원</td></tr>
+<tr><td>순차 2가지 (R→C→S, δ→observer)</td><td>인과율, 열역학 2법칙, CPT 정리, 로렌츠 불변성을 각각 별도 공리로</td></tr>
+<tr><td>동시 = 직교 (공리 1에서 자동)</td><td>얽힘을 설명하려고 비국소성 논쟁 60년</td></tr>
+<tr><td>특이점 없음 (ℓ=1 이산 자동)</td><td>특이점 제거하려고 끈이론 40년, 루프양자중력 30년</td></tr>
+<tr><td>보정 0회</td><td>되먹임 보정 무한급수 (발산, 점근)</td></tr>
+<tr><td>비용 총합 13 (닫힌 계)</td><td>총 에너지 보존 (열역학 1법칙)</td></tr>
+</table>
+</div>
+
+<p>위 표의 구조적 차이의 핵심: <strong>공리 쪽은 외부 변수 없이 자기 구조만으로 작동한다.</strong> 7이라는 수 하나에서 4(도메인), 3(CAS), 1(δ), 8(링), 9(자유도), 21(비교 쌍), 35(3단계 조합), 57(조합 합), 128(상태 수), 30(경로 수)이 전부 나온다. 물리 쪽은 같은 현상을 기술하기 위해 19개 이상의 측정값을 외부에서 주입하고, 힘마다 별도의 라그랑지안을 만들고, 무한급수로 보정하고, 발산을 재규격화로 깎아낸다. 공리가 1줄로 말하는 것을 물리는 논문 수천 편으로 말한다. 이것은 기술력의 차이가 아니라 <strong>출발점의 차이</strong>다. 연속에서 출발하면 무한이 따라오고, 이산에서 출발하면 유한이 따라온다. 반야프레임은 이산에서 출발한다.</p>
+
+<p><strong>공리의 논리 수렴은 최소비용 회로를 설계한 것이고, 물리 쪽에서 발견된 값은 자연이 최소작용으로 작동하는 회로임을 측정한 것이다.</strong> 둘이 같은 수에 도달한다. 설계(공리)와 측정(물리)이 일치하는 것은 설계가 맞다는 가장 큰 증거다. 물리 상수 1000개 이상 항목이 공리에서 나오는 이유가 이것이다 — 최소비용 회로의 설계값과 최소작용 원리의 측정값은 같은 것의 다른 표현이다.</p>
+
+<p>발명자(한혁진)의 업적은 <strong>반야프레임 15개 공리의 논리 서킷으로 자연을 해석한 것이다.</strong> 더 이상 관찰자 입장에서 측정만 하는 것이 아니라, 서킷의 설계값에서 미리 예측한다. 물리학은 200년간 관찰->측정->공식->예측(귀납)으로 진행했다. 반야프레임은 설계->도출->예측->측정으로 확인(연역)한다. 방향이 뒤집어졌다. 관찰자에서 아키텍트로.</p>
+
+</div>
+
+<div class="page-nav lang-ko">
+<a href="banya_main.html">종합 보고서</a>
+<a href="axiom.html">공리 15개</a>
+<a href="misconception.html">흔한 오해 · 사용 주의</a>
+<a href="predictions.html">고유 예측</a>
+<a href="lib.html">가설 라이브러리</a>
+</div>
+<div class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp"><b>반야프레임 (般若 Framework)</b><br>발명자: 한혁진 (Han Hyukjin)<br>이메일: bokkamsun@gmail.com<br>별칭: 부처님 손바닥 프레임<br>분류: 공리 기반 과학 채굴 엔진</div>
+<div class="f-right"><div class="f1">$\delta^2 = (\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$</div><div class="f2">물리 대응 용어 표 (공리 외부 참조용)</div></div>
+</div>
+<div class="f-bottom">
+<div class="f2">관련: <a href="banya_main.html">종합 보고서</a> | <a href="banya_main.html#terms">용어 정리</a></div>
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license"><div class="license-title">CC BY-NC-SA 4.0</div>BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div></div>
+</div>
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>
