@@ -23,7 +23,7 @@
 .box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
 .box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
 .box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
-.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; overflow-x:auto; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
 .finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
 .step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
 .step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
@@ -49,7 +49,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="d02.html">D-02</a>: 바인베르크 각 sin²θ_W = 7/30 의 구조적 의미 (S급, α 독립 도출)</strong></p>
-<div class="formula-box">$$\sin^2\theta_W^{\text{tree}} = \frac{4\pi^2 - 3}{16\pi^2} = 0.23101 \quad \text{(α 독립)} \qquad \sin^2\theta_W^{\text{run}} = \frac{3}{4\pi}\!\left(1 - \!\left(4+\tfrac{1}{\pi}\right)\alpha\right) = 0.23121$$</div>
+<div class="formula-wrap"><div class="formula-box">$$\sin^2\theta_W^{\text{tree}} = \frac{4\pi^2 - 3}{16\pi^2} = 0.23101 \quad \text{(α 독립)} \qquad \sin^2\theta_W^{\text{run}} = \frac{3}{4\pi}\!\left(1 - \!\left(4+\tfrac{1}{\pi}\right)\alpha\right) = 0.23121$$</div></div>
 <p class="finding-precision">tree-level 오차 0.09% · running(M_Z) 오차 0.005% · PDG 2024 실험값 0.23122 · α 독립 경로로 도출되어 D-01과 교차 검증 가능</p>
 <p><strong>발견의 순간:</strong> tree-level 공식 (4π²-3)/(16π²)이 α 없이 순수 기하로 떨어진 게 결정적이었다. α를 입력으로 받으면 순환 논증(α = g²sin²θ_W/4π)이지만, 본 도출은 <a href="../axiom.html#ax9">공리 9</a> 자료형 30(접근 경로 수 = 7×4+2)에서 직접 나온다. 자료형 30에서 7/30 = 0.2333 (D-56)이 거친 근사이고, 곡률 보정 3/(16π²)을 빼면 (4π²-3)/(16π²)이 정밀화된 형태. v1.8 정독에서 결정적 통찰: 자료형 30이 CAS 자유도 7과 도메인 4의 조합 30=7×4+2에서 나오므로, sin²θ_W는 7/30의 곡률 보정으로 자동 도출.</p>
 <p>v1.8 정합 체인: <a href="../axiom.html#ax1">공리 1</a>(4축 직교) + <a href="../axiom.html#ax2">공리 2</a>(CAS 3단계) ==&gt; <a href="../axiom.html#ax9">공리 9</a> 자료형 30(접근 경로) ==&gt; 수축 겹침비 (1-ℓ/N)에서 ℓ=23, N=30 일 때의 비율 = 7/30. 곡률 보정 3/(16π²)은 SU(2) 1루프 보정 = CAS 단계 3 / (구면 4π² × 2바이벡터). 이것이 (4π²-3)/(16π²)의 의미.</p>
@@ -69,7 +69,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h2>v1.8 공리 기준 5단계 재귀 대입</h2>
 <div class="step">
 <h3>1단계. 반야식 출발</h3>
-<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
 <p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
 </div>
 <div class="step">

@@ -23,7 +23,7 @@
 .box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
 .box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
 .box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
-.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; overflow-x:auto; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
 .finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
 .step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
 .step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
@@ -49,7 +49,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="box-finding">
 <h3>Core Finding</h3>
 <p><strong><a href="d02.html">D-02</a>: structural meaning of Weinberg angle sin²θ_W = 7/30 (S-grade, α-independent derivation)</strong></p>
-<div class="formula-box">$$\sin^2\theta_W^{\text{tree}} = \frac{4\pi^2 - 3}{16\pi^2} = 0.23101 \quad \text{(α independent)} \qquad \sin^2\theta_W^{\text{run}} = \frac{3}{4\pi}\!\left(1 - \!\left(4+\tfrac{1}{\pi}\right)\alpha\right) = 0.23121$$</div>
+<div class="formula-wrap"><div class="formula-box">$$\sin^2\theta_W^{\text{tree}} = \frac{4\pi^2 - 3}{16\pi^2} = 0.23101 \quad \text{(α independent)} \qquad \sin^2\theta_W^{\text{run}} = \frac{3}{4\pi}\!\left(1 - \!\left(4+\tfrac{1}{\pi}\right)\alpha\right) = 0.23121$$</div></div>
 <p class="finding-precision">tree-level Error 0.09% · running(M_Z) Error 0.005% · PDG 2024 experimental value 0.23122 · derived via an α-independent path, enabling cross-verification with D-01</p>
 <p><strong>Moment of Discovery:</strong> The decisive feature was that the tree-level Banya formula (4π²-3)/(16π²) dropped out as pure geometry, without α. Taking α as input would produce a cyclic argument (α = g²sin²θ_W/4π), but this derivation comes directly from <a href="../axiom.html#ax9">Axiom 9</a>'s data type 30 (number of access paths = 7×4+2). From data type 30, the coarse approximation 7/30 = 0.2333 (D-56) emerges, and subtracting the curvature correction 3/(16π²) gives the refined form (4π²-3)/(16π²). The decisive insight from the v1.8 reading: data type 30 arises from the combination of CAS self-induction 7 and domain 4 as 30 = 7×4+2, so sin²θ_W is automatically derived as the curvature correction to 7/30.</p>
 <p>v1.8 consistent chain: <a href="../axiom.html#ax1">Axiom 1</a> (4 orthogonal axes) + <a href="../axiom.html#ax2">Axiom 2</a> (CAS 3 stages) ==&gt; <a href="../axiom.html#ax9">Axiom 9</a> data type 30 (access paths) ==&gt; the contraction overlap ratio (1-ℓ/N) with ℓ=23, N=30 yields 7/30. The curvature correction 3/(16π²) is the SU(2) one-loop correction = CAS stage 3 / (spherical 4π² × 2 bivector). This is the meaning of (4π²-3)/(16π²).</p>
@@ -69,7 +69,7 @@ weak = ring-30 (v1.8 physics_map) classification maps directly onto data type 30
 <h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
-<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
 <p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
 </div>
 <div class="step">

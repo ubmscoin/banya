@@ -23,7 +23,7 @@
 .box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
 .box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
 .box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
-.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; overflow-x:auto; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
 .finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
 .step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
 .step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
@@ -49,7 +49,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="d03.html">D-03</a>: 강결합상수 α_s = 3α(4π)^(2/3) — 색 자유도 3 = CAS 3축 직교 (S급)</strong></p>
-<div class="formula-box">$$\alpha_s = 3\,\alpha\,(4\pi)^{2/3} = 0.1183$$</div>
+<div class="formula-wrap"><div class="formula-box">$$\alpha_s = 3\,\alpha\,(4\pi)^{2/3} = 0.1183$$</div></div>
 <p class="finding-precision">오차 0.3% · PDG 2024 실험값 α_s(M_Z) = 0.1179 ± 0.0009 · α 재투입 도출 · ring-7 (강력 FSM 원자성) 영역</p>
 <p><strong>발견의 순간:</strong> 색 자유도 = 3이 어디서 왔는가? 라이브러리 본문은 "CAS Swap이 3색 자유도를 쥐는 비용"이라 표현. v1.8 정독에서 결정적 통찰: <a href="../axiom.html#ax2">공리 2</a> 명제 "CAS 3축 직교"의 R, C, S 3개 독립 비트(001, 010, 100)가 SU(3) 색 자유도 3개와 1:1 매핑. 색은 별도 가설이 아니라 CAS 자체 구조의 정점에서 자동 도출. 그래서 α_s = 3 × (α × 기하 인자)에서 3이 단지 곱셈 계수가 아니라 CAS 3축 직교의 표현.</p>
 <p>v1.8 정합 체인: <a href="../axiom.html#ax1">공리 1</a>(4축) ==&gt; <a href="../axiom.html#ax2">공리 2</a>(CAS 3단계, 3축 직교) ==&gt; SU(3) = CAS 3축 회전군 ==&gt; 색 자유도 3 ==&gt; α_s = 3α(4π)^(2/3). (4π)^(2/3) 인자는 입체각 4π의 2/3 power = 구면 분할에서 단순 비대각 항. <a href="../axiom.html#ax7">공리 7</a>(Compare true ==&gt; Swap 쓰기, false ==&gt; 중첩 유지)이 색의 confined 상태(Compare true ==&gt; 결합)와 deconfined 상태(Compare false ==&gt; 자유)를 가른다.</p>
@@ -68,7 +68,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h2>v1.8 공리 기준 5단계 재귀 대입</h2>
 <div class="step">
 <h3>1단계. 반야식 출발</h3>
-<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
 <p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
 </div>
 <div class="step">

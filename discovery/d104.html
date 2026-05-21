@@ -23,7 +23,7 @@
 .box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
 .box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
 .box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
-.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; overflow-x:auto; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
 .finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
 .step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
 .step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
@@ -49,7 +49,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="d104.html">D-104</a>: 4력 통합 — CAS 단일 연산자, 4가지 비용 패턴 — S급</strong></p>
-<div class="formula-box">$$	ext{CAS}(1) 	imes 	ext{domain bit patterns}(4) = 	ext{"4 forces"}$$</div>
+<div class="formula-wrap"><div class="formula-box">$$	ext{CAS}(1) 	imes 	ext{domain bit patterns}(4) = 	ext{"4 forces"}$$</div></div>
 <p class="finding-precision">오차 0% — 수치 도출이 아닌 구조적 식별.</p>
 <p>무엇: 4가지 기본 힘이 CAS 단일 연산자(<a href="../axiom.html#ax2">공리 2</a>)의 도메인 4비트 패턴으로 통합됨을 식별한다.</p>
 <p>반야식: CAS(1) × domain bit patterns(4) = "4 forces". CAS는 유일한 연산자(<a href="../axiom.html#ax2">공리 2</a>)이며, 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>: $2^4 = 16$ 주소 공간)의 ON/OFF 패턴이 4가지 비용 구조를 만든다. 1111 = 강력(CAS 원자성 111 유지), 0001 = 약력(수축 겹침 비용, <a href="../axiom.html#ax13">공리 13</a> 명제), 0110 = 전자기력(교차 도메인 Compare·Swap), 1000 = 중력(Swap 누적).</p>
@@ -90,16 +90,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <li>강력 = FSM 원자성, 3력 = ECS 영역 — physics_map v1.8 정합  (단 중력은 ECS 안에서도 ring 없는 특수 케이스)</li>
 </ul>
 <p><strong>v1.8 재채굴 식:</strong></p>
-<div class="formula-box">
+<div class="formula-wrap"><div class="formula-box">
 $$\text{CAS}(1) \times \text{ring 분류} = \{ \text{FSM 원자성, ring-30, ring-137, ring 없음(중력)} \}$$
-</div>
+</div></div>
 <p>4력 = CAS 단일 연산자 × 4가지 ring 접근 방식 (ring-7=강력 FSM 닫힘, ring-30=약력, ring-137=전자기, ring 없음=중력 √3 노름 수축).</p>
 <p><strong>관련 공리:</strong> <a href="../axiom.html#ax1">공리 1</a>(4축 직교), <a href="../axiom.html#ax2">공리 2</a>(CAS R·C·S 3단계 + 워크벤치 √3), <a href="../axiom.html#ax4">공리 4</a>(비용 = + 순서 횡단), <a href="../axiom.html#ax11">공리 11</a>(다중 투영, 거리 ℓ, 수축 겹침 1-ℓ/N), <a href="../axiom.html#ax12">공리 12</a>(FSM/RLU 구간 분리), <a href="../axiom.html#ax13">공리 13</a>(인덱싱, 1/4πℓ²).</p>
 </div>
 <h2>v1.8 공리 기준 5단계 재귀 대입</h2>
 <div class="step">
 <h3>1단계. 반야식 출발</h3>
-<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
 <p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
 </div>
 <div class="step">
