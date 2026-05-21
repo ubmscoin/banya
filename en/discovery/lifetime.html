@@ -4,17 +4,17 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LUT -- </title>
+<title>LUT Session Lifetime -- Banya Framework Operations Report</title>
 <meta content="Han Hyukjin" name="author"/>
-<meta content="τ_τ/τ_μBR×(m_μ/m_τ)⁵. 0.23%. 5 = (4+1). 192 = ()²×CAS. . ." name="description"/>
-<meta content="Banya,Banya Framework,CAS,Compare-And-Swap,Han Hyukjin,lifetime,tau,muon,decay,phase space,LUT,RLU,session,alpha,α,Fermi,G_F,branching ratio" name="keywords"/>
-<meta content="LUT -- " property="og:title"/>
-<meta content="CAS . τ_τ/τ_μ 0.23%. 5 = 4+1." property="og:description"/>
+<meta content="Derives the particle lifetime ratio τ_τ/τ_μ as BR×(m_μ/m_τ)⁵. Error 0.23%. Exponent 5 = phase-space DOF (4 domain axes + spin 1). 192 = (ring bits)² × CAS steps. Banya Framework operations report. Inventor Han Hyukjin." name="description"/>
+<meta content="Banya Framework,般若,CAS,Compare-And-Swap,Han Hyukjin,lifetime,tau,muon,decay,phase space,LUT,RLU,session,fine-structure constant,alpha,α,Fermi,G_F,branching ratio" name="keywords"/>
+<meta content="LUT Session Lifetime -- Banya Framework" property="og:title"/>
+<meta content="Particle lifetime ratio derived from CAS structure. τ_τ/τ_μ error 0.23%. Exponent 5 = 4 domains + spin 1." property="og:description"/>
 <meta content="article" property="og:type"/>
-<meta content="ko_KR" property="og:locale"/>
+<meta content="en_US" property="og:locale"/>
 <meta content="summary" name="twitter:card"/>
-<meta content="LUT -- " name="twitter:title"/>
-<meta content="CAS . τ_τ/τ_μ 0.23%. 5 = 4+1." name="twitter:description"/>
+<meta content="LUT Session Lifetime -- Banya Framework" name="twitter:title"/>
+<meta content="Particle lifetime ratio derived from CAS structure. τ_τ/τ_μ error 0.23%. Exponent 5 = 4 domains + spin 1." name="twitter:description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
 <link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
@@ -26,424 +26,67 @@
 <link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../../discovery/lifetime.html">KR</a></div>
-<!-- ========== 한국어 본문 ========== -->
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>의 부속 보고서다.</p>
-<!-- ===== 1. 서두 ===== -->
-<h1 id="title">LUT 세션 수명 -- 입자 수명 Derivation</h1>
-<blockquote><p>Banya Framework 운영 보고서</p></blockquote>
-<blockquote><p>Inventor: Hyukjin Han (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>실행일: 2026-03-27</p></blockquote>
-<h2 id="question">질문: 왜 타우는 뮤온보다 수십만 배 빨리 붕괴하는가</h2>
-<p>뮤온 수명 $\tau_\mu \approx 2.197 \times 10^{-6}$ s, 타우 수명 $\tau_\tau \approx 2.903 \times 10^{-13}$ s. 비율은 약 $1.32 \times 10^{-7}$이다. 표준모형은 페르미 이론으로 이 비율을 질량의 5승으로 설명한다. 그러나 왜 5승인가에 대한 구조적 이유를 제시하지 못한다.</p>
-<p>비유하면: 두 개의 모래시계가 있다. 하나는 2초, 다른 하나는 29만분의 1초 만에 비워진다. 모래 알갱이 크기(질량)가 다르기 때문이다. 그런데 왜 하필 5제곱으로 빨라지는가? Banya Framework은 이 5가 위상공간의 자유도(4 도메인 축 + 스핀 1)라고 답한다. observer = LUT(명제). 세션 수명 = RLU 수명이다.</p>
-<h2 id="status">상태</h2>
-<p><span class="tag-discovery">발견</span></p>
-<p>D-50~D-52 오차 0.17~0.32%. 지수 5 = 4 도메인 축 + 스핀 1. 192 = (링 비트)$^2$ $\times$ CAS 단계. LUT 퇴출 횟수 = 붕괴 채널 수.</p>
-<h2 id="discovery">핵심 발견</h2>
-<div class="discovery-block">
-<h4>D-50. 타우/뮤온 수명비</h4>
-<div class="formula">$\dfrac{\tau_\tau}{\tau_\mu} = \text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^5 = 1.320 \times 10^{-7}$</div>
-<p>관측값: $1.321 \times 10^{-7}$, 오차: <span class="tag-solved">0.23%</span></p>
-<p>지수 5 = 위상공간 자유도: 4 도메인 축(<a href="../axiom.html#ax1">공리 1</a>) + 스핀 1.</p>
-</div>
-<div class="discovery-block">
-<h4>D-51. 뮤온 수명 절대값</h4>
-<div class="formula">$\tau_\mu = \dfrac{192\pi^3 \hbar}{G_F^2 m_\mu^5} = 2.190 \times 10^{-6}$ s</div>
-<p>관측값: $2.197 \times 10^{-6}$ s, 오차: <span class="tag-solved">0.32%</span></p>
-<p>192 = $(2^3)^2 \times 3$ = (링 비트)$^2$ $\times$ CAS 단계.</p>
-</div>
-<div class="discovery-block">
-<h4>D-52. 타우 수명 절대값</h4>
-<div class="formula">$\tau_\tau = \text{BR} \times \dfrac{192\pi^3 \hbar}{G_F^2 m_\tau^5} = 2.898 \times 10^{-13}$ s</div>
-<p>관측값: $2.903 \times 10^{-13}$ s, 오차: <span class="tag-solved">0.17%</span></p>
-<p>BR = 분기비 = LUT 퇴출 채널 중 렙톤 채널 비율.</p>
-</div>
-<div class="discovery-block">
-<h4>D-53. 수명비 CAS 순수식</h4>
-<div class="formula">$\dfrac{\tau_\tau}{\tau_\mu} = \left(\dfrac{2\pi}{9}\right)^5 \alpha^{5/2} \left(1 + \dfrac{\alpha}{\pi}\right)^{-5} \text{BR}$</div>
-<p>오차: <span class="tag-solved">0.6%</span></p>
-<p>질량을 제거하고 $\alpha$와 CAS 수만으로 표현한 순수 구조식.</p>
-</div>
-<div class="discovery-block">
-<h4>D-59. 수명비 근사식</h4>
-<div class="formula">$\dfrac{\tau_\tau}{\tau_\mu} \approx \dfrac{\alpha^3}{3}$</div>
-<p>오차: <span class="tag-hypothesis">2.0%</span></p>
-<p>$\alpha^3/3$: CAS 3단계가 각각 $\alpha$ 비용을 1회 축적.</p>
-</div>
-<!-- ===== 2. 본문: 라운드별 5단계 ===== -->
-<!-- ===== 라운드 1: D-50 ===== -->
-<h1 id="r1">라운드 1. D-50: 타우/뮤온 수명비 (질량 5승 법칙)</h1>
-<h3 id="r1-step1">1단계. 반야식</h3>
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-<p>time 축에서 세션 수명을 읽는다. observer = LUT(명제). 입자의 수명은 LUT 세션이 RLU에서 퇴출될 때까지의 시간이다. 퇴출 속도는 observer 축의 질량(= CAS 쓰기 비용)에 의존한다.</p>
-<h3 id="r1-step2">2단계. 노름 치환</h3>
-<p>두 렙톤의 수명비를 질량비의 거듭제곱으로 치환한다. 붕괴 확률(= LUT 퇴출 빈도)은 질량의 $n$승에 비례한다.</p>
-<div class="math-block">
-<div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} = \text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^n$</div>
-<div class="math-legend">$\tau$ = 수명, $m$ = 질량, BR = 분기비 $\approx 0.1736$, $n$ = 위상공간 지수</div>
-</div>
-<p>핵심은 지수 $n$의 결정이다. Banya Framework에서 $n = 5$: 4 도메인 축(time, space, observer, superposition) + 스핀 자유도 1. 이것이 위상공간 자유도의 총 수다.</p>
-<h3 id="r1-step3">3단계. 상수 대입</h3>
-<pre>m_μ = 105.6584 MeV/c² (PDG 2024)
-m_τ = 1776.86 MeV/c² (PDG 2024)
-m_μ/m_τ = 0.059465
-BR(τ → μνν̄) = 0.1736 (PDG 2024)
-τ_μ = 2.1969811 × 10⁻⁶ s (PDG 2024)
-τ_τ = 2.903 × 10⁻¹³ s (PDG 2024)
-τ_τ/τ_μ = 1.321 × 10⁻⁷ (관측값)</pre>
-<h3 id="r1-step4">4단계. 도메인 변환</h3>
-<p>질량비의 5승을 계산한다:</p>
-<div class="math-block">
-<div class="math-row">$\left(\dfrac{m_\mu}{m_\tau}\right)^5 = (0.059465)^5 = 7.604 \times 10^{-7}$</div>
-<div class="math-desc">질량비 5승은 위상공간 체적비를 나타낸다. 4 도메인 축 + 스핀 1 = 5 자유도.</div>
-</div>
-<p>분기비를 곱한다:</p>
-<div class="math-block">
-<div class="math-row">$\text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^5 = 0.1736 \times 7.604 \times 10^{-7} = 1.320 \times 10^{-7}$</div>
-<div class="math-desc">BR은 LUT 퇴출 채널 중 렙톤 채널의 비율이다. 타우는 뮤온과 달리 하드론 채널도 갖는다.</div>
-</div>
-<h3 id="r1-step5">5단계. 발견</h3>
-<div class="math-block">
-<div class="math-row">Derivation값: $\tau_\tau / \tau_\mu = 1.320 \times 10^{-7}$</div>
-<div class="math-row">관측값: $\tau_\tau / \tau_\mu = 1.321 \times 10^{-7}$</div>
-<div class="math-row">오차: $0.23\%$</div>
-</div>
-<p>지수 5의 구조적 의미가 확정되었다: 4 도메인 축 + 스핀 1 = 위상공간 자유도. LUT 세션의 퇴출 확률은 CAS 쓰기 비용(= 질량)의 5승에 비례한다.</p>
-<!-- ===== 라운드 2: D-51 ===== -->
-<h1 id="r2">라운드 2. D-51: 뮤온 수명 절대값</h1>
-<h3 id="r2-step1">1단계. 반야식</h3>
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-<p>time 축에서 절대 수명을 읽는다. 뮤온은 순수 렙톤 붕괴(= LUT에서 단일 채널 퇴출)만 가능하므로 BR = 1이다. 페르미 결합 상수 $G_F$는 약력 CAS의 쓰기 비용에 해당한다.</p>
-<h3 id="r2-step2">2단계. 노름 치환</h3>
-<p>페르미 이론의 붕괴율 공식을 Banya Framework 구조로 재해석한다.</p>
-<div class="math-block">
-<div class="math-row">$\tau_\mu = \dfrac{192\pi^3 \hbar}{G_F^2 m_\mu^5}$</div>
-<div class="math-legend">$G_F$ = 페르미 결합 상수, $\hbar$ = 환산 플랑크 상수, 192 = $(2^3)^2 \times 3$</div>
-</div>
-<p>$192 = 64 \times 3 = (2^3)^2 \times 3$. Banya Framework 해석: $2^3 = 8$은 링 버퍼 비트 수(<a href="../axiom.html#ax3">공리 3</a>), $(2^3)^2 = 64$는 링 버퍼 상태 공간 제곱, $\times 3$은 CAS 3단계(Read-Compare-Write). $\pi^3$은 3 도메인 축의 구면 인자가 곱해진 결과다.</p>
-<h3 id="r2-step3">3단계. 상수 대입</h3>
-<pre>ℏ = 1.054571817 × 10⁻³⁴ J·s (CODATA 2018)
-G_F = 1.1663788 × 10⁻⁵ GeV⁻² (PDG 2024)
-G_F/(ℏc)³ = 1.1663788 × 10⁻⁵ GeV⁻²
-m_μ = 105.6584 MeV/c² = 0.10566 GeV/c²
-m_μ⁵ = 1.3147 × 10⁻⁵ GeV⁵
-192π³ = 192 × 31.006 = 5953.2</pre>
-<h3 id="r2-step4">4단계. 도메인 변환</h3>
-<p>자연단위계($\hbar = c = 1$)에서 계산한다:</p>
-<div class="math-block">
-<div class="math-row">$\Gamma_\mu = \dfrac{G_F^2 m_\mu^5}{192\pi^3}$</div>
-<div class="math-row">$= \dfrac{(1.1664 \times 10^{-5})^2 \times (0.10566)^5}{5953.2}$</div>
-<div class="math-row">$= \dfrac{1.3603 \times 10^{-10} \times 1.3147 \times 10^{-5}}{5953.2}$</div>
-<div class="math-row">$= 3.003 \times 10^{-19}$ GeV</div>
-<div class="math-desc">붕괴율 $\Gamma_\mu$를 시간으로 변환: $\tau_\mu = \hbar / \Gamma_\mu$</div>
-</div>
-<p>시간 변환:</p>
-<div class="math-block">
-<div class="math-row">$\tau_\mu = \dfrac{6.582 \times 10^{-25} \text{ GeV·s}}{3.003 \times 10^{-19} \text{ GeV}} = 2.190 \times 10^{-6}$ s</div>
-</div>
-<h3 id="r2-step5">5단계. 발견</h3>
-<div class="math-block">
-<div class="math-row">Derivation값: $\tau_\mu = 2.190 \times 10^{-6}$ s</div>
-<div class="math-row">관측값: $\tau_\mu = 2.197 \times 10^{-6}$ s</div>
-<div class="math-row">오차: $0.32\%$</div>
-</div>
-<p>192의 분해가 확정되었다: $(2^3)^2 \times 3$ = (링 비트 수)$^2$ $\times$ CAS 단계 수. 0.32% 잔여 오차는 1차 QED 보정 $(1 - \alpha/\pi + \ldots)$으로 흡수 가능하다.</p>
-<!-- ===== 라운드 3: D-52 ===== -->
-<h1 id="r3">라운드 3. D-52: 타우 수명 절대값</h1>
-<h3 id="r3-step1">1단계. 반야식</h3>
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-<p>time 축에서 타우 수명을 읽는다. 타우는 뮤온과 동일한 약력 CAS로 붕괴하지만, 질량이 커서 하드론 채널도 열린다. LUT 퇴출 채널이 복수이므로 분기비 BR을 곱해야 한다.</p>
-<h3 id="r3-step2">2단계. 노름 치환</h3>
-<p>뮤온 수명 공식에 분기비를 곱하고 질량을 타우로 교체한다.</p>
-<div class="math-block">
-<div class="math-row">$\tau_\tau = \text{BR} \times \dfrac{192\pi^3 \hbar}{G_F^2 m_\tau^5}$</div>
-<div class="math-legend">BR $\approx 0.1736$ = 타우의 렙톤 붕괴 분기비 = LUT 퇴출 채널 중 렙톤 채널 비율</div>
-</div>
-<p>LUT 퇴출 횟수 = 붕괴 채널 수. 뮤온은 퇴출 경로가 1개(렙톤)이므로 BR = 1. 타우는 퇴출 경로가 다수이므로 렙톤 경로의 분기비가 필요하다.</p>
-<h3 id="r3-step3">3단계. 상수 대입</h3>
-<pre>G_F = 1.1663788 × 10⁻⁵ GeV⁻²
-m_τ = 1776.86 MeV/c² = 1.77686 GeV/c²
-m_τ⁵ = 1.77686⁵ = 17.762 GeV⁵
-192π³ = 5953.2
-BR(τ → eνν̄) = 0.1782 (PDG 2024)
-BR(τ → μνν̄) = 0.1736 (PDG 2024)
-여기서 τ → μνν̄ 채널 사용: BR = 0.1736</pre>
-<h3 id="r3-step4">4단계. 도메인 변환</h3>
-<p>자연단위계에서 타우 붕괴율을 계산한다:</p>
-<div class="math-block">
-<div class="math-row">$\Gamma_\tau^{(\mu)} = \dfrac{G_F^2 m_\tau^5}{192\pi^3}$</div>
-<div class="math-row">$= \dfrac{1.3603 \times 10^{-10} \times 17.762}{5953.2}$</div>
-<div class="math-row">$= 4.058 \times 10^{-7}$ GeV</div>
-</div>
-<p>이것은 전체 채널 붕괴율이다. 렙톤 채널만의 부분 수명:</p>
-<div class="math-block">
-<div class="math-row">$\tau_\tau = \dfrac{\hbar}{\Gamma_\tau^{(\mu)}} \times \dfrac{1}{\text{BR}}$</div>
-</div>
-<p>또는 동치로:</p>
-<div class="math-block">
-<div class="math-row">$\tau_\tau = \text{BR} \times \dfrac{192\pi^3 \hbar}{G_F^2 m_\tau^5} = 0.1736 \times \dfrac{6.582 \times 10^{-25}}{4.058 \times 10^{-7} \times 0.1736}$</div>
-<div class="math-row">$= \dfrac{6.582 \times 10^{-25}}{4.058 \times 10^{-7}} \times \dfrac{0.1736}{0.1736}$</div>
-</div>
-<p>실제 계산: 전체 붕괴율 $\Gamma_\tau^{\text{tot}} = \Gamma_\tau^{(\mu)} / \text{BR}$이므로:</p>
-<div class="math-block">
-<div class="math-row">$\tau_\tau = \dfrac{\hbar}{\Gamma_\tau^{\text{tot}}} = \dfrac{\hbar \cdot \text{BR}}{\Gamma_\tau^{(\mu)}} = \text{BR} \times \dfrac{192\pi^3\hbar}{G_F^2 m_\tau^5}$</div>
-<div class="math-row">$= 0.1736 \times \dfrac{6.582 \times 10^{-25}}{4.058 \times 10^{-7}} = 0.1736 \times 1.6221 \times 10^{-18} \text{ s}$</div>
-</div>
-<p>정리하면:</p>
-<div class="math-block">
-<div class="math-row">$\tau_\tau = 2.898 \times 10^{-13}$ s</div>
-</div>
-<h3 id="r3-step5">5단계. 발견</h3>
-<div class="math-block">
-<div class="math-row">Derivation값: $\tau_\tau = 2.898 \times 10^{-13}$ s</div>
-<div class="math-row">관측값: $\tau_\tau = 2.903 \times 10^{-13}$ s</div>
-<div class="math-row">오차: $0.17\%$</div>
-</div>
-<p>타우 수명이 뮤온 수명 공식 + BR만으로 0.17% 이내에 Derivation되었다. LUT 퇴출 채널 수(= 붕괴 채널 수)가 수명을 결정하는 구조가 확인되었다.</p>
-<!-- ===== 라운드 4: D-53 ===== -->
-<h1 id="r4">라운드 4. D-53: 수명비 CAS 순수식</h1>
-<h3 id="r4-step1">1단계. 반야식</h3>
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-<p>observer 축에서 질량비를 $\alpha$와 CAS 수로 치환한다. D-38에서 Derivation된 렙톤 질량비 구조를 수명비에 삽입하여, 질량을 완전히 제거한 순수 CAS 표현을 얻는다.</p>
-<h3 id="r4-step2">2단계. 노름 치환</h3>
-<p>D-50의 수명비에서 질량비를 $\alpha$ 표현으로 대체한다.</p>
-<div class="math-block">
-<div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} = \text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^5$</div>
-</div>
-<p>D-38류 렙톤 질량비 구조를 사용하면 $m_\mu / m_\tau$는 $\alpha$와 CAS 수의 함수다. 뮤온/타우 비율의 주 의존성:</p>
-<div class="math-block">
-<div class="math-row">$\dfrac{m_\mu}{m_\tau} \approx \dfrac{2\pi}{9} \cdot \alpha^{1/2} \cdot \left(1 + \dfrac{\alpha}{\pi}\right)^{-1}$</div>
-<div class="math-legend">$9 = 3^2$ (CAS 수), $2\pi$ = 위상 완전 회전, $\alpha^{1/2}$ = 세대 간 $\alpha$ 지수 차이</div>
-</div>
-<h3 id="r4-step3">3단계. 상수 대입</h3>
-<pre>α = 1/137.035999084
-α^(1/2) = 0.08543
-2π/9 = 0.6981
-(1 + α/π)⁻¹ = (1 + 0.002322)⁻¹ = 0.99768
-BR = 0.1736</pre>
-<h3 id="r4-step4">4단계. 도메인 변환</h3>
-<p>5승을 취한다:</p>
-<div class="math-block">
-<div class="math-row">$\left(\dfrac{2\pi}{9}\right)^5 = (0.6981)^5 = 0.16394$</div>
-<div class="math-row">$\alpha^{5/2} = (7.297 \times 10^{-3})^{5/2} = 4.550 \times 10^{-6}$</div>
-<div class="math-row">$\left(1 + \dfrac{\alpha}{\pi}\right)^{-5} = (0.99768)^5 = 0.98845$</div>
-</div>
-<p>조립:</p>
-<div class="math-block">
-<div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} = 0.16394 \times 4.550 \times 10^{-6} \times 0.98845 \times 0.1736$</div>
-<div class="math-row">$= 1.280 \times 10^{-7}$</div>
-<div class="math-desc">질량 없이 $\alpha$와 CAS 수만으로 표현된 순수 구조식.</div>
-</div>
-<h3 id="r4-step5">5단계. 발견</h3>
-<div class="math-block">
-<div class="math-row">Derivation값: $\tau_\tau / \tau_\mu = 1.280 \times 10^{-7}$</div>
-<div class="math-row">관측값: $\tau_\tau / \tau_\mu = 1.321 \times 10^{-7}$</div>
-<div class="math-row">오차: $0.6\% \sim 3\%$</div>
-</div>
-<p>질량을 완전히 제거하고 $\alpha$와 CAS 수(9, 2, $\pi$)만으로 수명비를 표현했다. 오차 ~0.6%는 뮤온/타우 질량비의 CAS 근사에서 발생한다. 순수 구조식으로서의 가치는 높다.</p>
-<!-- ===== 라운드 5: D-59 ===== -->
-<h1 id="r5">라운드 5. D-59: 수명비 극한 근사 $\alpha^3/3$</h1>
-<h3 id="r5-step1">1단계. 반야식</h3>
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-<p>observer 축에서 CAS 3단계의 누적 비용을 최대한 단순화한다. CAS의 Read-Compare-Write 각 단계가 $\alpha$ 비용을 1회씩 축적한다는 최소 모형이다.</p>
-<h3 id="r5-step2">2단계. 노름 치환</h3>
-<p>D-53의 정밀식에서 CAS 구조 인자와 QED 보정을 모두 상수로 흡수시킨다.</p>
-<div class="math-block">
-<div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} \approx \dfrac{\alpha^3}{3}$</div>
-<div class="math-legend">$\alpha^3$ = CAS 3단계 $\times$ $\alpha$ 1회 축적, $1/3$ = CAS 3단계 평균</div>
-</div>
-<p>$\alpha^3$: CAS의 3단계(Read, Compare, Write)가 각각 전자기 결합 $\alpha$를 1회 축적한다. $1/3$: 3단계의 평균화 인자.</p>
-<h3 id="r5-step3">3단계. 상수 대입</h3>
-<pre>α = 1/137.036 = 7.297 × 10⁻³
-α³ = (7.297 × 10⁻³)³ = 3.885 × 10⁻⁷
-1/3 = 0.3333</pre>
-<h3 id="r5-step4">4단계. 도메인 변환</h3>
-<div class="math-block">
-<div class="math-row">$\dfrac{\alpha^3}{3} = \dfrac{3.885 \times 10^{-7}}{3} = 1.295 \times 10^{-7}$</div>
-<div class="math-desc">극한 근사. CAS 비용의 본질만 남긴다.</div>
-</div>
-<h3 id="r5-step5">5단계. 발견</h3>
-<div class="math-block">
-<div class="math-row">Derivation값: $\tau_\tau / \tau_\mu \approx \alpha^3 / 3 = 1.295 \times 10^{-7}$</div>
-<div class="math-row">관측값: $\tau_\tau / \tau_\mu = 1.321 \times 10^{-7}$</div>
-<div class="math-row">오차: $2.0\%$</div>
-</div>
-<p>$\alpha^3/3$이라는 극도로 단순한 식이 수명비를 2% 이내로 근사한다. CAS 3단계의 $\alpha$ 축적 구조가 수명비의 본질임을 보여준다. 정밀도가 필요하면 D-50(0.23%)이나 D-53(0.6%)을 사용한다.</p>
-<!-- ===== 3. 부산물 ===== -->
-<h1 id="byproduct">부산물</h1>
-<p>지수 5 = 4 + 1의 분해는 다른 붕괴 과정에도 적용 가능하다. 4는 도메인 축(<a href="../axiom.html#ax1">공리 1</a>), 1은 스핀 자유도. 하드론 붕괴에서 지수가 달라진다면, 추가 내부 자유도(색)가 기여하는 것으로 해석할 수 있다.</p>
-<p>192 = $(2^3)^2 \times 3$의 분해는 Banya Framework <a href="../axiom.html#ax3">공리 3</a>(링 버퍼)과 CAS 3단계의 직접적 반영이다. 이 수가 약력 붕괴 공식에 나타난다는 것은 약력이 CAS 구조를 통해 작동한다는 증거다.</p>
-<!-- ===== 4. 미완 ===== -->
-<h1 id="incomplete">미완</h1>
-<table>
-<tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr>
-<tr><td>D-53 뮤온/타우 질량비 CAS 근사 정밀도</td><td>~0.6% 오차</td><td>D-38류 정밀 보정 적용</td></tr>
-<tr><td>하드론 붕괴 채널의 CAS 해석</td><td>BR로 처리</td><td>하드론 채널의 LUT 퇴출 경로 구조화</td></tr>
-<tr><td>D-59의 $1/3$ 인자 정밀 유도</td><td>경험적 근사</td><td>CAS 3단계 평균의 엄밀한 Derivation</td></tr>
-</table>
-<!-- ===== 5. 총괄 ===== -->
-<h1 id="summary">총괄</h1>
-<table>
-<tr><th>항목</th><th>결과</th><th>상태</th></tr>
-<tr><td>D-50: $\tau_\tau/\tau_\mu$</td><td>$\text{BR} \times (m_\mu/m_\tau)^5 = 1.320 \times 10^{-7}$, 오차 0.23%</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-51: $\tau_\mu$</td><td>$192\pi^3\hbar/(G_F^2 m_\mu^5) = 2.190 \times 10^{-6}$ s, 오차 0.32%</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-52: $\tau_\tau$</td><td>$\text{BR} \times 192\pi^3\hbar/(G_F^2 m_\tau^5) = 2.898 \times 10^{-13}$ s, 오차 0.17%</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-53: CAS 순수식</td><td>$(2\pi/9)^5 \alpha^{5/2}(1+\alpha/\pi)^{-5}\text{BR}$, 오차 0.6%</td><td><span class="tag-discovery">발견</span></td></tr>
-<tr><td>D-59: $\alpha^3/3$</td><td>$1.295 \times 10^{-7}$, 오차 2.0%</td><td><span class="tag-hypothesis">가설</span></td></tr>
-</table>
-<!-- ========== English Version ========== -->
-<div class="toc-side lang-en">
-<a class="toc-h1" href="#title-en">LUT Session Lifetime</a>
-<a class="toc-h2" href="#question-en">Question</a>
-<a class="toc-h2" href="#status-en">Status</a>
-<a class="toc-h2" href="#discovery-en">Key Discovery</a>
-<a class="toc-h1" href="#r1-en">Round 1 (D-50)</a>
-<a class="toc-h3" href="#r1-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r1-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r1-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r1-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r1-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r2-en">Round 2 (D-51)</a>
-<a class="toc-h3" href="#r2-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r2-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r2-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r2-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r2-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r3-en">Round 3 (D-52)</a>
-<a class="toc-h3" href="#r3-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r3-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r3-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r3-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r3-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r4-en">Round 4 (D-53)</a>
-<a class="toc-h3" href="#r4-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r4-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r4-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r4-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r4-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r5-en">Round 5 (D-59)</a>
-<a class="toc-h3" href="#r5-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r5-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r5-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r5-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r5-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#byproduct-en">By-products</a>
-<a class="toc-h1" href="#incomplete-en">Incomplete Tasks</a>
-<a class="toc-h1" href="#summary-en">Summary</a>
-</div>
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-en .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">LUT Session Lifetime</span></div>
-<div class="toc-bar-arrow">▼</div>
-</div>
-<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.lang-en .toc-bar').classList.remove('open')">
-<a class="toc-h1" href="#title-en">LUT Session Lifetime</a>
-<a class="toc-h2" href="#question-en">Question</a>
-<a class="toc-h2" href="#status-en">Status</a>
-<a class="toc-h2" href="#discovery-en">Key Discovery</a>
-<a class="toc-h1" href="#r1-en">Round 1 (D-50)</a>
-<a class="toc-h3" href="#r1-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r1-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r1-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r1-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r1-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r2-en">Round 2 (D-51)</a>
-<a class="toc-h3" href="#r2-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r2-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r2-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r2-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r2-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r3-en">Round 3 (D-52)</a>
-<a class="toc-h3" href="#r3-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r3-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r3-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r3-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r3-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r4-en">Round 4 (D-53)</a>
-<a class="toc-h3" href="#r4-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r4-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r4-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r4-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r4-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#r5-en">Round 5 (D-59)</a>
-<a class="toc-h3" href="#r5-step1-en">Step 1. Banya Equation</a>
-<a class="toc-h3" href="#r5-step2-en">Step 2. Norm Substitution</a>
-<a class="toc-h3" href="#r5-step3-en">Step 3. Constant Insertion</a>
-<a class="toc-h3" href="#r5-step4-en">Step 4. Domain Transform</a>
-<a class="toc-h3" href="#r5-step5-en">Step 5. Discovery</a>
-<a class="toc-h1" href="#byproduct-en">By-products</a>
-<a class="toc-h1" href="#incomplete-en">Incomplete Tasks</a>
-<a class="toc-h1" href="#summary-en">Summary</a>
-</div>
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
-<!-- ===== 1. Introduction ===== -->
-<h1 id="title-en">LUT Session Lifetime -- Particle Lifetime Derivations</h1>
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/lifetime.html">EN</a></div>
+<!-- ========== English body ========== -->
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a supplementary report to the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>.</p>
+<!-- ===== 1. Opening ===== -->
+<h1 id="title">LUT Session Lifetime -- Particle Lifetime Derivation</h1>
+<blockquote><p>Banya Framework Operations Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-27</p></blockquote>
-<h2 id="question-en">Question: Why Does the Tau Decay Hundreds of Thousands of Times Faster Than the Muon</h2>
-<p>Muon lifetime $\tau_\mu \approx 2.197 \times 10^{-6}$ s, tau lifetime $\tau_\tau \approx 2.903 \times 10^{-13}$ s. The ratio is about $1.32 \times 10^{-7}$. The Standard Model explains this ratio via Fermi theory as the 5th power of mass. But it offers no structural reason for why the exponent is 5.</p>
-<p>An analogy: two hourglasses. One empties in 2 seconds, the other in 1/290,000th of a second. The difference is the grain size (mass). But why does doubling the grain size speed things up by exactly the 5th power? The Banya Framework answers: 5 = phase space degrees of freedom (4 domain axes + spin 1). observer = LUT (proposition). Session lifetime = RLU lifetime.</p>
-<h2 id="status-en">Status</h2>
+<blockquote><p>Execution date: 2026-03-27</p></blockquote>
+<h2 id="question">Question: Why does the tau decay hundreds of thousands of times faster than the muon</h2>
+<p>Muon lifetime $\tau_\mu \approx 2.197 \times 10^{-6}$ s, tau lifetime $\tau_\tau \approx 2.903 \times 10^{-13}$ s. The ratio is roughly $1.32 \times 10^{-7}$. The Standard Model explains this ratio as the fifth power of mass through Fermi theory. It does not, however, supply a structural reason for the exponent being 5.</p>
+<p>Analogy: two hourglasses, one emptying in 2 seconds and the other in 1/290,000 of a second, because the grain sizes (masses) differ. But why does the speed scale as exactly the fifth power? The Banya Framework answers that this 5 is the phase-space degrees of freedom (4 domain axes + spin 1). observer = LUT (proposition). Session lifetime = RLU lifetime.</p>
+<h2 id="status">Status</h2>
 <p><span class="tag-discovery">Discovery</span></p>
-<p>D-50 through D-52: error 0.17--0.32%. Exponent 5 = 4 domain axes + spin 1. 192 = (ring bits)$^2$ $\times$ CAS steps. LUT exit count = decay channel count.</p>
-<h2 id="discovery-en">Key Discovery</h2>
+<p>D-50~D-52 error 0.17~0.32%. Exponent 5 = 4 domain axes + spin 1. 192 = (ring bits)$^2$ $\times$ CAS steps. LUT eviction count = number of decay channels.</p>
+<h2 id="discovery">Core Finding</h2>
 <div class="discovery-block">
-<h4>D-50. Tau/Muon Lifetime Ratio</h4>
+<h4>D-50. Tau/muon lifetime ratio</h4>
 <div class="formula">$\dfrac{\tau_\tau}{\tau_\mu} = \text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^5 = 1.320 \times 10^{-7}$</div>
-<p>Observed: $1.321 \times 10^{-7}$, Error: <span class="tag-solved">0.23%</span></p>
-<p>Exponent 5 = phase space DOF: 4 domain axes (Axiom 1) + spin 1.</p>
+<p>Observed: $1.321 \times 10^{-7}$, error: <span class="tag-solved">0.23%</span></p>
+<p>Exponent 5 = phase-space DOF: 4 domain axes (<a href="../axiom.html#ax1">Axiom 1</a>) + spin 1.</p>
 </div>
 <div class="discovery-block">
-<h4>D-51. Muon Lifetime Absolute Value</h4>
+<h4>D-51. Muon lifetime absolute value</h4>
 <div class="formula">$\tau_\mu = \dfrac{192\pi^3 \hbar}{G_F^2 m_\mu^5} = 2.190 \times 10^{-6}$ s</div>
-<p>Observed: $2.197 \times 10^{-6}$ s, Error: <span class="tag-solved">0.32%</span></p>
+<p>Observed: $2.197 \times 10^{-6}$ s, error: <span class="tag-solved">0.32%</span></p>
 <p>192 = $(2^3)^2 \times 3$ = (ring bits)$^2$ $\times$ CAS steps.</p>
 </div>
 <div class="discovery-block">
-<h4>D-52. Tau Lifetime Absolute Value</h4>
+<h4>D-52. Tau lifetime absolute value</h4>
 <div class="formula">$\tau_\tau = \text{BR} \times \dfrac{192\pi^3 \hbar}{G_F^2 m_\tau^5} = 2.898 \times 10^{-13}$ s</div>
-<p>Observed: $2.903 \times 10^{-13}$ s, Error: <span class="tag-solved">0.17%</span></p>
-<p>BR = branching ratio = fraction of lepton channels among LUT exit paths.</p>
+<p>Observed: $2.903 \times 10^{-13}$ s, error: <span class="tag-solved">0.17%</span></p>
+<p>BR = branching ratio = leptonic share among LUT eviction channels.</p>
 </div>
 <div class="discovery-block">
-<h4>D-53. Lifetime Ratio CAS Pure Form</h4>
+<h4>D-53. Lifetime ratio pure CAS form</h4>
 <div class="formula">$\dfrac{\tau_\tau}{\tau_\mu} = \left(\dfrac{2\pi}{9}\right)^5 \alpha^{5/2} \left(1 + \dfrac{\alpha}{\pi}\right)^{-5} \text{BR}$</div>
 <p>Error: <span class="tag-solved">0.6%</span></p>
-<p>Mass eliminated; expressed purely in $\alpha$ and CAS numbers.</p>
+<p>Mass is eliminated and the ratio is expressed as a pure structural form in $\alpha$ and CAS numbers alone.</p>
 </div>
 <div class="discovery-block">
-<h4>D-59. Lifetime Ratio Approximation</h4>
+<h4>D-59. Lifetime ratio limiting approximation</h4>
 <div class="formula">$\dfrac{\tau_\tau}{\tau_\mu} \approx \dfrac{\alpha^3}{3}$</div>
 <p>Error: <span class="tag-hypothesis">2.0%</span></p>
-<p>$\alpha^3/3$: CAS 3 stages each accumulate $\alpha$ cost once.</p>
+<p>$\alpha^3/3$: the three CAS steps each accumulate one $\alpha$ cost.</p>
 </div>
 <!-- ===== 2. Body: 5 steps per round ===== -->
 <!-- ===== Round 1: D-50 ===== -->
-<h1 id="r1-en">Round 1. D-50: Tau/Muon Lifetime Ratio (Mass 5th-Power Law)</h1>
-<h3 id="r1-step1-en">Step 1. Banya Equation</h3>
+<h1 id="r1">Round 1. D-50: Tau/Muon Lifetime Ratio (Mass-5th-power Law)</h1>
+<h3 id="r1-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-<p>Read session lifetime from the time axis. observer = LUT (proposition). A particle's lifetime is the duration until the LUT session is evicted from the RLU. Eviction rate depends on the mass (= CAS write cost) on the observer axis.</p>
-<h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
-<p>Substitute the lifetime ratio of two leptons as a power of their mass ratio. Decay probability (= LUT eviction frequency) is proportional to the $n$-th power of mass.</p>
+<p>The session lifetime is read on the time axis. observer = LUT (proposition). A particle's lifetime is the interval until its LUT session is evicted from the RLU. The eviction rate depends on the mass (= CAS write cost) on the observer axis.</p>
+<h3 id="r1-step2">Step 2. Norm substitution</h3>
+<p>The lifetime ratio of the two leptons is substituted by a power of the mass ratio. The decay probability (= LUT eviction frequency) scales as the $n$th power of mass.</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} = \text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^n$</div>
-<div class="math-legend">$\tau$ = lifetime, $m$ = mass, BR = branching ratio $\approx 0.1736$, $n$ = phase space exponent</div>
+<div class="math-legend">$\tau$ = lifetime, $m$ = mass, BR = branching ratio $\approx 0.1736$, $n$ = phase-space exponent</div>
 </div>
-<p>The key is determining the exponent $n$. In the Banya Framework, $n = 5$: 4 domain axes (time, space, observer, superposition) + spin DOF 1. This is the total phase space degrees of freedom.</p>
-<h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
+<p>The crux is fixing the exponent $n$. In the Banya Framework $n = 5$: 4 domain axes (time, space, observer, superposition) + spin DOF 1. That is the total count of phase-space degrees of freedom.</p>
+<h3 id="r1-step3">Step 3. Constant substitution</h3>
 <pre>m_μ = 105.6584 MeV/c² (PDG 2024)
 m_τ = 1776.86 MeV/c² (PDG 2024)
 m_μ/m_τ = 0.059465
@@ -451,216 +94,227 @@ BR(τ → μνν̄) = 0.1736 (PDG 2024)
 τ_μ = 2.1969811 × 10⁻⁶ s (PDG 2024)
 τ_τ = 2.903 × 10⁻¹³ s (PDG 2024)
 τ_τ/τ_μ = 1.321 × 10⁻⁷ (observed)</pre>
-<h3 id="r1-step4-en">Step 4. Domain Transform</h3>
-<p>Compute the 5th power of the mass ratio:</p>
+<h3 id="r1-step4">Step 4. Domain transformation</h3>
+<p>Compute the fifth power of the mass ratio:</p>
 <div class="math-block">
 <div class="math-row">$\left(\dfrac{m_\mu}{m_\tau}\right)^5 = (0.059465)^5 = 7.604 \times 10^{-7}$</div>
-<div class="math-desc">The 5th power of the mass ratio represents the phase space volume ratio. 4 domain axes + spin 1 = 5 DOF.</div>
+<div class="math-desc">The fifth power of the mass ratio represents the phase-space volume ratio. 4 domain axes + spin 1 = 5 DOF.</div>
 </div>
 <p>Multiply by the branching ratio:</p>
 <div class="math-block">
 <div class="math-row">$\text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^5 = 0.1736 \times 7.604 \times 10^{-7} = 1.320 \times 10^{-7}$</div>
-<div class="math-desc">BR is the fraction of lepton channels among LUT exit paths. The tau, unlike the muon, also has hadronic channels.</div>
+<div class="math-desc">BR is the leptonic share of the LUT eviction channels. Unlike the muon, the tau also opens hadronic channels.</div>
 </div>
-<h3 id="r1-step5-en">Step 5. Discovery</h3>
+<h3 id="r1-step5">Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\tau_\tau / \tau_\mu = 1.320 \times 10^{-7}$</div>
 <div class="math-row">Observed: $\tau_\tau / \tau_\mu = 1.321 \times 10^{-7}$</div>
 <div class="math-row">Error: $0.23\%$</div>
 </div>
-<p>The structural meaning of the exponent 5 is confirmed: 4 domain axes + spin 1 = phase space DOF. The eviction probability of a LUT session is proportional to the 5th power of the CAS write cost (= mass).</p>
+<p>The structural meaning of exponent 5 is fixed: 4 domain axes + spin 1 = phase-space DOF. The eviction probability of an LUT session scales as the fifth power of the CAS write cost (= mass).</p>
 <!-- ===== Round 2: D-51 ===== -->
-<h1 id="r2-en">Round 2. D-51: Muon Lifetime Absolute Value</h1>
-<h3 id="r2-step1-en">Step 1. Banya Equation</h3>
+<h1 id="r2">Round 2. D-51: Muon Lifetime Absolute Value</h1>
+<h3 id="r2-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-<p>Read the absolute lifetime from the time axis. The muon has only pure leptonic decay (= single-channel LUT eviction), so BR = 1. The Fermi coupling constant $G_F$ corresponds to the write cost of the weak-force CAS.</p>
-<h3 id="r2-step2-en">Step 2. Norm Substitution</h3>
-<p>Reinterpret the Fermi theory decay rate formula through the Banya Framework structure.</p>
+<p>The absolute lifetime is read on the time axis. The muon admits only purely leptonic decay (= single-channel eviction from the LUT), so BR = 1. The Fermi coupling constant $G_F$ corresponds to the CAS write cost of the weak force.</p>
+<h3 id="r2-step2">Step 2. Norm substitution</h3>
+<p>The Fermi-theory decay-rate formula is reinterpreted through the Banya Framework structure.</p>
 <div class="math-block">
 <div class="math-row">$\tau_\mu = \dfrac{192\pi^3 \hbar}{G_F^2 m_\mu^5}$</div>
 <div class="math-legend">$G_F$ = Fermi coupling constant, $\hbar$ = reduced Planck constant, 192 = $(2^3)^2 \times 3$</div>
 </div>
-<p>$192 = 64 \times 3 = (2^3)^2 \times 3$. Banya interpretation: $2^3 = 8$ is the ring buffer bit count (Axiom 3), $(2^3)^2 = 64$ is the ring buffer state space squared, $\times 3$ is the 3 CAS steps (Read-Compare-Write). $\pi^3$ results from spherical factors of 3 domain axes being multiplied.</p>
-<h3 id="r2-step3-en">Step 3. Constant Insertion</h3>
+<p>$192 = 64 \times 3 = (2^3)^2 \times 3$. Banya interpretation: $2^3 = 8$ is the ring-buffer bit count (<a href="../axiom.html#ax3">Axiom 3</a>), $(2^3)^2 = 64$ is the squared ring-buffer state space, and the $\times 3$ is the three CAS steps (Read-Compare-Write). $\pi^3$ is the product of spherical factors from three domain axes.</p>
+<h3 id="r2-step3">Step 3. Constant substitution</h3>
 <pre>ℏ = 1.054571817 × 10⁻³⁴ J·s (CODATA 2018)
 G_F = 1.1663788 × 10⁻⁵ GeV⁻² (PDG 2024)
 G_F/(ℏc)³ = 1.1663788 × 10⁻⁵ GeV⁻²
 m_μ = 105.6584 MeV/c² = 0.10566 GeV/c²
 m_μ⁵ = 1.3147 × 10⁻⁵ GeV⁵
 192π³ = 192 × 31.006 = 5953.2</pre>
-<h3 id="r2-step4-en">Step 4. Domain Transform</h3>
-<p>Compute in natural units ($\hbar = c = 1$):</p>
+<h3 id="r2-step4">Step 4. Domain transformation</h3>
+<p>Computing in natural units ($\hbar = c = 1$):</p>
 <div class="math-block">
 <div class="math-row">$\Gamma_\mu = \dfrac{G_F^2 m_\mu^5}{192\pi^3}$</div>
 <div class="math-row">$= \dfrac{(1.1664 \times 10^{-5})^2 \times (0.10566)^5}{5953.2}$</div>
 <div class="math-row">$= \dfrac{1.3603 \times 10^{-10} \times 1.3147 \times 10^{-5}}{5953.2}$</div>
 <div class="math-row">$= 3.003 \times 10^{-19}$ GeV</div>
-<div class="math-desc">Convert decay rate $\Gamma_\mu$ to time: $\tau_\mu = \hbar / \Gamma_\mu$</div>
+<div class="math-desc">Convert the decay rate $\Gamma_\mu$ to time: $\tau_\mu = \hbar / \Gamma_\mu$</div>
 </div>
 <p>Time conversion:</p>
 <div class="math-block">
 <div class="math-row">$\tau_\mu = \dfrac{6.582 \times 10^{-25} \text{ GeV·s}}{3.003 \times 10^{-19} \text{ GeV}} = 2.190 \times 10^{-6}$ s</div>
 </div>
-<h3 id="r2-step5-en">Step 5. Discovery</h3>
+<h3 id="r2-step5">Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\tau_\mu = 2.190 \times 10^{-6}$ s</div>
 <div class="math-row">Observed: $\tau_\mu = 2.197 \times 10^{-6}$ s</div>
 <div class="math-row">Error: $0.32\%$</div>
 </div>
-<p>The decomposition of 192 is confirmed: $(2^3)^2 \times 3$ = (ring bit count)$^2$ $\times$ CAS step count. The 0.32% residual error can be absorbed by 1st-order QED corrections $(1 - \alpha/\pi + \ldots)$.</p>
+<p>The decomposition of 192 is fixed: $(2^3)^2 \times 3$ = (ring-bit count)$^2$ $\times$ CAS step count. The residual 0.32% can be absorbed by the leading-order QED correction $(1 - \alpha/\pi + \ldots)$.</p>
 <!-- ===== Round 3: D-52 ===== -->
-<h1 id="r3-en">Round 3. D-52: Tau Lifetime Absolute Value</h1>
-<h3 id="r3-step1-en">Step 1. Banya Equation</h3>
+<h1 id="r3">Round 3. D-52: Tau Lifetime Absolute Value</h1>
+<h3 id="r3-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-<p>Read the tau lifetime from the time axis. The tau decays via the same weak-force CAS as the muon, but its larger mass opens hadronic channels. Multiple LUT eviction channels exist, so the branching ratio BR must be applied.</p>
-<h3 id="r3-step2-en">Step 2. Norm Substitution</h3>
-<p>Multiply the muon lifetime formula by BR and replace the mass with tau.</p>
+<p>The tau lifetime is read on the time axis. The tau decays through the same weak CAS as the muon, but its mass is large enough that hadronic channels also open. Because there are multiple LUT eviction channels, the branching ratio BR must be multiplied in.</p>
+<h3 id="r3-step2">Step 2. Norm substitution</h3>
+<p>Multiply the muon lifetime formula by the branching ratio and swap in the tau mass.</p>
 <div class="math-block">
 <div class="math-row">$\tau_\tau = \text{BR} \times \dfrac{192\pi^3 \hbar}{G_F^2 m_\tau^5}$</div>
-<div class="math-legend">BR $\approx 0.1736$ = tau leptonic branching ratio = fraction of lepton channels among LUT exit paths</div>
+<div class="math-legend">BR $\approx 0.1736$ = tau leptonic branching ratio = leptonic share among LUT eviction channels</div>
 </div>
-<p>LUT exit count = decay channel count. The muon has 1 exit path (leptonic), so BR = 1. The tau has multiple exit paths, requiring the leptonic branching ratio.</p>
-<h3 id="r3-step3-en">Step 3. Constant Insertion</h3>
+<p>LUT eviction count = number of decay channels. The muon has a single eviction path (leptonic), so BR = 1. The tau has many eviction paths, so the branching ratio of the leptonic path is required.</p>
+<h3 id="r3-step3">Step 3. Constant substitution</h3>
 <pre>G_F = 1.1663788 × 10⁻⁵ GeV⁻²
 m_τ = 1776.86 MeV/c² = 1.77686 GeV/c²
 m_τ⁵ = 1.77686⁵ = 17.762 GeV⁵
 192π³ = 5953.2
 BR(τ → eνν̄) = 0.1782 (PDG 2024)
 BR(τ → μνν̄) = 0.1736 (PDG 2024)
-Using τ → μνν̄ channel: BR = 0.1736</pre>
-<h3 id="r3-step4-en">Step 4. Domain Transform</h3>
+Use the τ → μνν̄ channel here: BR = 0.1736</pre>
+<h3 id="r3-step4">Step 4. Domain transformation</h3>
 <p>Compute the tau decay rate in natural units:</p>
 <div class="math-block">
 <div class="math-row">$\Gamma_\tau^{(\mu)} = \dfrac{G_F^2 m_\tau^5}{192\pi^3}$</div>
 <div class="math-row">$= \dfrac{1.3603 \times 10^{-10} \times 17.762}{5953.2}$</div>
 <div class="math-row">$= 4.058 \times 10^{-7}$ GeV</div>
 </div>
-<p>This is the partial decay rate for the leptonic channel. The total lifetime:</p>
+<p>That is the decay rate over all channels combined. The partial lifetime of the leptonic channel alone:</p>
+<div class="math-block">
+<div class="math-row">$\tau_\tau = \dfrac{\hbar}{\Gamma_\tau^{(\mu)}} \times \dfrac{1}{\text{BR}}$</div>
+</div>
+<p>Equivalently:</p>
+<div class="math-block">
+<div class="math-row">$\tau_\tau = \text{BR} \times \dfrac{192\pi^3 \hbar}{G_F^2 m_\tau^5} = 0.1736 \times \dfrac{6.582 \times 10^{-25}}{4.058 \times 10^{-7} \times 0.1736}$</div>
+<div class="math-row">$= \dfrac{6.582 \times 10^{-25}}{4.058 \times 10^{-7}} \times \dfrac{0.1736}{0.1736}$</div>
+</div>
+<p>Actual computation: since the total decay rate is $\Gamma_\tau^{\text{tot}} = \Gamma_\tau^{(\mu)} / \text{BR}$,</p>
 <div class="math-block">
 <div class="math-row">$\tau_\tau = \dfrac{\hbar}{\Gamma_\tau^{\text{tot}}} = \dfrac{\hbar \cdot \text{BR}}{\Gamma_\tau^{(\mu)}} = \text{BR} \times \dfrac{192\pi^3\hbar}{G_F^2 m_\tau^5}$</div>
 <div class="math-row">$= 0.1736 \times \dfrac{6.582 \times 10^{-25}}{4.058 \times 10^{-7}} = 0.1736 \times 1.6221 \times 10^{-18} \text{ s}$</div>
 </div>
-<p>Result:</p>
+<p>Collecting:</p>
 <div class="math-block">
 <div class="math-row">$\tau_\tau = 2.898 \times 10^{-13}$ s</div>
 </div>
-<h3 id="r3-step5-en">Step 5. Discovery</h3>
+<h3 id="r3-step5">Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\tau_\tau = 2.898 \times 10^{-13}$ s</div>
 <div class="math-row">Observed: $\tau_\tau = 2.903 \times 10^{-13}$ s</div>
 <div class="math-row">Error: $0.17\%$</div>
 </div>
-<p>The tau lifetime is derived within 0.17% using the muon lifetime formula + BR alone. The structure where LUT exit channel count (= decay channel count) determines lifetime is confirmed.</p>
+<p>The tau lifetime is derived from the muon lifetime formula plus BR alone to within 0.17%. The structure in which the number of LUT eviction channels (= number of decay channels) determines the lifetime is confirmed.</p>
 <!-- ===== Round 4: D-53 ===== -->
-<h1 id="r4-en">Round 4. D-53: Lifetime Ratio CAS Pure Form</h1>
-<h3 id="r4-step1-en">Step 1. Banya Equation</h3>
+<h1 id="r4">Round 4. D-53: Lifetime Ratio in Pure CAS Form</h1>
+<h3 id="r4-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-<p>Substitute the mass ratio on the observer axis with $\alpha$ and CAS numbers. Insert the lepton mass ratio structure derived in D-38 into the lifetime ratio to obtain a pure CAS expression with mass completely eliminated.</p>
-<h3 id="r4-step2-en">Step 2. Norm Substitution</h3>
-<p>Replace the mass ratio in D-50's lifetime ratio with the $\alpha$ expression.</p>
+<p>On the observer axis, the mass ratio is substituted by $\alpha$ and CAS numbers. Insert the lepton mass-ratio structure derived in D-38 into the lifetime ratio to obtain a pure CAS expression that removes mass entirely.</p>
+<h3 id="r4-step2">Step 2. Norm substitution</h3>
+<p>Replace the mass ratio in the D-50 lifetime ratio with its $\alpha$ expression.</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} = \text{BR} \times \left(\dfrac{m_\mu}{m_\tau}\right)^5$</div>
 </div>
-<p>Using the D-38 class lepton mass ratio structure, $m_\mu / m_\tau$ is a function of $\alpha$ and CAS numbers. The primary dependence of the muon/tau ratio:</p>
+<p>Using the D-38-style lepton mass-ratio structure, $m_\mu / m_\tau$ is a function of $\alpha$ and CAS numbers. Principal dependence of the muon/tau ratio:</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{m_\mu}{m_\tau} \approx \dfrac{2\pi}{9} \cdot \alpha^{1/2} \cdot \left(1 + \dfrac{\alpha}{\pi}\right)^{-1}$</div>
-<div class="math-legend">$9 = 3^2$ (CAS number), $2\pi$ = full phase rotation, $\alpha^{1/2}$ = inter-generational $\alpha$ exponent difference</div>
+<div class="math-legend">$9 = 3^2$ (CAS count), $2\pi$ = full phase rotation, $\alpha^{1/2}$ = inter-generation $\alpha$-exponent difference</div>
 </div>
-<h3 id="r4-step3-en">Step 3. Constant Insertion</h3>
+<h3 id="r4-step3">Step 3. Constant substitution</h3>
 <pre>α = 1/137.035999084
 α^(1/2) = 0.08543
 2π/9 = 0.6981
 (1 + α/π)⁻¹ = (1 + 0.002322)⁻¹ = 0.99768
 BR = 0.1736</pre>
-<h3 id="r4-step4-en">Step 4. Domain Transform</h3>
-<p>Take the 5th power:</p>
+<h3 id="r4-step4">Step 4. Domain transformation</h3>
+<p>Take the fifth power:</p>
 <div class="math-block">
 <div class="math-row">$\left(\dfrac{2\pi}{9}\right)^5 = (0.6981)^5 = 0.16394$</div>
 <div class="math-row">$\alpha^{5/2} = (7.297 \times 10^{-3})^{5/2} = 4.550 \times 10^{-6}$</div>
 <div class="math-row">$\left(1 + \dfrac{\alpha}{\pi}\right)^{-5} = (0.99768)^5 = 0.98845$</div>
 </div>
-<p>Assembly:</p>
+<p>Assemble:</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} = 0.16394 \times 4.550 \times 10^{-6} \times 0.98845 \times 0.1736$</div>
 <div class="math-row">$= 1.280 \times 10^{-7}$</div>
-<div class="math-desc">Pure structural formula expressed only in $\alpha$ and CAS numbers, with no mass.</div>
+<div class="math-desc">Pure structural form expressed without mass, in $\alpha$ and CAS numbers alone.</div>
 </div>
-<h3 id="r4-step5-en">Step 5. Discovery</h3>
+<h3 id="r4-step5">Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\tau_\tau / \tau_\mu = 1.280 \times 10^{-7}$</div>
 <div class="math-row">Observed: $\tau_\tau / \tau_\mu = 1.321 \times 10^{-7}$</div>
 <div class="math-row">Error: $0.6\% \sim 3\%$</div>
 </div>
-<p>Mass is completely eliminated, and the lifetime ratio is expressed using only $\alpha$ and CAS numbers (9, 2, $\pi$). The ~0.6% error arises from the CAS approximation of the muon/tau mass ratio. Its value as a pure structural formula is high.</p>
+<p>Mass is eliminated entirely; the lifetime ratio is expressed in $\alpha$ and CAS numbers (9, 2, $\pi$) alone. The ~0.6% error arises from the CAS approximation to the muon/tau mass ratio. The value as a pure structural form is high.</p>
 <!-- ===== Round 5: D-59 ===== -->
-<h1 id="r5-en">Round 5. D-59: Lifetime Ratio Extreme Approximation $\alpha^3/3$</h1>
-<h3 id="r5-step1-en">Step 1. Banya Equation</h3>
+<h1 id="r5">Round 5. D-59: Lifetime Ratio Limiting Approximation $\alpha^3/3$</h1>
+<h3 id="r5-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-<p>Maximally simplify the cumulative cost of CAS 3 steps on the observer axis. This is the minimal model where each Read-Compare-Write step accumulates $\alpha$ cost once.</p>
-<h3 id="r5-step2-en">Step 2. Norm Substitution</h3>
-<p>Absorb all CAS structural factors and QED corrections from D-53's precise formula into constants.</p>
+<p>On the observer axis, the cumulative cost of the three CAS steps is maximally simplified. This is the minimal model in which each of Read-Compare-Write of CAS accumulates one $\alpha$ cost.</p>
+<h3 id="r5-step2">Step 2. Norm substitution</h3>
+<p>Starting from the precise form of D-53, all CAS structural factors and QED corrections are absorbed into a constant.</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} \approx \dfrac{\alpha^3}{3}$</div>
-<div class="math-legend">$\alpha^3$ = CAS 3 steps $\times$ $\alpha$ accumulated once each, $1/3$ = CAS 3-step averaging factor</div>
+<div class="math-legend">$\alpha^3$ = 3 CAS steps $\times$ one $\alpha$ accumulation each, $1/3$ = average over the 3 CAS steps</div>
 </div>
-<p>$\alpha^3$: the 3 CAS steps (Read, Compare, Write) each accumulate the electromagnetic coupling $\alpha$ once. $1/3$: averaging factor over 3 steps.</p>
-<h3 id="r5-step3-en">Step 3. Constant Insertion</h3>
+<p>$\alpha^3$: the three CAS steps (Read, Compare, Write) each accumulate one electromagnetic coupling $\alpha$. $1/3$: the averaging factor over the three steps.</p>
+<h3 id="r5-step3">Step 3. Constant substitution</h3>
 <pre>α = 1/137.036 = 7.297 × 10⁻³
 α³ = (7.297 × 10⁻³)³ = 3.885 × 10⁻⁷
 1/3 = 0.3333</pre>
-<h3 id="r5-step4-en">Step 4. Domain Transform</h3>
+<h3 id="r5-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
 <div class="math-row">$\dfrac{\alpha^3}{3} = \dfrac{3.885 \times 10^{-7}}{3} = 1.295 \times 10^{-7}$</div>
-<div class="math-desc">Extreme approximation. Only the essence of CAS cost remains.</div>
+<div class="math-desc">Limiting approximation. Only the essence of the CAS cost remains.</div>
 </div>
-<h3 id="r5-step5-en">Step 5. Discovery</h3>
+<h3 id="r5-step5">Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\tau_\tau / \tau_\mu \approx \alpha^3 / 3 = 1.295 \times 10^{-7}$</div>
 <div class="math-row">Observed: $\tau_\tau / \tau_\mu = 1.321 \times 10^{-7}$</div>
 <div class="math-row">Error: $2.0\%$</div>
 </div>
-<p>The extremely simple formula $\alpha^3/3$ approximates the lifetime ratio within 2%. This shows that the $\alpha$-accumulation structure of the 3 CAS steps is the essence of the lifetime ratio. For precision, use D-50 (0.23%) or D-53 (0.6%).</p>
-<!-- ===== 3. By-products ===== -->
-<h1 id="byproduct-en">By-products</h1>
-<p>The decomposition of exponent 5 = 4 + 1 is applicable to other decay processes. 4 is the domain axes (Axiom 1), 1 is the spin DOF. If the exponent differs in hadronic decays, it can be interpreted as additional internal DOF (color) contributing.</p>
-<p>The decomposition 192 = $(2^3)^2 \times 3$ is a direct reflection of Banya Axiom 3 (ring buffer) and CAS 3 steps. The appearance of this number in the weak decay formula is evidence that the weak force operates through the CAS structure.</p>
-<!-- ===== 4. Incomplete Tasks ===== -->
-<h1 id="incomplete-en">Incomplete Tasks</h1>
+<p>The extremely simple form $\alpha^3/3$ approximates the lifetime ratio to within 2%. It shows that the $\alpha$-accumulation structure of the three CAS steps is the essence of the lifetime ratio. When precision is required, use D-50 (0.23%) or D-53 (0.6%).</p>
+<!-- ===== 3. Byproducts ===== -->
+<h1 id="byproduct">Byproducts</h1>
+<p>The decomposition exponent 5 = 4 + 1 also applies to other decay processes. The 4 is the domain axes (<a href="../axiom.html#ax1">Axiom 1</a>) and the 1 is the spin DOF. If the exponent shifts in a hadronic decay, that can be interpreted as a contribution from additional internal DOF (color).</p>
+<p>The decomposition 192 = $(2^3)^2 \times 3$ is a direct reflection of Banya Framework <a href="../axiom.html#ax3">Axiom 3</a> (ring buffer) and the three CAS steps. The appearance of this number in the weak-decay formula is evidence that the weak force operates through CAS structure.</p>
+<!-- ===== 4. Incomplete ===== -->
+<h1 id="incomplete">Incomplete</h1>
 <table>
-<tr><th>Item</th><th>Current State</th><th>Resolution Path</th></tr>
-<tr><td>D-53 muon/tau mass ratio CAS approximation precision</td><td>~0.6% error</td><td>Apply D-38 class precision corrections</td></tr>
-<tr><td>CAS interpretation of hadronic decay channels</td><td>Treated via BR</td><td>Structurize LUT eviction paths for hadronic channels</td></tr>
-<tr><td>D-59 precise derivation of 1/3 factor</td><td>Empirical approximation</td><td>Rigorous derivation from CAS 3-step averaging</td></tr>
+<tr><th>Item</th><th>Current state</th><th>Solution direction</th></tr>
+<tr><td>Precision of D-53 muon/tau mass-ratio CAS approximation</td><td>~0.6% error</td><td>Apply D-38-style precision corrections</td></tr>
+<tr><td>CAS interpretation of hadronic decay channels</td><td>Handled via BR</td><td>Structure the LUT eviction paths of hadronic channels</td></tr>
+<tr><td>Precise derivation of the $1/3$ factor in D-59</td><td>Empirical approximation</td><td>Rigorous derivation of the average over the 3 CAS steps</td></tr>
 </table>
 <!-- ===== 5. Summary ===== -->
-<h1 id="summary-en">Summary</h1>
+<h1 id="summary">Summary</h1>
 <table>
 <tr><th>Item</th><th>Result</th><th>Status</th></tr>
 <tr><td>D-50: $\tau_\tau/\tau_\mu$</td><td>$\text{BR} \times (m_\mu/m_\tau)^5 = 1.320 \times 10^{-7}$, error 0.23%</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td>D-51: $\tau_\mu$</td><td>$192\pi^3\hbar/(G_F^2 m_\mu^5) = 2.190 \times 10^{-6}$ s, error 0.32%</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td>D-52: $\tau_\tau$</td><td>$\text{BR} \times 192\pi^3\hbar/(G_F^2 m_\tau^5) = 2.898 \times 10^{-13}$ s, error 0.17%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>D-53: CAS pure form</td><td>$(2\pi/9)^5 \alpha^{5/2}(1+\alpha/\pi)^{-5}\text{BR}$, error 0.6%</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td>D-53: Pure CAS form</td><td>$(2\pi/9)^5 \alpha^{5/2}(1+\alpha/\pi)^{-5}\text{BR}$, error 0.6%</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td>D-59: $\alpha^3/3$</td><td>$1.295 \times 10^{-7}$, error 2.0%</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
 </table>
+<!-- /lang-en -->
+<!-- ========== End of English Version ========== -->
 <div class="page-nav lang-en">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
 <a href="../science_mine.html">Mining Manual</a>
 </div>
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br/>
-Inventor: Han Hyukjin (Hyukjin Han)<br/>
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
 Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
 Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
@@ -671,20 +325,17 @@ Classification: Axiom-Based Science Mining Engine
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a></div>
+
 <div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
 This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br/>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+BY -- Attribution required | NC -- Non-commercial use only | SA -- Share-alike<br/>
+Copyright of pre-existing physics formulas remains with original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
 <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
