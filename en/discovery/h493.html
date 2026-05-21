@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-493 Asymptotic Freedom = Cost Decrease with RLU Distance -- Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-493 Asymptotic freedom = cost decrease with RLU distance. 5-Step Recursive Substitution (v1.8 Axiom Base) mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h493.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib_new.html">&lt;== Library</a> | Category: <code>h_qcd</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
+<h1><a href="h493.html">H-493</a>. Asymptotic Freedom = Cost Decrease with RLU Distance</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="h493.html">H-493</a>: Asymptotic freedom = cost decrease with RLU distance</strong></p>
+<div class="formula-box">$$\alpha_s(Q^2) \;\propto\; \frac{1}{\ln(Q^2/\Lambda_{\text{QCD}}^2)},\quad \text{RLU cost} \;\propto\; C \cdot \frac{1-\ell/N}{4\pi\ell^2} \xrightarrow{\ell \to 0} 0$$</div>
+<p class="finding-precision">Grade: A</p>
+<p>Asymptotic freedom -- the weakening of the strong interaction between quarks at short distances (high energies) -- is explained by the cost-decreasing structure in the interaction formula of <a href="../axiom.html#ax11">Axiom 11</a> as $\ell \to 0$. As the RLU distance shrinks, the number of boundary crossings drops and the cost decreases, which is consistent with the running of the QCD coupling.</p>
+<p><a href="../axiom.html#ax11">Axiom 11</a> ($C \cdot (1-\ell/N)/(4\pi\ell^2)$), <a href="../axiom.html#ax4">Axiom 4</a> (cost $+1$/boundary), <a href="../axiom.html#ax6">Axiom 6</a> (RLU residual 9)</p>
+<p><a href="../axiom.html#ax11">Axiom 11</a> (interaction strength = distance-dependent), <a href="../axiom.html#ax4">Axiom 4</a> (boundary cost ==&gt; short distance = fewer boundary crossings), <a href="../axiom.html#ax6">Axiom 6</a> (RLU reach determines the cost denominator), <a href="../axiom.html#ax12">Axiom 12</a> (FSM closure ==&gt; the cost decrease is observable only outside the confinement region)</p>
+<p>At $\ell \to 0$ (high-energy limit) CAS cost ==&gt; 0: quarks behave like free particles. At $\ell \to \infty$ (low energy) the cost diverges: confinement. These two limits are unified in a single formula. Structurally matches the Gross-Wilczek-Politzer (1973) discovery.</p>
+<p>$\alpha_s(M_Z) = 0.1179 \pm 0.0010$. Substituting $\ell = \ell_{Z}$ in the RLU cost formula reproduces the running. The coefficient $11$ in $\beta_0 = 11 - 2n_f/3$ is related to the FSM degrees of freedom.</p>
+<p>Reproduces the 1-loop logarithmic dependence of $\alpha_s$ running. 2-loop and higher corrections can be interpreted as RLU multi-boundary effects.</p>
+<p>Asymptotic freedom (Gross-Wilczek-Politzer 1973), running of the QCD coupling, beta function, lattice QCD.</p>
+<p>Compare with $\alpha_s(Q^2)$ running experimental data (LEP, LHC). If deviations are detected at high energy, the RLU cost formula must be revised.</p>
+<p>Physical derivation of $\Lambda_{\text{QCD}} \approx 200\;\text{MeV}$. RLU interpretation of the 2-loop coefficient of the $\beta$ function.</p>
+<p><strong>Re-substitution Purpose:</strong> <a href="h492.html">H-492</a> (confinement) low-energy limit. <a href="h508.html">H-508</a> (DIS) high-energy limit. <a href="h514.html">H-514</a> (DGLAP) scale running.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is classified as hypothesis (Class III) and has stopped without proceeding to the next round. Although both a quantitative formula and an experimental value exist, the final step of the forward chain has not closed. Not every coefficient in the formula is derived directly from physics or primary integers; some remain as external inputs or hypotheses. Remaining tasks specified: <a href="../axiom.html#ax11">Axiom 11</a> ($C \cdot (1-\ell/N)/(4\pi\ell^2)$), <a href="../axiom.html#ax4">Axiom 4</a> (cost $+1$/boundary), <a href="../axiom.html#ax6">Axiom 6</a> (RLU residual 9). The path to D promotion is standardised on three routes: (1) clearing the remaining tasks above, (2) re-injecting adjacent D/H cards in the library as input to a recursive substitution round, (3) introducing further as-yet-unapplied propositions from <a href="../axiom.html#ax1">Axiom 1</a>, <a href="../axiom.html#ax2">Axiom 2</a>, <a href="../axiom.html#ax4">Axiom 4</a>, <a href="../axiom.html#ax9">Axiom 9</a>, <a href="../axiom.html#ax11">Axiom 11</a>.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-hypothesis">
+<p><strong>Verdict: Hypothesis</strong> -- Hypothesis (Recursive substitution in progress)</p>
+<p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon next round / Remaining tasks specified</p>
+<p><strong>Location:</strong> Category: h qcd. Domain: delta ==&gt; SU(3) 3-axis color degree of freedom x QCD cost domain (alpha_s path). Recursive substitution path: <a href="h492.html">H-492</a>, <a href="h508.html">H-508</a>, <a href="h514.html">H-514</a></p>
+</div>
+<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution — δ to target domain</h3>
+<p>delta ==&gt; SU(3) 3-axis color degree of freedom x QCD cost domain (alpha_s path)</p>
+</div>
+<div class="step">
+<h3>Step 3. Constant + Hypothesis Re-injection</h3>
+<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS 3-axis = SU(3) color), 7 (beta_0=7), 8 (gluon=3^2-1, output)</p>
+<p><strong>Physical Constant Inputs:</strong> <code>M_Z</code></p>
+<p><strong>Library Re-substitution:</strong> <a href="h492.html">H-492</a>, <a href="h508.html">H-508</a>, <a href="h514.html">H-514</a></p>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
+<ul>
+<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
+<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
+<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
+</ul>
+</div>
+<div class="step">
+<h3>Step 5. Discovery / Verdict</h3>
+<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p>Re-substitution Purpose: <a href="h492.html">H-492</a> (confinement) low-energy limit. <a href="h508.html">H-508</a> (DIS) high-energy limit. <a href="h514.html">H-514</a> (DGLAP) scale running.</p><p>This card can be re-used as input for the following cards: <a href="h492.html">H-492</a>, <a href="h508.html">H-508</a>, <a href="h514.html">H-514</a></p>
+</div>
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>Quantitative output</td><td>Structure narrative only</td><td>Next-round recursive substitution</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="h493.html">H-493</a>: Asymptotic freedom = cost decrease with RLU distance</td><td>Grade: A</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY — Attribution required | NC — Non-commercial use only | SA — Share-alike<br/>
+Copyright of pre-existing physics formulas remains with original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

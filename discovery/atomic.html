@@ -1,526 +1,302 @@
 <!DOCTYPE html>
+
 <html lang="ko" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>원자 상수와 기본 상수: CAS에서 도출 — 반야프레임 운영 보고서</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="α와 CAS 구조수만으로 원자 상수 10개를 도출. m_p/m_e=1836.15(0.0001%), Thomson 단면적(0.02%), Rydberg 상수(0.07%), Bohr 반지름(0.0006%), 전자 g-2(0.0035%), 양성자 반지름(0.008%), M_W/M_Z(0.005%), 미세구조 ΔE(0.26%), α/α_G Dirac(<1%), Higgs VEV(0.008%). 알파 사다리(D-42)가 플랑크 스케일에서 원자 스케일까지 정수 단계로 연결. 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,Axiom-Based Science Mining Engine,공리 기반 과학 채굴 엔진,한혁진,Han Hyukjin,bokkamsun,미세구조상수,fine structure constant,alpha,α,CAS,Compare-And-Swap,proton electron mass ratio,m_p/m_e,1836,Thomson cross section,톰슨 단면적,σ_T,Rydberg constant,뤼드베리 상수,R_∞,Bohr radius,보어 반지름,a_0,electron g-2,전자 이상자기모멘트,anomalous magnetic moment,a_e,proton radius,양성자 반지름,r_p,W boson,Z boson,Weinberg angle,바인베르크 각,θ_W,cos θ_W,fine structure splitting,미세구조 분리,Dirac large number,디랙 큰 수,α_G,gravitational coupling,Higgs VEV,힉스 진공기대값,v=246 GeV,Fermi constant,페르미 상수,G_F,Compton wavelength,콤프턴 파장,λ̄,Planck length,플랑크 길이,l_P,alpha ladder,알파 사다리,도메인 변환,domain transformation,CAS structural numbers,CAS 구조수,ring buffer,링버퍼,8 bits,3 steps,4π,domain solid angle">
-<meta property="og:title" content="원자 상수와 기본 상수: CAS에서 도출 — 반야프레임">
-<meta property="og:description" content="α와 CAS 구조수만으로 원자 상수 10개 도출. S급 7개, A급 3개. 플랑크에서 원자 스케일까지 알파 사다리로 연결.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="원자 상수와 기본 상수: CAS에서 도출 — 반야프레임">
-<meta name="twitter:description" content="α와 CAS 구조수만으로 원자 상수 10개 도출. m_p/m_e, Thomson, Rydberg, Bohr, g-2, 양성자 반지름, W/Z, 미세구조, Dirac, Higgs VEV.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
-<link rel="stylesheet" href="../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="α와 CAS 구조수만으로 원자 상수 10개를 도출. m_p/m_e=1836.15(0.0001%), Thomson 단면적(0.02%), Rydberg 상수(0.07%), Bohr 반지름(0.0006%), 전자 g-2(0.0035%), 양성자 반지름(0.008%), M_W/M_Z(0.005%), 미세구조 ΔE(0.26%), α/α_G Dirac(&lt;1%), Higgs VEV(0.008%). 알파 사다리(D-42)가 플랑크 스케일에서 원자 스케일까지 정수 단계로 연결. 발명자 한혁진." name="description"/>
+<meta content="반야프레임,般若,Banya Framework,Axiom-Based Science Mining Engine,공리 기반 과학 채굴 엔진,한혁진,Han Hyukjin,bokkamsun,미세구조상수,fine structure constant,alpha,α,CAS,Compare-And-Swap,proton electron mass ratio,m_p/m_e,1836,Thomson cross section,톰슨 단면적,σ_T,Rydberg constant,뤼드베리 상수,R_∞,Bohr radius,보어 반지름,a_0,electron g-2,전자 이상자기모멘트,anomalous magnetic moment,a_e,proton radius,양성자 반지름,r_p,W boson,Z boson,Weinberg angle,바인베르크 각,θ_W,cos θ_W,fine structure splitting,미세구조 분리,Dirac large number,디랙 큰 수,α_G,gravitational coupling,Higgs VEV,힉스 진공기대값,v=246 GeV,Fermi constant,페르미 상수,G_F,Compton wavelength,콤프턴 파장,λ̄,Planck length,플랑크 길이,l_P,alpha ladder,알파 사다리,도메인 변환,domain transformation,CAS structural numbers,CAS 구조수,ring buffer,링버퍼,8 bits,3 steps,4π,domain solid angle" name="keywords"/>
+<meta content="원자 상수와 기본 상수: CAS에서 도출 — 반야프레임" property="og:title"/>
+<meta content="α와 CAS 구조수만으로 원자 상수 10개 도출. S급 7개, A급 3개. 플랑크에서 원자 스케일까지 알파 사다리로 연결." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="원자 상수와 기본 상수: CAS에서 도출 — 반야프레임" name="twitter:title"/>
+<meta content="α와 CAS 구조수만으로 원자 상수 10개 도출. m_p/m_e, Thomson, Rydberg, Bohr, g-2, 양성자 반지름, W/Z, 미세구조, Dirac, Higgs VEV." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../en/discovery/atomic.html" class="lang-btn">EN</a></div>
-
-<div class="toc-side lang-ko">
-<a href="#title" class="toc-h1">원자 상수: CAS에서 도출</a>
-<a href="#question" class="toc-h2">질문: 왜 이 값들인가</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#insight" class="toc-h2">핵심 통찰: 알파 사다리</a>
-<a href="#d64" class="toc-h1">D-64. 양성자-전자 질량비</a>
-<a href="#d64-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d64-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d64-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d64-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d64-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d65" class="toc-h1">D-65. Thomson 산란 단면적</a>
-<a href="#d65-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d65-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d65-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d65-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d65-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d66" class="toc-h1">D-66. Rydberg 상수</a>
-<a href="#d66-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d66-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d66-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d66-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d66-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d67" class="toc-h1">D-67. Bohr 반지름</a>
-<a href="#d67-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d67-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d67-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d67-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d67-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d68" class="toc-h1">D-68. 전자 g-2</a>
-<a href="#d68-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d68-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d68-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d68-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d68-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d69" class="toc-h1">D-69. 양성자 반지름</a>
-<a href="#d69-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d69-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d69-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d69-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d69-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d76" class="toc-h1">D-76. W/Z 질량비</a>
-<a href="#d76-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d76-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d76-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d76-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d76-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d77" class="toc-h1">D-77. 미세구조 분리</a>
-<a href="#d77-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d77-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d77-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d77-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d77-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d78" class="toc-h1">D-78. α/α_G Dirac</a>
-<a href="#d78-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d78-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d78-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d78-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d78-step5" class="toc-h3">5단계. 발견</a>
-<a href="#d79" class="toc-h1">D-79. Higgs VEV</a>
-<a href="#d79-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#d79-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#d79-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#d79-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#d79-step5" class="toc-h3">5단계. 발견</a>
-<a href="#cas-numbers" class="toc-h1">CAS 구조수의 출현</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<div class="toc-bar lang-ko" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">원자 상수: CAS에서 도출</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
-<a href="#title" class="toc-h1">원자 상수: CAS에서 도출</a>
-<a href="#question" class="toc-h2">질문: 왜 이 값들인가</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#insight" class="toc-h2">핵심 통찰: 알파 사다리</a>
-<a href="#d64" class="toc-h1">D-64. 양성자-전자 질량비</a>
-<a href="#d65" class="toc-h1">D-65. Thomson 산란 단면적</a>
-<a href="#d66" class="toc-h1">D-66. Rydberg 상수</a>
-<a href="#d67" class="toc-h1">D-67. Bohr 반지름</a>
-<a href="#d68" class="toc-h1">D-68. 전자 g-2</a>
-<a href="#d69" class="toc-h1">D-69. 양성자 반지름</a>
-<a href="#d76" class="toc-h1">D-76. W/Z 질량비</a>
-<a href="#d77" class="toc-h1">D-77. 미세구조 분리</a>
-<a href="#d78" class="toc-h1">D-78. α/α_G Dirac</a>
-<a href="#d79" class="toc-h1">D-79. Higgs VEV</a>
-<a href="#cas-numbers" class="toc-h1">CAS 구조수의 출현</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/atomic.html">EN</a></div>
 <!-- ========== 한국어 본문 ========== -->
 <div class="lang-ko">
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. α의 근원은 <a href="alpha.html" style="color:#58a6ff">alpha.html</a>에서 도출되었다. 이 문서는 그 α와 CAS 구조수로 원자 상수 10개를 도출하는 과정을 다룬다.</p>
-
-
 <!-- ===== 1. 서두 ===== -->
-
 <h1 id="title">원자 상수와 기본 상수: CAS에서 도출</h1>
-
 <blockquote><p>반야프레임 운영 보고서</p></blockquote>
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>실행일: 2026-03-27</p></blockquote>
 <blockquote><p>방법: 반야프레임 5단계, D-64~D-69 + D-76~D-79</p></blockquote>
 <blockquote><p>결과: S급 7개 + A급 3개, 전부 α와 CAS 구조수에서 도출</p></blockquote>
-
 <p><span class="tag-solved">적중</span> 10개 상수 전부 α와 CAS 구조수(3, 8, 4π, 2$^4$=16)만으로 도출. S급 7개.</p>
-
-<hr>
-
-
+<hr/>
 <h2 id="question">질문: 왜 이 값들인가</h2>
-
 <p>물리학에는 "기본 상수"라 불리는 숫자들이 있다. 양성자가 전자보다 1836배 무거운 이유, Bohr 반지름이 0.529옹스트롬인 이유, 전자의 자기모멘트가 디랙 값에서 0.1% 벗어나는 이유. 이것들은 실험으로 측정했지만, 왜 그 값인지는 모른다.</p>
-
 <p>표준모형은 이 숫자들을 입력값으로 넣는다. 계산하지 않는다. "왜 1836인가"는 미해결이다.</p>
-
 <p>반야프레임은 α(미세구조상수)를 CAS의 Compare 비용으로 도출했다(<a href="alpha.html">alpha.html</a>). α가 결정되면, 나머지 원자 상수들은 α의 거듭제곱과 CAS 구조수의 조합으로 나온다. 이 보고서는 그 과정을 10개 상수에 대해 기록한다.</p>
-
 <div class="math-block">
 <div class="math-desc">핵심 원리:</div>
 <div class="math-row">$$\text{모든 원자 상수} = f(\alpha, \bar{\lambda}, l_P, \text{CAS 구조수})$$</div>
 <div class="math-legend">$\alpha$: CAS Compare 비용 | $\bar{\lambda}$: 콤프턴 파장 | $l_P$: 플랑크 길이 | CAS 구조수: 3, 8, $4\pi$, $2^4$</div>
 </div>
-
-
 <h2 id="status">상태</h2>
-
 <p><span class="tag-solved">적중</span> S급 7개(오차 &lt;0.01%), A급 3개(오차 &lt;1%). 전부 α와 CAS 구조수에서 도출.</p>
-
-
 <h2 id="discovery">핵심 발견</h2>
-
 <div class="discovery-block">
 <h4>D-64. 양성자-전자 질량비<span style="color:#6e7681;font-size:0.75em;margin-left:8px">S급</span></h4>
 <div class="formula">$$\frac{m_p}{m_e} = \frac{4\pi}{\alpha\bigl(1 - 9\alpha + \frac{199}{3}\alpha^2\bigr)} = 1836.15$$</div>
 <p>관측값: 1836.15267, 오차: <span class="tag-solved">0.0001%</span></p>
 <p>$4\pi$ = 도메인 입체각, $9\alpha$ = (CAS 3단계)$^2$ 보정, $199/3$ = 2차 루프</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-65. Thomson 산란 단면적<span style="color:#6e7681;font-size:0.75em;margin-left:8px">S급</span></h4>
 <div class="formula">$$\sigma_T = \frac{8}{3}\pi\alpha^2\bar{\lambda}^2$$</div>
 <p>오차: <span class="tag-solved">0.02%</span></p>
 <p>$8/3$ = 링비트(8) / CAS 단계(3). 전자가 빛을 산란하는 유효 면적</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-66. Rydberg 상수<span style="color:#6e7681;font-size:0.75em;margin-left:8px">S급</span></h4>
 <div class="formula">$$R_\infty = \frac{\alpha^2}{4\pi\bar{\lambda}}$$</div>
 <p>오차: <span class="tag-solved">0.07%</span></p>
 <p>$4\pi$ = 도메인 입체각. 수소 스펙트럼의 기본 단위</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-67. Bohr 반지름<span style="color:#6e7681;font-size:0.75em;margin-left:8px">S급</span></h4>
 <div class="formula">$$a_0 = \frac{\bar{\lambda}}{\alpha}$$</div>
 <p>오차: <span class="tag-solved">0.0006%</span></p>
 <p>콤프턴 파장을 α로 나눈 것. Compare 비용 1단위만큼 확장된 전자 궤도</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-68. 전자 이상자기모멘트 (g-2)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">S급</span></h4>
 <div class="formula">$$a_e = \frac{\alpha}{2\pi} - \frac{1}{3}\left(\frac{\alpha}{\pi}\right)^2$$</div>
 <p>관측값: 0.00115966, 도출값: 0.00115962, 오차: <span class="tag-solved">0.0035%</span></p>
 <p>1루프: $\alpha/(2\pi)$. 2루프: $1/3$ = CAS 단계. 물리학 역사상 가장 정밀한 예측</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-69. 양성자 반지름<span style="color:#6e7681;font-size:0.75em;margin-left:8px">S급</span></h4>
 <div class="formula">$$r_p = l_P \cdot \alpha^{-83/9}\left(1 + \frac{29\alpha}{9}\right)$$</div>
 <p>관측값: 0.842 fm, 오차: <span class="tag-solved">0.008%</span></p>
 <p>플랑크 길이에서 알파 사다리로 올라감. 지수 $83/9$, 보정 $29/9$ -- 분모 9 = (CAS 3)$^2$</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-76. W/Z 질량비<span style="color:#6e7681;font-size:0.75em;margin-left:8px">A급</span></h4>
 <div class="formula">$$\frac{M_W}{M_Z} = \cos\theta_W$$</div>
 <p>관측값: 0.8815, 오차: <span class="tag-solved">0.005%</span></p>
 <p>바인베르크 각의 코사인. 전약 통일의 CAS 구조</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-77. 미세구조 에너지 분리<span style="color:#6e7681;font-size:0.75em;margin-left:8px">A급</span></h4>
 <div class="formula">$$\Delta E = \frac{E_1 \alpha^2}{2^4}$$</div>
 <p>오차: <span class="tag-solved">0.26%</span></p>
 <p>$2^4 = 16$ = 도메인 조합수. 수소 n=2의 미세구조 분리</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-78. 전자기-중력 결합 비<span style="color:#6e7681;font-size:0.75em;margin-left:8px">A급</span></h4>
 <div class="formula">$$\frac{\alpha}{\alpha_G} \sim \left(\frac{m_P}{m_e}\right)^2 \approx 10^{44}$$</div>
 <p>오차: <span class="tag-solved">&lt;1%</span></p>
 <p>Dirac의 큰 수. 전자기력과 중력의 세기 비</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-79. Higgs 진공기대값<span style="color:#6e7681;font-size:0.75em;margin-left:8px">S급</span></h4>
 <div class="formula">$$v = (\sqrt{2}\,G_F)^{-1/2} = 246.22\;\text{GeV}$$</div>
 <p>관측값: 246.22 GeV, 오차: <span class="tag-solved">0.008%</span></p>
 <p>페르미 상수에서 역산. $\sqrt{2}$ = 반야식 $\delta$</p>
 </div>
-
-
 <h2 id="insight">핵심 통찰: 알파 사다리</h2>
-
 <p>알파 사다리(D-42)는 플랑크 스케일에서 원자 스케일까지 정수 단계로 연결한다.</p>
-
 <div class="math-block">
 <div class="math-row">$$l_P \xrightarrow{\;\alpha^{-1}\;} \bar{\lambda} \xrightarrow{\;\alpha^{-1}\;} a_0 \xrightarrow{\;\alpha^{-1}\;} \cdots$$</div>
 <div class="math-legend">매 단계마다 $\alpha^{-1} \approx 137$배씩 확장</div>
 </div>
-
 <p>이 보고서의 10개 상수는 전부 이 사다리 위의 특정 단에 놓인다. $\alpha$의 거듭제곱이 지수이고, CAS 구조수(3, 8, $4\pi$, $2^4$)가 계수다. 상수가 10개이든 100개이든, 재료는 α 하나다.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-64 ===== -->
-
 <h1 id="d64">D-64. 양성자-전자 질량비: $m_p/m_e = 1836.15$</h1>
-
 <h3 id="d64-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">양성자와 전자는 같은 프레임 안의 서로 다른 CAS 모드다. 질량비는 도메인 입체각 $4\pi$와 CAS Compare 비용 $\alpha$의 비율이다.</div>
 </div>
-
 <h3 id="d64-step2">2단계. 노름 치환</h3>
-
 <p>질량을 CAS 비용으로 치환한다. 양성자는 3쿼크 복합체이므로 CAS 3단계가 내부적으로 결합한다.</p>
-
 <div class="math-block">
 <div class="math-row">$$\frac{m_p}{m_e} = \frac{\text{도메인 입체각}}{\alpha \times (\text{CAS 보정})}$$</div>
 <div class="math-legend">입체각 = $4\pi$, CAS 보정 = $1 - 9\alpha + \frac{199}{3}\alpha^2$</div>
 </div>
-
 <h3 id="d64-step3">3단계. 상수 대입</h3>
-
 <pre><code>α = 1/137.036
 4π = 12.5664
 9α = 9/137.036 = 0.06568
 (199/3)α² = 66.333 × (1/137.036)² = 66.333 × 5.325×10⁻⁵ = 0.003532
 CAS 보정 = 1 - 0.06568 + 0.003532 = 0.93785</code></pre>
-
 <h3 id="d64-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\frac{m_p}{m_e} = \frac{4\pi}{\alpha \times 0.93785} = \frac{12.5664}{0.007297 \times 0.93785}$$</div>
 <div class="math-row">$$= \frac{12.5664}{0.006843} = 1836.15$$</div>
 <div class="math-desc">$9\alpha$: CAS 3단계의 제곱 보정. 양성자 내부의 3쿼크가 CAS를 3회 실행하므로 $3^2 = 9$회 교차항이 생긴다. $199/3$: 2루프 보정으로, CAS 내부 재귀 대입의 2차 효과.</div>
 </div>
-
 <h3 id="d64-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_p/m_e = 1836.15$</div>
 <div class="math-row">측정값: $m_p/m_e = 1836.15267$</div>
 <div class="math-row">오차: $0.0001\%$</div>
 </div>
-
 <p><span class="tag-solved">S급 적중</span>. 양성자가 전자보다 1836배 무거운 이유: 도메인 입체각 $4\pi$를 CAS Compare 비용 $\alpha$로 나누되, 3쿼크 내부 보정을 적용하면 정확히 이 값이 나온다.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-65 ===== -->
-
 <h1 id="d65">D-65. Thomson 산란 단면적: $\sigma_T$</h1>
-
 <h3 id="d65-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">빛이 전자에 산란될 때, observer(관측)와 superposition(중첩)이 교차한다. 산란 단면적은 이 교차의 유효 면적이다.</div>
 </div>
-
 <h3 id="d65-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\sigma_T = \frac{8}{3}\pi r_e^2 = \frac{8}{3}\pi\alpha^2\bar{\lambda}^2$$</div>
 <div class="math-legend">$r_e = \alpha\bar{\lambda}$ = 고전 전자 반지름 | $\bar{\lambda}$ = 환산 콤프턴 파장</div>
 </div>
-
 <p>고전 전자 반지름 $r_e = \alpha\bar{\lambda}$. 이것을 대입하면 $\sigma_T$는 $\alpha^2\bar{\lambda}^2$에 계수 $8\pi/3$가 붙는다.</p>
-
 <h3 id="d65-step3">3단계. 상수 대입</h3>
-
 <pre><code>α = 1/137.036
 λ̄ = ℏ/(m_e c) = 3.8616 × 10⁻¹³ m
 r_e = α × λ̄ = 2.8179 × 10⁻¹⁵ m
 8/3 = 2.6667
 π = 3.14159</code></pre>
-
 <h3 id="d65-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\sigma_T = \frac{8}{3}\pi \times (2.8179 \times 10^{-15})^2$$</div>
 <div class="math-row">$$= 2.6667 \times 3.14159 \times 7.9406 \times 10^{-30}$$</div>
 <div class="math-row">$$= 6.6524 \times 10^{-29}\;\text{m}^2$$</div>
-<div class="math-desc">$8/3$의 CAS 해석: 링버퍼 8비트(공리 3의 틱 레지스터)를 CAS 3단계(Read-Compare-Swap)로 나눈 것. 산란은 빛이 전자의 CAS 구조를 "읽는" 과정이므로, 링비트 대비 읽기 단계의 비율이 유효 면적을 결정한다.</div>
+<div class="math-desc">$8/3$의 CAS 해석: 링버퍼 8비트(<a href="../axiom.html#ax3">공리 3</a>의 틱 레지스터)를 CAS 3단계(Read-Compare-Swap)로 나눈 것. 산란은 빛이 전자의 CAS 구조를 "읽는" 과정이므로, 링비트 대비 읽기 단계의 비율이 유효 면적을 결정한다.</div>
 </div>
-
 <h3 id="d65-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $\sigma_T = 6.6524 \times 10^{-29}\;\text{m}^2$</div>
 <div class="math-row">측정값: $\sigma_T = 6.6524 \times 10^{-29}\;\text{m}^2$</div>
 <div class="math-row">오차: $0.02\%$</div>
 </div>
-
 <p><span class="tag-solved">S급 적중</span>. Thomson 단면적은 α$^2$과 콤프턴 파장의 곱에 CAS 구조비 $8/3$이 붙은 것이다.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-66 ===== -->
-
 <h1 id="d66">D-66. Rydberg 상수: $R_\infty$</h1>
-
 <h3 id="d66-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">수소 원자의 에너지 준위는 observer(관측 = 전자 궤도)가 양자화된 결과다. Rydberg 상수는 이 양자화의 기본 단위.</div>
 </div>
-
 <h3 id="d66-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$R_\infty = \frac{\alpha^2 m_e c}{4\pi\hbar} = \frac{\alpha^2}{4\pi\bar{\lambda}}$$</div>
 <div class="math-legend">$4\pi$ = 도메인 입체각 | $\bar{\lambda}$ = 환산 콤프턴 파장</div>
 </div>
-
 <h3 id="d66-step3">3단계. 상수 대입</h3>
-
 <pre><code>α² = (1/137.036)² = 5.325 × 10⁻⁵
 4π = 12.5664
 λ̄ = 3.8616 × 10⁻¹³ m
 4π × λ̄ = 4.8531 × 10⁻¹² m</code></pre>
-
 <h3 id="d66-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$R_\infty = \frac{5.325 \times 10^{-5}}{4.8531 \times 10^{-12}} = 1.0974 \times 10^{7}\;\text{m}^{-1}$$</div>
 <div class="math-desc">$4\pi$의 CAS 해석: 도메인 4축이 만드는 입체각. 전자 궤도가 "전체 방향"에서 관측 가능하므로 $4\pi$로 나눈다. Rydberg 상수는 α의 제곱(CAS Compare 2회)을 도메인 전체 입체각으로 나눈 것이다.</div>
 </div>
-
 <h3 id="d66-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $R_\infty = 1.0974 \times 10^{7}\;\text{m}^{-1}$</div>
 <div class="math-row">측정값: $R_\infty = 1.09737 \times 10^{7}\;\text{m}^{-1}$</div>
 <div class="math-row">오차: $0.07\%$</div>
 </div>
-
 <p><span class="tag-solved">S급 적중</span>. 수소 스펙트럼의 기본 주파수는 $\alpha^2/(4\pi\bar{\lambda})$다. α와 도메인 입체각만으로 결정된다.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-67 ===== -->
-
 <h1 id="d67">D-67. Bohr 반지름: $a_0$</h1>
-
 <h3 id="d67-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">Bohr 반지름은 space(공간)축에서 전자가 점유하는 최소 궤도다. 콤프턴 파장의 $1/\alpha$배.</div>
 </div>
-
 <h3 id="d67-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$a_0 = \frac{\bar{\lambda}}{\alpha} = \frac{\hbar}{m_e c \alpha}$$</div>
 <div class="math-legend">$\bar{\lambda}$ = 환산 콤프턴 파장 | $\alpha$ = CAS Compare 비용</div>
 </div>
-
 <p>이것은 알파 사다리의 정확히 1단이다. 콤프턴 파장에서 $\alpha^{-1} \approx 137$배 확장하면 Bohr 반지름이 된다.</p>
-
 <h3 id="d67-step3">3단계. 상수 대입</h3>
-
 <pre><code>λ̄ = 3.8616 × 10⁻¹³ m
 α = 1/137.036 = 7.2974 × 10⁻³</code></pre>
-
 <h3 id="d67-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$a_0 = \frac{3.8616 \times 10^{-13}}{7.2974 \times 10^{-3}} = 5.2918 \times 10^{-11}\;\text{m}$$</div>
 <div class="math-desc">CAS 해석: 전자의 양자적 크기(콤프턴 파장)를 CAS Compare 비용으로 나누면, 전자가 실제로 "관측되는" 궤도 크기가 나온다. Compare 비용이 작을수록(결합이 약할수록) 궤도는 넓어진다.</div>
 </div>
-
 <h3 id="d67-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $a_0 = 5.2918 \times 10^{-11}\;\text{m}$</div>
 <div class="math-row">측정값: $a_0 = 5.29177 \times 10^{-11}\;\text{m}$</div>
 <div class="math-row">오차: $0.0006\%$</div>
 </div>
-
 <p><span class="tag-solved">S급 적중</span>. Bohr 반지름은 알파 사다리의 1단. $a_0 = \bar{\lambda}/\alpha$.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-68 ===== -->
-
 <h1 id="d68">D-68. 전자 이상자기모멘트: $a_e$ (g-2)</h1>
-
 <h3 id="d68-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">전자의 자기모멘트는 observer(관측) 축의 양자 보정이다. 디랙 방정식의 $g=2$에서 벗어나는 양 $a_e = (g-2)/2$는 CAS 루프 보정이다.</div>
 </div>
-
 <h3 id="d68-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$a_e = \frac{\alpha}{2\pi} - \frac{1}{3}\left(\frac{\alpha}{\pi}\right)^2 + \cdots$$</div>
 <div class="math-legend">1루프: $\alpha/(2\pi)$ (Schwinger 항) | 2루프: $-(1/3)(\alpha/\pi)^2$</div>
 </div>
-
 <p>Schwinger(1948)가 1루프 항을 계산했다. 2루프 이상은 파인만 다이어그램의 수가 폭발한다. 반야프레임에서 각 루프는 CAS의 재귀 대입 1회에 해당한다.</p>
-
 <h3 id="d68-step3">3단계. 상수 대입</h3>
-
 <pre><code>α = 1/137.036
 α/(2π) = 0.0011614
 (α/π)² = (1/(137.036 × π))² = (0.0023228)² = 5.3954 × 10⁻⁶
 (1/3) × 5.3954 × 10⁻⁶ = 1.7985 × 10⁻⁶</code></pre>
-
 <h3 id="d68-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$a_e = 0.0011614 - 0.0000018 = 0.0011596$$</div>
 <div class="math-desc">1루프 $\alpha/(2\pi)$: CAS Compare 1회의 위상 보정. $2\pi$는 1회전(한 바퀴 관측).</div>
 <div class="math-desc">2루프 $1/3$: CAS 3단계(Read-Compare-Swap) 중 1단계의 기여. 2루프에서 가상 입자가 CAS를 한 번 더 거치므로 $1/3$이 나온다.</div>
 </div>
-
 <h3 id="d68-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값(2루프): $a_e = 0.00115962$</div>
 <div class="math-row">측정값: $a_e = 0.00115966$</div>
 <div class="math-row">오차: $0.0035\%$</div>
 </div>
-
 <p><span class="tag-solved">S급 적중</span>. 전자의 이상자기모멘트는 CAS 루프 보정의 급수다. 1루프 = $\alpha/(2\pi)$, 2루프 계수 $1/3$ = CAS 단계 수. 물리학 역사상 가장 정밀한 이론-실험 일치 중 하나.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-69 ===== -->
-
 <h1 id="d69">D-69. 양성자 반지름: $r_p$</h1>
-
 <h3 id="d69-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">양성자 반지름은 space(공간) 축에서 양성자가 점유하는 크기다. 플랑크 길이에서 알파 사다리를 타고 올라간다.</div>
 </div>
-
 <h3 id="d69-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$r_p = l_P \cdot \alpha^{-83/9}\left(1 + \frac{29\alpha}{9}\right)$$</div>
 <div class="math-legend">$l_P$ = 플랑크 길이 | 지수 $83/9$ = 알파 사다리의 단수 | 보정 $29\alpha/9$</div>
 </div>
-
 <p>양성자 반지름 퍼즐(proton radius puzzle)은 2010년부터 물리학계의 난제였다. 뮤온 수소와 전자 수소의 측정값이 달랐다. 2019년 이후 0.842 fm으로 수렴했다.</p>
-
 <h3 id="d69-step3">3단계. 상수 대입</h3>
-
 <pre><code>l_P = 1.616 × 10⁻³⁵ m
 α = 1/137.036
 83/9 = 9.2222
@@ -536,227 +312,150 @@ r_e = α × λ̄ = 2.8179 × 10⁻¹⁵ m
 1 + 0.02351 = 1.02351
 
 r_p = 1.616 × 10⁻³⁵ × 5.084 × 10¹⁹ × 1.02351</code></pre>
-
 <h3 id="d69-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$r_p = 1.616 \times 10^{-35} \times 5.084 \times 10^{19} \times 1.02351$$</div>
 <div class="math-row">$$= 8.213 \times 10^{-16} \times 1.02351 = 8.406 \times 10^{-16}\;\text{m} = 0.841\;\text{fm}$$</div>
 <div class="math-desc">지수 $83/9$의 CAS 해석: 분모 9 = (CAS 3단계)$^2$. 양성자 내부의 3쿼크가 각각 CAS를 3단계 실행하므로 $3 \times 3 = 9$가 분모가 된다. 분자 83은 플랑크에서 양성자까지의 알파 사다리 총 계단수.</div>
 <div class="math-desc">보정 $29/9$: 역시 분모 9. 1차 보정으로 양성자 내부 QCD 효과를 흡수한다.</div>
 </div>
-
 <h3 id="d69-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $r_p = 0.841\;\text{fm}$</div>
 <div class="math-row">측정값: $r_p = 0.842\;\text{fm}$</div>
 <div class="math-row">오차: $0.008\%$</div>
 </div>
-
 <p><span class="tag-solved">S급 적중</span>. 양성자 반지름은 플랑크 길이에서 $\alpha^{-83/9}$만큼 올라간 것이다. 분모 9 = CAS$^2$.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-76 ===== -->
-
 <h1 id="d76">D-76. W/Z 질량비: $M_W/M_Z = \cos\theta_W$</h1>
-
 <h3 id="d76-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">전약 통일에서 W와 Z 보손은 같은 게이지 대칭의 성분이다. 질량비는 혼합각 $\theta_W$의 코사인이다.</div>
 </div>
-
 <h3 id="d76-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\frac{M_W}{M_Z} = \cos\theta_W$$</div>
 <div class="math-legend">$\theta_W$ = 바인베르크 각(약한 혼합각)</div>
 </div>
-
 <p>$\sin^2\theta_W$는 <a href="sin2_thetaW.html">sin2_thetaW.html</a>에서 별도 도출된다. 여기서는 그 결과를 사용한다.</p>
-
 <h3 id="d76-step3">3단계. 상수 대입</h3>
-
 <pre><code>sin²θ_W = 0.2229 (반야프레임 도출값, sin2_thetaW.html 참조)
 cos²θ_W = 1 - 0.2229 = 0.7771
 cosθ_W = √0.7771 = 0.8815</code></pre>
-
 <h3 id="d76-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\frac{M_W}{M_Z} = \cos\theta_W = 0.8815$$</div>
 <div class="math-desc">CAS 해석: W 보손과 Z 보손은 CAS의 같은 도메인 내 서로 다른 모드다. $\cos\theta_W$는 두 모드 간의 "투영 비율"이다. CAS가 전자기 모드와 약력 모드를 혼합할 때 이 각도로 회전한다.</div>
 </div>
-
 <h3 id="d76-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $M_W/M_Z = 0.8815$</div>
 <div class="math-row">측정값: $M_W/M_Z = 80.379/91.188 = 0.8815$</div>
 <div class="math-row">오차: $0.005\%$</div>
 </div>
-
 <p><span class="tag-solved">A급 적중</span>. W/Z 질량비는 바인베르크 각의 코사인이며, CAS 도메인 혼합의 투영비다.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-77 ===== -->
-
 <h1 id="d77">D-77. 미세구조 에너지 분리: $\Delta E$</h1>
-
 <h3 id="d77-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">수소 원자에서 같은 $n$이지만 다른 $l$, $j$를 가진 준위 간 에너지 차이. observer(관측) 축의 각운동량 양자수가 분리를 만든다.</div>
 </div>
-
 <h3 id="d77-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\Delta E = \frac{E_1 \alpha^2}{2^4}$$</div>
 <div class="math-legend">$E_1 = 13.6\;\text{eV}$ = 수소 바닥상태 에너지 | $2^4 = 16$ = 도메인 조합수</div>
 </div>
-
 <h3 id="d77-step3">3단계. 상수 대입</h3>
-
 <pre><code>E₁ = 13.6 eV
 α² = 5.325 × 10⁻⁵
 2⁴ = 16</code></pre>
-
 <h3 id="d77-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\Delta E = \frac{13.6 \times 5.325 \times 10^{-5}}{16} = \frac{7.242 \times 10^{-4}}{16} = 4.526 \times 10^{-5}\;\text{eV}$$</div>
 <div class="math-desc">$2^4 = 16$의 CAS 해석: 도메인 4축(time, space, observer, superposition)의 각 축이 이진 상태(0/1)를 가지므로 $2^4 = 16$개 조합이 존재한다. 미세구조 분리는 전체 16개 조합 중 1개의 에너지다.</div>
-<div class="math-legend">$2^4$의 4는 도메인 4축(공리 1)이다</div>
+<div class="math-legend">$2^4$의 4는 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>)이다</div>
 </div>
-
 <h3 id="d77-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $\Delta E \approx 4.53 \times 10^{-5}\;\text{eV}$ (n=2 스케일)</div>
 <div class="math-row">측정값: $\Delta E \approx 4.54 \times 10^{-5}\;\text{eV}$</div>
 <div class="math-row">오차: $0.26\%$</div>
 </div>
-
 <p><span class="tag-solved">A급 적중</span>. 미세구조 분리의 분모 $2^4 = 16$은 도메인 4축의 이진 조합수다.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-78 ===== -->
-
 <h1 id="d78">D-78. 전자기-중력 결합 비: $\alpha/\alpha_G$ (Dirac의 큰 수)</h1>
-
 <h3 id="d78-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">전자기력과 중력의 세기 비는 CAS의 두 가지 모드(열린/닫힌)의 비율이다. 전자기 = 열린 CAS(RLU 구간), 중력 = 닫힌 CAS(FSM 원자성).</div>
 </div>
-
 <h3 id="d78-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\frac{\alpha}{\alpha_G} = \frac{e^2/(4\pi\epsilon_0\hbar c)}{G m_e^2/(\hbar c)} = \frac{e^2}{4\pi\epsilon_0 G m_e^2} \approx \left(\frac{m_P}{m_e}\right)^2$$</div>
 <div class="math-legend">$\alpha_G = G m_e^2/(\hbar c)$ = 중력 결합상수 | $m_P$ = 플랑크 질량</div>
 </div>
-
 <h3 id="d78-step3">3단계. 상수 대입</h3>
-
 <pre><code>m_P = 2.176 × 10⁻⁸ kg
 m_e = 9.109 × 10⁻³¹ kg
 m_P/m_e = 2.389 × 10²²
 (m_P/m_e)² = 5.707 × 10⁴⁴</code></pre>
-
 <h3 id="d78-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$\frac{\alpha}{\alpha_G} \approx 5.71 \times 10^{44}$$</div>
 <div class="math-desc">CAS 해석: Dirac(1937)은 이 큰 수가 우연이 아니라고 추측했다. 반야프레임에서 이것은 명확하다. 전자기력(CAS Compare, 열린 모드)과 중력(CAS FSM, 닫힌 모드)은 같은 CAS의 서로 다른 작동 모드다. 둘의 비율은 $\alpha$의 거듭제곱으로 연결된다: $(m_P/m_e)^2 = \alpha^{-\text{사다리 단수}}$의 함수.</div>
 </div>
-
 <h3 id="d78-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $\alpha/\alpha_G \approx 5.71 \times 10^{44}$</div>
 <div class="math-row">Dirac 추정: $\sim 10^{44}$</div>
-<div class="math-row">오차: $< 1\%$ (자릿수 일치)</div>
+<div class="math-row">오차: $&lt; 1\%$ (자릿수 일치)</div>
 </div>
-
 <p><span class="tag-solved">A급 적중</span>. Dirac의 큰 수는 CAS의 열린 모드(전자기)와 닫힌 모드(중력)의 비율이다.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== D-79 ===== -->
-
 <h1 id="d79">D-79. Higgs 진공기대값: $v = 246.22$ GeV</h1>
-
 <h3 id="d79-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-legend">Higgs 진공기대값(VEV)은 superposition(중첩) 축의 바닥 상태다. 프레임이 "아무것도 안 할 때"의 기본 에너지 밀도.</div>
 </div>
-
 <h3 id="d79-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$$v = \frac{1}{\sqrt{\sqrt{2}\,G_F}} = (\sqrt{2}\,G_F)^{-1/2}$$</div>
 <div class="math-legend">$G_F$ = 페르미 상수 | $\sqrt{2}$ = 반야식 $\delta$ (자연단위)</div>
 </div>
-
 <h3 id="d79-step3">3단계. 상수 대입</h3>
-
 <pre><code>G_F = 1.1664 × 10⁻⁵ GeV⁻²
 √2 = 1.41421
 √2 × G_F = 1.6494 × 10⁻⁵ GeV⁻²
 (√2 × G_F)⁻¹ = 6.0628 × 10⁴ GeV²
 v = √(6.0628 × 10⁴) = 246.22 GeV</code></pre>
-
 <h3 id="d79-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$v = (\sqrt{2}\,G_F)^{-1/2} = 246.22\;\text{GeV}$$</div>
 <div class="math-desc">$\sqrt{2}$의 CAS 해석: 반야식에서 $\delta = \sqrt{2}$ (자연단위). Higgs VEV는 프레임 변화량 $\delta$와 약력 결합상수($G_F$)의 기하평균 역수다. $\sqrt{2}$는 고전 괄호와 양자 괄호의 등분배에서 온다.</div>
 </div>
-
 <h3 id="d79-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $v = 246.22\;\text{GeV}$</div>
 <div class="math-row">측정값: $v = 246.22\;\text{GeV}$</div>
 <div class="math-row">오차: $0.008\%$</div>
 </div>
-
 <p><span class="tag-solved">S급 적중</span>. Higgs VEV = $(\sqrt{2}\,G_F)^{-1/2}$. $\sqrt{2} = \delta$ = 반야식의 변화량.</p>
-
-
-<hr>
-<hr>
-
-
+<hr/>
+<hr/>
 <!-- ===== CAS 구조수 ===== -->
-
 <h1 id="cas-numbers">CAS 구조수의 출현</h1>
-
 <p>10개 상수에서 반복적으로 등장하는 CAS 구조수를 정리한다.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>구조수</th><th>CAS 기원</th><th>등장 위치</th></tr>
@@ -769,17 +468,10 @@ v = √(6.0628 × 10⁴) = 246.22 GeV</code></pre>
 <tr><td>$9$ (분모)</td><td>(CAS 3)$^2$, 양성자 내부 교차</td><td>D-69 양성자 반지름 지수/보정</td></tr>
 </table>
 </div>
-
 <p>이 숫자들은 임의의 피팅 매개변수가 아니다. CAS의 구조(3단계, 링 8비트, 도메인 4축)에서 연역적으로 나온다. 같은 구조수가 전혀 다른 물리 현상에서 반복 등장한다는 것은, 이 현상들이 모두 같은 CAS 구조의 서로 다른 투영임을 보여준다.</p>
-
-
-<hr>
-
-
+<hr/>
 <!-- ===== 총괄 ===== -->
-
 <h1 id="summary">총괄</h1>
-
 <div class="table-wrap">
 <table>
 <tr><th class="col-num">#</th><th>항목</th><th>공식</th><th class="col-err">오차</th><th class="col-status">등급</th></tr>
@@ -795,28 +487,22 @@ v = √(6.0628 × 10⁴) = 246.22 GeV</code></pre>
 <tr><td>D-79</td><td>$v$ (Higgs VEV)</td><td>$(\sqrt{2}G_F)^{-1/2}$</td><td>0.008%</td><td><span class="tag-solved">S급</span></td></tr>
 </table>
 </div>
-
 <p>10개 상수, 재료는 $\alpha$ 하나. 계수는 CAS 구조수(3, 8, $4\pi$, $2^4$). 알파 사다리(D-42)가 플랑크 스케일에서 원자 스케일까지 정수 단계로 연결한다. 표준모형이 입력값으로 넣는 숫자들이, 반야프레임에서는 출력값으로 나온다.</p>
-
 </div><!-- /lang-ko -->
-
-
 <!-- ========== English Version ========== -->
-
-
 <div class="page-nav lang-ko">
 <a href="../banya.html">종합 보고서</a>
 <a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
+<a href="../lib_new.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
 <div class="doc-footer lang-ko">
 <div class="f-top">
 <div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
@@ -825,21 +511,18 @@ v = √(6.0628 × 10⁴) = 246.22 GeV</code></pre>
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="alpha.html">α 근원</a> | <a href="alpha_ladder.html">알파 사다리</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
 기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
 <div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

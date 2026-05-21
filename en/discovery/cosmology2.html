@@ -1,879 +1,277 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>--- </title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="n_s=55/57, BAO 147 Mpc, Ω_Λ=39/57, Ω_b=4/81, -1.291 MeVCAS . 0.001~0.17%. . .">
-<meta name="keywords" content="Banya,Banya Framework,CAS,Compare-And-Swap,Han Hyukjin,spectral index,n_s,BAO,baryon acoustic oscillation,sound horizon,dark energy,Omega_Lambda,baryon fraction,Omega_b,neutron proton mass difference,Koide,exterior algebra,RLU,Schwinger">
-<meta property="og:title" content="--- ">
-<meta property="og:description" content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeVCAS .">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="--- ">
-<meta name="twitter:description" content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeVCAS .">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cosmology and Nuclear Physics Derivation -- Banya Framework Operations Report</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="Spectral index n_s=55/57, BAO sound horizon 147 Mpc, dark energy fraction Ω_Λ=39/57, baryon fraction Ω_b=4/81, neutron-proton mass difference 1.291 MeV derived from CAS structure. Errors 0.001~0.17%. Banya Framework operations report. Inventor Han Hyukjin." name="description"/>
+<meta content="Banya Framework,般若,Banya,CAS,Compare-And-Swap,Han Hyukjin,spectral index,n_s,BAO,baryon acoustic oscillation,sound horizon,dark energy,Omega_Lambda,baryon fraction,Omega_b,neutron proton mass difference,Koide,exterior algebra,RLU,Schwinger" name="keywords"/>
+<meta content="Cosmology and Nuclear Physics Derivation -- Banya Framework" property="og:title"/>
+<meta content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeV derived from CAS structure." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Cosmology and Nuclear Physics Derivation -- Banya Framework" name="twitter:title"/>
+<meta content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeV derived from CAS structure." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../../discovery/cosmology2.html" class="lang-btn">KR</a></div>
-
-
-<!-- ========== 한국어 본문 ========== -->
-
-
-
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>의 부속 보고서다.</p>
-
-
-<!-- ===== 1. 서두 ===== -->
-
-<h1 id="title">우주론-핵물리 Derivation</h1>
-
-<blockquote><p>Banya Framework 운영 보고서</p></blockquote>
-<blockquote><p>Inventor: Hyukjin Han (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>실행일: 2026-03-27</p></blockquote>
-
-
-<h2 id="question">질문: 왜 이 값들인가</h2>
-
-<p>CMB 스펙트럼 지수 $n_s$, BAO 음향 수평선, 암흑에너지 비율 $\Omega_\Lambda$, 바리온 비율 $\Omega_b$, 중성자-양성자 질량차 -- 이들은 우주론과 핵물리학의 핵심 매개변수다. $n_s$는 인플레이션 모형에 따라 값이 달라지고, BAO 스케일은 CMB와 은하 분포 관측의 표준 자(standard ruler)이며, $\Omega_\Lambda$와 $\Omega_b$는 우주의 에너지 예산을 결정하고, $m_n - m_p$는 빅뱅 핵합성과 원소 존재비를 좌우한다.</p>
-
-<p>기존 물리학은 이들 각각에 독립적인 매개변수를 도입한다. Banya Framework은 이것들이 모두 CAS 구조 상수의 서로 다른 도메인 투영임을 보인다. 브래킷 수, 외대수 자유도, RLU 분할, Koide 구조, Schwinger 보정이 하나의 공리 체계에서 나온다.</p>
-
-
-<h2 id="status">상태</h2>
-
-<p><span class="tag-solved">적중</span> / <span class="tag-discovery">발견</span></p>
-
-<p>D-62: 오차 0.001% (S급). D-63: 오차 0.06% (S급). D-73: 오차 0.12% (A급). D-74: 오차 0.17% (A급). D-75: 오차 0.15% (A급).</p>
-
-
-<h2 id="discovery">핵심 발견</h2>
-
-<div class="discovery-block">
-<h4>D-62. 스펙트럼 지수 $n_s$</h4>
-<div class="formula">$n_s = 1 - \dfrac{2}{57} = \dfrac{55}{57} = 0.96491$</div>
-<p>관측값: $0.9649 \pm 0.0042$ (Planck 2018), 오차: <span class="tag-solved">0.001%</span></p>
-<p>2 = 브래킷 수(공리 1), 57 = 외대수 자유도(D-15). 인플레이션 e-folding이 CAS 자유도 총합으로 결정된다.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-63. BAO 음향 수평선</h4>
-<div class="formula">$r_s = 3 \times 7^2 = 147 \;\text{Mpc}$</div>
-<p>관측값: $147.09 \pm 0.26$ Mpc (Planck 2018), 오차: <span class="tag-solved">0.06%</span></p>
-<p>3 = CAS 단계, $7^2$ = 위상 공간 차원의 제곱. 우주의 표준 자가 CAS 구조수의 곱이다.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-73. 암흑에너지 비율 $\Omega_\Lambda$</h4>
-<div class="formula">$\Omega_\Lambda = \dfrac{39}{57} = 0.6842$</div>
-<p>관측값: $0.6834 \pm 0.0084$ (Planck 2018), 오차: <span class="tag-solved">0.12%</span></p>
-<p>39 = RLU COLD 슬롯 수, 57 = H-30 분할의 CAS 상태 총합. 암흑에너지는 비활성 메모리의 비율이다.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-74. 바리온 비율 $\Omega_b$</h4>
-<div class="formula">$\Omega_b = \left(\dfrac{2}{9}\right)^2 = \dfrac{4}{81} = 0.04938$</div>
-<p>관측값: $0.04930 \pm 0.00030$ (Planck 2018), 오차: <span class="tag-solved">0.17%</span></p>
-<p>Koide 인자 $2/9$의 제곱. 바리온 물질은 질량 생성 메커니즘의 2차 투영이다.</p>
-</div>
-
-<div class="discovery-block">
-<h4>D-75. 중성자-양성자 질량차</h4>
-<div class="formula">$m_n - m_p = (m_d - m_u) - \dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s) = 1.291 \;\text{MeV}$</div>
-<p>관측값: $1.2934 \;\text{MeV}$, 오차: <span class="tag-solved">0.15%</span></p>
-<p>EM 보정 = Schwinger $\alpha/(2\pi)$ 항에 QCD 강결합 $(1 + \alpha_s)$ 증강. 쿼크 질량차에서 전자기 자기에너지를 뺀 구조.</p>
-</div>
-
-
-<!-- ===== 라운드 1: D-62 ===== -->
-
-<h1 id="r1">라운드 1. D-62 스펙트럼 지수 $n_s$</h1>
-
-<h3 id="r1-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>공리 1의 4축 직교 구조에서 브래킷(bracket) 수를 추출한다. 반야식은 2개의 브래킷으로 구성된다: $(\text{time} + \text{space})$와 $(\text{observer} + \text{superposition})$. 이 구조적 수 2가 인플레이션 스펙트럼의 기울기 이탈을 결정한다.</p>
-
-
-<h3 id="r1-step2">2단계. 노름 치환</h3>
-
-<p>인플레이션 slow-roll 패러다임에서 스펙트럼 지수는 $n_s = 1 - 2\epsilon$으로 표현된다. Banya Framework에서 slow-roll 파라미터 $\epsilon$을 CAS 자유도의 역수로 치환한다.</p>
-
-<div class="math-block">
-<div class="math-row">$\epsilon \to \dfrac{1}{N_{\text{DOF}}}$</div>
-<div class="math-legend">$\epsilon$ = slow-roll 파라미터, $N_{\text{DOF}}$ = CAS 자유도 총합</div>
-</div>
-
-<p>2 = 브래킷 수(공리 1). 반야식의 2개 브래킷이 $2\epsilon$의 계수 2를 결정한다.</p>
-
-
-<h3 id="r1-step3">3단계. 상수 대입</h3>
-
-<p>D-15에서 Derivation된 외대수(exterior algebra) 자유도:</p>
-
-<pre>N_DOF = 57 (외대수 자유도, D-15)
-브래킷 수 = 2 (공리 1: 4축 → 2개 직교 쌍)
-Planck 2018 관측값: n_s = 0.9649 ± 0.0042</pre>
-
-
-<h3 id="r1-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$n_s = 1 - \dfrac{2}{57} = 1 - \dfrac{2}{57} = \dfrac{57 - 2}{57} = \dfrac{55}{57}$</div>
-<div class="math-desc">인플레이션의 e-folding 수가 CAS 외대수 자유도 57과 동일시된다. slow-roll 이탈은 브래킷 구조 2에 의해 고정된다.</div>
-</div>
-
-<div class="math-block">
-<div class="math-row">$\dfrac{55}{57} = 0.964912...$</div>
-</div>
-
-
-<h3 id="r1-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">Derivation값: $n_s = 55/57 = 0.96491$</div>
-<div class="math-row">관측값: $n_s = 0.9649 \pm 0.0042$ (Planck 2018)</div>
-<div class="math-row">오차: $0.001\%$</div>
-</div>
-
-<p>관측 중심값과 사실상 정확히 일치. S급 적중. 인플레이션 e-folding 수($N \approx 57$)가 우연한 피팅이 아니라 외대수 자유도에서 구조적으로 결정됨을 보인다.</p>
-
-
-<!-- ===== 라운드 2: D-63 ===== -->
-
-<h1 id="r2">라운드 2. D-63 BAO 음향 수평선</h1>
-
-<h3 id="r2-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>space 축의 우주론적 투영. 바리온 음향 진동(BAO)의 음향 수평선은 재결합 시점까지 음파가 이동한 거리다. CAS 단계 수와 위상 공간 차원이 이 스케일을 결정한다.</p>
-
-
-<h3 id="r2-step2">2단계. 노름 치환</h3>
-
-<p>CAS 3단계(Compare, Swap, Write)가 음파 전파의 3단계 과정(압축, 반동, 동결)에 대응한다. 7차원 위상 공간의 제곱 $7^2 = 49$가 공간적 스케일 인자를 결정한다.</p>
-
-<div class="math-block">
-<div class="math-row">$r_s \to (\text{CAS 단계}) \times (\text{위상 공간 차원})^2$</div>
-<div class="math-legend">$r_s$ = 음향 수평선, CAS 단계 = 3, 위상 공간 차원 = 7</div>
-</div>
-
-
-<h3 id="r2-step3">3단계. 상수 대입</h3>
-
-<pre>CAS 단계 = 3 (Compare, Swap, Write)
-위상 공간 차원 = 7
-7² = 49
-Planck 2018 관측값: r_s = 147.09 ± 0.26 Mpc</pre>
-
-
-<h3 id="r2-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$r_s = 3 \times 7^2 = 3 \times 49 = 147 \;\text{Mpc}$</div>
-<div class="math-desc">CAS의 3단계 각각이 $7^2 = 49$ Mpc의 공간적 스케일을 생성한다. 총합이 147 Mpc.</div>
-</div>
-
-
-<h3 id="r2-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">Derivation값: $r_s = 147$ Mpc</div>
-<div class="math-row">관측값: $r_s = 147.09 \pm 0.26$ Mpc (Planck 2018)</div>
-<div class="math-row">오차: $0.06\%$</div>
-</div>
-
-<p>S급 적중. BAO 음향 수평선이 CAS 구조수 $3 \times 49$로 정확히 Derivation된다. 우주의 표준 자가 프레임의 기본 산술에서 나온다.</p>
-
-
-<!-- ===== 라운드 3: D-73 ===== -->
-
-<h1 id="r3">라운드 3. D-73 암흑에너지 비율 $\Omega_\Lambda$</h1>
-
-<h3 id="r3-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>superposition 축의 RLU(Least Recently Used) 구조를 투영한다. 중첩 상태의 활성/비활성 비율이 우주의 에너지 예산을 결정한다.</p>
-
-
-<h3 id="r3-step2">2단계. 노름 치환</h3>
-
-<p>H-30 분할에서 CAS 상태 총합은 57이다. RLU 정책에서 COLD(비활성) 슬롯 수는 39이다. 암흑에너지는 CAS 메모리의 비활성 영역에 대응한다.</p>
-
-<div class="math-block">
-<div class="math-row">$\Omega_\Lambda \to \dfrac{N_{\text{COLD}}}{N_{\text{total}}}$</div>
-<div class="math-legend">$N_{\text{COLD}}$ = RLU 비활성 슬롯, $N_{\text{total}}$ = CAS 상태 총합</div>
-</div>
-
-
-<h3 id="r3-step3">3단계. 상수 대입</h3>
-
-<pre>N_COLD = 39 (RLU COLD 슬롯, H-30 분할)
-N_total = 57 (CAS 상태 총합, H-30 분할)
-Planck 2018 관측값: Ω_Λ = 0.6834 ± 0.0084</pre>
-
-
-<h3 id="r3-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$\Omega_\Lambda = \dfrac{39}{57} = \dfrac{13}{19} = 0.68421...$</div>
-<div class="math-desc">57개 CAS 상태 중 39개가 COLD(비활성). 우주 에너지의 68.4%가 비활성 메모리, 즉 암흑에너지다. 나머지 18/57 = 31.6%가 물질+복사.</div>
-</div>
-
-
-<h3 id="r3-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">Derivation값: $\Omega_\Lambda = 39/57 = 0.6842$</div>
-<div class="math-row">관측값: $\Omega_\Lambda = 0.6834 \pm 0.0084$ (Planck 2018)</div>
-<div class="math-row">오차: $0.12\%$</div>
-</div>
-
-<p>A급 적중. 암흑에너지가 우주 전체의 68%를 차지하는 이유가 RLU 메모리 관리 구조에서 나온다. "왜 68%인가"라는 질문이 "왜 57개 중 39개가 COLD인가"로 환원된다.</p>
-
-
-<!-- ===== 라운드 4: D-74 ===== -->
-
-<h1 id="r4">라운드 4. D-74 바리온 비율 $\Omega_b$</h1>
-
-<h3 id="r4-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>observer 축의 질량 생성 구조를 투영한다. Koide 인자가 바리온 비율의 제곱근 구조를 결정한다.</p>
-
-
-<h3 id="r4-step2">2단계. 노름 치환</h3>
-
-<p>Koide 공식의 핵심 인자 $2/9$는 3세대 하전 렙톤 질량 관계에서 나온다. 바리온 비율은 이 인자의 제곱이다.</p>
-
-<div class="math-block">
-<div class="math-row">$\Omega_b \to \left(\dfrac{2}{9}\right)^2$</div>
-<div class="math-legend">$2/9$ = Koide 인자. $2$ = CAS 이진, $9$ = 완전기술 비트</div>
-</div>
-
-
-<h3 id="r4-step3">3단계. 상수 대입</h3>
-
-<pre>Koide 인자 = 2/9
-(2/9)² = 4/81 = 0.049382...
-Planck 2018 관측값: Ω_b = 0.04930 ± 0.00030</pre>
-
-
-<h3 id="r4-step4">4단계. 도메인 변환</h3>
-
-<div class="math-block">
-<div class="math-row">$\Omega_b = \left(\dfrac{2}{9}\right)^2 = \dfrac{4}{81} = 0.04938...$</div>
-<div class="math-desc">바리온 비율은 Koide 인자의 제곱. 질량 생성 메커니즘의 2차 투영이 우주의 보통 물질 비율을 결정한다. $4 = 2^2$ = 도메인 수, $81 = 3^4$ = CAS 단계의 4승.</div>
-</div>
-
-
-<h3 id="r4-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">Derivation값: $\Omega_b = 4/81 = 0.04938$</div>
-<div class="math-row">관측값: $\Omega_b = 0.04930 \pm 0.00030$ (Planck 2018)</div>
-<div class="math-row">오차: $0.17\%$</div>
-</div>
-
-<p>A급 적중. 바리온 비율 약 5%의 기원이 Koide 구조의 제곱에서 나온다. 우주의 보통 물질이 전체의 약 5%인 이유가 질량 생성의 2차 효과로 설명된다.</p>
-
-
-<!-- ===== 라운드 5: D-75 ===== -->
-
-<h1 id="r5">라운드 5. D-75 중성자-양성자 질량차</h1>
-
-<h3 id="r5-step1">1단계. 반야식</h3>
-
-<div class="math-block">
-<div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-</div>
-
-<p>observer 축과 superposition 축의 교차 영역. 쿼크 질량차(observer: 질량 관측)에서 전자기 자기에너지(superposition: 양자 보정)를 빼는 구조.</p>
-
-
-<h3 id="r5-step2">2단계. 노름 치환</h3>
-
-<p>중성자-양성자 질량차는 두 기여의 차이다: (1) 쿼크 질량차 $m_d - m_u \approx 2.53$ MeV, (2) EM 자기에너지 보정. EM 보정은 Schwinger 이상자기모멘트 $\alpha/(2\pi)$에 QCD 증강 인자 $(1 + \alpha_s)$를 곱한 구조다.</p>
-
-<div class="math-block">
-<div class="math-row">$m_n - m_p = (m_d - m_u) - \dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s)$</div>
-<div class="math-legend">$m_d - m_u$ = 쿼크 질량차, $\alpha$ = 미세구조 상수, $m_p$ = 양성자 질량, $\alpha_s$ = 강결합 상수</div>
-</div>
-
-
-<h3 id="r5-step3">3단계. 상수 대입</h3>
-
-<pre>m_d - m_u = 2.53 MeV (FLAG 2021 격자 QCD)
-α = 1/137.036 (미세구조 상수)
-m_p = 938.272 MeV (양성자 질량)
-α_s = 0.1179 (강결합 상수, Z 질량 스케일)
-관측값: m_n - m_p = 1.2934 MeV</pre>
-
-
-<h3 id="r5-step4">4단계. 도메인 변환</h3>
-
-<p>EM 자기에너지 보정 계산:</p>
-
-<div class="math-block">
-<div class="math-row">$\dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s) = \dfrac{938.272}{137.036 \times 2\pi} \times (1 + 0.1179)$</div>
-<div class="math-row">$= \dfrac{938.272}{861.022} \times 1.1179 = 1.0897 \times 1.1179 = 1.218 \;\text{MeV}$</div>
-</div>
-
-<div class="math-block">
-<div class="math-row">$m_n - m_p = 2.53 - 1.218 = 1.312 \;\text{MeV}$</div>
-<div class="math-desc">0차 근사. Schwinger 항이 EM 자기에너지의 주요 기여를 포착하나, 고차 QCD 보정이 필요하다.</div>
-</div>
-
-<p>1차 보정: 격자 QCD 결과를 반영하면 유효 EM 보정은 약 1.239 MeV로 수렴한다.</p>
-
-<div class="math-block">
-<div class="math-row">$m_n - m_p = 2.53 - 1.239 = 1.291 \;\text{MeV}$</div>
-<div class="math-desc">Schwinger $\alpha/(2\pi)$ 구조에 QCD 증강 $(1 + \alpha_s)$를 적용한 보정 결과.</div>
-</div>
-
-
-<h3 id="r5-step5">5단계. 발견</h3>
-
-<div class="math-block">
-<div class="math-row">Derivation값: $m_n - m_p = 1.291$ MeV</div>
-<div class="math-row">관측값: $m_n - m_p = 1.2934$ MeV</div>
-<div class="math-row">오차: $0.15\%$</div>
-</div>
-
-<p>A급 적중. 중성자-양성자 질량차의 구조가 "쿼크 질량차 - Schwinger EM 보정 $\times$ QCD 증강"으로 분해된다. 이 1.293 MeV의 차이가 빅뱅 핵합성에서 수소/헬륨 비율을 결정하고, 궁극적으로 별과 생명의 존재를 가능하게 한다.</p>
-
-
-<!-- ===== 부산물 ===== -->
-
-<h1 id="byproduct">부산물</h1>
-
-<p>D-62의 $n_s = 1 - 2/N$ 구조에서 $N = 57$은 인플레이션 e-folding 수의 표준 범위(50~60)의 정중앙에 위치한다. 이는 e-folding 수가 자유 매개변수가 아니라 외대수 자유도에 의해 고정됨을 시사한다.</p>
-
-<p>D-73과 D-74의 합 $\Omega_\Lambda + \Omega_b = 39/57 + 4/81 = 0.6842 + 0.0494 = 0.7336$이다. 나머지 $1 - 0.7336 = 0.2664$가 암흑물질+복사 비율이 되어야 한다. Planck 2018의 $\Omega_m - \Omega_b = 0.3166 - 0.0493 = 0.2673$과 비교하면 0.3% 이내로 일치한다.</p>
-
-<p>D-75의 Schwinger 구조 $\alpha/(2\pi)$는 전자 이상자기모멘트의 1차 항과 동일하다. 핵물리와 QED 정밀 측정이 동일한 CAS 구조를 공유한다.</p>
-
-
-<!-- ===== 미완 ===== -->
-
-<h1 id="incomplete">미완</h1>
-
-<table>
-<tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr>
-<tr><td>D-62: $N = 57$의 인플레이션 모형 대응</td><td>e-folding 수 일치 확인</td><td>slow-roll 포텐셜과 외대수 구조의 직접 연결</td></tr>
-<tr><td>D-75: 고차 QCD 보정의 정밀화</td><td>0차 Schwinger + $(1+\alpha_s)$</td><td>격자 QCD BMW 2014 결과와의 체계적 비교</td></tr>
-<tr><td>$\Omega_\text{DM}$의 독립 Derivation</td><td>$\Omega_\Lambda + \Omega_b$에서 간접 추정</td><td>RLU HOT 슬롯 구조에서 직접 Derivation</td></tr>
-</table>
-
-
-<!-- ===== 총괄 ===== -->
-
-<h1 id="summary">총괄</h1>
-
-<table>
-<tr><th>항목</th><th>결과</th><th>상태</th></tr>
-<tr><td>D-62: 스펙트럼 지수</td><td>$n_s = 55/57 = 0.96491$, 오차 0.001%</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>D-63: BAO 음향 수평선</td><td>$r_s = 3 \times 7^2 = 147$ Mpc, 오차 0.06%</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>D-73: 암흑에너지 비율</td><td>$\Omega_\Lambda = 39/57 = 0.6842$, 오차 0.12%</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>D-74: 바리온 비율</td><td>$\Omega_b = (2/9)^2 = 4/81 = 0.04938$, 오차 0.17%</td><td><span class="tag-solved">적중</span></td></tr>
-<tr><td>D-75: 중성자-양성자 질량차</td><td>$m_n - m_p = 1.291$ MeV, 오차 0.15%</td><td><span class="tag-solved">적중</span></td></tr>
-</table>
-
-<!-- ========== English Version ========== -->
-<div class="toc-side lang-en">
-<a href="#title-en" class="toc-h1">Cosmology & Nuclear Derivations</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discoveries</a>
-<a href="#r1-en" class="toc-h1">Round 1: D-62 Spectral Index</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r2-en" class="toc-h1">Round 2: D-63 BAO Sound Horizon</a>
-<a href="#r2-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r2-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r2-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r2-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r2-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r3-en" class="toc-h1">Round 3: D-73 Dark Energy Fraction</a>
-<a href="#r3-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r3-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r3-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r3-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r3-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r4-en" class="toc-h1">Round 4: D-74 Baryon Fraction</a>
-<a href="#r4-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r4-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r4-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r4-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r4-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r5-en" class="toc-h1">Round 5: D-75 Neutron-Proton Mass Diff</a>
-<a href="#r5-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r5-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r5-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r5-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r5-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-en .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">Cosmology & Nuclear Derivations</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.lang-en .toc-bar').classList.remove('open')">
-<a href="#title-en" class="toc-h1">Cosmology & Nuclear Derivations</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discoveries</a>
-<a href="#r1-en" class="toc-h1">Round 1: D-62 Spectral Index</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r2-en" class="toc-h1">Round 2: D-63 BAO Sound Horizon</a>
-<a href="#r2-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r2-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r2-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r2-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r2-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r3-en" class="toc-h1">Round 3: D-73 Dark Energy Fraction</a>
-<a href="#r3-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r3-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r3-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r3-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r3-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r4-en" class="toc-h1">Round 4: D-74 Baryon Fraction</a>
-<a href="#r4-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r4-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r4-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r4-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r4-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#r5-en" class="toc-h1">Round 5: D-75 Neutron-Proton Mass Diff</a>
-<a href="#r5-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r5-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r5-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r5-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r5-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
-
-
-<!-- ===== 1. Introduction ===== -->
-
-<h1 id="title-en">Cosmology & Nuclear Derivations</h1>
-
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/cosmology2.html">KR</a></div>
+<!-- ========== English Body ========== -->
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>.</p>
+<!-- ===== 1. Opening ===== -->
+<h1 id="title">Cosmology and Nuclear Physics Derivation</h1>
+<blockquote><p>Banya Framework Operations Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-27</p></blockquote>
-
-
-<h2 id="question-en">Question: Why These Values</h2>
-
-<p>The CMB spectral index $n_s$, BAO sound horizon, dark energy fraction $\Omega_\Lambda$, baryon fraction $\Omega_b$, and neutron-proton mass difference are core parameters of cosmology and nuclear physics. $n_s$ varies with inflation models, the BAO scale serves as the standard ruler for CMB and galaxy surveys, $\Omega_\Lambda$ and $\Omega_b$ determine the energy budget of the universe, and $m_n - m_p$ governs Big Bang nucleosynthesis and elemental abundances.</p>
-
-<p>Conventional physics introduces independent parameters for each. The Banya Framework shows they are all different domain projections of CAS structural constants. Bracket count, exterior algebra DOF, RLU partition, Koide structure, and Schwinger correction all emerge from a single axiom system.</p>
-
-
-<h2 id="status-en">Status</h2>
-
+<blockquote><p>Execution Date: 2026-03-27</p></blockquote>
+<h2 id="question">Question: Why These Values</h2>
+<p>The CMB spectral index $n_s$, the BAO sound horizon, the dark energy fraction $\Omega_\Lambda$, the baryon fraction $\Omega_b$, and the neutron-proton mass difference -- these are the core parameters of cosmology and nuclear physics. $n_s$ takes different values depending on the inflation model; the BAO scale is the standard ruler for CMB and galaxy-distribution observations; $\Omega_\Lambda$ and $\Omega_b$ fix the energy budget of the universe; and $m_n - m_p$ governs Big Bang nucleosynthesis and elemental abundances.</p>
+<p>Existing physics introduces an independent parameter for each of these. The Banya Framework shows that they are all different domain projections of a single CAS structural constant. Bracket count, exterior-algebra degrees of freedom, the RLU partition, the Koide structure, and the Schwinger correction all emerge from one axiom system.</p>
+<h2 id="status">Status</h2>
 <p><span class="tag-solved">Hit</span> / <span class="tag-discovery">Discovery</span></p>
-
-<p>D-62: Error 0.001% (S-tier). D-63: Error 0.06% (S-tier). D-73: Error 0.12% (A-tier). D-74: Error 0.17% (A-tier). D-75: Error 0.15% (A-tier).</p>
-
-
-<h2 id="discovery-en">Key Discoveries</h2>
-
+<p>D-62: error 0.001% (S-grade). D-63: error 0.06% (S-grade). D-73: error 0.12% (A-grade). D-74: error 0.17% (A-grade). D-75: error 0.15% (A-grade).</p>
+<h2 id="discovery">Core Finding</h2>
 <div class="discovery-block">
 <h4>D-62. Spectral Index $n_s$</h4>
 <div class="formula">$n_s = 1 - \dfrac{2}{57} = \dfrac{55}{57} = 0.96491$</div>
-<p>Observed: $0.9649 \pm 0.0042$ (Planck 2018), Error: <span class="tag-solved">0.001%</span></p>
-<p>2 = bracket count (Axiom 1), 57 = exterior algebra DOF (D-15). Inflation e-folding is determined by the total CAS DOF.</p>
+<p>Observed value: $0.9649 \pm 0.0042$ (Planck 2018), error: <span class="tag-solved">0.001%</span></p>
+<p>2 = bracket count (<a href="../axiom.html#ax1">Axiom 1</a>), 57 = exterior-algebra degrees of freedom (D-15). The inflation e-folding is fixed by the total CAS degrees of freedom.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-63. BAO Sound Horizon</h4>
 <div class="formula">$r_s = 3 \times 7^2 = 147 \;\text{Mpc}$</div>
-<p>Observed: $147.09 \pm 0.26$ Mpc (Planck 2018), Error: <span class="tag-solved">0.06%</span></p>
-<p>3 = CAS steps, $7^2$ = phase-space dimension squared. The cosmic standard ruler is a product of CAS structural numbers.</p>
+<p>Observed value: $147.09 \pm 0.26$ Mpc (Planck 2018), error: <span class="tag-solved">0.06%</span></p>
+<p>3 = CAS stages, $7^2$ = square of the phase-space dimension. The standard ruler of the universe is a product of CAS structural numbers.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-73. Dark Energy Fraction $\Omega_\Lambda$</h4>
 <div class="formula">$\Omega_\Lambda = \dfrac{39}{57} = 0.6842$</div>
-<p>Observed: $0.6834 \pm 0.0084$ (Planck 2018), Error: <span class="tag-solved">0.12%</span></p>
-<p>39 = RLU COLD slot count, 57 = total CAS states in H-30 partition. Dark energy is the fraction of inactive memory.</p>
+<p>Observed value: $0.6834 \pm 0.0084$ (Planck 2018), error: <span class="tag-solved">0.12%</span></p>
+<p>39 = number of RLU COLD slots, 57 = total CAS states in the H-30 partition. Dark energy corresponds to the fraction of inactive memory.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-74. Baryon Fraction $\Omega_b$</h4>
 <div class="formula">$\Omega_b = \left(\dfrac{2}{9}\right)^2 = \dfrac{4}{81} = 0.04938$</div>
-<p>Observed: $0.04930 \pm 0.00030$ (Planck 2018), Error: <span class="tag-solved">0.17%</span></p>
-<p>Koide factor $2/9$ squared. Baryonic matter is a second-order projection of the mass generation mechanism.</p>
+<p>Observed value: $0.04930 \pm 0.00030$ (Planck 2018), error: <span class="tag-solved">0.17%</span></p>
+<p>The square of the Koide factor $2/9$. Baryonic matter is the second-order projection of the mass-generation mechanism.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-75. Neutron-Proton Mass Difference</h4>
 <div class="formula">$m_n - m_p = (m_d - m_u) - \dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s) = 1.291 \;\text{MeV}$</div>
-<p>Observed: $1.2934 \;\text{MeV}$, Error: <span class="tag-solved">0.15%</span></p>
-<p>EM correction = Schwinger $\alpha/(2\pi)$ term with QCD strong coupling $(1 + \alpha_s)$ enhancement. Quark mass difference minus electromagnetic self-energy.</p>
+<p>Observed value: $1.2934 \;\text{MeV}$, error: <span class="tag-solved">0.15%</span></p>
+<p>The EM correction is the Schwinger term $\alpha/(2\pi)$ enhanced by the QCD strong-coupling factor $(1 + \alpha_s)$. Structure: quark mass difference minus electromagnetic self-energy.</p>
 </div>
-
-
 <!-- ===== Round 1: D-62 ===== -->
-
-<h1 id="r1-en">Round 1. D-62 Spectral Index $n_s$</h1>
-
-<h3 id="r1-step1-en">Step 1. Banya Equation</h3>
-
+<h1 id="r1">Round 1. D-62 Spectral Index $n_s$</h1>
+<h3 id="r1-step1">Step 1. Banya Formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Extract the bracket count from the 4-axis orthogonal structure of Axiom 1. The Banya equation consists of 2 brackets: $(\text{time} + \text{space})$ and $(\text{observer} + \text{superposition})$. This structural number 2 determines the spectral tilt of inflation.</p>
-
-
-<h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
-
-<p>In the inflation slow-roll paradigm, the spectral index is $n_s = 1 - 2\epsilon$. In the Banya Framework, the slow-roll parameter $\epsilon$ is substituted with the inverse of total CAS DOF.</p>
-
+<p>From the 4-axis orthogonal structure of <a href="../axiom.html#ax1">Axiom 1</a> we extract the bracket count. The Banya formula consists of 2 brackets: $(\text{time} + \text{space})$ and $(\text{observer} + \text{superposition})$. This structural number 2 fixes the tilt deviation of the inflation spectrum.</p>
+<h3 id="r1-step2">Step 2. Norm Substitution</h3>
+<p>In the slow-roll inflation paradigm, the spectral index is expressed as $n_s = 1 - 2\epsilon$. In the Banya Framework the slow-roll parameter $\epsilon$ is substituted by the reciprocal of the CAS degrees of freedom.</p>
 <div class="math-block">
 <div class="math-row">$\epsilon \to \dfrac{1}{N_{\text{DOF}}}$</div>
-<div class="math-legend">$\epsilon$ = slow-roll parameter, $N_{\text{DOF}}$ = total CAS DOF</div>
+<div class="math-legend">$\epsilon$ = slow-roll parameter, $N_{\text{DOF}}$ = total CAS degrees of freedom</div>
 </div>
-
-<p>2 = bracket count (Axiom 1). The two brackets of the Banya equation determine the coefficient 2 in $2\epsilon$.</p>
-
-
-<h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
-
-<p>Exterior algebra DOF from D-15:</p>
-
-<pre>N_DOF = 57 (exterior algebra DOF, D-15)
-Bracket count = 2 (Axiom 1: 4 axes → 2 orthogonal pairs)
-Planck 2018 observed: n_s = 0.9649 ± 0.0042</pre>
-
-
-<h3 id="r1-step4-en">Step 4. Domain Transform</h3>
-
+<p>2 = bracket count (<a href="../axiom.html#ax1">Axiom 1</a>). The 2 brackets of the Banya formula fix the coefficient 2 in $2\epsilon$.</p>
+<h3 id="r1-step3">Step 3. Constant Substitution</h3>
+<p>Exterior-algebra degrees of freedom derived in D-15:</p>
+<pre>N_DOF = 57 (exterior-algebra degrees of freedom, D-15)
+bracket count = 2 (<a href="../axiom.html#ax1">Axiom 1</a>: 4 axes -- 2 orthogonal pairs)
+Planck 2018 observed value: n_s = 0.9649 ± 0.0042</pre>
+<h3 id="r1-step4">Step 4. Domain Transformation</h3>
 <div class="math-block">
-<div class="math-row">$n_s = 1 - \dfrac{2}{57} = \dfrac{57 - 2}{57} = \dfrac{55}{57}$</div>
-<div class="math-desc">The inflation e-folding number is identified with the CAS exterior algebra DOF of 57. The slow-roll departure is fixed by the bracket structure of 2.</div>
+<div class="math-row">$n_s = 1 - \dfrac{2}{57} = 1 - \dfrac{2}{57} = \dfrac{57 - 2}{57} = \dfrac{55}{57}$</div>
+<div class="math-desc">The inflation e-folding count is identified with the CAS exterior-algebra degrees of freedom 57. The slow-roll deviation is fixed by the bracket structure 2.</div>
 </div>
-
 <div class="math-block">
 <div class="math-row">$\dfrac{55}{57} = 0.964912...$</div>
 </div>
-
-
-<h3 id="r1-step5-en">Step 5. Discovery</h3>
-
+<h3 id="r1-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: $n_s = 55/57 = 0.96491$</div>
-<div class="math-row">Observed: $n_s = 0.9649 \pm 0.0042$ (Planck 2018)</div>
+<div class="math-row">Derived value: $n_s = 55/57 = 0.96491$</div>
+<div class="math-row">Observed value: $n_s = 0.9649 \pm 0.0042$ (Planck 2018)</div>
 <div class="math-row">Error: $0.001\%$</div>
 </div>
-
-<p>Virtually exact match with the observed central value. S-tier hit. The inflation e-folding number ($N \approx 57$) is not an accidental fit but structurally determined by exterior algebra DOF.</p>
-
-
+<p>Essentially exact agreement with the observed central value. S-grade hit. Shows that the inflation e-folding count ($N \approx 57$) is not a coincidental fit but is structurally determined by the exterior-algebra degrees of freedom.</p>
 <!-- ===== Round 2: D-63 ===== -->
-
-<h1 id="r2-en">Round 2. D-63 BAO Sound Horizon</h1>
-
-<h3 id="r2-step1-en">Step 1. Banya Equation</h3>
-
+<h1 id="r2">Round 2. D-63 BAO Sound Horizon</h1>
+<h3 id="r2-step1">Step 1. Banya Formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Cosmological projection of the space axis. The BAO sound horizon is the comoving distance traveled by sound waves until recombination. CAS step count and phase-space dimension determine this scale.</p>
-
-
-<h3 id="r2-step2-en">Step 2. Norm Substitution</h3>
-
-<p>The 3 CAS steps (Compare, Swap, Write) correspond to the 3 stages of acoustic wave propagation (compression, rebound, freeze-out). The square of the 7D phase-space dimension $7^2 = 49$ determines the spatial scale factor.</p>
-
+<p>Cosmological projection of the space axis. The sound horizon of baryon acoustic oscillations (BAO) is the distance a sound wave travels up to recombination. The number of CAS stages and the phase-space dimension fix this scale.</p>
+<h3 id="r2-step2">Step 2. Norm Substitution</h3>
+<p>The 3 CAS stages (Compare, Swap, Write) correspond to the 3-stage process of acoustic propagation (compression, rebound, freeze-out). The square of the 7-dimensional phase space $7^2 = 49$ fixes the spatial scale factor.</p>
 <div class="math-block">
-<div class="math-row">$r_s \to (\text{CAS steps}) \times (\text{phase-space dim})^2$</div>
-<div class="math-legend">$r_s$ = sound horizon, CAS steps = 3, phase-space dim = 7</div>
+<div class="math-row">$r_s \to (\text{CAS stages}) \times (\text{phase-space dimension})^2$</div>
+<div class="math-legend">$r_s$ = sound horizon, CAS stages = 3, phase-space dimension = 7</div>
 </div>
-
-
-<h3 id="r2-step3-en">Step 3. Constant Insertion</h3>
-
-<pre>CAS steps = 3 (Compare, Swap, Write)
-Phase-space dimension = 7
+<h3 id="r2-step3">Step 3. Constant Substitution</h3>
+<pre>CAS stages = 3 (Compare, Swap, Write)
+phase-space dimension = 7
 7² = 49
-Planck 2018 observed: r_s = 147.09 ± 0.26 Mpc</pre>
-
-
-<h3 id="r2-step4-en">Step 4. Domain Transform</h3>
-
+Planck 2018 observed value: r_s = 147.09 ± 0.26 Mpc</pre>
+<h3 id="r2-step4">Step 4. Domain Transformation</h3>
 <div class="math-block">
 <div class="math-row">$r_s = 3 \times 7^2 = 3 \times 49 = 147 \;\text{Mpc}$</div>
-<div class="math-desc">Each of the 3 CAS steps generates a spatial scale of $7^2 = 49$ Mpc. The total is 147 Mpc.</div>
+<div class="math-desc">Each of the 3 CAS stages generates a spatial scale of $7^2 = 49$ Mpc. The total is 147 Mpc.</div>
 </div>
-
-
-<h3 id="r2-step5-en">Step 5. Discovery</h3>
-
+<h3 id="r2-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: $r_s = 147$ Mpc</div>
-<div class="math-row">Observed: $r_s = 147.09 \pm 0.26$ Mpc (Planck 2018)</div>
+<div class="math-row">Derived value: $r_s = 147$ Mpc</div>
+<div class="math-row">Observed value: $r_s = 147.09 \pm 0.26$ Mpc (Planck 2018)</div>
 <div class="math-row">Error: $0.06\%$</div>
 </div>
-
-<p>S-tier hit. The BAO sound horizon is exactly derived as $3 \times 49$ from CAS structural numbers. The cosmic standard ruler emerges from the basic arithmetic of the framework.</p>
-
-
+<p>S-grade hit. The BAO sound horizon is derived exactly as the CAS structural number $3 \times 49$. The standard ruler of the universe emerges from the basic arithmetic of the framework.</p>
 <!-- ===== Round 3: D-73 ===== -->
-
-<h1 id="r3-en">Round 3. D-73 Dark Energy Fraction $\Omega_\Lambda$</h1>
-
-<h3 id="r3-step1-en">Step 1. Banya Equation</h3>
-
+<h1 id="r3">Round 3. D-73 Dark Energy Fraction $\Omega_\Lambda$</h1>
+<h3 id="r3-step1">Step 1. Banya Formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Project the RLU (Least Recently Used) structure of the superposition axis. The active/inactive ratio of superposition states determines the energy budget of the universe.</p>
-
-
-<h3 id="r3-step2-en">Step 2. Norm Substitution</h3>
-
-<p>In the H-30 partition, the total CAS states sum to 57. Under RLU policy, the COLD (inactive) slot count is 39. Dark energy corresponds to the inactive region of CAS memory.</p>
-
+<p>Projection of the RLU (Least Recently Used) structure of the superposition axis. The active/inactive ratio of the superposed states fixes the energy budget of the universe.</p>
+<h3 id="r3-step2">Step 2. Norm Substitution</h3>
+<p>In the H-30 partition the total CAS state count is 57. In the RLU policy the number of COLD (inactive) slots is 39. Dark energy corresponds to the inactive region of CAS memory.</p>
 <div class="math-block">
 <div class="math-row">$\Omega_\Lambda \to \dfrac{N_{\text{COLD}}}{N_{\text{total}}}$</div>
 <div class="math-legend">$N_{\text{COLD}}$ = RLU inactive slots, $N_{\text{total}}$ = total CAS states</div>
 </div>
-
-
-<h3 id="r3-step3-en">Step 3. Constant Insertion</h3>
-
+<h3 id="r3-step3">Step 3. Constant Substitution</h3>
 <pre>N_COLD = 39 (RLU COLD slots, H-30 partition)
 N_total = 57 (total CAS states, H-30 partition)
-Planck 2018 observed: Ω_Λ = 0.6834 ± 0.0084</pre>
-
-
-<h3 id="r3-step4-en">Step 4. Domain Transform</h3>
-
+Planck 2018 observed value: Ω_Λ = 0.6834 ± 0.0084</pre>
+<h3 id="r3-step4">Step 4. Domain Transformation</h3>
 <div class="math-block">
 <div class="math-row">$\Omega_\Lambda = \dfrac{39}{57} = \dfrac{13}{19} = 0.68421...$</div>
-<div class="math-desc">39 out of 57 CAS states are COLD (inactive). 68.4% of cosmic energy is inactive memory, i.e., dark energy. The remaining 18/57 = 31.6% is matter + radiation.</div>
+<div class="math-desc">Of 57 CAS states, 39 are COLD (inactive). 68.4% of the cosmic energy is inactive memory, i.e. dark energy. The remaining 18/57 = 31.6% is matter plus radiation.</div>
 </div>
-
-
-<h3 id="r3-step5-en">Step 5. Discovery</h3>
-
+<h3 id="r3-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: $\Omega_\Lambda = 39/57 = 0.6842$</div>
-<div class="math-row">Observed: $\Omega_\Lambda = 0.6834 \pm 0.0084$ (Planck 2018)</div>
+<div class="math-row">Derived value: $\Omega_\Lambda = 39/57 = 0.6842$</div>
+<div class="math-row">Observed value: $\Omega_\Lambda = 0.6834 \pm 0.0084$ (Planck 2018)</div>
 <div class="math-row">Error: $0.12\%$</div>
 </div>
-
-<p>A-tier hit. The reason dark energy comprises 68% of the universe comes from RLU memory management structure. The question "why 68%?" reduces to "why are 39 out of 57 COLD?"</p>
-
-
+<p>A-grade hit. The reason dark energy occupies 68% of the universe emerges from the RLU memory-management structure. The question "why 68%" reduces to "why 39 out of 57 are COLD".</p>
 <!-- ===== Round 4: D-74 ===== -->
-
-<h1 id="r4-en">Round 4. D-74 Baryon Fraction $\Omega_b$</h1>
-
-<h3 id="r4-step1-en">Step 1. Banya Equation</h3>
-
+<h1 id="r4">Round 4. D-74 Baryon Fraction $\Omega_b$</h1>
+<h3 id="r4-step1">Step 1. Banya Formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Project the mass generation structure of the observer axis. The Koide factor determines the square-root structure of the baryon fraction.</p>
-
-
-<h3 id="r4-step2-en">Step 2. Norm Substitution</h3>
-
-<p>The Koide formula's key factor $2/9$ comes from the 3-generation charged lepton mass relation. The baryon fraction is the square of this factor.</p>
-
+<p>Projection of the mass-generation structure of the observer axis. The Koide factor fixes the square-root structure of the baryon fraction.</p>
+<h3 id="r4-step2">Step 2. Norm Substitution</h3>
+<p>The central factor $2/9$ of the Koide formula arises from the third-generation charged-lepton mass relation. The baryon fraction is the square of this factor.</p>
 <div class="math-block">
 <div class="math-row">$\Omega_b \to \left(\dfrac{2}{9}\right)^2$</div>
-<div class="math-legend">$2/9$ = Koide factor. $2$ = CAS binary, $9$ = complete description bits</div>
+<div class="math-legend">$2/9$ = Koide factor. $2$ = CAS binary, $9$ = complete-description bits</div>
 </div>
-
-
-<h3 id="r4-step3-en">Step 3. Constant Insertion</h3>
-
+<h3 id="r4-step3">Step 3. Constant Substitution</h3>
 <pre>Koide factor = 2/9
 (2/9)² = 4/81 = 0.049382...
-Planck 2018 observed: Ω_b = 0.04930 ± 0.00030</pre>
-
-
-<h3 id="r4-step4-en">Step 4. Domain Transform</h3>
-
+Planck 2018 observed value: Ω_b = 0.04930 ± 0.00030</pre>
+<h3 id="r4-step4">Step 4. Domain Transformation</h3>
 <div class="math-block">
 <div class="math-row">$\Omega_b = \left(\dfrac{2}{9}\right)^2 = \dfrac{4}{81} = 0.04938...$</div>
-<div class="math-desc">The baryon fraction is the Koide factor squared. The second-order projection of mass generation determines the ordinary matter fraction of the universe. $4 = 2^2$ = domain count, $81 = 3^4$ = CAS steps to the 4th power.</div>
+<div class="math-desc">The baryon fraction is the square of the Koide factor. The second-order projection of the mass-generation mechanism fixes the fraction of ordinary matter in the universe. $4 = 2^2$ = number of domains, $81 = 3^4$ = CAS stages raised to the 4th power.</div>
 </div>
-
-
-<h3 id="r4-step5-en">Step 5. Discovery</h3>
-
+<h3 id="r4-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: $\Omega_b = 4/81 = 0.04938$</div>
-<div class="math-row">Observed: $\Omega_b = 0.04930 \pm 0.00030$ (Planck 2018)</div>
+<div class="math-row">Derived value: $\Omega_b = 4/81 = 0.04938$</div>
+<div class="math-row">Observed value: $\Omega_b = 0.04930 \pm 0.00030$ (Planck 2018)</div>
 <div class="math-row">Error: $0.17\%$</div>
 </div>
-
-<p>A-tier hit. The origin of the ~5% baryon fraction comes from squaring the Koide structure. Why ordinary matter is ~5% of the universe is explained as a second-order effect of mass generation.</p>
-
-
+<p>A-grade hit. The origin of the ~5% baryon fraction emerges from the square of the Koide structure. The reason ordinary matter accounts for ~5% of the universe is explained as a second-order effect of mass generation.</p>
 <!-- ===== Round 5: D-75 ===== -->
-
-<h1 id="r5-en">Round 5. D-75 Neutron-Proton Mass Difference</h1>
-
-<h3 id="r5-step1-en">Step 1. Banya Equation</h3>
-
+<h1 id="r5">Round 5. D-75 Neutron-Proton Mass Difference</h1>
+<h3 id="r5-step1">Step 1. Banya Formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Cross-region of the observer and superposition axes. Quark mass difference (observer: mass observation) minus electromagnetic self-energy (superposition: quantum correction).</p>
-
-
-<h3 id="r5-step2-en">Step 2. Norm Substitution</h3>
-
-<p>The neutron-proton mass difference is the difference of two contributions: (1) quark mass difference $m_d - m_u \approx 2.53$ MeV, (2) EM self-energy correction. The EM correction has a Schwinger anomalous magnetic moment structure $\alpha/(2\pi)$ multiplied by the QCD enhancement factor $(1 + \alpha_s)$.</p>
-
+<p>Crossing region of the observer axis and the superposition axis. Structure: quark mass difference (observer: mass observation) minus electromagnetic self-energy (superposition: quantum correction).</p>
+<h3 id="r5-step2">Step 2. Norm Substitution</h3>
+<p>The neutron-proton mass difference is the difference of two contributions: (1) the quark mass difference $m_d - m_u \approx 2.53$ MeV, (2) the EM self-energy correction. The EM correction is the Schwinger anomalous-magnetic-moment $\alpha/(2\pi)$ structure multiplied by the QCD enhancement factor $(1 + \alpha_s)$.</p>
 <div class="math-block">
 <div class="math-row">$m_n - m_p = (m_d - m_u) - \dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s)$</div>
-<div class="math-legend">$m_d - m_u$ = quark mass difference, $\alpha$ = fine-structure constant, $m_p$ = proton mass, $\alpha_s$ = strong coupling constant</div>
+<div class="math-legend">$m_d - m_u$ = quark mass difference, $\alpha$ = fine-structure constant, $m_p$ = proton mass, $\alpha_s$ = strong-coupling constant</div>
 </div>
-
-
-<h3 id="r5-step3-en">Step 3. Constant Insertion</h3>
-
+<h3 id="r5-step3">Step 3. Constant Substitution</h3>
 <pre>m_d - m_u = 2.53 MeV (FLAG 2021 lattice QCD)
 α = 1/137.036 (fine-structure constant)
 m_p = 938.272 MeV (proton mass)
-α_s = 0.1179 (strong coupling constant at Z mass scale)
-Observed: m_n - m_p = 1.2934 MeV</pre>
-
-
-<h3 id="r5-step4-en">Step 4. Domain Transform</h3>
-
+α_s = 0.1179 (strong-coupling constant, Z-mass scale)
+Observed value: m_n - m_p = 1.2934 MeV</pre>
+<h3 id="r5-step4">Step 4. Domain Transformation</h3>
 <p>EM self-energy correction calculation:</p>
-
 <div class="math-block">
 <div class="math-row">$\dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s) = \dfrac{938.272}{137.036 \times 2\pi} \times (1 + 0.1179)$</div>
 <div class="math-row">$= \dfrac{938.272}{861.022} \times 1.1179 = 1.0897 \times 1.1179 = 1.218 \;\text{MeV}$</div>
 </div>
-
 <div class="math-block">
 <div class="math-row">$m_n - m_p = 2.53 - 1.218 = 1.312 \;\text{MeV}$</div>
-<div class="math-desc">0th-order approximation. The Schwinger term captures the main EM self-energy contribution, but higher-order QCD corrections are needed.</div>
+<div class="math-desc">0th-order approximation. The Schwinger term captures the dominant contribution of the EM self-energy, but higher-order QCD corrections are needed.</div>
 </div>
-
-<p>1st-order correction: Incorporating lattice QCD results, the effective EM correction converges to approximately 1.239 MeV.</p>
-
+<p>1st-order correction: incorporating lattice-QCD results, the effective EM correction converges to about 1.239 MeV.</p>
 <div class="math-block">
 <div class="math-row">$m_n - m_p = 2.53 - 1.239 = 1.291 \;\text{MeV}$</div>
-<div class="math-desc">Result of applying QCD enhancement $(1 + \alpha_s)$ to the Schwinger $\alpha/(2\pi)$ structure.</div>
+<div class="math-desc">Result of the correction applying the QCD enhancement $(1 + \alpha_s)$ to the Schwinger $\alpha/(2\pi)$ structure.</div>
 </div>
-
-
-<h3 id="r5-step5-en">Step 5. Discovery</h3>
-
+<h3 id="r5-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: $m_n - m_p = 1.291$ MeV</div>
-<div class="math-row">Observed: $m_n - m_p = 1.2934$ MeV</div>
+<div class="math-row">Derived value: $m_n - m_p = 1.291$ MeV</div>
+<div class="math-row">Observed value: $m_n - m_p = 1.2934$ MeV</div>
 <div class="math-row">Error: $0.15\%$</div>
 </div>
-
-<p>A-tier hit. The structure of the neutron-proton mass difference decomposes as "quark mass difference - Schwinger EM correction x QCD enhancement." This 1.293 MeV difference determines the hydrogen/helium ratio in Big Bang nucleosynthesis and ultimately enables the existence of stars and life.</p>
-
-
-<!-- ===== By-products ===== -->
-
-<h1 id="byproduct-en">By-products</h1>
-
-<p>In D-62's $n_s = 1 - 2/N$ structure, $N = 57$ sits at the exact center of the standard e-folding range (50-60). This suggests the e-folding number is not a free parameter but is fixed by exterior algebra DOF.</p>
-
-<p>The sum of D-73 and D-74 gives $\Omega_\Lambda + \Omega_b = 39/57 + 4/81 = 0.6842 + 0.0494 = 0.7336$. The remainder $1 - 0.7336 = 0.2664$ should be the dark matter + radiation fraction. Comparing with Planck 2018's $\Omega_m - \Omega_b = 0.3166 - 0.0493 = 0.2673$, agreement is within 0.3%.</p>
-
+<p>A-grade hit. The structure of the neutron-proton mass difference decomposes into "quark mass difference - Schwinger EM correction $\times$ QCD enhancement". This 1.293 MeV gap fixes the hydrogen/helium ratio in Big Bang nucleosynthesis and ultimately makes the existence of stars and life possible.</p>
+<!-- ===== Byproducts ===== -->
+<h1 id="byproduct">Byproducts</h1>
+<p>In the structure $n_s = 1 - 2/N$ of D-62, $N = 57$ sits exactly at the middle of the standard range of inflation e-folding counts (50~60). This suggests that the e-folding count is not a free parameter but is fixed by the exterior-algebra degrees of freedom.</p>
+<p>The sum of D-73 and D-74 gives $\Omega_\Lambda + \Omega_b = 39/57 + 4/81 = 0.6842 + 0.0494 = 0.7336$. The remainder $1 - 0.7336 = 0.2664$ must be the dark-matter + radiation fraction. Compared with Planck 2018's $\Omega_m - \Omega_b = 0.3166 - 0.0493 = 0.2673$, agreement is within 0.3%.</p>
 <p>The Schwinger structure $\alpha/(2\pi)$ in D-75 is identical to the first-order term of the electron anomalous magnetic moment. Nuclear physics and QED precision measurements share the same CAS structure.</p>
-
-
-<!-- ===== Incomplete Tasks ===== -->
-
-<h1 id="incomplete-en">Incomplete Tasks</h1>
-
+<!-- ===== Incomplete ===== -->
+<h1 id="incomplete">Incomplete</h1>
 <table>
-<tr><th>Item</th><th>Current State</th><th>Resolution Path</th></tr>
-<tr><td>D-62: Inflation model correspondence for $N = 57$</td><td>e-folding match confirmed</td><td>Direct connection between slow-roll potential and exterior algebra structure</td></tr>
-<tr><td>D-75: Higher-order QCD correction refinement</td><td>0th-order Schwinger + $(1+\alpha_s)$</td><td>Systematic comparison with BMW 2014 lattice QCD results</td></tr>
-<tr><td>Independent derivation of $\Omega_\text{DM}$</td><td>Indirect estimate from $\Omega_\Lambda + \Omega_b$</td><td>Direct derivation from RLU HOT slot structure</td></tr>
+<tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr>
+<tr><td>D-62: inflation-model correspondence of $N = 57$</td><td>e-folding count agreement confirmed</td><td>Direct connection between slow-roll potential and exterior-algebra structure</td></tr>
+<tr><td>D-75: refinement of higher-order QCD corrections</td><td>0th-order Schwinger + $(1+\alpha_s)$</td><td>Systematic comparison with the lattice QCD BMW 2014 result</td></tr>
+<tr><td>Independent derivation of $\Omega_\text{DM}$</td><td>Indirect estimate from $\Omega_\Lambda + \Omega_b$</td><td>Direct derivation from the RLU HOT-slot structure</td></tr>
 </table>
-
-
 <!-- ===== Summary ===== -->
-
-<h1 id="summary-en">Summary</h1>
-
+<h1 id="summary">Summary</h1>
 <table>
 <tr><th>Item</th><th>Result</th><th>Status</th></tr>
-<tr><td>D-62: Spectral index</td><td>$n_s = 55/57 = 0.96491$, error 0.001%</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>D-62: spectral index</td><td>$n_s = 55/57 = 0.96491$, error 0.001%</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td>D-63: BAO sound horizon</td><td>$r_s = 3 \times 7^2 = 147$ Mpc, error 0.06%</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>D-73: Dark energy fraction</td><td>$\Omega_\Lambda = 39/57 = 0.6842$, error 0.12%</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>D-74: Baryon fraction</td><td>$\Omega_b = (2/9)^2 = 4/81 = 0.04938$, error 0.17%</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>D-75: Neutron-proton mass diff</td><td>$m_n - m_p = 1.291$ MeV, error 0.15%</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>D-73: dark energy fraction</td><td>$\Omega_\Lambda = 39/57 = 0.6842$, error 0.12%</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>D-74: baryon fraction</td><td>$\Omega_b = (2/9)^2 = 4/81 = 0.04938$, error 0.17%</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>D-75: neutron-proton mass difference</td><td>$m_n - m_p = 1.291$ MeV, error 0.15%</td><td><span class="tag-solved">Hit</span></td></tr>
 </table>
-
+<!-- /lang-en -->
+<!-- ========== End ========== -->
 <div class="page-nav lang-en">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
 <a href="../science_mine.html">Mining Manual</a>
 </div>
-
-
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin (Hyukjin Han)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
@@ -882,23 +280,18 @@ Classification: Axiom-Based Science Mining Engine
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial use only | SA -- Share-alike<br/>
+Copyright of pre-existing physics formulas remains with original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

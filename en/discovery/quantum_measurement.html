@@ -1,357 +1,253 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Quantum Measurement Derivation: Compare True/False to Born Rule — Banya Framework Report</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="Banya Framework derivation of quantum measurement. Measurement problem = Compare true/false. Heisenberg uncertainty from Read-Compare mutual exclusion. Entanglement = shared delta projections. Decoherence = RLU decay. Born Rule from self-referential normalization.">
-<meta name="keywords" content="Banya Framework,Banya,quantum measurement,Born rule,Heisenberg uncertainty,entanglement,decoherence,Bell inequality,CAS,Compare,Han Hyukjin,TOE">
-<meta property="og:title" content="Quantum Measurement Derivation — Banya Framework">
-<meta property="og:description" content="Measurement problem, uncertainty, entanglement, decoherence, Born rule from CAS axioms.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Quantum Measurement — Banya Framework">
-<meta name="twitter:description" content="Born Rule |psi|^2 = self-referential normalization. Measurement = Compare true/false.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="Banya Framework derivation of quantum measurement. Measurement problem = Compare true/false. Heisenberg uncertainty from Read-Compare mutual exclusion. Entanglement = shared delta projections. Decoherence = RLU decay. Born Rule from self-referential normalization." name="description"/>
+<meta content="Banya Framework,Banya,quantum measurement,Born rule,Heisenberg uncertainty,entanglement,decoherence,Bell inequality,CAS,Compare,Han Hyukjin,TOE" name="keywords"/>
+<meta content="Quantum Measurement Derivation — Banya Framework" property="og:title"/>
+<meta content="Measurement problem, uncertainty, entanglement, decoherence, Born rule from CAS axioms." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Quantum Measurement — Banya Framework" name="twitter:title"/>
+<meta content="Born Rule |psi|^2 = self-referential normalization. Measurement = Compare true/false." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../../discovery/quantum_measurement.html" class="lang-btn">KR</a></div>
-
-
-
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/quantum_measurement.html">KR</a></div>
 <div class="toc-side lang-en">
-<a href="#en-title" class="toc-h1">Quantum Measurement</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-r1" class="toc-h1">Round 1. Measurement Problem</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r2" class="toc-h1">Round 2. Heisenberg Uncertainty</a>
-<a href="#en-r2-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r2-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r2-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r2-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r2-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r3" class="toc-h1">Round 3. Entanglement</a>
-<a href="#en-r3-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r3-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r3-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r3-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r3-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r4" class="toc-h1">Round 4. Decoherence</a>
-<a href="#en-r5" class="toc-h1">Round 5. Born Rule</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#en-title">Quantum Measurement</a>
+<a class="toc-h2" href="#en-intro">Introduction</a>
+<a class="toc-h2" href="#en-discovery">Key Discovery</a>
+<a class="toc-h1" href="#en-r1">Round 1. Measurement Problem</a>
+<a class="toc-h3" href="#en-r1-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r1-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r1-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r1-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r1-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r2">Round 2. Heisenberg Uncertainty</a>
+<a class="toc-h3" href="#en-r2-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r2-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r2-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r2-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r2-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r3">Round 3. Entanglement</a>
+<a class="toc-h3" href="#en-r3-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r3-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r3-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r3-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r3-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r4">Round 4. Decoherence</a>
+<a class="toc-h1" href="#en-r5">Round 5. Born Rule</a>
+<a class="toc-h1" href="#en-limits">Limitations</a>
+<a class="toc-h1" href="#en-summary">Summary</a>
 </div>
-
 <div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
 <div class="toc-bar-text"><span class="cur">Quantum Measurement</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
+<div class="toc-bar-arrow">▼</div>
 </div>
 <div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
-<a href="#en-title" class="toc-h1">Quantum Measurement</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-r1" class="toc-h1">Round 1. Measurement Problem</a>
-<a href="#en-r2" class="toc-h1">Round 2. Heisenberg Uncertainty</a>
-<a href="#en-r3" class="toc-h1">Round 3. Entanglement</a>
-<a href="#en-r4" class="toc-h1">Round 4. Decoherence</a>
-<a href="#en-r5" class="toc-h1">Round 5. Born Rule</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#en-title">Quantum Measurement</a>
+<a class="toc-h2" href="#en-intro">Introduction</a>
+<a class="toc-h2" href="#en-discovery">Key Discovery</a>
+<a class="toc-h1" href="#en-r1">Round 1. Measurement Problem</a>
+<a class="toc-h1" href="#en-r2">Round 2. Heisenberg Uncertainty</a>
+<a class="toc-h1" href="#en-r3">Round 3. Entanglement</a>
+<a class="toc-h1" href="#en-r4">Round 4. Decoherence</a>
+<a class="toc-h1" href="#en-r5">Round 5. Born Rule</a>
+<a class="toc-h1" href="#en-limits">Limitations</a>
+<a class="toc-h1" href="#en-summary">Summary</a>
 </div>
-
-
-
-
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a subsidiary report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It covers the derivation of quantum measurement phenomena from CAS axioms.</p>
-
 <h1 id="en-title">Quantum Measurement Derivation: From Compare True/False to Born Rule</h1>
-
 <blockquote><p>Banya Framework Operational Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>Date: 2026-04-03</p></blockquote>
-
-
 <h2 id="en-intro">Introduction</h2>
-
 <p><strong>Scope: H-442 through H-458.</strong> This report addresses the five central problems of quantum measurement theory and derives each from the Banya Framework axioms. The measurement problem (H-446, H-447), Heisenberg uncertainty (H-442), entanglement and Bell inequality violation (H-448, H-449), decoherence (H-445), and the Born rule (H-456) are all shown to be consequences of the CAS architecture.</p>
-
 <p><strong>Central thesis:</strong> Measurement is not a mysterious external act imposed on a quantum system. It is the Compare operation of CAS (Axiom 7). When Compare returns true, Swap executes and the state collapses. When Compare returns false, superposition persists (Axiom 13). This is all there is to measurement.</p>
-
 <p><strong>Status: <span class="tag-solved">Hit</span></strong> -- Measurement problem resolved as Compare judgment. Uncertainty principle derived from Read-Compare mutual exclusion. Entanglement from shared $\delta$ bits. Born rule from self-referential normalization in the observer loop.</p>
-
-
 <h2 id="en-discovery">Key Discovery</h2>
-
 <div class="discovery-block">
 <h4>Measurement = Compare Judgment (H-446, H-447)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{Compare}(\text{expected}, \text{actual}) \to \begin{cases} \text{true} \to \text{Swap (state determined)} \\ \text{false} \to \text{superposition maintained} \end{cases}$$</div>
 <p>Wavefunction collapse = Compare true $\to$ Swap. No collapse = Compare false $\to$ superposition (Axiom 7).</p>
 </div>
-
 <div class="discovery-block">
 <h4>Born Rule = Self-Referential Normalization (H-456)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$P = |\psi|^2 = |\langle \phi | \psi \rangle|^2 \;\longleftrightarrow\; \delta\text{-loop self-referential norm}$$</div>
 <p>The probability is the squared norm because the observer loop (Axiom 10) references itself, and the norm of a self-referential quantity is its square.</p>
 </div>
-
-
 <h1 id="en-r1">Round 1. The Measurement Problem (H-446, H-447)</h1>
-
 <h3 id="en-r1-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">Axiom 1: observer and superposition are orthogonal axes in the state space</div>
 </div>
-
 <p>The Banya equation places observer and superposition on orthogonal axes. This means a state can have nonzero projection onto both axes simultaneously. The measurement problem in quantum mechanics asks: when and how does a state that has a nonzero superposition component collapse to a definite observer component? The Banya Framework answers: when Compare returns true.</p>
-
 <h3 id="en-r1-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Axiom 7: Compare true} \to \text{Swap};\quad \text{Compare false} \to \text{superposition}$$</div>
 <div class="math-desc">The binary outcome of Compare determines whether the state is finalized or remains in superposition</div>
 </div>
-
 <p>Axiom 7 is the key. Compare takes two inputs: the expected value and the actual value. If they match (true), Swap executes and the state is written -- this is wavefunction collapse. If they do not match (false), the state remains in superposition -- the system stays unresolved on the superposition axis. There is no "measurement postulate" needed. The CAS architecture itself defines measurement.</p>
-
 <h3 id="en-r1-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
-<div class="math-row">$$|\psi\rangle = \sum_i c_i |i\rangle \;\xrightarrow{\text{Compare}(|k\rangle, |\psi\rangle)}\; \begin{cases} |k\rangle & \text{if match (true)} \\ \sum_{i \neq k} c_i' |i\rangle & \text{if no match (false)} \end{cases}$$</div>
+<div class="math-row">$$|\psi\rangle = \sum_i c_i |i\rangle \;\xrightarrow{\text{Compare}(|k\rangle, |\psi\rangle)}\; \begin{cases} |k\rangle &amp; \text{if match (true)} \\ \sum_{i \neq k} c_i' |i\rangle &amp; \text{if no match (false)} \end{cases}$$</div>
 <div class="math-desc">Quantum state before and after Compare: collapse or projection</div>
 </div>
-
 <p>In quantum notation, the state $|\psi\rangle$ is a superposition of basis states. The Compare operation checks whether the system matches a specific basis state $|k\rangle$. On true, the system Swaps to $|k\rangle$ and the superposition is destroyed. On false, the component $|k\rangle$ is excluded and the remaining superposition is renormalized. This is exactly the projection postulate of quantum mechanics, but derived from CAS rather than assumed.</p>
-
 <h3 id="en-r1-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\hat{P}_k = |k\rangle\langle k| \;\longleftrightarrow\; \text{Compare}(|k\rangle, \cdot)$$</div>
 <div class="math-desc">Projection operator = Compare operation targeting state $|k\rangle$</div>
 </div>
-
 <p>The projection operator $\hat{P}_k$ in quantum mechanics corresponds directly to the Compare operation targeting $|k\rangle$. Applying $\hat{P}_k$ to $|\psi\rangle$ extracts the component along $|k\rangle$ -- this is what Compare does. The idempotency of projection operators ($\hat{P}_k^2 = \hat{P}_k$) reflects the fact that comparing twice with the same expected value gives the same result as comparing once.</p>
-
 <h3 id="en-r1-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Measurement Problem Resolved (H-446, H-447)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{Measurement} = \text{Compare};\quad \text{Collapse} = \text{Compare true} \to \text{Swap}$$</div>
 <p>There is no measurement problem. There is only the Compare operation. The apparent mystery arises from treating measurement as something external to the system, when in fact it is the internal Compare step of CAS. <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-r2">Round 2. Heisenberg Uncertainty from Read-Compare Mutual Exclusion (H-442)</h1>
-
 <h3 id="en-r2-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{CAS pipeline: } R \to C \to S \quad \text{(sequential, Axiom 2)}$$</div>
 <div class="math-desc">Read and Compare are separate pipeline stages; they cannot execute simultaneously on the same entity</div>
 </div>
-
 <p>In the CAS pipeline, Read and Compare are sequential stages. Read acquires the current state. Compare evaluates it against an expected value. These two operations cannot be performed simultaneously on the same entity in the same tick (Axiom 8: $\delta$ polls every tick).</p>
-
 <h3 id="en-r2-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Read}(\text{position}) \;\text{and}\; \text{Compare}(\text{momentum}) \;\to\; \text{mutual exclusion}$$</div>
 <div class="math-desc">Position is acquired by Read; momentum requires Compare (rate of change between two Reads)</div>
 </div>
-
 <p>Position is a Read operation: you read the current location. Momentum is a Compare operation: you compare the current position with the previous position to compute the rate of change. Since Read and Compare are sequential in the pipeline, you cannot execute both on the same entity at the same tick. If you Read position precisely, you consume the tick and cannot Compare momentum in the same tick. If you Compare momentum, you need two Reads at different ticks, which means position is spread over an interval.</p>
-
 <h3 id="en-r2-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\Delta x \cdot \Delta p \geq \frac{\hbar}{2}$$</div>
 <div class="math-desc">Heisenberg uncertainty principle: the product of position and momentum uncertainties has a lower bound</div>
 </div>
-
 <p>The minimum uncertainty $\hbar/2$ corresponds to the minimum cost of one CAS tick. You cannot resolve both position and momentum to better than one tick's worth of information. The factor $\hbar$ is the quantum of action -- the cost of one complete CAS cycle (R$\to$C$\to$S) in the physics domain.</p>
-
 <h3 id="en-r2-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$[\hat{x}, \hat{p}] = i\hbar \;\longleftrightarrow\; [\text{Read}, \text{Compare}] \neq 0$$</div>
 <div class="math-desc">Non-commuting operators = non-commuting CAS stages</div>
 </div>
-
 <p>The canonical commutation relation $[\hat{x}, \hat{p}] = i\hbar$ states that position and momentum operators do not commute. In CAS terms: Read followed by Compare gives a different result than Compare followed by Read, because the CAS pipeline is irreversible (Axiom 2). The imaginary unit $i$ reflects the 90-degree phase shift between the time and space axes in the Banya equation (they are orthogonal components of the same quadratic form).</p>
-
 <h3 id="en-r2-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Heisenberg Uncertainty = Read-Compare Mutual Exclusion (H-442)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\Delta x \cdot \Delta p \geq \frac{\hbar}{2} \;\longleftrightarrow\; \text{Read-Compare pipeline exclusion per tick}$$</div>
 <p>The uncertainty principle is not a limit on our knowledge. It is a structural constraint of the CAS pipeline: Read and Compare cannot overlap on the same entity in the same tick. <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-r3">Round 3. Entanglement = Shared $\delta$ Projections (H-448, H-449)</h1>
-
 <h3 id="en-r3-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta = \text{global flag (Axiom 15)}, \quad \text{8-bit d-ring (Axiom 5)}$$</div>
 <div class="math-desc">The $\delta$ register is shared; entities can reference the same $\delta$ bits</div>
 </div>
-
 <p>Axiom 15 defines $\delta$ as a global flag. Axiom 5 specifies it as an 8-bit d-ring. When two entities share the same $\delta$ bits (i.e., their d-ring entries reference the same positions in the global $\delta$ register), their Compare outcomes become correlated regardless of spatial separation.</p>
-
 <h3 id="en-r3-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$|\Psi\rangle_{AB} = \frac{1}{\sqrt{2}}(|0\rangle_A|1\rangle_B - |1\rangle_A|0\rangle_B) \;\longleftrightarrow\; \delta_A \oplus \delta_B = \text{const}$$</div>
 <div class="math-desc">Bell state: the $\delta$ bits of A and B are XOR-locked</div>
 </div>
-
 <p>An entangled Bell state means that the $\delta$ bits of entities A and B are locked in a complementary relationship. When A's Compare resolves its $\delta$ bit to 0, B's corresponding $\delta$ bit must resolve to 1, and vice versa. This is not communication -- it is a shared constraint on the global $\delta$ register (Axiom 15). The correlation is established when the entities interact (Swap), and it persists until one of them undergoes a new Swap that overwrites the $\delta$ bit.</p>
-
 <h3 id="en-r3-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$S = \langle A_1 B_1 \rangle - \langle A_1 B_2 \rangle + \langle A_2 B_1 \rangle + \langle A_2 B_2 \rangle \leq 2\sqrt{2}$$</div>
 <div class="math-desc">Tsirelson bound: quantum mechanics allows $|S| \leq 2\sqrt{2}$, violating Bell's classical limit of 2</div>
 </div>
-
 <p>The Bell inequality violation (H-449) follows from the shared $\delta$ structure. Classical hidden variables would require each entity to carry its own independent state, giving $|S| \leq 2$. But in the Banya Framework, the $\delta$ register is global (Axiom 15), so the correlations can exceed the classical bound. The Tsirelson bound $2\sqrt{2}$ arises from the fact that the $\delta$ register has 8 bits (Axiom 5), and the maximum correlation achievable with shared bits in a quadratic norm structure is $\sqrt{2}$ times the classical maximum.</p>
-
 <h3 id="en-r3-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{No FTL signaling}: \quad \text{Tr}_B(\rho_{AB}) = \rho_A$$</div>
 <div class="math-desc">Partial trace: local statistics are unaffected by remote measurements</div>
 </div>
-
 <p>Entanglement does not permit faster-than-light signaling. In CAS terms: the shared $\delta$ bit constrains correlations, but a local Compare on entity A does not change the local statistics of entity B. The partial trace over B leaves A's reduced density matrix unchanged. This is because the $\delta$ register is read-only during Compare (Axiom 7) -- Compare does not modify $\delta$, it only reads it. Modification requires Swap, which is a local operation.</p>
-
 <h3 id="en-r3-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Entanglement = Shared $\delta$ Projection (H-448, H-449)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{Entanglement} = \text{shared } \delta \text{ bits}; \quad \text{Bell violation} = \text{global } \delta \text{ (Axiom 15)}$$</div>
 <p>Entanglement is not mysterious non-locality. It is shared reference to the same $\delta$ bits in the global register. <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-r4">Round 4. Decoherence = RLU Decay (H-445)</h1>
-
 <h3 id="en-r4-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Axiom 6: RLU residual 9, maintenance cost 4}$$</div>
 <div class="math-desc">RLU (Recently Least Used) entries have a residual lifetime and a maintenance cost per tick</div>
 </div>
-
 <p>Axiom 6 defines the RLU mechanism: each entity in the system has a residual value (initially 9) that decays with a maintenance cost of 4 per interaction with the environment. When the residual reaches zero, the entity is evicted from the active set.</p>
-
 <h3 id="en-r4-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$\rho(t) = \sum_k E_k \rho(0) E_k^\dagger \;\longleftrightarrow\; \text{RLU decay over } t \text{ ticks}$$</div>
 <div class="math-desc">Kraus operator evolution: each environmental interaction applies one RLU maintenance cost</div>
 </div>
-
 <p>Decoherence is the process by which a quantum superposition loses coherence due to interaction with the environment. In CAS terms, each environmental interaction costs 4 units of RLU residual (Axiom 6). After enough interactions, the coherent superposition decays to a classical mixture. The decoherence time $\tau_d$ is proportional to the number of ticks before the RLU residual is exhausted: $\tau_d \propto 9/4 \approx 2$ ticks for a maximally exposed entity.</p>
-
 <h3 id="en-r4-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\tau_{\text{decoherence}} \propto \frac{\text{RLU residual}}{\text{maintenance cost} \times \text{interaction rate}}$$</div>
 <div class="math-desc">Decoherence timescale: RLU budget divided by environmental drain rate</div>
 </div>
-
 <h3 id="en-r4-step4">Step 4. Domain Transform</h3>
-
 <p>For macroscopic objects, the interaction rate with the environment is enormous (e.g., $\sim 10^{20}$ air molecule collisions per second). The RLU residual is consumed almost instantaneously, and the superposition decoheres on femtosecond timescales. For isolated quantum systems (e.g., atoms in vacuum), the interaction rate is low, and coherence can persist for seconds or longer.</p>
-
 <h3 id="en-r4-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Decoherence = RLU Decay (H-445)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{Coherence} \propto e^{-t/\tau_d}, \quad \tau_d = \frac{\text{RLU residual}}{\text{drain rate}}$$</div>
 <p>Decoherence is not wavefunction collapse. It is the exhaustion of the RLU residual through environmental interactions (Axiom 6). <span class="tag-hypothesis">Hypothesis</span></p>
 </div>
-
-
 <h1 id="en-r5">Round 5. Born Rule $|\psi|^2$ = Self-Referential Normalization (H-456)</h1>
-
 <h3 id="en-r5-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Axiom 10: } \delta \to \text{observer} \to \text{Compare} \to \text{DATA} \to \delta$$</div>
 <div class="math-desc">The observer loop: $\delta$ fires, observer is activated, Compare is executed, DATA is updated, $\delta$ is updated</div>
 </div>
-
 <p>Axiom 10 defines the recursive observer loop. The key feature is that $\delta$ appears at both the beginning and end of the loop. This self-referential structure -- the output feeds back into the input -- determines the normalization of probabilities.</p>
-
 <h3 id="en-r5-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$P(k) = |\langle k|\psi\rangle|^2 \;\longleftrightarrow\; \text{self-referential norm of } \delta \text{ projection}$$</div>
 <div class="math-desc">The Born rule: probability = squared amplitude = self-referential normalization</div>
 </div>
-
 <p>Why is the probability the <em>square</em> of the amplitude, and not the amplitude itself, or the cube, or some other function? Because the observer loop is self-referential. When $\delta$ references itself through the loop $\delta \to \text{observer} \to \text{Compare} \to \text{DATA} \to \delta$, the consistency condition requires that the norm be quadratic. A linear norm would not be self-consistent under the loop (it would not be positive-definite). A cubic or higher norm would overdetermine the system. The unique self-consistent norm for a self-referential loop in a quadratic form ($\delta^2 = \ldots$, Axiom 1) is the squared modulus.</p>
-
 <h3 id="en-r5-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\sum_k P(k) = \sum_k |\langle k|\psi\rangle|^2 = 1$$</div>
 <div class="math-desc">Normalization: total probability = 1, reflecting $\delta$ conservation (Axiom 15: $\delta$ is a global flag, always defined)</div>
 </div>
-
 <p>The normalization condition $\sum P(k) = 1$ follows from the fact that $\delta$ is always defined (Axiom 15). At every tick, $\delta$ has a definite value. The probabilities over all possible outcomes must sum to 1 because exactly one outcome occurs per Compare operation per tick.</p>
-
 <h3 id="en-r5-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\rho = |\psi\rangle\langle\psi| \;\longleftrightarrow\; \delta \otimes \delta^* \;(\text{outer product of } \delta \text{ with its conjugate})$$</div>
 <div class="math-desc">Density matrix = self-referential outer product of $\delta$</div>
 </div>
-
 <p>The density matrix $\rho = |\psi\rangle\langle\psi|$ is the outer product of the state with itself. In CAS terms, this is the outer product of $\delta$ with its conjugate -- the beginning and end of the observer loop. The diagonal elements $\rho_{kk} = |c_k|^2$ give the Born rule probabilities. The off-diagonal elements $\rho_{jk} = c_j c_k^*$ encode coherences that decay under RLU decoherence (Round 4).</p>
-
 <h3 id="en-r5-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Born Rule = Self-Referential Normalization (H-456)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$P = |\psi|^2 \;\longleftrightarrow\; \delta^2 = (\text{Axiom 1 quadratic form}) \times (\text{Axiom 10 self-reference})$$</div>
 <p>The Born rule is not a postulate. It is the unique self-consistent normalization for a self-referential observer loop in a quadratic state space. <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-limits">Limitations</h1>
-
 <ol>
 <li><strong>Measurement-collapse identification is structural</strong>: The claim that Compare = measurement is a structural correspondence. A rigorous proof would require showing that no other CAS operation can produce collapse-like behavior.</li>
 <li><strong>Born rule derivation assumes quadratic form</strong>: The argument for $|\psi|^2$ relies on Axiom 1 being quadratic ($\delta^2$). If the Banya equation were of a different form, the Born rule would differ. The derivation is therefore contingent on the axiom choice.</li>
 <li><strong>Entanglement mechanism is qualitative</strong>: The shared $\delta$ bit explanation is compelling but does not yet produce the exact Tsirelson bound $2\sqrt{2}$ from first principles.</li>
 <li><strong>Decoherence timescale is approximate</strong>: The RLU decay model gives the correct qualitative behavior but has not been calibrated to match experimental decoherence times for specific systems.</li>
 </ol>
-
-
 <h1 id="en-summary">Summary</h1>
-
 <div class="table-wrap">
 <table>
 <tr><th>Item</th><th>Result</th><th class="col-status">Status</th><th class="col-date">Card</th></tr>
@@ -363,13 +259,8 @@
 <tr><td>Born rule $|\psi|^2$</td><td>Self-referential normalization in observer loop (Axiom 10)</td><td><span class="tag-solved">Hit</span></td><td>H-456</td></tr>
 </table>
 </div>
-
 <p>Current grade: <strong>A</strong> (Five of six items structurally resolved; decoherence quantitative calibration pending)</p>
 <p>Remaining for grade S: Rigorous Tsirelson bound from $\delta$ structure; experimental calibration of RLU decoherence times; formal proof of Born rule uniqueness.</p>
-
-</div>
-
-
 
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
@@ -377,15 +268,13 @@
 <a href="../lib.html">Factor Library</a>
 <a href="../science_mine.html">Mining Manual</a>
 </div>
-
-
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (Banya Framework)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
@@ -395,22 +284,20 @@ Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-bottom">
 <div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="electromagnetic.html">Electromagnetic</a> | <a href="gauge.html">Gauge Group</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br/>
 Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
 <script>
 (function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

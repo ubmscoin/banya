@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-566 중력자 질량 = 0 (비용 누적은 FSM 노름이 아님) -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-566 중력자 질량 = 0 (비용 누적은 FSM 노름이 아님). v1.8 공리 기준 5단계 재귀 대입 채굴 카드." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h566.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib_new.html">&lt;== 라이브러리</a> | 카테고리: <code>h_cosmology</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h566.html">H-566</a>. 중력자 질량 = 0 (비용 누적은 FSM 노름이 아님)</h1>
+<div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h566.html">H-566</a>: 중력자 질량 정확히 0 — 매개입자 부재의 공리적 필연 (B급 가설)</strong></p>
+<div class="formula-box">$$m_g = 0 \text{ (정확)}, \quad |m_g|_{\text{exp}} &lt; 1.2 \times 10^{-22} \text{ eV (GW170817)}$$</div>
+<p class="finding-precision">등급: B · 가설 · GW170817 중력파 속도 = 광속 측정에서 |m_g| &lt; 1.2 x 10^-22 eV (LIGO/Virgo 2017) · 프레임 예측: m_g = 0 정확</p>
+<p>본 카드는 중력자(graviton)의 질량이 정확히 0인 이유를 반야프레임 공리 구조에서 도출하는 B급 가설이다. 라이브러리 본문은 "비용 누적은 FSM 노름이 아님"이라 표현했으나, v1.8 physics_map.html에 의하면 중력은 + 횡단 비용이 아니라 √3 노름 누적·쥠 밀집 수축(ring 없음)이므로 표현 정정 필요. 본질 통찰("중력은 매개입자에 의한 게이지 힘이 아님")은 v1.8과 정합.</p>
+<p>v1.8 정합 재해석: 4력 v1.8 분류에서 중력은 ring 분류 외 — ring-7 강력 / ring-30 약력 / ring-137 전자기는 모두 ring 구조 위에서 매개입자(글루온/W·Z/광자)를 가진다. 중력은 ring 자체가 없으므로 매개입자가 들어설 자리가 없다. 이것이 중력자 부재의 구조적 근거.</p>
+<p>왜 m_g = 0인가의 진짜 이유: 중력은 <strong>√3 노름 수축이 거리 ℓ에 따라 1/(4πℓ²)로 직접 분배되는 기하학적 현상(<a href="../axiom.html#ax13">공리 13</a> 명제)</strong>이지, 두 FSM 노름 사이를 왕복하는 매개입자에 의한 교환력이 아니다. 매개입자 없음 ==&gt; 매개입자 질량을 정의할 대상 자체가 없음 ==&gt; m_g = 0은 매개입자의 "값"이 아니라 매개입자 부재의 표현.</p>
+<p>실험적 정합: GW170817 (중성자별 합병 중력파 + 짧은 감마선 폭발 동시 검출, 2017)에서 중력파 속도와 광속의 차이가 |Δv/c| &lt; 10^-15 측정됨. 이로부터 |m_g| &lt; 1.2 × 10^-22 eV 한계. 본 가설 m_g = 0은 이 한계와 정합. 미래 더 정밀한 측정에서도 본 가설은 0 예측 유지 — 어떤 유한 m_g 검출 시 본 가설은 즉시 반박된다.</p>
+<p>중력의 무한 도달 거리와 유카와 수정 부재(e^(-r/λ_g) 인자 없음)도 본 가설에서 자동 도출 — 매개입자 질량이 없으면 콤프턴 파장이 무한대이므로 도달 거리에 지수 감쇠 없음. 1/r² 의존성만 남는다 (<a href="../axiom.html#ax13">공리 13</a> 명제 1/(4πℓ²) 자연).</p>
+<p>스핀-2 성질의 공리적 유도가 후속 라운드 과제. <a href="../axiom.html#ax2">공리 2</a> 명제 워크벤치 √3 (CAS 3축 직교)에서 텐서 표현이 자연스럽게 따라 나올 가능성이 있으나 정량 도출은 미완. 분류 III(공리 내적 서술 완료) 가설로 표현 정정 후 D 승격 후보.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (재귀 대입 진행 중, 분류 III, B급)</p>
+<p><strong>이유:</strong> 카드 본질 통찰 "중력은 매개입자에 의한 게이지 힘이 아님"이 v1.8 physics_map의 4력 분류(중력 ring 없음)와 직접 정합하며, GW170817 실험 한계 |m_g| &lt; 1.2 x 10^-22 eV와 정합. 라이브러리 본문이 "비용 누적은 FSM 노름이 아님"이라고 자체 부정하면서도 "비용 누적" 어휘를 사용한 점이 <a href="../axiom.html#ax4">공리 4</a>(비용 = + 순서 횡단)와 충돌하여 재해석 필요. m_g = 0이 정량 식이 아니라 매개입자 부재의 표현이라는 점에서 분류 III에 머무름.
+표현 정정(비용 누적 ==&gt; √3 노름 수축)과 스핀-2 성질의 공리적 유도가 완료되면 D 승격. 다음 라운드 입력으로 <a href="../axiom.html#ax2">공리 2</a> 명제(워크벤치 √3, 텐서 표현), <a href="../axiom.html#ax11">공리 11</a> 명제(다중 투영의 거리 무관성), <a href="../axiom.html#ax13">공리 13</a> 명제(1/4πℓ²) 재투입 가능.</p>
+<p><strong>위치:</strong> ECS 상호작용 영역(<a href="../axiom.html#ax12">공리 12</a>) 안의 중력 매개입자 부재 가설. 4력 v1.8 분류에서 중력은 ring 없음 ==&gt; 매개입자 자리 없음 ==&gt; m_g = 0은 부재의 표현. <a href="h517.html">H-517</a>(중력 본질), <a href="h529.html">H-529</a>(G 상수)의 직접 귀결. 재귀 대입 경로: <a href="h555.html">H-555</a>(표준모형 게이지 보손), <a href="h557.html">H-557</a>(계층 문제).</p>
+</div>
+<h2>v1.8 카테고리 정정 (재채굴)</h2>
+<div class="verdict-unknown">
+<p><strong>주의:</strong> 본 카드 라이브러리 본문은 v1.0~1.2 시기 채굴이며 v1.8 공리/physics_map와 일부 불일치.</p>
+<p><strong>지적:</strong> "비용 누적은 FSM 노름이 아님" 표현은 카드 자체가 카테고리 혼란 인지하면서도 비용 어휘 사용. v1.8에 중력은 비용이 아니라 기하 수축.</p>
+<p><strong>v1.8 정정:</strong> v1.8: 중력자 질량 = 0은 √3 노름 수축이 매개입자 없이 직접 발생하기 때문 (ring 없음). 매개입자 매핑은 강력/약력/전자기 (ring-7/30/137)에만 적용.</p>
+<p><strong>4력 v1.8 분류 (physics_map):</strong> 강력=FSM 원자성(ring-7) | 약력=수축 겹침·직렬화(ring-30) | 전자기=교차 Cmp/Swp 비용(ring-137) | <strong>중력=√3 노름 누적·쥠 밀집 수축 (ring 없음, 비용 아닌 기하 수축)</strong></p>
+</div>
+<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<div class="step">
+<h3>1단계. 반야식 출발</h3>
+<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
+<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+</div>
+<div class="step">
+<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
+<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
+<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
+<p><strong>라이브러리 재투입:</strong> <a href="h555.html">H-555</a>, <a href="h557.html">H-557</a></p>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
+<ul>
+<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
+<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
+<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
+</ul>
+</div>
+<div class="step">
+<h3>5단계. 발견 / 판정</h3>
+<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재대입 용도: <a href="h555.html">H-555</a>(표준모형) 게이지 보손 질량. <a href="h557.html">H-557</a>(계층 문제) 중력 스케일.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h555.html">H-555</a>, <a href="h557.html">H-557</a></p>
+</div>
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>정량 산출</td><td>구조 서술까지</td><td>재귀 대입 다음 라운드</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="h566.html">H-566</a>: 중력자 질량 = 0 (비용 누적은 FSM 노름이 아님)</td><td>등급: B</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib_new.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
+기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,442 +1,283 @@
 <!DOCTYPE html>
+
 <html lang="ko" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>열역학 도출과정: d-ring 미시상태에서 Boltzmann 엔트로피 도출 — 반야프레임 운영 보고서</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="반야프레임 d-ring 미시상태에서 Boltzmann 엔트로피, CAS 비가역성에서 열역학 제2법칙, CAS 통계에서 Fermi-Dirac/Bose-Einstein 분포 도출.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,열역학,thermodynamics,Boltzmann,엔트로피,entropy,제2법칙,second law,Fermi-Dirac,Bose-Einstein,CAS,d-ring,미시상태,microstate,한혁진,Han Hyukjin">
-<meta property="og:title" content="열역학 도출과정 — 반야프레임">
-<meta property="og:description" content="d-ring 미시상태에서 Boltzmann 엔트로피, CAS 비가역성에서 제2법칙, CAS 통계에서 양자 분포 도출.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="열역학 도출과정 — 반야프레임">
-<meta name="twitter:description" content="d-ring에서 Boltzmann 엔트로피, CAS 비가역성에서 제2법칙, CAS 통계에서 양자 분포.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
-<link rel="stylesheet" href="../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="반야프레임 d-ring 미시상태에서 Boltzmann 엔트로피, CAS 비가역성에서 열역학 제2법칙, CAS 통계에서 Fermi-Dirac/Bose-Einstein 분포 도출." name="description"/>
+<meta content="반야프레임,般若,Banya Framework,열역학,thermodynamics,Boltzmann,엔트로피,entropy,제2법칙,second law,Fermi-Dirac,Bose-Einstein,CAS,d-ring,미시상태,microstate,한혁진,Han Hyukjin" name="keywords"/>
+<meta content="열역학 도출과정 — 반야프레임" property="og:title"/>
+<meta content="d-ring 미시상태에서 Boltzmann 엔트로피, CAS 비가역성에서 제2법칙, CAS 통계에서 양자 분포 도출." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="열역학 도출과정 — 반야프레임" name="twitter:title"/>
+<meta content="d-ring에서 Boltzmann 엔트로피, CAS 비가역성에서 제2법칙, CAS 통계에서 양자 분포." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../en/discovery/thermodynamics.html" class="lang-btn">EN</a></div>
-
-<div class="toc-side lang-ko">
-<a href="#title" class="toc-h1">열역학 도출과정</a>
-<a href="#intro" class="toc-h2">서두</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1. Boltzmann 엔트로피</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. d-ring 미시상태</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r2" class="toc-h1">라운드 2. 제2법칙</a>
-<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r2-step2" class="toc-h3">2단계. CAS 비가역성</a>
-<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r3" class="toc-h1">라운드 3. 온도 = CAS 활성률</a>
-<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r3-step2" class="toc-h3">2단계. CAS tick당 성공률</a>
-<a href="#r3-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r4" class="toc-h1">라운드 4. Fermi-Dirac 분포</a>
-<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r4-step2" class="toc-h3">2단계. CAS 배타</a>
-<a href="#r4-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r5" class="toc-h1">라운드 5. Bose-Einstein 분포</a>
-<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r5-step2" class="toc-h3">2단계. CAS 공유</a>
-<a href="#r5-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r5-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
-<a href="#limits" class="toc-h1">한계</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<div class="toc-bar lang-ko" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">열역학 도출과정</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
-<a href="#title" class="toc-h1">열역학 도출과정</a>
-<a href="#intro" class="toc-h2">서두</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1. Boltzmann 엔트로피</a>
-<a href="#r2" class="toc-h1">라운드 2. 제2법칙</a>
-<a href="#r3" class="toc-h1">라운드 3. 온도 = CAS 활성률</a>
-<a href="#r4" class="toc-h1">라운드 4. Fermi-Dirac 분포</a>
-<a href="#r5" class="toc-h1">라운드 5. Bose-Einstein 분포</a>
-<a href="#limits" class="toc-h1">한계</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/thermodynamics.html">EN</a></div>
 <div class="lang-ko">
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 반야프레임의 구조, 물리식 검증, CAS 연산자, 쓰기 이론 등 전체 내용은 Master Report에 있다. 이 문서는 그 중 열역학 도출과정만을 다룬다.</p>
-
 <h1 id="title">열역학 도출과정: d-ring 미시상태에서 Boltzmann, CAS에서 양자 통계</h1>
-
 <blockquote><p>반야프레임 운영 보고서</p></blockquote>
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>실행일: 2026-04-03</p></blockquote>
-
-
 <h2 id="intro">서두</h2>
-
 <p><strong>가치: 열역학의 통계역학적 기초를 공리에서 도출</strong> -- 엔트로피란 무엇인가, 왜 증가하는가, 온도란 무엇인가, 왜 페르미온과 보손의 통계가 다른가. 반야프레임은 d-ring의 미시상태 수와 CAS의 비가역성으로부터 이 모든 것에 답한다. H-567~591 카드를 다룬다.</p>
-
 <p><strong>상태: <span class="tag-solved">적중</span></strong> -- Boltzmann 엔트로피 = d-ring 미시상태의 로그, 제2법칙 = CAS 비가역성, Fermi-Dirac = CAS 배타적 Swap, Bose-Einstein = CAS 공유 Swap.</p>
-
-
 <h2 id="discovery">핵심 발견</h2>
-
 <div class="discovery-block">
 <h4>Boltzmann 엔트로피 = d-ring 미시상태의 로그<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-567~572, 2026-04-03</span></h4>
 <div class="formula">$$S = k_B \ln \Omega = k_B \ln W_{\text{d-ring}}$$</div>
 <p><span class="precision">$W_{\text{d-ring}}$ = d-ring의 8비트 배치 경우의 수. $k_B$는 hop-to-Joule 변환 상수.</span></p>
 </div>
-
 <div class="discovery-block">
-<h4>제2법칙 = CAS 비가역성(공리 2)의 직접 귀결<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-573~577, 2026-04-03</span></h4>
+<h4>제2법칙 = CAS 비가역성(<a href="../axiom.html#ax2">공리 2</a>)의 직접 귀결<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-573~577, 2026-04-03</span></h4>
 <div class="formula">$$\Delta S \geq 0 \quad \Longleftrightarrow \quad \text{CAS: R} \to \text{C} \to \text{S (비가역)}$$</div>
 <p><span class="precision">CAS가 비가역이므로 미시상태 수는 감소할 수 없다. 이것이 엔트로피 증가.</span></p>
 </div>
-
-
 <h1 id="r1">라운드 1. Boltzmann 엔트로피 (H-567~572)</h1>
-
 <h3 id="r1-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">4축 직교. 각 축의 상태 조합이 미시상태를 구성.</div>
 </div>
-
 <p>거시 상태(macrostate)는 외부에서 관측 가능한 상태이고, 미시 상태(microstate)는 그 거시 상태를 실현하는 내부 배치의 수다. 반야프레임에서 미시상태는 d-ring의 8비트 배치 경우의 수다.</p>
-
 <h3 id="r1-step2">2단계. d-ring 미시상태</h3>
-
-<p>공리 5: 8비트 d-ring. 각 비트는 0 또는 1의 값을 가진다. N개의 엔티티가 d-ring 위에 배치될 때, 미시상태의 수는:</p>
-
+<p><a href="../axiom.html#ax5">공리 5</a>: 8비트 d-ring. 각 비트는 0 또는 1의 값을 가진다. N개의 엔티티가 d-ring 위에 배치될 때, 미시상태의 수는:</p>
 <div class="math-block">
 <div class="math-row">$$W = \frac{(2^8)!}{n_0! \cdot n_1! \cdot \ldots \cdot n_{255}!}$$</div>
 <div class="math-desc">d-ring 미시상태 수: 256개 가능 상태에 N개 엔티티를 배치하는 경우의 수</div>
 </div>
-
 <p>여기서 $2^8 = 256$은 8비트로 표현 가능한 상태 수이고, $n_i$는 상태 $i$에 있는 엔티티 수다.</p>
-
 <p>Boltzmann의 정의:</p>
-
 <div class="math-block">
 <div class="math-row">$$S = k_B \ln W$$</div>
 <div class="math-desc">엔트로피 = Boltzmann 상수 $\times$ 미시상태 수의 로그</div>
 </div>
-
-<p>왜 로그인가: d-ring은 링 구조다(공리 5). 두 개의 독립적 d-ring 시스템을 합치면, 미시상태 수는 곱이 된다($W_{1+2} = W_1 \times W_2$). 로그를 취하면 합이 된다($\ln W_{1+2} = \ln W_1 + \ln W_2$). 엔트로피가 가산적(additive)이려면 로그가 필연이다.</p>
-
+<p>왜 로그인가: d-ring은 링 구조다(<a href="../axiom.html#ax5">공리 5</a>). 두 개의 독립적 d-ring 시스템을 합치면, 미시상태 수는 곱이 된다($W_{1+2} = W_1 \times W_2$). 로그를 취하면 합이 된다($\ln W_{1+2} = \ln W_1 + \ln W_2$). 엔트로피가 가산적(additive)이려면 로그가 필연이다.</p>
 <h3 id="r1-step3">3단계. 상수 대입</h3>
-
 <p>$k_B$의 기원: Boltzmann 상수는 d-ring의 내부 단위(hop, tick)를 물리 단위(Joule, Kelvin)로 변환하는 스케일링 상수다.</p>
-
 <div class="math-block">
 <div class="math-row">$$k_B = 1.381 \times 10^{-23} \text{ J/K}$$</div>
 <div class="math-row">$$k_B = \frac{\text{1 hop의 에너지}}{\text{1 tick의 온도 단위}}$$</div>
 <div class="math-desc">$k_B$는 d-ring 내부 단위와 SI 단위 사이의 변환 상수</div>
 </div>
-
 <h3 id="r1-step4">4단계. 도메인 변환</h3>
-
 <div class="table-wrap">
 <table>
 <tr><th>열역학</th><th>반야프레임</th><th>공리</th></tr>
-<tr><td>미시상태 수 $W$</td><td>d-ring 8비트 배치 경우의 수</td><td>공리 5</td></tr>
-<tr><td>엔트로피 $S$</td><td>$k_B \ln W_{\text{d-ring}}$</td><td>공리 5</td></tr>
-<tr><td>가산성</td><td>독립 d-ring의 미시상태 곱 → 로그 합</td><td>공리 5</td></tr>
-<tr><td>$k_B$</td><td>hop-to-Joule / tick-to-Kelvin 변환</td><td>공리 4, 6</td></tr>
+<tr><td>미시상태 수 $W$</td><td>d-ring 8비트 배치 경우의 수</td><td><a href="../axiom.html#ax5">공리 5</a></td></tr>
+<tr><td>엔트로피 $S$</td><td>$k_B \ln W_{\text{d-ring}}$</td><td><a href="../axiom.html#ax5">공리 5</a></td></tr>
+<tr><td>가산성</td><td>독립 d-ring의 미시상태 곱 → 로그 합</td><td><a href="../axiom.html#ax5">공리 5</a></td></tr>
+<tr><td>$k_B$</td><td>hop-to-Joule / tick-to-Kelvin 변환</td><td><a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax6">공리 6</a></td></tr>
 </table>
 </div>
-
 <h3 id="r1-step5">5단계. 발견</h3>
-
 <div class="discovery-block">
 <h4>$S = k_B \ln W$는 d-ring 구조의 필연<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-567~572</span></h4>
-<p>Boltzmann 엔트로피 공식은 d-ring(공리 5)의 8비트 미시상태 수에 로그를 취한 것이다. 로그가 필연인 이유: d-ring이 링 구조이므로 독립 시스템의 미시상태 수는 곱이 되고, 가산적 열역학량을 얻으려면 로그가 필요하다. $k_B$는 d-ring 내부 단위와 SI 단위의 변환 상수다.</p>
+<p>Boltzmann 엔트로피 공식은 d-ring(<a href="../axiom.html#ax5">공리 5</a>)의 8비트 미시상태 수에 로그를 취한 것이다. 로그가 필연인 이유: d-ring이 링 구조이므로 독립 시스템의 미시상태 수는 곱이 되고, 가산적 열역학량을 얻으려면 로그가 필요하다. $k_B$는 d-ring 내부 단위와 SI 단위의 변환 상수다.</p>
 </div>
-
-
 <h1 id="r2">라운드 2. 열역학 제2법칙 (H-573~577)</h1>
-
 <h3 id="r2-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
-<div class="math-desc">CAS의 비가역성(공리 2)이 시간의 화살을 결정.</div>
+<div class="math-desc">CAS의 비가역성(<a href="../axiom.html#ax2">공리 2</a>)이 시간의 화살을 결정.</div>
 </div>
-
 <h3 id="r2-step2">2단계. CAS 비가역성 = 엔트로피 증가</h3>
-
-<p>공리 2: CAS는 R→C→S 방향으로만 진행한다. 이것은 시간의 방향이다.</p>
-
-<p>CAS가 실행될 때마다 d-ring의 상태가 변한다. 이 변화는 비가역적이므로, "이전 상태로 되돌리는" CAS는 존재하지 않는다. 되돌리려면 별도의 CAS를 실행해야 하는데, 이 별도의 CAS도 비용을 소비한다(공리 4). 따라서:</p>
-
+<p><a href="../axiom.html#ax2">공리 2</a>: CAS는 R→C→S 방향으로만 진행한다. 이것은 시간의 방향이다.</p>
+<p>CAS가 실행될 때마다 d-ring의 상태가 변한다. 이 변화는 비가역적이므로, "이전 상태로 되돌리는" CAS는 존재하지 않는다. 되돌리려면 별도의 CAS를 실행해야 하는데, 이 별도의 CAS도 비용을 소비한다(<a href="../axiom.html#ax4">공리 4</a>). 따라서:</p>
 <div class="math-block">
 <div class="math-row">$$\text{CAS 1회 실행} \to W_{\text{after}} \geq W_{\text{before}}$$</div>
 <div class="math-row">$$\therefore S_{\text{after}} = k_B \ln W_{\text{after}} \geq k_B \ln W_{\text{before}} = S_{\text{before}}$$</div>
 <div class="math-desc">CAS 실행은 미시상태 수를 감소시킬 수 없다 → 엔트로피 비감소</div>
 </div>
-
 <p>왜 $W$가 감소할 수 없는가: CAS는 d-ring 위의 엔티티 배치를 변경한다. 비가역적 변경은 정보를 잃는 과정이다(어떤 이전 상태에서 왔는지를 알 수 없다). 정보 손실은 미시상태 수의 증가와 동치다(Landauer 원리).</p>
-
 <h3 id="r2-step3">3단계. 상수 대입</h3>
-
 <div class="math-block">
 <div class="math-row">$$\Delta S \geq 0 \quad (\text{고립계})$$</div>
 <div class="math-row">$$\Delta S = 0 \iff \text{CAS 미실행 (평형)}$$</div>
 <div class="math-desc">열역학 제2법칙. 등호 = CAS가 더 이상 실행되지 않는 상태(평형).</div>
 </div>
-
 <p>열 평형은 CAS가 더 이상 실행될 이유가 없는 상태다. 모든 Compare가 true를 반환하면(기대값 = 현재값), Swap이 실행되어도 상태가 변하지 않는다. 이것이 평형이고, 이때 $\Delta S = 0$이다.</p>
-
 <h3 id="r2-step4">4단계. 도메인 변환</h3>
-
 <div class="table-wrap">
 <table>
 <tr><th>열역학 제2법칙</th><th>반야프레임</th><th>공리</th></tr>
-<tr><td>$\Delta S \geq 0$</td><td>CAS 비가역성 → 정보 손실 → $W$ 증가</td><td>공리 2</td></tr>
-<tr><td>비가역 과정</td><td>CAS 실행 (R→C→S)</td><td>공리 2</td></tr>
-<tr><td>가역 과정</td><td>CAS 미실행 (평형)</td><td>공리 7</td></tr>
-<tr><td>Landauer 원리</td><td>CAS의 비가역 Swap = 1비트 정보 소거 = $k_B T \ln 2$ 열 방출</td><td>공리 2, 4</td></tr>
+<tr><td>$\Delta S \geq 0$</td><td>CAS 비가역성 → 정보 손실 → $W$ 증가</td><td><a href="../axiom.html#ax2">공리 2</a></td></tr>
+<tr><td>비가역 과정</td><td>CAS 실행 (R→C→S)</td><td><a href="../axiom.html#ax2">공리 2</a></td></tr>
+<tr><td>가역 과정</td><td>CAS 미실행 (평형)</td><td><a href="../axiom.html#ax7">공리 7</a></td></tr>
+<tr><td>Landauer 원리</td><td>CAS의 비가역 Swap = 1비트 정보 소거 = $k_B T \ln 2$ 열 방출</td><td><a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a></td></tr>
 </table>
 </div>
-
 <h3 id="r2-step5">5단계. 발견</h3>
-
 <div class="discovery-block">
-<h4>제2법칙 = 공리 2의 직접 귀결<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-573~577</span></h4>
-<p>엔트로피가 증가하는 이유는 CAS가 비가역이기 때문이다(공리 2). 비가역적 상태 변경은 정보를 잃고, 정보 손실은 미시상태 수의 증가다. 열역학 제2법칙은 별도의 법칙이 아니라 CAS 비가역성의 통계적 귀결이다. Landauer 원리($k_B T \ln 2$)는 CAS Swap 1회의 최소 비용이다.</p>
+<h4>제2법칙 = <a href="../axiom.html#ax2">공리 2</a>의 직접 귀결<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-573~577</span></h4>
+<p>엔트로피가 증가하는 이유는 CAS가 비가역이기 때문이다(<a href="../axiom.html#ax2">공리 2</a>). 비가역적 상태 변경은 정보를 잃고, 정보 손실은 미시상태 수의 증가다. 열역학 제2법칙은 별도의 법칙이 아니라 CAS 비가역성의 통계적 귀결이다. Landauer 원리($k_B T \ln 2$)는 CAS Swap 1회의 최소 비용이다.</p>
 </div>
-
-
 <h1 id="r3">라운드 3. 온도 = CAS 활성률 (H-578~581)</h1>
-
 <h3 id="r3-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">δ의 변화율이 CAS 활성률을 결정. 이것이 온도.</div>
 </div>
-
 <h3 id="r3-step2">2단계. CAS tick당 성공률 = 온도</h3>
-
 <p>온도는 "뜨거움의 정도"가 아니라, tick당 CAS 성공(Compare true → Swap) 비율이다.</p>
-
 <div class="math-block">
 <div class="math-row">$$T = \frac{1}{k_B} \cdot \frac{\partial E}{\partial S} = \frac{1}{k_B} \cdot \frac{\text{tick당 CAS 비용}}{\text{tick당 미시상태 변화}}$$</div>
 <div class="math-desc">온도 = CAS 비용 / 미시상태 변화율</div>
 </div>
-
 <p>온도가 높다는 것은:</p>
 <ul>
 <li>tick당 CAS 성공 횟수가 많다.</li>
 <li>엔티티들의 상태 변화가 빈번하다.</li>
 <li>d-ring 위의 비트 뒤집힘이 활발하다.</li>
 </ul>
-
 <p>절대 영도($T = 0$)는 CAS가 전혀 성공하지 않는 상태다. 모든 Compare가 true(이미 평형)이거나, Compare 자체가 실행되지 않는(d-ring 동결) 상태다.</p>
-
 <h3 id="r3-step3">3단계. 상수 대입</h3>
-
 <div class="math-block">
 <div class="math-row">$$E = \frac{3}{2} k_B T \quad (\text{단원자 이상기체 1입자})$$</div>
 <div class="math-desc">DOF 3(공간)에서 각 DOF당 $\frac{1}{2}k_B T$</div>
 </div>
-
-<p>$\frac{1}{2}k_B T$가 DOF당 에너지인 이유: 공리 9의 DOF 9(7+2) 중 공간 DOF 3이 운동에 기여한다. 각 DOF에서 CAS가 소비하는 평균 비용이 $\frac{1}{2}k_B T$다. $\frac{1}{2}$은 운동 에너지의 이차 형식($\frac{1}{2}mv^2$)에서 오는 계수다.</p>
-
+<p>$\frac{1}{2}k_B T$가 DOF당 에너지인 이유: <a href="../axiom.html#ax9">공리 9</a>의 DOF 9(7+2) 중 공간 DOF 3이 운동에 기여한다. 각 DOF에서 CAS가 소비하는 평균 비용이 $\frac{1}{2}k_B T$다. $\frac{1}{2}$은 운동 에너지의 이차 형식($\frac{1}{2}mv^2$)에서 오는 계수다.</p>
 <h3 id="r3-step4">4단계. 도메인 변환</h3>
-
 <div class="table-wrap">
 <table>
 <tr><th>열역학</th><th>반야프레임</th><th>공리</th></tr>
-<tr><td>온도 $T$</td><td>tick당 CAS 성공률</td><td>공리 7, 8</td></tr>
-<tr><td>절대 영도</td><td>CAS 완전 정지</td><td>공리 7</td></tr>
-<tr><td>에너지 등분배</td><td>각 DOF에서 CAS 비용 평균</td><td>공리 9</td></tr>
-<tr><td>열 전달</td><td>CAS 성공률이 높은 영역에서 낮은 영역으로 비용 전파</td><td>공리 4, 11</td></tr>
+<tr><td>온도 $T$</td><td>tick당 CAS 성공률</td><td><a href="../axiom.html#ax7">공리 7</a>, <a href="../axiom.html#ax8">공리 8</a></td></tr>
+<tr><td>절대 영도</td><td>CAS 완전 정지</td><td><a href="../axiom.html#ax7">공리 7</a></td></tr>
+<tr><td>에너지 등분배</td><td>각 DOF에서 CAS 비용 평균</td><td><a href="../axiom.html#ax9">공리 9</a></td></tr>
+<tr><td>열 전달</td><td>CAS 성공률이 높은 영역에서 낮은 영역으로 비용 전파</td><td><a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax11">공리 11</a></td></tr>
 </table>
 </div>
-
 <h3 id="r3-step5">5단계. 발견</h3>
-
 <div class="discovery-block">
 <h4>온도 = CAS 활성률. 절대 영도 = CAS 정지.<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-578~581</span></h4>
 <p>온도는 추상적 개념이 아니라 tick당 CAS 성공 비율이다. 뜨겁다는 것은 CAS가 활발하다는 것이고, 차갑다는 것은 CAS가 비활성이라는 것이다. 열 평형은 두 시스템의 CAS 활성률이 같아진 상태다. 에너지 등분배 정리는 각 DOF에서 CAS 비용이 균등하게 분배되는 것이다.</p>
 </div>
-
-
 <h1 id="r4">라운드 4. Fermi-Dirac 분포 (H-582~586)</h1>
-
 <h3 id="r4-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">CAS Swap의 배타성이 Pauli 배타 원리를 결정.</div>
 </div>
-
 <h3 id="r4-step2">2단계. CAS 배타적 Swap = 페르미온</h3>
-
 <p>페르미온은 같은 양자 상태를 공유할 수 없다(Pauli 배타 원리). 반야프레임에서 이것은 CAS의 배타적 Swap이다.</p>
-
 <p>d-ring의 각 슬롯은 1개의 엔티티만 점유할 수 있다(점유수 0 또는 1). CAS Swap이 엔티티를 이미 점유된 슬롯으로 옮기려 하면, Compare가 false를 반환한다("이미 점유됨 $\neq$ 비어있음"). Swap이 실행되지 않는다.</p>
-
 <div class="math-block">
 <div class="math-row">$$n_i \in \{0, 1\} \quad (\text{배타적 점유})$$</div>
 <div class="math-row">$$\bar{n}(\epsilon) = \frac{1}{e^{(\epsilon - \mu)/k_B T} + 1}$$</div>
 <div class="math-desc">Fermi-Dirac 분포: 배타적 CAS Swap의 통계적 결과</div>
 </div>
-
 <h3 id="r4-step3">3단계. 상수 대입</h3>
-
 <p>$+1$의 기원: Fermi-Dirac 분포의 분모에 $+1$이 있다. 이것은 배타 원리 때문이다. d-ring 슬롯의 점유수가 0 또는 1만 가능하면, 분배 함수를 계산할 때 $1 + e^{-(\epsilon-\mu)/k_BT}$가 나온다. 이 $+1$은 "비어있는 상태(0)"의 기여다.</p>
-
 <div class="math-block">
 <div class="math-row">$$Z_{\text{FD}} = 1 + e^{-(\epsilon - \mu)/k_B T}$$</div>
 <div class="math-row">$$\bar{n} = \frac{e^{-(\epsilon - \mu)/k_B T}}{Z_{\text{FD}}} = \frac{1}{e^{(\epsilon - \mu)/k_B T} + 1}$$</div>
 <div class="math-desc">분배 함수: 빈 슬롯(1항) + 점유 슬롯($e^{-\beta(\epsilon-\mu)}$항)</div>
 </div>
-
 <h3 id="r4-step4">4단계. 도메인 변환</h3>
-
 <div class="table-wrap">
 <table>
 <tr><th>Fermi-Dirac</th><th>반야프레임</th><th>공리</th></tr>
-<tr><td>$n_i \in \{0, 1\}$</td><td>d-ring 슬롯당 1 엔티티만 점유</td><td>공리 5</td></tr>
-<tr><td>Pauli 배타 원리</td><td>CAS Swap 거부: 이미 점유된 슬롯</td><td>공리 7</td></tr>
-<tr><td>페르미 에너지 $\mu$</td><td>CAS 비용의 임계값</td><td>공리 4</td></tr>
-<tr><td>$T \to 0$ 극한</td><td>CAS 정지 → 낮은 비용 슬롯부터 채움</td><td>공리 7</td></tr>
+<tr><td>$n_i \in \{0, 1\}$</td><td>d-ring 슬롯당 1 엔티티만 점유</td><td><a href="../axiom.html#ax5">공리 5</a></td></tr>
+<tr><td>Pauli 배타 원리</td><td>CAS Swap 거부: 이미 점유된 슬롯</td><td><a href="../axiom.html#ax7">공리 7</a></td></tr>
+<tr><td>페르미 에너지 $\mu$</td><td>CAS 비용의 임계값</td><td><a href="../axiom.html#ax4">공리 4</a></td></tr>
+<tr><td>$T \to 0$ 극한</td><td>CAS 정지 → 낮은 비용 슬롯부터 채움</td><td><a href="../axiom.html#ax7">공리 7</a></td></tr>
 </table>
 </div>
-
 <h3 id="r4-step5">5단계. 발견</h3>
-
 <div class="discovery-block">
 <h4>Fermi-Dirac 분포 = d-ring 배타적 점유의 통계<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-582~586</span></h4>
-<p>Fermi-Dirac 분포는 d-ring 슬롯이 배타적으로 점유될 때(1슬롯 1엔티티)의 통계적 결과다. Pauli 배타 원리는 공리 7(Compare false → Swap 거부)의 귀결이다. 분모의 $+1$은 빈 슬롯의 기여다.</p>
+<p>Fermi-Dirac 분포는 d-ring 슬롯이 배타적으로 점유될 때(1슬롯 1엔티티)의 통계적 결과다. Pauli 배타 원리는 <a href="../axiom.html#ax7">공리 7</a>(Compare false → Swap 거부)의 귀결이다. 분모의 $+1$은 빈 슬롯의 기여다.</p>
 </div>
-
-
 <h1 id="r5">라운드 5. Bose-Einstein 분포 (H-587~591)</h1>
-
 <h3 id="r5-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">CAS Swap의 비배타적 공유가 보손 통계를 결정.</div>
 </div>
-
 <h3 id="r5-step2">2단계. CAS 공유 Swap = 보손</h3>
-
 <p>보손은 같은 양자 상태를 공유할 수 있다. 반야프레임에서 이것은 d-ring 슬롯의 다중 점유다.</p>
-
-<p>CAS의 OPERATOR 도메인(공리 3: OPERATOR는 연속)에서는 슬롯당 점유수 제한이 없다. Compare가 "이미 점유됨"을 감지하더라도, OPERATOR 엔티티(보손)는 같은 슬롯에 중첩된다(공리 13: Superposition = ECS indexing).</p>
-
+<p>CAS의 OPERATOR 도메인(<a href="../axiom.html#ax3">공리 3</a>: OPERATOR는 연속)에서는 슬롯당 점유수 제한이 없다. Compare가 "이미 점유됨"을 감지하더라도, OPERATOR 엔티티(보손)는 같은 슬롯에 중첩된다(<a href="../axiom.html#ax13">공리 13</a>: Superposition = ECS indexing).</p>
 <div class="math-block">
 <div class="math-row">$$n_i \in \{0, 1, 2, 3, \ldots\} \quad (\text{다중 점유 허용})$$</div>
 <div class="math-row">$$\bar{n}(\epsilon) = \frac{1}{e^{(\epsilon - \mu)/k_B T} - 1}$$</div>
 <div class="math-desc">Bose-Einstein 분포: 비배타적 CAS Swap의 통계적 결과</div>
 </div>
-
 <h3 id="r5-step3">3단계. 상수 대입</h3>
-
 <p>$-1$의 기원: Bose-Einstein 분포의 분모에 $-1$이 있다. 다중 점유가 허용되면 분배 함수가 기하급수가 된다:</p>
-
 <div class="math-block">
 <div class="math-row">$$Z_{\text{BE}} = \sum_{n=0}^{\infty} e^{-n(\epsilon - \mu)/k_B T} = \frac{1}{1 - e^{-(\epsilon - \mu)/k_B T}}$$</div>
 <div class="math-row">$$\bar{n} = -\frac{\partial \ln Z}{\partial \beta \epsilon} = \frac{1}{e^{(\epsilon - \mu)/k_B T} - 1}$$</div>
 <div class="math-desc">분배 함수: 기하급수 합 → 분모에 $-1$</div>
 </div>
-
 <p>Bose-Einstein 응축(BEC): $T \to 0$ 극한에서 $\bar{n}$이 발산한다. 이것은 d-ring의 최저 비용 슬롯에 모든 OPERATOR 엔티티가 몰리는 것이다. 배타 원리가 없으므로 무한히 쌓일 수 있다.</p>
-
 <h3 id="r5-step4">4단계. 도메인 변환</h3>
-
 <div class="table-wrap">
 <table>
 <tr><th>Bose-Einstein</th><th>반야프레임</th><th>공리</th></tr>
-<tr><td>$n_i \in \{0,1,2,\ldots\}$</td><td>OPERATOR 엔티티의 다중 점유(중첩)</td><td>공리 3, 13</td></tr>
-<tr><td>보손 통계</td><td>CAS Swap이 중첩 허용</td><td>공리 7, 13</td></tr>
-<tr><td>BEC</td><td>최저 비용 슬롯에 집중</td><td>공리 4</td></tr>
-<tr><td>레이저(유도 방출)</td><td>같은 슬롯의 다중 점유가 추가 점유를 촉진</td><td>공리 13</td></tr>
+<tr><td>$n_i \in \{0,1,2,\ldots\}$</td><td>OPERATOR 엔티티의 다중 점유(중첩)</td><td><a href="../axiom.html#ax3">공리 3</a>, <a href="../axiom.html#ax13">공리 13</a></td></tr>
+<tr><td>보손 통계</td><td>CAS Swap이 중첩 허용</td><td><a href="../axiom.html#ax7">공리 7</a>, <a href="../axiom.html#ax13">공리 13</a></td></tr>
+<tr><td>BEC</td><td>최저 비용 슬롯에 집중</td><td><a href="../axiom.html#ax4">공리 4</a></td></tr>
+<tr><td>레이저(유도 방출)</td><td>같은 슬롯의 다중 점유가 추가 점유를 촉진</td><td><a href="../axiom.html#ax13">공리 13</a></td></tr>
 </table>
 </div>
-
 <h3 id="r5-step5">5단계. 발견</h3>
-
 <div class="discovery-block">
 <h4>Bose-Einstein 분포 = OPERATOR 다중 점유의 통계<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-587~591</span></h4>
-<p>Bose-Einstein 분포는 OPERATOR 엔티티(보손)가 d-ring 슬롯을 다중 점유할 때의 통계다. 공리 3(OPERATOR 연속) + 공리 13(중첩 = ECS indexing)이 다중 점유를 허용한다. 분모의 $-1$은 기하급수 합에서 나온다. 페르미온(DATA, 이산)은 배타적, 보손(OPERATOR, 연속)은 비배타적. 이 구분은 공리 3의 DATA-OPERATOR 이분법에서 기원한다.</p>
+<p>Bose-Einstein 분포는 OPERATOR 엔티티(보손)가 d-ring 슬롯을 다중 점유할 때의 통계다. <a href="../axiom.html#ax3">공리 3</a>(OPERATOR 연속) + <a href="../axiom.html#ax13">공리 13</a>(중첩 = ECS indexing)이 다중 점유를 허용한다. 분모의 $-1$은 기하급수 합에서 나온다. 페르미온(DATA, 이산)은 배타적, 보손(OPERATOR, 연속)은 비배타적. 이 구분은 <a href="../axiom.html#ax3">공리 3</a>의 DATA-OPERATOR 이분법에서 기원한다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>페르미온 vs 보손 = DATA vs OPERATOR<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-582~591 종합</span></h4>
 <div class="formula">$$\text{DATA (이산, 공리 3)} \to \text{배타적 점유} \to \text{Fermi-Dirac} \quad (+1)$$</div>
 <div class="formula">$$\text{OPERATOR (연속, 공리 3)} \to \text{다중 점유} \to \text{Bose-Einstein} \quad (-1)$$</div>
 <p><span class="precision">스핀-통계 정리의 기원: DATA(반정수 스핀, 페르미온)는 이산이므로 배타적, OPERATOR(정수 스핀, 보손)는 연속이므로 비배타적</span></p>
 </div>
-
-
 <h1 id="limits">한계</h1>
-
 <ol>
 <li><strong>$k_B$의 독립 도출</strong>: $k_B$가 hop-to-Joule 변환 상수라는 해석은 제시했지만, $1.381 \times 10^{-23}$이라는 구체적 값을 공리로부터 도출하는 것은 미완이다.</li>
 <li><strong>스핀-통계 정리의 엄밀 증명</strong>: DATA=페르미온, OPERATOR=보손의 대응은 구조적으로 명확하지만, 반정수/정수 스핀과의 정확한 연결은 향후 과제다.</li>
 <li><strong>상전이 기술</strong>: 임계 현상(critical phenomena)과 보편성 클래스를 CAS로 기술하는 것은 이 보고서의 범위를 넘는다.</li>
 </ol>
-
-
 <h1 id="summary">총괄</h1>
-
 <div class="table-wrap">
 <table>
 <tr><th>항목</th><th>결과</th><th class="col-status">상태</th><th class="col-date">날짜</th></tr>
 <tr><td>Boltzmann 엔트로피 (H-567~572)</td><td>$S = k_B \ln W_{\text{d-ring}}$. 로그 = 가산성 필연.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
-<tr><td>제2법칙 (H-573~577)</td><td>CAS 비가역성(공리 2) → $\Delta S \geq 0$. Landauer 대응.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>제2법칙 (H-573~577)</td><td>CAS 비가역성(<a href="../axiom.html#ax2">공리 2</a>) → $\Delta S \geq 0$. Landauer 대응.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
 <tr><td>온도 (H-578~581)</td><td>tick당 CAS 성공률. 절대 영도 = CAS 정지.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
 <tr><td>Fermi-Dirac (H-582~586)</td><td>DATA 배타적 점유 → $+1$. Pauli = CAS Swap 거부.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
 <tr><td>Bose-Einstein (H-587~591)</td><td>OPERATOR 다중 점유 → $-1$. BEC = 최저 비용 집중.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
 </table>
 </div>
-
 <p>현재 등급: <strong>A</strong> (5항목 구조 적중, 스핀-통계 DATA/OPERATOR 이분법 확립)</p>
 <p>등급 S까지 남은 것: $k_B$ 독립 도출, 스핀-통계 정리 엄밀 증명, 상전이 기술</p>
-
 </div>
-
-
 <div class="page-nav lang-ko">
 <a href="../banya.html">종합 보고서</a>
 <a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
+<a href="../lib_new.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
 <div class="doc-footer lang-ko">
 <div class="f-top">
 <div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
@@ -445,21 +286,18 @@
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="cosmic_thermo.html">우주 열역학</a> | <a href="cosmology_extended.html">우주론 확장</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
 기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
 <div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

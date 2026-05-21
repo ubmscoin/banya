@@ -1,372 +1,265 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Weak Force / CP Violation Derivation: SU(2) from Compare DOF — Banya Framework Report</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="Banya Framework derivation of weak force and CP violation. SU(2) from Compare DOF 2. W/Z boson masses. Parity and CP violation from CAS irreversibility. Higgs mechanism as FSM norm assignment. Neutrino mass and oscillation.">
-<meta name="keywords" content="Banya Framework,Banya,weak force,CP violation,SU(2),W boson,Z boson,Higgs,neutrino,parity,CAS,Compare,FSM,Han Hyukjin,TOE">
-<meta property="og:title" content="Weak Force / CP Violation — Banya Framework">
-<meta property="og:description" content="SU(2) from Compare DOF 2. W/Z masses. CP violation from CAS irreversibility. Higgs = FSM norm.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Weak Force / CP Violation — Banya Framework">
-<meta name="twitter:description" content="Parity violation, W/Z masses, Higgs mechanism, neutrino oscillation from CAS axioms.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="Banya Framework derivation of weak force and CP violation. SU(2) from Compare DOF 2. W/Z boson masses. Parity and CP violation from CAS irreversibility. Higgs mechanism as FSM norm assignment. Neutrino mass and oscillation." name="description"/>
+<meta content="Banya Framework,Banya,weak force,CP violation,SU(2),W boson,Z boson,Higgs,neutrino,parity,CAS,Compare,FSM,Han Hyukjin,TOE" name="keywords"/>
+<meta content="Weak Force / CP Violation — Banya Framework" property="og:title"/>
+<meta content="SU(2) from Compare DOF 2. W/Z masses. CP violation from CAS irreversibility. Higgs = FSM norm." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Weak Force / CP Violation — Banya Framework" name="twitter:title"/>
+<meta content="Parity violation, W/Z masses, Higgs mechanism, neutrino oscillation from CAS axioms." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../../discovery/weak_cp.html" class="lang-btn">KR</a></div>
-
-
-
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/weak_cp.html">KR</a></div>
 <div class="toc-side lang-en">
-<a href="#en-title" class="toc-h1">Weak Force / CP Violation</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-r1" class="toc-h1">Round 1. SU(2) from Compare</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r2" class="toc-h1">Round 2. W/Z Boson Masses</a>
-<a href="#en-r2-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r2-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r2-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r2-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r2-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r3" class="toc-h1">Round 3. Parity + CP Violation</a>
-<a href="#en-r3-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r3-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r3-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r3-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r3-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r4" class="toc-h1">Round 4. Higgs Mechanism</a>
-<a href="#en-r5" class="toc-h1">Round 5. Neutrino Mass</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#en-title">Weak Force / CP Violation</a>
+<a class="toc-h2" href="#en-intro">Introduction</a>
+<a class="toc-h2" href="#en-discovery">Key Discovery</a>
+<a class="toc-h1" href="#en-r1">Round 1. SU(2) from Compare</a>
+<a class="toc-h3" href="#en-r1-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r1-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r1-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r1-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r1-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r2">Round 2. W/Z Boson Masses</a>
+<a class="toc-h3" href="#en-r2-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r2-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r2-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r2-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r2-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r3">Round 3. Parity + CP Violation</a>
+<a class="toc-h3" href="#en-r3-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r3-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r3-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r3-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r3-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r4">Round 4. Higgs Mechanism</a>
+<a class="toc-h1" href="#en-r5">Round 5. Neutrino Mass</a>
+<a class="toc-h1" href="#en-limits">Limitations</a>
+<a class="toc-h1" href="#en-summary">Summary</a>
 </div>
-
 <div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
 <div class="toc-bar-text"><span class="cur">Weak Force / CP Violation</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
+<div class="toc-bar-arrow">▼</div>
 </div>
 <div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
-<a href="#en-title" class="toc-h1">Weak Force / CP Violation</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-r1" class="toc-h1">Round 1. SU(2) from Compare</a>
-<a href="#en-r2" class="toc-h1">Round 2. W/Z Boson Masses</a>
-<a href="#en-r3" class="toc-h1">Round 3. Parity + CP Violation</a>
-<a href="#en-r4" class="toc-h1">Round 4. Higgs Mechanism</a>
-<a href="#en-r5" class="toc-h1">Round 5. Neutrino Mass</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#en-title">Weak Force / CP Violation</a>
+<a class="toc-h2" href="#en-intro">Introduction</a>
+<a class="toc-h1" href="#en-r1">Round 1. SU(2) from Compare</a>
+<a class="toc-h1" href="#en-r2">Round 2. W/Z Boson Masses</a>
+<a class="toc-h1" href="#en-r3">Round 3. Parity + CP Violation</a>
+<a class="toc-h1" href="#en-r4">Round 4. Higgs Mechanism</a>
+<a class="toc-h1" href="#en-r5">Round 5. Neutrino Mass</a>
+<a class="toc-h1" href="#en-limits">Limitations</a>
+<a class="toc-h1" href="#en-summary">Summary</a>
 </div>
-
-
-
-
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a subsidiary report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It covers the derivation of weak force phenomena and CP violation from CAS axioms.</p>
-
 <h1 id="en-title">Weak Force / CP Violation: From Compare DOF 2 to Neutrino Oscillation</h1>
-
 <blockquote><p>Banya Framework Operational Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>Date: 2026-04-03</p></blockquote>
-
-
 <h2 id="en-intro">Introduction</h2>
-
 <p><strong>Scope: H-459 through H-475.</strong> This report derives the weak nuclear force, parity violation, CP violation, the Higgs mechanism, and neutrino properties from the Banya Framework axioms. The Compare operation has internal degrees of freedom 2 (true/false), which maps to the $SU(2)$ gauge group with $2^2 - 1 = 3$ generators (the gauge group report established this mapping). Here we extend that result to the full phenomenology of the weak sector.</p>
-
 <p><strong>Status: <span class="tag-solved">Hit</span></strong> -- $SU(2)$ recovered from Compare DOF. W/Z mass ratio structurally explained. Parity violation from CAS irreversibility. Higgs mechanism from FSM norm assignment. Neutrino oscillation from cross-domain Compare phase.</p>
-
-
 <h2 id="en-discovery">Key Discovery</h2>
-
 <div class="discovery-block">
 <h4>SU(2) Weak Gauge Group from Compare (H-459)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{Compare}(2) \to SU(2): \quad 2^2 - 1 = 3 \;\text{generators} \;\to\; W^+, W^-, Z^0$$</div>
 <p>The three weak bosons correspond to the three generators of $SU(2)$, which arise from the 2 degrees of freedom of Compare.</p>
 </div>
-
 <div class="discovery-block">
 <h4>CP Violation = CAS Irreversibility (H-462, H-463)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$R \to C \to S \neq S \to C \to R \;\longleftrightarrow\; CP \neq \overline{CP}$$</div>
 <p>The CAS pipeline is irreversible (Axiom 2). This irreversibility, projected onto the weak sector, manifests as CP violation.</p>
 </div>
-
-
 <h1 id="en-r1">Round 1. SU(2) from Compare DOF 2 (H-459)</h1>
-
 <h3 id="en-r1-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">Axiom 1: the observer axis hosts the Compare operation</div>
 </div>
-
 <p>The Compare operation lives on the observer axis of the Banya equation. It has exactly 2 internal degrees of freedom: the outcome is either true (match) or false (no match). This binary nature is not a simplification -- it is the complete description of Compare.</p>
-
 <h3 id="en-r1-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Compare DOF} = 2 \quad \to \quad SU(2): \;\dim = 2^2 - 1 = 3$$</div>
 <div class="math-desc">2 degrees of freedom generate an $SU(2)$ symmetry group with 3 generators</div>
 </div>
-
 <p>When the 2 degrees of freedom of Compare are promoted to a continuous symmetry group (the same procedure used in the gauge group report), the result is $SU(2)$ with 3 generators. The $-1$ comes from the det = 1 condition: the total probability of true + false must be 1, removing one degree of freedom from $U(2)$.</p>
-
 <h3 id="en-r1-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
-<div class="math-row">$$\sigma_1 = \begin{pmatrix}0&1\\1&0\end{pmatrix}, \quad \sigma_2 = \begin{pmatrix}0&-i\\i&0\end{pmatrix}, \quad \sigma_3 = \begin{pmatrix}1&0\\0&-1\end{pmatrix}$$</div>
+<div class="math-row">$$\sigma_1 = \begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}, \quad \sigma_2 = \begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix}, \quad \sigma_3 = \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}$$</div>
 <div class="math-desc">Pauli matrices: the 3 generators of $SU(2)$, corresponding to the 3 weak bosons</div>
 </div>
-
 <p>The three Pauli matrices are the generators of $SU(2)$. $\sigma_1$ and $\sigma_2$ correspond to the charged weak bosons $W^+$ and $W^-$ (they flip the true/false state). $\sigma_3$ corresponds to the neutral $Z^0$ boson (it distinguishes true from false without flipping). In CAS terms: $W^{\pm}$ = Compare outcome flip operations; $Z^0$ = Compare outcome identity with phase.</p>
-
 <h3 id="en-r1-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\begin{pmatrix}\nu_e \\ e^-\end{pmatrix}_L \;\longleftrightarrow\; \begin{pmatrix}\text{Compare true} \\ \text{Compare false}\end{pmatrix}$$</div>
 <div class="math-desc">Weak isospin doublet = Compare outcome doublet</div>
 </div>
-
 <p>The left-handed lepton doublet $(\nu_e, e^-)_L$ maps to the Compare outcome doublet (true, false). The neutrino corresponds to Compare true (the expected state was found), and the electron corresponds to Compare false (the expected state was not found, so a charged interaction occurred). This explains why only left-handed particles participate in the weak interaction: the Compare operation is directional (R$\to$C$\to$S), and "left-handed" corresponds to the forward direction of the CAS pipeline.</p>
-
 <h3 id="en-r1-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>SU(2) = Compare Symmetry Group (H-459)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{Compare}(2) \;\to\; SU(2)_L \;\to\; W^+, W^-, Z^0$$</div>
 <p>The weak gauge group is the symmetry group of the Compare operation. The subscript $L$ (left-handed) reflects CAS pipeline directionality. <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-r2">Round 2. W/Z Boson Masses (H-460, H-461)</h1>
-
 <h3 id="en-r2-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Axiom 14: FSM } 000 \to 001 \to 011 \to 111 \to 000, \quad \text{norm} = \text{mass}$$</div>
 <div class="math-desc">The FSM cycle assigns norms (masses) to entities based on their state transitions</div>
 </div>
-
 <p>Axiom 14 defines the FSM (Finite State Machine) cycle. The norm of an entity in this cycle corresponds to its mass. The weak bosons ($W^{\pm}$, $Z^0$) are massive because their FSM states are intermediate -- they are not at the fixed points (000 or 111) but at transitional states (001 or 011).</p>
-
 <h3 id="en-r2-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$M_W = \frac{g_w v}{2}, \quad M_Z = \frac{M_W}{\cos\theta_W}$$</div>
 <div class="math-desc">W and Z masses from electroweak symmetry breaking</div>
 </div>
-
 <p>The W boson mass is proportional to the weak coupling $g_w$ times the vacuum expectation value $v$. The Z boson is heavier than the W by a factor of $1/\cos\theta_W$ because the Z involves mixing between the $SU(2)$ and $U(1)$ sectors. In CAS terms: the W corresponds to a pure Compare flip (cost proportional to $g_w v/2$), while the Z involves both Compare and Read (the $U(1)$ factor), adding the mixing angle correction.</p>
-
 <h3 id="en-r2-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$M_W \approx 80.4\;\text{GeV}, \quad M_Z \approx 91.2\;\text{GeV}, \quad \frac{M_W}{M_Z} = \cos\theta_W \approx 0.882$$</div>
 <div class="math-desc">Experimental values and the Weinberg angle relation</div>
 </div>
-
 <p>The ratio $M_W / M_Z = \cos\theta_W$ is the Weinberg angle relation. In the Banya Framework, $\theta_W$ is the mixing angle between the Compare ($SU(2)$) and Read ($U(1)$) sectors. The $\sin^2\theta_W$ derivation is detailed in a separate report (sin2_thetaW.html).</p>
-
 <h3 id="en-r2-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{FSM state 001} \;\longleftrightarrow\; W^{\pm}, \quad \text{FSM state 011} \;\longleftrightarrow\; Z^0$$</div>
 <div class="math-desc">W boson = FSM single-bit flip; Z boson = FSM double-bit state</div>
 </div>
-
-<p>The W boson corresponds to FSM state 001 (one bit flipped from ground state 000). The Z boson corresponds to FSM state 011 (two bits flipped). The mass hierarchy $M_W < M_Z$ follows from the FSM norm: more bits flipped = higher norm = larger mass. The photon (FSM state 000, no bits flipped) is massless. The Higgs (FSM state 111, all bits flipped) has the highest mass in the electroweak sector.</p>
-
+<p>The W boson corresponds to FSM state 001 (one bit flipped from ground state 000). The Z boson corresponds to FSM state 011 (two bits flipped). The mass hierarchy $M_W &lt; M_Z$ follows from the FSM norm: more bits flipped = higher norm = larger mass. The photon (FSM state 000, no bits flipped) is massless. The Higgs (FSM state 111, all bits flipped) has the highest mass in the electroweak sector.</p>
 <h3 id="en-r2-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>W/Z Mass Hierarchy from FSM Norm (H-460, H-461)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
-<div class="formula">$$M_\gamma = 0 \;(000) < M_W \;(001) < M_Z \;(011) < M_H \;(111)$$</div>
+<div class="formula">$$M_\gamma = 0 \;(000) &lt; M_W \;(001) &lt; M_Z \;(011) &lt; M_H \;(111)$$</div>
 <p>The electroweak mass hierarchy follows from FSM bit count: more flipped bits = higher norm = heavier boson. <span class="tag-hypothesis">Hypothesis</span></p>
 </div>
-
-
 <h1 id="en-r3">Round 3. Parity Violation + CP Violation from CAS Irreversibility (H-462, H-463)</h1>
-
 <h3 id="en-r3-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Axiom 2: CAS } R \to C \to S \;\text{(irreversible)}$$</div>
 <div class="math-desc">The CAS pipeline has a definite direction; the reverse $S \to C \to R$ is forbidden</div>
 </div>
-
 <p>Axiom 2 establishes the arrow of CAS: Read, then Compare, then Swap. This sequence cannot be reversed. This built-in directionality is the origin of all discrete symmetry violations in physics.</p>
-
 <h3 id="en-r3-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$P: \;\mathbf{x} \to -\mathbf{x} \;\longleftrightarrow\; \text{CAS spatial inversion: swap left/right labels}$$</div>
 <div class="math-row">$$C: \;\text{particle} \to \text{antiparticle} \;\longleftrightarrow\; \text{CAS true} \leftrightarrow \text{false swap}$$</div>
 <div class="math-desc">Parity and charge conjugation as CAS label operations</div>
 </div>
-
 <p>Parity (P) corresponds to swapping spatial labels in the CAS system. Charge conjugation (C) corresponds to swapping the true/false outcomes of Compare. Under the strong and electromagnetic forces, these swaps are symmetries. But the weak force is mediated by Compare, which has a built-in direction (Axiom 2). Swapping Compare's inputs changes the outcome because $R \to C \to S \neq S \to C \to R$.</p>
-
 <h3 id="en-r3-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Wu experiment (1957): } P \text{ violated in } \beta \text{ decay}$$</div>
 <div class="math-row">$$\text{Cronin-Fitch (1964): } CP \text{ violated in } K^0 \text{ decay}$$</div>
 <div class="math-desc">Experimental confirmation of P and CP violation in the weak sector</div>
 </div>
-
 <p>The Wu experiment showed that parity is violated in beta decay (a weak process). The Cronin-Fitch experiment showed that even the combined CP symmetry is violated in neutral kaon decay. Both results follow from CAS irreversibility: the weak interaction (Compare) has a preferred direction, and neither spatial inversion (P) nor the combined charge-parity operation (CP) can undo this directionality.</p>
-
 <h3 id="en-r3-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$J_{\text{CP}} = \text{Im}(V_{us}V_{cb}V_{ub}^*V_{cs}^*) \approx 3 \times 10^{-5}$$</div>
 <div class="math-desc">Jarlskog invariant: the measure of CP violation in the CKM matrix</div>
 </div>
-
 <p>The Jarlskog invariant $J_{\text{CP}}$ quantifies the amount of CP violation. In the Banya Framework, this corresponds to the imaginary component of the CAS cost when traversing a closed loop in flavor space. The loop $u \to s \to c \to b \to u$ (via Compare operations) accumulates a complex phase because CAS is irreversible -- going around the loop in the opposite direction gives a different phase. The magnitude $\sim 3 \times 10^{-5}$ reflects the small but nonzero asymmetry between the forward and backward CAS paths in the quark mixing matrix.</p>
-
 <h3 id="en-r3-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>P and CP Violation = CAS Irreversibility (H-462, H-463)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$R \to C \to S \neq S \to C \to R \;\Rightarrow\; P\text{-violation},\; CP\text{-violation}$$</div>
 <p>Discrete symmetry violations are not accidental features of the weak force. They are inevitable consequences of CAS irreversibility (Axiom 2). <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-r4">Round 4. Higgs Mechanism as FSM Norm Assignment (H-475)</h1>
-
 <h3 id="en-r4-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Axiom 14: FSM } 000 \to 001 \to 011 \to 111 \to 000$$</div>
 <div class="math-desc">The FSM cycle; norm (mass) is assigned at each state transition</div>
 </div>
-
 <h3 id="en-r4-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$V(\phi) = -\mu^2|\phi|^2 + \lambda|\phi|^4 \;\longleftrightarrow\; \text{FSM potential landscape}$$</div>
 <div class="math-desc">The Mexican hat potential = FSM norm landscape around the 000 $\to$ 001 transition</div>
 </div>
-
 <p>The Higgs potential $V(\phi)$ has the famous "Mexican hat" shape: unstable at the origin, stable in a ring of minima. In the FSM, this corresponds to the transition from state 000 (symmetric, massless) to state 001 (broken symmetry, massive). The origin (000) is a local maximum of the FSM norm landscape. The ring of minima corresponds to the set of all 001-type states that differ only by a phase (the gauge degree of freedom).</p>
-
 <h3 id="en-r4-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$v = \frac{\mu}{\sqrt{\lambda}} \approx 246\;\text{GeV} \;\longleftrightarrow\; \text{FSM norm at state 001}$$</div>
 <div class="math-desc">Vacuum expectation value = FSM norm at the first non-trivial state</div>
 </div>
-
 <p>The vacuum expectation value $v \approx 246$ GeV is the norm of the FSM at state 001. Particles that couple to the Higgs field acquire mass proportional to their coupling strength times $v$. In FSM terms: mass = norm = the cost of being in a non-trivial FSM state.</p>
-
 <h3 id="en-r4-step4">Step 4. Domain Transform</h3>
-
 <p>The Higgs boson itself (mass $\approx 125$ GeV, H-475) is the radial excitation around the minimum of the Mexican hat potential. In FSM terms, it is the oscillation of the norm around the 001 equilibrium. Its mass ($125$ GeV $\approx v/2$) is consistent with the FSM prediction that the Higgs mass should be approximately half the vacuum expectation value.</p>
-
 <h3 id="en-r4-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Higgs Mechanism = FSM Norm Assignment (H-475)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{mass} = \text{FSM norm} = g \cdot v \;\longleftrightarrow\; \text{coupling} \times \text{FSM 001 norm}$$</div>
 <p>Mass generation is not a mystery. It is the assignment of FSM norms to entities that transition from the 000 ground state to non-trivial FSM states. <span class="tag-hypothesis">Hypothesis</span></p>
 </div>
-
-
 <h1 id="en-r5">Round 5. Neutrino Mass and Oscillation (H-464, H-465)</h1>
-
 <h3 id="en-r5-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Axiom 6: RLU residual 9, maintenance 4}$$</div>
 <div class="math-desc">RLU mechanism governs the minimum residual state</div>
 </div>
-
 <p>Neutrinos have extremely small but nonzero masses. In the Banya Framework, neutrino mass corresponds to the minimum nonzero RLU residual. An entity with the smallest possible RLU residual (just above eviction threshold) has the smallest possible norm (mass).</p>
-
 <h3 id="en-r5-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$m_\nu \sim \frac{v^2}{M_{\text{GUT}}} \;\longleftrightarrow\; \text{RLU minimum residual} = \frac{\text{FSM norm}^2}{\text{total RLU budget}}$$</div>
 <div class="math-desc">Seesaw mechanism: neutrino mass suppressed by the ratio of electroweak to GUT scale</div>
 </div>
-
 <p>The seesaw mechanism gives neutrino masses proportional to $v^2 / M_{\text{GUT}}$. In CAS terms: the neutrino's FSM norm is squared (because it passes through the Compare stage twice -- once for each chirality) and divided by the total RLU budget (the high-energy scale). This double passage through Compare is why neutrinos are so much lighter than other fermions.</p>
-
 <h3 id="en-r5-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\Delta m_{21}^2 \approx 7.5 \times 10^{-5}\;\text{eV}^2, \quad \Delta m_{32}^2 \approx 2.5 \times 10^{-3}\;\text{eV}^2$$</div>
 <div class="math-desc">Experimental mass-squared differences from oscillation data</div>
 </div>
-
 <h3 id="en-r5-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$P(\nu_\alpha \to \nu_\beta) = \sin^2(2\theta)\sin^2\left(\frac{\Delta m^2 L}{4E}\right)$$</div>
 <div class="math-desc">Neutrino oscillation probability: phase accumulates over distance $L$</div>
 </div>
-
 <p>Neutrino oscillation means that a neutrino created as one flavor ($\nu_e$, $\nu_\mu$, $\nu_\tau$) can be detected as a different flavor. In CAS terms: the three neutrino mass eigenstates correspond to three different RLU residual levels. As the neutrino propagates, the Compare operation cycles through these levels with different phases (because different masses mean different propagation speeds). The mixing angle $\theta$ is the angle between the flavor basis (the Compare outcome basis) and the mass basis (the RLU residual basis).</p>
-
 <h3 id="en-r5-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Neutrino Oscillation = Cross-Domain Compare Phase (H-464, H-465)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{Oscillation} = \text{phase difference between RLU residual levels over propagation distance}$$</div>
 <p>Neutrinos oscillate because their mass eigenstates (RLU levels) accumulate different phases during propagation. <span class="tag-hypothesis">Hypothesis</span></p>
 </div>
-
-
 <h1 id="en-limits">Limitations</h1>
-
 <ol>
 <li><strong>W/Z mass ratio</strong>: The FSM bit-count argument gives the correct ordering but does not yet derive the numerical values $80.4$ and $91.2$ GeV from first principles.</li>
 <li><strong>CP violation magnitude</strong>: The Jarlskog invariant $\sim 3 \times 10^{-5}$ is explained qualitatively but not derived numerically from CAS parameters.</li>
 <li><strong>Higgs mass</strong>: The $M_H \approx v/2$ relation is approximate. The precise value $125.1$ GeV requires the quartic coupling $\lambda$, which is not yet derived from axioms.</li>
 <li><strong>Neutrino mass hierarchy</strong>: Whether the hierarchy is normal or inverted is not yet determined from CAS structure alone.</li>
 </ol>
-
-
 <h1 id="en-summary">Summary</h1>
-
 <div class="table-wrap">
 <table>
 <tr><th>Item</th><th>Result</th><th class="col-status">Status</th><th class="col-date">Card</th></tr>
 <tr><td>$SU(2)$ from Compare DOF 2</td><td>$2^2 - 1 = 3$ generators $\to$ $W^+, W^-, Z^0$</td><td><span class="tag-solved">Hit</span></td><td>H-459</td></tr>
-<tr><td>W/Z mass hierarchy</td><td>FSM bit count: 001 $<$ 011 $\to$ $M_W < M_Z$</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-460, H-461</td></tr>
+<tr><td>W/Z mass hierarchy</td><td>FSM bit count: 001 $&lt;$ 011 $\to$ $M_W &lt; M_Z$</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-460, H-461</td></tr>
 <tr><td>Parity violation</td><td>CAS irreversibility $R \to C \to S$</td><td><span class="tag-solved">Hit</span></td><td>H-462</td></tr>
 <tr><td>CP violation</td><td>Complex phase from irreversible CAS loop in flavor space</td><td><span class="tag-solved">Hit</span></td><td>H-463</td></tr>
 <tr><td>Higgs mechanism</td><td>FSM norm assignment at $000 \to 001$ transition</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-475</td></tr>
 <tr><td>Neutrino oscillation</td><td>Cross-domain Compare phase from RLU level differences</td><td><span class="tag-hypothesis">Hypothesis</span></td><td>H-464, H-465</td></tr>
 </table>
 </div>
-
 <p>Current grade: <strong>A-</strong> (Three structural hits, three well-motivated hypotheses requiring numerical derivation)</p>
 <p>Remaining for grade S: Numerical W/Z mass derivation; Jarlskog invariant from CAS parameters; Higgs quartic coupling; neutrino hierarchy determination.</p>
-
-</div>
-
-
 
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
@@ -374,15 +267,13 @@
 <a href="../lib.html">Factor Library</a>
 <a href="../science_mine.html">Mining Manual</a>
 </div>
-
-
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (Banya Framework)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
@@ -392,22 +283,20 @@ Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-bottom">
 <div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="gauge.html">Gauge Group</a> | <a href="sin2_thetaW.html">Weinberg Angle</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br/>
 Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
 <script>
 (function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

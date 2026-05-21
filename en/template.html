@@ -1,108 +1,88 @@
 <!DOCTYPE html>
+
 <html lang="ko" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>제목 -- 반야프레임 운영 보고서</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="한 줄 설명">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,키워드들">
-<meta property="og:title" content="제목 -- 반야프레임">
-<meta property="og:description" content="한 줄 설명">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="제목 -- 반야프레임">
-<meta name="twitter:description" content="한 줄 설명">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="한 줄 설명" name="description"/>
+<meta content="반야프레임,般若,Banya Framework,키워드들" name="keywords"/>
+<meta content="제목 -- 반야프레임" property="og:title"/>
+<meta content="한 줄 설명" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="제목 -- 반야프레임" name="twitter:title"/>
+<meta content="한 줄 설명" name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
 </head>
 <body>
-
 <!-- ===== 언어 토글 ===== -->
-<div class="lang-switch"><a href="../template.html" class="lang-btn">KR</a></div>
-
-
+<div class="lang-switch"><a class="lang-btn" href="../template.html">KR</a></div>
 <!-- ========== 한국어 본문 ========== -->
 <div class="lang-ko" style="display:none">
-
 <!-- ===== TOC 사이드바 (데스크톱) ===== -->
 <div class="toc-side">
-<a href="#title" class="toc-h1">제목</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
+<a class="toc-h1" href="#title">제목</a>
+<a class="toc-h2" href="#question">질문</a>
+<a class="toc-h2" href="#status">상태</a>
+<a class="toc-h2" href="#discovery">핵심 발견</a>
+<a class="toc-h1" href="#r1">라운드 1</a>
+<a class="toc-h3" href="#r1-step1">1단계. 반야식</a>
+<a class="toc-h3" href="#r1-step2">2단계. 노름 치환</a>
+<a class="toc-h3" href="#r1-step3">3단계. 상수 대입</a>
+<a class="toc-h3" href="#r1-step4">4단계. 도메인 변환</a>
+<a class="toc-h3" href="#r1-step5">5단계. 발견</a>
 <!-- 라운드 2~N: 위와 같은 구조 반복 -->
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
+<a class="toc-h1" href="#byproduct">부산물</a>
+<a class="toc-h1" href="#incomplete">미완</a>
+<a class="toc-h1" href="#summary">총괄</a>
 </div>
-
 <!-- ===== TOC 모바일 바 ===== -->
 <div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-ko .toc-overlay').classList.toggle('show')">
 <div class="toc-bar-text"><span class="cur">제목</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
+<div class="toc-bar-arrow">▼</div>
 </div>
 <div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.lang-ko .toc-bar').classList.remove('open')">
 <!-- toc-side와 동일한 내용을 여기에도 넣는다. 반드시 양쪽 동기화 -->
-<a href="#title" class="toc-h1">제목</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
+<a class="toc-h1" href="#title">제목</a>
+<a class="toc-h2" href="#question">질문</a>
+<a class="toc-h2" href="#status">상태</a>
+<a class="toc-h2" href="#discovery">핵심 발견</a>
+<a class="toc-h1" href="#r1">라운드 1</a>
+<a class="toc-h3" href="#r1-step1">1단계. 반야식</a>
+<a class="toc-h3" href="#r1-step2">2단계. 노름 치환</a>
+<a class="toc-h3" href="#r1-step3">3단계. 상수 대입</a>
+<a class="toc-h3" href="#r1-step4">4단계. 도메인 변환</a>
+<a class="toc-h3" href="#r1-step5">5단계. 발견</a>
+<a class="toc-h1" href="#byproduct">부산물</a>
+<a class="toc-h1" href="#incomplete">미완</a>
+<a class="toc-h1" href="#summary">총괄</a>
 </div>
-
-
 <!-- ===== 부속 보고서 안내 ===== -->
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="banya.html" style="color:#58a6ff;font-weight:600">반야프레임 종합 보고서</a>의 부속 보고서다.</p>
-
-
 <!-- ===== 1. 서두 ===== -->
-
 <h1 id="title">제목: 무엇을 찾는가</h1>
-
 <blockquote><p>반야프레임 운영 보고서</p></blockquote>
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>실행일: 20XX-XX-XX</p></blockquote>
-
-
 <!-- 1-1. 질문: 이 발견이 과학계에서 왜 중요한가 -->
 <h2 id="question">질문: 왜 이 값인가</h2>
-
 <p>기존 물리학의 상황을 설명한다. 누가 시도했고, 왜 실패했고, 몇 년간 미해결이었는가. 초등학생도 이해할 수 있게 비유를 든다.</p>
-
-
 <!-- 1-2. 상태: 5개 용어 중 택1 -->
 <h2 id="status">상태</h2>
-
 <p><span class="tag-solved">적중</span> 또는 <span class="tag-discovery">발견</span> 또는 <span class="tag-hypothesis">가설</span> 또는 <span class="tag-wip">진행</span> 또는 <span class="tag-pending">대기</span></p>
-
 <p>상태의 근거를 한 문장으로 적는다. "오차 X%, 물리적 정당성 확보"처럼.</p>
-
-
 <!-- 1-3. 핵심 발견: 해결/발견이면 녹색, 가설이면 주황 -->
 <h2 id="discovery">핵심 발견</h2>
-
 <!-- 해결/발견인 경우 -->
 <div class="discovery-block">
 <h4>발견 이름</h4>
@@ -110,7 +90,6 @@
 <p>관측값: X, 오차: <span class="tag-solved">Y%</span></p>
 <p>한 줄 해석</p>
 </div>
-
 <!-- 가설인 경우 -->
 <!--
 <div class="hypothesis-block">
@@ -119,172 +98,113 @@
 <p>오차: <span class="tag-hypothesis">Y%</span>, 미완 사항: ...</p>
 </div>
 -->
-
-
 <!-- ===== 2. 본문: 라운드별 5단계 ===== -->
-
 <h1 id="r1">라운드 1. 제목 (0차 근사 등)</h1>
-
 <h3 id="r1-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">delta^2 = (time + space)^2 + (observer + superposition)^2</div>
 </div>
-
 <p>이 라운드에서 반야식의 어느 부분을 사용하는지 명시한다.</p>
-
-
 <h3 id="r1-step2">2단계. 노름 치환</h3>
-
 <p>반야식의 축을 물리적 변수로 치환한다. 어떤 치환 경로를 선택했는지 명시한다.</p>
-
 <div class="math-block">
 <div class="math-row">치환 결과</div>
 <div class="math-legend">범례</div>
 </div>
-
-
 <h3 id="r1-step3">3단계. 상수 대입</h3>
-
 <p>기존 물리 상수와 lib.html의 인자를 넣는다. 무엇을 넣었는지 명시한다.</p>
-
 <pre>대입한 값 목록</pre>
-
-
 <h3 id="r1-step4">4단계. 도메인 변환</h3>
-
 <p>대입 결과를 다른 도메인으로 변환한다. 변환 과정을 수식으로 보여준다.</p>
-
 <div class="math-block">
 <div class="math-row">변환 결과</div>
 <div class="math-desc">해석</div>
 <div class="math-legend">범례</div>
 </div>
-
-
 <h3 id="r1-step5">5단계. 발견</h3>
-
 <p>나온 값을 실험 측정값과 비교한다.</p>
-
 <div class="math-block">
 <div class="math-row">도출값: X</div>
 <div class="math-row">측정값: Y</div>
 <div class="math-row">오차: Z%</div>
 </div>
-
 <p>이 라운드의 판정. 부산물이 있으면 기록한다. 다음 라운드에 재대입할 것을 명시한다.</p>
-
-
 <!-- 라운드 2~N: 위와 동일한 5단계 구조를 반복한다 -->
 <!-- 이전 라운드의 결과를 3단계(상수 대입)에 재대입하면서 정밀도를 높인다 -->
-
-
 <!-- ===== 3. 부산물 ===== -->
-
 <h1 id="byproduct">부산물</h1>
-
 <p>라운드 과정에서 나온 부차적 발견들. 오차가 크더라도 구조가 보이면 기록한다. 이것들이 다음 도출의 씨앗이 된다.</p>
-
-
 <!-- ===== 4. 미완 (없으면 생략) ===== -->
-
 <h1 id="incomplete">미완</h1>
-
 <p>아직 해결되지 않은 것들을 정직하게 나열한다.</p>
-
 <table>
 <tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr>
 <tr><td>미완 항목 1</td><td>설명</td><td>다음에 시도할 경로</td></tr>
 </table>
-
-
 <!-- ===== 5. 총괄 ===== -->
-
 <h1 id="summary">총괄</h1>
-
 <table>
 <tr><th>항목</th><th>결과</th><th>상태</th></tr>
 <tr><td>핵심 도출</td><td>공식, 오차</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td>부산물</td><td>내용</td><td><span class="tag-discovery">발견</span></td></tr>
 <tr><td>미완 항목</td><td>내용</td><td><span class="tag-wip">진행</span></td></tr>
 </table>
-
 </div><!-- /lang-ko -->
-
-
 <!-- ========== English Version ========== -->
 <div class="lang-en">
-
 <!-- ===== TOC Sidebar (Desktop) ===== -->
 <div class="toc-side">
-<a href="#title-en" class="toc-h1">Title</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
+<a class="toc-h1" href="#title-en">Title</a>
+<a class="toc-h2" href="#question-en">Question</a>
+<a class="toc-h2" href="#status-en">Status</a>
+<a class="toc-h2" href="#discovery-en">Key Discovery</a>
+<a class="toc-h1" href="#r1-en">Round 1</a>
+<a class="toc-h3" href="#r1-step1-en">Step 1. Banya Equation</a>
+<a class="toc-h3" href="#r1-step2-en">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#r1-step3-en">Step 3. Constant Insertion</a>
+<a class="toc-h3" href="#r1-step4-en">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#r1-step5-en">Step 5. Discovery</a>
 <!-- Round 2~N: repeat same structure -->
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#byproduct-en">By-products</a>
+<a class="toc-h1" href="#incomplete-en">Incomplete Tasks</a>
+<a class="toc-h1" href="#summary-en">Summary</a>
 </div>
-
 <!-- ===== TOC Mobile Bar ===== -->
 <div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-en .toc-overlay').classList.toggle('show')">
 <div class="toc-bar-text"><span class="cur">Title</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
+<div class="toc-bar-arrow">▼</div>
 </div>
 <div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.lang-en .toc-bar').classList.remove('open')">
-<a href="#title-en" class="toc-h1">Title</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#title-en">Title</a>
+<a class="toc-h2" href="#question-en">Question</a>
+<a class="toc-h2" href="#status-en">Status</a>
+<a class="toc-h2" href="#discovery-en">Key Discovery</a>
+<a class="toc-h1" href="#r1-en">Round 1</a>
+<a class="toc-h3" href="#r1-step1-en">Step 1. Banya Equation</a>
+<a class="toc-h3" href="#r1-step2-en">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#r1-step3-en">Step 3. Constant Insertion</a>
+<a class="toc-h3" href="#r1-step4-en">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#r1-step5-en">Step 5. Discovery</a>
+<a class="toc-h1" href="#byproduct-en">By-products</a>
+<a class="toc-h1" href="#incomplete-en">Incomplete Tasks</a>
+<a class="toc-h1" href="#summary-en">Summary</a>
 </div>
-
-
 <!-- ===== Sub-report notice ===== -->
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
-
-
 <!-- ===== 1. Introduction ===== -->
-
 <h1 id="title-en">Title: What Are We Looking For</h1>
-
 <blockquote><p>Banya Framework Operation Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>Date: 20XX-XX-XX</p></blockquote>
-
-
 <!-- 1-1. Question -->
 <h2 id="question-en">Question: Why This Value</h2>
-
 <p>Describe the current state in physics. Who attempted it, why they failed, and how many years it remained unsolved. Use analogies simple enough for a child to understand.</p>
-
-
 <!-- 1-2. Status: choose 1 of 5 -->
 <h2 id="status-en">Status</h2>
-
 <p><span class="tag-solved">Hit</span> or <span class="tag-discovery">Discovery</span> or <span class="tag-hypothesis">Hypothesis</span> or <span class="tag-wip">In Progress</span> or <span class="tag-pending">Pending</span></p>
-
 <p>State the basis for the status in one sentence. e.g. "Error X%, physical justification secured."</p>
-
-
 <!-- 1-3. Key Discovery -->
 <h2 id="discovery-en">Key Discovery</h2>
-
 <!-- Solved/Discovery case -->
 <div class="discovery-block">
 <h4>Discovery Name</h4>
@@ -292,7 +212,6 @@
 <p>Observed: X, Error: <span class="tag-solved">Y%</span></p>
 <p>One-line interpretation</p>
 </div>
-
 <!-- Hypothesis case -->
 <!--
 <div class="hypothesis-block">
@@ -301,99 +220,58 @@
 <p>Error: <span class="tag-hypothesis">Y%</span>, Incomplete: ...</p>
 </div>
 -->
-
-
 <!-- ===== 2. Body: 5 steps per round ===== -->
-
 <h1 id="r1-en">Round 1. Title (0th-order approximation, etc.)</h1>
-
 <h3 id="r1-step1-en">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">delta^2 = (time + space)^2 + (observer + superposition)^2</div>
 </div>
-
 <p>Specify which part of the Banya equation is used in this round.</p>
-
-
 <h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
-
 <p>Substitute the axes of the Banya equation with physical variables. Specify the substitution path chosen.</p>
-
 <div class="math-block">
 <div class="math-row">Substitution result</div>
 <div class="math-legend">Legend</div>
 </div>
-
-
 <h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
-
 <p>Insert known physical constants and factors from lib.html. Specify what was inserted.</p>
-
 <pre>List of inserted values</pre>
-
-
 <h3 id="r1-step4-en">Step 4. Domain Transform</h3>
-
 <p>Transform the insertion result into another domain. Show the transformation process as equations.</p>
-
 <div class="math-block">
 <div class="math-row">Transform result</div>
 <div class="math-desc">Interpretation</div>
 <div class="math-legend">Legend</div>
 </div>
-
-
 <h3 id="r1-step5-en">Step 5. Discovery</h3>
-
 <p>Compare the derived value with the experimentally measured value.</p>
-
 <div class="math-block">
 <div class="math-row">Derived: X</div>
 <div class="math-row">Measured: Y</div>
 <div class="math-row">Error: Z%</div>
 </div>
-
 <p>Verdict for this round. Record any by-products. State what will be re-inserted in the next round.</p>
-
-
 <!-- Round 2~N: repeat the same 5-step structure -->
 <!-- Re-insert previous round results at Step 3 to improve precision -->
-
-
 <!-- ===== 3. By-products ===== -->
-
 <h1 id="byproduct-en">By-products</h1>
-
 <p>Secondary discoveries from the rounds. Record them even if error is large, as long as a structure is visible. These become seeds for future derivations.</p>
-
-
 <!-- ===== 4. Incomplete Tasks (omit if none) ===== -->
-
 <h1 id="incomplete-en">Incomplete Tasks</h1>
-
 <p>Honestly list everything that remains unsolved.</p>
-
 <table>
 <tr><th>Item</th><th>Current State</th><th>Resolution Path</th></tr>
 <tr><td>Incomplete item 1</td><td>Description</td><td>Next approach to try</td></tr>
 </table>
-
-
 <!-- ===== 5. Summary ===== -->
-
 <h1 id="summary-en">Summary</h1>
-
 <table>
 <tr><th>Item</th><th>Result</th><th>Status</th></tr>
 <tr><td>Key derivation</td><td>Formula, error</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td>By-product</td><td>Content</td><td><span class="tag-discovery">Discovery</span></td></tr>
 <tr><td>Incomplete item</td><td>Content</td><td><span class="tag-wip">In Progress</span></td></tr>
 </table>
-
 </div><!-- /lang-en -->
-
-
 <!-- ===== page-nav ===== -->
 <div class="page-nav">
 <a href="banya.html">종합 보고서</a>
@@ -401,16 +279,14 @@
 <a href="lib.html">가설 라이브러리</a>
 <a href="science_mine.html">과학 채굴 메뉴얼</a>
 </div>
-
-
 <!-- ===== 푸터 ===== -->
 <div class="doc-footer">
 <div class="f-top">
 <div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
@@ -420,21 +296,17 @@
 </div>
 <div class="f-bottom">
 <a href="banya.html">종합 보고서</a>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
 기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
 <div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
 <!-- ===== JS: 언어 전환 ===== -->
-
-
 <!-- ===== JS: TOC 스크롤 추적 ===== -->
 <script>
 (function(){
@@ -447,8 +319,7 @@ for(var i=secs.length-1;i>=0;i--){if(secs[i].el.offsetTop<=st){c=secs[i];break}}
 if(c&&c!==cur){if(cur)cur.a.classList.remove('active');c.a.classList.add('active');cur=c;if(tb)tb.textContent=c.a.textContent}}
 window.addEventListener('scroll',upd);upd()})();
 </script>
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

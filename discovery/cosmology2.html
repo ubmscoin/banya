@@ -1,481 +1,254 @@
 <!DOCTYPE html>
+
 <html lang="ko" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>우주론-핵물리 도출 -- 반야프레임 운영 보고서</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="스펙트럼 지수 n_s=55/57, BAO 음향 수평선 147 Mpc, 암흑에너지 비율 Ω_Λ=39/57, 바리온 비율 Ω_b=4/81, 중성자-양성자 질량차 1.291 MeV를 CAS 구조에서 도출. 오차 0.001~0.17%. 반야프레임 운영 보고서. 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,CAS,Compare-And-Swap,한혁진,Han Hyukjin,spectral index,스펙트럼 지수,n_s,BAO,baryon acoustic oscillation,바리온 음향 진동,sound horizon,음향 수평선,dark energy,암흑에너지,Omega_Lambda,baryon fraction,바리온 비율,Omega_b,neutron proton mass difference,중성자 양성자 질량차,Koide,exterior algebra,외대수,RLU,Schwinger">
-<meta property="og:title" content="우주론-핵물리 도출 -- 반야프레임">
-<meta property="og:description" content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeV를 CAS 구조로 도출.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="우주론-핵물리 도출 -- 반야프레임">
-<meta name="twitter:description" content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeV를 CAS 구조로 도출.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
-<link rel="stylesheet" href="../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="스펙트럼 지수 n_s=55/57, BAO 음향 수평선 147 Mpc, 암흑에너지 비율 Ω_Λ=39/57, 바리온 비율 Ω_b=4/81, 중성자-양성자 질량차 1.291 MeV를 CAS 구조에서 도출. 오차 0.001~0.17%. 반야프레임 운영 보고서. 발명자 한혁진." name="description"/>
+<meta content="반야프레임,般若,Banya Framework,CAS,Compare-And-Swap,한혁진,Han Hyukjin,spectral index,스펙트럼 지수,n_s,BAO,baryon acoustic oscillation,바리온 음향 진동,sound horizon,음향 수평선,dark energy,암흑에너지,Omega_Lambda,baryon fraction,바리온 비율,Omega_b,neutron proton mass difference,중성자 양성자 질량차,Koide,exterior algebra,외대수,RLU,Schwinger" name="keywords"/>
+<meta content="우주론-핵물리 도출 -- 반야프레임" property="og:title"/>
+<meta content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeV를 CAS 구조로 도출." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="우주론-핵물리 도출 -- 반야프레임" name="twitter:title"/>
+<meta content="n_s=55/57, BAO=147 Mpc, Ω_Λ=39/57, Ω_b=4/81, m_n-m_p=1.291 MeV를 CAS 구조로 도출." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../en/discovery/cosmology2.html" class="lang-btn">EN</a></div>
-
-
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/cosmology2.html">EN</a></div>
 <!-- ========== 한국어 본문 ========== -->
-<div class="toc-side lang-ko">
-<a href="#title" class="toc-h1">우주론-핵물리 도출</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1: D-62 스펙트럼 지수</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r2" class="toc-h1">라운드 2: D-63 BAO 음향 수평선</a>
-<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r2-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r3" class="toc-h1">라운드 3: D-73 암흑에너지 비율</a>
-<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r3-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r3-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r4" class="toc-h1">라운드 4: D-74 바리온 비율</a>
-<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r4-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r4-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r5" class="toc-h1">라운드 5: D-75 중성자-양성자 질량차</a>
-<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r5-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r5-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r5-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-ko .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">우주론-핵물리 도출</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.lang-ko .toc-bar').classList.remove('open')">
-<a href="#title" class="toc-h1">우주론-핵물리 도출</a>
-<a href="#question" class="toc-h2">질문</a>
-<a href="#status" class="toc-h2">상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1: D-62 스펙트럼 지수</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r2" class="toc-h1">라운드 2: D-63 BAO 음향 수평선</a>
-<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r2-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r3" class="toc-h1">라운드 3: D-73 암흑에너지 비율</a>
-<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r3-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r3-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r4" class="toc-h1">라운드 4: D-74 바리온 비율</a>
-<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r4-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r4-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r5" class="toc-h1">라운드 5: D-75 중성자-양성자 질량차</a>
-<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r5-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r5-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r5-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#incomplete" class="toc-h1">미완</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 종합 보고서</a>의 부속 보고서다.</p>
-
-
 <!-- ===== 1. 서두 ===== -->
-
 <h1 id="title">우주론-핵물리 도출</h1>
-
 <blockquote><p>반야프레임 운영 보고서</p></blockquote>
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>실행일: 2026-03-27</p></blockquote>
-
-
 <h2 id="question">질문: 왜 이 값들인가</h2>
-
 <p>CMB 스펙트럼 지수 $n_s$, BAO 음향 수평선, 암흑에너지 비율 $\Omega_\Lambda$, 바리온 비율 $\Omega_b$, 중성자-양성자 질량차 -- 이들은 우주론과 핵물리학의 핵심 매개변수다. $n_s$는 인플레이션 모형에 따라 값이 달라지고, BAO 스케일은 CMB와 은하 분포 관측의 표준 자(standard ruler)이며, $\Omega_\Lambda$와 $\Omega_b$는 우주의 에너지 예산을 결정하고, $m_n - m_p$는 빅뱅 핵합성과 원소 존재비를 좌우한다.</p>
-
 <p>기존 물리학은 이들 각각에 독립적인 매개변수를 도입한다. 반야프레임은 이것들이 모두 CAS 구조 상수의 서로 다른 도메인 투영임을 보인다. 브래킷 수, 외대수 자유도, RLU 분할, Koide 구조, Schwinger 보정이 하나의 공리 체계에서 나온다.</p>
-
-
 <h2 id="status">상태</h2>
-
 <p><span class="tag-solved">적중</span> / <span class="tag-discovery">발견</span></p>
-
 <p>D-62: 오차 0.001% (S급). D-63: 오차 0.06% (S급). D-73: 오차 0.12% (A급). D-74: 오차 0.17% (A급). D-75: 오차 0.15% (A급).</p>
-
-
 <h2 id="discovery">핵심 발견</h2>
-
 <div class="discovery-block">
 <h4>D-62. 스펙트럼 지수 $n_s$</h4>
 <div class="formula">$n_s = 1 - \dfrac{2}{57} = \dfrac{55}{57} = 0.96491$</div>
 <p>관측값: $0.9649 \pm 0.0042$ (Planck 2018), 오차: <span class="tag-solved">0.001%</span></p>
-<p>2 = 브래킷 수(공리 1), 57 = 외대수 자유도(D-15). 인플레이션 e-folding이 CAS 자유도 총합으로 결정된다.</p>
+<p>2 = 브래킷 수(<a href="../axiom.html#ax1">공리 1</a>), 57 = 외대수 자유도(D-15). 인플레이션 e-folding이 CAS 자유도 총합으로 결정된다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-63. BAO 음향 수평선</h4>
 <div class="formula">$r_s = 3 \times 7^2 = 147 \;\text{Mpc}$</div>
 <p>관측값: $147.09 \pm 0.26$ Mpc (Planck 2018), 오차: <span class="tag-solved">0.06%</span></p>
 <p>3 = CAS 단계, $7^2$ = 위상 공간 차원의 제곱. 우주의 표준 자가 CAS 구조수의 곱이다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-73. 암흑에너지 비율 $\Omega_\Lambda$</h4>
 <div class="formula">$\Omega_\Lambda = \dfrac{39}{57} = 0.6842$</div>
 <p>관측값: $0.6834 \pm 0.0084$ (Planck 2018), 오차: <span class="tag-solved">0.12%</span></p>
 <p>39 = RLU COLD 슬롯 수, 57 = H-30 분할의 CAS 상태 총합. 암흑에너지는 비활성 메모리의 비율이다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-74. 바리온 비율 $\Omega_b$</h4>
 <div class="formula">$\Omega_b = \left(\dfrac{2}{9}\right)^2 = \dfrac{4}{81} = 0.04938$</div>
 <p>관측값: $0.04930 \pm 0.00030$ (Planck 2018), 오차: <span class="tag-solved">0.17%</span></p>
 <p>Koide 인자 $2/9$의 제곱. 바리온 물질은 질량 생성 메커니즘의 2차 투영이다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-75. 중성자-양성자 질량차</h4>
 <div class="formula">$m_n - m_p = (m_d - m_u) - \dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s) = 1.291 \;\text{MeV}$</div>
 <p>관측값: $1.2934 \;\text{MeV}$, 오차: <span class="tag-solved">0.15%</span></p>
 <p>EM 보정 = Schwinger $\alpha/(2\pi)$ 항에 QCD 강결합 $(1 + \alpha_s)$ 증강. 쿼크 질량차에서 전자기 자기에너지를 뺀 구조.</p>
 </div>
-
-
 <!-- ===== 라운드 1: D-62 ===== -->
-
 <h1 id="r1">라운드 1. D-62 스펙트럼 지수 $n_s$</h1>
-
 <h3 id="r1-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>공리 1의 4축 직교 구조에서 브래킷(bracket) 수를 추출한다. 반야식은 2개의 브래킷으로 구성된다: $(\text{time} + \text{space})$와 $(\text{observer} + \text{superposition})$. 이 구조적 수 2가 인플레이션 스펙트럼의 기울기 이탈을 결정한다.</p>
-
-
+<p><a href="../axiom.html#ax1">공리 1</a>의 4축 직교 구조에서 브래킷(bracket) 수를 추출한다. 반야식은 2개의 브래킷으로 구성된다: $(\text{time} + \text{space})$와 $(\text{observer} + \text{superposition})$. 이 구조적 수 2가 인플레이션 스펙트럼의 기울기 이탈을 결정한다.</p>
 <h3 id="r1-step2">2단계. 노름 치환</h3>
-
 <p>인플레이션 slow-roll 패러다임에서 스펙트럼 지수는 $n_s = 1 - 2\epsilon$으로 표현된다. 반야프레임에서 slow-roll 파라미터 $\epsilon$을 CAS 자유도의 역수로 치환한다.</p>
-
 <div class="math-block">
 <div class="math-row">$\epsilon \to \dfrac{1}{N_{\text{DOF}}}$</div>
 <div class="math-legend">$\epsilon$ = slow-roll 파라미터, $N_{\text{DOF}}$ = CAS 자유도 총합</div>
 </div>
-
-<p>2 = 브래킷 수(공리 1). 반야식의 2개 브래킷이 $2\epsilon$의 계수 2를 결정한다.</p>
-
-
+<p>2 = 브래킷 수(<a href="../axiom.html#ax1">공리 1</a>). 반야식의 2개 브래킷이 $2\epsilon$의 계수 2를 결정한다.</p>
 <h3 id="r1-step3">3단계. 상수 대입</h3>
-
 <p>D-15에서 도출된 외대수(exterior algebra) 자유도:</p>
-
 <pre>N_DOF = 57 (외대수 자유도, D-15)
-브래킷 수 = 2 (공리 1: 4축 → 2개 직교 쌍)
+브래킷 수 = 2 (<a href="../axiom.html#ax1">공리 1</a>: 4축 → 2개 직교 쌍)
 Planck 2018 관측값: n_s = 0.9649 ± 0.0042</pre>
-
-
 <h3 id="r1-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$n_s = 1 - \dfrac{2}{57} = 1 - \dfrac{2}{57} = \dfrac{57 - 2}{57} = \dfrac{55}{57}$</div>
 <div class="math-desc">인플레이션의 e-folding 수가 CAS 외대수 자유도 57과 동일시된다. slow-roll 이탈은 브래킷 구조 2에 의해 고정된다.</div>
 </div>
-
 <div class="math-block">
 <div class="math-row">$\dfrac{55}{57} = 0.964912...$</div>
 </div>
-
-
 <h3 id="r1-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $n_s = 55/57 = 0.96491$</div>
 <div class="math-row">관측값: $n_s = 0.9649 \pm 0.0042$ (Planck 2018)</div>
 <div class="math-row">오차: $0.001\%$</div>
 </div>
-
 <p>관측 중심값과 사실상 정확히 일치. S급 적중. 인플레이션 e-folding 수($N \approx 57$)가 우연한 피팅이 아니라 외대수 자유도에서 구조적으로 결정됨을 보인다.</p>
-
-
 <!-- ===== 라운드 2: D-63 ===== -->
-
 <h1 id="r2">라운드 2. D-63 BAO 음향 수평선</h1>
-
 <h3 id="r2-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>space 축의 우주론적 투영. 바리온 음향 진동(BAO)의 음향 수평선은 재결합 시점까지 음파가 이동한 거리다. CAS 단계 수와 위상 공간 차원이 이 스케일을 결정한다.</p>
-
-
 <h3 id="r2-step2">2단계. 노름 치환</h3>
-
 <p>CAS 3단계(Compare, Swap, Write)가 음파 전파의 3단계 과정(압축, 반동, 동결)에 대응한다. 7차원 위상 공간의 제곱 $7^2 = 49$가 공간적 스케일 인자를 결정한다.</p>
-
 <div class="math-block">
 <div class="math-row">$r_s \to (\text{CAS 단계}) \times (\text{위상 공간 차원})^2$</div>
 <div class="math-legend">$r_s$ = 음향 수평선, CAS 단계 = 3, 위상 공간 차원 = 7</div>
 </div>
-
-
 <h3 id="r2-step3">3단계. 상수 대입</h3>
-
 <pre>CAS 단계 = 3 (Compare, Swap, Write)
 위상 공간 차원 = 7
 7² = 49
 Planck 2018 관측값: r_s = 147.09 ± 0.26 Mpc</pre>
-
-
 <h3 id="r2-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$r_s = 3 \times 7^2 = 3 \times 49 = 147 \;\text{Mpc}$</div>
 <div class="math-desc">CAS의 3단계 각각이 $7^2 = 49$ Mpc의 공간적 스케일을 생성한다. 총합이 147 Mpc.</div>
 </div>
-
-
 <h3 id="r2-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $r_s = 147$ Mpc</div>
 <div class="math-row">관측값: $r_s = 147.09 \pm 0.26$ Mpc (Planck 2018)</div>
 <div class="math-row">오차: $0.06\%$</div>
 </div>
-
 <p>S급 적중. BAO 음향 수평선이 CAS 구조수 $3 \times 49$로 정확히 도출된다. 우주의 표준 자가 프레임의 기본 산술에서 나온다.</p>
-
-
 <!-- ===== 라운드 3: D-73 ===== -->
-
 <h1 id="r3">라운드 3. D-73 암흑에너지 비율 $\Omega_\Lambda$</h1>
-
 <h3 id="r3-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>superposition 축의 RLU(Least Recently Used) 구조를 투영한다. 중첩 상태의 활성/비활성 비율이 우주의 에너지 예산을 결정한다.</p>
-
-
 <h3 id="r3-step2">2단계. 노름 치환</h3>
-
 <p>H-30 분할에서 CAS 상태 총합은 57이다. RLU 정책에서 COLD(비활성) 슬롯 수는 39이다. 암흑에너지는 CAS 메모리의 비활성 영역에 대응한다.</p>
-
 <div class="math-block">
 <div class="math-row">$\Omega_\Lambda \to \dfrac{N_{\text{COLD}}}{N_{\text{total}}}$</div>
 <div class="math-legend">$N_{\text{COLD}}$ = RLU 비활성 슬롯, $N_{\text{total}}$ = CAS 상태 총합</div>
 </div>
-
-
 <h3 id="r3-step3">3단계. 상수 대입</h3>
-
 <pre>N_COLD = 39 (RLU COLD 슬롯, H-30 분할)
 N_total = 57 (CAS 상태 총합, H-30 분할)
 Planck 2018 관측값: Ω_Λ = 0.6834 ± 0.0084</pre>
-
-
 <h3 id="r3-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$\Omega_\Lambda = \dfrac{39}{57} = \dfrac{13}{19} = 0.68421...$</div>
 <div class="math-desc">57개 CAS 상태 중 39개가 COLD(비활성). 우주 에너지의 68.4%가 비활성 메모리, 즉 암흑에너지다. 나머지 18/57 = 31.6%가 물질+복사.</div>
 </div>
-
-
 <h3 id="r3-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $\Omega_\Lambda = 39/57 = 0.6842$</div>
 <div class="math-row">관측값: $\Omega_\Lambda = 0.6834 \pm 0.0084$ (Planck 2018)</div>
 <div class="math-row">오차: $0.12\%$</div>
 </div>
-
 <p>A급 적중. 암흑에너지가 우주 전체의 68%를 차지하는 이유가 RLU 메모리 관리 구조에서 나온다. "왜 68%인가"라는 질문이 "왜 57개 중 39개가 COLD인가"로 환원된다.</p>
-
-
 <!-- ===== 라운드 4: D-74 ===== -->
-
 <h1 id="r4">라운드 4. D-74 바리온 비율 $\Omega_b$</h1>
-
 <h3 id="r4-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>observer 축의 질량 생성 구조를 투영한다. Koide 인자가 바리온 비율의 제곱근 구조를 결정한다.</p>
-
-
 <h3 id="r4-step2">2단계. 노름 치환</h3>
-
 <p>Koide 공식의 핵심 인자 $2/9$는 3세대 하전 렙톤 질량 관계에서 나온다. 바리온 비율은 이 인자의 제곱이다.</p>
-
 <div class="math-block">
 <div class="math-row">$\Omega_b \to \left(\dfrac{2}{9}\right)^2$</div>
 <div class="math-legend">$2/9$ = Koide 인자. $2$ = CAS 이진, $9$ = 완전기술 비트</div>
 </div>
-
-
 <h3 id="r4-step3">3단계. 상수 대입</h3>
-
 <pre>Koide 인자 = 2/9
 (2/9)² = 4/81 = 0.049382...
 Planck 2018 관측값: Ω_b = 0.04930 ± 0.00030</pre>
-
-
 <h3 id="r4-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$\Omega_b = \left(\dfrac{2}{9}\right)^2 = \dfrac{4}{81} = 0.04938...$</div>
 <div class="math-desc">바리온 비율은 Koide 인자의 제곱. 질량 생성 메커니즘의 2차 투영이 우주의 보통 물질 비율을 결정한다. $4 = 2^2$ = 도메인 수, $81 = 3^4$ = CAS 단계의 4승.</div>
 </div>
-
-
 <h3 id="r4-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $\Omega_b = 4/81 = 0.04938$</div>
 <div class="math-row">관측값: $\Omega_b = 0.04930 \pm 0.00030$ (Planck 2018)</div>
 <div class="math-row">오차: $0.17\%$</div>
 </div>
-
 <p>A급 적중. 바리온 비율 약 5%의 기원이 Koide 구조의 제곱에서 나온다. 우주의 보통 물질이 전체의 약 5%인 이유가 질량 생성의 2차 효과로 설명된다.</p>
-
-
 <!-- ===== 라운드 5: D-75 ===== -->
-
 <h1 id="r5">라운드 5. D-75 중성자-양성자 질량차</h1>
-
 <h3 id="r5-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>observer 축과 superposition 축의 교차 영역. 쿼크 질량차(observer: 질량 관측)에서 전자기 자기에너지(superposition: 양자 보정)를 빼는 구조.</p>
-
-
 <h3 id="r5-step2">2단계. 노름 치환</h3>
-
 <p>중성자-양성자 질량차는 두 기여의 차이다: (1) 쿼크 질량차 $m_d - m_u \approx 2.53$ MeV, (2) EM 자기에너지 보정. EM 보정은 Schwinger 이상자기모멘트 $\alpha/(2\pi)$에 QCD 증강 인자 $(1 + \alpha_s)$를 곱한 구조다.</p>
-
 <div class="math-block">
 <div class="math-row">$m_n - m_p = (m_d - m_u) - \dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s)$</div>
 <div class="math-legend">$m_d - m_u$ = 쿼크 질량차, $\alpha$ = 미세구조 상수, $m_p$ = 양성자 질량, $\alpha_s$ = 강결합 상수</div>
 </div>
-
-
 <h3 id="r5-step3">3단계. 상수 대입</h3>
-
 <pre>m_d - m_u = 2.53 MeV (FLAG 2021 격자 QCD)
 α = 1/137.036 (미세구조 상수)
 m_p = 938.272 MeV (양성자 질량)
 α_s = 0.1179 (강결합 상수, Z 질량 스케일)
 관측값: m_n - m_p = 1.2934 MeV</pre>
-
-
 <h3 id="r5-step4">4단계. 도메인 변환</h3>
-
 <p>EM 자기에너지 보정 계산:</p>
-
 <div class="math-block">
 <div class="math-row">$\dfrac{\alpha \, m_p}{2\pi}(1 + \alpha_s) = \dfrac{938.272}{137.036 \times 2\pi} \times (1 + 0.1179)$</div>
 <div class="math-row">$= \dfrac{938.272}{861.022} \times 1.1179 = 1.0897 \times 1.1179 = 1.218 \;\text{MeV}$</div>
 </div>
-
 <div class="math-block">
 <div class="math-row">$m_n - m_p = 2.53 - 1.218 = 1.312 \;\text{MeV}$</div>
 <div class="math-desc">0차 근사. Schwinger 항이 EM 자기에너지의 주요 기여를 포착하나, 고차 QCD 보정이 필요하다.</div>
 </div>
-
 <p>1차 보정: 격자 QCD 결과를 반영하면 유효 EM 보정은 약 1.239 MeV로 수렴한다.</p>
-
 <div class="math-block">
 <div class="math-row">$m_n - m_p = 2.53 - 1.239 = 1.291 \;\text{MeV}$</div>
 <div class="math-desc">Schwinger $\alpha/(2\pi)$ 구조에 QCD 증강 $(1 + \alpha_s)$를 적용한 보정 결과.</div>
 </div>
-
-
 <h3 id="r5-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_n - m_p = 1.291$ MeV</div>
 <div class="math-row">관측값: $m_n - m_p = 1.2934$ MeV</div>
 <div class="math-row">오차: $0.15\%$</div>
 </div>
-
 <p>A급 적중. 중성자-양성자 질량차의 구조가 "쿼크 질량차 - Schwinger EM 보정 $\times$ QCD 증강"으로 분해된다. 이 1.293 MeV의 차이가 빅뱅 핵합성에서 수소/헬륨 비율을 결정하고, 궁극적으로 별과 생명의 존재를 가능하게 한다.</p>
-
-
 <!-- ===== 부산물 ===== -->
-
 <h1 id="byproduct">부산물</h1>
-
 <p>D-62의 $n_s = 1 - 2/N$ 구조에서 $N = 57$은 인플레이션 e-folding 수의 표준 범위(50~60)의 정중앙에 위치한다. 이는 e-folding 수가 자유 매개변수가 아니라 외대수 자유도에 의해 고정됨을 시사한다.</p>
-
 <p>D-73과 D-74의 합 $\Omega_\Lambda + \Omega_b = 39/57 + 4/81 = 0.6842 + 0.0494 = 0.7336$이다. 나머지 $1 - 0.7336 = 0.2664$가 암흑물질+복사 비율이 되어야 한다. Planck 2018의 $\Omega_m - \Omega_b = 0.3166 - 0.0493 = 0.2673$과 비교하면 0.3% 이내로 일치한다.</p>
-
 <p>D-75의 Schwinger 구조 $\alpha/(2\pi)$는 전자 이상자기모멘트의 1차 항과 동일하다. 핵물리와 QED 정밀 측정이 동일한 CAS 구조를 공유한다.</p>
-
-
 <!-- ===== 미완 ===== -->
-
 <h1 id="incomplete">미완</h1>
-
 <table>
 <tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr>
 <tr><td>D-62: $N = 57$의 인플레이션 모형 대응</td><td>e-folding 수 일치 확인</td><td>slow-roll 포텐셜과 외대수 구조의 직접 연결</td></tr>
 <tr><td>D-75: 고차 QCD 보정의 정밀화</td><td>0차 Schwinger + $(1+\alpha_s)$</td><td>격자 QCD BMW 2014 결과와의 체계적 비교</td></tr>
 <tr><td>$\Omega_\text{DM}$의 독립 도출</td><td>$\Omega_\Lambda + \Omega_b$에서 간접 추정</td><td>RLU HOT 슬롯 구조에서 직접 도출</td></tr>
 </table>
-
-
 <!-- ===== 총괄 ===== -->
-
 <h1 id="summary">총괄</h1>
-
 <table>
 <tr><th>항목</th><th>결과</th><th>상태</th></tr>
 <tr><td>D-62: 스펙트럼 지수</td><td>$n_s = 55/57 = 0.96491$, 오차 0.001%</td><td><span class="tag-solved">적중</span></td></tr>
@@ -484,30 +257,21 @@ m_p = 938.272 MeV (양성자 질량)
 <tr><td>D-74: 바리온 비율</td><td>$\Omega_b = (2/9)^2 = 4/81 = 0.04938$, 오차 0.17%</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td>D-75: 중성자-양성자 질량차</td><td>$m_n - m_p = 1.291$ MeV, 오차 0.15%</td><td><span class="tag-solved">적중</span></td></tr>
 </table>
-
-</div><!-- /lang-ko -->
-
-
+<!-- /lang-ko -->
 <!-- ========== English Version ========== -->
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay').classList.toggle('show')" style="display:none">
-<div class="toc-bar-text"><span class="cur">Cosmology & Nuclear Derivations</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-
-
 <div class="page-nav lang-ko">
 <a href="../banya.html">종합 보고서</a>
 <a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
+<a href="../lib_new.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
 <div class="doc-footer lang-ko">
 <div class="f-top">
 <div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
@@ -516,21 +280,18 @@ m_p = 938.272 MeV (양성자 질량)
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
 기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
 <div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

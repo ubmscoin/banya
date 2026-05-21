@@ -1,213 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="ko" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>하드론 질량 도출: CAS 구조로부터 — 반야프레임 운영 보고서</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="CAS 구조로부터 하드론 질량 도출. π±, ρ, ω, Δ, Σ±, Ω⁻, π⁰, proton 새 경로. 응축 스케일, 초미세 분리, 데쿠플렛 등간격의 CAS 기원. 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,Axiom-Based Science Mining Engine,한혁진,Han Hyukjin,hadron mass,하드론 질량,pion mass,파이온,rho meson,rho 메존,omega meson,오메가 메존,Delta baryon,델타 바리온,Sigma baryon,시그마 바리온,Omega baryon,오메가 바리온,decuplet spacing,데쿠플렛 등간격,QCD,Λ_QCD,CAS,Compare-And-Swap,condensation scale,응축 스케일,isospin breaking,아이소스핀 깨짐,hyperfine,초미세,exterior algebra,외대수,ring buffer,링 버퍼,proton mass,양성자 질량">
-<meta property="og:title" content="하드론 질량 도출: CAS 구조로부터 — 반야프레임">
-<meta property="og:description" content="CAS 구조로부터 하드론 질량 도출. π±, ρ, ω, Δ, Σ±, Ω⁻, π⁰, proton 새 경로.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="하드론 질량 도출: CAS 구조로부터 — 반야프레임">
-<meta name="twitter:description" content="CAS 구조로부터 하드론 질량 도출. 데쿠플렛 등간격 = m_s×π/2. 링 반주기.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
-<link rel="stylesheet" href="../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="CAS 구조로부터 하드론 질량 도출. π±, ρ, ω, Δ, Σ±, Ω⁻, π⁰, proton 새 경로. 응축 스케일, 초미세 분리, 데쿠플렛 등간격의 CAS 기원. 발명자 한혁진." name="description"/>
+<meta content="반야프레임,般若,Banya Framework,Axiom-Based Science Mining Engine,한혁진,Han Hyukjin,hadron mass,하드론 질량,pion mass,파이온,rho meson,rho 메존,omega meson,오메가 메존,Delta baryon,델타 바리온,Sigma baryon,시그마 바리온,Omega baryon,오메가 바리온,decuplet spacing,데쿠플렛 등간격,QCD,Λ_QCD,CAS,Compare-And-Swap,condensation scale,응축 스케일,isospin breaking,아이소스핀 깨짐,hyperfine,초미세,exterior algebra,외대수,ring buffer,링 버퍼,proton mass,양성자 질량" name="keywords"/>
+<meta content="하드론 질량 도출: CAS 구조로부터 — 반야프레임" property="og:title"/>
+<meta content="CAS 구조로부터 하드론 질량 도출. π±, ρ, ω, Δ, Σ±, Ω⁻, π⁰, proton 새 경로." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="하드론 질량 도출: CAS 구조로부터 — 반야프레임" name="twitter:title"/>
+<meta content="CAS 구조로부터 하드론 질량 도출. 데쿠플렛 등간격 = m_s×π/2. 링 반주기." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../en/discovery/hadron_mass.html" class="lang-btn">EN</a></div>
-
-<div class="toc-side lang-ko">
-<a href="#title" class="toc-h1">하드론 질량 도출</a>
-<a href="#question" class="toc-h2">질문: 하드론 질량은 어디서 오는가</a>
-<a href="#status" class="toc-h2">현재 상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">R1. π± (D-80)</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r2" class="toc-h1">R2. ρ (D-81)</a>
-<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r2-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r3" class="toc-h1">R3. ω (D-82)</a>
-<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r3-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r3-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r4" class="toc-h1">R4. Δ (D-83)</a>
-<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r4-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r4-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r5" class="toc-h1">R5. Σ± (D-84)</a>
-<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r5-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r5-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r5-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r6" class="toc-h1">R6. Ω⁻ (D-85)</a>
-<a href="#r6-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r6-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r6-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r6-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r6-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r7" class="toc-h1">R7. π⁰ (D-89)</a>
-<a href="#r7-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r8" class="toc-h1">R8. proton 새 경로 (D-90)</a>
-<a href="#r8-step5" class="toc-h3">5단계. 발견</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">하드론 질량 도출</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar').classList.remove('open')">
-<a href="#title" class="toc-h1">하드론 질량 도출</a>
-<a href="#question" class="toc-h2">질문: 하드론 질량은 어디서 오는가</a>
-<a href="#status" class="toc-h2">현재 상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">R1. π± (D-80)</a>
-<a href="#r2" class="toc-h1">R2. ρ (D-81)</a>
-<a href="#r3" class="toc-h1">R3. ω (D-82)</a>
-<a href="#r4" class="toc-h1">R4. Δ (D-83)</a>
-<a href="#r5" class="toc-h1">R5. Σ± (D-84)</a>
-<a href="#r6" class="toc-h1">R6. Ω⁻ (D-85)</a>
-<a href="#r7" class="toc-h1">R7. π⁰ (D-89)</a>
-<a href="#r8" class="toc-h1">R8. proton 새 경로 (D-90)</a>
-<a href="#byproduct" class="toc-h1">부산물</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/hadron_mass.html">EN</a></div>
 <!-- ========== 한국어 본문 ========== -->
 <div class="lang-ko">
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 하드론 질량의 CAS 구조 도출 과정만을 다룬다.</p>
-
-
 <!-- ===== 1. 서두 ===== -->
-
 <h1 id="title">하드론 질량 도출: CAS 구조로부터</h1>
-
 <blockquote><p>반야프레임 운영 보고서</p></blockquote>
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>실행일: 2026-03-27</p></blockquote>
 <blockquote><p>방법: 반야프레임 5단계 재귀 대입, 8라운드 실행</p></blockquote>
 <blockquote><p>대상: D-80(π±), D-81(ρ), D-82(ω), D-83(Δ), D-84(Σ±), D-85(Ω⁻), D-89(π⁰), D-90(proton 새 경로)</p></blockquote>
-
-
 <h2 id="question">질문: 하드론 질량은 어디서 오는가</h2>
-
 <p>양성자 질량의 99%는 쿼크 질량이 아니라 강력(QCD) 결합 에너지에서 나온다. 그러나 QCD는 비섭동 영역이라 격자 계산 외에 해석적 공식이 없다. 파이온은 왜 비정상적으로 가볍고, ρ와 ω는 왜 거의 같은 질량이며, 데쿠플렛 바리온은 왜 등간격인가. 50년간 "격자 QCD가 재현한다"는 수치적 답만 있었을 뿐 구조적 이유는 미해결이다.</p>
-
 <p>반야프레임은 이를 CAS 연산의 구조적 속성으로 설명한다. 쿼크 결합 = CAS의 3비트 락 구조. 응축 스케일 = FSM 전이 에너지. 등간격 = 링 버퍼 반주기.</p>
-
-
 <h2 id="status">현재 상태</h2>
-
 <p><span class="tag-discovery">발견</span></p>
-
 <p>8개 하드론 질량을 CAS 구조 인자로 도출. 데쿠플렛 등간격의 링 버퍼 기원 확인.</p>
-
-
 <h2 id="discovery">핵심 발견</h2>
-
 <div class="discovery-block">
 <h4>D-80. π± 질량</h4>
-<div class="formula">$m_\pi^2 = (m_u + m_d) \times \dfrac{3\,\Lambda_{\text{cond}}^3}{f_\pi^2}$, &nbsp; $\Lambda_{\text{cond}} = \Lambda_{\text{QCD}} \times \dfrac{9}{8}$</div>
+<div class="formula">$m_\pi^2 = (m_u + m_d) \times \dfrac{3\,\Lambda_{\text{cond}}^3}{f_\pi^2}$,   $\Lambda_{\text{cond}} = \Lambda_{\text{QCD}} \times \dfrac{9}{8}$</div>
 <p>9/8 = CAS 3비트(8상태) + FSM 전이 1단계. 응축 스케일이 $\Lambda_{\text{QCD}}$보다 9/8배 높은 이유는 CAS가 8상태 중 1단계를 추가 소비하기 때문이다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-81. ρ 메존 질량</h4>
 <div class="formula">$m_\rho = \Lambda_{\text{QCD}} \times \dfrac{7}{2}$</div>
 <p>7 = CAS 3비트 상태수(8) - 1(자기 참조 제외). 2 = brackets(읽기/쓰기). CAS가 자기 자신을 제외한 7상태를 읽기/쓰기 2단계로 순회한 에너지.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-82. ω 메존 질량</h4>
 <div class="formula">$m_\omega = \Lambda_{\text{QCD}} \times \dfrac{7}{2} + 3(m_d - m_u)$</div>
 <p>아이소스핀 깨짐 보정. ρ와 같은 CAS 순회에 u/d 질량차 3배(색 자유도)를 더한다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-83. Δ 바리온 질량</h4>
 <div class="formula">$m_\Delta = m_p + \Lambda_{\text{QCD}} \times \dfrac{4}{3}$</div>
 <p>4/3 = Swap 1회 + CAS 3단계 중 1/3 추가. 스핀 3/2와 스핀 1/2의 차이 = CAS 초미세 분리.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-84. Σ± 바리온 질량</h4>
 <div class="formula">$m_{\Sigma^\pm} = m_p + m_s \times \sqrt{\dfrac{65}{9}}$</div>
 <p>65 = 57 + 8. 57 = 외대수(exterior algebra) 차원수($2^6 - 7$). 8 = 링 버퍼 비트수. 9 = CAS 3비트 × 3색.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-85. Ω⁻ 바리온 질량</h4>
 <div class="formula">$m_{\Omega^-} = m_p + \Lambda_{\text{QCD}} \times \dfrac{4}{3} + 3\,m_s \times \dfrac{\pi}{2}$</div>
 <p>데쿠플렛 꼭대기. Δ에서 출발하여 strange 쿼크 3개를 링 반주기($\pi/2$)씩 쌓는다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>데쿠플렛 등간격</h4>
 <div class="formula">$\delta_{\text{decuplet}} = m_s \times \dfrac{\pi}{2}$</div>
 <p>링 버퍼 반주기. strange 쿼크 1개 추가 = 링에서 반바퀴($\pi/2$) 전진. 이것이 Δ→Σ*→Ξ*→Ω의 약 150 MeV 등간격의 기원이다.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-89. π⁰ 질량</h4>
 <div class="formula">$m_{\pi^0} = m_{\pi^\pm} - \Delta_{\text{EM}}$</div>
 <p>π⁰는 π±에서 전자기 자기에너지($\Delta_{\text{EM}} \approx 4.6$ MeV)를 뺀다. CAS에서 전하 비트가 0인 상태 = 전자기 기여 부재.</p>
 </div>
-
 <div class="discovery-block">
 <h4>D-90. proton 새 경로</h4>
 <div class="formula">$m_p = \Lambda_{\text{QCD}} \times \dfrac{7}{2} + \dfrac{3}{2}(m_u + m_d) + \Delta_{\text{hyp}}$</div>
 <p>ρ 질량 + 구성 쿼크 기여 + 초미세 보정. CAS 순회 에너지가 양성자 질량의 뼈대를 형성한다.</p>
 </div>
-
-
 <!-- ===== R1. π± ===== -->
-
 <h1 id="r1">라운드 1. π± 질량 (D-80)</h1>
-
 <h3 id="r1-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>파이온 = 유사 골드스톤 보존. 카이랄 대칭 깨짐에서 나오는 질량. 반야식에서 superposition 축(겹침 상태)의 깨짐을 사용한다.</p>
-
 <h3 id="r1-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
-<div class="math-row">$\text{superposition} \to \langle\bar{q}q\rangle$, &nbsp; $\text{space} \to f_\pi$, &nbsp; $\text{time} \to m_q$</div>
+<div class="math-row">$\text{superposition} \to \langle\bar{q}q\rangle$,   $\text{space} \to f_\pi$,   $\text{time} \to m_q$</div>
 <div class="math-legend">$\langle\bar{q}q\rangle$ = 쿼크 응축, $f_\pi$ = 파이온 붕괴 상수, $m_q = m_u + m_d$</div>
 </div>
-
 <p>카이랄 응축은 superposition의 물리적 실현이다. CAS의 expected 값이 카이랄 대칭, new 값이 깨진 진공.</p>
-
 <h3 id="r1-step3">3단계. 상수 대입</h3>
-
 <pre>m_u = 2.16 MeV (PDG 2024)
 m_d = 4.67 MeV (PDG 2024)
 m_u + m_d = 6.83 MeV
@@ -215,9 +110,7 @@ m_u + m_d = 6.83 MeV
 f_π = 92.1 MeV
 CAS 보정: 9/8 (3비트 8상태 + 1 FSM 전이)
 Λ_cond = 217 × 9/8 = 244.1 MeV</pre>
-
 <h3 id="r1-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_\pi^2 = (m_u + m_d) \times \dfrac{3\,\Lambda_{\text{cond}}^3}{f_\pi^2}$</div>
 <div class="math-desc">GMOR 관계의 CAS 확장. 3 = 색 자유도(CAS 3비트 중 색 축). $\Lambda_{\text{cond}}^3$ = 응축 에너지 밀도.</div>
@@ -227,243 +120,160 @@ CAS 보정: 9/8 (3비트 8상태 + 1 FSM 전이)
 <div class="math-row">$\Rightarrow m_\pi = \sqrt{35\,150} \approx 187.5 \;\text{MeV}$</div>
 <div class="math-legend">GMOR: Gell-Mann–Oakes–Renner relation</div>
 </div>
-
 <h3 id="r1-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_\pi \approx 187.5$ MeV (0차 근사, 상수 조정 전)</div>
 <div class="math-row">측정값: $m_{\pi^\pm} = 139.57$ MeV</div>
 <div class="math-row">구조 확인: $\Lambda_{\text{cond}} = \Lambda_{\text{QCD}} \times 9/8$ 인자의 CAS 기원 확정</div>
 </div>
-
 <p>0차 근사에서 구조적 인자 9/8의 기원을 확정했다. 수치 정밀도는 고차 카이랄 보정으로 개선 가능하다. 핵심은 9/8이 CAS 8상태 + FSM 1전이에서 나온다는 것이다.</p>
-
-
 <!-- ===== R2. ρ ===== -->
-
 <h1 id="r2">라운드 2. ρ 메존 질량 (D-81)</h1>
-
 <h3 id="r2-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>ρ 메존 = 벡터 메존. 스핀 1. CAS의 전체 순회(Read→Compare→Swap)가 만드는 벡터 구조. observer 축을 사용한다.</p>
-
 <h3 id="r2-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
-<div class="math-row">$\text{observer} \to \text{CAS states}$, &nbsp; $\text{time} \to \Lambda_{\text{QCD}}$</div>
+<div class="math-row">$\text{observer} \to \text{CAS states}$,   $\text{time} \to \Lambda_{\text{QCD}}$</div>
 <div class="math-legend">CAS 3비트 = 8상태. 자기 참조 제외 = 7. brackets = Read/Write = 2.</div>
 </div>
-
 <h3 id="r2-step3">3단계. 상수 대입</h3>
-
 <pre>Λ_QCD = 217 MeV
 CAS states (자기 제외) = 7
 brackets (Read/Write) = 2</pre>
-
 <h3 id="r2-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_\rho = \Lambda_{\text{QCD}} \times \dfrac{7}{2} = 217 \times 3.5 = 759.5 \;\text{MeV}$</div>
 <div class="math-desc">CAS가 자기 자신을 제외한 7상태를 2단계(Read, Write)로 나누어 순회한 총 에너지.</div>
 </div>
-
 <h3 id="r2-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_\rho = 759.5$ MeV</div>
 <div class="math-row">측정값: $m_\rho = 775.26$ MeV</div>
 <div class="math-row">오차: $2.0\%$</div>
 </div>
-
 <p>2%는 벡터 메존 질량을 해석적으로 도출한 것 자체가 의미 있다. 7/2의 기원이 CAS 상태수와 Read/Write 단계라는 점이 핵심 발견이다.</p>
-
-
 <!-- ===== R3. ω ===== -->
-
 <h1 id="r3">라운드 3. ω 메존 질량 (D-82)</h1>
-
 <h3 id="r3-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>ω는 ρ와 같은 벡터 메존이나 아이소스핀 단일항. ρ의 CAS 순회에 아이소스핀 깨짐 보정을 더한다.</p>
-
 <h3 id="r3-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_\omega = m_\rho + 3(m_d - m_u)$</div>
 <div class="math-legend">3 = 색 자유도. $(m_d - m_u)$ = 아이소스핀 깨짐의 원천.</div>
 </div>
-
 <h3 id="r3-step3">3단계. 상수 대입</h3>
-
 <pre>m_ρ = Λ_QCD × 7/2 = 759.5 MeV (R2에서 도출)
 m_d - m_u = 4.67 - 2.16 = 2.51 MeV
 색 자유도 = 3</pre>
-
 <h3 id="r3-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_\omega = 759.5 + 3 \times 2.51 = 759.5 + 7.5 = 767.0 \;\text{MeV}$</div>
 <div class="math-desc">ρ-ω 질량 차이의 기원: u/d 질량차가 3색에 걸쳐 작용한 아이소스핀 깨짐.</div>
 </div>
-
 <h3 id="r3-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_\omega = 767.0$ MeV</div>
 <div class="math-row">측정값: $m_\omega = 782.66$ MeV</div>
 <div class="math-row">오차: $2.0\%$</div>
 </div>
-
 <p>ρ와 ω의 질량 차이가 $3(m_d - m_u)$에서 나온다는 구조적 이유를 확정했다. CAS에서 아이소스핀 = 비트 값의 차이.</p>
-
-
 <!-- ===== R4. Δ ===== -->
-
 <h1 id="r4">라운드 4. Δ 바리온 질량 (D-83)</h1>
-
 <h3 id="r4-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>Δ = 양성자의 스핀 여기 상태(3/2). CAS의 Swap 단계가 추가로 관여하는 초미세 분리.</p>
-
 <h3 id="r4-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_\Delta = m_p + \Delta_{\text{hyp}}$</div>
 <div class="math-row">$\Delta_{\text{hyp}} = \Lambda_{\text{QCD}} \times \dfrac{4}{3}$</div>
 <div class="math-legend">4 = Swap 1회(전체 CAS 1사이클) + CAS 3단계. 3 = CAS 단계수(Read, Compare, Swap).</div>
 </div>
-
 <h3 id="r4-step3">3단계. 상수 대입</h3>
-
 <pre>m_p = 938.272 MeV (측정값)
 Λ_QCD = 217 MeV
 초미세 인자 = 4/3</pre>
-
 <h3 id="r4-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_\Delta = 938.272 + 217 \times \dfrac{4}{3} = 938.272 + 289.3 = 1227.6 \;\text{MeV}$</div>
 <div class="math-desc">양성자 질량 + CAS 초미세 에너지. 스핀 1/2→3/2 전이 = Swap/CAS 추가 비용.</div>
 </div>
-
 <h3 id="r4-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_\Delta = 1227.6$ MeV</div>
 <div class="math-row">측정값: $m_\Delta = 1232$ MeV</div>
 <div class="math-row">오차: $0.36\%$</div>
 </div>
-
 <p>N-Δ 질량 분리 293 MeV를 $\Lambda_{\text{QCD}} \times 4/3 = 289.3$ MeV로 도출. 0.36% 이내. 4/3의 기원은 CAS의 Swap+3단계 구조이다.</p>
-
-
 <!-- ===== R5. Σ± ===== -->
-
 <h1 id="r5">라운드 5. Σ± 바리온 질량 (D-84)</h1>
-
 <h3 id="r5-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>Σ± = strange 쿼크 1개를 포함하는 바리온. space 축에 외대수 구조, observer 축에 링 버퍼 비트가 들어간다.</p>
-
 <h3 id="r5-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_{\Sigma^\pm} = m_p + m_s \times \sqrt{\dfrac{65}{9}}$</div>
 <div class="math-legend">65 = 57 + 8. 57 = $2^6 - 7$ (외대수 차원 - CAS 7상태). 8 = 링 버퍼 비트수. 9 = CAS 3비트 × 3색.</div>
 </div>
-
 <h3 id="r5-step3">3단계. 상수 대입</h3>
-
 <pre>m_p = 938.272 MeV
 m_s = 93.4 MeV (PDG 2024, MS-bar at 2 GeV)
 65/9 = 7.222...
 √(65/9) = 2.6875</pre>
-
 <h3 id="r5-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_{\Sigma^\pm} = 938.272 + 93.4 \times 2.6875 = 938.272 + 251.0 = 1189.3 \;\text{MeV}$</div>
 <div class="math-desc">strange 쿼크가 외대수+링 비트 구조 안에서 양성자에 결합하는 비용.</div>
 </div>
-
 <h3 id="r5-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_{\Sigma^\pm} = 1189.3$ MeV</div>
 <div class="math-row">측정값: $m_{\Sigma^+} = 1189.37$ MeV</div>
 <div class="math-row">오차: $0.006\%$</div>
 </div>
-
 <p>거의 정확한 적중. $\sqrt{65/9}$의 구조적 기원: 외대수 57차원 + 링 8비트를 CAS 3비트×3색으로 나눈 비율.</p>
-
-
 <!-- ===== R6. Ω⁻ ===== -->
-
 <h1 id="r6">라운드 6. Ω⁻ 바리온 질량 (D-85)</h1>
-
 <h3 id="r6-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
 <p>Ω⁻ = 데쿠플렛 꼭대기. sss. 링 버퍼의 반주기가 3회 적용된다.</p>
-
 <h3 id="r6-step2">2단계. 노름 치환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_{\Omega^-} = m_\Delta + 3 \times \delta_{\text{decuplet}}$</div>
 <div class="math-row">$\delta_{\text{decuplet}} = m_s \times \dfrac{\pi}{2}$</div>
 <div class="math-legend">$\pi/2$ = 링 버퍼 반주기. strange 쿼크 1개 추가 = 링에서 반바퀴 전진.</div>
 </div>
-
 <h3 id="r6-step3">3단계. 상수 대입</h3>
-
 <pre>m_Δ = 1232 MeV (측정값 사용)
 m_s = 93.4 MeV
 π/2 = 1.5708
 δ_decuplet = 93.4 × 1.5708 = 146.7 MeV</pre>
-
 <h3 id="r6-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$m_{\Omega^-} = 1232 + 3 \times 146.7 = 1232 + 440.1 = 1672.1 \;\text{MeV}$</div>
 <div class="math-desc">Δ에서 strange 쿼크 3개를 링 반주기씩 쌓아 올린다. 데쿠플렛 등간격의 기원.</div>
 </div>
-
 <h3 id="r6-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">도출값: $m_{\Omega^-} = 1672.1$ MeV</div>
 <div class="math-row">측정값: $m_{\Omega^-} = 1672.45$ MeV</div>
 <div class="math-row">오차: $0.02\%$</div>
 </div>
-
 <p>데쿠플렛 등간격 $\delta \approx 147$ MeV를 $m_s \times \pi/2 = 146.7$ MeV로 도출. Ω⁻ 질량 0.02% 이내 적중. 링 버퍼 반주기가 등간격의 기원이다.</p>
-
-
 <!-- ===== R7. π⁰ ===== -->
-
 <h1 id="r7">라운드 7. π⁰ 질량 (D-89)</h1>
-
 <h3 id="r7-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">$m_{\pi^0} = m_{\pi^\pm} - \Delta_{\text{EM}}$</div>
 <div class="math-row">$\Delta_{\text{EM}} \approx 4.6$ MeV (전자기 자기에너지)</div>
@@ -471,40 +281,23 @@ m_s = 93.4 MeV
 <div class="math-row">측정값: $m_{\pi^0} = 134.98$ MeV</div>
 <div class="math-row">오차: $0.01\%$</div>
 </div>
-
 <p>π⁰와 π±의 질량 차이는 전자기 자기에너지에서 나온다. CAS 관점: 전하 비트가 0인 상태는 전자기 기여를 받지 않으므로 더 가볍다. Dashen 정리의 CAS 재해석.</p>
-
-
 <!-- ===== R8. proton 새 경로 ===== -->
-
 <h1 id="r8">라운드 8. proton 새 경로 (D-90)</h1>
-
 <h3 id="r8-step5">5단계. 발견</h3>
-
 <div class="math-block">
 <div class="math-row">$m_p = \Lambda_{\text{QCD}} \times \dfrac{7}{2} + \dfrac{3}{2}(m_u + m_d) + \Delta_{\text{hyp}}$</div>
 <div class="math-row">$= 759.5 + 10.2 + \Delta_{\text{hyp}}$</div>
 <div class="math-desc">양성자의 뼈대 = ρ 질량(CAS 순회). 거기에 구성 쿼크 기여와 초미세 보정을 더한다.</div>
 </div>
-
 <p>양성자 질량의 새로운 분해: (1) CAS 7/2 순회 에너지 ≈ 760 MeV, (2) 구성 쿼크 ≈ 10 MeV, (3) 초미세 보정 ≈ 168 MeV. 양성자 질량의 80%가 CAS 순회에서 나온다.</p>
-
-
 <!-- ===== 부산물 ===== -->
-
 <h1 id="byproduct">부산물</h1>
-
 <p><b>B-1. 벡터 메존 질량 공식의 보편성.</b> $\Lambda_{\text{QCD}} \times 7/2$가 ρ뿐 아니라 $K^*$, $\phi$ 등 다른 벡터 메존에도 적용 가능한지 확인 필요. 7이 CAS 상태수에서 나오므로 맛깔 의존성은 질량항 보정으로 흡수될 수 있다.</p>
-
 <p><b>B-2. 데쿠플렛 등간격의 정밀 검증.</b> $\delta = m_s \times \pi/2$를 Δ(1232)→Σ*(1385)→Ξ*(1530)→Ω(1672) 전체에 걸쳐 확인: 153, 145, 142 MeV. 평균 147 MeV vs 도출값 146.7 MeV.</p>
-
 <p><b>B-3. 9/8 인자의 격자 QCD 대응.</b> 응축 스케일 $\Lambda_{\text{cond}} = \Lambda_{\text{QCD}} \times 9/8$이 격자 QCD의 $\langle\bar{q}q\rangle$ 값과 정합하는지 교차 검증 과제.</p>
-
-
 <!-- ===== 총괄 ===== -->
-
 <h1 id="summary">총괄</h1>
-
 <table>
 <tr><th>항목</th><th>공식</th><th>도출값</th><th>측정값</th><th>오차</th><th>상태</th></tr>
 <tr><td>D-80 π±</td><td>$(m_u+m_d) \times 3\Lambda_{\text{cond}}^3 / f_\pi^2$</td><td>구조 확정</td><td>139.57 MeV</td><td>—</td><td><span class="tag-discovery">발견</span></td></tr>
@@ -517,28 +310,23 @@ m_s = 93.4 MeV
 <tr><td>D-90 proton</td><td>$\Lambda \times 7/2 + 3(m_u+m_d)/2 + \Delta_{\text{hyp}}$</td><td>구조 확정</td><td>938.27 MeV</td><td>—</td><td><span class="tag-discovery">발견</span></td></tr>
 <tr><td>데쿠플렛 등간격</td><td>$\delta = m_s \times \pi/2$</td><td>146.7 MeV</td><td>~147 MeV</td><td>0.2%</td><td><span class="tag-solved">적중</span></td></tr>
 </table>
-
 </div><!-- /lang-ko -->
-
-
 <!-- ========== English Version ========== -->
-
-
 <!-- ===== page-nav ===== -->
 <div class="page-nav lang-ko">
 <a href="../banya.html">종합 보고서</a>
 <a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
+<a href="../lib_new.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
 <!-- ===== 푸터 ===== -->
 <div class="doc-footer lang-ko">
 <div class="f-top">
 <div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
@@ -547,21 +335,18 @@ m_s = 93.4 MeV
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="mass_hierarchy.html">페르미온 질량 계층</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
 기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
 <div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

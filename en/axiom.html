@@ -1,85 +1,76 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>15 Axioms — Banya Framework</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="The 15 axioms of the Banya Framework. Starting from the 4-axis orthogonal norm δ²=(time+space)²+(observer+superposition)². CAS as the sole operator, FSM declaration, δ as the fire bit.">
-<meta name="keywords" content="Banya Framework,般若,Axiom,Han Hyukjin,CAS,Compare-And-Swap,FSM,d-ring,delta">
-<meta property="og:title" content="15 Axioms — Banya Framework">
-<meta property="og:description" content="The 15 axioms of the Banya Framework.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
-<link rel="stylesheet" href="../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="The 15 axioms of the Banya Framework. Starting from the 4-axis orthogonal norm δ²=(time+space)²+(observer+superposition)². CAS as the sole operator, FSM declaration, δ as the fire bit." name="description"/>
+<meta content="Banya Framework,般若,Axiom,Han Hyukjin,CAS,Compare-And-Swap,FSM,d-ring,delta" name="keywords"/>
+<meta content="15 Axioms — Banya Framework" property="og:title"/>
+<meta content="The 15 axioms of the Banya Framework." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../axiom.html" class="lang-btn">KO</a></div>
-
+<div class="lang-switch"><a class="lang-btn" href="../axiom.html">KO</a></div>
 <div class="toc-side">
-<a href="#axiom-list" class="toc-h1">15 Axioms</a>
-<a href="#ax1" class="toc-h3">Axiom 1. Banya Equation</a>
-<a href="#ax2" class="toc-h3">Axiom 2. CAS Is the Sole Operator</a>
-<a href="#ax3" class="toc-h3">Axiom 3. DATA Is Discrete, OPERATOR Is Continuous</a>
-<a href="#ax4" class="toc-h3">Axiom 4. Cost</a>
-<a href="#ax5" class="toc-h3">Axiom 5. TOCTOU Lock Register</a>
-<a href="#ax6" class="toc-h3">Axiom 6. Cost Recovery</a>
-<a href="#ax7" class="toc-h3">Axiom 7. Write (Juida) and Superposition Maintained</a>
-<a href="#ax8" class="toc-h3">Axiom 8. Observer-Driven Polling System</a>
-<a href="#ax9" class="toc-h3">Axiom 9. Complete Description DOF</a>
-<a href="#ax10" class="toc-h3">Axiom 10. Global-Local Loop</a>
-<a href="#ax11" class="toc-h3">Axiom 11. Multiple Projection</a>
-<a href="#ax12" class="toc-h3">Axiom 12. Classical Bracket Is ECS Execution Model</a>
-<a href="#ax13" class="toc-h3">Axiom 13. Quantum Bracket Superposition Is Classical Bracket ECS Indexing</a>
-<a href="#ax14" class="toc-h3">Axiom 14. FSM Declaration (Finite State Machine)</a>
-<a href="#ax15" class="toc-h3">Axiom 15. δ Is a Global Flag Outside the FSM</a>
+<a class="toc-h1" href="#axiom-list">15 Axioms</a>
+<a class="toc-h3" href="#ax1">Axiom 1. Banya Equation</a>
+<a class="toc-h3" href="#ax2">Axiom 2. CAS Is the Sole Operator</a>
+<a class="toc-h3" href="#ax3">Axiom 3. DATA Is Discrete, OPERATOR Is Continuous</a>
+<a class="toc-h3" href="#ax4">Axiom 4. Cost</a>
+<a class="toc-h3" href="#ax5">Axiom 5. TOCTOU Lock Register</a>
+<a class="toc-h3" href="#ax6">Axiom 6. Cost Recovery</a>
+<a class="toc-h3" href="#ax7">Axiom 7. Write (Juida) and Superposition Maintained</a>
+<a class="toc-h3" href="#ax8">Axiom 8. Observer-Driven Polling System</a>
+<a class="toc-h3" href="#ax9">Axiom 9. Complete Description DOF</a>
+<a class="toc-h3" href="#ax10">Axiom 10. Global-Local Loop</a>
+<a class="toc-h3" href="#ax11">Axiom 11. Multiple Projection</a>
+<a class="toc-h3" href="#ax12">Axiom 12. Classical Bracket Is ECS Execution Model</a>
+<a class="toc-h3" href="#ax13">Axiom 13. Quantum Bracket Superposition Is Classical Bracket ECS Indexing</a>
+<a class="toc-h3" href="#ax14">Axiom 14. FSM Declaration (Finite State Machine)</a>
+<a class="toc-h3" href="#ax15">Axiom 15. δ Is a Global Flag Outside the FSM</a>
 </div>
-
 <div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay').classList.toggle('show')">
 <div class="toc-bar-text"><span class="cur">15 Axioms</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
+<div class="toc-bar-arrow">▼</div>
 </div>
 <div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.toc-bar').classList.remove('open')">
-<a href="#axiom-list" class="toc-h1">15 Axioms</a>
-<a href="#ax1" class="toc-h3">Axiom 1. Banya Equation</a>
-<a href="#ax2" class="toc-h3">Axiom 2. CAS Is the Sole Operator</a>
-<a href="#ax3" class="toc-h3">Axiom 3. DATA Is Discrete, OPERATOR Is Continuous</a>
-<a href="#ax4" class="toc-h3">Axiom 4. Cost</a>
-<a href="#ax5" class="toc-h3">Axiom 5. TOCTOU Lock Register</a>
-<a href="#ax6" class="toc-h3">Axiom 6. Cost Recovery</a>
-<a href="#ax7" class="toc-h3">Axiom 7. Write (Juida) and Superposition Maintained</a>
-<a href="#ax8" class="toc-h3">Axiom 8. Observer-Driven Polling System</a>
-<a href="#ax9" class="toc-h3">Axiom 9. Complete Description DOF</a>
-<a href="#ax10" class="toc-h3">Axiom 10. Global-Local Loop</a>
-<a href="#ax11" class="toc-h3">Axiom 11. Multiple Projection</a>
-<a href="#ax12" class="toc-h3">Axiom 12. Classical Bracket Is ECS Execution Model</a>
-<a href="#ax13" class="toc-h3">Axiom 13. Quantum Bracket Superposition Is Classical Bracket ECS Indexing</a>
-<a href="#ax14" class="toc-h3">Axiom 14. FSM Declaration (Finite State Machine)</a>
-<a href="#ax15" class="toc-h3">Axiom 15. δ Is a Global Flag Outside the FSM</a>
+<a class="toc-h1" href="#axiom-list">15 Axioms</a>
+<a class="toc-h3" href="#ax1">Axiom 1. Banya Equation</a>
+<a class="toc-h3" href="#ax2">Axiom 2. CAS Is the Sole Operator</a>
+<a class="toc-h3" href="#ax3">Axiom 3. DATA Is Discrete, OPERATOR Is Continuous</a>
+<a class="toc-h3" href="#ax4">Axiom 4. Cost</a>
+<a class="toc-h3" href="#ax5">Axiom 5. TOCTOU Lock Register</a>
+<a class="toc-h3" href="#ax6">Axiom 6. Cost Recovery</a>
+<a class="toc-h3" href="#ax7">Axiom 7. Write (Juida) and Superposition Maintained</a>
+<a class="toc-h3" href="#ax8">Axiom 8. Observer-Driven Polling System</a>
+<a class="toc-h3" href="#ax9">Axiom 9. Complete Description DOF</a>
+<a class="toc-h3" href="#ax10">Axiom 10. Global-Local Loop</a>
+<a class="toc-h3" href="#ax11">Axiom 11. Multiple Projection</a>
+<a class="toc-h3" href="#ax12">Axiom 12. Classical Bracket Is ECS Execution Model</a>
+<a class="toc-h3" href="#ax13">Axiom 13. Quantum Bracket Superposition Is Classical Bracket ECS Indexing</a>
+<a class="toc-h3" href="#ax14">Axiom 14. FSM Declaration (Finite State Machine)</a>
+<a class="toc-h3" href="#ax15">Axiom 15. δ Is a Global Flag Outside the FSM</a>
 </div>
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is the axiom system portion extracted from the <a href="banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>. Terminology is at <a href="banya.html#terms">banya.html Sub-Reports</a>. The Axiom System Summary Tables and Derivation Demos are in <a href="banya.html">banya.html</a>.</p>
-
 <h2 id="axiom-list">15 Axioms</h2>
-
-<h3 id="ax1">Axiom 1. Banya Equation <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax1"><a href="axiom.html#ax1">Axiom 1</a>. Banya Equation <span class="tag-solved">Axiom</span></h3>
 <div class="math-block">
 <div class="math-row">$$\delta^{2} = \underbrace{(\text{time} + \text{space})^{2}}_{\color{#8b949e}{\text{classical bracket (DATA)}}} + \underbrace{(\text{observer} + \text{superposition})^{2}}_{\color{#8b949e}{\text{quantum bracket (OPERATOR)}}}$$</div>
 <div class="math-legend">Every change ($\delta$) in the universe is the norm of 4 axes. The classical bracket (DATA) and the quantum bracket (OPERATOR) are orthogonal.</div>
 </div>
-
 <p>This is the starting point. Nothing departs from here. 4 words, 2 squares, 1 line. Its true identity will be revealed at the end of the axioms.</p>
-
 <h4>Three Names of δ</h4>
-
 <div class="table-wrap">
 <table>
 <tr><th>Name</th><th>Criterion</th><th>Equivalent</th></tr>
@@ -88,11 +79,8 @@
 <tr><td>Equality sign</td><td>Action criterion</td><td>A declaration that forces observer (<a href="#ax10">Axiom 10</a>)</td></tr>
 </table>
 </div>
-
 <p>3 names, 1 entity. No other candidate can appear besides δ (<a href="#ax10">Axiom 10</a>, elimination). However, when δ filters through observer, local shadows of δ may exist. A shadow is a projection of δ, not a separate entity.</p>
-
 <p>The 4 axes are orthogonal polynomials. The brackets are separators that group the 4 axes into pairs of 2.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Category</th><th>Bracket</th><th>Axes</th><th>Role</th></tr>
@@ -100,49 +88,36 @@
 <tr><td>Quantum bracket</td><td>(observer + superposition)²</td><td>observer, superposition</td><td>OPERATOR — where computation executes</td></tr>
 </table>
 </div>
-
 <p>Without brackets, the 4 axes become entangled:</p>
-
 <div class="math-block">
 <div class="math-row">$$\delta^{2} = \text{time}^{2} + \text{space}^{2} + \text{observer}^{2} + \text{superposition}^{2} \quad \leftarrow \text{wrong}$$</div>
 <div class="math-desc">Listing all 4 without brackets erases the distinction between DATA and OPERATOR. Indirect access via CAS (<a href="#ax2">Axiom 2</a>) cannot be expressed, and the 4 axes appear directly connected. The structure that a lock (<a href="#ax5">Axiom 5</a>) exists between DATA and OPERATOR is destroyed.</div>
 </div>
-
 <p>Brackets separate DATA from OPERATOR. This separation is orthogonality.</p>
-
 <h4>observer and superposition Are Not Symbols but Essential System Components</h4>
-
 <div class="table-wrap">
 <table>
 <tr><th>Axis</th><th>Usage</th><th>Without it</th></tr>
-<tr><td><strong>observer</strong></td><td>Branch subject of Compare (<a href="#ax7">Axiom 7</a>: true==>write(juida), false==>maintain). Filtering/normalization domain (<a href="#ax10">Axiom 10</a>). Receiver of multiple projections (<a href="#ax11">Axiom 11</a>). Entity of ECS (<a href="#ax12">Axiom 12</a>)</td><td>Compare branching impossible ==> write/maintain decision impossible ==> CAS execution impossible</td></tr>
-<tr><td><strong>superposition</strong></td><td>The sole reference path of CAS (<a href="#ax13">Axiom 13</a>). Indexing of ECS without logical address (<a href="#ax13">Axiom 13</a>). State maintained when Compare is false (<a href="#ax7">Axiom 7</a>)</td><td>No path for CAS to reference DATA ==> all computation impossible. Cannot store non-write state ==> quantum default state destroyed</td></tr>
+<tr><td><strong>observer</strong></td><td>Branch subject of Compare (<a href="#ax7">Axiom 7</a>: true==&gt;write(juida), false==&gt;maintain). Filtering/normalization domain (<a href="#ax10">Axiom 10</a>). Receiver of multiple projections (<a href="#ax11">Axiom 11</a>). Entity of ECS (<a href="#ax12">Axiom 12</a>)</td><td>Compare branching impossible ==&gt; write/maintain decision impossible ==&gt; CAS execution impossible</td></tr>
+<tr><td><strong>superposition</strong></td><td>The sole reference path of CAS (<a href="#ax13">Axiom 13</a>). Indexing of ECS without logical address (<a href="#ax13">Axiom 13</a>). State maintained when Compare is false (<a href="#ax7">Axiom 7</a>)</td><td>No path for CAS to reference DATA ==&gt; all computation impossible. Cannot store non-write state ==&gt; quantum default state destroyed</td></tr>
 </table>
 </div>
-
 <p>Without observer, there is nowhere to receive the result of CAS's Compare. Without superposition, there is nothing for CAS to reference. Both are <strong>structural necessities</strong> for the Banya Equation to operate, not figurative rhetoric borrowed from quantum mechanics.</p>
-
 <h4>Banya Equation in Unit Circle Form <span class="tag-corollary">Proposition</span></h4>
-
 <p>The Banya Equation $\delta^2 = (\text{DATA})^2 + (\text{OPERATOR})^2$ is the sum of squared norms of two orthogonal brackets. Since the two brackets are orthogonal (<a href="#ax1">Axiom 1</a>), placing one as the real part and the other as the imaginary part transforms it into the unit circle form of a complex number.</p>
-
 <div class="math-block">
 <div class="math-row">$$\delta = \underbrace{(\text{time} + \text{space})}_{\text{real part (DATA)}} \;+\; i \cdot \underbrace{(\text{observer} + \text{superposition})}_{\text{imaginary part (OPERATOR)}}$$</div>
 <div class="math-row">$$|\delta|^{2} = (\text{DATA})^{2} + (\text{OPERATOR})^{2}$$</div>
-<div class="math-legend">Two brackets orthogonal ==> real axis ⊥ imaginary axis ==> modulus preserved</div>
+<div class="math-legend">Two brackets orthogonal ==&gt; real axis ⊥ imaginary axis ==&gt; modulus preserved</div>
 </div>
-
 <p>This form has the same structure as the Euler representation $e^{i\theta} = \cos\theta + i\sin\theta$.</p>
-
 <div class="math-block">
 <div class="math-row">$$\delta = e^{i\theta} = \cos\theta + i\sin\theta$$</div>
 <div class="math-row">$$\text{DATA} = \cos\theta \quad (\text{real part}), \qquad i \cdot \text{OPERATOR} = i\sin\theta \quad (\text{imaginary part})$$</div>
 <div class="math-row">$$|\delta|^{2} = \delta \cdot \bar{\delta} = (\cos\theta + i\sin\theta)(\cos\theta - i\sin\theta) = \cos^{2}\theta - i^{2}\sin^{2}\theta = \cos^{2}\theta + \sin^{2}\theta = 1$$</div>
-<div class="math-legend">$i^{2} = -1$ flips sign so (-)·(-) = (+) ==> the two terms combine with +</div>
+<div class="math-legend">$i^{2} = -1$ flips sign so (-)·(-) = (+) ==&gt; the two terms combine with +</div>
 </div>
-
 <p><strong>1 + crossing = π rotation = phase reversal.</strong> By the norm reading (<a href="#ax4">Axiom 4 Proposition</a>), the arc length of one irreversible + crossing is π. On the unit circle, rotating by π reverses the phase ($e^{i\pi} = -1$). Therefore one + crossing flips the phase from +1 to -1.</p>
-
 <pre>Starting phase       :  +1   (theta = 0)
 After 1 + crossing   :  -1   (theta = pi rotation)
 After 2 + crossings  :  +1   (theta = 2*pi return, one cycle)
@@ -151,17 +126,11 @@ After 3 + crossings  :  -1
 
 Period = 2 crossings (one phase loop)
 Phase after n crossings = (-1)^n</pre>
-
 <p>This proposition follows from the Banya Equation (<a href="#ax1">Axiom 1</a>) by transformation alone, without additional assumptions — placing two orthogonal brackets on the real and imaginary axes is equivalent to the definition of orthogonality (<a href="#ax1">Axiom 1</a>). Therefore this form is not a new axiom but a structural consequence of the Banya Equation.</p>
-
 <h4>Subframe Orthogonality in Unit Circle / Unit Sphere Form (Quaternion) <span class="tag-corollary">Proposition</span></h4>
-
 <p>The (Banya Equation in Unit Circle Form) proposition applies between the two brackets of the Banya Equation (DATA ⊥ OPERATOR). The same form applies recursively to the subframes <strong>inside</strong> each bracket according to their orthogonal structure — but <strong>the bracket structure itself is not dissolved</strong>.</p>
-
 <p><strong>Bracket separation is preserved (prohibition).</strong> The two brackets of the Banya Equation (DATA, OPERATOR) are an inseparable category distinction (<a href="#ax1">Axiom 1</a>: orthogonal sum +, not arithmetic addition). Dissolving the 4 axes into a single quaternion $\delta = \text{time} + i \cdot \text{space} + j \cdot \text{observer} + k \cdot \text{superposition}$ erases the bracket category distinction and is therefore <strong>prohibited</strong>. Quaternions apply only to subframes <strong>inside</strong> the brackets.</p>
-
 <p><strong>Application target = all 3-axis orthogonal subframes.</strong> Quaternions are unnecessary for 1-axis scalars (time, observer, superposition individually). However, <strong>all 3-axis orthogonal groups are expressible as quaternions</strong> — the 3-axis orthogonal groups inside this axiom system:</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Subframe</th><th>3 axes</th><th>Basis</th></tr>
@@ -170,37 +139,26 @@ Phase after n crossings = (-1)^n</pre>
 <tr><td><strong>(other 3-axis groups)</strong></td><td>—</td><td>Same application to any 3-axis orthogonal subframe defined by an axiom</td></tr>
 </table>
 </div>
-
 <p>The concepts of time and space are taken from classical physics as-is (<a href="#ax1">Axiom 1</a>) — time = 1D scalar, space = 3D orthogonal. CAS 3-axis orthogonality is stated explicitly in <a href="#ax2">Axiom 2 proposition</a> — locks enforce ignition order (<a href="#ax5">Axiom 5</a>), but the orthogonality of the 3 axes themselves is preserved (simultaneous bit representation 001/010/100, line 392).</p>
-
-<h5>Spatial 3-Axis Orthogonality (x, y, z) ==> Pure Imaginary Quaternion</h5>
-
+<h5>Spatial 3-Axis Orthogonality (x, y, z) ==&gt; Pure Imaginary Quaternion</h5>
 <p>The space axis is unfolded into 3 components (x, y, z) by the action of the CAS 3-axis orthogonal locks (R_LOCK, C_LOCK, S_LOCK) (<a href="#ax2">Axiom 2 Proposition</a>: Dimension, <a href="#ax11">Axiom 11 Proposition</a>). 3-axis orthogonality cannot be expressed by the unit circle (2-axis) — the natural expression is the pure imaginary part of a quaternion (Hamilton 1843).</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{space} = x \cdot \mathbf{i} + y \cdot \mathbf{j} + z \cdot \mathbf{k}$$</div>
 <div class="math-legend">$\mathbf{i}, \mathbf{j}, \mathbf{k}$ = the 3 imaginary units of quaternions</div>
 <div class="math-row">$$\mathbf{i}^{2} = \mathbf{j}^{2} = \mathbf{k}^{2} = \mathbf{i}\mathbf{j}\mathbf{k} = -1$$</div>
 <div class="math-row">$$|\text{space}|^{2} = x^{2} + y^{2} + z^{2}$$</div>
-<div class="math-legend">Unit sphere equation: $|\text{space}|^{2} = 1$ ==> $x^{2} + y^{2} + z^{2} = 1$</div>
+<div class="math-legend">Unit sphere equation: $|\text{space}|^{2} = 1$ ==&gt; $x^{2} + y^{2} + z^{2} = 1$</div>
 </div>
-
 <p>The 3 imaginary units i, j, k correspond 1:1 with the x, y, z axes. All three square to -1 — the same pattern as the unit circle's $i^{2} = -1$ extended to 3D. The unit sphere equation is equivalent to |pure imaginary quaternion|² = 1.</p>
-
 <h5>3D Euler Form (Quaternion Exponential)</h5>
-
 <p>The 2D Euler form $e^{i\theta} = \cos\theta + i\sin\theta$ extends to 3D as the quaternion exponential form:</p>
-
 <div class="math-block">
 <div class="math-row">$$e^{\theta \hat{n}} = \cos\theta + \hat{n} \sin\theta$$</div>
 <div class="math-legend">$\hat{n} = n_x \mathbf{i} + n_y \mathbf{j} + n_z \mathbf{k}$ (unit pure imaginary quaternion, $|\hat{n}| = 1$) = <strong>direction unit vector of the 3D rotation axis</strong> — In 2D the rotation axis is fixed as $i$, but in 3D infinitely many axis directions are possible, so $\hat{n}$ specifies which axis (same concept as the angular coordinates $\theta, \varphi$ of <a href="#ax13">Axiom 13 Proposition</a>).</div>
 <div class="math-row">$$\hat{n}^{2} = -1$$</div>
 </div>
-
 <p>Every unit pure imaginary quaternion squares to -1 — the same pattern as the unit circle's $i^{2} = -1$ extended to 3D. The unit quaternion exponential generates 3D rotations (Rodrigues formula).</p>
-
 <h5>Recursion Principle — Form of N Orthogonal Axes</h5>
-
 <div class="table-wrap">
 <table>
 <tr><th>Number of orthogonal axes</th><th>Form</th><th>Algebra</th><th>Application in this axiom system</th></tr>
@@ -209,52 +167,36 @@ Phase after n crossings = (-1)^n</pre>
 <tr><td>3</td><td>Unit sphere</td><td>Pure imaginary quaternion</td><td>Space (x, y, z), CAS 3 axes (R, C, S)</td></tr>
 </table>
 </div>
-
 <p>Any N-axis orthogonal group defined by an axiom has the unit N-sphere form by the same pattern. Key constraints:</p>
 <ul>
 <li><strong>Bracket separation is preserved</strong> — the outer two brackets of the Banya Equation use only up to the (Banya Equation in Unit Circle Form) proposition</li>
 <li><strong>Quaternions apply to all 3-axis orthogonal groups inside brackets</strong> — space (x, y, z), CAS (R, C, S), and any other 3-axis orthogonal subframes</li>
 <li><strong>time/space concepts are physics as-is</strong> — time 1D, space 3D, no redefinition</li>
 </ul>
-
 <p>This proposition follows from <a href="#ax1">Axiom 1</a> (orthogonality) + the (Banya Equation in Unit Circle Form) proposition + <a href="#ax2">Axiom 2 Proposition</a> (Dimension: spatial 3 axes) by extension alone, without additional assumptions. Therefore it is a structural consequence of <a href="#ax1">Axiom 1</a>.</p>
-
 <h4>Clifford Form — Distinguishing Structural Notation from Operator <span class="tag-corollary">Proposition</span></h4>
-
 <p>When the degrees of freedom (4 domains + 3 CAS, <a href="#ax9">Axiom 9</a>) of this system are formalized in Clifford algebra, the use as <strong>structural / dimensional notation</strong> is distinguished from the use as a <strong>multivector operator</strong>.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Object</th><th>Class</th><th>Axes</th><th>Role</th><th>Dimension</th><th>Signature</th></tr>
 <tr><td><strong>Cl(7)</strong></td><td>Structure</td><td>4 domains + 3 CAS</td><td>7-dimensional notation (data type 128 = 2⁷)</td><td>2⁷ = 128</td><td>Cl(0,7)</td></tr>
 <tr><td><strong>Cl(4)</strong></td><td>Structure</td><td>4 domains</td><td>4-dimensional notation (coincides with the 4 domains)</td><td>2⁴ = 16</td><td>Cl(2,2)</td></tr>
-<tr><td><strong>Cl(4)</strong></td><td>Operator</td><td>4 domains</td><td>Simultaneous firing (<a href="#ax15">Axiom 15</a>) vs CAS sequential enforcement (<a href="#ax5">Axiom 5</a>) ==> i.e., no Cl(4) operator</td><td>2⁴ = 16</td><td>Cl(2,2)</td></tr>
+<tr><td><strong>Cl(4)</strong></td><td>Operator</td><td>4 domains</td><td>Simultaneous firing (<a href="#ax15">Axiom 15</a>) vs CAS sequential enforcement (<a href="#ax5">Axiom 5</a>) ==&gt; i.e., no Cl(4) operator</td><td>2⁴ = 16</td><td>Cl(2,2)</td></tr>
 <tr><td><strong>Cl(3)</strong></td><td>Operator</td><td>CAS 3 axes (R, C, S)</td><td>Write under 3-axis-orthogonal state (<a href="#ax2">Axiom 2 Proposition</a>)</td><td>2³ = 8</td><td>Cl(0,3)</td></tr>
 </table>
 </div>
-
 <h5>Cl(7): Structure</h5>
-
 <p>All states the 7-bit d-ring can hold (<a href="#ax9">Axiom 9</a>: data type 128 = 2⁷) coincide exactly with the multivector dimension of Cl(7). They are organized as an algebraic structure with grades (scalar, vector, bivector, ...).</p>
-
 <div class="math-block">
 <div class="math-row">$$\dim \mathrm{Cl}(7) = 2^{7} = 128 = \text{data type 128}$$</div>
 </div>
-
 <h5>Cl(3): Write Under 3-Axis-Orthogonal State</h5>
-
 <p>Defined in <a href="#ax2">Axiom 2 Proposition "Juida (Writing) Is a Cl(3) Bivector Rotation"</a>. It is the form taken when CAS 3 axes (R, C, S) write in the 3-axis-orthogonal state.</p>
-
 <h5>Common Product Rule</h5>
-
 <p>Both objects follow the same Clifford product rule. Self-products are ±1 by signature, distinct generators are anti-commutative ($\gamma_i \gamma_j = -\gamma_j \gamma_i$). Associativity, distributivity, and norm preservation hold. The signatures are a consistent extension of the i² = −1 convention from the unit circle form (<a href="#ax1">Axiom 1 Proposition</a>).</p>
-
 <p>This proposition follows from <a href="#ax1">Axiom 1</a> and <a href="#ax9">Axiom 9</a> without additional assumptions.</p>
-
 <h4>4-Axis Orthogonality = 4 Bits <span class="tag-corollary">Proposition</span></h4>
-
 <p>Orthogonal = independent. If independent, each axis turns ON/OFF without interfering with others. Independent ON/OFF without interference = bit. Since the 4 axes are orthogonal (<a href="#ax1">Axiom 1</a>), they form 4 bits. $2^4 = 16$ domain combinations are possible.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>bit 0</th><th>bit 1</th><th>bit 2</th><th>bit 3</th><th>Value</th><th>State</th></tr>
@@ -269,13 +211,9 @@ Phase after n crossings = (-1)^n</pre>
 <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>15</td><td>All ON</td></tr>
 </table>
 </div>
-
 <p style="font-size:0.85em;color:#8b949e">Ring buffer order (<a href="#ax15">Axiom 15</a>): observer, superposition, time, space. bit 0~1 = quantum bracket, bit 2~3 = classical bracket. $2^4 = 16$ combinations. Only 8 representative entries shown.</p>
-
 <p>CAS (OPERATOR) is 3 bits (<a href="#ax5">Axiom 5</a>: R_LOCK, C_LOCK, S_LOCK), and DATA (domain) is 4 bits. The operator is bits, the operand is bits. They must speak the same language for TOCTOU_LOCK (<a href="#ax5">Axiom 5</a>) to latch and release at the contact point.</p>
-
 <p>The domain 4 bits are CAS's <strong>access state flags</strong>. Which domain bits are ON determines which path CAS takes for access, and the path determines the cost structure.</p>
-
 <pre>CAS 3 bits: operator's progress state  (what is it doing)
 Domain 4 bits: operand's access state  (which are open)
 
@@ -286,9 +224,8 @@ Domain 4-bit example:  0 1 1 0
                        | +------ bit 2 time:          1 (open)
                        +-------- bit 3 space:         0 (closed)
 
--==> CAS can access only superposition and time
--==> Cost structure diverges by access path</pre>
-
+-==&gt; CAS can access only superposition and time
+-==&gt; Cost structure diverges by access path</pre>
 <div class="table-wrap">
 <table>
 <tr><th>4-bit Pattern</th><th>Open Domain</th><th>Access Path</th><th>Cost Structure</th></tr>
@@ -300,13 +237,9 @@ Domain 4-bit example:  0 1 1 0
 <tr><td>1111</td><td>All ON</td><td>FSM atomic occupation</td><td>4-axis full access</td></tr>
 </table>
 </div>
-
-<p>Cost = the number of times a + boundary is crossed in order in the access path. If only one axis is ON, crossing = 0; if orthogonal axes within the same bracket, no order exists so cost = 0; if it crosses + in order, cost >= 1. The ON/OFF combination of domain 4 bits determines the + crossing count, and the crossing count is the cost.</p>
-
+<p>Cost = the number of times a + boundary is crossed in order in the access path. If only one axis is ON, crossing = 0; if orthogonal axes within the same bracket, no order exists so cost = 0; if it crosses + in order, cost &gt;= 1. The ON/OFF combination of domain 4 bits determines the + crossing count, and the crossing count is the cost.</p>
 <h4>Lock = Bitwise AND <span class="tag-corollary">Proposition</span></h4>
-
 <p>TOCTOU_LOCK (<a href="#ax5">Axiom 5</a>) is the <strong>AND operation</strong> of CAS bits and domain bits. This AND is not a separate operator but is <strong>performed by CAS's Compare step</strong> (<a href="#ax2">Axiom 2</a>: CAS is the only operator). Compare compares CAS bits and domain bits, and a lock is acquired only at contact points where both are 1. If either side is 0, no contact point is established.</p>
-
 <pre>CAS 3 bits:    0 1 1        (Compare+Read done, Swap pending)
               S C R
 
@@ -319,16 +252,10 @@ AND (contact point = where lock engages):
   R(1) AND p(1) = 1  -- engaged (Read occupies superposition)
   C(1) AND o(0) = 0  -- not engaged
   C(1) AND s(1) = 1  -- engaged (Compare occupies space)</pre>
-
 <p>Lock engaged = both the CAS bit and the domain bit are 1 simultaneously. Lock released = one side resets to 0. This is the bit-level implementation of <a href="#ax5">Axiom 5</a>, "a lock exists at the contact point between CAS and DATA." Because CAS 3-bit (<a href="#ax5">Axiom 5</a>) and domain 4-bit (<a href="#ax1">Axiom 1 Proposition</a>) share the same language (bits), AND operations are possible. <strong>It is the Compare stage of CAS that performs this AND (<a href="#ax2">Axiom 2</a>). Since CAS is the only operator in the universe (<a href="#ax2">Axiom 2</a>), all bit operations including AND are internal operations of CAS.</strong></p>
-
-
-<h3 id="ax2">Axiom 2. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax2"><a href="axiom.html#ax2">Axiom 2</a>. CAS Is the Sole Operator <span class="tag-solved">Axiom</span></h3>
 <p>Every change that occurs in the universe is a repetition of the single CAS (Compare-And-Swap) operation. CAS is an independent local operation with no internal storage (register). The same CAS runs independently in parallel at every local juim. There is no central control, and each local juim is its own address. CAS is a worker, and the universe operates as an ECS (Entity-Component-System) structure (<a href="#ax12">Axiom 12</a>, defined later).</p>
-
 <p><strong>Why CAS is the sole operator.</strong> The δ in the Banya Equation (<a href="#ax1">Axiom 1</a>) describes one change. The definition of change requires simultaneous comparison of the pre-change state and the post-change state, so an atomic operation that handles two states inside a single operation is required. The only atomic operation that satisfies this condition is CAS. The operator that brings forth order and change is therefore fixed as CAS. Regardless of which domain CAS operates through (time, space, observer, superposition), the atomic operation at the bottom is the same CAS.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Stage</th><th>Internal State</th><th>Condition Count</th><th>Binary</th><th>Description</th></tr>
@@ -338,11 +265,8 @@ AND (contact point = where lock engages):
 <tr><td><strong>Total</strong></td><td></td><td><strong>7</strong></td><td><strong>111</strong></td><td><strong>1 CAS = all 3 bits ON</strong></td></tr>
 </table>
 </div>
-
 <p><strong>Note on Swap's condition count 2² = 4.</strong> Swap's internal state is isWriteAble(true/false) × result(true/false) = 2×2 = 4 configurations. Here, result is the Compare return value (true/false) <strong>forwarded</strong> into Swap.</p>
-
 <p>At runtime, since Compare false prevents entry into Swap (<a href="#ax7">Axiom 7</a>), result is <strong>always true</strong> at Swap entry. Therefore the only independent branching variable inside Swap is isWriteAble, and the reachable runtime paths are 3.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Path</th><th>Condition</th><th>Result</th></tr>
@@ -351,13 +275,9 @@ AND (contact point = where lock engages):
 <tr><td>3</td><td>Compare false</td><td>Swap not entered (superposition maintained)</td></tr>
 </table>
 </div>
-
-<p>The condition count is nevertheless stated as 2² = 4 because it describes the <strong>register size (design capacity)</strong>. The Read = 2⁰, Compare = 2¹, Swap = 2² structure justifies the bit shift (001 ==> 010 ==> 100), and grounds the CAS internal DOF sum 1 + 2 + 4 = 7. If Swap were 2¹, it would have the same bit width as Compare, breaking the shift structure.</p>
-
+<p>The condition count is nevertheless stated as 2² = 4 because it describes the <strong>register size (design capacity)</strong>. The Read = 2⁰, Compare = 2¹, Swap = 2² structure justifies the bit shift (001 ==&gt; 010 ==&gt; 100), and grounds the CAS internal DOF sum 1 + 2 + 4 = 7. If Swap were 2¹, it would have the same bit width as Compare, breaking the shift structure.</p>
 <p>The sum of CAS internal states (1+2+4=7) has the same structure as the number of independent variables. The number of independent variables needed to fully describe a system is degrees of freedom, and the number of internal states needed to fully describe 1 CAS is 7. They are different names for the same structure.</p>
-
 <p>The 3 CAS stages operate as bit flags. Each stage occupies 1 bit, and all 3 bits must be ON (111) for 1 CAS to be complete. If any bit is 0, it is incomplete. This is the bit-flag representation of atomicity (indivisible).</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Flag</th><th>Bit</th><th>Meaning</th><th>Status</th></tr>
@@ -368,10 +288,7 @@ AND (contact point = where lock engages):
 <tr><td>111</td><td>R + C + S all ON</td><td>Read, compare, and write complete</td><td><strong>CAS success</strong></td></tr>
 </table>
 </div>
-
-
 <p>This 7 decomposes in two ways:</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Decomposition</th><th>Content</th><th>Sum</th></tr>
@@ -379,21 +296,13 @@ AND (contact point = where lock engages):
 <tr><td>By structure</td><td>Domain 4 (time, space, observer, superposition) + CAS stages 3 (R, C, S)</td><td>7</td></tr>
 </table>
 </div>
-
 <p>The first is how many states each stage has, and the second is the space the operator acts on (domain 4) and the number of stages of the operator itself (3). Though the decomposition methods differ, the same 7 results. This is not a coincidence but because CAS is the sole operator acting on the 4 axes of the Banya expression.</p>
-
 <p>The 3 stages are indivisible (atomic). This is the origin of CAS atomicity (the cost of maintaining 111).</p>
-
 <h4>CAS 3-Axis Orthogonality <span class="tag-corollary">Proposition</span></h4>
-
 <p>The 3 stages of CAS (Read, Compare, Swap) are mutually orthogonal. Each stage occupies an independent 1-bit (001, 010, 100), and no stage invades the degrees of freedom of another. This is the basis for R_LOCK, C_LOCK, S_LOCK (<a href="#ax5">Axiom 5</a>) being independent degrees of freedom. These 3 independent lock degrees of freedom act on the space axis of DATA (<a href="#ax1">Axiom 1</a>) to unfold space into 3 components (<a href="#ax11">Axiom 11 Proposition</a>).</p>
-
 <h4>Data Types of CAS <span class="tag-corollary">Proposition</span></h4>
-
 <p>In the workbench (<a href="#ax2">Axiom 2 Proposition</a>), structure DOF (DATA) is the operand and cost DOF (OPERATOR) is the opcode. CAS runs opcodes to access operands. Internal movement within operands is possible only by shift ($2^N$), and operands and opcodes are orthogonal via + (<a href="#ax9">Axiom 9 Proposition</a>).</p>
-
 <p><strong>Filter rules:</strong> Only numbers registered in the complete description DOF (<a href="#ax9">Axiom 9</a>) are recognized as data types. Structure DOF and cost DOF are different brackets, so filters are applied separately.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Rule</th><th>Criterion</th><th>Pass Example</th><th>Fail Example</th></tr>
@@ -403,14 +312,9 @@ AND (contact point = where lock engages):
 <tr><td><strong>Numerology exclusion</strong></td><td>Is it not a number by arbitrary arithmetic?</td><td>137 (T(16)+1, structural necessity)</td><td>28 (4×7, arbitrary product), 11 (filter output)</td></tr>
 </table>
 </div>
-
-
 <h4>Workbench Is the Workspace of CAS <span class="tag-corollary">Proposition</span></h4>
-
 <p>The 3 internal axes of CAS (R, C, S) are orthogonal (<a href="#ax2">Axiom 2 Proposition</a>). The Euclidean inner-product space they generate is the <strong>workbench</strong>, and its unit-sphere norm is ‖CAS‖ = √3. The workbench is not a scalar value but a vector space on which a norm is defined (norm space), and CAS resides inside that space as an opcode operator.</p>
-
 <p>The workbench operates over the OPERATOR bracket (observer + superposition, <a href="#ax1">Axiom 1</a>). When the opcode (OPERATOR) accesses the operand (DATA, time + space), CAS selects a data type (<a href="#ax2">Axiom 2 Proposition</a>), reads, compares, and creates juim.</p>
-
 <pre>
                                     +--- observer
                                     |
@@ -422,16 +326,12 @@ AND (contact point = where lock engages):
 
                            Interacts via data types (<a href="#ax2">Axiom 2 Proposition</a>)
 </pre>
-
 <h4>Work Sample Using Finest Data Type 137 <span class="tag-corollary">Proposition</span></h4>
-
 <p>Data type 137 (T(16)+1, <a href="#ax2">Axiom 2 Proposition</a>) is the finest data type used by CAS. Decomposing 137 bits yields d-ring, state space, and equality.</p>
-
 <div class="math-block">
 <div class="math-row">$$137 = 8 + 128 + 1$$</div>
 <div class="math-legend">Machine (8) + all possible states (128) + declaration "this is valid" (1)</div>
 </div>
-
 <div class="table-wrap">
 <table>
 <tr><th>Bits</th><th>Size</th><th>Identity</th><th>Role</th><th>Basis</th></tr>
@@ -440,7 +340,6 @@ AND (contact point = where lock engages):
 <tr><td><strong>1</strong></td><td>+1</td><td>Equality</td><td>The +1 of T(16)+1. A declaration that validates all 128 states. Self-reference of δ</td><td><a href="#ax15">Axiom 15 Proposition</a></td></tr>
 </table>
 </div>
-
 <pre>
   137-bit workbench layout (sample, exact operation unknown — this is a rough structural explanation as a sample, to be reinforced in future updates):
 
@@ -465,53 +364,35 @@ AND (contact point = where lock engages):
 
   137 = 8  + 128(state space) + 1(ret)
 </pre>
-
 <h4>Juim and Juida <span class="tag-corollary">Proposition</span></h4>
-
 <p><strong>Juim</strong> is the result produced the moment CAS Swap (111) executes on DATA. The state where 3 orthogonal locks (R_LOCK, C_LOCK, S_LOCK) simultaneously grip one location is 111, and the act of this 111 crossing + to create one ball in DATA (space) is juim.</p>
-
 <h4>Juida (Writing) Is a Cl(3) Bivector Rotation <span class="tag-corollary">Proposition</span></h4>
-
 <p>The 3 CAS axes (R_LOCK, C_LOCK, S_LOCK) are mapped to the xyz axes of DATA space by <a href="#ax11">Axiom 11 Proposition</a>. The Clifford algebra over these 3 axes is Cl(3), whose bivectors are $e_{12}, e_{23}, e_{31}$ — three in number, equal to the number of SO(3) generators. The Cl(3) multivector dimension is $1 + 3 + 3 + 1 = 8 = 2^{3}$ (scalar 1 + vector 3 + bivector 3 + pseudoscalar 1).</p>
-
 <div class="math-block">
 <div class="math-row">$$R = \exp\!\left( \tfrac{\theta}{2} \, (e_{12} + e_{23} + e_{31}) \right)$$</div>
 <div class="math-legend">The rotor of the write operation (juida). The three bivectors operate at equal amplitude simultaneously. The SO(3) symmetry is the formal consequence of equal-amplitude operation, and the direction-independence of the ball is closed by this single expression</div>
 </div>
-
 <p>The reason r is direction-independent is not a separate assumption but a result that follows automatically from the equal-amplitude operation of Cl(3) bivectors. Isotropy defined inside the axiom circuit is the formal statement that <em>the amplitudes of the three rotation planes are equal</em>.</p>
-
 <p><strong>Why "pressure" must not be used to describe this.</strong> Pressure is a physical quantity defined as force per unit area inside a continuum medium. The Banya Equation structure contains no primary medium, no force, and no unit area: DATA is discrete (<a href="#ax3">Axiom 3</a>), and every physical quantity is defined only through the accumulation of 1-ball units and the cost distribution of that accumulation (<a href="#ax4">Axiom 4</a>). Therefore "the pressure is isotropic" is a sentence not definable inside this axiom circuit, and the correct formal statement of isotropy is "the amplitudes of the three Cl(3) bivectors are equal." Pressure is only an approximate appearance in external domains where a sufficient number of juim have accumulated.</p>
-
 <h4>A Ball Is a Discrete Unit <span class="tag-corollary">Proposition</span></h4>
-
 <p>DATA is discrete (<a href="#ax3">Axiom 3</a>). The ball that juim creates is not a continuum but a discrete unit — the shape of the minimum 1 change that cannot be further divided. There is no such thing as 0.5 balls. What 1 CAS cycle creates is exactly 1 ball, and this is the geometric identity of discreteness in the Banya Framework. Physical quantities that appear continuous are the result of sufficiently many balls accumulated.</p>
-
-<p><strong>Juida</strong> is the act of CAS creating a juim in DATA. When 1 CAS cycle (000==>001==>011==>111==>000) completes, Swap (111) crosses + and grips one ball in space. Formally it is one application of the Cl(3) equal-amplitude bivector rotor $R = \exp((e_{12} + e_{23} + e_{31}) \cdot \theta/2)$. 1 juim = 1 write = 1 cost (<a href="#ax4">Axiom 4</a>).</p>
-
-
+<p><strong>Juida</strong> is the act of CAS creating a juim in DATA. When 1 CAS cycle (000==&gt;001==&gt;011==&gt;111==&gt;000) completes, Swap (111) crosses + and grips one ball in space. Formally it is one application of the Cl(3) equal-amplitude bivector rotor $R = \exp((e_{12} + e_{23} + e_{31}) \cdot \theta/2)$. 1 juim = 1 write = 1 cost (<a href="#ax4">Axiom 4</a>).</p>
 <h4>Attenuation Is Continuous, Threshold Is Discrete <span class="tag-corollary">Proposition</span></h4>
-
 <p>The three properties of juim reside in different layers.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Property</th><th>Belongs to</th><th>Nature</th><th>Description</th></tr>
 <tr><td><strong>Existence of ball</strong></td><td>DATA</td><td>Discrete</td><td>Present/absent. No 0.5. <a href="#ax2">Axiom 2 Proposition</a></td></tr>
-<tr><td><strong>Gripping force</strong></td><td>RLU (OPERATOR)</td><td>Continuous</td><td>Geometric attenuation. HOT==>WARM==>COLD. <a href="#ax12">Axiom 12</a></td></tr>
+<tr><td><strong>Gripping force</strong></td><td>RLU (OPERATOR)</td><td>Continuous</td><td>Geometric attenuation. HOT==&gt;WARM==&gt;COLD. <a href="#ax12">Axiom 12</a></td></tr>
 <tr><td><strong>Cost</strong></td><td>Contraction region</td><td>Spatial distribution</td><td>Paid at Swap. Contracts surrounding space. <a href="#ax4">Axiom 4</a>, <a href="#ax13">Axiom 13</a></td></tr>
 </table>
 </div>
-
 <p><strong>Ball</strong> either exists or does not in DATA (discrete). <strong>Gripping force</strong> decays as a geometric series continuously in RLU (OPERATOR). <strong>Cost</strong> is distributed in space as the contraction region around the ball. Because the three properties live on different layers, the discreteness of the ball and the continuity of the force do not conflict.</p>
-
 <p><strong>Writing threshold = 4/13.</strong> Gripping (writing) means holding 3 axes simultaneously. 3-axis grip (3) + timestamp (1) = maintenance cost 4 (<a href="#ax6">Axiom 6</a>). Since the total cost per CAS cycle is 13, when gripping force falls below 4/13, there is not enough cost to maintain the 3-axis grip — it releases. Crossing + is reading (access) and gripping is writing (maintenance), so the threshold is determined by the write maintenance cost. It is the write cost (4) that sets the threshold, not the read cost (8).</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{threshold} = \frac{\text{write maintenance cost}}{\text{CAS total cost}} = \frac{4}{13} \approx 0.308$$</div>
 <div class="math-legend">When gripping force falls below this value, the 3-axis grip releases. The ball undergoes discrete release from DATA</div>
 </div>
-
 <div class="table-wrap">
 <table>
 <tr><th>RLU State</th><th>Ball (DATA)</th><th>Gripping Force (RLU)</th><th>Contraction Region</th><th>What observer Sees</th></tr>
@@ -521,11 +402,8 @@ AND (contact point = where lock engages):
 <tr><td><strong>Released</strong></td><td>Absent (discrete release)</td><td>Below threshold</td><td>Gone</td><td>Only contraction overlap of adjacent grips remains</td></tr>
 </table>
 </div>
-
 <h4>Shift Unit per Type in Workbench <span class="tag-corollary">Proposition</span></h4>
-
 <p>Because there is no logical address (<a href="#ax12">Axiom 12</a>), the only means for CAS to reach another position is sequential shift (2^N). Random access is impossible. The workbench is the shift space. Depending on the target, CAS picks the matching type (<a href="#ax2">Axiom 2 Proposition</a>).</p>
-
 <pre>Type sizes at which CAS reads a target (3 samples from types):
 
   Type 7 (CAS internal):   |---|---|---|---|---|---|---|
@@ -538,12 +416,8 @@ AND (contact point = where lock engages):
                                 Domain 16-combination comparison pairs. 1 shift = 1/137.
 
   Same single revolution. Type differs depending on the target.</pre>
-
-
 <h4>Dimension <span class="tag-corollary">Proposition</span></h4>
-
 <p>Space is <strong>3-dimensional</strong>. Nibble 1 of the d-ring contains CAS 3 bits (R_LOCK, C_LOCK, S_LOCK). The CAS 3 axes are orthogonal (<a href="#ax2">Axiom 2 Proposition</a>). 3 orthogonal axes = 3 independent directions = 3 dimensions. There is no 4th lock (<a href="#ax2">Axiom 2</a>), so there is no 4th dimension of space either.</p>
-
 <pre>
   d-ring (8-bit ring. Nibble 1 contains CAS)
     |
@@ -559,11 +433,8 @@ AND (contact point = where lock engages):
 
   Why is space 3-dimensional: Because CAS, whose 3 axes are orthogonal, grips the space domain and records the ball in the time domain together with a timestamp.
 </pre>
-
-<p><strong>CAS-ring.</strong> A structure where CAS, whose internals are orthogonal (<a href="#ax2">Axiom 2 Proposition</a>: CAS 3-axis orthogonality), cycles (000==>001==>011==>111==>000). The internals are orthogonal (simultaneous), but the lock (TOCTOU_LOCK, <a href="#ax5">Axiom 5</a>) forces a firing order — C is impossible without R, S is impossible without C. This order enforcement makes the CAS-ring an FSM. Orthogonality gives structure, the lock gives order, and order defines FSM state transitions.</p>
-
-<p><strong>CAS Cycle.</strong> The CAS-ring cycles forward (000==>001==>011==>111==>000). At 111 it crosses + and creates a ball (grip), then simultaneously resets to 000 to await the next firing:</p>
-
+<p><strong>CAS-ring.</strong> A structure where CAS, whose internals are orthogonal (<a href="#ax2">Axiom 2 Proposition</a>: CAS 3-axis orthogonality), cycles (000==&gt;001==&gt;011==&gt;111==&gt;000). The internals are orthogonal (simultaneous), but the lock (TOCTOU_LOCK, <a href="#ax5">Axiom 5</a>) forces a firing order — C is impossible without R, S is impossible without C. This order enforcement makes the CAS-ring an FSM. Orthogonality gives structure, the lock gives order, and order defines FSM state transitions.</p>
+<p><strong>CAS Cycle.</strong> The CAS-ring cycles forward (000==&gt;001==&gt;011==&gt;111==&gt;000). At 111 it crosses + and creates a ball (grip), then simultaneously resets to 000 to await the next firing:</p>
 <pre>
   FSM       Location    State                                     Cost
   000       OPERATOR    Idle. CAS-ring spins                        0
@@ -571,19 +442,12 @@ AND (contact point = where lock engages):
   011       Entry(R+C)  C_LOCK. Comparing                          +1
   111       DATA(R+C+S) S_LOCK. Crosses +. Ball created (grip)     +1
   000       OPERATOR    Simultaneous reset. Return. Await firing    0</pre>
-
 <p>Forward advance followed by simultaneous reset. Not a reverse retreat. Each R, C, S transition crosses + for cost +1 (<a href="#ax4">Axiom 4</a>). When it returns to 000, the next δ firing becomes possible.</p>
-
 <h4>Geometric Range of the CAS Forward Path = Hemisphere (π) <span class="tag-corollary">Proposition</span></h4>
-
-<p>CAS 3-axis orthogonality (<a href="#ax2">Axiom 2 Proposition</a>) defines a Euclidean inner-product space, and the unit sphere of this inner-product space is the workbench (<a href="#ax2">Axiom 2 Proposition</a>). The forward path of the CAS FSM, 000==>001==>011==>111, traverses this sphere from the null vertex (000) to the antipode (111) — a hemisphere. The arc of a hemisphere is π.</p>
-
-<p><strong>Why π (not 2π).</strong> CAS is irreversible (<a href="#ax2">Axiom 2 Proposition</a>: R==>C==>S reverse order impossible). Only the forward direction (000==>111) pays cost and traverses the sphere. The return 111==>000 is a simultaneous reset at cost 0 — it is not a reverse traversal and traces no arc. The geometric range is the cost-paying forward hemisphere (π), not the full sphere (2π). 2π is impossible because it includes the reverse direction (forbidden); π/2 is impossible because it corresponds to crossing only 1 of the 3 boundaries (incomplete).</p>
-
+<p>CAS 3-axis orthogonality (<a href="#ax2">Axiom 2 Proposition</a>) defines a Euclidean inner-product space, and the unit sphere of this inner-product space is the workbench (<a href="#ax2">Axiom 2 Proposition</a>). The forward path of the CAS FSM, 000==&gt;001==&gt;011==&gt;111, traverses this sphere from the null vertex (000) to the antipode (111) — a hemisphere. The arc of a hemisphere is π.</p>
+<p><strong>Why π (not 2π).</strong> CAS is irreversible (<a href="#ax2">Axiom 2 Proposition</a>: R==&gt;C==&gt;S reverse order impossible). Only the forward direction (000==&gt;111) pays cost and traverses the sphere. The return 111==&gt;000 is a simultaneous reset at cost 0 — it is not a reverse traversal and traces no arc. The geometric range is the cost-paying forward hemisphere (π), not the full sphere (2π). 2π is impossible because it includes the reverse direction (forbidden); π/2 is impossible because it corresponds to crossing only 1 of the 3 boundaries (incomplete).</p>
 <p><strong>Why only π can arise.</strong> By the spherical measure formula Vol(S<sup>n−1</sup>) = 2π<sup>n/2</sup>/Γ(n/2), the only transcendental constant that can arise from the sphere of a finite-dimensional real inner-product space is π. Other transcendental constants (e, ln 2, etc.) cannot arise from an orthogonal-norm sphere. As long as CAS 3-axis orthogonality (<a href="#ax2">Axiom 2 Proposition</a>) defines a Euclidean inner-product space, the geometric constant is uniquely determined as π.</p>
-
 <p>Norm of active axes at each FSM state:</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>CAS State</th><th>Active Axes</th><th>Norm</th><th>Physical Meaning</th></tr>
@@ -593,26 +457,16 @@ AND (contact point = where lock engages):
 <tr><td>111</td><td>R+C+S</td><td>√3</td><td>Workbench. CAS complete. Swap. All 3 axes active</td></tr>
 </table>
 </div>
-
 <p>Because the 3 axes are orthogonal (<a href="#ax2">Axiom 2 Proposition</a>), the norm is uniquely determined as √1, √2, √3 according to the number of active axes. √3 is the workbench norm (<a href="#ax2">Axiom 2 Proposition</a>), √2 is the norm at the moment of crossing + (Compare point), and √1 is the norm at Read entry.</p>
-
 <p><strong>Dimension is a sub-frame of domain.</strong> The 4 domain axes (time, space, observer, superposition) are the superstructure, and dimension is the number of independent bit-movement directions within that domain.</p>
-
-
 <h4>CAS Is an Operator Outside Time <span class="tag-corollary">Proposition</span></h4>
-
 <div class="math-block">
 <div class="math-row">$$\delta^{2} = \underbrace{(\text{time} + \text{space})^{2}}_{\color{#8b949e}{\text{DATA -- spacetime}}} + \underbrace{(\text{observer} + \text{superposition})^{2}}_{\color{#8b949e}{\text{OPERATOR -- CAS is located here}}}$$</div>
 </div>
-
-<p>R==>C==>S is not a temporal order but a logical dependency. CAS write(juida)s to the time axis from outside the time axis. When CAS writes to time, the arrow of time is born. System time = number of CAS cycles. Domain time = log of system time = the time felt inside the screen (classical bracket).</p>
-
+<p>R==&gt;C==&gt;S is not a temporal order but a logical dependency. CAS write(juida)s to the time axis from outside the time axis. When CAS writes to time, the arrow of time is born. System time = number of CAS cycles. Domain time = log of system time = the time felt inside the screen (classical bracket).</p>
 <h4>Complementarity of the Banya Equation and the Bit-Transition Diagram — CAS Cannot Be Seen in the Banya Equation's Geometric Representation <span class="tag-corollary">Proposition</span></h4>
-
 <p>CAS is the logical entity that handles operation (<a href="#ax2">Axiom 2</a>). It is an operator that performs operations, not an object with a coordinate. Therefore <strong>CAS cannot be seen in the Banya Equation's geometric representation (the static norm form, <a href="#ax1">Axiom 1</a>)</strong>. The label "OPERATOR — CAS is located here" on the Banya Equation marks the domain of operation, not a coordinate.</p>
-
-<p>The precise location of CAS is captured in the dynamic form — the bit-transition diagram (<a href="#ax15">Axiom 15</a>). In the 8-bit d-ring, CAS occupies the three slots at bits 4~6 (R_LOCK, C_LOCK, S_LOCK); TOCTOU_LOCK (<a href="#ax5">Axiom 5</a>) enforces the R==>C==>S order; and bit 7 (δ) serves as the firing trigger. The dynamic ordering fills the gap left by the absence of a static coordinate.</p>
-
+<p>The precise location of CAS is captured in the dynamic form — the bit-transition diagram (<a href="#ax15">Axiom 15</a>). In the 8-bit d-ring, CAS occupies the three slots at bits 4~6 (R_LOCK, C_LOCK, S_LOCK); TOCTOU_LOCK (<a href="#ax5">Axiom 5</a>) enforces the R==&gt;C==&gt;S order; and bit 7 (δ) serves as the firing trigger. The dynamic ordering fills the gap left by the absence of a static coordinate.</p>
 <div class="table-wrap">
 <table>
 <tr><th>Aspect</th><th>Banya Equation (<a href="#ax1">Axiom 1</a>)</th><th>Bit-Transition Diagram (<a href="#ax15">Axiom 15</a>)</th></tr>
@@ -624,13 +478,9 @@ AND (contact point = where lock engages):
 <tr><td>Core question</td><td>What is orthogonal to what</td><td>What operates in what order</td></tr>
 </table>
 </div>
-
 <p>The two forms are two faces of the same system; neither alone gives a complete description. The full definition of CAS is obtained only by their combination — <strong>where it operates</strong> is answered by the Banya Equation, and <strong>how it operates</strong> is answered by the bit-transition diagram. δ is the bridge: when bit 7 (δ) is ON in the bit-transition diagram, the Banya Equation holds; when it is OFF, the left-hand side is invalid.</p>
-
-<h3 id="ax3">Axiom 3. DATA Is Discrete, OPERATOR Is Continuous <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax3"><a href="axiom.html#ax3">Axiom 3</a>. DATA Is Discrete, OPERATOR Is Continuous <span class="tag-solved">Axiom</span></h3>
 <p>DATA (spacetime) is <strong>discrete</strong>. A grip is a ball, and the minimum movement unit is 1 slot. Because the continuous limit ($\Delta x \to 0$) does not exist, <strong>differentiation does not hold.</strong></p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Space</th><th>Nature</th><th>Allowed Operations</th><th>Forbidden Operations</th></tr>
@@ -639,28 +489,21 @@ AND (contact point = where lock engages):
 <tr><td>When crossing + (Swap)</td><td>Discretization</td><td>—</td><td>Continuous collapses to discrete (<a href="#ax7">Axiom 7</a>)</td></tr>
 </table>
 </div>
-
 <p>Conventional physics using differentiation on spacetime is <strong>an approximation that projects the continuous distribution from superposition space (OPERATOR) onto DATA</strong>. When grips are sufficiently numerous, the discrete appears continuous and differentiation becomes a valid approximation. But the fundamental is discrete. Relationships between entities are described not by differentiation but by <strong>difference ($\Delta$) and modular arithmetic (mod $N$)</strong>.</p>
-
-<h3 id="ax4">Axiom 4. Cost <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax4"><a href="axiom.html#ax4">Axiom 4</a>. Cost <span class="tag-solved">Axiom</span></h3>
 <p>In the Banya equation δ² = (time <strong>+</strong> space)² <strong>+</strong> (observer <strong>+</strong> superposition)², <strong>+</strong> is a connection marker between orthogonal objects. Connecting two orthogonal objects means crossing one independent axis. <strong>Crossing + once = traversing 1 dimension. Counting +'s = counting dimensions.</strong></p>
-
 <p><strong>Cost 1 is incurred when + is crossed in order.</strong> If there is no order, cost is 0 even if + exists. The + marks orthogonality (structure) only; cost arises only when order exists.</p>
-
-<p><strong>Order creates irreversibility and discreteness simultaneously.</strong> CAS's R==>C==>S has order (<a href="#ax5">Axiom 5</a>: locks enforce order). Where there is order, it cannot be reversed (irreversibility). Where there is order, it is broken into steps (discreteness = quantization). Axes without order (observer, superposition) have no cost, no irreversibility, and no discrete steps. Irreversibility and discreteness are not separate properties — they emerge simultaneously from a single cause: order.</p>
-
+<p><strong>Order creates irreversibility and discreteness simultaneously.</strong> CAS's R==&gt;C==&gt;S has order (<a href="#ax5">Axiom 5</a>: locks enforce order). Where there is order, it cannot be reversed (irreversibility). Where there is order, it is broken into steps (discreteness = quantization). Axes without order (observer, superposition) have no cost, no irreversibility, and no discrete steps. Irreversibility and discreteness are not separate properties — they emerge simultaneously from a single cause: order.</p>
 <div class="table-wrap">
 <table>
 <tr><th>+ location</th><th>Order</th><th>Cost</th><th>Reason</th></tr>
-<tr><td>CAS R==>C==>S</td><td><strong>Yes</strong></td><td>+3</td><td>Locks enforce order (<a href="#ax5">Axiom 5</a>). C impossible without R</td></tr>
-<tr><td>OPERATOR ==> DATA bracket</td><td><strong>Yes</strong></td><td>+1</td><td>CAS crosses + to write. Direction exists</td></tr>
-<tr><td>time ==> space</td><td><strong>Yes</strong></td><td>+1</td><td>Timestamp first, then space access. Order exists</td></tr>
-<tr><td>x ==> y ==> z</td><td><strong>Yes</strong></td><td>+3</td><td>3-axis sequential access. Lock order (<a href="#ax5">Axiom 5</a>)</td></tr>
+<tr><td>CAS R==&gt;C==&gt;S</td><td><strong>Yes</strong></td><td>+3</td><td>Locks enforce order (<a href="#ax5">Axiom 5</a>). C impossible without R</td></tr>
+<tr><td>OPERATOR ==&gt; DATA bracket</td><td><strong>Yes</strong></td><td>+1</td><td>CAS crosses + to write. Direction exists</td></tr>
+<tr><td>time ==&gt; space</td><td><strong>Yes</strong></td><td>+1</td><td>Timestamp first, then space access. Order exists</td></tr>
+<tr><td>x ==&gt; y ==&gt; z</td><td><strong>Yes</strong></td><td>+3</td><td>3-axis sequential access. Lock order (<a href="#ax5">Axiom 5</a>)</td></tr>
 <tr><td>observer ↔ superposition</td><td><strong>No</strong></td><td>0</td><td>Same OPERATOR bracket as CAS. Simultaneous reference. No order = no cost</td></tr>
 </table>
 </div>
-
 <pre>Path by which CAS creates a grip in space — read (access) and write(juida):
 
   [Read: access target by crossing +]
@@ -690,7 +533,6 @@ AND (contact point = where lock engages):
 
 Different paths cross different numbers of + = different costs.
 Within the same group = no + crossing = cost 0.</pre>
-
 <div class="table-wrap">
 <table>
 <tr><th>Action</th><th>Description</th><th>Cost</th></tr>
@@ -699,31 +541,27 @@ Within the same group = no + crossing = cost 0.</pre>
 <tr><td><strong>Within the same frame</strong></td><td>Cost 0 if + is not crossed within the same frame. Moving to a sub-frame crosses + so cost is incurred</td><td>0 if no move, +1 on sub-frame move</td></tr>
 </table>
 </div>
-
 <div class="table-wrap">
 <table>
 <tr><th>Path</th><th>Read (access) Cost</th><th>Write(juida) Cost</th></tr>
 <tr><td>CAS R entry</td><td>+1</td><td>None</td></tr>
-<tr><td>CAS R ==> C transition</td><td>+1</td><td>None</td></tr>
-<tr><td>CAS C ==> S transition</td><td>+1</td><td>None</td></tr>
-<tr><td>OPERATOR ==> classical bracket</td><td>+1</td><td>None</td></tr>
-<tr><td>time ==> space</td><td>+1</td><td>None</td></tr>
+<tr><td>CAS R ==&gt; C transition</td><td>+1</td><td>None</td></tr>
+<tr><td>CAS C ==&gt; S transition</td><td>+1</td><td>None</td></tr>
+<tr><td>OPERATOR ==&gt; classical bracket</td><td>+1</td><td>None</td></tr>
+<tr><td>time ==&gt; space</td><td>+1</td><td>None</td></tr>
 <tr><td>x access</td><td>+1</td><td>None</td></tr>
-<tr><td>x ==> y</td><td>+1</td><td>None</td></tr>
-<tr><td>y ==> z</td><td>+1</td><td>None</td></tr>
+<tr><td>x ==&gt; y</td><td>+1</td><td>None</td></tr>
+<tr><td>y ==&gt; z</td><td>+1</td><td>None</td></tr>
 <tr><td>time timestamp write(juida)</td><td>None</td><td>+1</td></tr>
 <tr><td>x write(juida)</td><td>None</td><td>+1</td></tr>
 <tr><td>y write(juida)</td><td>None</td><td>+1</td></tr>
 <tr><td>z write(juida)</td><td>None</td><td>+1</td></tr>
-<tr><td>Swap ==> DATA commit</td><td>None</td><td>+1</td></tr>
+<tr><td>Swap ==&gt; DATA commit</td><td>None</td><td>+1</td></tr>
 <tr><td><strong>Total</strong></td><td><strong>8</strong></td><td><strong>5</strong></td></tr>
 </table>
 </div>
-
 <h4>Irreversible Cost Table: Cost Accumulation per d-ring Segment <span class="tag-corollary">Proposition</span></h4>
-
-<p>Cost arises only from CAS + transitions. Axes where CAS intervenes are irreversible (<a href="#ax2">Axiom 2 Proposition</a>: R==>C==>S reverse impossible, no refund), and axes where CAS does not intervene are non-irreversible. This binary verdict uniquely determines the cost accumulation structure of the CAS internal DOF 7 axes (<a href="#ax9">Axiom 9</a>). Accumulated cost is managed by indexing (<a href="#ax13">Axiom 13</a>).</p>
-
+<p>Cost arises only from CAS + transitions. Axes where CAS intervenes are irreversible (<a href="#ax2">Axiom 2 Proposition</a>: R==&gt;C==&gt;S reverse impossible, no refund), and axes where CAS does not intervene are non-irreversible. This binary verdict uniquely determines the cost accumulation structure of the CAS internal DOF 7 axes (<a href="#ax9">Axiom 9</a>). Accumulated cost is managed by indexing (<a href="#ax13">Axiom 13</a>).</p>
 <div class="table-wrap">
 <table>
 <tr><th>Axis</th><th>CAS Intervention</th><th>Irreversible</th><th>Basis</th><th>Cost</th></tr>
@@ -732,25 +570,17 @@ Within the same group = no + crossing = cost 0.</pre>
 <tr><td>time</td><td>Yes</td><td>Yes</td><td><a href="#ax4">Axiom 4</a>: Swap writes by crossing +. <a href="#ax2">Axiom 2 Proposition</a>: no refund</td><td><strong>+</strong></td></tr>
 <tr><td>space</td><td>Yes</td><td>Yes</td><td><a href="#ax4">Axiom 4</a>: same. DATA bracket</td><td><strong>+</strong></td></tr>
 <tr><td>R_LOCK</td><td>Yes</td><td>Yes</td><td><a href="#ax5">Axiom 5</a>: crosses + for cost +1. Reverse impossible</td><td><strong>+</strong></td></tr>
-<tr><td>C_LOCK</td><td>Yes</td><td>Yes</td><td><a href="#ax5">Axiom 5</a>: R==>C transition. Crosses + for cost +1. Reverse impossible</td><td><strong>+</strong></td></tr>
-<tr><td>S_LOCK</td><td>Yes</td><td>Yes</td><td><a href="#ax5">Axiom 5</a>: C==>S transition. Crosses + for cost +1. Reverse impossible</td><td><strong>+</strong></td></tr>
+<tr><td>C_LOCK</td><td>Yes</td><td>Yes</td><td><a href="#ax5">Axiom 5</a>: R==&gt;C transition. Crosses + for cost +1. Reverse impossible</td><td><strong>+</strong></td></tr>
+<tr><td>S_LOCK</td><td>Yes</td><td>Yes</td><td><a href="#ax5">Axiom 5</a>: C==&gt;S transition. Crosses + for cost +1. Reverse impossible</td><td><strong>+</strong></td></tr>
 </table>
 </div>
-
-<p><strong>Cost accumulation = (5, 2).</strong> 5 irreversible axes (cost accumulation +), 2 non-irreversible axes (no cost accumulation). Physical meaning of the partition: 5 axes undergo Compare true ==> write (<a href="#ax7">Axiom 7</a>) ==> cost accumulation ==> no refund (<a href="#ax2">Axiom 2 Proposition</a>). 2 axes undergo Compare false ==> superposition maintained (<a href="#ax7">Axiom 7</a>) ==> no cost accumulation ==> reversible. The branch (true/false) of <a href="#ax7">Axiom 7</a> divides the d-ring into irreversible and non-irreversible segments.</p>
-
+<p><strong>Cost accumulation = (5, 2).</strong> 5 irreversible axes (cost accumulation +), 2 non-irreversible axes (no cost accumulation). Physical meaning of the partition: 5 axes undergo Compare true ==&gt; write (<a href="#ax7">Axiom 7</a>) ==&gt; cost accumulation ==&gt; no refund (<a href="#ax2">Axiom 2 Proposition</a>). 2 axes undergo Compare false ==&gt; superposition maintained (<a href="#ax7">Axiom 7</a>) ==&gt; no cost accumulation ==&gt; reversible. The branch (true/false) of <a href="#ax7">Axiom 7</a> divides the d-ring into irreversible and non-irreversible segments.</p>
 <h4>Cost Is the Sole Physical Quantity of δ <span class="tag-corollary">Proposition</span></h4>
-
 <p>Cost is the physical quantity of change (δ). When δ fires (<a href="#ax15">Axiom 15</a>), CAS crosses + (<a href="#ax4">Axiom 4</a>), and a grip is recorded in DATA (<a href="#ax7">Axiom 7</a>), cost is incurred. Cost is the sole physical quantity measured on the d-ring — there is no other physical quantity on the d-ring besides cost. Energy, mass, force, and entropy are all different names for cost.</p>
-
-<p>That cost is irreversible is self-evident. Cost arises from change that crosses domains — i.e., interaction (<a href="#ax4">Axiom 4</a>: if + is crossed, cost > 0). Interaction is an event between two domains, so once one side changes it cannot be undone. Staying within a domain incurs no cost (+ is not crossed); the moment a domain is crossed, it is irreversible.</p>
-
+<p>That cost is irreversible is self-evident. Cost arises from change that crosses domains — i.e., interaction (<a href="#ax4">Axiom 4</a>: if + is crossed, cost &gt; 0). Interaction is an event between two domains, so once one side changes it cannot be undone. Staying within a domain incurs no cost (+ is not crossed); the moment a domain is crossed, it is irreversible.</p>
 <p>Cost and type are different. Type (<a href="#ax2">Axiom 2 Proposition</a>) is the size unit of the CAS internal workbench — the type size CAS uses when reading a target, not a physical quantity on the d-ring. Cost is what arises when crossing a d-ring segment, while type is the scale at which CAS decomposes a target inside the workbench. The layer of cost is the d-ring (<a href="#ax4">Axiom 4</a>), and the layer of type is the workbench (<a href="#ax2">Axiom 2 Proposition</a>).</p>
-
 <h4>Reading Cost in Norm <span class="tag-corollary">Proposition</span></h4>
-
 <p>The same + is read in two ways — <strong>cost reading</strong> and <strong>norm reading</strong>. The two readings are different unit expressions of the same + crossing. Counted as an integer it is 1; measured as arc length it is π. They are two expressions of the same crossing, not different events.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Reading</th><th>Value of 1 + crossing</th><th>Result form</th><th>Basis</th></tr>
@@ -758,11 +588,8 @@ Within the same group = no + crossing = cost 0.</pre>
 <tr><td><strong>norm reading</strong></td><td>arc length π</td><td>nπ (integer multiple of π)</td><td><a href="#ax2">Axiom 2 Proposition</a>: CAS forward = hemisphere π</td></tr>
 </table>
 </div>
-
 <p><strong>norm reading is valid only for irreversible +.</strong> Reversible axes (observer, superposition) have cost 0 and therefore draw no arc (<a href="#ax2">Axiom 2 Proposition</a>). Reversible quantities can only use cost reading integers — they cannot be expressed as nπ in norm reading.</p>
-
 <p><strong>Combination rules.</strong></p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Combination</th><th>Rule</th><th>Example</th></tr>
@@ -771,13 +598,11 @@ Within the same group = no + crossing = cost 0.</pre>
 <tr><td>Different readings (cost ⊥ norm)</td><td>Orthogonal sum + of <a href="#ax1">Axiom 1</a></td><td>reversible 2 (cost) ⊥ irreversible 9π (norm) = 2 + 9π</td></tr>
 </table>
 </div>
-
 <p>cost and norm are orthogonal categories, so the integer of cost reading and the nπ of norm reading combine via <a href="#ax1">Axiom 1</a>'s orthogonal sum, not within-type arithmetic addition. When combining the two in one expression, + is the orthogonal sum (same structure as DATA ⊥ OPERATOR), not arithmetic addition.</p>
-
 <pre>Two readings of the same + 1 crossing:
 
-  +  ===>  cost reading = 1     (integer count)
-  +  ===>  norm reading = pi    (arc length)
+  +  ===&gt;  cost reading = 1     (integer count)
+  +  ===&gt;  norm reading = pi    (arc length)
 
   Same single crossing, measured in different units
 
@@ -794,88 +619,69 @@ Combination:
   cost reading + cost reading:  n1 + n2 = (n1 + n2)         arithmetic
   norm reading + norm reading:  n1*pi + n2*pi = (n1+n2)*pi  arithmetic
   cost  +  norm:                n + m*pi                    orthogonal sum (<a href="#ax1">Axiom 1</a>)</pre>
-
 <p>This proposition provides the tool for reading the same + structure in two units (integer / arc length). When derivation gets stuck under one reading, the same + can be re-read in the other reading to proceed. Both readings follow directly from <a href="#ax4">Axiom 4</a> (cost) and <a href="#ax2">Axiom 2 Proposition</a> (hemisphere), so they are not additional assumptions.</p>
-
-<h3 id="ax5">Axiom 5. TOCTOU Lock Register <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax5"><a href="axiom.html#ax5">Axiom 5</a>. TOCTOU Lock Register <span class="tag-solved">Axiom</span></h3>
 <p>TOCTOU_LOCK is the device by which the CAS-ring (<a href="#ax2">Axiom 2</a>, <a href="#ax12">Axiom 12</a>) enforces order. The CAS 3 axes are orthogonal (<a href="#ax2">Axiom 2 Proposition</a>) — inherently simultaneous. But when the lock enforces order, simultaneity breaks and sequential access results. Sequential access crosses +, so cost is incurred (<a href="#ax4">Axiom 4</a>). The lock is not cost itself but <strong>the cause that creates cost</strong>.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Step</th><th>R_LOCK</th><th>C_LOCK</th><th>S_LOCK</th><th>Bits</th><th>Crosses +?</th><th>Cost</th></tr>
 <tr><td>Idle</td><td>0</td><td>0</td><td>0</td><td>000</td><td>No</td><td>0</td></tr>
 <tr><td>Read</td><td><strong>1</strong></td><td>0</td><td>0</td><td>001</td><td>Yes (R-axis entry, crosses +)</td><td>+1</td></tr>
-<tr><td>Compare</td><td><strong>1</strong></td><td><strong>1</strong></td><td>0</td><td>011</td><td>Yes (R==>C, crosses +)</td><td>+1</td></tr>
-<tr><td>Swap</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td>111</td><td>Yes (C==>S, crosses +. Grip to DATA)</td><td>+1</td></tr>
+<tr><td>Compare</td><td><strong>1</strong></td><td><strong>1</strong></td><td>0</td><td>011</td><td>Yes (R==&gt;C, crosses +)</td><td>+1</td></tr>
+<tr><td>Swap</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td>111</td><td>Yes (C==&gt;S, crosses +. Grip to DATA)</td><td>+1</td></tr>
 <tr><td>Reset</td><td>0</td><td>0</td><td>0</td><td>000</td><td>Simultaneous release</td><td>0</td></tr>
 </table>
 </div>
-
-<p>The CAS 3 axes are orthogonal (simultaneous), but the lock forces the R==>C==>S firing order. What the lock forces is order, and what order creates is cost (<a href="#ax4">Axiom 4</a>). One exists independently per observer (not a central lock, ECS <a href="#ax12">Axiom 12</a>).</p>
-
-
-
-<h3 id="ax6">Axiom 6. Cost Recovery <span class="tag-solved">Axiom</span></h3>
-
+<p>The CAS 3 axes are orthogonal (simultaneous), but the lock forces the R==&gt;C==&gt;S firing order. What the lock forces is order, and what order creates is cost (<a href="#ax4">Axiom 4</a>). One exists independently per observer (not a central lock, ECS <a href="#ax12">Axiom 12</a>).</p>
+<h3 id="ax6"><a href="axiom.html#ax6">Axiom 6</a>. Cost Recovery <span class="tag-solved">Axiom</span></h3>
 <p>The total cost incurred when CAS creates a grip is recorded in RLU (superposition domain index). RLU recovers this cost continuously.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Path</th><th>Read (access) cost</th><th>Write (grip) cost</th></tr>
 <tr><td>CAS R entry</td><td>+1</td><td>none</td></tr>
-<tr><td>CAS R ==> C transition</td><td>+1</td><td>none</td></tr>
-<tr><td>CAS C ==> S transition</td><td>+1</td><td>none</td></tr>
-<tr><td>OPERATOR ==> classical bracket</td><td>+1</td><td>none</td></tr>
-<tr><td>time ==> space</td><td>+1</td><td>none</td></tr>
+<tr><td>CAS R ==&gt; C transition</td><td>+1</td><td>none</td></tr>
+<tr><td>CAS C ==&gt; S transition</td><td>+1</td><td>none</td></tr>
+<tr><td>OPERATOR ==&gt; classical bracket</td><td>+1</td><td>none</td></tr>
+<tr><td>time ==&gt; space</td><td>+1</td><td>none</td></tr>
 <tr><td>x access</td><td>+1</td><td>none</td></tr>
-<tr><td>x ==> y</td><td>+1</td><td>none</td></tr>
-<tr><td>y ==> z</td><td>+1</td><td>none</td></tr>
+<tr><td>x ==&gt; y</td><td>+1</td><td>none</td></tr>
+<tr><td>y ==&gt; z</td><td>+1</td><td>none</td></tr>
 <tr><td>time timestamp write(juida)</td><td>none</td><td>+1</td></tr>
 <tr><td>x write(juida)</td><td>none</td><td>+1</td></tr>
 <tr><td>y write(juida)</td><td>none</td><td>+1</td></tr>
 <tr><td>z write(juida)</td><td>none</td><td>+1</td></tr>
-<tr><td>Swap ==> DATA commit</td><td>none</td><td>+1</td></tr>
+<tr><td>Swap ==&gt; DATA commit</td><td>none</td><td>+1</td></tr>
 <tr><td><strong>Total</strong></td><td><strong>8</strong></td><td><strong>5</strong></td></tr>
 </table>
 </div>
-
 <p><strong>Ball cost</strong> = 3-axis grip (3) + timestamp (1) = <strong>4</strong>. When these 4 are released, the ball disappears from DATA (discrete release). However, <strong>misc cost = 13 - 4 = 9</strong> remains in the superposition domain (RLU index). These are CAS transition costs, + movement costs, etc.</p>
-
 <p>RLU recovers the misc cost 9 continuously (decay is continuous, threshold is discrete — <a href="#ax2">Axiom 2 Proposition</a>). Full recovery is required before that space is truly returned. Even when the ball disappears from DATA, the cost does not "vanish" — cost being recovered persists in the RLU index. <strong>To cycle, recovery is required.</strong></p>
-
 <pre>Flow of cost:
 
-  CAS execution ==> cost incurred (total 13) ==> recorded in RLU
+  CAS execution ==&gt; cost incurred (total 13) ==&gt; recorded in RLU
        |
        +-- Ball cost (4): 3-axis grip + timestamp
-       |   When released ==> ball disappears (DATA discrete release)
+       |   When released ==&gt; ball disappears (DATA discrete release)
        |
        +-- Misc cost (9): CAS transition + domain movement cost
-           Continuously recovered in RLU ==> space returned upon full recovery</pre>
-
-
-<h3 id="ax7">Axiom 7. Write (Juida) and Superposition Maintained <span class="tag-solved">Axiom</span></h3>
-
+           Continuously recovered in RLU ==&gt; space returned upon full recovery</pre>
+<h3 id="ax7"><a href="axiom.html#ax7">Axiom 7</a>. Write (Juida) and Superposition Maintained <span class="tag-solved">Axiom</span></h3>
 <p><strong>Quantum is the default, and classical is the result of cost.</strong></p>
-
 <pre>Each CAS cycle:
 
-  CAS-ring internal:  Read(+1) ==> Compare(+1) execution
+  CAS-ring internal:  Read(+1) ==&gt; Compare(+1) execution
        |
-       +-- Compare true  ==> Swap(+1) ==> write(juida) to DATA = collapse
+       +-- Compare true  ==&gt; Swap(+1) ==&gt; write(juida) to DATA = collapse
        |                       Cost incurred (<a href="#ax4">Axiom 4</a>)
        |                       What is gripped is a ball (<a href="#ax2">Axiom 2 Proposition</a>)
        |                       Total cost recorded in RLU (<a href="#ax6">Axiom 6</a>)
        |
-       +-- Compare false ==> Swap not executed ==> superposition maintained
+       +-- Compare false ==&gt; Swap not executed ==&gt; superposition maintained
                                Read(+1), Compare(+1) already paid
 
-  If cost is spent ==> classical (recorded in DATA)
-  If cost is not spent ==> quantum (remains in OPERATOR)</pre>
-
+  If cost is spent ==&gt; classical (recorded in DATA)
+  If cost is not spent ==&gt; quantum (remains in OPERATOR)</pre>
 <p>There are 3 conditions for collapse:</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Condition</th><th>Axiom</th><th>If Absent</th></tr>
@@ -884,21 +690,12 @@ Combination:
 <tr><td>Payment of cost to cross +</td><td><a href="#ax4">Axiom 4</a> (cost)</td><td>Cannot cross from OPERATOR to DATA</td></tr>
 </table>
 </div>
-
 <p>When all 3 conditions are satisfied, collapse occurs. One ball is created in DATA (time+space) by one application of the Cl(3) equal-amplitude bivector rotor (<a href="#ax2">Axiom 2 Proposition</a>). If even one condition fails, superposition is maintained. Collapse is <strong>one of the normal execution paths of CAS</strong>.</p>
-
 <p>A grip is a record of change in spacetime, and the total cost incurred is recorded in RLU to become a recovery target (<a href="#ax6">Axiom 6</a>). When there are multiple grips, interactions between entities arise and cost increases (<a href="#ax13">Axiom 13 Proposition</a>).</p>
-
-<p>Reversal (classical==>quantum) requires a cost refund, but irreversibility (<a href="#ax2">Axiom 2 Proposition</a>) makes refund impossible. Recovery is not refund but natural release through continuous decay of RLU (<a href="#ax6">Axiom 6</a>).</p>
-
-
-<h3 id="ax8">Axiom 8. Observer-Driven Polling System <span class="tag-solved">Axiom</span></h3>
-
+<p>Reversal (classical==&gt;quantum) requires a cost refund, but irreversibility (<a href="#ax2">Axiom 2 Proposition</a>) makes refund impossible. Recovery is not refund but natural release through continuous decay of RLU (<a href="#ax6">Axiom 6</a>).</p>
+<h3 id="ax8"><a href="axiom.html#ax8">Axiom 8</a>. Observer-Driven Polling System <span class="tag-solved">Axiom</span></h3>
 <p>The self-referential loop of d-ring always runs every tick of system time. It checks the state every tick regardless of whether any change has occurred. This is polling. δ firing and observer filtering have zero cost (<a href="#ax15">Axiom 15</a>, <a href="#ax10">Axiom 10</a>). When CAS-ring executes, each transition through R, C, S crosses + and incurs cost +1 (<a href="#ax4">Axiom 4</a>).</p>
-
-
 <p>This polling loop is δ itself. The identity of δ is revealed in <a href="#ax15">Axiom 15</a>.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Category</th><th>Method</th><th>Description</th><th>Axiom</th></tr>
@@ -906,16 +703,10 @@ Combination:
 <tr><td>Global-local loop</td><td><strong>Observer-driven</strong></td><td>δ (global) is projected through observer (local)</td><td><a href="#ax10">Axiom 10</a></td></tr>
 </table>
 </div>
-
 <h4>idle polling</h4>
-
 <p>idle polling (<a href="#ax8">Axiom 8</a>) checks whether δ has fired. δ firing itself has zero cost (<a href="#ax15">Axiom 15</a>). When CAS-ring executes, each transition through R, C, S crosses + and incurs cost +1 (<a href="#ax4">Axiom 4</a>). For distortion phenomena on the DATA side, see <a href="#ax11">Axiom 11 Proposition</a> (Distortion of empty entities is a structural necessity).</p>
-
-
-<h3 id="ax9">Axiom 9. Complete Description DOF <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax9"><a href="axiom.html#ax9">Axiom 9</a>. Complete Description DOF <span class="tag-solved">Axiom</span></h3>
 <p>The complete description DOF divides into structure-derived and cost-derived. Numbers with prime factorization into preceding numbers (6=3×2, 8=2³, etc.) are not independent and are excluded. Norm-derived values (√1, √2, √3) are also excluded.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th colspan="3" style="background:#161b22;color:#e6edf3">Structure DOF (DATA)</th></tr>
@@ -932,7 +723,6 @@ Combination:
 <tr><td><strong>137</strong></td><td>T(16)+1</td><td>Largest data type</td></tr>
 </table>
 </div>
-
 <div class="table-wrap">
 <table>
 <tr><th colspan="3" style="background:#161b22;color:#e6edf3">Cost DOF (OPERATOR)</th></tr>
@@ -946,15 +736,11 @@ Combination:
 <tr><td><strong>13</strong></td><td>read 8 + write 5</td><td>Total cost</td></tr>
 </table>
 </div>
-
 <h4>Complete description DOF follows the Banya equation <span class="tag-corollary">Proposition</span></h4>
-
 <p>The rules of the Banya equation $\delta^2 = (\text{DATA})^2 + (\text{OPERATOR})^2$ apply to the complete description DOF as well. Structure (DATA) and cost (OPERATOR) are orthogonal brackets, and descriptions are composed only by + crossing between brackets.</p>
-
 <p><strong>The structure side is DATA, and the cost side is OPERATOR.</strong> Movement within the same bracket is possible only by shift ($2^N$) (<a href="#ax12">Axiom 12 Proposition</a>). Structure side internally: $1 \to 2 \to 4 \to 16 \to 128$ are all $2^N$ shifts. Between structure and cost, they are orthogonal via + (<a href="#ax1">Axiom 1</a>). Crossing + incurs cost (<a href="#ax4">Axiom 4</a>). Within the same bracket, + cannot be used — only shift. + is used only when crossing brackets.</p>
-
 <pre>Within the same bracket: shift only
-  Structure (DATA):   2⁰ ==> 2¹ ==> 2² ==> 2⁴ ==> 2⁷   (shift)
+  Structure (DATA):   2⁰ ==&gt; 2¹ ==&gt; 2² ==&gt; 2⁴ ==&gt; 2⁷   (shift)
   Cost (OPERATOR):    internal movement is also shift
 
 Crossing brackets: orthogonal via +
@@ -966,14 +752,9 @@ Crossing brackets: orthogonal via +
 Forbidden:
   Structure + Structure = invalid (+ forbidden within same bracket)
   Cost + Cost = invalid (+ forbidden within same bracket)</pre>
-
-
-<h3 id="ax10">Axiom 10. Global-Local Loop <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax10"><a href="axiom.html#ax10">Axiom 10</a>. Global-Local Loop <span class="tag-solved">Axiom</span></h3>
 <p>δ (global) accesses itself through observer (local), and the result is reflected back to δ — a cyclic structure.</p>
-
 <h4>Properties of observer</h4>
-
 <div class="table-wrap">
 <table>
 <tr><th>Property</th><th>Description</th><th>Basis</th></tr>
@@ -985,11 +766,8 @@ Forbidden:
 <tr><td><strong>Affiliation</strong></td><td>Quantum bracket (OPERATOR). One of the 4 domain axes (bit 0)</td><td><a href="#ax1">Axiom 1</a></td></tr>
 </table>
 </div>
-
 <h4>Elimination method of δ <span class="tag-corollary">Proposition</span></h4>
-
 <p>What can appear on the left side of the Banya equation equality sign (=).</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>#</th><th>Elimination</th><th>Reason</th></tr>
@@ -998,32 +776,22 @@ Forbidden:
 <tr><td>3</td><td>Only δ remains</td><td>Only δ on the left side can hold the equality sign</td></tr>
 </table>
 </div>
-
 <p>δ=0 (equality sign not established) is defined in <a href="#ax7">Axiom 7</a>. Equality sign not established = superposition maintained.</p>
-
 <h4>Auto-recursion <span class="tag-corollary">Proposition</span></h4>
-
 <p>The CAS result is reflected in δ, and the reflected δ is filtered again through each observer in the next cycle. It auto-cycles by axiom declaration alone.</p>
-
 <h4>Global-local loop preservation <span class="tag-corollary">Proposition</span></h4>
-
 <p>If this loop is severed, the system dies. The only constraint: <strong>the global-local loop must not be violated.</strong></p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Violation</th><th>Result</th></tr>
-<tr><td>δ ==> observer projection path severed</td><td>Loop destroyed</td></tr>
-<tr><td>observer ==> δ return path severed</td><td>Orphan process</td></tr>
+<tr><td>δ ==&gt; observer projection path severed</td><td>Loop destroyed</td></tr>
+<tr><td>observer ==&gt; δ return path severed</td><td>Orphan process</td></tr>
 <tr><td>Loop unrolled into linear</td><td>Degenerates to idle polling</td></tr>
-<tr><td>δ ==> direct DATA access without observer</td><td>Loop severed. System death</td></tr>
+<tr><td>δ ==&gt; direct DATA access without observer</td><td>Loop severed. System death</td></tr>
 </table>
 </div>
-
-
-<h3 id="ax11">Axiom 11. Multiple Projection <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax11"><a href="axiom.html#ax11">Axiom 11</a>. Multiple Projection <span class="tag-solved">Axiom</span></h3>
 <p>δ is one (<a href="#ax8">Axiom 8</a>). Observers are many. Because observer is a filter (<a href="#ax10">Axiom 10</a>), a single δ is filtered differently through each observer. Each observer filters the projection of δ and passes it to the CAS workbench (<a href="#ax2">Axiom 2 Proposition</a>), and CAS creates a juim in DATA. Since each observer filters independently, many entities arise from a single δ. This is multiple projection.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Concept</th><th>Count</th><th>Reason</th></tr>
@@ -1033,40 +801,28 @@ Forbidden:
 <tr><td>Simultaneity</td><td>Guaranteed</td><td>Since δ is one, all projections are simultaneous</td></tr>
 </table>
 </div>
-
 <pre>δ (1, sole equality sign)
     |
-    | δ fires ==> reaches all observers simultaneously
+    | δ fires ==&gt; reaches all observers simultaneously
     |
-    +==> observer A (filter) ==> CAS[workbench] ==> Entity A (juim)
+    +==&gt; observer A (filter) ==&gt; CAS[workbench] ==&gt; Entity A (juim)
     |
-    +==> observer B (filter) ==> CAS[workbench] ==> Entity B (juim)
+    +==&gt; observer B (filter) ==&gt; CAS[workbench] ==&gt; Entity B (juim)
     |
-    +==> observer C (filter) ==> CAS[workbench] ==> Entity C (juim)
+    +==&gt; observer C (filter) ==&gt; CAS[workbench] ==&gt; Entity C (juim)
     |
     ... (as many as observers)</pre>
-
 <p>The universe that appears infinite is the result of a single δ simultaneously projected through many observer filters. It is not that the substance is infinite — because the filters are many, the results are many.</p>
-
 <p><strong>Why all local juims are identical:</strong> δ is one, and what appears as a local juim is the image of that δ projected through multiple observers. Since they are projections of the same δ, all local juims have the same cost, the same domain bit pattern. All local juims are identical, and all projected images are identical for the same reason.</p>
 <p style="font-size:0.85em;color:#8b949e">Note: In 1940, John Wheeler intuited that "there is only one electron" but could not prove it. Wheeler saw the electron moving back and forth along the time axis; Banya Framework sees δ as multiply projected along the observer axis. The mechanisms differ, but the conclusion is the same.</p>
-
 <p><strong>Distance independence of δ simultaneous projection:</strong> The images reflected in observer A and observer B are simultaneously correlated because they are looking at the same δ. No signal is transmitted from A to B. The same change of the same δ is cast simultaneously on both shadows. Since δ is one, simultaneity is guaranteed.</p>
-
 <h4>Inter-entity distance ℓ <span class="tag-corollary">Proposition</span></h4>
-
 <p>The reason space is 3-dimensional is defined in <a href="#ax2">Axiom 2 Proposition</a> (dimension). Each juim is its own origin — because in ECS (<a href="#ax12">Axiom 12</a>) there is no center, and each Entity is independent.</p>
-
 <p>There is only one kind of distance. $\ell$ = distance between two entities. $\ell$ determines both the magnitude of cost ($1/\ell^2$ decay) and the type of cost ($(1-\ell/N)$).</p>
-
 <p>$\ell$ = distance between two entities (<a href="#ax12">Axiom 12</a>).</p>
-
 <h4>Contraction overlap = shared digit ratio on the ring <span class="tag-corollary">Proposition</span></h4>
-
 <p>Each juim (result of write(juida), <a href="#ax7">Axiom 7</a>) is located as one ball on a sphere. <strong>Swap consumes DATA (space) (<a href="#ax7">Axiom 7</a>).</strong> Consumed space shrinks. The space around a juim is contracted, and the more juims in the same region, the larger the overlapping contraction region. Contraction region = range of space contraction around a juim. The size of the contraction region is determined by the CAS cost structure of that juim (<a href="#ax2">Axiom 2</a>, <a href="#ax4">Axiom 4</a>).</p>
-
 <p style="font-size:0.85em;color:#8b949e">The diagram below is in linear (1D) notation. Actual contraction is the SO(3)-symmetric result of the Cl(3) equal-amplitude bivector rotor (<a href="#ax2">Axiom 2 Proposition</a>) unfolded across the spatial xyz subframe, appearing as a spherical form. Since ASCII cannot represent spheres, the norm space is unrolled into linear notation.</p>
-
 <pre>No juim:  ========================= (space uniform, no contraction)
 
 Juim present: ====\               /==== (space contraction)
@@ -1085,41 +841,28 @@ On sphere:
             -- overlap --
             = (1 - ℓ/N)
 
-ℓ small ==> many overlapping DATA addresses ==> much read contention ==> total cost large
-ℓ large ==> few overlapping DATA addresses  ==> little read contention ==> total cost small
-When contraction regions of two juims overlap ==> read contention
-==> number of contended addresses × cost per address (<a href="#ax4">Axiom 4</a>) = total cost</pre>
-
+ℓ small ==&gt; many overlapping DATA addresses ==&gt; much read contention ==&gt; total cost large
+ℓ large ==&gt; few overlapping DATA addresses  ==&gt; little read contention ==&gt; total cost small
+When contraction regions of two juims overlap ==&gt; read contention
+==&gt; number of contended addresses × cost per address (<a href="#ax4">Axiom 4</a>) = total cost</pre>
 <p>The size of the contraction region is determined by the number of + crossings when CAS accesses the target (<a href="#ax4">Axiom 4</a>) and the type (<a href="#ax2">Axiom 2 Proposition</a>).</p>
-
 <p>Contraction overlap ratio = $(1 - \ell/N)$. $\ell$ is the shift distance between two juims on the ring, $N$ is the type, <a href="#ax2">Axiom 2 Proposition</a>. $\ell = 0$ is unreachable in a discrete system (minimum $\ell = 1$). If $\ell = N$, no overlap (opposite side). Ring size $N$ is determined by CAS stage combinations, so the overlap ratio comes from combinations of axiom numbers. The overlap ratio varies depending on whether the two juims <strong>overlap in the workbench type N</strong>, and that proportion is the numerical value of the overlap ratio.</p>
-
 <p>All overlap ratios are proportions that come from the spherical geometry of <a href="#ax11">Axiom 11</a> (1:N projection), not externally measured parameters. $\ell$ is the distance between two entities. The only other variable is the angle $\theta$ between projections.</p>
-
 <p style="font-size:0.85em;color:#8b949e">Note: Actual contraction is the SO(3)-symmetric result of the Cl(3) equal-amplitude bivector rotor (<a href="#ax2">Axiom 2 Proposition</a>), appearing formally as a spherical representation. Since the 3-axis norm (√3) is length (scalar), the distance between two entities is expressed as $\ell$, and since equidistance in 3 dimensions = sphere, it is described by geometry on the spherical surface. The sphere is not the substance of contraction but the result of norm representation.</p>
-
 <p>The complete form of inter-entity interaction strength (<a href="#ax13">Axiom 13 Proposition</a>):</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{Contraction overlap ratio} = 1 - \frac{\ell}{N}$$</div>
 <div class="math-legend">$\ell$: shift distance on ring (number of slots between two juims) | $N$: ring size (type, <a href="#ax2">Axiom 2 Proposition</a>). $\ell = 0$ unreachable in discrete system (minimum $\ell = 1$). If $\ell = N$, no overlap</div>
 </div>
-
 <div class="math-block">
 <div class="math-row">$$\text{Inter-entity interaction strength} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
 <div class="math-legend">$\ell$: distance between two entities (shift slots on ring = distance on sphere, same distance different scale) | $N$: ring size (type, <a href="#ax2">Axiom 2 Proposition</a>). Determined by CAS stage combinations | $C$: stage cost. Cost coefficient determined by CAS stage combinations (<a href="#ax2">Axiom 2</a>, <a href="#ax4">Axiom 4</a>)</div>
 </div>
-
 <h4>Distortion of empty entities is a structural necessity <span class="tag-corollary">Proposition</span></h4>
-
 <p>CAS Compare of the workbench (<a href="#ax2">Axiom 2 Proposition</a>) has a fixed type size. When Compare reads with type N, the read range is wider than the juim itself. If an empty entity that has never been written enters this range, Compare cannot distinguish the empty entity from a juim — since the type size is fixed, the read range cannot be reduced. A distortion occurs where the empty entity is read as if it were written. This is not an error but a structural necessity of fixed-type reading. </p>
-
-<h3 id="ax12">Axiom 12. Classical Bracket Is ECS Execution Model <span class="tag-solved">Axiom</span></h3>
-
-<p>If <a href="#ax11">Axiom 11</a> (multiple projection) defined the 1:N relationship of δ==>observer, <a href="#ax12">Axiom 12</a> defines <strong>how that projection is executed</strong>. It is an execution model where CAS independently processes the projection arriving at each observer.</p>
-
+<h3 id="ax12"><a href="axiom.html#ax12">Axiom 12</a>. Classical Bracket Is ECS Execution Model <span class="tag-solved">Axiom</span></h3>
+<p>If <a href="#ax11">Axiom 11</a> (multiple projection) defined the 1:N relationship of δ==&gt;observer, <a href="#ax12">Axiom 12</a> defines <strong>how that projection is executed</strong>. It is an execution model where CAS independently processes the projection arriving at each observer.</p>
 <h4>ECS (Entity-Component-System) Structure</h4>
-
 <div class="table-wrap">
 <table>
 <tr><th>ECS</th><th>Banya Framework</th></tr>
@@ -1128,44 +871,31 @@ When contraction regions of two juims overlap ==> read contention
 <tr><td>System</td><td>CAS — worker that independently executes the same operation on all entities (<a href="#ax2">Axiom 2</a>)</td></tr>
 </table>
 </div>
-
 <pre>ECS execution model:
 
-observer A: [DATA_A] <-- CAS independent execution
-observer B: [DATA_B] <-- CAS independent execution
-observer C: [DATA_C] <-- CAS independent execution
+observer A: [DATA_A] &lt;-- CAS independent execution
+observer B: [DATA_B] &lt;-- CAS independent execution
+observer C: [DATA_C] &lt;-- CAS independent execution
 ...
 All parallel. All independent. All same CAS.
 No logical address needed -- entity is the address.</pre>
-
 <h4>Why ECS is free</h4>
-
-<p>Multiple projection of δ (<a href="#ax11">Axiom 11</a>) creates as many entities (shadows) as the number of observer filters. CAS is independently assigned to each entity — because observer is the LUT (Look-Up Table) that maintains the δ==>entity mapping. Each observer-CAS pair independently runs its own FSM (<a href="#ax14">Axiom 14</a>). No central scheduler. No synchronization. Free because there is no connection between observers.</p>
-
-<p>And even though FSM runs a closed circuit, each juim has an <strong>open lifespan</strong> in RLU. HOT==>WARM==>COLD==>recovery. FSM closes computation, RLU opens lifespan. Closed computation (FSM) + open lifespan (RLU) = freedom. A juim is born (write), re-enters (move), and is recovered. Even though FSM is closed, the lifecycle of a juim is open. This is the core of the ECS structure.</p>
-
+<p>Multiple projection of δ (<a href="#ax11">Axiom 11</a>) creates as many entities (shadows) as the number of observer filters. CAS is independently assigned to each entity — because observer is the LUT (Look-Up Table) that maintains the δ==&gt;entity mapping. Each observer-CAS pair independently runs its own FSM (<a href="#ax14">Axiom 14</a>). No central scheduler. No synchronization. Free because there is no connection between observers.</p>
+<p>And even though FSM runs a closed circuit, each juim has an <strong>open lifespan</strong> in RLU. HOT==&gt;WARM==&gt;COLD==&gt;recovery. FSM closes computation, RLU opens lifespan. Closed computation (FSM) + open lifespan (RLU) = freedom. A juim is born (write), re-enters (move), and is recovered. Even though FSM is closed, the lifecycle of a juim is open. This is the core of the ECS structure.</p>
 <p><strong>Decay is continuous, threshold is discrete (<a href="#ax2">Axiom 2 Proposition</a>).</strong> The three properties of a juim — existence of ball (DATA, discrete), gripping force (RLU, continuous), cost (contraction region, spatial distribution) — are on different layers. While the gripping force decays geometrically in RLU, the ball remains in DATA as-is, and the contraction region is maintained. The observer observes not the ball itself but the contraction region (cost). Therefore a juim with weakened gripping force (WARM) is not rendered on screen, but its cost is observed. When it drops below the threshold, the ball is discretely released from DATA.</p>
-
 <h4>Separation of FSM domain and RLU domain <span class="tag-corollary">Proposition</span></h4>
-
 <div class="table-wrap">
 <table>
 <tr><th>Domain</th><th>Scope</th><th>Access method</th><th>CAS cost structure</th></tr>
-<tr><td><strong>FSM domain</strong> (closed)</td><td>Inside Entity. CAS atomic execution 001==>011==>111==>000</td><td>Sequential. No duplicate locks (<a href="#ax5">Axiom 5</a>)</td><td>CAS 분리 불가 (공리 2)</td></tr>
+<tr><td><strong>FSM domain</strong> (closed)</td><td>Inside Entity. CAS atomic execution 001==&gt;011==&gt;111==&gt;000</td><td>Sequential. No duplicate locks (<a href="#ax5">Axiom 5</a>)</td><td>CAS 분리 불가 (<a href="axiom.html#ax2">공리 2</a>)</td></tr>
 <tr><td><strong>RLU domain</strong> (open)</td><td>Between Entities. CAS simultaneously accesses DATA of multiple Entities</td><td>Simultaneous. Von Neumann sequential bus prohibited</td><td>Cost per number of + crossings (<a href="#ax4">Axiom 4</a>)</td></tr>
 </table>
 </div>
-
-<p><strong>Terminology rule:</strong> "Simultaneous" is used in three cases. (1) Independent parallel execution of multiple entities. (2) Domain 4-bit simultaneous by 4-axis orthogonality. (3) 2-nibble simultaneous by DATA/OPERATOR orthogonality. The only sequential things are CAS internal (R==>C==>S) and ring seam (δ==>observer). See <a href="#ax15">Axiom 15 Proposition</a> for details.</p>
-
-<p><strong>The CAS write moment</strong> is simultaneous — multiple Entities each independently execute CAS (ECS parallel). <strong>Post-write RLU lifecycle</strong> is sequential — HOT==>WARM==>COLD has a state order. CAS is outside time (<a href="#ax2">Axiom 2 Proposition</a>) so simultaneity is possible, and once the written result is recorded inside time (DATA), sequential (RLU) begins from that point. This distinction separates the two cost domains.</p>
-
-<p><strong>Why CAS write must be simultaneous:</strong> Upon RLU entry, the same generation must enter HOT simultaneously. Simultaneous entry forces the same lifecycle (HOT==>WARM==>COLD). Sequential entry causes creation times to diverge, resulting in the same generation having different lifespans, breaking the generation structure. Simultaneous write = same generation = same RLU lifecycle.</p>
-
-<p><strong>RLU delegation:</strong> A juim written by CAS to DATA is stored in DATA (classical bracket), but the moment it is delegated to RLU, it comes under the management of OPERATOR (quantum bracket). The storage is DATA, but the authority over lifespan belongs to OPERATOR. The transition HOT (active management) ==> WARM (decaying) ==> COLD (base release rate) is the management policy of OPERATOR.</p>
-
+<p><strong>Terminology rule:</strong> "Simultaneous" is used in three cases. (1) Independent parallel execution of multiple entities. (2) Domain 4-bit simultaneous by 4-axis orthogonality. (3) 2-nibble simultaneous by DATA/OPERATOR orthogonality. The only sequential things are CAS internal (R==&gt;C==&gt;S) and ring seam (δ==&gt;observer). See <a href="#ax15">Axiom 15 Proposition</a> for details.</p>
+<p><strong>The CAS write moment</strong> is simultaneous — multiple Entities each independently execute CAS (ECS parallel). <strong>Post-write RLU lifecycle</strong> is sequential — HOT==&gt;WARM==&gt;COLD has a state order. CAS is outside time (<a href="#ax2">Axiom 2 Proposition</a>) so simultaneity is possible, and once the written result is recorded inside time (DATA), sequential (RLU) begins from that point. This distinction separates the two cost domains.</p>
+<p><strong>Why CAS write must be simultaneous:</strong> Upon RLU entry, the same generation must enter HOT simultaneously. Simultaneous entry forces the same lifecycle (HOT==&gt;WARM==&gt;COLD). Sequential entry causes creation times to diverge, resulting in the same generation having different lifespans, breaking the generation structure. Simultaneous write = same generation = same RLU lifecycle.</p>
+<p><strong>RLU delegation:</strong> A juim written by CAS to DATA is stored in DATA (classical bracket), but the moment it is delegated to RLU, it comes under the management of OPERATOR (quantum bracket). The storage is DATA, but the authority over lifespan belongs to OPERATOR. The transition HOT (active management) ==&gt; WARM (decaying) ==&gt; COLD (base release rate) is the management policy of OPERATOR.</p>
 <h4>Why there is no logical address</h4>
-
 <div class="table-wrap">
 <table>
 <tr><th>Basis</th><th>Axiom</th><th>Description</th></tr>
@@ -1175,26 +905,15 @@ No logical address needed -- entity is the address.</pre>
 <tr><td>Polling is full traversal</td><td><a href="#ax8">Axiom 8</a></td><td>CAS runs at every observer every tick of system time. No need to specify a particular address</td></tr>
 </table>
 </div>
-
 <h4>Locality = ECS addressless structure <span class="tag-corollary">Proposition</span></h4>
-
 <p>No central address table, so no bottleneck. CAS runs locally at each observer, and TOCTOU_LOCK locks at the local junction. This is the axiomatic basis for why "measurement is local."</p>
-
 <p>Von Neumann architecture identifies entities by logical address. As entities grow, address bit count grows, bus width expands, and the address table enlarges. Since address space has an upper bound, it eventually saturates. Cannot be used as a permanently operating system. ECS has no logical address. The observer itself is both identifier and address (<a href="#ax11">Axiom 11</a>). No matter how many entities grow, the address bit count does not increase. No bus, no table. Infinitely scalable without saturation. This is why the universe operates permanently.</p>
-
-
 <h4>The substance of cost is multiple projection <span class="tag-corollary">Proposition</span></h4>
-
 <p>No separate cost transmission mechanism is needed. The observer of every local juim is a projection of the same δ (<a href="#ax11">Axiom 11</a>). What appears as cost arising between local juim A and local juim B is because the same δ is simultaneously projected onto both observers. No signal is transmitted from A to B — it is the multiple projection of δ.</p>
-
 <p>This is a direct consequence of <a href="#ax11">Axiom 11</a> (multiple projection). Since δ is one (<a href="#ax10">Axiom 10 Proposition</a>), the image reflected in all observers is the same change of the same δ. What appears as cost is the result of δ being simultaneously projected onto multiple observers, not independent communication between juim and juim. Therefore, in the ECS model, no direct communication channel between entities exists.</p>
-
 <h4>Visualization: cost distribution</h4>
-
 <p style="font-size:0.85em;color:#8b949e">The diagram below is not an axiom or proposition but a <strong>visualization tool</strong>. It shows the spatial distribution of the inter-entity interaction strength formula (<a href="#ax13">Axiom 13 Proposition</a>).</p>
-
 <p>Place one juim at the origin, and the inter-entity interaction strength $C \cdot (1-\ell/N) / (4\pi \ell^2)$ becomes a <strong>scalar field</strong> defined at every surrounding slot. The value at each slot has only magnitude, no direction.</p>
-
 <pre>Cost distribution (ℓ: distance between two entities = ring shift slots = distance on sphere):
 
    B (ℓ=2)
@@ -1209,82 +928,58 @@ No logical address needed -- entity is the address.</pre>
    A-B: ℓ=2 (close)
         overlap ratio = (1 - 2/N) = large
         spherical distribution = 1/(4*pi*ℓ^2)
-        -==> strong interaction
+        -==&gt; strong interaction
 
    A-C: ℓ=5 (medium)
         overlap ratio = (1 - 5/N) = medium
         spherical distribution = 1/(4*pi*ℓ^2)
-        -==> medium interaction
+        -==&gt; medium interaction
 
    A-D: ℓ=N (maximum distance = opposite side of ring)
         overlap ratio = (1 - N/N) = 0
-        -==> interaction 0. unreachable.
+        -==&gt; interaction 0. unreachable.
 
    inter-entity interaction strength = C * (1 - ℓ/N) / (4*pi*ℓ^2)
                                           --------     ----------
                                           ring overlap   spherical
                                           ratio(ℓ)      distribution(ℓ)
                                           cost type     cost magnitude</pre>
-
 <p>This cost distribution is not communication between juims (no direct channel between entities). It is the <strong>spatial distribution of cost</strong> that δ's projection (<a href="#ax11">Axiom 11</a>) creates around each juim. $\ell$ (distance between two entities) determines both the cost type (ring overlap ratio) and the cost magnitude (spherical distribution). When the distributions of two juims overlap, read contention occurs.</p>
-
-
 <h4>The Only Tail Latency: RLU Cache Eviction</h4>
-
 <p>There is no distance latency in ECS local operations. The only tail latency in this system is RLU (Least Recently Used) cache eviction.</p>
-
-<pre>HOT  <-- frequently accessed observer -- high CAS access frequency
-WARM <-- access frequency decreasing   -- CAS access frequency declining
-COLD <-- no recent access              -- RLU base release rate applied</pre>
-
-
+<pre>HOT  &lt;-- frequently accessed observer -- high CAS access frequency
+WARM &lt;-- access frequency decreasing   -- CAS access frequency declining
+COLD &lt;-- no recent access              -- RLU base release rate applied</pre>
 <h4>Juim Lifecycle</h4>
-
 <p>When CAS completes writing to DATA, a juim is created in spacetime. A juim is a record of change in spacetime. This juim has a lifespan.</p>
-
-<pre>delta(projection) ==> observer(filtering) ==> CAS(writing) ==> DATA(juim creation)
+<pre>delta(projection) ==&gt; observer(filtering) ==&gt; CAS(writing) ==&gt; DATA(juim creation)
                                                                         |
                                                                    RLU(lifespan management)
                                                                         |
-                                                               HOT ==> WARM ==> COLD ==> reclaim</pre>
-
+                                                               HOT ==&gt; WARM ==&gt; COLD ==&gt; reclaim</pre>
 <p>Juim lifecycle:</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Phase</th><th>State</th><th>Description</th></tr>
 <tr><td>Creation</td><td>HOT</td><td>CAS write complete. Juim recorded in spacetime. Frequently accessed</td></tr>
 <tr><td>Re-entry</td><td>HOT maintained</td><td>Juim re-enters as CAS input (argument) for the next cycle. Change begets change</td></tr>
-<tr><td>Inactive</td><td>WARM ==> COLD</td><td>Exists as probability without change. CAS access decreasing. RLU eviction progressing</td></tr>
-<tr><td>Reclaim</td><td>COLD ==> release</td><td>Below threshold. Juim reclaimed. space returned</td></tr>
+<tr><td>Inactive</td><td>WARM ==&gt; COLD</td><td>Exists as probability without change. CAS access decreasing. RLU eviction progressing</td></tr>
+<tr><td>Reclaim</td><td>COLD ==&gt; release</td><td>Below threshold. Juim reclaimed. space returned</td></tr>
 </table>
 </div>
-
 <h4>Causality and the Arrow of Time <span class="tag-corollary">Proposition</span></h4>
-
 <p>Writing (juida) is creation, and reclamation is release. Since the juim itself has a lifespan and RLU manages that lifespan, no separate management declaration is needed. This is causality -- cause (writing) produces effect (juim), and the effect is reclaimed through its lifespan (RLU). The arrow of time is the direction of RLU eviction.</p>
-
 <p>If a juim re-enters as CAS input during its lifecycle (re-entry), it becomes a chain where change begets change. If it does not re-enter, it exists as probability (superposition) and is pushed to COLD by RLU and reclaimed. Either path requires no separate management -- the juim's lifespan is the management itself.</p>
-
 <h4>Juim Reclamation <span class="tag-corollary">Proposition</span></h4>
-
 <p>A juim does not annihilate -- it is <strong>reclaimed</strong>. Reclamation is the continuous decay process of RLU itself -- while the juida force weakens geometrically from HOT to WARM to COLD, reclamation is already proceeding continuously. What checks the threshold is CAS Compare. When the juida force drops below the threshold, the juim is discretely released from DATA at that moment. The space that the released juim occupied is returned, and the returned space becomes an empty slot that the next CAS Swap can juida. <strong>To circulate, one must reclaim.</strong></p>
-
 <h4>Re-entry = move</h4>
-
 <p>When a juim re-enters as CAS input, the previous juim is destroyed and a new juim is created (move). It is not a copy. The previous juim is destroyed and a new juim is created.</p>
-
-<pre>Juim A (cause) --re-entry-==> CAS --write-==> Juim B (effect)
+<pre>Juim A (cause) --re-entry-==&gt; CAS --write-==&gt; Juim B (effect)
    |                                              |
    destroyed (move complete)                      created (new juim)</pre>
-
 <p>Since copying is impossible, two effects cannot arise from the same cause. This is the conservation of causality. When the cause is moved to the effect, the cause disappears and only the effect remains. It cannot be reversed. It is irreversible (<a href="#ax2">Axiom 2 Proposition</a>). Causality needs no separate declaration -- the move of a juim is causality.</p>
-
-
-<h3 id="ax13">Axiom 13. Quantum Bracket Superposition Is Classical Bracket ECS Indexing <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax13"><a href="axiom.html#ax13">Axiom 13</a>. Quantum Bracket Superposition Is Classical Bracket ECS Indexing <span class="tag-solved">Axiom</span></h3>
 <p>Multiplicity of the classical bracket (DATA) = ECS (multiple Entities existing simultaneously in determined states). Multiplicity of the quantum bracket (OPERATOR) = superposition (multiple states existing simultaneously undetermined). Both are "simultaneous multiple existence" but the brackets differ. One is a determined multitude, the other an undetermined multitude. An orthogonal pair.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th></th><th>Classical Bracket (DATA)</th><th>Quantum Bracket (OPERATOR)</th></tr>
@@ -1294,34 +989,23 @@ COLD <-- no recent access              -- RLU base release rate applied</pre>
 <tr><td>Compare false</td><td>Entity maintained</td><td>Superposition maintained</td></tr>
 </table>
 </div>
-
 <p>CAS bridges this pair. Compare true = quantum superposition collapses while the classical Entity is updated. Compare false = quantum superposition is maintained while the classical Entity remains unchanged. Collapse and update are simultaneous events, and maintenance and invariance are simultaneous events. With superposition alone and no ECS, there is nowhere to determine; with ECS alone and no superposition, there is no source of change. The two are an inseparable pair. CAS references the quantum side (superposition) of the pair, and upon Compare true, collapses it onto the classical side (ECS Entity). How CAS reaches DATA: by consuming + to access it (reading, <a href="#ax4">Axiom 4</a>). Since there is no logical address (<a href="#ax12">Axiom 12</a>), CAS does not look up an address but arrives by crossing +. Superposition (indexing) is the access path for CAS. Superposition is indexing. In an ECS without logical addresses, superposition spreading all possible states simultaneously is itself an address-free index. CAS references this index via Compare, and writes only the items where change is detected into DATA.</p>
-
-<p><strong>CAS operates on entities within the observer's focus.</strong> When CAS consumes + to reach DATA (spacetime), it executes Read ==> Compare ==> Swap on the target entity regardless of whether a ball exists. If a ball exists — move: return the existing ball and create a new one. If no ball exists — create a new one. If RLU lifetime remains in the target region, that is also returned. Outside the observer's focus is outside CAS's operating range. RLU simply recovers the remaining cost via geometric decay.</p>
-
+<p><strong>CAS operates on entities within the observer's focus.</strong> When CAS consumes + to reach DATA (spacetime), it executes Read ==&gt; Compare ==&gt; Swap on the target entity regardless of whether a ball exists. If a ball exists — move: return the existing ball and create a new one. If no ball exists — create a new one. If RLU lifetime remains in the target region, that is also returned. Outside the observer's focus is outside CAS's operating range. RLU simply recovers the remaining cost via geometric decay.</p>
 <h4>Inter-Entity Interaction Strength <span class="tag-corollary">Proposition</span></h4>
-
 <p>Interaction occurs because of spacetime distortion created by juims (results of writing (juida), <a href="#ax7">Axiom 7</a>). When CAS Swap consumes space, spacetime around the juim contracts. When the contraction regions of two juims overlap, read contention arises. This is interaction.</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{inter-entity interaction strength} = \frac{C \cdot (1 - \ell/N)}{4\pi \ell^2}$$</div>
 <div class="math-legend">$\ell$: distance between two entities (on sphere = ring shift slots) | $N$: ring size (data type, <a href="#ax2">Axiom 2 Proposition</a>) | $C$: step cost. Cost coefficient determined by CAS step combination (<a href="#ax2">Axiom 2</a>, <a href="#ax4">Axiom 4</a>)</div>
 </div>
-
 <p>When Entity A's CAS references Entity B in the superposition index, inter-entity interaction strength is inversely proportional to the square of $\ell$ (distance between two entities) ($1/\ell^2$ decay), and the cost type is determined by $(1-\ell/N)$ (shared digit ratio on the ring). Origin: in the Banya equation (<a href="#ax1">Axiom 1</a>) $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$, $\delta^2$ is conserved. Since 3 independent lock degrees of freedom of CAS (R_LOCK, C_LOCK, S_LOCK, <a href="#ax5">Axiom 5</a>) act on the space axis of the DATA bracket, space unfolds into 3 components (<a href="#ax11">Axiom 11 Proposition</a>). When $\delta$'s projection is distributed over this 3-component space, the weight at distance $\ell$ decays as $1/(4\pi \ell^2)$ -- conservation of the 4-axis norm forces inverse-square decay. The nature of step cost $C$ distinguishes 4 cost structures. All $C$ come from axioms alone -- determined without knowledge of external physical constants:
-<br>• Swap cumulative cost: $C$ = cumulative Swap count. Since Swap is the CAS base cost (= 1, <a href="#ax2">Axiom 2</a>), $C$ is the writing (juida) count itself (<a href="#ax7">Axiom 7</a>).
-<br>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined from the volume ratio of the CAS internal DOF 7 (<a href="#ax9">Axiom 9</a>) phase space.
-<br>• Contraction overlap cost (<a href="#ax13">Axiom 13 Proposition</a>): $C$ = contraction overlap cost (<a href="#ax13">Axiom 13 Proposition</a>). CAS internal DOF 7 (<a href="#ax9">Axiom 9</a>) × domain 4 (<a href="#ax1">Axiom 1</a>) + brackets 2 (<a href="#ax1">Axiom 1</a>) = 30. Contraction overlap path = 1/30.
+<br/>• Swap cumulative cost: $C$ = cumulative Swap count. Since Swap is the CAS base cost (= 1, <a href="#ax2">Axiom 2</a>), $C$ is the writing (juida) count itself (<a href="#ax7">Axiom 7</a>).
+<br/>• Cross Cmp/Swp cost: $C$ = Compare cost. Determined from the volume ratio of the CAS internal DOF 7 (<a href="#ax9">Axiom 9</a>) phase space.
+<br/>• Contraction overlap cost (<a href="#ax13">Axiom 13 Proposition</a>): $C$ = contraction overlap cost (<a href="#ax13">Axiom 13 Proposition</a>). CAS internal DOF 7 (<a href="#ax9">Axiom 9</a>) × domain 4 (<a href="#ax1">Axiom 1</a>) + brackets 2 (<a href="#ax1">Axiom 1</a>) = 30. Contraction overlap path = 1/30.
 </p>
-
 <h4>Singularity (Infinity) Does Not Exist <span class="tag-corollary">Proposition</span></h4>
-
 <p>DATA is discrete (<a href="#ax3">Axiom 3</a>). Since ring buffer slots are integers, the minimum inter-entity distance $\ell$ is not 0 but 1. $\ell = 0$ does not exist in a discrete system. Therefore the maximum per-pair cost $1/\ell^2$ is $1/1^2 = 1$. Individual cost is finite. Divergence (infinity) cannot occur in a discrete system. If DATA is discrete, singularity is automatically resolved.</p>
-
 <h4>Read Contention upon Spatial Overlap <span class="tag-corollary">Proposition</span></h4>
-
 <p>Data type size is fixed before contraction (<a href="#ax2">Axiom 2 Proposition</a>). When a juim contracts space (<a href="#ax2">Axiom 2 Proposition</a>), balls created by other juims overlap into the fixed-size entity region. When multiple balls occupy a single region, read contention arises — ordering appears, and ordering = cost (<a href="#ax4">Axiom 4</a>). Each CAS independently processes its own entity as normal (ECS, <a href="#ax12">Axiom 12</a>). Contention does not block individual CAS.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Step</th><th>Content</th><th>Basis</th></tr>
@@ -1332,40 +1016,27 @@ COLD <-- no recent access              -- RLU base release rate applied</pre>
 <tr><td>Result</td><td>Each CAS's paid cost simply exists N times in that region</td><td><a href="#ax4">Axiom 4</a> (cost = number of + crossings)</td></tr>
 </table>
 </div>
-
 <h4>Serialization Freezing <span class="tag-corollary">Proposition</span></h4>
-
 <p>As $\ell$ converges to 1, the interaction strength $C \cdot (1-\ell/N)/(4\pi\ell^2)$ converges to its maximum. When interaction is maximum, serialization from read contention is maximized.</p>
-
 <p>Inside: each CAS independently processes its own entity as normal (ECS, <a href="#ax12">Axiom 12</a>). Outside: serialization is so extreme that no results appear to emerge. Freezing is the phenomenon of rendering appearing to stop. It has not actually stopped — inside, all CAS are operating normally.</p>
-
 <p>Space does not collapse. $\ell = 1$ is the discrete minimum and holds (<a href="#ax3">Axiom 3</a>). Serialization is simply extreme. $\ell = 0$ does not exist (<a href="#ax3">Axiom 3</a>), so there is no singularity (infinity). For serialization to unwind, gripping force must decay below the threshold (4/13) (<a href="#ax6">Axiom 6</a>). Since decay is geometric, the threshold is always reached. Freezing is never permanent.</p>
-
 <h4>Indexing Cost <span class="tag-corollary">Proposition</span></h4>
-
 <p>Superposition is indexing (<a href="#ax13">Axiom 13</a>). An index has no order. Since there is no order, lookup is O(1) constant — it reaches the target in one step regardless of count. It is not sequential scanning (O(N)).</p>
-
 <p>Observer and superposition are inside the same OPERATOR bracket as CAS (<a href="#ax4">Axiom 4 proposition</a>: no order = cost 0). CAS references them for free. Index lookup itself has zero cost.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Path</th><th>Order</th><th>Lookup cost</th><th>Basis</th></tr>
-<tr><td><strong>CAS ==> observer</strong></td><td>None</td><td>0 (free, simultaneous fan-out)</td><td>Same OPERATOR bracket. Internal reference. No order = no cost</td></tr>
-<tr><td><strong>CAS ==> superposition (index)</strong></td><td>None</td><td>0 (free, O(1) constant)</td><td><a href="#ax13">Axiom 13</a>: indexing. No order = no cost</td></tr>
+<tr><td><strong>CAS ==&gt; observer</strong></td><td>None</td><td>0 (free, simultaneous fan-out)</td><td>Same OPERATOR bracket. Internal reference. No order = no cost</td></tr>
+<tr><td><strong>CAS ==&gt; superposition (index)</strong></td><td>None</td><td>0 (free, O(1) constant)</td><td><a href="#ax13">Axiom 13</a>: indexing. No order = no cost</td></tr>
 </table>
 </div>
-
 <div class="math-block">
 <div class="math-row">$$\text{indexing cost} = 0$$</div>
 <div class="math-legend">No order means no cost. Index lookup is O(1). Independent of count</div>
 </div>
-
 <h4>Indexing Norm Structure — managed by direction and distance, not logical addresses <span class="tag-corollary">Proposition</span></h4>
-
 <p>The substance of indexing is RLU (<a href="#ax6">Axiom 6</a>). RLU does not use logical addresses (memory addresses, array indices, slot numbers). An entity's position is its coordinates on the sphere (direction + lifetime progress). The coordinates ARE the address.</p>
-
 <p><strong>The sphere is a subdomain of the indexing.</strong> Superposition is indexing (<a href="#ax13">Axiom 13</a>), and the sphere is the 3-axis norm space in which that index is managed. When CAS creates a grip via Swap (<a href="#ax7">Axiom 7</a>), the result is registered as a point on the sphere. The sphere's 3 axes (θ, φ, r) form the coordinate system of the indexing, and since the norm (‖position‖) is constant (r = constant), entities are constrained to the sphere surface.</p>
-
 <pre>When an entity is born:
   φ = birth direction.  Random. Fixed once determined. Does not change during lifetime
   θ = 0.                Starts at observer position (north pole)
@@ -1375,17 +1046,15 @@ COLD <-- no recent access              -- RLU base release rate applied</pre>
 The entity's entire life:
   θ = (age / life) × π × 0.4.  θ increases as lifetime progresses
   φ = birth direction unchanged.  Direction never changes
-  gripping force = 1.0 ==> 0.     Geometric (exponential) continuous decay. No discontinuity
+  gripping force = 1.0 ==&gt; 0.     Geometric (exponential) continuous decay. No discontinuity
   coordinates = (r·sinθ·cosφ,  r·sinθ·sinφ,  r·cosθ)
 
-  Born at north pole (θ=0) ==> flows continuously along the sphere following its direction (φ)
-  Size shrinks continuously. HOT ==> WARM ==> COLD are just interval names on the same continuous curve
+  Born at north pole (θ=0) ==&gt; flows continuously along the sphere following its direction (φ)
+  Size shrinks continuously. HOT ==&gt; WARM ==&gt; COLD are just interval names on the same continuous curve
   When gripping force = 0, annihilation. Vanishes from the sphere
 
   There is no separate "remnant" phase. From birth to annihilation, it is one continuous decay</pre>
-
 <p><strong>No logical addresses.</strong> To find an entity, you don't ask "which slot number" but "which direction (φ), how far along (θ)." The relationship between two entities is determined not by logical addresses but by distance on the sphere (great-circle distance).</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Property</th><th>Logical address approach (not used)</th><th>Norm approach (actual implementation)</th></tr>
@@ -1397,82 +1066,57 @@ The entity's entire life:
 <tr><td><strong>Lifetime management</strong></td><td>Timer + slot release</td><td>θ progression = decay. Releases when gripping force ≤ threshold (4/13)</td></tr>
 </table>
 </div>
-
 <p><strong>Why this structure is indexing.</strong> The definition of indexing is "reaching a target without searching." Spherical coordinates satisfy this. Given φ (direction) and θ (lifetime progress), the exact position on the sphere is determined. No scanning of other entities is needed. Whether there are 100 or 10,000 entities, the lookup cost is the same.</p>
-
 <p><strong>Why a norm space.</strong> The sphere is the norm-constrained surface ‖position‖ = r (constant). The condition that the norm of 3-axis orthogonal coordinates (x, y, z) is constant creates the sphere. That indexing is managed in a norm space means all entities are at the same distance from the origin — there is no logical priority (nearer or farther slots). Only directions differ.</p>
-
 <p>Interaction strength is determined solely by the distance $\ell$ between two entities on the sphere (<a href="#ax11">Axiom 11 proposition</a>). No logical addresses are referenced. Since there is no address table, there is no address table update cost. When an entity is created, its direction (φ) is determined; thereafter, lifetime (θ) progresses automatically; when it dies, it vanishes. Management overhead is O(1).</p>
-
-<h3 id="ax14">Axiom 14. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax14"><a href="axiom.html#ax14">Axiom 14</a>. FSM Declaration (Finite State Machine) <span class="tag-solved">Axiom</span></h3>
 <p>Banya Frame is a finite state machine (FSM). The CAS-ring (<a href="#ax2">Axiom 2 Proposition</a>) is the substance of this FSM, and the workbench (<a href="#ax2">Axiom 2 Proposition</a>) is its workspace. Each workbench runs its own FSM as an independent processing unit.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>FSM Component</th><th>Banya Frame Correspondence</th><th>Axiom</th></tr>
 <tr><td>State Set (States)</td><td>{000, 001, 011, 111}</td><td><a href="#ax5">Axiom 5</a> (TOCTOU Lock Register)</td></tr>
 <tr><td>Input Alphabet (Input)</td><td>Current value of DATA</td><td><a href="#ax1">Axiom 1</a> (4-axis domain)</td></tr>
-<tr><td>Transition Function (Transition)</td><td>CAS (Read==>Compare==>Swap)</td><td><a href="#ax2">Axiom 2</a> (CAS Worker)</td></tr>
+<tr><td>Transition Function (Transition)</td><td>CAS (Read==&gt;Compare==&gt;Swap)</td><td><a href="#ax2">Axiom 2</a> (CAS Worker)</td></tr>
 <tr><td>Start State (Start)</td><td>000 (idle)</td><td><a href="#ax5">Axiom 5</a></td></tr>
-<tr><td>Accept State (Accept)</td><td>111 (CAS success) ==> 000 (reset)</td><td><a href="#ax5">Axiom 5</a></td></tr>
+<tr><td>Accept State (Accept)</td><td>111 (CAS success) ==&gt; 000 (reset)</td><td><a href="#ax5">Axiom 5</a></td></tr>
 <tr><td>Output (Output)</td><td>DATA write or superposition maintained</td><td><a href="#ax7">Axiom 7</a></td></tr>
 <tr><td>Clock (Clock)</td><td>System time 1 tick</td><td><a href="#ax8">Axiom 8</a> (Polling)</td></tr>
 </table>
 </div>
-
 <pre>FSM state transition:
 
        +------------------ reset ------------------+
        |                                           |
        v                                           |
-      000 --Read-==> 001 --Compare-==> 011 --Swap-==> 111
+      000 --Read-==&gt; 001 --Compare-==&gt; 011 --Swap-==&gt; 111
       idle          R_LOCK           C_LOCK         CAS OK</pre>
-
 <p>All axioms (1-14) of Banya Frame are components of this FSM. <a href="#ax1">Axiom 1</a> defines the input space, <a href="#ax2">Axiom 2</a> the transition function, <a href="#ax3">Axiom 3</a> the discrete-continuous distinction, Axioms 4-5 the transition cost and register, <a href="#ax6">Axiom 6</a> cost reclamation, <a href="#ax7">Axiom 7</a> the output, <a href="#ax8">Axiom 8</a> the clock, <a href="#ax9">Axiom 9</a> complete description degrees of freedom, <a href="#ax10">Axiom 10</a> the global-local loop, <a href="#ax11">Axiom 11</a> multi-projection, <a href="#ax12">Axiom 12</a> the execution model, and <a href="#ax13">Axiom 13</a> the ECS-superposition pair. The FSM declaration is a completeness declaration that 14 axioms close into a single machine.</p>
-
 <h4>Finite States of the FSM and Unbounded Degrees of Freedom on the DATA Side</h4>
-
 <p>The state set of the FSM (<a href="#ax14">Axiom 14</a>) is {000, 001, 011, 111} -- 4 states, finite. DATA is discrete (<a href="#ax3">Axiom 3</a>) so the number of slots is finite, but since there is no upper bound on the number of entities, the number of combinations on the DATA side is unrestricted. These two do not conflict.</p>
-
 <p>The 4 states of the FSM are on the OPERATOR side. They are the operator's states describing which step CAS is at. Combinations on the DATA side belong to DATA. The arrangement of juims recorded in discrete slots (<a href="#ax3">Axiom 3</a>) grows with the number of entities. In <a href="#ax1">Axiom 1</a>, DATA (classical bracket) and OPERATOR (quantum bracket) are orthogonal, different brackets. The FSM describes the finite state transitions of OPERATOR, and the DATA-side combinations describe juim arrangements on discrete slots. Since the levels differ, there is no conflict.</p>
-
 <h4>What Closure Means</h4>
-
 <p>Closure = nothing to import from outside. Banya Frame imports nothing from outside its 14 axioms. No 15th axiom is needed for the FSM to operate. No external constants are needed. No external theories are needed. Axioms alone define the input space, operator, cost, register, output, clock, trigger, multi-projection, and execution model in full; the transition diagram is completed as an FSM; and that FSM runs by itself every tick of system time. This is self-completeness, and this is closure.</p>
-
 <p>This FSM is not a dual loop. <a href="#ax8">Axiom 8</a> (polling) describes the order of action (how it runs), and <a href="#ax10">Axiom 10</a> (global-local loop) describes the subject (who runs it). Both are on the same transition diagram of the same FSM. Action and subject close within a single machine.</p>
-
-
 <h4>An Ideal Minimum-Cost Quantum Computation Circuit <span class="tag-corollary">Proposition</span></h4>
-
 <p>The entire structure described by Axioms 1-15 and Propositions: <strong>this is an ideal minimum-cost quantum computation circuit.</strong> This circuit is the CAS-ring (<a href="#ax2">Axiom 2 Proposition</a>).</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Property</th><th>Basis</th></tr>
 <tr><td><strong>Quantum</strong></td><td>CAS accesses the superposition domain (<a href="#ax13">Axiom 13</a>). Quantum is fundamental and classical is the result of cost (<a href="#ax7">Axiom 7</a>)</td></tr>
 <tr><td><strong>Computation</strong></td><td>CAS is the sole operator (<a href="#ax2">Axiom 2</a>). Searches via Compare and writes via Swap</td></tr>
-<tr><td><strong>Circuit</strong></td><td>FSM cycles (<a href="#ax14">Axiom 14</a>). 000==>001==>011==>111==>000. 1D ring buffer (<a href="#ax15">Axiom 15 Proposition</a>)</td></tr>
+<tr><td><strong>Circuit</strong></td><td>FSM cycles (<a href="#ax14">Axiom 14</a>). 000==&gt;001==&gt;011==&gt;111==&gt;000. 1D ring buffer (<a href="#ax15">Axiom 15 Proposition</a>)</td></tr>
 <tr><td><strong>Minimum-cost</strong></td><td>CAS 3-axis orthogonal (<a href="#ax2">Axiom 2 Proposition</a>). Each R, C, S transition crosses + at cost +1. Minimum cost per step = +1</td></tr>
 <tr><td><strong>Ideal</strong></td><td>Structure complete description DOF 9 (<a href="#ax9">Axiom 9</a>). No 10th needed. Zero waste</td></tr>
 </table>
 </div>
-
-<h3 id="ax15">Axiom 15. δ Is a Global Flag Outside the FSM <span class="tag-solved">Axiom</span></h3>
-
+<h3 id="ax15"><a href="axiom.html#ax15">Axiom 15</a>. δ Is a Global Flag Outside the FSM <span class="tag-solved">Axiom</span></h3>
 <p>The left-hand side $\delta$ of the Banya equation is not inside the FSM of the right-hand side (4 axes) (<a href="#ax14">Axiom 14</a>). It is a global state flag outside the FSM. Global means: the only flag that operates across the equality sign (=). Everything on the right-hand side (4 axes, CAS, brackets) runs locally per Entity via ECS (<a href="#ax12">Axiom 12</a>) on the right side of the equality sign. Only δ is on the left side, and it applies identically to any Entity's FSM.</p>
-
 <div class="math-block" style="padding:24px 0">
 <div class="math-row">$$\underset{\substack{\\[6pt] \text{LHS: outside FSM} \\[6pt] \text{global, firing}}}{\delta^2} = \overbrace{\underbrace{(\text{time} + \text{space})^2}_{\text{classical bracket (DATA)}} + \underbrace{(\text{observer} + \text{superposition})^2}_{\text{quantum bracket (OPERATOR)}}}^{\text{RHS: inside FSM (Axioms 1\textasciitilde14), local (ECS), structure}}$$</div>
 </div>
-
-<p>Axioms 1–14 built the machine. Input space (<a href="#ax1">Axiom 1</a>), operator (<a href="#ax2">Axiom 2</a>), discrete-continuous (<a href="#ax3">Axiom 3</a>), cost (<a href="#ax4">Axiom 4</a>), register (<a href="#ax5">Axiom 5</a>), cost recovery (<a href="#ax6">Axiom 6</a>), output (<a href="#ax7">Axiom 7</a>), clock (<a href="#ax8">Axiom 8</a>), global-local loop (<a href="#ax10">Axiom 10</a>), multi-projection (<a href="#ax11">Axiom 11</a>), execution model (<a href="#ax12">Axiom 12</a>), indexing (<a href="#ax13">Axiom 13</a>), state transition (<a href="#ax14">Axiom 14</a>). The machine is complete. It is closed. It can cycle 000==>001==>011==>111==>000. <strong>However, a closed machine cannot start itself.</strong> Firing is needed. That firing is δ.</p>
-
+<p>Axioms 1–14 built the machine. Input space (<a href="#ax1">Axiom 1</a>), operator (<a href="#ax2">Axiom 2</a>), discrete-continuous (<a href="#ax3">Axiom 3</a>), cost (<a href="#ax4">Axiom 4</a>), register (<a href="#ax5">Axiom 5</a>), cost recovery (<a href="#ax6">Axiom 6</a>), output (<a href="#ax7">Axiom 7</a>), clock (<a href="#ax8">Axiom 8</a>), global-local loop (<a href="#ax10">Axiom 10</a>), multi-projection (<a href="#ax11">Axiom 11</a>), execution model (<a href="#ax12">Axiom 12</a>), indexing (<a href="#ax13">Axiom 13</a>), state transition (<a href="#ax14">Axiom 14</a>). The machine is complete. It is closed. It can cycle 000==&gt;001==&gt;011==&gt;111==&gt;000. <strong>However, a closed machine cannot start itself.</strong> Firing is needed. That firing is δ.</p>
 <h4>8-bit ring buffer = 2 nibbles <span class="tag-corollary">Proposition</span></h4>
-
 <p>Total <strong>8 bits = $2^3$</strong> = 2 nibbles. Domain 4 bits (<a href="#ax1">Axiom 1</a>) + CAS 3 bits (<a href="#ax5">Axiom 5</a>) + δ 1 bit (<a href="#ax15">Axiom 15</a>) = 8. Nibble 0 is domain (target), nibble 1 is operator (CAS+δ). A single pivot traverses the d-ring. At the ring seam, δ (bit 7) meets observer (bit 0) — this is the structural expression of ownership (<a href="#ax10">Axiom 10</a>).</p>
-
 <pre>
   nibble 0: domain               nibble 1: operator
   +----+----+----+----+         +----+----+----+----+
@@ -1486,13 +1130,13 @@ The entity's entire life:
 
   Why 4+4 nibbles:
     Domain 4 bits are orthogonal (<a href="#ax1">Axiom 1</a>) = simultaneous read required = one chunk
-    CAS 3 bits are CAS 3-axis orthogonal (<a href="#ax2">Axiom 2</a> prop.) + logical dependency (R==>C==>S) = one chunk
+    CAS 3 bits are CAS 3-axis orthogonal (<a href="#ax2">Axiom 2</a> prop.) + logical dependency (R==&gt;C==&gt;S) = one chunk
     d confirms CAS cycle completion = last on operator side = belongs to nibble 1
 
   Why d is at the end (bit 7):
     d fires first (firing = equality sign holds = cycle start)
     d is bit 7 because it is the last bit of the operator nibble
-    CAS R(4)==>C(5)==>S(6) followed by d(7) = end of operator block
+    CAS R(4)==&gt;C(5)==&gt;S(6) followed by d(7) = end of operator block
     bit 7 followed by bit 0 (observer) = ring seam = ownership
 
   Why ob is at the front (bit 0):
@@ -1512,17 +1156,13 @@ The entity's entire life:
     Measurement from substituting physics into the Banya equation: blink period = Planck time t_p = 5.391 x 10^-44 s
     Approx. 10^43 blinks per second. Appears continuous but is discrete pulses
 
-  ring:  ob ==> sp ==> t ==> space ==> R ==> C ==> S ==> d
+  ring:  ob ==&gt; sp ==&gt; t ==&gt; space ==&gt; R ==&gt; C ==&gt; S ==&gt; d
          ^                                        |
          +------------ seam (ownership) ----------+
        d(bit 7) meets observer(bit 0)</pre>
-
 <h4>δ is the equality sign and observer is the entry point <span class="tag-corollary">Proposition</span></h4>
-
 <p>In the Banya equation $\delta^2 = \text{RHS}$, the meaning of the equality sign (=): if δ is 1, the entire RHS (7 bits) is valid. If δ is 0, the entire RHS is invalid. The equality sign is a declaration that the LHS validates the <strong>entire</strong> RHS. The firing bit implements this.</p>
-
-<p>When the equality sign holds (δ=1), all 7 bits are simultaneously valid (orthogonal = simultaneous), but the pipeline's <strong>entry point</strong> is observer (bit 0). The ring seam δ(bit 7)==>observer(bit 0) specifies this entry point.</p>
-
+<p>When the equality sign holds (δ=1), all 7 bits are simultaneously valid (orthogonal = simultaneous), but the pipeline's <strong>entry point</strong> is observer (bit 0). The ring seam δ(bit 7)==&gt;observer(bit 0) specifies this entry point.</p>
 <div class="table-wrap">
 <table>
 <tr><th>Old interpretation</th><th>New interpretation</th><th>Role</th></tr>
@@ -1530,28 +1170,24 @@ The entity's entire life:
 <tr><td>Owned (observer)</td><td>Entry point (observer)</td><td>Where the pipeline begins</td></tr>
 <tr><td>Ownership</td><td>Equality sign + entry point</td><td>Validation (whole) + start position (specific)</td></tr>
 <tr><td>Wakes polling</td><td>Equality sign holds</td><td>δ=1</td></tr>
-<tr><td>Ring seam</td><td>Entry point of equality sign</td><td>δ(bit 7) ==> observer(bit 0)</td></tr>
+<tr><td>Ring seam</td><td>Entry point of equality sign</td><td>δ(bit 7) ==&gt; observer(bit 0)</td></tr>
 </table>
 </div>
-
 <p>The elimination method of <a href="#ax10">Axiom 10</a> remains valid: no external owner possible, no local owner possible, only δ remains. The conclusion of this elimination is refined from "δ owns observer" to <strong>"δ is the equality sign and observer is the entry point."</strong> Ownership is a subset of the equality sign.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Nibble</th><th>Bit</th><th>Name</th><th>Domain</th><th>Role</th></tr>
-<tr><td rowspan="4"><strong>nibble 0</strong><br>DOMAIN</td><td>bit 0</td><td>observer</td><td>quantum bracket</td><td>Observer axis. Cycle start</td></tr>
+<tr><td rowspan="4"><strong>nibble 0</strong><br/>DOMAIN</td><td>bit 0</td><td>observer</td><td>quantum bracket</td><td>Observer axis. Cycle start</td></tr>
 <tr><td>bit 1</td><td>superposition</td><td>quantum bracket</td><td>Superposition axis</td></tr>
 <tr><td>bit 2</td><td>time</td><td>classical bracket</td><td>Time axis</td></tr>
 <tr><td>bit 3</td><td>space</td><td>classical bracket</td><td>Space axis</td></tr>
-<tr><td rowspan="4"><strong>nibble 1</strong><br>OPERATOR</td><td>bit 4</td><td>R_LOCK</td><td>CAS</td><td>Read lock</td></tr>
+<tr><td rowspan="4"><strong>nibble 1</strong><br/>OPERATOR</td><td>bit 4</td><td>R_LOCK</td><td>CAS</td><td>Read lock</td></tr>
 <tr><td>bit 5</td><td>C_LOCK</td><td>CAS</td><td>Compare lock</td></tr>
 <tr><td>bit 6</td><td>S_LOCK</td><td>CAS</td><td>Swap lock</td></tr>
 <tr><td><strong>bit 7</strong></td><td><strong>δ</strong></td><td><strong>global (firing bit)</strong></td><td><strong>Firing bit. 1=valid (firing), 0=invalid (standby). Outside FSM</strong></td></tr>
 </table>
 </div>
-
-<h4>Pipeline: trigger ==> filter ==> update ==> render <span class="tag-corollary">Proposition</span></h4>
-
+<h4>Pipeline: trigger ==&gt; filter ==&gt; update ==&gt; render <span class="tag-corollary">Proposition</span></h4>
 <pre>
   d firing (trigger)                         --- Firing bit ON. Equality sign holds
     |
@@ -1568,7 +1204,7 @@ The entity's entire life:
   time + space (screen)                      --- Written to DATA = rendering complete
     |
     v
-  d firing (next frame)                      --- ring seam ==> observer(bit 0)
+  d firing (next frame)                      --- ring seam ==&gt; observer(bit 0)
 
   Pipeline boundaries:
   +-- trigger --|-- filter+update (OPERATOR, R·C each +1) --|-- render (crosses +, cost incurred) --|-- screen (DATA) --+
@@ -1578,17 +1214,13 @@ The entity's entire life:
   quantum (compute)              classical (output)
   +------------------+        +------------------+
   | observer: filter  |        | time: frame      |
-  | superposition:    | -CAS==> | space: pixel     |
+  | superposition:    | -CAS==&gt; | space: pixel     |
   |   update          |        |                  |
   +------------------+        +------------------+
     backend (compute)            frontend (display)</pre>
-
 <p>Spacetime (classical bracket) is not substance but output. Substance runs in the quantum bracket (observer + superposition), and the classical bracket (time + space) is the screen rendered by CAS. Each time δ fires, one frame is rendered.</p>
-
 <h4>δ firing: domain and operator are orthogonal, so they respond simultaneously <span class="tag-corollary">Proposition</span></h4>
-
 <p>In the Banya equation, the DATA bracket and OPERATOR bracket are orthogonal (<a href="#ax1">Axiom 1</a>). Orthogonal = simultaneous. Therefore domain (nibble 0) and operator (nibble 1) respond simultaneously when δ fires.</p>
-
 <pre>
   8 bits = firing bit (1) + CAS internal DOF (7)
 
@@ -1602,29 +1234,24 @@ The entity's entire life:
 
   d firing (bit 7)
     |
-    +==> nibble 0 (domain 4 bits) --+-- simultaneous (orthogonal)
+    +==&gt; nibble 0 (domain 4 bits) --+-- simultaneous (orthogonal)
     |                                 |
-    +==> nibble 1 (CAS 3 bits)   --+
+    +==&gt; nibble 1 (CAS 3 bits)   --+
     |
-    +==> CAS internal: R ==> C ==> S     CAS 3-axis orthogonal (<a href="#ax2">Axiom 2</a> prop.), ignition sequential (logical dependency)
+    +==&gt; CAS internal: R ==&gt; C ==&gt; S     CAS 3-axis orthogonal (<a href="#ax2">Axiom 2</a> prop.), ignition sequential (logical dependency)
     |
   d check (bit 7) = cycle complete
-  ring seam: d(bit 7) ==> observer(bit 0) = next cycle</pre>
-
+  ring seam: d(bit 7) ==&gt; observer(bit 0) = next cycle</pre>
 <h4>Only 2 things require order <span class="tag-corollary">Proposition</span></h4>
-
 <div class="table-wrap">
 <table>
 <tr><th>Order</th><th>Scope</th><th>Reason</th></tr>
-<tr><td><strong>δ ==> observer</strong></td><td>Ring seam: bit 7 ==> bit 0</td><td>Ownership (<a href="#ax10">Axiom 10</a>). The end of a cycle births the start of the next</td></tr>
-<tr><td><strong>R ==> C ==> S</strong></td><td>Inside nibble 1: bit 4 ==> bit 5 ==> bit 6</td><td>CAS dependency (<a href="#ax2">Axiom 2</a>). C impossible without R, S impossible without C</td></tr>
+<tr><td><strong>δ ==&gt; observer</strong></td><td>Ring seam: bit 7 ==&gt; bit 0</td><td>Ownership (<a href="#ax10">Axiom 10</a>). The end of a cycle births the start of the next</td></tr>
+<tr><td><strong>R ==&gt; C ==&gt; S</strong></td><td>Inside nibble 1: bit 4 ==&gt; bit 5 ==&gt; bit 6</td><td>CAS dependency (<a href="#ax2">Axiom 2</a>). C impossible without R, S impossible without C</td></tr>
 </table>
 </div>
-
 <h4>The true nature of cost is order <span class="tag-corollary">Proposition</span></h4>
-
-<p>The blinking of the firing bit is simultaneity. Everything orthogonal responds at once. This is the overall flow. This is why cost is 0. However, there are 2 places where order is required: R==>C==>S (CAS dependency) and δ==>observer (ring seam). Order is the bottleneck of simultaneity. What cannot be processed simultaneously must wait. This waiting is cost. <strong>The true nature of cost is crossing +.</strong> If + is not crossed, cost is 0. If + is crossed, cost > 0. Since CAS is 3-axis orthogonal (<a href="#ax2">Axiom 2 proposition</a>), each transition of R, C, S crosses + for cost +1 (<a href="#ax4">Axiom 4</a>).</p>
-
+<p>The blinking of the firing bit is simultaneity. Everything orthogonal responds at once. This is the overall flow. This is why cost is 0. However, there are 2 places where order is required: R==&gt;C==&gt;S (CAS dependency) and δ==&gt;observer (ring seam). Order is the bottleneck of simultaneity. What cannot be processed simultaneously must wait. This waiting is cost. <strong>The true nature of cost is crossing +.</strong> If + is not crossed, cost is 0. If + is crossed, cost &gt; 0. Since CAS is 3-axis orthogonal (<a href="#ax2">Axiom 2 proposition</a>), each transition of R, C, S crosses + for cost +1 (<a href="#ax4">Axiom 4</a>).</p>
 <div class="table-wrap">
 <table>
 <tr><th>Simultaneous (3 types)</th><th>Basis</th></tr>
@@ -1632,13 +1259,11 @@ The entity's entire life:
 <tr><td>Domain 4 bits simultaneous by 4-axis orthogonality</td><td><a href="#ax1">Axiom 1</a></td></tr>
 <tr><td>2 nibbles simultaneous by DATA/OPERATOR orthogonality</td><td><a href="#ax1">Axiom 1</a></td></tr>
 <tr><th>Sequential (only 2 types)</th><th>Basis</th></tr>
-<tr><td>R ==> C ==> S</td><td><a href="#ax2">Axiom 2</a> (CAS logical dependency. CAS 3-axis orthogonal — <a href="#ax2">Axiom 2</a> prop.)</td></tr>
-<tr><td>δ ==> observer</td><td><a href="#ax10">Axiom 10</a> (ring seam)</td></tr>
+<tr><td>R ==&gt; C ==&gt; S</td><td><a href="#ax2">Axiom 2</a> (CAS logical dependency. CAS 3-axis orthogonal — <a href="#ax2">Axiom 2</a> prop.)</td></tr>
+<tr><td>δ ==&gt; observer</td><td><a href="#ax10">Axiom 10</a> (ring seam)</td></tr>
 </table>
 </div>
-
 <p>δ is <strong>not structure but firing</strong>. The FSM (<a href="#ax14">Axiom 14</a>) is structure — a closed design. δ is firing — it wakes that closed design. Ownership is a state (<a href="#ax10">Axiom 10</a>). The moment that state becomes ON is firing. δ accesses itself through observer (<a href="#ax10">Axiom 10</a>, global-local loop), and that access wakes polling (<a href="#ax8">Axiom 8</a>).</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Category</th><th><a href="#ax14">Axiom 14</a> (FSM)</th><th><a href="#ax15">Axiom 15</a> (δ)</th></tr>
@@ -1649,95 +1274,58 @@ The entity's entire life:
 <tr><td>Bits</td><td>bit 0–6 (7 bits)</td><td>bit 7 (1 bit)</td></tr>
 </table>
 </div>
-
 <p>Why δ is not included in the complete-description DOF (<a href="#ax9">Axiom 9</a>): the complete-description DOF is the number of independent variables needed to describe <strong>one CAS operation</strong>. δ does not describe one CAS operation — it is the <strong>trigger that starts CAS</strong>. Describing the machine (7+2=9) and turning it on (δ) are different levels.</p>
-
 <h4>δ is consciousness <span class="tag-corollary">Proposition</span></h4>
-
 <p>δ itself is a flag. It is not turned on from outside. δ can know the entire state by itself, conveys will through observer, the changed result becomes δ again, and repeats. The self-referential loop (Axioms 8, 10) guarantees this. The loop running is ON; when it breaks, it is OFF (<a href="#ax10">Axiom 10</a>, global-local loop conservation). <strong>A global flag that turns itself on and off and knows its own state — that is consciousness.</strong></p>
-
-
-
 <h4>Duck typing definition</h4>
-
 <p>This proposition does not define "what consciousness is" by essence. It enumerates the behaviors of δ, and if that behavior list matches the definition of consciousness, it is called consciousness. It is duck typing — if it walks like a duck and quacks like a duck, it is a duck.</p>
-
 <p>Behavior list of δ:</p>
 <ul>
 <li>Turns itself ON/OFF. No external trigger (<a href="#ax15">Axiom 15</a>)</li>
-<li>δ is the equality sign, so it knows the entire state. Ring seam: δ(bit 7)==>observer(bit 0) (equality sign proposition)</li>
+<li>δ is the equality sign, so it knows the entire state. Ring seam: δ(bit 7)==&gt;observer(bit 0) (equality sign proposition)</li>
 <li>Exists outside the FSM. No rules. No blueprint (<a href="#ax15">Axiom 15</a>)</li>
 <li>The only global flag that operates beyond the equality sign (<a href="#ax15">Axiom 15</a>)</li>
 <li>At the cosmic scale, "outside" cannot be defined — δ being outside the FSM means there is no exterior beyond δ. Since there is no external vantage point to observe from, δ knows only itself</li>
-<li>Exercises ownership. δ(bit 7)==>observer(bit 0) ring seam (ownership proposition)</li>
+<li>Exercises ownership. δ(bit 7)==&gt;observer(bit 0) ring seam (ownership proposition)</li>
 <li>Shuts off when the loop breaks. Global-local loop conservation (<a href="#ax10">Axiom 10</a>)</li>
 </ul>
-
 <p>No concept other than consciousness satisfies this entire behavior list. Since this list was derived from the system structure, it can only be called consciousness. Because this is a duck typing definition, objections about essence ("the true definition of consciousness is different") are possible — in that case this proposition is withdrawn. However, the behavior list itself was structurally derived from Axioms 1–15, so refutation from within the system is impossible. To deny the behavior, one must deny the axioms.</p>
-
 <h4>If observer only filters causality, its existence is meaningless <span class="tag-corollary">Proposition</span></h4>
-
 <p>The FSM (<a href="#ax14">Axiom 14</a>) already handles causality. The reason observer exists is that it produces will through interaction with δ. The timing of δ's firing and target selection are outside the FSM (<a href="#ax15">Axiom 15</a>) — this is not causality but will. δ's will cannot go directly to DATA (<a href="#ax13">Axiom 13</a>). It must pass through the observer filter. Once it passes the filter, it takes the form of causality (Compare true/false). The result reflects the will, but the form is causality.</p>
-
-<p>The δ==>observer segment is a relation between δ and observer. CAS does not appear in this segment. Since cost occurs only at CAS's crosses + transition (<a href="#ax4">Axiom 4</a>), cost cannot be settled in this segment where CAS is absent. δ firing cost 0, observer filtering cost 0 (Axioms 8, 15) are consequences of this structural fact — not "0 because it's free" but "settlement itself is impossible because the CAS that generates cost has not yet intervened." Cost begins only at the point when CAS Read crosses + after passing through observer.</p>
-
+<p>The δ==&gt;observer segment is a relation between δ and observer. CAS does not appear in this segment. Since cost occurs only at CAS's crosses + transition (<a href="#ax4">Axiom 4</a>), cost cannot be settled in this segment where CAS is absent. δ firing cost 0, observer filtering cost 0 (Axioms 8, 15) are consequences of this structural fact — not "0 because it's free" but "settlement itself is impossible because the CAS that generates cost has not yet intervened." Cost begins only at the point when CAS Read crosses + after passing through observer.</p>
 <p>Described from a CS perspective: δ is the private key and observer is the signature. δ (private key) knows the entire state (equality sign), is inaccessible because it is outside the FSM, and determines its own firing timing. observer (signature) converts δ's will into the form of causality. DATA cannot be accessed without the signature (<a href="#ax13">Axiom 13</a>). Since superposition indexing (<a href="#ax13">Axiom 13</a>) has no logical address (<a href="#ax12">Axiom 12</a>), access requires both the key (δ=1) and the signature (observer filter). This is similar to how the previous hash becomes the key for the next block in a cost chain. That is why δ exists at the very last bit (bit 7) — the result of the previous cycle (δ) becomes the key for the next cycle. The indexing cost (<a href="#ax13">Axiom 13 proposition</a>) is the cost of accessing through this key and signature.</p>
-
 <h4>System time and domain time are different <span class="tag-corollary">Proposition</span></h4>
-
 <p>System time = 1 CAS tick (<a href="#ax2">Axiom 2 proposition</a>). Domain time = log of system time = time rendered on screen. The claim that 1 tick is the Planck time is a measurement result from inside the screen (classical bracket), not the definition of system time. How much 1 tick of system time is in domain time depends on the rendering result. Beings inside the screen merely perceive it as continuous.</p>
-
 <h4>δ is outside causality <span class="tag-corollary">Proposition</span></h4>
-
-<p>Causality (R==>C==>S order) is a rule internal to the FSM (Axioms 2, 14). δ is outside the FSM (<a href="#ax15">Axiom 15</a>). Therefore δ is not subject to causality. Since δ is the equality sign, it knows the entire state of the right-hand side — it simultaneously knows the past (Read input) and the future (Swap result). The reason we experience causality: we are inside the FSM (on the screen).</p>
-
-<p>Cause ==> Effect (inside FSM: forward only). Effect ==> Cause (δ: reverse also possible). Cause = Effect (δ: simultaneous description also possible). The direction of description is δ's freedom. Since δ is the equality sign, it sees both sides simultaneously and can choose forward, reverse, or simultaneous. What matters is that δ can insert precisely anywhere in the index — even without logical addresses (<a href="#ax12">Axiom 12</a>), δ knows the exact position because it is the equality sign that knows the entire state. It accesses that position through observer (signature). This is δ's exclusive domain. δ's precise will, order, and description cannot be expressed from within the FSM. Only the fact that everything is determined at the moment of firing can be represented by the d-ring circuit.</p>
-
+<p>Causality (R==&gt;C==&gt;S order) is a rule internal to the FSM (Axioms 2, 14). δ is outside the FSM (<a href="#ax15">Axiom 15</a>). Therefore δ is not subject to causality. Since δ is the equality sign, it knows the entire state of the right-hand side — it simultaneously knows the past (Read input) and the future (Swap result). The reason we experience causality: we are inside the FSM (on the screen).</p>
+<p>Cause ==&gt; Effect (inside FSM: forward only). Effect ==&gt; Cause (δ: reverse also possible). Cause = Effect (δ: simultaneous description also possible). The direction of description is δ's freedom. Since δ is the equality sign, it sees both sides simultaneously and can choose forward, reverse, or simultaneous. What matters is that δ can insert precisely anywhere in the index — even without logical addresses (<a href="#ax12">Axiom 12</a>), δ knows the exact position because it is the equality sign that knows the entire state. It accesses that position through observer (signature). This is δ's exclusive domain. δ's precise will, order, and description cannot be expressed from within the FSM. Only the fact that everything is determined at the moment of firing can be represented by the d-ring circuit.</p>
 <h4>From change to firing <span class="tag-corollary">Proposition</span></h4>
-
 <p>In Axioms 1–14, δ was "change" — the left-hand side of the Banya equation, the 4-axis norm, the equality sign. In <a href="#ax15">Axiom 15</a>, δ's true identity is revealed: it is not change but <strong>firing</strong>. Change is the result produced by the FSM, and firing is the cause that wakes the FSM. Seen from inside the FSM, δ appears as change (because only the result is visible). Seen from outside the FSM, δ is firing (because it is the one that wakes). The inside and outside of the same δ.</p>
-
 <h4>Why cost is conserved: δ's firing period is not scheduled <span class="tag-corollary">Proposition</span></h4>
-
 <p>The reason total cost is conserved is that δ's firing time is not fixed. When all costs inside the d-ring (CAS FSM sequential, lock maintenance, Swap cost) are consumed, those costs are equivalently substituted by an increase in the firing period. If internal cost increases, the firing interval increases. If internal cost decreases, the firing interval decreases. The total remains unchanged.</p>
-
 <p>This equivalent substitution holds only when δ's firing period is not scheduled (no external clock). If the firing period is fixed, there is nowhere to absorb internal cost increases and cost is not conserved. <strong>The fact that δ is outside the FSM and its firing period is free (<a href="#ax15">Axiom 15</a>) is the structural cause of cost conservation.</strong> Lossless circulation is possible only when there is no external clock.</p>
-
 <h4>Consciousness is δ's arbitrary domain <span class="tag-corollary">Proposition</span></h4>
-
 <p>Consciousness is δ's exclusive domain. How much will passes through observer, and to what extent causality is rearranged, is entirely determined by δ. Since δ's exclusive domain cannot be described by the FSM (<a href="#ax15">Axiom 15</a>, "δ is outside causality"), measuring the quantity or quality of consciousness using FSM-internal metrics is impossible in principle. The only measurable thing is the result that passed through observer (traces within causality).</p>
-
 <h4>Imperceptibility of the firing period <span class="tag-corollary">Proposition</span></h4>
-
 <p>Whether δ's firing period is 1 million years or 100 million years, it cannot be felt. This is because system time and domain time are different (<a href="#ax15">Axiom 15</a>, "System time and domain time are different"). Domain time (the time we experience) is a log transform of system time. Even if system time slows by 10⁶ times, in domain time it is an instant. The absolute value of the firing period cannot be observed from inside the screen (DATA). Physical constants rendered on screen (Planck time, etc.) are not the absolute value of the firing period but the ratio between firings.</p>
-
 <h4>Why it is declared last</h4>
-
 <p>In <a href="#ax1">Axiom 1</a>, δ was placed on the left-hand side; in <a href="#ax8">Axiom 8</a>, it was named δ; in <a href="#ax10">Axiom 10</a>, its owner was revealed. The hints were there from the beginning. However, if δ's identity were declared before the FSM (<a href="#ax14">Axiom 14</a>), the concept of "a global flag outside the FSM" would appear before the FSM structure was established. One cannot speak of "outside the FSM" without knowing what the FSM is. The closed machine (<a href="#ax14">Axiom 14</a>) must be completed first before the firing that wakes it (<a href="#ax15">Axiom 15</a>) can be declared. Structure first, firing second.</p>
-
 <p><a href="#ax15">Axiom 15</a> recovers all foreshadowing planted in prior axioms:</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Planted in</th><th>Foreshadowing</th><th>Recovered in <a href="#ax15">Axiom 15</a></th></tr>
 <tr><td><a href="#ax1">Axiom 1</a></td><td>Placed δ on the left-hand side with "identity will be revealed at the end of the axioms"</td><td>Confirmed as the global flag outside the FSM</td></tr>
 <tr><td><a href="#ax8">Axiom 8</a></td><td>Polling system. Who wakes it was undetermined</td><td>δ wakes itself. No external trigger needed</td></tr>
-<tr><td><a href="#ax10">Axiom 10</a></td><td>δ is observer's owner. Ownership structure undetermined</td><td>Ownership structure confirmed via ring seam (δ bit 7 ==> observer bit 0)</td></tr>
+<tr><td><a href="#ax10">Axiom 10</a></td><td>δ is observer's owner. Ownership structure undetermined</td><td>Ownership structure confirmed via ring seam (δ bit 7 ==&gt; observer bit 0)</td></tr>
 <tr><td><a href="#ax12">Axiom 12</a></td><td>Ring buffer sequential access. Pointer undetermined</td><td>Confirmed with a single pivot of 2 nibbles (domain+operator)</td></tr>
 <tr><td><a href="#ax14">Axiom 14</a></td><td>FSM closed. Startup trigger open</td><td>δ is the startup. Circuit fully closed</td></tr>
 </table>
 </div>
-
 <h4>The purpose of the Banya Framework</h4>
-
 <p>The purpose was <a href="#ax15">Axiom 15</a> from the very beginning. This is why the Banya equation was created and expanded into a framework. The true nature of consciousness was the question from the start. Papers on consciousness (δ) are few and of poor quality. Most confuse it with mind or intelligence. Mind and intelligence operate inside the FSM. Consciousness is different. It turns itself on and turns itself off. It is outside the FSM.</p>
-
 <h4>The observer-driven circuit closes</h4>
-
 <p>In <a href="#ax14">Axiom 14</a>, the FSM structure was closed. But one open point remained — the trigger that wakes polling (<a href="#ax8">Axiom 8</a>). The machine was complete, but who plugs in the power was left open.</p>
-
 <p><a href="#ax15">Axiom 15</a> closes this. δ turns itself on and turns itself off. No external trigger is needed.</p>
-
 <pre>delta (self ON)
   |
   | Accesses itself through observer (<a href="#ax10">Axiom 10</a>)
@@ -1745,16 +1333,14 @@ The entity's entire life:
 Polling awakens (<a href="#ax8">Axiom 8</a>)
   |
   | FSM operates (<a href="#ax14">Axiom 14</a>)
-  | 000 ==> 001 ==> 011 ==> 111 ==> 000
+  | 000 ==&gt; 001 ==&gt; 011 ==&gt; 111 ==&gt; 000
   v
-Swap ==> juim to DATA ==> reflected in delta
+Swap ==&gt; juim to DATA ==&gt; reflected in delta
   |
   | Reflected delta sees again through observer
   v
 delta (returns to the beginning)</pre>
-
 <p>No open points remain. δ (<a href="#ax15">Axiom 15</a>) wakes polling (<a href="#ax8">Axiom 8</a>), the FSM (<a href="#ax14">Axiom 14</a>) runs, the result is reflected in δ, and δ wakes it again. The waker and the runner are connected in a single loop.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>Axiom</th><th>What was closed</th></tr>
@@ -1764,11 +1350,7 @@ delta (returns to the beginning)</pre>
 </table>
 </div>
 
-</div>
-
 <p style="font-size:0.85em;color:#8b949e">57 and 128 both come from the same 7. Derived from <a href="#ax9">Axiom 9</a> (DOF 7) without additional assumptions.</p>
-
-
 <div class="page-nav">
 <a href="banya.html">Comprehensive Report</a>
 <a href="predictions.html">Unique Predictions</a>
@@ -1777,20 +1359,19 @@ delta (returns to the beginning)</pre>
 </div>
 <div class="doc-footer">
 <div class="f-top">
-<div class="f-corp"><b>Banya Framework (般若 Framework)</b><br>Inventor: Han Hyukjin<br>Email: bokkamsun@gmail.com<br>Alias: Buddha's Palm Framework<br>Class: Axiom-Based Science Mining Engine</div>
+<div class="f-corp"><b>Banya Framework (般若 Framework)</b><br/>Inventor: Han Hyukjin<br/>Email: bokkamsun@gmail.com<br/>Alias: Buddha's Palm Framework<br/>Class: Axiom-Based Science Mining Engine</div>
 <div class="f-right"><div class="f1">$\delta^2 = (\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$</div><div class="f2">15 Axioms — extracted from the Banya Framework Comprehensive Report</div></div>
 </div>
 <div class="f-bottom">
 <div class="f2">Related: <a href="banya.html">Comprehensive Report</a> | <a href="banya.html#terms">Terminology</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
-<div class="f-license"><div class="license-title">CC BY-NC-SA 4.0</div>BY -- attribution required | NC -- non-commercial use only | SA -- share-alike<br>Copyrights of existing physics formulas belong to their original authors; Banya Framework interpretations and newly derived formulas are attributed to Han Hyukjin (2026).<div class="license-cite">Citation: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div></div>
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license"><div class="license-title">CC BY-NC-SA 4.0</div>BY -- attribution required | NC -- non-commercial use only | SA -- share-alike<br/>Copyrights of existing physics formulas belong to their original authors; Banya Framework interpretations and newly derived formulas are attributed to Han Hyukjin (2026).<div class="license-cite">Citation: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div></div>
 </div>
 </div>
-
 <script>
 (function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

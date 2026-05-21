@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-97 $f(\theta)$ Spherical Cap Overlap Closed Formula -- Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-97 $f(\theta)$ Spherical Cap Overlap Closed Formula. v1.8 Axiom-Based 5-Step Recursive Substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h97.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib_new.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
+<h1><a href="h97.html">H-97</a>. $f(\theta)$ Spherical Cap Overlap Closed Formula</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="h97.html">H-97</a>: $f(\theta)$ Spherical Cap Overlap Closed Formula</strong></p>
+<div class="formula-box">$$A_{\text{overlap}} = 2\pi - 2\varphi_1\cos\alpha_1 - 2\varphi_2\cos\alpha_2 - 2\varphi_3$$</div>
+<p class="finding-precision">Tool (mathematical formula, error not applicable)</p>
+<p>A mathematical tool that expresses the overlap region of two spherical caps as a closed formula.
+In the Banya formula, a spherical cap corresponds to the region that each CAS stage (Read, Compare, Swap) occupies on the d-ring (<a href="../axiom.html#ax2">Axiom 2</a>).
+When two caps of half-angles $\alpha_1$ and $\alpha_2$ have their centers separated by $\theta$, the overlap region $A_{\text{overlap}}$ is determined by three auxiliary angles $\varphi_1, \varphi_2, \varphi_3$.
+Structural consequence: a quantification tool for Proposition 6 (contraction region overlap). When CAS cost caps (<a href="h98.html">H-98</a>) overlap, juim contention arises at the ring seam, and the size of this contention region is computed as $f(\theta)$.
+Numerics: $f(\theta) = 1/2 - \varphi_1\cos\alpha_1/\pi - \varphi_2\cos\alpha_2/\pi - \varphi_3/(2\pi)$. Since this is a tool formula, error is not applicable (mathematically exact).
+Consistency: shared computational basis for <a href="h98.html">H-98</a> (CAS cost cap), <a href="h99.html">H-99</a> (lock-in ratio), and <a href="h100.html">H-100</a> (Hopf projection). All three cards reference this formula.
+Physical correspondence: computation of the intersection region of two circles in spherical geometry. A standard formula used in astronomy (field-of-view overlap), crystallography (Brillouin zones), and so on.
+In existing mathematics this is an application of spherical trigonometry, but in Banya it is reinterpreted as a geometric expression of the CAS cost structure.
+Verification: boundary conditions confirmed -- $f = 1$ at $\alpha_1 = \alpha_2, \theta = 0$ (full overlap), $f = 0$ at $\theta &gt; \alpha_1 + \alpha_2$ (no overlap).
+Remaining task: extension to overlap of three or more caps (triple overlap). Geometric meaning of simultaneous overlap of the three CAS stages.</p>
+<p><strong>Re-substitution Purpose:</strong> Re-substitution Purpose: computational tool for <a href="h98.html">H-98</a> (CAS cost cap), <a href="h99.html">H-99</a> (lock-in ratio), and <a href="h100.html">H-100</a> (Hopf projection).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is classified as a hypothesis (Class III) and is halted without proceeding to the next round. It has both a quantitative expression and experimental values, yet the final step of the forward chain has not been closed. Not every coefficient in the formula is directly derived from the axioms or the primary integers; some remain as external inputs or hypotheses. Remaining task specified: a mathematical tool that expresses the overlap region of two spherical caps as a closed formula.
+In the Banya formula, a spherical cap corresponds to the region that each CAS stage (Read, Compare, Swap) occupies on the d-ring (<a href="../axiom.html#ax2">Axiom 2</a>).
+When two caps of half-angles $\alpha_1$ and $\alpha_2$ have their centers separated by $\theta$, the overlap region $A_{\text{overlap}}$ is determined by three auxiliary angles $\varphi_1, \varphi_2, \varphi_3$.
+Structural consequence: a quantification tool for Proposition 6 (contraction region overlap). When CAS cost caps (<a href="h98.html">H-98</a>) overlap, the ring D-promotion path is the standard three-fold: (1) resolution of the remaining task above, (2) re-injection of neighboring D/H cards from the library as inputs to a recursive substitution round, and (3) additional introduction of currently unapplied propositions among those of <a href="../axiom.html#ax1">Axiom 1</a>, <a href="../axiom.html#ax2">Axiom 2</a>, <a href="../axiom.html#ax4">Axiom 4</a>, <a href="../axiom.html#ax9">Axiom 9</a>, and <a href="../axiom.html#ax11">Axiom 11</a>.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-hypothesis">
+<p><strong>Verdict: Hypothesis</strong> -- Hypothesis (recursive substitution in progress)</p>
+<p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible if the next round proceeds / remaining task specified</p>
+<p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula's own structure, primary integers (4,3) combination. Recursive substitution path: <a href="h100.html">H-100</a>, <a href="h98.html">H-98</a>, <a href="h99.html">H-99</a></p>
+</div>
+<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution -- delta to target domain</h3>
+<p>delta ==&gt; Banya formula's own structure, primary integers (4,3) combination</p>
+</div>
+<div class="step">
+<h3>Step 3. Constant + Hypothesis Re-injection</h3>
+<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full degrees-of-freedom list)</p>
+<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
+<p><strong>Library Re-substitution:</strong> <a href="h100.html">H-100</a>, <a href="h98.html">H-98</a>, <a href="h99.html">H-99</a></p>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>The formula above is the result of the domain transformation. v1.8 vocabulary alignment:</p>
+<ul>
+<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
+<li>+ = orthogonal composition (orthogonal subspace inside the bracket)</li>
+<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
+</ul>
+</div>
+<div class="step">
+<h3>Step 5. Discovery / Verdict</h3>
+<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p>Re-substitution Purpose: computational tool for <a href="h98.html">H-98</a> (CAS cost cap), <a href="h99.html">H-99</a> (lock-in ratio), and <a href="h100.html">H-100</a> (Hopf projection).</p><p>This card can be reused as input to the following cards: <a href="h100.html">H-100</a>, <a href="h98.html">H-98</a>, <a href="h99.html">H-99</a></p>
+</div>
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>Quantitative derivation</td><td>Structural narrative only</td><td>Next round of recursive substitution</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="h97.html">H-97</a>: $f(\theta)$ Spherical Cap Overlap Closed Formula</td><td>Tool (mathematical formula, error not applicable)</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-en">
+<a href="../banya.html">Full Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
+<a href="../science_mine.html">Science Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial use only | SA -- ShareAlike under identical terms<br/>
+Copyright in existing physics formulas belongs to their original authors; the Banya Framework interpretation and newly derived formulas are attributed to Han Hyukjin (2026).
+<div class="license-cite">Citation: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

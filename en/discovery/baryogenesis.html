@@ -1,356 +1,208 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>-() — </title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="-eta = 6.14e-10 . 6.1e-10, 0.7%. 0. alphasin^2(theta_W). 3CAS . .">
-<meta name="keywords" content="Banya,Banya Framework,baryogenesis,-matter-antimatter asymmetry,-baryon-to-photon ratio,eta,3Sakharov conditions,sphaleron,CPCP violation,Han Hyukjin,bokkamsun,CAS,Compare-And-Swap">
-<meta property="og:title" content="-— ">
-<meta property="og:description" content="-eta = 6.14e-10 . 0.7%. 0.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="-— ">
-<meta name="twitter:description" content="alphatheta_W. eta = 6.14e-10, 0.7%.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Matter-Antimatter Asymmetry (Baryogenesis) — Banya Framework Operating Report</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="Banya Framework recursive substitution derives the baryon-to-photon ratio eta = 6.14e-10. Observed value 6.1e-10, error 0.7%. Free parameters: 0. With only alpha and sin^2(theta_W) the report explains why matter exists in the universe. CAS automatically satisfies all three Sakharov conditions. Inventor Han Hyukjin." name="description"/>
+<meta content="Banya Framework,般若,Banya Framework,baryogenesis,baryogenesis,matter-antimatter asymmetry,matter-antimatter asymmetry,baryon-to-photon ratio,baryon-to-photon ratio,eta,Sakharov conditions,Sakharov conditions,sphaleron,sphaleron,CP violation,CP violation,Han Hyukjin,Han Hyukjin,bokkamsun,CAS,Compare-And-Swap" name="keywords"/>
+<meta content="Matter-Antimatter Asymmetry — Banya Framework Operating Report" property="og:title"/>
+<meta content="Banya Framework derives the baryon-to-photon ratio eta = 6.14e-10. Error 0.7% against observation. Free parameters: 0." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Matter-Antimatter Asymmetry — Banya Framework" name="twitter:title"/>
+<meta content="Why matter exists in the universe, derived from alpha and theta_W alone. eta = 6.14e-10, error 0.7%." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../../discovery/baryogenesis.html" class="lang-btn">KR</a></div>
-
-
-
-<div class="toc-side lang-en">
-<a href="#en-title" class="toc-h1">Matter-Antimatter Asymmetry</a>
-<a href="#en-value" class="toc-h2">Value</a>
-<a href="#en-status" class="toc-h2">Status</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-why" class="toc-h2">Why It Matters</a>
-<a href="#en-r1" class="toc-h1">Round 1. Sakharov Mapping</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. CAS Irreversible Order</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Sakharov 3 Conditions</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Substitution</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. Automatic Satisfaction</a>
-<a href="#en-r2" class="toc-h1">Round 2. Baryon-to-Photon Ratio</a>
-<a href="#en-r2-alpha4" class="toc-h3">alpha to the 4th Power</a>
-<a href="#en-r2-sin2" class="toc-h3">Weak Sphaleron Ratio</a>
-<a href="#en-r2-correction" class="toc-h3">Radiation Correction</a>
-<a href="#en-r2-result" class="toc-h3">Result</a>
-<a href="#en-r3" class="toc-h1">Round 3. Physical Interpretation</a>
-<a href="#en-r3-swap" class="toc-h3">Swap Success and Failure</a>
-<a href="#en-r3-source" class="toc-h3">Source of Asymmetry</a>
-<a href="#en-incomplete" class="toc-h1">Incomplete</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
-</div>
-
-<div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">Baryogenesis</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
-<a href="#en-title" class="toc-h1">Matter-Antimatter Asymmetry</a>
-<a href="#en-value" class="toc-h2">Value</a>
-<a href="#en-status" class="toc-h2">Status</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-why" class="toc-h2">Why It Matters</a>
-<a href="#en-r1" class="toc-h1">Round 1. Sakharov Mapping</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. CAS Irreversible Order</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Sakharov 3 Conditions</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Substitution</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. Automatic Satisfaction</a>
-<a href="#en-r2" class="toc-h1">Round 2. Baryon-to-Photon Ratio</a>
-<a href="#en-r2-alpha4" class="toc-h3">alpha to the 4th Power</a>
-<a href="#en-r2-sin2" class="toc-h3">Weak Sphaleron Ratio</a>
-<a href="#en-r2-correction" class="toc-h3">Radiation Correction</a>
-<a href="#en-r2-result" class="toc-h3">Result</a>
-<a href="#en-r3" class="toc-h1">Round 3. Physical Interpretation</a>
-<a href="#en-r3-swap" class="toc-h3">Swap Success and Failure</a>
-<a href="#en-r3-source" class="toc-h3">Source of Asymmetry</a>
-<a href="#en-incomplete" class="toc-h1">Incomplete</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
-</div>
-
-
-
-
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a supplementary report to the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>. The full contents, including the framework structure, 118 physics formula verifications, CAS operator, and write theory, are in the comprehensive report. This document covers only the derivation of matter-antimatter asymmetry (baryogenesis).</p>
-
-<h1 id="en-title">Matter-Antimatter Asymmetry (Baryogenesis)</h1>
-
-<blockquote><p>Banya Framework Operational Report</p></blockquote>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/baryogenesis.html">EN</a></div>
+<div class="lang-en">
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is an attached report of the <a href="../../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. The structure of the Banya Framework, verification of 118 physical equations, the CAS operator, write theory, and the rest of the full content live in the Master Report. This document covers only the derivation of matter-antimatter asymmetry (baryogenesis).</p>
+<h1 id="title">Matter-Antimatter Asymmetry (Baryogenesis)</h1>
+<blockquote><p>Banya Framework Operating Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-23</p></blockquote>
-<blockquote><p>Subject: Why only matter survived</p></blockquote>
-
-<hr>
-
-<h2 id="en-value">Value</h2>
-
-<p>This problem is Nobel Prize-level. It asks the fundamental reason why matter exists in the universe.</p>
-
-<p>Right after the Big Bang, matter and antimatter were created in equal amounts. If the amounts were equal, they should have all annihilated into light, leaving nothing behind. Yet here we are. There are stars, planets, and people. Out of every billion photons, we are that one surviving particle of matter. No one has been able to explain why that one particle survived.</p>
-
-<p>The Banya Framework explains it. With just two constants: $\alpha$ and the Weinberg angle.</p>
-
-<h2 id="en-status">Status</h2>
-
+<blockquote><p>Execution date: 2026-03-23</p></blockquote>
+<blockquote><p>Subject: Why only matter remained</p></blockquote>
+<hr/>
+<h2 id="value">Value</h2>
+<p>This problem is Nobel-tier. It asks the fundamental reason why matter exists in the universe.</p>
+<p>Right after the Big Bang, matter and antimatter were produced in equal amounts. If the amounts were equal, they should all have met, converted to light, and left nothing behind. Yet here we are. There are stars, planets, people. We are the one piece of matter left out of every billion photons. Nobody has been able to explain why that one piece survived.</p>
+<p>The Banya Framework explains it — using only $\alpha$ and the Weinberg angle.</p>
+<h2 id="status">Status</h2>
 <p><span class="tag-solved">Hit</span> -- $\eta = \alpha^4 \times \sin^2\theta_W \times \bigl[1 - 2(4+\frac{1}{\pi})\alpha\bigr] = 6.14 \times 10^{-10}$, error 0.7%. Independent justification of the correction term <code>(4+1/pi)</code> is incomplete.</p>
-
-<hr>
-
-<h2 id="en-discovery">Key Discovery</h2>
-
+<hr/>
+<h2 id="discovery">Core Finding</h2>
 <div class="discovery-block">
 <h4>Baryon-to-Photon Ratio Formula<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
 <div class="formula">$$\eta = \alpha^4 \times \sin^2\theta_W \times \left[1 - 2\!\left(4+\frac{1}{\pi}\right)\alpha\right]$$</div>
 <p style="text-align:center;margin-bottom:8px"><strong>$= 6.14 \times 10^{-10}$</strong></p>
 <p style="text-align:center;margin-bottom:8px">Observed value: $6.1 \times 10^{-10}$</p>
-<p style="text-align:center;margin-bottom:8px">Error: <span class="precision">approx. 0.7%</span></p>
+<p style="text-align:center;margin-bottom:8px">Error: <span class="precision">about 0.7%</span></p>
 <p style="text-align:center;margin-bottom:0">Free parameters: <strong>0</strong></p>
 </div>
-
-<h2 id="en-why">Why It Matters</h2>
-
-<p>Let me explain in simple terms why this formula is remarkable.</p>
-
-<p>In physics, the baryon-to-photon ratio $\eta$ is a number that expresses "why matter survived in the universe." It means that for every billion photons, one proton survived. No one has ever derived this number from theory. It was only measured through observation.</p>
-
-<p>The Banya Framework derives it from just two constants.</p>
-
+<h2 id="why">Why it matters</h2>
+<p>Here is a plain explanation of why this formula is so significant.</p>
+<p>In physics, the baryon-to-photon ratio $\eta$ is the number that expresses "why matter remained in the universe." It means that for every billion photons, one proton survived. Until now nobody has derived this number from theory; it has only been measured by observation.</p>
+<p>The Banya Framework derives it from only two constants.</p>
 <ul>
-<li>$\alpha$ -- the fine-structure constant. The strength of electromagnetic force. Already derived in Banya Framework Round 1.</li>
-<li>$\sin^2\theta_W$ -- the Weinberg angle. The mixing ratio of weak and electromagnetic forces. Already derived in the Banya Framework.</li>
+<li>$\alpha$ -- the fine-structure constant. The strength of the electromagnetic force. Already derived in Banya Framework Round 1.</li>
+<li>$\sin^2\theta_W$ -- the Weinberg angle. The mixing ratio between the weak and electromagnetic forces. Already derived in the Banya Framework.</li>
 </ul>
-
-<p>Both constants originate from the Banya Framework's 3 inputs ($\alpha$, $2/9$, $7$). Therefore, this formula reaches from the 3 inputs of the Banya Framework all the way to the reason for the existence of matter in the universe. Three inputs to the reason the universe exists.</p>
-
-<p>There is something even more important. If you feed the $\eta$ value from this formula back into the Banya Framework (re-substitution), it becomes the seed for the next discovery. This is how the Banya Framework operates. The output of one round becomes the input for the next. Seeds beget seeds.</p>
-
-<hr>
-
-<h1 id="en-r1">Round 1. CAS Mapping of Sakharov's 3 Conditions</h1>
-
-<h3 id="en-r1-step1">Step 1. Banya Equation</h3>
-
+<p>Both constants come from the three Banya Framework inputs ($\alpha$, $2/9$, $7$). So this formula has reached "why matter exists in the universe" from those three inputs. Three inputs, all the way to the reason the universe exists.</p>
+<p>There is something more important. The $\eta$ value produced by this formula, re-injected (recursive substitution) into the Banya Framework, becomes the seed of the next discovery. This is how the Banya Framework operates. Output of one round becomes input of the next. Seed begets seed.</p>
+<hr/>
+<h1 id="r1">Round 1. CAS Mapping of the Sakharov Three Conditions</h1>
+<h3 id="r1-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
-<div class="math-desc">The fundamental equation of the Banya Framework. 4 domains, 1 operator (CAS)</div>
+<div class="math-desc">The base equation of the Banya Framework. 4 axes, 1 operator (CAS).</div>
 </div>
-
-<p>All change begins from this equation. The Big Bang is no exception.</p>
-
-<h3 id="en-r1-step2">Step 2. The Irreversible R, C, S Order of CAS</h3>
-
-<p>CAS (Compare-And-Swap) consists of three steps.</p>
-
+<p>Every change starts from this equation. The Big Bang is no exception.</p>
+<h3 id="r1-step2">Step 2. The irreversible R, C, S order of CAS</h3>
+<p>CAS (Compare-And-Swap) consists of three stages.</p>
 <ul>
 <li><strong>R (Read)</strong> -- reads the current state</li>
-<li><strong>C (Compare)</strong> -- compares with the expected value</li>
-<li><strong>S (Swap)</strong> -- if they match, replaces with the new value</li>
+<li><strong>C (Compare)</strong> -- compares against the expected value</li>
+<li><strong>S (Swap)</strong> -- swaps in the new value if they match</li>
 </ul>
-
-<p>This order is irreversible. You do R, then C, then S. You cannot do S first and R later. This is irreversibility.</p>
-
-<h3 id="en-r1-step3">Step 3. Substitution of Sakharov's 3 Conditions</h3>
-
-<p>In 1967, Sakharov identified three conditions that must be simultaneously satisfied for matter to outnumber antimatter.</p>
-
+<p>This order cannot be reversed. R precedes C, C precedes S. You cannot do S first and R later. That is irreversibility.</p>
+<h3 id="r1-step3">Step 3. Substitute Sakharov's three conditions</h3>
+<p>In 1967 Sakharov showed that for matter to outnumber antimatter three conditions must hold simultaneously.</p>
 <ul>
-<li><strong>Condition 1</strong> -- Baryon number non-conservation (B violation)</li>
-<li><strong>Condition 2</strong> -- C symmetry and CP symmetry breaking</li>
-<li><strong>Condition 3</strong> -- Departure from thermal equilibrium</li>
+<li><strong>Condition 1</strong> -- baryon-number non-conservation (B violation)</li>
+<li><strong>Condition 2</strong> -- breaking of C symmetry and CP symmetry</li>
+<li><strong>Condition 3</strong> -- departure from thermal equilibrium</li>
 </ul>
-
-<p>If even one of these conditions is missing, no matter survives. In the Standard Model, each condition had to be explained by a separate mechanism.</p>
-
-<h3 id="en-r1-step4">Step 4. Substitution</h3>
-
-<p>Substitute Sakharov's 3 conditions into CAS.</p>
-
+<p>If even one of these is missing, no matter survives. In the Standard Model these conditions had to be explained by separate mechanisms.</p>
+<h3 id="r1-step4">Step 4. Substitution</h3>
+<p>Substitute Sakharov's three conditions into CAS.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Sakharov Condition</th><th>Physical Mechanism</th><th>CAS Correspondence</th></tr>
+<tr><th>Sakharov condition</th><th>Physical mechanism</th><th>CAS correspondence</th></tr>
 <tr><td>Condition 1: B violation</td><td>Sphaleron process</td><td>CAS topological rearrangement -- Swap can change baryon number</td></tr>
-<tr><td>Condition 2: CP violation</td><td>Weak force asymmetry</td><td>CAS irreversibility -- R, C, S order cannot be reversed</td></tr>
-<tr><td>Condition 3: Non-equilibrium</td><td>Early Big Bang inflation</td><td>First CAS -- the universe's first write breaks equilibrium</td></tr>
+<tr><td>Condition 2: CP violation</td><td>Asymmetry of the weak force</td><td>CAS irreversibility -- the R, C, S order cannot be reversed</td></tr>
+<tr><td>Condition 3: Non-equilibrium</td><td>Early-universe rapid expansion</td><td>The first CAS -- the universe's first write breaks equilibrium</td></tr>
 </table>
 </div>
-
-<h3 id="en-r1-step5">Step 5. All 3 Conditions Automatically Satisfied by CAS</h3>
-
-<p>Here is the key point. There is no need to struggle to satisfy Sakharov's 3 conditions separately. The structure of CAS itself already contains all three conditions.</p>
-
-<p>An analogy: instead of drawing the three sides of a triangle separately, the shape "triangle" already has three sides built in. If CAS exists, Sakharov's 3 conditions come for free.</p>
-
-<p>This means the Banya Framework explains "why matter survived" structurally. The survival of matter is not an accident but is built into the very way CAS operates.</p>
-
-<hr>
-
-<h1 id="en-r2">Round 2. Derivation of the Baryon-to-Photon Ratio</h1>
-
+<h3 id="r1-step5">Step 5. All three conditions are automatically satisfied inside CAS</h3>
+<p>This is the key point. There is no need to satisfy Sakharov's three conditions one by one. The structure of CAS itself already contains all three.</p>
+<p>An analogy: you do not draw the three sides of a triangle separately — the figure "triangle" already has three sides. If CAS exists, the Sakharov three conditions come along for free.</p>
+<p>This means the Banya Framework explains "why matter remained" structurally. The survival of matter is not an accident; it is built into the very way CAS operates.</p>
+<hr/>
+<h1 id="r2">Round 2. Derivation of the Baryon-to-Photon Ratio</h1>
 <p>Round 1 confirmed that matter can survive. Round 2 calculates how much survived.</p>
-
-<h3 id="en-r2-alpha4">alpha to the 4th Power</h3>
-
+<h3 id="r2-alpha4">The fourth power of alpha</h3>
 <div class="math-block">
 <div class="math-row">$$\alpha^4$$</div>
-<div class="math-desc">Compare cost for each of the 4 domains</div>
+<div class="math-desc">Compare cost of each of the four domains</div>
 </div>
-
-<p>The Banya Framework has 4 domains: time, space, observer, superposition. In the Compare step of CAS, each domain pays a coupling cost of $\alpha$. Since all 4 domains each pay once, the result is $\alpha^4$.</p>
-
-<p>Why is the cost per domain $\alpha$: $\alpha$ is the cost of the CAS Compare step (D-01). For matter-antimatter asymmetry to arise in the baryogenesis process, a Compare (comparison judgment) must occur once in each domain. 4 domains × Compare cost $\alpha$ = $\alpha^4$.</p>
-
-<p>In simple terms, for matter to be created, it must pass through all 4 axes once each, losing $1/137$ at each passage. Four passages give $(1/137)^4$.</p>
-
-<h3 id="en-r2-sin2">Weak Sphaleron CP Violation Ratio</h3>
-
+<p>The Banya Framework has four domains: time, space, observer, superposition. At the Compare stage of CAS each domain pays a coupling cost of $\alpha$. Four domains each paying once gives $\alpha^4$.</p>
+<p>Why the per-domain cost is $\alpha$: $\alpha$ is the cost of the CAS Compare stage (D-01). In baryon generation, for a matter-antimatter asymmetry to arise, a Compare (comparison judgment) must occur once in each domain. Four domains × Compare cost $\alpha$ = $\alpha^4$.</p>
+<p>Put simply: to produce matter, all four axes must be traversed once each, and each passage costs a factor of $1/137$. Four cuts give $(1/137)^4$.</p>
+<h3 id="r2-sin2">CP-violation fraction of the weak sphaleron</h3>
 <div class="math-block">
 <div class="math-row">$$\times\;\sin^2\theta_W$$</div>
-<div class="math-desc">The ratio at which the weak sphaleron violates CP</div>
+<div class="math-desc">Fraction at which the weak sphaleron violates CP</div>
 </div>
-
-<p>The Weinberg angle $\theta_W$ is the angle at which the weak and electromagnetic forces mix. $\sin^2\theta_W \approx 0.231$. The ratio of CP violation in the sphaleron process is exactly this value.</p>
-
-<p><strong>Note:</strong> In the Standard Model, the magnitude of CP violation is measured by the Jarlskog invariant $J$. The role of $\sin^2\theta_W$ here is not CP violation itself, but rather the electroweak mixing ratio at which weak gauge bosons participate in the sphaleron process. This ratio controls the magnitude of baryon number violation. That is, $\sin^2\theta_W$ is the ratio of "how many sphalerons change baryon number," not the ratio of "how much CP is broken."</p>
-
-<p>An analogy: imagine flipping a coin where heads and tails do not have exactly equal probability. It is tilted by 0.231 toward one side. This tilt creates the difference between matter and antimatter.</p>
-
-<h3 id="en-r2-correction">Forward-Reverse Radiation Correction</h3>
-
+<p>The Weinberg angle $\theta_W$ is the mixing angle between the weak and electromagnetic forces. $\sin^2\theta_W \approx 0.231$. In the sphaleron process this is exactly the fraction at which CP is violated.</p>
+<p><strong>Caveat:</strong> in the Standard Model the magnitude of CP violation is measured by the Jarlskog invariant $J$. The role of $\sin^2\theta_W$ here is not CP violation itself, but the electroweak mixing fraction at which the weak gauge bosons participate in the sphaleron process. This ratio controls the size of baryon-number violation. That is, $\sin^2\theta_W$ is the fraction "how many sphalerons change baryon number," not the fraction "how badly CP is broken."</p>
+<p>Analogy: toss a coin where heads and tails do not have exactly equal probability. It is tilted by 0.231 to one side. That tilt produces the difference between matter and antimatter.</p>
+<h3 id="r2-correction">Forward-backward radiation correction</h3>
 <div class="math-block">
 <div class="math-row">$$\times\;\left[1 - 2\!\left(4 + \frac{1}{\pi}\right)\alpha\right]$$</div>
-<div class="math-desc">Correction for forward and reverse radiation</div>
+<div class="math-desc">Correction from forward and backward radiation</div>
 </div>
-
-<p>Even after matter is created, some of it collides with photons and disappears again. This is the correction term for that "returning amount."</p>
-
+<p>Even after matter is produced, some of it collides with photons and disappears again. This term corrects for that "amount that flows back."</p>
 <ul>
-<li><strong>4</strong> -- contribution from the 4 domains</li>
+<li><strong>4</strong> -- contributions of the four domains</li>
 <li>$1/\pi$ -- geometric factor of circular feedback</li>
-<li>$2\alpha$ -- $\alpha$ cost for each of the forward (matter creation) and reverse (matter annihilation) directions</li>
+<li>$2\alpha$ -- forward (matter creation) and backward (matter annihilation), each costing $\alpha$</li>
 </ul>
-
-<p>This correction term is very small (approximately 0.06). The main contribution comes from $\alpha^4 \times \sin^2\theta_W$, and the correction is a fine-tuning.</p>
-
-<h3 id="en-r2-result">Result</h3>
-
+<p>This correction is very small (about 0.06). The main contribution comes from $\alpha^4 \times \sin^2\theta_W$; the correction is fine adjustment.</p>
+<h3 id="r2-result">Result</h3>
 <div class="math-block">
 <div class="math-row">$$\eta = \alpha^4 \times \sin^2\theta_W \times \left[1 - 2\!\left(4+\frac{1}{\pi}\right)\alpha\right]$$</div>
 <div class="math-row">$$= (7.297\!\times\!10^{-3})^4 \times 0.2312 \times \bigl[1 - 2(4.3183)(7.297\!\times\!10^{-3})\bigr]$$</div>
 <div class="math-row">$$= 2.836\!\times\!10^{-9} \times 0.2312 \times 0.9370$$</div>
 <div class="math-row">$$= 6.14 \times 10^{-10}$$</div>
-<div class="math-desc">Observed value: $6.1 \times 10^{-10}$ -- error approx. 0.7%</div>
+<div class="math-desc">Observed value: $6.1 \times 10^{-10}$ -- error about 0.7%</div>
 </div>
-
-<p>Zero free parameters. Both $\alpha$ and $\theta_W$ are values already derived within the Banya Framework. Not a single number was inserted to fit the result. Yet it matches the observed value with 0.7% error.</p>
-
-<hr>
-
-<h1 id="en-r3">Round 3. Physical Interpretation</h1>
-
-<h3 id="en-r3-swap">CAS Swap: Success and Failure</h3>
-
-<p>Two outcomes emerge from the Swap step of CAS.</p>
-
+<p>Free parameters: 0. Both $\alpha$ and $\theta_W$ are already values derived by the Banya Framework. No number was inserted to make things fit. Even so, the result agrees with observation at 0.7% error.</p>
+<hr/>
+<h1 id="r3">Round 3. Physical Interpretation</h1>
+<h3 id="r3-swap">Success and failure of CAS Swap</h3>
+<p>The Swap stage of CAS yields two outcomes.</p>
 <ul>
 <li><strong>Swap success</strong> = matter is created</li>
 <li><strong>Swap failure</strong> = antimatter is created</li>
 </ul>
-
-<p>Immediately after the Big Bang, countless CAS operations ran simultaneously. Most produced matter-antimatter pairs that annihilated each other into light. But in a tiny fraction of CAS operations, Swap succeeded in only one direction. That tiny fraction is the universe we see today.</p>
-
-<h3 id="en-r3-source">Source of the Asymmetry</h3>
-
-<p>Why did it tilt to one side? Because of the R, C, S order of CAS.</p>
-
-<p>In the Compare step, 1 bit of information is irreversibly consumed. Once the read value is compared with the expected value, the result of that comparison cannot be undone. This 1-bit irreversible consumption creates the subtle difference between the forward direction (matter) and the reverse direction (antimatter).</p>
-
-<p>An analogy: imagine flipping a coin, but the person's right hand is ever so slightly stronger than their left. Each flip, the difference is almost invisible, but after a billion flips, one side ends up with one extra. The irreversibility of Compare in CAS is precisely that "right hand."</p>
-
-<hr>
-
-<h1 id="en-incomplete">Incomplete</h1>
-
-<p>There are parts of this result that are not yet complete.</p>
-
+<p>Right after the Big Bang, a vast number of CAS operations executed simultaneously. Most produced matter-antimatter pairs that met and turned into light. But in a very small minority of CAS operations, Swap succeeded only on one side. That minority is today's universe.</p>
+<h3 id="r3-source">Origin of the asymmetry</h3>
+<p>Why does it tilt to one side? Because of the R, C, S order of CAS.</p>
+<p>At the Compare stage one bit of information is irreversibly consumed. Once you compare the read value with the expected value, that comparison result cannot be undone. This 1-bit irreversible consumption creates the tiny difference between the forward direction (matter) and the backward direction (antimatter).</p>
+<p>Analogy: in a coin toss, the tosser's right hand is very slightly stronger than the left. The difference is almost invisible on any single throw, but after a billion throws one side ends up ahead by one. In CAS the irreversibility of Compare is exactly that "right hand."</p>
+<hr/>
+<h1 id="incomplete">Incomplete</h1>
+<p>Parts of this result are not yet finished.</p>
 <div class="table-wrap">
 <table>
-<tr><th class="col-num">#</th><th>Incomplete Item</th><th>Current State</th><th>Required Work</th></tr>
-<tr><td>1</td><td>Independent justification of $(4+1/\pi)$ correction term</td><td>Convergence of $(4+1/\pi)$ confirmed via three paths: TOCTOU thermonuclear residual path, Wyler volume path, and complex-analytic Cauchy residue path. Rigorous formalization of each path in progress.</td><td>Reveal the path by which $1/\pi$ emerges from the feedback geometry of CAS's 4 domains</td></tr>
-<tr><td>2</td><td>CAS correspondence of the sphaleron process</td><td>CAS formula derived: $E_{sph} = B(\lambda_H) \cdot \sqrt{4\pi/\alpha_{weak}} \cdot \sqrt{2} \cdot m_t$. Numerical value approx. 10.1 TeV (standard range 7~10 TeV). Advanced from conceptual mapping to quantitative formula.</td><td>Express the sphaleron energy barrier as a CAS cost</td></tr>
+<tr><th class="col-num">#</th><th>Incomplete item</th><th>Current state</th><th>Work required</th></tr>
+<tr><td>1</td><td>Independent justification of the $(4+1/\pi)$ correction</td><td>TOCTOU thermonuclear residual path + Wyler volume path + complex-analysis Cauchy-residue path. Convergence to $(4+1/\pi)$ confirmed on all three paths. Rigorization of each path is underway.</td><td>Identify the path by which $1/\pi$ emerges from the feedback geometry of the four CAS domains</td></tr>
+<tr><td>2</td><td>CAS correspondence of the sphaleron process</td><td>CAS-form derivation: $E_{sph} = B(\lambda_H) \cdot \sqrt{4\pi/\alpha_{weak}} \cdot \sqrt{2} \cdot m_t$. Numerically about 10.1 TeV (standard range 7~10 TeV). Progress from conceptual mapping to quantitative formula.</td><td>Express the sphaleron energy barrier as a CAS cost</td></tr>
 </table>
 </div>
-
-<p>Current grade: <strong>A-</strong> (key formula discovered, 0.7% error, 0 free parameters)</p>
-<p>Remaining for grade A: resolve the 2 incomplete items above.</p>
-
-<hr>
-
-<h1 id="en-summary">Summary</h1>
-
+<p>Current grade: <strong>A-</strong> (core formula discovered, 0.7% error, 0 free parameters)</p>
+<p>What remains for grade A: clear the two incomplete items above.</p>
+<hr/>
+<h1 id="summary">Summary</h1>
 <p>The Banya Framework has explained why matter exists in the universe.</p>
-
-<p>The baryon-to-photon ratio was derived from just two constants: $\alpha$ and the Weinberg angle. Zero free parameters, 0.7% error. Sakharov's 3 conditions are automatically satisfied by the CAS structure.</p>
-
-<p>This is a journey from the Banya Framework's 3 inputs ($\alpha$, $2/9$, $7$) all the way to the reason for the universe's existence. Three seeds created stars, planets, and life.</p>
-
+<p>Using only two constants — $\alpha$ and the Weinberg angle — it derives the baryon-to-photon ratio. Zero free parameters, 0.7% error. The three Sakharov conditions are automatically satisfied by the CAS structure.</p>
+<p>This is a path from the three Banya Framework inputs ($\alpha$, $2/9$, $7$) all the way to the reason the universe exists. Three seeds made stars, planets, and life.</p>
 </div>
-
-
-
 <div class="page-nav lang-en">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
-<a href="../science_mine.html">Mining Manual</a>
+<a href="../../banya.html">Comprehensive Report</a>
+<a href="../../predictions.html">Unique Predictions</a>
+<a href="../../lib_new.html">Hypothesis Library</a>
+<a href="../../science_mine.html">Mining Manual</a>
 </div>
-
-
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin (Hyukjin Han)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
 <div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">바리온-광자 비 Derivation: $\eta = 6.14 \times 10^{-10}$, 오차 0.7%</div>
+<div class="f2">Baryon-to-photon ratio derivation: $\eta = 6.14 \times 10^{-10}$, error 0.7%</div>
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="alpha.html">alpha Derivation</a> | <a href="ckm_pmns.html">CKM/PMNS</a> | <a href="../expend.html">118 Compatibility Verification Appendix</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial use only | SA -- Share-alike<br/>
+Copyright of pre-existing physics formulas remains with the original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

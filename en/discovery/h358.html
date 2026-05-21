@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-358 Render (Swap) minimum cost = Landauer limit kT ln2 -- Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-358 Render (Swap) minimum cost = Landauer limit kT ln2. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; margin:8px 0; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h358.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib_new.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
+<h1><a href="h358.html">H-358</a>. Render (Swap) minimum cost = Landauer limit kT ln2</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="h358.html">H-358</a>: Render (Swap) minimum cost = Landauer limit kT ln2</strong></p>
+<div class="formula-box">$$E_{\text{render,min}}=k_B T\ln 2$$</div>
+<p>(1) A single CAS Swap is an irreversible bit erasure, and its minimum energy cost is the Landauer limit k_B T ln 2.</p>
+<p>(2) Banya formula: E_render,min = k_B T ln 2. When a Swap overwrites DATA (<a href="../axiom.html#ax3">Axiom 3</a>), the previous value is irreversibly erased, so the minimum energy is released.</p>
+<p>(3) By <a href="../axiom.html#ax4">Axiom 4</a> (cost existence), a cost is incurred at every + crossing. By <a href="../axiom.html#ax5">Axiom 5</a> (cost conservation), cost does not vanish. The irreversibility of Swap comes from <a href="../axiom.html#ax3">Axiom 3</a> (screen overwrite).</p>
+<p>(4) Structural consequence: at the Swap stage of CAS (S+1 cost), the previous value of DATA is replaced by the new value. The previous value cannot be recovered. The minimum thermodynamic cost of this irreversible erasure is the Landauer limit.</p>
+<p>(5) Numerics: k_B = 1.381 × 10⁻²³ J/K. At room temperature T = 300K, k_B T ln 2 = 2.87 × 10⁻²¹ J ≈ 0.018 eV. This is the minimum energy of 1-bit erasure.</p>
+<p>(6) Consistency: the Landauer principle was experimentally confirmed in 2012 (Berut et al.). In the Banya Framework, the irreversibility of Swap is the structural ground of this principle.</p>
+<p>(7) Physical correspondence: the second law of thermodynamics (entropy increase) is derived from the irreversibility of CAS Swap. At every Swap, at least k_B T ln 2 of energy is released to the environment, so entropy increases.</p>
+<p>(8) Read (R+1) and Compare (C+1) also incur cost (v1.2), but they do not change DATA, so they are not irreversible erasures. The Landauer limit applies directly only to Swap.</p>
+<p>(9) Verification: set the minimum energy of one CAS Swap to k_B T ln 2, and confirm whether the relation Planck energy E_P = k_B T_P ln 2 holds from there (T_P = Planck temperature).</p>
+<p>(10) Remaining task: the cost of simultaneous multi-bit erasure (n × k_B T ln 2?), the CAS correspondence of reversible operations in quantum computing, and the quantum correction term of the Landauer limit are pending.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is classified as a hypothesis (Class III) and has stopped without proceeding to the next round. Quantitative comparison with the experimental value is absent. The standard measured value to compare against (PDG/CODATA/experimental limit) has not been cited, or only dimensional and structural matches have been confirmed, so precision estimation is incomplete. A derivation formula exists, but quantitative collation against the experimental measured value is incomplete. Dimensional consistency and structural matching are established. Remaining tasks specified: (10) Remaining task: the cost of simultaneous multi-bit erasure (n × k_B T ln 2?), the CAS correspondence of reversible operations in quantum computing, and the quantum correction term of the Landauer limit are pending. The D promotion path has three standard moves: (1) resolve the remaining tasks above, (2) re-inject adjacent D/H cards from the library as inputs to the recursive substitution round, (3) introduce additional unused propositions from <a href="../axiom.html#ax1">Axiom 1</a>, <a href="../axiom.html#ax2">Axiom 2</a>, <a href="../axiom.html#ax4">Axiom 4</a>, <a href="../axiom.html#ax9">Axiom 9</a>, <a href="../axiom.html#ax11">Axiom 11</a>.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-hypothesis">
+<p><strong>Verdict: Hypothesis</strong> -- Hypothesis (recursive substitution in progress)</p>
+<p><strong>Reason:</strong> experimental comparison absent / recursive substitution not yet executed (round 1) / remaining tasks specified</p>
+<p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; natural classification plus (domain undetermined, subsequent refinement needed). Recursive substitution path: round 1 (no external input)</p>
+</div>
+<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution — δ to target domain</h3>
+<p>δ ==&gt; natural classification plus (domain undetermined, subsequent refinement needed)</p>
+</div>
+<div class="step">
+<h3>Step 3. Constant + Hypothesis Re-injection</h3>
+<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
+<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
+<p><strong>Library Re-substitution:</strong> <em>no external reference (round 1)</em></p>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
+<ul>
+<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
+<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
+<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
+</ul>
+</div>
+<div class="step">
+<h3>Step 5. Discovery / Verdict</h3>
+<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p><em>No byproducts specified. Cross-links may be added in subsequent mining.</em></p>
+</div>
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>Quantitative estimation</td><td>Structural narrative only</td><td>Next-round recursive substitution</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="h358.html">H-358</a>: Render (Swap) minimum cost = Landauer limit kT ln2</td><td>Derivation formula exists</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY — Attribution required | NC — Non-commercial use only | SA — Share-alike<br/>
+Copyright of pre-existing physics formulas remains with original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

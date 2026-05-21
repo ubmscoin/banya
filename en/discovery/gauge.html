@@ -1,395 +1,243 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>: CASU(1)xSU(2)xSU(3) — </title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="CAS 3(Read, Compare, Swap)U(1)xSU(2)xSU(3) . alpha_s = 3*alpha*(4pi)^(2/3) = 0.1183 (0.3%). 1+3+8=12 . CAS .">
-<meta name="keywords" content="Banya,Banya Framework,gauge group,U(1),SU(2),SU(3),Standard Model,CAS,Compare-And-Swap,Read,Compare,Swap,alpha_s,QCD,gluon,Gell-Mann,confinement,asymptotic freedom,SO(5 2),Han Hyukjin,TOE,">
-<meta property="og:title" content=": CASSM — ">
-<meta property="og:description" content="CAS (1,2,4)(1,3,8) . alpha_s 0.3%.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="— ">
-<meta name="twitter:description" content="CAS 3U(1)xSU(2)xSU(3) . alpha_s = 0.1183, 0.3%.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gauge Group Mapping: Deriving U(1)xSU(2)xSU(3) from CAS — Banya Framework Operating Report</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="Derivation of the Standard Model gauge group U(1)xSU(2)xSU(3) from the three CAS stages (Read, Compare, Swap) of the Banya Framework. alpha_s = 3*alpha*(4pi)^(2/3) = 0.1183 (error 0.3%). Generator count 1+3+8=12 mapping. Color confinement corresponds to CAS atomicity." name="description"/>
+<meta content="Banya Framework,般若,gauge group,U(1),SU(2),SU(3),Standard Model,CAS,Compare-And-Swap,Read,Compare,Swap,strong coupling constant,alpha_s,QCD,gluon,Gell-Mann,confinement,asymptotic freedom,SO(5 2),Han Hyukjin,TOE,Theory of Everything" name="keywords"/>
+<meta content="Gauge Group Mapping: SM Gauge Group from CAS — Banya Framework" property="og:title"/>
+<meta content="Necessary mapping from CAS (1,2,4) to gauge group (1,3,8). alpha_s derived with 0.3% error." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Gauge Group Mapping — Banya Framework" name="twitter:title"/>
+<meta content="U(1)xSU(2)xSU(3) derived from the 3 CAS stages. alpha_s = 0.1183, error 0.3%." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../../discovery/gauge.html" class="lang-btn">KR</a></div>
-
-
-
-<div class="toc-side lang-en">
-<a href="#en-title" class="toc-h1">Gauge Group Mapping</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-r1" class="toc-h1">Round 1. Gauge Generators from CAS</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. CAS Internal Structure</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Gauge Group Mapping Hypothesis</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Domain Transformation</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. det=1 Condition</a>
-<a href="#en-r2" class="toc-h1">Round 2. Eight Gluons</a>
-<a href="#en-r2-basis" class="toc-h3">CAS as Basis</a>
-<a href="#en-r2-gellmann" class="toc-h3">Correspondence with Gell-Mann Matrices</a>
-<a href="#en-r3" class="toc-h1">Round 3. alpha_s Derivation</a>
-<a href="#en-r3-formula" class="toc-h3">Derivation Formula</a>
-<a href="#en-r3-precision" class="toc-h3">Precision Verification</a>
-<a href="#en-r4" class="toc-h1">Round 4. Color Confinement = CAS Atomicity</a>
-<a href="#en-r4-baryon" class="toc-h3">Baryons and Mesons</a>
-<a href="#en-r4-freedom" class="toc-h3">Asymptotic Freedom</a>
-<a href="#en-r5" class="toc-h1">Round 5. SO(5,2) Embedding</a>
-<a href="#en-r5-decomp" class="toc-h3">Decomposition of 7</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
-</div>
-
-<div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">Gauge Group Mapping</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
-<a href="#en-title" class="toc-h1">Gauge Group Mapping</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-r1" class="toc-h1">Round 1. Gauge Generators from CAS</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. CAS Internal Structure</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Gauge Group Mapping Hypothesis</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Domain Transformation</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. det=1 Condition</a>
-<a href="#en-r2" class="toc-h1">Round 2. Eight Gluons</a>
-<a href="#en-r2-basis" class="toc-h3">CAS as Basis</a>
-<a href="#en-r2-gellmann" class="toc-h3">Correspondence with Gell-Mann Matrices</a>
-<a href="#en-r3" class="toc-h1">Round 3. alpha_s Derivation</a>
-<a href="#en-r3-formula" class="toc-h3">Derivation Formula</a>
-<a href="#en-r3-precision" class="toc-h3">Precision Verification</a>
-<a href="#en-r4" class="toc-h1">Round 4. Color Confinement = CAS Atomicity</a>
-<a href="#en-r4-baryon" class="toc-h3">Baryons and Mesons</a>
-<a href="#en-r4-freedom" class="toc-h3">Asymptotic Freedom</a>
-<a href="#en-r5" class="toc-h1">Round 5. SO(5,2) Embedding</a>
-<a href="#en-r5-decomp" class="toc-h3">Decomposition of 7</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
-</div>
-
-
-
-
-
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>. The overall structure of the Banya Framework, verification of 118 physics equations, CAS operator, and write theory are all in the comprehensive report. This document covers only the gauge group mapping process.</p>
-
-<h1 id="en-title">Gauge Group Mapping: Deriving U(1)xSU(2)xSU(3) from CAS 3-Step</h1>
-
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/gauge.html">EN</a></div>
+<div class="lang-en">
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a supplementary report to the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. The full content — the framework structure, verification of 118 physical equations, the CAS operator, the writing theory, and so on — lives in the Master Report. This document addresses only the gauge group mapping procedure.</p>
+<h1 id="title">Gauge Group Mapping: Deriving U(1)xSU(2)xSU(3) from the 3 CAS Stages</h1>
+<blockquote><p>Banya Framework Operating Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Execution Date: 2026-03-23</p></blockquote>
-
-
-<h2 id="en-intro">Introduction</h2>
-
-<p><strong>Value: TOE Core</strong> -- Answering the question "why this particular combination?" for the gauge group $U(1) \times SU(2) \times SU(3)$ that unifies three of nature's four forces (electromagnetism, weak force, strong force). This is the quantitative core of a Theory of Everything.</p>
-
-<p><strong>Status: <span class="tag-solved">Hit</span></strong> -- Structural correspondence and generator count derivation succeeded. Strong coupling constant $\alpha_s$ derivation error 0.3%. The relationship was precisely defined not as a group isomorphism but as a principal bundle projection.</p>
-
-
-<h2 id="en-discovery">Key Discovery</h2>
-
+<blockquote><p>Execution date: 2026-03-23</p></blockquote>
+<h2 id="intro">Introduction</h2>
+<p><strong>Value: TOE core</strong> -- This answers the question "why exactly this combination" for the gauge group $U(1) \times SU(2) \times SU(3)$ that unifies three of nature's four forces (electromagnetism, weak, strong). It is the quantitative heart of any theory of everything.</p>
+<p><strong>Status: <span class="tag-solved">Hit</span></strong> -- The structural correspondence and the derivation of the generator count both succeeded. Strong coupling constant $\alpha_s$ derived with 0.3% error. The relation is fixed precisely — not as a group isomorphism, but as a principal-bundle projection.</p>
+<h2 id="discovery">Core Finding</h2>
 <div class="discovery-block">
-<h4>Necessary Mapping from CAS to Standard Model Gauge Group<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<h4>Necessary mapping from CAS to the Standard Model gauge group<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
 <div class="formula">$$\alpha_s = 3 \times \alpha \times (4\pi)^{2/3} = 0.1183$$</div>
-<p><span class="precision">0.3% deviation from experimental value 0.1179</span></p>
+<p><span class="precision">Error 0.3% against the experimental value 0.1179</span></p>
 </div>
-
 <div class="hypothesis-block">
-<h4>From CAS Degrees of Freedom to Gauge Generators<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
+<h4>From CAS degrees of freedom to gauge generators<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
 <div class="formula">$$(1,\; 2,\; 4) \longrightarrow (1,\; 3,\; 8) \quad \text{necessary mapping}$$</div>
-<p>Read(1) maps to 1 generator of $U(1)$, Compare(2) maps to 3 generators of $SU(2)$, and Swap(4) maps to 8 generators of $SU(3)$.</p>
+<p>Read(1) maps to the 1 generator of $U(1)$, Compare(2) to the 3 generators of $SU(2)$, and Swap(4) to the 8 generators of $SU(3)$.</p>
 </div>
-
-
-<h1 id="en-r1">Round 1. Gauge Generators from CAS Degrees of Freedom</h1>
-
-<h3 id="en-r1-step1">Step 1. Banya Equation</h3>
-
+<h1 id="r1">Round 1. From CAS degrees of freedom to gauge generators</h1>
+<h3 id="r1-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
-<div class="math-desc">Banya Equation: 4-axis orthogonal structure, minimal description of state change</div>
+<div class="math-desc">Banya formula: 4-axis orthogonal structure, the minimal description of state change</div>
 </div>
-
-<p>The Banya Equation describes all state changes as orthogonal sums of 4 axes. CAS is the operator that executes these state changes.</p>
-
-<h3 id="en-r1-step2">Step 2. CAS Internal Structure</h3>
-
-<p>CAS (Compare-And-Swap) consists of 3 steps. Each step has different internal degrees of freedom.</p>
-
+<p>The Banya formula describes every state change as an orthogonal sum over the 4 axes. The operator that executes this state change is CAS.</p>
+<h3 id="r1-step2">Step 2. Internal structure of CAS</h3>
+<p>CAS (Compare-And-Swap) consists of 3 stages. Each stage has a different internal degree of freedom.</p>
 <div class="table-wrap">
 <table>
-<tr><th>CAS Step</th><th>Role</th><th>Internal DoF</th><th>Meaning</th></tr>
-<tr><td><strong>Read</strong></td><td>Reads the current state</td><td>1</td><td>Reading is singular. It fetches the state as-is. There is no choice.</td></tr>
-<tr><td><strong>Compare</strong></td><td>Compares with expected value</td><td>2</td><td>Comparison is binary. "Equal" or "not equal". A binary judgment.</td></tr>
-<tr><td><strong>Swap</strong></td><td>Conditionally exchanges</td><td>4</td><td>Exchange is four. The number of ways to place 2 values in 2 slots. $2 \times 2 = 4$.</td></tr>
+<tr><th>CAS stage</th><th>Role</th><th>Internal DOF</th><th>Meaning</th></tr>
+<tr><td><strong>Read</strong></td><td>Reads the current state</td><td>1</td><td>Reading is one. It takes the state as it is. No room for choice.</td></tr>
+<tr><td><strong>Compare</strong></td><td>Compares with the expected value</td><td>2</td><td>Comparison is two: "equal" or "not equal". A binary verdict.</td></tr>
+<tr><td><strong>Swap</strong></td><td>Exchanges conditionally</td><td>4</td><td>Exchange is four: the number of ways to place 2 values into 2 slots. $2 \times 2 = 4$.</td></tr>
 </table>
 </div>
-
-<p>Expanding the $2 \times 2 = 4$ counting for Swap: Swap places 2 values (the current value and the new value) into 2 slots (the original position and the target position). Number of cases: $2 \times 2 = 4$. Specifically: (1) both stay in place, (2) only the current value moves, (3) only the new value moves, (4) both exchange.</p>
-
-<p>The internal degrees of freedom of CAS are (1, 2, 4). These numbers emerge necessarily from the structure of CAS. They are not designed by anyone but determined by the essence of the operation.</p>
-
-<h3 id="en-r1-step3">Step 3. Gauge Group Mapping Hypothesis</h3>
-
-<p>When an operation with n degrees of freedom extends to a continuous symmetry group, how many generators does that group have?</p>
-
+<p>The $2 \times 2 = 4$ counting for Swap, unpacked: Swap places 2 values (the current value and the new value) into 2 slots (the original location and the target location). Number of cases: $2 \times 2 = 4$. Concretely: (1) both stay, (2) only the current value moves, (3) only the new value moves, (4) both exchange.</p>
+<p>The internal degrees of freedom of CAS are (1, 2, 4). These numbers come out of the CAS structure by necessity. No one designed them; the essence of the operation determines them.</p>
+<h3 id="r1-step3">Step 3. Substituting the gauge-group mapping hypothesis</h3>
+<p>When an operation with degree of freedom n is extended to a continuous symmetry group, what is the number of generators of that group?</p>
 <ul>
-<li>Operation with 1 degree of freedom: $U(1)$. 1 generator. A 1-dimensional rotation has 1 axis to rotate around.</li>
-<li>Operation with 2 degrees of freedom: $SU(2)$. $2^2 - 1 = 3$ generators. Remove the determinant-1 condition from $2 \times 2$ unitary matrices and 3 remain.</li>
-<li>Operation with 4 degrees of freedom: This is the key point.</li>
+<li>Operation with DOF 1: $U(1)$. 1 generator. A 1-dimensional rotation has 1 axis to rotate about.</li>
+<li>Operation with DOF 2: $SU(2)$. Generators $2^2 - 1 = 3$. Removing the determinant-one condition from $2 \times 2$ unitary matrices leaves 3.</li>
+<li>Operation with DOF 4: this is the key.</li>
 </ul>
-
-<h3 id="en-r1-step4">Step 4. Domain Transformation -- Why 1 Is Subtracted from Swap</h3>
-
-<p>Swap has 4 degrees of freedom. One might expect a 4-DoF operation to extend to $U(4)$. But it becomes not $U(4)$ but $SU(4-1) = SU(3)$.</p>
-
+<h3 id="r1-step4">Step 4. Domain transformation -- why 1 drops out of Swap</h3>
+<p>Swap has DOF 4. An operation with DOF 4 extended to a continuous symmetry group would seem to give $U(4)$. But it is not $U(4)$ — it becomes $SU(4-1) = SU(3)$.</p>
 <div class="math-block">
 <div class="math-row">$$\text{Read}(1) \longrightarrow U(1):\; \dim = 1$$</div>
 <div class="math-row">$$\text{Compare}(2) \longrightarrow SU(2):\; \dim = 2^2 - 1 = 3$$</div>
 <div class="math-row">$$\text{Swap}(4) \longrightarrow SU(4-1) = SU(3):\; \dim = 3^2 - 1 = 8$$</div>
-<div class="math-desc">Mapping from CAS degrees of freedom to gauge generator counts</div>
+<div class="math-desc">Mapping from CAS degrees of freedom to gauge-generator counts</div>
 </div>
-
-<h3 id="en-r1-step5">Step 5. Why 1 Is Subtracted from Swap -- The det=1 Condition</h3>
-
-<p>Why 3 instead of 4 for Swap? This is the most crucial point.</p>
-
-<p>Swap is an exchange. The total norm must be conserved before and after the exchange. "Something increased after the exchange" or "something decreased after the exchange" is not allowed. This is equivalent to requiring the determinant to be 1, the $\det = 1$ condition.</p>
-
-<p>Applying the $\det = 1$ condition to $U(4)$ gives $SU(4)$, but among Swap's 4 degrees of freedom, 1 is the identity -- "doing nothing." Not exchanging is not an exchange. Removing it leaves $4 - 1 = 3$ substantial degrees of freedom, whose special unitary group is $SU(3)$.</p>
-
-<p>Number of $SU(3)$ generators: $3^2 - 1 = 8$. These are the 8 gluons.</p>
-
+<h3 id="r1-step5">Step 5. Why 1 drops out of Swap — the det=1 condition</h3>
+<p>Why is it 3 and not 4 in Swap? This is the most important point.</p>
+<p>Swap is exchange. Before and after exchange the total norm must be preserved. "After the exchange something grew" or "after the exchange something shrank" is not allowed. This is the same as the condition that the determinant equals 1, the $\det = 1$ condition.</p>
+<p>Imposing $\det = 1$ on $U(4)$ gives $SU(4)$, but one of Swap's 4 degrees of freedom is the "do nothing" identity. Not exchanging is not exchange. Removing it leaves $4 - 1 = 3$ substantive degrees of freedom, and the special unitary group of those is $SU(3)$.</p>
+<p>Generator count of $SU(3)$: $3^2 - 1 = 8$. These are the 8 gluons.</p>
 <div class="math-block">
 <div class="math-row">$$\text{Total gauge generators}:\; 1 + 3 + 8 = 12$$</div>
-<div class="math-desc">Exactly matches the 12 gauge bosons of the Standard Model</div>
+<div class="math-desc">Exactly equal to the 12 gauge bosons of the Standard Model</div>
 </div>
-
-<p>1 photon, 3 W+/W-/Z bosons, 8 gluons. Total 12. Exactly the same as (1, 3, 8) = 12 from CAS.</p>
-
-
-<h1 id="en-r2">Round 2. 8 Gluons = CAS SU(3) Adjoint Representation</h1>
-
-<h3 id="en-r2-basis">R, C, S as Basis</h3>
-
-<p>Take the 3 CAS steps Read(R), Compare(C), Swap(S) as the 3 basis vectors of the fundamental representation of $SU(3)$. The adjoint representation of $SU(3)$ consists of $3 \times 3$ Hermitian matrices with zero trace.</p>
-
-<p>A $3 \times 3$ matrix has 9 components. Among these:</p>
-
+<p>1 photon, 3 W+, W-, Z bosons, 8 gluons. Total 12. Exactly the same as the (1, 3, 8) = 12 coming out of CAS.</p>
+<h1 id="r2">Round 2. 8 gluons = CAS SU(3) adjoint representation</h1>
+<h3 id="r2-basis">R, C, S as a basis</h3>
+<p>Place the 3 CAS stages Read(R), Compare(C), Swap(S) as the basis of the 3 fundamental representations of $SU(3)$. The adjoint representation of $SU(3)$ consists of the traceless $3 \times 3$ Hermitian matrices.</p>
+<p>A $3 \times 3$ matrix has 9 components. Among them:</p>
 <ul>
-<li><strong>6 off-diagonal components</strong>: Transitions between R-C, R-S, C-S. 2 each (real and imaginary parts), so 3 x 2 = 6.</li>
-<li><strong>2 traceless diagonal components</strong>: 3 diagonal entries minus the trace = 0 condition gives 2.</li>
+<li><strong>6 off-diagonal components</strong>: transitions among R-C, R-S, C-S. Two each (real and imaginary parts), giving 3 x 2 = 6.</li>
+<li><strong>2 traceless diagonal components</strong>: 3 diagonal entries minus the trace=0 condition leaves 2.</li>
 </ul>
-
 <div class="math-block">
-<div class="math-row">$$\text{Off-diagonal}\; 6 + \text{traceless diagonal}\; 2 = 8$$</div>
+<div class="math-row">$$\text{off-diagonal}\; 6 + \text{traceless diagonal}\; 2 = 8$$</div>
 <div class="math-desc">8 gluons = 8 Gell-Mann matrices</div>
 </div>
-
-<h3 id="en-r2-gellmann">Correspondence with Gell-Mann Matrices</h3>
-
+<h3 id="r2-gellmann">Correspondence with the Gell-Mann matrices</h3>
 <div class="table-wrap">
 <table>
-<tr><th>Gell-Mann Matrix</th><th>CAS Correspondence</th><th>Physical Meaning</th></tr>
+<tr><th>Gell-Mann matrix</th><th>CAS correspondence</th><th>Physical meaning</th></tr>
 <tr><td>$\lambda_1, \lambda_2$</td><td>R-C transition</td><td>State exchange between Read and Compare</td></tr>
 <tr><td>$\lambda_4, \lambda_5$</td><td>R-S transition</td><td>State exchange between Read and Swap</td></tr>
 <tr><td>$\lambda_6, \lambda_7$</td><td>C-S transition</td><td>State exchange between Compare and Swap</td></tr>
-<tr><td>$\lambda_3$</td><td>R-C diagonal</td><td>Relative weight of Read and Compare</td></tr>
-<tr><td>$\lambda_8$</td><td>Overall diagonal</td><td>Balance across all 3 steps</td></tr>
+<tr><td>$\lambda_3$</td><td>R-C diagonal</td><td>Relative weight of Read versus Compare</td></tr>
+<tr><td>$\lambda_8$</td><td>Overall diagonal</td><td>Balance across all 3 stages</td></tr>
 </table>
 </div>
-
-<p>When the 3 CAS steps are taken as basis vectors, the 8 Gell-Mann matrices emerge naturally. The 8 gluons are bosons that mediate inter-step transitions within CAS.</p>
-
-
-<h1 id="en-r3">Round 3. alpha_s Derivation</h1>
-
-<h3 id="en-r3-formula">Derivation Formula</h3>
-
-<p>Deriving the strong coupling constant $\alpha_s$ from the electromagnetic coupling constant $\alpha_{\text{em}}$.</p>
-
+<p>Placing the 3 CAS stages as a basis produces the 8 Gell-Mann matrices naturally. The 8 gluons are the bosons that mediate transitions between the stages inside CAS.</p>
+<h1 id="r3">Round 3. Derivation of alpha_s</h1>
+<h3 id="r3-formula">Derivation formula</h3>
+<p>Derive the strong coupling constant $\alpha_s$ from the electromagnetic coupling $\alpha_{\text{em}}$.</p>
 <div class="math-block">
 <div class="math-row">$$\alpha_s = 3 \times \alpha_{\text{em}} \times (4\pi)^{2/3}$$</div>
-<div class="math-desc">Strong coupling constant from CAS structure</div>
+<div class="math-desc">The strong coupling constant arising from the CAS structure</div>
 </div>
-
-<p>Why does this formula arise:</p>
-
+<p>Why this formula:</p>
 <ul>
-<li><strong>3</strong>: Number of CAS elements. The 3 steps: Read, Compare, Swap.</li>
-<li><strong>$\alpha_{\text{em}}$</strong>: Fundamental coupling constant. Derived from the Banya Framework in the alpha derivation report.</li>
-<li><strong>$(4\pi)^{2/3}$</strong>: Domain transformation factor. $4\pi$ is the total solid angle of the unit sphere ($S^2$) in 3-dimensional space, $4\pi$ steradians, and $2/3$ reflects that 2 of the 3 CAS steps (Compare and Swap) have non-trivial degrees of freedom.</li>
+<li><strong>3</strong>: number of CAS elements. The 3 stages Read, Compare, Swap.</li>
+<li><strong>$\alpha_{\text{em}}$</strong>: the fundamental coupling constant. The value derived from the Banya Framework in the alpha derivation report.</li>
+<li><strong>$(4\pi)^{2/3}$</strong>: domain-transformation factor. $4\pi$ is the full solid angle $4\pi$ steradians of the unit sphere ($S^2$) in 3-dimensional space, and $2/3$ reflects the fact that 2 of the 3 CAS stages (Compare and Swap) carry nontrivial degrees of freedom.</li>
 </ul>
-
-<h3 id="en-r3-precision">Precision Verification</h3>
-
+<h3 id="r3-precision">Precision check</h3>
 <div class="math-block">
 <div class="math-row">$$\alpha_{\text{em}} = \frac{1}{137.036} = 0.007297$$</div>
 <div class="math-row">$$(4\pi)^{2/3} = (12.566)^{0.667} = 5.405$$</div>
 <div class="math-row">$$\alpha_s = 3 \times 0.007297 \times 5.405 = \mathbf{0.1183}$$</div>
-<div class="math-desc">Numerical substitution: tree-level calculation</div>
+<div class="math-desc">Numerical substitution: tree-level computation</div>
 </div>
-
 <div class="table-wrap">
 <table>
 <tr><th>Item</th><th>Value</th></tr>
 <tr><td>Banya Framework derived value</td><td>0.1183</td></tr>
-<tr><td>Experimental measurement (PDG 2024, M_Z scale)</td><td>0.1179 +/- 0.0009</td></tr>
-<tr><td>Deviation</td><td><strong>0.3%</strong></td></tr>
+<tr><td>Experimental value (PDG 2024, M_Z scale)</td><td>0.1179 +/- 0.0009</td></tr>
+<tr><td>Error</td><td><strong>0.3%</strong></td></tr>
 </table>
 </div>
-
-<p>0.3% deviation. Within the experimental error range. This is a remarkable precision for a tree-level result.</p>
-
-
-<h1 id="en-r4">Round 4. Color Confinement = CAS Atomicity</h1>
-
-<h3 id="en-r4-baryon">CAS Interpretation of Baryons and Mesons</h3>
-
-<p>Quarks cannot exist alone. They can only exist in combinations where colors cancel. This is called color confinement.</p>
-
-<p>In CAS, this corresponds to atomicity. A CAS operation cannot be interrupted midway. The entire Read-Compare-Swap sequence is one atomic unit. The intermediate state cannot be observed externally.</p>
-
+<p>0.3% error. Inside the experimental uncertainty. As a tree-level result this is a notable level of precision.</p>
+<h1 id="r4">Round 4. Color confinement = CAS atomicity</h1>
+<h3 id="r4-baryon">CAS interpretation of baryons and mesons</h3>
+<p>A quark cannot exist alone. It exists only in combinations whose color cancels. This is called color confinement.</p>
+<p>In CAS this corresponds to atomicity. A CAS operation cannot be broken in the middle. The entire Read-Compare-Swap is one atomic unit. Intermediate states cannot be observed from outside.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Physics</th><th>CAS</th><th>Description</th></tr>
-<tr><td>Baryon (proton, neutron)</td><td>Committed CAS</td><td>3 quarks (= R,C,S 3 steps) all completed, colors canceled. Externally observable.</td></tr>
-<tr><td>Meson (pion, etc.)</td><td>Open transaction</td><td>Quark-antiquark pair (= forward + reverse CAS). Incomplete state, unstable and decays.</td></tr>
-<tr><td>Isolated quark</td><td>CAS intermediate state</td><td>Read done but Compare not yet performed. Cannot be exposed externally due to atomicity.</td></tr>
+<tr><th>Physics</th><th>CAS</th><th>Explanation</th></tr>
+<tr><td>Baryons (proton, neutron)</td><td>Committed CAS</td><td>3 quarks (= the 3 stages R, C, S) all complete and color-cancelled. Observable from outside.</td></tr>
+<tr><td>Mesons (pion, etc.)</td><td>Open transaction</td><td>Quark-antiquark pair (= forward + reverse CAS). Unfinalized, so unstable and decays.</td></tr>
+<tr><td>Lone quark</td><td>CAS intermediate state</td><td>State that has done Read but not Compare. By atomicity, cannot be exposed to the outside.</td></tr>
 </table>
 </div>
-
-<p>A baryon is a 3-quark system. CAS is also a 3-step system. Baryons are stable because 3 colors cancel, and CAS is stable because all 3 steps must complete before commit. Same structure.</p>
-
-<h3 id="en-r4-freedom">Asymptotic Freedom</h3>
-
-<p>Leading coefficient of the QCD beta function:</p>
-
+<p>A baryon is a 3-quark system. CAS is also a 3-stage system. A baryon is stable because the 3 colors cancel; CAS is stable because all 3 stages must complete in order to commit. Same structure.</p>
+<h3 id="r4-freedom">Asymptotic freedom</h3>
+<p>The first-order coefficient of the QCD beta function:</p>
 <div class="math-block">
 <div class="math-row">$$b_0 = \frac{11 C_A - 4 n_f T_R}{12\pi}$$</div>
-<div class="math-row">$$C_A = 3 \quad (\text{adjoint Casimir of } SU(3))$$</div>
+<div class="math-row">$$C_A = 3 \quad (\text{adjoint Casimir of }SU(3))$$</div>
 <div class="math-row">$$n_f = 6 \;\text{(number of quark flavors)},\quad T_R = \frac{1}{2}$$</div>
-<div class="math-row">$$b_0 = \frac{33 - 12}{12\pi} = \frac{21}{12\pi} > 0$$</div>
-<div class="math-desc">$b_0 > 0$, therefore asymptotic freedom holds</div>
+<div class="math-row">$$b_0 = \frac{33 - 12}{12\pi} = \frac{21}{12\pi} &gt; 0$$</div>
+<div class="math-desc">Since $b_0 &gt; 0$, asymptotic freedom holds</div>
 </div>
-
-<p>The numerator of $b_0$ is 21. This equals $\binom{7}{2} = 21$. It matches the 2-form degrees of freedom from the 7-dimensional exterior algebra in the alpha57 report. It may be coincidental, but the fact that both the gauge field degrees of freedom and the beta function numerator are 21 may originate from the same source.</p>
-
-<p>CAS interpretation of asymptotic freedom: As energy increases (distance decreases), each CAS step behaves more independently. It is as if looking at CAS through a magnifying glass loosens the coupling between steps. Conversely, as energy decreases (distance increases), the 3 steps clump together and become inseparable.</p>
-
-
-<h1 id="en-r5">Round 5. SO(5,2) Embedding</h1>
-
-<h3 id="en-r5-decomp">Decomposition of 7</h3>
-
-<p>In the alpha derivation report, it was confirmed that the symmetry space of the Banya Framework corresponds to $SO(5,2)$. The fundamental representation of $SO(5,2)$ is 7-dimensional. Decomposing this 7-dimensional space under $SU(3) \times U(1)$:</p>
-
+<p>The numerator of $b_0$ is 21. This equals $\binom{7}{2} = 21$. It coincides with the 2-form degree of freedom of the 7-dimensional exterior algebra that appeared in the alpha57 report. This may be a coincidence, but the gauge-field DOF being 21 and the numerator of the beta function being 21 could come from the same origin. Whether the coincidence 21 = $\binom{7}{2}$ is accidental or structural remains undetermined — a future verification task.</p>
+<p>CAS interpretation of asymptotic freedom: as energy increases (distance shortens), each CAS stage behaves more independently. As if magnifying CAS with a lens loosens the coupling between stages. Conversely, as energy decreases (distance grows), the 3 stages bunch into one and become inseparable.</p>
+<h1 id="r5">Round 5. Embedding in SO(5,2)</h1>
+<h3 id="r5-decomp">Decomposition of 7</h3>
+<p>The alpha derivation report confirmed that the symmetric space of the Banya Framework corresponds to $SO(5,2)$. The fundamental representation of $SO(5,2)$ is 7-dimensional. Decomposing this 7-dimensional representation as $SU(3) \times U(1)$:</p>
 <div class="math-block">
 <div class="math-row">$$\mathbf{7} = (\mathbf{3},\,+1) + (\bar{\mathbf{3}},\,-1) + (\mathbf{1},\,0)$$</div>
-<div class="math-desc">Decomposition of $SO(5,2)$ 7-dimensional representation under $SU(3) \times U(1)$</div>
+<div class="math-desc">Decomposition of the 7-dim representation of $SO(5,2)$ under $SU(3) \times U(1)$</div>
 </div>
-
 <ul>
-<li><strong>$(\mathbf{3},\,+1)$</strong>: Fundamental representation of $SU(3)$, $U(1)$ charge $+1$. Corresponds to quarks.</li>
-<li><strong>$(\bar{\mathbf{3}},\,-1)$</strong>: Anti-fundamental representation of $SU(3)$, $U(1)$ charge $-1$. Corresponds to antiquarks.</li>
+<li><strong>$(\mathbf{3},\,+1)$</strong>: fundamental representation of $SU(3)$, $U(1)$ charge $+1$. Corresponds to quarks.</li>
+<li><strong>$(\bar{\mathbf{3}},\,-1)$</strong>: anti-fundamental representation of $SU(3)$, $U(1)$ charge $-1$. Corresponds to antiquarks.</li>
 <li><strong>$(\mathbf{1},\,0)$</strong>: $SU(3)$ singlet, $U(1)$ neutral. Corresponds to leptons.</li>
 </ul>
-
-<p>7 = 3 + 3 + 1. This means that the 7-dimensional phase space of the Banya Framework naturally contains the quark-antiquark-lepton structure. The gauge group does not come from outside but emerges from the internal structure of the 7-dimensional space.</p>
-
-
-<h1 id="en-limits">Limitations</h1>
-
-<p>There are things that must be stated honestly.</p>
-
+<p>7 = 3 + 3 + 1. This means the 7-dimensional phase space of the Banya Framework naturally contains the quark-antiquark-lepton structure. The gauge group is not bolted on from outside; it emerges from the internal structure of the 7-dimensional space.</p>
+<h1 id="limits">Limitations</h1>
+<p>Some things have to be said honestly.</p>
 <ol>
-<li><strong>Not a group isomorphism but a principal bundle projection</strong>: CAS is not a group, so a group isomorphism itself is undefined. The correct relationship is a principal fiber bundle projection. CAS(OPERATOR) = total space, DATA(spacetime) = base space, write = projection, gauge transformation = writing the same DATA via a different internal path. "Isomorphism impossible" is not a limitation but a precise specification of the relationship. <span class="tag-solved">Hit</span></li>
-<li><strong>Coupling constant ratio mismatch</strong>: $\alpha_s$ matched with 0.3% error, but $\sin^2\theta_W$ derivation was resolved in a separate report.</li>
-<li><strong>Argument for subtracting 1 from Swap</strong>: Resolved by two independent proofs. (1) Group theory: U(1) satisfies det=1 automatically (1×1 unitary), Swap removes the identity permutation giving 3→SU(3). (2) Category theory: Read endomorphisms=1 (cannot remove), Swap endomorphisms=4 (remove identity→3). <span class="tag-solved">Hit</span></li>
+<li><strong>It is a principal-bundle projection, not a group isomorphism</strong>: Since CAS is not a group, a group isomorphism is not definable to begin with. The correct relation is a principal-fiber-bundle projection. CAS (OPERATOR) = total space, DATA (spacetime) = base space, writing = projection, gauge transformation = writing the same DATA along a different internal path. "Isomorphism impossible" is not a limitation but the precise specification of the relation. <span class="tag-solved">Hit</span></li>
+<li><strong>Coupling-ratio mismatch</strong>: $\alpha_s$ was matched with 0.3% error, but the derivation of $\sin^2\theta_W$ has been resolved in a separate report.</li>
+<li><strong>The argument for subtracting 1 from Swap</strong>: Resolved by two independent proofs. (1) Group theory: U(1) automatically satisfies det=1 (1×1 unitary); for Swap, after removing the identity permutation, 3 → SU(3). (2) Category theory: Read has 1 endomorphism (cannot be removed); Swap has 4 endomorphisms (remove the identity → 3). <span class="tag-solved">Hit</span></li>
 </ol>
-
-
-<h1 id="en-summary">Summary</h1>
-
+<h1 id="summary">Summary</h1>
 <div class="table-wrap">
 <table>
 <tr><th>Item</th><th>Result</th><th class="col-status">Status</th><th class="col-date">Date</th></tr>
-<tr><td>CAS (1,2,4) to (1,3,8) mapping</td><td>$U(1) \times SU(2) \times SU(3)$ generator count match</td><td><span class="tag-solved">Hit</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>8 gluon structure</td><td>8 Gell-Mann matrices = CAS $SU(3)$ adjoint rep.</td><td><span class="tag-solved">Hit</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>$\alpha_s$ derivation</td><td>$3 \times \alpha \times (4\pi)^{2/3} = 0.1183$, 0.3% error</td><td><span class="tag-solved">Hit</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>Color confinement correspondence</td><td>Baryon = CAS commit, Meson = open transaction</td><td><span class="tag-hypothesis">Hypothesis</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>Asymptotic freedom</td><td>$b_0 > 0$, numerator $21 = \binom{7}{2}$</td><td><span class="tag-hypothesis">Hypothesis</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>Mapping from CAS (1,2,4) to (1,3,8)</td><td>Generator counts of $U(1) \times SU(2) \times SU(3)$ match</td><td><span class="tag-solved">Hit</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>Structure of the 8 gluons</td><td>8 Gell-Mann matrices = adjoint representation of CAS $SU(3)$</td><td><span class="tag-solved">Hit</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>Derivation of $\alpha_s$</td><td>$3 \times \alpha \times (4\pi)^{2/3} = 0.1183$, error 0.3%</td><td><span class="tag-solved">Hit</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>Color-confinement correspondence</td><td>Baryon = CAS commit, meson = open transaction</td><td><span class="tag-hypothesis">Hypothesis</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>Asymptotic freedom</td><td>$b_0 &gt; 0$, numerator $21 = \binom{7}{2}$</td><td><span class="tag-hypothesis">Hypothesis</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 <tr><td>$SO(5,2)$ decomposition</td><td>$\mathbf{7} = (\mathbf{3},+1)+(\bar{\mathbf{3}},-1)+(\mathbf{1},0)$</td><td><span class="tag-solved">Hit</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>Rigorous group isomorphism</td><td>Principal fiber bundle constructed. Curvature reproduced via 2-simplex path. 3 continuous-limit items remaining</td><td><span class="tag-wip">In Progress</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>Independent weak coupling constant derivation</td><td>In D-34, relation α_weak = 4α_s/15 discovered (0.043%). However, D-34 itself is a relation found from experimental values, so fully independent derivation remains incomplete. Direction secured (C-grade)</td><td><span class="tag-wip">In Progress</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>Rigorous group isomorphism</td><td>Principal-bundle (fiber bundle) construction complete. Curvature reproduced via 2-simplex paths. 3 continuum-limit items remaining</td><td><span class="tag-wip">In progress</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>Independent derivation of the weak coupling constant</td><td>In D-34 the relation α_weak = 4α_s/15 was found (0.043%). However, D-34 itself was found as an empirical relation, so a fully independent derivation is incomplete. Direction secured (grade C)</td><td><span class="tag-wip">In progress</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 </table>
 </div>
-
-<p>Current grade: <strong>A-</strong> (Structural correspondence + $\alpha_s$ derivation success, isomorphism proof incomplete)</p>
-<p>Remaining for grade S: Rigorous construction of discrete-continuous isomorphism, independent weak coupling constant derivation</p>
-
+<p>Current grade: <strong>A-</strong> (structural correspondence + $\alpha_s$ derivation successful; isomorphism proof incomplete)</p>
+<p>What remains for grade S: rigorous construction of the discrete-continuum isomorphism, independent derivation of the weak coupling constant</p>
 </div>
-
-
-
 <div class="page-nav lang-en">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
 <a href="../science_mine.html">Mining Manual</a>
 </div>
-
-
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin (Hyukjin Han)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
 <div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">게이지 군: CAS (1,2,4)에서 $U(1) \times SU(2) \times SU(3)$ 매핑, $\alpha_s$ 오차 0.3%</div>
+<div class="f2">Gauge group: mapping from CAS (1,2,4) to $U(1) \times SU(2) \times SU(3)$, $\alpha_s$ error 0.3%</div>
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="alpha.html">alpha Derivation</a> | <a href="alpha57.html">alpha^57 우주상수</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial use only | SA -- Share-alike<br/>
+Copyright of pre-existing physics formulas remains with original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

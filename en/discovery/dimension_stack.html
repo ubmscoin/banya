@@ -1,495 +1,308 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>d-ring — </title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="CAS 3TOCTOU_LOCK-g=2, . SP=TOCTOU_LOCK, k→spin=k/2. =CAS(0,1), =CAS(N,N+1). g=2Read+Compare 2. .">
-<meta name="keywords" content="Banya,Banya Framework,Axiom-Based Science Mining Engine,Han Hyukjin,spin quantization,spin-statistics theorem,-Pauli exclusion,g-factor,gg=2,orbital angular momentum,angular momentum quantization,TOCTOU,CAS,Compare-And-Swap,fermion,boson,ring buffer,d-ring dimension table,d-ring spin 1/3,fractional spin">
-<meta property="og:title" content="d-ring — ">
-<meta property="og:description" content="CAS 3. SP=TOCTOU_LOCK. g=2=Read+Compare. =.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="d-ring — ">
-<meta name="twitter:description" content="SP=TOCTOU_LOCK 3. spin=k/2. g=2=Read+Compare. L=.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>d-ring Dimension Table and Spin Quantization — Banya Framework Operating Report</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="Spin quantization, spin-statistics, Pauli exclusion, g=2, and orbital quantum numbers derived from the CAS 3-bit TOCTOU_LOCK. SP=TOCTOU_LOCK, k participating bits -> spin=k/2. Fermion=CAS(0,1), boson=CAS(N,N+1). g=2 is the Read+Compare 2-step count. Inventor: Han Hyukjin." name="description"/>
+<meta content="Banya Framework,般若,Axiom-Based Science Mining Engine,Han Hyukjin,spin quantization,spin-statistics theorem,Pauli exclusion,g-factor,g=2,orbital angular momentum,angular momentum quantization,TOCTOU,CAS,Compare-And-Swap,fermion,boson,ring buffer,d-ring dimension table,spin 1/3,fractional spin" name="keywords"/>
+<meta content="d-ring Dimension Table and Spin Quantization — Banya Framework" property="og:title"/>
+<meta content="Spin quantization derived from the CAS 3-bit structure. SP=TOCTOU_LOCK. g=2=Read+Compare. Orbital angular momentum = integer ring wrap." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="d-ring Dimension Table and Spin Quantization — Banya Framework" name="twitter:title"/>
+<meta content="SP=TOCTOU_LOCK 3 bits. spin=k/2. g=2=Read+Compare. L=integer wrap." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../../discovery/dimension_stack.html" class="lang-btn">KR</a></div>
-
-
-
-<div class="toc-side lang-en">
-<a href="#en-title" class="toc-h1">Dimension Stack & Spin Quantization</a>
-<a href="#en-question" class="toc-h2">Question: Why Half-Integer Spin?</a>
-<a href="#en-status" class="toc-h2">Current Status</a>
-<a href="#en-discovery" class="toc-h2">Key Discoveries</a>
-<a href="#en-r1" class="toc-h1">R1. Spin Quantization</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r2" class="toc-h1">R2. Spin-Statistics Theorem</a>
-<a href="#en-r2-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r2-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r2-step3" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#en-r2-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r2-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r3" class="toc-h1">R3. Pauli Exclusion Principle</a>
-<a href="#en-r3-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r3-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r3-step3" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#en-r3-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r3-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r4" class="toc-h1">R4. Spin 1/3 Impossible</a>
-<a href="#en-r4-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r4-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r4-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r5" class="toc-h1">R5. g=2 (Read+Compare)</a>
-<a href="#en-r5-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r5-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r5-step3" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#en-r5-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r5-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r6" class="toc-h1">R6. Orbital Quantum Number L</a>
-<a href="#en-r6-step1" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#en-r6-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r6-step3" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#en-r6-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r6-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-byproduct" class="toc-h1">By-products</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
-</div>
-
-
-<div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar').classList.remove('open')">
-<a href="#en-title" class="toc-h1">Dimension Stack & Spin Quantization</a>
-<a href="#en-question" class="toc-h2">Question</a>
-<a href="#en-status" class="toc-h2">Status</a>
-<a href="#en-discovery" class="toc-h2">Key Discoveries</a>
-<a href="#en-r1" class="toc-h1">R1. Spin Quantization</a>
-<a href="#en-r2" class="toc-h1">R2. Spin-Statistics</a>
-<a href="#en-r3" class="toc-h1">R3. Pauli Exclusion</a>
-<a href="#en-r4" class="toc-h1">R4. Spin 1/3 Impossible</a>
-<a href="#en-r5" class="toc-h1">R5. g=2</a>
-<a href="#en-r6" class="toc-h1">R6. Orbital L</a>
-<a href="#en-byproduct" class="toc-h1">By-products</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
-</div>
-
-
-<!-- ========== 한국어 본문 ========== -->
-<!-- ========== English Version ========== -->
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It covers the CAS origin of spin quantization and related quantum mechanical structures.</p>
-
-
-<h1 id="en-title">Dimension Stack & Spin Quantization</h1>
-
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/dimension_stack.html">EN</a></div>
+<!-- ========== English Body ========== -->
+<div class="lang-en">
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is an annex to the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It treats the CAS origin of spin quantization and its related quantum-mechanical structures.</p>
+<!-- ===== 1. Opening ===== -->
+<h1 id="title">d-ring Dimension Table and Spin Quantization</h1>
+<blockquote><p>Banya Framework operating report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-27</p></blockquote>
-<blockquote><p>Method: Banya Framework 5-step recursive substitution, 6 rounds</p></blockquote>
-<blockquote><p>Targets: Spin quantization, spin-statistics, Pauli exclusion, spin 1/3 impossible, g=2, orbital quantum number L</p></blockquote>
-
-
-<h2 id="en-question">Question: Why Half-Integer Spin?</h2>
-
-<p>In quantum mechanics, spin is restricted to $0, 1/2, 1, 3/2, 2, \ldots$. Why are values like 1/3 or 0.7 forbidden? The standard answer is "representation theory of SU(2)," but this is a mathematical description, not a physical reason. Why are fermions exclusive and bosons cumulative? Why is the g-factor exactly 2? For 100 years, the only answer was "that is what we observe" with no structural explanation.</p>
-
-<p>Banya Framework explains all of these through the bit structure of CAS (Compare-And-Swap) operations. SP (Spin Pointer) = TOCTOU_LOCK with 3 bits, each either 0 or 1. When k bits participate, spin = k/2.</p>
-
-
-<h2 id="en-status">Current Status</h2>
-
+<blockquote><p>Execution date: 2026-03-27</p></blockquote>
+<blockquote><p>Method: Banya Framework 5-step recursive substitution, 6 rounds executed</p></blockquote>
+<blockquote><p>Targets: spin quantization, spin-statistics, Pauli exclusion, impossibility of spin 1/3, g=2, orbital quantum number L</p></blockquote>
+<h2 id="question">Question: why is spin half-integer?</h2>
+<p>In quantum mechanics, spin is only allowed to take the values $0, 1/2, 1, 3/2, 2, \ldots$. Why is there no 1/3 or 0.7? The standard answer — "the representation theory of the rotation group SU(2)" — is a mathematical description, not a physical reason. Why are fermions exclusive, while bosons accumulate? Why is the g-factor exactly 2? For a century there has been no structural reason beyond "that is what is observed."</p>
+<p>The Banya Framework explains all of this from the bit structure of the CAS (Compare-And-Swap) operation. The SP (Spin Pointer) = TOCTOU_LOCK is 3 bits, each bit is 0 or 1, and when k bits participate the spin equals k/2.</p>
+<h2 id="status">Current Status</h2>
 <p><span class="tag-discovery">Discovery</span></p>
-
-<p>Spin quantization, spin-statistics, Pauli exclusion, g=2, and orbital quantum numbers all derived from CAS bit structure. The impossibility of spin 1/3 established.</p>
-
-
-<h2 id="en-discovery">Key Discoveries</h2>
-
+<p>Spin quantization, spin-statistics, Pauli exclusion, g=2, and the orbital quantum number are all derived from the CAS bit structure. The reason spin 1/3 is impossible is fixed.</p>
+<h2 id="discovery">Core Finding</h2>
 <div class="discovery-block">
-<h4>Spin Quantization: spin = k/2</h4>
+<h4>Spin quantization: spin = k/2</h4>
 <div class="formula">SP = TOCTOU_LOCK, 3 bits, each $\in \{0, 1\}$. $k$ participating bits $\Rightarrow$ spin $= k/2$</div>
-<p>Bits can only be 0 or 1. Therefore spin is restricted to 0, 1/2, 1, 3/2. Continuous values impossible.</p>
+<p>Bits can only be 0 or 1, so spin is allowed only at 0, 1/2, 1, 3/2. Continuous values are impossible.</p>
 </div>
-
 <div class="discovery-block">
-<h4>Spin-Statistics: CAS Atomicity</h4>
+<h4>Spin-statistics: CAS atomicity</h4>
 <div class="formula">Fermion: CAS(expected=0, new=1) = exclusive. Boson: CAS(expected=N, new=N+1) = cumulative.</div>
-<p>Half-integer spin = CAS writes only to empty slots (0) = exclusive. Integer spin = CAS accumulates on existing value (N).</p>
+<p>Half-integer spin = CAS can only write to an empty slot (0) = exclusive. Integer spin = CAS can accumulate on top of the current value (N).</p>
 </div>
-
 <div class="discovery-block">
-<h4>Pauli Exclusion: CAS Compare Failure</h4>
+<h4>Pauli exclusion: failure of CAS Compare</h4>
 <div class="formula">CAS(expected=0, new=1): if current $\neq$ 0, Compare fails $\Rightarrow$ Swap rejected</div>
-<p>Two fermions in same quantum state = second CAS Compare fails. Slot already holds 1, but expected 0.</p>
+<p>Two fermions in the same quantum state = the second CAS Compare fails, because it expects 0 in a slot that is already 1.</p>
 </div>
-
 <div class="discovery-block">
-<h4>Spin 1/3 Impossible</h4>
+<h4>Spin 1/3 is impossible</h4>
 <div class="formula">SP 3 bits: $k \in \{0, 1, 2, 3\}$ $\Rightarrow$ spin $\in \{0, 1/2, 1, 3/2\}$. $k=2/3$ is not an integer $\Rightarrow$ impossible.</div>
-<p>Bit participation count must be integer. 1/3 of a bit participating is physically meaningless.</p>
+<p>The number of participating bits must be an integer. A fractional 1/3 bit participating has no physical meaning.</p>
 </div>
-
 <div class="discovery-block">
 <h4>g=2: Read + Compare</h4>
-<div class="formula">CAS cycle: Read → Compare → Swap. Stages that observe spin = Read + Compare = 2 stages. Swap does not observe.</div>
-<p>g-factor = number of CAS stages that observe spin = 2. Dirac equation's g=2 emerges from CAS Read+Compare.</p>
+<div class="formula">CAS cycle: Read -> Compare -> Swap. Stages that observe spin = Read + Compare = 2 stages. Swap does not observe.</div>
+<p>g-factor = number of CAS stages that observe spin = 2. The g=2 of the Dirac equation comes out of the Read+Compare of CAS.</p>
 </div>
-
 <div class="discovery-block">
-<h4>Orbital Quantum Number L: Integer Laps on Ring</h4>
-<div class="formula">$L = 0, 1, 2, \ldots$ = closed paths on ring buffer = integer laps</div>
-<p>Closed paths on ring buffer require integer laps. Half a lap (1/2) does not close. Therefore L is integer.</p>
+<h4>Orbital quantum number L: ring integer wrap</h4>
+<div class="formula">$L = 0, 1, 2, \ldots$ = closed path on a ring buffer = integer revolutions</div>
+<p>On a ring buffer, a closed path is only possible with integer revolutions. Half a revolution (1/2 wrap) does not close, so L must be an integer.</p>
 </div>
-
-
 <!-- ===== R1. Spin Quantization ===== -->
-
-<h1 id="en-r1">Round 1. Spin Quantization: spin = k/2</h1>
-
-<h3 id="en-r1-step1">Step 1. Banya Equation</h3>
-
+<h1 id="r1">Round 1. Spin Quantization: spin = k/2</h1>
+<h3 id="r1-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Spin is the internal degree of freedom of the observer axis. The lock structure used when observer reads a state determines spin.</p>
-
-<h3 id="en-r1-step2">Step 2. Norm Substitution</h3>
-
+<p>Spin is an internal degree of freedom on the observer axis. The structure of the lock that the observer uses while reading a state determines the spin.</p>
+<h3 id="r1-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
 <div class="math-row">$\text{observer} \to \text{SP}(\text{TOCTOU\_LOCK})$</div>
-<div class="math-row">$\text{SP} = [b_2, b_1, b_0]$, &nbsp; $b_i \in \{0, 1\}$</div>
-<div class="math-legend">SP = Spin Pointer. TOCTOU = Time-Of-Check-To-Time-Of-Use. 3-bit lock.</div>
+<div class="math-row">$\text{SP} = [b_2, b_1, b_0]$,   $b_i \in \{0, 1\}$</div>
+<div class="math-legend">SP = Spin Pointer. TOCTOU = Time-Of-Check-To-Time-Of-Use. A 3-bit lock.</div>
 </div>
-
-<p>SP is the lock that guarantees atomicity between reading (Check) and writing (Use) a state. This lock has 3 bits.</p>
-
-<h3 id="en-r1-step3">Step 3. Constant Insertion</h3>
-
+<p>SP is the lock that guarantees atomicity between when the observer reads (Check) and when it writes (Use) a state. This lock is 3 bits wide.</p>
+<h3 id="r1-step3">Step 3. Constant substitution</h3>
 <pre>SP bits = 3
 Each bit: 0 or 1 (participate / not participate)
-Participating bit count k = 0, 1, 2, 3
-Spin unit = 1/2 (fundamental quantum)</pre>
-
-<h3 id="en-r1-step4">Step 4. Domain Transform</h3>
-
+Number of participating bits k = 0, 1, 2, 3
+Spin unit = 1/2 (basic quantum)</pre>
+<h3 id="r1-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
-<div class="math-row">$\text{spin} = \dfrac{k}{2}$, &nbsp; $k \in \{0, 1, 2, 3\}$</div>
-<div class="math-desc">k bits participate in TOCTOU_LOCK → spin = k/2.</div>
+<div class="math-row">$\text{spin} = \dfrac{k}{2}$,   $k \in \{0, 1, 2, 3\}$</div>
+<div class="math-desc">k bits participate in TOCTOU_LOCK -> spin = k/2.</div>
 <div class="math-row">$k=0 \Rightarrow$ spin $0$ (scalar, Higgs)</div>
 <div class="math-row">$k=1 \Rightarrow$ spin $1/2$ (fermion: electron, quark)</div>
 <div class="math-row">$k=2 \Rightarrow$ spin $1$ (gauge boson: photon, W, Z, gluon)</div>
-<div class="math-row">$k=3 \Rightarrow$ spin $3/2$ (Δ baryon, gravitino)</div>
+<div class="math-row">$k=3 \Rightarrow$ spin $3/2$ (Delta baryon, gravitino)</div>
 </div>
-
-<h3 id="en-r1-step5">Step 5. Discovery</h3>
-
+<h3 id="r1-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: spin $\in \{0, 1/2, 1, 3/2\}$ (3-bit limit)</div>
-<div class="math-row">Observed: fundamental particle spins in nature = $\{0, 1/2, 1, 3/2, 2\}$</div>
-<div class="math-row">spin $2$ = graviton = composite structure beyond single SP 3-bit</div>
+<div class="math-row">Derived: spin $\in \{0, 1/2, 1, 3/2\}$ (3-bit ceiling)</div>
+<div class="math-row">Observed: spins of elementary particles found in nature = $\{0, 1/2, 1, 3/2, 2\}$</div>
+<div class="math-row">spin $2$ = graviton = composite structure that exceeds the 3-bit SP</div>
 </div>
-
-<p>3-bit SP covers spin 0 through 3/2. Spin 2 (graviton) is a combination of two SPs ($3/2 + 1/2$ or $1 + 1$). The key insight: discreteness of bits forces spin quantization.</p>
-
-
+<p>A 3-bit SP covers spins from 0 to 3/2. Spin 2 (graviton) can be explained as the combination of two SPs ($3/2 + 1/2$ or $1 + 1$). The key point is that the discreteness of the bits forces the quantization of spin.</p>
 <!-- ===== R2. Spin-Statistics ===== -->
-
-<h1 id="en-r2">Round 2. Spin-Statistics Theorem: CAS Atomicity</h1>
-
-<h3 id="en-r2-step1">Step 1. Banya Equation</h3>
-
+<h1 id="r2">Round 2. Spin-Statistics Theorem: CAS atomicity</h1>
+<h3 id="r2-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>The spin-statistics connection emerges from the relationship between observer (observation) and superposition (overlap). The type of CAS atomicity determines the statistics.</p>
-
-<h3 id="en-r2-step2">Step 2. Norm Substitution</h3>
-
+<p>The spin-statistics link comes from the relation between observer (observation) and superposition. The type of CAS atomicity determines the statistics.</p>
+<h3 id="r2-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
 <div class="math-row">Fermion: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$</div>
 <div class="math-row">Boson: $\text{CAS}(\text{expected}=N, \;\text{new}=N+1)$</div>
-<div class="math-legend">expected = value checked in Compare stage. new = value written in Swap stage.</div>
+<div class="math-legend">expected = expected value at the Compare stage. new = new value at the Swap stage.</div>
 </div>
-
-<p>Fermion CAS: "expect empty slot (0), write 1." Boson CAS: "expect current value (N), write N+1."</p>
-
-<h3 id="en-r2-step3">Step 3. Constant Insertion</h3>
-
-<pre>Fermion CAS: expected = 0 (only empty states allowed)
-             new = 1 (single occupancy)
-Boson CAS:   expected = N (current occupancy)
-             new = N+1 (accumulation allowed)</pre>
-
-<h3 id="en-r2-step4">Step 4. Domain Transform</h3>
-
+<p>The fermion CAS "expects an empty slot (0) and writes 1." The boson CAS "expects the current value (N) and writes N+1."</p>
+<h3 id="r2-step3">Step 3. Constant substitution</h3>
+<pre>Fermion CAS: expected = 0 (empty state only)
+              new = 1 (single occupancy)
+Boson CAS:    expected = N (current occupation count)
+              new = N+1 (accumulation allowed)</pre>
+<h3 id="r2-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
-<div class="math-row">Fermion CAS: write only to empty slots $\Rightarrow$ max 1 per quantum state $\Rightarrow$ Fermi-Dirac statistics</div>
-<div class="math-row">Boson CAS: accumulate on existing $\Rightarrow$ unlimited per quantum state $\Rightarrow$ Bose-Einstein statistics</div>
-<div class="math-desc">CAS expected value determines statistics. 0 = exclusive, N = cumulative.</div>
+<div class="math-row">Fermion CAS: writes only to an empty slot $\Rightarrow$ at most 1 per quantum state $\Rightarrow$ Fermi-Dirac statistics</div>
+<div class="math-row">Boson CAS: accumulates on top of existing $\Rightarrow$ unbounded count per quantum state $\Rightarrow$ Bose-Einstein statistics</div>
+<div class="math-desc">The expected value of the CAS determines the statistics: 0 makes it exclusive, N makes it cumulative.</div>
 </div>
-
-<h3 id="en-r2-step5">Step 5. Discovery</h3>
-
+<h3 id="r2-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: half-integer spin ↔ CAS(0,1) ↔ Fermi-Dirac</div>
-<div class="math-row">Derived: integer spin ↔ CAS(N,N+1) ↔ Bose-Einstein</div>
-<div class="math-row">Observed: spin-statistics theorem (no experimental exceptions)</div>
+<div class="math-row">Derived: half-integer spin <-> CAS(0,1) <-> Fermi-Dirac</div>
+<div class="math-row">Derived: integer spin <-> CAS(N,N+1) <-> Bose-Einstein</div>
+<div class="math-row">Observed: spin-statistics theorem (no experimental exception)</div>
 </div>
-
-<p>CAS origin of spin-statistics connection: half-integer spin = odd bit participation = expects empty slot (exclusive). Integer spin = even bit participation = accumulates on current value. The CAS expected parameter determines statistics.</p>
-
-
+<p>CAS origin of the spin-statistics link: half-integer spin = odd number of participating bits = expects only an empty slot (exclusive). Integer spin = even number of participating bits = can accumulate on top of the current value. The expected parameter of CAS determines the statistics.</p>
 <!-- ===== R3. Pauli Exclusion ===== -->
-
-<h1 id="en-r3">Round 3. Pauli Exclusion Principle: CAS Compare Failure</h1>
-
-<h3 id="en-r3-step1">Step 1. Banya Equation</h3>
-
+<h1 id="r3">Round 3. Pauli Exclusion Principle: CAS Compare failure</h1>
+<h3 id="r3-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Pauli exclusion = observer's attempt to occupy the same state twice fails. Rejected at the CAS Compare stage.</p>
-
-<h3 id="en-r3-step2">Step 2. Norm Substitution</h3>
-
+<p>Pauli exclusion = failure when the observer tries to occupy the same state twice. It is rejected at the Compare stage of CAS.</p>
+<h3 id="r3-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
-<div class="math-row">First fermion: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$ → succeeds. Slot: 0→1.</div>
-<div class="math-row">Second fermion: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$ → fails. Current = 1 ≠ expected = 0.</div>
-<div class="math-legend">Compare stage: current vs expected. Mismatch → Swap rejected.</div>
+<div class="math-row">First fermion: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$ -> success. Slot goes 0 -> 1.</div>
+<div class="math-row">Second fermion: $\text{CAS}(\text{expected}=0, \;\text{new}=1)$ -> failure. Current value = 1 != expected = 0.</div>
+<div class="math-legend">Compare stage: current vs expected. On mismatch, the Swap is rejected.</div>
 </div>
-
-<h3 id="en-r3-step3">Step 3. Constant Insertion</h3>
-
-<pre>Quantum state |n, l, m_l, m_s⟩ = CAS address
-First electron: CAS(0, 1) → succeeds → slot = 1
-Second electron (same state): CAS(0, 1) → Compare fails → rejected</pre>
-
-<h3 id="en-r3-step4">Step 4. Domain Transform</h3>
-
+<h3 id="r3-step3">Step 3. Constant substitution</h3>
+<pre>Quantum state |n, l, m_l, m_s> = CAS address
+First electron: CAS(0, 1) -> success -> slot = 1
+Second electron (same state): CAS(0, 1) -> Compare fails -> rejected</pre>
+<h3 id="r3-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
 <div class="math-row">$\text{Compare}(\text{current}=1, \;\text{expected}=0) \Rightarrow 1 \neq 0 \Rightarrow \text{Swap rejected}$</div>
-<div class="math-desc">CAS atomic Compare failure = Pauli exclusion principle. A second fermion cannot enter the same quantum numbers.</div>
+<div class="math-desc">A failed atomic Compare of CAS = the Pauli exclusion principle. A second fermion cannot enter the same set of quantum numbers.</div>
 </div>
-
-<h3 id="en-r3-step5">Step 5. Discovery</h3>
-
+<h3 id="r3-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: same quantum state, two CAS(0,1) executions → second Compare fails</div>
-<div class="math-row">Observed: Pauli exclusion principle (no experimental exceptions)</div>
+<div class="math-row">Derived: running CAS(0,1) twice on the same quantum state -> the second Compare fails</div>
+<div class="math-row">Observed: Pauli exclusion principle (no experimental exception)</div>
 </div>
-
-<p>Pauli exclusion is not an axiom but an inevitable consequence of CAS operations. When Compare fails, Swap does not occur. This is the structural reason why "two fermions cannot share the same quantum state."</p>
-
-
-<!-- ===== R4. Spin 1/3 Impossible ===== -->
-
-<h1 id="en-r4">Round 4. Spin 1/3 Impossible</h1>
-
-<h3 id="en-r4-step1">Step 1. Banya Equation</h3>
-
+<p>The Pauli exclusion principle is not an axiom but a necessary consequence of the CAS operation. In Compare-And-Swap, if the Compare fails the Swap does not happen. That is the structural reason why "two fermions cannot share the same quantum state."</p>
+<!-- ===== R4. Spin 1/3 impossible ===== -->
+<h1 id="r4">Round 4. Spin 1/3 is impossible</h1>
+<h3 id="r4-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>SP has 3 bits, each 0 or 1. "2/3 of a bit participating" is meaningless.</p>
-
-<h3 id="en-r4-step2">Step 2. Norm Substitution</h3>
-
+<p>SP is 3 bits wide and each bit is 0 or 1. "2/3 of a bit participates" is meaningless.</p>
+<h3 id="r4-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
-<div class="math-row">spin $= k/2$, &nbsp; $k \in \mathbb{Z}$, &nbsp; $0 \leq k \leq 3$</div>
-<div class="math-row">spin $= 1/3 \Rightarrow k = 2/3 \notin \mathbb{Z}$ → impossible</div>
-<div class="math-legend">Bit participation count k must be integer. Fractional bits do not exist.</div>
+<div class="math-row">spin $= k/2$,   $k \in \mathbb{Z}$,   $0 \leq k \leq 3$</div>
+<div class="math-row">spin $= 1/3 \Rightarrow k = 2/3 \notin \mathbb{Z}$ -> impossible</div>
+<div class="math-legend">The number of participating bits k must be an integer. There is no such thing as a fractional bit.</div>
 </div>
-
-<h3 id="en-r4-step5">Step 5. Discovery</h3>
-
+<h3 id="r4-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: spin $\notin \{1/3, 1/4, 1/5, 2/5, \ldots\}$ (non-integer k impossible)</div>
-<div class="math-row">Observed: no spin-1/3 particle has ever been found in nature</div>
+<div class="math-row">Derived: spin $\notin \{1/3, 1/4, 1/5, 2/5, \ldots\}$ (non-integer k is impossible)</div>
+<div class="math-row">Observed: a spin 1/3 particle has never once been found in nature</div>
 </div>
-
-<p>SU(2) representation theory states "spin 1/3 is not allowed" but does not explain why. CAS bit structure provides the reason: a bit either participates (1) or not (0) -- never 0.67.</p>
-
-
+<p>SU(2) representation theory states that "spin 1/3 is not allowed," but does not give the reason. The CAS bit structure does provide the reason: bit participation is 0 or 1, not 0.67.</p>
 <!-- ===== R5. g=2 ===== -->
-
-<h1 id="en-r5">Round 5. g=2: Read + Compare</h1>
-
-<h3 id="en-r5-step1">Step 1. Banya Equation</h3>
-
+<h1 id="r5">Round 5. g=2: Read + Compare</h1>
+<h3 id="r5-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>The g-factor represents the strength with which observer observes spin. Count how many of CAS's 3 stages "see" spin.</p>
-
-<h3 id="en-r5-step2">Step 2. Norm Substitution</h3>
-
+<p>The g-factor expresses how strongly the observer observes spin. It counts how many of the three CAS stages "see" the spin.</p>
+<h3 id="r5-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
-<div class="math-row">CAS cycle: Read → Compare → Swap</div>
-<div class="math-row">Read: reads the spin state → observes spin ✓</div>
-<div class="math-row">Compare: compares with expected → references spin ✓</div>
-<div class="math-row">Swap: writes new value → does not observe spin ✗</div>
-<div class="math-legend">Observation = Read + Compare = 2 stages. Swap only writes, so it does not observe.</div>
+<div class="math-row">CAS cycle: Read -> Compare -> Swap</div>
+<div class="math-row">Read: reads the spin state -> observes spin (yes)</div>
+<div class="math-row">Compare: compares against the expected value -> references spin (yes)</div>
+<div class="math-row">Swap: writes a new value -> does not observe spin (no)</div>
+<div class="math-legend">Observation = Read + Compare = 2 stages. Swap is a write only, so it is not an observation.</div>
 </div>
-
-<h3 id="en-r5-step3">Step 3. Constant Insertion</h3>
-
-<pre>CAS total stages = 3 (Read, Compare, Swap)
-Spin observation stages = 2 (Read, Compare)
-Non-observation stages = 1 (Swap)</pre>
-
-<h3 id="en-r5-step4">Step 4. Domain Transform</h3>
-
+<h3 id="r5-step3">Step 3. Constant substitution</h3>
+<pre>Total CAS stages = 3 (Read, Compare, Swap)
+Spin-observing stages = 2 (Read, Compare)
+Non-observing stages = 1 (Swap)</pre>
+<h3 id="r5-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
-<div class="math-row">$g = \dfrac{\text{spin observation stages}}{\text{spin unit}} = \dfrac{2}{1} = 2$</div>
-<div class="math-desc">Electron g-factor = number of CAS stages that observe spin = Read + Compare = 2.</div>
+<div class="math-row">$g = \dfrac{\text{spin-observing stages}}{\text{spin unit}} = \dfrac{2}{1} = 2$</div>
+<div class="math-desc">The electron g-factor = number of CAS stages that observe spin = Read + Compare = 2.</div>
 </div>
-
-<h3 id="en-r5-step5">Step 5. Discovery</h3>
-
+<h3 id="r5-step5">Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $g = 2$ (CAS Read + Compare)</div>
 <div class="math-row">Dirac equation prediction: $g = 2$</div>
-<div class="math-row">Experimental measurement: $g = 2.00231930436256 \ldots$ (with QED corrections)</div>
+<div class="math-row">Experimental measurement: $g = 2.00231930436256 \ldots$ (including QED corrections)</div>
 </div>
-
-<p>Dirac equation's g=2 is not an axiom but a structural result of CAS. 2 out of 3 stages observe spin. QED corrections (anomalous magnetic moment $g-2$) correspond to higher-order CAS loops.</p>
-
-
-<!-- ===== R6. Orbital Quantum Number L ===== -->
-
-<h1 id="en-r6">Round 6. Orbital Quantum Number L: Integer Laps on Ring</h1>
-
-<h3 id="en-r6-step1">Step 1. Banya Equation</h3>
-
+<p>The Dirac equation's g=2 is not an axiom but a structural consequence of CAS: 2 of the 3 stages observe spin. The QED correction (the $g-2$ anomalous magnetic moment) corresponds to higher-order CAS loops.</p>
+<!-- ===== R6. Orbital quantum number L ===== -->
+<h1 id="r6">Round 6. Orbital quantum number L: ring integer wrap</h1>
+<h3 id="r6-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>Orbital angular momentum comes from closed paths on the space axis. A path on the ring buffer must complete integer laps to close.</p>
-
-<h3 id="en-r6-step2">Step 2. Norm Substitution</h3>
-
+<p>Orbital angular momentum comes from closed paths on the space axis. For a path on a ring buffer to close, it must wind an integer number of revolutions.</p>
+<h3 id="r6-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
-<div class="math-row">$\text{space} \to \text{ring buffer}$, &nbsp; closed path $= 2\pi L$, &nbsp; $L \in \mathbb{Z}_{\geq 0}$</div>
-<div class="math-legend">Closed path on ring buffer = path returning to start = integer laps.</div>
+<div class="math-row">$\text{space} \to \text{ring buffer}$,   closed path $= 2\pi L$,   $L \in \mathbb{Z}_{\geq 0}$</div>
+<div class="math-legend">A closed path on a ring buffer = a path that returns to its starting point = an integer number of revolutions.</div>
 </div>
-
-<h3 id="en-r6-step3">Step 3. Constant Insertion</h3>
-
-<pre>Ring buffer circumference = 2π (normalized)
-Closed path condition: path length = 2πL, L = 0, 1, 2, ...
+<h3 id="r6-step3">Step 3. Constant substitution</h3>
+<pre>Ring buffer circumference = 2pi (normalized)
+Closed-path condition: path length = 2pi L, L = 0, 1, 2, ...
 L = 0: no path (s orbital)
-L = 1: 1 lap (p orbital)
-L = 2: 2 laps (d orbital)
+L = 1: 1 revolution (p orbital)
+L = 2: 2 revolutions (d orbital)
 ...</pre>
-
-<h3 id="en-r6-step4">Step 4. Domain Transform</h3>
-
+<h3 id="r6-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
-<div class="math-row">$L = 0, 1, 2, \ldots$ (closed paths on ring = integer laps)</div>
-<div class="math-row">$m_L = -L, -L+1, \ldots, L-1, L$ (ring mod operation residues)</div>
-<div class="math-desc">Ring buffer mod operation: position = offset mod N. Direction of closed path = sign of $m_L$.</div>
+<div class="math-row">$L = 0, 1, 2, \ldots$ (closed path on the ring = integer wrap)</div>
+<div class="math-row">$m_L = -L, -L+1, \ldots, L-1, L$ (residue of the ring mod operation)</div>
+<div class="math-desc">Ring buffer mod operation: position = offset mod N. The direction of the closed path = sign of $m_L$.</div>
 </div>
-
-<h3 id="en-r6-step5">Step 5. Discovery</h3>
-
+<h3 id="r6-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">Derived: $L \in \{0, 1, 2, \ldots\}$, &nbsp; $m_L \in \{-L, \ldots, +L\}$</div>
-<div class="math-row">Observed: atomic orbital L = 0(s), 1(p), 2(d), 3(f), ...</div>
+<div class="math-row">Derived: $L \in \{0, 1, 2, \ldots\}$,   $m_L \in \{-L, \ldots, +L\}$</div>
+<div class="math-row">Observed: atomic-orbital L = 0(s), 1(p), 2(d), 3(f), ...</div>
 </div>
-
-<p>Why orbital quantum number L is integer: closed paths on ring buffer require integer laps. Half a lap (L=1/2) does not return to the starting point, so it is not a closed path. This is the origin of the difference between spin (half-integer allowed) and orbital angular momentum (integer only).</p>
-
-
-<!-- ===== By-products ===== -->
-
-<h1 id="en-byproduct">By-products</h1>
-
-<p><b>B-1. Composite structure of spin 2.</b> SP 3 bits yield max spin 3/2. Graviton (spin 2) is a combination of two SPs. This suggests why gravity is qualitatively different from other forces.</p>
-
-<p><b>B-2. CAS loop correspondence of anomalous magnetic moment.</b> In $g - 2 = \alpha/(2\pi) + \ldots$, the term $\alpha/(2\pi)$ corresponds to the 1st-order CAS recursive loop (observer re-observing itself). Loop order = QED perturbation order.</p>
-
-<p><b>B-3. CAS interpretation of anyons.</b> Anyons with fractional statistics in 2D systems arise from topological winding numbers on the ring buffer, not from CAS bits. This explains why they are possible only in 2D, not in 3D.</p>
-
-
+<p>Why the orbital quantum number L is an integer: a closed path on a ring buffer can only have integer revolutions. Half a revolution (L=1/2) does not return to the starting point, so it is not a closed path. That is the origin of the difference between spin (half-integer allowed) and orbital angular momentum (integer only).</p>
+<!-- ===== Byproducts ===== -->
+<h1 id="byproduct">Byproducts</h1>
+<p><b>B-1. Composite structure of spin 2.</b> A 3-bit SP tops out at spin 3/2. The graviton (spin 2) is a combination of two SPs. This hints at why gravity, unlike the other forces, has a composite character.</p>
+<p><b>B-2. CAS-loop correspondence of the g-2 anomalous magnetic moment.</b> In $g - 2 = \alpha/(2\pi) + \ldots$, the $\alpha/(2\pi)$ corresponds to the first-order recursive loop of CAS (the observer observing itself). Loop order = QED perturbation order.</p>
+<p><b>B-3. CAS interpretation of anyons.</b> In two-dimensional systems, anyons with fractional statistics come not from the CAS bits but from the topological winding number of the ring buffer. This explains why they are impossible in 3D and possible only in 2D.</p>
 <!-- ===== Summary ===== -->
-
-<h1 id="en-summary">Summary</h1>
-
+<h1 id="summary">Summary</h1>
 <table>
-<tr><th>Item</th><th>CAS Structure</th><th>Physical Result</th><th>Status</th></tr>
-<tr><td>Spin quantization</td><td>SP 3-bit, k participating → k/2</td><td>spin = 0, 1/2, 1, 3/2</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><th>Item</th><th>CAS structure</th><th>Physical consequence</th><th>Status</th></tr>
+<tr><td>Spin quantization</td><td>SP 3 bits, k participate -> k/2</td><td>spin = 0, 1/2, 1, 3/2</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td>Spin-statistics</td><td>CAS(0,1) vs CAS(N,N+1)</td><td>Fermi-Dirac vs Bose-Einstein</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>Pauli exclusion</td><td>CAS Compare failure</td><td>No 2 fermions in same state</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>Spin 1/3 impossible</td><td>k=2/3 non-integer</td><td>No fractional spin particles found</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>Pauli exclusion</td><td>CAS Compare failure</td><td>2 fermions with same quantum numbers impossible</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>Spin 1/3 impossible</td><td>k=2/3 non-integer</td><td>fractional-spin particle never observed</td><td><span class="tag-solved">Hit</span></td></tr>
 <tr><td>g=2</td><td>Read + Compare = 2 stages</td><td>Dirac g-factor = 2</td><td><span class="tag-solved">Hit</span></td></tr>
-<tr><td>Orbital quantum number L</td><td>Ring closed paths = integer laps</td><td>L = 0, 1, 2, ...</td><td><span class="tag-solved">Hit</span></td></tr>
+<tr><td>Orbital quantum number L</td><td>ring closed path = integer wrap</td><td>L = 0, 1, 2, ...</td><td><span class="tag-solved">Hit</span></td></tr>
 </table>
-
+</div><!-- /lang-en -->
+<!-- ========== End of English Version ========== -->
 <!-- ===== page-nav ===== -->
-
 <div class="page-nav lang-en">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
 <a href="../science_mine.html">Mining Manual</a>
 </div>
-
-
-<!-- ===== 푸터 ===== -->
-
+<!-- ===== Footer ===== -->
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin (Hyukjin Han)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
 <div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">Spin quantization: SP=TOCTOU_LOCK 3-bit, spin=k/2, g=2=Read+Compare</div>
+<div class="f2">Spin quantization: SP=TOCTOU_LOCK 3 bits, spin=k/2, g=2=Read+Compare</div>
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="cas_internal.html">CAS Internal Structure</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial use only | SA -- Share-alike<br/>
+Copyright of pre-existing physics formulas remains with the original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

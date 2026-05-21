@@ -1,222 +1,115 @@
 <!DOCTYPE html>
+
 <html lang="ko" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>4력 통합 — CAS 단일 연산자 — 반야프레임 운영 보고서</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="4력 통합: CAS 1개 연산자의 도메인 4비트 ON/OFF 패턴이 4가지 비용 구조(강력·약력·전자기력·중력)를 만든다. 끈이론/LQG 70년 미완 과제의 공리적 해소. 발명자 한혁진.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,4력 통합,four force unification,grand unified theory,GUT,string theory,loop quantum gravity,LQG,CAS,Compare-And-Swap,strong force,weak force,electromagnetic,gravity,gravity quantization,중력 양자화,domain bit pattern,d-ring dimension table,한혁진,Han Hyukjin">
-<meta property="og:title" content="4력 통합 — CAS 단일 연산자 — 반야프레임">
-<meta property="og:description" content="4력은 분리된 적이 없다. CAS 1개 연산자 × 도메인 4비트 패턴 = 4가지 비용 구조.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="4력 통합 — CAS 단일 연산자 — 반야프레임">
-<meta name="twitter:description" content="4력은 분리된 적이 없다. CAS × domain 4-bit = 4 cost structures.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
-<link rel="stylesheet" href="../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="4력 통합: CAS 1개 연산자의 도메인 4비트 ON/OFF 패턴이 4가지 비용 구조(강력·약력·전자기력·중력)를 만든다. 끈이론/LQG 70년 미완 과제의 공리적 해소. 발명자 한혁진." name="description"/>
+<meta content="반야프레임,般若,Banya Framework,4력 통합,four force unification,grand unified theory,GUT,string theory,loop quantum gravity,LQG,CAS,Compare-And-Swap,strong force,weak force,electromagnetic,gravity,gravity quantization,중력 양자화,domain bit pattern,d-ring dimension table,한혁진,Han Hyukjin" name="keywords"/>
+<meta content="4력 통합 — CAS 단일 연산자 — 반야프레임" property="og:title"/>
+<meta content="4력은 분리된 적이 없다. CAS 1개 연산자 × 도메인 4비트 패턴 = 4가지 비용 구조." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="4력 통합 — CAS 단일 연산자 — 반야프레임" name="twitter:title"/>
+<meta content="4력은 분리된 적이 없다. CAS × domain 4-bit = 4 cost structures." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../en/discovery/unification.html" class="lang-btn">EN</a></div>
-
-<div class="toc-side lang-ko">
-<a href="#title" class="toc-h1">4력 통합</a>
-<a href="#question" class="toc-h2">질문: 왜 4개인가</a>
-<a href="#status" class="toc-h2">현재 상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">R1. 왜 4력인가</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r1-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r2" class="toc-h1">R2. d-ring 차원 테이블이 분리를 만든다</a>
-<a href="#r2-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r2-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r2-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r2-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r2-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r3" class="toc-h1">R3. 결합상수 수렴</a>
-<a href="#r3-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r3-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r3-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r3-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r3-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r4" class="toc-h1">R4. 중력 양자화는 이미 완료</a>
-<a href="#r4-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r4-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r4-step3" class="toc-h3">3단계. 상수 대입</a>
-<a href="#r4-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r4-step5" class="toc-h3">5단계. 발견</a>
-<a href="#r5" class="toc-h1">R5. 왜 끈이론/LQG는 못 풀었나</a>
-<a href="#r5-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r5-step2" class="toc-h3">2단계. 노름 치환</a>
-<a href="#r5-step5" class="toc-h3">5단계. 발견</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">4력 통합</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar').classList.remove('open')">
-<a href="#title" class="toc-h1">4력 통합</a>
-<a href="#question" class="toc-h2">질문: 왜 4개인가</a>
-<a href="#status" class="toc-h2">현재 상태</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">R1. 왜 4력인가</a>
-<a href="#r2" class="toc-h1">R2. d-ring 차원 테이블 분리</a>
-<a href="#r3" class="toc-h1">R3. 결합상수 수렴</a>
-<a href="#r4" class="toc-h1">R4. 중력 양자화</a>
-<a href="#r5" class="toc-h1">R5. 끈이론/LQG</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/unification.html">EN</a></div>
 <!-- ========== 한국어 본문 ========== -->
 <div class="lang-ko">
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 4력 통합의 CAS 기원을 다룬다.</p>
-
-
 <!-- ===== 1. 서두 ===== -->
-
 <h1 id="title">4력 통합 — CAS 단일 연산자, 4가지 비용 패턴</h1>
-
 <blockquote><p>반야프레임 운영 보고서</p></blockquote>
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>실행일: 2026-03-27</p></blockquote>
 <blockquote><p>방법: 반야프레임 5단계 재귀 대입, 5라운드 실행</p></blockquote>
 <blockquote><p>대상: 4력 통합, d-ring 차원 테이블 분리, 결합상수 수렴, 중력 양자화, 끈이론/LQG 비교</p></blockquote>
-
-
 <h2 id="question">질문: 왜 힘이 4개인가</h2>
-
 <p>물리학에는 4가지 기본 힘이 있다: 강력, 약력, 전자기력, 중력. 이 4개를 하나로 합치는 것이 "대통합"이다. 끈이론은 40년, 루프양자중력(LQG)은 30년을 투자했지만 아직 못 풀었다. 끈이론은 $10^{500}$개의 해가 나와서 예측력을 잃었고, LQG는 시공간은 이산화했지만 물질을 포함하지 못한다.</p>
-
 <p>반야프레임의 답: 연산자가 1개(CAS)이므로 힘도 처음부터 1개다. "4력"은 도메인 4비트의 ON/OFF 패턴이 만드는 4가지 <b>비용 구조</b>일 뿐이다. 통합할 것이 없다.</p>
-
-
 <h2 id="status">현재 상태</h2>
-
 <p><span class="tag-solved">적중</span></p>
-
 <p>수치 도출이 아닌 구조적 식별. CAS 1개 연산자 × 도메인 4비트 패턴 = 4가지 비용 구조. 오차 0%.</p>
-
-
 <h2 id="discovery">핵심 발견</h2>
-
 <div class="discovery-block">
 <h4>4력 통합 = CAS 1개 연산자의 4가지 도메인 비트 패턴</h4>
 <div class="formula">$\text{CAS}(1) \times \text{domain bit patterns}(4) = \text{"4 forces"}$</div>
-<p>1111: 강력 &nbsp;|&nbsp; 0001: 약력 &nbsp;|&nbsp; 0110: 전자기력 &nbsp;|&nbsp; 1000: 중력</p>
+<p>1111: 강력  |  0001: 약력  |  0110: 전자기력  |  1000: 중력</p>
 <p>4력은 분리된 적이 없다. 통합 에너지 = d-ring 차원 테이블이 비어 있는 에너지 = SP=000.</p>
 </div>
-
-
 <!-- ===== 라운드 1 ===== -->
-
 <h1 id="r1">라운드 1. 왜 4력인가</h1>
-
 <h3 id="r1-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 </div>
-
-<p>반야식에는 4개의 도메인 축이 있다: time, space, observer, superposition. 이 4축이 공리 1의 명제에 의해 4비트를 형성한다. $2^4 = 16$가지 조합.</p>
-
-
+<p>반야식에는 4개의 도메인 축이 있다: time, space, observer, superposition. 이 4축이 <a href="../axiom.html#ax1">공리 1</a>의 명제에 의해 4비트를 형성한다. $2^4 = 16$가지 조합.</p>
 <h3 id="r1-step2">2단계. 노름 치환</h3>
-
 <p>CAS는 DATA에 접근할 때 이 4비트를 통과한다. 다른 ON/OFF 패턴 = 다른 비용 구조 = 다른 "힘".</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{domain bits} = (b_3, b_2, b_1, b_0), \quad b_i \in \{0, 1\}$$</div>
 <div class="math-legend">$b_3$ = time, $b_2$ = space, $b_1$ = observer, $b_0$ = superposition</div>
 </div>
-
-
 <h3 id="r1-step3">3단계. 상수 대입</h3>
-
-<p>CAS 연산자는 1개(공리 2). 도메인 비트는 4개(공리 1 명제). 비용 패턴을 대입하면:</p>
-
+<p>CAS 연산자는 1개(<a href="../axiom.html#ax2">공리 2</a>). 도메인 비트는 4개(<a href="../axiom.html#ax1">공리 1</a> 명제). 비용 패턴을 대입하면:</p>
 <pre>
 1111: CAS 원자성 유지 (R→C→S 3단계 전부 결합) = 강력
 0001: 동일 도메인 내 직렬화                     = 약력
 0110: 교차 도메인 Compare·Swap                   = 전자기력
 1000: Swap 누적 (비가역 쓰기의 축적)             = 중력
 </pre>
-
-
 <h3 id="r1-step4">4단계. 도메인 변환</h3>
-
 <p>비트 패턴을 비용 유형으로 변환한다.</p>
-
 <div class="math-block">
 <div class="math-row">
 <table>
 <tr><th>비트 패턴</th><th>비용 유형</th><th>물리 이름</th><th>특징</th></tr>
 <tr><td>1111</td><td>CAS 원자성 (111 유지)</td><td>강력 (Strong)</td><td>닫힌 FSM, 분리 불가</td></tr>
-<tr><td>0001</td><td>수축 겹침 비용(공리 13 명제)</td><td>약력 (Weak)</td><td>쥠 수축 영역 겹침에 의한 isWritable 경합</td></tr>
+<tr><td>0001</td><td>수축 겹침 비용(<a href="../axiom.html#ax13">공리 13</a> 명제)</td><td>약력 (Weak)</td><td>쥠 수축 영역 겹침에 의한 isWritable 경합</td></tr>
 <tr><td>0110</td><td>교차 도메인 Cmp·Swp</td><td>전자기력 (EM)</td><td>도메인 간 비교+교환</td></tr>
 <tr><td>1000</td><td>Swap 누적</td><td>중력 (Gravity)</td><td>비가역 쓰기 축적, $1/d^2$</td></tr>
 </table>
 </div>
 </div>
-
-
 <h3 id="r1-step5">5단계. 발견</h3>
-
-<p>힘은 1개다. CAS가 유일한 연산자이므로(공리 2), "4력"은 도메인 4비트의 ON/OFF 패턴이 만드는 4가지 비용 구조다. 분리된 적이 없으므로 통합할 것도 없다.</p>
-
+<p>힘은 1개다. CAS가 유일한 연산자이므로(<a href="../axiom.html#ax2">공리 2</a>), "4력"은 도메인 4비트의 ON/OFF 패턴이 만드는 4가지 비용 구조다. 분리된 적이 없으므로 통합할 것도 없다.</p>
 <div class="math-block">
 <div class="math-row">$$\text{Force}(1) \times \text{Pattern}(4) = \text{"4 forces"}$$</div>
 </div>
-
-
 <!-- ===== 라운드 2 ===== -->
-
 <h1 id="r2">라운드 2. d-ring 차원 테이블이 분리를 만든다</h1>
-
 <h3 id="r2-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 </div>
-
 <p>d-ring 차원 테이블의 CAS FSM 상태가 도메인 축의 활성 수를 결정한다. SP 값에 따라 비용 패턴이 구분되거나 합쳐진다.</p>
-
-
 <h3 id="r2-step2">2단계. 노름 치환</h3>
-
 <p>SP = TOCTOU_LOCK 3비트(명제). SP 값이 활성 차원 수를 결정한다.</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{SP} \in \{000, 001, 011, 111\}$$</div>
 <div class="math-legend">SP = 활성 차원 수. 000 = 1D, 001 = 0D 분리, 011 = 2D, 111 = 4D(현재 우주)</div>
 </div>
-
-
 <h3 id="r2-step3">3단계. 상수 대입</h3>
-
 <pre>
 SP=000 (1D): 비용 구분 없음. CAS가 링 위에서 순환할 뿐. 통합 상태.
 SP=001 (0D 분리): CAS 원자성이 분리됨 → 강력이 떨어져 나옴.
 SP=011 (2D): 동일/교차 도메인이 분리됨 → 약력 ≠ 전자기력.
 SP=111 (4D): Swap 누적이 구면 위에 펼쳐짐 → 중력 = $1/d^2$.
 </pre>
-
-
 <h3 id="r2-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">
 <table>
@@ -228,133 +121,77 @@ SP=111 (4D): Swap 누적이 구면 위에 펼쳐짐 → 중력 = $1/d^2$.
 </table>
 </div>
 </div>
-
-
 <h3 id="r2-step5">5단계. 발견</h3>
-
 <p>"통합 에너지" = d-ring 차원 테이블이 비어 있는 에너지 = SP=000. 이 에너지에서는 도메인 비트 패턴 간 비용 구분이 사라진다. 기존 물리학이 말하는 "대통합 에너지"가 바로 이것이다. 에너지가 높아지면 d-ring 차원 테이블이 비워지고(SP→000), 비용 패턴이 하나로 합쳐진다.</p>
-
-
 <!-- ===== 라운드 3 ===== -->
-
 <h1 id="r3">라운드 3. 결합상수 수렴</h1>
-
 <h3 id="r3-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 </div>
-
 <p>각 힘의 결합상수는 CAS가 해당 비트 패턴을 순환하는 링의 크기로 결정된다.</p>
-
-
 <h3 id="r3-step2">2단계. 노름 치환</h3>
-
 <p>링 크기가 결합상수를 결정한다. 작은 링 = 큰 비용 = 큰 결합상수.</p>
-
 <div class="math-block">
 <div class="math-row">$$\alpha_{\text{force}} \sim \frac{1}{\text{ring size}}$$</div>
 <div class="math-legend">ring size = CAS가 해당 패턴을 완주하는 데 필요한 DATA 슬롯 수</div>
 </div>
-
-
 <h3 id="r3-step3">3단계. 상수 대입</h3>
-
 <pre>
-강력: ring size = 7 (CAS 쌍, 공리 3) → α_s ≈ 0.118 (가장 큰 결합상수)
+강력: ring size = 7 (CAS 쌍, <a href="../axiom.html#ax3">공리 3</a>) → α_s ≈ 0.118 (가장 큰 결합상수)
 약력: ring size = 30 (접근 경로, H-40) → G_F 효과
 전자기력: ring size = 137 (도메인 쌍, D-01) → α ≈ 1/137
 중력: ring size → ∞ (Swap 누적, 비가역) → G_N (가장 작은 결합상수)
 </pre>
-
-<p>작은 링 = 큰 비용: $\alpha_s > G_F \text{ effect} > \alpha \gg G_N$.</p>
-
-
+<p>작은 링 = 큰 비용: $\alpha_s &gt; G_F \text{ effect} &gt; \alpha \gg G_N$.</p>
 <h3 id="r3-step4">4단계. 도메인 변환</h3>
-
 <p>에너지가 증가하면 링이 효과적으로 수축한다. 모든 결합상수가 수렴한다.</p>
-
 <div class="math-block">
 <div class="math-row">$$M_{\text{GUT}} = M_Z \times \alpha^{-19/3}$$</div>
 <div class="math-desc">D-29: 19 = SM 자유 매개변수 수, 3 = CAS 단계수.</div>
 </div>
-
 <p>D-54: $b_0$ 기어 사다리. D-55: QCD/QED 비율 = 21/8.</p>
-
-
 <h3 id="r3-step5">5단계. 발견</h3>
-
 <p>결합상수의 "달리기(running)"는 링 크기의 에너지 의존성이다. 에너지가 높아지면 모든 링이 최소 크기(CAS 단계수 = 3)에 수렴한다. 이것이 GUT 에너지에서의 결합상수 통합이다.</p>
-
-
 <!-- ===== 라운드 4 ===== -->
-
 <h1 id="r4">라운드 4. 중력 양자화는 이미 완료</h1>
-
 <h3 id="r4-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 </div>
-
 <p>중력 = Swap 누적 비용. DATA는 이산(명제)이다.</p>
-
-
 <h3 id="r4-step2">2단계. 노름 치환</h3>
-
 <p>중력은 CAS의 Swap 단계가 비가역적으로 축적된 비용이다. DATA가 이산이므로 최소 거리 $d_{\min} = 1$이 존재한다.</p>
-
 <div class="math-block">
 <div class="math-row">$$d_{\min} = 1 \quad (\text{DATA slot})$$</div>
 <div class="math-legend">연속체 없음. 발산 없음. 특이점 없음(명제).</div>
 </div>
-
-
 <h3 id="r4-step3">3단계. 상수 대입</h3>
-
 <pre>
 D-46: r_s = N × 2l_p (슈바르츠실트 반지름 = CAS에서 도출)
 D-92: σ_QCD = (7/4)Λ₃² (끈 장력 = CAS에서 도출)
 </pre>
-
 <p>두 결과 모두 DATA의 이산성에서 자연스럽게 나온다.</p>
-
-
 <h3 id="r4-step4">4단계. 도메인 변환</h3>
-
 <div class="math-block">
 <div class="math-row">$$r_s = N \times 2l_p$$</div>
 <div class="math-desc">슈바르츠실트 반지름: DATA 슬롯 $N$개 × 플랑크 길이 2배. CAS의 Swap 누적 결과.</div>
 </div>
-
 <div class="math-block">
 <div class="math-row">$$\sigma_{\text{QCD}} = \frac{7}{4}\Lambda_3^2$$</div>
 <div class="math-desc">QCD 끈 장력: 7 = CAS 자유도, 4 = 도메인 비트 수. CAS에서 도출.</div>
 </div>
-
-
 <h3 id="r4-step5">5단계. 발견</h3>
-
 <p>중력은 "양자화되지 않은" 적이 없다. DATA가 이산(명제)이므로 중력은 처음부터 양자화돼 있다. 연속 시공간을 가정하고 "어떻게 양자화할 것인가"를 묻는 것 자체가 잘못된 질문이었다. $d_{\min} = 1$이 존재하므로 발산도, 특이점도 없다.</p>
-
-
 <!-- ===== 라운드 5 ===== -->
-
 <h1 id="r5">라운드 5. 왜 끈이론/LQG는 못 풀었나</h1>
-
 <h3 id="r5-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 </div>
-
 <p>반야식: 연산자 1개(CAS) + 이산 DATA = 4가지 비용 패턴. 통합할 것이 없다.</p>
-
-
 <h3 id="r5-step2">2단계. 노름 치환</h3>
-
 <p>세 접근법을 비교한다.</p>
-
 <div class="math-block">
 <div class="math-row">
 <table>
@@ -365,21 +202,12 @@ D-92: σ_QCD = (7/4)Λ₃² (끈 장력 = CAS에서 도출)
 </table>
 </div>
 </div>
-
-
 <h3 id="r5-step5">5단계. 발견</h3>
-
 <p><b>끈이론</b>: 연산자를 늘렸다(끈 진동 모드). 유일성을 잃었다($10^{500}$개 진공). 어떤 진공이 우리 우주인지 선택할 원리가 없다.</p>
-
 <p><b>LQG</b>: 시공간을 이산화했지만 연산자를 건드리지 않았다. 중력은 양자화했으나 물질(표준모형)을 포함하지 못한다.</p>
-
 <p><b>반야프레임</b>: 연산자 1개(CAS) + 이산 DATA = 4가지 비용 패턴. 통합할 것이 없다. 문제는 전제에 있었다: "4력은 분리돼 있으며 통합이 필요하다." 그들은 분리된 적이 없다.</p>
-
-
 <!-- ===== 총괄 ===== -->
-
 <h1 id="summary">총괄</h1>
-
 <table>
 <tr><th>항목</th><th>결과</th><th>상태</th></tr>
 <tr><td>D-104: 4력 통합</td><td>CAS(1) × domain bit patterns(4) = "4 forces"</td><td><span class="tag-solved">적중</span></td></tr>
@@ -388,33 +216,27 @@ D-92: σ_QCD = (7/4)Λ₃² (끈 장력 = CAS에서 도출)
 <tr><td>중력 양자화</td><td>DATA 이산 → $d_{\min}=1$ → 처음부터 양자화</td><td><span class="tag-solved">적중</span></td></tr>
 <tr><td>끈이론/LQG 비교</td><td>연산자 1개 + 이산 DATA = 통합 불필요</td><td><span class="tag-solved">적중</span></td></tr>
 </table>
-
 <div class="discovery-block" style="margin-top:24px">
 <h4>결론</h4>
 <p>4력은 분리된 적이 없다. CAS가 유일한 연산자이므로 힘은 처음부터 1개다. "4력"은 도메인 4비트의 ON/OFF 패턴이 만드는 4가지 비용 구조다. 끈이론/LQG 40+30년 미완 과제의 공리적 해소.</p>
 </div>
-
 </div><!-- /lang-ko -->
-
-
 <!-- ========== English Version ========== -->
-
-
 <!-- ===== page-nav ===== -->
 <div class="page-nav lang-ko">
 <a href="../banya.html">종합 보고서</a>
 <a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
+<a href="../lib_new.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
 <!-- ===== 푸터 ===== -->
 <div class="doc-footer lang-ko">
 <div class="f-top">
 <div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
@@ -423,21 +245,18 @@ D-92: σ_QCD = (7/4)Λ₃² (끈 장력 = CAS에서 도출)
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="../lib.html">가설 라이브러리</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
 기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
 <div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

@@ -1,282 +1,178 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CAS -- </title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="CAS . 15 = 3×5, α running 1/(3π)3 = CAS -= CAS QCD β₀ = 7/(4π)7 = CAS . D-27, D-39, D-40, D-44 .">
-<meta name="keywords" content="Banya,Banya Framework,CAS,Compare-And-Swap,Koide deviation,alpha running,α running,QED,1-loop,beta function,-spin-statistics theorem,Pauli exclusion principle,QCD,β₀,CAS CAS internal state,Han Hyukjin">
-<meta property="og:title" content="CAS -- ">
-<meta property="og:description" content="CAS 3α running, -QCD β₀ .">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CAS -- ">
-<meta name="twitter:description" content="CAS QED·QCD -.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAS Internal Structure Analysis -- Banya Framework Operating Report</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="CAS internal structure analysis. Koide deviation coefficient 15 = 3x5, α running coefficient 1/(3π) where 3 = CAS step count, spin-statistics theorem = CAS atomic occupancy, QCD β₀ = 7/(4π) where 7 = CAS internal state sum. Covers D-27, D-39, D-40, D-44." name="description"/>
+<meta content="Banya Framework,CAS,Compare-And-Swap,Koide deviation,alpha running,α running,QED,1-loop,beta function,spin-statistics theorem,Pauli exclusion principle,QCD,β₀,CAS internal state,Han Hyukjin" name="keywords"/>
+<meta content="CAS Internal Structure Analysis -- Banya Framework" property="og:title"/>
+<meta content="The CAS 3-step structure explains the Koide deviation, α running, spin-statistics, and QCD β₀ coefficients." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="CAS Internal Structure Analysis -- Banya Framework" name="twitter:title"/>
+<meta content="The CAS internal structure clarifies the origin of QED/QCD coefficients and the spin-statistics theorem." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<!-- ===== 언어 토글 ===== -->
-<div class="lang-switch"><a href="../../discovery/cas_internal.html" class="lang-btn">KR</a></div>
-
-
-<!-- ========== 한국어 본문 ========== -->
+<!-- ===== Language Toggle ===== -->
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/cas_internal.html">KR</a></div>
 <!-- ========== English Version ========== -->
-<!-- ===== TOC Sidebar (Desktop) ===== -->
-<div class="toc-side">
-<a href="#title-en" class="toc-h1">CAS Internal Structure Analysis</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-<!-- ===== TOC Mobile Bar ===== -->
-<div class="toc-bar" onclick="this.classList.toggle('open');document.querySelector('.lang-en .toc-overlay').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">CAS Internal Structure Analysis</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay" onclick="this.classList.remove('show');document.querySelector('.lang-en .toc-bar').classList.remove('open')">
-<a href="#title-en" class="toc-h1">CAS Internal Structure Analysis</a>
-<a href="#question-en" class="toc-h2">Question</a>
-<a href="#status-en" class="toc-h2">Status</a>
-<a href="#discovery-en" class="toc-h2">Key Discovery</a>
-<a href="#r1-en" class="toc-h1">Round 1</a>
-<a href="#r1-step1-en" class="toc-h3">Step 1. Banya Equation</a>
-<a href="#r1-step2-en" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#r1-step3-en" class="toc-h3">Step 3. Constant Insertion</a>
-<a href="#r1-step4-en" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#r1-step5-en" class="toc-h3">Step 5. Discovery</a>
-<a href="#byproduct-en" class="toc-h1">By-products</a>
-<a href="#incomplete-en" class="toc-h1">Incomplete Tasks</a>
-<a href="#summary-en" class="toc-h1">Summary</a>
-</div>
-
-
-<!-- ===== Sub-report notice ===== -->
-<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a sub-report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>.</p>
-
-
-<!-- ===== 1. Introduction ===== -->
-
-<h1 id="title-en">CAS Internal Structure Analysis</h1>
-
-<blockquote><p>Banya Framework Operation Report</p></blockquote>
+<div class="lang-en">
+<!-- ===== Subsidiary Report Notice ===== -->
+<p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a subsidiary report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Comprehensive Report</a>.</p>
+<!-- ===== 1. Header ===== -->
+<h1 id="title">CAS Internal Structure Analysis</h1>
+<blockquote><p>Banya Framework Operating Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
-<blockquote><p>Date: 2026-03-25</p></blockquote>
-
-
+<blockquote><p>Execution date: 2026-03-25</p></blockquote>
 <!-- 1-1. Question -->
-<h2 id="question-en">Question: Why Does the CAS 3-Step Structure Determine Physics Coefficients</h2>
-
-<p>The 1-loop beta function coefficient in QED, QCD's beta-zero, the Koide deviation coefficient 15, and the spin-statistics theorem -- these are numbers that "just came out that way" in the Standard Model. There was no theory explaining why they take those values. The CAS (Compare-And-Swap) structure in Banya Framework operates in 3 steps (Compare, Swap, Write), and we show that this number 3 is the origin of multiple physics coefficients.</p>
-
-
+<h2 id="question">Question: Why Does the CAS 3-Step Structure Determine Physical Coefficients?</h2>
+<p>The QED 1-loop β-function coefficient, the QCD β₀, the Koide deviation coefficient 15, and the spin-statistics theorem -- these are numbers that "just happen to come out that way" in the Standard Model. No theory has explained why they take those values. The Banya Framework's CAS (Compare-And-Swap) structure operates in 3 steps (Compare, Swap, Write), and we show that this number 3 is the origin of several physical coefficients.</p>
 <!-- 1-2. Status -->
-<h2 id="status-en">Status</h2>
-
+<h2 id="status">Status</h2>
 <p><span class="tag-discovery">Discovery</span></p>
-
-<p>All 4 items have 0% error. Coefficients emerge as integer correspondences from CAS internal structure.</p>
-
-
-<!-- 1-3. Key Discovery -->
-<h2 id="discovery-en">Key Discovery</h2>
-
+<p>All 4 items show 0% error. The coefficients emerge as integer correspondences from the CAS internal structure.</p>
+<!-- 1-3. Core Finding -->
+<h2 id="discovery">Core Finding</h2>
 <div class="discovery-block">
 <h4>D-27: Koide Deviation Coefficient 15</h4>
-<div class="formula">15 = 3 (CAS steps) &times; 5 (complete description 9 - domain 4)</div>
-<p>Digit match. Error: <span class="tag-solved">0%</span></p>
-<p>The coefficient 15 in the Koide deviation is explained by CAS structure.</p>
+<div class="formula">15 = 3 (CAS steps) × 5 (complete description 9 - domain 4)</div>
+<p>Digit-level match. Error: <span class="tag-solved">0%</span></p>
+<p>The Koide deviation coefficient 15 is explained by the CAS structure.</p>
 </div>
-
 <div class="discovery-block">
-<h4>D-39: &alpha; Running Coefficient 1/(3&pi;)</h4>
-<div class="formula">3 in 1/(3&pi;) = CAS step count</div>
+<h4>D-39: α Running Coefficient 1/(3π)</h4>
+<div class="formula">The 3 in 1/(3π) = CAS step count</div>
 <p>Error: <span class="tag-solved">0%</span> (standard QED)</p>
-<p>The QED 1-loop beta function coefficient originates from the CAS 3-step structure.</p>
+<p>The QED 1-loop β-function coefficient emerges from the CAS 3 steps.</p>
 </div>
-
 <div class="discovery-block">
-<h4>D-40: Spin-Statistics Theorem = CAS Atomic Occupation</h4>
-<div class="formula">Spin-statistics theorem = CAS atomicity (111 preservation)</div>
+<h4>D-40: Spin-Statistics Theorem = CAS Atomic Occupancy</h4>
+<div class="formula">Spin-statistics theorem = CAS atomicity (111 preserved)</div>
 <p>Error: <span class="tag-solved">0%</span> (structural correspondence)</p>
 <p>The Pauli exclusion principle is a direct consequence of CAS atomicity.</p>
 </div>
-
 <div class="discovery-block">
-<h4>D-44: QCD &beta;&#8320; = 7/(4&pi;)</h4>
+<h4>D-44: QCD β₀ = 7/(4π)</h4>
 <div class="formula">7 = CAS internal state sum</div>
 <p>Error: <span class="tag-solved">0%</span></p>
-<p>The QCD 1-loop beta function coefficient originates from CAS degrees of freedom.</p>
+<p>The coefficient of the QCD 1-loop β-function emerges from the CAS degrees of freedom.</p>
 </div>
-
-
 <!-- ===== 2. Body: Round 1 ===== -->
-
-<h1 id="r1-en">Round 1. Deriving Physics Coefficients from CAS Internal Degrees of Freedom</h1>
-
-<h3 id="r1-step1-en">Step 1. Banya Equation</h3>
-
+<h1 id="r1">Round 1. Deriving Physical Coefficients from CAS Internal Degrees of Freedom</h1>
+<h3 id="r1-step1">Step 1. Banya formula</h3>
 <div class="math-block">
 <div class="math-row">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
 </div>
-
-<p>CAS is the atomic operation governing state transitions on the observer axis of the Banya equation. It operates in 3 steps: Compare &rarr; Swap &rarr; Write. This round verifies how CAS internal degrees of freedom (step count 3, state sum 7) correspond to physics coefficients.</p>
-
-
-<h3 id="r1-step2-en">Step 2. Norm Substitution</h3>
-
-<p>Substitute CAS 3-step structure into physical variables.</p>
-
+<p>CAS is the atomic operator that governs state transitions on the observer axis of the Banya formula. Three steps: Compare → Swap → Write. In this round we verify how the CAS internal degrees of freedom (step count 3, state sum 7) correspond to physical coefficients.</p>
+<h3 id="r1-step2">Step 2. Norm substitution</h3>
+<p>The CAS 3-step structure is substituted into physical variables.</p>
 <div class="math-block">
-<div class="math-row">CAS step count = 3 &rarr; QED beta function denominator coefficient</div>
-<div class="math-row">Complete description 9 - Domain 4 = 5 &rarr; remaining factor of Koide deviation</div>
-<div class="math-row">CAS internal state sum = 7 &rarr; QCD &beta;&#8320; numerator</div>
-<div class="math-row">CAS atomicity (111 preservation) &rarr; fermionic exclusive occupation</div>
+<div class="math-row">CAS step count = 3 → denominator coefficient of the QED β-function</div>
+<div class="math-row">Complete description 9 - domain 4 = 5 → remaining factor of the Koide deviation</div>
+<div class="math-row">CAS internal state sum = 7 → numerator of QCD β₀</div>
+<div class="math-row">CAS atomicity (111 preserved) → fermion exclusive occupancy</div>
 </div>
-
-
-<h3 id="r1-step3-en">Step 3. Constant Insertion</h3>
-
-<p>Insert CAS structural factors and Banya Framework factors.</p>
-
+<h3 id="r1-step3">Step 3. Constant substitution</h3>
+<p>Substitute the CAS structural factors and the Banya Framework factors.</p>
 <pre>CAS step count: 3 (Compare, Swap, Write)
 Complete description: 9 (Banya Framework definition)
 Domain: 4 (time, space, observer, superposition)
-CAS internal state sum: 7 = 1(Compare) + 2(Swap) + 4(Write)
-CAS atomicity: 111 preservation (existing value preserved until write)</pre>
-
-
-<h3 id="r1-step4-en">Step 4. Domain Transform</h3>
-
-<p>Transform CAS factors into physics domain coefficients.</p>
-
+CAS internal state sum: 7 = 1 (Compare) + 2 (Swap) + 4 (Write)
+CAS atomicity: 111 preserved (the previous value is kept intact until the moment just before the write)</pre>
+<h3 id="r1-step4">Step 4. Domain transformation</h3>
+<p>Convert the CAS factors into physical-domain coefficients.</p>
 <div class="math-block">
 <div class="math-row">Koide deviation coefficient: $3 \times 5 = 15$</div>
-<div class="math-desc">CAS 3 steps &times; (complete description 9 - domain 4) = 15. Matches the coefficient of the Koide formula deviation term.</div>
+<div class="math-desc">CAS 3 steps × (complete description 9 - domain 4) = 15. Matches the coefficient of the deviation term in the Koide formula.</div>
 </div>
-
 <div class="math-block">
-<div class="math-row">&alpha; running: $\alpha(q^2) = \frac{\alpha}{1 - \frac{\alpha}{3\pi}\ln\frac{q^2}{m_e^2}}$</div>
-<div class="math-desc">The 3 in the denominator = CAS step count. This is the origin of the 3 in the QED 1-loop beta function.</div>
+<div class="math-row">α running: $\alpha(q^2) = \frac{\alpha}{1 - \frac{\alpha}{3\pi}\ln\frac{q^2}{m_e^2}}$</div>
+<div class="math-desc">The 3 in the denominator = CAS step count. This is the origin of the 3 that appears in the QED 1-loop β-function.</div>
 </div>
-
 <div class="math-block">
-<div class="math-row">Spin-statistics: CAS atomicity &harr; Fermionic exclusion principle</div>
-<div class="math-desc">Just as two writes cannot simultaneously succeed at the same address in CAS, two fermions cannot coexist in the same quantum state.</div>
+<div class="math-row">Spin-statistics: CAS atomicity ↔ fermion exclusion principle</div>
+<div class="math-desc">Just as two writes to the same address cannot both succeed simultaneously in CAS, two fermions cannot coexist in the same quantum state.</div>
 </div>
-
 <div class="math-block">
 <div class="math-row">QCD $\beta_0 = \frac{7}{4\pi}$</div>
 <div class="math-desc">Numerator 7 = CAS internal state sum (1+2+4). Origin of the QCD 1-loop coefficient.</div>
 </div>
-
-
-<h3 id="r1-step5-en">Step 5. Discovery</h3>
-
+<h3 id="r1-step5">Step 5. Discovery</h3>
 <div class="math-block">
-<div class="math-row">D-27: Derived 15 = Observed 15. Error 0%</div>
-<div class="math-row">D-39: Derived 3 = QED coefficient 3. Error 0%</div>
-<div class="math-row">D-40: CAS atomicity = Spin-statistics theorem. Error 0% (structural correspondence)</div>
-<div class="math-row">D-44: Derived 7 = QCD &beta;&#8320; numerator. Error 0%</div>
+<div class="math-row">D-27: derived value 15 = observed value 15. Error 0%</div>
+<div class="math-row">D-39: derived value 3 = QED coefficient 3. Error 0%</div>
+<div class="math-row">D-40: CAS atomicity = spin-statistics theorem. Error 0% (structural correspondence)</div>
+<div class="math-row">D-44: derived value 7 = numerator of QCD β₀. Error 0%</div>
 </div>
-
-<p>All 4 items match as integer correspondences with 0% error. CAS internal structure determines the fundamental coefficients of quantum field theory.</p>
-
-
-<!-- ===== 3. By-products ===== -->
-
-<h1 id="byproduct-en">By-products</h1>
-
-<p>The fact that CAS 3-step structure simultaneously determines coefficients in both QED and QCD suggests that the electroweak and strong forces branched from the same operational structure. This may develop into a Banya Framework version of Grand Unified Theory (GUT).</p>
-
-
-<!-- ===== 4. Incomplete Tasks ===== -->
-
-<h1 id="incomplete-en">Incomplete Tasks</h1>
-
+<p>All 4 items achieve 0% error through integer correspondence. The CAS internal structure determines the basic coefficients of quantum field theory.</p>
+<!-- ===== 3. Byproducts ===== -->
+<h1 id="byproduct">Byproducts</h1>
+<p>The fact that the 3-step CAS simultaneously determines coefficients in both QED and QCD suggests that the electroweak and strong forces branched from the same operational structure. This carries the potential to develop into a Banya Framework version of grand unified theory (GUT).</p>
+<!-- ===== 4. Incomplete ===== -->
+<h1 id="incomplete">Incomplete</h1>
 <table>
-<tr><th>Item</th><th>Current State</th><th>Resolution Path</th></tr>
-<tr><td>2-loop and higher coefficients</td><td>Only 1-loop verified</td><td>Attempt higher-loop coefficient derivation via CAS nesting structure</td></tr>
-<tr><td>Generalization of CAS state sum 7</td><td>Fixed at $N_f = 6$</td><td>Reconstruct CAS states with varying flavor count</td></tr>
+<tr><th>Item</th><th>Current state</th><th>Solution direction</th></tr>
+<tr><td>2-loop and higher coefficients</td><td>Only 1-loop verified</td><td>Attempt to derive higher-loop coefficients from the CAS superposition structure</td></tr>
+<tr><td>Generalization of CAS state sum 7</td><td>Fixed at $N_f = 6$</td><td>Reconfigure CAS states as the flavor count varies</td></tr>
 </table>
-
-
 <!-- ===== 5. Summary ===== -->
-
-<h1 id="summary-en">Summary</h1>
-
+<h1 id="summary">Summary</h1>
 <table>
 <tr><th>Item</th><th>Result</th><th>Status</th></tr>
-<tr><td>D-27: Koide deviation coeff. 15</td><td>$3 \times 5 = 15$, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>D-39: &alpha; running coefficient</td><td>$1/(3\pi)$: 3 = CAS steps, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>D-40: Spin-statistics theorem</td><td>CAS atomicity = exclusion, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
-<tr><td>D-44: QCD &beta;&#8320;</td><td>7 = CAS state sum, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td>D-27: Koide deviation coefficient 15</td><td>$3 \times 5 = 15$, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td>D-39: α running coefficient</td><td>The 3 in $1/(3\pi)$ = CAS step count, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td>D-40: Spin-statistics theorem</td><td>CAS atomicity = exclusion principle, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td>D-44: QCD β₀</td><td>7 = CAS internal state sum, error 0%</td><td><span class="tag-discovery">Discovery</span></td></tr>
 </table>
-
+</div><!-- /lang-en -->
 <!-- ===== page-nav ===== -->
-
 <div class="page-nav lang-en">
-<a href="../banya.html">Master Report</a>
-<a href="../predictions.html">Predictions</a>
-<a href="../lib.html">Factor Library</a>
-<a href="../science_mine.html">Mining Manual</a>
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib_new.html">Hypothesis Library</a>
+<a href="../science_mine.html">Science Mining Manual</a>
 </div>
-
-
-<!-- ===== 푸터 ===== -->
-
+<!-- ===== Footer ===== -->
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin (Hyukjin Han)<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (般若 Framework)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
 <div class="f1">$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$</div>
-<div class="f2">Origin of QED/QCD coefficients and spin-statistics theorem from CAS internal structure</div>
+<div class="f2">CAS internal structure clarifies the origin of QED/QCD coefficients and the spin-statistics theorem</div>
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">Related: <a href="../banya.html">Master Report</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
-Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial use only | SA -- Share-alike<br/>
+Copyright of pre-existing physics formulas remains with the original authors; the Banya Framework interpretation and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

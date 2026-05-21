@@ -1,357 +1,253 @@
 <!DOCTYPE html>
+
 <html lang="en" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Electromagnetic Derivation: Coulomb, Faraday, Poynting from CAS — Banya Framework Report</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="Banya Framework derivation of electromagnetic phenomena. Coulomb's Law from Axiom 11, Faraday Induction from CAS irreversibility, Poynting Vector from cost flow, Larmor Radiation from Swap acceleration, Fine Structure from lock-domain bit coupling.">
-<meta name="keywords" content="Banya Framework,Banya,electromagnetic,Coulomb,Faraday,Poynting,Larmor,fine structure,Maxwell,CAS,Compare-And-Swap,Axiom 11,Han Hyukjin,TOE">
-<meta property="og:title" content="Electromagnetic Derivation — Banya Framework">
-<meta property="og:description" content="Coulomb 1/r^2, Faraday induction, Poynting vector, Larmor radiation, fine structure splitting from CAS axioms.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Electromagnetic Derivation — Banya Framework">
-<meta name="twitter:description" content="Maxwell's 4 equations as 4-axis projections of CAS cost flow.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../common.css">
-<link rel="stylesheet" href="../../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="Banya Framework derivation of electromagnetic phenomena. Coulomb's Law from Axiom 11, Faraday Induction from CAS irreversibility, Poynting Vector from cost flow, Larmor Radiation from Swap acceleration, Fine Structure from lock-domain bit coupling." name="description"/>
+<meta content="Banya Framework,Banya,electromagnetic,Coulomb,Faraday,Poynting,Larmor,fine structure,Maxwell,CAS,Compare-And-Swap,Axiom 11,Han Hyukjin,TOE" name="keywords"/>
+<meta content="Electromagnetic Derivation — Banya Framework" property="og:title"/>
+<meta content="Coulomb 1/r^2, Faraday induction, Poynting vector, Larmor radiation, fine structure splitting from CAS axioms." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Electromagnetic Derivation — Banya Framework" name="twitter:title"/>
+<meta content="Maxwell's 4 equations as 4-axis projections of CAS cost flow." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../../discovery/electromagnetic.html" class="lang-btn">KR</a></div>
-
-
-
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/electromagnetic.html">KR</a></div>
 <div class="toc-side lang-en">
-<a href="#en-title" class="toc-h1">Electromagnetic Derivation</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-r1" class="toc-h1">Round 1. Coulomb's Law</a>
-<a href="#en-r1-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r1-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r1-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r1-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r1-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r2" class="toc-h1">Round 2. Faraday Induction</a>
-<a href="#en-r2-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r2-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r2-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r2-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r2-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r3" class="toc-h1">Round 3. Poynting Vector</a>
-<a href="#en-r3-step1" class="toc-h3">Step 1. Banya Eq</a>
-<a href="#en-r3-step2" class="toc-h3">Step 2. Norm Substitution</a>
-<a href="#en-r3-step3" class="toc-h3">Step 3. Constant Binding</a>
-<a href="#en-r3-step4" class="toc-h3">Step 4. Domain Transform</a>
-<a href="#en-r3-step5" class="toc-h3">Step 5. Discovery</a>
-<a href="#en-r4" class="toc-h1">Round 4. Larmor Radiation</a>
-<a href="#en-r5" class="toc-h1">Round 5. Fine Structure</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#en-title">Electromagnetic Derivation</a>
+<a class="toc-h2" href="#en-intro">Introduction</a>
+<a class="toc-h2" href="#en-discovery">Key Discovery</a>
+<a class="toc-h1" href="#en-r1">Round 1. Coulomb's Law</a>
+<a class="toc-h3" href="#en-r1-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r1-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r1-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r1-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r1-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r2">Round 2. Faraday Induction</a>
+<a class="toc-h3" href="#en-r2-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r2-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r2-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r2-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r2-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r3">Round 3. Poynting Vector</a>
+<a class="toc-h3" href="#en-r3-step1">Step 1. Banya Eq</a>
+<a class="toc-h3" href="#en-r3-step2">Step 2. Norm Substitution</a>
+<a class="toc-h3" href="#en-r3-step3">Step 3. Constant Binding</a>
+<a class="toc-h3" href="#en-r3-step4">Step 4. Domain Transform</a>
+<a class="toc-h3" href="#en-r3-step5">Step 5. Discovery</a>
+<a class="toc-h1" href="#en-r4">Round 4. Larmor Radiation</a>
+<a class="toc-h1" href="#en-r5">Round 5. Fine Structure</a>
+<a class="toc-h1" href="#en-limits">Limitations</a>
+<a class="toc-h1" href="#en-summary">Summary</a>
 </div>
-
 <div class="toc-bar lang-en" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-en').classList.toggle('show')">
 <div class="toc-bar-text"><span class="cur">Electromagnetic Derivation</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
+<div class="toc-bar-arrow">▼</div>
 </div>
 <div class="toc-overlay lang-en" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-en').classList.remove('open')">
-<a href="#en-title" class="toc-h1">Electromagnetic Derivation</a>
-<a href="#en-intro" class="toc-h2">Introduction</a>
-<a href="#en-discovery" class="toc-h2">Key Discovery</a>
-<a href="#en-r1" class="toc-h1">Round 1. Coulomb's Law</a>
-<a href="#en-r2" class="toc-h1">Round 2. Faraday Induction</a>
-<a href="#en-r3" class="toc-h1">Round 3. Poynting Vector</a>
-<a href="#en-r4" class="toc-h1">Round 4. Larmor Radiation</a>
-<a href="#en-r5" class="toc-h1">Round 5. Fine Structure</a>
-<a href="#en-limits" class="toc-h1">Limitations</a>
-<a href="#en-summary" class="toc-h1">Summary</a>
+<a class="toc-h1" href="#en-title">Electromagnetic Derivation</a>
+<a class="toc-h2" href="#en-intro">Introduction</a>
+<a class="toc-h2" href="#en-discovery">Key Discovery</a>
+<a class="toc-h1" href="#en-r1">Round 1. Coulomb's Law</a>
+<a class="toc-h1" href="#en-r2">Round 2. Faraday Induction</a>
+<a class="toc-h1" href="#en-r3">Round 3. Poynting Vector</a>
+<a class="toc-h1" href="#en-r4">Round 4. Larmor Radiation</a>
+<a class="toc-h1" href="#en-r5">Round 5. Fine Structure</a>
+<a class="toc-h1" href="#en-limits">Limitations</a>
+<a class="toc-h1" href="#en-summary">Summary</a>
 </div>
-
-
-
-
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">This document is a subsidiary report of the <a href="../banya.html" style="color:#58a6ff;font-weight:600">Banya Framework Master Report</a>. It covers the derivation of electromagnetic phenomena from CAS axioms.</p>
-
 <h1 id="en-title">Electromagnetic Derivation: From Axiom 11 to Maxwell's Equations</h1>
-
 <blockquote><p>Banya Framework Operational Report</p></blockquote>
 <blockquote><p>Inventor: Han Hyukjin (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>Date: 2026-04-03</p></blockquote>
-
-
 <h2 id="en-intro">Introduction</h2>
-
 <p><strong>Scope: D-151 through D-155, H-427 through H-441.</strong> This report derives five classical electromagnetic results from the Banya Framework axioms. Axiom 11 provides the interaction formula $w(\ell) = C \cdot (1-\ell/N)/(4\pi\ell^2)$. When mapped to the physics domain, this single expression yields Coulomb's law, Faraday induction, the Poynting vector, Larmor radiation, and fine-structure splitting. The overarching claim is that Maxwell's four equations are four-axis projections of CAS cost flow (H-427).</p>
-
 <p><strong>Status: <span class="tag-solved">Hit</span></strong> -- Coulomb $1/r^2$ recovered exactly. Faraday sign recovered from CAS irreversibility. Poynting vector as Compare$\times$Swap cross product. Larmor formula from Swap acceleration cost. Fine-structure $\alpha^4$ splitting from lock-domain bits.</p>
-
-
 <h2 id="en-discovery">Key Discovery</h2>
-
 <div class="discovery-block">
 <h4>Coulomb's Inverse-Square Law from Axiom 11 (D-152)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$w(\ell) = C \cdot \frac{1-\ell/N}{4\pi\ell^2} \;\xrightarrow{\;\ell \ll N\;}\; \frac{C}{4\pi\ell^2}$$</div>
 <p>The Banya interaction formula reduces to the Coulomb $1/r^2$ law in the short-range limit.</p>
 </div>
-
 <div class="discovery-block">
 <h4>Maxwell's 4 Equations = 4-Axis Projections (H-427)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\text{time} \to \nabla \cdot \mathbf{E},\quad \text{space} \to \nabla \times \mathbf{B},\quad \text{observer} \to \nabla \cdot \mathbf{B},\quad \text{superposition} \to \nabla \times \mathbf{E}$$</div>
 <p>Each Maxwell equation corresponds to one axis of the Banya equation $\delta^2 = (\text{time}+\text{space})^2 + (\text{observer}+\text{superposition})^2$.</p>
 </div>
-
-
 <h1 id="en-r1">Round 1. Coulomb's Law from Axiom 11 (D-152)</h1>
-
 <h3 id="en-r1-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">Axiom 1: four-axis orthogonal decomposition of every state change</div>
 </div>
-
 <p>All interactions in the Banya Framework are state changes. A state change between two entities separated by distance $\ell$ incurs a cost given by Axiom 11.</p>
-
 <h3 id="en-r1-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$w(\ell) = C \cdot \frac{f(\theta)}{4\pi\ell^2}, \quad f(\theta) = 1 - \frac{\ell}{N}$$</div>
 <div class="math-desc">Axiom 11: interaction cost. $C$ = coupling constant, $N$ = total entity count, $f(\theta)$ = angular factor</div>
 </div>
-
 <p>The angular factor $f(\theta) = 1 - \ell/N$ encodes the finite-size correction. When two entities are close ($\ell \ll N$), $f(\theta) \approx 1$ and the formula becomes a pure inverse-square law. The $4\pi$ denominator arises from the isotropic solid angle of the 3-dimensional boundary (Axiom 4: cost +1 per boundary crossing, total boundary cost 13, where $4\pi$ is the unit sphere solid angle in 3D).</p>
-
 <h3 id="en-r1-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$C \;\longleftrightarrow\; \frac{q_1 q_2}{4\pi\epsilon_0}, \qquad \ell \;\longleftrightarrow\; r$$</div>
 <div class="math-desc">Bind: CAS cost constant $C$ maps to the product of charges divided by $4\pi\epsilon_0$</div>
 </div>
-
 <p>The coupling constant $C$ in Axiom 11 is domain-agnostic. In the electromagnetic domain, $C$ is bound to the Coulomb prefactor $q_1 q_2 / (4\pi\epsilon_0)$. The discrete hop count $\ell$ maps to continuous radial distance $r$.</p>
-
 <h3 id="en-r1-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$w(r) = \frac{q_1 q_2}{4\pi\epsilon_0} \cdot \frac{1}{4\pi r^2} \cdot \underbrace{(1 - r/R)}_{\approx\,1}$$</div>
 <div class="math-desc">In the physics domain: $R$ = cosmic horizon scale; for $r \ll R$ the correction vanishes</div>
 </div>
-
 <p>The factor $(1 - r/R)$ is a cosmological correction that is negligible at laboratory scales. Dropping it yields the standard Coulomb force. This correction becomes significant only at horizon scales and connects to the dark-energy discussion in the cosmology report.</p>
-
 <h3 id="en-r1-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Coulomb's Law (D-152)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$F = \frac{q_1 q_2}{4\pi\epsilon_0 r^2}$$</div>
 <p><span class="precision">Exact recovery of the inverse-square law from Axiom 11 in the $\ell \ll N$ limit.</span></p>
 </div>
-
 <p>The inverse-square law is not postulated; it is a consequence of isotropic cost distribution over a 3D boundary. The $1/r^2$ dependence follows from the $4\pi r^2$ surface area of a sphere, which is the natural boundary in 3 spatial dimensions (Axiom 4). The Banya Framework predicts a deviation at cosmological distances proportional to $r/R$.</p>
-
-
 <h1 id="en-r2">Round 2. Faraday Induction from CAS Irreversibility (D-154)</h1>
-
 <h3 id="en-r2-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{CAS: } R \to C \to S \quad \text{(irreversible, Axiom 2)}$$</div>
 <div class="math-desc">The CAS pipeline is strictly one-directional: Read, then Compare, then Swap</div>
 </div>
-
 <p>Axiom 2 states that the CAS sequence is irreversible. You cannot reverse the order. This irreversibility is the origin of all time-asymmetric phenomena, including Faraday's law of induction.</p>
-
 <h3 id="en-r2-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$\frac{\partial \Phi_B}{\partial t} \;\longleftrightarrow\; \text{CAS state change rate along the time axis}$$</div>
 <div class="math-desc">Magnetic flux change = rate of CAS cost accumulation projected onto the time axis</div>
 </div>
-
 <p>When the CAS cost flow changes over time (i.e., the magnetic flux through a loop changes), the system must compensate. The compensation is an induced electric field that opposes the change. The direction of opposition is dictated by the irreversibility of CAS: the return path $S \to C \to R$ is forbidden, so the induced field must point in the direction that would restore the previous state via the forward path $R \to C \to S$.</p>
-
 <h3 id="en-r2-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\mathcal{E} = -\frac{d\Phi_B}{dt}$$</div>
 <div class="math-desc">The minus sign = R$\to$C$\to$S direction. CAS irreversibility dictates the sign.</div>
 </div>
-
 <p>The minus sign in Faraday's law is not a convention. It is a direct consequence of CAS irreversibility (Axiom 2). The system cannot undo a Swap by reversing back through Compare to Read. Therefore, any change in the magnetic cost flow must be opposed by an induced electromotive force in the forward direction.</p>
-
 <h3 id="en-r2-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\oint \mathbf{E} \cdot d\mathbf{l} = -\frac{d}{dt}\int \mathbf{B} \cdot d\mathbf{A}$$</div>
 <div class="math-desc">Faraday's law in integral form: the CAS cost loop integral equals the negative time derivative of flux</div>
 </div>
-
 <p>The line integral of the electric field around a closed loop (CAS cost loop) equals the negative rate of change of magnetic flux through that loop. The closed loop corresponds to a complete CAS cycle projected onto the space-time plane. The integral form makes explicit that this is a global constraint, not a local one -- just as CAS atomicity (Axiom 2) is a global constraint on the entire R$\to$C$\to$S sequence.</p>
-
 <h3 id="en-r2-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Faraday's Law of Induction (D-154)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\mathcal{E} = -\frac{d\Phi_B}{dt}$$</div>
 <p>The minus sign is not Lenz's empirical rule but a theorem of CAS irreversibility (Axiom 2). <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-r3">Round 3. Poynting Vector from Cost Flow (D-153)</h1>
-
 <h3 id="en-r3-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">The 4-axis structure decomposes CAS cost flow into orthogonal components</div>
 </div>
-
 <p>The CAS cost flow has components along all four axes. When projected onto the observer-superposition plane, the Compare and Swap operations generate orthogonal field components.</p>
-
 <h3 id="en-r3-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$\mathbf{E} \;\longleftrightarrow\; \text{Compare cost gradient}, \qquad \mathbf{B} \;\longleftrightarrow\; \text{Swap cost curl}$$</div>
 <div class="math-desc">Electric field = Compare operation cost gradient; Magnetic field = Swap operation cost curl</div>
 </div>
-
 <p>Compare is a scalar judgment (true/false), so its cost field is a gradient field -- it points from high cost to low cost. Swap is a permutation operation, so its cost field has rotational character -- it curls around the axis of exchange. The cross product of these two orthogonal fields gives the direction of energy transport.</p>
-
 <h3 id="en-r3-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\mathbf{S} = \frac{1}{\mu_0}\,\mathbf{E} \times \mathbf{B}$$</div>
 <div class="math-desc">Poynting vector: energy flux = Compare $\times$ Swap cross product</div>
 </div>
-
 <p>The Poynting vector $\mathbf{S}$ represents the rate of energy transfer per unit area. In the Banya Framework, this is the cross product of the Compare cost field ($\mathbf{E}$) and the Swap cost field ($\mathbf{B}$). The factor $1/\mu_0$ is the domain-specific constant that converts CAS cost units to SI energy flux units.</p>
-
 <h3 id="en-r3-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\nabla \cdot \mathbf{S} + \frac{\partial u}{\partial t} = -\mathbf{J} \cdot \mathbf{E}$$</div>
 <div class="math-desc">Poynting's theorem: CAS cost conservation law</div>
 </div>
-
 <p>This is the energy conservation law for electromagnetic fields. In CAS terms: the divergence of the cost flow plus the rate of change of stored cost equals the negative of the work done by the current. This is a direct expression of Axiom 4 (cost +1 per boundary, total 13): cost is conserved and accounted for at every boundary crossing.</p>
-
 <h3 id="en-r3-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Poynting Vector as Compare$\times$Swap (D-153)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\mathbf{S} = \frac{1}{\mu_0}\,\mathbf{E} \times \mathbf{B}$$</div>
 <p>Energy flow direction = cross product of the two non-trivial CAS stages. <span class="tag-solved">Hit</span></p>
 </div>
-
-
 <h1 id="en-r4">Round 4. Larmor Radiation from Swap Acceleration Cost (D-151)</h1>
-
 <h3 id="en-r4-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\text{Swap cost} \propto \frac{d^2 \ell}{dt^2} \quad \text{(second derivative of position = acceleration)}$$</div>
 <div class="math-desc">Swap acceleration: when the hop distance changes non-uniformly, extra cost is incurred</div>
 </div>
-
 <p>When a charged entity accelerates, its Swap operation must update the position at an increasing rate. This non-uniform Swap incurs an additional cost proportional to the square of the acceleration.</p>
-
 <h3 id="en-r4-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$P = \frac{q^2 a^2}{6\pi\epsilon_0 c^3}$$</div>
 <div class="math-desc">Larmor formula: radiated power proportional to acceleration squared</div>
 </div>
-
 <p>The Larmor formula states that an accelerating charge radiates power proportional to $a^2$. In CAS terms, the Swap stage must expend extra cost when the entity's position changes non-linearly. This excess cost is radiated as electromagnetic energy. The $a^2$ dependence arises because cost is a norm (always positive), and the norm of the acceleration vector is its square.</p>
-
 <h3 id="en-r4-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\frac{q^2}{6\pi\epsilon_0 c^3} \;\longleftrightarrow\; \text{CAS Swap cost coefficient for acceleration}$$</div>
 <div class="math-desc">The prefactor encodes the cost of non-uniform Swap execution</div>
 </div>
-
 <p>The factor $6\pi$ comes from the angular integration over the radiation pattern (isotropic in the non-relativistic limit). The $c^3$ in the denominator reflects the three spatial dimensions through which the cost propagates (each dimension contributes one factor of $c$, the propagation speed).</p>
-
 <h3 id="en-r4-step4">Step 4. Domain Transform</h3>
-
 <p>For relativistic motion, the Larmor formula generalizes to the Lienard formula. In CAS terms, relativistic motion means the Swap rate approaches the maximum CAS tick rate (Axiom 8: $\delta$ polls every tick). Near this limit, time dilation effects modify the cost accounting.</p>
-
 <h3 id="en-r4-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Larmor Radiation = Swap Acceleration Cost (D-151)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$P = \frac{q^2 a^2}{6\pi\epsilon_0 c^3}$$</div>
 <p>Accelerating charges radiate because non-uniform Swap incurs irreducible cost. <span class="tag-hypothesis">Hypothesis</span></p>
 </div>
-
-
 <h1 id="en-r5">Round 5. Fine Structure from Lock-Domain Bit Coupling (D-155)</h1>
-
 <h3 id="en-r5-step1">Step 1. Banya Equation</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta = 8\text{-bit d-ring} \quad \text{(Axiom 5)}$$</div>
 <div class="math-desc">The state register is an 8-bit ring buffer; lock-domain bits encode interaction strength</div>
 </div>
-
 <p>Axiom 5 defines the state as an 8-bit d-ring (ring buffer). The lock-domain bits within this ring encode the coupling strength between entities. The fine-structure constant $\alpha$ governs the electromagnetic coupling. Higher-order corrections arise from bit-level interactions within the d-ring.</p>
-
 <h3 id="en-r5-step2">Step 2. Norm Substitution</h3>
-
 <div class="math-block">
 <div class="math-row">$$E_{fs} = E_n \cdot \alpha^2 \left(\frac{1}{j+1/2} - \frac{3}{4n}\right) \cdot \frac{1}{n^2}$$</div>
 <div class="math-desc">Fine-structure energy correction: $\alpha^2$ from two lock-domain bit couplings</div>
 </div>
-
 <p>The fine-structure splitting of hydrogen energy levels goes as $\alpha^2$. Each factor of $\alpha$ corresponds to one lock-domain bit coupling in the d-ring. The $\alpha^4$ hyperfine splitting (D-155) involves four such couplings -- two from the electron's d-ring and two from the proton's d-ring interacting via Compare operations.</p>
-
 <h3 id="en-r5-step3">Step 3. Constant Binding</h3>
-
 <div class="math-block">
 <div class="math-row">$$\alpha = \frac{e^2}{4\pi\epsilon_0\hbar c} \approx \frac{1}{137.036}$$</div>
 <div class="math-desc">Fine-structure constant: the fundamental lock-domain coupling strength</div>
 </div>
-
 <h3 id="en-r5-step4">Step 4. Domain Transform</h3>
-
 <div class="math-block">
 <div class="math-row">$$\Delta E_{\alpha^4} \propto \alpha^4 \cdot m_e c^2$$</div>
 <div class="math-desc">$\alpha^4$ splitting: four lock-domain bit interactions (D-155)</div>
 </div>
-
 <p>The $\alpha^4$ corrections include the Lamb shift and hyperfine structure. In the Banya Framework, each power of $\alpha$ represents one additional d-ring bit interaction. At $\alpha^4$, we have a 4-bit chain: two bits from entity A's d-ring, two from entity B's d-ring, linked through Compare. This 4-bit chain has $2^4 = 16$ possible states, which corresponds to the 16-fold splitting pattern observed in fine-structure spectroscopy when all quantum numbers are resolved.</p>
-
 <h3 id="en-r5-step5">Step 5. Discovery</h3>
-
 <div class="discovery-block">
 <h4>Fine Structure = Lock-Domain Bit Coupling (D-155)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
 <div class="formula">$$\alpha^n \;\longleftrightarrow\; n\text{-bit d-ring coupling chain}$$</div>
 <p>Each power of $\alpha$ in perturbative QED corresponds to one additional lock-domain bit interaction in the d-ring. <span class="tag-hypothesis">Hypothesis</span></p>
 </div>
-
-
 <h1 id="en-limits">Limitations</h1>
-
 <ol>
 <li><strong>Coulomb derivation is structural, not numerical</strong>: The $1/r^2$ law follows from Axiom 11, but the value of $\epsilon_0$ is not derived from the framework -- it is bound as a domain constant.</li>
 <li><strong>Faraday sign argument is qualitative</strong>: The connection between CAS irreversibility and the minus sign in Faraday's law is conceptually compelling but not yet proven with the rigor of a mathematical theorem.</li>
 <li><strong>Poynting vector interpretation is analogical</strong>: Identifying $\mathbf{E}$ with Compare and $\mathbf{B}$ with Swap is a mapping, not a derivation. The cross product structure is consistent but not uniquely determined.</li>
 <li><strong>Fine-structure $\alpha^n$ correspondence</strong>: The claim that each power of $\alpha$ maps to one d-ring bit is a hypothesis awaiting rigorous proof from the axiom system.</li>
 </ol>
-
-
 <h1 id="en-summary">Summary</h1>
-
 <div class="table-wrap">
 <table>
 <tr><th>Item</th><th>Result</th><th class="col-status">Status</th><th class="col-date">Card</th></tr>
@@ -363,13 +259,8 @@
 <tr><td>Maxwell 4 equations = 4-axis projection</td><td>time, space, observer, superposition $\to$ div E, curl B, div B, curl E</td><td><span class="tag-solved">Hit</span></td><td>H-427</td></tr>
 </table>
 </div>
-
 <p>Current grade: <strong>A</strong> (Three exact structural recoveries, two well-motivated hypotheses, one unifying interpretation)</p>
 <p>Remaining for grade S: Numerical derivation of $\epsilon_0$ from axioms; rigorous proof of Faraday sign theorem; complete $\alpha^n$ correspondence proof.</p>
-
-</div>
-
-
 
 <div class="page-nav lang-en">
 <a href="../banya.html">Master Report</a>
@@ -377,15 +268,13 @@
 <a href="../lib.html">Factor Library</a>
 <a href="../science_mine.html">Mining Manual</a>
 </div>
-
-
 <div class="doc-footer lang-en">
 <div class="f-top">
 <div class="f-corp">
-<b>Banya Framework (Banya Framework)</b><br>
-Inventor: Han Hyukjin<br>
-Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-Alias: Buddha's Palm Framework<br>
+<b>Banya Framework (Banya Framework)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
 Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-right">
@@ -395,22 +284,20 @@ Classification: Axiom-Based Science Mining Engine
 </div>
 <div class="f-bottom">
 <div class="f2">Related: <a href="../banya.html">Master Report</a> | <a href="alpha.html">Alpha Derivation</a> | <a href="gauge.html">Gauge Group</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- Attribution required | NC -- Non-commercial only | SA -- Share alike<br/>
 Copyright of existing physics formulas belongs to original authors. Banya Framework interpretations and newly derived formulas belong to Han Hyukjin (2026).
 <div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-
-
 <script>
 (function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>

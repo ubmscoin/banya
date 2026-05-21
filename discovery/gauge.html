@@ -1,134 +1,61 @@
 <!DOCTYPE html>
+
 <html lang="ko" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>게이지 군 매핑: CAS에서 U(1)xSU(2)xSU(3) 도출 — 반야프레임 운영 보고서</title>
-<meta name="author" content="Han Hyukjin">
-<meta name="description" content="반야프레임 CAS 3단계(Read, Compare, Swap)에서 표준모형 게이지 군 U(1)xSU(2)xSU(3) 도출. alpha_s = 3*alpha*(4pi)^(2/3) = 0.1183 (오차 0.3%). 생성자 수 1+3+8=12 매핑. 색 가둠과 CAS 원자성 대응.">
-<meta name="keywords" content="반야프레임,般若,Banya Framework,게이지 군,gauge group,U(1),SU(2),SU(3),표준모형,Standard Model,CAS,Compare-And-Swap,Read,Compare,Swap,강결합상수,alpha_s,QCD,글루온,gluon,겔만 행렬,Gell-Mann,색 가둠,confinement,점근적 자유,asymptotic freedom,SO(5 2),한혁진,Han Hyukjin,TOE,만물 이론">
-<meta property="og:title" content="게이지 군 매핑: CAS에서 SM 게이지 군 도출 — 반야프레임">
-<meta property="og:description" content="CAS (1,2,4)에서 게이지 군 (1,3,8) 필연적 매핑. alpha_s 도출 오차 0.3%.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="게이지 군 매핑 — 반야프레임">
-<meta name="twitter:description" content="CAS 3단계에서 U(1)xSU(2)xSU(3) 도출. alpha_s = 0.1183, 오차 0.3%.">
-<meta name="robots" content="index, follow">
-<meta name="rights" content="CC BY-NC-SA 4.0, Han Hyukjin 2026">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../common.css">
-<link rel="stylesheet" href="../print.css" media="print">
+<meta content="Han Hyukjin" name="author"/>
+<meta content="반야프레임 CAS 3단계(Read, Compare, Swap)에서 표준모형 게이지 군 U(1)xSU(2)xSU(3) 도출. alpha_s = 3*alpha*(4pi)^(2/3) = 0.1183 (오차 0.3%). 생성자 수 1+3+8=12 매핑. 색 가둠과 CAS 원자성 대응." name="description"/>
+<meta content="반야프레임,般若,Banya Framework,게이지 군,gauge group,U(1),SU(2),SU(3),표준모형,Standard Model,CAS,Compare-And-Swap,Read,Compare,Swap,강결합상수,alpha_s,QCD,글루온,gluon,겔만 행렬,Gell-Mann,색 가둠,confinement,점근적 자유,asymptotic freedom,SO(5 2),한혁진,Han Hyukjin,TOE,만물 이론" name="keywords"/>
+<meta content="게이지 군 매핑: CAS에서 SM 게이지 군 도출 — 반야프레임" property="og:title"/>
+<meta content="CAS (1,2,4)에서 게이지 군 (1,3,8) 필연적 매핑. alpha_s 도출 오차 0.3%." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="ko_KR" property="og:locale"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="게이지 군 매핑 — 반야프레임" name="twitter:title"/>
+<meta content="CAS 3단계에서 U(1)xSU(2)xSU(3) 도출. alpha_s = 0.1183, 오차 0.3%." name="twitter:description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="0" http-equiv="expires"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="lang-switch"><a href="../en/discovery/gauge.html" class="lang-btn">EN</a></div>
-
-<div class="toc-side lang-ko">
-<a href="#title" class="toc-h1">게이지 군 매핑</a>
-<a href="#intro" class="toc-h2">서두</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1. CAS에서 게이지 생성자</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. CAS 내부 구조</a>
-<a href="#r1-step3" class="toc-h3">3단계. 게이지 군 매핑 가설</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. det=1 조건</a>
-<a href="#r2" class="toc-h1">라운드 2. 글루온 8개</a>
-<a href="#r2-basis" class="toc-h3">CAS를 기저로</a>
-<a href="#r2-gellmann" class="toc-h3">겔만 행렬과의 대응</a>
-<a href="#r3" class="toc-h1">라운드 3. alpha_s 도출</a>
-<a href="#r3-formula" class="toc-h3">도출 공식</a>
-<a href="#r3-precision" class="toc-h3">정밀도 검증</a>
-<a href="#r4" class="toc-h1">라운드 4. 색 가둠 = CAS 원자성</a>
-<a href="#r4-baryon" class="toc-h3">바리온과 메존</a>
-<a href="#r4-freedom" class="toc-h3">점근적 자유</a>
-<a href="#r5" class="toc-h1">라운드 5. SO(5,2) 매립</a>
-<a href="#r5-decomp" class="toc-h3">7의 분해</a>
-<a href="#limits" class="toc-h1">한계</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
-
-<div class="toc-bar lang-ko" onclick="this.classList.toggle('open');document.querySelector('.toc-overlay.lang-ko').classList.toggle('show')">
-<div class="toc-bar-text"><span class="cur">게이지 군 매핑</span></div>
-<div class="toc-bar-arrow">&#9660;</div>
-</div>
-<div class="toc-overlay lang-ko" onclick="this.classList.remove('show');document.querySelector('.toc-bar.lang-ko').classList.remove('open')">
-<a href="#title" class="toc-h1">게이지 군 매핑</a>
-<a href="#intro" class="toc-h2">서두</a>
-<a href="#discovery" class="toc-h2">핵심 발견</a>
-<a href="#r1" class="toc-h1">라운드 1. CAS에서 게이지 생성자</a>
-<a href="#r1-step1" class="toc-h3">1단계. 반야식</a>
-<a href="#r1-step2" class="toc-h3">2단계. CAS 내부 구조</a>
-<a href="#r1-step3" class="toc-h3">3단계. 게이지 군 매핑 가설</a>
-<a href="#r1-step4" class="toc-h3">4단계. 도메인 변환</a>
-<a href="#r1-step5" class="toc-h3">5단계. det=1 조건</a>
-<a href="#r2" class="toc-h1">라운드 2. 글루온 8개</a>
-<a href="#r2-basis" class="toc-h3">CAS를 기저로</a>
-<a href="#r2-gellmann" class="toc-h3">겔만 행렬과의 대응</a>
-<a href="#r3" class="toc-h1">라운드 3. alpha_s 도출</a>
-<a href="#r3-formula" class="toc-h3">도출 공식</a>
-<a href="#r3-precision" class="toc-h3">정밀도 검증</a>
-<a href="#r4" class="toc-h1">라운드 4. 색 가둠 = CAS 원자성</a>
-<a href="#r4-baryon" class="toc-h3">바리온과 메존</a>
-<a href="#r4-freedom" class="toc-h3">점근적 자유</a>
-<a href="#r5" class="toc-h1">라운드 5. SO(5,2) 매립</a>
-<a href="#r5-decomp" class="toc-h3">7의 분해</a>
-<a href="#limits" class="toc-h1">한계</a>
-<a href="#summary" class="toc-h1">총괄</a>
-</div>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/gauge.html">EN</a></div>
 <div class="lang-ko">
-
 <p style="margin-bottom:24px;font-size:0.85em;color:#8b949e">이 문서는 <a href="../banya.html" style="color:#58a6ff;font-weight:600">반야프레임 Master Report</a>의 부속 보고서다. 반야프레임의 구조, 118개 물리식 검증, CAS 연산자, 쓰기 이론 등 전체 내용은 Master Report에 있다. 이 문서는 그 중 게이지 군 매핑 과정만을 다룬다.</p>
-
 <h1 id="title">게이지 군 매핑: CAS 3단계에서 U(1)xSU(2)xSU(3) 도출</h1>
-
 <blockquote><p>반야프레임 운영 보고서</p></blockquote>
 <blockquote><p>발명자: 한혁진 (bokkamsun@gmail.com)</p></blockquote>
 <blockquote><p>실행일: 2026-03-23</p></blockquote>
-
-
 <h2 id="intro">서두</h2>
-
 <p><strong>가치: TOE 핵심</strong> -- 자연의 4가지 힘 중 3가지(전자기력, 약력, 강력)를 통합하는 게이지 군 $U(1) \times SU(2) \times SU(3)$가 "왜 하필 이 조합인가"라는 질문에 답하는 것이다. 이것은 만물 이론의 정량적 핵심이다.</p>
-
 <p><strong>상태: <span class="tag-solved">적중</span></strong> -- 구조적 대응과 생성자 수 유도에 성공했다. 강결합상수 $\alpha_s$ 도출 오차 0.3%. 관계는 군 동형사상이 아니라 주다발 투영으로 정확히 규정되었다.</p>
-
-
 <h2 id="discovery">핵심 발견</h2>
-
 <div class="discovery-block">
 <h4>CAS에서 표준모형 게이지 군으로의 필연적 매핑<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
 <div class="formula">$$\alpha_s = 3 \times \alpha \times (4\pi)^{2/3} = 0.1183$$</div>
 <p><span class="precision">실험값 0.1179 대비 오차 0.3%</span></p>
 </div>
-
 <div class="hypothesis-block">
 <h4>CAS 자유도에서 게이지 생성자로<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-03-22</span></h4>
 <div class="formula">$$(1,\; 2,\; 4) \longrightarrow (1,\; 3,\; 8) \quad \text{필연적 매핑}$$</div>
 <p>Read(1)은 $U(1)$의 1개 생성자로, Compare(2)는 $SU(2)$의 3개 생성자로, Swap(4)은 $SU(3)$의 8개 생성자로 매핑된다.</p>
 </div>
-
-
 <h1 id="r1">라운드 1. CAS 자유도에서 게이지 생성자</h1>
-
 <h3 id="r1-step1">1단계. 반야식</h3>
-
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
 <div class="math-desc">반야식: 4축 직교 구조, 상태 변화의 최소 기술</div>
 </div>
-
 <p>반야식은 모든 상태 변화를 4축의 직교 합으로 기술한다. 이 상태 변화를 실행하는 연산자가 CAS다.</p>
-
 <h3 id="r1-step2">2단계. CAS 내부 구조</h3>
-
 <p>CAS(Compare-And-Swap)는 3단계로 구성된다. 각 단계의 내부 자유도가 다르다.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>CAS 단계</th><th>역할</th><th>내부 자유도</th><th>의미</th></tr>
@@ -137,70 +64,46 @@
 <tr><td><strong>Swap</strong></td><td>조건부로 교환한다</td><td>4</td><td>교환은 넷이다. 2개의 값을 2개의 슬롯에 배치하는 경우의 수. $2 \times 2 = 4$.</td></tr>
 </table>
 </div>
-
 <p>Swap의 $2 \times 2 = 4$ 카운팅을 풀어서 설명하면 이렇다. Swap은 2개의 값(현재값과 새 값)을 2개의 슬롯(원래 위치와 목표 위치)에 배치한다. 경우의 수: $2 \times 2 = 4$. 구체적으로: (1) 둘 다 그대로, (2) 현재값만 이동, (3) 새 값만 이동, (4) 둘 다 교환.</p>
-
 <p>CAS의 내부 자유도는 (1, 2, 4)다. 이것은 CAS의 구조에서 필연적으로 나오는 숫자다. 누가 설계한 것이 아니라 연산의 본질이 결정한다.</p>
-
 <h3 id="r1-step3">3단계. 게이지 군 매핑 가설 대입</h3>
-
 <p>자유도 n을 가진 연산이 연속 대칭군으로 확장될 때, 그 군의 생성자 수는 어떻게 되는가.</p>
-
 <ul>
 <li>자유도 1인 연산: $U(1)$. 생성자 1개. 1차원 회전이니까 돌리는 축이 1개다.</li>
 <li>자유도 2인 연산: $SU(2)$. 생성자 $2^2 - 1 = 3$개. $2 \times 2$ 유니터리 행렬에서 행렬식 1 조건을 빼면 3개.</li>
 <li>자유도 4인 연산: 여기가 핵심이다.</li>
 </ul>
-
 <h3 id="r1-step4">4단계. 도메인 변환 -- Swap에서 1이 빠지는 이유</h3>
-
 <p>Swap의 자유도는 4다. 자유도 4인 연산이 연속 대칭군으로 확장되면 $U(4)$가 될 것 같다. 하지만 $U(4)$가 아니라 $SU(4-1) = SU(3)$이 된다.</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{Read}(1) \longrightarrow U(1):\; \dim = 1$$</div>
 <div class="math-row">$$\text{Compare}(2) \longrightarrow SU(2):\; \dim = 2^2 - 1 = 3$$</div>
 <div class="math-row">$$\text{Swap}(4) \longrightarrow SU(4-1) = SU(3):\; \dim = 3^2 - 1 = 8$$</div>
 <div class="math-desc">CAS 자유도에서 게이지 생성자 수로의 매핑</div>
 </div>
-
 <h3 id="r1-step5">5단계. Swap에서 1이 빠지는 이유 -- det=1 조건</h3>
-
 <p>Swap에서 왜 4가 아니라 3인가. 이것이 가장 중요한 대목이다.</p>
-
 <p>Swap은 교환이다. 교환 전후로 전체 노름이 보존되어야 한다. "교환했더니 뭔가가 늘었다"거나 "교환했더니 뭔가가 줄었다"는 허용되지 않는다. 이것은 행렬식이 1이어야 한다는 조건, $\det = 1$ 조건과 같다.</p>
-
 <p>$U(4)$에서 $\det = 1$ 조건을 걸면 $SU(4)$가 되는데, Swap의 4개 자유도 중 1개는 "아무것도 안 하는" 항등원이다. 교환을 안 하는 것은 교환이 아니다. 이것을 빼면 $4 - 1 = 3$개의 실질적 자유도가 남고, 이것의 특수 유니터리 군이 $SU(3)$이다.</p>
-
 <p>$SU(3)$의 생성자 수: $3^2 - 1 = 8$. 이것이 글루온 8개다.</p>
-
 <div class="math-block">
 <div class="math-row">$$\text{게이지 생성자 총합}:\; 1 + 3 + 8 = 12$$</div>
 <div class="math-desc">표준모형의 게이지 보손 12개와 정확히 일치</div>
 </div>
-
 <p>광자 1개, W+, W-, Z 보손 3개, 글루온 8개. 합계 12개. CAS에서 나온 (1, 3, 8) = 12와 정확히 같다.</p>
-
-
 <h1 id="r2">라운드 2. 글루온 8개 = CAS SU(3) 수반표현</h1>
-
 <h3 id="r2-basis">R, C, S를 기저로</h3>
-
 <p>CAS의 3단계 Read(R), Compare(C), Swap(S)를 $SU(3)$의 기본 표현 3개 기저로 놓는다. $SU(3)$의 수반표현(adjoint representation)은 $3 \times 3$ 에르미트 행렬 중 대각합이 0인 것들이다.</p>
-
 <p>$3 \times 3$ 행렬은 9개의 성분을 가진다. 이 중에서:</p>
-
 <ul>
 <li><strong>비대각 성분 6개</strong>: R-C, R-S, C-S 사이의 전환. 각각 2개씩(실수부, 허수부) 해서 3 x 2 = 6개.</li>
 <li><strong>traceless 대각 성분 2개</strong>: 대각 3개에서 대각합 = 0 조건을 빼면 2개.</li>
 </ul>
-
 <div class="math-block">
 <div class="math-row">$$\text{비대각}\; 6 + \text{traceless 대각}\; 2 = 8$$</div>
 <div class="math-desc">글루온 8개 = 겔만 행렬 8개</div>
 </div>
-
 <h3 id="r2-gellmann">겔만 행렬과의 대응</h3>
-
 <div class="table-wrap">
 <table>
 <tr><th>겔만 행렬</th><th>CAS 대응</th><th>물리적 의미</th></tr>
@@ -211,38 +114,27 @@
 <tr><td>$\lambda_8$</td><td>전체 대각</td><td>3단계 전체의 균형</td></tr>
 </table>
 </div>
-
 <p>CAS의 3단계를 기저로 놓으면 겔만 행렬 8개가 자연스럽게 나온다. 글루온 8개는 CAS 내부의 단계 간 전환을 매개하는 보손이다.</p>
-
-
 <h1 id="r3">라운드 3. alpha_s 도출</h1>
-
 <h3 id="r3-formula">도출 공식</h3>
-
 <p>강결합상수 $\alpha_s$를 전자기 결합상수 $\alpha_{\text{em}}$으로부터 도출한다.</p>
-
 <div class="math-block">
 <div class="math-row">$$\alpha_s = 3 \times \alpha_{\text{em}} \times (4\pi)^{2/3}$$</div>
 <div class="math-desc">CAS 구조에서 나오는 강결합상수</div>
 </div>
-
 <p>왜 이런 식이 나오는가:</p>
-
 <ul>
 <li><strong>3</strong>: CAS의 원소 수. Read, Compare, Swap 3단계.</li>
 <li><strong>$\alpha_{\text{em}}$</strong>: 기본 결합상수. alpha 도출 보고서에서 반야프레임으로부터 유도한 값.</li>
 <li><strong>$(4\pi)^{2/3}$</strong>: 도메인 변환 인자. $4\pi$는 3차원 공간에서 단위구($S^2$)의 전체 입체각 $4\pi$ 스테라디안이고, $2/3$은 CAS 3단계 중 2단계(Compare와 Swap)가 비자명한 자유도를 가진다는 것을 반영한다.</li>
 </ul>
-
 <h3 id="r3-precision">정밀도 검증</h3>
-
 <div class="math-block">
 <div class="math-row">$$\alpha_{\text{em}} = \frac{1}{137.036} = 0.007297$$</div>
 <div class="math-row">$$(4\pi)^{2/3} = (12.566)^{0.667} = 5.405$$</div>
 <div class="math-row">$$\alpha_s = 3 \times 0.007297 \times 5.405 = \mathbf{0.1183}$$</div>
 <div class="math-desc">수치 대입 과정: 트리 레벨 계산</div>
 </div>
-
 <div class="table-wrap">
 <table>
 <tr><th>항목</th><th>값</th></tr>
@@ -251,18 +143,11 @@
 <tr><td>오차</td><td><strong>0.3%</strong></td></tr>
 </table>
 </div>
-
 <p>0.3% 오차다. 실험 오차 범위 안에 들어간다. 이것은 트리 레벨(tree-level) 결과로서 주목할 만한 정밀도다.</p>
-
-
 <h1 id="r4">라운드 4. 색 가둠 = CAS 원자성</h1>
-
 <h3 id="r4-baryon">바리온과 메존의 CAS 해석</h3>
-
 <p>쿼크는 단독으로 존재할 수 없다. 반드시 색이 상쇄되는 조합으로만 존재한다. 이것을 색 가둠(confinement)이라 한다.</p>
-
 <p>CAS에서 이것은 원자성(atomicity)에 해당한다. CAS 연산은 중간에 끊을 수 없다. Read-Compare-Swap 전체가 하나의 원자적 단위다. 중간 상태를 외부에서 관측할 수 없다.</p>
-
 <div class="table-wrap">
 <table>
 <tr><th>물리</th><th>CAS</th><th>설명</th></tr>
@@ -271,59 +156,39 @@
 <tr><td>단독 쿼크</td><td>CAS 중간 상태</td><td>Read만 하고 Compare를 안 한 상태. 원자성에 의해 외부에 노출 불가.</td></tr>
 </table>
 </div>
-
 <p>바리온은 3쿼크 시스템이다. CAS도 3단계 시스템이다. 바리온이 안정한 이유는 3개의 색이 상쇄되기 때문이고, CAS가 안정한 이유는 3단계가 모두 완료되어야 커밋되기 때문이다. 같은 구조다.</p>
-
 <h3 id="r4-freedom">점근적 자유</h3>
-
 <p>QCD의 베타 함수 1차항 계수:</p>
-
 <div class="math-block">
 <div class="math-row">$$b_0 = \frac{11 C_A - 4 n_f T_R}{12\pi}$$</div>
 <div class="math-row">$$C_A = 3 \quad (SU(3)\text{의 수반 카시미르})$$</div>
 <div class="math-row">$$n_f = 6 \;\text{(쿼크 맛 수)},\quad T_R = \frac{1}{2}$$</div>
-<div class="math-row">$$b_0 = \frac{33 - 12}{12\pi} = \frac{21}{12\pi} > 0$$</div>
-<div class="math-desc">$b_0 > 0$ 이므로 점근적 자유 성립</div>
+<div class="math-row">$$b_0 = \frac{33 - 12}{12\pi} = \frac{21}{12\pi} &gt; 0$$</div>
+<div class="math-desc">$b_0 &gt; 0$ 이므로 점근적 자유 성립</div>
 </div>
-
 <p>$b_0$의 분자가 21이다. 이것은 $\binom{7}{2} = 21$과 같다. alpha57 보고서에서 나온 7차원 외적 대수의 2-형식 자유도와 일치한다. 우연의 일치일 수도 있지만, 게이지장의 자유도가 21이라는 것과 베타 함수의 분자가 21이라는 것이 같은 근원에서 오는 것일 수 있다. 21 = $\binom{7}{2}$와의 일치가 우연인지 구조적인지는 미확정이다. 향후 검증 과제 (Whether the coincidence 21 = $\binom{7}{2}$ is accidental or structural remains undetermined — a future verification task).</p>
-
 <p>점근적 자유의 CAS 해석: 에너지가 높아지면(거리가 짧아지면) CAS의 각 단계가 더 독립적으로 행동한다. 마치 돋보기로 CAS를 들여다보면 각 단계 사이의 결합이 느슨해지는 것과 같다. 반대로 에너지가 낮아지면(거리가 멀어지면) 3단계가 하나로 뭉쳐서 분리가 불가능해진다.</p>
-
-
 <h1 id="r5">라운드 5. SO(5,2) 매립</h1>
-
 <h3 id="r5-decomp">7의 분해</h3>
-
 <p>alpha 도출 보고서에서 반야프레임의 대칭 공간은 $SO(5,2)$와 대응한다고 확인했다. $SO(5,2)$의 기본 표현은 7차원이다. 이 7차원을 $SU(3) \times U(1)$로 분해하면:</p>
-
 <div class="math-block">
 <div class="math-row">$$\mathbf{7} = (\mathbf{3},\,+1) + (\bar{\mathbf{3}},\,-1) + (\mathbf{1},\,0)$$</div>
 <div class="math-desc">$SO(5,2)$의 7차원 표현을 $SU(3) \times U(1)$로 분해</div>
 </div>
-
 <ul>
 <li><strong>$(\mathbf{3},\,+1)$</strong>: $SU(3)$의 기본 표현, $U(1)$ 전하 $+1$. 쿼크에 해당.</li>
 <li><strong>$(\bar{\mathbf{3}},\,-1)$</strong>: $SU(3)$의 반기본 표현, $U(1)$ 전하 $-1$. 반쿼크에 해당.</li>
 <li><strong>$(\mathbf{1},\,0)$</strong>: $SU(3)$ 싱글릿, $U(1)$ 중성. 렙톤에 해당.</li>
 </ul>
-
 <p>7 = 3 + 3 + 1. 이것은 반야프레임의 7차원 위상 공간이 자연스럽게 쿼크-반쿼크-렙톤 구조를 포함한다는 뜻이다. 게이지 군이 밖에서 붙이는 것이 아니라 7차원 공간의 내부 구조에서 나온다.</p>
-
-
 <h1 id="limits">한계</h1>
-
 <p>정직하게 말해야 할 것들이 있다.</p>
-
 <ol>
 <li><strong>군 동형사상이 아니라 주다발 투영이다</strong>: CAS는 군이 아니므로 군 동형사상 자체가 정의 불가하다. 올바른 관계는 주다발(principal fiber bundle) 투영이다. CAS(OPERATOR) = 전체 공간, DATA(시공간) = 밑 공간, 쓰기 = 투영, 게이지 변환 = 같은 DATA를 다른 내부 경로로 쓰기. "동형 불가"는 한계가 아니라 관계의 정확한 규정이다. <span class="tag-solved">적중</span></li>
 <li><strong>결합상수 비율 불일치</strong>: $\alpha_s$는 0.3% 오차로 맞았지만, $\sin^2\theta_W$ 도출이 별도 보고서에서 해결되었다.</li>
 <li><strong>Swap에서 1을 빼는 논증</strong>: 두 독립 증명으로 해결되었다. (1) 군론: U(1)은 det=1이 자동 성립(1×1 유니터리), Swap은 항등치환 제거 후 3→SU(3). (2) 범주론: Read 자기사상=1개(제거불가), Swap 자기사상=4개(항등 제거→3). <span class="tag-solved">적중</span></li>
 </ol>
-
-
 <h1 id="summary">총괄</h1>
-
 <div class="table-wrap">
 <table>
 <tr><th>항목</th><th>결과</th><th class="col-status">상태</th><th class="col-date">날짜</th></tr>
@@ -331,32 +196,28 @@
 <tr><td>글루온 8개 구조</td><td>겔만 행렬 8개 = CAS $SU(3)$ 수반표현</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 <tr><td>$\alpha_s$ 도출</td><td>$3 \times \alpha \times (4\pi)^{2/3} = 0.1183$, 오차 0.3%</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 <tr><td>색 가둠 대응</td><td>바리온 = CAS 커밋, 메존 = 열린 트랜잭션</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
-<tr><td>점근적 자유</td><td>$b_0 > 0$, 분자 $21 = \binom{7}{2}$</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
+<tr><td>점근적 자유</td><td>$b_0 &gt; 0$, 분자 $21 = \binom{7}{2}$</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 <tr><td>$SO(5,2)$ 분해</td><td>$\mathbf{7} = (\mathbf{3},+1)+(\bar{\mathbf{3}},-1)+(\mathbf{1},0)$</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 <tr><td>엄밀한 군 동형사상</td><td>주다발(fiber bundle) 구성 완료. 2-단체(2-simplex) 경로로 곡률 재현. 연속극한 3항목 잔여</td><td><span class="tag-wip">진행</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 <tr><td>약력 결합상수 독립 도출</td><td>D-34에서 α_weak = 4α_s/15 관계 발견 (0.043%). 단, D-34 자체가 실험값으로 발견된 관계이므로 완전한 독립 도출은 미완. 방향 확보 (C등급)</td><td><span class="tag-wip">진행</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-03-22</span></td></tr>
 </table>
 </div>
-
 <p>현재 등급: <strong>A-</strong> (구조적 대응 + $\alpha_s$ 도출 성공, 동형사상 증명 미완)</p>
 <p>등급 S까지 남은 것: 이산-연속 동형사상의 엄밀한 구성, 약력 결합상수 독립 도출</p>
-
 </div>
-
-
 <div class="page-nav lang-ko">
 <a href="../banya.html">종합 보고서</a>
 <a href="../predictions.html">고유 예측</a>
-<a href="../lib.html">가설 라이브러리</a>
+<a href="../lib_new.html">가설 라이브러리</a>
 <a href="../science_mine.html">과학 채굴 메뉴얼</a>
 </div>
 <div class="doc-footer lang-ko">
 <div class="f-top">
 <div class="f-corp">
-<b>반야프레임 (般若 Framework)</b><br>
-발명자: 한혁진 (Han Hyukjin)<br>
-이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br>
-별칭: 부처님 손바닥 프레임<br>
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
 분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
 </div>
 <div class="f-right">
@@ -365,21 +226,18 @@
 </div>
 </div>
 <div class="f-bottom">
-<div class="f2">관련 문서: <a href="../banya.html">종합 보고서</a> | <a href="../expend.html">118개 상세검증 부록</a></div>
-<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
 <div class="f-license">
 <div class="license-title">CC BY-NC-SA 4.0</div>
-This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br>
-BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+BY -- 저작자 표시 필수 | NC -- 비상업적 이용만 허용 | SA -- 동일 조건 변경 허락<br/>
 기존 물리학 공식의 저작권은 원저작자에게 있으며, 반야프레임 해석 및 신규 도출 공식은 Han Hyukjin(2026)에 귀속됩니다.
 <div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
 </div>
 </div>
 </div>
-<script>
-(function(){var b=document.querySelector('.toc-bar-text .cur'),ss=document.querySelectorAll('.toc-side a'),os=document.querySelectorAll('.toc-overlay a'),secs=[];document.querySelectorAll('h1[id],h2[id],h3[id]').forEach(function(s){secs.push(s)});window.addEventListener('scroll',function(){var y=window.scrollY+100,c='';for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)c=secs[i].id}if(b){var el=document.getElementById(c);if(el)b.textContent=el.textContent.substring(0,35)}ss.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)});os.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c)})})})();
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </body>
 </html>
