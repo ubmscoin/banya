@@ -77,8 +77,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>2단계. 노름 치환</h3>
 <p>치환하는 노름은 ECS 집단 노름이다. $N$개 CAS의 비용을 단순히 더하는 선형 노름이 아니라, RLU 집단 효과가 위상 전이로 나타나는(<a href="../axiom.html#ax6">공리 6</a>) 비선형 결합 노름을 택한다. 창발이 개별 합과 집단 패턴의 차이로 정의되기 때문이다.</p>
 <div class="math-block">
-<div class="math-row">$\delta^2_{\text{집단}} = \sum_{i=1}^{N}\delta_i^2 + \sum_{i<j}J_{ij}$</div>
-<div class="math-row">$P_{\text{창발}} = \delta^2_{\text{집단}} - \sum_{i=1}^{N}\delta_i^2 = \sum_{i<j}J_{ij}$</div>
+<div class="math-row">$\delta^2_{\text{집단}} = \sum_{i=1}^{N}\delta_i^2 + \sum_{i&lt;j}J_{ij}$</div>
+<div class="math-row">$P_{\text{창발}} = \delta^2_{\text{집단}} - \sum_{i=1}^{N}\delta_i^2 = \sum_{i&lt;j}J_{ij}$</div>
 <div class="math-legend">$\delta^2_{\text{집단}}$: ECS 전체 비용 | $\delta_i^2$: 개별 CAS 비용 | $J_{ij}$: CAS 쌍 사이 비선형 결합항 | $P_{\text{창발}}$: 환원 불가능한 집단 패턴 | $N$: ECS 내 CAS 수</div>
 </div>
 </div>
@@ -92,14 +92,14 @@ J_ij   : 비선형 결합항 (공리 4, 형식 미정)
 <h3>4단계. 도메인 변환</h3>
 <p>응집물질 위상 전이 도메인으로 변환한다. 이 변환으로 보려는 것은 개별 항으로 환원되지 않는 집단 패턴 $P_{\text{창발}}$의 존재 여부다. 결합항 $J_{ij}$가 0이 아닐 때만 집단 패턴이 살아남는다.</p>
 <div class="math-block">
-<div class="math-row">$P_{\text{창발}} = \sum_{i<j}J_{ij} \neq 0$</div>
-<div class="math-row">\text{BCS: } $\Delta_{\text{gap}} = \sum_{i<j}J_{ij}\big|_{\text{쿠퍼쌍}}$</div>
+<div class="math-row">$P_{\text{창발}} = \sum_{i&lt;j}J_{ij} \neq 0$</div>
+<div class="math-row">\text{BCS: } $\Delta_{\text{gap}} = \sum_{i&lt;j}J_{ij}\big|_{\text{쿠퍼쌍}}$</div>
 </div>
 </div>
 <div class="step">
 <h3>5단계. 발견</h3>
 <div class="math-block">
-<div class="math-row">도출: $P_{\text{창발}} = \sum_{i<j}J_{ij}$ (개별 합과의 차)</div>
+<div class="math-row">도출: $P_{\text{창발}} = \sum_{i&lt;j}J_{ij}$ (개별 합과의 차)</div>
 <div class="math-row">검증: $J_{ij}$ 형식 미정 — 정량 산출 대기</div>
 <div class="math-row">정합: 초전도 BCS 갭 = 창발적 집단 비용</div>
 </div>

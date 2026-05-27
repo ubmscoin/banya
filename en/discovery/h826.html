@@ -78,8 +78,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 2. Norm Substitution</h3>
 <p>The norm being substituted is the many-CAS crossing-cost norm. A single CAS cost is linear in the number of domain crossings (<a href="../axiom.html#ax4">Axiom 4</a>), but when $N$ access the same DATA simultaneously, lock enforcement (<a href="../axiom.html#ax5">Axiom 5</a>) adds cross terms so the total exceeds the sum of individual costs. Irreducibility is defined by this excess, so this norm is chosen.</p>
 <div class="math-block">
-<div class="math-row">$C_{\text{tot}} = \sum_{i=1}^{N} C_i + \sum_{i<j} C_{ij}$</div>
-<div class="math-row">$\Delta C_{\text{emerg}} = C_{\text{tot}} - N\,C_1 = \sum_{i<j} C_{ij}$</div>
+<div class="math-row">$C_{\text{tot}} = \sum_{i=1}^{N} C_i + \sum_{i&lt;j} C_{ij}$</div>
+<div class="math-row">$\Delta C_{\text{emerg}} = C_{\text{tot}} - N\,C_1 = \sum_{i&lt;j} C_{ij}$</div>
 <div class="math-legend">$C_{\text{tot}}$: total crossing cost | $C_i$: single-CAS cost | $C_{ij}$: CAS-pair crossing cost (lock) | $\Delta C_{\text{emerg}}$: emergent (super-additive) residual</div>
 </div>
 </div>
@@ -101,7 +101,7 @@ N     = free input        number of components</pre>
 <div class="math-block">
 <div class="math-row">Derived: residual $\Delta C_{\text{emerg}} \sim O(N^2)$, individual sum $N\,C_1 \sim O(N)$</div>
 <div class="math-row">Consequence: $C_{\text{tot}} \neq N\,C_1$ (super-additive, irreducible)</div>
-<div class="math-row">Measured: multi-agent simulation mutual information $I > \sum H_i - H_{\text{joint}}$ qualitative match</div>
+<div class="math-row">Measured: multi-agent simulation mutual information $I &gt; \sum H_i - H_{\text{joint}}$ qualitative match</div>
 </div>
 <p>Verdict: <strong>Hypothesis</strong>. The super-additive structure closes, but the absolute value of the pair crossing cost $C_{ij}$ is not fixed directly from the axioms, so the quantitative error is undetermined.</p>
 <p>Insight: emergence is not mystery but the $O(N^2)$ accumulation of CAS pair crossing costs, and the same structure leads to self-organization (<a href="h825.html">H-825</a>) and the edge of chaos (<a href="h830.html">H-830</a>).</p>

@@ -78,8 +78,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>2단계. 노름 치환</h3>
 <p>치환하는 노름은 다수 CAS의 교차 비용 노름이다. 단일 CAS의 비용은 도메인 교차 횟수에 선형이지만(<a href="../axiom.html#ax4">공리 4</a>), $N$개가 같은 DATA에 동시 접근하면 락 강제(<a href="../axiom.html#ax5">공리 5</a>)로 교차 항이 추가되어 총비용이 개별 비용 합을 초과한다. 환원 불가능성이 이 초과분으로 정의되므로 이 노름을 택한다.</p>
 <div class="math-block">
-<div class="math-row">$C_{\text{tot}} = \sum_{i=1}^{N} C_i + \sum_{i<j} C_{ij}$</div>
-<div class="math-row">$\Delta C_{\text{emerg}} = C_{\text{tot}} - N\,C_1 = \sum_{i<j} C_{ij}$</div>
+<div class="math-row">$C_{\text{tot}} = \sum_{i=1}^{N} C_i + \sum_{i&lt;j} C_{ij}$</div>
+<div class="math-row">$\Delta C_{\text{emerg}} = C_{\text{tot}} - N\,C_1 = \sum_{i&lt;j} C_{ij}$</div>
 <div class="math-legend">$C_{\text{tot}}$: 총 교차 비용 | $C_i$: 단일 CAS 비용 | $C_{ij}$: CAS 쌍 교차 비용(락) | $\Delta C_{\text{emerg}}$: 창발분(비초가법 잔차)</div>
 </div>
 </div>
@@ -101,7 +101,7 @@ N     = 자유 입력          구성요소 수</pre>
 <div class="math-block">
 <div class="math-row">도출: 창발분 $\Delta C_{\text{emerg}} \sim O(N^2)$, 개별 합 $N\,C_1 \sim O(N)$</div>
 <div class="math-row">귀결: $C_{\text{tot}} \neq N\,C_1$ (비초가법, 환원 불가)</div>
-<div class="math-row">측정: 다중 행위자 시뮬레이션 상호정보 $I > \sum H_i - H_{\text{joint}}$ 정성 일치</div>
+<div class="math-row">측정: 다중 행위자 시뮬레이션 상호정보 $I &gt; \sum H_i - H_{\text{joint}}$ 정성 일치</div>
 </div>
 <p>판정: <strong>가설</strong>. 비초가법 구조는 닫혔으나 쌍 교차 비용 $C_{ij}$의 절대값이 공리에서 직접 고정되지 않아 정량 오차가 미정이다.</p>
 <p>통찰: 창발은 신비가 아니라 CAS 쌍 교차 비용의 $O(N^2)$ 누적이며, 같은 구조가 자기조직화(<a href="h825.html">H-825</a>)와 카오스 가장자리(<a href="h830.html">H-830</a>)로 이어진다.</p>

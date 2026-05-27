@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>치환하는 노름은 다중 observer Compare 다수결 노름이다. 개별 observer의 Compare 성공 확률 $p>1/2$가 서로 독립이고, 통합 판정이 다수결로 닫히기 때문에 이 노름을 택한다. 따라서 집단 정확도를 $N$개 독립 Compare의 다수결 확률(콘도르세 형식)로 치환한다.</p>
+<p>치환하는 노름은 다중 observer Compare 다수결 노름이다. 개별 observer의 Compare 성공 확률 $p&gt;1/2$가 서로 독립이고, 통합 판정이 다수결로 닫히기 때문에 이 노름을 택한다. 따라서 집단 정확도를 $N$개 독립 Compare의 다수결 확률(콘도르세 형식)로 치환한다.</p>
 <div class="math-block">
 <div class="math-row">$P_N = \sum_{k=\lceil N/2\rceil}^{N} \binom{N}{k} p^{k}(1-p)^{N-k}$</div>
 <div class="math-legend">$P_N$: 집단 정확도 | $N$: observer 수 (홀수) | $p$: 개별 observer Compare 성공 확률 | $\binom{N}{k}$: 다수결 조합 수</div>
@@ -92,14 +92,14 @@ P_9 = sum_{k=5}^{9} C(9,k) 0.6^k 0.4^(9-k)</pre>
 <h3>4단계. 도메인 변환</h3>
 <p>Compare 분기 도메인(true 시 Swap 시 DATA / false 시 중첩 유지)으로 변환한다. 이 변환으로 보려는 것은 통합 Compare가 개별 Compare를 얼마나 넘어서는가, 곧 집단 정확도다. $p=0.60$, $N=9$를 다수결 합에 넣어 그 값을 산출한다.</p>
 <div class="math-block">
-<div class="math-row">$P_9 = 0.594 + 0.212 + \cdots \approx 0.73 > p = 0.60$</div>
+<div class="math-row">$P_9 = 0.594 + 0.212 + \cdots \approx 0.73 &gt; p = 0.60$</div>
 </div>
 </div>
 <div class="step">
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출값: $P_9 \approx 0.73$ ($p=0.60$ 대비 상승)</div>
-<div class="math-row">측정값: 집단 정확도 $P_{\text{group}} > p_{\text{individual}}$ (다양성 조건)</div>
+<div class="math-row">측정값: 집단 정확도 $P_{\text{group}} &gt; p_{\text{individual}}$ (다양성 조건)</div>
 <div class="math-row">부등식 방향 일치</div>
 </div>
 <p>판정: <strong>가설</strong>. 통합이 개별을 넘어선다는 부등식은 닫혔으나, 개별 정확도 $p$와 observer 독립성이 외부 가정이라 forward chain 마지막 단계가 닫히지 않았다.</p>
