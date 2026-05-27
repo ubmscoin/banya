@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-555 페이지 곡선 전환점 = S_max/2 = 4 ln2 (얽힘 절반 비트) — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-555 페이지 곡선 전환점 = S_max/2 = 4 ln2 (얽힘 절반 비트). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p555.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p555.html">P-555</a>. 페이지 곡선 전환점 = $S_max/2$ = 4 ln2 (얽힘 절반 비트)</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p555.html">P-555</a>: 페이지 곡선 전환점 = $S_max/2$ = 4 ln2 (얽힘 절반 비트)</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$S_{\text{Page}}=\frac{S_{\max}}{2}=\frac{8\ln 2}{2}=4\ln 2\approx 2.77\;(\text{니블 0 = 도메인 4비트})$$</div></div>
+<p class="finding-precision">예측: 단일 엔티티 얽힘 엔트로피의 페이지 곡선 전환점(최대 얽힘)은 정확히 $S_max/2=4$ ln2이며, 이는 d-ring 8비트 중 도메인 니블 4비트가 얽힘에 참여할 때 도달한다. (finding-precision: 정확)</p>
+<p>반야식 $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$에서 블랙홀 증발 얽힘 엔트로피의 페이지 전환 시점는 d-ring 8비트 중 4비트(도메인 니블) 얽힘 포화 비용에서 도출된다 (<a href="../axiom.html#ax15">공리 15</a>, <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax3">공리 3</a>).</p>
+<p>H-595는 $S_max=8$ ln2까지 닫고 페이지 곡선 정량 대응을 미작성으로 남겼다. 전환점이 8비트의 절반=도메인 니블 4비트=4 ln2로 닫히므로 예측이다(<a href="p44.html">P-44</a> 최대값과 다른 동역학 관측가능량).</p>
+<p>(a)d-ring 니블 절반 노름 (b)8비트의 절반인 도메인 니블 4비트가 얽힘 포화 = 페이지 시점.</p>
+<p>검증: 아날로그 블랙홀/큐빗 증발 모형에서 얽힘 엔트로피 전환점이 최대값의 절반(4 ln2)인지 측정.</p>
+<p>반박: 페이지 전환점이 $S_max$의 절반(4 ln2)이 아닌 다른 분율이면 반증.</p>
+<p><strong>재대입 용도:</strong> 검증: 아날로그 블랙홀/큐빗 증발 모형에서 얽힘 엔트로피 전환점이 최대값의 절반(4 ln2)인지 측정. 반박: 페이지 전환점이 $S_max$의 절반(4 ln2)이 아닌 다른 분율이면 반증. 출처: <a href="../axiom.html#ax15">공리 15</a>, <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax3">공리 3</a>.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 블랙홀 증발 얽힘 엔트로피의 페이지 전환 시점를 다루는 고유 예측으로 검증 대기 상태다. forward chain은 <a href="../axiom.html#ax15">공리 15</a>, <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax3">공리 3</a>에서 닫혀 있다. 검증 충족 시 D 승격, 반증 조건 충족 시 폐기 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> H-595는 $S_max=8$ ln2까지 닫고 페이지 곡선 정량 대응을 미작성으로 남겼다. 전환점이 8비트의 절반=도메인 니블 4비트=4 ln2로 닫히므로 예측이다(<a href="p44.html">P-44</a> 최대값과 다른 동역학 관측가능량).</p>
+<p><strong>위치:</strong> 카테고리: p. 블랙홀 증발 얽힘 엔트로피의 페이지 전환 시점 — d-ring 8비트 중 4비트(도메인 니블) 얽힘 포화 비용에서 도출. 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: d-ring 8비트 중 4비트(도메인 니블) 얽힘 포화 비용에서 블랙홀 증발 얽힘 엔트로피의 페이지 전환 시점 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>블랙홀 증발 얽힘 엔트로피의 페이지 전환 시점는 d-ring 8비트 중 4비트(도메인 니블) 얽힘 포화 비용에서 도출된다. 관련 공리: <a href="../axiom.html#ax15">공리 15</a>, <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax3">공리 3</a>.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a)d-ring 니블 절반 노름 (b)8비트의 절반인 도메인 니블 4비트가 얽힘 포화 = 페이지 시점.</p>
+<div class="math-block">
+<div class="math-row">$S_{\text{Page}}=\frac{1}{2}S_{\max}\;(\text{Page time})$</div>
+<div class="math-row">$S_{\text{Page}}=\frac{8\ln 2}{2}=4\ln 2\;(\text{니블 0 = 도메인 4비트})$</div>
+<div class="math-legend">$S_{\text{Page}}$: 페이지 전환 엔트로피 | $S_{\max}=8\ln 2$: d-ring 최대 얽힘 (<a href="h595.html">H-595</a>) | 8: d-ring 비트 (<a href="../axiom.html#ax15">공리 15</a>) | 4: 도메인 니블 절반 (<a href="../axiom.html#ax1">공리 1</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<div class="math-block">
+<div class="math-row">$S_{\max}=8\ln 2$ (<a href="h595.html">H-595</a>)</div>
+<div class="math-row">8 d-ring 비트 (<a href="../axiom.html#ax15">공리 15</a>)</div>
+<div class="math-row">도메인 니블 = 4비트 (<a href="../axiom.html#ax1">공리 1</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a)블랙홀 정보${\cdot}$페이지 곡선 도메인 (b)얽힘이 최대에 닿아 되돌아가는 시점을 본다.</p>
+<div class="math-block">
+<div class="math-row">$S_{\text{Page}}=4\ln 2=2.773\;(\text{8비트 절반 = 도메인 니블})$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $S_{\text{Page}}=4\ln 2\approx 2.77\;(\text{exact half of }8\ln 2)$</div>
+<div class="math-row">검증: 아날로그 블랙홀/큐빗 증발 모형에서 얽힘 엔트로피 전환점이 최대값의 절반(4 ln2)인지 측정.</div>
+</div>
+<p>판정: <strong>예측</strong>. 페이지 전환점이 $S_max$의 절반(4 ln2)이 아닌 다른 분율이면 반증.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="h595.html">H-595</a> · <a href="h907.html">H-907</a> · <a href="h523.html">H-523</a> · <a href="h522.html">H-522</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p555.html">P-555</a>: 페이지 곡선 전환점 = $S_max/2$ = 4 ln2 (얽힘 절반 비트)</td><td>예측 (대기) — 블랙홀 증발 얽힘 엔트로피의 페이지 전환 시점</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

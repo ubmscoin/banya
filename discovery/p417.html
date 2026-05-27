@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-417 파스칼 7행 우반부 = 반입자 다중항 7·21·35 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-417 파스칼 7행 우반부 = 반입자 다중항 7·21·35. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p417.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p417.html">P-417</a>. 파스칼 7행 우반부 = 반입자 다중항 $7{\cdot}21{\cdot}35$</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p417.html">P-417</a>: 파스칼 7행 우반부 = 반입자 다중항 $7{\cdot}21{\cdot}35$</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$(\underbrace{1,7,21,35}_{\text{입자}},\underbrace{35,21,7,1}_{\text{반입자}}):\ \binom{7}{5}=21=\overline{\text{메손}},\ \binom{7}{6}=7=\overline{\text{쿼크세대}}$$</div></div>
+<p class="finding-precision">예측: <a href="p97.html">P-97</a> 파스칼 좌우 대칭에서 우반부 $\binom{7}{5}=21$(반메손 상한)${\cdot}\binom{7}{6}=7$(반쿼크 7비트 인덱스)가 좌반부 입자 다중항$(P-57{\cdot}P-58)$의 CPT 켤레로 분리되며, 입자=반입자 상태수가 정확히 같아 바리온 비대칭이 동수 다중항 안의 비가역 편향(<a href="h479.html">H-479</a>)에서만 나옴을 고정한다. 검증 PDG 반입자 분광 재분석(즉시). (구조 항등식)</p>
+<p>반야식 $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$에서 파스칼 7행 우반부 (35,21,7,1)의 반입자 다중항 상한는 비가역 CAS 방향 반전 (반입자 켤레)에서 도출된다 (<a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax9">공리 9</a>).</p>
+<p>P-97은 좌우 대칭을 지적만 했고 우반부 $21{\cdot}7$이 반입자 상한이라는 정량 분리는 빈자리였다. C(7,5)=C(7,2), C(7,6)=C(7,1) 항등식이 forward chain을 닫는다.</p>
+<p>(a)CPT 켤레 카운트 노름. (b)CAS 비가역 방향 반전이 반입자를 만들고 조합수는 좌우 동일.</p>
+<p>검증: PDG 반메손/반바리온 수가 입자와 정확히 동수인지($21{\cdot}35$ 대칭) 즉시 재확인.</p>
+<p>반박: 반입자 상태수가 입자와 다르거나 C(7,$5)\neq$ C(7,2)이면(불가) 구조 폐기.</p>
+<p><strong>재대입 용도:</strong> 검증: PDG 반메손/반바리온 수가 입자와 정확히 동수인지($21{\cdot}35$ 대칭) 즉시 재확인. 반박: 반입자 상태수가 입자와 다르거나 C(7,$5)\neq$ C(7,2)이면(불가) 구조 폐기. 출처: <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax9">공리 9</a>.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 파스칼 7행 우반부 (35,21,7,1)의 반입자 다중항 상한를 다루는 고유 예측으로 검증 대기 상태다. forward chain은 <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax9">공리 9</a>에서 닫혀 있다. 검증 충족 시 D 승격, 반증 조건 충족 시 폐기 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> P-97은 좌우 대칭을 지적만 했고 우반부 $21{\cdot}7$이 반입자 상한이라는 정량 분리는 빈자리였다. C(7,5)=C(7,2), C(7,6)=C(7,1) 항등식이 forward chain을 닫는다.</p>
+<p><strong>위치:</strong> 카테고리: p. 파스칼 7행 우반부 (35,21,7,1)의 반입자 다중항 상한 — 비가역 CAS 방향 반전 (반입자 켤레)에서 도출. 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: 비가역 CAS 방향 반전 (반입자 켤레)에서 파스칼 7행 우반부 (35,21,7,1)의 반입자 다중항 상한 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>파스칼 7행 우반부 (35,21,7,1)의 반입자 다중항 상한는 비가역 CAS 방향 반전 (반입자 켤레)에서 도출된다. 관련 공리: <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax9">공리 9</a>.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a)CPT 켤레 카운트 노름. (b)CAS 비가역 방향 반전이 반입자를 만들고 조합수는 좌우 동일.</p>
+<div class="math-block">
+<div class="math-row">$N_\text{antiparticle} = N_\text{particle}$</div>
+<div class="math-row">$\binom{7}{5}=\binom{7}{2}=21,\quad \binom{7}{6}=\binom{7}{1}=7$</div>
+<div class="math-legend">$\binom{7}{5}=21$=반메손 상한 | $\binom{7}{6}=7$=반쿼크 인덱스 | <a href="p97.html">P-97</a>=CPT 좌우 대칭 | <a href="h479.html">H-479</a>=비가역 편향</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<div class="math-block">
+<div class="math-row">$\binom{7}{5}=21$</div>
+<div class="math-row">$\binom{7}{6}=7$</div>
+<div class="math-row">$\binom{7}{2}=21$ (<a href="p57.html">P-57</a>)</div>
+<div class="math-row">$\binom{7}{1}=7$ (<a href="h246.html">H-246</a>)</div>
+<div class="math-row">CPT symmetry (<a href="p97.html">P-97</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a)구조 대칭 도메인. (b)파스칼 우반부가 반입자 다중항 상한을 동수로 주는가.</p>
+<div class="math-block">
+<div class="math-row">$\binom{7}{5}=21=N_{\overline{\text{meson}}},\quad \binom{7}{6}=7=N_{\overline{\text{quark gen.}}}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $N_{\overline{\text{meson}}}=21,\ N_{\overline{\text{quark}}}=7$</div>
+<div class="math-row">검증: PDG 반메손/반바리온 수가 입자와 정확히 동수인지($21{\cdot}35$ 대칭) 즉시 재확인.</div>
+</div>
+<p>판정: <strong>예측</strong>. 반입자 상태수가 입자와 다르거나 C(7,$5)\neq$ C(7,2)이면(불가) 구조 폐기.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="h245.html">H-245</a> · <a href="h479.html">H-479</a> · <a href="p57.html">P-57</a> · <a href="p58.html">P-58</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p417.html">P-417</a>: 파스칼 7행 우반부 = 반입자 다중항 $7{\cdot}21{\cdot}35$</td><td>예측 (대기) — 파스칼 7행 우반부 (35,21,7,1)의 반입자 다중항 상한</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

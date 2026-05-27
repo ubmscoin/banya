@@ -84,11 +84,13 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
-<pre>copy        = Read + Swap          read original + write replica
-Read cost   = R+1                  Axiom 2 (CAS sequential R==C==S)
-Read target = DATA only            Axiom 2 (FSM-internal DATA)
-delta target= false                Axiom 15 (δ is not DATA)
-copy cost   = infinity             copy impossible when Read denied</pre>
+<div class="math-block">
+<div class="math-row">copy = Read + Swap read original + write replica</div>
+<div class="math-row">Read cost = R+1 Axiom <a href="../axiom.html#ax2">2</a> (CAS sequential R==C==S)</div>
+<div class="math-row">Read target = DATA only Axiom <a href="../axiom.html#ax2">2</a> (FSM-internal DATA)</div>
+<div class="math-row">$\delta$ target= false Axiom <a href="../axiom.html#ax15">15</a> ($\delta$ is not DATA)</div>
+<div class="math-row">copy cost = infinity copy impossible when Read denied</div>
+</div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>

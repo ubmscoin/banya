@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-179 액시온 부재 = 강한 CP는 비가역 잔여(theta_QCD 0 아님) — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-179 액시온 부재 = 강한 CP는 비가역 잔여(theta_QCD 0 아님). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p179.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p179.html">P-179</a>. 액시온 부재 = 강한 CP는 비가역 잔여($theta_QCD$ 0 아님)</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p179.html">P-179</a>: 액시온 부재 = 강한 CP는 비가역 잔여($theta_QCD$ 0 아님)</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\theta_\text{QCD}\sim\alpha^k\neq0\ (\text{CAS 비가역 잔여})\ \Rightarrow\ \nexists\ \text{PQ 대칭},\ m_a=\varnothing$$</div></div>
+<p class="finding-precision">예측: 강한 CP 위상은 CAS 비가역성이 남기는 작은 잔여로 정확히 0이 아니므로 그것을 0으로 미는 페체이-퀸 대칭과 액시온은 존재하지 않는다 — 대신 nEDM이 $alpha^8$ 스케일로 0이 아니다. ABRACADABRA/nEDM에서 검증(2025~). (finding-precision: 구조)</p>
+<p>반야식 $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$에서 페체이-퀸 액시온의 존재는 비가역 잔여 위상 비용에서 도출된다 (<a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax7">공리 7</a>).</p>
+<p><a href="p13.html">P-13</a>(강한CP nEDM 0 아님)이 있으나 그것이 액시온 부재(PQ 대칭 부재)를 함의한다는 BSM 귀결은 미전개다.</p>
+<p>(a)비가역 잔여 노름 (b)CAS 비가역(<a href="../axiom.html#ax4">공리 4</a>)이 위상을 정확히 0으로 보내지 못하므로 PQ 대칭 불필요/부재</p>
+<p>검증: ABRACADABRA/ADMX 액시온 탐색 및 nEDM 측정(2025~). 액시온 검출 시 반증</p>
+<p>반박: QCD 액시온이 확정 검출되면 폐기</p>
+<p><strong>재대입 용도:</strong> 검증: ABRACADABRA/ADMX 액시온 탐색 및 nEDM 측정(2025~). 액시온 검출 시 반증 반박: QCD 액시온이 확정 검출되면 폐기 출처: <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax7">공리 7</a>.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 페체이-퀸 액시온의 존재를 다루는 고유 예측으로 검증 대기 상태다. forward chain은 <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax7">공리 7</a>에서 닫혀 있다. 검증 충족 시 D 승격, 반증 조건 충족 시 폐기 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> <a href="p13.html">P-13</a>(강한CP nEDM 0 아님)이 있으나 그것이 액시온 부재(PQ 대칭 부재)를 함의한다는 BSM 귀결은 미전개다.</p>
+<p><strong>위치:</strong> 카테고리: p. 페체이-퀸 액시온의 존재 — 비가역 잔여 위상 비용에서 도출. 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: 비가역 잔여 위상 비용에서 페체이-퀸 액시온의 존재 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>페체이-퀸 액시온의 존재는 비가역 잔여 위상 비용에서 도출된다. 관련 공리: <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax7">공리 7</a>.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a)비가역 잔여 노름 (b)CAS 비가역(<a href="../axiom.html#ax4">공리 4</a>)이 위상을 정확히 0으로 보내지 못하므로 PQ 대칭 불필요/부재</p>
+<div class="math-block">
+<div class="math-row">$\mathcal{L}\supset\theta_\text{QCD}\frac{g^2}{32\pi^2}G\tilde{G}$</div>
+<div class="math-row">$\theta_\text{QCD}=\text{irreversible residue}\neq0\ \Rightarrow\ \nexists\ a$</div>
+<div class="math-legend">$m_a$: 액시온 질량 | $\theta_\text{QCD}$: 강한 CP 위상 | 비가역 잔여 (<a href="../axiom.html#ax4">공리 4</a>) | $\varnothing$: 액시온 부재</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<div class="math-block">
+<div class="math-row">$\theta_\text{QCD}\neq0$ (<a href="p13.html">P-13</a>)</div>
+<div class="math-row">$\text{CAS order irreversible}$ (<a href="../axiom.html#ax4">공리 4</a>)</div>
+<div class="math-row">$d_n\sim\alpha^8$ (<a href="p32.html">P-32</a> 관련)</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a)BSM 부재 도메인 (b)PQ 대칭/액시온이 프레임에서 가능한가</p>
+<div class="math-block">
+<div class="math-row">$\theta_\text{QCD}=\alpha^k\neq0\ \Rightarrow\ \text{no symmetry forces }0\ \Rightarrow\ m_a=\text{undefined}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $m_a=\text{undefined (no axion)},\quad d_n\neq0$</div>
+<div class="math-row">검증: ABRACADABRA/ADMX 액시온 탐색 및 nEDM 측정(2025~). 액시온 검출 시 반증</div>
+</div>
+<p>판정: <strong>예측</strong>. QCD 액시온이 확정 검출되면 폐기</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="h31.html">H-31</a> · <a href="h44.html">H-44</a> · <a href="d18.html">D-18</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p179.html">P-179</a>: 액시온 부재 = 강한 CP는 비가역 잔여($theta_QCD$ 0 아님)</td><td>예측 (대기) — 페체이-퀸 액시온의 존재</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

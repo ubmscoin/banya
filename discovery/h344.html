@@ -84,11 +84,13 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<pre>copy        = Read + Swap          원본 읽기 + 사본 쓰기
-Read cost   = R+1                  공리 2 (CAS 순차 R==C==S)
-Read target = DATA only            공리 2 (FSM 내부 DATA)
-delta target= false                공리 15 (δ는 DATA 아님)
-copy cost   = infinity             Read 거부 시 복제 불가</pre>
+<div class="math-block">
+<div class="math-row">copy = Read + Swap 원본 읽기 + 사본 쓰기</div>
+<div class="math-row">Read cost = R+1 <a href="../axiom.html#ax2">공리 2</a> (CAS 순차 R==C==S)</div>
+<div class="math-row">Read target = DATA only <a href="../axiom.html#ax2">공리 2</a> (FSM 내부 DATA)</div>
+<div class="math-row">$\delta$ target= false <a href="../axiom.html#ax15">공리 15</a> ($\delta$는 DATA 아님)</div>
+<div class="math-row">copy cost = infinity Read 거부 시 복제 불가</div>
+</div>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
