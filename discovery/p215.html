@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a)필터 누적 노름 (b)전자기 결합이 running으로 $M_Z$에서 7비트 전체 활성 한계 $2^7=128$에 접근하기 때문.</p>
+<p>치환하는 노름은 필터 누적 노름이다. 전자기 결합이 running으로 $M_Z$에서 7비트 전체 활성 한계 $2^7=128$에 접근하기 때문. 왜 이 노름인가 — $\alpha^{-1}(M_Z)$ 전자기 결합 역수는 필터 누적 running 비용 (7비트 활성)에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되, 반야식은 그 양을 CAS 비용 항으로만 다시 쓴 것이기 때문이다. 그래서 물리식 $\dfrac{1}{\alpha(M_Z)}=\dfrac{1}{\alpha(0)}\Bigl(1-\Delta\alpha\Bigr)$를 반야 치환식 $\alpha^{-1}(M_Z)=\dfrac{1}{\alpha}\Bigl(1-\dfrac{57}{3\pi}\alpha\Bigr)$로 옮긴다. 이 치환의 근거 공리는 <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax9">공리 9</a>이며, 우변의 각 기호는 아래 범례에서 정의한다.</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{1}{\alpha(M_Z)}=\dfrac{1}{\alpha(0)}\Bigl(1-\Delta\alpha\Bigr)$</div>
 <div class="math-row">$\alpha^{-1}(M_Z)=\dfrac{1}{\alpha}\Bigl(1-\dfrac{57}{3\pi}\alpha\Bigr)$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — $\alpha^{-1}(M_Z)$ 전자기 결합 역수를 수치로 산출하는 데 필요한 입력이 이들 3개로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고, 순환 논증이 끼어들 여지가 없다. 아래 표에 각 상수의 값과 그 출처(카드${\cdot}$공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">$\alpha=1/137.036$ (<a href="d01.html">D-01</a>)</div>
 <div class="math-row">57=21+35+1 (<a href="p50.html">P-50</a>)</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a)observer 도메인(결합 running) (b)전자기 결합 역수가 $M_Z$에서 128 극한에 접근함을 보려 한다.</p>
+<p>observer 도메인(결합 running)으로 변환한다. 왜 이 도메인으로 변환하는가 — $\alpha^{-1}(M_Z)$ 전자기 결합 역수는 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 전자기 결합 역수가 $M_Z$에서 128 극한에 접근함을 보려 한다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어, 외부 입력 없이 좌변 관측량이 결정되기 때문이다. 대입한 상수로 아래 식을 계산해 도출값을 얻는다. 이 값이 $\alpha^{-1}(M_Z)$ 전자기 결합 역수의 이론 예측이며, 다음 단계에서 측정값과 대조한다.</p>
 <div class="math-block">
 <div class="math-row">$\alpha^{-1}(M_Z)=137.036\times(1-57\alpha/(3\pi))=137.036\times0.9406\approx128.9$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">예측값: $\alpha^{-1}(M_Z)\approx128.9\ \ (\to128=2^7\text{ 극한})$</div>
 <div class="math-row">검증: FCC-ee가 $\alpha(M_Z)$를 $10^{-4}$로 확정하면 7비트 활성 구조 검증.</div>
 </div>
-<p>판정: <strong>예측</strong>. $\alpha^{-1}(M_Z)$가 128~129 구조에서 1.5% 이상 벗어나면 폐기.</p>
+<p>위 계산의 도출값은 $\alpha^{-1}(M_Z)\approx128.9\ \ (\to128=2^7\text{ 극한})$이다. 이 값은 $\alpha^{-1}(M_Z)$ 전자기 결합 역수에 대한 반야프레임의 정량 예측으로, 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 도출된 결과다. 검증 경로는 다음과 같다 — FCC-ee가 $\alpha(M_Z)$를 $10^{-4}$로 확정하면 7비트 활성 구조 검증. 왜 예측 판정인가 — H-372가 식을 가설로 두고 물리대응표 S행이 $128=2^{7}$ 극한을 명시하나 측정가능 예측${\cdot}$반증조건으로 분리한 카드가 없어 예측이다. 반증 조건은 다음과 같다 — $\alpha^{-1}(M_Z)$가 128~129 구조에서 1.5% 이상 벗어나면 폐기. 이 조건이 충족되면 본 도출은 폐기된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>

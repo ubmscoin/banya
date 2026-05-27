@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm substituted is the CAS Swap irreversible-cost norm — the minimum energy one irreversible branch dissipates into the environment. (b) This norm is chosen because erasing a bit closes one two-way Compare branch irreversibly (P-45 channel capacity), and that branch's information content is fixed at $\ln 2$. The minimum erasure energy is therefore substituted by the environment temperature scale $kT$ times the information content $\ln 2$.</p>
+<p>(a) The norm substituted is the CAS Swap irreversible-cost norm — the minimum energy one irreversible branch dissipates into the environment. (b) This norm is chosen because erasing a bit closes one two-way Compare branch irreversibly (P-45 channel capacity), and that branch's information content is fixed at $\ln 2$. The minimum erasure energy is therefore substituted by the environment temperature scale $kT$ times the information content $\ln 2$. Why this norm: the Landauer Limit $kT\ln 2$ itself originates from CAS Swap Irreversibility, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$E_{\min} = T\,\Delta S$</div>
 <div class="math-row">$E_{\min} = kT\ln 2$</div>
@@ -86,15 +86,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Landauer Limit $kT\ln 2$ numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
-<div class="math-row">$\ln$ 2 = 0.6931471805599453 two-way branch, 1 bit</div>
+<div class="math-row">ln 2 = 0.6931471805599453 two-way branch, 1 bit</div>
 <div class="math-row">k = $1.380649\times10^{-23}$ J/K Boltzmann scale</div>
 <div class="math-row">branch = 2 Compare two-way (<a href="p45.html">P-45</a>)</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the time domain (irreversible erasure cost). (b) What it reveals is the unavoidable minimum energy bound for erasing 1 bit in an environment at temperature $T$. Multiplying the information content $\ln 2$ by the environment scale $kT$ yields that value.</p>
+<p>(a) The transformation is into the time domain (irreversible erasure cost). (b) What it reveals is the unavoidable minimum energy bound for erasing 1 bit in an environment at temperature $T$. Multiplying the information content $\ln 2$ by the environment scale $kT$ yields that value. Why this domain: the Landauer Limit $kT\ln 2$ itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$E_{\min} = kT\ln 2 = 0.6931\,kT$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Prediction</h3>
 <div class="math-block">
 <div class="math-row">Predicted: $E_{\min} = kT\ln 2$ (lower bound, nothing below it)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Test: measure 1-bit erasure energy in nanoscale thermodynamics (2027~)</div>
 <div class="math-row">Refutation: a bit-erasure energy below $kT\ln 2$ is measured</div>
 </div>

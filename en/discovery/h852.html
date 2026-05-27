@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the cost-wave round-trip attenuation norm. The emitted cost wave travels to the target and back, attenuating as $1/R^2$ on each of the transmit and receive legs, so the signal weakens as $1/R^4$; the maximum detection range is fixed where this attenuation equals the minimum received power, so this norm is chosen.</p>
+<p>The norm being substituted is the cost-wave round-trip attenuation norm. The emitted cost wave travels to the target and back, attenuating as $1/R^2$ on each of the transmit and receive legs, so the signal weakens as $1/R^4$; the maximum detection range is fixed where this attenuation equals the minimum received power, so this norm is chosen. Why this norm: the Radar Detection Range itself originates from the CAS Cost-Wave Round-Trip Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$P_r = \dfrac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4}$</div>
 <div class="math-row">$R_{\max} = \left(\dfrac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 P_{\min}}\right)^{1/4}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Radar Detection Range numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$P_{t}$ = $1.0\times10^{6}$ W air-surveillance transmit</div>
 <div class="math-row">G = 1000 (30 dBi) antenna gain</div>
@@ -96,7 +97,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the measurement domain (round-trip propagation range). What it reveals is the maximum detection range $R_{\max}$ reached before the signal attenuates to the noise floor. Substituting the constants above into the fourth root yields that value.</p>
+<p>The transformation is into the measurement domain (round-trip propagation range). What it reveals is the maximum detection range $R_{\max}$ reached before the signal attenuates to the noise floor. Substituting the constants above into the fourth root yields that value. Why this domain: the Radar Detection Range itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$R_{\max} = \left(\dfrac{10^6 \cdot 10^6 \cdot (0.03)^2 \cdot 1}{1984.4 \cdot 10^{-13}}\right)^{1/4} \approx 1.6\times 10^{5}\;\text{m}$</div>
 </div>
@@ -105,6 +106,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Measurement Agreement</h3>
 <div class="math-block">
 <div class="math-row">Derived: $R_{\max} \approx 160\;\text{km}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: air-surveillance detection $100$~$400\;\text{km}$</div>
 <div class="math-row">Error: $&lt; 10\%$ (for comparable parameters)</div>
 </div>

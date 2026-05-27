@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the RLU eviction-rate norm — the fraction of COLD entries pushed out of the cache per unit d-ring cycle. This norm is chosen because the Hubble constant is the macroscopic expression of that eviction rate. The cache expansion rate of the RLU Friedmann equation (<a href="h46.html">H-46</a>) is therefore substituted by the Hubble constant.</p>
+<p>The norm being substituted is the RLU eviction-rate norm — the fraction of COLD entries pushed out of the cache per unit d-ring cycle. This norm is chosen because the Hubble constant is the macroscopic expression of that eviction rate. The cache expansion rate of the RLU Friedmann equation (<a href="h46.html">H-46</a>) is therefore substituted by the Hubble constant. Why this norm: $H_0 = 67.92\;\text{km/s/Mpc}$ itself originates from the RLU eviction rate, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$H_0 = \dfrac{\dot a}{a}$</div>
 <div class="math-row">$H_0 = r_\text{ev}\,(\text{RLU Friedmann, H-46})$</div>
@@ -86,6 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate $H_0 = 67.92\;\text{km/s/Mpc}$ numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$r_{ev}$ = RLU eviction rate Axiom <a href="../axiom.html#ax6">6</a></div>
 <div class="math-row">$H_{0}$ = 67.92 $\text{km}/s/Mpc$ <a href="h46.html">H-46</a> conversion</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is from the RLU eviction domain into the cosmological expansion domain. What it reveals is the rate at which space grows per unit time — the Hubble constant $H_0$. Converting the eviction rate into km/s/Mpc units yields that value.</p>
+<p>The transformation is from the RLU eviction domain into the cosmological expansion domain. What it reveals is the rate at which space grows per unit time — the Hubble constant $H_0$. Converting the eviction rate into km/s/Mpc units yields that value. Why this domain: $H_0 = 67.92\;\text{km/s/Mpc}$ itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$H_0 = 67.92\;\text{km/s/Mpc}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $H_0 = 67.92\;\text{km/s/Mpc}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $67.36 \pm 0.54$ (Planck 2018)</div>
 <div class="math-row">Error: $0.83\%$</div>
 </div>

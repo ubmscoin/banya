@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the product norm $2^7 \times 2^2$ of the 7-DOF power set and the FSM 4 states. (b) This norm is chosen because complete description requires both the "combination 7 bits" and the "FSM stage 2 bits," and the FSM 4 states are exactly $2^2$. Thus the complete-description state count is substituted by $2^7 \times 4 = 2^9$.</p>
+<p>(a) The norm being substituted is the product norm $2^7 \times 2^2$ of the 7-DOF power set and the FSM 4 states. (b) This norm is chosen because complete description requires both the "combination 7 bits" and the "FSM stage 2 bits," and the FSM 4 states are exactly $2^2$. Thus the complete-description state count is substituted by $2^7 \times 4 = 2^9$. Why this norm: the complete-description state count 512 itself originates from the 7 DOF and the 2 bracket bits, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$N = 2^7 \times 4 = 128 \times 4$</div>
 <div class="math-row">$N = 2^9 = 512;\quad 9 = 7 + 2$</div>
@@ -84,6 +84,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the complete-description state count 512 numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">effective DOF = 7 = domain 4 + CAS 3 Axiom <a href="../axiom.html#ax9">9</a></div>
 <div class="math-row">$2^{7}$ = 128</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The target domain of the transformation is the elementary-particle complete-description state space. (b) What it reveals is the total state count needed to fully describe one instant — the combination 128 multiplied by the FSM stage 4. Multiplying the two factors yields that value.</p>
+<p>(a) The target domain of the transformation is the elementary-particle complete-description state space. (b) What it reveals is the total state count needed to fully describe one instant — the combination 128 multiplied by the FSM stage 4. Multiplying the two factors yields that value. Why this domain: the complete-description state count 512 itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$128 \times 4 = 512 = 2^9$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $N = 2^9 = 512$ (complete-description states, $9 = 7 + 2$)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Reference: Standard Model particle types $\approx 60 \ll 512$ (the rest unobserved or virtual)</div>
 <div class="math-row">Quantitative match: integer decomposition established, explicit mapping of 512 states incomplete</div>
 </div>

@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the quotient norm of the data type 128 divided by the domain DOF. It is chosen because (a) the 4 domain bits are bound as environment DOF and drop out of the phases, and (b) the remaining internal DOF are the independent phases that appear in oscillation. The independent-phase count is therefore substituted by $128/2^4$.</p>
+<p>The norm being substituted is the quotient norm of the data type 128 divided by the domain DOF. It is chosen because (a) the 4 domain bits are bound as environment DOF and drop out of the phases, and (b) the remaining internal DOF are the independent phases that appear in oscillation. The independent-phase count is therefore substituted by $128/2^4$. Why this norm: 8 Independent Phases itself originates from the Data-Type 128 Domain-Quotient Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$N_\phi = 2^7 / 2^4$</div>
 <div class="math-row">$N_\phi = 128 / 16 = 8 = 2^3$</div>
@@ -86,6 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate 8 Independent Phases numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">128 = $2^{7}$ data type (<a href="p51.html">P-51</a>)</div>
 <div class="math-row">16 = $2^{4}$ 4-bit domain environment DOF (Axiom <a href="../axiom.html#ax1">1</a>)</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the oscillation-phase space of the superposition domain. What it reveals is which of the 8 phases is observed. Because the neutrino is a Dirac particle (<a href="p47.html">P-47</a>), the Majorana phase DOF are inactive, so only the Dirac CP phase is observed.</p>
+<p>The transformation is into the oscillation-phase space of the superposition domain. What it reveals is which of the 8 phases is observed. Because the neutrino is a Dirac particle (<a href="p47.html">P-47</a>), the Majorana phase DOF are inactive, so only the Dirac CP phase is observed. Why this domain: 8 Independent Phases itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$N_\phi = 8, \quad N_\text{obs} = 1 \;(\text{Dirac } \delta_{CP}), \quad N_\text{Majorana} \to 0$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Prediction</h3>
 <div class="math-block">
 <div class="math-row">Predicted: independent phases $128/2^4 = 8$, only Dirac CP observed</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Test: DUNE/JUNO Dirac CP phase $\delta_{CP}$ measurement (2030~)</div>
 <div class="math-row">Refutation: Majorana phase detected at $5\sigma$</div>
 </div>

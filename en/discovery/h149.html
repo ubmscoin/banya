@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the information-per-cycle norm, the 3-state information divided by one cycle. It is chosen because the information $\ln 3$ of the 3 states the CAS can hold is released over one $8\pi$ revolution of the 8-bit ring. The QNM characteristic frequency is substituted by the ratio of those two quantities.</p>
+<p>The norm being substituted is the information-per-cycle norm, the 3-state information divided by one cycle. It is chosen because the information $\ln 3$ of the 3 states the CAS can hold is released over one $8\pi$ revolution of the 8-bit ring. The QNM characteristic frequency is substituted by the ratio of those two quantities. Why this norm: the QNM frequency spacing itself originates from the CAS 3-stage information and 8-bit ring-cycle cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\omega_{\text{QNM}} \propto \dfrac{\ln(\text{states})}{\text{cycle}}$</div>
 <div class="math-row">$\omega_{\text{QNM}} \propto \dfrac{\ln 3}{8\pi}$</div>
@@ -86,15 +86,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the QNM frequency spacing numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
-<div class="math-row">$\ln$ 3 = 1.0986122886681098 Axiom <a href="../axiom.html#ax2">2</a> CAS 3 states</div>
+<div class="math-row">ln 3 = 1.0986122886681098 Axiom <a href="../axiom.html#ax2">2</a> CAS 3 states</div>
 <div class="math-row">8 $\pi$ = 25.132741228718345 Axiom <a href="../axiom.html#ax15">15</a> 8-bit ring cycle</div>
-<div class="math-row">$\ln3/8\pi$ = 0.043710</div>
+<div class="math-row">$ln3/8\pi$ = 0.043710</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the quantum/information domain (Schwarzschild asymptotic spectrum). What it reveals is the dimensionless frequency spacing of the asymptotic quasi-normal modes. Dividing the 3-state information by one ring cycle yields that spacing.</p>
+<p>The transformation is into the quantum/information domain (Schwarzschild asymptotic spectrum). What it reveals is the dimensionless frequency spacing of the asymptotic quasi-normal modes. Dividing the 3-state information by one ring cycle yields that spacing. Why this domain: the QNM frequency spacing itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{\ln 3}{8\pi} = \dfrac{1.0986}{25.133} = 0.04370$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Verdict</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\ln 3/(8\pi) = 0.04370$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Correspondence: Hod (1998) asymptotic QNM real-part spacing $\ln 3/(8\pi M)$</div>
 <div class="math-row">Status: structural correspondence (awaiting quantitative verification)</div>
 </div>

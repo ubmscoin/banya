@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) Compare-branch probability norm (b) sum of squared branch probabilities = density-matrix purity.</p>
+<p>The norm substituted is compare-branch probability norm. Sum of squared branch probabilities = density-matrix purity. Why this norm: Purity of the reduced state after projective measurement originates from Swap-collapse cost on Compare-true, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $\text{Tr}(\rho^2)=\sum_k p_k^2,\;\; p_k=\langle k|\rho|k\rangle$ is therefore replaced by the Banya form $\text{Tr}(\rho_{\text{post}}^2)=\sum_k \Pr(\text{Compare true}_k)^2$. The substitution rests on Axiom <a href="../axiom.html#ax2">2</a>, Axiom <a href="../axiom.html#ax7">7</a>, Axiom <a href="../axiom.html#ax13">13</a>, Axiom <a href="../axiom.html#ax1">1</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$\text{Tr}(\rho^2)=\sum_k p_k^2,\;\; p_k=\langle k|\rho|k\rangle$</div>
 <div class="math-row">$\text{Tr}(\rho_{\text{post}}^2)=\sum_k \Pr(\text{Compare true}_k)^2$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate Purity of the reduced state after projective measurement numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\sum_k p_k = 1$ (normalization)</div>
 <div class="math-row">$p_k = \Pr(\text{Compare true}_k)$ (Axiom <a href="../axiom.html#ax2">2</a>)</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) measurement-collapse domain (b) how much measurement mixes a pure state.</p>
+<p>The transformation is into the measurement-collapse domain. Why this domain: Purity of the reduced state after projective measurement is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. How much measurement mixes a pure state. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for Purity of the reduced state after projective measurement, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$\text{Tr}(\rho_{\text{post}}^2)=\sum_k p_k^2\geq\frac{1}{d}\;(\text{equality at uniform})$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $\text{Tr}(\rho_{\text{post}}^2)_{\min}=\frac{1}{d}\;(\text{uniform measure, exact})$</div>
 <div class="math-row">Test: Via post-measurement state tomography on qudits, confirm purity equals sum of squared $p_k$ and bottoms at 1/d for uniform.</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if non-selective post-measurement purity differs from sum of squared $p_k$ or is not 1/d for uniform.</p>
+<p>The derived value of the computation above is $\text{Tr}(\rho_{\text{post}}^2)_{\min}=\frac{1}{d}\;(\text{uniform measure, exact})$. It is a quantitative Banya-framework prediction for Purity of the reduced state after projective measurement, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: Via post-measurement state tomography on qudits, confirm purity equals sum of squared $p_k$ and bottoms at 1/d for uniform. Why the prediction verdict: <a href="h447.html">H-447</a> (collapse=Swap) and <a href="h13.html">H-13</a> (collapse=write) are qualitative; the squared sum of Compare-branch probabilities closes the purity and bottoms at 1/d for uniform, hence a prediction. Falsification condition: Falsified if non-selective post-measurement purity differs from sum of squared $p_k$ or is not 1/d for uniform. If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

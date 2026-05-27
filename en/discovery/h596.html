@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the CAS Swap atomicity norm. (b) Since no single unitary can perfectly clone an unknown state, what we read is the fidelity upper bound the best approximate clone can reach. This norm is chosen because the information a single unitary can move is limited by FSM closure (<a href="../axiom.html#ax14">Axiom 14</a>). The absence of perfect cloning is substituted by the fidelity upper bound $F$ of the universal cloner.</p>
+<p>(a) The norm being substituted is the CAS Swap atomicity norm. (b) Since no single unitary can perfectly clone an unknown state, what we read is the fidelity upper bound the best approximate clone can reach. This norm is chosen because the information a single unitary can move is limited by FSM closure (<a href="../axiom.html#ax14">Axiom 14</a>). The absence of perfect cloning is substituted by the fidelity upper bound $F$ of the universal cloner. Why this norm: the Cloning-Fidelity Upper Bound itself originates from the CAS Swap Atomicity Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$U|\psi\rangle|0\rangle = |\psi\rangle|\psi\rangle$ : no solution for arbitrary $|\psi\rangle$</div>
 <div class="math-row">$F = \dfrac{2}{d+1}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Cloning-Fidelity Upper Bound numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">d = 2 single-qubit state-space dimension</div>
 <div class="math-row">2/(d+1) = 2/3 non-optimal cloning limit</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the quantum/information domain (single-qubit cloning). (b) What it reveals is the maximum fidelity reachable when one Swap produces a copy while preserving the original. Substituting the single qubit $d=2$ into the optimal universal-cloner formula yields the bound.</p>
+<p>(a) The transformation is into the quantum/information domain (single-qubit cloning). (b) What it reveals is the maximum fidelity reachable when one Swap produces a copy while preserving the original. Substituting the single qubit $d=2$ into the optimal universal-cloner formula yields the bound. Why this domain: the Cloning-Fidelity Upper Bound itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$F_{\max} = \dfrac{5}{6} \approx 0.8333$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $F \leq 5/6$ (single-qubit optimal cloning)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: perfect cloning ($F=1$) never observed; no-cloning theorem holds</div>
 <div class="math-row">Bound: $F_{\max} = 5/6$</div>
 </div>

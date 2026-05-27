@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the pipeline-stage norm. It is chosen because (a) measurement collapse is the transition output at render through the observer filter into screen, and (b) the minimum measurement resolution $1\,t_P$ sets each stage's clock cost (<a href="../axiom.html#ax4">Axiom 4</a>). The collapse-fixing time is therefore substituted by the late 3-stage clock.</p>
+<p>The norm being substituted is the pipeline-stage norm. It is chosen because (a) measurement collapse is the transition output at render through the observer filter into screen, and (b) the minimum measurement resolution $1\,t_P$ sets each stage's clock cost (<a href="../axiom.html#ax4">Axiom 4</a>). The collapse-fixing time is therefore substituted by the late 3-stage clock. Why this norm: the Measurement-Collapse Delay $3\,t_P$ itself originates from the Pipeline-Transition Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$t_\text{collapse} = t_\text{update} + t_\text{render} + t_\text{screen}$</div>
 <div class="math-row">$t_\text{collapse} \geq 3\,t_P$</div>
@@ -86,6 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Measurement-Collapse Delay $3\,t_P$ numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$t_{P}$ = 1 minimum measurement resolution (1 clock)</div>
 <div class="math-row">3 = update,render,screen late pipeline stages (Axiom <a href="../axiom.html#ax3">3</a>)</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the measurement-fixing time of the observer domain. What it reveals is whether collapse is instantaneous or delayed by the pipeline clock. The sum of the late 3-stage clock sets the floor of the fixing delay.</p>
+<p>The transformation is into the measurement-fixing time of the observer domain. What it reveals is whether collapse is instantaneous or delayed by the pipeline clock. The sum of the late 3-stage clock sets the floor of the fixing delay. Why this domain: the Measurement-Collapse Delay $3\,t_P$ itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$t_\text{collapse} \geq 3\,t_P &gt; 0 \quad\text{(not instantaneous)}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Prediction</h3>
 <div class="math-block">
 <div class="math-row">Predicted: measurement-fixing delay $\geq 3\,t_P$ (render·screen transition)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Test: ultrafast quantum measurement, $t_P$-scale delay floor (2035~)</div>
 <div class="math-row">Refutation: instantaneous collapse below $t_P$ confirmed</div>
 </div>

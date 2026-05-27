@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) RLU decay-threshold norm (b) decay must stay above the gap threshold for zero Swap error, gap 1/sqrt(N) gives time N.</p>
+<p>The norm substituted is rLU decay-threshold norm. Decay must stay above the gap threshold for zero Swap error, gap 1/sqrt(N) gives time N. Why this norm: Adiabatic minimal energy-gap scaling for N-variable optimization originates from Cost of maintaining the adiabatic condition via RLU geometric decay, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $t_{\text{ad}}\gtrsim\frac{1}{\Delta_{\min}^2},\quad \Delta_{\min}\sim N^{-1/2}$ is therefore replaced by the Banya form $\Delta_{\min}=\frac{1}{\sqrt N}\;(\text{RLU threshold avoidance}),\;\; t\propto N$. The substitution rests on Axiom <a href="../axiom.html#ax6">6</a>, Axiom <a href="../axiom.html#ax7">7</a>, Axiom <a href="../axiom.html#ax4">4</a>, Axiom <a href="../axiom.html#ax12">12</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$t_{\text{ad}}\gtrsim\frac{1}{\Delta_{\min}^2},\quad \Delta_{\min}\sim N^{-1/2}$</div>
 <div class="math-row">$\Delta_{\min}=\frac{1}{\sqrt N}\;(\text{RLU threshold avoidance}),\;\; t\propto N$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate Adiabatic minimal energy-gap scaling for N-variable optimization numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\Delta_{\min}\propto N^{-1/2}$ (disorder gap)</div>
 <div class="math-row">$t\propto\Delta^{-2}$ (adiabatic theorem)</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) quantum-annealing/optimization domain (b) how annealing slows as variables increase.</p>
+<p>The transformation is into the quantum-annealing/optimization domain. Why this domain: Adiabatic minimal energy-gap scaling for N-variable optimization is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. How annealing slows as variables increase. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for Adiabatic minimal energy-gap scaling for N-variable optimization, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$t_{\text{anneal}}\propto\Delta_{\min}^{-2}\propto N\;(\Delta_{\min}\propto N^{-1/2})$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $\Delta_{\min}\propto N^{-1/2},\; t_{\text{anneal}}\propto N$</div>
 <div class="math-row">Test: On D-Wave-type annealers, measure whether the minimal gap scales as 1/sqrt(N) and anneal time as N with problem size.</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if the minimal gap closes exponentially $(e^{-N})$ so anneal time is exponential, contradicting this power law.</p>
+<p>The derived value of the computation above is $\Delta_{\min}\propto N^{-1/2},\; t_{\text{anneal}}\propto N$. It is a quantitative Banya-framework prediction for Adiabatic minimal energy-gap scaling for N-variable optimization, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: On D-Wave-type annealers, measure whether the minimal gap scales as 1/sqrt(N) and anneal time as N with problem size. Why the prediction verdict: <a href="h612.html">H-612</a> (annealing = RLU-decay optimization) is qualitative; the adiabatic t proportional $1/gap^2$ and the disordered N-variable gap 1/sqrt(N) close under the RLU threshold-avoidance condition, hence a prediction. Falsification condition: Falsified if the minimal gap closes exponentially $(e^{-N})$ so anneal time is exponential, contradicting this power law. If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

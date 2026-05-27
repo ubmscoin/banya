@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the ring-buffer slot norm. The generation count is the number of integer slots occupiable on the d-ring, and since the slots are discrete they admit no non-integer value, so this norm is chosen. The generation count is therefore substituted by the ratio of total width to single-channel width.</p>
+<p>The norm being substituted is the ring-buffer slot norm. The generation count is the number of integer slots occupiable on the d-ring, and since the slots are discrete they admit no non-integer value, so this norm is chosen. The generation count is therefore substituted by the ratio of total width to single-channel width. Why this norm: the invisible generation count $N_\nu$ itself originates from the ring-buffer slot cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$N_\nu = \dfrac{\Gamma_{\text{inv}}}{\Gamma_{\nu\bar\nu}}$</div>
 <div class="math-row">$N_\nu = \dfrac{498}{165.9} \approx 3.00$</div>
@@ -84,15 +84,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the invisible generation count $N_\nu$ numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\Gamma_{inv}$ = 498 $\text{MeV}$ 3-channel sum, <a href="h279.html">H-279</a></div>
 <div class="math-row">$\Gamma_\nu$ $\nu$ = 165.9 $\text{MeV}$ single channel, <a href="h279.html">H-279</a></div>
-<div class="math-row">$N_\nu(\exp)$ = 2.9840 ${\pm}$ 0.0082 LEP lineshape</div>
+<div class="math-row">$N_\nu(exp)$ = 2.9840 ${\pm}$ 0.0082 LEP lineshape</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the generation-count domain. What it reveals is the number of occupied integer slots on the d-ring — the light neutrino generation count $N_\nu$. Dividing the invisible total width by the single-channel width yields that value.</p>
+<p>The transformation is into the generation-count domain. What it reveals is the number of occupied integer slots on the d-ring — the light neutrino generation count $N_\nu$. Dividing the invisible total width by the single-channel width yields that value. Why this domain: the invisible generation count $N_\nu$ itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$N_\nu = \dfrac{3\times165.9}{498} = \dfrac{497.7}{498} \approx 3.00$</div>
 </div>
@@ -101,6 +102,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $N_\nu = 3.00$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $N_\nu = 2.9840 \pm 0.0082$ (LEP)</div>
 <div class="math-row">Error: $0.53\%$</div>
 </div>

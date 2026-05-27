@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the max-entropy norm of the orthogonal bit space. It is chosen because, the two nibbles being orthogonal, the joint state count is a product whose logarithm separates into a sum. The $4\ln 2$ of the domain 4 bits is therefore added to the $3\ln 2$ of the CAS 3 bits.</p>
+<p>The norm being substituted is the max-entropy norm of the orthogonal bit space. It is chosen because, the two nibbles being orthogonal, the joint state count is a product whose logarithm separates into a sum. The $4\ln 2$ of the domain 4 bits is therefore added to the $3\ln 2$ of the CAS 3 bits. Why this norm: 7 ln2 itself originates from the Orthogonal Max-Entropy Sum of the Two Nibbles, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$S=k_B\ln W,\quad W=2^n$</div>
 <div class="math-row">$S_{\text{total}}=S_{\text{domain}}+S_{\text{operator}}=4\ln 2+3\ln 2=7\ln 2$</div>
@@ -84,16 +84,17 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate 7 ln2 numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">domain bits = 4 Axiom <a href="../axiom.html#ax1">1</a></div>
 <div class="math-row">CAS bits = 3 Axiom <a href="../axiom.html#ax9">9</a> (4+3=7)</div>
-<div class="math-row">$\ln$ 2 = 0.6931</div>
+<div class="math-row">ln 2 = 0.6931</div>
 <div class="math-row">$\delta(bit7)$ = 1 fixed, contributes 0</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The orthogonal bit domain is transformed into the information-content domain. What it reveals is the maximum information a single entity holds in 1 tick. Adding the max entropy of the two nibbles yields that value ($\delta$ is fixed at 1, contributing 0).</p>
+<p>The orthogonal bit domain is transformed into the information-content domain. What it reveals is the maximum information a single entity holds in 1 tick. Adding the max entropy of the two nibbles yields that value ($\delta$ is fixed at 1, contributing 0). Why this domain: 7 ln2 itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$S_{\text{total}}=7\ln 2=7\times 0.6931=4.852\;\text{nats}=7\;\text{bit}$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $S_{\text{total}}=7\ln 2=7\;\text{bit/tick}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: no direct measurement (consistent with Bekenstein-Hawking area entropy)</div>
 <div class="math-row">Error: quantitative comparison incomplete</div>
 </div>

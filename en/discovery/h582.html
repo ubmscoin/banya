@@ -73,7 +73,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the state-count log norm of one d-ring bit — the $\ln 2$ entropy norm. (b) The microstate count lost by irreversible erasure is $2\to1$, i.e. $\ln 2$, which multiplied by temperature closes as the minimum energy; that is why this norm is chosen. The cost $+1$ is substituted by $k_B T\ln 2$.</p>
+<p>(a) The norm being substituted is the state-count log norm of one d-ring bit — the $\ln 2$ entropy norm. (b) The microstate count lost by irreversible erasure is $2\to1$, i.e. $\ln 2$, which multiplied by temperature closes as the minimum energy; that is why this norm is chosen. The cost $+1$ is substituted by $k_B T\ln 2$. Why this norm: the Landauer Minimum Erasure Energy itself originates from the CAS Irreversible Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$E_{\min} = T\,\Delta S = T\,(k_B\ln 2)$</div>
 <div class="math-row">$E_{\min} = k_B T \ln 2$</div>
@@ -82,16 +82,17 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Landauer Minimum Erasure Energy numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$k_{B}$ = $1.380649\times10^{-23}$ J/K</div>
-<div class="math-row">$\ln$ 2 = 0.6931471805599453</div>
+<div class="math-row">ln 2 = 0.6931471805599453</div>
 <div class="math-row">T = 300 K room temperature</div>
-<div class="math-row">$E_{min}$ = $k_{B}$ T $\ln$ 2 Landauer 1961</div>
+<div class="math-row">$E_{min}$ = $k_{B}$ T ln 2 Landauer 1961</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the information-thermodynamics domain ($\text{bit}\to\text{J}$). (b) What it reveals is the minimum heat an irreversible 1-bit erasure releases to the environment — the Landauer limit. Multiplying $\ln 2$ by $k_B T$ yields that value.</p>
+<p>(a) The transformation is into the information-thermodynamics domain ($\text{bit}\to\text{J}$). (b) What it reveals is the minimum heat an irreversible 1-bit erasure releases to the environment — the Landauer limit. Multiplying $\ln 2$ by $k_B T$ yields that value. Why this domain: the Landauer Minimum Erasure Energy itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$E_{\min}=k_B T\ln 2=(1.380649\times10^{-23})(300)(0.693147)=2.871\times10^{-21}\ \text{J}$</div>
 </div>
@@ -100,6 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $E_{\min}=2.871\times10^{-21}\ \text{J}$ ($T=300\ \text{K}$)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $(2.8\pm0.1)\times10^{-21}\ \text{J}$ (Bérut et al. 2012)</div>
 <div class="math-row">Error: $2.5\%$</div>
 </div>

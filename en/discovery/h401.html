@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the coupling-order norm $\alpha^5$ that counts 5 Compares. (b) It is chosen because the higher-order self-energy passes through a 5-step Compare chain and only l=0 (maximal indexing depth, <a href="../axiom.html#ax13">Axiom 13</a>) contributes. It is multiplied by the $1/n^3$ indexing cost and the log factor.</p>
+<p>(a) The norm being substituted is the coupling-order norm $\alpha^5$ that counts 5 Compares. (b) It is chosen because the higher-order self-energy passes through a 5-step Compare chain and only l=0 (maximal indexing depth, <a href="../axiom.html#ax13">Axiom 13</a>) contributes. It is multiplied by the $1/n^3$ indexing cost and the log factor. Why this norm: the Lamb-shift higher-order term itself originates from the cost of 5 CAS Compares, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\Delta E_{\text{Lamb}}(nS) = \dfrac{\alpha^5}{\pi n^3} m_e c^2 \ln(1/\alpha^2)\,\delta_{l,0}$</div>
 <div class="math-row">$\Delta E_{\text{Lamb}}(nS)\propto\alpha^5\ln(1/\alpha^2)\,\delta_{l,0}/n^3$</div>
@@ -84,16 +84,17 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Lamb-shift higher-order term numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\alpha$ = 1/137.036 <a href="d01.html">D-01</a></div>
 <div class="math-row">$\alpha^{5}$ = $2.04\times10^{-11}$</div>
-<div class="math-row">$\ln(1/\alpha^{2})$ = 2 $\ln$ 137 = 9.85</div>
+<div class="math-row">$\ln(1/\alpha^{2})$ = 2 ln 137 = 9.85</div>
 <div class="math-row">n = 2 ==> $1/n^{3}$ = 1/8</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the electromagnetic ring-137 coupling-order domain. (b) What it reveals is the magnitude of the 2S Lamb shift. Multiplying the 5-Compare order by the log factor and the $1/n^3$ indexing cost yields that value.</p>
+<p>(a) The transformation is into the electromagnetic ring-137 coupling-order domain. (b) What it reveals is the magnitude of the 2S Lamb shift. Multiplying the 5-Compare order by the log factor and the $1/n^3$ indexing cost yields that value. Why this domain: the Lamb-shift higher-order term itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\alpha^5\ln(1/\alpha^2) = 2.04\times10^{-11}\times 9.85 = 2.01\times10^{-10}$</div>
 <div class="math-row">$\Delta E_{\text{Lamb}}(2S) = 2.01\times10^{-10}\times \tfrac{1}{8} = 2.51\times10^{-11}\,m_e c^2$</div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\Delta E_{\text{Lamb}}(2S)\approx 2.51\times10^{-11}\,m_e c^2$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: precision-QED standard value not compared</div>
 <div class="math-row">Status: dimension/order consistent, quantitative error not computed</div>
 </div>

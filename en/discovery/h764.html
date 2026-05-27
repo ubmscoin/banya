@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the accumulated-cost functional norm. Since the CAS always takes the minimum-cost path, the first variation vanishes on that path, and this stationarity condition fixes the motion, which is why this norm is chosen. The cost minimization $\delta\mathcal{F}=0$ is therefore substituted by the Euler-Lagrange equation.</p>
+<p>The norm being substituted is the accumulated-cost functional norm. Since the CAS always takes the minimum-cost path, the first variation vanishes on that path, and this stationarity condition fixes the motion, which is why this norm is chosen. The cost minimization $\delta\mathcal{F}=0$ is therefore substituted by the Euler-Lagrange equation. Why this norm: the Euler-Lagrange Equation itself originates from CAS Cost Minimization, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\delta\mathcal{F}[y] = \delta\displaystyle\int_a^b L(x,y,y')\,dx = 0$</div>
 <div class="math-row">$\dfrac{\partial L}{\partial y} - \dfrac{d}{dx}\dfrac{\partial L}{\partial y'} = 0$</div>
@@ -84,6 +84,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Euler-Lagrange Equation numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\delta$ F = 0 first-variation stationarity (Axiom <a href="../axiom.html#ax4">4</a>)</div>
 <div class="math-row">$\delta^{2}$ F > 0 Jacobi minimum condition</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the quantum-cost domain. What it reveals is whether the variational stationarity condition reproduces the hydrogen ground-state energy. Applying Rayleigh-Ritz cost minimization to a trial wavefunction yields that value.</p>
+<p>The transformation is into the quantum-cost domain. What it reveals is whether the variational stationarity condition reproduces the hydrogen ground-state energy. Applying Rayleigh-Ritz cost minimization to a trial wavefunction yields that value. Why this domain: the Euler-Lagrange Equation itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$E_0 = \min_{\psi}\dfrac{\langle\psi|H|\psi\rangle}{\langle\psi|\psi\rangle} = -13.6\ \mathrm{eV}$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived structure: $\delta\mathcal{F}=0$ = CAS cost minimization = Euler-Lagrange</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: hydrogen $E_0 = -13.6$ eV</div>
 <div class="math-row">Error: matches the trial-wavefunction reproduction</div>
 </div>

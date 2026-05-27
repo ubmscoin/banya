@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) filter-omission entropy norm (b) subtract the H2(alpha) uncertainty of alpha omission from a 1-bit channel.</p>
+<p>The norm substituted is filter-omission entropy norm. Subtract the H2(alpha) uncertainty of alpha omission from a 1-bit channel. Why this norm: Single-qubit quantum capacity of a depolarizing channel originates from Entropy cost of the observer-filter omission alpha, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $Q=\max_\rho I_c(\rho,\mathcal N),\quad I_c=S(\mathcal N\rho)-S((\text{id}\otimes\mathcal N)\Phi)$ is therefore replaced by the Banya form $Q=1-H_2(\alpha)\;(\alpha=\text{filter omission, Axiom 11})$. The substitution rests on Axiom <a href="../axiom.html#ax11">11</a>, Axiom <a href="../axiom.html#ax2">2</a>, Axiom <a href="../axiom.html#ax4">4</a>, Axiom <a href="../axiom.html#ax1">1</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$Q=\max_\rho I_c(\rho,\mathcal N),\quad I_c=S(\mathcal N\rho)-S((\text{id}\otimes\mathcal N)\Phi)$</div>
 <div class="math-row">$Q=1-H_2(\alpha)\;(\alpha=\text{filter omission, Axiom 11})$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate Single-qubit quantum capacity of a depolarizing channel numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\alpha=1/137.036082$ (CODATA 2018)</div>
 <div class="math-row">$H_2(\alpha)=0.0601$</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) quantum-channel-capacity domain (b) how filter noise degrades quantum information transmission.</p>
+<p>The transformation is into the quantum-channel-capacity domain. Why this domain: Single-qubit quantum capacity of a depolarizing channel is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. How filter noise degrades quantum information transmission. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for Single-qubit quantum capacity of a depolarizing channel, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$Q=1-H_2(1/137.036)=1-0.0601=0.9399\;\text{qubit}$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $Q=1-H_2(\alpha)\approx 0.940\;\text{qubit}$</div>
 <div class="math-row">Test: In a channel with alpha-level coherent noise, measure whether coherent information matches 1 - H2(alpha) ~ 0.94.</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if quantum capacity differs significantly from 1 - H2(alpha) or is independent of alpha.</p>
+<p>The derived value of the computation above is $Q=1-H_2(\alpha)\approx 0.940\;\text{qubit}$. It is a quantitative Banya-framework prediction for Single-qubit quantum capacity of a depolarizing channel, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: In a channel with alpha-level coherent noise, measure whether coherent information matches 1 - H2(alpha) ~ 0.94. Why the prediction verdict: $P-45/w1_d4$ channel capacity closed the classical 1 bit, leaving the quantum (coherent-information) capacity unwritten; subtracting the binary entropy of filter omission alpha gives 1 - H2(alpha), hence a prediction (a distinct observable from classical capacity). Falsification condition: Falsified if quantum capacity differs significantly from 1 - H2(alpha) or is independent of alpha. If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

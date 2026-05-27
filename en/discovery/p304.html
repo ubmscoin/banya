@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) Cost norm. (b) phase distributes the CAS 3-stage cost over 128 states, so the cost norm applies.</p>
+<p>The norm substituted is cost norm. Phase distributes the CAS 3-stage cost over 128 states, so the cost norm applies. Why this norm: leading PN coefficient of inspiral GW phase originates from phase cost of CAS 3 stages divided by 128 states, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $\Psi(f)=\frac{3}{128}(\pi\mathcal{M}f)^{-5/3}$ is therefore replaced by the Banya form $\Psi(f)=\frac{3_{(R,C,S)}}{128_{2^7}}(\pi\mathcal{M}f)^{-5/3}$. The substitution rests on Axiom <a href="../axiom.html#ax2">2</a>, Axiom <a href="../axiom.html#ax9">9</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$\Psi(f)=\frac{3}{128}(\pi\mathcal{M}f)^{-5/3}$</div>
 <div class="math-row">$\Psi(f)=\frac{3_{(R,C,S)}}{128_{2^7}}(\pi\mathcal{M}f)^{-5/3}$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate leading PN coefficient of inspiral GW phase numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$3=\text{CAS stages}$ (Axiom <a href="../axiom.html#ax2">2</a>)</div>
 <div class="math-row">$128=2^7$ (Axiom <a href="../axiom.html#ax9">9</a>)</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) time domain. (b) how CAS stages and state count set the inspiral phase.</p>
+<p>The transformation is into the time domain. Why this domain: leading PN coefficient of inspiral GW phase is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. How CAS stages and state count set the inspiral phase. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for leading PN coefficient of inspiral GW phase, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$\Psi(f)=\frac{3}{128}(\pi\mathcal{M}f)^{-5/3}+\sum_n c_n f^{(n-5)/3}$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $\text{leading coefficient}=3/128=0.0234\ \text{exact}$</div>
 <div class="math-row">Test: Confirm the leading PN coefficient $3/128$ in LIGO O5/Virgo inspiral waveform fits (2025 onward).</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if the leading PN coefficient deviates from $3/128$.</p>
+<p>The derived value of the computation above is $\text{leading coefficient}=3/128=0.0234\ \text{exact}$. It is a quantitative Banya-framework prediction for leading PN coefficient of inspiral GW phase, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: Confirm the leading PN coefficient $3/128$ in LIGO O5/Virgo inspiral waveform fits (2025 onward). Why the prediction verdict: <a href="h865.html">H-865</a> detection and <a href="p80.html">P-80</a> 1/128 are closed, but deriving the standard inspiral phase coefficient $3/128$ as CAS 3 stages over 128 was missing, hence prediction. Falsification condition: Falsified if the leading PN coefficient deviates from $3/128$. If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

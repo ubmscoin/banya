@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the CAS Compare cost norm. In the subthreshold region the channel occupancy follows a Boltzmann distribution in gate voltage, and that distribution closes into the thermal energy $k_BT$ of <a href="../axiom.html#ax4">Axiom 4</a> (cost), so this norm is chosen. It is substituted by the gate voltage needed to raise the current by one decade — the subthreshold slope.</p>
+<p>The norm being substituted is the CAS Compare cost norm. In the subthreshold region the channel occupancy follows a Boltzmann distribution in gate voltage, and that distribution closes into the thermal energy $k_BT$ of <a href="../axiom.html#ax4">Axiom 4</a> (cost), so this norm is chosen. It is substituted by the gate voltage needed to raise the current by one decade — the subthreshold slope. Why this norm: the MOSFET Subthreshold Slope itself originates from CAS Compare Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$I_{DS} \propto e^{q V_{GS}/k_B T}$</div>
 <div class="math-row">$SS = \dfrac{k_B T}{q}\ln 10$</div>
@@ -85,15 +85,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the MOSFET Subthreshold Slope numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$k_{B}$ T / q (300K) = 0.02585 V</div>
-<div class="math-row">$\ln$ 10 = 2.302585</div>
+<div class="math-row">ln 10 = 2.302585</div>
 <div class="math-row">SS measured = 60 mV/decade ideal MOSFET 300K</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the MOSFET transfer-characteristic domain (current per gate voltage). What it reveals is the minimum gate-voltage resolution at which the CAS Compare separates ON from OFF — the subthreshold slope. Multiplying the thermal voltage by $\ln 10$ yields that value.</p>
+<p>The transformation is into the MOSFET transfer-characteristic domain (current per gate voltage). What it reveals is the minimum gate-voltage resolution at which the CAS Compare separates ON from OFF — the subthreshold slope. Multiplying the thermal voltage by $\ln 10$ yields that value. Why this domain: the MOSFET Subthreshold Slope itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$SS = 0.02585 \times 2.302585 = 0.0595\;\text{V/decade} = 59.5\;\text{mV/decade}$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $SS = 59.5\;\text{mV/decade}$ (300K)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $60\;\text{mV/decade}$ (ideal MOSFET 300K)</div>
 <div class="math-row">Error: $&lt; 10\%$ (with short-channel effects)</div>
 </div>

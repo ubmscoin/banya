@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the ratio norm of RLU reclamation rate to CAS generation rate. When reclamation is below generation, cost accumulates and an avalanche fires; when the avalanche releases cost, reclamation again approaches generation — this self-regulation converges to criticality, so this norm is chosen. The ratio $9/4$ of the residual 9 to the ball-maintenance 4 sets the reclamation/generation balance point.</p>
+<p>The norm being substituted is the ratio norm of RLU reclamation rate to CAS generation rate. When reclamation is below generation, cost accumulates and an avalanche fires; when the avalanche releases cost, reclamation again approaches generation — this self-regulation converges to criticality, so this norm is chosen. The ratio $9/4$ of the residual 9 to the ball-maintenance 4 sets the reclamation/generation balance point. Why this norm: Self-Organized Criticality itself originates from the Balance of RLU Decay and CAS Generation, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$r = \dfrac{R_{\text{decay}}}{R_{\text{gen}}}, \qquad r^\ast = \dfrac{9}{4}$</div>
 <div class="math-row">$r &lt; r^\ast \Rightarrow$ accumulation, $\;\; r &gt; r^\ast \Rightarrow$ release, $\;\; r = r^\ast \Rightarrow$ criticality</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Self-Organized Criticality numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$cost_{total}$ = 13 total cost of one grasp Axiom <a href="../axiom.html#ax11">11</a></div>
 <div class="math-row">$cost_{ball}$ = 4 3-axis grasp + timestamp</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the $\delta$-firing / d-ring self-reference domain (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). What it reveals is the critical exponent of the avalanche-size distribution. When the balance ratio $9/4$ regulates avalanche release, the distribution becomes a power law (<a href="h827.html">H-827</a>).</p>
+<p>The transformation is into the $\delta$-firing / d-ring self-reference domain (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). What it reveals is the critical exponent of the avalanche-size distribution. When the balance ratio $9/4$ regulates avalanche release, the distribution becomes a power law (<a href="h827.html">H-827</a>). Why this domain: Self-Organized Criticality itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$r = r^\ast = \tfrac{9}{4} \;\Rightarrow\; P(s) \propto s^{-\tau}, \quad \tau \approx 1.5$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: at balance ratio $r^\ast = 9/4$, avalanche distribution $P(s)\propto s^{-\tau}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: 2D sandpile critical exponent $\tau \approx 1.5$</div>
 <div class="math-row">Result: spontaneous critical convergence and power-law avalanches qualitatively match</div>
 </div>

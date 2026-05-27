@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the automation norm, with the number of input constants as the denominator and the number of output parameters CAS auto-generates as the numerator. It is chosen because industrial application is a pipeline that unfolds many parameters from few inputs without contradiction, and because those inputs are fixed at the 3 constants $(\alpha, m_e, m_p)$. Industrial value is therefore substituted by the number of auto-generated parameters per input.</p>
+<p>The norm being substituted is the automation norm, with the number of input constants as the denominator and the number of output parameters CAS auto-generates as the numerator. It is chosen because industrial application is a pipeline that unfolds many parameters from few inputs without contradiction, and because those inputs are fixed at the 3 constants $(\alpha, m_e, m_p)$. Industrial value is therefore substituted by the number of auto-generated parameters per input. Why this norm: the 33x Parameter Auto-Generation Ratio itself originates from 3 Inputs, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$(\alpha,\;m_e,\;m_p) \;\vdash\; \{\,p_1,\dots,p_M\,\}$</div>
 <div class="math-row">$A = \dfrac{N_{\text{param}}}{N_{\text{input}}}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the 33x Parameter Auto-Generation Ratio numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$N_{input}$ = 3 input constants ($\alpha$, $m_{e}$, $m_{p}$)</div>
 <div class="math-row">$N_{param}$ = 100 auto-settable parameters</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the Banya structure domain (the derivation pipeline). What it reveals is the number of simulation parameters one input constant unfolds — the auto-generation ratio $A$. Dividing the auto-generated parameters by the input constants yields that value.</p>
+<p>The transformation is into the Banya structure domain (the derivation pipeline). What it reveals is the number of simulation parameters one input constant unfolds — the auto-generation ratio $A$. Dividing the auto-generated parameters by the input constants yields that value. Why this domain: the 33x Parameter Auto-Generation Ratio itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$A = \dfrac{100}{3} \approx 33$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Hypothesis</h3>
 <div class="math-block">
 <div class="math-row">Derived: $A \approx 33$ (auto-generated parameters per input, 0 consistency errors)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Observed: 100+ parameters from 3 inputs, vs. 19 individually entered in the Standard Model</div>
 </div>
 <p>Verdict: <strong>Hypothesis</strong>. The auto-generation ratio of 33 parameters per input closes structurally, but until a prototype simulator validates the agreement between auto- and manually entered parameters it remains Class III.</p>

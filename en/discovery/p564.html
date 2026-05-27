@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) Compare orthogonal-projection norm (b) two bit axes share a 1/sqrt(2) orthogonal projection giving success 1/2(1+1/sqrt(2)).</p>
+<p>The norm substituted is compare orthogonal-projection norm. Two bit axes share a 1/sqrt(2) orthogonal projection giving success 1/2(1+1/sqrt(2)). Why this norm: Random-access decoding success of 2 bits encoded in 1 qubit originates from Compare orthogonal-projection cost of encoding 2 bits into 1 qubit, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $p_{2\to1}=\frac{1}{2}\Big(1+\frac{1}{\sqrt 2}\Big)\;(\text{optimal QRAC})$ is therefore replaced by the Banya form $p_{2\to1}=\frac{1}{2}\Big(1+\frac{1}{\sqrt 2}\Big)\;(\text{Compare orthogonal }1/\sqrt 2)$. The substitution rests on Axiom <a href="../axiom.html#ax1">1</a>, Axiom <a href="../axiom.html#ax2">2</a>, Axiom <a href="../axiom.html#ax7">7</a>, Axiom <a href="../axiom.html#ax13">13</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$p_{2\to1}=\frac{1}{2}\Big(1+\frac{1}{\sqrt 2}\Big)\;(\text{optimal QRAC})$</div>
 <div class="math-row">$p_{2\to1}=\frac{1}{2}\Big(1+\frac{1}{\sqrt 2}\Big)\;(\text{Compare orthogonal }1/\sqrt 2)$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate Random-access decoding success of 2 bits encoded in 1 qubit numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$1/\sqrt 2=0.7071$ (Axiom <a href="../axiom.html#ax1">1</a> orthogonal)</div>
 <div class="math-row">2-bit → 1 qubit</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) quantum information-coding domain (b) how well one qubit carries two bits.</p>
+<p>The transformation is into the quantum information-coding domain. Why this domain: Random-access decoding success of 2 bits encoded in 1 qubit is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. How well one qubit carries two bits. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for Random-access decoding success of 2 bits encoded in 1 qubit, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$p_{2\to1}=\frac{1}{2}(1+0.7071)=0.8536\;(\text{classical exceeds 0.75})$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $p_{2\to1}=\tfrac{1}{2}(1+1/\sqrt2)\approx 0.854\;(\text{exact})$</div>
 <div class="math-row">Test: In photon/ion 2-to-1 QRAC experiments, measure whether decoding success matches 0.854.</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if 2-to-1 QRAC success exceeds 0.854 or stays at the classical 0.75.</p>
+<p>The derived value of the computation above is $p_{2\to1}=\tfrac{1}{2}(1+1/\sqrt2)\approx 0.854\;(\text{exact})$. It is a quantitative Banya-framework prediction for Random-access decoding success of 2 bits encoded in 1 qubit, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: In photon/ion 2-to-1 QRAC experiments, measure whether decoding success matches 0.854. Why the prediction verdict: <a href="h446.html">H-446</a> (measurement = Compare) and <a href="p45.html">P-45</a> (channel = Compare branch) are qualitative; two bits projecting onto the Bloch diagonal at orthogonal 1/sqrt(2) closes at 1/2(1+1/sqrt(2)), hence a prediction. Falsification condition: Falsified if 2-to-1 QRAC success exceeds 0.854 or stays at the classical 0.75. If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the CAS atomicity norm (<a href="../axiom.html#ax2">Axiom 2</a> unique operator). (b) This norm is chosen because compare-and-swap must be one indivisible step for the consistency of concurrent updates to be guaranteed. This atomicity requirement is not confined to nature; it applies identically to all parallel computation. So physics CAS is substituted by the hardware CAS instruction to expose the isomorphism.</p>
+<p>(a) The norm being substituted is the CAS atomicity norm (<a href="../axiom.html#ax2">Axiom 2</a> unique operator). (b) This norm is chosen because compare-and-swap must be one indivisible step for the consistency of concurrent updates to be guaranteed. This atomicity requirement is not confined to nature; it applies identically to all parallel computation. So physics CAS is substituted by the hardware CAS instruction to expose the isomorphism. Why this norm: Processor CAS Universality itself originates from the CAS Unique Operator, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\text{Banya update} = \text{CAS}(\text{compare}, \text{swap})$</div>
 <div class="math-row">$\forall\, \text{CPU} : \exists\, \text{CAS instruction} \;\Longleftrightarrow\; \text{atomicity required}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Processor CAS Universality numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">x86 : CMPXCHG introduced 1989 (i486)</div>
 <div class="math-row">ARM : LDREX/STREX CAS-equivalent</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The domain transformed into is the computation/hardware domain. (b) What it reveals is whether CAS is the universal primitive of computation. Since all three major ISAs (x86·ARM·RISC-V) place a CAS-equivalent instruction in hardware, the universality fraction closes at 100%. Lock-free data structures, mutexes, and atomic counters all stand on this one operation.</p>
+<p>(a) The domain transformed into is the computation/hardware domain. (b) What it reveals is whether CAS is the universal primitive of computation. Since all three major ISAs (x86·ARM·RISC-V) place a CAS-equivalent instruction in hardware, the universality fraction closes at 100%. Lock-free data structures, mutexes, and atomic counters all stand on this one operation. Why this domain: Processor CAS Universality itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\text{coverage} = 100\% \;\Longrightarrow\; \text{CAS is the universal computational primitive}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: physics CAS and hardware CAS are isomorphic, universality fraction 100%</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: formal isomorphism proof of physics CAS and hardware CAS pending</div>
 <div class="math-row">Grade: B</div>
 </div>

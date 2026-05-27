@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the CAS Compare amplitude-amplification norm. (b) What it reveals is the number of Compare iterations needed to find the target with probability $\sim 1$ among $N$ DATA items (<a href="../axiom.html#ax3">Axiom 3</a>). Since one Compare rotates the amplitude by only $1/\sqrt{N}$, reaching the target requires $\sqrt{N}$ accumulations, so this norm is chosen. The unstructured search is substituted by the amplitude-amplification iteration count.</p>
+<p>(a) The norm being substituted is the CAS Compare amplitude-amplification norm. (b) What it reveals is the number of Compare iterations needed to find the target with probability $\sim 1$ among $N$ DATA items (<a href="../axiom.html#ax3">Axiom 3</a>). Since one Compare rotates the amplitude by only $1/\sqrt{N}$, reaching the target requires $\sqrt{N}$ accumulations, so this norm is chosen. The unstructured search is substituted by the amplitude-amplification iteration count. Why this norm: Grover's Search Iteration Count itself originates from the CAS Compare Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\Delta\theta \approx \dfrac{1}{\sqrt{N}}$ (amplitude rotation per Compare)</div>
 <div class="math-row">$k = \dfrac{\pi}{4}\sqrt{N} = O(\sqrt{N})$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Grover's Search Iteration Count numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">N = $1\times10^{6}$ search-space size</div>
 <div class="math-row">$\sqrt{N}$ = 1000 quantum Compare count</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the quantum/information domain (unstructured search). (b) What it reveals is the difference in Compare counts between quantum and classical for searching $N=10^6$ items. Substituting $N=10^6$ into the $\sqrt{N}$ iteration count yields that value.</p>
+<p>(a) The transformation is into the quantum/information domain (unstructured search). (b) What it reveals is the difference in Compare counts between quantum and classical for searching $N=10^6$ items. Substituting $N=10^6$ into the $\sqrt{N}$ iteration count yields that value. Why this domain: Grover's Search Iteration Count itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$k = \sqrt{10^6} = 1000$ (vs classical $\sim 500000$)</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: quantum $\sim 1000$ Compares, classical $\sim 500000$ Compares ($N=10^6$)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $O(\sqrt{N})$ optimality (BBBV theorem, matches lower bound)</div>
 <div class="math-row">Complexity: $O(\sqrt{N})$</div>
 </div>

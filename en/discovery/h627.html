@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the alignment norm of $N$ entity lock bits, namely the $z$-component average $\langle S_z\rangle$. The collective average, not a single bit magnitude, is substituted because magnetization is the lock-bit alignment degree across the whole ECS lattice, not one bit. Multiplying the alignment degree by the unit magnetic moment gives the macroscopic magnetization.</p>
+<p>The norm being substituted is the alignment norm of $N$ entity lock bits, namely the $z$-component average $\langle S_z\rangle$. The collective average, not a single bit magnitude, is substituted because magnetization is the lock-bit alignment degree across the whole ECS lattice, not one bit. Multiplying the alignment degree by the unit magnetic moment gives the macroscopic magnetization. Why this norm: Spontaneous Magnetization itself originates from CAS lock-Bit Alignment, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$M = N\mu_B\langle S_z\rangle$</div>
 <div class="math-row">$\langle S_z\rangle = \tfrac{1}{2}\tanh\!\left(\dfrac{J\langle S_z\rangle}{k_B T}\right)$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Spontaneous Magnetization numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\mu_{B}$ = $9.274\times10^{-24}$ J/T unit magnetic moment</div>
 <div class="math-row">$k_{B}$ = $1.381\times10^{-23}$ J/K</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the macroscopic-magnetism domain. What it reveals is the temperature boundary above which alignment cannot survive, namely the Curie temperature. The self-consistent equation admits a nonzero $\langle S_z\rangle$ when $k_B T &lt; J$, and this boundary sets the Curie temperature.</p>
+<p>The transformation is into the macroscopic-magnetism domain. What it reveals is the temperature boundary above which alignment cannot survive, namely the Curie temperature. The self-consistent equation admits a nonzero $\langle S_z\rangle$ when $k_B T &lt; J$, and this boundary sets the Curie temperature. Why this domain: Spontaneous Magnetization itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$k_B T_C \approx J$; for $\;T &gt; T_C$, $\langle S_z\rangle = 0$ and $M = 0$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $M = N\mu_B\langle S_z\rangle$, critical $k_B T_C \approx J$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: Fe $T_C = 1043$ K, $\mu_B = 9.274\times10^{-24}$ J/T</div>
 <div class="math-row">Match: structure and temperature dependence agree, axiomatic value of $J$ undetermined</div>
 </div>

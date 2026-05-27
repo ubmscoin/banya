@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the confinement norm of the core-cladding refractive-index difference. The total-internal-reflection critical angle (<a href="h693.html">H-693</a>) sets the admissible incidence-angle range for confinement, so this norm is chosen; the numerical aperture is substituted by the square root of the difference of the two squared indices.</p>
+<p>The norm being substituted is the confinement norm of the core-cladding refractive-index difference. The total-internal-reflection critical angle (<a href="h693.html">H-693</a>) sets the admissible incidence-angle range for confinement, so this norm is chosen; the numerical aperture is substituted by the square root of the difference of the two squared indices. Why this norm: the Optical-Fiber Numerical Aperture itself originates from the ECS Waveguide Confinement Norm, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\sin\theta_c = \dfrac{n_2}{n_1}$</div>
 <div class="math-row">$\text{NA} = \sqrt{n_1^2 - n_2^2}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Optical-Fiber Numerical Aperture numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">n1 = 1.4475 core (1550 $\text{nm}$)</div>
 <div class="math-row">n2 = 1.4424 cladding</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the fiber-confinement domain. What it reveals is NA, the incidence-angle range over which the cost wave is confined in the core. The square root of the core-cladding squared-index difference yields that value.</p>
+<p>The transformation is into the fiber-confinement domain. What it reveals is NA, the incidence-angle range over which the cost wave is confined in the core. The square root of the core-cladding squared-index difference yields that value. Why this domain: the Optical-Fiber Numerical Aperture itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\text{NA} = \sqrt{1.4475^2 - 1.4424^2} = 0.1215$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\text{NA} = 0.1215$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $\text{NA} \approx 0.12$ (single-mode fiber)</div>
 <div class="math-row">Error: $1.2\%$</div>
 </div>

@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the multiple-projection norm $\text{Proj}_i(\text{State})$. (b) A single projection describes only one particle and cannot close the many-body problem; only $N$ projections describe all $N$ particles and their pairwise interactions, so this norm is chosen. Without projections, $N$-body interaction is undescribable (necessity); with $N$ projections, the system closes as independent description plus inter-projection CAS cost (sufficiency). The multi-particle system is therefore substituted by the projection set and its pairwise cost.</p>
+<p>(a) The norm being substituted is the multiple-projection norm $\text{Proj}_i(\text{State})$. (b) A single projection describes only one particle and cannot close the many-body problem; only $N$ projections describe all $N$ particles and their pairwise interactions, so this norm is chosen. Without projections, $N$-body interaction is undescribable (necessity); with $N$ projections, the system closes as independent description plus inter-projection CAS cost (sufficiency). The multi-particle system is therefore substituted by the projection set and its pairwise cost. Why this norm: the Multi-Particle Necessity-and-Sufficiency of Multiple Projection itself originates from the Inter-Projection CAS Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$$\text{Proj}_i(\text{State}) = \text{Particle}_i \quad (i = 1,\dots,N)$$</div>
 <div class="math-row">$$\text{Cost} \sim \binom{N}{2} = \tfrac{N(N-1)}{2} \;\leftrightarrow\; \text{multiple projection necessary and sufficient}$$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Multi-Particle Necessity-and-Sufficiency of Multiple Projection numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">N = 2 => 1 pair = 2-body (gravity, electromagnetism)</div>
 <div class="math-row">N = 3 => 3 pairs = 3-body</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the many-body interaction domain. (b) What it reveals is whether the projection count matches the particle count and the pairwise cost reproduces interaction. At $N=2$ the CAS cost of 2 projections becomes the 2-body force, and at general $N$ the cost accumulates as $N^2$ following the pair count $\binom{N}{2}$.</p>
+<p>(a) The transformation is into the many-body interaction domain. (b) What it reveals is whether the projection count matches the particle count and the pairwise cost reproduces interaction. At $N=2$ the CAS cost of 2 projections becomes the 2-body force, and at general $N$ the cost accumulates as $N^2$ following the pair count $\binom{N}{2}$. Why this domain: the Multi-Particle Necessity-and-Sufficiency of Multiple Projection itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$$N=2:\; \binom{2}{2}=1,\qquad N=3:\; \binom{3}{2}=3,\qquad \text{Cost}\sim N^2$$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Necessity: no projections $\Rightarrow$ $N$-body interaction undescribable</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Sufficiency: $N$ projections $\Rightarrow$ $N$ particles plus $\binom{N}{2}$ pair costs close the system</div>
 <div class="math-row">Check: pair count $N(N-1)/2$ matches the pairwise-interaction count of many-body physics</div>
 </div>

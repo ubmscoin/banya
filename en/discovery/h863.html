@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the binary-entropy norm of the Compare branch — the information norm of the error rate at which the legitimate key and the eavesdropper's information separate. (b) The secret key vanishes at the point where the information the eavesdropper extracts equals the information the legitimate parties lose, and this balance closes at the binary entropy $h(Q)=\tfrac12$ (<a href="../axiom.html#ax3">Axiom 3</a> no-cloning); hence the entropy norm is chosen. The secure key rate is therefore substituted by $1-2h(Q)$.</p>
+<p>(a) The norm being substituted is the binary-entropy norm of the Compare branch — the information norm of the error rate at which the legitimate key and the eavesdropper's information separate. (b) The secret key vanishes at the point where the information the eavesdropper extracts equals the information the legitimate parties lose, and this balance closes at the binary entropy $h(Q)=\tfrac12$ (<a href="../axiom.html#ax3">Axiom 3</a> no-cloning); hence the entropy norm is chosen. The secure key rate is therefore substituted by $1-2h(Q)$. Why this norm: the QKD Eavesdropping Threshold QBER itself originates from CAS Compare Irreversibility, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$r = 1 - 2\,h(Q)$</div>
 <div class="math-row">$h(Q) = -Q\log_2 Q - (1-Q)\log_2(1-Q)$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the QKD Eavesdropping Threshold QBER numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">r threshold = 1 - 2 h(Q) = 0 $\to$ h(Q) = 0.5</div>
 <div class="math-row">h(0.11) = 0.4999 binary entropy</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is from the information-entropy domain into the measurement-error-rate domain (QBER). (b) What it reveals is the threshold error rate $Q_{\text{th}}$ at which the secret-key rate vanishes — the threshold above which eavesdropping is structurally detected. Solving the root of $h(Q)=\tfrac12$ yields that value.</p>
+<p>(a) The transformation is from the information-entropy domain into the measurement-error-rate domain (QBER). (b) What it reveals is the threshold error rate $Q_{\text{th}}$ at which the secret-key rate vanishes — the threshold above which eavesdropping is structurally detected. Solving the root of $h(Q)=\tfrac12$ yields that value. Why this domain: the QKD Eavesdropping Threshold QBER itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$h(Q_{\text{th}}) = \tfrac12 \;\;\Rightarrow\;\; Q_{\text{th}} = 0.1100 = 11.0\%$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $Q_{\text{th}} = 11.0\%$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: BB84 security limit $\sim 11\%$ (experimental QKD)</div>
 <div class="math-row">Error: $&lt; 1\%$</div>
 </div>

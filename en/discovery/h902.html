@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the CAS cost +1 norm. In the irreversible-cost classification (<a href="../axiom.html#ax4">Axiom 4</a>), one irreversible unit closes as the thermodynamically non-erasable minimum energy, and this cost is identical to the Landauer limit, which is why this norm is chosen. CAS cost 1 = 1 bit = $E_{\min}$.</p>
+<p>The norm being substituted is the CAS cost +1 norm. In the irreversible-cost classification (<a href="../axiom.html#ax4">Axiom 4</a>), one irreversible unit closes as the thermodynamically non-erasable minimum energy, and this cost is identical to the Landauer limit, which is why this norm is chosen. CAS cost 1 = 1 bit = $E_{\min}$. Why this norm: the Minimum Energy per Bit itself originates from CAS Cost +1, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$E_{\min} = k_B T \ln 2 \;\; \text{per bit}$</div>
 <div class="math-row">$1\;\text{CAS cost} = 1\;\text{bit} = E_{\min}$</div>
@@ -85,16 +85,17 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Minimum Energy per Bit numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$k_{B}$ = $1.380649\times10^{-23}$ J/K</div>
 <div class="math-row">T = 300 K</div>
-<div class="math-row">$\ln$ 2 = 0.6931472</div>
-<div class="math-row">$E_{min}$ = $k_{B}$ ${\cdot}$ 300 ${\cdot}$ $\ln2$ = $2.87\times10^{-21}$ J Bérut 2012 verified</div>
+<div class="math-row">ln 2 = 0.6931472</div>
+<div class="math-row">$E_{min}$ = $k_{B}$ ${\cdot}$ 300 ${\cdot}$ ln2 = $2.87\times10^{-21}$ J Bérut 2012 verified</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the information-thermodynamics domain. What it reveals is the minimum energy released to the environment when one bit is erased. Substituting $k_B T \ln 2$ into one irreversible CAS cost unit yields that value.</p>
+<p>The transformation is into the information-thermodynamics domain. What it reveals is the minimum energy released to the environment when one bit is erased. Substituting $k_B T \ln 2$ into one irreversible CAS cost unit yields that value. Why this domain: the Minimum Energy per Bit itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$E_{\min} = (1.380649\times 10^{-23})(300)(0.6931) = 2.87\times 10^{-21}\;\text{J}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $E_{\min} = 2.87\times 10^{-21}\;\text{J}$ (300K, per bit)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: Landauer limit experimentally verified (Bérut 2012)</div>
 <div class="math-row">Status: formula matches experiment, ratio to Planck energy not closed</div>
 </div>

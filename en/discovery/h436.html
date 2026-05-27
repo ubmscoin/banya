@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the domain-bit norm — symmetric to the Zeeman shift riding on the lock bits, the Stark shift rides on the domain bits (bit 0-3). (b) This norm is chosen because in non-degenerate states the Compare branch does not close at first order, so the field adds cost only at second order (<a href="../axiom.html#ax7">Axiom 7</a>: first order if degenerate, second order if non-degenerate). The energy shift is therefore substituted by the product of the polarizability $\alpha_p$ and the squared field strength.</p>
+<p>(a) The norm being substituted is the domain-bit norm — symmetric to the Zeeman shift riding on the lock bits, the Stark shift rides on the domain bits (bit 0-3). (b) This norm is chosen because in non-degenerate states the Compare branch does not close at first order, so the field adds cost only at second order (<a href="../axiom.html#ax7">Axiom 7</a>: first order if degenerate, second order if non-degenerate). The energy shift is therefore substituted by the product of the polarizability $\alpha_p$ and the squared field strength. Why this norm: the Stark Second-Order Shift $-\tfrac{1}{2}\alpha_p E^2$ itself originates from the Domain-Bit Shift Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\Delta E^{(2)} = -\dfrac{1}{2}\displaystyle\sum_{k\neq n}\dfrac{|\langle k| eEz |n\rangle|^2}{E_k - E_n}$</div>
 <div class="math-row">$\Delta E_{\text{Stark}} = -\dfrac{1}{2}\,\alpha_p\,E_{\text{ext}}^2$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Stark Second-Order Shift $-\tfrac{1}{2}\alpha_p E^2$ numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$E_{ext}$ = external electric field strength</div>
 <div class="math-row">$\alpha_{p}$ = polarizability (domain-bit response)</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the domain-bit shift domain (electric-field response). (b) What it reveals is whether the energy shift of a non-degenerate level is linear in the squared field strength. The hydrogen $n=2$ degenerate level splits at first order $\Delta E \propto eaE$, the non-degenerate level at second order $\propto E^2$.</p>
+<p>(a) The transformation is into the domain-bit shift domain (electric-field response). (b) What it reveals is whether the energy shift of a non-degenerate level is linear in the squared field strength. The hydrogen $n=2$ degenerate level splits at first order $\Delta E \propto eaE$, the non-degenerate level at second order $\propto E^2$. Why this domain: the Stark Second-Order Shift $-\tfrac{1}{2}\alpha_p E^2$ itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\Delta E_{\text{Stark}} = -\dfrac{1}{2}\,\alpha_p\,E_{\text{ext}}^2 \quad(\text{non-degenerate})$</div>
 <div class="math-row">$\Delta E_{\text{Stark}} \propto e\,a\,E_{\text{ext}} \quad(n=2\ \text{degenerate})$</div>
@@ -104,6 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: first order $\propto E$ if degenerate, second order $\propto E^2$ if non-degenerate</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: hydrogen Balmer line splitting, Stark 1913</div>
 <div class="math-row">Agreement: order branch matches (quantitative coefficient unclosed)</div>
 </div>

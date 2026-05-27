@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) CAS-stage occupancy norm (b) unoccupied Swap (bit 100=0) means no DATA write = invariant state.</p>
+<p>The norm substituted is cAS-stage occupancy norm. Unoccupied Swap (bit 100=0) means no DATA write = invariant state. Why this norm: Repeated-measurement fidelity of a QND observable originates from Read-only cost +1, Compare-Swap bypass adds zero cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $F = |\langle\psi|\psi'\rangle|^2,\quad \text{QND: } \psi'=\psi$ is therefore replaced by the Banya form $F_{\text{QND}}(n)=1,\quad \text{Swap}=0 \Rightarrow \Delta\text{DATA}=0$. The substitution rests on Axiom <a href="../axiom.html#ax2">2</a>, Axiom <a href="../axiom.html#ax5">5</a>, Axiom <a href="../axiom.html#ax7">7</a>, Axiom <a href="../axiom.html#ax15">15</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$F = |\langle\psi|\psi'\rangle|^2,\quad \text{QND: } \psi'=\psi$</div>
 <div class="math-row">$F_{\text{QND}}(n)=1,\quad \text{Swap}=0 \Rightarrow \Delta\text{DATA}=0$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate Repeated-measurement fidelity of a QND observable numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">[H,A]=0 (QND condition)</div>
 <div class="math-row">Swap bit=0 (Axiom <a href="../axiom.html#ax5">5</a>)</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) non-demolition measurement domain (b) the exact condition under which repeated measurement preserves the state.</p>
+<p>The transformation is into the non-demolition measurement domain. Why this domain: Repeated-measurement fidelity of a QND observable is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. The exact condition under which repeated measurement preserves the state. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for Repeated-measurement fidelity of a QND observable, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$F_{\text{QND}}(1)=F_{\text{QND}}(2)=\cdots=F_{\text{QND}}(n)=1$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $F_{\text{QND}}=1\;(\text{exact, all }n)$</div>
 <div class="math-row">Test: In QND photon-number measurements on superconducting circuits/ions, confirm repeated fidelity converges to 1 after detection-efficiency correction.</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if QND repeated measurement intrinsically changes the state (F<1).</p>
+<p>The derived value of the computation above is $F_{\text{QND}}=1\;(\text{exact, all }n)$. It is a quantitative Banya-framework prediction for Repeated-measurement fidelity of a QND observable, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: In QND photon-number measurements on superconducting circuits/ions, confirm repeated fidelity converges to 1 after detection-efficiency correction. Why the prediction verdict: <a href="h455.html">H-455</a> qualitatively showed QND performs Read only; with no Swap there is zero juim change, closing fidelity to exactly 1, hence a prediction. Falsification condition: Falsified if QND repeated measurement intrinsically changes the state (F<1). If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the FSM norm band gap inherited from <a href="h618.html">H-618</a>. (b) This norm is chosen because conductivity is decided by whether the Fermi surface lies inside a band (gap=0) or inside the gap. If the RLU thermal energy (<a href="../axiom.html#ax6">Axiom 6</a>) exceeds the gap, cost transfer opens; if smaller, it is blocked.</p>
+<p>(a) The norm being substituted is the FSM norm band gap inherited from <a href="h618.html">H-618</a>. (b) This norm is chosen because conductivity is decided by whether the Fermi surface lies inside a band (gap=0) or inside the gap. If the RLU thermal energy (<a href="../axiom.html#ax6">Axiom 6</a>) exceeds the gap, cost transfer opens; if smaller, it is blocked. Why this norm: the Conductor/Insulator Classification itself originates from the Presence or Absence of the FSM Norm Gap, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$E_g = 0 \implies \text{conductor}$</div>
 <div class="math-row">$E_g &gt; 0 \implies \text{insulator/semiconductor}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Conductor/Insulator Classification numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$E_{g}(Cu)$ = 0 $\text{eV}$ conductor</div>
 <div class="math-row">$E_{g}(Si)$ = 1.12 $\text{eV}$ semiconductor</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the condensed-matter (conductivity) domain. (b) What it reveals is the material classification by gap value. A gap of 0 is a conductor, a small gap overcome by RLU thermal energy is a semiconductor, and above $3\ \text{eV}$ is an insulator.</p>
+<p>(a) The transformation is into the condensed-matter (conductivity) domain. (b) What it reveals is the material classification by gap value. A gap of 0 is a conductor, a small gap overcome by RLU thermal energy is a semiconductor, and above $3\ \text{eV}$ is an insulator. Why this domain: the Conductor/Insulator Classification itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$E_g(\text{Cu})=0 \implies \text{conductor}, \quad E_g(\text{Si})=1.12\ \text{eV} \implies \text{semiconductor}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $E_g=0$ conductor, $E_g&gt;0$ insulator</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: Cu $0$, Si $1.12\ \text{eV}$, diamond $5.5\ \text{eV}$</div>
 <div class="math-row">Status: classification matches, per-material gap not derived</div>
 </div>

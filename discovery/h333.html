@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 observer 축 노름이다. (b) 제노 효과는 잦은 관측이 Swap(붕괴)을 막는 현상이므로, $\delta^2$의 observer 성분을 단위 시간당 필터 재시작 횟수로 치환한다. 관측 간격 $\Delta t$가 작아 trigger·filter·재시작 루프가 update·render보다 빨리 돌면, 붕괴 폭이 $(\Gamma\Delta t)^2$로 억제된다.</p>
+<p>(a) 치환하는 노름은 observer 축 노름이다. (b) 제노 효과는 잦은 관측이 Swap(붕괴)을 막는 현상이므로, $\delta^2$의 observer 성분을 단위 시간당 필터 재시작 횟수로 치환한다. 관측 간격 $\Delta t$가 작아 trigger·filter·재시작 루프가 update·render보다 빨리 돌면, 붕괴 폭이 $(\Gamma\Delta t)^2$로 억제된다. 왜 이 노름인가 — 양자 제노 비붕괴 확률 자체가 필터 재시작 빈도에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$P_1 \approx 1 - (\Gamma\,\Delta t)^2$</div>
 <div class="math-row">$P_N \approx \left(1 - (\Gamma t/N)^2\right)^N \;\Rightarrow\; 1 \;\;(N \to \infty)$</div>
@@ -84,6 +84,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 양자 제노 비붕괴 확률 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">$\Delta$ t = t/N 관측 간격 (필터 재시작 주기)</div>
 <div class="math-row">$P_{1}$ = 1 - ($\Gamma$ $\Delta$ $t)^{2}$ 1회 관측 비붕괴 확률</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 양자·정보 도메인(Compare 분기)으로 변환한다. (b) 보려는 것은 $N$회 관측 후 상태가 붕괴하지 않을 확률 $P_N$이다. 필터 재시작이 $N$번 일어나면 각 구간의 붕괴 폭이 $(\Gamma t/N)^2$로 작아져 곱이 1로 수렴한다.</p>
+<p>(a) 양자·정보 도메인(Compare 분기)으로 변환한다. (b) 보려는 것은 $N$회 관측 후 상태가 붕괴하지 않을 확률 $P_N$이다. 필터 재시작이 $N$번 일어나면 각 구간의 붕괴 폭이 $(\Gamma t/N)^2$로 작아져 곱이 1로 수렴한다. 왜 이 도메인으로 변환하는가 — 양자 제노 비붕괴 확률 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$P_N = \left(1 - (\Gamma t/N)^2\right)^N \xrightarrow{\,N\to\infty\,} 1$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출 구조: $P_N \to 1$ as $N \to \infty$ (관측 빈도 클수록 동결)</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">측정: Itano et al. 1990 이온 트랩 — 잦은 관측이 불안정 상태 수명 연장</div>
 <div class="math-row">대조: $(\Gamma\Delta t)^2$ 단주기 의존성 일치, 절대 오차 미산출</div>
 </div>

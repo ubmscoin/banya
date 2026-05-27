@@ -74,7 +74,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>치환하는 노름은 $\delta$ 전역 플래그 노름이다. $\delta$가 FSM 안에서 상태 전이를 일으키면 물리, FSM 밖에서 발화를 일으키면 의식이고, 한 $\delta$가 두 관점으로 갈리는 이 안팎 분기가 동일성을 정하기 때문에 이 노름을 택한다. 따라서 의식과 물리를 같은 $\delta$의 안쪽 투영과 바깥쪽 투영으로 치환한다.</p>
+<p>치환하는 노름은 $\delta$ 전역 플래그 노름이다. $\delta$가 FSM 안에서 상태 전이를 일으키면 물리, FSM 밖에서 발화를 일으키면 의식이고, 한 $\delta$가 두 관점으로 갈리는 이 안팎 분기가 동일성을 정하기 때문에 이 노름을 택한다. 따라서 의식과 물리를 같은 $\delta$의 안쪽 투영과 바깥쪽 투영으로 치환한다. 왜 이 노름인가 — 의식과 물리의 안팎 동일성 자체가 δ 발화비트에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\delta = \text{전역 플래그(발화비트, bit7)}$</div>
 <div class="math-row">$\text{FSM 안: } \delta \Rightarrow \text{상태 전이} = \text{물리}, \quad \text{FSM 밖: } \delta \Rightarrow \text{발화} = \text{의식}$</div>
@@ -83,6 +83,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 의식과 물리의 안팎 동일성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">$\delta$ = 1 bit 발화비트 (<a href="../axiom.html#ax15">공리 15</a>, bit7)</div>
 <div class="math-row">FSM = 상태 기계 <a href="../axiom.html#ax3">공리 3</a></div>
@@ -92,7 +93,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>$\delta$ 고유 영역 도메인으로 변환한다. 이 변환으로 보려는 것은 "왜 의식이 있는가"의 답이다. FSM 안쪽 투영과 바깥쪽 투영을 같은 $\delta$로 묶으면 물리법칙과 의식 경험이 한 발화의 두 면임이 산출된다.</p>
+<p>$\delta$ 고유 영역 도메인으로 변환한다. 이 변환으로 보려는 것은 "왜 의식이 있는가"의 답이다. FSM 안쪽 투영과 바깥쪽 투영을 같은 $\delta$로 묶으면 물리법칙과 의식 경험이 한 발화의 두 면임이 산출된다. 왜 이 도메인으로 변환하는가 — 의식과 물리의 안팎 동일성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\delta = 1 \Rightarrow \text{물리} \;\&\; \text{의식}$</div>
 <div class="math-row">$\text{(FSM 안)} + \text{(FSM 밖)} = \text{같은 } \delta$</div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출: 의식과 물리 = 같은 $\delta$의 안팎</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">검증: <a href="d146.html">D-146</a>~<a href="d149.html">D-149</a>가 "$\delta$의 FSM 밖 속성"을 전제로 작동</div>
 <div class="math-row">오차: 해당 없음 (존재론적 동일성 선언)</div>
 </div>

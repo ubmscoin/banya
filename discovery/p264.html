@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a)Compare 분기 확률 노름 (b)각 분기 확률 제곱합 = 밀도행렬 순도.</p>
+<p>치환하는 노름은 Compare 분기 확률 노름이다. 각 분기 확률 제곱합 = 밀도행렬 순도. 왜 이 노름인가 — 사영 측정 후 축소 상태의 순도는 Compare true 시 Swap 붕괴 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되, 반야식은 그 양을 CAS 비용 항으로만 다시 쓴 것이기 때문이다. 그래서 물리식 $\text{Tr}(\rho^2)=\sum_k p_k^2,\;\; p_k=\langle k|\rho|k\rangle$를 반야 치환식 $\text{Tr}(\rho_{\text{post}}^2)=\sum_k \Pr(\text{Compare true}_k)^2$로 옮긴다. 이 치환의 근거 공리는 <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax7">공리 7</a>, <a href="../axiom.html#ax13">공리 13</a>, <a href="../axiom.html#ax1">공리 1</a>이며, 우변의 각 기호는 아래 범례에서 정의한다.</p>
 <div class="math-block">
 <div class="math-row">$\text{Tr}(\rho^2)=\sum_k p_k^2,\;\; p_k=\langle k|\rho|k\rangle$</div>
 <div class="math-row">$\text{Tr}(\rho_{\text{post}}^2)=\sum_k \Pr(\text{Compare true}_k)^2$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 사영 측정 후 축소 상태의 순도를 수치로 산출하는 데 필요한 입력이 이들 3개로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고, 순환 논증이 끼어들 여지가 없다. 아래 표에 각 상수의 값과 그 출처(카드${\cdot}$공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">$\sum_k p_k = 1$ (정규화)</div>
 <div class="math-row">$p_k = \Pr(\text{Compare true}_k)$ (<a href="../axiom.html#ax2">공리 2</a>)</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a)측정 붕괴 도메인 (b)측정이 순수 상태를 얼마나 혼합시키는가 본다.</p>
+<p>측정 붕괴 도메인으로 변환한다. 왜 이 도메인으로 변환하는가 — 사영 측정 후 축소 상태의 순도는 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 측정이 순수 상태를 얼마나 혼합시키는가 본다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어, 외부 입력 없이 좌변 관측량이 결정되기 때문이다. 대입한 상수로 아래 식을 계산해 도출값을 얻는다. 이 값이 사영 측정 후 축소 상태의 순도의 이론 예측이며, 다음 단계에서 측정값과 대조한다.</p>
 <div class="math-block">
 <div class="math-row">$\text{Tr}(\rho_{\text{post}}^2)=\sum_k p_k^2\geq\frac{1}{d}\;(\text{균등에서 등호})$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">예측값: $\text{Tr}(\rho_{\text{post}}^2)_{\min}=\frac{1}{d}\;(\text{균등 측정, exact})$</div>
 <div class="math-row">검증: 큐딧 비선택 측정 후 상태 단층촬영으로 순도가 $\Sigma$ $p_k^{2}$와 일치하고 균등시 1/d인지 확인.</div>
 </div>
-<p>판정: <strong>예측</strong>. 비선택 측정 후 순도가 $\Sigma$ $p_k^{2}$와 다르거나 균등시 1/d 아니면 반증.</p>
+<p>위 계산의 도출값은 $\text{Tr}(\rho_{\text{post}}^2)_{\min}=\frac{1}{d}\;(\text{균등 측정, exact})$이다. 이 값은 사영 측정 후 축소 상태의 순도에 대한 반야프레임의 정량 예측으로, 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 도출된 결과다. 검증 경로는 다음과 같다 — 큐딧 비선택 측정 후 상태 단층촬영으로 순도가 $\Sigma$ $p_k^{2}$와 일치하고 균등시 1/d인지 확인. 왜 예측 판정인가 — <a href="h447.html">H-447</a>(붕괴=$Swap){\cdot}H-13($붕괴=쓰기)는 정성이다. Compare 분기 확률의 제곱합이 순도로 닫히고 균등시 1/d로 바닥치므로 예측이다. 반증 조건은 다음과 같다 — 비선택 측정 후 순도가 $\Sigma$ $p_k^{2}$와 다르거나 균등시 1/d 아니면 반증. 이 조건이 충족되면 본 도출은 폐기된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>

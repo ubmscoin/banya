@@ -73,7 +73,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the CAS cost-subtraction norm. Internal energy is the accumulated CAS cost and the RLU recovery is the thermally returned part of it, so the work-usable remainder is read through this subtraction — which is why the norm is chosen. The Helmholtz free energy is substituted as the CAS total cost minus the RLU recoverable cost.</p>
+<p>The norm being substituted is the CAS cost-subtraction norm. Internal energy is the accumulated CAS cost and the RLU recovery is the thermally returned part of it, so the work-usable remainder is read through this subtraction — which is why the norm is chosen. The Helmholtz free energy is substituted as the CAS total cost minus the RLU recoverable cost. Why this norm: the Helmholtz Free Energy itself originates from the CAS Total Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$F = U - TS$</div>
 <div class="math-row">$F = C_\text{tot} - C_\text{RLU}$</div>
@@ -82,16 +82,17 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Helmholtz Free Energy numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$C_{tot}$ : CAS accumulated cost = internal energy U Axiom <a href="../axiom.html#ax4">4</a></div>
 <div class="math-row">$C_{RLU}$ : RLU decay recovery = T S Axiom <a href="../axiom.html#ax6">6</a></div>
-<div class="math-row">S : $\log$ of state count = entropy <a href="h567.html">H-567</a></div>
+<div class="math-row">S : log of state count = entropy <a href="h567.html">H-567</a></div>
 <div class="math-row">sense : CAS irreversible ==> dF $\le$ 0 Axiom <a href="../axiom.html#ax5">5</a></div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the isothermal-work domain. What it reveals is the equilibrium condition — which direction the free energy flows. Because CAS irreversibility (<a href="../axiom.html#ax5">Axiom 5</a>) accumulates cost in one direction only, $F$ can only decrease in an isothermal process and halts where the recoverable cost is maximal.</p>
+<p>The transformation is into the isothermal-work domain. What it reveals is the equilibrium condition — which direction the free energy flows. Because CAS irreversibility (<a href="../axiom.html#ax5">Axiom 5</a>) accumulates cost in one direction only, $F$ can only decrease in an isothermal process and halts where the recoverable cost is maximal. Why this domain: the Helmholtz Free Energy itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$dF = dU - T\,dS \le 0 \;\text{ (isothermal)},\quad F_\text{min} \Leftrightarrow C_\text{RLU}\ \text{maximal}$</div>
 </div>
@@ -100,6 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $F = C_\text{tot} - C_\text{RLU}$; isothermal equilibrium is $F$ minimal = RLU recovery maximal</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $dF \le 0$ (isothermal) and the free-energy minimization principle — universally confirmed in chemical equilibria and phase transitions</div>
 <div class="math-row">Quantitative formula for $C_\text{RLU}$: incomplete (grade B)</div>
 </div>

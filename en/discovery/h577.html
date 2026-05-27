@@ -73,7 +73,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the <a href="../axiom.html#ax4">Axiom 4</a> Swap-non-exclusion norm. (b) It is chosen because the occupancy $n$ of one slot runs over all of $\{0,1,2,\dots\}$, making the per-slot sum an infinite geometric series. With common ratio $e^{-(\epsilon-\mu)/k_BT}&lt;1$, the series closes to $1/(1-e^{-x})$, and taking the mean occupancy fixes the denominator sign to $-1$.</p>
+<p>(a) The norm being substituted is the <a href="../axiom.html#ax4">Axiom 4</a> Swap-non-exclusion norm. (b) It is chosen because the occupancy $n$ of one slot runs over all of $\{0,1,2,\dots\}$, making the per-slot sum an infinite geometric series. With common ratio $e^{-(\epsilon-\mu)/k_BT}&lt;1$, the series closes to $1/(1-e^{-x})$, and taking the mean occupancy fixes the denominator sign to $-1$. Why this norm: the Bose-Einstein Distribution itself originates from the CAS Swap Non-Exclusion Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\bar n = \dfrac{\sum_n n\,e^{-n(\epsilon-\mu)/k_BT}}{\sum_n e^{-n(\epsilon-\mu)/k_BT}},\quad n\in\{0,1,2,\dots\}$</div>
 <div class="math-row">$f(\epsilon) = \dfrac{1}{e^{(\epsilon-\mu)/k_BT} - 1}$</div>
@@ -82,6 +82,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Bose-Einstein Distribution numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">n in {0, 1, 2, ...} CAS Swap non-exclusion (Axiom <a href="../axiom.html#ax4">4</a>)</div>
 <div class="math-row">$k_{B}$ = $1.380649\times10^{-23}$ J/K CODATA 2018</div>
@@ -90,7 +91,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the occupancy-number distribution of quantum statistics. (b) What it reveals is the mean occupancy of a single state of cost $\epsilon$. Closing the numerator and denominator of the infinite geometric series and taking $\bar n$ leaves the $-1$ in the denominator.</p>
+<p>(a) The transformation is into the occupancy-number distribution of quantum statistics. (b) What it reveals is the mean occupancy of a single state of cost $\epsilon$. Closing the numerator and denominator of the infinite geometric series and taking $\bar n$ leaves the $-1$ in the denominator. Why this domain: the Bose-Einstein Distribution itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\bar n = \dfrac{e^{-x}/(1-e^{-x})^2}{1/(1-e^{-x})} = \dfrac{e^{-x}}{1-e^{-x}} = \dfrac{1}{e^{x}-1}$</div>
 </div>
@@ -99,6 +100,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $f(\epsilon) = 1/(e^{(\epsilon-\mu)/k_BT}-1)$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Standard form: Bose-Einstein distribution (1924)</div>
 <div class="math-row">Match: denominator sign $-1$ exact</div>
 </div>

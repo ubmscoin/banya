@@ -80,7 +80,7 @@ Structural consequence: the FSM's sequential constraint (<a href="../axiom.html#
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the sequential-cost norm of the CAS 3 steps. It is chosen because the code distance closes through the ordering constraint between steps, and the 2 logical qubits correspond to the 2-nibble structure of the firing bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>). The code $[n,k,d]$ is therefore substituted by the CAS 3-step sequential structure.</p>
+<p>The norm being substituted is the sequential-cost norm of the CAS 3 steps. It is chosen because the code distance closes through the ordering constraint between steps, and the 2 logical qubits correspond to the 2-nibble structure of the firing bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>). The code $[n,k,d]$ is therefore substituted by the CAS 3-step sequential structure. Why this norm: the FSM [3,2,2] Code Distance itself originates from the CAS 3-Step Sequential Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$[n,k,d]$</div>
 <div class="math-row">$\text{FSM}[3,2,2]: \quad n=3,\; k=2,\; d=2$</div>
@@ -89,6 +89,7 @@ Structural consequence: the FSM's sequential constraint (<a href="../axiom.html#
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the FSM [3,2,2] Code Distance numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">n = 3 CAS 3 steps (Axiom <a href="../axiom.html#ax2">2</a>)</div>
 <div class="math-row">k = 2 $\delta$ 2 nibbles (Axiom <a href="../axiom.html#ax15">15</a>)</div>
@@ -98,7 +99,7 @@ Structural consequence: the FSM's sequential constraint (<a href="../axiom.html#
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the Banya-structure domain (code distance). What it reveals is the ability to detect a single-bit error — the detection limit of distance $d=2$. The number of detectable errors $d-1$ is obtained from the distance.</p>
+<p>The transformation is into the Banya-structure domain (code distance). What it reveals is the ability to detect a single-bit error — the detection limit of distance $d=2$. The number of detectable errors $d-1$ is obtained from the distance. Why this domain: the FSM [3,2,2] Code Distance itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$d - 1 = 2 - 1 = 1 \;\text{(single-bit error detection)}$</div>
 <div class="math-row">$P_{\text{detect}} = 1 - 2^{-(d-1)} = 1 - \tfrac{1}{2} = 0.5$</div>
@@ -108,6 +109,7 @@ Structural consequence: the FSM's sequential constraint (<a href="../axiom.html#
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $[3,2,2]$, single-error detection 100%, correction 0%</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Reference: the $[3,2,2]$ code's $d=2$ definition (detection only, no correction)</div>
 <div class="math-row">Error: $0\%$ (matches definition; correction unreached since $d=2$)</div>
 </div>

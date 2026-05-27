@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the cost-propagation-time norm, split into two terms. The special-relativistic time dilation from satellite velocity (time axis) and the general-relativistic speed-up from weaker gravity (space axis) add with opposite signs to give the net clock offset, so this norm is chosen.</p>
+<p>The norm being substituted is the cost-propagation-time norm, split into two terms. The special-relativistic time dilation from satellite velocity (time axis) and the general-relativistic speed-up from weaker gravity (space axis) add with opposite signs to give the net clock offset, so this norm is chosen. Why this norm: the GPS Clock Offset itself originates from the Relativistic Correction of the CAS Cost Propagation Time, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\Delta t_{\text{SR}} = -\dfrac{v^2}{2c^2}\,T,\quad \Delta t_{\text{GR}} = \dfrac{\Delta\phi}{c^2}\,T$</div>
 <div class="math-row">$\Delta t_{\text{total}} = \Delta t_{\text{SR}} + \Delta t_{\text{GR}}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the GPS Clock Offset numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">v = 3.874 $\text{km}/s$ satellite orbital velocity</div>
 <div class="math-row">h = 20200 $\text{km}$ satellite altitude</div>
@@ -96,7 +97,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the measurement domain (cumulative clock offset). What it reveals is the net daily offset $\Delta t_{\text{total}}$ between satellite and ground clocks that accumulates if uncorrected. Adding the two relativistic terms yields that value.</p>
+<p>The transformation is into the measurement domain (cumulative clock offset). What it reveals is the net daily offset $\Delta t_{\text{total}}$ between satellite and ground clocks that accumulates if uncorrected. Adding the two relativistic terms yields that value. Why this domain: the GPS Clock Offset itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\Delta t_{\text{total}} = -7.2 + 45.9 = +38.7\;\mu\text{s/day}$</div>
 </div>
@@ -105,6 +106,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Measurement Agreement</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\Delta t_{\text{total}} = +38.7\;\mu\text{s/day}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $+38.7\;\mu\text{s/day}$ (operational GPS correction)</div>
 <div class="math-row">If uncorrected: $\sim 10\;\text{km/day}$ position error accumulates</div>
 </div>

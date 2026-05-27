@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the connection-cost minimization norm. Preferring same-domain connections (cost 0) creates high clustering, while a few cross-domain connections (cost 1) shrink the diameter logarithmically — the topology that minimizes total cost forces both properties at once, so this norm is chosen.</p>
+<p>The norm being substituted is the connection-cost minimization norm. Preferring same-domain connections (cost 0) creates high clustering, while a few cross-domain connections (cost 1) shrink the diameter logarithmically — the topology that minimizes total cost forces both properties at once, so this norm is chosen. Why this norm: Small-World Topology itself originates from CAS Connection-Cost Minimization, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$C_{\text{net}} = n_0\cdot 0 + n_1\cdot 1 = n_1$</div>
 <div class="math-row">$\min C_{\text{net}} \;\Rightarrow\; L \sim \ln N,\; C \gg C_{\text{rand}}$</div>
@@ -85,16 +85,17 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Small-World Topology numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$cost_{intra}$ = 0 intra-domain connection Axiom <a href="../axiom.html#ax4">4</a></div>
 <div class="math-row">$cost_{cross}$ = 1 cross-domain connection Axiom <a href="../axiom.html#ax4">4</a></div>
-<div class="math-row">L $\sim$ $\ln$ N cross links shrink diameter</div>
-<div class="math-row">C >> $\ln$ N / N intra preference keeps clustering</div>
+<div class="math-row">L $\sim$ ln N cross links shrink diameter</div>
+<div class="math-row">C >> ln N / N intra preference keeps clustering</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the network-topology domain. What it reveals is the path-length and clustering scale of the cost-minimal topology. Minimizing the cross-connection count $n_1$ yields the asymptotics of $L$ and $C$.</p>
+<p>The transformation is into the network-topology domain. What it reveals is the path-length and clustering scale of the cost-minimal topology. Minimizing the cross-connection count $n_1$ yields the asymptotics of $L$ and $C$. Why this domain: Small-World Topology itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$L \sim \ln N \;\ll\; N, \qquad C \gg C_{\text{rand}} \sim \dfrac{\ln N}{N}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $L\sim\ln N$ (short path) and $C\gg C_{\text{rand}}$ (high clustering) coexist</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: Watts-Strogatz model = regular lattice (intra-domain) + random shortcuts (cross)</div>
 <div class="math-row">Result: cost-minimal topology qualitatively matches the small-world definition</div>
 </div>

@@ -73,7 +73,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the CAS accumulated-cost norm (<a href="../axiom.html#ax4">Axiom 4</a> cost-$+1$ conservation). (b) This norm is chosen because cost is neither newly created nor destroyed but only transferred, with RLU recovery (<a href="../axiom.html#ax6">Axiom 6</a>) corresponding to heat exchange and FSM norm change to work. Internal energy is therefore substituted by accumulated CAS cost, and heat and work by the transfer paths of that cost.</p>
+<p>(a) The norm being substituted is the CAS accumulated-cost norm (<a href="../axiom.html#ax4">Axiom 4</a> cost-$+1$ conservation). (b) This norm is chosen because cost is neither newly created nor destroyed but only transferred, with RLU recovery (<a href="../axiom.html#ax6">Axiom 6</a>) corresponding to heat exchange and FSM norm change to work. Internal energy is therefore substituted by accumulated CAS cost, and heat and work by the transfer paths of that cost. Why this norm: the First Law of Thermodynamics itself originates from CAS Cost Conservation, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$dU = \delta Q - \delta W$</div>
 <div class="math-row">$d(\text{cost}) = \delta(\text{RLU}) - \delta(\text{FSM norm})$</div>
@@ -82,6 +82,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the First Law of Thermodynamics numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">CAS cycle cost = +1 (exact) Axiom <a href="../axiom.html#ax4">4</a></div>
 <div class="math-row">cost creation/destruction = 0 conservation (transfer only)</div>
@@ -90,7 +91,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the macroscopic thermodynamic domain. (b) What it reveals is whether cost conservation manifests as the invariance of internal energy in a closed system. When cost creation and destruction are 0, the sum of $dU$ is conserved in a closed system.</p>
+<p>(a) The transformation is into the macroscopic thermodynamic domain. (b) What it reveals is whether cost conservation manifests as the invariance of internal energy in a closed system. When cost creation and destruction are 0, the sum of $dU$ is conserved in a closed system. Why this domain: the First Law of Thermodynamics itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\oint dU = 0 \quad (\text{closed system})$</div>
 </div>
@@ -99,6 +100,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $dU = \delta Q - \delta W$ (cost conservation)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: First Law $dU = \delta Q - \delta W$ (no violation observed)</div>
 <div class="math-row">Consistency: form matches; quasi-local energy correspondence incomplete</div>
 </div>

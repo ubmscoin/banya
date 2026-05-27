@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the screening-length norm defined by the ratio of thermal-motion energy to electrostatic energy. (b) This norm is chosen because the distance over which the liberated FSM population masks a charge perturbation is set solely by the balance of the two energies. The thermal energy $\varepsilon_0 k_B T_e$ is divided by the charge-density term $n_e e^2$, and the square root substitutes the length dimension.</p>
+<p>(a) The norm being substituted is the screening-length norm defined by the ratio of thermal-motion energy to electrostatic energy. (b) This norm is chosen because the distance over which the liberated FSM population masks a charge perturbation is set solely by the balance of the two energies. The thermal energy $\varepsilon_0 k_B T_e$ is divided by the charge-density term $n_e e^2$, and the square root substitutes the length dimension. Why this norm: the Debye screening length itself originates from the FSM liberated state, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\lambda_D = \sqrt{\dfrac{\varepsilon_0 k_B T_e}{n_e e^2}}$</div>
 <div class="math-row">$\omega_p = \sqrt{\dfrac{n_e e^2}{\varepsilon_0 m_e}}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Debye screening length numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$T_{e}$ = $1\times10^{4}$ K => kB Te = $1.38\times10^{-19}$ J laboratory plasma</div>
 <div class="math-row">$n_{e}$ = $1\times10^{18}$ $m^{-3}$ typical density</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The domain transformed into is the macroscopic screening-scale domain. (b) What it reveals is the Debye length over which the liberated population masks charge, and the plasma frequency that is its reciprocal time scale.</p>
+<p>(a) The domain transformed into is the macroscopic screening-scale domain. (b) What it reveals is the Debye length over which the liberated population masks charge, and the plasma frequency that is its reciprocal time scale. Why this domain: the Debye screening length itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\lambda_D = \sqrt{\dfrac{8.854\times10^{-12}\times1.38\times10^{-19}}{10^{18}\times(1.602\times10^{-19})^2}} \approx 7\times10^{-6}\,\text{m}$</div>
 <div class="math-row">$\omega_p \approx 5.6\times10^{10}\,\text{rad/s}$</div>
@@ -104,6 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\lambda_D\approx 7\,\mu\text{m}$, $\omega_p\approx 56\,\text{GHz}$ @ $T_e=10^4\,\text{K}$, $n_e=10^{18}\,\text{m}^{-3}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: Debye length $\mu\text{m}$–$\text{mm}$, plasma frequency GHz–THz</div>
 <div class="math-row">Error: within measured range</div>
 </div>

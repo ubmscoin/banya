@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the LRU cache-residency norm of the superposition domain. It is chosen because DATA discreteness (<a href="../axiom.html#ax3">Axiom 3</a>) makes the cache finite so below-threshold items are evicted, and polling (<a href="../axiom.html#ax8">Axiom 8</a>) updates the LRU rank. The exponential decay of the off-diagonal element is therefore substituted by an eviction-time norm inversely proportional to the number of environmental entities $N_{\text{env}}$.</p>
+<p>The norm being substituted is the LRU cache-residency norm of the superposition domain. It is chosen because DATA discreteness (<a href="../axiom.html#ax3">Axiom 3</a>) makes the cache finite so below-threshold items are evicted, and polling (<a href="../axiom.html#ax8">Axiom 8</a>) updates the LRU rank. The exponential decay of the off-diagonal element is therefore substituted by an eviction-time norm inversely proportional to the number of environmental entities $N_{\text{env}}$. Why this norm: the Decoherence Time itself originates from ECS Index LRU Eviction, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\rho_{ij}(t) = \rho_{ij}(0)\,e^{-t/\tau_D},\quad \text{LRU}_{ij}\xrightarrow[\text{evict}]{}0$</div>
 <div class="math-row">$\tau_D \propto \dfrac{1}{N_{\text{env}}}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Decoherence Time numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">superconducting qubit $N_{env}$ $\sim$ 1 => $\tau_{D}$ $\sim$ 100 us measured T2 level</div>
 <div class="math-row">dust particle $N_{env}$ $\sim$ $1\times10^{18}$ => $\tau_{D}$ $\sim$ $1\times10^{-31}$ s Zurek 2003 estimate</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is from the isolated domain into the environment-coupled domain (superposition cache contention). What it reveals is how fast the off-diagonal element is evicted as the number of environmental entities grows. Substituting the two extreme $N_{\text{env}}$ values yields the eviction time.</p>
+<p>The transformation is from the isolated domain into the environment-coupled domain (superposition cache contention). What it reveals is how fast the off-diagonal element is evicted as the number of environmental entities grows. Substituting the two extreme $N_{\text{env}}$ values yields the eviction time. Why this domain: the Decoherence Time itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\tau_D(\text{qubit}) \sim 100\,\mu\text{s} \;\gg\; \tau_D(\text{dust}) \sim 10^{-31}\,\text{s}$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\tau_D \propto 1/N_{\text{env}}$, qubit $\sim 100\,\mu$s · dust $\sim 10^{-31}$ s</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: structurally matches measured superconducting-qubit $T_2$ and Zurek 2003 estimates</div>
 <div class="math-row">Error: structural match (quantitative scaling verification pending)</div>
 </div>

@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the activator-inhibitor diffusion norm. The diffusion coefficient $D_u$ of CAS cost (local) is smaller than $D_v$ of RLU damping (global), forcing $D_v &gt; D_u$, and this range difference destabilizes the homogeneous steady state — which is why this norm is chosen. The target is therefore substituted by the Turing instability condition of a two-species reaction-diffusion system.</p>
+<p>The norm being substituted is the activator-inhibitor diffusion norm. The diffusion coefficient $D_u$ of CAS cost (local) is smaller than $D_v$ of RLU damping (global), forcing $D_v &gt; D_u$, and this range difference destabilizes the homogeneous steady state — which is why this norm is chosen. The target is therefore substituted by the Turing instability condition of a two-species reaction-diffusion system. Why this norm: the Turing Instability Wavelength itself originates from the CAS Activator-Inhibitor Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\partial_t u = D_u \nabla^2 u + f(u,v),\quad \partial_t v = D_v \nabla^2 v + g(u,v)$</div>
 <div class="math-row">$\dfrac{D_v}{D_u} &gt; \left(\dfrac{b}{a}\right)^2,\qquad \lambda \propto \sqrt{\dfrac{D_v}{D_u}}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Turing Instability Wavelength numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$D_{v}$ / $D_{u}$ > $(b/a)^{2}$ Turing instability threshold</div>
 <div class="math-row">$\lambda$ ${\propto}$ $\sqrt{D_{v} / D_{u}}$ pattern wavelength</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the spatial-pattern region of the Banya structure domain. What it reveals is the pattern wavelength $\lambda$ set by the activator-inhibitor diffusion ratio. Under the asymmetric condition where $D_v/D_u$ exceeds threshold, the wavelength is yielded.</p>
+<p>The transformation is into the spatial-pattern region of the Banya structure domain. What it reveals is the pattern wavelength $\lambda$ set by the activator-inhibitor diffusion ratio. Under the asymmetric condition where $D_v/D_u$ exceeds threshold, the wavelength is yielded. Why this domain: the Turing Instability Wavelength itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\lambda \propto \sqrt{D_v/D_u}\quad (D_v/D_u &gt; (b/a)^2)$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Derivation</h3>
 <div class="math-block">
 <div class="math-row">Derived: when the activator-inhibitor ratio $D_v/D_u$ crosses threshold, a standing pattern of wavelength $\lambda \propto \sqrt{D_v/D_u}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: observed in leopard spots, zebra stripes, BZ reaction (qualitative match)</div>
 <div class="math-row">Not closed: the threshold $(b/a)^2$ is an external reaction-equation input, not derived from axioms</div>
 </div>

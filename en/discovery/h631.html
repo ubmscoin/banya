@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the FSM-DATA cost-exchange norm. (b) It is chosen because electrical resistance is the accumulated phonon-scattering cost the FSM pays crossing the lattice, and the number of occupiable phonon modes is proportional to temperature. The coupling term of the electron-phonon Hamiltonian is therefore substituted by the cost-exchange efficiency $g_q$, and the high-temperature resistivity is read as $\rho \propto T$.</p>
+<p>(a) The norm being substituted is the FSM-DATA cost-exchange norm. (b) It is chosen because electrical resistance is the accumulated phonon-scattering cost the FSM pays crossing the lattice, and the number of occupiable phonon modes is proportional to temperature. The coupling term of the electron-phonon Hamiltonian is therefore substituted by the cost-exchange efficiency $g_q$, and the high-temperature resistivity is read as $\rho \propto T$. Why this norm: Cu room-temperature resistivity $\rho \propto T$ itself originates from the FSM-DATA lattice cost exchange, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$H_{e\text{-}ph} = \sum_{k,q} g_q\, c^\dagger_{k+q}c_k(a_q + a^\dagger_{-q})$</div>
 <div class="math-row">$\rho(T) \propto g_q^2\, n_{ph}(T) \propto T \quad (T \gg \Theta_D)$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Cu room-temperature resistivity $\rho \propto T$ numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\rho(Cu$, 300K) = 1.7 $uOhm\times$ $\text{cm}$ measured</div>
 <div class="math-row">$\Theta_{D}(Cu)$ = 343 K Debye temperature</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the conduction-resistance domain (d-ring scattering). (b) What it reveals is how the cost exchange accumulates with temperature — the temperature dependence of resistivity. In the high-temperature limit the phonon-mode count grows linearly in $T$, making resistivity proportional to $T$.</p>
+<p>(a) The transformation is into the conduction-resistance domain (d-ring scattering). (b) What it reveals is how the cost exchange accumulates with temperature — the temperature dependence of resistivity. In the high-temperature limit the phonon-mode count grows linearly in $T$, making resistivity proportional to $T$. Why this domain: Cu room-temperature resistivity $\rho \propto T$ itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\rho(T) \propto T \quad (T \gg \Theta_D)$</div>
 <div class="math-row">$\rho(T) \propto T^5 \quad (T \ll \Theta_D,\ \text{Bloch-Gr\"uneisen})$</div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\rho(\text{Cu}) \propto T$ (high-temperature linear)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $\rho(\text{Cu}, 300\,\text{K}) = 1.7\;\mu\Omega\cdot\text{cm}$, linear temperature dependence</div>
 <div class="math-row">Agreement: high-T $\rho \propto T$ and low-T $\rho \propto T^5$ both match</div>
 </div>

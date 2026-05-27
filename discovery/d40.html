@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 CAS Compare 기댓값 노름이다. (b) 같은 상태에 몇 개의 쥠(juim)이 들어갈 수 있는가를 보려는 것이기 때문에 이 노름을 택한다 — 점유 슬롯의 기댓값이 통계를 가른다. 페르미온은 빈 슬롯에서만 성공하는 1회 점유, 보손은 기존 점유 위에 누적되는 다회 점유로 치환한다(<a href="../axiom.html#ax3">공리 3</a> FSM 상태 전이).</p>
+<p>(a) 치환하는 노름은 CAS Compare 기댓값 노름이다. (b) 같은 상태에 몇 개의 쥠(juim)이 들어갈 수 있는가를 보려는 것이기 때문에 이 노름을 택한다 — 점유 슬롯의 기댓값이 통계를 가른다. 페르미온은 빈 슬롯에서만 성공하는 1회 점유, 보손은 기존 점유 위에 누적되는 다회 점유로 치환한다(<a href="../axiom.html#ax3">공리 3</a> FSM 상태 전이). 왜 이 노름인가 — 스핀-통계 정리 자체가 CAS 원자적 점유 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\bar{n}_{\pm} = \dfrac{1}{e^{(E-\mu)/kT} \mp 1}$</div>
 <div class="math-row">$\text{페르미온}=\mathrm{CAS}(\text{expected}=0,\,\text{new}=1),\quad \text{보손}=\mathrm{CAS}(\text{expected}=N,\,\text{new}=N{+}1)$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 스핀-통계 정리 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">spin 1/2 = CAS 이진 방향 $0\leftrightarrow$ 1 <a href="../axiom.html#ax2">공리 2</a></div>
 <div class="math-row">expected = 0 (페르미온, 1회 점유)</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 원자 점유 도메인(d_atomic)으로 변환한다. (b) 보려는 것은 동일 양자상태의 허용 점유수다. 페르미온은 Compare가 expected=0만 통과시켜 점유수가 0 또는 1로 잘리고, 보손은 expected=N을 통과시켜 무제한 누적된다.</p>
+<p>(a) 원자 점유 도메인(d_atomic)으로 변환한다. (b) 보려는 것은 동일 양자상태의 허용 점유수다. 페르미온은 Compare가 expected=0만 통과시켜 점유수가 0 또는 1로 잘리고, 보손은 expected=N을 통과시켜 무제한 누적된다. 왜 이 도메인으로 변환하는가 — 스핀-통계 정리 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\text{페르미온: } \bar{n}_- \in \{0,1\} \;\Rightarrow\; \text{파울리 배타},\qquad \text{보손: } \bar{n}_+ \to \infty \;\Rightarrow\; \text{BEC}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출: 페르미-디랙 $-1$ / 보스-아인슈타인 $+1$ = CAS 성공/실패 부호</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">대응: 파울리 배타원리 · 보스-아인슈타인 응축</div>
 <div class="math-row">오차: $0\%$ (구조 동형)</div>
 </div>

@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the leptonic-exits-2-over-total-exits norm. It is chosen because the branching ratio is the ratio of the 2 leptonic exits to the total exits, and the 3 hadronic exits carry the first-order color-coupling correction $\alpha_s/\pi$. The leptonic branching ratio is therefore substituted by the reciprocal of the leptonic exits 2 plus the corrected hadronic-exit sum.</p>
+<p>The norm being substituted is the leptonic-exits-2-over-total-exits norm. It is chosen because the branching ratio is the ratio of the 2 leptonic exits to the total exits, and the 3 hadronic exits carry the first-order color-coupling correction $\alpha_s/\pi$. The leptonic branching ratio is therefore substituted by the reciprocal of the leptonic exits 2 plus the corrected hadronic-exit sum. Why this norm: $\text{BR}_{\text{lep}}(\tau)$ itself originates from the LUT Exit-Branching Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\text{BR}_{\text{lep}} = \dfrac{\Gamma_{e}+\Gamma_{\mu}}{\Gamma_{\text{total}}}$</div>
 <div class="math-row">$\text{BR}_{\text{lep}}(\tau) = \dfrac{1}{2+3\left(1+\dfrac{\alpha_s}{\pi}\right)}$</div>
@@ -86,6 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate $\text{BR}_{\text{lep}}(\tau)$ numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">2 = leptonic exits (e, $\mu$) Axiom <a href="../axiom.html#ax6">6</a></div>
 <div class="math-row">3 = CAS 3 stages = color DOF Axiom <a href="../axiom.html#ax3">3</a></div>
@@ -96,7 +97,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the tau-decay branching domain. What it reveals is the probability that the tau decays into a leptonic channel — the leptonic branching ratio. Adding the hadronic exit $3(1+\alpha_s/\pi)$ to the leptonic exits 2 and taking the reciprocal yields that value.</p>
+<p>The transformation is into the tau-decay branching domain. What it reveals is the probability that the tau decays into a leptonic channel — the leptonic branching ratio. Adding the hadronic exit $3(1+\alpha_s/\pi)$ to the leptonic exits 2 and taking the reciprocal yields that value. Why this domain: $\text{BR}_{\text{lep}}(\tau)$ itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\text{BR}_{\text{lep}}(\tau) = \dfrac{1}{2+3\times 1.037656} = \dfrac{1}{5.1130} = 0.196$</div>
 </div>
@@ -105,6 +106,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Hypothesis</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\text{BR}_{\text{lep}}(\tau) = 0.196$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $0.1782 \pm 0.0004$ (PDG 2024)</div>
 <div class="math-row">Error: $9.8\%$</div>
 </div>

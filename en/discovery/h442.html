@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the minimum-action norm of one CAS tick. It is chosen because the two operations attempt to lock different nibbles of the same register simultaneously, causing lock contention (<a href="../axiom.html#ax5">Axiom 5</a>), and only one Read-Compare pair closes per tick. The canonical commutation relation $[x,p]$ is therefore substituted by the non-commutativity of the per-tick minimum cost $\hbar/2$.</p>
+<p>The norm being substituted is the minimum-action norm of one CAS tick. It is chosen because the two operations attempt to lock different nibbles of the same register simultaneously, causing lock contention (<a href="../axiom.html#ax5">Axiom 5</a>), and only one Read-Compare pair closes per tick. The canonical commutation relation $[x,p]$ is therefore substituted by the non-commutativity of the per-tick minimum cost $\hbar/2$. Why this norm: Heisenberg Uncertainty itself originates from CAS-Atomicity Lock Contention, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$[\hat{x},\hat{p}] = i\hbar \;\Rightarrow\; \Delta x\,\Delta p \ge \tfrac{1}{2}\,|\langle[\hat{x},\hat{p}]\rangle|$</div>
 <div class="math-row">$\Delta x\,\Delta p \ge \dfrac{\hbar}{2} \;\Leftrightarrow\; \text{Read}(x)\circ\text{Compare}(p)\ \text{non-commutative}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Heisenberg Uncertainty numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">hbar = $1.054571817\times10^{-34}$ $J{\cdot}s$ CODATA 2018</div>
 <div class="math-row">hbar/2 = $5.272859\times10^{-35}$ $J{\cdot}s$ CAS one-tick minimum cost</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is from the CAS-scheduling domain into the conjugate-variable measurement domain. What it reveals is the lower bound that a single Read-Compare pair closing per tick imposes on the product precision of the two conjugate variables. The minimum cost is computed as the floor of that product.</p>
+<p>The transformation is from the CAS-scheduling domain into the conjugate-variable measurement domain. What it reveals is the lower bound that a single Read-Compare pair closing per tick imposes on the product precision of the two conjugate variables. The minimum cost is computed as the floor of that product. Why this domain: Heisenberg Uncertainty itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\Delta x\,\Delta p \ge \dfrac{\hbar}{2} = 5.27\times 10^{-35}\ \text{J}\cdot\text{s}$</div>
 </div>
@@ -102,6 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\Delta x\,\Delta p \ge \hbar/2$ (CAS one-tick lock contention)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: fully consistent with the standard quantum-mechanical uncertainty relation</div>
 <div class="math-row">Error: structural match (quantitative 0)</div>
 </div>

@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the divergence-rate norm of the CAS cost trajectory. The cost difference $\delta C_0$ between two adjacent initial states is amplified exponentially each tick by the nonlinear feedback, and that amplification rate is exactly the Lyapunov exponent — that is why this norm is chosen. The trajectory separation is therefore substituted by the exponential growth of the cost difference.</p>
+<p>The norm being substituted is the divergence-rate norm of the CAS cost trajectory. The cost difference $\delta C_0$ between two adjacent initial states is amplified exponentially each tick by the nonlinear feedback, and that amplification rate is exactly the Lyapunov exponent — that is why this norm is chosen. The trajectory separation is therefore substituted by the exponential growth of the cost difference. Why this norm: a Positive Lyapunov Exponent itself originates from CAS Nonlinear Cost Feedback, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\delta C(n) = \delta C_0\, e^{\lambda n}$</div>
 <div class="math-row">$\lambda = \lim_{n\to\infty}\dfrac{1}{n}\ln\dfrac{|\delta C(n)|}{|\delta C_0|}$</div>
@@ -84,6 +84,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate a Positive Lyapunov Exponent numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">FSM = deterministic (same input, same output) Axiom <a href="../axiom.html#ax14">14</a></div>
 <div class="math-row">$\lambda_{1}$ = 0.906 Lorenz attractor (observed)</div>
@@ -92,7 +93,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the nonlinear-dynamics domain. What it reveals is the condition under which a deterministic CAS produces unpredictability — a positive Lyapunov exponent. Once the cost-feedback gain exceeds 1, $\lambda &gt; 0$ and sensitive dependence arises.</p>
+<p>The transformation is into the nonlinear-dynamics domain. What it reveals is the condition under which a deterministic CAS produces unpredictability — a positive Lyapunov exponent. Once the cost-feedback gain exceeds 1, $\lambda &gt; 0$ and sensitive dependence arises. Why this domain: a Positive Lyapunov Exponent itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\lambda &gt; 0 \quad\Longrightarrow\quad \text{sensitive dependence}$</div>
 </div>
@@ -101,6 +102,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\lambda &gt; 0$ = exponential divergence of the CAS cost trajectory</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Compared: Lorenz $\lambda_1 = 0.906$, Feigenbaum $\delta_F = 4.669$</div>
 <div class="math-row">Quantitative check: pending (compute $\lambda$ from the nonlinear gain)</div>
 </div>

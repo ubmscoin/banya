@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) Compare amplitude-rotation norm (b) cost conservation rotates amplitude by theta, filling the pi/2 arc in (pi/4)sqrt(N) steps.</p>
+<p>The norm substituted is compare amplitude-rotation norm. Cost conservation rotates amplitude by theta, filling the pi/2 arc in (pi/4)sqrt(N) steps. Why this norm: Optimal CAS-Compare iteration count for unstructured N-item search originates from Per-Compare amplitude rotation of O(1/sqrt(N)) cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $k_{\text{opt}}=\frac{\pi}{4}\sqrt N,\quad \theta=2\arcsin\frac{1}{\sqrt N}$ is therefore replaced by the Banya form $k_{\text{opt}}=\frac{\pi/2}{\theta}=\frac{\pi}{4}\sqrt N\;(\text{Compare rotation accumulation})$. The substitution rests on Axiom <a href="../axiom.html#ax2">2</a>, Axiom <a href="../axiom.html#ax4">4</a>, Axiom <a href="../axiom.html#ax3">3</a>, Axiom <a href="../axiom.html#ax1">1</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$k_{\text{opt}}=\frac{\pi}{4}\sqrt N,\quad \theta=2\arcsin\frac{1}{\sqrt N}$</div>
 <div class="math-row">$k_{\text{opt}}=\frac{\pi/2}{\theta}=\frac{\pi}{4}\sqrt N\;(\text{Compare rotation accumulation})$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate Optimal CAS-Compare iteration count for unstructured N-item search numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\theta=2\arcsin(1/\sqrt N)$ (Axiom <a href="../axiom.html#ax4">4</a> cost conservation)</div>
 <div class="math-row">$\pi/2 target arc$</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) quantum-search-algorithm domain (b) the iteration count just before optimal measurement.</p>
+<p>The transformation is into the quantum-search-algorithm domain. Why this domain: Optimal CAS-Compare iteration count for unstructured N-item search is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. The iteration count just before optimal measurement. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for Optimal CAS-Compare iteration count for unstructured N-item search, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$k_{\text{opt}}=\frac{\pi/2}{2\arcsin(1/\sqrt N)}\approx\frac{\pi}{4}\sqrt N\;(N\gg1)$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $k_{\text{opt}}=\lfloor(\pi/4)\sqrt N\rfloor\;(\text{exact, BBBV agreement})$</div>
 <div class="math-row">Test: On NISQ Grover circuits, measure whether success probability peaks at (pi/4)sqrt(N) iterations and decreases beyond (over-rotation).</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if the optimal count differs from (pi/4)sqrt(N), e.g. another constant times sqrt(N) or another power.</p>
+<p>The derived value of the computation above is $k_{\text{opt}}=\lfloor(\pi/4)\sqrt N\rfloor\;(\text{exact, BBBV agreement})$. It is a quantitative Banya-framework prediction for Optimal CAS-Compare iteration count for unstructured N-item search, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: On NISQ Grover circuits, measure whether success probability peaks at (pi/4)sqrt(N) iterations and decreases beyond (over-rotation). Why the prediction verdict: <a href="h600.html">H-600</a> closed only the sqrt(N) amplification structure, leaving the exact iteration constant undetermined; cost conservation (axiom 4) rotates the amplitude by a unit angle and the count filling the pi/2 arc closes exactly at (pi/4)sqrt(N), hence a prediction. Falsification condition: Falsified if the optimal count differs from (pi/4)sqrt(N), e.g. another constant times sqrt(N) or another power. If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

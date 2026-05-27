@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm substituted is the selection-mask norm over the 4 domain bits — the number of bits $k$ the observer opens. (b) This norm is chosen because attention is a selective opening that passes only some axes rather than receiving all information, and that selectivity closes through the pass-bit count of the <a href="../axiom.html#ax10">Axiom 10</a> filter. The throughput is therefore substituted by $k/4$ and the mask count by $\binom{4}{k}$.</p>
+<p>(a) The norm substituted is the selection-mask norm over the 4 domain bits — the number of bits $k$ the observer opens. (b) This norm is chosen because attention is a selective opening that passes only some axes rather than receiving all information, and that selectivity closes through the pass-bit count of the <a href="../axiom.html#ax10">Axiom 10</a> filter. The throughput is therefore substituted by $k/4$ and the mask count by $\binom{4}{k}$. Why this norm: the Domain-Selection Mask of Attention itself originates from the Observer Filter Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\text{attention}=\text{spotlight on selected channels}$</div>
 <div class="math-row">$\text{attention}=\{\,\text{observer opens }k\text{ of 4 domain bits},\;k&lt;4\,\}$</div>
@@ -84,6 +84,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Domain-Selection Mask of Attention numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">N domain = 4 Axiom <a href="../axiom.html#ax1">1</a> (4-axis orthogonality)</div>
 <div class="math-row">k = 1..3 k < 4 selective opening</div>
@@ -95,7 +96,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The domain transformed into is the bit-mask domain of the observer filter. (b) What it reveals is the fraction of information one mask setting passes, together with the number of masks that coexist. Substituting bit count $k$ into throughput and combination yields those values.</p>
+<p>(a) The domain transformed into is the bit-mask domain of the observer filter. (b) What it reveals is the fraction of information one mask setting passes, together with the number of masks that coexist. Substituting bit count $k$ into throughput and combination yields those values. Why this domain: the Domain-Selection Mask of Attention itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$k=1:\ \text{throughput}=1/4,\ \binom{4}{1}=4$</div>
 <div class="math-row">$k=2:\ \text{throughput}=1/2,\ \binom{4}{2}=6$</div>
@@ -105,6 +106,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: attention width $=k/4$, mask count $=\binom{4}{k}$, switch cost $=S+1$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Against: inattentional blindness, narrowing of attention width, attentional blink</div>
 <div class="math-row">Awaiting measurement (no quantitative value cited)</div>
 </div>

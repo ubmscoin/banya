@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the time-average occupancy (duty cycle) norm of the firing bit. (b) It is chosen because $\delta$ has only the two states ON and OFF with no structure to bias between them, so the long-term average distributes symmetrically over the two states. Matter-energy equipartition is therefore substituted by the time-average value of the firing bit.</p>
+<p>(a) The norm being substituted is the time-average occupancy (duty cycle) norm of the firing bit. (b) It is chosen because $\delta$ has only the two states ON and OFF with no structure to bias between them, so the long-term average distributes symmetrically over the two states. Matter-energy equipartition is therefore substituted by the time-average value of the firing bit. Why this norm: Duty Cycle 1/2 itself originates from the Firing-bit ON/OFF Toggle Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\langle\delta\rangle_t = \dfrac{T_{\text{ON}}}{T_{\text{ON}} + T_{\text{OFF}}}$</div>
 <div class="math-row">$\langle\delta\rangle_t = \dfrac{1}{2}\quad(T_{\text{ON}} = T_{\text{OFF}})$</div>
@@ -86,6 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Duty Cycle 1/2 numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\delta$ state = {0, 1} Axiom <a href="../axiom.html#ax15">15</a> (firing bit)</div>
 <div class="math-row">ON/OFF bias term = 0 (symmetric) Axiom <a href="../axiom.html#ax4">4</a></div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the time domain. (b) What it reveals is how matter render ($\delta=1$) and energy latency ($\delta=0$) distribute in the long-term average. Since the two states are equal, the occupancy closes at exactly $1/2$.</p>
+<p>(a) The transformation is into the time domain. (b) What it reveals is how matter render ($\delta=1$) and energy latency ($\delta=0$) distribute in the long-term average. Since the two states are equal, the occupancy closes at exactly $1/2$. Why this domain: Duty Cycle 1/2 itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\langle\delta\rangle_t = \dfrac{1}{2}\quad(\text{matter-energy equipartition})$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Prediction</h3>
 <div class="math-block">
 <div class="math-row">Predicted: $\langle\delta\rangle_t = 1/2$ (ON/OFF equal over the long run, matter-energy equipartition)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Test: long-term cosmic energy-density average (2030~)</div>
 <div class="math-row">Refutation: $\langle\delta\rangle_t \neq 1/2$ (deviation beyond $3\sigma$)</div>
 </div>

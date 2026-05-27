@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the piezoelectric tensor $d_{ijk}$ norm that couples the domain-bit deformation to stress. (b) This norm is chosen because the polarization $D_i$ is the linear response to the stress $\sigma_{jk}$, and its proportionality coefficient is exactly the cost-conversion rate of the deformation channel. The direct electric-field term $\varepsilon_{ij}E_j$ is added to the mechanical-stress term $d_{ijk}\sigma_{jk}$ to substitute the electric displacement.</p>
+<p>(a) The norm being substituted is the piezoelectric tensor $d_{ijk}$ norm that couples the domain-bit deformation to stress. (b) This norm is chosen because the polarization $D_i$ is the linear response to the stress $\sigma_{jk}$, and its proportionality coefficient is exactly the cost-conversion rate of the deformation channel. The direct electric-field term $\varepsilon_{ij}E_j$ is added to the mechanical-stress term $d_{ijk}\sigma_{jk}$ to substitute the electric displacement. Why this norm: piezoelectric polarization itself originates from domain bit deformation, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$D_i = d_{ijk}\,\sigma_{jk} + \varepsilon_{ij}\,E_j$</div>
 <div class="math-row">$P_i = d_{ijk}\,\sigma_{jk}\quad(E_j=0)$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate piezoelectric polarization numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">PZT d33 = $300\sim$ 600 pC/N non-centrosymmetric</div>
 <div class="math-row">quartz d11 = 2.3 pC/N SiO2</div>
@@ -93,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The domain transformed into is the mechanical-electric cost-conversion domain. (b) What it reveals is the polarization produced per unit stress — the sign and magnitude of the deformation-channel cost-conversion rate $d_{ijk}$. The non-centrosymmetry condition forces $d_{ijk}\neq 0$.</p>
+<p>(a) The domain transformed into is the mechanical-electric cost-conversion domain. (b) What it reveals is the polarization produced per unit stress — the sign and magnitude of the deformation-channel cost-conversion rate $d_{ijk}$. The non-centrosymmetry condition forces $d_{ijk}\neq 0$. Why this domain: piezoelectric polarization itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$P_3 = d_{33}\,\sigma_{33} = 500\,\text{pC/N}\times 1\,\text{MPa} = 5\times10^{-4}\,\text{C/m}^2$</div>
 <div class="math-row">$f_{quartz} = 32768 = 2^{15}\,\text{Hz}$</div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: in non-centrosymmetry $d_{ijk}\neq0$, $P_3\sim5\times10^{-4}\,\text{C/m}^2$ @ 1 MPa</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: PZT $d_{33}=300$–$600\,\text{pC/N}$, quartz $d_{11}=2.3\,\text{pC/N}$</div>
 <div class="math-row">Error: $&lt; 15\%$</div>
 </div>

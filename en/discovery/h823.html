@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the δ utterance-bit (bit7) norm. One threshold crossing reduces to one bit7 set, and a refractory period of one ring-buffer tick is enforced before the next firing. (b) The action potential is chosen for this norm because the neuron's all-or-none is the setting of a single 0/1 bit, and the refractory period closes as a time quantum of one ring-buffer tick (<a href="../axiom.html#ax8">Axiom 8</a>). The maximum firing rate is fixed as the reciprocal of the refractory period.</p>
+<p>(a) The norm being substituted is the δ utterance-bit (bit7) norm. One threshold crossing reduces to one bit7 set, and a refractory period of one ring-buffer tick is enforced before the next firing. (b) The action potential is chosen for this norm because the neuron's all-or-none is the setting of a single 0/1 bit, and the refractory period closes as a time quantum of one ring-buffer tick (<a href="../axiom.html#ax8">Axiom 8</a>). The maximum firing rate is fixed as the reciprocal of the refractory period. Why this norm: the Neural Action Potential itself originates from the delta Utterance-Bit Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\delta_{\text{fire}} = [\,V_m &gt; V_{\text{th}}\,] \implies \text{bit7} = 1$</div>
 <div class="math-row">$f_{\max} = 1/\tau_{\text{ref}}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Neural Action Potential numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$V_{th}$ = -55 mV firing threshold</div>
 <div class="math-row">AP width = 1 ms action potential duration</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation domain is the neuron firing-rate domain. (b) What it reveals is the maximum firing rate set by one refractory tick — $f_{\max}$. It is computed as the reciprocal of the refractory period $\tau_{\text{ref}}$.</p>
+<p>(a) The transformation domain is the neuron firing-rate domain. (b) What it reveals is the maximum firing rate set by one refractory tick — $f_{\max}$. It is computed as the reciprocal of the refractory period $\tau_{\text{ref}}$. Why this domain: the Neural Action Potential itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$f_{\max} = 1/\tau_{\text{ref}} = 1/(5\;\text{ms}) = 200\;\text{Hz}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $f_{\max} = 200\;\text{Hz}$ (refractory one tick = 5 ms)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: firing frequency $1$–$200\;\text{Hz}$, action potential $1\;\text{ms}$</div>
 <div class="math-row">Status: firing-rate upper bound matches structurally, threshold absolute value closure incomplete</div>
 </div>

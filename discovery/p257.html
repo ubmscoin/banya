@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a)자료형 137 시프트 노름 (b)1시프트=1/137이 최소 분해 가능한 겹침.</p>
+<p>치환하는 노름은 자료형 137 시프트 노름이다. 1시프트=1/137이 최소 분해 가능한 겹침. 왜 이 노름인가 — 약한 값 증폭의 최대 인자는 Compare 부분 활성화 $(\epsilon{\ll}1)$ 시 Swap 확률 $\epsilon^{2}$에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되, 반야식은 그 양을 CAS 비용 항으로만 다시 쓴 것이기 때문이다. 그래서 물리식 $A_w = \frac{\langle\phi|\hat A|\psi\rangle}{\langle\phi|\psi\rangle},\;\; A_w\to\infty \text{ as }\langle\phi|\psi\rangle\to0$를 반야 치환식 $A_{\max} = \frac{1}{(\langle\phi|\psi\rangle)_{\min}} = \frac{1}{1/137} = 137$로 옮긴다. 이 치환의 근거 공리는 <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax11">공리 11</a>, <a href="../axiom.html#ax13">공리 13</a>이며, 우변의 각 기호는 아래 범례에서 정의한다.</p>
 <div class="math-block">
 <div class="math-row">$A_w = \frac{\langle\phi|\hat A|\psi\rangle}{\langle\phi|\psi\rangle},\;\; A_w\to\infty \text{ as }\langle\phi|\psi\rangle\to0$</div>
 <div class="math-row">$A_{\max} = \frac{1}{(\langle\phi|\psi\rangle)_{\min}} = \frac{1}{1/137} = 137$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 약한 값 증폭의 최대 인자를 수치로 산출하는 데 필요한 입력이 이들 3개로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고, 순환 논증이 끼어들 여지가 없다. 아래 표에 각 상수의 값과 그 출처(카드${\cdot}$공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">N=137 (가장 정밀한 자료형, <a href="../axiom.html#ax2">공리 2</a> 명제)</div>
 <div class="math-row">$\langle\phi|\psi\rangle_{\min}=1/137$</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a)약한 측정 도메인 (b)증폭이 어디서 천장에 닿는가 본다.</p>
+<p>약한 측정 도메인으로 변환한다. 왜 이 도메인으로 변환하는가 — 약한 값 증폭의 최대 인자는 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 증폭이 어디서 천장에 닿는가 본다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어, 외부 입력 없이 좌변 관측량이 결정되기 때문이다. 대입한 상수로 아래 식을 계산해 도출값을 얻는다. 이 값이 약한 값 증폭의 최대 인자의 이론 예측이며, 다음 단계에서 측정값과 대조한다.</p>
 <div class="math-block">
 <div class="math-row">$A_{\max} = 137\;\Rightarrow\; \text{증폭 한계 }\approx 137\times\text{(약한 결합 기준)}$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">예측값: $A_{\max} = 137\;(\pm\text{ 자료형 정밀도})$</div>
 <div class="math-row">검증: 광학 약한 값 증폭 실험에서 사전사후 겹침을 줄이며 증폭이 ~137 부근에서 포화하는지 확인.</div>
 </div>
-<p>판정: <strong>예측</strong>. 증폭이 137을 크게 초과하거나(분해 한계 없음) 다른 고정값에서 포화하면 반증.</p>
+<p>위 계산의 도출값은 $A_{\max} = 137\;(\pm\text{ 자료형 정밀도})$이다. 이 값은 약한 값 증폭의 최대 인자에 대한 반야프레임의 정량 예측으로, 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 도출된 결과다. 검증 경로는 다음과 같다 — 광학 약한 값 증폭 실험에서 사전사후 겹침을 줄이며 증폭이 ~137 부근에서 포화하는지 확인. 왜 예측 판정인가 — H-454는 약한 값 증폭이 겹침 역수임을 정성으로만 보였다. 최소 겹침이 137 자료형 한 칸(1/137)에 고정되므로 상한이 정량으로 닫혀 예측이다. 반증 조건은 다음과 같다 — 증폭이 137을 크게 초과하거나(분해 한계 없음) 다른 고정값에서 포화하면 반증. 이 조건이 충족되면 본 도출은 폐기된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>

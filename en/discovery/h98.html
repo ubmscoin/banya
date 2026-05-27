@@ -80,7 +80,7 @@ Structural consequence: Swap/30 = Read/1 = 1/30. The CAS cost structure is self-
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the spherical-cap area norm. It is chosen because setting the step cost fraction $f$ equal to the cap height $1-\cos\alpha$ closes the cost directly into a half-angle. Each step cost fraction is therefore substituted by the cap half-angle $\alpha$.</p>
+<p>The norm being substituted is the spherical-cap area norm. It is chosen because setting the step cost fraction $f$ equal to the cap height $1-\cos\alpha$ closes the cost directly into a half-angle. Each step cost fraction is therefore substituted by the cap half-angle $\alpha$. Why this norm: the Spherical-Cap Half-Angle itself originates from the CAS Step Cost Fraction, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$f = \dfrac{\text{step cost}}{\text{total paths}}$</div>
 <div class="math-row">$\cos\alpha = 1 - f \;\Rightarrow\; \text{Swap cap}\; f=\tfrac{1}{30},\; \text{half-angle}\;14.36°$</div>
@@ -89,6 +89,7 @@ Structural consequence: Swap/30 = Read/1 = 1/30. The CAS cost structure is self-
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the Spherical-Cap Half-Angle numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">30 access paths = 16 domains + 14 auxiliary (Axiom <a href="../axiom.html#ax1">1</a>)</div>
 <div class="math-row">1/30 $Swap{\cdot}Read$ cap fraction => half-angle 14.36°</div>
@@ -97,7 +98,7 @@ Structural consequence: Swap/30 = Read/1 = 1/30. The CAS cost structure is self-
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the Banya-structure domain (cap half-angle). What it reveals is whether the CAS cost system self-closes — namely the equality Swap/30 = Read/1 = 1/30. The half-angle $\alpha$ is obtained from the fraction $f$.</p>
+<p>The transformation is into the Banya-structure domain (cap half-angle). What it reveals is whether the CAS cost system self-closes — namely the equality Swap/30 = Read/1 = 1/30. The half-angle $\alpha$ is obtained from the fraction $f$. Why this domain: the Spherical-Cap Half-Angle itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\text{Swap cap} = \text{Read cap} = 14.36°,\quad \text{Compare cap} = 6.92°$</div>
 </div>
@@ -106,6 +107,7 @@ Structural consequence: Swap/30 = Read/1 = 1/30. The CAS cost structure is self-
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: Swap·Read half-angle $14.36°$, Compare half-angle $6.92°$ ($\alpha=1/137$)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Reference: Compare cap $\alpha=1/137$ = <a href="d01.html">D-01</a> fine-structure constant</div>
 <div class="math-row">Error: $0\%$ (Compare cap agrees independently with <a href="d01.html">D-01</a> $\alpha$, self-consistent)</div>
 </div>

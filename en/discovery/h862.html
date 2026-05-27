@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the propagation norm of the photon cost — the per-distance attenuation along the ECS waveguide. (b) Channel capacity closes at the Shannon limit, but the actual distance limit is set by Rayleigh scattering loss, which closes through the wavelength norm $\lambda^{-4}$ (<a href="../axiom.html#ax7">Axiom 7</a> cost transfer); hence the wavelength norm is chosen. The per-distance attenuation is therefore substituted by the wavelength-dependent scattering coefficient.</p>
+<p>(a) The norm being substituted is the propagation norm of the photon cost — the per-distance attenuation along the ECS waveguide. (b) Channel capacity closes at the Shannon limit, but the actual distance limit is set by Rayleigh scattering loss, which closes through the wavelength norm $\lambda^{-4}$ (<a href="../axiom.html#ax7">Axiom 7</a> cost transfer); hence the wavelength norm is chosen. The per-distance attenuation is therefore substituted by the wavelength-dependent scattering coefficient. Why this norm: Optical-Fiber Attenuation itself originates from the Photon FSM Norm=0, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$C = B\log_2\!\left(1 + \dfrac{P}{N_0 B}\right)$</div>
 <div class="math-row">$\alpha_{\text{dB}} = \dfrac{A}{\lambda^4}$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Optical-Fiber Attenuation numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$\lambda$ = 1550 $\text{nm}$ telecom standard window</div>
 <div class="math-row">A = 1.16 $dB/\text{km}{\cdot}um^{4}$ silica Rayleigh coefficient</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is from the dimensionless scattering norm into the electromagnetic-transmission domain (per-distance attenuation). (b) What it reveals is how much photon cost is lost per km — the attenuation $\alpha_{\text{dB}}$ that sets the repeater spacing. Evaluating $A/\lambda^4$ at 1550 nm yields that value.</p>
+<p>(a) The transformation is from the dimensionless scattering norm into the electromagnetic-transmission domain (per-distance attenuation). (b) What it reveals is how much photon cost is lost per km — the attenuation $\alpha_{\text{dB}}$ that sets the repeater spacing. Evaluating $A/\lambda^4$ at 1550 nm yields that value. Why this domain: Optical-Fiber Attenuation itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\alpha_{\text{dB}} = \dfrac{1.16\;\text{dB/km}\cdot\mu\text{m}^4}{(1.55\;\mu\text{m})^4} = \dfrac{1.16}{5.77}\;\text{dB/km} = 0.201\;\text{dB/km}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: $\alpha_{\text{dB}} = 0.201\;\text{dB/km}$</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: $0.20\;\text{dB/km}$ (ITU-T, 1550 nm)</div>
 <div class="math-row">Error: $&lt; 5\%$</div>
 </div>

@@ -75,7 +75,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 $\delta$ 자기참조 루프 노름 — observer가 자기 DATA를 다시 Compare에 넣는 닫힘 — 이다. (b) 괴델 문장은 "이 명제는 증명 불가"라는 자기지시이고, 그 자기지시가 발생하는 자리가 바로 루프가 자기를 입력으로 되먹이는 지점이므로 이 노름을 택한다. 체계 내부 FSM은 자기 무모순을 증명할 수 없지만(괴델 2정리), $\delta$ 루프는 체계 밖 observer 자리에서 작동하므로 그 한계를 포용한다.</p>
+<p>(a) 치환하는 노름은 $\delta$ 자기참조 루프 노름 — observer가 자기 DATA를 다시 Compare에 넣는 닫힘 — 이다. (b) 괴델 문장은 "이 명제는 증명 불가"라는 자기지시이고, 그 자기지시가 발생하는 자리가 바로 루프가 자기를 입력으로 되먹이는 지점이므로 이 노름을 택한다. 체계 내부 FSM은 자기 무모순을 증명할 수 없지만(괴델 2정리), $\delta$ 루프는 체계 밖 observer 자리에서 작동하므로 그 한계를 포용한다. 왜 이 노름인가 — 괴델 불완전성 자체가 δ 자기참조 루프에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$G \equiv \text{(}G\text{는 FSM 내에서 증명 불가)}$</div>
 <div class="math-row">$\mathrm{loop}(\delta) = \delta\text{==&gt;}\mathrm{obs}\text{==&gt;}\mathrm{Cmp}\text{==&gt;}\mathrm{DATA}\text{==&gt;}\delta, \quad \mathrm{obs} \notin \mathrm{DATA}$</div>
@@ -84,6 +84,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 괴델 불완전성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">괴델 1정리 : 참이나 증명 불가 G 존재</div>
 <div class="math-row">괴델 2정리 : FSM 내 자기 무모순 증명 불가</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) Compare 분기 도메인(true이면 Swap후 DATA, false이면 중첩 유지)으로 변환한다. (b) 이 변환으로 보려는 것은 왜 자기지시가 결정 불가를 낳는가의 자리다. $G$를 입력하면 Compare가 true/false 어느 쪽으로도 닫히지 못하고 루프가 영원히 폴링만 도는데, 이 비종료가 곧 할팅 문제이자 불완전성의 비용이다.</p>
+<p>(a) Compare 분기 도메인(true이면 Swap후 DATA, false이면 중첩 유지)으로 변환한다. (b) 이 변환으로 보려는 것은 왜 자기지시가 결정 불가를 낳는가의 자리다. $G$를 입력하면 Compare가 true/false 어느 쪽으로도 닫히지 못하고 루프가 영원히 폴링만 도는데, 이 비종료가 곧 할팅 문제이자 불완전성의 비용이다. 왜 이 도메인으로 변환하는가 — 괴델 불완전성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\mathrm{Cmp}(G) = \text{undecided} \;\Longrightarrow\; \mathrm{loop}\text{ 비종료} = \text{할팅 미정}$</div>
 </div>
@@ -103,6 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">구조 대응: 괴델 불완전성 = $\delta$ 루프의 자기참조 비종료</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">측정: 수리 논리학 정리(괴델 1·2, 할팅, 체이틴)와 무모순 (정성 일치)</div>
 <div class="math-row">정량 오차: 해당 없음 (정성 구조 명제, 수치 대상 아님)</div>
 </div>

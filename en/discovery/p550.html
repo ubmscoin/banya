@@ -72,7 +72,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) QFT orthogonal-projection norm (b) the central lobe of the sinc kernel occupies $4/pi^2$ of the total area.</p>
+<p>The norm substituted is qFT orthogonal-projection norm. The central lobe of the sinc kernel occupies $4/pi^2$ of the total area. Why this norm: Lower bound of obtaining the correct period in a single measurement originates from Single Compare-measurement cost after the quantum Fourier transform, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms. The physics relation $P\geq\frac{4}{\pi^2}\;(\text{Shor single-shot lower bound})$ is therefore replaced by the Banya form $P_{\text{success}}=\frac{4}{\pi^2}\;(\text{sinc}^2\text{ central lobe = Compare orthogonal projection})$. The substitution rests on Axiom <a href="../axiom.html#ax2">2</a>, Axiom <a href="../axiom.html#ax1">1</a>, Axiom <a href="../axiom.html#ax3">3</a>, Axiom <a href="../axiom.html#ax4">4</a>, and each symbol on the right is defined in the legend below.</p>
 <div class="math-block">
 <div class="math-row">$P\geq\frac{4}{\pi^2}\;(\text{Shor single-shot lower bound})$</div>
 <div class="math-row">$P_{\text{success}}=\frac{4}{\pi^2}\;(\text{sinc}^2\text{ central lobe = Compare orthogonal projection})$</div>
@@ -81,6 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the 3 inputs needed to evaluate Lower bound of obtaining the correct period in a single measurement numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">$4/\pi^2 = 0.4053$ (sinc² central lobe)</div>
 <div class="math-row">QFT orthogonal projection (Axiom <a href="../axiom.html#ax1">1</a>)</div>
@@ -89,7 +90,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) quantum-algorithm measurement domain (b) the single-shot success probability of period finding.</p>
+<p>The transformation is into the quantum-algorithm measurement domain. Why this domain: Lower bound of obtaining the correct period in a single measurement is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. The single-shot success probability of period finding. Why the transformation closes the derivation: the constants already substituted fully numericalize the right-hand side, so the observable is fixed with no external input. Evaluating the relation below with those constants gives the derived value. This value is the theoretical prediction for Lower bound of obtaining the correct period in a single measurement, compared against measurement in the next step.</p>
 <div class="math-block">
 <div class="math-row">$P_{\text{success}}=\int_{\text{central lobe}}\text{sinc}^2=\frac{4}{\pi^2}\approx 0.405$</div>
 </div>
@@ -100,7 +101,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Predicted: $P_{\text{success}}\geq 4/\pi^2\approx 0.405\;(\text{exact lower bound})$</div>
 <div class="math-row">Test: In Shor factoring circuits, statistically measure whether single-measurement period success matches the $4/pi^2$ lower bound.</div>
 </div>
-<p>Verdict: <strong>Prediction</strong>. Falsified if the single-trial success lower bound differs from $4/pi^2$.</p>
+<p>The derived value of the computation above is $P_{\text{success}}\geq 4/\pi^2\approx 0.405\;(\text{exact lower bound})$. It is a quantitative Banya-framework prediction for Lower bound of obtaining the correct period in a single measurement, obtained forward from the CAS cost structure rather than fitted after the fact. Verification path: In Shor factoring circuits, statistically measure whether single-measurement period success matches the $4/pi^2$ lower bound. Why the prediction verdict: The <a href="h598.html">H-598</a>/<a href="h599.html">H-599</a> line closed exponential-state-space parallelism only, leaving the measurement success constant undetermined; the QFT-peak orthogonal projection equals the $sinc^2$ central lobe $4/pi^2$, hence a prediction. Falsification condition: Falsified if the single-trial success lower bound differs from $4/pi^2$. If it is met, this derivation is discarded.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

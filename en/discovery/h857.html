@@ -76,7 +76,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the signal-to-leakage ratio of the conversion — the electric output factor $S^2\sigma$ divided by the thermal leak $\kappa$, a dimensionless norm. (b) This norm is chosen because conversion efficiency is set not by absolute output but only by the ratio against leakage. The product of the squared Seebeck coefficient $S^2$ and the electrical conductivity $\sigma$ is substituted by the thermal conductivity $\kappa$ and made dimensionless with the temperature $T$.</p>
+<p>(a) The norm being substituted is the signal-to-leakage ratio of the conversion — the electric output factor $S^2\sigma$ divided by the thermal leak $\kappa$, a dimensionless norm. (b) This norm is chosen because conversion efficiency is set not by absolute output but only by the ratio against leakage. The product of the squared Seebeck coefficient $S^2$ and the electrical conductivity $\sigma$ is substituted by the thermal conductivity $\kappa$ and made dimensionless with the temperature $T$. Why this norm: the thermoelectric figure of merit ZT itself originates from the thermal-electric cost conversion, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\sigma_{th} = \dfrac{S^2\sigma}{\kappa}$</div>
 <div class="math-row">$ZT = \dfrac{S^2\sigma}{\kappa}\,T$</div>
@@ -85,6 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate the thermoelectric figure of merit ZT numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">Bi2Te3 ZT $\sim$ 1.0 room temperature</div>
 <div class="math-row">PbTe ZT $\sim$ 2.0 high temperature</div>
@@ -94,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The domain transformed into is the thermal-electric conversion-efficiency domain. (b) What it reveals is the actual conversion efficiency against the Carnot limit, obtained by inserting $ZT$ into the efficiency formula.</p>
+<p>(a) The domain transformed into is the thermal-electric conversion-efficiency domain. (b) What it reveals is the actual conversion efficiency against the Carnot limit, obtained by inserting $ZT$ into the efficiency formula. Why this domain: the thermoelectric figure of merit ZT itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\dfrac{\eta}{\eta_C} = \dfrac{\sqrt{1+ZT}-1}{\sqrt{1+ZT}+1}$</div>
 <div class="math-row">$ZT=1 \Rightarrow \eta/\eta_C \approx 0.17$</div>
@@ -104,6 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Discovery</h3>
 <div class="math-block">
 <div class="math-row">Derived: at $ZT=1$, $\eta/\eta_C\approx 0.17$ (within the $10$–$20\%$ vs-Carnot range)</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Measured: Bi₂Te₃ $ZT\sim1$, SnSe $ZT\sim2.6$</div>
 <div class="math-row">Error: $&lt; 20\%$ (material dependent)</div>
 </div>

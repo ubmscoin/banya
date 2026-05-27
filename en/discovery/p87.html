@@ -77,7 +77,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the inter-nibble bit-AND lock-width norm. (b) It is chosen because the number of bits that can be simultaneously locked is limited by the smaller of the two nibbles, and CAS has only the 3 bits Read, Compare, Swap, so this norm sets the lock ceiling. The maximum simultaneous lock is therefore substituted by the minimum of the 4 domain axes and the 3 CAS axes.</p>
+<p>(a) The norm being substituted is the inter-nibble bit-AND lock-width norm. (b) It is chosen because the number of bits that can be simultaneously locked is limited by the smaller of the two nibbles, and CAS has only the 3 bits Read, Compare, Swap, so this norm sets the lock ceiling. The maximum simultaneous lock is therefore substituted by the minimum of the 4 domain axes and the 3 CAS axes. Why this norm: Max Simultaneous Lock 3 itself originates from the Inter-nibble Bit-AND Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\max(\text{lock}) = \min(\text{nibble}_0,\ \text{nibble}_1)$</div>
 <div class="math-row">$\max(\text{lock}) = \min(4, 3) = 3$</div>
@@ -86,6 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate Max Simultaneous Lock 3 numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">domain axes = 4 Axiom <a href="../axiom.html#ax1">1</a></div>
 <div class="math-row">CAS bits = 3 (R, C, S) Axiom <a href="../axiom.html#ax5">5</a></div>
@@ -95,7 +96,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the observer domain. (b) What it reveals is which domain bit is exempt from the lock and thus always observable. When CAS locks 3, the 4th domain bit — the observer (<a href="../axiom.html#ax10">Axiom 10</a>: observer = filter) — remains.</p>
+<p>(a) The transformation is into the observer domain. (b) What it reveals is which domain bit is exempt from the lock and thus always observable. When CAS locks 3, the 4th domain bit — the observer (<a href="../axiom.html#ax10">Axiom 10</a>: observer = filter) — remains. Why this domain: Max Simultaneous Lock 3 itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\max(\text{lock}) = 3,\quad \text{free bit} = 4 - 3 = 1 = \text{observer}$</div>
 </div>
@@ -104,6 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 5. Prediction</h3>
 <div class="math-block">
 <div class="math-row">Predicted: maximum simultaneous lock 3, observer bit always free</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
 <div class="math-row">Test: quantum-information experiments, observer-DOF accessibility (2028~)</div>
 <div class="math-row">Refutation: a case where the observer bit is locked by CAS and observation is blocked</div>
 </div>
