@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Read 주소 비트에서 전하 양자화 $Q=n/3$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>약한 초전하는 CAS Read(<a href="../axiom.html#ax2">공리 2</a>)가 DATA(<a href="../axiom.html#ax3">공리 3</a>)의 주소를 읽을 때, 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>) 중 어느 축의 어떤 비트를 읽는지로 정해지는 양자수다. 읽는 축이 $T_3$를, 비트 위치가 $Y_W$를 준다. 전하는 이 둘의 합으로 나오는 Read 주소 체계의 양자수다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS Read 주소 노름이다. 전하·아이소스핀이 별도 양이 아니라 같은 Read 주소를 어느 비트로 쪼개 읽느냐의 결과이고, 그 비트 분할이 전하 유리수를 강제하기 때문에 이 노름을 택한다. 겔-만 니시지마 관계를 Read 주소 비트로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$Q = T_3 + \dfrac{Y_W}{2}$</div>
+<div class="math-row">$Q = \dfrac{n}{3},\qquad n\in\mathbb{Z}\quad(\text{DATA 8비트 = CAS 3비트 + 나머지})$</div>
+<div class="math-legend">$Q$: 전하 | $T_3$: 약 아이소스핀 = Read 축 | $Y_W$: 약 초전하 = Read 비트 위치 | $3$: CAS 3비트 (<a href="../axiom.html#ax2">공리 2</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>DATA 비트 = 8                     공리 3
+CAS 비트  = 3                     공리 2 (R,C,S)
+도메인 축 = 4                     공리 1 (2^4 = 16)
+분모 3    = CAS 3비트 분할 ==> Q = n/3</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전약 양자수 도메인으로 변환한다. 이 변환으로 보려는 것은 DATA 8비트를 CAS 3비트로 쪼갤 때 강제되는 전하 분모, 곧 전하 양자화 단위 $1/3$이다. 분모 3이 CAS 3비트 분할에서 직접 나온다.</p>
+<div class="math-block">
+<div class="math-row">$Q = \dfrac{n}{3} \quad(n=\dots,-1,0,1,2,\dots)$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 전하 단위 $Q = n/3$ (분모 3 = CAS 3비트)</div>
+<div class="math-row">측정값: 쿼크 전하 $\{-1/3, +2/3\}$, 렙톤 $\{0,-1\}$ 정합</div>
+<div class="math-row">구조 일치, 잔여: 각 입자 $Y_W$ 배정표 미도출</div>
+</div>
+<p>판정: <strong>가설</strong>. 전하 분모 3이 CAS 3비트 분할에서 닫히지만, 각 입자에 대한 정확한 $Y_W$ 배정표가 Read 비트 할당에서 아직 전수 도출되지 않았다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h802.html">H-802</a>(전자기-약력). <a href="h805.html">H-805</a>(중성 흐름)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a></p>
+<p>재투입 경로: <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h613.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h613.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h613.html">H-613</a>. Quantum Sensor = Extreme Sensitivity of CAS Compare</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible upon next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h_measurement. Domain: δ ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive substitution path: <a href="h592.html">H-592</a>, <a href="h614.html">H-614</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the standard quantum limit $1/\sqrt{N}$ from the cost of $N$ CAS Compares</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The sensitivity of a quantum sensor is the cost of how many Compares the CAS performs. One Compare extracts one bit of information (<a href="../axiom.html#ax2">Axiom 2</a>), cost $N$ is $N$ independent Compares (<a href="../axiom.html#ax4">Axiom 4</a>), and because DATA is discrete (<a href="../axiom.html#ax3">Axiom 3</a>) a minimum resolution exists.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the statistical-summation norm of $N$ independent Compares. It is chosen because each Compare extracts uncorrelated noise independently, so the phase uncertainty shrinks as $1/\sqrt{N}$; this is the standard quantum limit.</p>
+<div class="math-block">
+<div class="math-row">$\delta\phi \ge \dfrac{\sigma}{\sqrt{N}}$</div>
+<div class="math-row">$\delta\phi \ge \dfrac{1}{\sqrt{N}}$</div>
+<div class="math-legend">$\delta\phi$: phase resolution | $N$: number of independent Compares (entities) | $\sigma$: single-Compare standard deviation (=1) | $1/\sqrt{N}$: standard quantum limit</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h592.html">H-592</a>, <a href="h614.html">H-614</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N = 1e10         number of independent CAS Compares (atoms)
+sqrt(N) = 1e5
+ref: standard quantum limit (SQL); atom interferometry; LIGO</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the measurement domain (the Compare branch true==&gt;Swap==&gt;DATA). What it reveals is the best phase resolution $\delta\phi$ of $N$-entity independent measurement. Substituting $N$ into the standard quantum limit yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\delta\phi \ge \dfrac{1}{\sqrt{10^{10}}} = 10^{-5}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\delta\phi \ge 1/\sqrt{N}$, equal to $10^{-5}$ at $N=10^{10}$</div>
+<div class="math-row">Measured: atomic clocks and atom interferometers confirm the SQL $1/\sqrt{N}$ scaling</div>
+<div class="math-row">Match: structural and scaling agreement (absolute coefficient pending)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The standard quantum limit follows from the statistical summation of $N$ independent Compares, but the absolute normalization of the single-Compare variance $\sigma$ remains an external input, so the final stage of the forward chain does not close. Insight: synchronizing the Compares through entanglement breaks this limit down to $1/N$ (<a href="h614.html">H-614</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h614.html">H-614</a> (metrology) SQL baseline. <a href="h592.html">H-592</a> (qubit) measurement application.</p><p>This card can be re-used as input for the following cards: <a href="h592.html">H-592</a>, <a href="h614.html">H-614</a></p>
+<p>Re-injection path: <a href="h614.html">H-614</a>, <a href="h592.html">H-592</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

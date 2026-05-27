@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h826.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h826.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h826.html">H-826</a>. Complex-System Emergence = Nonlinear Collective Effect of Many CAS</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible when the next round proceeds / outstanding tasks listed.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unfixed, follow-up refinement needed). Recursive substitution path: <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a>, <a href="h835.html">H-835</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Emergent Super-Additivity from the Many-CAS Crossing Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Emergence is the macroscopic cost that arises when $N$ CAS (<a href="../axiom.html#ax2">Axiom 2</a>: the unique operator) operate simultaneously and their domain-crossing costs (<a href="../axiom.html#ax4">Axiom 4</a>: cost 1 per + crossed) become entangled. This cost is read as the coupling term of the Banya formula.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unfixed, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the many-CAS crossing-cost norm. A single CAS cost is linear in the number of domain crossings (<a href="../axiom.html#ax4">Axiom 4</a>), but when $N$ access the same DATA simultaneously, lock enforcement (<a href="../axiom.html#ax5">Axiom 5</a>) adds cross terms so the total exceeds the sum of individual costs. Irreducibility is defined by this excess, so this norm is chosen.</p>
+<div class="math-block">
+<div class="math-row">$C_{\text{tot}} = \sum_{i=1}^{N} C_i + \sum_{i<j} C_{ij}$</div>
+<div class="math-row">$\Delta C_{\text{emerg}} = C_{\text{tot}} - N\,C_1 = \sum_{i<j} C_{ij}$</div>
+<div class="math-legend">$C_{\text{tot}}$: total crossing cost | $C_i$: single-CAS cost | $C_{ij}$: CAS-pair crossing cost (lock) | $\Delta C_{\text{emerg}}$: emergent (super-additive) residual</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a>, <a href="h835.html">H-835</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>pairs = N(N-1)/2          number of CAS pairs
+C_ij  = 1                 one-domain crossing cost   Axiom 4
+N     = free input        number of components</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the structural-cost domain (Banya structure). What it reveals is how the emergent residual scales with $N$. Multiplying the pair count $N(N-1)/2$ by the pair crossing cost yields the scale of the residual.</p>
+<div class="math-block">
+<div class="math-row">$\Delta C_{\text{emerg}} = \dfrac{N(N-1)}{2}\,C_{ij} \sim O(N^2)$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: residual $\Delta C_{\text{emerg}} \sim O(N^2)$, individual sum $N\,C_1 \sim O(N)$</div>
+<div class="math-row">Consequence: $C_{\text{tot}} \neq N\,C_1$ (super-additive, irreducible)</div>
+<div class="math-row">Measured: multi-agent simulation mutual information $I > \sum H_i - H_{\text{joint}}$ qualitative match</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The super-additive structure closes, but the absolute value of the pair crossing cost $C_{ij}$ is not fixed directly from the axioms, so the quantitative error is undetermined.</p>
+<p>Insight: emergence is not mystery but the $O(N^2)$ accumulation of CAS pair crossing costs, and the same structure leads to self-organization (<a href="h825.html">H-825</a>) and the edge of chaos (<a href="h830.html">H-830</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h825.html">H-825</a> (self-organization). <a href="h835.html">H-835</a> (consciousness). <a href="h830.html">H-830</a> (edge of chaos).</p><p>This card can be re-used as input for the following cards: <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a>, <a href="h835.html">H-835</a></p>
+<p>Re-injection path: <a href="h835.html">H-835</a>, <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a>, <a href="h835.html">H-835</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 다수 CAS 교차 비용에서 창발 비초가법성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>창발은 $N$개의 CAS(<a href="../axiom.html#ax2">공리 2</a>: 유일 연산자)가 동시에 작동할 때 도메인 교차 비용(<a href="../axiom.html#ax4">공리 4</a>: + 횡단마다 비용 1)이 서로 얽혀 발생하는 거시 비용이다. 이 비용을 반야식의 결합 항으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 다수 CAS의 교차 비용 노름이다. 단일 CAS의 비용은 도메인 교차 횟수에 선형이지만(<a href="../axiom.html#ax4">공리 4</a>), $N$개가 같은 DATA에 동시 접근하면 락 강제(<a href="../axiom.html#ax5">공리 5</a>)로 교차 항이 추가되어 총비용이 개별 비용 합을 초과한다. 환원 불가능성이 이 초과분으로 정의되므로 이 노름을 택한다.</p>
+<div class="math-block">
+<div class="math-row">$C_{\text{tot}} = \sum_{i=1}^{N} C_i + \sum_{i<j} C_{ij}$</div>
+<div class="math-row">$\Delta C_{\text{emerg}} = C_{\text{tot}} - N\,C_1 = \sum_{i<j} C_{ij}$</div>
+<div class="math-legend">$C_{\text{tot}}$: 총 교차 비용 | $C_i$: 단일 CAS 비용 | $C_{ij}$: CAS 쌍 교차 비용(락) | $\Delta C_{\text{emerg}}$: 창발분(비초가법 잔차)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a>, <a href="h835.html">H-835</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>pairs = N(N-1)/2          CAS 쌍의 수
+C_ij  = 1                 도메인 1회 교차 비용   공리 4
+N     = 자유 입력          구성요소 수</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>구조 비용 도메인(반야 구조)으로 변환한다. 이 변환으로 보려는 것은 창발분이 $N$에 어떻게 의존하는가다. 쌍의 수 $N(N-1)/2$에 쌍 교차 비용을 곱해 창발분의 스케일을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta C_{\text{emerg}} = \dfrac{N(N-1)}{2}\,C_{ij} \sim O(N^2)$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 창발분 $\Delta C_{\text{emerg}} \sim O(N^2)$, 개별 합 $N\,C_1 \sim O(N)$</div>
+<div class="math-row">귀결: $C_{\text{tot}} \neq N\,C_1$ (비초가법, 환원 불가)</div>
+<div class="math-row">측정: 다중 행위자 시뮬레이션 상호정보 $I > \sum H_i - H_{\text{joint}}$ 정성 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 비초가법 구조는 닫혔으나 쌍 교차 비용 $C_{ij}$의 절대값이 공리에서 직접 고정되지 않아 정량 오차가 미정이다.</p>
+<p>통찰: 창발은 신비가 아니라 CAS 쌍 교차 비용의 $O(N^2)$ 누적이며, 같은 구조가 자기조직화(<a href="h825.html">H-825</a>)와 카오스 가장자리(<a href="h830.html">H-830</a>)로 이어진다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h825.html">H-825</a>(자기조직화). <a href="h835.html">H-835</a>(의식). <a href="h830.html">H-830</a>(카오스 가장자리)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a>, <a href="h835.html">H-835</a></p>
+<p>재투입 경로: <a href="h835.html">H-835</a>, <a href="h817.html">H-817</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

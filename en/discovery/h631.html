@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h631.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h631.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h631.html">H-631</a>. Electron-Phonon Coupling = Cost Exchange between FSM and DATA Lattice</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible upon advancing to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h621.html">H-621</a>, <a href="h630.html">H-630</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Cu room-temperature resistivity $\rho \propto T$ from the FSM-DATA lattice cost exchange</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Electron-phonon coupling is the cost exchange the FSM (<a href="../axiom.html#ax14">Axiom 14</a>) pays as it moves across the DATA lattice d-ring. The FSM's motion disturbs the lattice and emits or absorbs phonons (<a href="h630.html">H-630</a>); this cost exchange accumulating as irreversible scattering (<a href="../axiom.html#ax4">Axiom 4</a>) is read as electrical resistance.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM-DATA cost-exchange norm. (b) It is chosen because electrical resistance is the accumulated phonon-scattering cost the FSM pays crossing the lattice, and the number of occupiable phonon modes is proportional to temperature. The coupling term of the electron-phonon Hamiltonian is therefore substituted by the cost-exchange efficiency $g_q$, and the high-temperature resistivity is read as $\rho \propto T$.</p>
+<div class="math-block">
+<div class="math-row">$H_{e\text{-}ph} = \sum_{k,q} g_q\, c^\dagger_{k+q}c_k(a_q + a^\dagger_{-q})$</div>
+<div class="math-row">$\rho(T) \propto g_q^2\, n_{ph}(T) \propto T \quad (T \gg \Theta_D)$</div>
+<div class="math-legend">$g_q$: FSM-DATA cost-exchange efficiency | $c^\dagger_{k+q}c_k$: FSM scattering | $a_q + a^\dagger_{-q}$: phonon emission/absorption (<a href="h630.html">H-630</a>) | $n_{ph}(T)$: occupied phonon-mode count | $\Theta_D$: Debye temperature</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h621.html">H-621</a>, <a href="h630.html">H-630</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>rho(Cu, 300K) = 1.7 uOhm*cm        measured
+Theta_D(Cu)   = 343 K              Debye temperature
+n_ph(T)       ~ T/Theta_D          high-T linear</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = ordered crossing of orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the conduction-resistance domain (d-ring scattering). (b) What it reveals is how the cost exchange accumulates with temperature — the temperature dependence of resistivity. In the high-temperature limit the phonon-mode count grows linearly in $T$, making resistivity proportional to $T$.</p>
+<div class="math-block">
+<div class="math-row">$\rho(T) \propto T \quad (T \gg \Theta_D)$</div>
+<div class="math-row">$\rho(T) \propto T^5 \quad (T \ll \Theta_D,\ \text{Bloch-Gr\"uneisen})$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\rho(\text{Cu}) \propto T$ (high-temperature linear)</div>
+<div class="math-row">Measured: $\rho(\text{Cu}, 300\,\text{K}) = 1.7\;\mu\Omega\cdot\text{cm}$, linear temperature dependence</div>
+<div class="math-row">Agreement: high-T $\rho \propto T$ and low-T $\rho \propto T^5$ both match</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The temperature-dependence form follows from the cost-exchange norm, but the absolute value of the coupling constant $g_q$ does not yet close directly from the axioms, so it remains a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h621.html">H-621</a> (BCS) phonon mediation. <a href="h630.html">H-630</a> (phonon) coupling application.</p><p>This card can be re-used as input for the following cards: <a href="h621.html">H-621</a>, <a href="h630.html">H-630</a></p>
+<p>Re-injection path: <a href="h630.html">H-630</a>, <a href="h621.html">H-621</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

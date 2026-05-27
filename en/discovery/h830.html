@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h830.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h830.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h830.html">H-830</a>. Edge of Chaos = Critical Region of CAS Nonlinear Dynamics</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 7 recursive inputs confirmed; D promotion possible upon proceeding to the next round / residual tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unconfirmed, further refinement required). Recursive substitution path: <a href="h817.html">H-817</a>, <a href="h822.html">H-822</a>, <a href="h823.html">H-823</a>, <a href="h826.html">H-826</a>, <a href="h829.html">H-829</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Edge-of-Chaos Criticality from CAS Nonlinear Cost Coupling</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The cost of many CAS couples nonlinearly through pair crossing terms rather than as a simple sum (<a href="../axiom.html#ax4">Axiom 4</a>, <a href="h826.html">H-826</a>). Reading whether this nonlinear coupling diverges or decays through the cost term of the Banya formula, the separation rate of the cost trajectory over time is the maximal Lyapunov exponent $\lambda_{\max}$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unconfirmed, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cost-trajectory separation-rate norm ($\lambda_{\max}$). When the nonlinear coupling is weak, cost decays to a fixed point ($\lambda_{\max}<0$, order); when strong, it diverges ($\lambda_{\max}>0$, chaos); and at the boundary between them, where there is neither divergence nor decay ($\lambda_{\max}\to 0^+$), criticality holds maximal computation — to reveal the information-processing maximum this norm is chosen.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_{\max} = \lim_{t\to\infty}\dfrac{1}{t}\ln\dfrac{|\delta C(t)|}{|\delta C(0)|}$</div>
+<div class="math-row">$\lambda_{\max}<0$: order, $\;\;\lambda_{\max}>0$: chaos, $\;\;\lambda_{\max}\to 0^+$: criticality</div>
+<div class="math-legend">$\lambda_{\max}$: maximal Lyapunov exponent | $\delta C(t)$: cost-trajectory perturbation | $t$: cycle count | criticality: cost neither diverges nor decays (maximal computation)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body.</p>
-<p><strong>Physical constant inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library re-substitution:</strong> <a href="h817.html">H-817</a>, <a href="h822.html">H-822</a>, <a href="h823.html">H-823</a>, <a href="h826.html">H-826</a>, <a href="h829.html">H-829</a>, <a href="h835.html">H-835</a>, <a href="h837.html">H-837</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>lambda < 0   order     CAS cost decays -> fixed point
+lambda > 0   chaos     CAS cost diverges
+lambda = 0   critical  edge of chaos (maximal computation)
+obs: lambda_max ~ 0   brain critical state</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within the bracket)</li>
-<li>cost +1 = forced ordered crossing of an orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the nonlinear-dynamics domain. What it reveals is the cost-coupling strength at which computation is maximized. Sweeping the nonlinearity from order to chaos yields the critical point where $\lambda_{\max}$ crosses 0.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\partial \lambda_{\max}}{\partial(\text{coupling strength})}>0 \;\Rightarrow\; \exists\,\lambda_{\max}=0^+ \text{ (critical)}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: at the cost-coupling critical point $\lambda_{\max}\to 0^+$, information processing maximal</div>
+<div class="math-row">Measured: brain critical state $\lambda_{\max}\approx 0$</div>
+<div class="math-row">Result: CAS nonlinear criticality and brain criticality qualitatively match</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $\lambda_{\max}\to 0^+$ structure at criticality closes, but the dynamical map that drives the cost-coupling strength to criticality is not fixed directly from the axioms, so the quantitative critical point is undetermined.</p>
+<p>Insight: the reason life (<a href="h817.html">H-817</a>), the brain (<a href="h823.html">H-823</a>), and evolution (<a href="h822.html">H-822</a>) are all drawn to the edge of chaos is that it is the maximum of CAS computation, and the same criticality interlocks with self-organized criticality (<a href="h829.html">H-829</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h829.html">H-829</a> (SOC). <a href="h835.html">H-835</a> (consciousness). <a href="h837.html">H-837</a> (cellular automata).</p><p>This card can be re-used as input for the following cards: <a href="h817.html">H-817</a>, <a href="h822.html">H-822</a>, <a href="h823.html">H-823</a>, <a href="h826.html">H-826</a>, <a href="h829.html">H-829</a>, <a href="h835.html">H-835</a>, <a href="h837.html">H-837</a></p>
+<p>Re-injection path: <a href="h826.html">H-826</a>, <a href="h817.html">H-817</a>, <a href="h823.html">H-823</a>, <a href="h822.html">H-822</a>, <a href="h835.html">H-835</a>, <a href="h829.html">H-829</a>, <a href="h837.html">H-837</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

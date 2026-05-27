@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="d05.html">D-05</a>, <a href="d29.html">D-29</a>, <a href="h465.html">H-465</a>, <a href="h471.html">H-471</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare 비용 제곱을 FSM 최대 노름으로 나눈 값에서 중성미자 질량 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>중성미자 질량은 OPERATOR 괄호 내부에서 Compare만 통과하고 Swap을 건너뛰는 입자의 비용이다. Swap(색전하)을 건너뛰므로 $SU(3)$ 단일항이고, Compare 비용만 FSM 노름에 기여하므로(<a href="../axiom.html#ax2">공리 2</a> CAS 3단계) 질량이 극히 작다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 최대 노름이다. 좌손 Compare 비용 제곱이 질량을 만들고 FSM 최대 노름 $M_R$(우손 Majorana 질량)이 이를 억제하는 시소 구조이며(<a href="../axiom.html#ax14">공리 14</a> FSM 노름 = 질량), Compare 비용 1회가 경계 $+1$(<a href="../axiom.html#ax4">공리 4</a>)이므로 이 노름을 택한다. 따라서 표준모형 Type-I 시소를 Compare-only 비용 비로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$m_\nu = \dfrac{m_D^2}{M_R}$</div>
+<div class="math-row">$m_\nu \sim \dfrac{(\text{Compare 비용})^2}{\text{FSM 최대 노름}}$</div>
+<div class="math-legend">$m_\nu$: 좌손 중성미자 질량 | $m_D \sim v$: Compare 경계 비용 (진공기댓값 스케일) | $M_R$: FSM 최대 노름 = 우손 Majorana 질량 = CAS 통일 스케일 (<a href="d29.html">D-29</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d05.html">D-05</a>, <a href="d29.html">D-29</a>, <a href="h465.html">H-465</a>, <a href="h471.html">H-471</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>v       = 246 GeV               진공기댓값
+M_R     = 1e15 GeV              GUT 스케일 D-29
+v^2/M_R = 6.05e-11 GeV = 0.06 eV
+sum m_nu(상한) = 0.12 eV         Planck</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>변환하는 도메인은 페르미온 질량 계층 도메인이다. 이 변환으로 보려는 것은 Compare-only 참여와 FSM 노름 억제가 만드는 극미 중성미자 질량 $m_\nu$다. Compare 비용 제곱을 CAS 통일 스케일 $M_R$로 나눠 그 크기를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_\nu \sim \dfrac{(246\;\text{GeV})^2}{10^{15}\;\text{GeV}} \approx 0.06\;\text{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_{\nu_3} \sim 0.06\;\text{eV}$, $\sum m_\nu \lesssim 0.12\;\text{eV}$</div>
+<div class="math-row">측정값: $|\Delta m_{31}^2| \approx 2.5\times 10^{-3}\;\text{eV}^2$ ($m_{\nu_3}\approx 0.05\;\text{eV}$)</div>
+<div class="math-row">정합: 크기 차수 일치 (Planck 상한 양립)</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>표준모형이 BSM으로 둔 시소 무거운 파트너 $M_R$이 CAS 통일 스케일(<a href="d29.html">D-29</a>)과 일치한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h465.html">H-465</a>(중성미자 진동), <a href="h471.html">H-471</a>(사하로프 조건, 렙토제네시스), <a href="d05.html">D-05</a>($\theta_{12}$) 질량 기반.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d05.html">D-05</a>, <a href="d29.html">D-29</a>, <a href="h465.html">H-465</a>, <a href="h471.html">H-471</a></p>
+<p>재투입 경로: <a href="d29.html">D-29</a>, <a href="h465.html">H-465</a>, <a href="h471.html">H-471</a>, <a href="d05.html">D-05</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

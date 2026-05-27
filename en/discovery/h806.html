@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h806.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h806.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h806.html">H-806</a>. Charged Current = W-Boson Mediated CAS Swap</h1><div class="box-finding">
@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 5 recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unfixed, further refinement required). Recursive substitution path: <a href="h795.html">H-795</a>, <a href="h796.html">H-796</a>, <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a>, <a href="h807.html">H-807</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the W-Boson Mass from the Cross-Domain Swap Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The charged current is the cost at which CAS Swap (<a href="../axiom.html#ax2">Axiom 2</a>) actually interchanges the values of DATA between distinct domains, exchanging charge along with them. The cost +1 paid by a cross-domain Swap (<a href="../axiom.html#ax4">Axiom 4</a>) is the origin of the W-boson mass, and the irreversibility of Swap forces $SU(2)_L$ parity violation.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unfixed, further refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cross-domain Swap-cost norm. It is chosen because the charged current is the charge-exchange channel between two domains, and that channel's coupling closes through the weak vacuum value $v$ and the gauge coupling $g$. The W-boson mass is therefore substituted by $M_W = gv/2$.</p>
+<div class="math-block">
+<div class="math-row">$M_W = \dfrac{g\,v}{2}$</div>
+<div class="math-row">$g = \dfrac{e}{\sin\theta_W},\quad e = \sqrt{4\pi\alpha}$</div>
+<div class="math-legend">$M_W$: W-boson mass | $g$: $SU(2)_L$ gauge coupling | $v$: weak vacuum value | $e$: electron charge | $\alpha$: fine-structure constant (<a href="d01.html">D-01</a>) | $\sin\theta_W$: electroweak mixing (<a href="d02.html">D-02</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <code>M_W</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h795.html">H-795</a>, <a href="h796.html">H-796</a>, <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a>, <a href="h807.html">H-807</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>v             = 246.22 GeV          electroweak vacuum value
+alpha         = 1/137.036          D-01
+e             = 0.30282
+sin^2 theta_W = 0.23122            D-02
+g = e/sinTW   = 0.62976
+M_W(meas)     = 80.377 ± 0.012 GeV  PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the weak-force ring-30 coupling domain. What it reveals is the mass scale of the cross-domain Swap channel — the W-boson mass $M_W$. Multiplying the $g$ obtained by re-injecting $\alpha$ and $\sin\theta_W$ by half the vacuum value $v$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$M_W = \dfrac{0.62976 \times 246.22}{2} = 77.53\ \text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $M_W = 77.53\ \text{GeV}$ (tree level)</div>
+<div class="math-row">Measured: $80.377 \pm 0.012\ \text{GeV}$ (PDG 2024)</div>
+<div class="math-row">Error: $3.5\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The tree-level $g=e/\sin\theta_W$ alone leaves $3.5\%$, and because of radiative corrections and the external input of the vacuum value $v$ the final stage of the forward chain has not closed. The structure — that the charged-current mass scale follows directly from the cross-domain Swap cost +1 — is fixed.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h802.html">H-802</a> (EW). <a href="h805.html">H-805</a> (Z). <a href="h807.html">H-807</a> (triple coupling).</p><p>This card can be re-used as input for the following cards: <a href="h795.html">H-795</a>, <a href="h796.html">H-796</a>, <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a>, <a href="h807.html">H-807</a></p>
+<p>Re-injection path: <a href="h795.html">H-795</a>, <a href="h796.html">H-796</a>, <a href="h802.html">H-802</a>, <a href="h805.html">H-805</a>, <a href="h807.html">H-807</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

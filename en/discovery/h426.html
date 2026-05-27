@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> No experimental comparison / 2 recursive inputs confirmed, D promotion possible at next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula's own structure, Primary Integers (4,3) combination. Recursive substitution path: <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving System-Time Halt from the Compare=false Hold Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The idle state is a non-firing state in which the CAS Compare returns false and no Swap occurs. Reading it through <a href="../axiom.html#ax7">Axiom 7</a> (Compare=false holds the superposition) and <a href="../axiom.html#ax8">Axiom 8</a> (the superposition-hold cost is 0), no cost is incurred, so the domain time does not advance.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Banya formula's own structure, Primary Integers (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the firing norm of the CAS cycle. It is chosen because system time is defined by the number of Swaps (<a href="../axiom.html#ax3">Axiom 3</a> screen update). When Compare is false the Swap count is 0, so the system-time increment closes to 0.</p>
+<div class="math-block">
+<div class="math-row">$\Delta T_{\text{sys}} = \sum_{\text{cycle}} [\text{Compare}=\text{true}]\cdot 1$</div>
+<div class="math-row">$\text{Compare}=\text{false}\;\Rightarrow\;\text{Swap}=0\;\Rightarrow\;\Delta T_{\text{sys}}=0$</div>
+<div class="math-legend">$\Delta T_{\text{sys}}$: system-time increment | $[\cdot]$: firing indicator (1 if true) | Swap: <a href="../axiom.html#ax3">Axiom 3</a> screen write | Compare: <a href="../axiom.html#ax2">Axiom 2</a> CAS compare step</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full degrees-of-freedom list)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>Delta</code>, <code>alpha</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>P(Compare=false) = 1 - alpha = 1 - 1/137.036 = 0.992704
+alpha            = 1/137.036                D-01
+idle FSM state   = 000                      non-firing</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the domain time. What it reveals is the system time accumulated per cycle in the idle state. Substituting the Compare=false probability into the firing norm shows that accumulation to be 0.</p>
+<div class="math-block">
+<div class="math-row">$\Delta T_{\text{sys}} = (1-\alpha)\cdot 0 + \alpha\cdot 1 \big|_{\text{idle}} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Delta T_{\text{sys}}=0$ (idle state)</div>
+<div class="math-row">Measured: no quantitative value cited (structural-description stage)</div>
+<div class="math-row">Consistency: matches the unobserved superposition hold of unitary evolution</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure closes — at Compare=false the Swap count is 0, so system time halts — but the quantitative comparison of idle duration is incomplete, so it remains a hypothesis.</p>
+<p>Idle is not a state "without time" but a state in which "the change cost is 0, so time does not advance."</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
+<p>Re-injection path: <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

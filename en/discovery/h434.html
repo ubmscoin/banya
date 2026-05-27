@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D-promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h gauge ew. Domain: delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition. Recursive substitution path: <a href="d155.html">D-155</a>, <a href="h435.html">H-435</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Spin-Orbit Coupling from the 8-Bit Coexistence Crossing Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Spin-orbit coupling is the crossing cost (<a href="../axiom.html#ax4">Axiom 4</a>) that arises because the orbital bits (bits 0-3) and the spin lock bits (bits 4-6) of the d-ring coexist on the same 8-bit ring (<a href="../axiom.html#ax5">Axiom 5</a>). On the same ring, interaction between the two bit groups is unavoidable. The coupling is read through this crossing cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the 8-bit coexistence crossing-cost norm. The cost of orbit $\mathbf{L}$ (bits 0-3) and spin $\mathbf{S}$ (bits 4-6) meeting on the same ring closes as $\mathbf{L}\cdot\mathbf{S}$, and the radial strength $\xi(r)$ becomes $1/r^3$ as one differentiation of the $4\pi\ell^2$ surface (<a href="../axiom.html#ax11">Axiom 11</a>) — which is why this norm is chosen. The FSM (<a href="../axiom.html#ax14">Axiom 14</a>) fixes the spin state. The coupling Hamiltonian is therefore substituted by $\xi(r)\,\mathbf{L}\cdot\mathbf{S}$.</p>
+<div class="math-block">
+<div class="math-row">$\xi(r) \propto \dfrac{d}{dr}\dfrac{1}{4\pi\ell^2} \propto \dfrac{1}{r^3}$</div>
+<div class="math-row">$H_{SO} = \xi(r)\,\mathbf{L}\cdot\mathbf{S}$</div>
+<div class="math-legend">$H_{SO}$: spin-orbit Hamiltonian | $\mathbf{L}$: orbit (bits 0-3) | $\mathbf{S}$: spin (bits 4-6) | $\xi(r)$: crossing strength $\propto 1/r^3$ | $4\pi\ell^2$: sphere (<a href="../axiom.html#ax11">Axiom 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (domain)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d155.html">D-155</a>, <a href="h435.html">H-435</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>xi(r)       ~ 1/r^3          Axiom 11, one differentiation
+hydrogen 2p xi ~ 0.365 cm^-1
+j           = 3/2, 1/2       L·S splitting
+L·S         = [j(j+1)-l(l+1)-s(s+1)]/2</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the atomic fine-structure domain. What it reveals is the fine-structure splitting in which one level splits into $j=3/2$ and $j=1/2$. Multiplying $\xi(r)$ by the $\mathbf{L}\cdot\mathbf{S}$ eigenvalue yields that splitting.</p>
+<div class="math-block">
+<div class="math-row">$\Delta E_{SO} = \tfrac{1}{2}\,\xi\,[\,j(j{+}1)-\ell(\ell{+}1)-s(s{+}1)\,]$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\xi \propto 1/r^3$, $j=3/2,\,1/2$ splitting</div>
+<div class="math-row">Measured: hydrogen 2p $\xi \approx 0.365\ \text{cm}^{-1}$</div>
+<div class="math-row">Error: shape match (qualitative), cross-consistent with <a href="d155.html">D-155</a></div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The 8-bit coexistence reproduces the $\mathbf{L}\cdot\mathbf{S}$ coupling and the $1/r^3$ dependence, but the forward chain that closes the $\xi(r)$ coefficient quantitatively from the axioms is incomplete.</p>
+<p>This coupling is the mechanism for the fine-structure splitting of <a href="d155.html">D-155</a> and the foundation for the Zeeman effect of <a href="h435.html">H-435</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: mechanism for <a href="d155.html">D-155</a> (fine structure); foundation for <a href="h435.html">H-435</a> (Zeeman).</p><p>This card can be re-used as input for the following cards: <a href="d155.html">D-155</a>, <a href="h435.html">H-435</a></p>
+<p>Re-injection path: <a href="d155.html">D-155</a>, <a href="h435.html">H-435</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

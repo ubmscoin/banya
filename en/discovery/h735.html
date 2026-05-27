@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h735.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h735.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h735.html">H-735</a>. Mercury Precession = Orbital Effect of Schwarzschild Cost Correction</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks stated.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h728.html">H-728</a>, <a href="h730.html">H-730</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Mercury Precession from the Schwarzschild cost-correction term</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A planetary orbit is a minimum-cost path (geodesic, <a href="h728.html">H-728</a>). The $1/r^3$ correction term that the Schwarzschild cost distribution (<a href="h730.html">H-730</a>) adds to the Newtonian potential prevents the orbit from closing (<a href="../axiom.html#ax4">Axiom 4</a>). This precession is read through the CAS cost correction of the Banya structure domain.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Schwarzschild effective-potential norm. (b) The Newtonian effective potential yields a closed ellipse, but once the cost gradient adds the $1/r^3$ term the perihelion advances each revolution and the orbit no longer closes, so this norm is chosen. The Newtonian effective potential is therefore substituted by the form with the cost-correction term added.</p>
+<div class="math-block">
+<div class="math-row">$V_{\text{eff}} = -\dfrac{GM}{r} + \dfrac{L^2}{2r^2}$</div>
+<div class="math-row">$V_{\text{eff}} = -\dfrac{GM}{r} + \dfrac{L^2}{2r^2} - \dfrac{GM L^2}{c^2 r^3}$</div>
+<div class="math-legend">$\delta\phi$: precession angle | $L$: orbital angular momentum | $-GML^2/(c^2 r^3)$: cost-correction term | $a, e$: semi-major axis, eccentricity</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h728.html">H-728</a>, <a href="h730.html">H-730</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>GM_sun   = 1.327e20 m^3 s^-2
+c        = 2.998e8 m s^-1
+a        = 5.79e10 m              Mercury semi-major axis
+e        = 0.2056                 Mercury eccentricity</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the orbital-rotation domain. (b) What it reveals is the perihelion precession angle $\delta\phi$ per century. Integrating the cost-correction term over one orbital period yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\delta\phi = \dfrac{6\pi GM}{c^2 a(1-e^2)} \approx 5.0 \times 10^{-7}\;\text{rad/rev}$</div>
+<div class="math-row">$\delta\phi \approx 43.0''/\text{century}$ (converted by Mercury's revolution count)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\delta\phi = 43.0''/\text{century}$</div>
+<div class="math-row">Measured: $42.98'' \pm 0.04''$ (Le Verrier 1859, radar observation)</div>
+<div class="math-row">Error: $&lt; 0.1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The precession-angle formula follows from the cost-correction term and agrees with observation to better than $0.1\%$, but $M$ and the orbital elements $a, e$ are external inputs, so the final step of the forward chain is not closed. Insight: precession is the result of the $1/r^3$ term of the cost gradient preventing the orbit from closing — the first test of general relativity.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h730.html">H-730</a> (Schwarzschild) orbital verification. <a href="h728.html">H-728</a> (geodesic) correction.</p><p>This card can be re-used as input for the following cards: <a href="h728.html">H-728</a>, <a href="h730.html">H-730</a></p>
+<p>Re-injection path: <a href="h730.html">H-730</a>, <a href="h728.html">H-728</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

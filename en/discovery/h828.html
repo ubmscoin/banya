@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible on the next round / residual tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement needed). Recursive substitution path: <a href="h834.html">H-834</a>, <a href="h840.html">H-840</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Small-World Topology from CAS Connection-Cost Minimization</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>In connections between entities (<a href="../axiom.html#ax5">Axiom 5</a>: ECS lock register), a connection within the same domain costs 0 and a connection crossing a domain costs 1 (<a href="../axiom.html#ax4">Axiom 4</a>). The connection cost is read as the count of + crossings in the Banya formula.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the connection-cost minimization norm. Preferring same-domain connections (cost 0) creates high clustering, while a few cross-domain connections (cost 1) shrink the diameter logarithmically — the topology that minimizes total cost forces both properties at once, so this norm is chosen.</p>
+<div class="math-block">
+<div class="math-row">$C_{\text{net}} = n_0\cdot 0 + n_1\cdot 1 = n_1$</div>
+<div class="math-row">$\min C_{\text{net}} \;\Rightarrow\; L \sim \ln N,\; C \gg C_{\text{rand}}$</div>
+<div class="math-legend">$C_{\text{net}}$: total network connection cost | $n_0$: intra-domain connections (cost 0) | $n_1$: cross-domain connections (cost 1) | $L$: mean path length | $C$: clustering coefficient | $N$: number of nodes</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h834.html">H-834</a>, <a href="h840.html">H-840</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>cost_intra = 0            intra-domain connection   Axiom 4
+cost_cross = 1            cross-domain connection    Axiom 4
+L ~ ln N                  cross links shrink diameter
+C >> ln N / N            intra preference keeps clustering</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the network-topology domain. What it reveals is the path-length and clustering scale of the cost-minimal topology. Minimizing the cross-connection count $n_1$ yields the asymptotics of $L$ and $C$.</p>
+<div class="math-block">
+<div class="math-row">$L \sim \ln N \;\ll\; N, \qquad C \gg C_{\text{rand}} \sim \dfrac{\ln N}{N}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $L\sim\ln N$ (short path) and $C\gg C_{\text{rand}}$ (high clustering) coexist</div>
+<div class="math-row">Measured: Watts-Strogatz model = regular lattice (intra-domain) + random shortcuts (cross)</div>
+<div class="math-row">Result: cost-minimal topology qualitatively matches the small-world definition</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The coexistence of the two small-world properties closes from cost minimization, but the optimal cross-connection fraction is not fixed directly from the axioms, so quantitative prediction is undetermined.</p>
+<p>Insight: the reason brains, societies, and power grids are all small-world is the universal consequence of CAS connection-cost minimization, and the same optimal topology is re-injected into network science (<a href="h840.html">H-840</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h840.html">H-840</a> (network science). <a href="h834.html">H-834</a> (collective intelligence)</p><p>This card can be re-used as input for the following cards: <a href="h834.html">H-834</a>, <a href="h840.html">H-840</a></p>
+<p>Re-injection path: <a href="h840.html">H-840</a>, <a href="h834.html">H-834</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -72,39 +72,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승급 가능 / 잔여 과제 명시.</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare 비트 비교 비용에서 CKM u행 Hamming 거리 단조 대응 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 유일 연산자 + 4축 직교.</p>
+<p>쿼크 맛 전이는 CAS의 Read ==&gt; Compare ==&gt; Swap(<a href="../axiom.html#ax2">공리 2</a>)에서 Compare 단계가 두 상태의 비트를 비교하는 비용이다. 비교해야 할 비트가 많을수록 비용이 커지고 전이가 억압된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 두 쿼크 비트열 사이의 Hamming 거리 노름이다. (b) <a href="h44.html">H-44</a>의 3비트 옥텟 할당에서 $u$행 전이가 비트 한 자리씩 멀어지므로, 이 거리 노름이 곧 Compare 비용을 정해 전이 진폭의 단조 순서를 강제하기 때문에 택한다.</p>
+<div class="math-block">
+<div class="math-row">$|V_{ij}| = f\big(d_H(i,j)\big),\quad f\ \text{단조 감소}$</div>
+<div class="math-row">$|V_{ud}| &gt; |V_{us}| &gt; |V_{ub}|,\quad d_H(u,d) &lt; d_H(u,s) &lt; d_H(u,b)$</div>
+<div class="math-legend">$|V_{ij}|$: CKM 전이 진폭 | $d_H$: Hamming 거리 (<a href="h44.html">H-44</a>) | $f$: 거리 ==&gt; 진폭 단조 감소 함수 | $u,d,s,b$: 쿼크 맛</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>d_H(u,d) = 1     |V_ud| = 0.97435    PDG 2024
+d_H(u,s) = 2     |V_us| = 0.22500    PDG 2024
+d_H(u,b) = 3     |V_ub| = 0.00382    PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 약력 혼합 도메인(CKM 비트 공간)으로 변환한다. (b) 보려는 것은 비트 거리가 전이 진폭의 크기 순서를 정하는지 여부다. Hamming 거리 순서와 진폭 순서를 나란히 놓아 단조 대응을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$d_H:\ 1 &lt; 2 &lt; 3 \;\Longleftrightarrow\; |V|:\ 0.974 &gt; 0.225 &gt; 0.0038$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $d_H$ 증가 ==&gt; $|V_{ij}|$ 단조 감소</div>
+<div class="math-row">측정: $0.974 &gt; 0.225 &gt; 0.0038$ (PDG 2024)</div>
+<div class="math-row">결과: 3쌍 모두 순서 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 거리 ==&gt; 진폭의 단조 대응은 세 쌍 모두 성립하나, $|V_{ij}| = f(d_H)$의 함수 형태가 정량 공식으로 닫히지 않아(지수 감쇠 $\exp(-c\,d_H)$ 후보 미확정) forward chain이 열려 있다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h47.html">H-47</a>($s_{13}$) 도출의 구조적 근거. CKM 전체를 비트 전이로 재구성.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: $d_H=3$, $s_{13}$, $|V_{ij}| \propto \exp(-c \cdot d_H(i,j))$, $s_{13}$</p>
+<p>재투입 경로: <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a>, <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">
@@ -136,41 +145,6 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>판정: 가설</strong> -- Hypothesis (재귀 대입 진행 중)</p>
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승급 가능 / 잔여 과제 명시.</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
-</div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
-<div class="step">
-<h3>1단계. 반야식 출발</h3>
-<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 유일 연산자 + 4축 직교.</p>
-</div>
-<div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
-</div>
-<div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
-</div>
-<div class="step">
-<h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
-</div>
-<div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
-</div>
-<div class="box-byproduct">
-<h3>부산물</h3>
-<p>재대입 용도: <a href="h47.html">H-47</a>($s_{13}$) 도출의 구조적 근거. CKM 전체를 비트 전이로 재구성, 2개 H 카드 입력으로 chain이 닫혀 있어, 가설 입력만으로는 산출 불가능한 정량 결과가 다수 D 입력을 통해 forward chain으로 완료되었다. <a href="../axiom.html#ax2">공리 2</a>와 <a href="../axiom.html#ax4">공리 4</a>가 인용되어 forward chain의 각 단계가 공리 본문과 직접 매핑된다 — 공리 → 식 → 수치의 3단 흐름이 끊김 없이 진행. <strong>최종 검증:</strong> 명시적 도출 식 존재 ✓, 오차 0.0% ≤ 1% ✓, 공리 인용 2개 (≥ 2) ✓, 도출/유도 키워드 본문 명시 ✓, 자유 매개변수 0개 ✓. D 승급 조건 5개 모두 충족.</p>
-<p><strong>승급 후 위치:</strong> lib.html 인덱스에서 H 섹션 → D 섹션으로 이동 (HTML 파일명 h82.html은 유지하여 cross-link 보존). H 섹션에는 "(D 승급, B급)" 표시 잔존하여 이력 보존.</p>
-<p><strong>다음 라운드 후속:</strong> 본 D 승급으로 다른 H 카드들의 재귀 대입 chain이 추가 입력을 얻음. 본 카드를 입력으로 받는 H 카드들의 추가 승급 가능성 재검토 필요.</p>
 </div>
 </main>
 <div class="page-nav lang-ko">

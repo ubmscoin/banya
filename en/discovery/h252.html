@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> No experimental comparison / 2 recursive inputs confirmed, D-promotion possible after next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h234.html">H-234</a>, <a href="h251.html">H-251</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the collapse entry point bit 0 from the ring-buffer entry cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Observation collapse is the cost at which, when observer enters the ring buffer, the CAS Read fixes the superposition of one bit. observer is the result of completing the $\delta$ loop (<a href="../axiom.html#ax15">Axiom 15</a>) and, as the agent of the Compare branch, decides grasp on true and superposition-retain on false (<a href="../axiom.html#ax7">Axiom 7</a>). Which bit the entry starts at sets the collapse order.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the ring-buffer bit-index norm. (b) It is chosen because observer's entry position sets the collapse start, and the ring-buffer bit order is fixed as observer·superposition·time·space (<a href="../axiom.html#ax15">Axiom 15</a>), so observer occupies the least-significant bit. The entry point is therefore substituted by a bit index.</p>
+<div class="math-block">
+<div class="math-row">$i_{\text{entry}} = \min\{\,i : \text{bit occupied by observer}\,\}$</div>
+<div class="math-row">$i_{\text{entry}} = 0 \quad (\text{LSB})$</div>
+<div class="math-legend">$i_{\text{entry}}$: entry bit index | $i=0$: least-significant bit observer | $i=1$: superposition | $i=2,3$: time, space</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h234.html">H-234</a>, <a href="h251.html">H-251</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>bit 0 = observer                   Axiom 15 ring-buffer order (LSB)
+bit 1 = superposition
+bit 2 = time
+bit 3 = space
+Read cost = Compare + 1</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum-measurement-basis domain. (b) What it reveals is the bit the collapse fixes first — the degree of freedom the measurement projects earliest. Since observer occupies the least-significant ring-buffer bit, the entry index falls to 0.</p>
+<div class="math-block">
+<div class="math-row">$i_{\text{entry}} = 0 \;\Rightarrow\; \text{Read}(\text{bit }0)\;\text{is the first projection}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $i_{\text{entry}} = 0$ (observer = LSB)</div>
+<div class="math-row">Measured: no direct observation of the collapse entry point</div>
+<div class="math-row">Status: awaiting verification that the Born rule $P=|\langle\psi|\varphi\rangle|^2$ is reproduced</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The entry point is fixed at the least-significant ring-buffer bit 0, but the quantitative comparison against Born-probability reproduction is incomplete.</p>
+<p>Insight: "why observation causes collapse" reduces to the Read executed at LSB entry.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h234.html">H-234</a>, <a href="h251.html">H-251</a></p>
+<p>Re-injection path: <a href="h251.html">H-251</a>, <a href="h234.html">H-234</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

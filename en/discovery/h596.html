@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h596.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h596.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h596.html">H-596</a>. No-Cloning Theorem = Non-Copyability by CAS Atomicity</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon advancing to next round / residual tasks specified</p>
 <p><strong>Location:</strong> Category: h_misc. Domain: delta ==&gt; outside natural classification (domain unconfirmed, follow-up refinement needed). Recursive substitution path: <a href="h592.html">H-592</a>, <a href="h601.html">H-601</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Cloning-Fidelity Upper Bound from the CAS Swap Atomicity Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Non-copyability is read through the atomicity cost in which the CAS Read·Compare·Swap closes as one block. Swap is an operation that moves a value, not one that copies it (<a href="../axiom.html#ax2">Axiom 2</a>); doubling one unknown state into two copies would double the cost and break cost conservation (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unconfirmed, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS Swap atomicity norm. (b) Since no single unitary can perfectly clone an unknown state, what we read is the fidelity upper bound the best approximate clone can reach. This norm is chosen because the information a single unitary can move is limited by FSM closure (<a href="../axiom.html#ax14">Axiom 14</a>). The absence of perfect cloning is substituted by the fidelity upper bound $F$ of the universal cloner.</p>
+<div class="math-block">
+<div class="math-row">$U|\psi\rangle|0\rangle = |\psi\rangle|\psi\rangle$ : no solution for arbitrary $|\psi\rangle$</div>
+<div class="math-row">$F = \dfrac{2}{d+1}$</div>
+<div class="math-legend">$U$: cloning unitary | $|\psi\rangle$: unknown single state | $F$: universal-cloner fidelity bound | $d$: state-space dimension (single qubit $d=2$)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h592.html">H-592</a>, <a href="h601.html">H-601</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>d   = 2           single-qubit state-space dimension
+2/(d+1) = 2/3     non-optimal cloning limit
+F_max   = 5/6     optimal universal cloner (Buzek-Hillery 1996)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum/information domain (single-qubit cloning). (b) What it reveals is the maximum fidelity reachable when one Swap produces a copy while preserving the original. Substituting the single qubit $d=2$ into the optimal universal-cloner formula yields the bound.</p>
+<div class="math-block">
+<div class="math-row">$F_{\max} = \dfrac{5}{6} \approx 0.8333$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $F \leq 5/6$ (single-qubit optimal cloning)</div>
+<div class="math-row">Measured: perfect cloning ($F=1$) never observed; no-cloning theorem holds</div>
+<div class="math-row">Bound: $F_{\max} = 5/6$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Perfect cloning of an unknown state is structurally excluded by CAS Swap atomicity, and even the best copy cannot exceed $F=5/6$. A step in which the fidelity bound closes directly from the axioms remains, so it has not advanced to the next round.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: security of <a href="h601.html">H-601</a> (key distribution). Fundamental constraint on <a href="h592.html">H-592</a> (qubit).</p><p>This card can be re-used as input for the following cards: <a href="h592.html">H-592</a>, <a href="h601.html">H-601</a></p>
+<p>Re-injection path: <a href="h601.html">H-601</a>, <a href="h592.html">H-592</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

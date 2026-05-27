@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../../discovery/h54.html">KO</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h54.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_cosmology</code> | Verdict: <span class="tag-discovery">Discovery</span></p>
 <h1><a href="h54.html">H-54</a>. BH evaporation time $t_{evap} = 5120\pi G^2 M^3 / (\hbar c^4)$, 5120 = 10x2⁹</h1><div class="box-finding">
@@ -68,34 +68,43 @@ Open tasks: establish the CAS-necessary basis for 10. Fully identify exactly whi
 <p><strong>Reason:</strong> explicit derivation formula exists / experiment-comparison error &lt;= 1% / 1 recursive-substitution input confirmed / forward chain complete (axiom ==&gt; formula ==&gt; numeric value)</p>
 <p><strong>Position:</strong> Category: h cosmology. Domain: delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale. Recursive-substitution path: <a href="d32.html">D-32</a></p>
 </div>
-<h2>v1.8 axiom-based 5-step recursive substitution</h2>
+<h2>5-Step Recursive Substitution: Deriving the BH Evaporation-Time Coefficient 5120 from the RLU Cache Cost</h2>
 <div class="step">
-<h3>Step 1. Banya formula start</h3>
+<h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>Every mining starts from this single line. CAS sole operator + 4 orthogonal axes.</p>
+<p>The black-hole evaporation time is read as the cosmological cost of the RLU cache emptying its HOT state. <a href="d32.html">D-32</a> ($T_H^3\tau_{BH} = (10/\pi^2)T_P^3 t_P$) closes the BH temperature-lifetime relation, and the coefficient 10 of that relation comes from spatial degrees of freedom (<a href="../axiom.html#ax1">Axiom 1</a> domain combination).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm substitution -- delta into the target domain</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the product norm of spatial DOF 10 and information state count $2^9$. (b) The evaporation-time coefficient splits into the product of spatial structure (10) and binary state space (512), and the two factors are each forced from different axioms, which is why this norm is chosen. Transforming <a href="d32.html">D-32</a> algebraically gives the standard BH evaporation time, and the coefficient $5120 = 10\times 2^9$ falls out.</p>
+<div class="math-block">
+<div class="math-row">$t_{evap} = C_{BH}\,\pi\dfrac{G^2 M^3}{\hbar c^4}$</div>
+<div class="math-row">$C_{BH} = 10\times 2^9 = 5120$</div>
+<div class="math-legend">$t_{evap}$: BH evaporation time | $C_{BH}$: evaporation coefficient | $10$: $SO(5)$ dimension = spatial DOF (<a href="d32.html">D-32</a>, Wyler) | $2^9$: full-description 9-bit binary state space (CAS 3 + domain 4 + utterance 2) | $M$: BH mass</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constants + hypothesis re-injection (recursive substitution)</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 57 (output, alpha^57=Lambda*l_p^2), 7, 21, 35 (exterior-algebra dimensions)</p>
-<p><strong>Physical-constant input:</strong> <code>alpha</code></p>
-<p><strong>Library re-injection:</strong> <a href="d32.html">D-32</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>10            = SO(5) dimension = spatial DOF   D-32, Wyler
+2^9           = 512        full-description 9 bits (CAS 3 + domain 4 + utterance 2)
+C_BH          = 10 x 512 = 5120
+standard Hawking = 5120    Stefan-Boltzmann + Schwarzschild integral</pre>
 </div>
 <div class="step">
-<h3>Step 4. Domain transformation</h3>
-<p>The formula in the body above is the result of the domain transformation. v1.8 vocabulary alignment:</p>
-<ul>
-<li>equals sign (=) = delta utterance bit = 1 (declaration that left- and right-hand sides have identical change magnitude)</li>
-<li>+ = orthogonal composition (orthogonal subspaces inside parentheses)</li>
-<li>cost +1 = forced traversal of an orthogonal boundary order (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<h3>Step 4. Domain Transformation</h3>
+<p>(a) The transformation is into the cosmological RLU (HOT/WARM/COLD) scale domain. (b) What it reveals is the time for a black hole of mass $M$ to fully evaporate. Substituting the coefficient 5120 — spatial DOF 10 times binary state count 512 — into the Hawking integral form yields that value.</p>
+<div class="math-block">
+<div class="math-row">$t_{evap} = 5120\,\pi\dfrac{G^2 M^3}{\hbar c^4}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / verdict</h3>
-<p>Verdict: <strong>Discovery</strong>. For details see the "Why this verdict" box above.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $C_{BH} = 10\times 2^9 = 5120$</div>
+<div class="math-row">Measured: $5120$ (standard Hawking evaporation-formula coefficient)</div>
+<div class="math-row">Error: $0\%$ (algebraically exact from <a href="d32.html">D-32</a>)</div>
+</div>
+<p>Verdict: <strong>Discovery</strong>. The coefficient 5120 that standard theory obtains by integration is closed as the product of spatial DOF 10 and binary state count $2^9$. The forward chain (axiom ==&gt; <a href="d32.html">D-32</a> ==&gt; coefficient) is complete with error 0%.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

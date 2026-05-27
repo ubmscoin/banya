@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare가 완전기술자유도에서 점유하는 비율에서 카비보 각 $\sin\theta_C$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>카비보 각은 CAS가 쿼크 세대 간 전이를 쥐는 비용의 비율이다. Compare 자유도 2가 완전기술자유도 $9$(<a href="../axiom.html#ax9">공리 9</a>: CAS 내부 7 + 괄호 구조 2)에서 점유하는 몫 $2/9$가 기본 각도를 정하고, $\alpha$의 +를 넘는 1차 보정(<a href="../axiom.html#ax4">공리 4</a>)이 더해진다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare 자유도 2 대 완전기술자유도 9의 비율 노름 $2/9$이다. 카비보 각이 CAS가 쿼크 세대 간 전이를 쥐는 비용의 비율이고, 그 비용이 Compare가 완전기술자유도에서 점유하는 몫으로 닫히기 때문에 이 노름을 택한다. 따라서 카비보 각을 기본 비율 $2/9$와 <a href="d01.html">D-01</a>의 $\alpha$에서 오는 1차 보정으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin\theta_C = |V_{us}|$</div>
+<div class="math-row">$\sin\theta_C = \dfrac{2}{9}\!\left(1 + \dfrac{\pi\,\alpha}{2}\right)$</div>
+<div class="math-legend">$\theta_C$: 카비보 각 | $2$: Compare 자유도 | $9$: 완전기술자유도 = CAS 7 + 괄호 2 (<a href="../axiom.html#ax9">공리 9</a>) | $\pi\alpha/2$: +를 넘는 1차 보정 (<a href="d01.html">D-01</a>) | $V_{us}$: CKM 행렬 성분</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3, 9, 30, 7</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>2/9            = 0.22222
+alpha          = 1/137.036          D-01
+pi alpha / 2   = 0.011460
+sin theta_C    = 0.2243             PDG (V_us)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>CKM 혼합각 도메인으로 변환한다. 이 변환으로 보려는 것은 쿼크가 세대를 넘어 섞이는 기본 비율, 곧 카비보 각 $\sin\theta_C$다. 기본 비율 $2/9$에 1차 보정을 곱해 카비보 각을 산출한다. 보정 없이는 $0.2222$로 0.9% 오차다.</p>
+<div class="math-block">
+<div class="math-row">$\sin\theta_C = 0.22222 \times (1 + 0.011460) = 0.2248$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\sin\theta_C = 0.2248$</div>
+<div class="math-row">측정값: $0.2243$ (PDG $V_{us}$)</div>
+<div class="math-row">오차: $0.24\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. Wolfenstein 전개 매개변수 $\lambda$였던 자유 매개변수가 Compare/완전기술자유도 비율에서 닫히며, <a href="d08.html">D-08</a>와 결합해 CKM 행렬을 구성하고 CP 위반 <a href="d23.html">D-23</a>에 재투입된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: CKM 행렬 전체 구성, 쿼크 붕괴율 계산, CP 위반 크기 도출. <a href="d08.html">D-08</a>(Wolfenstein $A$)과 조합하면 CKM 행렬의 4개 매개변수 중 2개를 확보한다.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

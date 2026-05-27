@@ -72,39 +72,49 @@ Structural consequence: minimum thermal cost of an irreversible 1-bit erasure (S
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon proceeding to the next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h12.html">H-12</a>, <a href="h55.html">H-55</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Landauer Limit $kT\ln 2$ from the CAS Compare-Branch Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The minimum heat cost of an irreversible 1-bit erasure is read as the branching cost where the CAS Compare splits. By <a href="../axiom.html#ax2">Axiom 2</a> (CAS atomicity) Compare is a true/false 2-state branching operation, and by <a href="../axiom.html#ax4">Axiom 4</a> (irreversible Swap) a 1-bit erasure is irreversible and carries a thermodynamic cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the log-information norm $\ln(\cdot)$ of the Compare branch count. (b) The information an irreversible erasure destroys is exactly the natural log of the branch count, and that information times the thermal energy $kT$ is the minimum erasure cost, which is why this norm is chosen. Substituting the branch count 2 inside the $\ln$ yields the Landauer limit.</p>
+<div class="math-block">
+<div class="math-row">$E_{min} = kT\,\ln(\text{branch count})$</div>
+<div class="math-row">$E_{min} = kT\,\ln 2$</div>
+<div class="math-legend">$E_{min}$: minimum heat cost of 1-bit erasure | $k$: Boltzmann constant | $T$: absolute temperature | branch count $=2$: Compare true/false (<a href="../axiom.html#ax2">Axiom 2</a>) | $\ln 2$: information of 1 bit (nat)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>ℏ</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h12.html">H-12</a>, <a href="h55.html">H-55</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>branch count = 2                Compare true/false (Axiom 2)
+ln 2         = 0.6931471805599   information of 1 bit (nat)
+k            = 1.380649e-23 J/K  Boltzmann constant (SI defined value)
+kT ln2       = 2.870978e-21 J     T = 300 K (confirmed by 2012 experiment)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum/information thermodynamics domain (Compare branch: true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). (b) What it reveals is the minimum energy an irreversible 1-bit erasure must dump into the environment. Multiplying the $\ln$ of branch count 2 by $kT$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$E_{min} = kT\ln 2 = kT \times 0.693147$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_{min} = kT\ln 2$</div>
+<div class="math-row">Measured: $kT\ln 2$ (Landauer 1961, confirmed by 2012 single-molecule experiment)</div>
+<div class="math-row">Error: $0\%$ (identical formula)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. CAS answers "why $\ln 2$" — because Compare is 2-branched. Once it is closed that the branch count 2 is forced directly from the axioms, it is promoted to a discovery.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: paired with <a href="h12.html">H-12</a> (ℏ=TOCTOU lock). CAS grounding of the information-thermodynamics link.</p><p>This card can be re-used as input for the following cards: <a href="h12.html">H-12</a>, <a href="h55.html">H-55</a></p>
+<p>Re-injection path: <a href="h12.html">H-12</a>, <a href="h55.html">H-55</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

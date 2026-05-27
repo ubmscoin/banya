@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h845.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h845.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h845.html">H-845</a>. Integrated Circuit = ECS Parallel Array of Many CAS</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion is possible upon proceeding to the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain not yet determined, further refinement needed). Recursive-substitution path: <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Moore's-Law Transistor Count from the ECS Parallel CAS Array</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>An integrated circuit is the cost structure of many CAS arrayed in parallel on a single ECS substrate. <a href="../axiom.html#ax2">Axiom 2</a> (CAS is the unique operator) gives each transistor as an independent CAS Compare unit and the silicon wafer as a regular ECS substrate. <a href="../axiom.html#ax4">Axiom 4</a> (cost) forces the total cost to be the product of the CAS count and the unit switching cost. The growth of CAS count per unit area is read in the time domain.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain not yet determined, further refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the ECS parallel-array density norm. Integration density is the CAS count per unit area, and that count closes into the parallel CAS array on the ECS substrate of <a href="../axiom.html#ax2">Axiom 2</a>, so this norm is chosen. The transistor count is substituted by the product of the baseline-year array density and a doubling every two years.</p>
+<div class="math-block">
+<div class="math-row">$N \sim 2^{(y-1971)/2}$</div>
+<div class="math-row">$N = N_0 \cdot 2^{(y-1971)/2}$</div>
+<div class="math-legend">$N$: transistor count | $N_0$: 1971 baseline CAS count (Intel 4004 = 2300) | $y$: year | $1971$: Moore baseline year | exponent $/2$: doubling every two years</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N_0          = 2300            Intel 4004 (1971)
+y            = 2021
+(y-1971)/2   = 25
+2^25         = 33554432</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the integration-density domain (transistor count per year). What it reveals is the scale of the CAS array on a single 2021 chip. Multiplying the baseline array density by the two-year doubling factor yields that value.</p>
+<div class="math-block">
+<div class="math-row">$N(2021) = 2300 \times 2^{25} = 7.7 \times 10^{10}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $N(2021) = 7.7 \times 10^{10}$</div>
+<div class="math-row">Measured: $\sim 10^{10}$–$10^{11}$ (modern IC)</div>
+<div class="math-row">Status: order-of-magnitude match (Moore's law, 50-year trend)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The ECS parallel CAS array reproduces the order of magnitude of Moore's law, but the baseline count $N_0$ and the doubling period are an empirical trend dependent on process limits and do not close directly from the axioms.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution targets: <a href="h844.html">H-844</a> (transistor). <a href="h846.html">H-846</a> (quantum computer). <a href="h847.html">H-847</a> (memory)</p><p>This card can be re-used as input for the following cards: <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
+<p>Re-injection path: <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

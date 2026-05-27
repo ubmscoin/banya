@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-33 dw/da = 0 정확히 (암흑에너지 상태방정식 불변) — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-33 dw/da = 0 정확히 (암흑에너지 상태방정식 불변). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p33.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p33.html">P-33</a>. $dw/da=0$ 정확히 (암흑에너지 상태방정식 불변)</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p33.html">P-33</a>: $dw/da=0$ 정확히 (암흑에너지 상태방정식 불변)</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$w(a)=w_0+w_a(1-a)=-1,\qquad \frac{dw}{da}=w_a=0\ \text{정확히}\quad(\text{RLU COLD 비가역})$$</div></div>
+<p class="finding-precision">예측: 암흑에너지 상태방정식 running $w_a=0$ 정확히($w=-1$ 불변). 검증 DESI/Euclid/Rubin(2026~).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 암흑에너지는 RLU 캐시의 COLD 영역 에너지에 대응한다 — CAS 연산이 완료되어 더 이상 접근되지 않는 쥠(juim)들이다(<a href="../axiom.html#ax12">공리 12</a> 명제).</p>
+<p>완료된 CAS 연산은 비가역이다(<a href="../axiom.html#ax2">공리 2</a> 명제). 되돌릴 수 없으므로 COLD의 에너지 밀도는 시공간 팽창과 무관하게 일정하다.</p>
+<p>에너지 밀도가 팽창과 무관하게 일정한 것이 바로 상태방정식 $w=-1$의 구조적 이유다(P-04). 이것이 우주상수의 정체다.</p>
+<p>COLD가 비가역적으로 고정되어 있으므로 $w$에는 시간(스케일) 의존성이 없다 ==> CPL 파라미터화 $w(a)=w_0+w_a(1-a)$에서 $w_a=0$, $w_0=-1$이다.</p>
+<p>즉 $dw/da=0$은 근사가 아니라 RLU COLD 비가역성의 정확한 귀결이다 — 암흑에너지는 동역학적으로 변하지 않는다.</p>
+<p>이것은 quintessence(굴러가는 스칼라장)나 phantom 암흑에너지 모형과 직접 구별된다 — 그 모형들은 $w_a\neq0$인 시간 변화를 예측한다.</p>
+<p>즉 본 예측은 "암흑에너지가 거의 상수"가 아니라 "정확히 $w=-1$ 불변"이라는 강한 정량 주장이다.</p>
+<p>최근 DESI 2024 결과는 $w$의 약한 시간 변화 가능성을 시사했으나, 현재 통계에서는 $w=-1$과 $1\sigma$ 이내로 정합한다.</p>
+<p>검증: DESI/Euclid/Rubin(2026~)이 $w_a$를 정밀 측정해 0과 일관되면 본 예측을 지지한다.</p>
+<p>반박: $w_a$가 0에서 $3\sigma$ 이상 벗어나면 COLD 비가역성 가정이 깨지므로 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: DESI/Euclid/Rubin(2026~). 반박: $w_a\neq0$ at $3\sigma$. 출처: P-04($w=-1$), <a href="d15.html">D-15</a>($\Lambda$), <a href="../axiom.html#ax12">공리 12</a>(RLU COLD).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측으로 검증 대기 상태다. forward chain은 공리 2 공리 12(COLD 비가역)에서 $w=-1$·$w_a=0$까지 닫혀 있고, DESI 2024와 $1\sigma$ 정합한다. $w_a=0$ 정밀 확인 시 D 승격, $w_a\neq0$($3\sigma$) 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 정밀 측정 진행 중(DESI 2024 1σ 정합) / forward chain 완료(공리 2 공리 12 ==> COLD 비가역 ==> $w=-1$, $w_a=0$) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: time ==&gt; RLU COLD 비가역성이 $w=-1$ 불변 강제, $w_a=0$(공리 2 공리 12). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: RLU COLD 비가역 비용에서 암흑에너지 상태방정식 불변 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>암흑에너지는 RLU 캐시의 COLD 영역, 곧 CAS 연산이 완료되어 더는 접근되지 않는 쥠들에 대응한다(<a href="../axiom.html#ax12">공리 12</a> 명제). 완료된 CAS 연산은 비가역이므로(<a href="../axiom.html#ax2">공리 2</a> 명제) COLD의 에너지 밀도는 시공간 팽창과 무관하게 일정하다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU COLD 비가역 노름이다. COLD가 비가역으로 고정되어 에너지 밀도가 스케일에 의존하지 않고, 그 불변성이 상태방정식 $w$를 정하기 때문에 이 노름을 택한다. 따라서 CPL 파라미터화 $w(a)=w_0+w_a(1-a)$의 running 항 $w_a$를 COLD 비가역성으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$w(a)=w_0+w_a(1-a)$</div>
+<div class="math-row">$w_0=-1,\quad w_a=0$</div>
+<div class="math-legend">$w(a)$: 상태방정식 | $a$: 우주 스케일 인자 | $w_0$: 현재값 | $w_a$: running 항 | COLD: RLU 비가역 고정 영역 (<a href="../axiom.html#ax12">공리 12</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>w_0  = -1               P-04
+w_a  = 0                COLD 비가역
+Lambda l_P^2 ~ alpha^57 D-15</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>암흑에너지 상태방정식 도메인(time)으로 변환한다. 이 변환으로 보려는 것은 $w$가 스케일 $a$에 따라 변하는가, 곧 $dw/da$다. COLD 비가역으로 에너지 밀도가 $a$에 무관하므로 $dw/da=w_a=0$이 정확히 성립한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{dw}{da}=w_a=0\quad(w=-1\ \text{불변})$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측: $w_a=0$ 정확히, $w=-1$ 불변</div>
+<div class="math-row">검증: DESI/Euclid/Rubin (2026~) $w_a$가 0과 일관 시 지지</div>
+<div class="math-row">반박: $w_a\neq0$ at $3\sigma$</div>
+</div>
+<p>판정: <strong>예측</strong>. $dw/da=0$은 근사가 아니라 COLD 비가역성의 정확한 귀결이며, quintessence·phantom의 $w_a\neq0$과 직접 구별된다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="d15.html">D-15</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p33.html">P-33</a>: dw/da = 0 정확히 (암흑에너지 상태방정식 불변)</td><td>예측 (대기) — $w_a=0$ 정확히, 암흑에너지 $w=-1$ 불변</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

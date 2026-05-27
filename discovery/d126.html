@@ -66,39 +66,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 5개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형. 재귀 대입 경로: <a href="d04.html">D-04</a>, <a href="d127.html">D-127</a>, <a href="d36.html">D-36</a>, <a href="d37.html">D-37</a>, <a href="d42.html">D-42</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Read 1회 비용에서 콤프턴 파장 $\bar{\lambda}_C$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전자 1개가 d-ring 위에서 한 번 쥐어지는 공간 스케일은 CAS Read 1사이클이 차지하는 길이다. CAS 1사이클 작용량 $\hbar$를 전자 DATA 크기와 링 순환 속도로 나눈 비용이 이 길이를 정한다(<a href="../axiom.html#ax3">공리 3</a> CAS 연산).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS Read 1사이클의 길이 노름이다. (b) 전자 한 개의 쥠이 차지하는 공간 크기를 보려 하기 때문에 이 노름을 택한다. CAS 1사이클 작용량 $\hbar$(<a href="d37.html">D-37</a>)를 전자 DATA 크기 $m_e$(<a href="d04.html">D-04</a>)와 링 순환 속도 $c$(<a href="d36.html">D-36</a>)의 곱으로 나눈다.</p>
+<div class="math-block">
+<div class="math-row">$\bar{\lambda}_C = \dfrac{\lambda_C}{2\pi}$</div>
+<div class="math-row">$\bar{\lambda}_C = \dfrac{\hbar}{m_e c}$</div>
+<div class="math-legend">$\bar{\lambda}_C$: 환산 콤프턴 파장 | $\hbar$: CAS 1사이클 작용량 (<a href="d37.html">D-37</a>) | $m_e$: 전자 DATA 크기 (<a href="d04.html">D-04</a>) | $c$: 링 순환 속도 (<a href="d36.html">D-36</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>m_e</code>, <code>ℏ</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d04.html">D-04</a>, <a href="d127.html">D-127</a>, <a href="d36.html">D-36</a>, <a href="d37.html">D-37</a>, <a href="d42.html">D-42</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar  = 1.054571817e-34 J s       D-37
+m_e   = 9.1093837e-31 kg          D-04
+c     = 2.99792458e8 m/s          D-36
+a_0   = 5.29177e-11 m             D-42 (보어 반지름)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 질량 계층 길이 사다리 도메인으로 변환한다. (b) 보려는 것은 전자의 d-ring 쥠 1회가 차지하는 길이 스케일이다. 보어 반지름 $a_0$에서 $\alpha$ 1승만큼 축소한 자리이며 $a_0/\alpha$ 관계로 교차 확인된다(<a href="d42.html">D-42</a>).</p>
+<div class="math-block">
+<div class="math-row">$\bar{\lambda}_C = \dfrac{\hbar}{m_e c} = \alpha\,a_0 = 3.8616 \times 10^{-13}\;\text{m}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\bar{\lambda}_C = 3.8616 \times 10^{-13}\;\text{m}$</div>
+<div class="math-row">측정값: $3.8616 \times 10^{-13}\;\text{m}$ (CODATA)</div>
+<div class="math-row">오차: 유효숫자 4자리 일치</div>
+</div>
+<p>판정: <strong>적중</strong>. $\alpha$ 길이 사다리 $a_0 \to \bar{\lambda}_C \to r_e$의 중간 디딤돌이 닫혔으며, 다음 칸 $r_e = \alpha\bar{\lambda}_C$(<a href="d127.html">D-127</a>)의 직접 입력이 된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d04.html">D-04</a>, <a href="d127.html">D-127</a>, <a href="d36.html">D-36</a>, <a href="d37.html">D-37</a>, <a href="d42.html">D-42</a></p>
+<p>재투입 경로: <a href="d42.html">D-42</a>, <a href="d37.html">D-37</a>, <a href="d04.html">D-04</a>, <a href="d36.html">D-36</a>, <a href="d127.html">D-127</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

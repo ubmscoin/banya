@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/d156.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/d156.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>d_electromag</code> | Verdict: <span class="tag-discovery">Discovery</span></p>
 <h1><a href="d156.html">D-156</a>. Warburg Impedance Half-order = $\tfrac{1}{2}$ — Phase-boundary Category Crossing</h1><div class="box-finding">
@@ -61,39 +61,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Explicit derived expression + measured exponent 0.5 at 0% error / the locus (phase boundary) matches the category-crossing structure / forward chain complete (Axioms 1, 3 ==&gt; category boundary ==&gt; half-order ==&gt; measured 0.5)</p>
 <p><strong>Location:</strong> Category: d electromag. Domain: delta ==&gt; electromagnetic coupling alpha. Recursive substitution path: <a href="h953.html">H-953</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Warburg Half-order $\tfrac{1}{2}$ from the Category-boundary Crossing Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Warburg response is the cost an ion pays to cross once the category boundary between DATA (classical, discrete) and OPERATOR (quantum, continuous) (<a href="../axiom.html#ax1">Axiom 1</a>, <a href="../axiom.html#ax3">Axiom 3</a>). Responses inside a category have integer order, but an interface wedged between two phases has a single crossing equal to an orthogonal rotation of $\pi/4$ = a half-order operator, so the order drops to half of an integer (<a href="h953.html">H-953</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the boundary-crossing norm that separates the two categories DATA and OPERATOR. (b) This norm is chosen because the impedance is a half-differential response crossing the boundary once ($\alpha\pi/2$, $\alpha=1/2$), and the reason a half rather than an integer appears is that it is an interface between two categories of different phase. The Warburg impedance is therefore substituted by the $-1/2$ power of $(i\omega)$.</p>
+<div class="math-block">
+<div class="math-row">$Z_W \propto (i\omega)^{-\alpha},\quad \alpha=\tfrac{1}{2}$</div>
+<div class="math-row">$Z_W \propto (i\omega)^{-1/2} = |\omega|^{-1/2}\,e^{-i\pi/4}$</div>
+<div class="math-legend">$Z_W$: Warburg impedance | $\omega$: angular frequency | $\alpha=1/2$: single boundary crossing = half-order | $e^{-i\pi/4}$: orthogonal rotation $\pi/4$ = phase $-45°$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (DATA/OPERATOR brackets), 1/2 (half-order) — <a href="h953.html">H-953</a> half-derivative structure</p>
-<p><strong>Physical Constant Inputs:</strong> <code>omega</code> (angular frequency)</p>
-<p><strong>Library Re-substitution:</strong> <a href="h953.html">H-953</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>alpha    = 1/2                 single boundary-crossing order
+phase    = -45 deg = -pi/4     Warburg phase
+exp(meas)= 0.5                 EIS Warburg exponent (universal)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the electrochemical impedance spectroscopy (EIS) domain. (b) What it reveals is the Warburg exponent and phase angle of the electrode-electrolyte interfacial diffusion response. Moving the single-crossing order $1/2$ into the impedance power yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\alpha_{\text{Warburg}} = \tfrac{1}{2},\qquad \arg Z_W = -\tfrac{\pi}{4} = -45°$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Discovery</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\alpha_{\text{Warburg}} = \tfrac{1}{2}$, phase $-45°$</div>
+<div class="math-row">Measured: $0.5$ (Warburg element of the Randles equivalent circuit, phase $-45°$)</div>
+<div class="math-row">Error: $0\%$</div>
+</div>
+<p>Verdict: <strong>Discovery</strong>. Fractional differentiation is the only regime measured directly in experiment, and the fact that its locus is exactly the DATA-OPERATOR category boundary is the measured confirmation of the <a href="h953.html">H-953</a> half-differential structure.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: derivation of half-order responses in interfacial diffusion (Cottrell, anomalous diffusion); measured anchor for the <a href="h953.html">H-953</a> half-derivative structure.</p>
+<p>Re-injection path: <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

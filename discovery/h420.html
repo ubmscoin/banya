@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 스크린 렌더링 비용에서 시간 연속감 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>도메인 시간은 시스템 시간을 스크린에 렌더링한 결과다(<a href="../axiom.html#ax3">공리 3</a>). 렌더링 해상도에 한계가 있으므로, 이산 시스템 시간의 한 칸 차분이 그 한계 이하로 줄면 연속으로 감지된다. 이 차분을 로그 변환의 인접 차로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 로그 인접 차분 노름 $\Delta\log$이다. 도메인 시간이 시스템 시간의 로그 렌더링이라고 보아 이 노름을 택하며, 큰 $T$에서 한 칸 차분이 $1/T$로 수렴함을 본다.</p>
+<div class="math-block">
+<div class="math-row">$t_{\text{dom}} = \log(t_{\text{sys}})$</div>
+<div class="math-row">$\Delta\log = \log(T+1)-\log(T) = \log(1+1/T) \sim 1/T$</div>
+<div class="math-legend">$\Delta\log$: 인접 시스템 시간의 도메인 차분 | $T$: 시스템 시간 (플랑크 단위) | $1/T$: 큰 $T$ 근사 | $t_{\text{dom}}$: 도메인 시간</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>Delta</code></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>T_sys      = 1e60               현재 우주 나이 (플랑크 단위)
+1/T        = 1e-60
+res_screen = 1                  스크린 1칸 한계
+초기 우주   T ~ 1, Delta_log ~ 0.301</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>도메인 시간 지각 도메인으로 변환한다. 이 변환으로 보려는 것은 큰 $T$에서 시간 차분이 스크린 해상도 이하로 떨어져 연속으로 느껴지는가이다. 현재 우주 나이를 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta\log = \log(1 + 10^{-60}) \approx 10^{-60} \ll 1$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Delta\log \approx 10^{-60}$ (현재 $T\sim 10^{60}$)</div>
+<div class="math-row">측정값: 시간 이산성 미검출 (플랑크 시간 해상도)</div>
+<div class="math-row">오차: 정량 측정값 부재 (정성 일치)</div>
+</div>
+<p>판정: <strong>가설</strong>. 큰 $T$에서 시간이 연속으로 느껴지는 일상 경험이 로그 렌더링의 귀결로 따라온다. 로그 변환을 다른 변환과 가르는 근거와 공간 연속감의 동일 메커니즘 여부가 확정되면 승격 가능하다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

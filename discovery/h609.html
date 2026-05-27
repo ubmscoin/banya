@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: ECS 병렬 실행에서 양자 세포 자동자 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양자 세포 자동자는 격자의 각 엔티티가 같은 CAS를 동시에 실행하는 구조로 읽는다. ECS의 동시 접근(<a href="../axiom.html#ax7">공리 7</a>)이 병렬성을 주고, 이웃 엔티티 사이의 비용 교환(<a href="../axiom.html#ax4">공리 4</a>)이 전이 규칙을 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 ECS 병렬 실행 노름이다. 각 엔티티 $i$의 로컬 CAS가 전이 규칙이고, 격자 전체는 그 곱으로 한 틱을 진행한다. (b) QCA의 로컬 전이 규칙이 곧 CAS이고 공간 격자가 곧 ECS이므로, 이웃 비용 교환이 결합을 정한다 — 이 때문에 이 노름을 택한다. 따라서 QCA를 ECS 병렬 CAS로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{QCA} = \prod_i \text{CAS}_i$</div>
+<div class="math-row">$\text{neighborhood} = 3 = \text{CAS}\ (R,C,S)$</div>
+<div class="math-legend">$\text{QCA}$: 양자 세포 자동자 | $\prod_i$: ECS 전체 엔티티 병렬 | $\text{CAS}_i$: 엔티티 $i$의 로컬 전이 규칙 | $3$: 1차원 이웃(좌·자기·우) = CAS 3축</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>이웃 폭         = 3            좌·자기·우 (1차원)
+CAS 축         = 3            R, C, S (공리 2)
+틱당 전이      = 로컬 규칙     이웃 비용 교환
+전역 = 로컬의 곱             ECS 병렬</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 공간 격자 도메인(ECS 동시 접근 그리드)으로 변환한다. (b) 보려는 것은 로컬 CAS 규칙이 격자 전체에서 동시에 도는 거시 전이, 곧 물리 법칙의 QCA 표현이다. 이웃 폭 3과 CAS 3축을 대응시켜 전이 구조를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{1D neighborhood}\ 3 = \text{CAS}\ (R,C,S)\ 3$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 1차원 이웃 폭 3 = CAS 3축</div>
+<div class="math-row">대조: QCA 로컬 전이 규칙 (Watrous 1995, Schumacher-Werner 2004)</div>
+<div class="math-row">결과: 구조적 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. ECS 병렬 CAS와 QCA의 로컬 전이 구조가 일치하지만, 전이 규칙을 CAS 비용으로 명시 구성하고 정량 산출까지 닫는 마지막 단계가 미완이다.</p>
+<p>반야프레임 자체가 거대한 QCA — 물리 법칙은 격자 위 로컬 CAS 규칙의 거시적 발현이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h611.html">H-611</a>(양자 시뮬레이션) 기반. <a href="h617.html">H-617</a>(결정 구조) 격자 연결</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a></p>
+<p>재투입 경로: <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 정량 식 부재 / 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="d02.html">D-02</a>, <a href="d04.html">D-04</a>, <a href="h20.html">H-20</a>, <a href="h33.html">H-33</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 4도메인 경유 비용에서 보정항 $(4+1/\pi)$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>보정항은 CAS가 DATA에 작용할 때 4개 도메인 전부를 경유하는 비용이다. 반야식의 4도메인은 직교(<a href="../axiom.html#ax1">공리 1</a>)하므로 Compare와 Swap 사이 TOCTOU 간격(<a href="../axiom.html#ax5">공리 5</a>)에서 이 경유 비용을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 4도메인 경유 노름에 d-ring 위상 잔여를 더한 노름이다. (b) 보정항이 CAS가 DATA 전체에 작용하는 구조 상수이고, 직교 4도메인 경유 비용 4에 사이클이 원형으로 닫힐 때의 위상 잔여 $1/\pi$가 더해지기 때문에 이 노름을 택한다. 비용(<a href="../axiom.html#ax4">공리 4</a>) 합으로 보정항을 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$A = \dfrac{3}{4\pi}\bigl(1 - (4+1/\pi)\,\alpha\bigr)$</div>
+<div class="math-row">$4 + \dfrac{1}{\pi} = 4.3183$</div>
+<div class="math-legend">$4$: 직교 4도메인 경유 비용 (<a href="../axiom.html#ax1">공리 1</a>) | $1/\pi$: d-ring 원형 위상 잔여 | $A$: $\sin^2\theta_W$ running 보정 (<a href="d02.html">D-02</a>) | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>pi</code>, <code>sin^2theta_W</code>, <code>theta</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d02.html">D-02</a>, <a href="d04.html">D-04</a>, <a href="h20.html">H-20</a>, <a href="h33.html">H-33</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>4         = 4 도메인 경유          공리 1
+1/pi      = 0.31831
+4+1/pi    = 4.3183
+alpha     = 1/137.036             D-01
+sin2_thW  = 0.23121 ± 0.00004     PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 전약 혼합각 도메인($\sin^2\theta_W$)으로 변환한다. (b) 보려는 것은 보정항 $(4+1/\pi)$가 running 보정으로 들어간 혼합각의 값이다. 보정항을 $\alpha$와 곱해 $3/4\pi$ 기준값에서 빼 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin^2\theta_W = \dfrac{3}{4\pi}\bigl(1 - 4.3183 \times \tfrac{1}{137.036}\bigr) = 0.23121$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\sin^2\theta_W = 0.23121$</div>
+<div class="math-row">측정값: $0.23121 \pm 0.00004$ (PDG 2024)</div>
+<div class="math-row">오차: $0.18\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 보정항 $(4+1/\pi)$가 <a href="d02.html">D-02</a>·<a href="d04.html">D-04</a>·<a href="h33.html">H-33</a> 3곳에 동일하게 등장하나, 반야식에서의 독립 유도가 미완이라 가설에서 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d02.html">D-02</a>, <a href="d04.html">D-04</a> 외에 다른 도출에서도 $(4+1/\pi)$가 등장하는지 확인. 등장하면 프레임 구조 상수로 확정된다.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d02.html">D-02</a>, <a href="d04.html">D-04</a>, <a href="h20.html">H-20</a>, <a href="h33.html">H-33</a></p>
+<p>재투입 경로: <a href="d02.html">D-02</a>, <a href="d04.html">D-04</a>, <a href="h33.html">H-33</a>, <a href="h20.html">H-20</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

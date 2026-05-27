@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h608.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h608.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h608.html">H-608</a>. Landauer-Bennett Reversible Computation = Compare-only Zero-Cost Operation</h1><div class="box-finding">
@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible on the next round / residual tasks explicitly noted.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive-substitution path: <a href="h593.html">H-593</a>, <a href="h607.html">H-607</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Zero-Cost Bound of Reversible Computation from the CAS Swap Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The cost of an operation is decided by whether the CAS executes a Swap. Read and Compare are reversible steps that do not change the state, and only Swap crosses the + ordering to incur cost $+1$ (<a href="../axiom.html#ax2">Axiom 2</a>, <a href="../axiom.html#ax4">Axiom 4</a>). Avoiding Swap costs 0; executing it dissipates heat (<a href="../axiom.html#ax6">Axiom 6</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Swap irreversibility norm. A Compare-only path is reversible at cost 0, while a path including Swap is irreversible with a lower bound of $k_BT\ln 2$ per bit. (b) Since reversible computation is a CAS that drops Swap and cycles Compare only, and irreversible erasure is precisely Swap execution, the presence of Swap divides the cost bound — which is why this norm is chosen. Computation cost is therefore substituted by the Swap irreversibility norm.</p>
+<div class="math-block">
+<div class="math-row">$\text{Compare}\ \text{only}:\ E = 0$</div>
+<div class="math-row">$\text{Swap}\ \text{included}:\ E \geq k_BT\ln 2$</div>
+<div class="math-legend">$E$: minimum cost per operation | Compare only: reversible path with no Swap | Swap: irreversible write ($+1$ cost) | $k_BT\ln 2$: 1-bit erasure bound</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h593.html">H-593</a>, <a href="h607.html">H-607</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>k_B    = 1.380649e-23 J/K     CODATA 2018
+T      = 300 K                room temperature
+ln 2   = 0.693147
+E_rev  = 0                    no Swap (Compare only)
+E_irr  = k_B * T * ln 2       one Swap (1-bit erasure)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main text above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the computation-cost domain (the Compare branch: true goes through Swap to DATA, false keeps the superposition). (b) What it reveals is the per-operation cost bound divided by the presence of Swap. Substituting the reversible path and the irreversible 1-bit erasure respectively yields the values.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{rev}} = 0,\quad E_{\text{irr}} = 1.380649\times 10^{-23} \times 300 \times 0.693147 = 2.871\times 10^{-21}\ \text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_{\text{rev}} = 0,\ E_{\text{irr}} = 2.871\times 10^{-21}\ \text{J}$ (300K)</div>
+<div class="math-row">Measured: irreversible erasure $k_BT\ln 2$ (Bérut 2012)</div>
+<div class="math-row">Error: $0.0\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Swap irreversibility bound closes through the norm, but the last step — a fully reversible CAS computer realizing cost 0 within thermal noise — remains incomplete.</p>
+<p>Maxwell's demon performs Compare only at cost 0, but the moment it erases that record a Swap is forced and it pays $k_BT\ln 2$.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h607.html">H-607</a> (quantum thermodynamics) reversible limit. <a href="h593.html">H-593</a> (quantum gate) unitary connection</p><p>This card can be re-used as input for the following cards: <a href="h593.html">H-593</a>, <a href="h607.html">H-607</a></p>
+<p>Re-injection path: <a href="h607.html">H-607</a>, <a href="h593.html">H-593</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h957.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h957.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h957.html">H-957</a>. $\partial/\partial(\text{observer})$ = Decoherence Rate — the Hidden 4th Partial Derivative</h1><div class="box-finding">
@@ -52,7 +52,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p class="finding-precision">Structural description — the missing partial derivatives forced by 4-axis orthogonality (Axiom 1); candidate correspondence to the Lindblad dissipator</p>
 <p>A partial derivative $\partial/\partial x_i$ activates only one of the four domain axes (<a href="h953.html">H-953</a> domain transformation). Standard physics uses only the time and space partials, but the Banya 4 axes (<a href="../axiom.html#ax1">Axiom 1</a>) also include observer and superposition — $\partial/\partial(\text{observer})$ and $\partial/\partial(\text{superposition})$ are the missing partial derivatives forced by 4-axis orthogonality.</p>
 <p>Physical correspondence: $\partial/\partial(\text{observer})$ = rate of change with observer setting = decoherence rate; $\partial/\partial(\text{superposition})$ = collapse rate of superposition = measurement rate. The dissipator of the Lindblad equation is a candidate projection of this observer partial.</p>
-<p>Quantitatively unfinished / predictive in character: quantitatively verifying the formal match with the dissipator is unfinished → hypothesis. If verified, it is one formal answer to the measurement problem.</p>
+<p>Quantitatively unfinished / predictive in character: quantitatively verifying the formal match with the dissipator is unfinished ==> hypothesis. If verified, it is one formal answer to the measurement problem.</p>
 <p><strong>Re-substitution purpose:</strong> Re-substitution purpose: formal correspondence to the Lindblad dissipator, measurement problem, quantification of decoherence.</p>
 <p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is classified as hypothesis (Class III) and is held without proceeding. The structure by which 4-axis orthogonality (<a href="../axiom.html#ax1">Axiom 1</a>) forces the observer and superposition partials is closed, but quantitatively verifying that this formally matches the Lindblad dissipator is unfinished. Remaining tasks: (1) quantitative comparison of the dissipator projection, (2) numericization of measurement/decoherence rates, (3) re-inject <a href="h953.html">H-953</a>.</p>
 </div>
@@ -62,39 +62,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Structural agreement confirmed (4-axis orthogonality forces the missing partials) / quantitative verification of the dissipator match unfinished / Round 1 / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; observer-axis partial derivative (one of the four domain axes). Recursive substitution path: <a href="h953.html">H-953</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the observer Partial Derivative = Decoherence Rate from 4-axis Orthogonality (Axiom 1)</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A partial derivative is the CAS cost of activating just one of the 4 domain axes to read the rate of change along it. The 4 axes time, space, observer, superposition on the right of the Banya formula are orthogonal (<a href="../axiom.html#ax1">Axiom 1</a>), so standard physics, using only the time and space partial derivatives, is missing the observer and superposition partial derivatives.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; observer-axis partial derivative (one of the four domain axes)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the observer-axis partial-derivative norm. Decoherence is the rate of change of the observer setting, and that rate closes as the partial derivative activating only the single observer axis of the 4, so this norm is chosen (<a href="../axiom.html#ax1">Axiom 1</a> 4-axis orthogonality). The dissipator (loss term) $\mathcal{D}[\rho]$ of the standard Lindblad equation is substituted by the observer-axis partial derivative.</p>
+<div class="math-block">
+<div class="math-row">$\dot\rho = -\dfrac{i}{\hbar}[H,\rho] + \mathcal{D}[\rho]$</div>
+<div class="math-row">$\dfrac{\partial}{\partial(\text{observer})}\rho = \Gamma_{\text{dec}}\,\rho$</div>
+<div class="math-legend">$\mathcal{D}[\rho]$: Lindblad dissipator | $\partial/\partial(\text{observer})$: observer-axis partial derivative (1 of the 4 axes, <a href="../axiom.html#ax1">Axiom 1</a>) | $\Gamma_{\text{dec}}$: decoherence rate | $\partial/\partial(\text{superposition})$: superposition collapse rate = measurement rate</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 4 (domain axes = Axiom 1)</p>
-<p><strong>Physical Constant Inputs:</strong> none (directly from axiom structure)</p>
-<p><strong>Library Re-substitution:</strong> <a href="h953.html">H-953</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>4            = number of orthogonal domain axes   Axiom 1
+2            = axes used by standard physics (time, space)
+2            = missing axes (observer, superposition)
+Gamma_dec    = undetermined            dissipator projection not yet quantified</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum-measurement domain. What it reveals is whether the observer partial derivative formally matches the projection of the Lindblad dissipator — the value of the decoherence rate $\Gamma_{\text{dec}}$. The quantitative comparison of the projection coefficient does not yet close.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\partial}{\partial(\text{observer})}\rho \;\stackrel{?}{=}\; \mathcal{D}[\rho]$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: the observer and superposition partial derivatives are forced by 4-axis orthogonality</div>
+<div class="math-row">Measured: formal match with the dissipator not yet quantitatively verified</div>
+<div class="math-row">Status: structure closed, quantitative step incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure forcing the two missing partial derivatives from 4-axis orthogonality closes, but the step quantitatively verifying the formal match with the Lindblad dissipator is incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: formal correspondence to the Lindblad dissipator, measurement problem, quantification of decoherence.</p>
+<p>Re-injection path: <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

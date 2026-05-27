@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 4축 다중 선형 비용에서 계량 텐서 독립 성분 수 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CAS 비용은 4축(<a href="../axiom.html#ax1">공리 1</a>: time·space·observer·superposition)에 걸쳐 다중 선형으로 분포한다. 두 축에 동시에 선형인 비용은 2계 텐서 $g_{\mu\nu}$이며, 그 성분은 비용 거리(RLU 감쇠)를 정한다. 비용 분류(<a href="../axiom.html#ax4">공리 4</a>)가 성분 값을 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 4축 2계 대칭 텐서 노름이다. 계량 $g_{\mu\nu}$가 두 축 교환에 대칭이고(거리의 대칭성), CAS 비용의 좌표 공변성(<a href="../axiom.html#ax2">공리 2</a>)이 변환 법칙을 정하기 때문에 이 노름을 택한다. (b) $d$축 대칭 2계 텐서의 독립 성분 수는 $d(d+1)/2$이므로, 4축 계량의 독립 성분 수를 그 공식으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$ds^2 = g_{\mu\nu}\,dx^\mu dx^\nu, \qquad g_{\mu\nu} = g_{\nu\mu}$</div>
+<div class="math-row">$N_{\text{indep}} = \dfrac{d(d+1)}{2}$</div>
+<div class="math-legend">$g_{\mu\nu}$: 계량 텐서 = 비용 거리 | $d$: 축 수 = 4 (<a href="../axiom.html#ax1">공리 1</a>) | $d(d+1)/2$: 대칭 2계 독립 성분 | $ds^2$: 비용 선소</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>축 수 d        = 4              공리 1 (4축)
+4x4 성분       = 16
+대칭 조건      = g_mn = g_nm
+독립 성분 수   = 4*5/2 = 10     일반 상대론 계량</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 일반 상대론 계량 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 4축 비용 거리의 독립 자유도, 곧 계량 텐서 독립 성분 수다. 대칭 조건으로 16 성분을 줄여 그 수를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$N_{\text{indep}} = \dfrac{4(4+1)}{2} = 10$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 계량 독립 성분 $4\times5/2 = 10$</div>
+<div class="math-row">측정값: 4차원 대칭 계량 독립 성분 10 (일반 상대론)</div>
+<div class="math-row">정합: 성분 수 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 4축 다중 선형 비용이 대칭 계량의 독립 성분 10을 재현하는 구조 정합은 성립하나, 아인슈타인 방정식 $G_{\mu\nu}=8\pi G\,T_{\mu\nu}$의 결합 $G$를 공리에서 직접 산출하지 않아 정량 도출 단계가 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h747.html">H-747</a>(미분 형식). <a href="h751.html">H-751</a>(스피너). <a href="h755.html">H-755</a>(정보 기하학)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a></p>
+<p>재투입 경로: <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

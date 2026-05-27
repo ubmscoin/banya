@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../../discovery/h60.html">KO</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h60.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_mass_yukawa</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h60.html">H-60</a>. Bit-weighted mass ratio: $m_c = v/\sqrt{2} \times \alpha$ = 1270.7 MeV</h1><div class="box-finding">
@@ -71,34 +71,43 @@ Axiom basis: From <a href="../axiom.html#ax2">Axiom 2</a> propositions (data typ
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible at next round / remaining tasks explicit</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type size (137, 27). Recursive substitution path: <a href="d01.html">D-01</a>, <a href="d16.html">D-16</a>, <a href="d17.html">D-17</a>, <a href="h44.html">H-44</a></p>
 </div>
-<h2>v1.8 axiom-based 5-step recursive substitution</h2>
+<h2>5-Step Recursive Substitution: Deriving $m_c = 1270.7$ MeV from the CAS Shift operation</h2>
 <div class="step">
-<h3>Step 1. Banya formula starting point</h3>
+<h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>Every mining starts from this single line. CAS sole operator + 4-axis orthogonal.</p>
+<p>The charm mass is read as the Shift cost of descending one generation from the top mass. In <a href="../axiom.html#ax2">Axiom 2</a> (data type, Shift operation $2^N$), one Shift is the 3rd-to-2nd generation scale transition, and that transition factor is the ring-137 selection probability $\alpha$ (<a href="d01.html">D-01</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm substitution -- delta to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS Shift norm. The up-type mass ladder descends as a geometric series in $\alpha$, and the top mass $m_t = v/\sqrt{2}$ closes through the FSM 011 norm (<a href="d16.html">D-16</a>), so this norm is chosen. The charm mass is therefore substituted by $m_t$ times one Shift factor $\alpha$.</p>
+<div class="math-block">
+<div class="math-row">$m_c = m_t\cdot\alpha$</div>
+<div class="math-row">$m_c = \dfrac{v}{\sqrt{2}}\cdot\alpha$</div>
+<div class="math-legend">$m_c$: charm quark mass | $m_t = v/\sqrt{2}$: top mass, FSM 011 norm (<a href="d16.html">D-16</a>) | $\alpha$: ring-137 selection probability = Shift factor (<a href="d01.html">D-01</a>, <a href="../axiom.html#ax2">Axiom 2</a>) | $v$: Higgs vacuum expectation value</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constants + hypothesis re-injection (recursive substitution)</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical constant inputs:</strong> <code>alpha</code>, <code>m_c</code>, <code>m_t</code></p>
-<p><strong>Library re-injection:</strong> <a href="d01.html">D-01</a>, <a href="d16.html">D-16</a>, <a href="d17.html">D-17</a>, <a href="h44.html">H-44</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>v          = 246.22 GeV          Higgs vev
+v/sqrt(2)  = 174.1 GeV = m_t     D-16
+alpha      = 1/137.036           D-01
+m_c(meas)  = 1270 ± 20 MeV       PDG 2024</pre>
 </div>
 <div class="step">
-<h3>Step 4. Domain transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 vocabulary alignment:</p>
-<ul>
-<li>Equality (=) = delta utterance bit = 1 (declaration of equal magnitude of change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within parentheses)</li>
-<li>cost +1 = forced traversal of orthogonal boundary order (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<h3>Step 4. Domain Transformation</h3>
+<p>The transformation is into the fermion mass-hierarchy domain. What it reveals is whether one Shift descends exactly from top to charm. Multiplying $m_t$ by $\alpha$ yields the value.</p>
+<div class="math-block">
+<div class="math-row">$m_c = 174.1\times 10^3 \times \dfrac{1}{137.036} = 1270.7 \;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Finding / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why this verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $m_c = 1270.7$ MeV</div>
+<div class="math-row">Measured: $1270 \pm 20$ MeV (PDG 2024)</div>
+<div class="math-row">Error: $0.06\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. It agrees with PDG to 0.06%, but why the Shift factor is $\alpha$ and the CAS derivation of the down-type ladder (d, s, b) are unconfirmed, leaving the final step of the forward chain open.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

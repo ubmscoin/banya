@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on the next round / outstanding tasks specified.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula self-structure, primary-integer (4,3) combination. Recursive-substitution path: <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the squeezing parameter $r$ from the CAS cost-fluctuation lower bound</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A squeezed state reduces the fluctuation of one of the two orthogonal CAS cost components $X_1, X_2$ below the standard limit and enlarges the other. This asymmetric reduction is read through the lower bound on cost fluctuation (<a href="../axiom.html#ax9">Axiom 9</a> uncertainty relation) and the two orthogonal components (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; Banya formula self-structure, primary-integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the product lower-bound norm of cost fluctuation. This norm is chosen because the product $\Delta X_1\,\Delta X_2$ is bound at a minimum, yet reducing a single component alone has no lower bound, so the squeezing parameter $r$ can exponentially compress one side. The asymmetric reduction is therefore substituted by an exponential function of $r$.</p>
+<div class="math-block">
+<div class="math-row">$\Delta X_1\,\Delta X_2 \geq \dfrac{1}{4}$</div>
+<div class="math-row">$\Delta X_1 = \dfrac{e^{-r}}{2}, \quad \Delta X_2 = \dfrac{e^{+r}}{2}$</div>
+<div class="math-legend">$\Delta X_1,\Delta X_2$: two orthogonal cost fluctuations | $1/4$: product lower bound (<a href="../axiom.html#ax9">Axiom 9</a>) | $r$: squeezing parameter | product stays at the bound, one side compresses as $e^{-r}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>squeeze_max = 15  dB   Vahlbruch 2016
+squeeze_LIGO= 6   dB   applied at LIGO
+dB          = -10 log10( (2 dX1)^2 )</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main text above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the cost-fluctuation domain. What it reveals is the parameter $r$ corresponding to the maximum squeezing of 15 dB — how far one-side fluctuation is reduced relative to the standard limit. The value is computed from the dB definition.</p>
+<div class="math-block">
+<div class="math-row">$15 = -10\log_{10}(e^{-2r}) = \dfrac{20\,r}{\ln 10}, \quad r = \dfrac{15\ln 10}{20} = 1.73$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $r = 1.73$ (15 dB maximum squeezing)</div>
+<div class="math-row">Measured: 15 dB (Vahlbruch 2016), 6 dB applied at LIGO</div>
+<div class="math-row">Status: consistent with homodyne measurement; the theoretical limit of the extreme $r$ value not yet closed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The product lower bound and the one-side exponential compression follow directly from the axioms, but the step of closing the physical upper bound of the squeezing $r$ from cost fluctuation remains.</p>
+<p>Insight: the product lower bound forces the other side to grow as much as one side shrinks, so information is not lost but moved into the orthogonal component.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h713.html">H-713</a> (twin photons) quantum optics. <a href="h715.html">H-715</a> (antibunching) non-classical contrast.</p><p>This card can be re-used as input for the following cards: <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
+<p>Re-injection path: <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

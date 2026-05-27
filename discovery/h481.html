@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="d62.html">D-62</a>, <a href="h484.html">H-484</a>, <a href="h487.html">H-487</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 해제 단독 구간 비용에서 e-folding 수 $N_e \geq 57$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>인플레이션은 $\delta$ bit7 점화(<a href="../axiom.html#ax15">공리 15</a>) 이전 구간의 비용이다. 관측자가 아직 확정되지 않아 Compare가 불가능하므로(<a href="../axiom.html#ax15">공리 15</a>), 틱은 진행하되(<a href="../axiom.html#ax8">공리 8</a>) CAS R·C·S가 실행되지 않고 RLU 해제만 단독으로 도는 구간이다(<a href="../axiom.html#ax6">공리 6</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 해제 단독 노름이다. CAS 실행 없이 해제만 도는 동안 주소 공간이 비용 재분배 없이 늘어나 스케일 팩터가 지수로 증가하기 때문에 이 노름을 택한다. 팽창의 척도는 e-folding 수 $N_e$이며, 그 하한이 FSM 자유도 $\alpha^{57}$(<a href="../axiom.html#ax14">공리 14</a>)의 지수 57로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$a(t) = a_0\,e^{H_{\text{inf}} t}$</div>
+<div class="math-row">$N_e = \ln\dfrac{a_{\text{end}}}{a_0} \geq 57$</div>
+<div class="math-legend">$a$: 스케일 팩터 | $H_{\text{inf}}$: 미실행 구간 팽창률 $\sim 1/\Delta t_{\text{tick}}$ | $N_e$: e-folding 수 | $57$: FSM 자유도 $\alpha^{57}$ 지수 (<a href="../axiom.html#ax14">공리 14</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d62.html">D-62</a>, <a href="h484.html">H-484</a>, <a href="h487.html">H-487</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N_e   = 57                        FSM 자유도 alpha^57, 공리 14
+e^57  = 5.3e24
+n_s   = 1 - 2/57 = 55/57          D-62
+관측  n_s = 0.9649 ± 0.0042       Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주 스케일 도메인($\alpha^{57}$ 영역)으로 변환한다. 이 변환으로 보려는 것은 인플레이션이 남긴 관측량, 곧 스칼라 기울기 $n_s$다. $N_e = 57$을 느린 굴림 관계 $n_s = 1 - 2/N_e$에 넣어 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$n_s = 1 - \dfrac{2}{57} = \dfrac{55}{57} = 0.96491$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $n_s = 55/57 = 0.96491$</div>
+<div class="math-row">측정값: $0.9649 \pm 0.0042$ (Planck 2018)</div>
+<div class="math-row">오차: $0.001\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. e-folding 수 57이 FSM 자유도 $\alpha^{57}$의 지수로 닫히며, 인플레이션 종료 = $\delta$ 발화 = CAS 첫 실행 = 재가열이 같은 점화 사건으로 묶인다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d62.html">D-62</a>($n_s = 55/57$) 근거. <a href="h484.html">H-484</a>(CMB 이방성) 초기 요동 씨앗. <a href="h487.html">H-487</a>(플랑크 시대) 이전 구간.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d62.html">D-62</a>, <a href="h484.html">H-484</a>, <a href="h487.html">H-487</a></p>
+<p>재투입 경로: <a href="d62.html">D-62</a>, <a href="h484.html">H-484</a>, <a href="h487.html">H-487</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -72,39 +72,48 @@ Compare 비용 C+1은 미세구조상수 $\alpha = 1/137$에 대응하는 캡 �
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 단계 비용 비율에서 구면 캡 반각 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CAS 각 단계의 비용은 d-ring 위 구면 캡 하나가 차지하는 면적 비율이다. Swap 비용 S+1은 30개 접근경로(<a href="../axiom.html#ax1">공리 1</a>, $2^4=16$ 도메인 + 보조 경로) 중 1개를 점유하므로 비율 $f=1/30$이고(<a href="../axiom.html#ax4">공리 4</a>), 비용 비율이 캡 면적 비율과 일치해 외부 입력 없이 닫힌다(<a href="../axiom.html#ax2">공리 2</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 구면 캡 면적 노름이다. 단계 비용 비율 $f$가 캡 높이 $1-\cos\alpha$와 같다고 두면 비용이 곧 반각으로 닫히기 때문에 이 노름을 택한다. 따라서 각 단계 비용 비율을 캡 반각 $\alpha$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$f = \dfrac{\text{단계 비용}}{\text{전체 경로}}$</div>
+<div class="math-row">$\cos\alpha = 1 - f \;\Rightarrow\; \text{Swap 캡}\; f=\tfrac{1}{30},\; \text{반각}\;14.36°$</div>
+<div class="math-legend">$f$: 캡 면적 비율 | $\alpha$: 캡 반각 | Swap·Read: $f=1/30$ (30 접근경로 중 1) | Compare: $f=1/137$ ($\alpha$, <a href="d01.html">D-01</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>30        접근경로 수 = 16 도메인 + 14 보조 (공리 1)
+1/30      Swap·Read 캡 비율 => 반각 14.36°
+1/137     Compare 캡 비율 = alpha (D-01) => 반각 6.92°</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>반야 구조 도메인(캡 반각)으로 변환한다. 이 변환으로 보려는 것은 CAS 비용 체계가 자기폐쇄하는가, 곧 Swap/30 = Read/1 = 1/30의 일치다. 비율 $f$에서 반각 $\alpha$를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{Swap 캡} = \text{Read 캡} = 14.36°,\quad \text{Compare 캡} = 6.92°$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: Swap·Read 반각 $14.36°$, Compare 반각 $6.92°$ ($\alpha=1/137$)</div>
+<div class="math-row">대조값: Compare 캡 $\alpha=1/137$ = <a href="d01.html">D-01</a> 미세구조상수</div>
+<div class="math-row">오차: $0\%$ (Compare 캡이 <a href="d01.html">D-01</a> $\alpha$와 독립 일치, 자기일관)</div>
+</div>
+<p>판정: <strong>가설</strong>. 비용 비율이 캡 면적과 일치해 체계가 자기폐쇄하나, 접근경로 30의 공리적 유도와 $1/30$·$1/137$ 관계 닫음이 미완이라 가설에 머문다. 결합상수가 캡 면적이라는 한 통찰이 <a href="h97.html">H-97</a>·<a href="h99.html">H-99</a>의 입력 캡 크기를 준다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h99.html">H-99</a>(잠김 비율 모델)의 입력 캡 크기. <a href="h97.html">H-97</a>(겹침 공식)과 결합.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a></p>
+<p>재투입 경로: <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a>, <a href="d01.html">D-01</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

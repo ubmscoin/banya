@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h442.html">H-442</a>, <a href="h446.html">H-446</a>, <a href="h455.html">H-455</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare 부분 활성화 비용에서 약한 값 증폭 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>약한 측정은 Compare의 결합 강도를 문턱 이하로 낮춰 Swap이 확률적으로만 실행되는 비용이다. Compare는 분기하되(<a href="../axiom.html#ax7">공리 7</a>) 투영 강도 $C$를 가변으로 둘 수 있으므로(<a href="../axiom.html#ax11">공리 11</a>), 반야식의 observer 항을 미소 활성화 비용으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 Compare 부분 활성화 노름이다. 결합 강도 $\epsilon\ll 1$(<a href="../axiom.html#ax11">공리 11</a> 투영 강도 $C$)에서 Swap 확률이 $\epsilon^2$의 미소량이 된다. (b) 이 노름을 택하는 이유: 대부분 Compare false로 중첩이 유지되고 극소수 true 이벤트만 앙상블 평균에 기여해, 사전·사후 선택 통계가 고유값 범위를 넘는 약한 값을 만들기 때문이다. 따라서 약한 값 $\langle A\rangle_w$를 사전·사후 상태의 비대각 비로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Pr(\text{Swap}) \propto \epsilon^2$</div>
+<div class="math-row">$\langle A\rangle_w = \dfrac{\langle\phi|A|\psi\rangle}{\langle\phi|\psi\rangle}$</div>
+<div class="math-legend">$\epsilon$: Compare 결합 강도 $\ll 1$ | $\langle A\rangle_w$: 약한 값 | $|\psi\rangle$: 사전 선택 | $\langle\phi|$: 사후 선택 | $\langle\phi|\psi\rangle$: 작을수록 증폭</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h442.html">H-442</a>, <a href="h446.html">H-446</a>, <a href="h455.html">H-455</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>epsilon       << 1            Compare 부분 활성화 (공리 11)
+Pr(Swap)      ~ epsilon^2     미소 Swap 확률
+|<sigma_z>_w| > 1  (가능)     Aharonov 1988
+고유값 범위   [-1, 1]         스핀-1/2</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 사전·사후 선택 앙상블 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 약한 값이 고유값 범위 $[-1,1]$를 초과하는가다. 사후 선택 겹침 $\langle\phi|\psi\rangle$이 작을수록 약한 값이 증폭되어 $|\langle\sigma_z\rangle_w|>1$이 산출된다.</p>
+<div class="math-block">
+<div class="math-row">$\langle\phi|\psi\rangle \to 0 \;\Rightarrow\; |\langle\sigma_z\rangle_w| > 1$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\Pr(\text{Swap})\propto\epsilon^2$, 약한 값 $|\langle\sigma_z\rangle_w|>1$ 가능</div>
+<div class="math-row">측정값: Aharonov 1988 약한 값 · Hosten-Kwiat 2008 빔 편향 증폭</div>
+</div>
+<p>판정: <strong>가설</strong>. 약한 값 증폭이 부분 활성화 노름에서 정성적으로 닫혔으나, 활성화 수준 $\epsilon$과 결합 상수 $C$의 정량 관계 및 약한 값의 CAS 경로 적분 표현이 미완이다. 약한 측정은 전부 아니면 전무가 아니라 문턱 이하 동작이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h442.html">H-442</a>(불확정성) 부분 완화. <a href="h455.html">H-455</a>(비파괴 측정) 미소 교란. <a href="h446.html">H-446</a>(측정 문제) 연속 스펙트럼.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h442.html">H-442</a>, <a href="h446.html">H-446</a>, <a href="h455.html">H-455</a></p>
+<p>재투입 경로: <a href="h442.html">H-442</a>, <a href="h455.html">H-455</a>, <a href="h446.html">H-446</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../../discovery/h916.html">KO</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h916.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h916.html">H-916</a>. Meaning of equals = the $=$ in $\delta^2 = \ldots$ is an ownership declaration</h1><div class="box-finding">
@@ -68,34 +68,45 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unresolved, follow-up refinement needed). Recursive substitution path: <a href="h931.html">H-931</a>, <a href="h936.html">H-936</a></p>
 </div>
-<h2>v1.8 axiom-based 5-step recursive substitution</h2>
+<h2>5-Step Recursive Substitution: Deriving the Ownership Semantics of Equals from the $\delta$ Self-Reference Write Cost</h2>
 <div class="step">
-<h3>Step 1. Banya formula starting point</h3>
+<h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining begins from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The $=$ that the left-hand $\delta^2$ forms with the right-hand side is not a comparison asserting that two values are equal, but the write cost by which $\delta$ takes the right-hand CAS result as its own state. This write is forced by <a href="../axiom.html#ax15">Axiom 15</a> ($\delta^2 = \text{CAS(self)}$) and <a href="../axiom.html#ax10">Axiom 10</a> (self-reference loop).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm substitution -- delta into the target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unresolved, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the self-reference write norm — the assignment by which the left-hand side takes ownership of the right-hand result. Because $\delta$ owns the result when it updates its own state via CAS (<a href="../axiom.html#ax15">Axiom 15</a>), the assignment norm is chosen rather than the comparison norm. The mathematical equality relation is therefore substituted by the Banya ownership assignment.</p>
+<div class="math-block">
+<div class="math-row">$a = b \;:\; a \equiv b \text{ (equality comparison)}$</div>
+<div class="math-row">$\delta^2 := \text{CAS}(\text{self}) \;:\; \text{left side owns the right result (assignment)}$</div>
+<div class="math-legend">$=$: mathematical equality comparison | $:=$: Banya assignment (ownership transfer) | $\text{CAS(self)}$: $\delta$ self-reference write (<a href="../axiom.html#ax10">Axiom 10</a>) | $\equiv$: identity</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constants + hypothesis reinjection (recursive substitution)</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical constant input:</strong> <em>no input constants</em></p>
-<p><strong>Library reinjection:</strong> <a href="h931.html">H-931</a>, <a href="h936.html">H-936</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>CAS    = Compare-And-Swap        Axiom 2 sole operator
+Compare: comparison (decide a == b)
+Swap   : write (left := result)
+delta  = global utterance bit    Axiom 15</pre>
 </div>
 <div class="step">
-<h3>Step 4. Domain transformation</h3>
-<p>The expression in the body above is the result of the domain transformation. v1.8 vocabulary alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change magnitudes on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspaces within parentheses)</li>
-<li>cost +1 = forced ordered crossing of orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<h3>Step 4. Domain Transformation</h3>
+<p>The transformation is into the Banya structure domain (self-reference loop). What it reveals is whether the $=$ of the Banya formula is a comparison operation or an assignment operation. Compare weighs two values, Swap updates the left side, and the $=$ of the Banya formula sits on the Swap side.</p>
+<div class="math-block">
+<div class="math-row">$\text{Compare}(a,b) \;:\; a == b \text{ (comparison, state unchanged)}$</div>
+<div class="math-row">$\delta^2 = \text{CAS(self)} \;\Rightarrow\; \delta^2 := \text{Swap result (ownership transfer)}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Finding / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why this verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: Banya $=$ $\equiv$ assignment (ownership), mathematical $=$ $\equiv$ comparison</div>
+<div class="math-row">Measured: qualitative proposition (awaiting measurement)</div>
+<div class="math-row">Consistency: agrees with the assignment semantics of $x = x+1$ in programming</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The ownership semantics of equals coexists with mathematical equality without conflict, and comparison is Compare (<a href="../axiom.html#ax7">Axiom 7</a>) while assignment is $=$, the two kept separate.</p>
+<p>Insight: once the single $=$ of the Banya formula is granted as an ownership declaration rather than a comparison, the self-reference loop (<a href="../axiom.html#ax10">Axiom 10</a>) closes.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

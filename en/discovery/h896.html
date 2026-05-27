@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h896.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h896.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_mass_yukawa</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h896.html">H-896</a>. Quark-Lepton Complementarity = FSM Closed (Quarks) vs Open (Leptons)</h1><div class="box-finding">
@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D Promotion is possible on the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type size (137, 27). Recursive-substitution path: <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Quark-Lepton Complementarity from the FSM Closed/Open Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The difference between quarks and leptons is the cost difference of whether the FSM (<a href="../axiom.html#ax14">Axiom 14</a>) is a closed or an open circuit. A closed FSM confines the internal degrees of freedom (the 3 color axes) as one block; an open FSM releases them outward. This closed/open split separates the two particle families within the same ECS (<a href="../axiom.html#ax12">Axiom 12</a>) execution model.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the FSM-state norm. (a) It is a discrete norm that splits the particle families into the two states closed/open, and (b) it is chosen because the difference between color confinement and free propagation branches directly off the topology of the FSM circuit (closed vs open). The color DOF 3 is the CAS R·C·S 3-axis orthogonality (<a href="../axiom.html#ax2">Axiom 2</a> proposition) inside the closed FSM.</p>
+<div class="math-block">
+<div class="math-row">$\text{quark} = \text{color-confined triplet},\quad \text{lepton} = \text{color singlet}$</div>
+<div class="math-row">$\text{FSM closed} \Rightarrow \text{quark},\quad \text{FSM open} \Rightarrow \text{lepton}$</div>
+<div class="math-legend">FSM closed: closed circuit = color confinement | FSM open: open circuit = free propagation | triplet: 3 color axes = CAS R·C·S | singlet: color charge 0</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>color DOF   = 3            CAS 3-axis orthogonality (Axiom 2)
+quark types = 6            3 generations x 2
+lepton types= 6            3 generations x 2
+generations = 3            FSM state count (H-01)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Standard Model particle-classification domain. What it reveals is whether the closed/open norm splits the particle spectrum exactly into two. The closed FSM keeps the 3 color axes alive, giving 6 quarks; the open FSM kills color, giving 6 leptons.</p>
+<div class="math-block">
+<div class="math-row">$3 \text{ generations} \times 2 = 6 \text{ quarks} \;|\; 6 \text{ leptons}$</div>
+<div class="math-row">$\text{closed FSM color} = 3,\quad \text{open FSM color} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: color-confined 6 quarks + free 6 leptons, 3 color axes</div>
+<div class="math-row">Compared: Standard Model classification (6 quarks, 6 leptons, color 3, 3 generations)</div>
+<div class="math-row">Match: particle classification agrees</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The closed/open norm matches the particle-family classification, but the energy scale of the FSM closed-to-open transition does not close from the axioms, so the quantitative forward chain remains incomplete.</p>
+<p>Insight: color confinement is not an added hypothesis but the very fact that the FSM circuit is closed.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h893.html">H-893</a> (weak-strong unification). <a href="h897.html">H-897</a> (boson-fermion)</p><p>This card can be re-used as input for the following cards: <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
+<p>Re-injection path: <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

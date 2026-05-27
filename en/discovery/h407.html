@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / recursive substitution not executed (1st round) / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h gauge ew. Domain: delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition. Recursive substitution path: 1st round (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the top decay width from the maximal CAS Swap cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The top decay width is the cost at which the CAS Swap cycles fastest. The Swap cost is proportional to the grip (<a href="../axiom.html#ax4">Axiom 4</a>), and since the top grip $m_t$ is maximal, it cannot hold the FSM 111 state and Swaps immediately. The decay width is that Swap rate.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Swap-cost norm. The Swap rate is proportional to the grip squared $G_F m_t^2$ (<a href="../axiom.html#ax4">Axiom 4</a>), and the emitted phase space adds one more $m_t$ dimension, so the decay width closes as $m_t^3$. The width is therefore substituted by the product of the Fermi constant and $m_t^3$.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma_t = \dfrac{G_F m_t^3}{8\pi\sqrt{2}}$</div>
+<div class="math-row">$\tau_t = \hbar/\Gamma_t$</div>
+<div class="math-legend">$\Gamma_t$: top decay width | $G_F$: Fermi constant | $m_t$: top grip | $8\pi\sqrt{2}$: 2-body phase space + Swap normalization | $\tau_t$: top lifetime</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (domain)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>G_F</code>, <code>m_t</code>, <code>pi</code>, <code>ℏ</code></p>
-<p><strong>Library Re-substitution:</strong> <em>No external reference (1st round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>G_F      = 1.166e-5 GeV^-2        PDG 2024
+m_t      = 173.2 GeV             PDG 2024
+8 pi r2  = 35.45
+Gamma_t  = 1.42 ± 0.15 GeV       PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the electroweak decay domain. What it reveals is the top decay width $\Gamma_t$, i.e. the Swap rate. Dividing $G_F m_t^3$ by $8\pi\sqrt{2}$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma_t = \dfrac{1.166\times10^{-5}\times 173.2^3}{35.45} = \dfrac{60.57}{35.45} = 1.71\;\text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Gamma_t = 1.71$ GeV</div>
+<div class="math-row">Measured: $1.42 \pm 0.15$ GeV (PDG 2024)</div>
+<div class="math-row">Error: $20\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The tree-level Swap cost closes, but the CAS interpretation of the NLO QCD correction and the finite-b mass correction is incomplete, leaving a $20\%$ residual.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No explicit byproducts. Cross-links can be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

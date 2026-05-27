@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion is possible when the next round proceeds / residual tasks stated.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a>, <a href="h854.html">H-854</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the GPS Clock Offset from the Relativistic Correction of the CAS Cost Propagation Time</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>GPS fixes range from the CAS cost-wave propagation time $\Delta t = d/c$ of <a href="../axiom.html#ax7">Axiom 7</a>, and the CAS Compare of <a href="../axiom.html#ax5">Axiom 5</a> compares satellite time with receiver time. Because satellite velocity and gravitational level alter the satellite polling period, the relativistic correction of <a href="../axiom.html#ax8">Axiom 8</a> is essential — GPS reads this time cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cost-propagation-time norm, split into two terms. The special-relativistic time dilation from satellite velocity (time axis) and the general-relativistic speed-up from weaker gravity (space axis) add with opposite signs to give the net clock offset, so this norm is chosen.</p>
+<div class="math-block">
+<div class="math-row">$\Delta t_{\text{SR}} = -\dfrac{v^2}{2c^2}\,T,\quad \Delta t_{\text{GR}} = \dfrac{\Delta\phi}{c^2}\,T$</div>
+<div class="math-row">$\Delta t_{\text{total}} = \Delta t_{\text{SR}} + \Delta t_{\text{GR}}$</div>
+<div class="math-legend">$\Delta t_{\text{SR}}$: special-relativistic dilation (time) | $\Delta t_{\text{GR}}$: general-relativistic speed-up (space) | $v$: satellite velocity | $\Delta\phi$: gravitational potential difference | $T$: one day</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical constant inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library re-substitution:</strong> <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a>, <a href="h854.html">H-854</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>v        = 3.874 km/s          satellite orbital velocity
+h        = 20200 km            satellite altitude
+c        = 299792.458 km/s     speed of light
+T        = 86400 s             one day
+dt_SR    = -7.2 us/day         special relativity
+dt_GR    = +45.9 us/day        general relativity</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main text above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the measurement domain (cumulative clock offset). What it reveals is the net daily offset $\Delta t_{\text{total}}$ between satellite and ground clocks that accumulates if uncorrected. Adding the two relativistic terms yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\Delta t_{\text{total}} = -7.2 + 45.9 = +38.7\;\mu\text{s/day}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Measurement Agreement</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Delta t_{\text{total}} = +38.7\;\mu\text{s/day}$</div>
+<div class="math-row">Measured: $+38.7\;\mu\text{s/day}$ (operational GPS correction)</div>
+<div class="math-row">If uncorrected: $\sim 10\;\text{km/day}$ position error accumulates</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The relativistic-correction sum closes, but the ionospheric delay is not precisely derived from the CAS cost-propagation model, leaving the forward chain incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h854.html">H-854</a> (atomic clock). <a href="h848.html">H-848</a> (communication). <a href="h852.html">H-852</a> (radar)</p><p>This card can be re-used as input for the following cards: <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a>, <a href="h854.html">H-854</a></p>
+<p>Re-injection path: <a href="h854.html">H-854</a>, <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

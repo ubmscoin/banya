@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h898.html">H-898</a>, <a href="h903.html">H-903</a>, <a href="h914.html">H-914</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 감쇠율에서 결맞음 길이 경계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양자-고전 전환은 환경과의 CAS 상호작용이 누적되며 RLU 감쇠(<a href="../axiom.html#ax6">공리 6</a>)가 중첩항 $(\text{observer}+\text{superposition})$을 깎아 시간·공간항만 남기는 비용이다. Compare가 true/false를 확정하는 순간 중첩이 붕괴한다(<a href="../axiom.html#ax7">공리 7</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 감쇠율 $\Gamma_{\text{RLU}}$ 노름이다. 결맞음 길이가 감쇠율의 역수로 닫히고, 이산 양자에서 연속 고전으로 가는 극한(<a href="../axiom.html#ax3">공리 3</a>)이 이 감쇠 노름으로 결정되기 때문에 이 노름을 택한다. 환경 CAS 빈도가 클수록 $\Gamma_{\text{RLU}}$가 커지고 결맞음 길이가 짧아진다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_{\text{dec}} \propto \dfrac{1}{f_{\text{CAS}}}$</div>
+<div class="math-row">$L_{\text{coh}} = \dfrac{\hbar}{m c}\cdot\dfrac{1}{\Gamma_{\text{RLU}}}$</div>
+<div class="math-legend">$L_{\text{coh}}$: 결맞음 길이 | $\Gamma_{\text{RLU}}$: RLU 감쇠율 = 결맞음 소실률 (<a href="../axiom.html#ax6">공리 6</a>) | $f_{\text{CAS}}$: 환경 CAS 빈도 | $\hbar/mc$: 콤프턴 길이</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h898.html">H-898</a>, <a href="h903.html">H-903</a>, <a href="h914.html">H-914</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar       = 1.054571817e-34 J·s
+c          = 2.99792458e8 m/s
+tau_dec(C70)  ~ 1e-17 s        Arndt 1999 (공기 중)
+tau_dec(dust) ~ 1e-31 s</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>양자·정보 결맞음 도메인으로 변환한다. 이 변환으로 보려는 것은 질량에 따라 양자 중첩이 유지되는 길이 경계다. 거시 물체는 환경 CAS 빈도가 극대라 결맞음 시간이 0으로 수렴해 즉시 고전화하고, 미시 물체는 빈도가 극소라 중첩이 유지된다.</p>
+<div class="math-block">
+<div class="math-row">$L_{\text{coh}}(\text{거시}) \to 0,\quad L_{\text{coh}}(\text{미시}) \gg \hbar/mc$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 결맞음 길이 $\propto 1/\Gamma_{\text{RLU}}$, 거시 한계에서 고전 전환</div>
+<div class="math-row">측정: $\tau_{\text{dec}}(C_{70}) \sim 10^{-17}\,\text{s}$ (Arndt 1999)</div>
+<div class="math-row">상태: 정성 정합, 정량 forward chain 미닫힘</div>
+</div>
+<p>판정: <strong>가설</strong>. RLU 감쇠율과 결맞음 시간의 비례 관계는 풀러렌 간섭 실험과 정합하나, $\Gamma_{\text{RLU}}$를 공리에서 정량으로 닫는 단계가 남아 가설에 머문다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h898.html">H-898</a>(스케일 계층). <a href="h903.html">H-903</a>(시공간 창발). <a href="h914.html">H-914</a>(연속체)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h898.html">H-898</a>, <a href="h903.html">H-903</a>, <a href="h914.html">H-914</a></p>
+<p>재투입 경로: <a href="h898.html">H-898</a>, <a href="h903.html">H-903</a>, <a href="h914.html">H-914</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

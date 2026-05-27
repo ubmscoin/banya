@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h electromag qed. 도메인: delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2)). 재귀 대입 경로: <a href="h843.html">H-843</a>, <a href="h849.html">H-849</a>, <a href="h862.html">H-862</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 전자-정공 재결합 Swap 비용에서 방출 파장 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>LED는 광전효과의 역과정이다. 광전지가 광자를 흡수해 노름 전이를 일으키는 반면, LED는 전자-정공 재결합이라는 Swap이 FSM 노름 차만큼의 비용을 광자로 되돌려 방출한다(<a href="../axiom.html#ax5">공리 5</a>: Swap = 재결합). 반야식 우항의 비용이 전기에서 광으로 변환된다(<a href="../axiom.html#ax7">공리 7</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2))</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 FSM 노름 차 = 광자 에너지 노름이다. 재결합 Swap이 방출하는 광자 에너지는 정확히 밴드갭 $E_g$(FSM 노름 차)이고(<a href="../axiom.html#ax3">공리 3</a>), 이것이 방출 광자의 진동수를 고정한다. (b) 이 노름을 택하는 까닭은 밴드갭 하나가 방출 파장을 단번에 정하기 때문이다. $E_g$가 정해지면 $\lambda = hc/E_g$로 파장이 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{photon}} = h\nu = E_g$</div>
+<div class="math-row">$\lambda = \dfrac{hc}{E_g}$</div>
+<div class="math-legend">$E_{\text{photon}}$: 방출 광자 에너지 | $h$: 플랑크 상수 | $\nu$: 진동수 | $E_g$: 밴드갭 = FSM 노름 차 | $\lambda$: 방출 파장 | $c$: 광속</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 5, 2 (서명 (5,2)), 137 (자료형 = T(16)+1)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h843.html">H-843</a>, <a href="h849.html">H-849</a>, <a href="h862.html">H-862</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>h c       = 1240 eV·nm        광속·플랑크 곱
+적색 E_g  = ~ 1.9 eV          GaAsP
+청색 E_g  = ~ 2.6 eV          InGaN
+파장-밴드갭 차 = < 2%</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 전계발광 방출 도메인(재결합 Swap 후 광자 방출)으로 변환한다. (b) 이 변환으로 보려는 것은 밴드갭 하나가 정하는 방출 파장이다. $E_g$를 $\lambda = hc/E_g$에 넣어 적색·청색 LED 파장을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_{\text{적}} = \dfrac{1240}{1.9} \approx 653\ \text{nm}, \quad \lambda_{\text{청}} = \dfrac{1240}{2.6} \approx 477\ \text{nm}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\lambda_{\text{적}} \approx 653$ nm, $\lambda_{\text{청}} \approx 477$ nm</div>
+<div class="math-row">측정 정합: 방출 파장-밴드갭 이론값 차 $< 2\%$</div>
+<div class="math-row">측정 검증 대기: 녹색 갭 문제의 FSM 노름 해석</div>
+</div>
+<p>판정: <strong>가설</strong>. 방출 파장이 밴드갭에서 2% 안으로 정합하지만, 녹색 갭(InGaN 녹색 효율 저하) 문제가 FSM 노름으로 닫히지 않아 발견 승격 전 단계다.</p>
+<p>재결합 Swap이 노름 차를 광자로 되돌린다는 단일 규칙이 흡수(<a href="h849.html">H-849</a>)와 방출을 한 구조의 정·역으로 묶는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h849.html">H-849</a>(광전지). <a href="h843.html">H-843</a>(다이오드). <a href="h862.html">H-862</a>(광통신)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h843.html">H-843</a>, <a href="h849.html">H-849</a>, <a href="h862.html">H-862</a></p>
+<p>재투입 경로: <a href="h849.html">H-849</a>, <a href="h843.html">H-843</a>, <a href="h862.html">H-862</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

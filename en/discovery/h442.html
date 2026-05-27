@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion is possible once the next round proceeds / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive substitution path: <a href="h447.html">H-447</a>, <a href="h454.html">H-454</a>, <a href="h456.html">H-456</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Heisenberg Uncertainty from CAS-Atomicity Lock Contention</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Position and momentum are two nibbles of the same 8-bit register (<a href="../axiom.html#ax5">Axiom 5</a>). Since CAS processes the R$\to$C$\to$S order atomically within one tick (<a href="../axiom.html#ax2">Axiom 2</a>), while the position slot is Read the Compare on the momentum slot cannot run in the same tick. This simultaneous-execution impossibility is read as the non-commutativity of the conjugate-variable pair.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the minimum-action norm of one CAS tick. It is chosen because the two operations attempt to lock different nibbles of the same register simultaneously, causing lock contention (<a href="../axiom.html#ax5">Axiom 5</a>), and only one Read-Compare pair closes per tick. The canonical commutation relation $[x,p]$ is therefore substituted by the non-commutativity of the per-tick minimum cost $\hbar/2$.</p>
+<div class="math-block">
+<div class="math-row">$[\hat{x},\hat{p}] = i\hbar \;\Rightarrow\; \Delta x\,\Delta p \ge \tfrac{1}{2}\,|\langle[\hat{x},\hat{p}]\rangle|$</div>
+<div class="math-row">$\Delta x\,\Delta p \ge \dfrac{\hbar}{2} \;\Leftrightarrow\; \text{Read}(x)\circ\text{Compare}(p)\ \text{non-commutative}$</div>
+<div class="math-legend">$\Delta x$: position slot uncertainty | $\Delta p$: momentum slot uncertainty | $\hbar/2$: CAS one-tick minimum cost | $\circ$: same-tick composition (lock contention)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h447.html">H-447</a>, <a href="h454.html">H-454</a>, <a href="h456.html">H-456</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>hbar     = 1.054571817e-34 J·s      CODATA 2018
+hbar/2   = 5.272859e-35 J·s         CAS one-tick minimum cost
+[x,p]    = i hbar                    canonical commutation relation</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is from the CAS-scheduling domain into the conjugate-variable measurement domain. What it reveals is the lower bound that a single Read-Compare pair closing per tick imposes on the product precision of the two conjugate variables. The minimum cost is computed as the floor of that product.</p>
+<div class="math-block">
+<div class="math-row">$\Delta x\,\Delta p \ge \dfrac{\hbar}{2} = 5.27\times 10^{-35}\ \text{J·s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Delta x\,\Delta p \ge \hbar/2$ (CAS one-tick lock contention)</div>
+<div class="math-row">Measured: fully consistent with the standard quantum-mechanical uncertainty relation</div>
+<div class="math-row">Error: structural match (quantitative 0)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The non-commutative structure is closed from CAS atomicity, but the frame-constant conversion of $\hbar/2$ itself remains an external input, leaving the final forward-chain step incomplete. Uncertainty is not a fundamental limit of nature but a structural constraint of CAS scheduling that closes only one Read-Compare pair per tick.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: premise for <a href="h447.html">H-447</a> (wavefunction collapse). Foundation for partial relaxation in <a href="h454.html">H-454</a> (weak measurement). Probability basis for <a href="h456.html">H-456</a> (Born rule).</p><p>This card can be re-used as input for the following cards: <a href="h447.html">H-447</a>, <a href="h454.html">H-454</a>, <a href="h456.html">H-456</a></p>
+<p>Re-injection path: <a href="h447.html">H-447</a>, <a href="h454.html">H-454</a>, <a href="h456.html">H-456</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

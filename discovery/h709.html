@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h696.html">H-696</a>, <a href="h711.html">H-711</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 응력에 의한 CAS 비용 전파 비등방성에서 광탄성 복굴절 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>광탄성 효과는 기계적 응력이 매질 안 CAS 비용 전파 속도(굴절률)를 방향마다 다르게 바꾸는 비용이다(<a href="../axiom.html#ax4">공리 4</a> 비용 전파 속도 = 매질 CAS 밀도 의존). 편광은 도메인 비트 방향이고(<a href="h696.html">H-696</a>), ECS 격자가 응력으로 변형되면 비용 전파가 비등방이 된다(<a href="../axiom.html#ax7">공리 7</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 응력-굴절률 결합 노름, 곧 광탄성 텐서 $C_{ijkl}$다. (b) 등방성 매질은 모든 도메인 비트 방향이 같은 비용 전파 속도를 갖지만, 주응력이 가해지면 주응력 방향에 따라 도메인 비트가 분리되어 두 굴절률로 갈라지므로 굴절률 변화 노름은 응력 텐서에 선형으로 치환된다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta n_{ij} = C_{ijkl}\,\sigma_{kl}$</div>
+<div class="math-row">$\Delta n = C\,(\sigma_1 - \sigma_2)$</div>
+<div class="math-legend">$\Delta n_{ij}$: 굴절률 변화 텐서 | $C_{ijkl}$: 광탄성 텐서 | $\sigma_{kl}$: 응력 텐서 | $\sigma_1,\sigma_2$: 주응력 | $C$: 응력-광학 상수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h696.html">H-696</a>, <a href="h711.html">H-711</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>C(유리)   = 2.7e-12 Pa^-1        2.7 TPa^-1, 광탄성 응력 분석
+C(에폭시) = 50e-12 Pa^-1         50 TPa^-1
+sigma     = 10 MPa = 1e7 Pa      예시 응력</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 광탄성 응력 분석 도메인(프린지 패턴)으로 변환한다. (b) 보려는 것은 주어진 응력이 만드는 복굴절 $\Delta n$, 곧 프린지 패턴으로 응력 분포를 재구성하는 양이다. 유리에 $10\,\text{MPa}$ 응력을 대입한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta n = 2.7\times10^{-12}\times10^{7} = 2.7\times10^{-5}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\Delta n = 2.7\times10^{-5}$ (유리, $10\,\text{MPa}$)</div>
+<div class="math-row">측정: $C_{\text{유리}}\approx2.7\,\text{TPa}^{-1}$, 광탄성 응력 분석</div>
+</div>
+<p>판정: <strong>가설</strong>. 응력에 선형인 복굴절 형태는 도메인 비트 분리 노름에서 닫혔으나, 광탄성 텐서 $C_{ijkl}$를 CAS 비용 격자 변형에서 미시적으로 도출하는 마지막 단계가 미완이라 가설에 멈춘다.</p>
+<p>통찰: 응력 하 유리의 무지개 프린지는 도메인 비트가 주응력 방향으로 분리되어 비용 전파가 두 속도로 갈라지는 비등방성의 직접 가시화다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h696.html">H-696</a>(편광) 복굴절 응용. <a href="h711.html">H-711</a>(커 효과) 외부장 대비</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h696.html">H-696</a>, <a href="h711.html">H-711</a></p>
+<p>재투입 경로: <a href="h696.html">H-696</a>, <a href="h711.html">H-711</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

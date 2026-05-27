@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h80.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h80.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_qcd</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h80.html">H-80</a>. Proton/Neutron: Color 111 = Baryon, Flavor/Color Separation</h1><div class="box-finding">
@@ -72,39 +72,48 @@ Structural consequence: the distinction between proton (uud) and neutron (udd) l
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion is possible upon advancing to the next round / remaining tasks are specified</p>
 <p><strong>Location:</strong> Category: h qcd. Domain: delta ==&gt; SU(3) 3-axis color degrees of freedom x QCD cost domain (alpha_s path). Recursive substitution path: <a href="h44.html">H-44</a>, <a href="h79.html">H-79</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Baryon Color Neutrality 111 from the XOR of Three Quark Color Bits</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A baryon is a color-confined state that closes only when the color bits of the three quarks are all different. The color bits belong to the OPERATOR axis and the flavor bits to the DATA axis, so they are orthogonal and non-interfering (<a href="../axiom.html#ax1">Axiom 1</a>, 4-axis orthogonality). The sum of the three color bits is read as the color-confinement condition.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; SU(3) 3-axis color degrees of freedom x QCD cost domain (alpha_s path)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the XOR norm of the three quark color bits — it counts the bitwise XOR of the R·G·B color bits (<a href="../axiom.html#ax2">Axiom 2</a>, CAS 3 bits). (b) Only when the three colors are all different does the XOR become fully active $111$, closing color neutrality, and the flavor bits being an orthogonal axis do not touch this condition — hence this norm is chosen. The color-confinement condition is therefore substituted by XOR $=111$.</p>
+<div class="math-block">
+<div class="math-row">$\text{Baryon}: \quad b_{\text{color}_1} \oplus b_{\text{color}_2} \oplus b_{\text{color}_3} = 111$</div>
+<div class="math-row">$R \oplus G \oplus B = 100 \oplus 010 \oplus 001 = 111$</div>
+<div class="math-legend">$\oplus$: bitwise XOR | $R,G,B$: three color bits $100,010,001$ | $111$: color neutral (all three colors different) | flavor: DATA axis (orthogonal, <a href="../axiom.html#ax1">Axiom 1</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS 3 axes = SU(3) color), 7 (beta_0=7), 8 (gluons=3^2-1, output)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h44.html">H-44</a>, <a href="h79.html">H-79</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>R = 100, G = 010, B = 001         Axiom 2 (CAS 3 bits)
+R XOR G XOR B = 111
+proton = uud, neutron = udd (same color 111, flavor only differs)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = ordered crossing of orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the strong-force color-confinement domain (d-ring slot seam ==&gt; color neutrality). (b) What it reveals is the color condition under which three quarks are confined into a baryon. Bitwise XOR of the three color bits yields that value.</p>
+<div class="math-block">
+<div class="math-row">$100 \oplus 010 \oplus 001 = 111$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: baryon color-confinement condition XOR $=111$</div>
+<div class="math-row">Measured: QCD $\epsilon_{ijk}$ antisymmetric color-neutral baryons (proton, neutron)</div>
+<div class="math-row">Error: structural correspondence (qualitative match)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. XOR $=111$ structurally enforces color confinement, but promotion to Discovery requires deriving baryon-number conservation from CAS atomicity (<a href="../axiom.html#ax14">Axiom 14</a>) and closing the baryon mass formula via CAS.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: explicitization of the <a href="h44.html">H-44</a> baryon condition. Together with <a href="h79.html">H-79</a> (meson), it completes the hadron classification scheme.</p><p>This card can be re-used as input for the following cards: <a href="h44.html">H-44</a>, <a href="h79.html">H-79</a></p>
+<p>Re-injection path: <a href="h44.html">H-44</a>, <a href="h79.html">H-79</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

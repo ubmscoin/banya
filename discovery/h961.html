@@ -51,50 +51,62 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$S(f)\propto \frac{1}{f^{\alpha}},\quad \alpha\approx 1\ :\quad \xi_{\text{white}} \xrightarrow{\ D^{-\alpha/2}\ } 1/f\ \text{noise}$$</div></div>
 <p class="finding-precision">구조 서술 — flicker 노이즈 PSD ∝ 1/f^α(α≈1). 분수 적분이 백색(평탄)을 1/f로</p>
 <p>1/f(flicker) 노이즈는 PSD가 $1/f^{\alpha}$(α≈1)인 보편 잡음(전자·생체·금융). 백색잡음(평탄·무기억)의 분수 적분 $D^{-\alpha/2}$이 1/f 스펙트럼을 만든다. 반야: 분수 적분 = 음의 차수 회전(<a href="h953.html">H-953</a>의 역방향), 비국소 기억의 주입.</p>
-<p>백색(차수 0)도 브라운($1/f^2$, 차수 1 적분)도 아닌 중간 1/f가 분수 차수다. 보편성의 정체: 분수 적분이 "무기억 ↔ 완전기억" 사이를 보간하는 보편 연산이기 때문 — 이상확산(H-958)·점탄성(H-959)과 같은 "사이 상태" 패턴.</p>
-<p>정량 미완: α≈1 변동·매질 의존 → 가설.</p>
+<p>백색(차수 0)도 브라운($1/f^2$, 차수 1 적분)도 아닌 중간 1/f가 분수 차수다. 보편성의 정체: 분수 적분이 "무기억 <==> 완전기억" 사이를 보간하는 보편 연산이기 때문 — 이상확산(H-958)·점탄성(H-959)과 같은 "사이 상태" 패턴.</p>
+<p>정량 미완: α≈1 변동·매질 의존 ==> 가설.</p>
 <p><strong>재대입 용도:</strong> 재대입 용도: fBm/Hurst 지수, 잡음 분광, 1/f 보편성 정량.</p>
-<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 미진행 멈춤. 1/f = 백색잡음의 분수 적분(무기억↔완전기억 보간) 구조는 닫혔으나, 지수 α를 공리에서 산출하는 단계가 미완. 잔여 과제: (1) α의 공리 도출, (2) fBm/Hurst 연결, (3) <a href="h953.html">H-953</a> 재투입.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 미진행 멈춤. 1/f = 백색잡음의 분수 적분(무기억<==>완전기억 보간) 구조는 닫혔으나, 지수 α를 공리에서 산출하는 단계가 미완. 잔여 과제: (1) α의 공리 도출, (2) fBm/Hurst 연결, (3) <a href="h953.html">H-953</a> 재투입.</p>
 </div>
 <h2>왜 이 판정인가</h2>
 <div class="verdict-hypothesis">
 <p><strong>판정: 가설</strong> -- Hypothesis (재귀 대입 진행 중)</p>
-<p><strong>이유:</strong> 구조 정합 확인(분수 적분 = 무기억↔완전기억 보간) / α의 공리 도출 미완 / 1차 라운드 / 잔여 과제 명시</p>
+<p><strong>이유:</strong> 구조 정합 확인(분수 적분 = 무기억<==>완전기억 보간) / α의 공리 도출 미완 / 1차 라운드 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; 비국소 기억 주입 (분수 적분). 재귀 대입 경로: <a href="h953.html">H-953</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: OPERATOR 평면 음차수 회전 비용에서 1/f 노이즈 분수 적분 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>1/f 노이즈는 무기억 잡음이 OPERATOR 평면(observer + superposition)을 분수 차수만큼 회전하며 기억을 얻는 비용이다. 이 평면은 순서가 없어 비용도 비가역도 이산도 없는 축이므로(<a href="../axiom.html#ax4">공리 4</a>), 정수 차수 사이의 분수 회전이 허용되고 비국소 기억이 주입된다. d-ring 폴링(<a href="../axiom.html#ax8">공리 8</a>)이 매 틱 누적하는 과거 상태가 그 기억의 원천이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 비국소 기억 주입 (분수 적분)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 OPERATOR 평면의 회전 노름이다 — <a href="h953.html">H-953</a>이 분수 차수 미분 $D^{\beta}$를 평면 회전 $e^{i\beta\pi/2}$로 닫은 그 노름이다. (b) 이 노름을 택하는 이유: 백색잡음은 차수 0(평탄), 브라운잡음은 차수 1 적분($1/f^2$)이고, 1/f는 그 사이 분수 차수 $-\alpha/2$의 음차수 회전이기 때문이다. 분수 적분은 H-953 회전의 역방향(음의 차수)이며, 적분 연산이 스펙트럼 밀도를 $1/f^{\alpha}$로 기울인다.</p>
+<div class="math-block">
+<div class="math-row">$D^{\beta}\ \text{회전}:\ e^{i\beta\pi/2}\quad(\text{<a href=\"h953.html\">H-953</a>})$</div>
+<div class="math-row">$\xi_{\text{white}}\ \text{에}\ D^{-\alpha/2}\ \text{적용}:\quad S(f)\propto \dfrac{1}{f^{\alpha}}$</div>
+<div class="math-legend">$\xi_{\text{white}}$: 백색잡음(평탄 PSD) | $D^{-\alpha/2}$: 차수 $-\alpha/2$ 분수 적분 | $\alpha$: 스펙트럼 지수($\approx 1$) | $S(f)$: 전력 스펙트럼 밀도 | $\beta=0$: 백색, $\beta=1$: 브라운</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> α (적분 분수 차수, ≈1)</p>
-<p><strong>물리 상수 입력:</strong> 없음 (공리 구조에서 직접)</p>
-<p><strong>라이브러리 재투입:</strong> <a href="h953.html">H-953</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha = 1            1/f 이상 잡음 지수 (목표값)
+-alpha/2 = -0.5      분수 적분 차수
+beta = 0             백색잡음 (차수 0, 평탄)
+beta = 1             브라운잡음 (차수 1 적분, 1/f^2)
+S(f) ~ 1/f^alpha     관측 PSD 형태 (전자/생체/금융 보편)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 도메인은 양자·정보 측정 도메인의 주파수 스펙트럼이다. (b) 보려는 것은 무기억(차수 0)과 완전기억(차수 1) 사이를 보간하는 분수 차수 $-\alpha/2$가 평탄 스펙트럼을 $1/f^{\alpha}$로 기울이는지다. 백색잡음에 $D^{-\alpha/2}$를 적용하면 스펙트럼 지수가 $\alpha$로 떨어진다.</p>
+<div class="math-block">
+<div class="math-row">$S_{\xi}(f)=\text{const}\ \xrightarrow{\ D^{-\alpha/2}\ }\ S(f)=\dfrac{\text{const}}{f^{\alpha}}$</div>
+<div class="math-row">$\alpha=1\ \Rightarrow\ S(f)\propto \dfrac{1}{f}\quad(\text{1/f 이상 잡음})$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $1/f$ 노이즈 = 백색잡음의 분수 적분 $D^{-\alpha/2}$, 지수 $\alpha\approx 1$</div>
+<div class="math-row">측정: flicker PSD $\propto 1/f^{\alpha}$, $\alpha\approx 1$ (매질 의존 변동)</div>
+<div class="math-row">정량: $\alpha$의 공리 산출 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 분수 적분 = 무기억과 완전기억 사이 보간이라는 구조는 OPERATOR 평면 음차수 회전(<a href="h953.html">H-953</a> 역방향)으로 닫혔으나, 지수 $\alpha$를 공리에서 산출하는 단계가 미완이다. 통찰: 1/f 보편성은 잡음의 종류가 아니라 무기억과 완전기억을 잇는 분수 차수 그 자체다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: fBm/Hurst 지수, 잡음 분광, 1/f 보편성 정량.</p>
+<p>재투입 경로: <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

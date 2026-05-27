@@ -67,39 +67,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h745.html">H-745</a>, <a href="h761.html">H-761</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 이진 샘플 비용에서 몬테카를로 수렴율 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>몬테카를로는 CAS Compare의 true/false 이진 판정(<a href="../axiom.html#ax5">공리 5</a>: 락 레지스터의 순서 강제)을 기본 샘플 단위로 삼는다. 비용이 볼츠만 가중(<a href="../axiom.html#ax4">공리 4</a>)을 주고, FSM 반복(<a href="../axiom.html#ax14">공리 14</a>)이 마르코프 체인을 이룬다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare 이진 샘플의 평균 수렴 노름이다. 다수의 독립 Compare 평균이 대수의 법칙으로 기대값에 수렴하고, 그 표준오차가 샘플 수 $N$에 따라 줄어들기 때문에 이 노름을 택한다. 따라서 기대값 추정을 Compare 샘플의 비용 가중 평균으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\langle f\rangle = \dfrac{1}{N}\sum_{i=1}^{N} f(x_i),\quad x_i \sim e^{-C(x_i)}$</div>
+<div class="math-row">$\sigma_{\langle f\rangle} = \dfrac{\sigma_f}{\sqrt{N}}$</div>
+<div class="math-legend">$\langle f\rangle$: 몬테카를로 추정값 | $x_i$: Compare 샘플 (<a href="../axiom.html#ax5">공리 5</a>) | $C(x_i)$: 비용 = 볼츠만 가중 (<a href="../axiom.html#ax4">공리 4</a>) | $\sigma_{\langle f\rangle}$: 표준오차 | $N$: 샘플 수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h745.html">H-745</a>, <a href="h761.html">H-761</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Compare    = 이진 샘플 (true/false)        공리 5
+weight     = exp(-C)  볼츠만 가중           공리 4
+proton     = 938 ± 10 MeV   격자 QCD 몬테카를로</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>측정·샘플링 도메인으로 변환한다. 이 변환으로 보려는 것은 Compare 샘플 평균의 수렴율, 곧 표준오차의 $N$ 의존성이다. 독립 샘플이면 표준오차가 $1/\sqrt{N}$로 감소한다.</p>
+<div class="math-block">
+<div class="math-row">$\sigma_{\langle f\rangle} \sim \dfrac{1}{\sqrt{N}}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: Compare 샘플 평균 수렴율 $\sim 1/\sqrt{N}$</div>
+<div class="math-row">대조: 격자 QCD 몬테카를로 양성자 $938 \pm 10$ MeV</div>
+<div class="math-row">정량 검증: 대기 (Compare 자기상관에서 유효 샘플수 산출 필요)</div>
+</div>
+<p>판정: <strong>가설</strong>. 몬테카를로 샘플링이 CAS Compare 이진 판정으로 구조 환원되며, 메트로폴리스 수락/거절·중요도 샘플링·마르코프 체인이 같은 Compare 구조에서 따라온다. Compare 자기상관에서 유효 샘플수 산출은 다음 라운드 과제.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h745.html">H-745</a>(경로적분). <a href="h761.html">H-761</a>(격자 게이지)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h745.html">H-745</a>, <a href="h761.html">H-761</a></p>
+<p>재투입 경로: <a href="h745.html">H-745</a>, <a href="h761.html">H-761</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

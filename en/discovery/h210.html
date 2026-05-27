@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / 2 recursive inputs confirmed, D promotion possible at next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost × data type size (137, 27). Recursive substitution path: <a href="h208.html">H-208</a>, <a href="h209.html">H-209</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving massless bosons from the CAS-bypass serialization cost 0</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Fermion mass is the CAS indexing cost times the data-type size. One CAS cycle Read+1·Compare+1·Swap+1 (<a href="../axiom.html#ax2">Axiom 2</a>) locks slots and accumulates cost, but the photon bypasses this CAS path, going straight from trigger to screen and locking no slot.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost × data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS-bypass serialization-cost norm. A boson whose gauge symmetry is unbroken passes without inducing a hold, and a serialization cost of 0 corresponds directly to mass 0 — which is why this norm is chosen. The boson mass is substituted by a quantity proportional to the CAS-transit cost.</p>
+<div class="math-block">
+<div class="math-row">$m_B = k\cdot C_{\text{CAS}}$</div>
+<div class="math-row">$m_\gamma = k\cdot 0 = 0$</div>
+<div class="math-legend">$m_B$: boson mass | $C_{\text{CAS}}$: CAS-transit serialization cost | $m_\gamma$: photon mass | $k$: data-type-size proportionality factor</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h208.html">H-208</a>, <a href="h209.html">H-209</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>C_CAS(photon)  = 0          CAS-bypass path
+C_CAS(gluon)   = 0          CAS-bypass path
+C_CAS(W,Z)     > 0          CAS transit
+m_photon       < 1e-18 eV   PDG 2024 upper bound</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the mass-hierarchy domain. What it reveals is the mass of a gauge boson that bypasses the CAS. Multiplying the serialization cost 0 by the proportionality factor yields that value.</p>
+<div class="math-block">
+<div class="math-row">$m_\gamma = k\cdot C_{\text{CAS}} = k\cdot 0 = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $m_\gamma = 0$</div>
+<div class="math-row">Measured: $m_\gamma < 10^{-18}\;\text{eV}$ (PDG 2024 upper bound)</div>
+<div class="math-row">Status: consistent with the bound, quantitative comparison incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong></p>
+<p>A massless gauge boson is read as a CAS-bypass serialization cost of 0, its path diverging from the CAS-transit masses of $W^\pm$·$Z$.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h208.html">H-208</a>, <a href="h209.html">H-209</a></p>
+<p>Re-injection path: <a href="h208.html">H-208</a>, <a href="h209.html">H-209</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

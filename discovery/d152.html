@@ -66,39 +66,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d misc. 도메인: delta ==&gt; 자연 분류 외. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d132.html">D-132</a>, <a href="d140.html">D-140</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 공리 11 상호작용 강도에서 쿨롱 역제곱 법칙 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전자기력은 소스 한 점의 영향이 space 3성분이 펼치는 $4\pi$ 구면으로 흩어질 때의 비용이다. 다중 투영(<a href="../axiom.html#ax11">공리 11</a>)이 상호작용 강도 $w = \Gamma f(\theta)/(4\pi r^2)$로 이 흩어짐을 기술하며, space 3축(<a href="../axiom.html#ax1">공리 1</a>)이 분모의 $4\pi r^2$ 구면을 만든다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 <a href="../axiom.html#ax11">공리 11</a> 상호작용 강도 노름 $w = \Gamma f(\theta)/(4\pi r^2)$이다. 소스 강도 $\Gamma = \alpha\hbar c$가 거리 $r$의 구면으로 균등히 퍼지고 $\ell \ll N$ 근거리 극한에서 $f(\theta)\to1$이기 때문에 이 노름을 택한다. 따라서 쿨롱 힘을 $\Gamma$를 $4\pi r^2$로 나눈 역제곱 형태로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$F = \dfrac{\alpha\hbar c}{r^2}$</div>
+<div class="math-row">$F = \dfrac{e^2}{4\pi\varepsilon_0 r^2}$</div>
+<div class="math-legend">$F$: 쿨롱 힘 | $\Gamma = \alpha\hbar c$: 소스 강도 | $4\pi$: space 3축 구면 (<a href="../axiom.html#ax1">공리 1</a>) | $f(\theta)\to1$: 근거리 극한 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) | $e$: 전자 전하 (<a href="d140.html">D-140</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 본문 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d132.html">D-132</a>, <a href="d140.html">D-140</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha   = 1/137.036                    D-01
+e       = 1.602176634e-19 C            D-140
+hbar c  = 3.16153e-26 J*m
+k_e     = 8.9875517873681764e9 N*m^2/C^2   CODATA</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전자기 힘/거리 도메인으로 변환한다. 이 변환으로 보려는 것은 두 전하 사이 힘의 거리 의존, 곧 쿨롱 상수 $k_e$다. 소스 강도 $\alpha\hbar c$를 $4\pi\varepsilon_0$ 정규화로 묶으면 그 값이 산출된다.</p>
+<div class="math-block">
+<div class="math-row">$k_e = \dfrac{1}{4\pi\varepsilon_0} = \dfrac{\alpha\hbar c}{e^2} = 8.98755\times10^{9}\;\text{N·m}^2/\text{C}^2$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $F \propto 1/r^2$, $k_e = 8.98755\times10^{9}$</div>
+<div class="math-row">측정값: 캐빈디시 역제곱 지수 편차 $&lt;10^{-16}$ (Coulomb 1785)</div>
+<div class="math-row">오차: $0\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 역제곱 $1/r^2$가 space 3축 $4\pi$ 구면의 직접 결과이며 자유 매개변수 0개로 닫힌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 전자기 상호작용 전체의 기반. <a href="d132.html">D-132</a>(수소 스펙트럼) 입력.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d132.html">D-132</a>, <a href="d140.html">D-140</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="d140.html">D-140</a>, <a href="d132.html">D-132</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

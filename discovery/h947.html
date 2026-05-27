@@ -69,39 +69,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 전자기 위상 횡단 비용에서 이상 자기 모멘트 a_e 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>이상 자기 모멘트는 자기 모멘트의 Larmor 회전이 단위원을 한 번 도는 동안 치르는 비용이다. 한 번의 위상 횡단(<a href="../axiom.html#ax4">공리 4</a> 노름 reading, 호 = $\pi$)이 전자기 결합 $\alpha$(<a href="d01.html">D-01</a>)와 묶여 이 비용을 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 단위원 위상 노름(<a href="../axiom.html#ax1">공리 1</a> 단위원 형식: 위상 = $e^{i\theta}$)이다. Schwinger 1-loop 항이 한 비가역 횡단 $\pi$를 한 바퀴 $2\pi$로 나눈 노름 reading 꼴이기 때문에 이 노름을 택한다. 따라서 $a_e$를 $\alpha$의 멱급수로 치환하되 1차 항을 호/한 바퀴 비로 고정한다.</p>
+<div class="math-block">
+<div class="math-row">$a_e = \dfrac{g-2}{2}$</div>
+<div class="math-row">$a_e = \dfrac{\alpha}{2\pi} + c_2\alpha^2 + c_3\alpha^3 + \cdots$</div>
+<div class="math-legend">$a_e$: 전자 이상 자기 모멘트 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) | $2\pi$: 단위원 한 바퀴(<a href="../axiom.html#ax1">공리 1</a>) | $c_n$: $n$-loop 위상 횡단 누적</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha    = 1/137.035999          D-01
+2 pi     = 6.283185307
+a_e      = 1.001159652180(12)    측정값 - 1 (실험 a_e)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전자기 결합 도메인으로 변환한다. 이 변환으로 보려는 것은 한 위상 횡단이 자기 모멘트에 더하는 1-loop 보정 $a_e$다. $\alpha$를 단위원 한 바퀴 $2\pi$로 나눠 Schwinger 항을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$a_e \approx \dfrac{\alpha}{2\pi} = \dfrac{1}{137.035999 \times 6.283185} = 0.0011614$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $a_e = \alpha/2\pi = 0.0011614$ (1-loop)</div>
+<div class="math-row">측정값: $a_e = 0.00115965218$       (1-loop 비교)</div>
+<div class="math-row">오차: $0.1\%$ (1-loop 항)</div>
+</div>
+<p>판정: <strong>가설</strong>. Schwinger 1차 항 $\alpha/2\pi$는 한 위상 횡단으로 닫히지만, 고차 계수 $c_2,c_3,c_4$가 아직 CAS 구조수 비로 분해되지 않아 forward chain이 1-loop에서 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: QED 정밀 검증, 뮤온 g-2 anomaly 후속 채굴, 신물리 탐색 경계 조건.</p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

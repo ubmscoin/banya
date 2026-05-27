@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-126 카시미르 온도 의존 9/13 인자 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-126 카시미르 온도 의존 9/13 인자. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p126.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p126.html">P-126</a>. 카시미르 효과 온도 의존성의 RLU 감쇠 도출</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p126.html">P-126</a>: 카시미르 효과 온도 의존성의 RLU 감쇠 도출</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$F_\text{Casimir}(T)=F_0\left[1+\frac{2\pi k_B T d}{\hbar c}\cdot\frac{9}{13}\right]^{-1}\quad(\text{열적 보정에 }9/13\approx0.692\ \text{인자})$$</div></div>
+<p class="finding-precision">예측: 카시미르 열적 보정에 $9/13\approx0.692$ 인자(Lifshitz 대비 ~30% 차이). 검증 마이크로-나노 카시미르력(2028~).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 카시미르 효과(두 판 사이 진공 요동에 의한 인력)는 RLU 캐시의 폴링 구조로 기술된다(<a href="../axiom.html#ax6">공리 6</a>, <a href="../axiom.html#ax8">공리 8</a> δ 폴링).</p>
+<p>본 예측은 카시미르력의 온도 의존 보정에 $9/13\approx0.692$ 인자가 붙는다고 본다 — $F_\text{Casimir}(T)=F_0[1+(2\pi k_B Td/\hbar c)(9/13)]^{-1}$.</p>
+<p>9는 RLU 잔여(<a href="../axiom.html#ax6">공리 6</a>: 총 13 중 유지비용 4를 뺀 잔여)이고, 13은 한 상호작용의 총 비용(<a href="../axiom.html#ax4">공리 4</a>)이다.</p>
+<p>즉 열적 보정이 RLU 잔여 9 대 총 비용 13의 비율 $9/13$만큼 감쇠한다 ==> DATA 이산성(<a href="../axiom.html#ax3">공리 3</a>)이 열적 항을 깎는다.</p>
+<p>이 $9/13$ 인자로 인해 카시미르 열적 보정이 표준 Lifshitz 이론 대비 약 30% 차이를 보인다.</p>
+<p>즉 본 예측은 "카시미르력에 온도 의존이 있다"가 아니라 "열적 보정에 정확히 $9/13$ 인자, Lifshitz 대비 ~30%"라는 정량 주장이다.</p>
+<p>$9/13$은 슈빙거 $4/13$(P-123)·진공에너지 $4/13$(P-130)과 같은 총 비용 13 분배 계열이다(4+9=13).</p>
+<p>표준 Lifshitz 이론은 이 $9/13$ 감쇠 없이 열적 보정을 예측하므로, 그 차이가 변별점이다.</p>
+<p>검증: 마이크로-나노 스케일 카시미르력 정밀 측정(T=100-600K, Yale·IUPUI, 2028~)에서 열적 보정이 $9/13$ 감쇠를 보이면 본 예측을 지지한다.</p>
+<p>반박: 열적 보정이 Lifshitz와 1% 이내로 일치하고 $9/13$ 감쇠가 부재하면 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: 마이크로-나노 카시미르력 정밀 측정(T=100-600K, Yale·IUPUI, 2028~). 반박: 열적 보정이 Lifshitz와 1% 이내 일치, $9/13$ 부재. 출처: <a href="../axiom.html#ax6">공리 6</a>(RLU 잔여 9, 유지비용 4), <a href="../axiom.html#ax4">공리 4</a>(비용 +1), <a href="../axiom.html#ax8">공리 8</a>(δ 폴링), <a href="../axiom.html#ax3">공리 3</a>(DATA 이산).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 전자기 도메인 고유 예측으로 검증 대기 상태다. forward chain은 공리 4 공리 6(RLU 잔여 9/총비용 13)에서 카시미르 열적 보정 $9/13$까지 닫혀 있으나, 마이크로-나노 카시미르력 정밀 측정이 아직 그 ~30% 차이를 가를 수준에 못 미친다. $9/13$ 감쇠 확인 시 D 승격, Lifshitz 1% 일치 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 정밀 측정 대기 / forward chain 완료(공리 4 공리 6 ==> RLU 잔여 9/총비용 13 ==> 열적 보정 $9/13$) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: space ==&gt; RLU 잔여 9/총비용 13이 카시미르 열적 보정 $9/13$ 감쇠(공리 4 공리 6). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: RLU 잔여 9/총비용 13에서 카시미르 열적 보정 9/13 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>카시미르 열적 보정은 두 판 사이 진공 요동을 RLU 캐시가 폴링하며 치르는 비용이다. 한 상호작용의 총 비용 $13$(<a href="../axiom.html#ax4">공리 4</a>)에서 유지비용 $4$를 뺀 RLU 잔여 $9$(<a href="../axiom.html#ax6">공리 6</a>)가 열적 항에 붙는 인자가 된다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 잔여 노름이다 — 총 비용 $13$ 중 유지비용 $4$를 제외한 잔여 $9$의 비율(<a href="../axiom.html#ax6">공리 6</a>). 열적 보정이 RLU 폴링(<a href="../axiom.html#ax8">공리 8</a> δ 폴링)으로 깎이고 그 깎임이 DATA 이산성(<a href="../axiom.html#ax3">공리 3</a>)으로 잔여 $9$ 대 총 $13$의 비로 닫히기 때문에 이 노름을 택한다. 그래서 Lifshitz 열적 항에 $9/13$ 인자를 곱한다.</p>
+<div class="math-block">
+<div class="math-row">$F_\text{Casimir}(T)=F_0\left[1+\dfrac{2\pi k_B T d}{\hbar c}\right]^{-1}$</div>
+<div class="math-row">$F_\text{Casimir}(T)=F_0\left[1+\dfrac{2\pi k_B T d}{\hbar c}\cdot\dfrac{9}{13}\right]^{-1}$</div>
+<div class="math-legend">$F_\text{Casimir}(T)$: 온도 의존 카시미르력 | $F_0$: 영온도 카시미르력 | $9$: RLU 잔여 (<a href="../axiom.html#ax6">공리 6</a>) | $13$: 한 상호작용 총 비용 (<a href="../axiom.html#ax4">공리 4</a>) | $9/13\approx0.692$: 열적 보정 감쇠 인자</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>13   = 한 상호작용 총 비용         공리 4
+4    = RLU 유지비용                공리 6
+9    = 13 - 4 = RLU 잔여           공리 6
+9/13 = 0.692                       열적 보정 인자</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>space 도메인(판 사이 진공 요동)으로 변환한다. 이 변환으로 보려는 것은 표준 Lifshitz 열적 항이 RLU 잔여로 얼마나 감쇠하는가다. 잔여 $9$를 총 비용 $13$으로 나눠 그 감쇠 인자를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{9}{13}=0.692$</div>
+<div class="math-row">$F_\text{Casimir}(T)=F_0\left[1+\dfrac{2\pi k_B T d}{\hbar c}\cdot 0.692\right]^{-1}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: 열적 보정에 $9/13\approx0.692$ 인자</div>
+<div class="math-row">표준 대비: Lifshitz 이론 대비 약 $30\%$ 차이</div>
+<div class="math-row">검증: 마이크로-나노 카시미르력 정밀 측정 (T=100-600K, Yale·IUPUI, 2028~)</div>
+</div>
+<p>판정: <strong>예측</strong>. 열적 보정이 $9/13$ 감쇠를 보이면 D 승격, Lifshitz와 1% 이내 일치하면 폐기된다.</p>
+<p>총 비용 $13$의 분배가 슈빙거 $4/13$(<a href="p123.html">P-123</a>)·진공에너지 $4/13$(<a href="p130.html">P-130</a>)과 같은 계열($4+9=13$)임을 한 번 더 드러낸다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p126.html">P-126</a>: 카시미르 온도 의존 9/13 인자</td><td>예측 (대기) — 카시미르 열적 보정 $9/13$ 인자(Lifshitz 대비 ~30%)</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

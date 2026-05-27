@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h822.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h822.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h822.html">H-822</a>. Evolution = Probabilistic Mutation of CAS Compare + Natural Selection</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D Promotion possible upon proceeding to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive substitution path: <a href="h818.html">H-818</a>, <a href="h838.html">H-838</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Evolution Rate from the CAS Compare Error Rate</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Evolution occurs when the CAS Compare (<a href="../axiom.html#ax2">Axiom 2</a>) errs with probability greater than 0 and the FSM norm (<a href="../axiom.html#ax6">Axiom 6</a>) selects that outcome. If Compare is false the superposition is held; if true, Swap records the mutated DATA (<a href="../axiom.html#ax7">Axiom 7</a>). The cost $+1$ (<a href="../axiom.html#ax4">Axiom 4</a>) acts as environmental pressure, extinguishing entities of lower norm.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM fitness norm — entities of higher FSM norm (<a href="../axiom.html#ax6">Axiom 6</a>) persist preferentially, while lower-norm entities fail to bear the cost and drop out. (b) Evolution is chosen for this norm because natural selection is exactly differential persistence by norm, and mutation reduces to a single probability, the Compare error rate $\mu$. The evolution rate becomes the product of the error rate and the norm gradient (selection pressure).</p>
+<div class="math-block">
+<div class="math-row">$v = \mu \cdot s$</div>
+<div class="math-row">$\mu = P(\text{Compare error}),\quad s = \nabla(\text{FSM norm})$</div>
+<div class="math-legend">$v$: evolution rate | $\mu$: Compare error rate = mutation rate | $s$: FSM norm gradient = selection pressure (<a href="../axiom.html#ax6">Axiom 6</a>) | $+1$: environmental cost (<a href="../axiom.html#ax4">Axiom 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h818.html">H-818</a>, <a href="h838.html">H-838</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>mu  = 1e-8 per bp per generation   human mutation rate
+s   = environmental cost gradient  external input
+v   = mu * s                       evolution rate</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation domain is the ECS population fitness domain. (b) What it reveals is how much per-generation variation is fixed by norm selection — the evolution rate $v$. Multiplying the error rate $\mu$ by the norm gradient $s$ yields it.</p>
+<div class="math-block">
+<div class="math-row">$v = \mu \cdot s,\quad \mu \approx 10^{-8}\;\text{/bp/gen}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $v = \mu \cdot s$, $\mu$ = Compare error rate</div>
+<div class="math-row">Measured: $\mu \approx 10^{-8}$/bp/generation (human)</div>
+<div class="math-row">Status: structural mapping consistent, $s$ as external input leaves closure incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Mutation reduces to the Compare error rate and natural selection to FSM norm selection, but the selection pressure $s$ is not derived from the axioms and remains an external input, so it stays a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h818.html">H-818</a> (DNA). <a href="h838.html">H-838</a> (genetic algorithms)</p><p>This card can be re-used as input for the following cards: <a href="h818.html">H-818</a>, <a href="h838.html">H-838</a></p>
+<p>Re-injection path: <a href="h818.html">H-818</a>, <a href="h838.html">H-838</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

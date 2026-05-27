@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed, D promotion possible at next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; natural classification surplus (domain undetermined, requires later refinement). Recursive substitution path: <a href="d151.html">D-151</a>, <a href="d154.html">D-154</a>, <a href="h440.html">H-440</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Light-Speed Invariance from the One-Boundary-per-Tick Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The maximum speed of cost propagation is crossing one boundary per tick. Reading through <a href="../axiom.html#ax4">Axiom 4</a> (boundary-crossing cost +1), <a href="../axiom.html#ax8">Axiom 8</a> (per-tick polling), and <a href="../axiom.html#ax3">Axiom 3</a> (DATA discreteness), 1 boundary per tick is the upper bound, and this bound is an invariant independent of the inertial frame.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; natural classification surplus (domain undetermined, requires later refinement)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cost-propagation-speed norm. It is chosen because the speed of light is the maximum speed at which the CAS can move cost, closing as the ratio of the minimum length to the minimum tick on the discrete lattice (<a href="../axiom.html#ax3">Axiom 3</a>). This ratio is independent of the observer domain, so it is the same value in every inertial frame.</p>
+<div class="math-block">
+<div class="math-row">$v = \dfrac{n_{\text{boundary}}\,\Delta\ell_{\min}}{n_{\text{tick}}\,\Delta t_{\min}},\qquad n_{\text{boundary}}\le n_{\text{tick}}$</div>
+<div class="math-row">$c = \dfrac{\Delta\ell_{\min}}{\Delta t_{\min}} = \text{const}$</div>
+<div class="math-legend">$c$: cost-propagation upper bound | $\Delta\ell_{\min}$: minimum length (<a href="../axiom.html#ax3">Axiom 3</a> discreteness) | $\Delta t_{\min}$: minimum tick (<a href="../axiom.html#ax8">Axiom 8</a> polling) | $n_{\text{boundary}}\le n_{\text{tick}}$: at most 1 boundary per tick (<a href="../axiom.html#ax4">Axiom 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d151.html">D-151</a>, <a href="d154.html">D-154</a>, <a href="h440.html">H-440</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>max boundary crossing/tick = 1            Axiom 4
+polling period             = 1 tick       Axiom 8
+c (measured)               = 299792458 m/s  defined value (SI 2019)
+invariance                 = frame-independent</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the observer domain. What it reveals is whether the cost-propagation speed varies with the inertial frame. Substituting the 1-boundary-per-tick bound fixes the speed at $\Delta\ell_{\min}/\Delta t_{\min}$, showing it to be frame-independent.</p>
+<div class="math-block">
+<div class="math-row">$v_{\max} = c = \dfrac{\Delta\ell_{\min}}{\Delta t_{\min}},\qquad \dfrac{\partial c}{\partial(\text{frame})} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $c = \Delta\ell_{\min}/\Delta t_{\min}$ (frame-independent bound)</div>
+<div class="math-row">Measured: $c = 299792458$ m/s (consistent with Michelson-Morley, GPS corrections)</div>
+<div class="math-row">Consistency: structurally matches special-relativistic Lorentz invariance</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure closes — the 1-boundary-per-tick bound forces light-speed invariance — but the quantitative derivation of $\Delta\ell_{\min}$ and $\Delta t_{\min}$ and the full Lorentz transformation are incomplete, so it remains a hypothesis.</p>
+<p>Exceeding the speed of light would cross a boundary without paying its cost, which CAS atomicity forbids.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: Reference speed for <a href="h440.html">H-440</a> (Cherenkov). Foundation for the <a href="d151.html">D-151</a>~<a href="d154.html">D-154</a> electromagnetic system.</p><p>This card can be re-used as input for the following cards: <a href="d151.html">D-151</a>, <a href="d154.html">D-154</a>, <a href="h440.html">H-440</a></p>
+<p>Re-injection path: <a href="h440.html">H-440</a>, <a href="d151.html">D-151</a>, <a href="d154.html">D-154</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

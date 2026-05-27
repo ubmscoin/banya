@@ -52,7 +52,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p class="finding-precision">구조 서술 — 4축 직교(공리 1)가 강제하는 누락 편미분; Lindblad dissipator 후보 대응</p>
 <p>편미분 $\partial/\partial x_i$는 도메인 4축 중 한 축만 활성화한다(<a href="h953.html">H-953</a> 도메인 변환). 표준 물리는 time·space 편미분만 쓰지만, 반야 4축(<a href="../axiom.html#ax1">공리 1</a>)에는 observer·superposition도 있다 — $\partial/\partial(\text{observer})$, $\partial/\partial(\text{superposition})$가 4축 직교에서 강제되는 누락 편미분이다.</p>
 <p>물리 대응: $\partial/\partial(\text{observer})$ = 관측자 설정 변화율 = 결잃음률(decoherence rate), $\partial/\partial(\text{superposition})$ = 중첩 붕괴율 = 측정률. Lindblad 방정식의 dissipator(소실항)가 이 observer 편미분의 사영일 후보다.</p>
-<p>정량 미완 / 예측 성격: dissipator와의 형식 일치를 정량 검증하는 단계가 미완 → 가설. 검증되면 측정 문제의 한 형식 답.</p>
+<p>정량 미완 / 예측 성격: dissipator와의 형식 일치를 정량 검증하는 단계가 미완 ==> 가설. 검증되면 측정 문제의 한 형식 답.</p>
 <p><strong>재대입 용도:</strong> 재대입 용도: Lindblad dissipator 형식 대응, 측정 문제, 결잃음 정량.</p>
 <p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 분류되어 다음 라운드로 미진행한 채 멈춰 있다. 4축 직교(<a href="../axiom.html#ax1">공리 1</a>)가 observer·superposition 편미분을 강제한다는 구조는 닫혔으나, 이것이 Lindblad dissipator와 형식적으로 일치하는지 정량 검증하는 단계가 미완이다. 잔여 과제: (1) dissipator 사영의 정량 대조, (2) 측정률·결잃음률 수치화, (3) <a href="h953.html">H-953</a> 재투입.</p>
 </div>
@@ -62,39 +62,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 구조 정합 확인(4축 직교 강제 누락 편미분) / dissipator 형식 일치 정량 검증 미완 / 1차 라운드 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; observer 축 편미분 (도메인 4축 중 1축). 재귀 대입 경로: <a href="h953.html">H-953</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 4축 직교(공리 1)에서 observer 편미분 = 결잃음률 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>편미분은 도메인 4축 중 한 축만 활성화해 그 축 방향의 변화율을 읽는 CAS 비용이다. 반야식 우변의 4축 time·space·observer·superposition은 직교이므로(<a href="../axiom.html#ax1">공리 1</a>), time·space 두 축의 편미분만 쓰는 표준 물리에는 observer·superposition 두 축의 편미분이 누락되어 있다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; observer 축 편미분 (도메인 4축 중 1축)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 observer 축 편미분 노름이다. 결잃음이 관측자 설정의 변화율이고, 그 변화율이 4축 중 observer 한 축만 활성화하는 편미분으로 닫히기 때문에 이 노름을 택한다(<a href="../axiom.html#ax1">공리 1</a> 4축 직교). 표준 Lindblad 방정식의 dissipator(소실항) $\mathcal{D}[\rho]$를 observer 축 편미분으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dot\rho = -\dfrac{i}{\hbar}[H,\rho] + \mathcal{D}[\rho]$</div>
+<div class="math-row">$\dfrac{\partial}{\partial(\text{observer})}\rho = \Gamma_{\text{dec}}\,\rho$</div>
+<div class="math-legend">$\mathcal{D}[\rho]$: Lindblad dissipator | $\partial/\partial(\text{observer})$: observer 축 편미분 (<a href="../axiom.html#ax1">공리 1</a> 4축 중 1축) | $\Gamma_{\text{dec}}$: 결잃음률 | $\partial/\partial(\text{superposition})$: 중첩 붕괴율 = 측정률</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 4 (도메인 축 = 공리 1)</p>
-<p><strong>물리 상수 입력:</strong> 없음 (공리 구조에서 직접)</p>
-<p><strong>라이브러리 재투입:</strong> <a href="h953.html">H-953</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>4            = 도메인 직교축 수        공리 1
+2            = 표준 물리 사용 축 (time, space)
+2            = 누락 축 (observer, superposition)
+Gamma_dec    = 미정                    dissipator 사영 정량 미완</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>양자 측정 도메인으로 변환한다. 이 변환으로 보려는 것은 observer 편미분이 Lindblad dissipator의 사영과 형식적으로 일치하는지, 곧 결잃음률 $\Gamma_{\text{dec}}$의 값이다. 다만 사영 계수의 정량 대조가 아직 닫히지 않는다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\partial}{\partial(\text{observer})}\rho \;\stackrel{?}{=}\; \mathcal{D}[\rho]$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: observer·superposition 편미분이 4축 직교에서 강제됨</div>
+<div class="math-row">측정: dissipator 형식 일치 정량 검증 미완</div>
+<div class="math-row">상태: 구조 닫힘, 정량 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 4축 직교가 두 누락 편미분을 강제하는 구조는 닫혔으나, Lindblad dissipator와의 형식 일치를 정량 검증하는 단계가 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: Lindblad dissipator 형식 대응, 측정 문제, 결잃음 정량.</p>
+<p>재투입 경로: <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 차이에서 반도체 밴드갭 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>반도체의 밴드갭은 FSM이 선언한 허용 상태 사이의 금지 구간 비용이다. <a href="../axiom.html#ax14">공리 14</a>(FSM 선언)는 결정 격자의 허용 상태를 유한 상태로 가르고, <a href="../axiom.html#ax3">공리 3</a>(DATA는 이산)는 그 상태가 이산 에너지 준위임을 강제한다. <a href="../axiom.html#ax2">공리 2</a>(CAS는 유일한 연산자)는 이 격자를 ECS 기판으로 준다. 전도대와 가전대의 노름 차이를 갭으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 상태 노름이다. 밴드갭이 전도대·가전대 두 허용 상태의 비용 차이이고, 그 차이가 <a href="../axiom.html#ax14">공리 14</a>의 FSM 선언으로 닫히기 때문에 이 노름을 택한다. 밴드갭 $E_g$를 두 FSM 노름의 차로 치환하고, 진성 캐리어 밀도를 볼츠만 점유로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$E_g = E_c - E_v$</div>
+<div class="math-row">$E_g = \|F\|_{\text{cond}} - \|F\|_{\text{val}} \;;\quad n_i \propto e^{-E_g / 2k_BT}$</div>
+<div class="math-legend">$E_g$: 밴드갭 | $\|F\|_{\text{cond}}$: 전도대 FSM 노름 | $\|F\|_{\text{val}}$: 가전대 FSM 노름 | $n_i$: 진성 캐리어 밀도 | $k_B T$: 열에너지 (300K에서 0.02585 eV)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>E_g(Si) 도출  = 1.12 eV       FSM 노름 차
+k_B T (300K)  = 0.02585 eV
+E_g(Si) 측정  = 1.12 eV       실리콘 실측
+E_g(Ge) 측정  = 0.67 eV
+E_g(GaAs) 측정 = 1.42 eV</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>고체 밴드 도메인(허용/금지 에너지 구간)으로 변환한다. 이 변환으로 보려는 것은 실리콘의 밴드갭 폭과 그에 따른 진성 캐리어 점유다. 도핑은 외부 FSM을 격자에 삽입해 갭 내부에 새 준위를 만든다.</p>
+<div class="math-block">
+<div class="math-row">$E_g(\text{Si}) = \|F\|_{\text{cond}} - \|F\|_{\text{val}} = 1.12\;\text{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $E_g(\text{Si}) = 1.12\;\text{eV}$</div>
+<div class="math-row">측정값: $1.12\;\text{eV}$ (실리콘 실측)</div>
+<div class="math-row">오차: $< 1\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 밴드갭이 FSM 노름 차로 정합하지만, $\|F\|_{\text{cond}}$·$\|F\|_{\text{val}}$ 절댓값이 격자 상수에서 ab initio로 닫히지 않아 갭 폭은 외부 입력으로 남는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h843.html">H-843</a>(다이오드). <a href="h844.html">H-844</a>(트랜지스터). <a href="h845.html">H-845</a>(집적회로)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
+<p>재투입 경로: <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

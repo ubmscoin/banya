@@ -65,39 +65,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="h543.html">H-543</a>, <a href="h546.html">H-546</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 이중 비용에서 이중양성자 붕괴 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양성자 붕괴는 한 FSM이 GUT 장벽을 비가역적으로 터널링하는 비용(<a href="h543.html">H-543</a>)이다. 이중양성자 붕괴는 두 FSM이 동시에 같은 장벽을 넘는 사건이며, CAS 비용(<a href="../axiom.html#ax4">공리 4</a>)이 단일 사건의 두 배로 쌓인다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 이중 비용 노름이다. 독립한 두 FSM 전이(<a href="../axiom.html#ax11">공리 11</a>: 2-FSM 동시 전이)의 비용이 곱으로 결합(<a href="../axiom.html#ax4">공리 4</a>: 이중 비용 = 단일의 제곱)하기 때문에 이 노름을 택한다. 단일 붕괴 진폭이 $\alpha$의 거듭제곱으로 억제되므로, 이중 붕괴는 그 진폭의 제곱만큼 추가 억제된다.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma_1 \propto \alpha^{n}$</div>
+<div class="math-row">$\Gamma_2 \propto \Gamma_1^{\,2} \propto \alpha^{2n}$</div>
+<div class="math-legend">$\Gamma_1$: 단일 양성자 붕괴율 (<a href="h543.html">H-543</a>) | $\Gamma_2$: 이중 붕괴율 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) | $n$: 단일 전이 거듭제곱</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h543.html">H-543</a>, <a href="h546.html">H-546</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha     = 1/137.036        D-01
+추가 억제   = alpha^29          이중 터널링 잉여 비용
+tau_1     ~ 1e34 yr           H-543 단일 양성자 수명
+tau_2     &gt; 1e68 yr           이중 = 단일의 제곱</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>질량 계층(CAS 비용 × 자료형 크기) 도메인에서 $\Delta B = 2$ 붕괴 도메인으로 변환한다. 이 변환으로 보려는 것은 이중양성자 수명 $\tau_2$의 하한이다. 단일 수명의 제곱이 $\alpha^{29}$ 인자로 부풀려져 관측 가능 범위를 벗어난다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_2 \sim \tau_1^{\,2} \cdot \alpha^{-29} > 10^{68}\;\text{yr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\tau_2 > 10^{68}$ yr ($\alpha^{29}$ 추가 억제)</div>
+<div class="math-row">측정: 현재 실험 감도 도달 불가</div>
+<div class="math-row">검증: $\Delta B = 2$ 핵붕괴 탐색 대기</div>
+</div>
+<p>판정: <strong>가설</strong>. 이중 비용이 단일의 제곱이라는 구조에서 사실상 금지된 수명이 따라오나, $\alpha^{29}$ 인자의 핵 내 상관 보정은 미확정이다.</p>
+<p>통찰: 두 사건의 동시성은 비용을 더하는 것이 아니라 곱하므로, 단일에서 약한 억제도 이중에서는 절대 금지가 된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h543.html">H-543</a>(양성자 붕괴) 확장. <a href="h546.html">H-546</a>(바리온수) $\Delta B = 2$.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h543.html">H-543</a>, <a href="h546.html">H-546</a></p>
+<p>재투입 경로: <a href="h543.html">H-543</a>, <a href="h546.html">H-546</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

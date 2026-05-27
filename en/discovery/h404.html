@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / recursive substitution not executed (1st round) / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h qcd. Domain: delta ==&gt; SU(3) 3-axis color degree of freedom x QCD cost domain (alpha_s path). Recursive substitution path: 1st round (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving m_u/m_d from the CAS Read-asymmetry cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The up/down mass ratio comes from the asymmetry of the degrees of freedom accessed at the CAS Read step. Of the full-description DOF 7 (<a href="../axiom.html#ax9">Axiom 9</a>), up Reads 2 and down Reads 5, the branch occurring over the 4 domain axes (<a href="../axiom.html#ax1">Axiom 1</a>). A strong color correction $\alpha_s/(3\pi)$ is then added.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; SU(3) 3-axis color degree of freedom x QCD cost domain (alpha_s path)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Read-asymmetry norm $2/5 = (7-5)/(7-2)$. (b) It is chosen because the up/down mass difference comes from the Read-step DOF asymmetry, with a 1-loop color correction added. $\alpha_s$ is taken from <a href="d03.html">D-03</a>.</p>
+<div class="math-block">
+<div class="math-row">$m_u/m_d = \dfrac{7-5}{7-2}$</div>
+<div class="math-row">$m_u/m_d = \dfrac{2}{5}\left(1+\dfrac{\alpha_s}{3\pi}\right)$</div>
+<div class="math-legend">$2/5$: Read asymmetry = up 2 / down 5 DOF | $7$: full-description DOF (<a href="../axiom.html#ax9">Axiom 9</a>) | $\alpha_s$: strong coupling (<a href="d03.html">D-03</a>) | $3\pi$: 1-loop color-correction denominator</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS 3 axes = SU(3) color), 7 (beta_0=7), 8 (gluon=3^2-1, computed)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>alpha</code>, <code>alpha_s</code>, <code>pi</code></p>
-<p><strong>Library Re-substitution:</strong> <em>No external reference (1st round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>2/5         = 0.4
+alpha_s     = 0.1179          D-03
+alpha_s/(3 pi) = 0.01252
+m_u/m_d(exp) = 2.16/4.67 = 0.4625   PDG</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the 1st-generation quark mass-ratio domain. (b) What it reveals is the up/down mass ratio $m_u/m_d$. Multiplying the Read asymmetry 2/5 by the 1-loop color correction yields that value.</p>
+<div class="math-block">
+<div class="math-row">$m_u/m_d = 0.4\times(1+0.01252) = 0.4050$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $m_u/m_d = 0.4050$</div>
+<div class="math-row">Measured: $0.4625$ (PDG, $2.16/4.67$)</div>
+<div class="math-row">Error: $12\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The mass ratio falls in the right range from the Read asymmetry 2/5, but it halts at hypothesis because the cause of the 12% gap (scale choice, higher-order corrections) is undetermined.</p>
+</div>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No explicit byproducts. Cross-links can be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

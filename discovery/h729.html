@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 5개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h722.html">H-722</a>, <a href="h727.html">H-727</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a>, <a href="h739.html">H-739</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: ECS 곡률-비용 등식에서 아인슈타인 방정식 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>아인슈타인 방정식은 ECS 곡률이 CAS 비용 분포에 의해 결정된다는 등식이다. CAS 비용 분포가 에너지-운동량 텐서라는 <a href="../axiom.html#ax4">공리 4</a>(비용)와 ECS 구조가 리치 텐서라는 <a href="../axiom.html#ax7">공리 7</a>(쓰기와 중첩 유지)으로 이 등식을 읽고, 비용이 곡률 원천이라는 <a href="h727.html">H-727</a>을 입력으로 받는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 ECS 곡률 텐서 노름 $G_{\mu\nu}$다. 곡률이 CAS 비용 분포와 같고 그 등식이 비앙키 항등식으로 비용 보존 $\nabla_\mu T^{\mu\nu}=0$까지 닫히기 때문에 이 노름을 택한다. 따라서 곡률을 비용 텐서로 치환하며, 결합 상수가 $8\pi G/c^4$로 고정된다.</p>
+<div class="math-block">
+<div class="math-row">$G_{\mu\nu} + \Lambda g_{\mu\nu} = \dfrac{8\pi G}{c^4}T_{\mu\nu}$</div>
+<div class="math-row">$\nabla_\mu T^{\mu\nu} = 0$</div>
+<div class="math-legend">$G_{\mu\nu}$: ECS 곡률 (<a href="../axiom.html#ax7">공리 7</a>) | $T_{\mu\nu}$: CAS 비용 분포 (<a href="../axiom.html#ax4">공리 4</a>) | $\Lambda$: RLU 해제 비용 (<a href="h739.html">H-739</a>) | $8\pi G/c^4$: 비용-곡률 결합 | $\nabla_\mu T^{\mu\nu}=0$: 비앙키 비용 보존</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h722.html">H-722</a>, <a href="h727.html">H-727</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a>, <a href="h739.html">H-739</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>G          = 6.674e-11   m^3/kg/s^2
+c          = 299792458   m/s
+8 pi G/c^4 = 2.077e-43    1/(J/m)
+Newton:    nabla^2 Phi = 4 pi G rho</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약장 정적 도메인(뉴턴 극한)으로 변환한다. 이 변환으로 보려는 것은 곡률-비용 결합 $8\pi G/c^4$가 뉴턴 푸아송 방정식의 $4\pi G$로 떨어지는지다. $g_{00}$ 성분만 남기면 장 방정식이 푸아송 방정식으로 환원된다.</p>
+<div class="math-block">
+<div class="math-row">$\nabla^2\Phi = 4\pi G\rho$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\nabla^2\Phi = 4\pi G\rho$ (뉴턴 극한)</div>
+<div class="math-row">측정값: 뉴턴 푸아송 방정식 $\nabla^2\Phi = 4\pi G\rho$</div>
+<div class="math-row">오차: $0\%$ (약장 일치)</div>
+</div>
+<p>판정: <strong>가설</strong>. 곡률-비용 등식이 비앙키 항등식으로 비용 보존까지 닫히고 약장에서 푸아송 방정식으로 환원되나, 결합 상수 $8\pi G/c^4$를 공리에서 직접 도출하는 단계가 남아 forward chain 마지막이 미결이다. 구대칭 진공해는 <a href="h730.html">H-730</a>, 우주상수는 <a href="h739.html">H-739</a>로 이어진다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h730.html">H-730</a>(슈바르츠실트) 구대칭 해. <a href="h739.html">H-739</a>(우주 팽창) $\Lambda$</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h722.html">H-722</a>, <a href="h727.html">H-727</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a>, <a href="h739.html">H-739</a></p>
+<p>재투입 경로: <a href="h727.html">H-727</a>, <a href="h722.html">H-722</a>, <a href="h739.html">H-739</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

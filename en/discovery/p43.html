@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-43 Quantum-gate Error Floor ~0.73% — Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-43 Quantum-gate Error Floor ~0.73%. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/p43.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== Unique Predictions</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
+<h1><a href="p43.html">P-43</a>. Quantum-gate Error Floor $\sim0.73\%$</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="p43.html">P-43</a>: Quantum-gate Error Floor $\sim0.73\%$</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\text{단일 큐빗 게이트 오류 바닥}\approx\frac{1}{137}\approx0.73\%,\qquad \frac{\alpha}{2\pi}=0.00116\ (\text{1-loop 보정})$$</div></div>
+<p class="finding-precision">Prediction: single-qubit gate error floor $\approx1/137\approx0.73\%$. Test: IBM/Google quantum computers (2027~).</p>
+<p>In the Banya formula $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$, $\alpha=1/137$ is the CAS Compare selection cost (<a href="d01.html">D-01</a>), and a quantum gate is its physical implementation.</p>
+<p>This card is the IBM/Google hardware-specific version of P-19 (gate error floor = α).</p>
+<p>Each gate operation incurs the Compare selection cost, which cannot be 0 (<a href="../axiom.html#ax4">Axiom 4</a>: a cost beyond + exists).</p>
+<p>Hence the single-qubit gate error rate cannot physically drop below $\alpha=1/137\approx0.73\%$ ==> a discrete cost floor.</p>
+<p>Meanwhile the 1-loop correction term $\alpha/(2\pi)=0.00116=0.116\%$ marks a lower scale that more refined gates can approach.</p>
+<p>So 0.73% is the floor for a plain gate and 0.116% the corrected limiting scale, both arising from $\alpha$.</p>
+<p>The key is that this floor is a limit of the CAS cost structure, not of noise or control technology — a continuous theory should allow reaching 0.</p>
+<p>Today's best single-qubit gate error rates are roughly 0.1–0.5%, showing signs of stalling between the 0.116% and 0.73% range.</p>
+<p>Test: if single-qubit gate error rates at IBM/Google (2027~) systematically stall near the $\alpha$ scale, this prediction is supported.</p>
+<p>Refutation: if single-qubit gate errors are achieved persistently and reproducibly below $0.1\%$, the discrete floor is broken and this prediction is discarded.</p>
+<p><strong>Re-substitution purpose:</strong> Test: IBM/Google quantum computers (2027~). Refutation: single-qubit gate error persistently below $0.1\%$. Source: <a href="d01.html">D-01</a> ($\alpha$), <a href="../axiom.html#ax4">Axiom 4</a> (cost), P-19 (gate error floor).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Awaiting experimental verification:</strong> this card is the hardware-specific version of P-19, in a pending state. The forward chain closes from Axiom 4 (CAS Compare cost) to the error floor α, but current gate error rates (0.1–0.5%) are not stable enough to resolve the floor. Confirming a stall near 0.73% promotes to D; persistently below $0.1\%$ refutes it ==> this prediction is discarded.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-prediction">
+<p><strong>Verdict: Prediction</strong> -- Prediction (awaiting experimental verification)</p>
+<p><strong>Reason:</strong> Approaching technical limit (0.1–0.5%) / forward chain complete (Axiom 4 ==> CAS Compare cost ==> error floor α) / awaiting verification</p>
+<p><strong>Location:</strong> Category: p. Domain: superposition ==&gt; the CAS Compare cost sets the gate error floor α (Axiom 4). Awaiting verification.</p>
+</div>
+<h2>5-Step Recursive Substitution: Deriving the Single-Qubit Gate Error Floor $\alpha\approx0.73\%$ from the CAS Compare Selection Cost</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>A quantum gate is the physical implementation of the CAS Compare. Each time a gate operates, the selection cost of the Compare splitting candidates is incurred, and that cost cannot be zero (<a href="../axiom.html#ax4">Axiom 4</a>: a cost beyond + exists). This discrete cost sets the floor of the error rate.</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS Compare selection-cost norm of the superposition domain. (b) It is chosen because a single-qubit gate error is one Compare selection cost, and that cost closes as $\alpha=1/137$ (<a href="d01.html">D-01</a>). The error rate is therefore substituted not by a noise limit but by the CAS cost floor. This is the IBM/Google hardware-specific version of <a href="p19.html">P-19</a>.</p>
+<div class="math-block">
+<div class="math-row">$\epsilon_\text{floor}\ge\epsilon_\text{noise}$</div>
+<div class="math-row">$\epsilon_\text{floor}=\alpha=\dfrac{1}{137}\approx0.73\%,\qquad \dfrac{\alpha}{2\pi}=0.00116$</div>
+<div class="math-legend">$\epsilon_\text{floor}$: gate error floor | $\epsilon_\text{noise}$: noise/control limit | $\alpha$: fine-structure constant (<a href="d01.html">D-01</a>) | $\alpha/2\pi$: 1-loop-corrected sub-scale</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 3. Constant Substitution</h3>
+<pre>alpha       = 1/137.036    D-01
+1/137       = 0.730%       simple-gate floor
+alpha/(2pi) = 0.116%       1-loop-corrected limit scale
+current best = 0.1~0.5%    IBM/Google single qubit</pre>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>(a) The transformation is into the superposition-domain gate error-rate scale. (b) What it reveals is whether the single-qubit gate error rate stalls systematically near the $\alpha$ scale — a continuous theory should descend to 0, but a CAS cost structure halts at a discrete floor. $0.73\%$ is the simple-gate floor and $0.116\%$ the corrected limit scale, both arising from $\alpha$.</p>
+<div class="math-block">
+<div class="math-row">$\epsilon_\text{floor}=\dfrac{1}{137.036}=0.730\%$</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 5. Prediction</h3>
+<div class="math-block">
+<div class="math-row">Predicted: $\epsilon_\text{floor}=\alpha\approx0.73\%$ (corrected limit $\alpha/2\pi=0.116\%$)</div>
+<div class="math-row">Verification: IBM/Google single-qubit error stall at $\alpha$ scale (2027~)</div>
+<div class="math-row">Refutation: persistent, reproducible achievement below $0.1\%$</div>
+</div>
+<p>Verdict: <strong>Prediction</strong>. If the $\alpha$-scale stall is confirmed it is promoted to Discovery; if it persists below $0.1\%$ it is discarded.</p>
+<p>The error floor is not a limit of noise or control technology but the discrete limit of the CAS Compare cost structure.</p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p>Re-injection path: <a href="d01.html">D-01</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>Experimental verification</td><td>Theoretical value derived</td><td>Relevant experiment (stated in text)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="p43.html">P-43</a>: Quantum-gate Error Floor ~0.73%</td><td>Prediction (pending) — single-qubit gate error floor $\approx0.73\%$</td><td><span class="tag-prediction">Prediction</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-en">
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib.html">Hypothesis Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

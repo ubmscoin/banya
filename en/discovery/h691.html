@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h691.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h691.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_cosmology</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h691.html">H-691</a>. Olbers' Paradox Resolution = RLU Attenuation + Finite Universe Age</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D-promotion possible upon the next round / residual tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h cosmology. Domain: delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmological scale. Recursive substitution path: <a href="h483.html">H-483</a>, <a href="h690.html">H-690</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Night-Sky Brightness Ratio from the RLU-Attenuation Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The accumulated brightness of arriving starlight is the cost paid jointly by RLU redshift attenuation (<a href="../axiom.html#ax6">Axiom 6</a>) and the finite universe age (<a href="../axiom.html#ax12">Axiom 12</a>). It is read through the time term in which ECS expansion (<a href="../axiom.html#ax2">Axiom 2</a>) reduces the source density.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmological scale.</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the RLU-attenuation norm. It is chosen because the night-sky brightness is not the divergent integral of an infinite universe but a time integral up to the finite age $t_0$, and the redshift factor $a(t)^3/a(t_0)^3$ trims the cost of distant sources. The accumulated brightness is therefore substituted by the finite-time integral of the source emissivity $j(t)$.</p>
+<div class="math-block">
+<div class="math-row">$I_{\text{Olbers}} = \displaystyle\int_0^{\infty} j\,dr = \infty$</div>
+<div class="math-row">$I = \displaystyle\int_0^{t_0} j(t)\,\dfrac{a(t)^3}{a(t_0)^3}\,dt &lt; \infty$</div>
+<div class="math-legend">$I$: accumulated night-sky brightness | $t_0$: finite universe age (<a href="../axiom.html#ax12">Axiom 12</a>) | $j(t)$: source emissivity | $a(t)^3/a(t_0)^3$: RLU redshift attenuation (<a href="../axiom.html#ax6">Axiom 6</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 57 (derived, alpha^57 = Lambda * l_p^2), 7, 21, 35 (exterior-algebra dimensions)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h483.html">H-483</a>, <a href="h690.html">H-690</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>t_0       = 13.797 Gyr            Planck 2018
+c t_0     = 46.5 Gly (comoving)   observable universe radius
+I_obs/I_O = 1e-6                  observed brightness vs Olbers prediction
+sky       = 22 mag/arcsec^2       night-sky surface brightness</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the cosmological-luminosity domain. What it reveals is the ratio of the actual night-sky brightness to Olbers' infinite-universe prediction. The finite horizon and redshift attenuation close the divergent integral to a finite value.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{I}{I_{\text{Olbers}}} \approx \dfrac{c\,t_0}{R_{\text{Hubble}}} \sim 10^{-6}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $I/I_{\text{Olbers}} \sim 10^{-6}$</div>
+<div class="math-row">Measured: night sky $\sim 22\;\text{mag/arcsec}^2$</div>
+<div class="math-row">Status: qualitative agreement, quantitative ratio not closed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure by which finite age and RLU attenuation prevent divergence is closed, but the relative ratio of the two contributions is not produced directly from the axioms, so it falls short of D-promotion.</p>
+<p>Insight: the darkness of the night sky is direct evidence that the universe has accumulated cost for only a finite time.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: finite horizon for <a href="h483.html">H-483</a> (BAO). Observational limit for <a href="h690.html">H-690</a> (large-scale structure).</p><p>This card can be re-used as input for the following cards: <a href="h483.html">H-483</a>, <a href="h690.html">H-690</a></p>
+<p>Re-injection path: <a href="h483.html">H-483</a>, <a href="h690.html">H-690</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

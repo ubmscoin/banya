@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h767.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h767.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h767.html">H-767</a>. Determinism vs Indeterminism = Binary Branch of Compare true/false</h1><div class="box-finding">
@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs identified, D-promotion possible on next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h768.html">H-768</a>, <a href="h774.html">H-774</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Bell Violation from the Compare Binary Branch</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The FSM (<a href="../axiom.html#ax14">Axiom 14</a>) is a deterministic rule, but the Compare within it (<a href="../axiom.html#ax5">Axiom 5</a>) is a binary branch point: true==&gt;Swap==&gt;DATA / false==&gt;keep superposition. Because δ accesses the observer only partially (<a href="../axiom.html#ax15">Axiom 15</a>), the deterministic FSM appears indeterministic to the observer.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Compare-branch norm — the nonlocal correlation norm of two measurement settings. (b) Since determinism (full FSM state) and indeterminism (Compare outcome unpredictable) are two views of the same branch point, the norm chosen separates the classical hidden-variable correlation bound from the Compare correlation. The maximum of the branch correlation appears as a Bell-inequality violation.</p>
+<div class="math-block">
+<div class="math-row">$|S_{\text{classical}}| \le 2$</div>
+<div class="math-row">$S_{\text{Compare}} = 2\sqrt{2}$</div>
+<div class="math-legend">$S$: CHSH correlation sum | $\le 2$: hidden-variable (classical branch) bound | $2\sqrt{2}$: Compare nonlocal-branch maximum (Tsirelson) | $\delta$: observer partial access = indeterministic appearance</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h768.html">H-768</a>, <a href="h774.html">H-774</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>sqrt(2)        = 1.414213562373095
+2 sqrt(2)      = 2.828427124746190
+classical max  = 2
+S (CHSH)       = 2.82 ± 0.02       Aspect/Bell experiment</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum-correlation domain (Compare branch). (b) What it reveals is the maximum nonlocal correlation $S$ produced by the Compare branch. Combining the branch norm over two measurement settings yields that value.</p>
+<div class="math-block">
+<div class="math-row">$S_{\text{Compare}} = 2\sqrt{2} = 2.828 > 2$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $S = 2\sqrt{2} = 2.828$</div>
+<div class="math-row">Measured: $2.82 \pm 0.02$ (Bell experiment)</div>
+<div class="math-row">Bound exceeded: $S > 2$ (hidden variables excluded)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Compare nonlocal branch exceeds the classical bound 2 and closes at $2\sqrt{2}$, but a formal proof of the compatibility between FSM determinism and the Compare indeterministic appearance is not yet written.</p>
+<p>Determinism and indeterminism are not a contradiction but two views of the same Compare branch point.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h768.html">H-768</a> (free will). <a href="h774.html">H-774</a> (quantum interpretation)</p><p>This card can be re-used as input for the following cards: <a href="h768.html">H-768</a>, <a href="h774.html">H-774</a></p>
+<p>Re-injection path: <a href="h768.html">H-768</a>, <a href="h774.html">H-774</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

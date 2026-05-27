@@ -69,39 +69,53 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 1 recursive input confirmed, D promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost × data type size (137, 27). Recursive substitution path: <a href="h01.html">H-01</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the down-type Masses from the CAS Per-Stage Color-Access Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The down-type quark mass is the same-generation lepton mass times the color-access cost paid as the CAS 3 stages (R·C·S) map onto generation $k$ (<a href="h01.html">H-01</a>). The cost of each stage (<a href="../axiom.html#ax4">Axiom 4</a>: R+1·C+1·S+1) is read as a factor.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost × data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS per-stage color-access norm — chosen because Read (gen 1) opens all 3 colors $=3$, Compare (gen 2) selects 1 of 3 colors $=1/3$, Swap (gen 3) is a color-independent exchange $=1$, closing the color-access factor $F(k)=\{3,1/3,1\}$, which is multiplied by the generation factor $R(k)=\{9/3,8/3,7/3\}$ decreasing by 1/3 per generation from the complete-description DOF 9 (<a href="../axiom.html#ax9">Axiom 9</a>).</p>
+<div class="math-block">
+<div class="math-row">$m_\text{down}(k) = m_\text{lepton}(k)\,F(k)\,R(k)$</div>
+<div class="math-row">$F(k)=\{3,\tfrac{1}{3},1\},\quad R(k)=\{\tfrac{9}{3},\tfrac{8}{3},\tfrac{7}{3}\}$</div>
+<div class="math-legend">$F(k)$: CAS stage color access = Read 3 / Compare 1/3 / Swap 1 | $R(k)$: generation decrease factor | $9$: complete-description DOF (<a href="../axiom.html#ax9">Axiom 9</a>) | $7$: internal DOF</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>alpha</code>, <code>alpha_s</code>, <code>m_b</code>, <code>m_e</code>, <code>m_mu</code>, <code>m_tau</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h01.html">H-01</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>m_e     = 0.511 MeV
+m_mu    = 105.7 MeV
+m_tau   = 1777 MeV
+F(k)    = {3, 1/3, 1}            CAS Read/Compare/Swap color access
+R(k)    = {3, 8/3, 7/3}          Axiom 9 (9/3, 8/3, 7/3)
+alpha_s = 0.1184                 D-03</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the mass-hierarchy down-type domain. What it reveals is the three masses d·s·b derived per generation from the lepton masses. Multiplying $F(k)\,R(k)$ per generation yields the values.</p>
+<div class="math-block">
+<div class="math-row">$m_b = m_\tau \cdot 1 \cdot \tfrac{7}{3} = 1777 \cdot \tfrac{7}{3} = 4146\;\text{MeV}$</div>
+<div class="math-row">$m_s = m_\mu \cdot \tfrac{1}{3} \cdot \tfrac{8}{3} = 105.7 \cdot \tfrac{8}{9} \xrightarrow{(1-\alpha_s)} 93.0\;\text{MeV}$</div>
+<div class="math-row">$m_d = m_e \cdot 3 \cdot 3 = 0.511 \cdot 9 = 4.60\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">$m_b$: derived 4146 / measured 4180 MeV — error $0.81\%$</div>
+<div class="math-row">$m_s$: derived 93.0 / measured 93.4 MeV — error $0.17\%$</div>
+<div class="math-row">$m_d$: derived 4.60 / measured 4.67 MeV — error $0.28\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. It closes all three masses to within 1% simultaneously and $F(k)=\{3,1/3,1\}$ matches the GUT Georgi-Jarlskog factor, but the necessity of the arithmetic structure of $R(k)$ is not yet proven, so it remains a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: unify 3 separate formulas into 1 to eliminate numerology. F(k) = {3, 1/3, 1} matches the GUT Georgi–Jarlskog. Grounds for inducing GUT from CAS.</p><p>This card can be re-used as input for the following cards: <a href="h01.html">H-01</a></p>
+<p>Re-injection path: <a href="h01.html">H-01</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

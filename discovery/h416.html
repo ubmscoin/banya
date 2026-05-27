@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d21.html">D-21</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 비용에서 전자 질량 m_e 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전자 질량은 CAS가 전자라는 가장 가벼운 하전 렙톤을 쥐는 데 드는 비용이다. <a href="../axiom.html#ax4">공리 4</a> 비용 분류에 따라 이 쥠은 Compare 비용에서 오며, 양성자 쥠 $m_p$(<a href="d21.html">D-21</a>)에 Compare 억제 인자를 곱한 형태로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare 2회 억제 노름 $\alpha^2$이다. 전자 쥠이 양성자 쥠에 비해 Compare를 두 번 더 거치는 억제 구조라고 보아 이 노름을 택하며, 여기에 CAS 3단계를 전 구면으로 나눈 구조 인자 $\sqrt{3/(4\pi)}$를 곱한다.</p>
+<div class="math-block">
+<div class="math-row">$y_e = m_e/v$</div>
+<div class="math-row">$m_e = \alpha^2 m_p \sqrt{3/(4\pi)}$</div>
+<div class="math-legend">$m_e$: 전자 쥠 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) | $\alpha^2$: Compare 2회 억제 | $m_p$: 양성자 쥠 (<a href="d21.html">D-21</a>) | $\sqrt{3/(4\pi)}$: CAS 3단계 / 전 구면</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>m_e</code>, <code>m_mu</code>, <code>m_tau</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d21.html">D-21</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha          = 1/137.036          D-01
+alpha^2        = 5.325e-5
+m_p            = 938.272 MeV        CODATA 2018
+sqrt(3/(4pi))  = 0.4886
+m_e            = 0.51100 MeV        CODATA 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전자 질량 계층 도메인으로 변환한다. 이 변환으로 보려는 것은 순수 CAS 억제만으로 전자 쥠이 재현되는가이다. 세 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_e = 5.325\times10^{-5} \times 938.272 \times 0.4886 = 0.0244\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_e = 0.0244\;\text{MeV}$</div>
+<div class="math-row">측정값: $0.51100\;\text{MeV}$ (CODATA 2018)</div>
+<div class="math-row">오차: 인자 $\sim 21$ 부족</div>
+</div>
+<p>판정: <strong>가설</strong>. $\alpha^2$ 억제가 인자 20만큼 과도하여 실패한 시도다. $\alpha^{3/2}$이면 $0.42\;\text{MeV}$로 근접하므로 거듭제곱 차수와 도메인 기여를 추가 정련해야 한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d21.html">D-21</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="d21.html">D-21</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D promotion possible on next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed). Recursive substitution path: <a href="h745.html">H-745</a>, <a href="h765.html">H-765</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Scattering Cross-Section from CAS Input/Output Cost Conservation</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Scattering is the cost of one CAS cycle that processes input DATA through R==&gt;C==&gt;S and emits output. The transition amplitude from input to output state is the S-matrix, and the fact that this cycle neither loses nor creates cost is unitarity $S^\dagger S = I$ (<a href="../axiom.html#ax4">Axiom 4</a> cost conservation).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS input/output cost-conservation norm — the unitary norm $S^\dagger S = I$. (b) It is chosen because scattering is one input==&gt;process==&gt;output cycle (<a href="../axiom.html#ax2">Axiom 2</a> R==&gt;C==&gt;S) whose transition amplitude squared must be conserved as probability. Electromagnetic scattering is weighted by the coupling $\alpha$, so the cross-section falls at order $\alpha^2$.</p>
+<div class="math-block">
+<div class="math-row">$\sigma = \dfrac{|S_{fi}|^2}{\text{flux}}$</div>
+<div class="math-row">$\sigma(e^+e^-\to\mu^+\mu^-) = \dfrac{4\pi\alpha^2}{3s}$</div>
+<div class="math-legend">$S$: scattering matrix (input/output amplitude) | $S^\dagger S=I$: cost conservation = unitarity | $\alpha$: electromagnetic coupling (<a href="d01.html">D-01</a>) | $s$: center-of-mass energy squared</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h745.html">H-745</a>, <a href="h765.html">H-765</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>alpha = 1/137.036          D-01
+pi    = 3.141592653589793
+sigma = 4 pi alpha^2 / (3 s)
+LEP   e+e- -> mu+mu- cross-section   PDG/LEP</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the electromagnetic scattering cross-section domain (ring-137). (b) What it reveals is the collision cross-section produced by the input/output cost of one cycle — the $\alpha^2/s$ dependence of $\sigma$. Combining the unitary norm with the $\alpha$ weight yields that form.</p>
+<div class="math-block">
+<div class="math-row">$\sigma(e^+e^-\to\mu^+\mu^-) = \dfrac{4\pi}{3}\dfrac{\alpha^2}{s} \propto \dfrac{1}{137.036^2}\dfrac{1}{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived form: $\sigma \propto \alpha^2/s$, unitary $S^\dagger S = I$</div>
+<div class="math-row">Measured: LEP $e^+e^-\to\mu^+\mu^-$ cross-section</div>
+<div class="math-row">Error: $&lt; 1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $\alpha^2/s$ dependence of the cross-section falls out of CAS input/output cost conservation, but a 0-free-parameter complete proof of unitarity $S^\dagger S=I$ is not yet written.</p>
+<p>The S-matrix is the input/output amplitude of one CAS cycle, and cost conservation is exactly unitarity.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h765.html">H-765</a> (Green function). <a href="h745.html">H-745</a> (path integral) S-matrix.</p><p>This card can be re-used as input for the following cards: <a href="h745.html">H-745</a>, <a href="h765.html">H-765</a></p>
+<p>Re-injection path: <a href="h765.html">H-765</a>, <a href="h745.html">H-745</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

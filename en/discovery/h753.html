@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h753.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h753.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h753.html">H-753</a>. Hopf Algebra = Combine-Separate Structure of CAS Operations</h1><div class="box-finding">
@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed; D-promotion possible at next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h746.html">H-746</a>, <a href="h754.html">H-754</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Hopf Algebra Axioms from the CAS Combine-Separate Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Hopf algebra is the structural cost in which both sides — combining costs (product) and distributing costs (coproduct) — are compatible for the CAS operation (<a href="../axiom.html#ax2">Axiom 2</a>). Swap combines two states into one cost while a Read branch splits one cost into two (<a href="../axiom.html#ax4">Axiom 4</a>); this combine-separate is read as the cost that closes.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the bialgebra norm in which product and coproduct are compatible. (b) It is chosen because CAS cost combination closes as the product $m$, cost distribution as the coproduct $\Delta$, Compare as the counit $\varepsilon$, and the FSM inverse as the antipode $S$ (<a href="../axiom.html#ax14">Axiom 14</a> FSM bialgebra). The bundle of CAS operations is therefore substituted by the Hopf algebra axioms.</p>
+<div class="math-block">
+<div class="math-row">$\Delta(m(a\otimes b)) = \Delta(a)\,\Delta(b)$</div>
+<div class="math-row">$m(S\otimes \mathrm{id})\,\Delta = \eta\,\varepsilon$</div>
+<div class="math-legend">$m$: product = Swap cost combination | $\Delta$: coproduct = Read branch cost distribution | $\varepsilon$: counit = Compare | $S$: antipode = CAS inverse | $\eta$: unit (<a href="../axiom.html#ax14">Axiom 14</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h746.html">H-746</a>, <a href="h754.html">H-754</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>product m   = Swap cost combine    Axiom 2
+coproduct D = Read branch split    Axiom 4
+counit eps  = Compare              Axiom 5
+antipode S  = CAS inverse
+renorm.     = Connes-Kreimer 2000</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is from the CAS cost domain into the Hopf algebra domain. (b) What it reveals is the compatibility of product and coproduct — whether the antipode closes. If combine-then-separate and separate-then-combine close at the same cost, the Hopf axioms hold.</p>
+<div class="math-block">
+<div class="math-row">$m\,(S\otimes\mathrm{id})\,\Delta = \eta\circ\varepsilon = m\,(\mathrm{id}\otimes S)\,\Delta$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: CAS product, coproduct, counit, antipode satisfy the Hopf axioms</div>
+<div class="math-row">Correspondence: Connes-Kreimer renormalization Hopf algebra (2000)</div>
+<div class="math-row">Structural match: cost-tree decomposition = CAS cost combine-distribute</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The CAS combine-separate corresponds structurally to the Hopf algebra axioms, but the axiomatic derivation of the antipode is incomplete. The two directions in which cost is combined and split are the product and coproduct of one structure.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution role: <a href="h746.html">H-746</a> (Lie group) universal envelope. <a href="h754.html">H-754</a> (category) abstraction</p><p>This card can be re-used as input for the following cards: <a href="h746.html">H-746</a>, <a href="h754.html">H-754</a></p>
+<p>Re-injection path: <a href="h746.html">H-746</a>, <a href="h754.html">H-754</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

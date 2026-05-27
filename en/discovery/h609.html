@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h609.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h609.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h609.html">H-609</a>. Quantum Cellular Automaton = Parallel ECS Execution of CAS</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible upon the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Quantum Cellular Automaton from Parallel ECS Execution</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A quantum cellular automaton is read as a structure where each lattice entity runs the same CAS simultaneously. The simultaneous access of the ECS (<a href="../axiom.html#ax7">Axiom 7</a>) provides the parallelism, and the cost exchange between neighbor entities (<a href="../axiom.html#ax4">Axiom 4</a>) sets the transition rule.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the ECS parallel-execution norm. The local CAS of each entity $i$ is the transition rule, and the whole lattice advances one tick as their product. (b) Since the QCA local transition rule is precisely the CAS and the spatial lattice is precisely the ECS, neighbor cost exchange sets the coupling — which is why this norm is chosen. The QCA is therefore substituted by parallel ECS CAS.</p>
+<div class="math-block">
+<div class="math-row">$\text{QCA} = \prod_i \text{CAS}_i$</div>
+<div class="math-row">$\text{neighborhood} = 3 = \text{CAS}\ (R,C,S)$</div>
+<div class="math-legend">$\text{QCA}$: quantum cellular automaton | $\prod_i$: parallel over all ECS entities | $\text{CAS}_i$: local transition rule of entity $i$ | $3$: 1D neighborhood (left, self, right) = CAS 3 axes</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>neighborhood width = 3        left, self, right (1D)
+CAS axes           = 3        R, C, S (Axiom 2)
+per-tick transition = local rule    neighbor cost exchange
+global = product of local           ECS parallel</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the spatial-lattice domain (the ECS simultaneous-access grid). (b) What it reveals is the macroscopic transition in which the local CAS rule runs simultaneously across the lattice — the QCA expression of physical law. Matching the neighborhood width 3 to the CAS 3 axes yields the transition structure.</p>
+<div class="math-block">
+<div class="math-row">$\text{1D neighborhood}\ 3 = \text{CAS}\ (R,C,S)\ 3$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: 1D neighborhood width 3 = CAS 3 axes</div>
+<div class="math-row">Compared: QCA local transition rule (Watrous 1995, Schumacher-Werner 2004)</div>
+<div class="math-row">Result: structural agreement</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The local transition structure of parallel ECS CAS matches that of the QCA, but the last step — explicitly constructing the transition rule as a CAS cost and closing to a quantitative output — remains incomplete.</p>
+<p>The Banya framework is itself a giant QCA — physical law is the macroscopic manifestation of the local CAS rule on the lattice.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: base for <a href="h611.html">H-611</a> (quantum simulation). Lattice link to <a href="h617.html">H-617</a> (crystal structure).</p><p>This card can be re-used as input for the following cards: <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a></p>
+<p>Re-injection path: <a href="h611.html">H-611</a>, <a href="h617.html">H-617</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

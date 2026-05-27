@@ -68,39 +68,52 @@ Error 0.17% — actually more precise than <a href="d51.html">D-51</a> (0.32%).<
 <p><strong>Reason:</strong> Explicit derivation formula exists / Experimental comparison error &lt;= 1% / 2 recursive substitution inputs confirmed / forward chain complete (axiom ==&gt; formula ==&gt; value)</p>
 <p><strong>Location:</strong> Category: d mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type. Recursive substitution path: <a href="d50.html">D-50</a>, <a href="d51.html">D-51</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving $\tau_\tau$ Absolute Lifetime from the 8-bit Ring Normalization + LUT Escape-Path Correction</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The tau lifetime is the absolute time for the RLU to recover the same 8-bit ring normalization cost as the muon (<a href="../axiom.html#ax6">Axiom 6</a>: cost recovery), except the tau juim has multiple escape paths. Multiple channels are the branching by which the LUT execution model (<a href="../axiom.html#ax12">Axiom 12</a>) processes each observer-arriving projection independently, corrected by the branching ratio $BR$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the 8-bit ring normalization norm of <a href="d51.html">D-51</a> times the LUT escape-path weight. The high juim density of the tau d-ring opens several paths under the juida operation, and that path weight closes as the branching ratio $BR$ — which is why this norm is chosen. The lifetime is therefore substituted as the <a href="d51.html">D-51</a> form with $m$ replaced by $m_\tau$ and multiplied by $BR$.</p>
+<div class="math-block">
+<div class="math-row">$\tau_\tau = BR \times \dfrac{\hbar}{\Gamma_\tau^{(1\text{ch})}}$</div>
+<div class="math-row">$\tau_\tau = BR \times \dfrac{192\pi^3\hbar}{G_F^2 m_\tau^5}$</div>
+<div class="math-legend">$\tau_\tau$: tau lifetime | $192\pi^3\hbar/(G_F^2 m_\tau^5)$: <a href="d51.html">D-51</a> single-channel lifetime ($m_\mu{\to}m_\tau$) | $BR$: LUT escape-path correction (single leptonic channel branching ratio) | $m_\tau^5$: juim-density 5 DOF</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>Physical Constant Inputs:</strong> <code>G_F</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="d50.html">D-50</a>, <a href="d51.html">D-51</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>192   = (2^3)^2 * 3 = 64 * 3
+pi^3  = 31.006277
+hbar  = 6.582119569e-25 GeV s
+G_F   = 1.1663787e-5 GeV^-2       CODATA 2018
+m_tau = 1.77686 GeV               PDG 2024
+BR    = 0.1782                    tau -> e nu nu  PDG 2024
+tau_tau= 2.903e-13 s              PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the mass-hierarchy domain (lepton absolute lifetime). What it reveals is the absolute time recovered by the RLU when one tau juim decays through multiple paths. Multiplying the <a href="d51.html">D-51</a> single-channel lifetime by the branching ratio yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\tau_\tau = 0.1782 \times \dfrac{192\pi^3\hbar}{G_F^2 m_\tau^5} = 0.1782 \times 1.626{\times}10^{-12} = 2.898 \times 10^{-13}\ \text{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Discovery</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\tau_\tau = 2.898 \times 10^{-13}\ \text{s}$</div>
+<div class="math-row">Measured: $2.903 \times 10^{-13}\ \text{s}$       PDG 2024</div>
+<div class="math-row">Error: $0.17\%$</div>
+</div>
+<p>Verdict: <strong>Discovery</strong>. Adding only the LUT escape-path correction to the <a href="d51.html">D-51</a> 8-bit ring normalization closes the tau absolute lifetime, with a residual smaller than D-51's.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: CAS analysis of tau decay channels. Chains into <a href="d50.html">D-50</a>, <a href="d51.html">D-51</a>.</p><p>This card can be re-used as input for the following cards: <a href="d50.html">D-50</a>, <a href="d51.html">D-51</a></p>
+<p>Re-injection path: <a href="d51.html">D-51</a>, <a href="d50.html">D-50</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 광자 흡수 FSM 노름 전이 비용에서 변환 효율 한계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>광전지는 광자의 비용을 전기의 비용으로 바꾸는 장치다. 입사 광자가 밴드갭을 넘는 FSM 노름 전이를 일으키고(<a href="../axiom.html#ax3">공리 3</a>), 그 비용이 pn 접합에서 전류로 변환된다(<a href="../axiom.html#ax7">공리 7</a>: 비용 변환). 광전효과 <a href="h437.html">H-437</a>의 정방향 흡수가 이 카드의 입력 구조다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 밴드갭 FSM 노름 전이 노름이다. 광자 에너지가 밴드갭 $E_g$ 이상일 때만 FSM 노름 전이가 일어나고(<a href="../axiom.html#ax3">공리 3</a>), CAS가 pn 접합에서 전자-정공을 분리한다(<a href="../axiom.html#ax5">공리 5</a>: pn 분리). (b) 이 노름을 택하는 까닭은 밴드갭 미만 광자 손실과 밴드갭 초과 광자의 열 손실이 단접합 변환 효율의 상한을 정하기 때문이다. 이 상한이 Shockley-Queisser 한계로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\eta = \dfrac{P_{\text{out}}}{P_{\text{in}}} = \dfrac{I_{sc}\,V_{oc}\,FF}{P_{\text{solar}}}$</div>
+<div class="math-row">$h\nu \ge E_g \;\Longrightarrow\; \text{FSM 노름 전이}$</div>
+<div class="math-legend">$\eta$: 변환 효율 | $I_{sc}$: 단락 전류 | $V_{oc}$: 개방 전압 | $FF$: 채움 인자 | $P_{\text{solar}}$: 입사 태양 비용 | $E_g$: 밴드갭 = FSM 노름 차</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>SQ 한계   = 33.7%      단접합, AM1.5
+Si 단접합 = ~ 26%      실측 최고 효율
+GaAs      = ~ 29%      실측 최고 효율
+다접합    = ~ 47%      밴드갭 적층
+이론-실측 차 = < 5%</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 광-전 변환 효율 도메인(FSM 노름 전이 후 pn 분리)으로 변환한다. (b) 이 변환으로 보려는 것은 단일 밴드갭이 태양 비용에서 끌어낼 수 있는 최대 전기 비용 비율, 곧 단접합 효율 상한이다. SQ 한계가 그 상한이고 실측 최고 효율이 그에 5% 안으로 접근한다.</p>
+<div class="math-block">
+<div class="math-row">$\eta_{\text{Si}} \approx 26\% \;<\; \eta_{\text{SQ}} = 33.7\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출 구조: 단접합 효율 상한 = SQ 한계 $33.7\%$</div>
+<div class="math-row">측정 정합: Si $26\%$, GaAs $29\%$, 이론-실측 차 $< 5\%$</div>
+<div class="math-row">측정 검증 대기: FSM 노름에서 SQ 한계의 직접 도출</div>
+</div>
+<p>판정: <strong>가설</strong>. 변환 효율과 SQ 한계가 실측에 5% 안으로 정합하지만, SQ 한계 $33.7\%$ 자체가 FSM 노름에서 직접 유도되지 않고 외부 입력으로 남아 발견 승격 전 단계다.</p>
+<p>밴드갭 이상 광자만 FSM 노름 전이를 일으킨다는 단일 조건이 흡수 손실과 효율 상한을 한 구조로 묶는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h437.html">H-437</a>(광전효과). <a href="h842.html">H-842</a>(반도체). <a href="h850.html">H-850</a>(LED)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a></p>
+<p>재투입 경로: <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

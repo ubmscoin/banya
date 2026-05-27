@@ -72,39 +72,48 @@ Structural consequence: the t==&gt;s transition corresponds to Hamming distance 
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible at the next round / Remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h82.html">H-82</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving $|V_{ts}|$ from the Compare Repetition Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The $t \to s$ transition is the Compare repetition cost CAS pays crossing two bits (<a href="h82.html">H-82</a>, $d_H=2$). By <a href="../axiom.html#ax4">Axiom 4</a> (C+1 repetition), the greater the distance, the more the amplitude is suppressed by a power of $\lambda$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Wolfenstein power norm (a power series in $\lambda$). (b) Because $t \to s$ is a two-bit transition it takes a $\lambda^2$ suppression, and the second-order contribution $\lambda^2/2$ of the Compare repetition cost attaches as a correction — hence this norm is chosen. $\lambda$ comes from the Cabibbo angle (<a href="d07.html">D-07</a>), $A$ from the CAS cost ratio (<a href="d08.html">D-08</a>).</p>
+<div class="math-block">
+<div class="math-row">$|V_{ts}| = A\lambda^2 + \mathcal{O}(\lambda^4)$</div>
+<div class="math-row">$|V_{ts}| = A\lambda^2\!\left(1 - \dfrac{\lambda^2}{2}\right)$</div>
+<div class="math-legend">$|V_{ts}|$: CKM $t$-$s$ transition amplitude | $\lambda = \sin\theta_C$ (<a href="d07.html">D-07</a>) | $A$: Wolfenstein factor (<a href="d08.html">D-08</a>) | $\lambda^2/2$: second-order Compare repetition correction</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the body of the card</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h82.html">H-82</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>lambda = 0.2248      D-07
+A      = 0.8165      D-08
+|V_ts| = 0.03880     PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the weak-mixing domain (CKM third-generation row). (b) What it reveals is the $t$-$s$ transition magnitude $|V_{ts}|$ that fixes the $B_s$ mixing amplitude. Multiplying $A\lambda^2$ by the second-order correction yields that value.</p>
+<div class="math-block">
+<div class="math-row">$|V_{ts}| = 0.8165 \times 0.2248^2 \times\!\left(1 - \dfrac{0.2248^2}{2}\right) = 0.04051$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $|V_{ts}| = 0.04051$</div>
+<div class="math-row">Measured: $0.03880$       PDG 2024</div>
+<div class="math-row">Error: $4.42\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Closure holds through second order in $\lambda^2$, but the higher-order ($\lambda^4$ and beyond) correction that would shrink the $4.42\%$ residual is not yet derived as a CAS cost, leaving the forward chain open.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: verification of the CKM unitarity triangle side lengths. Prediction of $B_s$ mixing.</p><p>This card can be reused as input for the following cards: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h82.html">H-82</a></p>
+<p>Re-injection path: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h82.html">H-82</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

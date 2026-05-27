@@ -66,39 +66,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 4개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a>, <a href="d137.html">D-137</a>, <a href="d138.html">D-138</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 괄호 비교차 경로 비용 0에서 광자 질량 = 0 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>광자는 발화비트 $\delta$가 쥠이 걸리지 않는 경로를 선택할 때 스크린에 질량 없는 입자로 나타난다. 질량을 <a href="../axiom.html#ax4">공리 4</a>(비용 = 질량)로, CAS 경로 분기를 <a href="../axiom.html#ax2">공리 2</a>(Read·Compare·Swap)로, 괄호 교차 여부를 <a href="../axiom.html#ax1">공리 1</a>(도메인 4축의 + 괄호)로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 괄호 교차 비용 노름이다. (b) CAS 경로는 괄호(+)를 넘는 경로(비용 &gt; 0)와 넘지 않는 경로(비용 0)로 갈리고, 질량이 곧 그 교차 비용이기 때문에 이 노름을 택한다. 따라서 광자 질량을 괄호 비교차 경로의 비용으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$m = \text{cost}_\text{bracket-cross}$</div>
+<div class="math-row">$m_\gamma = \text{cost}_\text{no-cross} = 0$</div>
+<div class="math-legend">$m$: 질량 = 괄호 교차 비용 | 교차 경로: 비용 &gt; 0, 질량 &gt; 0 | 비교차 경로: Read만, Compare·Swap 불필요 | $m_\gamma$: 광자 질량</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a>, <a href="d137.html">D-137</a>, <a href="d138.html">D-138</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>cost(no-cross) = 0           공리 4
+경로           = Read only    Compare/Swap 불필요
+m_gamma(상한)  &lt; 1e-18 eV     PDG 2024
+오차           = 0%           구조 대응</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 질량 계층 도메인(CAS 비용 = 질량)으로 변환한다. (b) 보려는 것은 괄호를 넘지 않는 순수 전파 모드의 질량이다. Compare 분기를 거치지 않는 경로이므로 직렬화 비용이 정확히 0이고, 그 비용이 질량 0으로 렌더링된다.</p>
+<div class="math-block">
+<div class="math-row">$m_\gamma = 0\quad(\text{정확히 0, "매우 작음"이 아님})$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_\gamma = 0$</div>
+<div class="math-row">측정값: $m_\gamma &lt; 10^{-18}\;\text{eV}$ (PDG 2024 상한)</div>
+<div class="math-row">오차: $0\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. 괄호 비교차 경로의 비용은 구조적으로 정확히 0이며, 실험 상한의 개선과 무관하게 이론값은 0이다.</p>
+<p>$m_\gamma=0$이면 $E=mc^2$(<a href="d137.html">D-137</a>)는 $E=pc$로 닫혀 전자기파의 무한 도달 거리를 준다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a>, <a href="d137.html">D-137</a>, <a href="d138.html">D-138</a></p>
+<p>재투입 경로: <a href="d137.html">D-137</a>, <a href="d02.html">D-02</a>, <a href="d01.html">D-01</a>, <a href="d138.html">D-138</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

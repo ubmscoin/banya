@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h469.html">H-469</a>, <a href="h471.html">H-471</a>, <a href="h474.html">H-474</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인 교차 Swap 비용에서 베타 붕괴 문턱 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>베타 붕괴는 다운 쿼크가 업 쿼크로 바뀌며 도메인 경계를 넘는 Swap이다. 두 쿼크는 서로 다른 도메인 비트 조합에 있고, Compare가 true를 반환하면 Swap이 경계를 넘어 실행된다(<a href="../axiom.html#ax7">공리 7</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 도메인 교차 비용 노름이다. 맛 변환이 도메인 경계를 1회 넘으므로 비용 $+1$이 발생하고(<a href="../axiom.html#ax4">공리 4</a>), 이 비용이 가상 $W$ 보손으로 나타나 전자와 반중성미자로 분배되기 때문이다. Swap이 허용되려면 FSM 노름 차이(<a href="../axiom.html#ax14">공리 14</a>)가 방출 입자의 노름을 초과해야 한다.</p>
+<div class="math-block">
+<div class="math-row">$n \to p + e^- + \bar\nu_e \;,\quad \text{Cost}_{\text{cross}} = +1$</div>
+<div class="math-row">$Q = (m_n - m_p) - m_e$</div>
+<div class="math-legend">$\text{Cost}_{\text{cross}}$: 도메인 교차 비용 (<a href="../axiom.html#ax4">공리 4</a>) | $m_n - m_p$: 중성자-양성자 FSM 노름 차 | $m_e$: 전자 FSM 노름 | $Q$: 붕괴 방출 에너지</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <code>G_F</code>, <code>m_e</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h469.html">H-469</a>, <a href="h471.html">H-471</a>, <a href="h474.html">H-474</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_n - m_p = 1.293 MeV            PDG 2024
+m_e       = 0.511 MeV
+|V_ud|    = 0.97373              PDG 2024
+tau_n     = 879.4 ± 0.6 s        병 측정</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 교차 도메인으로 변환한다. 이 변환으로 보려는 것은 Swap이 허용되는 붕괴 문턱 $Q$다. FSM 노름 차에서 전자 노름을 빼 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$Q = 1.293 - 0.511 = 0.782\ \text{MeV} > 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $Q = 0.782\ \text{MeV} > 0 \Rightarrow$ Compare true, Swap 허용</div>
+<div class="math-row">측정값: $Q = 0.782\ \text{MeV}$ , $\tau_n = 879.4 \pm 0.6\ \text{s}$</div>
+<div class="math-row">오차: $0.0\%$ (문턱 부호)</div>
+</div>
+<p>판정: <strong>가설</strong>. 교차 문턱 부호는 정확하나, 수명 정량과 병-빔 불일치($\sim 8$ s) 해소가 미확정이라 forward chain의 마지막 단계가 닫히지 않았다.</p>
+<p>$Q>0$이면 Compare true로 Swap이 허용되고, 양성자 내부 중성자는 Compare false로 안정이라는 분기가 도메인 교차 비용 부호로 갈린다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h469.html">H-469</a>(카비보 각) $|V_{ud}|$ 맥락, <a href="h471.html">H-471</a>(사하로프) 바리온수 비보존, <a href="h474.html">H-474</a>(Fermi 상수) 적용 사례.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h469.html">H-469</a>, <a href="h471.html">H-471</a>, <a href="h474.html">H-474</a></p>
+<p>재투입 경로: <a href="h469.html">H-469</a>, <a href="h471.html">H-471</a>, <a href="h474.html">H-474</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

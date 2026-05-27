@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h729.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h729.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h729.html">H-729</a>. Einstein Equation = CAS Cost Tensor = Energy-Momentum Tensor</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 5 recursive inputs confirmed; D promotion possible in the next round / remaining tasks explicitly listed.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h722.html">H-722</a>, <a href="h727.html">H-727</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a>, <a href="h739.html">H-739</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Einstein Equation from the ECS Curvature-Cost Identity</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Einstein equation is the identity that ECS curvature is determined by the CAS cost distribution. This identity is read through <a href="../axiom.html#ax4">Axiom 4</a> (cost), under which the CAS cost distribution is the energy-momentum tensor, and through <a href="../axiom.html#ax7">Axiom 7</a> (write and superposition), under which the ECS structure is the Ricci tensor; it takes <a href="h727.html">H-727</a>, under which cost is the curvature source, as input.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the ECS curvature-tensor norm $G_{\mu\nu}$. It is chosen because the curvature equals the CAS cost distribution, and that identity closes through the Bianchi identity down to cost conservation $\nabla_\mu T^{\mu\nu}=0$. The curvature is therefore substituted by the cost tensor, with the coupling constant fixed to $8\pi G/c^4$.</p>
+<div class="math-block">
+<div class="math-row">$G_{\mu\nu} + \Lambda g_{\mu\nu} = \dfrac{8\pi G}{c^4}T_{\mu\nu}$</div>
+<div class="math-row">$\nabla_\mu T^{\mu\nu} = 0$</div>
+<div class="math-legend">$G_{\mu\nu}$: ECS curvature (<a href="../axiom.html#ax7">Axiom 7</a>) | $T_{\mu\nu}$: CAS cost distribution (<a href="../axiom.html#ax4">Axiom 4</a>) | $\Lambda$: RLU release cost (<a href="h739.html">H-739</a>) | $8\pi G/c^4$: cost-curvature coupling | $\nabla_\mu T^{\mu\nu}=0$: Bianchi cost conservation</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h722.html">H-722</a>, <a href="h727.html">H-727</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a>, <a href="h739.html">H-739</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>G          = 6.674e-11   m^3/kg/s^2
+c          = 299792458   m/s
+8 pi G/c^4 = 2.077e-43    1/(J/m)
+Newton:    nabla^2 Phi = 4 pi G rho</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the weak-field static domain (Newtonian limit). What it reveals is whether the curvature-cost coupling $8\pi G/c^4$ drops to the $4\pi G$ of the Newtonian Poisson equation. Keeping only the $g_{00}$ component reduces the field equation to the Poisson equation.</p>
+<div class="math-block">
+<div class="math-row">$\nabla^2\Phi = 4\pi G\rho$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\nabla^2\Phi = 4\pi G\rho$ (Newtonian limit)</div>
+<div class="math-row">Measured: Newtonian Poisson equation $\nabla^2\Phi = 4\pi G\rho$</div>
+<div class="math-row">Error: $0\%$ (weak-field agreement)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The curvature-cost identity closes through the Bianchi identity down to cost conservation and reduces to the Poisson equation in the weak field, but the step deriving the coupling constant $8\pi G/c^4$ directly from the axioms remains, leaving the forward chain's final stage open. The spherically symmetric vacuum solution leads on to <a href="h730.html">H-730</a> and the cosmological constant to <a href="h739.html">H-739</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h730.html">H-730</a> (Schwarzschild) spherically symmetric solution. <a href="h739.html">H-739</a> (cosmic expansion) $\Lambda$.</p><p>This card can be re-used as input for the following cards: <a href="h722.html">H-722</a>, <a href="h727.html">H-727</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a>, <a href="h739.html">H-739</a></p>
+<p>Re-injection path: <a href="h727.html">H-727</a>, <a href="h722.html">H-722</a>, <a href="h739.html">H-739</a>, <a href="h730.html">H-730</a>, <a href="h731.html">H-731</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

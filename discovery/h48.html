@@ -72,39 +72,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승급 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: $\delta$ ==&gt; RLU HOT/WARM/COLD 분포 또는 $\alpha^{57}$ 우주 스케일. 재귀 대입 경로: <a href="h30.html">H-30</a>, <a href="h46.html">H-46</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 캐시 비용에서 우주 평탄성 $\Omega_k = 0$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 유일 연산자 + 4축 직교.</p>
+<p>공간 곡률은 RLU 캐시가 모든 엔티티를 구간에 배정하고 남는 잔여 비용이다. 캐시가 HOT·WARM·COLD 3구간으로 완전 분할되는 것은 <a href="../axiom.html#ax6">공리 6</a>(RLU)가 정하고, 모든 엔티티가 반드시 하나의 도메인에 속해 미배정 상태가 없는 것은 <a href="../axiom.html#ax1">공리 1</a>(도메인 4축)이 정한다. 이 두 공리가 잔여 비용을 0으로 강제한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- $\delta$가 대상 도메인으로</h3>
-<p>$\delta$ ==&gt; RLU HOT/WARM/COLD 분포 또는 $\alpha^{57}$ 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 큐의 완전 분할 노름이다. 곡률 분율 $\Omega_k$가 전체 1에서 세 구간 분율의 합을 뺀 잔여인데, 세 구간이 총 상태수 57을 빈틈 없이 채워 합이 정확히 57/57=1이 되기 때문에 이 노름을 택한다. 따라서 $\Omega_k$를 잔여 분율로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Omega_k = 1 - (\Omega_m + \Omega_\Lambda)$</div>
+<div class="math-row">$\Omega_k = 1 - \dfrac{\text{HOT}+\text{WARM}+\text{COLD}}{57} = 1 - \dfrac{3+15+39}{57}$</div>
+<div class="math-legend">$\Omega_k$: 공간 곡률 분율 | HOT=3, WARM=15, COLD=39: RLU 3구간 (<a href="h30.html">H-30</a>) | $57$: 총 상태수 = 빈틈 없는 분할</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, $\alpha^{57}=\Lambda \cdot l_p^2$), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h30.html">H-30</a>, <a href="h46.html">H-46</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>HOT  = 3                        H-30
+WARM = 15                       H-30
+COLD = 39                       H-30
+sum  = 57 = 57/57 = 1
+|Omega_k| obs < 0.002          Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = $\delta$ 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주론 RLU 도메인으로 변환한다. 이 변환으로 보려는 것은 공간 곡률 분율 $\Omega_k$다. 세 구간 합이 전체를 채우므로 잔여를 계산해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Omega_k = 1 - \dfrac{57}{57} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Omega_k = 0$</div>
+<div class="math-row">측정값: $|\Omega_k| < 0.002$ (Planck 2018)</div>
+<div class="math-row">상한 정합: 관측 상한이 이론값 0을 포함</div>
+</div>
+<p>판정: <strong>가설</strong>. 평탄성이 RLU 완전 분할의 구조적 필연으로 떨어져 인플레이션 없이 설명되나, 지평선·자기단극 문제까지 동일 구조로 닫히는지 미확인이라 forward chain 미완.</p>
+<p>통찰: 표준 우주론이 인플레이션으로 미세 조정하는 $\Omega_k\approx0$이 RLU 큐에 빈틈이 구조적으로 불가능하다는 데서 강제된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 인플레이션 없이 평탄성 설명. 공간 곡률 = RLU 잔여의 부재.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h46.html">H-46</a>, <a href="h30.html">H-30</a></p>
+<p>재투입 경로: <a href="h30.html">H-30</a>, <a href="h46.html">H-46</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="d151.html">D-151</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 3-lock 구면 투영에서 쌍극자 복사 패턴 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>쌍극자 복사 패턴은 CAS의 3-lock 비트(bit 4~6, <a href="../axiom.html#ax5">공리 5</a>)가 3차원 구면으로 투영될 때의 각도 분포다. 비용 변화율(<a href="../axiom.html#ax4">공리 4</a>)이 방향에 따라 달라지므로 복사 세기가 각도에 의존한다. 이 구면 투영으로 패턴을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 3-lock 구면 조화 노름이다. lock 비트 1개의 구면 투영이 $\ell=1$ 구면 조화함수 $Y_1^m$에 대응하고, 그 세기가 $|Y_1^m|^2 \propto \sin^2\theta$로 닫히기 때문에 이 노름을 택한다. 복사가 $4\pi\ell^2$ 면(<a href="../axiom.html#ax11">공리 11</a>)으로 퍼지므로 각도 분포만 남는다. 따라서 복사 세기 $P(\theta)$를 단일 lock 비트의 구면 조화 제곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$P(\theta) \propto |Y_1^m(\theta,\phi)|^2$</div>
+<div class="math-row">$P(\theta) \propto \sin^2\theta$</div>
+<div class="math-legend">$P(\theta)$: 복사 세기 | $\theta$: 축과의 각 | $Y_1^m$: $\ell=1$ 구면 조화(lock 비트 1개) | $\sin^2\theta$: 단일 lock 투영 | $4\pi\ell^2$: 구면 분산(<a href="../axiom.html#ax11">공리 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>pi</code>, <code>theta</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d151.html">D-151</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>l           = 1            단일 lock 비트
+|Y_1^0|^2   ~ cos^2(theta)
+|Y_1^±1|^2  ~ sin^2(theta)
+P(0)        = 0            축 방향 복사 영점</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>복사 각도 분포 도메인으로 변환한다. 이 변환으로 보려는 것은 쌍극자가 어느 방향으로 얼마나 복사하는가다. 단일 lock 비트의 $\ell=1$ 구면 조화 제곱을 취해 그 분포를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$P(\theta) \propto \sin^2\theta,\quad P(0)=0,\ P(\tfrac{\pi}{2})=\text{최대}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $P(\theta) \propto \sin^2\theta$ (축 방향 영점)</div>
+<div class="math-row">측정값: 안테나 복사 패턴 $\sin^2\theta$</div>
+<div class="math-row">오차: 형태 일치(정성)</div>
+</div>
+<p>판정: <strong>가설</strong>. 단일 lock 투영이 쌍극자 $\sin^2\theta$를 재현하나, 고차 다극자(사중극자 이상)의 lock 조합 계수가 미정이다.</p>
+<p>고차 다극자는 lock 비트 다중 조합으로 이어지며 중력파 사중극자 패턴으로 확장된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d151.html">D-151</a>(라머 복사) 각도 분포. 중력파 사중극자 패턴 확장.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d151.html">D-151</a></p>
+<p>재투입 경로: <a href="d151.html">D-151</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

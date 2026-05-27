@@ -44,7 +44,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <body>
 <div class="lang-switch"><a class="lang-btn" href="../../discovery/p07.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
-<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== Unique Predictions</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
 <h1><a href="p07.html">P-07</a>. Higgs Self-Coupling</h1><div class="box-finding">
 <h3>Core Finding</h3>
 <p><strong><a href="p07.html">P-07</a>: Higgs Self-Coupling</strong></p>
@@ -64,39 +64,53 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental data absent / structural forward chain complete / awaiting verification</p>
 <p><strong>Location:</strong> Category: p. Domain: delta ==&gt; prediction target domain (specified per P card). Recursive substitution path: <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Higgs Self-Coupling from the CAS Swap Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Higgs self-coupling is the cost the Swap stage of CAS pays to assign mass. Among the total cost 13 of one CAS cycle (<a href="../axiom.html#ax6">Axiom 6</a>), Swap (norm $\sqrt{3}$) is the maximum-cost operation, and on top of this unit cost the phase-space dimension and the generation structure are multiplied to fix the strength of the Higgs-potential vertex.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; prediction target domain (specified per P card)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS Swap-cost norm. The Higgs self-coupling is the mass-assigning cost of the Swap stage, and that cost closes through the phase-space dimension 7 and the Compare binary branching $54$ of the generation structure $3^3=27$, so this norm is chosen. The $\lambda_H$ that the Standard Model back-calculates from the Higgs mass and VEV is substituted by the CAS structure ratio $7/54$.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{m_H^2}{2v^2}$</div>
+<div class="math-row">$\lambda_H = \dfrac{7}{54}$</div>
+<div class="math-legend">$\lambda_H$: Higgs self-coupling | $7$: CAS phase-space dimension (<a href="../axiom.html#ax9">Axiom 9</a>) | $27=3^3$: generation structure | $54=27\times2$: Compare binary branching | $v$: vacuum expectation value</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> specified per prediction card</p>
-<p><strong>Physical Constant Inputs:</strong> <code>m_t</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>7      = CAS phase-space dimension   Axiom 9
+27     = 3^3 generation structure
+54     = 27 x 2 (Compare branching)
+m_H    = 125.25 GeV                  PDG 2024
+v      = 246.22 GeV                  vacuum expectation value</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Higgs-sector coupling domain. What it reveals is the Higgs-potential vertex strength $\lambda_H$ and the Higgs mass $m_H = v\sqrt{2\lambda_H} = v\sqrt{7/27}$ that follows from it. The structure ratio $7/54$ is computed.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{7}{54} = 0.12963$</div>
+<div class="math-row">$m_H = v\sqrt{2\lambda_H} = v\sqrt{7/27}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>prediction</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Prediction</h3>
+<div class="math-block">
+<div class="math-row">Predicted: $\lambda_H = 7/54 = 0.12963$</div>
+<div class="math-row">Measured: $0.12943$ (Standard Model back-calc $m_H^2/2v^2$, PDG 2024)</div>
+<div class="math-row">Error: $0.16\%$</div>
+<div class="math-row">Verification method: HL-LHC / FCC direct measurement of Higgs self-coupling via di-Higgs production</div>
+</div>
+<p>Verdict: <strong>Prediction</strong>. $7/54$ is uniquely determined by the CAS structure with no adjustable parameter. If the direct di-Higgs measurement matches $0.12963$, it is promoted to Discovery; if it deviates by 5σ or more, it is refuted.</p>
+<p>The Higgs self-coupling is a single structure ratio of the Swap cost times the generation structure — right or wrong, this is the only value.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
+<p>Re-injection path: <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

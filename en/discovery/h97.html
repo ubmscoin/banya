@@ -72,39 +72,49 @@ Structural consequence: a quantification tool for Proposition 6 (contraction reg
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible if the next round proceeds / remaining task specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula's own structure, primary integers (4,3) combination. Recursive substitution path: <a href="h100.html">H-100</a>, <a href="h98.html">H-98</a>, <a href="h99.html">H-99</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Spherical-Cap Overlap $f(\theta)$ from the CAS Step-Occupied Region</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The overlap of two spherical caps is the juim-contention size when the regions each CAS step occupies on the d-ring superpose. Each Read·Compare·Swap step occupies one cap (<a href="../axiom.html#ax2">Axiom 2</a>), and the cost contention arises where those occupied regions overlap.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Banya formula's own structure, primary integers (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the spherical solid-angle norm. It is chosen because the overlap region of two caps is measured as a solid-angle area, and that area sets the contention size. The arrangement of two caps of half-angles $\alpha_1,\alpha_2$ whose centers are $\theta$ apart is substituted by the closed solid-angle formula.</p>
+<div class="math-block">
+<div class="math-row">$A_{\text{overlap}}(\theta;\alpha_1,\alpha_2)$</div>
+<div class="math-row">$A_{\text{overlap}} = 2\pi - 2\varphi_1\cos\alpha_1 - 2\varphi_2\cos\alpha_2 - 2\varphi_3$</div>
+<div class="math-legend">$A_{\text{overlap}}$: overlap solid angle | $\alpha_1,\alpha_2$: two cap half-angles | $\theta$: angle between cap centers | $\varphi_1,\varphi_2,\varphi_3$: spherical-triangle auxiliary angles | $f=A_{\text{overlap}}/4\pi$: normalized overlap fraction</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full degrees-of-freedom list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h100.html">H-100</a>, <a href="h98.html">H-98</a>, <a href="h99.html">H-99</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>pi      = 3.141592653589793
+4 pi    = 12.566370614359172   total spherical solid angle
+boundary: theta = 0,         alpha_1 = alpha_2 => f = 1
+boundary: theta > alpha_1 + alpha_2        => f = 0</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of the domain transformation. v1.8 vocabulary alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace inside the bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Banya-structure domain (normalized overlap fraction). What it reveals is how much the two CAS cost caps superpose — namely $f(\theta)$. Dividing the solid angle by the full sphere $4\pi$ yields that fraction.</p>
+<div class="math-block">
+<div class="math-row">$f(\theta) = \dfrac{A_{\text{overlap}}}{4\pi} = \dfrac{1}{2} - \dfrac{\varphi_1\cos\alpha_1}{\pi} - \dfrac{\varphi_2\cos\alpha_2}{\pi} - \dfrac{\varphi_3}{2\pi}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $f(0)=1$ (full overlap), $f(\theta>\alpha_1+\alpha_2)=0$ (no overlap)</div>
+<div class="math-row">Reference: spherical-trigonometry closed formula (mathematical identity)</div>
+<div class="math-row">Error: not applicable (tool formula, mathematically exact)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. It is a closed formula that closes both boundary conditions exactly and is exact as a tool, but it remains a hypothesis until the triple-overlap (simultaneous CAS 3-step occupation) extension closes. The single insight that cost contention is an area supplies the common computational basis of <a href="h98.html">H-98</a>·<a href="h99.html">H-99</a>·<a href="h100.html">H-100</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: computational tool for <a href="h98.html">H-98</a> (CAS cost cap), <a href="h99.html">H-99</a> (lock-in ratio), and <a href="h100.html">H-100</a> (Hopf projection).</p><p>This card can be reused as input to the following cards: <a href="h100.html">H-100</a>, <a href="h98.html">H-98</a>, <a href="h99.html">H-99</a></p>
+<p>Re-injection path: <a href="h98.html">H-98</a>, <a href="h99.html">H-99</a>, <a href="h100.html">H-100</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

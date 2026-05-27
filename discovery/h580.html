@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h577.html">H-577</a>, <a href="h579.html">H-579</a>, <a href="h591.html">H-591</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인 4축 열적 자유도 비용에서 슈테판-볼츠만 법칙 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>총 복사 에너지는 흑체복사(<a href="h579.html">H-579</a>) 플랑크 함수를 모든 모드에 걸쳐 합한 비용이다. <a href="../axiom.html#ax1">공리 1</a>(반야식)이 도메인을 4축으로 정하고, 그 4축이 위상 공간의 적분 차원을 정해 온도 의존 지수를 $T^4$로 못박는다. <a href="../axiom.html#ax2">공리 2</a>가 모드 세기를 적분으로 닫는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 <a href="../axiom.html#ax1">공리 1</a> 도메인 4축 노름이다. (b) 이 노름을 택하는 까닭은 플랑크 함수를 $\nu$로 적분할 때 무차원 치환 $x=h\nu/k_BT$가 적분 밖으로 $T^4$를 뽑아내고, 그 지수 4가 도메인 4축(시간 1 + 공간 3)과 일치하기 때문이다. 3차원 공간만이면 $T^3$이 되지만 시간 축이 더해져 $T^4$다.</p>
+<div class="math-block">
+<div class="math-row">$j=\displaystyle\int_0^\infty \dfrac{2\pi h\nu^3}{c^2}\dfrac{1}{e^{h\nu/k_BT}-1}\,d\nu$</div>
+<div class="math-row">$j=\dfrac{2\pi^5 k_B^4}{15h^3c^2}\,T^4=\sigma T^4$</div>
+<div class="math-legend">$j$: 복사 발산도 | $T^4$: 도메인 4축(시간 1 + 공간 3) | $\sigma$: 슈테판 상수 | $x=h\nu/k_BT$: 무차원 치환 | $\int x^3/(e^x-1)dx=\pi^4/15$</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h577.html">H-577</a>, <a href="h579.html">H-579</a>, <a href="h591.html">H-591</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>k_B = 1.380649e-23 J/K         CODATA 2018
+h   = 6.62607015e-34 J s       CODATA 2018
+c   = 2.99792458e8 m/s         CODATA 2018
+int_0^inf x^3/(e^x - 1) dx = pi^4/15</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 도메인은 흑체 표면의 총 복사 발산도다. (b) 보려는 것은 온도 의존성의 지수와 계수 $\sigma$다. 무차원 치환으로 $T^4$를 뽑고 적분 $\pi^4/15$를 대입하면 $\sigma$가 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\sigma=\dfrac{2\pi^5 k_B^4}{15h^3c^2}=5.6704\times 10^{-8}\ \mathrm{W\,m^{-2}K^{-4}}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출식: $j=\sigma T^4,\ \sigma=2\pi^5 k_B^4/(15h^3c^2)$</div>
+<div class="math-row">측정값: $\sigma=5.670374\times 10^{-8}\ \mathrm{W\,m^{-2}K^{-4}}$</div>
+<div class="math-row">오차: $<0.01\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 지수 $T^4$가 도메인 4축(시간 1 + 공간 3)에서, 계수 $\sigma$가 플랑크 적분에서 자유 매개변수 없이 닫힌다. 잔여 과제는 시간 축의 열적 자유도 기여 메커니즘의 공리적 서술이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h579.html">H-579</a>(흑체복사) 총 에너지. <a href="h591.html">H-591</a>(열적 사멸) 복사 냉각.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h577.html">H-577</a>, <a href="h579.html">H-579</a>, <a href="h591.html">H-591</a></p>
+<p>재투입 경로: <a href="h579.html">H-579</a>, <a href="h577.html">H-577</a>, <a href="h591.html">H-591</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

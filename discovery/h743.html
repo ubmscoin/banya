@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a>, <a href="h749.html">H-749</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용의 위상 공간 흐름에서 해밀턴 정준 방정식 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>위상 공간 좌표 $q$는 DATA 상태(<a href="../axiom.html#ax3">공리 3</a>), 켤레 운동량 $p$는 CAS 비용(<a href="../axiom.html#ax4">공리 4</a>), 해밀토니안 $H$는 CAS 총비용이다. FSM(<a href="../axiom.html#ax14">공리 14</a>)이 매 틱 시간 진화를 생성하므로 비용 흐름이 위상 공간 흐름으로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 심플렉틱 노름이다. CAS 연산이 DATA 상태와 비용을 짝으로 진화시키되 위상 공간 체적을 보존하기 때문에 이 노름을 택하며(<a href="../axiom.html#ax2">공리 2</a> CAS 연산의 결정론적 흐름), 정준 방정식을 비용의 심플렉틱 흐름으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dot q = \dfrac{\partial H}{\partial p}, \quad \dot p = -\dfrac{\partial H}{\partial q}$</div>
+<div class="math-row">$\dfrac{dH}{dt} = 0$</div>
+<div class="math-legend">$q$: DATA 상태 | $p$: CAS 비용 | $H$: CAS 총비용 | $dH/dt=0$: 비용 합산 보존 | 체적 보존: 리우빌</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a>, <a href="h749.html">H-749</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>q           = DATA 상태            공리 3
+p           = CAS 비용             공리 4
+H           = CAS 총비용
+dH/dt       = 0                   비용 합산 보존
+검증        = 리우빌 정리          위상 공간 체적 보존</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>위상 공간 흐름 도메인으로 변환한다. 이 변환으로 보려는 것은 비용의 짝 진화가 체적을 보존하는가, 곧 정보 보존이다. 정준 방정식 두 식이 비용 흐름을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dot q = \dfrac{\partial H}{\partial p}, \; \dot p = -\dfrac{\partial H}{\partial q} \Rightarrow \dfrac{dH}{dt} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: CAS 비용 짝 진화 $=$ 심플렉틱 흐름, $dH/dt=0$</div>
+<div class="math-row">검증: 리우빌 정리 위상 공간 체적 보존</div>
+<div class="math-row">상태: 구조 정합 확인, 정량 측정 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. CAS 비용+DATA 상태의 짝 진화가 정준 방정식을 재현하지만, 이산 틱에서 연속 심플렉틱 형식으로의 극한이 남아 다음 라운드 입력 <a href="h744.html">H-744</a>·<a href="h748.html">H-748</a>·<a href="h749.html">H-749</a>로 미룬다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h744.html">H-744</a>(라그랑주) 르장드르 변환. <a href="h748.html">H-748</a>(위상 공간) 심플렉틱</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a>, <a href="h749.html">H-749</a></p>
+<p>재투입 경로: <a href="h749.html">H-749</a>, <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

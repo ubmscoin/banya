@@ -72,39 +72,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승급 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: D-43, H-46, H-57</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 캐시 비용에서 CMB 온도 $T_0$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
-<div class="formula-wrap"><div class="formula-box">$$T_0 = \left(\frac{15 \hbar^3 c^5 \rho_\gamma}{\pi^2 k_B^4}\right)^{1/4}, \quad \rho_\gamma = \rho_c \times \Omega_r$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 유일 연산자 + 4축 직교.</p>
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>CMB 온도는 RLU 캐시 HOT 구간의 최고 에너지 복사 모드가 식어 남은 잔광 비용이다. 복사 성분이 HOT 구간 최고 에너지 모드에 대응하는 것은 <a href="../axiom.html#ax6">공리 6</a>(RLU)가 정하고, 물질-복사 등가 적색편이 $z_{eq}$는 <a href="d43.html">D-43</a>가 정한다. 이 복사 비용이 현재 온도로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU HOT 구간 복사 분율 노름이다. $z_{eq}$에서 복사 분율 $\Omega_r$가 정해지면 임계 밀도와 곱해 복사 밀도 $\rho_\gamma$가 나오고, 흑체 복사가 스테판-볼츠만 법칙으로 온도와 묶이기 때문에 이 노름을 택한다. 따라서 $T_0$를 복사 밀도의 1/4 거듭제곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\rho_\gamma = \rho_c \, \Omega_r, \quad \Omega_r = \dfrac{\Omega_m}{1+z_{eq}}$</div>
+<div class="math-row">$T_0 = \left(\dfrac{15\,\hbar^3 c^5 \rho_\gamma}{\pi^2 k_B^4}\right)^{1/4}$</div>
+<div class="math-legend">$T_0$: 현재 CMB 온도 | $\rho_\gamma$: 복사 밀도 | $\Omega_r$: 복사 분율 ($z_{eq}$에서, <a href="d43.html">D-43</a>) | $\rho_c$: 임계 밀도 ($H_0$에서, <a href="h57.html">H-57</a>) | $15/\pi^2$: 스테판-볼츠만 인자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (공리 14):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <code>H_0</code></p>
-<p><strong>라이브러리 재투입:</strong> D-43, H-46, H-57</p>
+<h3>3단계. 상수 대입</h3>
+<pre>z_eq    = 3402                  D-43
+Omega_m = 0.316                 H-46
+Omega_r = 0.316/3403 = 9.29e-5
+rho_c   = 8.5e-27 kg/m^3        H-57 (H_0)
+T0 exp  = 2.7255 K              Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (비가역)</li>
-</ul>
+<p>우주론 복사 도메인으로 변환한다. 이 변환으로 보려는 것은 빅뱅 잔광의 현재 온도 $T_0$다. $z_{eq}$에서 복사 밀도를 거쳐 스테판-볼츠만 1/4 거듭제곱으로 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$T_0 = \left(\dfrac{15\,\hbar^3 c^5 \rho_c \Omega_r}{\pi^2 k_B^4}\right)^{1/4} = 2.741\ \text{K}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $T_0 = 2.741\ \text{K}$</div>
+<div class="math-row">측정값: $2.7255\ \text{K}$ (Planck 2018)</div>
+<div class="math-row">오차: $0.58\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. $z_{eq}$ ==&gt; $\Omega_r$ ==&gt; $\rho_\gamma$ ==&gt; $T_0$ 연쇄가 CAS 구조만으로 0.58% 산출되었으나, 세 카드 연쇄의 오차 누적이 정리되지 않아 forward chain 미완.</p>
+<p>통찰: 표준 우주론이 $T_0$를 직접 측정해 역으로 $\Omega_r$를 구하는 방향이, 반야프레임에서는 RLU ==&gt; $z_{eq}$ ==&gt; $T_0$로 역전된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: CMB 스펙트럼, 재조합 온도, 뉴트리노 배경 온도 $T_\nu = T_0 (4/11)^{1/3}$.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: CMB 스펙트럼 카드, 재조합 온도 카드, 뉴트리노 배경 온도 카드</p>
+<p>재투입 경로: <a href="d43.html">D-43</a>, <a href="h46.html">H-46</a>, <a href="h57.html">H-57</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

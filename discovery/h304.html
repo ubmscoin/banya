@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h301.html">H-301</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 2회 전자기 비용에서 $\tau_{\pi^0}$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>중성 파이온의 수명은 메손 인덱스 $(u\bar u - d\bar d)/\sqrt2$가 두 광자로 붕괴할 때의 전자기 비용이다. $\gamma\gamma$ 경로는 CAS Compare 2회 완료에 대응하고(<a href="../axiom.html#ax4">공리 4</a> 비용), 메손 인덱스 구조는 이항 분류(<a href="../axiom.html#ax9">공리 9</a>)가 제공한다. 전자기 붕괴라 비용 $\alpha^2$가 약붕괴 $G_F^2$보다 훨씬 작다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 전자기 Compare 2회 노름($\alpha^2$ 차수)이다. $\pi^0$ 붕괴가 Swap 쓰기가 아니라 광자 2개를 향한 Compare 2회로 닫히는 전자기 과정이고, 그 비용이 미세구조상수의 제곱 차수이기 때문에 이 노름을 택한다. 따라서 수명을 삼각 이상 붕괴폭 $\Gamma=\alpha^2 m_\pi^3/(64\pi^3 f_\pi^2)$의 역수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma_{\pi^0} = \dfrac{\alpha^2 m_\pi^3}{64\pi^3 f_\pi^2}$</div>
+<div class="math-row">$\tau_{\pi^0} = \dfrac{1}{\Gamma_{\pi^0}} = 8.52\times10^{-17}\;\text{s}$</div>
+<div class="math-legend">$\tau_{\pi^0}$: 중성 파이온 수명 | $\alpha^2$: Compare 2회 전자기 비용 (<a href="d01.html">D-01</a>) | $m_\pi$: $\pi^0$ 질량 | $f_\pi$: 파이온 붕괴 상수 | $64\pi^3$: 삼각 이상 위상 인자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <code>G_F</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h301.html">H-301</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha = 1/137.036          D-01
+m_pi  = 134.977 MeV
+f_pi  = 92.1 MeV
+pi^3  = 31.00628
+tau   = (8.52 +/- 0.18)e-17 s   PrimEx</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전자기 붕괴 수명 도메인으로 변환한다. 이 변환으로 보려는 것은 Compare 2회가 완료되는 $\gamma\gamma$ 붕괴 시간 $\tau_{\pi^0}$다. 삼각 이상 붕괴폭의 역수를 취해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_{\pi^0} = \dfrac{64\pi^3 f_\pi^2}{\alpha^2 m_\pi^3} = 8.52\times10^{-17}\;\text{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\tau_{\pi^0} = 8.52\times10^{-17}\;\text{s}$</div>
+<div class="math-row">측정값: $(8.52\pm0.18)\times10^{-17}\;\text{s}$ (PrimEx)</div>
+<div class="math-row">오차: 측정 불확실성 범위 내 일치</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>전자기 Compare 2회 비용 $\alpha^2$이 약붕괴 $G_F^2$보다 $10^9$배 빠른 $\gamma\gamma$ 수명을 닫는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h301.html">H-301</a></p>
+<p>재투입 경로: <a href="h301.html">H-301</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

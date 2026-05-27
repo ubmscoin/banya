@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h271.html">H-271</a>, <a href="h312.html">H-312</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare false 누적 비용에서 달림 결합 $\alpha(M_Z)=1/128.9$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>달림 결합은 CAS의 Compare가 false를 반환할 때마다 가상 쌍 1루프가 생성되는 누적 비용이다. <a href="../axiom.html#ax7">공리 7</a>(필터 = Compare 반복)이 false 누적의 메커니즘을, <a href="../axiom.html#ax9">공리 9</a>(이항 분류)가 $C(7,k)$ 조합에서 유효 루프 수를 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare false 누적 노름이다. false 횟수 $N$이 에너지 스케일을 매개하고 결합이 그 누적의 역수로 닫히기 때문에 이 노름을 택한다. 연속 루프 적분을 Compare false의 이산 카운팅으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha(N) = \alpha\sum_n (\alpha N/(3\pi))^n$</div>
+<div class="math-row">$\alpha(N) = \dfrac{\alpha}{1 - \alpha N/(3\pi)}$</div>
+<div class="math-legend">$\alpha(N)$: 달림 결합 $|$ $\alpha$: 미세구조상수 $1/137.036$ $|$ $N$: Compare false 누적 횟수 (<a href="../axiom.html#ax7">공리 7</a>) $|$ $3\pi$: CAS 3단계 위상 보정 $|$ $N=3\pi/\alpha$: 란다우 극</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h271.html">H-271</a>, <a href="h312.html">H-312</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha       = 1/137.036           D-01
+3 pi        = 9.42478
+alpha(0)    = 1/137.036           N=0
+alpha(M_Z)  = 1/127.940 +- 0.014  LEP</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전자기 달림 도메인으로 변환한다. 이 변환으로 보려는 것은 $M_Z$ 스케일에서 진공 편극 차폐가 풀린 결합 $\alpha(M_Z)$다. false 누적 $N$을 $M_Z$ 스케일로 잡아 1루프 합을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha(M_Z) = \dfrac{\alpha}{1 - \alpha N/(3\pi)} \approx 1/128.9$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\alpha(M_Z) = 1/128.9$</div>
+<div class="math-row">측정값: $1/127.940 \pm 0.014$ (LEP)</div>
+<div class="math-row">오차: $0.74\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 달림 결합이 Compare false의 이산 누적으로 닫히며, QCD 달림인 <a href="h271.html">H-271</a>과 병렬 구조를 이루고 <a href="h312.html">H-312</a>에서 재확인된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h271.html">H-271</a>, <a href="h312.html">H-312</a></p>
+<p>재투입 경로: <a href="h271.html">H-271</a>, <a href="h312.html">H-312</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

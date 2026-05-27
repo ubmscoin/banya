@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 정량 식 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h02.html">H-02</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 쓰기 투영 비용에서 주다발 투영 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>반야식에서 $(time+space)$는 밑 공간이고 $(observer+superposition)$은 파이버다. CAS가 파이버 위에서 연산하고 쓰기(쥐기)가 파이버에서 밑 공간으로 내려오는 투영이라는 비용으로 대상을 읽는다. DATA와 OPERATOR의 분리(<a href="../axiom.html#ax1">공리 1</a>)와 CAS 유일 연산자(<a href="../axiom.html#ax2">공리 2</a>)가 이 투영 구조의 출발점이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 쓰기 투영 노름 $\pi:P\to M$이다. 게이지 변환이 같은 DATA를 다른 내부 경로로 쓰는 자유이고, 그 자유가 다중 투영(<a href="../axiom.html#ax11">공리 11</a>)의 단면 선택과 닫히기 때문에 이 노름을 택한다. 따라서 CAS-DATA 구조를 주다발 $(P,M,\pi,G_\text{SM})$의 투영으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\pi:P\to M,\quad G_\text{SM}=U(1)\times SU(2)\times SU(3)$</div>
+<div class="math-row">$P=\text{CAS(OPERATOR)},\quad M=\text{DATA},\quad \text{쓰기}=\pi$</div>
+<div class="math-legend">$P$: 전체 공간 = CAS | $M$: 밑 공간 = DATA 시공간 | $\pi$: 투영 = 쓰기(쥐기) | $G_\text{SM}$: 파이버 구조군 | 단면: 다중 투영 (<a href="../axiom.html#ax11">공리 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h02.html">H-02</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>P  = CAS (OPERATOR, 파이버 위 연산)
+M  = DATA (time + space)
+pi = 쓰기 = 파이버에서 밑 공간으로의 투영
+G  = U(1) x SU(2) x SU(3)        구조군</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>게이지 구조 도메인으로 변환한다. 이 변환으로 보려는 것은 CAS가 동형사상이 아니라 투영이라는 점, 곧 "CAS는 군이 아니라 군이 작용하는 공간"이라는 구조다. 접속은 CAS의 DATA 접근 경로, 곡률은 접속의 비가환성으로 읽힌다.</p>
+<div class="math-block">
+<div class="math-row">$\text{게이지 변환} = \text{단면 선택의 자유} = \text{CAS 내부 경로 자유}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">구조 대응: CAS-DATA $\cong$ 주다발 $(P,M,\pi,G_\text{SM})$</div>
+<div class="math-row">정량 식: 미작성 (국소 자명성·전이 함수 증명 대기)</div>
+<div class="math-row">실험 비교: 부재</div>
+</div>
+<p>판정: <strong>가설</strong>. 구조 대응은 닫혔으나 주다발 공리(국소 자명성·전이 함수) 충족의 수학적 증명과 정량 식이 미완이라 D 승격 전이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 게이지 이론의 수학적 기초를 CAS에서 유도한다. fiber bundle 구조가 CAS-DATA 관계를 정확히 기술한다.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h02.html">H-02</a></p>
+<p>재투입 경로: <a href="h02.html">H-02</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

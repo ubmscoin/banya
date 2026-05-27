@@ -67,39 +67,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D-promotion possible upon entering the next round / remaining tasks listed.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unresolved, further refinement needed). Recursive substitution path: <a href="h756.html">H-756</a>, <a href="h758.html">H-758</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving a Positive Lyapunov Exponent from CAS Nonlinear Cost Feedback</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Chaos is the cost by which, inside a deterministic FSM (<a href="../axiom.html#ax14">Axiom 14</a>), nonlinear cost feedback (<a href="../axiom.html#ax4">Axiom 4</a>) amplifies an initial DATA difference exponentially. RLU decay (<a href="../axiom.html#ax6">Axiom 6</a>) confines this amplification to a finite region, forming an attractor.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unresolved, further refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the divergence-rate norm of the CAS cost trajectory. The cost difference $\delta C_0$ between two adjacent initial states is amplified exponentially each tick by the nonlinear feedback, and that amplification rate is exactly the Lyapunov exponent — that is why this norm is chosen. The trajectory separation is therefore substituted by the exponential growth of the cost difference.</p>
+<div class="math-block">
+<div class="math-row">$\delta C(n) = \delta C_0\, e^{\lambda n}$</div>
+<div class="math-row">$\lambda = \lim_{n\to\infty}\dfrac{1}{n}\ln\dfrac{|\delta C(n)|}{|\delta C_0|}$</div>
+<div class="math-legend">$\lambda$: Lyapunov exponent = CAS cost-trajectory divergence rate | $\delta C(n)$: cost difference after $n$ ticks (<a href="../axiom.html#ax4">Axiom 4</a>) | $\delta C_0$: initial cost difference | $\lambda > 0$: chaos condition</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h756.html">H-756</a>, <a href="h758.html">H-758</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>FSM       = deterministic (same input, same output)   Axiom 14
+lambda_1  = 0.906        Lorenz attractor (observed)
+delta_F   = 4.669201...  Feigenbaum (logistic map)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the nonlinear-dynamics domain. What it reveals is the condition under which a deterministic CAS produces unpredictability — a positive Lyapunov exponent. Once the cost-feedback gain exceeds 1, $\lambda > 0$ and sensitive dependence arises.</p>
+<div class="math-block">
+<div class="math-row">$\lambda > 0 \quad\Longrightarrow\quad \text{sensitive dependence}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\lambda > 0$ = exponential divergence of the CAS cost trajectory</div>
+<div class="math-row">Compared: Lorenz $\lambda_1 = 0.906$, Feigenbaum $\delta_F = 4.669$</div>
+<div class="math-row">Quantitative check: pending (compute $\lambda$ from the nonlinear gain)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The sensitive dependence of chaos reduces structurally to CAS nonlinear cost feedback, and strange attractors (<a href="h758.html">H-758</a>) and period doubling follow from the same cost dynamics. Computing $\lambda$ quantitatively is the next-round task.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h756.html">H-756</a> (ergodicity). <a href="h758.html">H-758</a> (fractal) attractor.</p><p>This card can be re-used as input for the following cards: <a href="h756.html">H-756</a>, <a href="h758.html">H-758</a></p>
+<p>Re-injection path: <a href="h758.html">H-758</a>, <a href="h756.html">H-756</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

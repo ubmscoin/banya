@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-85 128 상태 포화 = QGP 전이 온도 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-85 128 상태 포화 = QGP 전이 온도. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p85.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p85.html">P-85</a>. 128 상태 포화 = QGP 전이 온도</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p85.html">P-85</a>: 128 상태 포화 = QGP 전이 온도</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$g_*=128\ \text{포화}\ \Rightarrow\ \text{QGP 상전이},\quad T_c\sim150\ \text{MeV에서 }g_*=128\ (\text{CAS 포화점})$$</div></div>
+<p class="finding-precision">예측: QGP 전이에서 유효 자유도 $g_*=128$ 포화가 상전이, $T_c\sim150$ MeV. 검증 RHIC/LHC 중이온(2027~).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 전체 상태 공간은 128 = $2^7$(P-51)이며, 이것이 한 영역에서 모두 활성화되면 CAS가 포화한다.</p>
+<p>쿼크-글루온 플라스마(QGP) 전이는 강하게 묶인 하드론이 자유 쿼크·글루온으로 풀리는 상전이다.</p>
+<p>본 예측은 QGP 전이에서 유효 자유도 $g_*$가 128에 도달하면 상전이가 일어난다고 본다 ==> 128 = CAS 포화점.</p>
+<p>전이 온도 $T_c\sim150$ MeV에서 $g_*=128$이 되며, 이것이 격자 QCD가 보는 QGP 임계 온도의 구조적 근거다.</p>
+<p>128 = $2^7$이 전체 인덱스 공간이므로, 한 영역의 자유도가 이를 채우면 더 이상 새 상태를 인덱싱할 수 없어 상전이로 풀린다.</p>
+<p>즉 본 예측은 "QGP 전이가 있다"가 아니라 "전이점에서 $g_*$가 정확히 128 포화"라는 구조적 정량 주장이다.</p>
+<p>격자 QCD의 표준 $g_*$ 셈(쿼크·글루온 자유도)이 $T_c$ 근방에서 128에 수렴하는지가 핵심 검증점이다.</p>
+<p>관측 전략: RHIC·LHC 중이온 충돌에서 QGP의 유효 자유도와 전이 온도를 측정한다.</p>
+<p>검증: RHIC/LHC(2027~)에서 QGP 전이 시 유효 자유도가 128에 포화하면 본 예측을 지지한다.</p>
+<p>반박: QGP 전이와 128 포화가 구조적으로 무관함이 입증되면 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: RHIC/LHC 중이온 충돌 유효 자유도(2027~). 반박: QGP 전이와 128 포화의 무관 입증. 출처: P-51(128=2⁷), <a href="../axiom.html#ax6">공리 6</a>(RLU), <a href="../axiom.html#ax4">공리 4</a>(비용 구조).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측으로 검증 대기 상태다. forward chain은 공리 4·P-51($g_*=128$ 포화)에서 QGP 전이까지 닫혀 있으나, 중이온 충돌의 유효 자유도 정밀 측정이 아직 그 수준에 못 미친다. 128 포화 확인 시 D 승격, 무관 입증 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 중이온 분석 진행 중 / forward chain 완료(공리 4·P-51 ==> $g_*=128$ 포화 ==> QGP 전이) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: superposition ==&gt; 128 자유도 포화가 QGP 상전이 결정(공리 4 공리 6). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: 인덱스 공간 포화 비용에서 QGP 전이 $g_*=128$ 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>QGP 전이는 한 영역의 상태 인덱싱이 포화하는 비용이다. 전체 인덱스 공간은 $128 = 2^7$(<a href="p51.html">P-51</a>)이고, RLU 캐시(<a href="../axiom.html#ax6">공리 6</a>)가 이를 다 채우면 더 인덱싱할 수 없는 포화점(<a href="../axiom.html#ax4">공리 4</a> 비용 구조)이 대상이다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 인덱스 공간 포화 노름이다. 유효 자유도 $g_*$가 전체 인덱스 $128$에 도달하면 새 상태를 인덱싱할 수 없어 하드론이 자유 쿼크·글루온으로 풀리기 때문에 이 노름을 택한다. 따라서 QGP 상전이를 $g_*=128$ 포화로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$g_* = 128 = 2^7 \;\Rightarrow\; \text{QGP transition}$</div>
+<div class="math-row">$T_c \sim 150\ \text{MeV} : g_* = 128 \text{ (CAS saturation)}$</div>
+<div class="math-legend">$g_*$: 유효 자유도 | $128=2^7$: 전체 인덱스 공간 (<a href="p51.html">P-51</a>) | $T_c$: QGP 전이 온도 | 포화: 인덱싱 불가 (<a href="../axiom.html#ax4">공리 4</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>128       = 2^7              전체 인덱스 공간 (P-51)
+g_*       = 쿼크+글루온 유효 자유도
+T_c       ~ 150 MeV          격자 QCD QGP 임계 온도</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>superposition 도메인의 중이온 충돌 상전이로 변환한다. 이 변환으로 보려는 것은 전이점에서 $g_*$가 정확히 $128$에 포화하는지다. 인덱스 공간이 다 차는 임계 온도에서 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$g_*(T_c) = 128, \quad T_c \sim 150\ \text{MeV}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: 전이점에서 $g_* = 128$ 포화, $T_c \sim 150\ \text{MeV}$</div>
+<div class="math-row">검증: RHIC/LHC 중이온 충돌 유효 자유도 (2027~)</div>
+<div class="math-row">반박: QGP 전이와 $128$ 포화가 구조적으로 무관함 입증</div>
+</div>
+<p>판정: <strong>예측</strong>. forward chain은 공리 4·<a href="p51.html">P-51</a>의 $g_*=128$ 포화에서 QGP 전이까지 닫혀 있으나 중이온 충돌 유효 자유도 정밀 측정이 아직 그 수준에 못 미쳐 검증 대기 상태다.</p>
+<p>통찰: 상전이가 동역학 변수가 아니라 인덱스 공간 $2^7$의 포화라는 정수 조건으로 환원된다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p85.html">P-85</a>: 128 상태 포화 = QGP 전이 온도</td><td>예측 (대기) — QGP 전이 = $g_*=128$ 포화($T_c\sim150$ MeV)</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

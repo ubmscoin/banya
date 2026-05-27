@@ -66,39 +66,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d misc. 도메인: delta ==&gt; 자연 분류 외. 재귀 대입 경로: <a href="d147.html">D-147</a>, <a href="d148.html">D-148</a>, <a href="d149.html">D-149</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 발화비트 자유 선택에서 Born rule $|\psi|^2$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>측정 확률은 발화비트 $\delta$가 128개 유효 상태 중 하나를 등호로 확정하는 자유 선택의 비용이다. $\delta$ 쪽에서는 선택이 확정이고, FSM 안 observer는 다음 상태를 모르므로 그 무지가 확률로 나타난다(<a href="../axiom.html#ax15">공리 15</a> 발화비트 8비트, <a href="../axiom.html#ax3">공리 3</a> FSM).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 발화비트 선택 빈도의 FSM 안 집계 노름이다. 측정 확률이 $\delta$ 자유 선택의 스크린 투영이고, 그 빈도 집계가 Compare(C+1) 성공 분포로 닫히기 때문에 이 노름을 택한다(<a href="../axiom.html#ax2">공리 2</a> CAS). 따라서 양자 측정 확률을 발화비트가 상태 $|n\rangle$을 고른 빈도로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$P(n)=|\langle n|\psi\rangle|^2$</div>
+<div class="math-row">$P(n)=\text{δ가 } |n\rangle \text{을 고른 FSM 안 빈도}$</div>
+<div class="math-legend">$P(n)$: 상태 $|n\rangle$ 측정 확률 | $\psi$: 상태 벡터 | $\delta$: 발화비트 128 유효 상태 (<a href="../axiom.html#ax15">공리 15</a>) | $\langle n|\psi\rangle$: 진폭, Compare(C+1) 대응</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 본문 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d147.html">D-147</a>, <a href="d148.html">D-148</a>, <a href="d149.html">D-149</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>delta 유효 상태 = 128            axiom 15 (8비트)
+sum_n P(n)      = 1              정규화
+Born rule       = P(n) = |<n|psi>|^2   QM 공리</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>FSM 안 관측 도메인으로 변환한다. 이 변환으로 보려는 것은 스크린에 기록된 상태별 빈도이며, $\delta$ 선택을 Read(R+1)로 집계하면 진폭 제곱과 일치한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{δ가 }|n\rangle\text{을 고른 빈도}=|\langle n|\psi\rangle|^2$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $P(n)=|\langle n|\psi\rangle|^2$</div>
+<div class="math-row">측정값: Born rule (글리슨 정리, 양자역학 공리)</div>
+<div class="math-row">오차: $0\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. 확률은 FSM 안의 무지에서 나오고 $\delta$ 쪽에서는 확정이며, 링 이음새 구조가 글리슨 정리의 조건을 만족한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d147.html">D-147</a>, <a href="d148.html">D-148</a>, <a href="d149.html">D-149</a></p>
+<p>재투입 경로: <a href="d147.html">D-147</a>, <a href="d148.html">D-148</a>, <a href="d149.html">D-149</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

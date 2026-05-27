@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h842.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h842.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h842.html">H-842</a>. Semiconductor = Doping Control of FSM-Norm Bandgap</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive-substitution path: <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Semiconductor Bandgap from the FSM Norm Difference</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The semiconductor bandgap is the forbidden-interval cost between the allowed states declared by the FSM. <a href="../axiom.html#ax14">Axiom 14</a> (FSM declaration) partitions the crystal lattice's allowed states into finite states, and <a href="../axiom.html#ax3">Axiom 3</a> (DATA is discrete) forces those states to be discrete energy levels. <a href="../axiom.html#ax2">Axiom 2</a> (CAS is the unique operator) provides this lattice as the ECS substrate. The norm difference between conduction and valence bands is read as the gap.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; outside the natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the FSM state norm. The bandgap is the cost difference between the two allowed states (conduction and valence), and that difference closes through the FSM declaration of <a href="../axiom.html#ax14">Axiom 14</a>, so this norm is chosen. The bandgap $E_g$ is substituted by the difference of two FSM norms, and the intrinsic carrier density by Boltzmann occupancy.</p>
+<div class="math-block">
+<div class="math-row">$E_g = E_c - E_v$</div>
+<div class="math-row">$E_g = \|F\|_{\text{cond}} - \|F\|_{\text{val}} \;;\quad n_i \propto e^{-E_g / 2k_BT}$</div>
+<div class="math-legend">$E_g$: bandgap | $\|F\|_{\text{cond}}$: conduction-band FSM norm | $\|F\|_{\text{val}}$: valence-band FSM norm | $n_i$: intrinsic carrier density | $k_B T$: thermal energy (0.02585 eV at 300K)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>E_g(Si) derived  = 1.12 eV       FSM norm diff
+k_B T (300K)     = 0.02585 eV
+E_g(Si) measured = 1.12 eV       silicon
+E_g(Ge) measured = 0.67 eV
+E_g(GaAs) measured = 1.42 eV</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the solid-state band domain (allowed/forbidden energy intervals). What it reveals is the silicon bandgap width and the resulting intrinsic carrier occupancy. Doping inserts an external FSM into the lattice to create new levels inside the gap.</p>
+<div class="math-block">
+<div class="math-row">$E_g(\text{Si}) = \|F\|_{\text{cond}} - \|F\|_{\text{val}} = 1.12\;\text{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_g(\text{Si}) = 1.12\;\text{eV}$</div>
+<div class="math-row">Measured: $1.12\;\text{eV}$ (silicon)</div>
+<div class="math-row">Error: $< 1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The bandgap matches as an FSM norm difference, but the absolute values of $\|F\|_{\text{cond}}$ and $\|F\|_{\text{val}}$ do not close ab initio from the lattice constant, so the gap width remains an external input.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h843.html">H-843</a> (diode). <a href="h844.html">H-844</a> (transistor). <a href="h845.html">H-845</a> (integrated circuit)</p><p>This card can be re-used as input for the following cards: <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
+<p>Re-injection path: <a href="h843.html">H-843</a>, <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

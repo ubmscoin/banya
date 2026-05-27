@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h896.html">H-896</a>, <a href="h900.html">H-900</a>, <a href="h917.html">H-917</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 실행 비용에서 ECS의 실행 모델 필요충분성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>물리 과정의 실행은 존재 단위(Entity)에 속성(Component)을 붙이고 규칙(System)이 폴링으로 그 속성을 갱신하는 비용이다(<a href="../axiom.html#ax12">공리 12</a> ECS, <a href="../axiom.html#ax8">공리 8</a> 폴링). 반야식이 매 폴링 사이클의 CAS 비용을 정의한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 Entity·Component·System 세 축의 ECS 노름이다. (b) 세 축 중 하나라도 빠지면 실행이 정의되지 않고(필요성), 셋이 모이면 표준 모형 전체가 모델링되기 때문에(충분성) 이 노름을 택한다. 상속이 아니라 조합으로 속성을 붙이는 구조라야 빈 엔티티(진공, <a href="h900.html">H-900</a>)와 컴포넌트 추가·제거(상전이)가 같은 모델 안에서 닫힌다. 따라서 실행 모델을 ECS 3축 노름으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$$\text{State} = \{\, E_k : \text{Component}(E_k) \,\}$$</div>
+<div class="math-row">$$\text{System} : \text{Component} \to \text{Component}' \;\leftrightarrow\; \text{실행 모델 필요충분}$$</div>
+<div class="math-legend">$E_k$: $k$번째 Entity (존재) | $\text{Component}$: 속성 데이터 (양자수) | $\text{System}$: 규칙 (물리 법칙) | 빈 $E_k$: 진공 (<a href="h900.html">H-900</a>) | $\leftrightarrow$: 필요충분</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h896.html">H-896</a>, <a href="h900.html">H-900</a>, <a href="h917.html">H-917</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Entity 수    ~ 10^80                바리온 (관측 가능 우주)
+Component 종류 = 표준 모형 양자수    질량, 전하, 스핀
+System 실행   = 폴링                공리 8
+조합 우선     = 상속 부재            물리 패턴</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 계산 물리 실행 도메인으로 변환한다. (b) 보려는 것은 ECS 3축만으로 빈 엔티티에서 상전이까지 닫히는지다. 빈 Entity는 진공, Component 추가·제거는 상전이, System 1회 실행은 폴링 사이클로 대응하며, 격자 QCD·분자 동역학이 실제로 이 패턴으로 구현된다.</p>
+<div class="math-block">
+<div class="math-row">$$E_k(\varnothing) = \text{진공},\qquad E_k \cup C = \text{상전이},\qquad \text{System}^{(1)} = \text{폴링 1회}$$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">필요성: E·C·S 중 하나 결여 $\Rightarrow$ 물리 과정 정의 불가</div>
+<div class="math-row">충분성: E·C·S 셋 구비 $\Rightarrow$ 표준 모형 전체 모델링</div>
+<div class="math-row">검증: 격자 QCD·분자 동역학이 ECS 패턴으로 구현됨</div>
+</div>
+<p>판정: <strong>가설</strong>. ECS가 실행 모델의 필요충분 조건임은 닫혔으나 ECS와 양자장론의 형식적 동형 증명이 아직 forward chain으로 닫히지 않아 가설에 머문다.</p>
+<p>통찰: 우주의 실행 모델은 상속 트리가 아니라 조합형 ECS이며, 진공은 컴포넌트가 빈 엔티티다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h900.html">H-900</a>(진공=빈 엔티티). <a href="h896.html">H-896</a>(쿼크-렙톤). <a href="h917.html">H-917</a>(<a href="../axiom.html#ax1">공리 1</a>)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h896.html">H-896</a>, <a href="h900.html">H-900</a>, <a href="h917.html">H-917</a></p>
+<p>재투입 경로: <a href="h900.html">H-900</a>, <a href="h896.html">H-896</a>, <a href="h917.html">H-917</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

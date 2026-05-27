@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h863.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h863.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h863.html">H-863</a>. Quantum Cryptography = Structural Detection of Eavesdropping by CAS Compare</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible if the next round proceeds / residual tasks stated.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: δ ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h846.html">H-846</a>, <a href="h862.html">H-862</a>, <a href="h866.html">H-866</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the QKD Eavesdropping Threshold QBER from CAS Compare Irreversibility</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The security of quantum cryptography arises because an eavesdropper's measurement is a CAS Compare, and Compare is irreversible, so it disturbs the superposition (<a href="../axiom.html#ax5">Axiom 5</a>). Eavesdropping inserts an extra Compare into the $(\text{observer}+\text{superposition})$ bracket of $\delta^2$, and its trace remains as an error rate. The threshold error rate is read from the cost of this bracket.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the binary-entropy norm of the Compare branch — the information norm of the error rate at which the legitimate key and the eavesdropper's information separate. (b) The secret key vanishes at the point where the information the eavesdropper extracts equals the information the legitimate parties lose, and this balance closes at the binary entropy $h(Q)=\tfrac12$ (<a href="../axiom.html#ax3">Axiom 3</a> no-cloning); hence the entropy norm is chosen. The secure key rate is therefore substituted by $1-2h(Q)$.</p>
+<div class="math-block">
+<div class="math-row">$r = 1 - 2\,h(Q)$</div>
+<div class="math-row">$h(Q) = -Q\log_2 Q - (1-Q)\log_2(1-Q)$</div>
+<div class="math-legend">$r$: secure secret-key rate | $Q$: quantum bit error rate QBER | $h$: binary entropy function | $r=0$: eavesdropper info = legitimate info (key 0)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h846.html">H-846</a>, <a href="h862.html">H-862</a>, <a href="h866.html">H-866</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>r threshold = 1 - 2 h(Q) = 0  ->  h(Q) = 0.5
+h(0.11)     = 0.4999          binary entropy
+h(0.110028) = 0.500000        root
+Q_th(meas)  = ~11%            BB84 PDG/experimental security limit</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is from the information-entropy domain into the measurement-error-rate domain (QBER). (b) What it reveals is the threshold error rate $Q_{\text{th}}$ at which the secret-key rate vanishes — the threshold above which eavesdropping is structurally detected. Solving the root of $h(Q)=\tfrac12$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$h(Q_{\text{th}}) = \tfrac12 \;\;\Rightarrow\;\; Q_{\text{th}} = 0.1100 = 11.0\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $Q_{\text{th}} = 11.0\%$</div>
+<div class="math-row">Measured: BB84 security limit $\sim 11\%$ (experimental QKD)</div>
+<div class="math-row">Error: $&lt; 1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The threshold QBER of $11\%$ closes as the root of $h(Q)=\tfrac12$, so the eavesdropping-detection threshold follows directly from the information norm, but this is a first-order limit assuming a single eavesdropping Compare, with collective-attack corrections not applied, so the forward chain is not complete. That Compare is irreversible and measurement disturbs the superposition (<a href="../axiom.html#ax5">Axiom 5</a>) is the structural basis of eavesdropping detection, and no-cloning (<a href="../axiom.html#ax3">Axiom 3</a>) blocks any bypass.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h846.html">H-846</a> (quantum computer). <a href="h862.html">H-862</a> (optical communication). <a href="h866.html">H-866</a> (quantum sensing)</p><p>This card can be re-used as input for the following cards: <a href="h846.html">H-846</a>, <a href="h862.html">H-862</a>, <a href="h866.html">H-866</a></p>
+<p>Re-injection path: <a href="h846.html">H-846</a>, <a href="h862.html">H-862</a>, <a href="h866.html">H-866</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

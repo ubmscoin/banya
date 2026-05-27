@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h98.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h98.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h98.html">H-98</a>. CAS Cost = Spherical Cap Size (Self-Closure)</h1><div class="box-finding">
@@ -72,39 +72,48 @@ Structural consequence: Swap/30 = Read/1 = 1/30. The CAS cost structure is self-
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible in the next round / remaining tasks stated</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula structure itself, primary integer (4,3) combination. Recursive substitution path: <a href="d01.html">D-01</a>, <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Spherical-Cap Half-Angle from the CAS Step Cost Fraction</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The cost of each CAS step is the area fraction one spherical cap occupies on the d-ring. The Swap cost S+1 occupies 1 of the 30 access paths (<a href="../axiom.html#ax1">Axiom 1</a>, $2^4=16$ domains + auxiliary paths), so the fraction is $f=1/30$ (<a href="../axiom.html#ax4">Axiom 4</a>); the cost fraction equals the cap area fraction, closing with no external input (<a href="../axiom.html#ax2">Axiom 2</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; Banya formula structure itself, primary integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the spherical-cap area norm. It is chosen because setting the step cost fraction $f$ equal to the cap height $1-\cos\alpha$ closes the cost directly into a half-angle. Each step cost fraction is therefore substituted by the cap half-angle $\alpha$.</p>
+<div class="math-block">
+<div class="math-row">$f = \dfrac{\text{step cost}}{\text{total paths}}$</div>
+<div class="math-row">$\cos\alpha = 1 - f \;\Rightarrow\; \text{Swap cap}\; f=\tfrac{1}{30},\; \text{half-angle}\;14.36°$</div>
+<div class="math-legend">$f$: cap area fraction | $\alpha$: cap half-angle | Swap·Read: $f=1/30$ (1 of 30 access paths) | Compare: $f=1/137$ ($\alpha$, <a href="d01.html">D-01</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full degree-of-freedom list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>none</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d01.html">D-01</a>, <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>30        access paths = 16 domains + 14 auxiliary (Axiom 1)
+1/30      Swap·Read cap fraction => half-angle 14.36°
+1/137     Compare cap fraction = alpha (D-01) => half-angle 6.92°</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Banya-structure domain (cap half-angle). What it reveals is whether the CAS cost system self-closes — namely the equality Swap/30 = Read/1 = 1/30. The half-angle $\alpha$ is obtained from the fraction $f$.</p>
+<div class="math-block">
+<div class="math-row">$\text{Swap cap} = \text{Read cap} = 14.36°,\quad \text{Compare cap} = 6.92°$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: Swap·Read half-angle $14.36°$, Compare half-angle $6.92°$ ($\alpha=1/137$)</div>
+<div class="math-row">Reference: Compare cap $\alpha=1/137$ = <a href="d01.html">D-01</a> fine-structure constant</div>
+<div class="math-row">Error: $0\%$ (Compare cap agrees independently with <a href="d01.html">D-01</a> $\alpha$, self-consistent)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The cost fraction equals the cap area so the system self-closes, but it stays a hypothesis since the axiomatic derivation of the 30 access paths and the closing of the $1/30$–$1/137$ relation are incomplete. The single insight that a coupling is a cap area supplies the input cap sizes of <a href="h97.html">H-97</a>·<a href="h99.html">H-99</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Recursive substitution use: input cap size for <a href="h99.html">H-99</a> (lock ratio model). Combined with <a href="h97.html">H-97</a> (overlap formula).</p><p>This card can be re-used as input for the following cards: <a href="d01.html">D-01</a>, <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a></p>
+<p>Re-injection path: <a href="h97.html">H-97</a>, <a href="h99.html">H-99</a>, <a href="d01.html">D-01</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

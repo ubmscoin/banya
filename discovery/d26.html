@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 1개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d structure. 도메인: delta ==&gt; 반야식 구조 / 1차 정수. 재귀 대입 경로: <a href="d01.html">D-01</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비가역 서명에서 Wyler 전인자 9/8π⁴ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>Wyler 전인자는 4개 도메인 축(<a href="../axiom.html#ax1">공리 1</a>)의 위상 공간 대비 CAS가 점유할 수 있는 상태 수의 비율이다. CAS 원자성(<a href="../axiom.html#ax6">공리 6</a>)으로 닫힌 한 사이클의 비용(<a href="../axiom.html#ax9">공리 9</a>)이 이 비율로 고정되며, 비가역 비용 분류(<a href="../axiom.html#ax4">공리 4</a>)가 서명 $(5,2)$를 강제한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 구조 / 1차 정수</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 서명 $(5,2)$ 노름이다. 비가역 5축(time·space·R·C·S)이 $SO(5)$를, 비가역 부재 2축(observer·superposition, <a href="../axiom.html#ax15">공리 15</a> 명제)이 $SO(2)$를 만들어 대칭공간 $D_5=SO(5,2)/SO(5)\times SO(2)$가 유일하게 선택되기 때문에 이 노름을 택한다. 따라서 $\alpha$(<a href="d01.html">D-01</a>)의 전인자를 $9/8\pi^4$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha = \dfrac{9}{8\pi^4}\left(\dfrac{\pi^5}{2^4\cdot 5!}\right)^{1/4}$</div>
+<div class="math-row">$\dfrac{9}{8\pi^4} = \dfrac{9}{2^3\,\pi^4}$</div>
+<div class="math-legend">$9$: 완전기술자유도 분자 (<a href="../axiom.html#ax9">공리 9</a>: 7+2) | $2^3$: CAS R·C·S 3비트 이진 상태 | $\pi^4$: 도메인 4축 위상 공간 | $(5,2)$: 비가역 5 + 비가역 부재 2 (<a href="../axiom.html#ax4">공리 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1차 정수 목록</p>
-<p><strong>물리 상수 입력:</strong> <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>9            = 7 + 2            완전기술자유도 (공리 9)
+2^3          = 8               CAS 3비트
+pi^4         = 97.409
+8 pi^4       = 779.27
+alpha        = 1/137.035999177(21)   CODATA 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>무차원 결합 도메인(전자기 ring-137)으로 변환한다. 이 변환으로 보려는 것은 $D_5$ 체적비의 전인자 $9/8\pi^4$가 CAS 구조에서 갖는 값이다. 분자 9를 분모 $8\pi^4$로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{9}{8\pi^4} = \dfrac{9}{779.27} = 0.0115492$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $9/8\pi^4 = 0.0115492$, 전체 $\alpha = 1/137.036082$</div>
+<div class="math-row">측정값: $1/137.035999177(21)$ (CODATA 2018)</div>
+<div class="math-row">오차: $0.00006\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. Wyler가 1969년 맞히고도 설명 못 한 "왜 이 대칭공간인가"가 서명 $(5,2)$의 유일성으로 닫혔다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d01.html">D-01</a>(alpha) 공식의 내부 구조 해명. Wyler "왜 이 대칭공간인가" 57년 미해결에 답.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

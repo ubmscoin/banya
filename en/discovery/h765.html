@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h765.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h765.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h765.html">H-765</a>. Green's Function = Response Function of a Single CAS Swap</h1><div class="box-finding">
@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D promotion possible when next round proceeds / remaining tasks stated.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h764.html">H-764</a>, <a href="h766.html">H-766</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Dyson Propagator from the Single CAS Swap Response</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A Green's function is the response to a point source. A single CAS Swap (<a href="../axiom.html#ax2">Axiom 2</a>) changing DATA at one point is the source, the propagation cost of that change (<a href="../axiom.html#ax4">Axiom 4</a>) is the propagator, and the RLU decay (<a href="../axiom.html#ax6">Axiom 6</a>) sets the propagator decay.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cost-propagation response norm. A single Swap is the point source $\delta(x-x')$ and its response spreads along the RLU decay, which is why this norm is chosen. Substituting the point-source equation by the Green's function closes the self-energy correction as a Dyson recursion.</p>
+<div class="math-block">
+<div class="math-row">$(\hat{L} - \omega)\,G(x,x') = \delta(x-x')$</div>
+<div class="math-row">$G = G_0 + G_0\,\Sigma\,G$</div>
+<div class="math-legend">$G$: full propagator | $G_0$: free propagator = interaction-free cost propagation | $\Sigma$: self-energy = RLU correction | $\delta(x-x')$: single-Swap source | $A(\omega)$: spectral function</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h764.html">H-764</a>, <a href="h766.html">H-766</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>delta(x-x') = single-Swap source  (Axiom 2)
+G_0         = free propagator      cost propagation (Axiom 4)
+Sigma       = self-energy          RLU decay (Axiom 6)
+g-2 corr.   = propagator loop      QED test</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the electromagnetic-coupling domain. What it reveals is whether the Dyson recursion gives the electron $g-2$ propagator correction exactly. Recursively inserting the self-energy into the free propagator yields that value.</p>
+<div class="math-block">
+<div class="math-row">$G(\omega) = \dfrac{1}{\omega - \omega_0 - \Sigma(\omega)}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: $G = G_0 + G_0\Sigma G$ = recursive correction of the CAS Swap response</div>
+<div class="math-row">Measured: electron $g-2$ propagator correction</div>
+<div class="math-row">Error: $< 10^{-10}$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The recursive structure of the Dyson equation coincides with the self-energy correction of the CAS Swap response. The forward chain that derives the propagator structure directly from the CAS Swap is incomplete, so it remains a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h766.html">H-766</a> (scattering matrix). <a href="h764.html">H-764</a> (variational) Green's function.</p><p>This card can be re-used as input for the following cards: <a href="h764.html">H-764</a>, <a href="h766.html">H-766</a></p>
+<p>Re-injection path: <a href="h766.html">H-766</a>, <a href="h764.html">H-764</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

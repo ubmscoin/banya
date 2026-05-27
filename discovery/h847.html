@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a>, <a href="h862.html">H-862</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 읽기/쓰기 비대칭 비용에서 메모리 접근 구조 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>메모리는 DATA를 이산 단위로 보관하고 CAS가 그 자리를 읽고 쓰는 장치다. 반야식 우항의 space 항이 DATA가 놓이는 자리(주소)를 주고, observer 항이 그 자리를 지정해 접근하는 비용을 준다. 읽기와 쓰기는 같은 자리에 대한 두 방향의 CAS 연산이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS 읽기/쓰기 비대칭 노름이다. 읽기는 Compare가 DATA를 비파괴로 복사하는 가역 연산이고(<a href="../axiom.html#ax5">공리 5</a>: Compare), 쓰기는 Swap이 기존 DATA를 덮어쓰는 비가역 연산이다(<a href="../axiom.html#ax5">공리 5</a>: Swap). (b) 이 노름을 택하는 까닭은 메모리의 한 자리에 대한 두 연산의 비용 차이가 메모리 계층(레지스터·DRAM·SSD)의 접근 시간 차이를 정하기 때문이다. 주소는 ECS 격자 좌표(<a href="../axiom.html#ax2">공리 2</a>)이고, 1비트는 이산 DATA의 최소 단위다(<a href="../axiom.html#ax4">공리 4</a>).</p>
+<div class="math-block">
+<div class="math-row">$\text{read}:\ \text{out} = \text{Compare}(\text{DATA}[a])$</div>
+<div class="math-row">$\text{write}:\ \text{DATA}[a] = \text{Swap}(\text{in})$</div>
+<div class="math-legend">$a$: ECS 격자 주소 좌표 | $\text{DATA}[a]$: 자리 $a$의 이산 DATA | Compare: 비파괴 읽기 (가역) | Swap: 덮어쓰기 (비가역) | out/in: 출력/입력 DATA</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a>, <a href="h862.html">H-862</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>레지스터 접근 = ~ ps             CPU 레지스터 실측
+DRAM 접근    = ~ 10 ns           DDR 실측
+SSD 접근     = ~ us              NAND Flash 실측
+DRAM 용량    = 16 ~ 64 GB        소비자 시스템
+1 bit        = 최소 이산 DATA 단위  공리 4</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 이산 저장 접근 도메인(ECS 격자 위 CAS 읽기/쓰기)으로 변환한다. (b) 이 변환으로 보려는 것은 자리 지정 후 읽기/쓰기 한 번에 드는 접근 시간이 계층마다 어떻게 갈리는가다. 레지스터에서 SSD까지 접근 시간이 약 $10^6$배 벌어지는 계층이 그 답이다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{t_{\text{SSD}}}{t_{\text{reg}}} \approx \dfrac{10^{-6}}{10^{-12}} = 10^{6}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출 구조: 읽기 = Compare(가역), 쓰기 = Swap(비가역)</div>
+<div class="math-row">측정 정합: 접근 시간 ps(레지스터) ~ ns(DRAM) ~ us(SSD)</div>
+<div class="math-row">측정 검증 대기: CAS 쓰기 최소 에너지의 란다우어 한계 도출</div>
+</div>
+<p>판정: <strong>가설</strong>. 읽기/쓰기의 가역·비가역 비대칭이 메모리 계층 접근 시간을 정성적으로 닫지만, 쓰기 비용의 란다우어 한계 정량 도출이 미완이라 발견 승격 전 단계다.</p>
+<p>읽기는 가역 Compare, 쓰기는 비가역 Swap이라는 비대칭이 메모리 계층 전체를 한 규칙으로 묶는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h845.html">H-845</a>(집적회로). <a href="h844.html">H-844</a>(트랜지스터). <a href="h862.html">H-862</a>(광통신)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a>, <a href="h862.html">H-862</a></p>
+<p>재투입 경로: <a href="h845.html">H-845</a>, <a href="h844.html">H-844</a>, <a href="h862.html">H-862</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

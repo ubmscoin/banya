@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h743.html">H-743</a>, <a href="h745.html">H-745</a>, <a href="h764.html">H-764</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 최소 경로 선택에서 오일러-라그랑주 방정식 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>라그랑지안 $L = T - V$는 CAS 비용의 운동-위치 분리이고, 작용 $S = \int L\,dt$는 그 비용의 틱 누적이다. CAS가 비용을 최소화하는 경로를 고르는 것이(<a href="../axiom.html#ax4">공리 4</a> 비용 최소화, <a href="../axiom.html#ax14">공리 14</a> FSM 결정론적 경로 선택) 최소 작용 원리다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 작용 정류 노름이다. CAS 연산 경로 중 비용 누적이 정류인 경로만 실현되기 때문에 이 노름을 택하며(<a href="../axiom.html#ax2">공리 2</a> CAS 연산 경로), 작용 변분 0 조건을 오일러-라그랑주 방정식으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\delta S = \delta \int L\,dt = 0$</div>
+<div class="math-row">$\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot q} - \dfrac{\partial L}{\partial q} = 0$</div>
+<div class="math-legend">$S$: 작용 = 비용 틱 누적 | $L=T-V$: 비용의 운동-위치 분리 | $q$: 일반화 좌표 = DATA 자유도 | $\delta S=0$: 비용 정류</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h743.html">H-743</a>, <a href="h745.html">H-745</a>, <a href="h764.html">H-764</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>L           = T - V               비용 운동-위치 분리
+S           = ∫ L dt              비용 틱 누적
+δS          = 0                   비용 정류 경로
+검증        = 오일러-라그랑주      해밀턴 형식과 동등</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>최소 작용 경로 도메인으로 변환한다. 이 변환으로 보려는 것은 비용 누적을 정류로 만드는 경로의 운동 방정식이다. 작용 변분 0 조건이 오일러-라그랑주 방정식을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\delta S = 0 \Rightarrow \dfrac{d}{dt}\dfrac{\partial L}{\partial \dot q} - \dfrac{\partial L}{\partial q} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: CAS 비용 정류 경로 $=$ 오일러-라그랑주 방정식</div>
+<div class="math-row">검증: 뉴턴·해밀턴 역학과 동등한 운동 방정식</div>
+<div class="math-row">상태: 구조 정합 확인, 정량 측정 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. CAS 비용 최소화가 오일러-라그랑주 방정식을 강제하지만, 이산 비용에서 연속 라그랑지안으로의 극한이 남아 다음 라운드 입력 <a href="h743.html">H-743</a>·<a href="h745.html">H-745</a>·<a href="h764.html">H-764</a>로 미룬다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h743.html">H-743</a>(해밀턴) 르장드르 쌍. <a href="h745.html">H-745</a>(경로적분) 양자화. <a href="h764.html">H-764</a>(변분)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h743.html">H-743</a>, <a href="h745.html">H-745</a>, <a href="h764.html">H-764</a></p>
+<p>재투입 경로: <a href="h745.html">H-745</a>, <a href="h743.html">H-743</a>, <a href="h764.html">H-764</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

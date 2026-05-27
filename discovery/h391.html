@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 자료형 128 분할 비용에서 64 유효 부분공간 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>유효 부분공간은 $\delta=1$일 때 도메인 패턴이 FSM 상태와 교차하며 치르는 비용이다. 도메인 4축의 ON/OFF 조합(<a href="../axiom.html#ax1">공리 1</a>)과 FSM 상태(<a href="../axiom.html#ax14">공리 14</a>)가 $\delta$ 전역 플래그(<a href="../axiom.html#ax15">공리 15</a>) 아래에서 곱해질 때 자료형 $128=2^7$이 유효·전이로 갈린다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 도메인×FSM 직접곱 노름이다. (b) 유효 부분공간이 도메인 패턴과 FSM 상태가 동시에 확정된 교차 칸이고, 그 칸 수가 자료형 $128=2^7$을 유효·전이로 가르기 때문에 이 노름을 택한다. 도메인 16패턴에 FSM 4상태를 곱해 유효 부분공간 수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$N = 2^7 = 128$</div>
+<div class="math-row">$N_{\text{eff}} = 2^4 \times 2^2 = 16 \times 4 = 64$</div>
+<div class="math-legend">$N$: 완전기술 자료형 $2^7$ | $2^4$: 도메인 4축 ON/OFF 16패턴 | $2^2$: FSM 4상태 | $N_{\text{eff}}$: 도메인-상태 교차 유효 부분공간</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>2^7   = 128            완전기술 자료형
+2^4   = 16             도메인 4축 16패턴
+2^2   = 4              FSM 4상태
+N_eff = 16 * 4 = 64
+trans = 128 - 64 = 64  전이 상태</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 반야 구조 상태공간 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 자료형 128 중 도메인과 FSM이 함께 확정된 유효 칸의 수와, 그 나머지인 전이 칸의 수다. 유효 64와 전이 64가 정확히 1:1로 갈린다.</p>
+<div class="math-block">
+<div class="math-row">$N_{\text{eff}} = 16 \times 4 = 64 = 2^6 = 4^3$</div>
+<div class="math-row">$N_{\text{trans}} = 128 - 64 = 64$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $N_{\text{eff}} = 64$, $N_{\text{trans}} = 64$ (1:1 분할)</div>
+<div class="math-row">구조 대조: 고유 상태(관측 가능) 대 전이 상태(가상 과정) 구분</div>
+<div class="math-row">정합: 차원·구조 일치, 정량 측정 대조 대기</div>
+</div>
+<p>판정: <strong>가설</strong>. $64=2^6=4^3$이 FSM 4상태의 3차원 배치($4^3$)로도 읽히며, 유효:전이 64:64 분할이 시스템이 절반의 시간을 전이에 쓴다는 구조적 귀결을 준다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

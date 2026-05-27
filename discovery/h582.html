@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비가역 비용에서 란다우어 최소 소거 에너지 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>1비트 소거는 두 상태(0,1)를 하나로 합치는 비가역 CAS 동작이다. TOCTOU 락 레지스터(<a href="../axiom.html#ax5">공리 5</a>)가 한 번 잠긴 비트를 되돌리지 못하므로 비용 $+1$(<a href="../axiom.html#ax4">공리 4</a>)이 회수 불가로 열로 방출된다. 가역 Swap만으로 끝나는 동작은 이 비용을 치르지 않는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 d-ring 1비트의 상태수 로그 노름, 곧 $\ln 2$ 엔트로피 노름이다. (b) 비가역 소거가 잃는 미시상태수가 $2\to1$, 곧 $\ln 2$ 분량이고 이것이 온도와 곱해져 최소 에너지로 닫히기 때문에 이 노름을 택한다. 비용 $+1$은 $k_B T\ln 2$로 치환된다.</p>
+<div class="math-block">
+<div class="math-row">$E_{\min} = T\,\Delta S = T\,(k_B\ln 2)$</div>
+<div class="math-row">$E_{\min} = k_B T \ln 2$</div>
+<div class="math-legend">$E_{\min}$: 비트 소거 최소 에너지 | $\Delta S = k_B\ln 2$: 1비트 상태수 $2\to1$ 손실 | $T$: 절대온도 | $k_B$: 비용-온도 환산 | $\ln 2$: d-ring 1비트 (<a href="../axiom.html#ax2">공리 2</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>k_B   = 1.380649e-23 J/K
+ln 2  = 0.6931471805599453
+T     = 300 K                    실온 기준
+E_min = k_B T ln 2                Landauer 1961</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 정보-열역학 도메인($\text{bit}\to\text{J}$)으로 변환한다. (b) 보려는 것은 비가역 1비트 소거가 환경에 방출하는 최소 열, 곧 란다우어 한계다. $\ln 2$에 $k_B T$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$E_{\min}=k_B T\ln 2=(1.380649\times10^{-23})(300)(0.693147)=2.871\times10^{-21}\ \text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $E_{\min}=2.871\times10^{-21}\ \text{J}$ ($T=300\ \text{K}$)</div>
+<div class="math-row">측정값: $(2.8\pm0.1)\times10^{-21}\ \text{J}$ (Bérut et al. 2012)</div>
+<div class="math-row">오차: $2.5\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 최소 비용식 $k_B T\ln 2$는 비가역 소거 노름에서 닫혔으나, CAS 비용 $+1$과 $k_B$ 환산 계수를 공리에서 직접 고정하는 정량 대응은 다음 라운드 과제다. Bérut 2012 단일 콜로이드 입자 실험이 도출값과 오차 한계 내 일치한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h568.html">H-568</a>(제2법칙) 정보-열역학 연결. <a href="h586.html">H-586</a>(맥스웰 도깨비) 비용.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
+<p>재투입 경로: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

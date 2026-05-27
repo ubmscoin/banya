@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형. 재귀 대입 경로: <a href="d16.html">D-16</a>, <a href="d17.html">D-17</a>, <a href="d61.html">D-61</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Read 비용에서 Charm 질량 $m_c$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>참 쿼크 질량은 top 질량에서 전자기 결합 한 번만큼 시프트한 위치의 비용이다. 시프트 1회(<a href="../axiom.html#ax2">공리 2</a> 명제)가 세대를 하나 내리고, 이 비용을 풀면 그만큼 에너지가 방출된다. 3세대 top에서 2세대 charm으로의 전환이 $\alpha$ 한 번에 대응한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 미세구조상수 $\alpha = 1/137.036$, 곧 CAS Read 한 번의 결합 세기다. charm이 top에서 $\alpha$ 한 번만큼 내려온 up-type 2세대 자리이고, 그 한 칸의 시프트가 전자기 결합 비용으로 닫히기 때문에 이 노름을 택한다. 힉스 VEV를 $\sqrt{2}$로 정규화한 단일 모드 진폭 $v/\sqrt{2}$(<a href="d16.html">D-16</a> top 유카와)에 $\alpha$를 곱한다.</p>
+<div class="math-block">
+<div class="math-row">$m_c = y_c\,\dfrac{v}{\sqrt{2}}$</div>
+<div class="math-row">$m_c = \dfrac{v}{\sqrt{2}}\,\alpha$</div>
+<div class="math-legend">$m_c$: charm 질량 | $v/\sqrt{2}$: 힉스 VEV 단일 모드 진폭 = $m_t$ (<a href="d16.html">D-16</a>) | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) = Read 1회 비용 | $y_c$: charm 유카와</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>물리 상수 입력:</strong> <code>m_c</code>, <code>m_t</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d16.html">D-16</a>, <a href="d17.html">D-17</a>, <a href="d61.html">D-61</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>v          = 246.22 GeV         힉스 VEV
+v/sqrt(2)  = 174100 MeV         D-16 top 유카와
+alpha      = 1/137.036          D-01
+m_c(meas)  = 1270 ± 20 MeV      PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>up-type 질량 계층 도메인으로 변환한다. 이 변환으로 보려는 것은 top에서 $\alpha$ 한 칸 내려온 2세대 charm의 질량이다. 단일 모드 진폭에 Read 1회 비용을 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_c = 174100 \times \dfrac{1}{137.036} = 1270.5\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_c = 1270.5\;\text{MeV}$</div>
+<div class="math-row">측정값: $1270 \pm 20\;\text{MeV}$ (PDG 2024)</div>
+<div class="math-row">오차: $0.04\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. top 질량에서 $\alpha$ 한 번만큼의 Read 시프트로 charm이 보정 없이 닫힌다.</p>
+<p>up-type 사다리는 $v/\sqrt{2}$에서 결합상수 거듭제곱으로 내려가며, 각 칸마다 쥠 하나가 풀린다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 질량 계층 CAS 비용 구조. <a href="d16.html">D-16</a>(top) 연쇄.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d16.html">D-16</a>, <a href="d17.html">D-17</a>, <a href="d61.html">D-61</a></p>
+<p>재투입 경로: <a href="d16.html">D-16</a>, <a href="d17.html">D-17</a>, <a href="d61.html">D-61</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h620.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h620.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_electromag_qed</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h620.html">H-620</a>. Superconductivity = Cooper Pair = Bosonic Coupling of Two FSMs</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks listed.</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive-substitution path: <a href="h621.html">H-621</a>, <a href="h622.html">H-622</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the BCS Gap $\Delta$ and Critical Temperature $T_c$ from the Swap Coupling of Two FSMs</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>An FSM is a half-integer-norm fermion (<a href="../axiom.html#ax14">Axiom 14</a>). When two FSMs couple via Swap (<a href="../axiom.html#ax2">Axiom 2</a>) with opposite lock bits (spin), they become an integer-norm boson (Cooper pair). The amount by which the pair-coupling cost is below the solo cost (<a href="../axiom.html#ax4">Axiom 4</a>) is the energy gap, and the boson transfers cost without resistance, giving superconductivity.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the opposite-spin Swap coupling norm of two FSMs. (b) This norm is chosen because the cost difference by which pairing is cheaper than solo reads directly as the gap $\Delta$, and the RLU thermal energy (<a href="../axiom.html#ax6">Axiom 6</a>) limit that breaks that gap reads as the critical temperature $T_c$. The ratio of gap to $T_c$ closes as the BCS universal relation.</p>
+<div class="math-block">
+<div class="math-row">$\Delta = V \sum_k \langle c_{-k\downarrow}c_{k\uparrow}\rangle$</div>
+<div class="math-row">$2\Delta = 3.53\, k_B T_c$</div>
+<div class="math-legend">$\Delta$: BCS energy gap | $V$: pair-coupling cost difference | $c_{k\uparrow}$: FSM (fermion) | $T_c$: critical temperature | $3.53$: BCS universal ratio</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h621.html">H-621</a>, <a href="h622.html">H-622</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Delta(Al) = 0.17 meV      T_c = 1.2 K
+Delta(Nb) = 1.5 meV       T_c = 9.3 K
+3.53      = 2 Delta / k_B T_c   BCS 1957</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the electromagnetic/condensed-matter (superconductivity) domain. (b) What it reveals is the proportionality between the gap $\Delta$ and the critical temperature $T_c$. Dividing the gap fixed by the pair-coupling cost difference by the BCS universal ratio $3.53$ gives the temperature $T_c$ at which RLU thermal energy breaks the pair.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{2\Delta_{\text{Al}}}{k_B T_c} = \dfrac{2 \times 0.17\ \text{meV}}{k_B \times 1.2\ \text{K}} \approx 3.5$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $2\Delta / k_B T_c \approx 3.5$ (bosonic coupling)</div>
+<div class="math-row">Measured: Al $3.5$, Nb $3.8$ (BCS 1957)</div>
+<div class="math-row">Status: low-T BCS matches, high-T superconductivity unsolved</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Swap coupling of two FSMs closes the bosonic gap and the BCS universal ratio, but the pairing mechanism of high-T superconductivity (YBCO) and the magnitude of $V$ are not derived from the axioms, so the round halted.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: concretization of <a href="h621.html">H-621</a> (BCS theory). Bosonic-condensation analogue of <a href="h622.html">H-622</a> (superfluid).</p><p>This card can be re-used as input for the following cards: <a href="h621.html">H-621</a>, <a href="h622.html">H-622</a></p>
+<p>Re-injection path: <a href="h621.html">H-621</a>, <a href="h622.html">H-622</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

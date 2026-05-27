@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인 단일축 결핍 비용에서 4종 페르미온 채널 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>페르미온 채널은 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>) 중 3축이 ON이고 1축만 OFF인 결핍 비용이다. 단일축 결핍은 동일 상태 중복을 불허하는 페르미 통계를 따르며, $C(4,3)$은 단일축 여기 $C(4,1)$의 파스칼 대칭 짝, 곧 입자-구멍 대칭이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 도메인 4축의 단일축 결핍 조합 노름 $C(4,3)$이다. (b) 한 도메인 축만 OFF인 결핍 패턴이 곧 한 페르미온 채널이고, 결핍의 비대칭성이 배타 원리의 구조적 근원이기 때문에 이 노름을 택한다. 4축 중 OFF로 둘 1축을 고르는 조합 수로 페르미온 채널 수를 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$C(4,3) = \dbinom{4}{3} = \dbinom{4}{1} = 4$</div>
+<div class="math-row">$\{1110,\,1101,\,1011,\,0111\}$</div>
+<div class="math-legend">$C(4,3)$: 4축 중 3축 ON 조합 수 | $1110$: space OFF | $1101$: time OFF | $1011$: observer OFF | $0111$: superposition OFF</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>C(4,3) = 4! / (3! * 1!) = 4
+C(4,1) = 4              보손 단일축 여기 (H-392)
+C(4,3) + C(4,1) = 8     페르미온 채널 + 보손
+C(4,2) = 6             인접/대각쌍 (미해석)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 페르미온 채널 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 단일축 결핍 4패턴이 페르미온 채널과 1:1로 맞물리는가, 그리고 보손 $C(4,1)=4$와의 합 8이 자유도를 절반씩 보손·페르미온으로 가르는가다. 1축 OFF의 비대칭이 반정수 스핀의 기하학적 표현이 된다.</p>
+<div class="math-block">
+<div class="math-row">$C(4,3) = 4 = $ 페르미온 채널 4종</div>
+<div class="math-row">$C(4,1) + C(4,3) = 4 + 4 = 8$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $C(4,3) = 4$ (단일축 결핍 4패턴)</div>
+<div class="math-row">구조 대조: 페르미 통계 = 결핍 상태 = 배타 원리</div>
+<div class="math-row">정합: 구조 일치, OFF축-페르미온 종 할당 및 질량 정량 대기</div>
+</div>
+<p>판정: <strong>가설</strong>. 단일축 결핍 $C(4,3)=4$가 보손 $C(4,1)=4$의 파스칼 대칭 짝이며, 둘의 합 8이 보손·페르미온 절반씩의 자유도 분할과 초대칭의 조합론적 기초를 준다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h446.html">H-446</a>, <a href="h450.html">H-450</a>, <a href="h457.html">H-457</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: ECS 인덱스 RLU 축출에서 결맞음 소실 시간 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>중첩 상태의 비대각 성분 $\rho_{ij}$는 ECS 인덱스의 RLU 캐시 항목이다(<a href="../axiom.html#ax13">공리 13</a>). 환경 엔티티와의 상호작용이 많을수록 해당 인덱스 접근 빈도가 분산되어 RLU 순위가 떨어지는데(<a href="../axiom.html#ax11">공리 11</a> 다중 투영), 이 순위 하락을 superposition 도메인의 캐시 축출 비용으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 superposition 도메인의 RLU 캐시 잔류 노름이다. DATA 이산(<a href="../axiom.html#ax3">공리 3</a>)이 캐시를 유한하게 만들어 임계 이하 항목이 축출되고, 폴링(<a href="../axiom.html#ax8">공리 8</a>)이 RLU 순위를 갱신하기 때문에 이 노름을 택한다. 따라서 비대각 성분의 지수 감쇠를 환경 엔티티 수 $N_{\text{env}}$에 반비례하는 축출 시간 노름으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\rho_{ij}(t) = \rho_{ij}(0)\,e^{-t/\tau_D},\quad \text{RLU}_{ij}\xrightarrow[\text{evict}]{}0$</div>
+<div class="math-row">$\tau_D \propto \dfrac{1}{N_{\text{env}}}$</div>
+<div class="math-legend">$\rho_{ij}$: 밀도 행렬 비대각 (중첩 인덱스) | $\tau_D$: 결맞음 소실 시간 | $N_{\text{env}}$: 환경 엔티티 수 | evict: RLU 캐시 축출</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h446.html">H-446</a>, <a href="h450.html">H-450</a>, <a href="h457.html">H-457</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>초전도 큐비트   N_env ~ 1         =&gt; tau_D ~ 100 us       T2 실측 수준
+먼지 입자       N_env ~ 1e18      =&gt; tau_D ~ 1e-31 s      Zurek 2003 추정
+스케일링        tau_D  ~  1 / N_env</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>고립 도메인에서 환경 결합 도메인(superposition 캐시 경합)으로 변환한다. 이 변환으로 보려는 것은 환경 엔티티 수가 늘 때 비대각 성분이 얼마나 빨리 축출되는가다. 두 극단 $N_{\text{env}}$를 대입해 축출 시간을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_D(\text{큐비트}) \sim 100\,\mu\text{s} \;\gg\; \tau_D(\text{먼지}) \sim 10^{-31}\,\text{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\tau_D \propto 1/N_{\text{env}}$, 큐비트 $\sim 100\,\mu$s · 먼지 $\sim 10^{-31}$ s</div>
+<div class="math-row">측정: 초전도 큐비트 $T_2$ 실측·Zurek 2003 추정과 구조 일치</div>
+<div class="math-row">오차: 구조 일치 (정량 스케일링 검증 대기)</div>
+</div>
+<p>판정: <strong>가설</strong>. 축출 정책이 $\tau_D\propto 1/N_{\text{env}}$를 주어 소실 메커니즘은 닫혔으나, RLU 축출 임계값의 프레임 상수 정량화가 남아 forward chain 마지막 단계가 미완. 결맞음 소실은 정보 누출이 아니라 유한 캐시의 축출 정책이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h446.html">H-446</a>(측정 문제) 비가역성 근거. <a href="h450.html">H-450</a>(밀도 행렬) 비대각 감쇠. <a href="h457.html">H-457</a>(슈뢰딩거 고양이) 거시 결맞음 소실.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h446.html">H-446</a>, <a href="h450.html">H-450</a>, <a href="h457.html">H-457</a></p>
+<p>재투입 경로: <a href="h446.html">H-446</a>, <a href="h450.html">H-450</a>, <a href="h457.html">H-457</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

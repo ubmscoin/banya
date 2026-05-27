@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a>, <a href="h854.html">H-854</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 전파 시간의 상대론 보정에서 GPS 시계 편차 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>GPS는 위성에서 방출한 <a href="../axiom.html#ax7">공리 7</a>의 CAS 비용파 전파 시간 $\Delta t = d/c$로 거리를 정하고, <a href="../axiom.html#ax5">공리 5</a>의 CAS Compare가 위성 시각과 수신기 시각을 비교한다. 위성 속도와 중력 준위가 위성의 폴링 주기를 바꾸므로 <a href="../axiom.html#ax8">공리 8</a>의 상대론 보정이 필수다 — GPS는 이 시간 비용을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 비용 전파 시간 노름이고, 두 항으로 갈린다. 위성 속도가 만드는 특수상대론 시간 지연(time 축)과 중력 약화가 만드는 일반상대론 시간 빠름(space 축)이 반대 부호로 더해져 순 시계 편차가 되기 때문에 이 노름을 택한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta t_{\text{SR}} = -\dfrac{v^2}{2c^2}\,T,\quad \Delta t_{\text{GR}} = \dfrac{\Delta\phi}{c^2}\,T$</div>
+<div class="math-row">$\Delta t_{\text{total}} = \Delta t_{\text{SR}} + \Delta t_{\text{GR}}$</div>
+<div class="math-legend">$\Delta t_{\text{SR}}$: 특수상대론 지연 (time) | $\Delta t_{\text{GR}}$: 일반상대론 빠름 (space) | $v$: 위성 속도 | $\Delta\phi$: 중력 퍼텐셜 차 | $T$: 1일</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a>, <a href="h854.html">H-854</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>v        = 3.874 km/s          위성 궤도 속도
+h        = 20200 km            위성 고도
+c        = 299792.458 km/s     광속
+T        = 86400 s             1일
+dt_SR    = -7.2 us/day         특수상대론
+dt_GR    = +45.9 us/day        일반상대론</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>측정 도메인(누적 시계 편차)으로 변환한다. 이 변환으로 보려는 것은 보정하지 않으면 매일 누적되는 위성 시계와 지상 시계의 순 편차 $\Delta t_{\text{total}}$다. 두 상대론 항을 더해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta t_{\text{total}} = -7.2 + 45.9 = +38.7\;\mu\text{s/day}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 측정 정합</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Delta t_{\text{total}} = +38.7\;\mu\text{s/day}$</div>
+<div class="math-row">측정값: $+38.7\;\mu\text{s/day}$ (GPS 운용 보정값)</div>
+<div class="math-row">미보정 시: $\sim 10\;\text{km/day}$ 위치 오차 누적</div>
+</div>
+<p>판정: <strong>가설</strong>. 상대론 보정 합은 닫히나 이온층 지연이 CAS 비용 전파 모델에서 정밀 도출되지 않아 forward chain이 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h854.html">H-854</a>(원자시계). <a href="h848.html">H-848</a>(통신). <a href="h852.html">H-852</a>(레이더)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a>, <a href="h854.html">H-854</a></p>
+<p>재투입 경로: <a href="h854.html">H-854</a>, <a href="h848.html">H-848</a>, <a href="h852.html">H-852</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

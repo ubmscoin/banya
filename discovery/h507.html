@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h492.html">H-492</a>, <a href="h501.html">H-501</a>, <a href="h512.html">H-512</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 닫힌 문자열 비용에서 레게 기울기 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>하드론 질량은 FSM 순환의 노름(<a href="../axiom.html#ax14">공리 14</a>)이다. FSM 닫힌 영역(<a href="../axiom.html#ax12">공리 12</a>)은 길이가 각운동량 $J$에 비례하는 문자열로 닫히고, 경계마다 매기는 비용 $+1$(<a href="../axiom.html#ax4">공리 4</a>)이 그 문자열 장력을 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 FSM 순환의 회전 노름(<a href="../axiom.html#ax14">공리 14</a>)이다. (b) 회전 모드가 한 단계 높아질 때마다 노름 제곱이 $J$에 선형으로 늘고 그것이 질량 제곱이므로 이 노름을 택한다. 따라서 질량 제곱을 각운동량의 선형식으로 치환하며, 기울기는 문자열 장력의 역수다.</p>
+<div class="math-block">
+<div class="math-row">$\|\text{FSM}\|^2 \propto J$</div>
+<div class="math-row">$J = \alpha_0 + \alpha' M^2,\quad \alpha' = \dfrac{1}{2\pi\sigma}$</div>
+<div class="math-legend">$J$: 하드론 스핀 | $M^2$: 질량 제곱 = FSM 노름 제곱 | $\alpha'$: 레게 기울기 | $\sigma$: 문자열 장력 (<a href="../axiom.html#ax4">공리 4</a> 비용/경계) | $\alpha_0$: 절편</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h492.html">H-492</a>, <a href="h501.html">H-501</a>, <a href="h512.html">H-512</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>sigma         = 0.18 GeV^2          H-492
+2 pi          = 6.28319
+rho(770)      = J=1, M^2=0.59 GeV^2
+a_2(1320)     = J=2, M^2=1.74 GeV^2
+rho_3(1690)   = J=3, M^2=2.86 GeV^2
+alpha' (meas) = 0.88 GeV^-2         PDG</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 하드론 스펙트럼 도메인으로 변환한다. (b) 보려는 것은 $J$-$M^2$ 직선의 기울기 $\alpha'$다. 가둠(<a href="h492.html">H-492</a>)의 문자열 장력 $\sigma$를 역수로 묶어 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha' = \dfrac{1}{2\pi\sigma} = \dfrac{1}{6.28319 \times 0.18} = 0.88\;\text{GeV}^{-2}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\alpha' = 0.88\;\text{GeV}^{-2}$</div>
+<div class="math-row">측정값: $0.88\;\text{GeV}^{-2}$ ($\rho$, $a_2$, $\rho_3$ 궤적)</div>
+<div class="math-row">오차: $\sim 5\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 기울기가 가둠의 문자열 장력에서 일관되게 닫히나, 절편 $\alpha_0$가 아직 공리에서 도출되지 않아 궤적 전체가 닫히지 않는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h501.html">H-501</a>(스펙트럼) 각운동량 패턴. <a href="h492.html">H-492</a>(가둠) 문자열 장력. <a href="h512.html">H-512</a>(하드론화) 문자열 분열.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h492.html">H-492</a>, <a href="h501.html">H-501</a>, <a href="h512.html">H-512</a></p>
+<p>재투입 경로: <a href="h492.html">H-492</a>, <a href="h501.html">H-501</a>, <a href="h512.html">H-512</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

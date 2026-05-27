@@ -73,39 +73,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>v1.8 정정:</strong> v1.8: 쌍둥이 역설 = 두 observer의 시스템 시간/도메인 시간 변환비 차이 (<a href="../axiom.html#ax15">공리 15</a> "시스템 시간과 도메인 시간은 다르다"). 비용 누적이 아니라 도메인 시간 로그 변환 차이.</p>
 <p><strong>4력 v1.8 분류 (physics_map):</strong> 강력=FSM 원자성(ring-7) | 약력=수축 겹침·직렬화(ring-30) | 전자기=교차 Cmp/Swp 비용(ring-137) | <strong>중력=√3 노름 누적·쥠 밀집 수축 (ring 없음, 비용 아닌 기하 수축)</strong></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인 시간 변환비 노름에서 쌍둥이 역설 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>쌍둥이 역설은 두 observer가 같은 시스템 시간을 공유해도 각자의 도메인 시간 변환비가 갈리는 사례다. $\delta^2$ 좌항 time축이 시스템 시간(CAS 틱)인 데 비해, 스크린에 렌더되는 도메인 시간은 그 로그 변환이다(<a href="../axiom.html#ax15">공리 15</a> 시스템 시간≠도메인 시간). <a href="../axiom.html#ax12">공리 12</a>에서 각 observer가 자기 원점이므로 경로별 적분이 다를 수 있다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 <a href="../axiom.html#ax15">공리 15</a> 도메인 시간/시스템 시간 변환비 노름이다. (b) 이 노름을 택하는 이유는 시간 차이가 <a href="../axiom.html#ax4">공리 4</a> 비용 이력이 아니라 변환비의 경로별 적분 차이이기 때문이다 — 고유 시간 인자 $\sqrt{1-v^2/c^2}$가 곧 도메인 시간/시스템 시간 비율이다. 외부 형식의 고유 시간 적분을 변환비 적분으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta\tau = \int\!\sqrt{1 - v^2(t)/c^2}\;dt$</div>
+<div class="math-row">$\Delta\tau = \int (\text{도메인 시간}/\text{시스템 시간})\;dt$</div>
+<div class="math-legend">$\Delta\tau$: 도메인 시간(측정 시간) | $dt$: 시스템 시간(CAS 틱) | $\sqrt{1-v^2/c^2}$: 변환비 = 도메인/시스템 | 변환비: <a href="../axiom.html#ax15">공리 15</a></div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h717.html">H-717</a>, <a href="h728.html">H-728</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>v        = 0.9 c                  여행자 속도
+1-v^2/c^2 = 0.19                  변환비 제곱
+sqrt     = 0.436                  도메인/시스템 비율
+t_sys    = 22.2 yr                시스템 시간(왕복 10 광년)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 시간 변환 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 같은 시스템 시간 22.2년을 공유한 두 observer의 도메인 시간 적분이 변환비 비대칭만으로 갈리는가다. 여행자는 변환비 0.436, 정지자는 1을 적분해 두 도메인 시간을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta\tau_{\text{여행}} = 0.436 \times 22.2 = 9.7\ \text{yr}$</div>
+<div class="math-row">$\Delta\tau_{\text{정지}} = 1 \times 22.2 = 22.2\ \text{yr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 도메인 시간 차 $22.2-9.7 = 12.5\ \text{yr}$</div>
+<div class="math-row">측정값: Hafele-Keating 1971 동쪽 $-59\ \text{ns}$·서쪽 $+273\ \text{ns}$, GPS 매일 약 $38\ \mu\text{s}$</div>
+<div class="math-row">결과: 변환비 적분 비대칭 정합</div>
+</div>
+<p>판정: <strong>가설</strong>. 시간 차가 비용 이력이 아니라 <a href="../axiom.html#ax15">공리 15</a> 도메인 시간 변환비의 경로별 적분 차이로 닫히나, 가속 구간 변환비의 정확한 적분이 미완이라 분류 III에 머문다. <a href="../axiom.html#ax6">공리 6</a> RLU 회수율을 결합한 다음 라운드가 닫힘의 입력이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h717.html">H-717</a>(시간 팽창) 비대칭 사례. <a href="h728.html">H-728</a>(측지선) 최대 고유 시간</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h717.html">H-717</a>, <a href="h728.html">H-728</a></p>
+<p>재투입 경로: <a href="h724.html">H-724</a>, <a href="h717.html">H-717</a>, <a href="h517.html">H-517</a>, <a href="h518.html">H-518</a>, <a href="h728.html">H-728</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

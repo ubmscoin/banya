@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h gauge ew. 도메인: delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배. 재귀 대입 경로: <a href="h158.html">H-158</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 9비트 2-쥠 경로 수에서 Z 보손 폭/질량비 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>대상은 <a href="../axiom.html#ax15">공리 15</a> 8비트를 발화비트 $\delta$ 1비트만큼 확장한 9비트 구조에서, $Z$ 보손이 한 틱에 붕괴할 경로 비율이다. 9개 자리 중 2비트를 켜는 경로 수 $\binom{9}{2}$가 매 틱의 붕괴 후보 수이고, 그중 하나가 붕괴를 유발하는 비율 $\Gamma_Z/M_Z$를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 9비트 2-쥠 경로 수 노름이다. $Z$ 보손의 쥠 수명이 2-비트 경로 수만큼의 틱이고 매 틱 한 경로가 붕괴를 유발하기 때문에 이 노름을 택한다. 따라서 폭/질량비를 $1/\binom{9}{2}=1/36$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Gamma_Z}{M_Z} = \dfrac{1}{\binom{9}{2}}$</div>
+<div class="math-row">$\binom{9}{2} = 36 = \dfrac{9\times 8}{2}$</div>
+<div class="math-legend">$\Gamma_Z$: $Z$ 붕괴폭 | $M_Z$: $Z$ 질량 | $\binom{9}{2}=36$: 9비트 2-쥠 경로 수 | $9$: 8비트 + $\delta$ 확장 | $1/36$: 폭/질량 예측비 (<a href="h158.html">H-158</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (도메인)</p>
-<p><strong>물리 상수 입력:</strong> <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h158.html">H-158</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>C(9,2)        = 36 = 9 x 8 / 2
+1/36          = 0.02778                     예측
+Gamma_Z       = 2.4952 GeV                   PDG 2024
+M_Z           = 91.1876 GeV                  PDG 2024
+Gamma_Z/M_Z   = 0.02738 = 1/36.53           PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전약 $SU(2)\times U(1)$ 결합 도메인으로 변환한다. 이 변환으로 보려는 것은 $Z$ 공명의 상대 폭, 곧 폭/질량비다. 2-쥠 경로 수의 역수를 측정 비율과 맞대어 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Gamma_Z}{M_Z} = \dfrac{1}{36} = 0.02778$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Gamma_Z/M_Z = 1/36 = 0.02778$</div>
+<div class="math-row">측정값: $0.02738 = 1/36.53$       PDG 2024</div>
+<div class="math-row">오차: $1.5\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 1.5% 일치는 근접하나 9비트 확장의 물리적 정당성과 $W$ 보손에도 유사한 $\binom{n}{2}$ 비율이 적용되는지, 1.5% 오차가 고차 보정으로 줄어드는지 확인하는 라운드가 남아 가설에서 멈춘다.</p>
+<p>통찰: $Z$ 상대 폭이 9비트 2-쥠 경로 수의 역수로 단일 정수에서 나온다는 점은, 페르미온 결합 합산 대신 경로 셈으로 공명 형태를 잡을 수 있음을 시사한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h158.html">H-158</a></p>
+<p>재투입 경로: <a href="h158.html">H-158</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

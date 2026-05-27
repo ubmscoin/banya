@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h876.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h876.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h876.html">H-876</a>. Falsifiability = 120 P-cards Experimentally Testable</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on the next round / residual tasks explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, requires further refinement). Recursive substitution path: <a href="h875.html">H-875</a>, <a href="h877.html">H-877</a>, <a href="h889.html">H-889</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the 0% Falsification Rate from the Compare Mismatch Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Falsifiability is the mismatch cost of the CAS Compare that asks whether a P-card prediction disagrees with observation. When Compare weighs two data types and returns false, the framework is forced to revise (<a href="../axiom.html#ax7">Axiom 7</a>: Compare true writes via Swap, false keeps superposition). An unobserved prediction is precisely the slot that opens a false possibility, so one P-card is one Compare-mismatch trial.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, requires further refinement).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the binary norm of the Compare result. This norm is chosen because falsifiability is set by whether one observation-vs-prediction comparison can return false, and that count of possibilities closes directly into the number of P-cards. The falsification rate is substituted by the ratio of false counts to total comparisons.</p>
+<div class="math-block">
+<div class="math-row">$\exists\,\text{exp}:\ \text{result}\neq\text{pred}\ \Rightarrow\ \text{revision}$</div>
+<div class="math-row">$r_{\text{fals}}=\dfrac{N_{\text{false}}}{N_{\text{P}}}$</div>
+<div class="math-legend">$N_{\text{P}}$: P-card count (false-capable comparisons) | $N_{\text{false}}$: observation mismatches | $r_{\text{fals}}$: falsification rate | $\Rightarrow$: Compare false forces framework revision</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> Extracted from the card body.</p>
-<p><strong>Physical constant inputs:</strong> <em>No input constants.</em></p>
-<p><strong>Library re-substitution:</strong> <a href="h875.html">H-875</a>, <a href="h877.html">H-877</a>, <a href="h889.html">H-889</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N_P     = 120        P-card count (falsifiable propositions)
+N_false = 0          observation mismatches (to date)
+N_test  = 30~50      testable with current technology</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the dimensionless-reliability domain. What it reveals is how many times false occurred across 120 Compare-mismatch trials — the falsification rate. Dividing the false count by the P-card count yields that value.</p>
+<div class="math-block">
+<div class="math-row">$r_{\text{fals}}=\dfrac{0}{120}=0\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Hypothesis</h3>
+<div class="math-block">
+<div class="math-row">Derived: $r_{\text{fals}}=0\%$ (0/120)</div>
+<div class="math-row">Measured: $30$~$50$ testable, $0$ mismatches</div>
+<div class="math-row">Error: $0\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The falsification rate is 0%, but most of the 120 remain untested, so the forward chain is incomplete — as P-card verification proceeds, D promotion follows. Insight: that the number of falsification opportunities is itself counted by the number of P-cards is the quantification of Popper's criterion.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h875.html">H-875</a> (D/H/P classification). <a href="h877.html">H-877</a> (hit rate). <a href="h889.html">H-889</a> (predictive power).</p><p>This card can be re-used as input for the following cards: <a href="h875.html">H-875</a>, <a href="h877.html">H-877</a>, <a href="h889.html">H-889</a></p>
+<p>Re-injection path: <a href="h875.html">H-875</a>, <a href="h877.html">H-877</a>, <a href="h889.html">H-889</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

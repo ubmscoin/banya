@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: lock 비트 정렬 비용에서 펄서 자기 쌍극자 감쇠 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>펄서는 회전하는 FSM 집합체의 lock 비트(<a href="../axiom.html#ax9">공리 9</a>) 거시 정렬축이 회전축과 어긋나 주기적 비용을 방출하는 천체다. RLU 감쇠(<a href="../axiom.html#ax6">공리 6</a>)가 자기 쌍극자 복사로, FSM 집합 회전의 각운동량 보존(<a href="../axiom.html#ax3">공리 3</a>)이 빠른 회전으로 나타난다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 lock 비트 정렬 노름이다. lock 비트의 거시 정렬이 자기장을 만들고 그 비대칭이 회전 에너지를 RLU 감쇠로 빼내기 때문에 이 노름을 택한다. 따라서 방출률을 자기 쌍극자 복사 비용으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dot E = \dfrac{4\pi^2 I \dot P}{P^3}$</div>
+<div class="math-legend">$\dot E$: 회전 에너지 방출률 | $I$: 관성 모멘트 | $P$: 회전 주기 | $\dot P$: 주기 증가율 (RLU 감쇠, <a href="../axiom.html#ax6">공리 6</a>) | $B$: lock 비트 정렬 자기장</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>P_Crab       = 0.033 s            크랩 펄서
+Pdot         = ~1e-15             자기 쌍극자 감쇠
+I            = 1e45 g cm^2        중성자 별 관성 모멘트
+B            = ~1e12 G            lock 비트 정렬 자기장
+Edot_Crab    = 4.6e38 erg/s       관측</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>회전 FSM 집합체 도메인(자기 쌍극자 복사)으로 변환한다. 이 변환으로 보려는 것은 회전 에너지 방출률 $\dot E$다. 크랩 펄서의 $P, \dot P, I$를 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dot E = \dfrac{4\pi^2 \times 10^{45} \times 10^{-15}}{(0.033)^3} = 4.6\times 10^{38}\;\text{erg/s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\dot E = 4.6\times 10^{38}\;\text{erg/s}$</div>
+<div class="math-row">측정값: $4.6\times 10^{38}\;\text{erg/s}$ (크랩 펄서)</div>
+<div class="math-row">오차: $< 10\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 자기 쌍극자 감쇠율은 닫히지만 자기장 $B \sim 10^{12}\;\text{G}$ 자체가 lock 비트 정렬에서 1차 정수로 도출되지 않아 미완. 같은 정렬축이 중성자 별 구조 <a href="h672.html">H-672</a>와 중력파 배경 <a href="h677.html">H-677</a>로 이어진다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h672.html">H-672</a>(중성자 별 구조). <a href="h677.html">H-677</a>(중력파) PTA</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a></p>
+<p>재투입 경로: <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

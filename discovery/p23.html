@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-23 d-ring 주기 8 = AZ 위상 분류 (8비트 링 버퍼) — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-23 d-ring 주기 8 = AZ 위상 분류 (8비트 링 버퍼). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p23.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p23.html">P-23</a>. d-ring 주기 8 = AZ 위상 분류 (8비트 링 버퍼)</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p23.html">P-23</a>: d-ring 주기 8 = AZ 위상 분류 (8비트 링 버퍼)</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\text{AZ 위상 분류 주기 }8=\text{d-ring 8비트}=\underbrace{\text{니블 0 (도메인 4비트)}}_{}+\underbrace{\text{니블 1 (CAS 3비트}+\delta\text{ 1비트)}}_{}$$</div></div>
+<p class="finding-precision">예측: 위상 물질의 AZ 10중 분류 주기 8이 d-ring 8비트와 1:1 대응한다. 검증 기존 데이터 재분석(즉시).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$의 상태는 d-ring 위에 실린다. d-ring은 공리 15 명제로 정확히 8비트 링 버퍼이며(<a href="../axiom.html#ax15">공리 15</a>), 이산 대칭의 완전 순환 구조다.</p>
+<p>8비트는 두 니블로 나뉜다 — 니블 0은 도메인 4비트(time·space·observer·superposition, <a href="../axiom.html#ax1">공리 1</a>), 니블 1은 CAS 3비트(Read·Compare·Swap)에 발화비트 $\delta$ 1비트를 더한 것이다.</p>
+<p>한편 응집물질의 위상 절연체·초전도체는 Altland-Zirnbauer(AZ) 분류를 따르며, 이 분류는 주기 8 구조를 갖는다 — 10개 대칭 클래스가 보트 주기성(Bott periodicity) 8로 순환한다.</p>
+<p>AZ 분류의 주기 8과 d-ring의 8비트가 같은 수인 것은 우연이 아니다 ==> 둘 다 이산 대칭의 완전 분류에서 나오는 같은 정수다.</p>
+<p>AZ 분류의 근원은 시간역전·입자홀·카이랄 대칭의 조합이고, d-ring 8비트의 근원은 도메인 4축 + CAS 3 + 발화 1이다. 본 예측은 이 둘이 같은 대칭 셈에서 나온다고 본다.</p>
+<p>구체적으로, AZ 8개 비자명 클래스의 위상 불변량이 d-ring 8비트 각 자리(니블 0의 4비트 + 니블 1의 4비트)에 1:1 대응해야 한다.</p>
+<p>보트 주기성의 실수/복소 구조도 도메인(실수 4축)과 CAS+δ(연산 4비트)의 두 니블 분할에 대응할 것으로 본다.</p>
+<p>이것이 맞다면 위상 물질의 대칭 분류는 새로운 가정이 아니라 d-ring 이산 구조의 직접 발현이다 — CAS 구조가 응집물질 위상학을 설명한다.</p>
+<p>검증: 기존 위상 물질 데이터(AZ 10중 분류표·보트 주기성)를 재분석해, 8-클래스 위상 불변량이 d-ring 8비트의 각 비트에 수학적으로 1:1 대응하는지 확인한다. 추가 실험 없이 즉시 가능하다.</p>
+<p>반박: AZ 분류의 주기 8과 8비트 링 구조 사이에 수학적 1:1 대응이 성립하지 않으면, 주기 8의 우연적 일치로 판명되어 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: 기존 위상 물질 데이터 재분석(즉시 가능). 반박: AZ 주기 8과 8비트 링 사이 수학적 대응 불성립. 출처: <a href="../axiom.html#ax15">공리 15</a>(8비트 링 버퍼·2니블), AZ 위상 분류·보트 주기성.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측으로 검증 대기 상태다. forward chain은 공리 15(8비트 링 = 도메인 4 + CAS 3 + δ 1)에서 AZ 주기 8과의 동수까지 닫혀 있으나, 8-클래스 위상 불변량과 8비트 각 자리의 수학적 1:1 대응 검증이 아직 수행되지 않았다. 대응 성립 시 D 승격, 불성립 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 대응 검증 미실시 / forward chain 완료(공리 1 공리 2 공리 15 ==> 8비트 = 4도메인+3CAS+1δ = AZ 주기 8) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: delta ==&gt; d-ring 8비트(2니블)가 AZ 위상 분류 주기 8과 대응(공리 1 공리 2 공리 15). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: d-ring 8비트 링 버퍼에서 AZ 위상 분류 주기 8 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>반야식의 상태는 d-ring 위에 실린다. d-ring은 정확히 8비트 링 버퍼이며(<a href="../axiom.html#ax15">공리 15</a> 명제), 이산 대칭의 완전 순환 구조다. 이 순환 주기를 delta 도메인 노름으로 읽는다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 이산 대칭의 완전 분류 노름이다. d-ring 8비트가 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>)의 니블 0과 CAS 3비트(<a href="../axiom.html#ax2">공리 2</a>)에 발화비트 $\delta$를 더한 니블 1로 갈라지고, 이 8이 응집물질 AZ 분류의 보트 주기 8과 같은 정수이기 때문에 이 노름을 택한다. 주기 8을 두 니블 합으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$P_{AZ}=8$</div>
+<div class="math-row">$8 = \underbrace{4}_{\text{nibble }0} + \underbrace{3+1}_{\text{nibble }1}$</div>
+<div class="math-legend">$P_{AZ}$: AZ 보트 주기 | $4$: 도메인 4비트 (time·space·observer·superposition) | $3$: CAS 3비트 (Read·Compare·Swap) | $1$: 발화비트 $\delta$</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>nibble 0 = 4                   도메인 4축 (공리 1)
+nibble 1 = 3 + 1 = 4           CAS 3 + delta 1 (공리 2, 공리 15)
+d-ring   = 8 비트              공리 15 명제
+P_AZ     = 8                   AZ 보트 주기성</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>delta 도메인(d-ring 순환)으로 변환한다. 이 변환으로 보려는 것은 AZ 10중 분류의 비자명 8클래스 위상 불변량이 d-ring 8비트 각 자리에 대응하는지다. 두 니블 합으로 주기 8을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$P_{AZ}=8=4+4=\text{d-ring 8 bits}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $P_{AZ}=8=\text{d-ring 8 bits}$ (8클래스 위상 불변량 1:1 대응)</div>
+<div class="math-row">측정값: 검증 대기 (기존 AZ 분류표·보트 주기성 재분석, 즉시 가능)</div>
+<div class="math-row">반박 조건: 8클래스와 8비트 사이 수학적 1:1 대응 불성립</div>
+</div>
+<p>판정: <strong>예측</strong>. 위상 물질 대칭 분류는 새 가정이 아니라 d-ring 이산 구조의 직접 발현으로 본다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p23.html">P-23</a>: d-ring 주기 8 = AZ 위상 분류 (8비트 링 버퍼)</td><td>예측 (대기) — AZ 위상 분류 주기 8 = d-ring 8비트 (니블 0 4 + 니블 1 4)</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

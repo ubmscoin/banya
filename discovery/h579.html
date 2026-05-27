@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h478.html">H-478</a>, <a href="h577.html">H-577</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: d-ring 열적 모드의 CAS 평형 비용에서 흑체복사 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>흑체복사는 d-ring(<a href="../axiom.html#ax2">공리 2</a>)의 이산 열적 모드가 CAS 평형에 도달한 상태다. <a href="../axiom.html#ax2">공리 2</a>가 모드를 이산 주파수 $\nu$로 양자화하고, <a href="../axiom.html#ax4">공리 4</a>(비용) 평형이 각 모드의 평균 점유를 정한다. 각 모드는 점유 상한이 없는 보손(<a href="h577.html">H-577</a>)이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 <a href="h577.html">H-577</a> 보스-아인슈타인 노름이다. (b) 이 노름을 택하는 까닭은 d-ring 한 모드의 점유가 비배타 Swap을 따르고, 모드 1개당 비용이 $h\nu$, 평형 척도가 $k_BT$이기 때문이다. 모드 밀도 $8\pi\nu^2/c^3$에 보손 점유와 모드 비용 $h\nu$를 곱하면 플랑크 함수가 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\rho(\nu)=\dfrac{8\pi\nu^2}{c^3}$</div>
+<div class="math-row">$B(\nu,T)=\dfrac{2h\nu^3}{c^2}\dfrac{1}{e^{h\nu/k_BT}-1}$</div>
+<div class="math-legend">$B$: 분광 복사휘도 | $h\nu$: d-ring 1모드 비용 | $k_BT$: CAS 평형 척도 | $\rho$: 모드 밀도 | $-1$: 보손 비배타(<a href="h577.html">H-577</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h478.html">H-478</a>, <a href="h577.html">H-577</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>h   = 6.62607015e-34 J s       CODATA 2018
+c   = 2.99792458e8 m/s         CODATA 2018
+k_B = 1.380649e-23 J/K         CODATA 2018
+점유 = 1/(exp(h nu / k_B T) - 1)   H-577</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 도메인은 d-ring 모드의 분광 복사휘도다. (b) 보려는 것은 주파수 $\nu$에서의 복사 세기다. 모드 비용 $h\nu$, 모드 밀도, 보손 점유를 곱하면 분모 $-1$이 자외선 파탄을 막는다.</p>
+<div class="math-block">
+<div class="math-row">$B(\nu,T)=h\nu\cdot\dfrac{2\nu^2}{c^2}\cdot\dfrac{1}{e^{h\nu/k_BT}-1}=\dfrac{2h\nu^3}{c^2}\dfrac{1}{e^{h\nu/k_BT}-1}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출식: $B(\nu,T)=\dfrac{2h\nu^3}{c^2}/(e^{h\nu/k_BT}-1)$</div>
+<div class="math-row">측정값: CMB 흑체 스펙트럼 (COBE/FIRAS)</div>
+<div class="math-row">오차: $<10^{-5}$ (편차)</div>
+</div>
+<p>판정: <strong>가설</strong>. 플랑크 함수가 d-ring 이산 모드 + 보손 점유에서 닫히며 분모 $-1$이 자외선 파탄을 자동 해소한다. 같은 식이 슈테판-볼츠만 <a href="h580.html">H-580</a>과 빈 변위 <a href="h581.html">H-581</a>의 입력이 된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h580.html">H-580</a>(슈테판-볼츠만) 총 복사. <a href="h581.html">H-581</a>(빈 변위) 피크. <a href="h577.html">H-577</a>(BE 분포) 적용.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h478.html">H-478</a>, <a href="h577.html">H-577</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
+<p>재투입 경로: <a href="h577.html">H-577</a>, <a href="h478.html">H-478</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

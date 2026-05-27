@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 교차 세대 비용에서 CKM 혼합 성분 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>쿼크 혼합은 CAS Compare가 다른 세대의 DATA를 비교할 때 치르는 비대각 비용이다. Compare(<a href="../axiom.html#ax2">공리 2</a>)가 세대 $i,j$를 비교하고, 교차 비용 +1(<a href="../axiom.html#ax4">공리 4</a>)이 세대 차이만큼 누적되며, 세대 수는 3(<a href="h793.html">H-793</a>)이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS Compare의 교차 세대 비대각 노름이다. (b) 이 노름을 택하는 이유: 같은 세대 비교는 대각 성분(비용 0)이고 다른 세대 비교는 비대각 성분(비용 +1 × 세대 차이)이므로, 세대 간 거리가 멀수록 혼합 성분이 기하급수적으로 감소하기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$|V_{us}| \approx \sin\theta_C, \quad |V_{cb}| \approx \sin^2\theta_C, \quad |V_{ub}| \approx \sin^3\theta_C$</div>
+<div class="math-row">$\theta_C \approx 13^\circ$</div>
+<div class="math-legend">$V_{ij}$: CKM 혼합 성분 | $\theta_C$: 카비보 각 = 인접 세대 교차 비용 | 멱 지수: 세대 차이 (<a href="../axiom.html#ax4">공리 4</a>) | 3세대: <a href="h793.html">H-793</a></div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>theta_C      = 13°
+sin theta_C  = 0.22             lambda (울펜슈타인)
+A            = 0.81             울펜슈타인
+|V_us|       = 0.22  |V_cb| = 0.04  |V_ub| = 0.004   측정</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 쿼크 혼합 도메인(CKM 행렬)으로 변환한다. (b) 보려는 것은 세대 간 혼합 성분의 크기 위계다. 카비보 각의 거듭제곱이 세대 차이마다 비대각 성분을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$|V_{us}| : |V_{cb}| : |V_{ub}| \approx 0.22 : 0.04 : 0.004 = \sin\theta_C : \sin^2\theta_C : \sin^3\theta_C$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $|V_{us}|:|V_{cb}|:|V_{ub}| = \sin\theta_C:\sin^2\theta_C:\sin^3\theta_C$</div>
+<div class="math-row">측정값: $0.22 : 0.04 : 0.004$ (CKM)</div>
+<div class="math-row">상태: 자릿수 정합, 정밀 측정값 비교 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 비대각 성분의 멱 위계가 CAS 교차 비용 누적으로 닫히지만 정밀 측정값과의 비교와 CP 위반 위상 도출이 미완이라 가설에 머문다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h796.html">H-796</a>(렙톤 혼합). <a href="h812.html">H-812</a>(CPT)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
+<p>재투입 경로: <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

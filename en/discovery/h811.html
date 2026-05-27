@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h811.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h811.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h811.html">H-811</a>. Dispersion Relations = Causality Constraint on CAS Cost</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon next round / outstanding tasks explicitly listed.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: δ ==&gt; Banya formula's own structure, primary integer (4,3) combination. Recursive substitution path: <a href="h815.html">H-815</a>, <a href="h816.html">H-816</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Dispersion Relations from the Analyticity of CAS Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The scattering amplitude is the cost CAS pays while processing one channel. This cost cannot run against the forward direction of the 8-bit ring buffer (<a href="../axiom.html#ax8">Axiom 8</a>: time order = causality), so the cost function is analytic in the upper half-plane. Axiom 2's statement that the CAS operation incurs cost (<a href="../axiom.html#ax2">Axiom 2</a>) grants that cost both a real and an imaginary part.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; Banya formula's own structure, primary integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the analyticity norm enforced by the ring-buffer time order. (b) When CAS cost is causal (<a href="../axiom.html#ax8">Axiom 8</a>), the amplitude has no poles in the upper half-plane, so the Cauchy integral holds and the real part closes as the principal-value integral of the imaginary part — that is why this norm is chosen. The scattering amplitude is therefore substituted into the Kramers-Kronig form.</p>
+<div class="math-block">
+<div class="math-row">$\mathcal{A}(s) = \mathcal{A}_\infty + \dfrac{1}{2\pi i}\oint \dfrac{\mathcal{A}(s')}{s'-s}\,ds'$</div>
+<div class="math-row">$\text{Re}\,\mathcal{A}(s) = \dfrac{1}{\pi}\,\text{P}\!\!\int \dfrac{\text{Im}\,\mathcal{A}(s')}{s'-s}\,ds'$</div>
+<div class="math-legend">$\mathcal{A}$: scattering amplitude = CAS cost | $\text{Re}$: elastic-channel cost | $\text{Im}$: inelastic-channel cost | $\text{P}$: Cauchy principal value | $s$: collision energy squared</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h815.html">H-815</a>, <a href="h816.html">H-816</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>pi             = 3.141592653589793
+sigma_tot(s)  &lt; c * ln^2(s)        Froissart bound
+c              = pi / m_pi^2        m_pi = 0.1396 GeV</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the scattering-amplitude domain (the complex plane of the quantum cost). (b) What it reveals is the predictive power of computing the real part (forward scattering) from the imaginary part (total cross section). The principal-value integral combines the two parts.</p>
+<div class="math-block">
+<div class="math-row">$\text{Re}\,\mathcal{A}(s) = \dfrac{1}{\pi}\,\text{P}\!\!\int \dfrac{\text{Im}\,\mathcal{A}(s')}{s'-s}\,ds'$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: causality $\Rightarrow$ analyticity $\Rightarrow$ dispersion relations</div>
+<div class="math-row">Constraint: $\sigma_{\text{tot}}(s) &lt; c\,\ln^2 s$ (Froissart bound)</div>
+<div class="math-row">Measured: high-energy $pp$ cross section respects the Froissart bound</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The chain closes up to the stage where ring-buffer causality enforces analyticity, but the final stage of deriving every coefficient of the amplitude directly from axioms is unfinished. Insight: causality binds the real and imaginary parts of CAS cost so they cannot be separated.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h815.html">H-815</a> (optical theorem). <a href="h816.html">H-816</a> (crossing symmetry)</p><p>This card can be re-used as input for the following cards: <a href="h815.html">H-815</a>, <a href="h816.html">H-816</a></p>
+<p>Re-injection path: <a href="h815.html">H-815</a>, <a href="h816.html">H-816</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

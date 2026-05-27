@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 7자유도와 괄호 2비트에서 완전기술 상태 수 512 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>완전기술 상태 수는 한 엔티티를 한 순간에 빠짐없이 기술하는 비용이다. 어떤 도메인-CAS 조합인가에 7자유도(<a href="../axiom.html#ax9">공리 9</a>)가, FSM이 어느 단계인가에 4상태(<a href="../axiom.html#ax14">공리 14</a>: idle·Read·Compare·Swap)가 필요하다. 두 비용의 곱이 완전기술 상태 공간이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 7자유도 멱집합과 FSM 4상태의 곱 노름 $2^7 \times 2^2$이다. (b) 이 노름을 택하는 이유는 완전기술이 "조합 7비트"와 "FSM 단계 2비트"를 모두 요구하고, FSM 4상태가 정확히 $2^2$이기 때문이다. 따라서 완전기술 상태 수를 $2^7 \times 4 = 2^9$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$N = 2^7 \times 4 = 128 \times 4$</div>
+<div class="math-row">$N = 2^9 = 512;\quad 9 = 7 + 2$</div>
+<div class="math-legend">$2^7$: 7자유도 조합 (<a href="../axiom.html#ax9">공리 9</a>) | $4 = 2^2$: FSM 4상태 (<a href="../axiom.html#ax14">공리 14</a>) | $9 = 7 + 2$: 완전기술 자유도 7 + 괄호 2 | $512$: 한 순간 완전기술 상태 수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>유효 자유도 = 7 = 도메인 4 + CAS 3         공리 9
+2^7         = 128
+FSM 상태 수 = 4 = 2^2                       공리 14 (idle, Read, Compare, Swap)
+2^9         = 128 * 4 = 512
+9           = 7 + 2                         완전기술 7 + 괄호 2</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 대상 도메인은 소립자 완전기술 상태 공간이다. (b) 이 변환으로 보려는 것은 한 순간을 완전히 기술하는 데 필요한 총 상태 수, 곧 조합 128에 FSM 단계 4를 곱한 크기다. 두 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$128 \times 4 = 512 = 2^9$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $N = 2^9 = 512$ (완전기술 상태 수, $9 = 7 + 2$)</div>
+<div class="math-row">대조값: 표준 모형 입자 종류 $\approx 60 \ll 512$ (나머지는 미관측 또는 가상)</div>
+<div class="math-row">정량 대조: 정수 분해까지 확립, 512 상태 명시 매핑 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. $128 \times 4 = 512 = 2^9$ 정수 분해는 정확하나, 512개 상태 각각을 물리 입자·가상 상태에 명시 매핑하는 단계가 미완이다.</p>
+<p>통찰: 완전기술이 9비트를 요구하는 이유는 7자유도 조합에 FSM 4상태의 2비트가 더해지기 때문이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

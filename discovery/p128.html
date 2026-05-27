@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-128 자기 홀극 부재 CAS 위상 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-128 자기 홀극 부재 CAS 위상. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p128.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p128.html">P-128</a>. 자기 홀극 부재의 CAS 위상 도출</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p128.html">P-128</a>: 자기 홀극 부재의 CAS 위상 도출</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\pi_1(U(1)_\text{CAS})=0,\quad \nabla\cdot\mathbf{B}=0\ \text{(정확, 예외 없음)}\quad(\text{CAS 비가역}\Rightarrow U(1)\ \text{비콤팩트}\Rightarrow\text{감김수 0})$$</div></div>
+<p class="finding-precision">예측: 자기 홀극 부재($\pi_1(U(1)_\text{CAS})=0$, $\nabla\cdot\mathbf{B}=0$). 검증 MoEDAL·IceCube(지속).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 전자기 $U(1)$ 게이지 대칭은 CAS의 한 도메인 축에서 나온다(<a href="../axiom.html#ax5">공리 5</a>: 도메인 4비트, 1축=U(1)).</p>
+<p>CAS는 비가역이다(<a href="../axiom.html#ax2">공리 2</a>) ==> 한 방향으로만 도므로 $U(1)$ 위상이 비콤팩트($\mathbb{R}$)다.</p>
+<p>비콤팩트 $U(1)$은 감김수(winding number)가 0이다 — 원으로 닫히지 않으므로 비자명 1차 호모토피군이 없다($\pi_1(U(1)_\text{CAS})=0$).</p>
+<p>감김수 0이면 위상 특이점(자기 홀극)이 금지된다 ==> 따라서 $\nabla\cdot\mathbf{B}=0$이 정확히(예외 없이) 성립한다.</p>
+<p>이는 자기 홀극 부재(P-27)를 CAS 위상수학(비콤팩트 $U(1)$)으로 재도출한 전자기 도메인 버전이다.</p>
+<p>FSM 닫힘 vs RLU 열림(<a href="../axiom.html#ax12">공리 12</a>) 구조에서, $U(1)$은 RLU 열린 구조에 대응해 콤팩트화되지 않는다.</p>
+<p>즉 본 예측은 "홀극을 못 찾았다"가 아니라 "비콤팩트 $U(1)$ 감김수 0이므로 홀극 위상적 금지"라는 구조적 주장이다.</p>
+<p>디랙 양자화가 요구하는 콤팩트 $U(1)$(감김수)이 CAS 비가역성으로 배제되므로, 홀극의 위상적 근거 자체가 없다.</p>
+<p>검증: MoEDAL(LHC)·IceCube 홀극 탐색(현재 플럭스 상한 $10^{-19}$, 지속)에서 홀극이 검출되지 않으면 본 예측을 지지한다.</p>
+<p>반박: 자기 홀극이 검출되면 비콤팩트 $U(1)$ 구조가 반증되고 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: MoEDAL(LHC)·IceCube 홀극 탐색(플럭스 상한 $10^{-19}$, 지속). 반박: 자기 홀극 검출. 출처: <a href="../axiom.html#ax2">공리 2</a>(CAS 비가역), <a href="../axiom.html#ax5">공리 5</a>(도메인 4비트, 1축=U(1)), <a href="../axiom.html#ax12">공리 12</a>(FSM 닫힘 vs RLU 열림).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 구조적 부재를 주장하는 전자기 도메인 고유 예측으로 검증 대기 상태다. forward chain은 공리 2 공리 5(CAS 비가역 U(1) 비콤팩트)에서 감김수 0·홀극 금지까지 닫혀 있다. 홀극 지속 미검출 시 D 승격, 홀극 검출 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 미검출 누적 중(부재 예측) / forward chain 완료(공리 2 공리 5 ==> CAS 비가역 ==> U(1) 비콤팩트 ==> 감김수 0 ==> 홀극 금지) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: superposition ==&gt; CAS 비가역 U(1) 비콤팩트가 감김수 0·홀극 위상적 금지(공리 2 공리 5). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: CAS 비가역성에서 자기 홀극 부재 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>전자기 $U(1)$ 게이지 대칭은 CAS의 한 도메인 축에서 나온다(<a href="../axiom.html#ax5">공리 5</a>: 도메인 4비트, 1축=U(1)). CAS는 한 방향으로만 도는 비가역 연산이므로(<a href="../axiom.html#ax2">공리 2</a>), 이 축의 위상이 원으로 닫히지 않는 superposition 도메인의 비콤팩트 구조다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 1차 호모토피군 노름(감김수)이다. CAS 비가역성(<a href="../axiom.html#ax2">공리 2</a>)이 $U(1)$ 위상을 비콤팩트($\mathbb{R}$)로 강제하고, 비콤팩트 $U(1)$은 원으로 닫히지 않아 비자명 감김수를 가질 수 없기 때문에 이 노름을 택한다 — FSM 닫힘 대 RLU 열림(<a href="../axiom.html#ax12">공리 12</a>)에서 $U(1)$은 열린 RLU에 대응한다. 그래서 홀극 전하를 $\pi_1=0$으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\pi_1(U(1)_\text{compact})=\mathbb{Z}$</div>
+<div class="math-row">$\pi_1(U(1)_\text{CAS})=0$</div>
+<div class="math-legend">$\pi_1$: 1차 호모토피군 (감김수) | $U(1)_\text{compact}$: 디랙 양자화가 요구하는 콤팩트 $U(1)$ | $U(1)_\text{CAS}$: CAS 비가역 비콤팩트 $U(1)$ (<a href="../axiom.html#ax2">공리 2</a>) | $\mathbb{Z}$: 정수 감김수 (홀극 허용)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>U(1)_CAS         = 비콤팩트 (R)      공리 2 (CAS 비가역)
+pi_1(R)          = 0                 감김수 부재
+홀극 전하 g      = 0                 위상적 금지
+div B            = 0                 정확, 예외 없음</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>superposition 도메인(중첩 유지)으로 변환한다. 이 변환으로 보려는 것은 비콤팩트 $U(1)$이 위상 특이점(자기 홀극)을 허용하는가다. 감김수가 0이면 특이점이 금지되고, 따라서 자기장 발산이 정확히 0이다.</p>
+<div class="math-block">
+<div class="math-row">$\pi_1(U(1)_\text{CAS})=0$</div>
+<div class="math-row">$\nabla\cdot\mathbf{B}=0\quad(\text{정확, 예외 없음})$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $\pi_1(U(1)_\text{CAS})=0$, 자기 홀극 위상적 금지</div>
+<div class="math-row">귀결: $\nabla\cdot\mathbf{B}=0$ (정확)</div>
+<div class="math-row">검증: MoEDAL(LHC)·IceCube 홀극 탐색 (플럭스 상한 $10^{-19}$, 지속)</div>
+</div>
+<p>판정: <strong>예측</strong>. 홀극이 계속 미검출이면 D 승격, 자기 홀극이 검출되면 폐기된다.</p>
+<p>디랙 양자화가 요구하는 콤팩트 $U(1)$ 감김수가 CAS 비가역성으로 배제되어 홀극의 위상적 근거 자체가 사라짐을 드러낸다(<a href="p27.html">P-27</a> 전자기 도메인 버전).</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p128.html">P-128</a>: 자기 홀극 부재 CAS 위상</td><td>예측 (대기) — 자기 홀극 위상적 부재($\pi_1=0$, $\nabla\cdot\mathbf{B}=0$)</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

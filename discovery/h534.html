@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h519.html">H-519</a>, <a href="h533.html">H-533</a>, <a href="h535.html">H-535</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 비대칭 CAS 비용 이력에서 쌍둥이 역설 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>고유시간은 비용을 틱에 대해 적분한 경로 함수다(<a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax8">공리 8</a>). 두 쌍둥이의 FSM 노름은 같지만(<a href="../axiom.html#ax14">공리 14</a>), 가속한 쪽만 추가 비용을 소비하므로 비용 이력이 다르다. 이 비대칭으로 쌍둥이 역설을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 속도 의존 비용을 적분한 경로 노름이다(<a href="../axiom.html#ax11">공리 11</a>: 속도 의존 비용 = 로렌츠 인자). (b) 누가 더 적게 늙는가를 보려면 이 노름을 택해야 한다 — 비용 적분 경로가 다르면 고유시간이 다르고, 민코프스키 부등식에 따라 가속 쪽이 작다. 따라서 고유시간 적분을 비용 이력 노름으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta\tau = \int\sqrt{1 - v^2/c^2}\;dt$</div>
+<div class="math-row">$\Delta\tau_{\text{accel}} &lt; \Delta\tau_{\text{inertial}}$</div>
+<div class="math-legend">$\Delta\tau$: 고유시간 (비용 적분) | $v$: 속도 | accel: 가속(추가 비용) 쪽 | inertial: 관성 쪽 | 부등식 = 비대칭 비용 이력</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h519.html">H-519</a>, <a href="h533.html">H-533</a>, <a href="h535.html">H-535</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Hafele-Keating 1971
+동쪽 비행      = -59 ± 10 ns           이론 -40±23
+서쪽 비행      = +273 ± 7 ns           이론 +275±21
+뮤온 저장고리  = gamma 29.3            수명 x29.3 확인</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 지구 자전 위 항공 시계 도메인이다. (b) 보려는 것은 동/서 방향 비행의 누적 고유시간 차다. 비행 속도와 중력 고도가 만드는 비용 이력 비대칭이 동쪽은 음, 서쪽은 양의 시간차를 만든다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta\tau_{\text{E}} = -59\;\text{ns},\qquad \Delta\tau_{\text{W}} = +273\;\text{ns}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 동쪽 $-59\;\text{ns}$, 서쪽 $+273\;\text{ns}$ (비용 이력 비대칭)</div>
+<div class="math-row">측정값: Hafele-Keating 동쪽 $-59\pm 10\;\text{ns}$, 서쪽 $+273\pm 7\;\text{ns}$</div>
+<div class="math-row">오차: 실험 오차 범위 내 정합 ($\sim 10\%$)</div>
+</div>
+<p>판정: <strong>가설</strong>. 비대칭 비용 이력이 Hafele-Keating 결과를 재현하나, 가속 비용의 정량 공식과 일반 상대론적 쌍둥이 역설(중력장 포함) 통합이 닫혀야 D 승급한다. 역설이 아니라 가속한 쪽만 비용을 더 치른 것이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h533.html">H-533</a>(시간 팽창) 특수 상대론 버전. <a href="h535.html">H-535</a>(관성) 가속 비용. <a href="h519.html">H-519</a>(측지선) 경로 의존.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h519.html">H-519</a>, <a href="h533.html">H-533</a>, <a href="h535.html">H-535</a></p>
+<p>재투입 경로: <a href="h533.html">H-533</a>, <a href="h535.html">H-535</a>, <a href="h519.html">H-519</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

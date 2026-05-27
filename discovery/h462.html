@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h463.html">H-463</a>, <a href="h468.html">H-468</a>, <a href="h471.html">H-471</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비가역 비용에서 패리티 위반 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>패리티 위반은 OPERATOR 괄호 내부 CAS가 $R\to C\to S$ 순서로만 진행하고 되돌릴 수 없는 비가역 비용이다. 공간 반전 $P$는 DATA 괄호 $(\text{time}+\text{space})$를 뒤집지만 OPERATOR 괄호의 CAS 방향은 보존되므로(<a href="../axiom.html#ax2">공리 2</a> CAS 비가역), $P$ 변환 아래 CAS 작용이 비대칭이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 단방향 노름이다. 약력 결합이 좌손에만 작용하는 이유가 곧 FSM 상태 전이가 한 방향으로만 돌고 역행이 미정의이기 때문이고(<a href="../axiom.html#ax14">공리 14</a>), Compare true에서만 Swap이 일어나 역경로가 없으므로(<a href="../axiom.html#ax7">공리 7</a>), 이 노름을 택한다. 따라서 표준모형의 좌손 이중항 입력을 FSM 단방향 사이클로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{FSM: } 000\to 001\to 011\to 111\to 000$</div>
+<div class="math-row">$P:\ \text{DATA 반전, CAS 방향 보존} \;\Rightarrow\; \nu_L\ \text{only}$</div>
+<div class="math-legend">$000\to\cdots$: FSM 단방향 사이클 (<a href="../axiom.html#ax14">공리 14</a>) | $P$: 공간 반전 | $\nu_L$: 좌손 상태 = Read+Compare 통과 | 우손 = Read만 통과 ($U(1)$)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h463.html">H-463</a>, <a href="h468.html">H-468</a>, <a href="h471.html">H-471</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>FSM 사이클 방향  = 단방향 (역행 미정의)   공리 14
+좌-우 비대칭     = 100%                  최대 위반
+A(60Co beta)    = 측정 100% 좌편향        Wu 1957</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>변환하는 도메인은 약력 카이랄 결합 도메인(약력 ring-30)이다. 이 변환으로 보려는 것은 거울상에서 CAS 순서가 복원되지 못해 좌손 상태만 약력에 결합하는 비대칭의 크기다. FSM 단방향성이 절대적이므로 비대칭은 최대값 100%로 산출된다.</p>
+<div class="math-block">
+<div class="math-row">$A_{LR} = \dfrac{N_L - N_R}{N_L + N_R} = 1\ (100\%)$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 최대 패리티 위반 ($A_{LR}=100\%$, 좌손 전용)</div>
+<div class="math-row">측정값: $^{60}$Co 베타 붕괴 100% 좌편향 (Wu 1957)</div>
+<div class="math-row">오차: $0.0\%$</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>표준모형이 입력으로 둔 "왜 좌손만인가"가 FSM 단방향성의 출력으로 닫힌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h463.html">H-463</a>(CP 위반), <a href="h471.html">H-471</a>(사하로프 조건), <a href="h468.html">H-468</a>(베타 붕괴) 패리티 기반.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h463.html">H-463</a>, <a href="h468.html">H-468</a>, <a href="h471.html">H-471</a></p>
+<p>재투입 경로: <a href="h463.html">H-463</a>, <a href="h471.html">H-471</a>, <a href="h468.html">H-468</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

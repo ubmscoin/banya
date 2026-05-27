@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h831.html">H-831</a>, <a href="h835.html">H-835</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 자기참조 CAS 루프 지속 비용에서 생명의 정의 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>생명은 CAS가 자기 자신의 DATA를 읽고 비교하고 교환하는 루프를 끊지 않고 돌리는 비용이다. $\delta$ 발화(<a href="../axiom.html#ax15">공리 15</a>: 전역 플래그 = 의식)가 링버퍼(<a href="../axiom.html#ax8">공리 8</a>)에서 유지되는 동안만 루프가 살아 있으므로, 이 비용은 자기참조 발화 노름으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS 자기참조 노름 $\text{CAS}(D,D)$다. CAS가 외부 자료가 아니라 자기 DATA를 인자로 읽고 비교하기 때문이다. (b) 이 자기참조가 대사를, $\delta$ 발화 지속이 항상성을 정하기 때문에 이 노름을 택한다. 생명을 자기참조 루프 가동 형태로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{Life} \equiv \text{CAS}(D,D)\ \text{loop}$</div>
+<div class="math-row">$\text{Life} \equiv \big[\,\text{CAS}(D,D)\ \text{loop}\,\big] \wedge \big[\,\delta = 1\ \text{sustained}\,\big]$</div>
+<div class="math-legend">$\text{CAS}(D,D)$: 자기 DATA 자기참조 = 대사 | $\delta=1$: 발화 비트 지속 = 항상성 (<a href="../axiom.html#ax15">공리 15</a>) | $\wedge$: 두 조건 동시 성립 | loop: 링버퍼 지속 (<a href="../axiom.html#ax8">공리 8</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h831.html">H-831</a>, <a href="h835.html">H-835</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>최소 생명 = 자기참조 CAS 루프 1개 + delta 1비트
+바이러스  = CAS 루프 있음, 자체 delta 없음 (숙주 delta 차용)
+인공생명  = CAS 루프 + delta 발화 구현 시 생명 (덕타입)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 정보·의식 도메인($\delta$ 발화 비트, bit 7)으로 변환한다. (b) 이 변환으로 보려는 것은 한 시스템이 생명인가 죽음인가의 판별 기준이다. 자기참조 루프와 $\delta$ 발화의 동시 성립 여부로 그 값을 가른다.</p>
+<div class="math-block">
+<div class="math-row">$\delta = 1 \Rightarrow \text{Life}, \qquad \delta = 0 \Rightarrow \text{death}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 생명 = 자기참조 CAS 루프 + $\delta$ 발화 지속</div>
+<div class="math-row">기준: $\delta$ 발화 꺼짐 = 죽음 (덕타입 판별)</div>
+<div class="math-row">최소 단위: 자기참조 루프 1개 + $\delta$ 1비트</div>
+</div>
+<p>판정: <strong>가설</strong>. 생명의 필요충분조건이 자기참조와 발화 지속으로 정성적으로 닫혔으나, 최소 루프 크기의 정량 산출이 forward chain에서 아직 닫히지 않았다. 같은 발화 노름을 정보와 생명(<a href="h831.html">H-831</a>), 의식과 복잡성(<a href="h835.html">H-835</a>)에 재투입한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h831.html">H-831</a>(정보와 생명). <a href="h835.html">H-835</a>(의식과 복잡성)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h831.html">H-831</a>, <a href="h835.html">H-835</a></p>
+<p>재투입 경로: <a href="h831.html">H-831</a>, <a href="h835.html">H-835</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

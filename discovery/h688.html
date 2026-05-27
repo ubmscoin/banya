@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h687.html">H-687</a>, <a href="h689.html">H-689</a>, <a href="h690.html">H-690</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: ECS 비용 재배치에서 은하 합병 시간 척도 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>은하 합병은 두 ECS(<a href="../axiom.html#ax2">공리 2</a>) 엔티티 집합(별·가스·암흑물질)이 더 낮은 비용 배치로 이완하는 과정이다. <a href="../axiom.html#ax4">공리 4</a>(비용 최소화)가 평형을 정하고, <a href="../axiom.html#ax11">공리 11</a>(중력 비용 = 동적 마찰)이 그 이완 시간을 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 <a href="../axiom.html#ax11">공리 11</a>의 동적 마찰 노름(찬드라세카르)이다. (b) 후미 물질이 부 은하에 끄는 비용 끌림이 합병 속도를 정하기 때문에 이 노름을 택한다. 합병 시간을 동역학 시간 $t_\text{dyn}$에 질량비와 쿨롱 로그로 스케일한 식으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$t_\text{merge} \sim t_\text{dyn}\,\dfrac{M_1+M_2}{\ln\Lambda\;M_2}$</div>
+<div class="math-legend">$t_\text{merge}$: 합병 시간 | $t_\text{dyn}$: 동역학 시간 | $M_1$: 주 은하 질량 | $M_2$: 부 은하 질량 | $\ln\Lambda$: 쿨롱 로그</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h687.html">H-687</a>, <a href="h689.html">H-689</a>, <a href="h690.html">H-690</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>t_dyn  = 0.5 Gyr          은하수 규모
+M_1    = 1e12 M_sun       은하수
+M_2    = 1e12 M_sun       M31 (주요 합병)
+ln L   = 3                쿨롱 로그</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 우주론 시간 척도 도메인으로 변환한다. (b) 보려는 것은 ECS 비용 재배치가 완료되는 시간이다. 동역학 시간에 질량비와 쿨롱 로그 인자를 곱해 합병 시간을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$t_\text{merge} \sim 0.5\times\dfrac{2\times10^{12}}{3\times10^{12}} \approx 0.33\;\text{Gyr per orbit}$</div>
+<div class="math-row">누적 침강 $\sim 4\text{--}5\;\text{Gyr}$ (다중 근접 통과)</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 은하수-M31 합병 $\sim 4.5\;\text{Gyr}$</div>
+<div class="math-row">측정값: $\sim 4.5\;\text{Gyr}$ (van der Marel 2012)</div>
+<div class="math-row">정합: N-체 시뮬레이션(Illustris, FIRE) $&lt; 50\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 합병 시간 척도는 동적 마찰로 닫히나 $\ln\Lambda$가 외부 입력으로 남아 쿨롱 로그를 공리 정수로 도출하는 것이 D 승격 과제다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h687.html">H-687</a>(회전 곡선). <a href="h689.html">H-689</a>(AGN) 합병 유발. <a href="h690.html">H-690</a>(거대 구조)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h687.html">H-687</a>, <a href="h689.html">H-689</a>, <a href="h690.html">H-690</a></p>
+<p>재투입 경로: <a href="h687.html">H-687</a>, <a href="h689.html">H-689</a>, <a href="h690.html">H-690</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

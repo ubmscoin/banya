@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h619.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h619.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h619.html">H-619</a>. Conductor/Insulator = Presence or Absence of FSM Norm Band Gap</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible upon next round / outstanding work stated explicitly.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, subsequent refinement required). Recursive-substitution path: <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Conductor/Insulator Classification from the Presence or Absence of the FSM Norm Gap</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Electrical conduction is the process by which CAS cost (<a href="../axiom.html#ax4">Axiom 4</a>) is passed from one entity to the next. If the band gap (<a href="h618.html">H-618</a>) is 0, the cost flows without a gap, giving a conductor; if the gap is positive, the cost must cross the gap, giving an insulator. Conductor/insulator are the two gap-presence cases of the same FSM norm structure.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; outside the natural classification (domain undetermined, subsequent refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM norm band gap inherited from <a href="h618.html">H-618</a>. (b) This norm is chosen because conductivity is decided by whether the Fermi surface lies inside a band (gap=0) or inside the gap. If the RLU thermal energy (<a href="../axiom.html#ax6">Axiom 6</a>) exceeds the gap, cost transfer opens; if smaller, it is blocked.</p>
+<div class="math-block">
+<div class="math-row">$E_g = 0 \implies \text{conductor}$</div>
+<div class="math-row">$E_g &gt; 0 \implies \text{insulator/semiconductor}$</div>
+<div class="math-legend">$E_g$: FSM norm band gap (<a href="h618.html">H-618</a>) | $E_g = 0$: Fermi surface inside a band | $E_g \lesssim k_BT$: semiconductor | $E_g &gt; 3\ \text{eV}$: insulator</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants.</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>E_g(Cu)  = 0 eV           conductor
+E_g(Si)  = 1.12 eV        semiconductor
+E_g(C)   = 5.5 eV         insulator (diamond)
+k_B T    = 0.025 eV       300 K</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within the bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the condensed-matter (conductivity) domain. (b) What it reveals is the material classification by gap value. A gap of 0 is a conductor, a small gap overcome by RLU thermal energy is a semiconductor, and above $3\ \text{eV}$ is an insulator.</p>
+<div class="math-block">
+<div class="math-row">$E_g(\text{Cu})=0 \implies \text{conductor}, \quad E_g(\text{Si})=1.12\ \text{eV} \implies \text{semiconductor}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_g=0$ conductor, $E_g&gt;0$ insulator</div>
+<div class="math-row">Measured: Cu $0$, Si $1.12\ \text{eV}$, diamond $5.5\ \text{eV}$</div>
+<div class="math-row">Status: classification matches, per-material gap not derived</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The presence or absence of the gap exactly separates conductors from insulators, but the gap size is taken as an external input from <a href="h618.html">H-618</a> and the per-material magnitude is not derived from the axioms, so the round halted.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h618.html">H-618</a> (band structure) application. Comparison with <a href="h633.html">H-633</a> (Mott insulator).</p><p>This card can be re-used as input for the following cards: <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a></p>
+<p>Re-injection path: <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

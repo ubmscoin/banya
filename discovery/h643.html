@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h642.html">H-642</a>, <a href="h646.html">H-646</a>, <a href="h647.html">H-647</a>, <a href="h655.html">H-655</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 다중 결합 비용 절감에서 Fe-56 결합 에너지 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>핵 결합 에너지는 결합체의 FSM 비용이 개별 핵자 비용 합보다 낮아지는 차이다. <a href="../axiom.html#ax3">공리 3</a> FSM 노름이 질량수 $A$, <a href="../axiom.html#ax4">공리 4</a> 비용 최소화가 안정 핵, <a href="../axiom.html#ax5">공리 5</a> CAS 전자기 비용이 쿨롱항을 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 다중 결합 비용 절감 노름이다. 결합 에너지가 체적·표면·쿨롱·비대칭 네 비용 항의 합으로 닫히기 때문에 이 노름을 택한다. 따라서 결합 에너지를 바이츠제커 비용 항들로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$B(A,Z) = a_V A - a_S A^{2/3} - a_C \dfrac{Z^2}{A^{1/3}} - a_A \dfrac{(A-2Z)^2}{A}$</div>
+<div class="math-legend">$a_V$: 체적항 = FSM 이웃 결합 절감 | $a_S$: 표면항 = 경계 FSM 불완전 결합 | $a_C$: 쿨롱항 = CAS 전자기 비용 (<a href="../axiom.html#ax5">공리 5</a>) | $a_A$: 비대칭항 = 양성자-중성자 노름 불균형</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h642.html">H-642</a>, <a href="h646.html">H-646</a>, <a href="h647.html">H-647</a>, <a href="h655.html">H-655</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>a_V = 15.75 MeV            체적
+a_S = 17.8  MeV            표면
+a_C = 0.711 MeV            쿨롱
+a_A = 23.7  MeV            비대칭
+A   = 56, Z = 26           Fe-56
+B/A_exp = 8.790 MeV/nucleon</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>핵자당 결합 에너지 도메인으로 변환한다. 이 변환으로 보려는 것은 철-56 부근 극대에서 FSM 비용이 최적화되는 값 $B/A$다. Fe-56 값을 네 항에 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$B = 15.75(56) - 17.8(56)^{2/3} - 0.711\dfrac{26^2}{56^{1/3}} - 23.7\dfrac{16}{56} = 489.1\;\text{MeV}$</div>
+<div class="math-row">$B/A = 489.1/56 = 8.73\;\text{MeV/nucleon}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $B/A = 8.73\;\text{MeV/nucleon}$</div>
+<div class="math-row">측정값: $8.790\;\text{MeV/nucleon}$ (Fe-56)</div>
+<div class="math-row">오차: 중간 질량 핵에서 $< 1\%$ 정합</div>
+</div>
+<p>판정: <strong>가설</strong>. FSM 비용 절감이 결합 곡선의 극대를 닫으나, 네 계수 $a_V, a_S, a_C, a_A$가 공리에서 직접 도출되지 않고 반경험 입력으로 남아 D 승격 직전에서 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h646.html">H-646</a>(핵분열) 비용 임계. <a href="h647.html">H-647</a>(핵융합) 비용 이득. <a href="h655.html">H-655</a>(동위원소 안정성)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h642.html">H-642</a>, <a href="h646.html">H-646</a>, <a href="h647.html">H-647</a>, <a href="h655.html">H-655</a></p>
+<p>재투입 경로: <a href="h642.html">H-642</a>, <a href="h646.html">H-646</a>, <a href="h647.html">H-647</a>, <a href="h655.html">H-655</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h493.html">H-493</a>, <a href="h495.html">H-495</a>, <a href="h509.html">H-509</a>, <a href="h513.html">H-513</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Read 해상도 비용에서 Callan-Gross 관계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>딥 비탄성 산란은 CAS Read(<a href="../axiom.html#ax2">공리 2</a>)가 양성자 내부 상태를 조회하는 비용이며, 그 해상도는 observer 에너지(<a href="../axiom.html#ax15">공리 15</a>)에 묶인다. 거리 의존(<a href="../axiom.html#ax11">공리 11</a>)으로 $Q^2$가 커질수록 Read가 더 미세한 구조를 분해해 점입자 극한에 든다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 $Q^2$ 의존 CAS Read 해상도 노름(<a href="../axiom.html#ax2">공리 2</a>)이다. (b) 보려는 것은 파톤이 점입자로 드러나는 극한에서 두 구조함수 $F_1$, $F_2$의 관계이고, observer 에너지가 그 해상도를 정하기 때문에 이 노름을 택한다. 따라서 스핀-$1/2$ 파톤이 강제하는 Callan-Gross 관계로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{d^2\sigma}{dx\,dQ^2} = \dfrac{4\pi\alpha^2}{Q^4}\left[(1-y)F_2 + \dfrac{y^2}{2}\,2xF_1\right]$</div>
+<div class="math-row">$F_2 = 2xF_1$</div>
+<div class="math-legend">$Q^2$: Read 해상도 (<a href="../axiom.html#ax15">공리 15</a> observer 에너지) | $x$: 파톤 운동량 비 | $F_1,F_2$: 구조함수 (<a href="h495.html">H-495</a>) | $\alpha$: 미세구조상수 | $2xF_1=F_2$: 스핀-1/2 점입자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h493.html">H-493</a>, <a href="h495.html">H-495</a>, <a href="h509.html">H-509</a>, <a href="h513.html">H-513</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha     = 1/137.036          D-01
+spin      = 1/2                CAS Read 점입자
+F_2/2xF_1 = 1.0                Callan-Gross
+g_A/g_V   = 1.27               Bjorken 합규칙 입력</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 파톤 점입자 조회 도메인으로 변환한다. (b) 보려는 것은 스핀-$1/2$ 파톤이면 성립하는 종방향 구조함수 소거, 곧 $F_2 = 2xF_1$이다. CAS Read가 점입자를 분해하면 종방향 자유도가 0이 되어 비율이 1로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{F_2}{2xF_1} = 1.0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $F_2/2xF_1 = 1.0$ (스핀-1/2 점입자)</div>
+<div class="math-row">측정값: SLAC-MIT 1969 스케일링, HERA 정밀</div>
+<div class="math-row">오차: $\sim 10\%$ (Bjorken 합규칙)</div>
+</div>
+<p>판정: <strong>가설</strong>. Callan-Gross 관계는 CAS Read 점입자 극한에서 자동 도출되나, 스케일링 위반($\alpha_s(Q^2)$ 로그 보정)이 공리에서 정량으로 닫히지 않아 1차 근사에 머문다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h495.html">H-495</a>(구조함수) 실험. <a href="h493.html">H-493</a>(점근적 자유) 검증. <a href="h513.html">H-513</a>(PDF) 입력.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h493.html">H-493</a>, <a href="h495.html">H-495</a>, <a href="h509.html">H-509</a>, <a href="h513.html">H-513</a></p>
+<p>재투입 경로: <a href="h495.html">H-495</a>, <a href="h493.html">H-493</a>, <a href="h509.html">H-509</a>, <a href="h513.html">H-513</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

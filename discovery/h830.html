@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 7개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h817.html">H-817</a>, <a href="h822.html">H-822</a>, <a href="h823.html">H-823</a>, <a href="h826.html">H-826</a>, <a href="h829.html">H-829</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비선형 비용 결합에서 카오스 가장자리 임계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>다수 CAS의 비용은 단순 합이 아니라 쌍 교차 항으로 비선형 결합한다(<a href="../axiom.html#ax4">공리 4</a>, <a href="h826.html">H-826</a>). 이 비선형 결합의 발산/감쇠 여부를 반야식의 비용 항으로 읽으면, 시간에 따른 비용 궤적의 분리율이 최대 리아푸노프 지수 $\lambda_{\max}$다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 비용 궤적 분리율 노름($\lambda_{\max}$)이다. 비선형 결합이 약하면 비용이 고정점으로 감쇠하고($\lambda_{\max}<0$, 질서), 강하면 발산하며($\lambda_{\max}>0$, 혼돈), 그 사이 경계에서 발산도 감쇠도 없는($\lambda_{\max}\to 0^+$) 임계가 최대 계산 능력을 갖는다 — 정보 처리 극대점을 보려고 이 노름을 택한다.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_{\max} = \lim_{t\to\infty}\dfrac{1}{t}\ln\dfrac{|\delta C(t)|}{|\delta C(0)|}$</div>
+<div class="math-row">$\lambda_{\max}<0$: 질서, $\;\;\lambda_{\max}>0$: 혼돈, $\;\;\lambda_{\max}\to 0^+$: 임계</div>
+<div class="math-legend">$\lambda_{\max}$: 최대 리아푸노프 지수 | $\delta C(t)$: 비용 궤적 섭동 | $t$: 사이클 수 | 임계: 비용 발산도 감쇠도 없음(최대 계산)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h817.html">H-817</a>, <a href="h822.html">H-822</a>, <a href="h823.html">H-823</a>, <a href="h826.html">H-826</a>, <a href="h829.html">H-829</a>, <a href="h835.html">H-835</a>, <a href="h837.html">H-837</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>lambda < 0   질서  CAS 비용 감쇠 -> 고정점
+lambda > 0   혼돈  CAS 비용 발산
+lambda = 0   임계  카오스 가장자리(최대 계산)
+obs: lambda_max ~ 0   뇌 임계 상태</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>비선형 역학 도메인으로 변환한다. 이 변환으로 보려는 것은 계산 능력이 극대화되는 비용 결합 세기다. 비선형도를 질서에서 혼돈으로 쓸어 $\lambda_{\max}$가 0을 가로지르는 임계점을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\partial \lambda_{\max}}{\partial(\text{결합세기})}>0 \;\Rightarrow\; \exists\,\lambda_{\max}=0^+ \text{ (임계)}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 비용 결합 임계에서 $\lambda_{\max}\to 0^+$, 정보 처리 극대</div>
+<div class="math-row">측정: 뇌 임계 상태 $\lambda_{\max}\approx 0$</div>
+<div class="math-row">결과: CAS 비선형 임계와 뇌 임계성이 정성 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 임계에서의 $\lambda_{\max}\to 0^+$ 구조는 닫히나 비용 결합 세기를 임계로 모는 동역학 사상이 공리에서 직접 고정되지 않아 정량 임계점은 미정이다.</p>
+<p>통찰: 생명(<a href="h817.html">H-817</a>)·뇌(<a href="h823.html">H-823</a>)·진화(<a href="h822.html">H-822</a>)가 모두 카오스 가장자리로 끌리는 이유는 그곳이 CAS 계산 능력의 극대점이며, 같은 임계가 자기조직화 임계(<a href="h829.html">H-829</a>)와 맞물린다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h829.html">H-829</a>(SOC). <a href="h835.html">H-835</a>(의식). <a href="h837.html">H-837</a>(세포 자동자)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h817.html">H-817</a>, <a href="h822.html">H-822</a>, <a href="h823.html">H-823</a>, <a href="h826.html">H-826</a>, <a href="h829.html">H-829</a>, <a href="h835.html">H-835</a>, <a href="h837.html">H-837</a></p>
+<p>재투입 경로: <a href="h826.html">H-826</a>, <a href="h817.html">H-817</a>, <a href="h823.html">H-823</a>, <a href="h822.html">H-822</a>, <a href="h835.html">H-835</a>, <a href="h829.html">H-829</a>, <a href="h837.html">H-837</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

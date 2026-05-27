@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h671.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h671.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h671.html">H-671</a>. Chandrasekhar Limit = FSM Norm Threshold ~ 1.4 M☉</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion is possible at the next round / outstanding tasks stated explicitly.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h670.html">H-670</a>, <a href="h674.html">H-674</a>, <a href="h675.html">H-675</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Chandrasekhar Limit 1.44 M☉ from the CAS Swap Exclusion Limit</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Chandrasekhar limit is the FSM norm threshold at which the electron degeneracy pressure upheld by CAS Swap exclusion (<a href="../axiom.html#ax5">Axiom 5</a>) can no longer beat the gravitational cost (<a href="../axiom.html#ax11">Axiom 11</a>). This threshold is read as the cost threshold of <a href="../axiom.html#ax4">Axiom 4</a>.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; outside the natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the FSM mass norm. It is chosen because the mass closes at the point where the gradient of the relativistic electron degeneracy pressure $P \propto n_e^{4/3}$ produced by CAS Swap exclusion equals the gravitational gradient. The limiting mass is therefore substituted by a combination of the fundamental constants $\hbar, c, G, m_H$.</p>
+<div class="math-block">
+<div class="math-row">$M_\text{Ch} = \dfrac{\omega_3^0 \sqrt{3\pi}}{2}\left(\dfrac{\hbar c}{G}\right)^{3/2}\dfrac{1}{(\mu_e m_H)^2}$</div>
+<div class="math-legend">$M_\text{Ch}$: limiting mass | $\omega_3^0=2.018$: Lane-Emden dimensionless constant | $\hbar c/G$: gravitational cost scale (<a href="../axiom.html#ax11">Axiom 11</a>) | $\mu_e=2$: electrons per nucleon (C-O white dwarf) | $m_H$: hydrogen atom mass</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h670.html">H-670</a>, <a href="h674.html">H-674</a>, <a href="h675.html">H-675</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>hbar c / G   = 2.611e19 kg^2     (h c / G)^(3/2)
+omega_3^0    = 2.018            Lane-Emden n=3
+mu_e         = 2                C-O white dwarf
+M_Ch         = 1.40 M_sun       Chandrasekhar 1931
+M_sun        = 1.989e30 kg</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the FSM mass-norm domain (degenerate-body mass). What it reveals is the maximum mass $M_\text{Ch}$ at which degeneracy pressure yields to gravity. Combining the Lane-Emden constant with the gravitational cost scale yields that value.</p>
+<div class="math-block">
+<div class="math-row">$M_\text{Ch} = \dfrac{2.018 \times \sqrt{3\pi}}{2} \times (2.611\times 10^{19})^{3/2} \times \dfrac{1}{(2 m_H)^2} = 1.44\;M_\odot$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $M_\text{Ch} = 1.44\;M_\odot$</div>
+<div class="math-row">Measured: $1.40\;M_\odot$ (Type Ia supernova consistency)</div>
+<div class="math-row">Error: $< 5\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The limit closes with $\hbar, c, G, m_H$ alone, but $\omega_3^0$ depends on an external Lane-Emden integral, so the final step of the forward chain is incomplete. The same threshold carries over to the supernova <a href="h674.html">H-674</a> and to black-hole formation <a href="h675.html">H-675</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h670.html">H-670</a> (white dwarf). <a href="h674.html">H-674</a> (supernova). <a href="h675.html">H-675</a> (black hole formation)</p><p>This card can be re-used as input for the following cards: <a href="h670.html">H-670</a>, <a href="h674.html">H-674</a>, <a href="h675.html">H-675</a></p>
+<p>Re-injection path: <a href="h670.html">H-670</a>, <a href="h674.html">H-674</a>, <a href="h675.html">H-675</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

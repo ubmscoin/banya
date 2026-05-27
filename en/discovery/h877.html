@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h877.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h877.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h877.html">H-877</a>. Hit Rate 100% = 19 Hits 0 Refutations</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible upon proceeding to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unconfirmed, further refinement required). Recursive substitution path: <a href="h871.html">H-871</a>, <a href="h874.html">H-874</a>, <a href="h876.html">H-876</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the 100% Hit Rate from the Compare Success Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A hit is the event in which the CAS Compare, weighing a derived value against an observed value, returns true within the error margin. Each true confirms a Swap write, and a single false breaks the 100% hit rate (<a href="../axiom.html#ax7">Axiom 7</a>). One observation-comparable D-card is one Compare-success trial, and 19 cards make 19 trials.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unconfirmed, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Compare-true frequency norm. This norm is chosen because the hit rate is set by the ratio of successful comparisons to total comparisons, whose denominator closes directly into the 19 observation-comparable D-cards. The hit rate is substituted by the ratio of true counts to trial counts.</p>
+<div class="math-block">
+<div class="math-row">$p_{\text{hit}}=\dfrac{N_{\text{hit}}}{N_{\text{hit}}+N_{\text{miss}}}$</div>
+<div class="math-row">$p_{\text{hit}}=\dfrac{19}{19+0}=100\%$</div>
+<div class="math-legend">$N_{\text{hit}}$: Compare-true count | $N_{\text{miss}}$: Compare-false count | $p_{\text{hit}}$: hit rate | $19$: observation-comparable D-cards</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h871.html">H-871</a>, <a href="h874.html">H-874</a>, <a href="h876.html">H-876</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N_hit  = 19          obs-matching D-cards (alpha, alpha_s, Koide, etc.)
+N_miss = 0           observation mismatches
+N_card = 19          observation-comparable D-cards</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the dimensionless-reliability domain. What it reveals is how many times true occurred across 19 Compare trials — the hit rate. Dividing the true count by the trial count yields that value.</p>
+<div class="math-block">
+<div class="math-row">$p_{\text{hit}}=\dfrac{19}{19}=100\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Hypothesis</h3>
+<div class="math-block">
+<div class="math-row">Derived: $p_{\text{hit}}=100\%$ (19/19)</div>
+<div class="math-row">Measured: $19$ hits, $0$ refutations</div>
+<div class="math-row">Error: $0\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The hit rate is 100%, but the sample of 19 is small, so the forward chain is incomplete — once the D-cards grow past 50 it updates and promotes. Insight: a single Compare false drops 100% to $18/19=94.7\%$, so this norm doubles as a self-correction signal.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h874.html">H-874</a> (grading system). <a href="h876.html">H-876</a> (falsifiability). <a href="h871.html">H-871</a> (input-output ratio)</p><p>This card can be re-used as input for the following cards: <a href="h871.html">H-871</a>, <a href="h874.html">H-874</a>, <a href="h876.html">H-876</a></p>
+<p>Re-injection path: <a href="h874.html">H-874</a>, <a href="h876.html">H-876</a>, <a href="h871.html">H-871</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h337.html">H-337</a>, <a href="h340.html">H-340</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 8비트 링 이음새 전달 비대칭에서 의지 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>의지는 8비트 링에서 발화비트 $\delta$(bit 7)가 진입점 observer(bit 0)에 전달되는 한 방향 이음새 비용이다. $\delta$는 FSM 밖 전역 플래그(<a href="../axiom.html#ax15">공리 15</a>)이고 observer는 FSM 진입점 필터(<a href="../axiom.html#ax10">공리 10</a>)이므로, 이 비용을 링 이음새 bit 7 — bit 0 한 방향 전달로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 8비트 링 이음새의 전달 방향 노름이다. (b) 발화비트가 observer로만 흐르고 역경로가 없는 비대칭이 의지의 구조를 정하기 때문에 이 노름을 택한다. observer가 $\delta$를 수신·필터링할 수는 있어도 $\delta$에 명령할 수 없으므로, 의지를 링 한 방향 경로 수의 비대칭으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{will} = \dfrac{N_{7\,\mapsto\,0}}{N_{0\,\mapsto\,7}}$</div>
+<div class="math-row">$N_{7\,\mapsto\,0} = 1,\quad N_{0\,\mapsto\,7} = 0$</div>
+<div class="math-legend">$N_{7\,\mapsto\,0}$: bit 7 발화비트에서 bit 0 observer로의 이음새 경로 수 | $N_{0\,\mapsto\,7}$: observer에서 발화비트로의 직접 경로 수 | will: 의지 비대칭</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h337.html">H-337</a>, <a href="h340.html">H-340</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>bit 7 = delta            FSM 밖 전역 플래그 (공리 15)
+bit 0 = observer         FSM 진입점 필터 (공리 10)
+N(7->0) = 1              링 이음새 순방향 경로
+N(0->7) = 0              역방향 경로 없음</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 $\delta$-observer 링 이음새 도메인이다. (b) 보려는 것은 의지가 "받아서 선택하는" 비대칭 구조인지, 곧 한 방향 전달의 방향 수다. 두 경로 수의 비를 취해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{will} = \dfrac{1}{0} = \infty \quad(1:0\ \text{비대칭})$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 이음새 전달 비대칭 $1:0$</div>
+<div class="math-row">측정: 리벳 1983 준비 전위가 의식적 결정에 선행</div>
+<div class="math-row">오차: 정량 대조 미완 (구조 일치까지)</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>통찰: 의지는 환상이 아니라 링 이음새가 한 방향뿐이라는 구조 자체다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h337.html">H-337</a>, <a href="h340.html">H-340</a></p>
+<p>재투입 경로: <a href="h337.html">H-337</a>, <a href="h340.html">H-340</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

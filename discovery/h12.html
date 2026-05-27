@@ -69,39 +69,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare-Swap 락 비용에서 h-bar = TOCTOU 락 비용 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>$\hbar$는 CAS의 Compare(상태 판정, 비용 +1)와 Swap(확정, 비용 +1) 사이의 최소 락 비용이다(<a href="../axiom.html#ax4">공리 4</a>: 비용). 두 시점 사이에서 DATA가 바뀌면 CAS 원자성(<a href="../axiom.html#ax14">공리 14</a>: FSM)이 깨지므로, 이를 막는 최소 비용이 0보다 커야 한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 TOCTOU 락 레지스터 노름(<a href="../axiom.html#ax5">공리 5</a>)이다. Compare 시점의 상태와 Swap 시점의 상태가 어긋나지 않도록 잡아두는 락이 원자성을 보장하는 유일한 장치이므로 이 노름을 택한다. 락 비용을 한 켤레 변수 사이에서 나누면 곱이 일정한 보존 관계가 된다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta x \cdot \Delta p \geq \dfrac{\hbar}{2}$</div>
+<div class="math-row">$\Delta E \cdot \Delta t \geq \dfrac{\hbar}{2}$</div>
+<div class="math-legend">$\hbar$: Compare-Swap 최소 락 비용 | $\Delta x,\Delta p$: 위치·운동량 켤레 | $\Delta E,\Delta t$: 에너지·시간 켤레 | $\hbar/2$: 총 락 비용의 보존 하한</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <code>Delta</code>, <code>ℏ</code></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar      = 1.054571817e-34 J·s   CODATA 2018
+hbar      > 0                     원자성 조건 (= 0 이면 TOCTOU 취약)
+플랑크 단위 hbar = 1               단위 선택 의존</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>락 비용을 켤레 변수 위상공간 도메인으로 변환한다. 이 변환으로 보려는 것은 위치를 정밀히 Compare하면($\Delta x$ 작게) 락 비용이 위치 쪽에 쏠려 운동량 쪽 비용($\Delta p$)이 커지는 거래다. 곱 $\Delta x\cdot\Delta p$의 하한이 락 비용 $\hbar/2$로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta x \downarrow \;\Rightarrow\; \Delta p \uparrow,\qquad \Delta x\cdot\Delta p \geq \dfrac{\hbar}{2}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\hbar > 0$ = Compare-Swap 최소 락 비용 (원자성 필요조건)</div>
+<div class="math-row">측정: $\hbar = 1.054571817\times10^{-34}$ J·s (CODATA 2018)</div>
+<div class="math-row">일치: 차원·구조 일치 (절대값 도출 미완)</div>
+</div>
+<p>판정: <strong>가설</strong>. 불확정성이 한계가 아니라 연산 비용이라는 구조는 $\hbar>0$의 필연성을 설명하나, $1.054\times10^{-34}$이라는 절대값을 CAS 비용에서 도출하는 식이 미작성이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 불확정성 원리의 근원 설명. h-bar를 "최소 작용"이 아닌 "락 비용"으로 재해석하면 양자-고전 경계(디코히어런스)의 정량적 기준 도출 가능.</p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

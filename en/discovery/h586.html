@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D Promotion possible upon next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive substitution path: <a href="h568.html">H-568</a>, <a href="h582.html">H-582</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Maxwell's Demon entropy compensation from the observer's Compare cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The demon's act of sorting is a Compare by which the observer (<a href="../axiom.html#ax10">Axiom 10</a>) partitions particles to one side. The $\text{observer}$ term on the right of the Banya formula is that measuring subject, and the Compare pays an irreversible cost of $+1$ (<a href="../axiom.html#ax4">Axiom 4</a>). That cost is the price of information acquisition.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Compare-cost norm of the observer term. It is chosen because the entropy decrease the demon gains by sorting is offset precisely by this Compare cost. The minimum cost per measured bit is the Landauer lower bound $k_B T \ln 2$ (<a href="h582.html">H-582</a>), and being irreversible (<a href="../axiom.html#ax5">Axiom 5</a>) it cannot be recovered.</p>
+<div class="math-block">
+<div class="math-row">$\Delta S_{\text{gas}} = -k_B \ln 2$</div>
+<div class="math-row">$\Delta S_{\text{observer}} = +\dfrac{Q_{\text{Compare}}}{T} = +k_B \ln 2$</div>
+<div class="math-legend">$\Delta S_{\text{gas}}$: gas entropy decrease from measurement | $\Delta S_{\text{observer}}$: increase from Compare cost | $Q_{\text{Compare}}$: 1-bit sorting cost | $\ln 2$: left/right 2-state branch</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h568.html">H-568</a>, <a href="h582.html">H-582</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>k_B   = 1.380649e-23 J/K        CODATA 2018
+ln 2  = 0.693147
+Q_min = k_B T ln 2              H-582 Landauer bound
+T     = 300 K                   room-temperature example</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the measurement/observer domain (<a href="../axiom.html#ax10">Axiom 10</a>: Compare branch). What it reveals is the sum of the gain the demon obtains by sorting and the cost the Compare pays — the total entropy budget. The two terms are added.</p>
+<div class="math-block">
+<div class="math-row">$\Delta S_{\text{total}} = \Delta S_{\text{gas}} + \Delta S_{\text{observer}} = -k_B\ln 2 + k_B\ln 2 = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived budget: $\Delta S_{\text{total}} = 0$</div>
+<div class="math-row">Measured check: Szilard engine $\langle W\rangle \le k_B T\ln 2$ (Toyabe et al. 2010)</div>
+<div class="math-row">Status: quantitative bound matches, demon application awaiting verification</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Since the measurement cost compensates the sorting gain exactly, the demon cannot violate the Second Law. The observer obtains no information for free.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h582.html">H-582</a> (Landauer) measurement cost. <a href="h568.html">H-568</a> (Second Law) cannot be violated.</p><p>This card can be re-used as input for the following cards: <a href="h568.html">H-568</a>, <a href="h582.html">H-582</a></p>
+<p>Re-injection path: <a href="h582.html">H-582</a>, <a href="h568.html">H-568</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

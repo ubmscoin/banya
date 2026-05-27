@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h849.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h849.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h849.html">H-849</a>. Photovoltaic Cell = Energy Conversion of the Photoelectric Effect (<a href="h437.html">H-437</a>)</h1><div class="box-finding">
@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D-promotion is possible upon proceeding to the next round / remaining tasks are explicitly stated.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unconfirmed; further refinement needed). Recursive-substitution path: <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Conversion Efficiency Limit from the Photon-Absorption FSM Norm Transition Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A photovoltaic cell is a device that converts the cost of photons into the cost of electricity. An incident photon induces an FSM norm transition across the band gap (<a href="../axiom.html#ax3">Axiom 3</a>), and that cost is converted into current at the pn junction (<a href="../axiom.html#ax7">Axiom 7</a>: cost conversion). The forward absorption of the photoelectric effect <a href="h437.html">H-437</a> is the input structure of this card.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unconfirmed; further refinement needed).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the band-gap FSM norm transition norm. An FSM norm transition occurs only when the photon energy is at least the band gap $E_g$ (<a href="../axiom.html#ax3">Axiom 3</a>), and the CAS separates electron-hole pairs at the pn junction (<a href="../axiom.html#ax5">Axiom 5</a>: pn separation). (b) This norm is chosen because the loss of sub-band-gap photons and the thermal loss of above-band-gap photons set the upper bound of single-junction conversion efficiency. This bound closes as the Shockley-Queisser limit.</p>
+<div class="math-block">
+<div class="math-row">$\eta = \dfrac{P_{\text{out}}}{P_{\text{in}}} = \dfrac{I_{sc}\,V_{oc}\,FF}{P_{\text{solar}}}$</div>
+<div class="math-row">$h\nu \ge E_g \;\Longrightarrow\; \text{FSM norm transition}$</div>
+<div class="math-legend">$\eta$: conversion efficiency | $I_{sc}$: short-circuit current | $V_{oc}$: open-circuit voltage | $FF$: fill factor | $P_{\text{solar}}$: incident solar cost | $E_g$: band gap = FSM norm difference</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the body of the card.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>SQ limit       = 33.7%     single junction, AM1.5
+Si single jct  = ~ 26%     measured record efficiency
+GaAs           = ~ 29%     measured record efficiency
+multi-junction = ~ 47%     stacked band gaps
+theory-measurement gap = < 5%</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the photo-to-electric conversion efficiency domain (pn separation after the FSM norm transition). (b) What it reveals is the maximum fraction of electrical cost a single band gap can extract from the solar cost — the single-junction efficiency upper bound. The SQ limit is that bound, and the measured record efficiency approaches it within 5%.</p>
+<div class="math-block">
+<div class="math-row">$\eta_{\text{Si}} \approx 26\% \;<\; \eta_{\text{SQ}} = 33.7\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: single-junction efficiency bound = SQ limit $33.7\%$</div>
+<div class="math-row">Measurement agreement: Si $26\%$, GaAs $29\%$, theory-measurement gap $< 5\%$</div>
+<div class="math-row">Awaiting measurement: direct derivation of the SQ limit from the FSM norm</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Conversion efficiency and the SQ limit agree with measurement within 5%, but the SQ limit $33.7\%$ itself is not derived directly from the FSM norm and remains an external input, so it stands one step short of promotion to discovery.</p>
+<p>The single condition that only above-band-gap photons trigger an FSM norm transition binds absorption loss and the efficiency bound into one structure.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h437.html">H-437</a> (photoelectric effect). <a href="h842.html">H-842</a> (semiconductor). <a href="h850.html">H-850</a> (LED).</p><p>This card can be re-used as input for the following cards: <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a></p>
+<p>Re-injection path: <a href="h437.html">H-437</a>, <a href="h842.html">H-842</a>, <a href="h850.html">H-850</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

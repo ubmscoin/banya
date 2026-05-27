@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h700.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h700.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h700.html">H-700</a>. Nonlinear Optics = Higher-Order Response of CAS Cost</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion is possible upon proceeding to the next round / residual tasks explicitly listed.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement needed). Recursive substitution path: <a href="h711.html">H-711</a>, <a href="h713.html">H-713</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Nonlinear Susceptibility Order from the Power Series of CAS Cost Response</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Nonlinear optics is the cost at which the ECS medium (<a href="../axiom.html#ax7">Axiom 7</a>) response to a strong CAS cost wave departs from linearity and higher-order cost coupling (<a href="../axiom.html#ax4">Axiom 4</a>) emerges. The CAS symmetry of the medium (<a href="../axiom.html#ax2">Axiom 2</a>) decides whether $\chi^{(2)}$ exists.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the power-series norm of the cost response. The medium polarization expands in powers of the cost-wave amplitude, each order setting a higher-order Swap coupling, so this norm is chosen; the polarization is substituted by the susceptibility series.</p>
+<div class="math-block">
+<div class="math-row">$P = \epsilon_0\left(\chi^{(1)}E + \chi^{(2)}E^2 + \chi^{(3)}E^3 + \cdots\right)$</div>
+<div class="math-row">$n_2 = \dfrac{3\chi^{(3)}}{4n_0^2\epsilon_0 c}$</div>
+<div class="math-legend">$P$: medium polarization | $\chi^{(k)}$: $k$-th-order susceptibility | $E$: cost-wave amplitude | $n_2$: Kerr coefficient | $n_0$: linear refractive index</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h711.html">H-711</a>, <a href="h713.html">H-713</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>chi^(3) = 1.8e-22 m^2/V^2   fused silica
+n0      = 1.45
+epsilon_0 = 8.854e-12 F/m
+c       = 2.998e8 m/s</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the nonlinear-medium domain. What it reveals is the Kerr coefficient $n_2$ produced by the third-order susceptibility. Substituting $\chi^{(3)}$ into the Kerr relation yields that value.</p>
+<div class="math-block">
+<div class="math-row">$n_2 = \dfrac{3\times 1.8\times10^{-22}}{4\times 1.45^2\times 8.854\times10^{-12}\times 2.998\times10^8} = 2.4\times10^{-20}\ \text{m}^2/\text{W}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $n_2 = 2.4\times10^{-20}\ \text{m}^2/\text{W}$</div>
+<div class="math-row">Measured: $n_2 \approx 2.6\times10^{-20}\ \text{m}^2/\text{W}$ (optical fiber)</div>
+<div class="math-row">Error: $8\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The power-series order structure matches the measured Kerr coefficient to the same order of magnitude, but the susceptibilities $\chi^{(k)}$ are external inputs rather than derived from axiom integers, so the forward chain does not close and it stops at hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h713.html">H-713</a> (photon pair) SPDC. <a href="h711.html">H-711</a> (Kerr effect) third-order nonlinearity.</p><p>This card can be re-used as input for the following cards: <a href="h711.html">H-711</a>, <a href="h713.html">H-713</a></p>
+<p>Re-injection path: <a href="h713.html">H-713</a>, <a href="h711.html">H-711</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h855.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h855.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h855.html">H-855</a>. Particle Accelerator = FSM Norm Acceleration by External Field</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unfixed, follow-up refinement required). Recursive substitution path: <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a>, <a href="h864.html">H-864</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the LHC Beam Energy from the External-Field FSM Norm Acceleration Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A charged particle is an FSM and its energy is the FSM norm of <a href="../axiom.html#ax3">Axiom 3</a>. The cost of <a href="../axiom.html#ax7">Axiom 7</a> (the accelerating electric-field energy $qV$) increases the norm each cycle, and on collision the CAS Compare of <a href="../axiom.html#ax5">Axiom 5</a> judges energy-momentum conservation and triggers a Swap (particle creation) — the accelerator reads this norm-increase cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unfixed, follow-up refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the FSM norm (beam energy) grown by the external field. A synchrotron confines the orbit with a magnetic field while the RF cavity adds $qV$ to the norm each revolution, so the accumulated energy is the per-turn gain times the number of turns, and this norm is chosen.</p>
+<div class="math-block">
+<div class="math-row">$E = q\,V_{\text{acc}} \times N_{\text{turns}}$</div>
+<div class="math-row">$E_{\text{cm}} = 2\,E_{\text{beam}}$</div>
+<div class="math-legend">$E$: FSM norm (beam energy) | $q$: charge | $V_{\text{acc}}$: accelerating voltage per turn | $N_{\text{turns}}$: accumulated turns | $E_{\text{cm}}$: center-of-mass collision energy</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a>, <a href="h864.html">H-864</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>E_beam   = 6.8 TeV             LHC beam energy
+circumference = 26.7 km        LHC ring
+B        = 8.3 T               bending field</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the collision domain (center-of-mass energy). What it reveals is the center-of-mass energy $E_{\text{cm}}$ available for new FSM creation when the two beams collide head-on. Doubling the beam energy yields that value.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{cm}} = 2 \times 6.8 = 13.6\;\text{TeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Measurement Agreement</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_{\text{cm}} = 13.6\;\text{TeV}$</div>
+<div class="math-row">Measured: $13.6\;\text{TeV}$ (LHC Run 3 center-of-mass)</div>
+<div class="math-row">Product: Higgs boson $125.25 \pm 0.17\;\text{GeV}$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The accumulated acceleration energy closes, but the synchrotron radiation loss is not quantitatively derived from the FSM-norm model, leaving the forward chain incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h856.html">H-856</a> (nuclear reactor), <a href="h860.html">H-860</a> (plasma), <a href="h864.html">H-864</a> (fusion reactor).</p><p>This card can be re-used as input for the following cards: <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a>, <a href="h864.html">H-864</a></p>
+<p>Re-injection path: <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a>, <a href="h864.html">H-864</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

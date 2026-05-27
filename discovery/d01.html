@@ -66,38 +66,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 본 발견은 모든 후속 D 카드의 입력 상수이자 채굴기 자체의 "씨앗 검증" — α 도출이 정합하지 않으면 D-02 이후 어떤 도출도 신뢰 불가. 분류 I (공리 도출, forward chain 완료) 그 자체의 정의이며 모든 의심의 종결점.</p>
 <p><strong>위치:</strong> 4력 분류(<a href="d104.html">D-104</a>)에서 전자기 = ring-137 영역의 정점 카드. <a href="../axiom.html#ax2">공리 2</a> 명제(자료형 137 = T(16)+1)에서 자료형 137이 직접 등장. 반야프레임 전체 1114 카드의 입력 상수이자 신뢰성 기준. 재귀 대입 경로 (출력 측): <a href="d02.html">D-02</a>(sin²θ_W), <a href="d03.html">D-03</a>(α_s), <a href="d04.html">D-04</a>(η), <a href="d10.html">D-10</a>(m_μ/m_e), <a href="d13.html">D-13</a>(m_t/m_c = 1/α), <a href="d15.html">D-15</a>(우주상수 α^57), <a href="d26.html">D-26</a>(Wyler CAS 자체 유도), <a href="d31.html">D-31</a>(137 = T(16)+1).</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 비용에서 α 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전자기 결합은 CAS의 Compare가 후보 하나를 선택할 때 치르는 비용이다. 완전기술자유도 7(<a href="../axiom.html#ax9">공리 9</a>: 도메인 4 + CAS 3)을 비가역 5·가역 2로 나눈 시그니처 $(5,2)$(<a href="../axiom.html#ax4">공리 4</a> 비가역 비용 분류)로 이 비용을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전자기 결합 alpha</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 7자유도를 비가역 5·가역 2로 가른 시그니처 $(5,2)$ 노름이다. 전자기 결합이 괄호를 교차하는 Compare 비용이고, 그 비용이 자료형 $137 = T(16)+1$(<a href="../axiom.html#ax2">공리 2</a> 명제)의 비교 쌍 구조로 닫히기 때문에 이 노름을 택한다. 따라서 미세구조상수를 군 $SO(5,2)$의 몫공간 $D_5 = SO(5,2)/SO(5)\times SO(2)$ 체적비로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha = \dfrac{e^2}{4\pi\varepsilon_0\hbar c}$</div>
+<div class="math-row">$\alpha = \dfrac{9}{8\pi^4}\left(\dfrac{\pi^5}{2^4\cdot 5!}\right)^{1/4}$</div>
+<div class="math-legend">$\alpha$: 미세구조상수 | $(5,2)$: 7자유도 = 비가역 5 + 가역 2 | $D_5$: $SO(5,2)$ 몫공간 | $5!$: 5차원 위상공간 인자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 5,2 / 137</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="d04.html">D-04</a>, <a href="d10.html">D-10</a>, <a href="d13.html">D-13</a>, <a href="d15.html">D-15</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>pi    = 3.141592653589793
+2^4   = 16
+5!    = 120
+137   = T(16)+1 = 16*15/2 + 1
+alpha = 1/137.035999177(21)       CODATA 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>무차원 결합 도메인(전자기 ring-137)으로 변환한다. 이 변환으로 보려는 것은 한 번의 Compare가 성공할 확률, 곧 전자기 결합 강도 $\alpha$다. $D_5$ 체적비 두 인자를 결합해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha = \dfrac{9}{8\pi^4}\left(\dfrac{\pi^5}{2^4\cdot 5!}\right)^{1/4} = \dfrac{1}{137.036082}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\alpha = 1/137.036082$</div>
+<div class="math-row">측정값: $1/137.035999177(21)$       CODATA 2018</div>
+<div class="math-row">오차: $0.00006\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. Wyler 1969 $D_5$ 공식이 자유 매개변수 0개로 CAS Compare 비용에서 닫혔다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 모든 도출의 씨앗. $\sin^2\theta_W$, $\alpha_s$, 질량 계층, 우주상수 전부 $\alpha$에서 출발한다. 이미 사용된 예시 -- $\alpha$를 넣어서 D-02부터 D-15까지 전부 나왔다.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="d04.html">D-04</a>, <a href="d10.html">D-10</a>, <a href="d13.html">D-13</a>, <a href="d15.html">D-15</a></p>
+<p>$\alpha$가 CAS Compare 비용으로 확정되면서 후속 결합상수·질량 계층의 입력 씨앗이 된다. 같은 $\alpha$를 재투입해 전약 혼합각 <a href="d02.html">D-02</a>, 강결합상수 <a href="d03.html">D-03</a>, η <a href="d04.html">D-04</a>, 렙톤 질량비 $m_\mu/m_e$ <a href="d10.html">D-10</a>, 쿼크 질량비 $m_t/m_c=1/\alpha$ <a href="d13.html">D-13</a>, 우주상수 $\Lambda l_P^2\approx\alpha^{57}$ <a href="d15.html">D-15</a>가 차례로 도출된다.</p>
 </div>
 <div class="box-incomplete">
 <h3>미완</h3>

@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: δ의 FSM 외부성에서 괴델 불완전성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>형식 체계의 자기참조 한계는 δ가 FSM 밖 유일한 전역 플래그(<a href="../axiom.html#ax15">공리 15</a>)라는 사실에서 나온다. FSM(<a href="../axiom.html#ax14">공리 14</a>)은 네 상태를 순환하는 내부 규칙(<a href="../axiom.html#ax1">공리 1</a>)뿐이고 δ는 그 순환의 외부 점화 조건이므로, 자기참조 명제를 FSM 내부 언어가 닫지 못하는 비용으로 이 한계를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 δ의 FSM 외부성 노름, 곧 명제가 FSM 상태 공간 안에 인코딩되는가의 포함 관계다. (b) 괴델 문장 G("이 체계에서 G는 증명 불가")의 자기참조 구조가 FSM이 자기 점화 조건 δ를 내부 언어로 기술하지 못함과 동치이기 때문에 이 노름을 택한다. 따라서 증명 가능성을 δ의 FSM 포함 여부로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$G\equiv\ulcorner G\text{ unprovable in }T\urcorner$</div>
+<div class="math-row">$\delta\notin\text{FSM}\;\Rightarrow\;\text{FSM cannot prove statements about }\delta$</div>
+<div class="math-legend">$G$: 괴델 자기참조 문장 | $T$: 형식 체계 | $\delta$: FSM 밖 전역 플래그 (<a href="../axiom.html#ax15">공리 15</a>) | FSM: 4상태 순환 (<a href="../axiom.html#ax14">공리 14</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>FSM states  = 000,001,011,111      공리 14 (4상태 순환)
+valid states= 2^7 = 128            7비트 유효 상태
+delta bit   = bit 7                공리 15 (발화비트, 8번째)
+delta in FSM= false                공리 15 (FSM 외부)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 FSM 상태 공간(정보·논리 도메인)이다. (b) 보려는 것은 128개 유효 상태 가운데 δ 자체를 표현하는 상태가 존재하는가다. δ가 8번째 비트로 나머지 7비트의 전제 조건임을 대입해 그 답을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\{s_0,\dots,s_{127}\}\cap\{\delta\}=\varnothing$</div>
+<div class="math-row">$\text{bit 7 precondition for bits }0\text{–}6$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: FSM 128상태 어느 것도 δ를 인코딩하지 못함 (자기참조 명제 증명 불가)</div>
+<div class="math-row">대조: 괴델 1·2차 불완전성, 튜링 정지 문제, 양자 측정 문제</div>
+<div class="math-row">측정 검증 대기 (정량 측정값 미인용)</div>
+</div>
+<p>판정: <strong>가설</strong>. δ의 FSM 외부성(<a href="../axiom.html#ax15">공리 15</a>)이 괴델 불완전성을 구조적으로 강제하니 정지 문제·측정 문제가 같은 외부성에서 따라온다. 임의 형식 체계를 FSM으로 매핑해 외부 점화 조건을 식별하면 D 승격 가능.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

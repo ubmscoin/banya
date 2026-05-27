@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h854.html">H-854</a>, <a href="h855.html">H-855</a>, <a href="h866.html">H-866</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: lock 비트 정렬 비용에서 라모 공명 주파수 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>핵스핀은 <a href="../axiom.html#ax10">공리 10</a>의 lock 비트이고, 외부 자기장 $B_0$가 그 lock 비트를 정렬하며 에너지 준위를 가른다. RF 펄스가 라모 주파수와 일치할 때 <a href="../axiom.html#ax5">공리 5</a>의 CAS Compare가 참이 되어 Swap(에너지 흡수)이 일어난다 — MRI는 이 공명 비용을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 lock 비트(핵스핀) 정렬 노름이다. 라모 세차는 lock 비트가 외부장에 정렬되며 도는 비용이고, 그 세차율이 곧 공명 조건이기 때문에 이 노름을 택한다. 따라서 공명 각주파수를 자기회전비와 외부장의 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta E = h\,\nu_0 = \gamma\,\hbar\,B_0$</div>
+<div class="math-row">$\omega_0 = \gamma\,B_0$</div>
+<div class="math-legend">$\omega_0$: 라모 각주파수 | $\gamma$: 양성자 자기회전비 | $B_0$: 외부 정렬 자기장 | $\Delta E$: lock 비트 준위 분리 | $h$: 플랑크 상수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h854.html">H-854</a>, <a href="h855.html">H-855</a>, <a href="h866.html">H-866</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>gamma/2pi = 42.577 MHz/T        양성자 (CODATA)
+B_0       = 1.5 T               임상 MRI
+B_0       = 3.0 T               고자장 MRI</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>핵자기공명 도메인(lock 비트 세차)으로 변환한다. 이 변환으로 보려는 것은 RF 펄스가 lock 비트를 교란하는 공명 주파수 $\nu_0$다. 자기회전비에 외부장을 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\nu_0 = 42.577 \times 1.5 = 63.87\;\text{MHz}$</div>
+<div class="math-row">$\nu_0 = 42.577 \times 3.0 = 127.73\;\text{MHz}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 측정 정합</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\nu_0 = 63.87\;\text{MHz}$ ($1.5\;\text{T}$)</div>
+<div class="math-row">측정값: $63.87\;\text{MHz}$ (임상 $1.5\;\text{T}$ MRI 양성자 공명)</div>
+<div class="math-row">관계: $\omega_0 = \gamma B_0$ 라모 공명 실측 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 공명 주파수는 닫히나 T1/T2 이완 시간이 lock 비트 모델에서 정량 도출되지 않아 forward chain이 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h854.html">H-854</a>(원자시계). <a href="h866.html">H-866</a>(양자 센싱). <a href="h855.html">H-855</a>(입자가속기)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h854.html">H-854</a>, <a href="h855.html">H-855</a>, <a href="h866.html">H-866</a></p>
+<p>재투입 경로: <a href="h854.html">H-854</a>, <a href="h866.html">H-866</a>, <a href="h855.html">H-855</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h854.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h854.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h854.html">H-854</a>. Atomic Clock = Precision Measurement of CAS Polling Period</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks explicitly stated.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive-substitution path: <a href="h851.html">H-851</a>, <a href="h853.html">H-853</a>, <a href="h866.html">H-866</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Cesium Second-Definition Frequency from the CAS Polling Period</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The atomic transition frequency is the reciprocal of the CAS polling period of <a href="../axiom.html#ax5">Axiom 5</a>. The FSM energy-level difference $\Delta E = h\nu$ of <a href="../axiom.html#ax3">Axiom 3</a> sets that polling frequency, and the lock bit of <a href="../axiom.html#ax10">Axiom 10</a> (the hyperfine state of nuclear-electron spin coupling) creates the two levels — the atomic clock reads the stability of this polling.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS polling-period norm. The energy difference between the two hyperfine lock-bit levels of cesium-133 is the cost of one polling cycle, and its frequency is the very reference for the unit of time, so this norm is chosen. The transition frequency is therefore substituted by the level energy difference divided by the Planck constant.</p>
+<div class="math-block">
+<div class="math-row">$\Delta E_{\text{hf}} = h\,\nu_{\text{Cs}}$</div>
+<div class="math-row">$\nu_{\text{Cs}} = \dfrac{\Delta E_{\text{hf}}}{h}$</div>
+<div class="math-legend">$\nu_{\text{Cs}}$: cesium transition frequency | $\Delta E_{\text{hf}}$: hyperfine lock-bit level difference | $h$: Planck constant | $1\;\text{s}$: 9192631770 polling cycles</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h851.html">H-851</a>, <a href="h853.html">H-853</a>, <a href="h866.html">H-866</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>nu_Cs    = 9192631770 Hz        SI second definition (exact)
+h        = 6.62607015e-34 J·s   Planck (exact)
+dnu/nu   = 1e-16                cesium standard stability</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within the bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the time-standard domain (polling-cycle count). What it reveals is the number of polling cycles $\nu_{\text{Cs}}$ that define one second. Dividing the level energy difference by the Planck constant yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\nu_{\text{Cs}} = 9\,192\,631\,770\;\text{Hz} \;\Rightarrow\; 1\;\text{s} = 9\,192\,631\,770 \text{ cycles}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Measurement Agreement</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\nu_{\text{Cs}} = 9\,192\,631\,770\;\text{Hz}$</div>
+<div class="math-row">Measured: $9\,192\,631\,770\;\text{Hz}$ (SI second definition)</div>
+<div class="math-row">Stability: $\Delta\nu/\nu \sim 10^{-16}$ measured</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The polling frequency and the definition of the second close, but the ultimate limit of polling stability (quantum fluctuation) is not quantitatively derived from the model, leaving the forward chain incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h853.html">H-853</a> (GPS). <a href="h851.html">H-851</a> (MRI). <a href="h866.html">H-866</a> (quantum sensing).</p><p>This card can be re-used as input for the following cards: <a href="h851.html">H-851</a>, <a href="h853.html">H-853</a>, <a href="h866.html">H-866</a></p>
+<p>Re-injection path: <a href="h853.html">H-853</a>, <a href="h851.html">H-851</a>, <a href="h866.html">H-866</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

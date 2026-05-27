@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h924.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h924.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h924.html">H-924</a>. <a href="../axiom.html#ax8">Axiom 8</a> Completeness = Every-Tick Polling is Necessary and Sufficient for Dynamics</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible in the next round / outstanding tasks listed.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unfixed, further refinement required). Recursive-substitution path: <a href="h903.html">H-903</a>, <a href="h909.html">H-909</a>, <a href="h911.html">H-911</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Minimum Tick Interval from the Polling Tick Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Dynamics is the cost the CAS pays to poll each tick and run Swap when the condition holds. The accumulation of the left side $\delta^2$ of the Banya formula is time itself, and time is defined as the order of polls. The dynamics cost is thus read as the minimum interval of polling ticks (<a href="../axiom.html#ax8">Axiom 8</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unfixed, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the time norm of the polling tick interval. (b) Without polling there is no Swap trigger and the state is static (time stops), while every-tick polling produces dynamics — hence this norm (<a href="../axiom.html#ax8">Axiom 8</a>). The minimum tick interval $\Delta t$ is therefore substituted by the least time one poll occupies = the Planck time.</p>
+<div class="math-block">
+<div class="math-row">$\forall\, t_n:\ \text{Poll}(t_n)\ \Rightarrow\ \text{CAS check}$</div>
+<div class="math-row">$\Delta t = t_P,\qquad \nu = 1/\Delta t$</div>
+<div class="math-legend">$\Delta t$: minimum polling tick interval | $t_P$: Planck time | $\nu$: polling frequency | $t_n$: the $n$-th tick</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h903.html">H-903</a>, <a href="h909.html">H-909</a>, <a href="h911.html">H-911</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>t_P = 5.391 x 10^-44 s    Planck time
+nu  = 1/t_P
+    = 1.855 x 10^43 Hz</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the dynamics time-evolution domain. (b) What it reveals is the polling frequency $\nu$, the number of CAS checks per second. The reciprocal of the minimum tick interval yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\nu = 1/t_P = 1/(5.391\times10^{-44}) \approx 1.855\times10^{43}\ \text{Hz}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\nu \approx 1.9\times10^{43}\ \text{Hz}$ ($\Delta t = t_P$)</div>
+<div class="math-row">Necessity: no polling means a static state (time stops)</div>
+<div class="math-row">Sufficiency: every-tick polling produces every-tick dynamics (time evolution closes)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Every-tick polling is the closure point of dynamics, but the exact identity of the minimum tick with the Planck time must be closed by measurement. That Hamiltonian, Schrodinger, and Newtonian dynamics reduce to an every-tick polling average is the clue to that closure.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h911.html">H-911</a> (time reversal). <a href="h909.html">H-909</a> (end of the universe). <a href="h903.html">H-903</a> (spacetime)</p><p>This card can be re-used as input for the following cards: <a href="h903.html">H-903</a>, <a href="h909.html">H-909</a>, <a href="h911.html">H-911</a></p>
+<p>Re-injection path: <a href="h911.html">H-911</a>, <a href="h909.html">H-909</a>, <a href="h903.html">H-903</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

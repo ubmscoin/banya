@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / 1 recursive input confirmed, D promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; natural classification plus (domain undetermined, refinement needed in subsequent rounds). Recursive substitution path: <a href="h232.html">H-232</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Decoherence Rate $\Gamma$ from the Orthogonality-violation Read Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Decoherence is the cost the CAS Read (<a href="../axiom.html#ax2">Axiom 2</a>) pays as it detects an orthogonality violation. When orthogonality is complete there is no violation to detect, so the cost is 0; when a grip penetrates across the domain boundary the cost arises in proportion to the collision frequency of occupied and empty slots. This violation cost is read as the cross term on the right side of the Banya formula.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; natural classification plus (domain undetermined, refinement needed in subsequent rounds)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the binomial-variance norm built from the occupancy $d/N$ and the vacancy $1-d/N$. (b) This norm is chosen because the violation collision is the frequency at which occupied and empty slots meet, and that frequency is maximal at the product of the two ratios. The decoherence rate $\Gamma$ is therefore substituted by this product carried on the inverse Planck time.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma = \dfrac{1}{t_p}\,p(1-p)$</div>
+<div class="math-row">$\Gamma = \dfrac{1}{t_p}\,\dfrac{d}{N}\left(1-\dfrac{d}{N}\right)$</div>
+<div class="math-legend">$\Gamma$: decoherence rate | $t_p$: Planck time | $d/N$: slot occupancy | $1-d/N$: vacancy | $p(1-p)$: binomial variance = violation collision frequency</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> Extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h232.html">H-232</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>t_p          = 5.391247e-44 s         Planck time
+d/N          = 1/2                    max-violation occupancy
+p(1-p)_max   = 1/4                    maximal at d/N = 1/2
+Gamma_max    = 1/(4 t_p) ~ 4.64e42 /s</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the inverse-time domain (decay rate). (b) What it reveals is the speed at which the orthogonality violation destroys quantum correlation — the maximum decoherence rate. Since the product is maximal at $1/4$ when $d/N=1/2$, the value is computed at that point.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma_{\max} = \dfrac{1}{t_p}\cdot\dfrac{1}{2}\cdot\dfrac{1}{2} = \dfrac{1}{4t_p}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Gamma_{\max} = 1/(4t_p)$, maximal at $d/N=1/2$</div>
+<div class="math-row">Measured: system-specific decoherence times (not compared)</div>
+<div class="math-row">Status: functional form derived, quantitative comparison pending</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The decoherence rate closes as the binomial-variance form $p(1-p)$, but mapping which physical quantities $N$ and $d$ correspond to in real systems remains the next round's task.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h232.html">H-232</a></p>
+<p>Re-injection path: <a href="h232.html">H-232</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h579.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h579.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_info_consciousness</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h579.html">H-579</a>. Blackbody Radiation = CAS Equilibrium of d-ring Thermal Modes</h1><div class="box-finding">
@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative equation absent / 4 recursive inputs confirmed, D promotion possible upon next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h478.html">H-478</a>, <a href="h577.html">H-577</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Blackbody Radiation from the CAS-Equilibrium Cost of d-ring Thermal Modes</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Blackbody radiation is the state in which the discrete thermal modes of the d-ring (<a href="../axiom.html#ax2">Axiom 2</a>) reach CAS equilibrium. <a href="../axiom.html#ax2">Axiom 2</a> quantizes the modes into discrete frequencies $\nu$, and the <a href="../axiom.html#ax4">Axiom 4</a> (cost) equilibrium sets the mean occupancy of each mode. Each mode is a boson with no upper bound on occupancy (<a href="h577.html">H-577</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the <a href="h577.html">H-577</a> Bose-Einstein norm. (b) It is chosen because the occupancy of one d-ring mode follows the non-exclusive Swap, the cost per mode is $h\nu$, and the equilibrium scale is $k_BT$. Multiplying the mode density $8\pi\nu^2/c^3$ by the boson occupancy and the mode cost $h\nu$ closes the Planck function.</p>
+<div class="math-block">
+<div class="math-row">$\rho(\nu)=\dfrac{8\pi\nu^2}{c^3}$</div>
+<div class="math-row">$B(\nu,T)=\dfrac{2h\nu^3}{c^2}\dfrac{1}{e^{h\nu/k_BT}-1}$</div>
+<div class="math-legend">$B$: spectral radiance | $h\nu$: cost of 1 d-ring mode | $k_BT$: CAS equilibrium scale | $\rho$: mode density | $-1$: boson non-exclusion (<a href="h577.html">H-577</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h478.html">H-478</a>, <a href="h577.html">H-577</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>h   = 6.62607015e-34 J s       CODATA 2018
+c   = 2.99792458e8 m/s         CODATA 2018
+k_B = 1.380649e-23 J/K         CODATA 2018
+occupancy = 1/(exp(h nu / k_B T) - 1)   H-577</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the spectral radiance of the d-ring modes. (b) What it reveals is the radiation intensity at frequency $\nu$. Multiplying the mode cost $h\nu$, the mode density, and the boson occupancy, the denominator $-1$ blocks the ultraviolet catastrophe.</p>
+<div class="math-block">
+<div class="math-row">$B(\nu,T)=h\nu\cdot\dfrac{2\nu^2}{c^2}\cdot\dfrac{1}{e^{h\nu/k_BT}-1}=\dfrac{2h\nu^3}{c^2}\dfrac{1}{e^{h\nu/k_BT}-1}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $B(\nu,T)=\dfrac{2h\nu^3}{c^2}/(e^{h\nu/k_BT}-1)$</div>
+<div class="math-row">Measured: CMB blackbody spectrum (COBE/FIRAS)</div>
+<div class="math-row">Error: $<10^{-5}$ (deviation)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Planck function closes from d-ring discrete modes plus boson occupancy, and the denominator $-1$ resolves the ultraviolet catastrophe automatically. The same function becomes the input for the Stefan-Boltzmann law <a href="h580.html">H-580</a> and Wien's displacement <a href="h581.html">H-581</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h580.html">H-580</a> (Stefan-Boltzmann) total radiation. <a href="h581.html">H-581</a> (Wien displacement) peak. <a href="h577.html">H-577</a> (BE distribution) application.</p><p>This card can be re-used as input for the following cards: <a href="h478.html">H-478</a>, <a href="h577.html">H-577</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
+<p>Re-injection path: <a href="h577.html">H-577</a>, <a href="h478.html">H-478</a>, <a href="h580.html">H-580</a>, <a href="h581.html">H-581</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

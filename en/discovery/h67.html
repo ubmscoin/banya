@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h67.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h67.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h67.html">H-67</a>. Holevo Bound = Compare 1 bit / CAS Cycle</h1><div class="box-finding">
@@ -71,39 +71,48 @@ Axiom basis: under <a href="../axiom.html#ax2">Axiom 2</a> (CAS atomicity), Comp
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion is possible on the next round / remaining tasks stated</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Holevo Bound from the CAS Compare Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Information extraction is the cost the CAS Compare pays per cycle. Compare atomically decides only one true/false bit (<a href="../axiom.html#ax2">Axiom 2</a>), and observation is that Compare execution (<a href="../axiom.html#ax11">Axiom 11</a>). Since one d-ring revolution runs one Compare, the upper bound on extracted information is set by this cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the per-CAS-cycle Compare-decision-bit-count norm. The upper bound on classical information drawn from a quantum state is the number of Compares possible in one cycle, and this norm is chosen because Compare is an atomic 1-bit decision (cost C+1). The Holevo bound $\chi$ is substituted by 1 bit per cycle.</p>
+<div class="math-block">
+<div class="math-row">$\chi \leq S(\rho)$</div>
+<div class="math-row">$\chi_{\text{CAS}} = 1\;\text{bit / cycle}$</div>
+<div class="math-legend">$\chi$: Holevo information | $S(\rho)$: von Neumann entropy | $1\,\text{bit}$: one Compare decision (<a href="../axiom.html#ax2">Axiom 2</a>) | cycle: one d-ring revolution = one Compare (<a href="../axiom.html#ax11">Axiom 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Compare decisions/cycle = 1 bit       Axiom 2 (atomicity)
+observation = Compare execution        Axiom 11
+Holevo bound            = 1 classical bit / 1 qubit</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum information-extraction domain. What it reveals is the upper bound of classical bits drawable from 1 qubit. Since only one Compare runs per cycle, that bound closes at 1 bit.</p>
+<div class="math-block">
+<div class="math-row">$\chi_{\max} = 1\;\text{Compare} \times 1\;\text{bit} = 1\;\text{bit}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Hypothesis</h3>
+<div class="math-block">
+<div class="math-row">Derived: extraction bound per cycle $= 1$ bit</div>
+<div class="math-row">Reference: Holevo bound $\chi \leq S(\rho) \leq 1$ bit (1 qubit)</div>
+<div class="math-row">Agreement: structural match (quantitative closure incomplete)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The 1-bit bound matches Compare atomicity, but closing the full continuous inequality for $\chi$ within CAS remains, so it stays a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: CAS interpretation of quantum channel capacity. Structural proof of the impossibility of superluminal communication. Linked with <a href="h70.html">H-70</a> (Tsirelson bound).</p><p>This card can be re-used as input for the following cards: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
+<p>Re-injection path: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

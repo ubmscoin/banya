@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 5개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57. 재귀 대입 경로: <a href="d15.html">D-15</a>, <a href="d62.html">D-62</a>, <a href="d63.html">D-63</a>, <a href="d74.html">D-74</a>, <a href="h30.html">H-30</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU COLD 슬롯 비용에서 암흑에너지 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>암흑에너지는 d-ring의 57 슬롯 중 CAS가 접근하지 않아 비활성으로 남는 슬롯의 비용이다. 쓰기·중첩 유지(<a href="../axiom.html#ax7">공리 7</a>)의 RLU 정책이 슬롯을 HOT·WARM·COLD로 가르고, 접근 빈도 0인 COLD 슬롯이 음의 압력으로 남는다. 그 분율을 비용으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 RLU COLD 슬롯 분율 노름이다. (b) DATA는 이산이라(<a href="../axiom.html#ax3">공리 3</a>) d-ring 슬롯이 57개 정수로 양자화되고, 접근 빈도에 따른 HOT($3$)·WARM($15$)·COLD($39$) 분배에서 COLD 분율이 암흑에너지 밀도를 정하기 때문에 이 노름을 택한다.</p>
+<div class="math-block">
+<div class="math-row">$\Omega_\Lambda = \dfrac{N_{\text{COLD}}}{N_{\text{slot}}}$</div>
+<div class="math-row">$\Omega_\Lambda = \dfrac{39}{57}$</div>
+<div class="math-legend">$\Omega_\Lambda$: 암흑에너지 밀도 비율 | $57$: d-ring 슬롯 수 (<a href="d15.html">D-15</a>) | $39$: COLD 슬롯 수 ($57-15-3$, <a href="h30.html">H-30</a>) | $3$: HOT (CAS 단계 수) | $15$: WARM ($3\times 5$)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57, 7, 21, 35</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d15.html">D-15</a>, <a href="d62.html">D-62</a>, <a href="d63.html">D-63</a>, <a href="d74.html">D-74</a>, <a href="h30.html">H-30</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N_slot       = 57                 d-ring 슬롯 수, D-15
+N_HOT        = 3                  CAS 단계 수
+N_WARM       = 15 = 3 x 5
+N_COLD       = 57 - 15 - 3 = 39   H-30 분배
+Omega_Lambda = 0.6847 ± 0.0073    Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 우주론 에너지 밀도 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 우주 전체 에너지 중 암흑에너지가 차지하는 분율이다. COLD 슬롯 수를 전체 슬롯 수로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Omega_\Lambda = \dfrac{39}{57} = 0.6842$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Omega_\Lambda = 0.6842$</div>
+<div class="math-row">측정값: $0.6847 \pm 0.0073$ (Planck 2018)</div>
+<div class="math-row">오차: $0.12\%$</div>
+</div>
+<p>판정: <strong>발견</strong></p>
+<p>우주론의 우연 문제로 불린 68% 분율이 RLU COLD 분율이라는 순수 정수비로 닫힌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 우주론 에너지 분배. <a href="h30.html">H-30</a>(3:15:39) 연쇄.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d15.html">D-15</a>, <a href="d62.html">D-62</a>, <a href="d63.html">D-63</a>, <a href="d74.html">D-74</a>, <a href="h30.html">H-30</a></p>
+<p>재투입 경로: <a href="d15.html">D-15</a>, <a href="h30.html">H-30</a>, <a href="d74.html">D-74</a>, <a href="d62.html">D-62</a>, <a href="d63.html">D-63</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h364.html">H-364</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 상태전이 빈도에서 타우 스케일 강결합 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>타우 질량 스케일의 강결합 $\alpha_s(m_\tau)$는 FSM 상태전이 000==&gt;001==&gt;011==&gt;111의 빈도 비용이다. CAS(<a href="../axiom.html#ax2">공리 2</a>)에서 에너지가 낮을수록 전이가 빈번해 결합이 커지므로, 점근적 자유의 역으로 저에너지에서 $\alpha_s$가 증가한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 상태전이 빈도 노름이다. 강결합이 분자에 CAS 유효 상태 수 7, 분모에 구면 채널 $4\pi$를 두고 에너지 의존성 $\ln(m_\tau/\Lambda)$로 달리기 때문에 이 노름을 택한다. 따라서 $\alpha_s(m_\tau)$를 7과 $4\pi$의 1루프 달리기 식으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha_s(m_\tau) = \dfrac{g_s^2(m_\tau)}{4\pi}$</div>
+<div class="math-row">$\alpha_s(m_\tau) = \dfrac{7}{4\pi\left(1 + \dfrac{7}{2\pi\ln(m_\tau/\Lambda)}\right)}$</div>
+<div class="math-legend">$\alpha_s(m_\tau)$: 타우 스케일 강결합 | $7$: CAS 유효 상태 수 = $\beta_0$ 계수 | $4\pi$: 구면 채널 | $m_\tau$: 타우 질량 | $\Lambda$: $\Lambda_{\text{QCD}}$ (<a href="h364.html">H-364</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <code>Lambda</code>, <code>M_Z</code>, <code>alpha</code>, <code>alpha_s</code>, <code>m_b</code>, <code>m_c</code>, <code>m_tau</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h364.html">H-364</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_tau   = 1.777 GeV               PDG 2024
+Lambda  = 0.222 GeV               H-364
+ln(m_tau/Lambda) = ln(8.0) = 2.08
+7/(2 pi x 2.08) = 0.536
+1 + 0.536 = 1.536</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>강력 ring-7 달리기 도메인으로 변환한다. 이 변환으로 보려는 것은 타우 스케일에서의 색 결합 세기 $\alpha_s(m_\tau)$다. 7을 $4\pi$와 1루프 달리기 인자로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha_s(m_\tau) = \dfrac{7}{4\pi\times 1.536} = \dfrac{7}{19.30} = 0.363$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\alpha_s(m_\tau) = 0.363$</div>
+<div class="math-row">측정값: $0.330 \pm 0.014$ (PDG 2024)</div>
+<div class="math-row">오차: $10\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 1루프 달리기는 정성적으로 맞으나 오차 10%가 2루프 보정 없이는 남아 발견으로 승격하지 못한다.</p>
+<p>통찰: $\beta_0$ 분자가 CAS 유효 상태 수 7이며, 저에너지 전이 빈발이 색 가둠의 모습이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h364.html">H-364</a></p>
+<p>재투입 경로: <a href="h364.html">H-364</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

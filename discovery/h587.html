@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비가역 비용에서 카르노 효율 최소 손실 비율 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>열기관은 고온원과 저온원 사이에서 CAS가 비용을 옮기는 사이클이다. CAS는 비가역(<a href="../axiom.html#ax5">공리 5</a>)이라 옮긴 비용 일부를 일로 되돌리지 못하고 저온원에 버린다. 그 버려지는 몫이 효율 손실이며, 온도는 δ 평형(<a href="h571.html">H-571</a>)으로 정의된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 비가역 비용 노름이다. 비가역 손실의 하한이 효율 한계를 정하기 때문에 이 노름을 택한다. CAS 비용 보존(<a href="../axiom.html#ax4">공리 4</a>)으로 입력 비용 $Q_H$ 중 일 $W$를 뺀 나머지가 저온원으로 가고, 그 최소 비율이 온도비 $T_L/T_H$다.</p>
+<div class="math-block">
+<div class="math-row">$\eta = \dfrac{W}{Q_H} = 1 - \dfrac{Q_L}{Q_H}$</div>
+<div class="math-row">$\eta_C = 1 - \dfrac{T_L}{T_H}$</div>
+<div class="math-legend">$\eta$: 열기관 효율 | $W$: 추출한 일 | $Q_H,Q_L$: 고온원 흡수·저온원 방출 비용 | $T_H,T_L$: 고온·저온 온도 (δ 평형, <a href="h571.html">H-571</a>) | $\eta_C$: 카르노 한계 = 최소 손실 비율</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>T_H = 600 K                     고온원 예시
+T_L = 300 K                     저온원 예시
+T_L/T_H = 0.5                   최소 손실 비율
+1 - T_L/T_H = 0.5               카르노 한계</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>열역학 효율 도메인으로 변환한다. 이 변환으로 보려는 것은 비가역 손실이 최소일 때 얻을 수 있는 일의 최대 비율, 곧 카르노 효율 $\eta_C$다. 온도비를 1에서 빼서 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\eta_C = 1 - \dfrac{300}{600} = 0.5 = 50\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\eta_C = 1 - T_L/T_H = 0.5$ (예시)</div>
+<div class="math-row">측정 검증: 모든 실측 열기관 $\eta \le \eta_C$ (열역학 제2법칙)</div>
+<div class="math-row">상태: 정성 한계 일치, 비가역 손실 정량화 대기</div>
+</div>
+<p>판정: <strong>가설</strong>. 카르노 사이클은 CAS 비가역을 최소화하는 이상적 경로이며, 실제 열기관은 비가역 비용이 더 커 $\eta < \eta_C$다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h568.html">H-568</a>(제2법칙) 효율 한계. <a href="h572.html">H-572</a>(자유에너지) 최대 일.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
+<p>재투입 경로: <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

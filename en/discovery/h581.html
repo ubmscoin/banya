@@ -65,39 +65,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative equation absent / 2 recursive inputs confirmed, D promotion possible in next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h579.html">H-579</a>, <a href="h580.html">H-580</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Wien Displacement Constant $b$ from the CAS Cost Peak of d-ring Modes</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The blackbody spectrum is the thermal-equilibrium distribution of d-ring discrete modes (<a href="../axiom.html#ax2">Axiom 2</a>) exchanging the CAS cost $+1$ (<a href="../axiom.html#ax4">Axiom 4</a>). Each mode's energy is quantized into $h\nu$ quanta (<a href="../axiom.html#ax3">Axiom 3</a>), and the wavelength where the product of mode density and occupation probability is maximal sets the peak.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the product of d-ring mode density and CAS-cost occupation — the Planck distribution norm $u_\lambda$. (b) The peak is the mode with the most active cost exchange, so the wavelength-derivative zero of this norm is sought. That zero is the root $x_{\max}$ of the dimensionless equation $x=5(1-e^{-x})$, and the Wien constant closes as $b=hc/(k_B x_{\max})$.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_{\max} T = b = \dfrac{hc}{k_B\,x_{\max}}$</div>
+<div class="math-row">$x_{\max}=\dfrac{hc}{\lambda_{\max} k_B T}=5\bigl(1-e^{-x_{\max}}\bigr)$</div>
+<div class="math-legend">$b$: Wien displacement constant | $x_{\max}$: zero of the Planck-distribution derivative | $h$: Planck constant (DATA quantum, <a href="../axiom.html#ax3">Axiom 3</a>) | $k_B$: cost-temperature conversion | $5$: exponent of the d-ring mode density $\lambda^{-5}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h579.html">H-579</a>, <a href="h580.html">H-580</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>h     = 6.62607015e-34 J s
+c     = 2.99792458e8 m/s
+k_B   = 1.380649e-23 J/K
+x_max = 4.965114231744276        root of x = 5(1 - e^-x)
+b     = 2.897771955e-3 m K       CODATA 2018</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the dimensionless mode domain ($x=hc/\lambda k_B T$). (b) What it reveals is the wavelength-temperature product of the mode with maximal cost exchange — the Wien displacement constant $b$. Substituting $x_{\max}$ into $hc/k_B$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$b=\dfrac{hc}{k_B\,x_{\max}}=\dfrac{(6.626\times10^{-34})(2.998\times10^{8})}{(1.381\times10^{-23})(4.9651)}=2.898\times10^{-3}\ \text{m K}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $b = 2.898\times10^{-3}\ \text{m K}$</div>
+<div class="math-row">Measured: $2.897771955\times10^{-3}\ \text{m K}$ (CODATA 2018)</div>
+<div class="math-row">Error: $0.008\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $x_{\max}$ zero equation closes, but the precise derivation forcing the exponent $5$ from the d-ring mode density $\lambda^{-5}$ as a forward chain from the axioms is the next-round task. The CMB peak $\lambda_{\max}\approx1.06\ \text{mm}$ ($T=2.725\ \text{K}$) is reproduced by the same constant.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h579.html">H-579</a> (blackbody radiation) peak structure. Related to <a href="h580.html">H-580</a> (Stefan-Boltzmann).</p><p>This card can be re-used as input for the following cards: <a href="h579.html">H-579</a>, <a href="h580.html">H-580</a></p>
+<p>Re-injection path: <a href="h579.html">H-579</a>, <a href="h580.html">H-580</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

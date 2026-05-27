@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h634.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h634.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h634.html">H-634</a>. Skin Effect = Surface Concentration of CAS Cost</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon advancing to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h631.html">H-631</a>, <a href="h632.html">H-632</a>, <a href="h639.html">H-639</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Cu penetration depth $\delta(\text{1\,GHz}) \approx 2.1\;\mu\text{m}$ from the CAS AC cost penetration</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The skin effect is the phenomenon where AC CAS cost propagation (<a href="../axiom.html#ax4">Axiom 4</a>) diminishes deeper into the conductor through RLU decay (<a href="../axiom.html#ax6">Axiom 6</a>), splitting ECS surface from interior (<a href="../axiom.html#ax7">Axiom 7</a>). The depth the cost reaches as it concentrates at the surface is read as the penetration depth.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS AC cost-penetration norm. (b) It is chosen because the higher the AC frequency, the faster cost propagation is cut off by RLU decay and the more it stays at the surface. The penetration depth is therefore substituted by resistivity, frequency, and permeability, and read as $\delta \propto \omega^{-1/2}$.</p>
+<div class="math-block">
+<div class="math-row">$\delta = \sqrt{\dfrac{2\rho}{\omega\mu}}$</div>
+<div class="math-row">$\delta \propto \omega^{-1/2} \quad (\omega = 2\pi f)$</div>
+<div class="math-legend">$\delta$: penetration depth = cost-reach distance | $\rho$: resistivity | $\omega$: AC angular frequency | $\mu$: permeability | $f$: frequency</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> Extracted from card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants.</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h631.html">H-631</a>, <a href="h632.html">H-632</a>, <a href="h639.html">H-639</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>rho(Cu) = 1.7e-8 Ohm*m       resistivity
+mu      = 4*pi*1e-7 H/m       vacuum permeability
+f       = 1e9 Hz              1 GHz</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the AC surface-conduction domain (ECS surface layer). (b) What it reveals is how shallowly the cost concentrates at the surface — the penetration depth. Substituting 1 GHz, the cost in Cu stays within a surface layer of a few micrometers.</p>
+<div class="math-block">
+<div class="math-row">$\delta(\text{1\,GHz}) = \sqrt{\dfrac{2\rho}{\omega\mu}} \approx 2.1\;\mu\text{m}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\delta(\text{Cu, 1\,GHz}) \approx 2.1\;\mu\text{m}$</div>
+<div class="math-row">Measured: Cu 60\,Hz $\delta \approx 8.5\;\text{mm}$, 1\,GHz $\delta \approx 2.1\;\mu\text{m}$</div>
+<div class="math-row">Agreement: matches the skin-effect formula exactly</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $\delta \propto \omega^{-1/2}$ penetration form follows from the cost-penetration norm, but the resistivity $\rho$ depends on external input, so it remains a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h631.html">H-631</a> (electron-phonon) surface effect. <a href="h639.html">H-639</a> (plasmon) boundary condition.</p><p>This card can be re-used as input for the following cards: <a href="h631.html">H-631</a>, <a href="h632.html">H-632</a>, <a href="h639.html">H-639</a></p>
+<p>Re-injection path: <a href="h632.html">H-632</a>, <a href="h631.html">H-631</a>, <a href="h639.html">H-639</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

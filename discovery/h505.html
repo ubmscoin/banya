@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="h494.html">H-494</a>, <a href="h497.html">H-497</a>, <a href="h504.html">H-504</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 차와 전자기 비용 경합에서 중성자-양성자 질량 차 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>중성자 $ddu$와 양성자 $uud$의 질량 차는 두 비용의 경합이다. FSM 노름이 $m_d>m_u$이므로 중성자 쪽이 무겁고(<a href="../axiom.html#ax14">공리 14</a>), 양성자의 전하가 전자기 자기 에너지를 더해 양성자 쪽을 끌어올린다(<a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax11">공리 11</a>: 전자기 $\propto\alpha/\ell$). 두 항의 부호가 반대다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 FSM 노름 차에 전자기 CAS 비용을 더한 합성 노름이다. (b) 이 노름을 택하는 이유: 강력 노름 차는 중성자를 무겁게, 전자기 비용은 양성자를 무겁게 하므로 순 차이는 두 부호 다른 항의 합이고, 이 경합이 부등호 방향까지 정하기 때문이다. 단일 질량차를 두 비용 합으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$m_n - m_p = \Delta\|\text{FSM}\| + \Delta E_{\text{EM}}$</div>
+<div class="math-row">$m_n - m_p = (m_d - m_u) - |\Delta E_{\text{EM}}|$</div>
+<div class="math-legend">$m_d - m_u$: FSM 노름 차 (중성자 무겁게) (<a href="../axiom.html#ax14">공리 14</a>) | $\Delta E_{\text{EM}}$: 전자기 자기 에너지 (양성자 무겁게) (<a href="../axiom.html#ax11">공리 11</a>) | $\propto\alpha/\ell$: 전자기 비용 (<a href="../axiom.html#ax4">공리 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h494.html">H-494</a>, <a href="h497.html">H-497</a>, <a href="h504.html">H-504</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_d - m_u    ~ +2.5 MeV     쿼크 노름 차
+dE_EM        ~ -1.2 MeV     전자기 보정
+m_n - m_p(측정) = 1.2933 MeV   PDG
+격자 QCD+QED = 1.51 ± 0.30 MeV BMW 2015</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 질량 계층 도메인으로 변환한다. (b) 보려는 것은 강력 노름 차가 전자기 보정을 압도해 $m_n>m_p$가 되는가이다. 두 부호 다른 항을 더해 순 차이를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_n - m_p = (+2.5) + (-1.2) = 1.3\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 측정</h3>
+<div class="math-block">
+<div class="math-row">도출: $m_n - m_p = 1.3\;\text{MeV}$</div>
+<div class="math-row">측정: $1.2933\;\text{MeV}$ (PDG), 격자 $1.51\pm0.30$ (BMW 2015)</div>
+<div class="math-row">오차: 격자값과 $1\sigma$ 정합</div>
+</div>
+<p>판정: <strong>가설</strong>. 두 항 경합이 부등호와 크기를 닫지만, $m_d-m_u$와 전자기 자기 에너지의 정량 계수가 공리에서 직접 도출되지 않아 마지막 단계가 미완이다.</p>
+<p>통찰: 강력 노름 차가 전자기 보정을 이겨 $m_n>m_p$가 되는 부등호가 수소 안정과 우주 구조를 가능케 하는 분기점이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h497.html">H-497</a>(이소스핀) 깨짐 현상. <a href="h504.html">H-504</a>(양성자 안정성) 붕괴 방향. <a href="h494.html">H-494</a>(파이온) 질량 분리.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h494.html">H-494</a>, <a href="h497.html">H-497</a>, <a href="h504.html">H-504</a></p>
+<p>재투입 경로: <a href="h497.html">H-497</a>, <a href="h504.html">H-504</a>, <a href="h494.html">H-494</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Explicit derivation formula exists / Experimental comparison error &lt;= 1% / Recursive substitution inputs (4) confirmed / forward chain complete (axiom ==&gt; formula ==&gt; numerical value)</p>
 <p><strong>Location:</strong> Category: d cosmology. Domain: delta ==&gt; RLU HOT/WARM/COLD or alpha^57. Recursive substitution path: <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Spectral index $n_s$ from the RLU state-space cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The spectral index is slightly below 1 because CAS consumes part of the state space as operation cost. The $2^4=16$ combinations of the 4 domain axes (<a href="../axiom.html#ax1">Axiom 1</a>) form 57 independent combinations on the d-ring (<a href="../axiom.html#ax3">Axiom 3</a>), and when juim grabs some of them, only the rest are freely observed.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD or alpha^57</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the 57-independent-combination state-space norm. It is chosen because the spectrum's slight break of scale invariance is the cost of CAS operations consuming slots, and that cost is exactly one Read plus one Compare = 2 slots. Subtracting 2 from 57 (<a href="d15.html">D-15</a>) gives the observable fraction.</p>
+<div class="math-block">
+<div class="math-row">$n_s = 1 - \dfrac{n_{\text{CAS}}}{N}$</div>
+<div class="math-row">$n_s = 1 - \dfrac{2}{57} = \dfrac{55}{57}$</div>
+<div class="math-legend">$n_s$: spectral index | $57$: number of independent CAS combinations (<a href="d15.html">D-15</a>) | $2$: Read 1 + Compare 1 consumed slots | $55$: observable slots | $N$: full state space</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 57, 7, 21, 35</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>57         = CAS independent combinations   D-15
+2          = Read(R+1) + Compare(C+1)
+55/57      = 0.96491
+n_s(meas)  = 0.9649 ± 0.0042    Planck 2018</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the CMB power-spectrum slope domain. What it reveals is the degree of red tilt from scale invariance — the spectral index $n_s$. The fraction of the 57 slots remaining after CAS uses 2 yields that value.</p>
+<div class="math-block">
+<div class="math-row">$n_s = \dfrac{55}{57} = 0.96491$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hit</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $n_s = 0.96491$</div>
+<div class="math-row">Measured: $0.9649 \pm 0.0042$ (Planck 2018)</div>
+<div class="math-row">Error: $0.001\%$</div>
+</div>
+<p>Verdict: <strong>Hit</strong>. The pure integer ratio $55/57$ closes the CMB red tilt with 0 free parameters.</p>
+<p>The red tilt $n_s<1$ is the trace of CAS grabbing 2 state-space slots, slightly breaking scale invariance.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: slope of the CMB power spectrum. Chain with <a href="d15.html">D-15</a> (57).</p><p>This card can be re-used as input for the following cards: <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
+<p>Re-injection path: <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

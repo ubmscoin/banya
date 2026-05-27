@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="d155.html">D-155</a>, <a href="h434.html">H-434</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 외부장 방향 의존 비용에서 제만 분기 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>제만 효과는 외부 자기장이 3-lock 비트(bit 4~6, $2^3=8$ 배열, <a href="../axiom.html#ax5">공리 5</a>)에 방향 의존 비용(<a href="../axiom.html#ax4">공리 4</a>)을 부과해 축퇴를 깨는 현상이다. 장이 없으면 8 배열의 비용이 같아 한 준위지만, 장이 걸리면 방향마다 비용이 갈린다. 이 방향 의존 비용으로 분기를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 외부장 방향 의존 비용 노름이다. lock 배열마다 외부장(<a href="../axiom.html#ax11">공리 11</a>)에 대한 비용이 $m_J$에 비례해 갈라지고, 갈라진 가짓수가 $2J+1$로 닫히기 때문에 이 노름을 택한다. 따라서 준위 이동을 $g_J\,\mu_B\,m_J\,B_{\text{ext}}$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta E_m = g_J\,\mu_B\,m_J\,B_{\text{ext}}$</div>
+<div class="math-row">\text{분기 수} = 2J+1</div>
+<div class="math-legend">$\Delta E_m$: 준위 이동 | $g_J$: Landé 인자 | $\mu_B$: Bohr 마그네톤 | $m_J$: 방향 양자수 | $B_{\text{ext}}$: 외부장(<a href="../axiom.html#ax11">공리 11</a>) | $2J+1$: lock 배열 분기</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d155.html">D-155</a>, <a href="h434.html">H-434</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>mu_B        = 5.7883818e-5 eV/T
+B_ext       = 1 T
+m_J         = -J ... +J     2J+1 개
+분기 수     = 2J+1</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>외부장 준위 분리 도메인으로 변환한다. 이 변환으로 보려는 것은 한 준위가 외부장에서 몇 개로, 얼마만큼 갈라지는가다. $g_J\,\mu_B\,m_J$에 $B_{\text{ext}}=1$ T를 곱해 그 이동을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta E \approx 5.8\times10^{-5}\ \text{eV}\quad(\text{Na D선, }B=1\,\text{T})$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 분기 $2J+1$, $\Delta E \approx 5.8\times10^{-5}$ eV</div>
+<div class="math-row">측정값: Na D선 $B=1$ T에서 $\Delta E \approx 5.8\times10^{-5}$ eV</div>
+<div class="math-row">오차: 차수 일치, 분기 수 정확</div>
+</div>
+<p>판정: <strong>가설</strong>. 방향 의존 비용이 $2J+1$ 분기와 차수를 재현하나, Landé $g_J$를 CAS에서 정량으로 닫는 forward chain은 미완이다.</p>
+<p>정상($S=0$)과 비정상($S\neq0$)의 갈림, Paschen-Back 디커플링이 같은 lock 비용 구조에서 따라온다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h434.html">H-434</a>(스핀-궤도) 외부장 확장. <a href="d155.html">D-155</a>(미세구조) 자기장 버전.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d155.html">D-155</a>, <a href="h434.html">H-434</a></p>
+<p>재투입 경로: <a href="h434.html">H-434</a>, <a href="d155.html">D-155</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

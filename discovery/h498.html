@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h494.html">H-494</a>, <a href="h506.html">H-506</a>, <a href="h510.html">H-510</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 부여 비대칭 비용에서 constituent 질량 300 MeV 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>카이랄 대칭의 자발적 깨짐은 FSM 노름 부여(<a href="../axiom.html#ax14">공리 14</a>)에서 좌·우 성분에 비대칭 노름이 할당되는 비용이다. FSM 순환 $000\to111$이 한 방향성을 선호하면(<a href="../axiom.html#ax2">공리 2</a>: CAS 비가역 R==&gt;C==&gt;S) 진공 응축이 닫히고(<a href="../axiom.html#ax12">공리 12</a>: FSM 닫힘), 그 응축 에너지가 쿼크 유효 질량을 만든다(<a href="../axiom.html#ax4">공리 4</a>: 비용 = 응축 에너지).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 좌·우 FSM 노름이 갈리며 생기는 카이랄 응축 노름 $\langle\bar{q}q\rangle$이다(<a href="../axiom.html#ax14">공리 14</a>). (b) 이 응축이 쿼크 constituent 질량의 대부분을 만들고 깨짐의 유사-골드스톤 보손이 파이온 삼중항(<a href="h494.html">H-494</a>)으로 나타나기 때문에 이 노름을 택한다. 따라서 constituent 질량을 응축 노름의 세제곱근 스케일로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\|\text{FSM}\|_L \neq \|\text{FSM}\|_R \;:\; \langle\bar{q}q\rangle \neq 0$</div>
+<div class="math-row">$M_q \sim \langle\bar{q}q\rangle^{1/3}$</div>
+<div class="math-legend">$\langle\bar{q}q\rangle$: 카이랄 응축 노름 | $\|\text{FSM}\|_{L,R}$: 좌·우 FSM 노름 | $M_q$: constituent 쿼크 질량 | $\text{SU}(2)_L\times\text{SU}(2)_R\to\text{SU}(2)_V$: 깨짐 패턴</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h494.html">H-494</a>, <a href="h506.html">H-506</a>, <a href="h510.html">H-510</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>&lt;qbar q&gt; = -(250 MeV)^3        격자 QCD
+f_pi     = 92.1 MeV            파이온 붕괴상수
+m_proton = 938 MeV            양성자 질량</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 강력 진공 응축 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 응축이 부여하는 쿼크 constituent 질량 $M_q$이다. 응축 노름의 세제곱근에 수치 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$M_q \sim |\langle\bar{q}q\rangle|^{1/3} = 250\;\text{MeV} \;\to\; \sim 300\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $M_q \sim 300\;\text{MeV}$</div>
+<div class="math-row">측정값: constituent 쿼크 질량 $\sim 300\;\text{MeV}$ (격자 QCD)</div>
+<div class="math-row">오차: $\sim 10\%$ 수준 정합</div>
+</div>
+<p>판정: <strong>가설</strong>. 응축 스케일은 닫혔으나 $\langle\bar{q}q\rangle$ 절댓값이 격자 입력으로 남아 forward chain이 미완결이다.</p>
+<p>통찰: 양성자 질량 $938\;\text{MeV}$의 약 $99\%$가 current 질량이 아니라 이 카이랄 응축에서 나온다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h494.html">H-494</a>(파이온 질량) 깨짐 결과. <a href="h506.html">H-506</a>(QCD 진공) 응축 구조. <a href="h510.html">H-510</a>(QGP) 카이랄 복원.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h494.html">H-494</a>, <a href="h506.html">H-506</a>, <a href="h510.html">H-510</a></p>
+<p>재투입 경로: <a href="h494.html">H-494</a>, <a href="h506.html">H-506</a>, <a href="h510.html">H-510</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

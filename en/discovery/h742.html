@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h742.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h742.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h742.html">H-742</a>. Noether's Theorem = Correspondence between CAS Symmetry and Cost Conservation</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon advancing to the next round / outstanding tasks specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; the Banya formula's own structure, primary integer (4,3) combination. Recursive substitution path: <a href="h746.html">H-746</a>, <a href="h764.html">H-764</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Noether's conserved quantities from the tick-invariance of the CAS cost sum</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The CAS cost is identical each tick as $R{+}1$, $C{+}1$, $S{+}1$. That this cost sum is invariant under the tick is the time-translation symmetry (<a href="../axiom.html#ax4">Axiom 4</a> cost conservation, <a href="../axiom.html#ax14">Axiom 14</a> FSM deterministic cycle), and the 4 axes of the Banya formula (<a href="../axiom.html#ax1">Axiom 1</a>) are the seats of the space-translation and rotation symmetries.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; the Banya formula's own structure, primary integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS structure-invariance norm. It is chosen because CAS operations preserve the cost sum even after shift and relabeling (<a href="../axiom.html#ax2">Axiom 2</a> structural invariance of the sole operator CAS), and the generators of the continuous symmetry are substituted 1:1 with the conserved quantities.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{d}{dt}Q = 0$</div>
+<div class="math-row">$Q = \displaystyle\sum_{\text{axis}} \dfrac{\partial(\text{cost})}{\partial(\text{shift})}$</div>
+<div class="math-legend">$Q$: conserved quantity | time-shift invariance: energy | space-shift invariance: momentum | d-ring phase invariance: angular momentum | CAS relabeling invariance: charge</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (complete list of degrees of freedom)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h746.html">H-746</a>, <a href="h764.html">H-764</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>tick cost   = R+1, C+1, S+1        identical each tick
+sym axes    = 4                    time, space, observer, superposition
+conserved   = energy, momentum, angular momentum, charge
+check       = Noether 1918         continuous symmetry = conserved quantity</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the conserved-quantity domain. What it reveals is which symmetry axis's cost invariance yields which conserved quantity. Mapping a cost derivative onto each shift invariance produces the conserved quantity.</p>
+<div class="math-block">
+<div class="math-row">time invariance $=$ energy, space invariance $=$ momentum, phase invariance $=$ angular momentum</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: CAS symmetry 4 axes $=$ 4 conserved quantities</div>
+<div class="math-row">Check: Noether 1918, a conserved quantity per continuous symmetry</div>
+<div class="math-row">Status: structural correspondence confirmed, quantitative measurement incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The tick-invariance of the CAS cost sum forces the conserved quantities, but the limit transition from discrete ticks to continuous symmetry remains, deferred to the next-round inputs <a href="h746.html">H-746</a> and <a href="h764.html">H-764</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h746.html">H-746</a> (Lie group) symmetry structure. <a href="h764.html">H-764</a> (variational principle) cost minimization</p><p>This card can be re-used as input for the following cards: <a href="h746.html">H-746</a>, <a href="h764.html">H-764</a></p>
+<p>Re-injection path: <a href="h746.html">H-746</a>, <a href="h764.html">H-764</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

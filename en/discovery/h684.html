@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h684.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h684.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h684.html">H-684</a>. Roche Limit = Tidal Cost Exceeds Self-Binding Cost</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D Promotion possible upon next-round advance / remaining tasks explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h682.html">H-682</a>, <a href="h683.html">H-683</a>, <a href="h688.html">H-688</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Roche-Limit Distance from the Tidal-Cost vs Self-Binding-Cost Comparison</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Roche limit is the critical distance at which the tidal cost gradient (<a href="h683.html">H-683</a>) exceeds the self-binding cost of the satellite FSM (<a href="../axiom.html#ax4">Axiom 4</a>). The comparison of the two costs (<a href="../axiom.html#ax11">Axiom 11</a>) decides whether the satellite is disrupted.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the comparison norm between the tidal cost and the self-binding cost. It is chosen because the distance at which the tidal cost gradient $\propto M_p r/d^3$ overtakes the self-binding cost $\propto Gm_s\rho_s$ is the disruption threshold. The Roche limit is therefore substituted by the distance at which the two costs are equal.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{M_p r}{d^3} > G\,m_s\,\rho_s$</div>
+<div class="math-row">$d_R = 2.44\,R_p\left(\dfrac{\rho_p}{\rho_s}\right)^{1/3}$</div>
+<div class="math-legend">$d_R$: Roche limit | $R_p$: planet radius | $\rho_p,\rho_s$: planet/satellite density | $2.44$: fluid Roche coefficient | $1/3$: density-ratio exponent</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h682.html">H-682</a>, <a href="h683.html">H-683</a>, <a href="h688.html">H-688</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Roche coeff   = 2.44             fluid satellite
+Earth-Moon d_R = 2.86 R_earth    ~18200 km
+Saturn rings  = < 2.26 R_Saturn  within Roche limit</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the comparison domain of tidal cost versus self-binding cost. What it reveals is the critical distance at which the tidal cost overcomes self-gravity — the Roche limit $d_R$. Multiplying the planet radius by the cube root of the density ratio and the fluid coefficient yields that value.</p>
+<div class="math-block">
+<div class="math-row">$d_R(\text{Earth-Moon}) \approx 2.86\;R_\oplus \approx 18{,}200\;\text{km}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $d_R = 2.44\,R_p(\rho_p/\rho_s)^{1/3}$ (tidal cost > self-binding cost)</div>
+<div class="math-row">Observed: Saturn rings within $< 2.26\;R_\text{Saturn}$, Shoemaker-Levy 9 tidal disruption at Jupiter</div>
+<div class="math-row">Agreement: outer edge of Saturn's rings within $< 10\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Roche-limit distance closes as the tidal vs self-binding cost comparison, but the solid tensile-strength correction is not derived directly from the cost norm, leaving the final step of the forward chain incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h683.html">H-683</a> (tidal force). <a href="h682.html">H-682</a> (planet formation). <a href="h688.html">H-688</a> (galaxy merger) tidal tails.</p><p>This card can be re-used as input for the following cards: <a href="h682.html">H-682</a>, <a href="h683.html">H-683</a>, <a href="h688.html">H-688</a></p>
+<p>Re-injection path: <a href="h683.html">H-683</a>, <a href="h682.html">H-682</a>, <a href="h688.html">H-688</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

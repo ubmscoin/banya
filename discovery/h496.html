@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h494.html">H-494</a>, <a href="h504.html">H-504</a>, <a href="h505.html">H-505</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 유한 해제 비용에서 핵력 도달거리 1.4 fm 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>핵력은 핵자 사이에서 파이온을 교환하는 RLU 해제 비용이다. RLU 잔여 해제가 유한하므로(<a href="../axiom.html#ax6">공리 6</a>) 전파 경로마다 비용이 누적되고(<a href="../axiom.html#ax4">공리 4</a>: 비용 $+1$/경계), 도달거리가 유한해진다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 교환 입자 파이온의 FSM 노름 $m_\pi$다(<a href="../axiom.html#ax14">공리 14</a>). (b) RLU 경로를 따른 전파 비용이 거리에 대해 지수적으로 누적되어 $\sim 1/m_\pi$에서 차단되기 때문에 이 노름을 택한다. 따라서 핵력 포텐셜을 파이온 노름이 지배하는 유카와 지수 감쇠로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$V(r) = -\dfrac{g^2}{4\pi r}\,e^{-m_\pi r}$</div>
+<div class="math-row">$R = \dfrac{1}{m_\pi}$</div>
+<div class="math-legend">$V(r)$: 핵력 포텐셜 | $g^2/4\pi$: 핵력 결합 | $m_\pi$: 파이온 FSM 노름 (<a href="h494.html">H-494</a>) | $R$: RLU 도달거리 | $e^{-m_\pi r}$: RLU 경로 비용의 지수 누적</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h494.html">H-494</a>, <a href="h504.html">H-504</a>, <a href="h505.html">H-505</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_pi      = 139.6 MeV          PDG 2024
+hbar c    = 197.3 MeV fm
+g^2/(4pi) = 14                 핵력 결합
+E_d       = 2.224 MeV          중수소 결합에너지</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 핵력(강한 잔여력) 도달거리 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 RLU 해제 유한성이 정하는 핵력 도달거리 $R$이다. 파이온 노름의 역수에 $\hbar c$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$R = \dfrac{\hbar c}{m_\pi c^2} = \dfrac{197.3}{139.6} = 1.41\;\text{fm}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $R = 1.41\;\text{fm}$</div>
+<div class="math-row">측정값: $\sim 1.4\;\text{fm}$ (1-파이온 교환 도달거리)</div>
+<div class="math-row">오차: $\sim 1\%$ 수준 정성 정합</div>
+</div>
+<p>판정: <strong>가설</strong>. 도달거리는 닫혔으나 결합 $g^2/4\pi\approx 14$가 외부 입력으로 남아 forward chain이 미완결이다.</p>
+<p>통찰: $m_\pi=0$이면 유카와 감쇠가 사라져 쿨롱형 $1/r$로 환원된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h494.html">H-494</a>(파이온) 교환자. <a href="h504.html">H-504</a>(양성자 안정성) 결합. <a href="h505.html">H-505</a>(n-p 질량 차) 핵력 맥락.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h494.html">H-494</a>, <a href="h504.html">H-504</a>, <a href="h505.html">H-505</a></p>
+<p>재투입 경로: <a href="h494.html">H-494</a>, <a href="h504.html">H-504</a>, <a href="h505.html">H-505</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

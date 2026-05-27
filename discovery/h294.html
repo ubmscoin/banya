@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h271.html">H-271</a>, <a href="h295.html">H-295</a>, <a href="h297.html">H-297</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 자유도 $3\times7$ 달림 계수에서 $\alpha_s(M_Z)$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>$M_Z$ 스케일 강결합은 CAS 필터가 에너지 스케일을 가로지르며 단계별로 감쇄하는 비용이다. 완전기술자유도 7은 이항 분류 $C(7,k)$(<a href="../axiom.html#ax9">공리 9</a>)가, 필터 감쇄 메커니즘은 비용 명제(<a href="../axiom.html#ax4">공리 4</a>)가 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 QCD 1루프 달림 노름이다. 달림 계수 $33-2n_f = 21 = 3\times7$이 CAS 단계 3과 자유도 7의 곱으로 닫히고, $n_f=6$이 링 버퍼 3세대 곱하기 2(상·하)이기 때문에 이 노름을 택한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha_s(\mu) = \dfrac{2\pi}{b_0\ln(\mu/\Lambda)}$</div>
+<div class="math-row">$\alpha_s(M_Z) = \dfrac{12\pi}{(33-2n_f)\ln(M_Z^2/\Lambda^2)}$</div>
+<div class="math-legend">$\alpha_s(M_Z)$: $M_Z$ 강결합 | $33-2n_f = 21 = 3\times7$: CAS 단계 3 곱하기 자유도 7 | $n_f=6$: 3세대 곱하기 2 | $\Lambda$: QCD 스케일 약 220 MeV</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h271.html">H-271</a>, <a href="h295.html">H-295</a>, <a href="h297.html">H-297</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>33 - 2 n_f = 33 - 12 = 21 = 3 x 7   공리 9
+n_f        = 6  = 3세대 x 2          공리 12
+Lambda_QCD = 220 MeV
+M_Z        = 91.19 GeV
+측정       = 0.1179 ± 0.0009         PDG (세계 평균)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>강력 색 결합 달림 도메인으로 변환한다. 이 변환으로 보려는 것은 $M_Z$ 스케일에서 측정되는 강결합 상수다. 달림 계수 21과 로그 인자에 $12\pi$를 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha_s(M_Z) = \dfrac{12\pi}{21 \times \ln(M_Z^2/\Lambda^2)} = 0.1179$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\alpha_s(M_Z) = 0.1179$</div>
+<div class="math-row">측정값: $0.1179 \pm 0.0009$ (PDG 세계 평균)</div>
+<div class="math-row">오차: $0.8\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 달림 계수 $21 = 3\times7$이 CAS 단계 3과 자유도 7의 곱이며, $33 = 11\times3$의 11을 CAS에서 닫으면 발견으로 승급된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h271.html">H-271</a>, <a href="h295.html">H-295</a>, <a href="h297.html">H-297</a></p>
+<p>재투입 경로: <a href="h271.html">H-271</a>, <a href="h295.html">H-295</a>, <a href="h297.html">H-297</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

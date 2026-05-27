@@ -61,39 +61,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 지수 5/3 = (9−4)/3이 D-33로 확정(백색왜성·Kolmogorov 측정, 오차 0%) / 분수 라플라시안 (-Δ)^(5/3) 형식으로 동일 결과 / forward chain 완료</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h953.html">H-953</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 공리 9 자유도 9·4·3에서 축퇴 압력 지수 5/3 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>축퇴 압력은 페르미 매질을 한 번 더 압축할 때 치르는 CAS 비용이다. 완전기술자유도 9 가운데 Swap이 쥐는 4를 빼고 남은 비-Swap 자유도를 CAS 3단계로 나눈 비가 압력 지수를 정한다(<a href="../axiom.html#ax9">공리 9</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 자유도 분수 $(9-4)/3$ 노름이다. 축퇴 압력 지수가 매질의 압축 비용이고, 그 비용이 비-Swap 자유도(분자)와 CAS 단계 수(분모)의 비로 닫히기 때문에 이 노름을 택한다(<a href="../axiom.html#ax9">공리 9</a>). 표준 다방정 상태방정식 $P\propto\rho^{\gamma}$의 지수 $\gamma$를 자유도 비로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$P \propto \rho^{\gamma}$</div>
+<div class="math-row">$\gamma = \dfrac{9-4}{3} = \dfrac{5}{3}$</div>
+<div class="math-legend">$\gamma$: 축퇴 압력 지수 | $9$: 구조 완전기술자유도 (<a href="../axiom.html#ax9">공리 9</a>) | $4$: Swap 공값(쥐기) | $3$: CAS 단계 | $(-\Delta)^{5/3}$: 분수 라플라시안 (<a href="h953.html">H-953</a> 반차 미분 일반화)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 9 (구조 자유도), 4 (공값), 3 (CAS 단계) → (9−4)/3</p>
-<p><strong>물리 상수 입력:</strong> 없음 (공리 구조에서 직접)</p>
-<p><strong>라이브러리 재투입:</strong> <a href="h953.html">H-953</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>9            = 구조 완전기술자유도   공리 9
+4            = Swap 공값(쥐기)        공리 9
+3            = CAS 단계 R C S         공리 2
+(9-4)/3      = 5/3 = 1.6667
+gamma(측정)  = 5/3                    백색왜성 축퇴압 (D-33)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>축퇴 페르미 매질(백색왜성·중성자별) 도메인으로 변환한다. 이 변환으로 보려는 것은 압축에 대한 압력의 거듭제곱 지수, 곧 분수 라플라시안 $(-\Delta)^{5/3}$로 표현되는 축퇴 압력의 강성이다. 자유도 비 $(9-4)/3$이 그 지수를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\gamma = \dfrac{9-4}{3} = \dfrac{5}{3} = 1.6667$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\gamma = 5/3 = 1.6667$</div>
+<div class="math-row">측정값: $5/3$ (백색왜성 축퇴압, <a href="d33.html">D-33</a>)</div>
+<div class="math-row">오차: $0\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. 지수 $5/3$이 자유도 비 $(9-4)/3$으로 닫혔고, 같은 지수가 Kolmogorov 난류 $E(k)\propto k^{-5/3}$에도 나타나 둘 다 분수 라플라시안 $(-\Delta)^{5/3}$의 사영으로 묶인다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 찬드라세카르 한계, 중성자별 상태방정식, 난류 스펙트럼 통합.</p>
+<p>재투입 경로: <a href="d33.html">D-33</a>, <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

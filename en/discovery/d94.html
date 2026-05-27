@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Explicit derivation formula exists / Experimental comparison error &lt;= 1% / forward chain complete (logic ==&gt; formula ==&gt; numerics)</p>
 <p><strong>Location:</strong> Category: d structure. Domain: delta ==&gt; Banya formula structure / primary integers. Recursive substitution path: Primary round (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the diatomic specific-heat ratio $\gamma_{di}$ from the CAS thermal DOF allocation</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The specific-heat ratio is the ratio of the total channels over which the CAS data type can distribute energy to the thermally accessible channels. Of the CAS state count 7 (<a href="../axiom.html#ax2">Axiom 2</a>: $2^3-1$), the 4 domain axes occupied by Swap (<a href="../axiom.html#ax1">Axiom 1</a>) are thermally frozen, reducing the effective channels.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Banya formula structure / primary integers</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS thermal DOF norm. It is chosen because the numerator is the full CAS state count 7 (<a href="../axiom.html#ax2">Axiom 2</a>) and the denominator is the non-Swap DOF 5 — the total DOF 9 (<a href="../axiom.html#ax9">Axiom 9</a>) minus the 4 domain axes occupied by Swap (<a href="../axiom.html#ax1">Axiom 1</a>). The diatomic specific-heat ratio is therefore substituted by the state-to-non-Swap-DOF ratio $7/5$.</p>
+<div class="math-block">
+<div class="math-row">$\gamma_{di} = \dfrac{c_p}{c_v}$</div>
+<div class="math-row">$\gamma_{di} = \dfrac{7}{5}$</div>
+<div class="math-legend">$\gamma_{di}$: diatomic specific-heat ratio | $7$: CAS state count $2^3-1$ (<a href="../axiom.html#ax2">Axiom 2</a>) | $5$: non-Swap DOF $9-4$ (<a href="../axiom.html#ax9">Axiom 9</a> and <a href="../axiom.html#ax1">Axiom 1</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> Primary integers list</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <em>No external reference (primary round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>CAS states  = 7               2^3 - 1
+non-Swap DOF = 9 - 4 = 5
+gamma_di    = 1.400           N2, O2 (room temp)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the classical-thermodynamics domain. What it reveals is the channel ratio over which a diatomic gas distributes energy — the specific-heat ratio $\gamma_{di}$. Dividing the CAS state count 7 by the thermally live non-Swap DOF 5 yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\gamma_{di} = \dfrac{7}{5} = 1.4000$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hit</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\gamma_{di} = 7/5 = 1.4000$</div>
+<div class="math-row">Measured: $1.4000$       N₂ and O₂ at room temperature</div>
+<div class="math-row">Error: $0\%$</div>
+</div>
+<p>Verdict: <strong>Hit</strong>. Even in classical thermodynamics rather than particle physics, the integer ratio of the CAS state count 7 to the non-Swap DOF 5 reproduces the diatomic specific-heat ratio exactly.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: Diatomic gas specific-heat ratio. Grounded in <a href="../axiom.html#ax2">Axiom 2</a> (CAS state count 7), <a href="../axiom.html#ax9">Axiom 9</a> (DOF).</p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

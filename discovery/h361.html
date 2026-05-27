@@ -67,39 +67,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h397.html">H-397</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 단일 틱당 1 Swap 비용에서 스크린 대역폭 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>스크린 대역폭은 Swap이 DATA를 갱신하는 최대 속도다. <a href="../axiom.html#ax3">공리 3</a>(스크린)에서 DATA는 Swap으로만 갱신되고, <a href="../axiom.html#ax6">공리 6</a>(쥠)에서 Swap 1회가 1비트 변경이며, 1틱에 최대 1 Swap이므로 대역폭은 틱 주파수가 상한이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 time 축의 틱 노름이다. 대역폭이 단위 시간당 Swap 비트 수이고 그 시간 단위가 더 쪼갤 수 없는 1틱이기 때문에 이 노름을 택한다. 따라서 틱 주기를 플랑크 시간 $t_P$로 두고 대역폭을 그 역수 $f_P$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{BW}=\dfrac{1\;\text{bit}}{t_{\text{tick}}}$</div>
+<div class="math-row">$\text{BW}=\dfrac{1}{t_P}=f_P$</div>
+<div class="math-legend">$\text{BW}$: 스크린 대역폭 | $t_{\text{tick}}$: 1틱 주기 | $t_P$: 플랑크 시간 | $f_P$: 플랑크 주파수 | $1\;\text{bit}$: Swap 1회당 변경량(<a href="../axiom.html#ax6">공리 6</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>pi</code>, <code>ℏ</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h397.html">H-397</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>t_P   = 5.391 e-44 s         CODATA 2018
+f_P   = 1/t_P = 1.855 e43 Hz
+1 Swap/tick                  공리 6</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>time 축의 틱 도메인을 정보 처리율 도메인으로 변환한다. 이 변환으로 보려는 것은 스크린에 정보가 기록되는 속도의 상한이다. 1 Swap/tick에 틱 주파수 $f_P$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{BW}=1\;\text{bit}\times f_P=1.855\times10^{43}\;\text{bit/s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\text{BW}=1.855\times10^{43}\;\text{bit/s}$</div>
+<div class="math-row">측정값: 직접 측정 부재 (베켄슈타인 한계 상한과 정합)</div>
+<div class="math-row">오차: 정량 대조 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 대역폭 상한은 $f_P$로 닫혔으나 비교할 표준 측정값이 없어 멈춘다. 실효 대역폭은 Compare 대부분이 false라 $\alpha\,f_P$ <a href="h397.html">H-397</a>로 떨어진다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h397.html">H-397</a></p>
+<p>재투입 경로: <a href="h397.html">H-397</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

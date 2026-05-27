@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> No experimental comparison / recursive substitution not yet executed (round 1) / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive substitution path: round 1 (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving CAS Cannot Be Measured by Domain Time from the CAS Compare Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Domain time (bit 2) is the rendering output Swap writes after the CAS Compare branches (<a href="../axiom.html#ax3">Axiom 3</a>). CAS (bits 4,5,6) is the backend process ignited by δ (<a href="../axiom.html#ax15">Axiom 15</a>). The attempt to gauge process bits with an output bit is read on the bit-position scale.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the bit-position (data-type layout) norm — chosen because the domain is the target of CAS, not its measurement tool (<a href="../axiom.html#ax3">Axiom 3</a> screen, <a href="../axiom.html#ax15">Axiom 15</a> δ). Measurability is therefore substituted by whether the intersection of the domain bit set and the CAS bit set is empty.</p>
+<div class="math-block">
+<div class="math-row">$\text{time} \in \{\text{bit }2\},\quad \text{CAS} \in \{\text{bit }4,5,6\}$</div>
+<div class="math-row">$\{\text{bit }2\} \cap \{\text{bit }4,5,6\} = \varnothing$</div>
+<div class="math-legend">bit 2: domain time (<a href="../axiom.html#ax3">Axiom 3</a>) | bit 4,5,6: CAS Read·Compare·Swap | $\varnothing$: empty set = no measurement tool | $\cap$: bit-set intersection</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <em>no external reference (round 1)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>bit(time) = 2              Axiom 3
+bit(CAS)  = 4, 5, 6        Axiom 15
+t_P       = 5.391e-44 s    CODATA 2018  (time resolution)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum/information domain (the bit layout). What it reveals is whether domain time can gauge a CAS cycle. If the intersection of the two bit sets is empty it cannot serve as a measurement tool, so the domain-time resolution is merely the output of one CAS cycle.</p>
+<div class="math-block">
+<div class="math-row">$\{2\} \cap \{4,5,6\} = \varnothing$</div>
+<div class="math-row">$\Delta t_{\min} = t_P = 5.391\times 10^{-44}\ \text{s} = \text{one CAS cycle output}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: intersection of domain-time bit and CAS bits $= \varnothing$</div>
+<div class="math-row">domain-time resolution $= t_P$, which is CAS output, not CAS runtime</div>
+<div class="math-row">Awaiting measurement.</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The bit-separation structure in which domain time is CAS output and cannot become a measurement tool is closed, but the check that quantitatively exhibits the contradiction of a self-referential measurement attempt is incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No explicit byproducts. Cross-links may be added in later mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

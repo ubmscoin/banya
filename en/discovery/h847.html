@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D promotion possible upon the next round / residual tasks listed.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: δ ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a>, <a href="h862.html">H-862</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Memory Access Structure from the CAS Read/Write Asymmetry Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Memory is a device that holds DATA in discrete units while the CAS reads and writes those locations. The space term on the right of the Banya formula gives the location (address) where DATA sits, and the observer term gives the cost of designating that location for access. Read and write are two-directional CAS operations on the same location.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; outside the natural classification (domain undetermined, further refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS read/write asymmetry norm. A read is the reversible operation in which Compare copies DATA non-destructively (<a href="../axiom.html#ax5">Axiom 5</a>: Compare), and a write is the irreversible operation in which Swap overwrites the existing DATA (<a href="../axiom.html#ax5">Axiom 5</a>: Swap). (b) This norm is chosen because the cost difference between the two operations on one memory location sets the access-time difference across the memory hierarchy (register, DRAM, SSD). The address is an ECS lattice coordinate (<a href="../axiom.html#ax2">Axiom 2</a>), and one bit is the minimal unit of discrete DATA (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
+<div class="math-block">
+<div class="math-row">$\text{read}:\ \text{out} = \text{Compare}(\text{DATA}[a])$</div>
+<div class="math-row">$\text{write}:\ \text{DATA}[a] = \text{Swap}(\text{in})$</div>
+<div class="math-legend">$a$: ECS lattice address coordinate | $\text{DATA}[a]$: discrete DATA at location $a$ | Compare: non-destructive read (reversible) | Swap: overwrite (irreversible) | out/in: output/input DATA</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a>, <a href="h862.html">H-862</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>register access = ~ ps          CPU register measurement
+DRAM access     = ~ 10 ns       DDR measurement
+SSD access      = ~ us          NAND Flash measurement
+DRAM capacity   = 16 ~ 64 GB    consumer systems
+1 bit           = minimal discrete DATA unit   Axiom 4</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the discrete-storage access domain (CAS read/write over the ECS lattice). (b) What it reveals is how, after a location is designated, the access time of one read/write splits across hierarchy levels. The hierarchy in which access time spreads by about $10^6$ from register to SSD is that answer.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{t_{\text{SSD}}}{t_{\text{reg}}} \approx \dfrac{10^{-6}}{10^{-12}} = 10^{6}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: read = Compare (reversible), write = Swap (irreversible)</div>
+<div class="math-row">Measurement agreement: access time ps (register) ~ ns (DRAM) ~ us (SSD)</div>
+<div class="math-row">Awaiting measurement: derivation of the Landauer limit for the minimal CAS write energy</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The reversible/irreversible asymmetry of read/write qualitatively closes the memory-hierarchy access times, but a quantitative derivation of the Landauer limit for write cost remains incomplete, so it stands one step short of promotion to discovery.</p>
+<p>The asymmetry that read is a reversible Compare and write is an irreversible Swap binds the entire memory hierarchy under one rule.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h845.html">H-845</a> (integrated circuit), <a href="h844.html">H-844</a> (transistor), <a href="h862.html">H-862</a> (optical communication).</p><p>This card can be re-used as input for the following cards: <a href="h844.html">H-844</a>, <a href="h845.html">H-845</a>, <a href="h862.html">H-862</a></p>
+<p>Re-injection path: <a href="h845.html">H-845</a>, <a href="h844.html">H-844</a>, <a href="h862.html">H-862</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

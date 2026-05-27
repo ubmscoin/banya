@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h755.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h755.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_info_consciousness</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h755.html">H-755</a>. Information Geometry = Fisher Metric on CAS State Space</h1><div class="box-finding">
@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> No quantitative formula yet / 2 recursive inputs confirmed, D promotion possible on next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h750.html">H-750</a>, <a href="h757.html">H-757</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Fisher Metric from the Compare Cost Sensitivity</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Information geometry is the cost curvature endowed on the manifold formed by the probability distribution of CAS states (<a href="../axiom.html#ax5">Axiom 5</a> Compare probability judgment). How sensitively the Compare cost varies with the distribution parameters (<a href="../axiom.html#ax4">Axiom 4</a> cost = information) is read as the metric.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the variance norm of the log-likelihood gradient (Fisher metric). (b) It is chosen because the expected squared rate of change of the Compare cost sets the curvature of the distance between distributions (<a href="../axiom.html#ax15">Axiom 15</a> δ = minimal information unit). The metric of the CAS state space is therefore substituted by the Fisher information $g_{ij}$.</p>
+<div class="math-block">
+<div class="math-row">$g_{ij} = \mathbb{E}\!\left[\dfrac{\partial \ln p}{\partial \theta^i}\dfrac{\partial \ln p}{\partial \theta^j}\right]$</div>
+<div class="math-row">$ds^2 = g_{ij}\,d\theta^i\,d\theta^j$</div>
+<div class="math-legend">$p$: CAS Compare probability distribution (<a href="../axiom.html#ax5">Axiom 5</a>) | $\theta^i$: distribution parameters | $g_{ij}$: Fisher metric = Compare cost sensitivity | $ds^2$: distance between distributions (<a href="../axiom.html#ax4">Axiom 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>none</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h750.html">H-750</a>, <a href="h757.html">H-757</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>distribution p = Compare prob.   Axiom 5
+metric g_ij    = log-likelihood grad. var.
+KL divergence  = asymmetric distance
+Cramer-Rao     = 1/g_ij min. variance
+info. geometry = Amari 1985</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is from the CAS probability distribution domain into the information-geometry manifold domain. (b) What it reveals is the lower bound on estimation variance — the Cramer-Rao bound. The inverse of the Fisher metric fixes the lower bound on the variance of an unbiased estimator.</p>
+<div class="math-block">
+<div class="math-row">$\mathrm{Var}(\hat\theta) \ge \dfrac{1}{g_{\theta\theta}}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: Compare cost sensitivity = Fisher metric $g_{ij}$</div>
+<div class="math-row">Correspondence: Amari information geometry (1985), Cramer-Rao bound</div>
+<div class="math-row">Structural match: thermodynamic Fisher information = specific heat</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The distribution sensitivity of the Compare cost corresponds structurally to the Fisher metric, but the axiomatic derivation of the quantum Fisher information (SLD) is incomplete. How sensitive the cost is to the parameters is precisely the curvature of the state space.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h750.html">H-750</a> (tensor) Fisher metric. <a href="h757.html">H-757</a> (chaos) information loss rate.</p><p>This card can be re-used as input for the following cards: <a href="h750.html">H-750</a>, <a href="h757.html">H-757</a></p>
+<p>Re-injection path: <a href="h750.html">H-750</a>, <a href="h757.html">H-757</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

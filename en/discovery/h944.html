@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h944.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h944.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_neutrino_cp</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h944.html">H-944</a>. Spin-Statistics Theorem = Quaternion Phase (-1)^(2s) Particle Exchange Branch</h1><div class="box-finding">
@@ -69,39 +69,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 1 recursive input confirmed; D Promotion possible at the next round / remaining task stated</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7). Recursive-substitution path: <a href="h942.html">H-942</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving spin-statistics $(-1)^{2s}$ from the quaternion exchange-phase norm</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Particle-exchange statistics is read through the rotation cost of swapping two particles. Exchanging two particles is a $180^\circ$ rotation between them, and a fermion is represented by the spatial 3-axis orthogonal group (unit quaternions, <a href="../axiom.html#ax1">Axiom 1</a> quaternion proposition), so the two-sided product structure acts.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm substituted is the quaternion exchange-phase norm — the $180^\circ$ exchange becomes a $360^\circ$ rotation effect under the two-sided product, yielding phase $-1$. (b) This norm is chosen because the representation of a spin-$s$ particle follows the unit-circle phase $(-1)^n$ (<a href="../axiom.html#ax1">Axiom 1</a> proposition), and the exchange rotation appears scaled by $2s$ in the representation space. Half-integer spin (<a href="h942.html">H-942</a>) is a quaternion representation, so it branches to $-1$; integer spin is a vector representation, so it branches to $+1$.</p>
+<div class="math-block">
+<div class="math-row">$\text{exchange} : R_{\text{exch}} = 180^\circ \;\to\; \text{two-sided product } 360^\circ$</div>
+<div class="math-row">$\psi(x_1, x_2) = (-1)^{2s}\,\psi(x_2, x_1)$</div>
+<div class="math-legend">$s$: spin | $(-1)^{2s}$: quaternion exchange phase (<a href="../axiom.html#ax1">Axiom 1</a> proposition) | fermion: quaternion representation $\to$ $-1$ | boson: vector representation $\to$ $+1$ | <a href="h942.html">H-942</a>: half-integer spin input</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS step), 9 (Koide theta), 30 (CAS access paths), 7 (DOF)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h942.html">H-942</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>s = 0    -> (-1)^0 = +1   boson (Higgs)
+s = 1/2  -> (-1)^1 = -1   fermion (electron, proton)
+s = 1    -> (-1)^2 = +1   boson (photon, W/Z)
+s = 3/2  -> (-1)^3 = -1   fermion</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the particle-exchange statistics domain. (b) What it reveals is whether the exchange phase branches to $+1$ (symmetric) or $-1$ (antisymmetric). Applying the exponent $2s$ to spin $s$ splits integer spin to $+1$ and half-integer spin to $-1$.</p>
+<div class="math-block">
+<div class="math-row">$s = 1/2 \;\Rightarrow\; (-1)^{2s} = (-1)^1 = -1 \;\text{(antisymmetric, Pauli exclusion)}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\psi(x_1,x_2) = (-1)^{2s}\,\psi(x_2,x_1)$</div>
+<div class="math-row">Measured: Pauli exclusion (fermions) and BEC (bosons) both confirmed</div>
+<div class="math-row">Match: qualitatively 100% (Pauli-violation limit $\sim 10^{-26}$)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The exchange phase $(-1)^{2s}$ follows directly from the quaternion exchange rotation, but the final step of closing equivalence with microcausality and Lorentz invariance remains incomplete. It takes the half-integer spin of <a href="h942.html">H-942</a> as input.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h942.html">H-942</a> (half-integer spin), Pauli exclusion, BEC statistics, anyon statistics generalization.</p><p>This card can be re-used as input for the following cards: <a href="h942.html">H-942</a></p>
+<p>Re-injection path: <a href="h942.html">H-942</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h772.html">H-772</a>, <a href="h780.html">H-780</a>, <a href="h790.html">H-790</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: δ 발화 플래그에서 존재 판정 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>존재는 δ 발화 비트(<a href="../axiom.html#ax15">공리 15</a>: δ = 존재 플래그, bit 7)가 켜졌는가의 문제다. DATA에 기록이 있어도(<a href="../axiom.html#ax3">공리 3</a>: 잠재 기록) δ가 발화하지 않으면 그 기록은 잠재 상태에 머문다. 반야식 좌변 δ의 0/비0이 곧 잠재/존재의 갈림이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 δ 발화 플래그의 0/1 노름이다. 존재론은 결합 세기 같은 연속량이 아니라 발화 여부의 이진 판정이므로, 연속 노름이 아닌 이 플래그 노름을 택한다. DATA 기록의 유무(<a href="../axiom.html#ax3">공리 3</a>)와 δ 발화의 유무(<a href="../axiom.html#ax15">공리 15</a>)를 곱해 존재 계층을 읽는다.</p>
+<div class="math-block">
+<div class="math-row">$\text{being}(x) = \begin{cases} \text{latent} & \delta(x)=0 \\ \text{existing} & \delta(x)\neq 0 \end{cases}$</div>
+<div class="math-row">$\text{layer}(x) = \text{rec}_{\text{DATA}}(x)\cdot \nu_\delta(x)$</div>
+<div class="math-legend">$\delta$: 발화 플래그 (<a href="../axiom.html#ax15">공리 15</a>) | $\text{rec}_{\text{DATA}}$: DATA 기록 유무 (<a href="../axiom.html#ax3">공리 3</a>) | $\nu_\delta$: δ 발화 빈도 | latent: 잠재 | existing: 실재</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h772.html">H-772</a>, <a href="h780.html">H-780</a>, <a href="h790.html">H-790</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>delta = 0          잠재 (DATA 기록만, 미발화)
+delta != 0         존재 (발화)
+nu_delta 일시      가상 (빈 엔티티 일시 오염)
+nu_delta 지속      실재 (지속 발화)
+bit 7              발화 비트 위치        공리 15</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>양자 진공 도메인으로 변환한다. 이 변환으로 보려는 것은 진공·가상 입자·실재 입자가 단일 δ 발화 빈도 축 위에 어떻게 배열되는가다. 발화 빈도 $\nu_\delta$가 0이면 진공, 일시이면 가상 입자, 지속이면 실재 입자로 갈리며, 진공 에너지는 일시 발화 빈도의 합으로 나타난다.</p>
+<div class="math-block">
+<div class="math-row">$\text{vacuum} : \nu_\delta = 0 \quad<\quad \text{virtual} : \nu_\delta\ \text{transient} \quad<\quad \text{real} : \nu_\delta\ \text{sustained}$</div>
+<div class="math-row">$E_{\text{vac}} = \textstyle\sum \nu_\delta^{\text{transient}}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출 구조: 진공 = δ 미발화, 가상 입자 = δ 일시 발화, 실재 = δ 지속 발화</div>
+<div class="math-row">대응 측정: 양자장론 진공 요동 구조 (가상 입자 일시성)</div>
+<div class="math-row">정량 산출: 미작성 (구조 정합 단계)</div>
+</div>
+<p>판정: <strong>가설</strong>. δ 발화 빈도 축 하나가 잠재·가상·실재 3계층을 가르는 구조는 양자장론 진공과 정합하나, 진공 에너지의 정량 산출은 다음 라운드 과제다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h772.html">H-772</a>(실재론). <a href="h780.html">H-780</a>(정보 존재론)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h772.html">H-772</a>, <a href="h780.html">H-780</a>, <a href="h790.html">H-790</a></p>
+<p>재투입 경로: <a href="h790.html">H-790</a>, <a href="h772.html">H-772</a>, <a href="h780.html">H-780</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

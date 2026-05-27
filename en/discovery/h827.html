@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h827.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h827.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h827.html">H-827</a>. Power-Law Distribution = Scale-Invariant Distribution of CAS Cost</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D-promotion possible on the next round / remaining tasks identified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h829.html">H-829</a>, <a href="h840.html">H-840</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Power-Law Exponent from the Scale-Invariant CAS Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The CAS domain-crossing cost is always +1 regardless of scale (<a href="../axiom.html#ax4">Axiom 4</a>: one + crossing = cost 1). That this cost rule is identical at micro and macro scale is the scale invariance, and the cost term of the Banya formula is read as invariant under rescaling.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the scale-invariant cost norm. If the cost function satisfies $C(bx)=b^{-\gamma}C(x)$ (form-invariant under rescaling $b$), the distribution can only be a power law — only a power preserves its form under rescaling. So this norm is chosen, and the exponent $\gamma$ is constrained by the domain dimension (<a href="../axiom.html#ax1">Axiom 1</a>: 4 axes).</p>
+<div class="math-block">
+<div class="math-row">$C(bx) = b^{-\gamma}\,C(x) \;\Longrightarrow\; P(x) = A\,x^{-\gamma}$</div>
+<div class="math-row">$\gamma = 1 + \dfrac{d}{d_0}$</div>
+<div class="math-legend">$P(x)$: event-size distribution | $\gamma$: power-law exponent | $b$: rescaling factor | $d$: number of active domains | $d_0$: reference dimension | $A$: normalization constant</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h829.html">H-829</a>, <a href="h840.html">H-840</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>d_max = 4                 4 domain axes      Axiom 1
+d_0   = 2                 planar reference dimension
+gamma = 1 + d/d_0         d in {1,2,3,4}
+obs   = gamma in [1.5,3.5]  Zipf/Pareto/Gutenberg-Richter</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the cost-distribution domain (scale-invariant). What it reveals is the admissible range of the exponent $\gamma$. Substituting the domain count $d$ from 1 to 4 yields the $\gamma$ band.</p>
+<div class="math-block">
+<div class="math-row">$\gamma = 1 + \dfrac{d}{2}, \quad d\in\{1,2,3,4\} \;\Rightarrow\; \gamma\in\{1.5,\,2,\,2.5,\,3\}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\gamma \in [1.5,\,3]$ (domains 1 to 4 axes)</div>
+<div class="math-row">Measured: observed power-law exponent band $\gamma \in [1.5,\,3.5]$</div>
+<div class="math-row">Result: derived band overlaps the observed band</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The exponent band closes from the 4-axis structure, but the reference dimension $d_0$ is not fixed directly from the axioms, so a single $\gamma$ value is undetermined.</p>
+<p>Insight: the universality of power laws comes not from the field but from the scale invariance of the CAS cost, and the same scale-invariant cost is re-injected into the event distribution of self-organized criticality (<a href="h829.html">H-829</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h829.html">H-829</a> (SOC). <a href="h840.html">H-840</a> (network science).</p><p>This card can be re-used as input for the following cards: <a href="h829.html">H-829</a>, <a href="h840.html">H-840</a></p>
+<p>Re-injection path: <a href="h829.html">H-829</a>, <a href="h840.html">H-840</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

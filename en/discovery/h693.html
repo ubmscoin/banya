@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h693.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h693.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h693.html">H-693</a>. Total Internal Reflection = Critical Angle of Cost Propagation Speed Ratio</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed, D promotion possible on next round / remaining task explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed). Recursive substitution path: <a href="h692.html">H-692</a>, <a href="h699.html">H-699</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Critical Angle from the Boundary Limit of the Cost-Propagation-Speed Ratio</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Total internal reflection is the cost in which a CAS cost wave cannot cross from a dense medium into a rarer one and is wholly returned at the boundary. It is read through the structure in which the limiting angle, where cost propagation becomes impossible, forces reflection (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the refractive-index-ratio norm of <a href="h692.html">H-692</a> closed at the $90^\circ$ refraction-angle limit. It is chosen because, under the ECS boundary condition (<a href="../axiom.html#ax7">Axiom 7</a>), once the refraction angle exceeds $90^\circ$ the cost can no longer cross the boundary and is wholly returned. The critical angle is therefore substituted by the arcsine of the refractive-index ratio.</p>
+<div class="math-block">
+<div class="math-row">$n_1\sin\theta_c = n_2\sin 90^\circ$</div>
+<div class="math-row">$\theta_c = \arcsin\!\left(\dfrac{n_2}{n_1}\right)$</div>
+<div class="math-legend">$\theta_c$: critical angle | $n_1$: dense-medium index | $n_2$: rare-medium index | $90^\circ$: refraction-angle limit = cost-propagation boundary (<a href="../axiom.html#ax4">Axiom 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h692.html">H-692</a>, <a href="h699.html">H-699</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n_glass   = 1.50
+n_diamond = 2.417
+n_air     = 1.0003      589 nm, room temperature</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the geometric-optics boundary domain. What it reveals is the critical angle at which light begins to be wholly returned at the glass-air boundary. Substituting the refractive-index ratio into the arcsine yields that angle.</p>
+<div class="math-block">
+<div class="math-row">$\theta_c = \arcsin\!\left(\dfrac{1.0003}{1.50}\right) = 41.8^\circ$</div>
+<div class="math-row">$\theta_c^{\text{diamond}} = \arcsin\!\left(\dfrac{1.0003}{2.417}\right) = 24.4^\circ$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: glass-air $\theta_c = 41.8^\circ$, diamond-air $24.4^\circ$</div>
+<div class="math-row">Measured: consistent with fiber-optic and prism experiments</div>
+<div class="math-row">Status: critical angle consistent, refractive index itself not derived</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The critical angle closes as the $90^\circ$ limit of the <a href="h692.html">H-692</a> refractive-index ratio, but the input indices are external inputs not derived from the axioms, so it falls short of D-promotion.</p>
+<p>Insight: the critical angle is the last angle at which cost can still cross the boundary.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h699.html">H-699</a> (optical-fiber total internal reflection) confinement principle. <a href="h692.html">H-692</a> (Snell's law) limit.</p><p>This card can be re-used as input for the following cards: <a href="h692.html">H-692</a>, <a href="h699.html">H-699</a></p>
+<p>Re-injection path: <a href="h692.html">H-692</a>, <a href="h699.html">H-699</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

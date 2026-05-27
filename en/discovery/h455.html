@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h442.html">H-442</a>, <a href="h446.html">H-446</a>, <a href="h454.html">H-454</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Repeated-Measurement Invariance from the Idempotent-Swap Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Quantum non-demolition (QND) measurement is the cost in which, when the observable $A$ commutes with the Hamiltonian ($[H,A]=0$), Read reads the slot but the Swap becomes the identity. In the CAS R·C·S pipeline (<a href="../axiom.html#ax2">Axiom 2</a>), if DATA is already an eigenstate (<a href="../axiom.html#ax3">Axiom 3</a> discrete), then even a Compare-true overwrites with the same state, so the observer term of the Banya formula is read as a disturbance-free cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the idempotent-Swap norm (<a href="../axiom.html#ax7">Axiom 7</a> Compare-true with Swap as identity). (b) This norm is chosen because when $[H,A]=0$ the Read slot and the time-evolution operator's action slot are orthogonal, so the ECS index (<a href="../axiom.html#ax13">Axiom 13</a>) is invariant and repeated measurement is guaranteed to give the same result. The post-measurement state is therefore substituted by the idempotent projector $P_k$.</p>
+<div class="math-block">
+<div class="math-row">$P_k^2 = P_k, \qquad [H,A]=0$</div>
+<div class="math-row">$\text{Swap}\!:|k\rangle = |k\rangle$</div>
+<div class="math-legend">$A$: observable | $H$: Hamiltonian | $[H,A]=0$: commute | $P_k$: projector onto eigenstate $|k\rangle$ | $P_k^2=P_k$: idempotent = identity Swap</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stage)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h442.html">H-442</a>, <a href="h446.html">H-446</a>, <a href="h454.html">H-454</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>[H, A]   = 0             QND condition
+P_k^2    = P_k           idempotent projector
+Swap: |k> = |k>          Compare true, Swap identity
+n_repeat measurements    identical result (predicted)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the cavity-QED photon-number domain. (b) What it reveals is whether repeated measurement preserves the result. After Read$(n)$, even a Compare$(n=n)$ that is true has Swap$(n)=n$ idempotent, so the photon number does not change.</p>
+<div class="math-block">
+<div class="math-row">$\text{Read}(n) \to \text{Compare}(n=n) \to \text{Swap}(n)=n$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: repeated-measurement result invariant ($P_k^2=P_k$)</div>
+<div class="math-row">Measured: Nogues 1999 cavity photon-number QND — identical result on repeated measurement</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Repeated-measurement invariance closes from the idempotent-Swap norm, but the CAS classification of QND-capable observables and the partial-Compare model of approximate QND (back-action evasion) are incomplete. QND is not an exception to CAS but the special case in which the Swap becomes the identity.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: limiting case of <a href="h454.html">H-454</a> (weak measurement). QND exception to <a href="h442.html">H-442</a> (uncertainty). Idempotent measurement for <a href="h446.html">H-446</a> (measurement problem).</p><p>This card can be re-used as input for the following cards: <a href="h442.html">H-442</a>, <a href="h446.html">H-446</a>, <a href="h454.html">H-454</a></p>
+<p>Re-injection path: <a href="h454.html">H-454</a>, <a href="h442.html">H-442</a>, <a href="h446.html">H-446</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h921.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h921.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h921.html">H-921</a>. <a href="../axiom.html#ax5">Axiom 5</a> Completeness = 8 bits Necessary and Sufficient for State History</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion is possible in the next round / outstanding tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement needed). Recursive substitution path: <a href="h904.html">H-904</a>, <a href="h907.html">H-907</a>, <a href="h931.html">H-931</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the 8-bit Necessary-and-Sufficient Width from the d-ring Recording Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Recording state history is the cost the firing bit $\delta$ pays each tick to push one cell into the d-ring. This cost is read through the 2-nibble structure: the upper nibble holds the 4 domain axes (<a href="../axiom.html#ax1">Axiom 1</a>), the lower nibble holds the state value, and the most-significant bit 7 is the firing bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the bit-width norm of the d-ring. (b) It is chosen because the state history closes losslessly only when one cell holds both the 4 domain axes (upper 4 bits) and the state value (lower 4 bits) at once (<a href="../axiom.html#ax5">Axiom 5</a>). The cell width $b$ is therefore substituted by upper nibble 4 plus lower nibble 4.</p>
+<div class="math-block">
+<div class="math-row">$b = (\text{domain nibble}) + (\text{value nibble})$</div>
+<div class="math-row">$b = 4 + 4 = 8,\qquad N = 2^b$</div>
+<div class="math-legend">$b$: bit width of one d-ring cell | $4$: domain 4-axis nibble (<a href="../axiom.html#ax1">Axiom 1</a>) | $4$: state value nibble | $N$: number of distinguishable state histories</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h904.html">H-904</a>, <a href="h907.html">H-907</a>, <a href="h931.html">H-931</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>domain_nibble = 4        Axiom 1 (4 axes)
+value_nibble  = 4        Axiom 5 (2 nibbles)
+b             = 8        Axiom 5 (byte)
+2^b           = 256</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the state-history capacity domain. (b) What it reveals is the number $N$ of state histories one cell distinguishes. Raising base 2 to the width $b=8$ yields that number.</p>
+<div class="math-block">
+<div class="math-row">$N = 2^8 = 256$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Necessity: $b=7$ gives $N=128$ < physical state space (history short)</div>
+<div class="math-row">Sufficiency: $b=8$ gives $N=256$ = domain 16 combos times value 16 (history closes)</div>
+<div class="math-row">$b=9$ gives $N=512$ (redundant, wasted cost)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. $b=8$ is the unique closure point between shortfall and redundancy, but that $N=256$ covers the physical state space must be closed by measurement. The structural match with the 8-bit byte standard is the clue to that closure.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution targets: <a href="h904.html">H-904</a> (holography). <a href="h907.html">H-907</a> (black hole information). <a href="h931.html">H-931</a> (<a href="../axiom.html#ax15">Axiom 15</a>)</p><p>This card can be re-used as input for the following cards: <a href="h904.html">H-904</a>, <a href="h907.html">H-907</a>, <a href="h931.html">H-931</a></p>
+<p>Re-injection path: <a href="h904.html">H-904</a>, <a href="h907.html">H-907</a>, <a href="h931.html">H-931</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

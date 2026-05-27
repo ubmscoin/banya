@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h604.html">H-604</a>, <a href="h606.html">H-606</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 공유 δ 비트에서 양자 상호정보 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>두 엔티티의 상관은 그들이 공유하는 δ 레지스터 비트다. <a href="../axiom.html#ax15">공리 15</a>에서 δ는 8비트 전역 플래그이고, 얽힘은 그 δ 비트가 두 엔티티에 걸쳐 있는 상태다. <a href="../axiom.html#ax2">공리 2</a>에서 한쪽 Compare 결과가 다른 쪽과 상관되며, <a href="../axiom.html#ax3">공리 3</a>에서 두 d-ring이 얽힌다 — 상호정보는 이 공유 δ의 엔트로피다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 공유 δ 비트의 von Neumann 상호정보 노름 $S(A)+S(B)-S(AB)$이다. (b) 이 노름을 택하는 이유: 두 엔티티가 각자 가진 정보의 합에서 결합 정보를 빼면 겹친 δ만 남고, 그 겹침이 상관의 척도다. Araki-Lieb 부등식이 상한을 $2\min(S(A),S(B))$로 닫으므로, 8비트 d-ring 두 개의 최대 상호정보는 $2\times 8\ln 2 = 16\ln 2$다.</p>
+<div class="math-block">
+<div class="math-row">$I(A:B) = S(A) + S(B) - S(AB)$</div>
+<div class="math-row">$I(A:B) \;\leq\; 2\min\!\big(S(A),\,S(B)\big) \;\leq\; 16\ln 2$</div>
+<div class="math-legend">$I(A:B)$: 양자 상호정보 | $S$: von Neumann 엔트로피 (<a href="h604.html">H-604</a>) | $S(AB)$: 결합 엔트로피 | $2\min$: Araki-Lieb 상한 | $16\ln 2$: 8비트 d-ring 두 개 최대</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h604.html">H-604</a>, <a href="h606.html">H-606</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>ln 2 = 0.693147
+분리 상태 I(A:B) = 0
+벨 상태  I(A:B) = 2 ln 2 = 1.386
+최대 상호정보 = 16 ln 2 = 11.09     8비트 d-ring 둘</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 상관 정보 도메인(공유 δ 비트의 엔트로피)으로 변환한다. (b) 보려는 것은 두 엔티티가 공유하는 δ의 양, 곧 벨 상태에서의 상호정보다. 최대 얽힘 1큐빗 쌍은 $S(A)=S(B)=\ln 2$, $S(AB)=0$이므로 $I=2\ln 2$로 떨어진다.</p>
+<div class="math-block">
+<div class="math-row">$I_{\text{Bell}} = \ln 2 + \ln 2 - 0 = 2\ln 2 = 1.386$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 벨 상태 $I(A:B) = 2\ln 2 = 1.386$, 분리 상태 $0$</div>
+<div class="math-row">측정값: 양자 상호정보 정의·Araki-Lieb 부등식과 일치</div>
+<div class="math-row">상태: 정의 일치, δ 공유 메커니즘 정량화 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 상호정보 = 공유 δ 엔트로피라는 구조가 공리 15에서 닫혔고 벨·분리 상태가 정확히 재현되나, δ 비트가 두 엔티티에 걸치는 물리적 메커니즘(얽힘 스와핑)을 정량화하는 다음 라운드가 남았다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h604.html">H-604</a>(양자 엔트로피) 응용. <a href="h606.html">H-606</a>(디스코드) 분해 대상</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h604.html">H-604</a>, <a href="h606.html">H-606</a></p>
+<p>재투입 경로: <a href="h604.html">H-604</a>, <a href="h606.html">H-606</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

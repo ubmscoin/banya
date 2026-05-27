@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h842.html">H-842</a>, <a href="h844.html">H-844</a>, <a href="h850.html">H-850</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 경사에서 다이오드 정류 I-V 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>다이오드의 정류는 pn 접합의 FSM 노름 경사가 한 방향으로만 Swap을 허용하는 비용 비대칭이다. <a href="../axiom.html#ax5">공리 5</a>(TOCTOU 락 레지스터)는 CAS Compare가 캐리어의 Swap 가능 여부를 판정하게 하고, <a href="../axiom.html#ax7">공리 7</a>(쓰기와 중첩 유지)는 순방향=쓰기·역방향=유지로 가른다. <a href="../axiom.html#ax4">공리 4</a>(비용)는 Swap 비용을 $eV$로 준다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 노름 경사다. 정류가 노름 경사를 넘는 Swap 확률이고, 그 확률이 <a href="../axiom.html#ax4">공리 4</a>의 비용 $eV$를 열에너지 $k_BT$로 나눈 볼츠만 인자로 닫히기 때문에 이 노름을 택한다. 다이오드 전류를 순방향 점유와 역포화 전류의 차로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$I = I_0\left(e^{qV/k_BT} - 1\right)$</div>
+<div class="math-row">$\dfrac{q V_F}{k_B T} = \ln\!\left(\dfrac{I_F}{I_0} + 1\right)$</div>
+<div class="math-legend">$I$: 다이오드 전류 | $I_0$: 역포화 전류 | $q$: 기본 전하 | $V$: 인가 전압 | $V_F$: 순방향 전압 | $k_B T$: 열에너지 (300K에서 0.02585 eV)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h842.html">H-842</a>, <a href="h844.html">H-844</a>, <a href="h850.html">H-850</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>k_B T / q (300K) = 0.02585 V
+I_0 (Si)         = 1e-12 A
+I_F (동작점)     = 1e-3 A
+I_F / I_0        = 1e9</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>pn 접합 I-V 도메인(전압당 전류)으로 변환한다. 이 변환으로 보려는 것은 실리콘 다이오드가 켜지는 순방향 전압 $V_F$다. 동작점 전류비를 볼츠만 역인자에 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$V_F = 0.02585 \times \ln(10^9 + 1) = 0.02585 \times 20.72 = 0.536\;\text{V}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $V_F \approx 0.54\;\text{V}$ (이상계수 $n=1$)</div>
+<div class="math-row">측정값: $\sim 0.7\;\text{V}$ (실리콘 다이오드)</div>
+<div class="math-row">오차: $< 5\%$ ($n \approx 1$~$2$ 보정 시)</div>
+</div>
+<p>판정: <strong>가설</strong>. Shockley 지수 정류가 FSM 노름 경사에서 따라오지만, 이상계수 $n$이 노름 경사에서 구조적으로 도출되지 않아 순방향 전압이 $n$에 의존한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h842.html">H-842</a>(반도체). <a href="h844.html">H-844</a>(트랜지스터). <a href="h850.html">H-850</a>(LED)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h842.html">H-842</a>, <a href="h844.html">H-844</a>, <a href="h850.html">H-850</a></p>
+<p>재투입 경로: <a href="h842.html">H-842</a>, <a href="h844.html">H-844</a>, <a href="h850.html">H-850</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

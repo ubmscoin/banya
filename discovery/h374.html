@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="h375.html">H-375</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 111 역전이 억제 비용에서 양성자 수명 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양성자는 FSM 111 완결 상태(<a href="../axiom.html#ax14">공리 14</a>)다. 붕괴는 $111$에서 $000$으로의 역전이이며, CAS 전체가 동시에 역전되어야 하므로 57개 조합(<a href="../axiom.html#ax9">공리 9</a>)이 이를 억제한다. 억제 지수는 도메인 4축으로 나눈 $57/4$다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 GUT 스케일 역전이 노름으로, X 보손 질량 $M_X=v/\alpha^{57/4}$가 억제를 운반한다. (b) 이 노름을 택하는 이유는 FSM 111 완결 상태의 해체가 GUT 스케일 전이를 요구하기 때문이며, 수명은 GUT 결합과 X 질량의 표준 양성자 붕괴 폭으로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_p\sim\dfrac{M_X^4}{\alpha_{\text{GUT}}^2 M_p^5}$</div>
+<div class="math-row">$M_X=\dfrac{v}{\alpha^{57/4}}$</div>
+<div class="math-legend">$\tau_p$: 양성자 수명 | $M_X$: X 보손 질량 | $\alpha_{\text{GUT}}$: GUT 결합 | $M_p$: 양성자 질량 | $57/4$: 조합 수 / 도메인 4축 (<a href="../axiom.html#ax9">공리 9</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h375.html">H-375</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha          = 1/137.036        D-01
+57/4           = 14.25            57 / 도메인 4축
+alpha^(57/4)   = 10^-30 (근사)
+tau_p (실험 하한) > 2.4e34 yr     Super-Kamiokande (p -> e+ pi0)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) GUT 스케일 붕괴 수명 도메인으로 변환한다. (b) 보려는 것은 FSM 111 역전이 억제가 부여하는 양성자 수명 $\tau_p$다. $\alpha^{57/4}$ 억제에 GUT 결합 보정을 더해 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha^{14.25}=(1/137.036)^{14.25}\approx 10^{-30}$</div>
+<div class="math-row">$\tau_p > 10^{34}\;\text{yr}$ (억제만), $\alpha_{\text{GUT}}$ 보정 후 $\tau_p\sim 10^{37}\;\text{yr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\tau_p\sim 10^{37}\;\text{yr}$</div>
+<div class="math-row">측정값: $\tau_p > 2.4\times 10^{34}\;\text{yr}$ (Super-Kamiokande)</div>
+<div class="math-row">정합: 실험 하한과 모순 없음</div>
+</div>
+<p>판정: <strong>가설</strong>. 붕괴 채널별 분기비와 $M_X$ 정밀 계산이 미정이라 단일 예측값 전이다. 양성자의 안정성이 FSM 111 완결 상태의 역전이 억제로 구조적으로 설명되는 점이 통찰이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h375.html">H-375</a></p>
+<p>재투입 경로: <a href="h375.html">H-375</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

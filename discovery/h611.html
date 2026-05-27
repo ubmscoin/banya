@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 자기참조 모사 비용에서 트로터 오차 $O(t^2/n)$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양자 시뮬레이션은 하나의 CAS가 다른 해밀토니안을 자기 구조로 모사하는 비용이다. CAS가 보편 연산자(<a href="../axiom.html#ax2">공리 2</a>)이므로 임의 해밀토니안을 모사할 수 있고, 자기 시뮬레이션은 FSM 자기참조(<a href="../axiom.html#ax12">공리 12</a>)다. 시간 진화를 $n$개 Compare 단계로 쪼갤 때 비용이 보존(<a href="../axiom.html#ax4">공리 4</a>)되어 모사 정확도가 결정된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 시간 진화 연산자를 $n$개 부분 단계로 쪼개는 트로터 분해 노름이다. 비가환 항 $H_k$를 한 사이클에 동시 처리할 수 없어 CAS가 순차 Compare로 나누기 때문에 이 노름을 택하며, 이때 발생하는 잔차가 트로터 오차다.</p>
+<div class="math-block">
+<div class="math-row">$e^{-iHt} = \displaystyle\lim_{n\to\infty}\left(\prod_k e^{-iH_k t/n}\right)^{n}$</div>
+<div class="math-row">$e^{-iHt} = \displaystyle\prod_k e^{-iH_k t/n} + O(t^2/n)$</div>
+<div class="math-legend">$H$: 전체 해밀토니안 | $H_k$: CAS 부분 단계 | $n$: Compare 단계 수 | $t$: 모사 시간 | $O(t^2/n)$: 트로터 잔차</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>t = 1            모사 시간 (단위)
+n = 100          CAS Compare 단계 수
+t^2/n = 0.01     트로터 1차 오차 스케일
+참조: Trotter-Suzuki decomposition; Feynman 1982</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>양자·정보 도메인(d-ring 자기참조 루프)으로 변환한다. 이 변환으로 보려는 것은 $n$ 단계 모사에서 누적되는 트로터 오차의 크기다. 1차 항 $t^2/n$에 위 상수를 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$O(t^2/n) = \dfrac{1^2}{100} = 0.01$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출 스케일: 트로터 오차 $= O(t^2/n)$, $n=100$에서 $0.01$</div>
+<div class="math-row">측정: 이온 트랩·냉원자 시뮬레이터 단계 수 증가 시 오차 $1/n$ 감쇠 관측</div>
+<div class="math-row">정합: 구조 일치 (정량 검증 대기)</div>
+</div>
+<p>판정: <strong>가설</strong>. 트로터 분해가 CAS 자기참조 모사의 순차 Compare 구조에서 따라오지만, 단계당 잔차의 절대 계수가 외부 입력으로 남아 forward chain 마지막 단계가 닫히지 않았다. 통찰: 시뮬레이션 오차는 CAS가 비가환 항을 한 사이클에 못 쥐는 데서 나온다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h609.html">H-609</a>(QCA), <a href="h612.html">H-612</a>(양자 어닐링) 시뮬레이션 응용</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
+<p>재투입 경로: <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

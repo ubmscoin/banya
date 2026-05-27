@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h711.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h711.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h711.html">H-711</a>. Kerr Effect = Cost Propagation Anisotropy Induced by Electric Field</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs are confirmed; D promotion is feasible in the next round / outstanding tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h696.html">H-696</a>, <a href="h700.html">H-700</a>, <a href="h709.html">H-709</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Kerr constant $K$ from CAS cost-propagation anisotropy</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Kerr effect is the anisotropy by which an external electric field makes a medium's CAS cost propagate differently per direction. This anisotropy is read as the irreversible cost by which the external field deforms the CAS cost structure (<a href="../axiom.html#ax4">Axiom 4</a>), and among the 4 domain axes (<a href="../axiom.html#ax1">Axiom 1</a>) the propagation-direction axis splits its cost with field strength.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the domain propagation-axis cost norm. This norm is chosen because the Kerr effect is an even function (inversion-symmetric) of the external field, so the first-order term vanishes and the even-order $E^2$ term remains as the lowest order. The refractive-index anisotropy is therefore substituted by the $E^2$-dependent term of the CAS cost.</p>
+<div class="math-block">
+<div class="math-row">$\Delta n = \lambda K E^2$</div>
+<div class="math-row">$K = \dfrac{\Delta n}{\lambda E^2}$</div>
+<div class="math-legend">$\Delta n$: birefringence (propagation-axis cost split) | $\lambda$: wavelength | $E$: external electric field | $K$: Kerr constant ($\chi^{(3)}$ DC limit) | $E^2$: lowest even order surviving inversion symmetry</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h696.html">H-696</a>, <a href="h700.html">H-700</a>, <a href="h709.html">H-709</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>K(CS2)        = 3e-14   m/V^2     electro-optic measurement
+K(nitrobenzene) = 4.4e-12 m/V^2    electro-optic measurement
+lambda        = 589e-9  m         Na D line
+E             = 1e6     V/m        applied field</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the electro-optic domain. What it reveals is the cost-propagation split a medium produces per unit field strength — the birefringence $\Delta n$. Substituting the nitrobenzene Kerr constant into the formula above yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\Delta n = (589\times 10^{-9})\times(4.4\times 10^{-12})\times(10^6)^2 = 2.59\times 10^{-9}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: $\Delta n \propto E^2$ (inversion-symmetric even function)</div>
+<div class="math-row">Measured: $K(\text{nitrobenzene}) = 4.4\times 10^{-12}\;\text{m/V}^2$</div>
+<div class="math-row">Status: consistent with electro-optic measurement; the CAS-cost microscopic coefficient of $K$ not yet closed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $E^2$ dependence follows directly from domain inversion symmetry, but the final step of closing the Kerr constant $K$ itself from $\chi^{(3)}$ to an axiom remains.</p>
+<p>Insight: the absence of the first-order Pockels effect and the presence of the second-order Kerr effect both split from the single inversion symmetry.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h700.html">H-700</a> (nonlinear optics) DC limit. <a href="h709.html">H-709</a> (photoelasticity) external-field comparison.</p><p>This card can be re-used as input for the following cards: <a href="h696.html">H-696</a>, <a href="h700.html">H-700</a>, <a href="h709.html">H-709</a></p>
+<p>Re-injection path: <a href="h696.html">H-696</a>, <a href="h700.html">H-700</a>, <a href="h709.html">H-709</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

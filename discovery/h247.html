@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h195.html">H-195</a>, <a href="h197.html">H-197</a>, <a href="h198.html">H-198</a>, <a href="h246.html">H-246</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 7비트 2-쥠과 3-쥠 합에서 E7 기본 표현 차원 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>대상은 완전기술자유도 7(<a href="../axiom.html#ax9">공리 9</a>)을 담는 <a href="../axiom.html#ax15">공리 15</a> 하위 7비트에서 2비트 쥠과 3비트 쥠을 함께 켠 상태의 총수다. 2-쥠 $\binom{7}{2}=21$(<a href="h195.html">H-195</a>: $SO(7)$ 차원)과 3-쥠 $\binom{7}{3}=35$(<a href="h197.html">H-197</a>: CAS 코셋)의 합이 어떤 대칭의 다중항이 되는지를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 2-쥠과 3-쥠을 한 다중항으로 묶는 합 노름이다. 21과 35가 각각 독립 보존 구조를 이루고 그 합 56이 한 군의 기본 표현 차원과 같아지기 때문에 이 노름을 택한다. 따라서 두 쥠 조합 수의 합을 예외 리 군 $E_7$의 기본 표현 차원으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dim V_{\text{fund}}(E_7) = 56$</div>
+<div class="math-row">$\binom{7}{2} + \binom{7}{3} = 21 + 35 = 56$</div>
+<div class="math-legend">$\binom{7}{2}=21$: 2-쥠 = $SO(7)$ 차원 (<a href="h195.html">H-195</a>) | $\binom{7}{3}=35$: 3-쥠 = CAS 코셋 (<a href="h197.html">H-197</a>) | $E_7$: 예외 리 군 | $\dim V_{\text{fund}}(E_7)=56$: 기본 표현 차원</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h195.html">H-195</a>, <a href="h197.html">H-197</a>, <a href="h198.html">H-198</a>, <a href="h246.html">H-246</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>C(7,2)        = 21                          H-195 (SO(7))
+C(7,3)        = 35                          H-197 (CAS 코셋)
+21 + 35       = 56 = C(8,3)
+dim fund(E7)  = 56                          Cartan 분류</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>반야 구조 대칭 도메인으로 변환한다. 이 변환으로 보려는 것은 2-쥠과 3-쥠 상태가 함께 들어가는 최소 다중항 차원이다. 두 조합 수의 합과 기본 표현 차원을 맞대어 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$21 + 35 = 56 = \dim V_{\text{fund}}(E_7)$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\dim V_{\text{fund}} = 56$</div>
+<div class="math-row">대조값: $\dim V_{\text{fund}}(E_7) = 56$       Cartan 분류</div>
+<div class="math-row">차원 일치: 정확</div>
+</div>
+<p>판정: <strong>가설</strong>. $21+35=56$ 분해는 정확하나 이 분할이 $E_7$에서 $SO(7)$로의 분기 규칙과 일치하는지, 133 수반 표현이 다른 파스칼 조합에서 나오는지 확인하는 라운드가 남아 가설에서 멈춘다.</p>
+<p>통찰: 2-쥠과 3-쥠의 합이 $E_7$ 기본 표현을 채운다는 것은 <a href="h246.html">H-246</a>의 7=G2와 한 줄에 놓여, 쥠 차수가 예외 군 사다리의 단을 지정함을 시사한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h195.html">H-195</a>, <a href="h197.html">H-197</a>, <a href="h198.html">H-198</a>, <a href="h246.html">H-246</a></p>
+<p>재투입 경로: <a href="h195.html">H-195</a>, <a href="h197.html">H-197</a>, <a href="h246.html">H-246</a>, <a href="h198.html">H-198</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

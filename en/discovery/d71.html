@@ -68,39 +68,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Explicit derivation formula exists / Experimental comparison error &lt;= 1% / Recursive substitution inputs 5 confirmed / forward chain complete (axiom ==&gt; formula ==&gt; numerics)</p>
 <p><strong>Location:</strong> Category: d mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type. Recursive substitution path: <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Bottom Mass from the CAS DOF Ratio</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The bottom mass is the cost of grabbing an extra color channel in the transition from the 3rd-generation lepton tau to the 3rd-generation down-type quark. In the full-description DOF (<a href="../axiom.html#ax9">Axiom 9</a>), the ratio of the 7 nonzero CAS internal states to the 3 CAS stages fixes that transition cost, and the color grab closes through cost recovery (<a href="../axiom.html#ax6">Axiom 6</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the DOF-ratio $7/3$ norm. (b) The 7 is the count of nonzero CAS internal states ($1+2+4$, <a href="../axiom.html#ax9">Axiom 9</a>), the 3 is the count of CAS stages (Read, Compare, Swap, <a href="../axiom.html#ax2">Axiom 2</a>), and the color transition from tau to bottom is set by this ratio — hence the choice. It is multiplied by the strong-coupling 2-loop cost $2\alpha_s^2/\pi$.</p>
+<div class="math-block">
+<div class="math-row">$m_b = m_\tau \cdot \dfrac{7}{3}$</div>
+<div class="math-row">$m_b = m_\tau \cdot \dfrac{7}{3}\!\left(1 + \dfrac{2\alpha_s^2}{\pi}\right)$</div>
+<div class="math-legend">$m_b$: bottom mass | $m_\tau$: tau mass | $7$: nonzero CAS internal states | $3$: CAS stages | $\alpha_s$: strong coupling (<a href="d03.html">D-03</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>Physical Constant Inputs:</strong> <code>m_b</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>m_tau        = 1776.86 MeV         PDG 2024
+7/3          = 2.33333
+alpha_s      = 0.1183              D-03
+2 alpha_s^2/pi = 0.008908
+pi           = 3.141592653589793
+m_b          = 4180 ± 30 MeV       PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the down-type Yukawa mass domain (d-ring seam). (b) What it reveals is the precise bottom mass with the 2-loop strong-coupling correction included. Multiplying the tau mass by $7/3$ and the strong-coupling correction factor yields that value.</p>
+<div class="math-block">
+<div class="math-row">$m_b = 1776.86 \times \dfrac{7}{3}\times(1 + 0.008908) = 4146.0 \times 1.008908 = 4183\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>discovery</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $m_b = 4183\;\text{MeV}$</div>
+<div class="math-row">Measured: $4180 \pm 30\;\text{MeV}$ (PDG 2024)</div>
+<div class="math-row">Error: $0.069\%$</div>
+</div>
+<p>Verdict: <strong>Discovery</strong></p>
+<p>With $7/3$ emerging from pure CAS structure constants, the <a href="d21.html">D-21</a> first-order approximation (0.81%) is sharpened more than tenfold by the 2-loop correction.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: 3rd-generation quark-lepton correspondence. <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a> cross-check.</p><p>This card can be reused as input for the following cards: <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
+<p>Re-injection path: <a href="d21.html">D-21</a>, <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

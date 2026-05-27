@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / recursive substitution not executed (1st round) / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive substitution path: 1st round (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Lamb-shift higher-order term from the cost of 5 CAS Compares</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Lamb-shift higher-order term is the cost an electron pays in repeated Compares against the field around the nucleus. Of the full-description DOF 7 (<a href="../axiom.html#ax9">Axiom 9</a>: domain 4 + CAS 3), 2 brackets (quantum/classical split) are fixed, so the actual Compare count is $7-2=5$; only the l=0 orbital penetrates the nucleus, giving maximal indexing depth (<a href="../axiom.html#ax13">Axiom 13</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2))</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the coupling-order norm $\alpha^5$ that counts 5 Compares. (b) It is chosen because the higher-order self-energy passes through a 5-step Compare chain and only l=0 (maximal indexing depth, <a href="../axiom.html#ax13">Axiom 13</a>) contributes. It is multiplied by the $1/n^3$ indexing cost and the log factor.</p>
+<div class="math-block">
+<div class="math-row">$\Delta E_{\text{Lamb}}(nS) = \dfrac{\alpha^5}{\pi n^3} m_e c^2 \ln(1/\alpha^2)\,\delta_{l,0}$</div>
+<div class="math-row">$\Delta E_{\text{Lamb}}(nS)\propto\alpha^5\ln(1/\alpha^2)\,\delta_{l,0}/n^3$</div>
+<div class="math-legend">$\alpha^5$: 5 Compares = effective DOF $7-2$ | $\ln(1/\alpha^2)$: log correction | $\delta_{l,0}$: maximal indexing depth at l=0 | $1/n^3$: cost of accessing the n-th d-ring slot | $m_e c^2$: electron rest scale</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>Delta</code>, <code>alpha</code>, <code>m_e</code></p>
-<p><strong>Library Re-substitution:</strong> <em>No external reference (1st round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>alpha       = 1/137.036          D-01
+alpha^5     = 2.04e-11
+ln(1/alpha^2) = 2 ln 137 = 9.85
+n           = 2 ==> 1/n^3 = 1/8</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the electromagnetic ring-137 coupling-order domain. (b) What it reveals is the magnitude of the 2S Lamb shift. Multiplying the 5-Compare order by the log factor and the $1/n^3$ indexing cost yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\alpha^5\ln(1/\alpha^2) = 2.04\times10^{-11}\times 9.85 = 2.01\times10^{-10}$</div>
+<div class="math-row">$\Delta E_{\text{Lamb}}(2S) = 2.01\times10^{-10}\times \tfrac{1}{8} = 2.51\times10^{-11}\,m_e c^2$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Delta E_{\text{Lamb}}(2S)\approx 2.51\times10^{-11}\,m_e c^2$</div>
+<div class="math-row">Measured: precision-QED standard value not compared</div>
+<div class="math-row">Status: dimension/order consistent, quantitative error not computed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. $\alpha^5$ closes as $7-2=5$ Compares and $\delta_{l,0}$ reflects maximal l=0 indexing depth, but it halts at hypothesis because the comparison with a standard measured value is incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No explicit byproducts. Cross-links can be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

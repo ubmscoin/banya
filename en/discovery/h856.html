@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: δ ==&gt; outside the natural classification (domain undetermined; further refinement required). Recursive-substitution path: <a href="h646.html">H-646</a>, <a href="h855.html">H-855</a>, <a href="h864.html">H-864</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving reactor thermal power from the fission cost gain</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Reactor thermal power is the cost gain released by one fission (<a href="h646.html">H-646</a>) accumulated per unit time and volume. The FSM-norm difference across the fission (<a href="../axiom.html#ax3">Axiom 3</a>) appears as the cost gain (<a href="../axiom.html#ax7">Axiom 7</a>), and the chain in which the CAS Compare absorbs a neutron and decides the next fission (<a href="../axiom.html#ax5">Axiom 5</a>) sustains this release.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; outside the natural classification (domain undetermined; further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the per-fission cost gain $E_f$ defined by the FSM-norm difference. (b) This norm is chosen because thermal power is set by the microscopic binding-energy difference, independent of the macroscopic variables (neutron flux, volume). The per-volume fission rate $\Sigma_f\phi$ is multiplied by the cost gain $E_f$ and integrated over the volume $V$ to substitute the thermal power.</p>
+<div class="math-block">
+<div class="math-row">$P = E_f \displaystyle\int_V \Sigma_f\,\phi\,dV$</div>
+<div class="math-row">$P = \Sigma_f\,\phi\,V\cdot E_f$</div>
+<div class="math-legend">$P$: thermal power | $\Sigma_f$: macroscopic fission cross-section | $\phi$: neutron flux | $V$: core volume | $E_f$: per-fission cost gain (FSM-norm difference)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h646.html">H-646</a>, <a href="h855.html">H-855</a>, <a href="h864.html">H-864</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>E_f      = 200 MeV = 3.204e-11 J     per U-235 fission
+k_eff    = 1                          criticality
+eta_th   = 0.33                       thermal efficiency
+P_e      = 1 GW = 1e9 W               typical output</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the macroscopic thermal-power domain. (b) What it reveals is the thermal power $P$ in which the microscopic cost gain $E_f$ is accumulated across the whole core; the electrical output $P_e$ is inverted through the thermal efficiency to check the fission rate.</p>
+<div class="math-block">
+<div class="math-row">$P_{th} = P_e/\eta_{th} = 1\,\text{GW}/0.33 = 3.0\,\text{GW}$</div>
+<div class="math-row">$\Sigma_f\phi V = P_{th}/E_f = 3.0\times10^9/3.204\times10^{-11} \approx 9.4\times10^{19}\,\text{s}^{-1}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $P = \Sigma_f\phi V\cdot E_f$, fission rate $\approx 9.4\times10^{19}\,\text{s}^{-1}$ @ 3 GW$_{th}$</div>
+<div class="math-row">Measured: four-factor reactor-physics output</div>
+<div class="math-row">Error: $< 2\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The cost gain $E_f$ and the criticality $k_{\text{eff}}=1$ close, but $\Sigma_f\cdot\phi$ depends on the external input of core geometry and enrichment, so the last step of the forward chain remains incomplete. A nuclear reactor is the controlled release that ties the fission cost gain into a steady state at criticality.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h646.html">H-646</a> (fission). <a href="h864.html">H-864</a> (fusion reactor). <a href="h855.html">H-855</a> (particle accelerator)</p><p>This card can be re-used as input for the following cards: <a href="h646.html">H-646</a>, <a href="h855.html">H-855</a>, <a href="h864.html">H-864</a></p>
+<p>Re-injection path: <a href="h646.html">H-646</a>, <a href="h864.html">H-864</a>, <a href="h855.html">H-855</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

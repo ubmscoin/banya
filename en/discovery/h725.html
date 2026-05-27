@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h725.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h725.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h725.html">H-725</a>. Relativistic Momentum = γmv = Cost-Corrected FSM Norm × Velocity</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D-promotion possible upon the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h_misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h720.html">H-720</a>, <a href="h721.html">H-721</a>, <a href="h726.html">H-726</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Relativistic Momentum from the γ-Corrected FSM Norm × Velocity</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Relativistic momentum is the FSM norm $m_0$ (<a href="../axiom.html#ax3">Axiom 3</a>) corrected by the conversion ratio $\gamma$ and then multiplied by the domain bit transit rate (velocity). The bit transit on the space axis of the left bracket of $\delta^2$ forms the space component of the momentum (the <a href="h721.html">H-721</a> 4-momentum), and $\gamma$ enters as the <a href="../axiom.html#ax4">Axiom 4</a> cost-density increase.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the $\gamma$-corrected FSM norm (<a href="../axiom.html#ax3">Axiom 3</a> $m_0$). (b) It is chosen because generalizing the classical momentum $p=mv$ to a quantity conserved under the Lorentz transformation (<a href="h720.html">H-720</a>) requires a $\gamma$ cost correction on the norm. The generic external classical momentum is substituted by the $\gamma$-corrected norm × transit rate.</p>
+<div class="math-block">
+<div class="math-row">$p = m_0 v$</div>
+<div class="math-row">$p = \gamma\,m_0\,v$</div>
+<div class="math-legend">$m_0$: FSM norm (<a href="../axiom.html#ax3">Axiom 3</a>) | $\gamma$: cost-density correction (<a href="../axiom.html#ax4">Axiom 4</a>) | $v$: domain bit transit rate | $p^\mu$: 4-momentum space component (<a href="h721.html">H-721</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h720.html">H-720</a>, <a href="h721.html">H-721</a>, <a href="h726.html">H-726</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>m_e   = 0.511     MeV/c^2     PDG 2024 electron
+v     = 0.9 c                 example speed
+gamma = 2.294                1/sqrt(1-0.81)
+beta  = 0.9                   v/c</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the momentum domain. (b) What it reveals is whether the $\gamma$-corrected norm × velocity closes to the electron momentum measured in collision / scattering experiments. Applying $\gamma=2.294$ to an electron at $v=0.9c$ yields the momentum.</p>
+<div class="math-block">
+<div class="math-row">$p = \gamma\,m_0\,v = 2.294 \times 0.511 \times 0.9 = 1.055\ \text{MeV}/c$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $p = \gamma m_0 v = 1.055\ \text{MeV}/c$ (at $v=0.9c$)</div>
+<div class="math-row">Measured: energy-momentum relation $E^2=(pc)^2+(m_0c^2)^2$ matches collision experiments</div>
+<div class="math-row">Result: $\gamma$-corrected momentum matches</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $\gamma$-corrected FSM norm × velocity closes to the measured momentum and drops to $p=E/c$ in the photon limit $m_0=0$, but the final step forcing the $\gamma$ correction from a single integer is incomplete, so it remains Class III. The <a href="h726.html">H-726</a> energy-momentum relation is the input to that closure.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h721.html">H-721</a> (4-vector) spatial component. <a href="h726.html">H-726</a> (energy) energy-momentum relation.</p><p>This card can be re-used as input for the following cards: <a href="h720.html">H-720</a>, <a href="h721.html">H-721</a>, <a href="h726.html">H-726</a></p>
+<p>Re-injection path: <a href="h720.html">H-720</a>, <a href="h721.html">H-721</a>, <a href="h726.html">H-726</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

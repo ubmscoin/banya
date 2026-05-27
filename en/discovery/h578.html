@@ -65,39 +65,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / three recursive inputs confirmed, D-promotion possible on the next round / outstanding tasks listed</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive-substitution path: <a href="h567.html">H-567</a>, <a href="h576.html">H-576</a>, <a href="h577.html">H-577</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Maxwell-Boltzmann Distribution from the RLU Decay Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The classical limit is the regime where the occupancy is far smaller than the number of slots, so no two Swaps ever contend for the same slot. The RLU decay of <a href="../axiom.html#ax6">Axiom 6</a> (cost recovery) shaves occupancy as an exponential of the cost $\epsilon$, and <a href="../axiom.html#ax4">Axiom 4</a> (cost) sets the scale $k_BT$ of that exponent. Here the denominator $\pm1$ of both Fermi-Dirac (<a href="h576.html">H-576</a>) and Bose-Einstein (<a href="h577.html">H-577</a>) is negligible.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the <a href="../axiom.html#ax6">Axiom 6</a> RLU-decay norm. (b) It is chosen because in the regime $e^{(\epsilon-\mu)/k_BT}\gg 1$ the $\pm1$ in the denominator vanishes relative to the exponential term, the exclusion/non-exclusion distinction disappears, and pure exponential decay alone remains. Both quantum distributions converge to the same classical form.</p>
+<div class="math-block">
+<div class="math-row">$f_{\text{FD/BE}} = \dfrac{1}{e^{(\epsilon-\mu)/k_BT} \pm 1}$</div>
+<div class="math-row">$f(\epsilon) \to e^{-(\epsilon-\mu)/k_BT}\quad(e^{(\epsilon-\mu)/k_BT}\gg 1)$</div>
+<div class="math-legend">$f$: occupancy | $\pm1$: exclusion/non-exclusion term, vanishes in classical limit | $\epsilon$: state cost | $k_BT$: RLU decay scale | $e^{-\epsilon/k_BT}$: Boltzmann factor</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>none</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h567.html">H-567</a>, <a href="h576.html">H-576</a>, <a href="h577.html">H-577</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>exp(x) >> 1                   classical limit (RLU-dominated, Axiom 6)
+k_B = 1.380649e-23 J/K        CODATA 2018
+x = (eps-mu)/(k_B T)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the velocity/energy distribution of classical statistics. (b) What it reveals is the occupancy form left after the quantum term vanishes. Dropping $\pm1$ from the denominator exposes a single Boltzmann factor.</p>
+<div class="math-block">
+<div class="math-row">$f(\epsilon) = \dfrac{1}{e^{x}\pm 1} \approx \dfrac{1}{e^{x}} = e^{-(\epsilon-\mu)/k_BT}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $f(\epsilon) \propto e^{-\epsilon/k_BT}$</div>
+<div class="math-row">Standard form: Maxwell-Boltzmann distribution (1860)</div>
+<div class="math-row">Match: Boltzmann-factor form exact</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Boltzmann factor falls out of the RLU-decay norm, and the vanishing of the denominator $\pm1$ closes the quantum/classical boundary exactly. The remaining task is the quantitative correspondence between the RLU decay rate and the $k_BT$ scale.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h576.html">H-576</a> (FD) classical limit. <a href="h577.html">H-577</a> (BE) classical limit. <a href="h567.html">H-567</a> (entropy) classical regime.</p><p>This card can be re-used as input for the following cards: <a href="h567.html">H-567</a>, <a href="h576.html">H-576</a>, <a href="h577.html">H-577</a></p>
+<p>Re-injection path: <a href="h576.html">H-576</a>, <a href="h577.html">H-577</a>, <a href="h567.html">H-567</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

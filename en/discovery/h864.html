@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h864.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h864.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h864.html">H-864</a>. Fusion Reactor = Sustained Control of FSM Fusion Cost Gain</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h855.html">H-855</a>, <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the DT Fusion Cost Gain from the FSM Norm Change</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The fusion gain is the norm that decreases when light FSMs (hydrogen isotopes) merge — the mass defect released as cost (<a href="../axiom.html#ax3">Axiom 3</a>). Since the FSM norm corresponds to binding energy, the norm difference before and after fusion is read as the cost of $\delta^2$. $Q>1$ is the condition that the released cost exceeds the cost spent on confinement.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM mass norm — the difference in rest cost before and after the reaction. (b) The numerator of the cost gain $Q$ is the fusion energy released, and that energy closes as the mass defect $\Delta m\,c^2$ (<a href="../axiom.html#ax7">Axiom 7</a> cost gain); hence the mass norm is chosen. The DT fusion energy is therefore substituted by the difference of the reactant and product mass sums.</p>
+<div class="math-block">
+<div class="math-row">$Q = \dfrac{P_{\text{fusion}}}{P_{\text{input}}} > 1$</div>
+<div class="math-row">$E_{\text{DT}} = \big[(m_D + m_T) - (m_{\text{He}} + m_n)\big]c^2$</div>
+<div class="math-legend">$Q$: fusion cost gain | $E_{\text{DT}}$: DT reaction energy released | $m_D,m_T,m_{\text{He}},m_n$: D, T, He-4, neutron FSM masses | $c^2$: mass-cost conversion $931.494\;\text{MeV/u}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h855.html">H-855</a>, <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>m_D  = 2.014102 u     AME2020
+m_T  = 3.016049 u     AME2020
+m_He = 4.002602 u     AME2020
+m_n  = 1.008665 u     AME2020
+c^2  = 931.494 MeV/u  CODATA</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is from the dimensionless mass norm into the nuclear-energy domain (MeV). (b) What it reveals is the cost released by a single DT fusion — the energy released that becomes the numerator of the $Q>1$ gain. Multiplying the mass-sum difference by $c^2$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{DT}} = (5.030151 - 5.011267)\,\text{u} \times 931.494\;\text{MeV/u} = 0.018884 \times 931.494 = 17.59\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_{\text{DT}} = 17.59\;\text{MeV}$</div>
+<div class="math-row">Measured: $17.6\;\text{MeV}$ (DT fusion Q-value)</div>
+<div class="math-row">Error: $&lt; 0.1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The DT released energy of $17.6\;\text{MeV}$ closes from the FSM mass-norm difference to within $&lt;0.1\%$, but the denominator of the cost gain $Q$ (the confinement input) depends on plasma control via the Lawson criterion $n\tau_E T$ and remains an external input, leaving the forward chain incomplete. That fusion lies on the rising segment of the binding-energy curve is a direct consequence of <a href="../axiom.html#ax3">Axiom 3</a>, that the FSM norm corresponds to binding energy.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h856.html">H-856</a> (nuclear reactor). <a href="h860.html">H-860</a> (plasma). <a href="h855.html">H-855</a> (particle accelerator)</p><p>This card can be re-used as input for the following cards: <a href="h855.html">H-855</a>, <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a></p>
+<p>Re-injection path: <a href="h856.html">H-856</a>, <a href="h860.html">H-860</a>, <a href="h855.html">H-855</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

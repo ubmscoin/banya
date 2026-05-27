@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h603.html">H-603</a>, <a href="h615.html">H-615</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Quantum Channel Capacity from the CAS Cost-Transfer Limit</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A channel is the path that moves one entity's CAS cost to another. In <a href="../axiom.html#ax4">Axiom 4</a> cost is conserved, so the transportable information has an upper bound; in <a href="../axiom.html#ax6">Axiom 6</a> RLU attenuation erodes that cost and becomes channel noise. In <a href="../axiom.html#ax2">Axiom 2</a> Compare is the encoding/decoding, so the capacity is the maximum Compare information over an optimized input distribution.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Holevo-information norm of CAS cost transfer — the von Neumann entropy of the output ensemble minus its conditional entropy. (b) Why this norm: the upper bound on classical information a quantum channel carries is exactly this quantity (the Holevo-Schumacher-Westmoreland theorem), and its maximum is the channel capacity. For a lossy bosonic channel, RLU attenuation fixes the mean photon number $\bar n$ and the capacity closes into the single function $g(\bar n)$.</p>
+<div class="math-block">
+<div class="math-row">$C_Q = \max_\rho \left[ S(\mathcal{E}(\rho)) - \sum_i p_i S(\mathcal{E}(\rho_i)) \right]$</div>
+<div class="math-row">$C_{\text{boson}} = g(\bar n) = (\bar n + 1)\log(\bar n + 1) - \bar n\log\bar n$</div>
+<div class="math-legend">$C_Q$: quantum channel capacity | $S$: von Neumann entropy | $\mathcal{E}$: channel (CAS cost-transfer map) | $\rho$: input state | $\bar n$: mean photon number (set by RLU attenuation) | $g$: bosonic entropy function</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h603.html">H-603</a>, <a href="h615.html">H-615</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>S(rho) = -Tr(rho ln rho)             von Neumann entropy
+g(x)   = (x+1)log(x+1) - x log x      lossy bosonic channel
+lossless limit g(x) -> log x  (large x)
+C_boson(n=1) = 2 log 2 - 0 = 2 bit</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the information-capacity domain (bits per use). (b) What it reveals is the maximum classical information the CAS cost-transfer path can carry in one use. Optimizing the input distribution closes the capacity into a function of the single factor $\bar n$.</p>
+<div class="math-block">
+<div class="math-row">$C_{\text{boson}} = g(\bar n) = (\bar n + 1)\log(\bar n + 1) - \bar n\log\bar n$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $C_{\text{boson}} = g(\bar n)$ (lossy bosonic channel)</div>
+<div class="math-row">Measured: matches the HSW theorem and lossy-channel capacity theory</div>
+<div class="math-row">Status: structural match, RLU derivation of $\bar n$ incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure — capacity = Holevo information of the optimal input, noise = RLU attenuation — is closed, but computing $\bar n$ directly from the RLU constant of Axiom 6 is the final step toward promotion to Discovery.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h603.html">H-603</a> (Holevo bound), <a href="h615.html">H-615</a> (quantum networks) capacity limits.</p><p>This card can be re-used as input for the following cards: <a href="h603.html">H-603</a>, <a href="h615.html">H-615</a></p>
+<p>Re-injection path: <a href="h603.html">H-603</a>, <a href="h615.html">H-615</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

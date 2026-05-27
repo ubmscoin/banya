@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="h431.html">H-431</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 원자성 Read 경로 자유도에서 게이지 불변성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>게이지 자유도는 CAS가 원자 사이클로 닫히는(<a href="../axiom.html#ax2">공리 2</a>) 동안 Read 경로를 잡는 위상 자유도다. Swap은 Compare의 bool 결과에만 의존하고(<a href="../axiom.html#ax7">공리 7</a> Compare이면 Swap), Read 오프셋에는 의존하지 않으므로(<a href="../axiom.html#ax14">공리 14</a> FSM 닫힘) 그 오프셋이 곧 게이지 자유도다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Read 경로 위상 노름이다. 물리량(Swap 결과)이 Read 오프셋의 변화에 불변이기 때문에 이 노름을 택한다. Read 오프셋을 임의 위상으로 옮겨도 Compare bool이 같으면 Swap이 같아, 퍼텐셜에 $\partial_\mu\chi$를 더하는 게이지 변환이 관측량을 바꾸지 않는다.</p>
+<div class="math-block">
+<div class="math-row">$A_\mu \mapsto A_\mu + \partial_\mu\chi$</div>
+<div class="math-row">$\text{Swap} = f(\text{Compare bool}),\qquad \dfrac{\partial\,\text{Swap}}{\partial(\text{Read offset})} = 0$</div>
+<div class="math-legend">$A_\mu$: 게이지 퍼텐셜 | $\chi$: Read 오프셋 위상 | Compare bool: <a href="../axiom.html#ax7">공리 7</a> 비교 결과 | Swap: <a href="../axiom.html#ax2">공리 2</a> CAS 쓰기 단계</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h431.html">H-431</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>U(1)  = Read 경로 1개          전하 보존
+SU(2) = Read 채널 2개 비가환    약한 동위스핀 보존
+SU(3) = Read 채널 3개 비가환    공리 2 CAS 3축
+관측량 = Swap 결과 (Read 오프셋 불변)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>게이지 대칭 도메인으로 변환한다. 이 변환으로 보려는 것은 Read 오프셋 위상에 대한 관측량의 불변성이다. Swap이 Compare bool만의 함수임을 대입하면 게이지 변환 아래 관측량의 변화가 0으로 산출된다.</p>
+<div class="math-block">
+<div class="math-row">$\delta(\text{observable}) = 0\quad\text{under}\quad A_\mu \mapsto A_\mu + \partial_\mu\chi$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 관측량 게이지 불변 ($U(1)$ Read 경로 1개)</div>
+<div class="math-row">측정값: $U(1)$ 전하 보존, $SU(2)$ 약한 동위스핀 보존 (표준모형 확인)</div>
+<div class="math-row">정합: Yang-Mills 게이지 구조와 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. Read 오프셋 불변이 게이지 불변성을 강제하는 구조는 닫혔으나, $SU(2)$·$SU(3)$의 다중 Read 채널 비가환성 형식화가 미완이라 가설에 머문다.</p>
+<p>게이지 자유도는 Compare bool이 같으면 Read 경로를 자유롭게 고를 수 있는 CAS 원자성의 잉여다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h431.html">H-431</a>(전하 양자화) 근거. 표준모형 게이지 구조 기반.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h431.html">H-431</a></p>
+<p>재투입 경로: <a href="h431.html">H-431</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

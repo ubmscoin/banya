@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h587.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h587.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h587.html">H-587</a>. Carnot Efficiency = Minimum Loss Ratio of CAS Irreversible Cost</h1><div class="box-finding">
@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 3 recursive inputs confirmed, D promotion possible at the next round / remaining tasks explicit</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unfixed, further refinement required). Recursive substitution path: <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Carnot minimum-loss ratio from the CAS irreversible cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A heat engine is a cycle in which the CAS transfers cost between a hot reservoir and a cold reservoir. Because the CAS is irreversible (<a href="../axiom.html#ax5">Axiom 5</a>), it cannot return part of the transferred cost as work and dumps it into the cold reservoir. That discarded share is the efficiency loss, and temperature is defined by δ equilibrium (<a href="h571.html">H-571</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unfixed, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS irreversible-cost norm. It is chosen because the lower bound of the irreversible loss sets the efficiency limit. By CAS cost conservation (<a href="../axiom.html#ax4">Axiom 4</a>), the remainder of the input cost $Q_H$ after the work $W$ flows to the cold reservoir, and its minimum ratio is the temperature ratio $T_L/T_H$.</p>
+<div class="math-block">
+<div class="math-row">$\eta = \dfrac{W}{Q_H} = 1 - \dfrac{Q_L}{Q_H}$</div>
+<div class="math-row">$\eta_C = 1 - \dfrac{T_L}{T_H}$</div>
+<div class="math-legend">$\eta$: heat-engine efficiency | $W$: extracted work | $Q_H,Q_L$: cost absorbed from hot / released to cold | $T_H,T_L$: hot/cold temperature (δ equilibrium, <a href="h571.html">H-571</a>) | $\eta_C$: Carnot limit = minimum loss ratio</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>T_H = 600 K                     hot-reservoir example
+T_L = 300 K                     cold-reservoir example
+T_L/T_H = 0.5                   minimum loss ratio
+1 - T_L/T_H = 0.5               Carnot limit</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of a domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the thermodynamic-efficiency domain. What it reveals is the maximum fraction of work obtainable when the irreversible loss is minimal — the Carnot efficiency $\eta_C$. It is computed by subtracting the temperature ratio from 1.</p>
+<div class="math-block">
+<div class="math-row">$\eta_C = 1 - \dfrac{300}{600} = 0.5 = 50\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\eta_C = 1 - T_L/T_H = 0.5$ (example)</div>
+<div class="math-row">Measured check: every real heat engine $\eta \le \eta_C$ (Second Law)</div>
+<div class="math-row">Status: qualitative limit matches, irreversible-loss quantification pending</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Carnot cycle is the ideal path that minimizes CAS irreversibility; real engines carry a larger irreversible cost, so $\eta < \eta_C$.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h568.html">H-568</a> (Second Law) efficiency limit. <a href="h572.html">H-572</a> (free energy) maximum work.</p><p>This card can be re-used as input for the following cards: <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
+<p>Re-injection path: <a href="h568.html">H-568</a>, <a href="h571.html">H-571</a>, <a href="h572.html">H-572</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

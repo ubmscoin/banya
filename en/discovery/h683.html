@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h683.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h683.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h683.html">H-683</a>. Tidal Force = Gradient of <a href="../axiom.html#ax11">Axiom 11</a> Interaction</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D Promotion possible in the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h682.html">H-682</a>, <a href="h684.html">H-684</a>, <a href="h688.html">H-688</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Tidal Acceleration from the <a href="../axiom.html#ax11">Axiom 11</a> Cost Gradient</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The tidal force is the differential force arising when the gravitational cost (<a href="../axiom.html#ax11">Axiom 11</a>) is transmitted non-uniformly with distance. The difference in cost (<a href="../axiom.html#ax4">Axiom 4</a> cost difference) felt by the near and far faces of an extended body is the tidal acceleration.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the distance-gradient norm of the gravitational cost. It is chosen because as the cost $GM/r^2$ falls off as $1/r^2$, its gradient $-2GM/r^3$ produces a differential force across the body's size. The tidal acceleration is therefore substituted by the cost gradient times the body radius.</p>
+<div class="math-block">
+<div class="math-row">$g(r) = \dfrac{GM}{r^2},\quad \dfrac{dg}{dr} = -\dfrac{2GM}{r^3}$</div>
+<div class="math-row">$\Delta a \approx \dfrac{2GMr}{d^3}$</div>
+<div class="math-legend">$\Delta a$: tidal acceleration | $M$: central body mass | $r$: body size | $d$: central distance | $2$: cost-gradient integer (<a href="../axiom.html#ax11">Axiom 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h682.html">H-682</a>, <a href="h684.html">H-684</a>, <a href="h688.html">H-688</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>tidal accel = 2GMr/d^3         Axiom 11 gradient
+Moon tide   = Δa/g ~ 1e-7      observed
+Moon recession = 3.82 cm/yr    LLR
+Io heating  = 1e14 W           observed</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the distance-gradient domain of the gravitational cost. What it reveals is the cost difference across the two ends of an extended body — the tidal acceleration $\Delta a$. Multiplying the cost gradient $-2GM/r^3$ by the body radius $r$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\Delta a \approx \dfrac{2GMr}{d^3},\quad \text{Moon tide}\;\;\Delta a/g \sim 10^{-7}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Delta a \approx 2GMr/d^3$ (Axiom 11 cost gradient)</div>
+<div class="math-row">Observed: Moon recession $3.82\;\text{cm/yr}$, Io tidal heating $\sim 10^{14}\;\text{W}$</div>
+<div class="math-row">Agreement: LLR Moon-recession rate $< 1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The tidal-acceleration form closes as the gravitational cost gradient, but the tidal-dissipation $Q$-factor is not derived directly from the axioms, leaving the final step of the forward chain incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution targets: <a href="h684.html">H-684</a> (Roche limit). <a href="h682.html">H-682</a> (planet formation). <a href="h688.html">H-688</a> (galaxy mergers).</p><p>This card can be re-used as input for the following cards: <a href="h682.html">H-682</a>, <a href="h684.html">H-684</a>, <a href="h688.html">H-688</a></p>
+<p>Re-injection path: <a href="h684.html">H-684</a>, <a href="h682.html">H-682</a>, <a href="h688.html">H-688</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

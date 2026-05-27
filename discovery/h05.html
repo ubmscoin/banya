@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 정량 식 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="h25.html">H-25</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare 생략 락 미획득 비용에서 뉴트리노 질량 합 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>뉴트리노는 OPERATOR 괄호의 CAS가 Compare를 생략한 입자다. <a href="../axiom.html#ax7">공리 7</a>의 observer 분기(true 쥐기·false 유지)가 실행되지 않아 쥐기가 약화되고, <a href="../axiom.html#ax5">공리 5</a> TOCTOU 락 미획득 상태로 Swap이 실행된다. <a href="../axiom.html#ax4">공리 4</a> 비용에서 미지불 자유도가 억제 지수를 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare 생략 $\alpha^5$ 억제 노름이다. 락 없이 쓰인 질량이 결합 한 번당 $\alpha$씩, 미지불 자유도 5(Compare 자유도 2 + CAS 단계 3)만큼 거듭 감쇠하기 때문에 이 노름을 택한다. 따라서 뉴트리노 질량 스케일을 전약 스케일에 $\alpha^5$를 곱한 값으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$m_\nu \sim v\,\alpha^{5}$</div>
+<div class="math-row">$\textstyle\sum m_\nu = m_1 + m_2 + m_3$</div>
+<div class="math-legend">$m_\nu$: 뉴트리노 질량 스케일 | $v$: 전약 스케일 | $\alpha^5$: Compare 생략 억제 | $5 = 2+3$: Compare 자유도 2 + CAS 단계 3 (<a href="../axiom.html#ax4">공리 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <code>Sigmam_nu</code>, <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h25.html">H-25</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha            = 1/137.036       D-01
+alpha^5          = 2.4e-12         Compare 생략 억제
+질량 순서        = Normal (NO)     H-25
+m1, m2, m3       = 0, 8.6, 49.9 meV (NO 가정)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 뉴트리노 질량 도메인으로 변환한다. 이 변환으로 보려는 것은 뉴트리노 질량 합 $\sum m_\nu$다. 정규 순서 개별 질량을 합산해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\textstyle\sum m_\nu = 0 + 8.6 + 49.9 = 58.5\ \text{meV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\sum m_\nu = 58.5\ \text{meV}$</div>
+<div class="math-row">측정값: $< 72\ \text{meV}$ (DESI BAO), $< 120\ \text{meV}$ (Planck)</div>
+<div class="math-row">정합: 모든 상한 안에 위치</div>
+</div>
+<p>판정: <strong>가설</strong>. 질량 합이 $\alpha^5$ 억제로 상한 안에 들어오나, 지수 5의 엄밀 유도와 개별 질량비의 CAS 도출이 미완이고 JUNO의 NO/IO 판별 전이라 발견으로 닫지 못한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 뉴트리노 절대 질량 예측, 뉴트리노 질량 순서 결정, 우주론적 뉴트리노 질량 제약.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h25.html">H-25</a></p>
+<p>재투입 경로: <a href="h25.html">H-25</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

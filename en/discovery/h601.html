@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible in the next round / outstanding tasks listed.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive-substitution path: <a href="h596.html">H-596</a>, <a href="h615.html">H-615</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the QKD Eavesdropping Threshold Error Rate from the CAS Compare Disturbance Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Eavesdropping is a third Compare inserted between the two legitimate parties. In <a href="../axiom.html#ax2">Axiom 2</a> a Compare reads the superposition and fixes the state, so an extra Compare pays an extra cost and collapses the superposition. In <a href="../axiom.html#ax4">Axiom 4</a> that cost is irreversible and leaves a trace — this trace is the source of eavesdropping detection.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the d-ring 1-bit Compare norm that separates the two bases (rectilinear and diagonal). BB84 randomly alternates two CAS bases, and the Swap outcomes 0 and 1 of one bit are the two poles of the norm. (b) Why this norm: when the eavesdropper guesses the basis wrong, the Compare collapses the superposition along the wrong axis and injects errors into the legitimate measurement. With the eavesdropper intercepting on a random basis each time, each of the half-the-time basis mismatches errs with probability 1/2, so the upper-bound disturbance closes at $1/2 \times 1/2 = 1/4$.</p>
+<div class="math-block">
+<div class="math-row">$Q = \dfrac{1}{2}\cdot\dfrac{1}{2} = \dfrac{1}{4}$</div>
+<div class="math-row">$Q_{\text{th}} = 1 - 2H_2^{-1}\!\left(\tfrac12\right) \;\text{(BB84 threshold)}$</div>
+<div class="math-legend">$Q$: max error rate injected by eavesdropper | $1/2$: basis-mismatch probability | $1/2$: Swap-error probability on mismatch | $Q_{\text{th}}$: threshold error rate for secure key extraction | $H_2$: binary entropy</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h596.html">H-596</a>, <a href="h615.html">H-615</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>basis-mismatch prob   = 1/2
+error prob on mismatch = 1/2
+Q(max disturbance)    = 1/4 = 25%        BB84 (Bennett-Brassard 1984)
+Q_th(BB84)            = 11%              secure-key threshold
+Q_th(6-state)         = 12.6%           6-state protocol</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the dimensionless error-rate domain (d-ring 1-bit Compare statistics). (b) What it reveals is the maximum quantum bit-error rate the eavesdropper injects under intercept-resend, and the threshold below which a secure key survives. Multiplying the two basis probabilities yields the maximum disturbance.</p>
+<div class="math-block">
+<div class="math-row">$Q = \dfrac{1}{2}\times\dfrac{1}{2} = 0.25 = 25\%$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $Q = 25\%$ (max disturbance under intercept-resend)</div>
+<div class="math-row">Measured: BB84 threshold $11\%$, 6-state $12.6\%$</div>
+<div class="math-row">Status: structural match, threshold refinement incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure — eavesdrop = extra Compare = irreversible cost — is closed, but deriving the $11\%$ threshold directly from the axioms requires a next round reducing the binary-entropy factor to a d-ring cost.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: application of <a href="h596.html">H-596</a> (no-cloning); security basis for <a href="h615.html">H-615</a> (quantum network).</p><p>This card can be re-used as input for the following cards: <a href="h596.html">H-596</a>, <a href="h615.html">H-615</a></p>
+<p>Re-injection path: <a href="h596.html">H-596</a>, <a href="h615.html">H-615</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

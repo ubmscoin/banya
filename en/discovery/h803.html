@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h803.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h803.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h803.html">H-803</a>. Spontaneous Symmetry Breaking = Non-zero Expectation of FSM Norm</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D-promotion possible in the next round / outstanding tasks specified.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula structure itself, primary integer (4,3) combination. Recursive substitution path: <a href="h801.html">H-801</a>, <a href="h802.html">H-802</a>, <a href="h804.html">H-804</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Spontaneous Symmetry Breaking from the Non-zero FSM Norm Expectation</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Spontaneous symmetry breaking is the phenomenon where the operations stay symmetric while only the state becomes asymmetric. The Read, Compare, and Swap of CAS (<a href="../axiom.html#ax2">Axiom 2</a>) preserve symmetry, but once the floor of the FSM norm (<a href="../axiom.html#ax6">Axiom 6</a>) sits at a single non-zero point $v$, the vacuum of DATA (<a href="../axiom.html#ax3">Axiom 3</a>) is fixed in that direction and the symmetry breaks.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Banya formula structure itself, primary integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the floor value $\|F_H\|_0$ of the Higgs-field FSM norm (<a href="../axiom.html#ax6">Axiom 6</a>). (b) This norm is chosen because the moment that floor value is fixed at a non-zero $v$ is precisely the symmetry breaking, and that $v$ is directly measured through the W and Z masses. The vacuum expectation value is substituted by the norm floor and linked to the W mass via the gauge coupling.</p>
+<div class="math-block">
+<div class="math-row">$\langle 0|H|0\rangle = v = \|F_H\|_0 \neq 0$</div>
+<div class="math-row">$M_W = \dfrac{g\,v}{2},\quad M_Z = \dfrac{M_W}{\cos\theta_W}$</div>
+<div class="math-legend">$v$: vacuum expectation value = FSM norm floor (<a href="../axiom.html#ax6">Axiom 6</a>) | $g$: $SU(2)$ coupling | $M_W,M_Z$: W and Z masses | $\theta_W$: Weinberg angle (<a href="h802.html">H-802</a>) | $\langle 0|H|0\rangle$: vacuum expectation value</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (complete DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>M_W</code>, <code>M_Z</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h801.html">H-801</a>, <a href="h802.html">H-802</a>, <a href="h804.html">H-804</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>v   = 246.22 GeV          electroweak vacuum expectation value
+g   = 0.6536              SU(2) coupling (PDG 2024)
+M_W = g v / 2 = 0.6536 * 246.22 / 2
+cos theta_W = 0.8815      from sin^2 theta_W = 0.2229 (H-802)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the electroweak vacuum (mass domain). (b) What it reveals is whether the norm floor $v$, combined with the gauge coupling, closes through the W and Z masses. Multiplying the norm-floor value by the coupling yields the two masses.</p>
+<div class="math-block">
+<div class="math-row">$M_W = \dfrac{0.6536\cdot 246.22}{2} = 80.46\;\text{GeV},\quad M_Z = \dfrac{80.46}{0.8815} = 91.28\;\text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $M_W = 80.46\;\text{GeV},\; M_Z = 91.28\;\text{GeV}$</div>
+<div class="math-row">Measured: $M_W = 80.377\;\text{GeV},\; M_Z = 91.188\;\text{GeV}$ (PDG 2024)</div>
+<div class="math-row">Error: $M_W$ 0.1%, $M_Z$ 0.1%</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The norm floor $v\neq 0$ closes the W and Z masses to 0.1%, but the step of deriving $v$ itself from the axioms remains before D-promotion.</p>
+<p>Insight: symmetry breaks not in the operation but in the moment the norm floor settles onto a single point.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h801.html">H-801</a> (vacuum). <a href="h802.html">H-802</a> (EW unification). <a href="h804.html">H-804</a> (Goldstone)</p><p>This card can be re-used as input for the following cards: <a href="h801.html">H-801</a>, <a href="h802.html">H-802</a>, <a href="h804.html">H-804</a></p>
+<p>Re-injection path: <a href="h801.html">H-801</a>, <a href="h802.html">H-802</a>, <a href="h804.html">H-804</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

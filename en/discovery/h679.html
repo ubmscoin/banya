@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h679.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h679.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_cosmology</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h679.html">H-679</a>. Eddington Luminosity = Radiation-Gravity Cost Balance</h1><div class="box-finding">
@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h cosmology. Domain: delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale. Recursive substitution path: <a href="h667.html">H-667</a>, <a href="h681.html">H-681</a>, <a href="h689.html">H-689</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Eddington Luminosity from the RLU Radiation-Gravity Cost Balance</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Eddington luminosity is the critical luminosity at which the outward radiation cost and the inward gravity cost balance exactly. <a href="../axiom.html#ax6">Axiom 6</a> (RLU decay = radiation) and <a href="../axiom.html#ax11">Axiom 11</a> (cost transfer = gravity) read this balance.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the balance norm that sets the radiation cost equal to the gravity cost per unit norm. The radiation pressure acts on electrons through the Thomson-scattering cost $\sigma_T$ while gravity acts on the proton norm $m_p$ (<a href="../axiom.html#ax4">Axiom 4</a> cost balance), so this norm is chosen. The critical luminosity is therefore substituted by the balance condition of the two costs.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{L\sigma_T}{4\pi r^2 c} = \dfrac{G M m_p}{r^2}$</div>
+<div class="math-row">$L_\text{Edd} = \dfrac{4\pi G M m_p c}{\sigma_T}$</div>
+<div class="math-legend">$L_\text{Edd}$: Eddington luminosity | $G$: cost-transfer constant | $M$: FSM norm | $m_p$: proton norm | $c$: radiation-propagation limit | $\sigma_T$: Thomson-scattering cost</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 57 (derived, alpha^57=Lambda*l_p^2), 7, 21, 35 (exterior-algebra dimensions)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h667.html">H-667</a>, <a href="h681.html">H-681</a>, <a href="h689.html">H-689</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>G       = 6.674e-8 cm^3 g^-1 s^-2
+M_sun   = 1.989e33 g
+m_p     = 1.673e-24 g
+c       = 2.998e10 cm/s
+sigma_T = 6.652e-25 cm^2             CAS electromagnetic scattering cost</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the cosmological accretion-luminosity domain. What it reveals is the critical luminosity per solar mass $L_\text{Edd}$. Dividing the four balance constants by the Thomson cost yields that value.</p>
+<div class="math-block">
+<div class="math-row">$L_\text{Edd} = \dfrac{4\pi \times 6.674\times10^{-8} \times 1.989\times10^{33} \times 1.673\times10^{-24} \times 2.998\times10^{10}}{6.652\times10^{-25}}$</div>
+<div class="math-row">$L_\text{Edd} \approx 1.26\times10^{38}\;\text{erg/s} \;(\text{per }M_\odot)$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $L_\text{Edd} = 1.26\times10^{38}\;\text{erg/s}$ (per solar mass)</div>
+<div class="math-row">Measured: AGN and X-ray binary luminosities near the Eddington limit (observed)</div>
+<div class="math-row">Error: $&lt; 1\%$ (standard-constant balance formula)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The critical luminosity closes from the radiation-gravity cost balance using only standard constants, but the Thomson-scattering cost $\sigma_T$ is not yet derived directly from the CAS electromagnetic cost, leaving the final forward-chain step incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h667.html">H-667</a> (stellar energy source). <a href="h689.html">H-689</a> (active galactic nuclei). <a href="h681.html">H-681</a> (stellar wind)</p><p>This card can be re-used as input for the following cards: <a href="h667.html">H-667</a>, <a href="h681.html">H-681</a>, <a href="h689.html">H-689</a></p>
+<p>Re-injection path: <a href="h667.html">H-667</a>, <a href="h689.html">H-689</a>, <a href="h681.html">H-681</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

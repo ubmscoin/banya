@@ -69,39 +69,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / Recursive substitution not yet executed (1st round) / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula's own structure, combination of Primary Integers (4,3). Recursive substitution path: 1st round (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving h-bar = TOCTOU lock cost from the Compare-Swap lock cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>$\hbar$ is the minimum lock cost between the CAS Compare (state judgment, cost +1) and Swap (commit, cost +1) (<a href="../axiom.html#ax4">Axiom 4</a>: cost). If DATA changes between those two instants, CAS atomicity (<a href="../axiom.html#ax14">Axiom 14</a>: FSM) breaks, so the minimum cost that prevents this must be greater than 0.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Banya formula's own structure, combination of Primary Integers (4,3)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the TOCTOU lock-register norm (<a href="../axiom.html#ax5">Axiom 5</a>). It is chosen because the lock that keeps the state at Compare time and the state at Swap time from diverging is the only device guaranteeing atomicity. Splitting the lock cost between one conjugate pair yields a conservation relation in which the product is fixed.</p>
+<div class="math-block">
+<div class="math-row">$\Delta x \cdot \Delta p \geq \dfrac{\hbar}{2}$</div>
+<div class="math-row">$\Delta E \cdot \Delta t \geq \dfrac{\hbar}{2}$</div>
+<div class="math-legend">$\hbar$: minimum Compare-Swap lock cost | $\Delta x,\Delta p$: position-momentum conjugate | $\Delta E,\Delta t$: energy-time conjugate | $\hbar/2$: conservation lower bound of total lock cost</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full self-data-type list)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>Delta</code>, <code>ℏ</code></p>
-<p><strong>Library Re-substitution:</strong> <em>no external reference (1st round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>hbar      = 1.054571817e-34 J·s   CODATA 2018
+hbar      > 0                     atomicity condition (= 0 -> TOCTOU vulnerable)
+Planck units hbar = 1             unit-choice dependent</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the conjugate-variable phase-space domain. What it reveals is the trade: Compare position precisely ($\Delta x$ small) and the lock cost concentrates on position, raising the momentum-side cost ($\Delta p$). The lower bound of the product $\Delta x\cdot\Delta p$ closes at the lock cost $\hbar/2$.</p>
+<div class="math-block">
+<div class="math-row">$\Delta x \downarrow \;\Rightarrow\; \Delta p \uparrow,\qquad \Delta x\cdot\Delta p \geq \dfrac{\hbar}{2}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\hbar > 0$ = minimum Compare-Swap lock cost (atomicity necessity)</div>
+<div class="math-row">Measured: $\hbar = 1.054571817\times10^{-34}$ J·s (CODATA 2018)</div>
+<div class="math-row">Agreement: dimensional/structural (absolute value not yet derived)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure in which uncertainty is a computational cost rather than a limit explains the necessity of $\hbar>0$, but the formula deriving the absolute value $1.054\times10^{-34}$ from the CAS cost is not yet written.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: Foundational explanation of the uncertainty principle. Reinterpreting h-bar as "lock cost" rather than "minimum action" enables quantitative criteria for the quantum-classical boundary (decoherence) to be derived.</p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

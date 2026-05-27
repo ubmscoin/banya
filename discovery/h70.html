@@ -71,39 +71,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h67.html">H-67</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 비용에서 치렐슨 한계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>벨 상관의 양자 상한은 CAS Compare가 직교 괄호를 가로지를 때 치르는 비용이다. Compare는 $\pm 1$ 이진 판정을 한다(<a href="../axiom.html#ax2">공리 2</a>, 비용 C+1). 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>)에서 두 축 사이 최소 각 $45°$가 d-ring 위 직교 사영을 정하며, 이 둘의 곱이 상한을 닫는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare 이진 판정 $\times$ 직교 사영 노름이다. CHSH 상관의 양자 상한이 두 번의 $\pm1$ 판정과 직교 기저 간 사영으로 분해되기 때문에 이 노름을 택한다. 치렐슨 한계 $2\sqrt{2}$를 $2$(Compare)와 $\sqrt{2}$(직교)의 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$|\langle \mathcal{B} \rangle| \leq 2\sqrt{2}$</div>
+<div class="math-row">$2\sqrt{2} = 2\,(\text{Compare}) \times \sqrt{2}\,(\text{직교})$</div>
+<div class="math-legend">$\mathcal{B}$: CHSH 연산자 | $2$: Compare $\pm1$ 판정 2회 (<a href="../axiom.html#ax2">공리 2</a>) | $\sqrt{2}$: 직교 기저 사영 $1/\cos 45°$ | $45°$: 도메인 2축 최소 각 (<a href="../axiom.html#ax1">공리 1</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h67.html">H-67</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Compare 판정 = 2          공리 2 (+-1 이진)
+cos 45     = 1/sqrt(2)
+1/cos 45   = sqrt(2) = 1.41421
+2 x sqrt2  = 2.82843
+고전 한계   = 2
+PR-box     = 4</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>양자 비국소 상관 도메인(CHSH)으로 변환한다. 이 변환으로 보려는 것은 벨 부등식 위반의 상한이다. Compare $2$에 직교 사영 $\sqrt{2}$를 곱해 그 값을 산출하며, $\sqrt{2}<2$인 직교성 제약이 PR-box $4$ 도달을 막는다.</p>
+<div class="math-block">
+<div class="math-row">$|\langle \mathcal{B} \rangle|_{\max} = 2 \times \sqrt{2} = 2\sqrt{2} \approx 2.828$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 가설</h3>
+<div class="math-block">
+<div class="math-row">도출값: $|\langle \mathcal{B} \rangle| \leq 2\sqrt{2} \approx 2.828$</div>
+<div class="math-row">대조: 치렐슨 1980 양자 상한 $2\sqrt{2}$ (고전 $2$, PR-box $4$)</div>
+<div class="math-row">정합: 상한값 일치 (정량 닫힘 미완)</div>
+</div>
+<p>판정: <strong>가설</strong>. $2\sqrt{2}$가 Compare $2$ $\times$ 직교 $\sqrt{2}$로 분해되나, PR-box 도달 불가의 엄밀 증명이 남아 가설에 머문다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h67.html">H-67</a>(홀레보 한계)과 통합. 양자 게임 이론의 CAS 해석. PR-box(4) 도달 불가 이유 = CAS 직교성 제약.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h67.html">H-67</a></p>
+<p>재투입 경로: <a href="h67.html">H-67</a>, <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

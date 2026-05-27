@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 2개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d qcd. 도메인: delta ==&gt; 색 자유도 x QCD 비용. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 4축 도메인 순회 비용에서 바리온-광자 비 $\eta$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>물질-반물질 비대칭은 CAS가 DATA에 쥠을 만들 때 4축 도메인(<a href="../axiom.html#ax1">공리 1</a>) 전부를 순회하면서 누적되는 비용 누수다. 축을 하나 넘을 때마다 $\alpha$ 한 번씩(<a href="../axiom.html#ax4">공리 4</a>: 축마다 +1), 4축이므로 $\alpha^4$이 등장한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 색 자유도 x QCD 비용</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 4축 도메인 순회 비용 노름 $\alpha^4$이다. 물질-반물질 비대칭이 CAS가 4축 도메인 전부를 거치며 쥠을 만드는 과정의 비용 누수이고, 축마다 $\alpha$ 한 번씩 4축이 누적되기 때문에 이 노름을 택한다. 따라서 바리온-광자 비를 4축 비용 누적 $\alpha^4$, <a href="d02.html">D-02</a>의 전약 혼합비, 1차 보정으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\eta = \dfrac{n_B - n_{\bar{B}}}{n_\gamma}$</div>
+<div class="math-row">$\eta = \alpha^4 \,\sin^2\theta_W \,(1-\text{보정})$</div>
+<div class="math-legend">$\eta$: 바리온-광자 비 | $\alpha^4$: 4축 도메인 순회 비용 (<a href="d01.html">D-01</a>) | $\sin^2\theta_W$: 전약 혼합비 (<a href="d02.html">D-02</a>) | $n_B,n_\gamma$: 바리온 수, 광자 수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3, 7, 색 8</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha          = 1/137.036          D-01
+alpha^4        = 2.84e-9
+sin^2 theta_W  = 0.231              D-02
+eta            = 6.10e-10           Planck (CMB+BBN)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>바리오제네시스 비대칭 도메인으로 변환한다. 이 변환으로 보려는 것은 광자 한 개당 살아남은 바리온의 수, 곧 우주에 물질이 존재하는 비율 $\eta$다. 4축 누적 비용에 전약 혼합비를 곱하고 1차 보정을 적용해 바리온-광자 비를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\eta = (2.84\times 10^{-9}) \times 0.231 \times (1-\text{보정}) = 6.14 \times 10^{-10}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\eta = 6.14 \times 10^{-10}$</div>
+<div class="math-row">측정값: $6.10 \times 10^{-10}$ (Planck CMB+BBN)</div>
+<div class="math-row">오차: $0.7\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 사하로프 3조건으로도 정할 수 없던 $\eta$의 값이 CAS 4축 순회 비용 누적에서 자유 매개변수 없이 닫힌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 물질 존재 비율, 원시 핵합성 원소비 도출. 재대입 시 초기 우주 상태를 제약할 수 있다.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

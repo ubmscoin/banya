@@ -44,7 +44,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <body>
 <div class="lang-switch"><a class="lang-btn" href="../en/discovery/p07.html">EN</a></div>
 <main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
-<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
 <h1><a href="p07.html">P-07</a>. 힉스 자기결합</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="p07.html">P-07</a>: 힉스 자기결합</strong></p>
@@ -64,39 +64,53 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 데이터 부재 / 구조적 forward chain 완료 / 검증 대기</p>
 <p><strong>위치:</strong> 카테고리: p. 도메인: delta ==&gt; 예측 대상 도메인 (P 카드별 명시). 재귀 대입 경로: <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Swap 비용에서 힉스 자기결합 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>힉스 자기결합은 CAS의 Swap 단계가 질량을 부여할 때 치르는 비용이다. CAS 1사이클 총 비용 13(<a href="../axiom.html#ax6">공리 6</a>) 중 Swap(노름 $\sqrt{3}$)이 최대 비용 연산이며, 이 단위 비용 위에 위상공간 차원과 세대구조가 곱해져 힉스 퍼텐셜 꼭짓점 세기를 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 예측 대상 도메인 (P 카드별 명시)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS Swap 비용 노름이다. 힉스 자기결합이 Swap 단계의 질량 부여 비용이고, 그 비용이 위상공간 차원 7과 세대구조 $3^3=27$의 Compare 이진 분기 $54$로 닫히기 때문에 이 노름을 택한다. 표준모형이 힉스 질량·진공값에서 역산하던 $\lambda_H$를 CAS 구조비 $7/54$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{m_H^2}{2v^2}$</div>
+<div class="math-row">$\lambda_H = \dfrac{7}{54}$</div>
+<div class="math-legend">$\lambda_H$: 힉스 자기결합 | $7$: CAS 위상공간 차원 (<a href="../axiom.html#ax9">공리 9</a>) | $27=3^3$: 세대구조 | $54=27\times2$: Compare 이진 분기 | $v$: 진공 기댓값</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 예측 카드별 명시</p>
-<p><strong>물리 상수 입력:</strong> <code>m_t</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>7      = CAS 위상공간 차원       공리 9
+27     = 3^3 세대구조
+54     = 27 x 2 (Compare 분기)
+m_H    = 125.25 GeV             PDG 2024
+v      = 246.22 GeV             진공 기댓값</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>힉스 섹터 결합 도메인으로 변환한다. 이 변환으로 보려는 것은 힉스 퍼텐셜 꼭짓점 세기 $\lambda_H$와 그로부터 따라오는 힉스 질량 $m_H = v\sqrt{2\lambda_H} = v\sqrt{7/27}$다. 구조비 $7/54$를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_H = \dfrac{7}{54} = 0.12963$</div>
+<div class="math-row">$m_H = v\sqrt{2\lambda_H} = v\sqrt{7/27}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>예측</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $\lambda_H = 7/54 = 0.12963$</div>
+<div class="math-row">측정값: $0.12943$ (표준모형 역산 $m_H^2/2v^2$, PDG 2024)</div>
+<div class="math-row">오차: $0.16\%$</div>
+<div class="math-row">검증 방법: HL-LHC·FCC 힉스 쌍생성 자기결합 직접 측정</div>
+</div>
+<p>판정: <strong>예측</strong>. $7/54$는 CAS 구조에서 유일하게 결정되며 조정 가능한 매개변수가 없다. 힉스 쌍생성 직접 측정이 $0.12963$과 정합하면 D 승격, 5σ 이상 어긋나면 반증된다.</p>
+<p>힉스 자기결합은 Swap 비용에 세대구조가 곱해진 단일 구조비 — 맞든 틀리든 이 값뿐이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
+<p>재투입 경로: <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

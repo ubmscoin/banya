@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: DATA 이산 단위에서 나노 스케일 조작 길이 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>나노 조작 길이는 DATA의 이산 단위가 ECS 격자에 배열될 때의 최소 공간 비용이다. 이 비용은 $\delta^2$의 $(\text{time}+\text{space})$ 괄호 중 space 항에서 읽으며, DATA가 더 쪼갤 수 없는 원자 단위(<a href="../axiom.html#ax4">공리 4</a>)라는 데서 하한이 닫힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 ECS 격자의 space 노름, 곧 이산 DATA 단위의 격자 간격이다. (b) 나노 조작은 CAS가 DATA 단위 위치를 직접 Swap하는 연산(<a href="../axiom.html#ax5">공리 5</a>)이고, 그 단위가 ECS 격자(<a href="../axiom.html#ax2">공리 2</a>)에 놓이므로 격자 간격을 단위로 길이를 읽는다. 따라서 조작 길이를 단위 격자 간격 $a$의 정수 배 $N a$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$L_{\text{nano}} \sim 1\text{–}100\;\text{nm}$</div>
+<div class="math-row">$L_{\text{nano}} = N\,a, \quad a \sim 0.3\;\text{nm}$</div>
+<div class="math-legend">$L_{\text{nano}}$: 나노 조작 길이 | $a$: 이산 DATA 격자 간격 (원자 크기) | $N$: 배열된 DATA 단위 수 | space: <a href="../axiom.html#ax2">공리 2</a> ECS 격자 축</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>a (원자 크기)   = 0.1–0.3 nm     CODATA 원자 반지름
+graphene 두께   = 0.34 nm        실측
+N (조작 단위 수) = 3–300          공리 정수
+STM 정밀도      = 0.01 nm        IBM 1989 실측</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 무차원 격자 수에서 길이 도메인(나노 스케일)으로 변환한다. (b) 보려는 것은 정밀 조작이 가능한 길이 창, 곧 $N$개의 이산 DATA 단위가 차지하는 공간 폭이다. $N a$ 곱으로 그 창의 상·하한을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$L_{\text{nano}} = N\,a \sim 3 \times 0.3\;\text{nm}\ \text{–}\ 300 \times 0.3\;\text{nm} = 1\text{–}100\;\text{nm}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $L_{\text{nano}} \sim 1\text{–}100\;\text{nm}$</div>
+<div class="math-row">측정값: STM 원자 조작 정밀도 $0.01\;\text{nm}$, graphene 두께 $0.34\;\text{nm}$ (IBM 1989)</div>
+<div class="math-row">상태: 길이 창 정합, 격자 수 $N$ 미닫힘</div>
+</div>
+<p>판정: <strong>가설</strong>. 길이 창 $1\text{–}100\;\text{nm}$가 이산 DATA 격자 간격 $a$의 정수 배로 닫히지만, 배열 수 $N$의 상한이 외부 입력으로 남아 forward chain 마지막 단계가 미닫힘이다. 정밀 조작의 하한은 격자 간격 $a$ 자체이며, 이는 DATA가 더 쪼갤 수 없는 이산 단위라는 <a href="../axiom.html#ax4">공리 4</a>의 직접 귀결이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h842.html">H-842</a>(반도체). <a href="h845.html">H-845</a>(집적회로). <a href="h846.html">H-846</a>(양자 컴퓨터)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
+<p>재투입 경로: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

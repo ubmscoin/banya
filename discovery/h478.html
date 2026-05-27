@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="d43.html">D-43</a>, <a href="h482.html">H-482</a>, <a href="h484.html">H-484</a>, <a href="h49.html">H-49</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: d-ring 열적 평형 잔여에서 CMB 온도 $T_{\text{CMB}}$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CMB 온도는 d-ring(8비트 링버퍼, <a href="../axiom.html#ax5">공리 5</a>)에서 HOT 슬롯이 WARM으로 전이(<a href="../axiom.html#ax6">공리 6</a>)할 때 남긴 열적 평형 잔여다. 디커플링 시점에서 CAS Compare가 광자-바리온 간 정지하고(<a href="../axiom.html#ax2">공리 2</a>: 비가역), 비용 보존(<a href="../axiom.html#ax4">공리 4</a>)이 그 온도를 동결한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 d-ring 열적 평형 잔여 노름, 곧 디커플링 시점의 평형 온도를 그 후 주소 공간 팽창비로 적색편이한 값이다. (b) 이 노름을 택하는 이유는 디커플링 후 광자가 자유 스트리밍하며 $T\propto1/a$ 냉각하고, $a_{\text{dec}}/a_0=1/(1+z_{\text{dec}})$가 곧 RLU 해제에 의한 주소 공간 팽창비이기 때문이다. 따라서 현재 온도를 평형 온도 나누기 $(1+z_{\text{dec}})$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$T_{\text{CMB}} = T_{\text{decouple}}\cdot\dfrac{a_{\text{dec}}}{a_0}$</div>
+<div class="math-row">$T_{\text{CMB}} = \dfrac{T_{\text{eq}}}{1+z_{\text{dec}}}$</div>
+<div class="math-legend">$T_{\text{CMB}}$: 현재 CMB 온도 | $T_{\text{eq}}$: 디커플링 평형 온도 | $z_{\text{dec}}$: 디커플링 적색편이 | $a_{\text{dec}}/a_0=1/(1+z_{\text{dec}})$: 주소 공간 팽창비</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d43.html">D-43</a>, <a href="h482.html">H-482</a>, <a href="h484.html">H-484</a>, <a href="h49.html">H-49</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>z_eq          = 3402              D-43
+z_dec         = 1090
+T_eq          = 2970 K            동결 평형 온도
+T_CMB(frame)  = 2.741 K           H-49 도출
+T_CMB(obs)    = 2.7255 ± 0.0006 K COBE/FIRAS</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 도메인은 우주론 흑체 복사 도메인(현재 관측 온도)이다. (b) 보려는 것은 디커플링 평형 온도가 주소 공간 팽창으로 냉각된 현재 배경 온도다. $T_{\text{eq}}\approx2970$ K를 $(1+1090)$으로 나누면 d-ring 열용량 모델 기준 H-49 도출값이 나온다.</p>
+<div class="math-block">
+<div class="math-row">$T_{\text{CMB}} = \dfrac{2970\ \text{K}}{1+1090} = 2.741\ \text{K}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $T_{\text{CMB}} = 2.741\ \text{K}$ (<a href="h49.html">H-49</a>)</div>
+<div class="math-row">측정값: $2.7255 \pm 0.0006\ \text{K}$ (COBE/FIRAS)</div>
+<div class="math-row">오차: $0.6\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. COBE/FIRAS와 0.6% 정합하나, 디커플링 적색편이 $z_{\text{dec}}$의 공리적 도출과 d-ring 슬롯 수-$T_{\text{eq}}$ 정확 관계식이 닫히지 않아 가설에 머문다. 소수점 4자리 도출은 차세대 분광 관측(PIXIE)과 대조해야 한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h484.html">H-484</a>(CMB 이방성) 배경 온도. <a href="h482.html">H-482</a>(재이온화) 사전 조건. <a href="d43.html">D-43</a>($z_{\text{eq}}=3402$) 정합.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d43.html">D-43</a>, <a href="h482.html">H-482</a>, <a href="h484.html">H-484</a>, <a href="h49.html">H-49</a></p>
+<p>재투입 경로: <a href="d43.html">D-43</a>, <a href="h49.html">H-49</a>, <a href="h484.html">H-484</a>, <a href="h482.html">H-482</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

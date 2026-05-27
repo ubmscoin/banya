@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h627.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h627.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h627.html">H-627</a>. Magnetism = Collective Alignment of CAS lock Bits</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D Promotion possible if next round proceeds / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed). Recursive substitution path: <a href="h628.html">H-628</a>, <a href="h635.html">H-635</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Spontaneous Magnetization from CAS lock-Bit Alignment</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Magnetism is the macroscopic cost that emerges when the CAS lock bit (<a href="../axiom.html#ax2">Axiom 2</a>) held by each entity aligns in one direction. The lock-bit coupling between neighboring entities is the ECS neighbor interaction (<a href="../axiom.html#ax7">Axiom 7</a>), and alignment proceeds in the cost-minimizing direction (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the alignment norm of $N$ entity lock bits, namely the $z$-component average $\langle S_z\rangle$. The collective average, not a single bit magnitude, is substituted because magnetization is the lock-bit alignment degree across the whole ECS lattice, not one bit. Multiplying the alignment degree by the unit magnetic moment gives the macroscopic magnetization.</p>
+<div class="math-block">
+<div class="math-row">$M = N\mu_B\langle S_z\rangle$</div>
+<div class="math-row">$\langle S_z\rangle = \tfrac{1}{2}\tanh\!\left(\dfrac{J\langle S_z\rangle}{k_B T}\right)$</div>
+<div class="math-legend">$M$: magnetization | $N$: entity count | $\mu_B$: unit magnetic moment | $\langle S_z\rangle$: lock-bit alignment degree | $J$: ECS neighbor coupling cost (<a href="../axiom.html#ax7">Axiom 7</a>) | $k_B T$: RLU thermal cost</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h628.html">H-628</a>, <a href="h635.html">H-635</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>mu_B = 9.274e-24 J/T          unit magnetic moment
+k_B  = 1.381e-23 J/K
+T_C(Fe) = 1043 K              Curie temperature
+J ~ k_B T_C                   exchange-coupling scale</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = forced ordered crossing of orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the macroscopic-magnetism domain. What it reveals is the temperature boundary above which alignment cannot survive, namely the Curie temperature. The self-consistent equation admits a nonzero $\langle S_z\rangle$ when $k_B T < J$, and this boundary sets the Curie temperature.</p>
+<div class="math-block">
+<div class="math-row">$k_B T_C \approx J$; for $\;T > T_C$, $\langle S_z\rangle = 0$ and $M = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $M = N\mu_B\langle S_z\rangle$, critical $k_B T_C \approx J$</div>
+<div class="math-row">Measured: Fe $T_C = 1043$ K, $\mu_B = 9.274\times10^{-24}$ J/T</div>
+<div class="math-row">Match: structure and temperature dependence agree, axiomatic value of $J$ undetermined</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Lock-bit alignment and ECS exchange coupling structurally reproduce magnetization and the Curie transition, but the step that derives the exchange cost $J$ directly from the axioms has not closed, so it halts at hypothesis. Insight: magnetization is not one bit but the agreed alignment degree of $N$ lock bits.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h628.html">H-628</a> (ferro/antiferro), <a href="h635.html">H-635</a> (GMR) magnetism-based.</p><p>This card can be re-used as input for the following cards: <a href="h628.html">H-628</a>, <a href="h635.html">H-635</a></p>
+<p>Re-injection path: <a href="h628.html">H-628</a>, <a href="h635.html">H-635</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

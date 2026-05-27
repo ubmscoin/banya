@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d electromag. 도메인: delta ==&gt; 전자기 결합 alpha. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d104.html">D-104</a>, <a href="d80.html">D-80</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 전하 d-ring의 전자기 CAS 비용에서 $\pi^0$ 질량 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>$\pi^0$-$\pi^\pm$ 질량 분리는 전하를 가진 d-ring 쥠(<a href="../axiom.html#ax15">공리 15</a>)이 치르는 추가 전자기 CAS 비용이다. Compare(C+1, <a href="../axiom.html#ax3">공리 3</a>)가 전하 유무를 감지하며, 전하 0인 $\pi^0$에서는 이 비용이 발생하지 않으므로 하전 파이온에서 감산한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전자기 결합 alpha</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS 3단계 × 미세구조상수의 전자기 교차 도메인 노름이다(<a href="../axiom.html#ax13">공리 13</a> 인덱싱 비용 명제의 전자기 버전). (b) 전자기 보정의 계수 3이 CAS 3단계 R·C·S와 직접 대응하고, $\alpha$가 전하 d-ring의 교차 도메인 비용을 정하기 때문에 이 노름을 택한다. 보정은 질량 제곱 차원으로 $3\alpha\Lambda_{\text{cond}}^2$다.</p>
+<div class="math-block">
+<div class="math-row">$m_{\pi^0}^2 = m_{\pi^\pm}^2 - 3\alpha\Lambda_{\text{cond}}^2$</div>
+<div class="math-row">$\Lambda_{\text{cond}} = \Lambda_{QCD}\times\dfrac{9}{8} = 249.75\;\text{MeV}$</div>
+<div class="math-legend">$m_{\pi^\pm}$: 하전 파이온 질량 (<a href="d80.html">D-80</a>) | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) | $3$: CAS 3단계 R·C·S | $\Lambda_{\text{cond}}$: 응축 스케일 | $9/8$: 반야 보정 인자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 5,2 / 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d104.html">D-104</a>, <a href="d80.html">D-80</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_pi+      = 139.27 MeV       D-80
+alpha      = 1/137            D-01
+Lambda_cond = 249.75 MeV      222 x 9/8
+3 alpha L^2 = 1366 MeV^2
+m_pi0      = 134.977 MeV      PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 중성 파이온 질량 도메인(전하 0 d-ring 쥠)으로 변환한다. (b) 이 변환으로 보려는 것은 전자기 보정을 제거한 $\pi^0$의 정지 질량이다. 하전 파이온 질량 제곱에서 전자기 CAS 비용을 빼고 제곱근을 취해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_{\pi^0} = \sqrt{139.27^2 - 1366} = \sqrt{18030} = 134.3\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_{\pi^0} = 134.3\;\text{MeV}$</div>
+<div class="math-row">측정값: $134.977\;\text{MeV}$ (PDG 2024)</div>
+<div class="math-row">오차: $0.50\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 보정 계수 3이 CAS 3단계의 표현이며, $m_{\pi^\pm}^2-m_{\pi^0}^2\approx 3\alpha\Lambda_{\text{cond}}^2$가 Das-Guralnik-Mathur 합규칙과 정합한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 파이온 질량 분리. <a href="d80.html">D-80</a> 연쇄. 상세보기:도출 과정</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d104.html">D-104</a>, <a href="d80.html">D-80</a></p>
+<p>재투입 경로: <a href="d80.html">D-80</a>, <a href="d01.html">D-01</a>, <a href="d104.html">D-104</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

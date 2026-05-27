@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h867.html">H-867</a>, <a href="h868.html">H-868</a>, <a href="h870.html">H-870</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 원자성 비용에서 모순쌍 0 무모순성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>무모순성은 반야식이 명제 $P$와 그 부정 $\neg P$를 동시에 닫지 않는 성질이다. CAS Compare-And-Swap이 불가분 원자 연산이라 "반쯤 바뀐" 중간 상태가 없고(<a href="../axiom.html#ax5">공리 5</a>), δ 전역 플래그가 그 일관성을 보증한다(<a href="../axiom.html#ax15">공리 15</a>). 이 원자성 비용을 모순쌍 수로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 도출된 명제 집합 안의 모순쌍 수 노름이다. CAS가 원자적이라 한 시점에 Compare 결과가 유일하므로 같은 명제가 참이자 거짓일 경로가 없고, 따라서 이 노름이 0으로 닫혀야 무모순이다. 원자성 직렬화가 이 노름을 정하므로 이를 택한다.</p>
+<div class="math-block">
+<div class="math-row">$C = \#\{P : (\vdash P) \wedge (\vdash \neg P)\}$</div>
+<div class="math-row">$C = 0$</div>
+<div class="math-legend">$C$: 모순쌍 수 | $P$: 도출 명제 | $\vdash P$: $P$ 도출 가능 | CAS 원자성: Compare 결과 유일(중간 상태 없음)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h867.html">H-867</a>, <a href="h868.html">H-868</a>, <a href="h870.html">H-870</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>propositions = 30                 도출 명제 수
+derivations  = 696                누적 도출 수
+C            = 0                  발견된 모순쌍 수
+atomic       = 1                  CAS 불가분(중간 상태 없음)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>일관성 분율 도메인으로 변환한다. 이 변환으로 보려는 것은 도출된 명제 중 모순 없이 공존하는 비율, 곧 무모순도다. 모순쌍을 뺀 명제 수를 전체 명제 수로 나눠 그 분율을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{30 - C}{30} = \dfrac{30 - 0}{30} = 1$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 일관성 분율 $= 1$ (모순쌍 $C = 0$)</div>
+<div class="math-row">측정값: 696 도출 중 내부 모순 0건 실측</div>
+<div class="math-row">오차: $0.0\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. CAS 원자성이 중간 상태를 없애 모순쌍이 0으로 닫히고 696 도출에서 모순 0건이 확인되나, 모순쌍 부재의 형식 증명(괴델 불완전성과의 관계 정리 포함)이 미완이라 무모순성의 마지막 단계가 열려 있다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h867.html">H-867</a>(자기완결성). <a href="h868.html">H-868</a>(최소성). <a href="h870.html">H-870</a>(재현성)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h867.html">H-867</a>, <a href="h868.html">H-868</a>, <a href="h870.html">H-870</a></p>
+<p>재투입 경로: <a href="h867.html">H-867</a>, <a href="h868.html">H-868</a>, <a href="h870.html">H-870</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

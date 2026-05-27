@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 갭의 유무에서 도체/부도체 분류 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전기 전도는 CAS 비용(<a href="../axiom.html#ax4">공리 4</a>)이 한 엔티티에서 다음으로 전달되는 과정이다. 밴드 갭(<a href="h618.html">H-618</a>)이 0이면 비용이 갭 없이 흘러 도체, 갭이 양수면 비용이 갭을 넘어야 해 부도체가 된다. 도체/부도체는 같은 FSM 노름 구조의 갭 유무 두 경우다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 <a href="h618.html">H-618</a>에서 받은 FSM 노름 밴드 갭이다. (b) 이 노름을 택하는 이유는 전도성이 페르미 면이 밴드 내부(갭=0)에 있는가, 갭 안에 있는가로 갈리기 때문이다. RLU 열에너지(<a href="../axiom.html#ax6">공리 6</a>)가 갭보다 크면 비용 전달이 열리고, 작으면 막힌다.</p>
+<div class="math-block">
+<div class="math-row">$E_g = 0 \implies \text{도체}$</div>
+<div class="math-row">$E_g &gt; 0 \implies \text{부도체/반도체}$</div>
+<div class="math-legend">$E_g$: FSM 노름 밴드 갭 (<a href="h618.html">H-618</a>) | $E_g = 0$: 페르미 면이 밴드 내부 | $E_g \lesssim k_BT$: 반도체 | $E_g &gt; 3\ \text{eV}$: 절연체</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>E_g(Cu)  = 0 eV           도체
+E_g(Si)  = 1.12 eV        반도체
+E_g(C)   = 5.5 eV         절연체(다이아몬드)
+k_B T    = 0.025 eV       300 K</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 응집물질(전도성) 도메인으로 변환한다. (b) 보려는 것은 갭 값에 따른 물질 분류다. 갭 0은 도체, 작은 갭은 RLU 열에너지로 극복되는 반도체, $3\ \text{eV}$ 초과는 절연체로 갈린다.</p>
+<div class="math-block">
+<div class="math-row">$E_g(\text{Cu})=0 \implies \text{도체}, \quad E_g(\text{Si})=1.12\ \text{eV} \implies \text{반도체}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $E_g=0$ 도체, $E_g&gt;0$ 부도체</div>
+<div class="math-row">측정: Cu $0$, Si $1.12\ \text{eV}$, 다이아몬드 $5.5\ \text{eV}$</div>
+<div class="math-row">상태: 분류 일치, 물질별 갭 정량 미도출</div>
+</div>
+<p>판정: <strong>가설</strong>. 갭 유무가 도체/부도체를 정확히 가르지만, 갭 크기 자체를 <a href="h618.html">H-618</a>에서 받은 외부 입력으로 쓰고 물질별 절댓값을 공리에서 도출하지 못해 라운드를 멈췄다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h618.html">H-618</a>(밴드 구조) 응용. <a href="h633.html">H-633</a>(모트 절연체) 대비</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a></p>
+<p>재투입 경로: <a href="h618.html">H-618</a>, <a href="h633.html">H-633</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

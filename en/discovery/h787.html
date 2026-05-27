@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D promotion possible on next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unfixed, follow-up refinement required). Recursive substitution path: <a href="h779.html">H-779</a>, <a href="h786.html">H-786</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Computational Complexity Classes from CAS Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Computational complexity is the cost CAS accumulates as a function of input size. Cost is resource (<a href="../axiom.html#ax4">Axiom 4</a>); accumulated cost is time complexity, and DATA occupancy is space complexity (<a href="../axiom.html#ax3">Axiom 3</a>). Taking computational equivalence (<a href="h786.html">H-786</a>) as input, a cost measure is laid on top of it.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unfixed, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS cost-accumulation norm. (b) It is chosen because complexity classes are defined by the asymptotic growth rate of cost, and that cost reduces to the resource cost of <a href="../axiom.html#ax4">Axiom 4</a>. A complexity class is therefore substituted by the asymptotic function of the CAS cycle count.</p>
+<div class="math-block">
+<div class="math-row">$T(n) = N_{\text{cyc}}(n)$</div>
+<div class="math-row">$\text{P} = \{T(n) = O(n^k)\}, \quad \text{NP} = \{V(n) = O(n^k)\}, \quad \text{BQP} = \{\text{Compare superposition}\}$</div>
+<div class="math-legend">$T(n)$: solving cost | $V(n)$: verification cost | $N_{\text{cyc}}$: CAS cycle count | $\text{P}$: polynomial solving | $\text{NP}$: polynomial verification | $\text{BQP}$: Compare superposition (<a href="../axiom.html#ax5">Axiom 5</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h779.html">H-779</a>, <a href="h786.html">H-786</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Landauer limit  = kT ln 2       min cost to erase 1 bit
+Shor factoring  = O(n^3)        uses Compare superposition
+Grover search   = O(sqrt N)     vs classical O(N)
+P =? NP         = open           Millennium Problem</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the complexity-class domain. (b) What it reveals is the separation of solving cost from verification cost — the cost asymmetry of P versus NP. Polynomial CAS cost is P, polynomial verification alone is NP, and allowing Compare superposition (<a href="../axiom.html#ax5">Axiom 5</a>) extends to BQP.</p>
+<div class="math-block">
+<div class="math-row">$\text{P} \subseteq \text{NP}, \qquad \text{P} \subseteq \text{BQP}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: complexity class $=$ asymptotic growth of CAS cost (<a href="../axiom.html#ax4">Axiom 4</a>)</div>
+<div class="math-row">Consequence: BQP advantage $=$ use of Compare superposition (<a href="../axiom.html#ax5">Axiom 5</a>)</div>
+<div class="math-row">Measurement: the P vs NP separation is open — no quantitative output</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The map redefining complexity classes by CAS cost is closed, but since the P–NP separation itself is open, a quantitative verdict is withheld. The next round proceeds by re-injecting computational equivalence (<a href="h786.html">H-786</a>) and simulation (<a href="h779.html">H-779</a>).</p>
+<p>Insight: if the cost asymmetry between solving and verification stems from the irreversibility of CAS cost accumulation, then P≠NP becomes a physical proposition.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h786.html">H-786</a> (computation). <a href="h779.html">H-779</a> (simulation)</p><p>This card can be re-used as input for the following cards: <a href="h779.html">H-779</a>, <a href="h786.html">H-786</a></p>
+<p>Re-injection path: <a href="h786.html">H-786</a>, <a href="h779.html">H-779</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

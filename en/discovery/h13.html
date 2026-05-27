@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / Quantitative formula absent / 2 recursive inputs confirmed, D promotion is possible after the next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition held). Recursive substitution path: <a href="h12.html">H-12</a>, <a href="h14.html">H-14</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Wavefunction collapse = write from the CAS Compare branch cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Wavefunction collapse is the operation that runs CAS on superposition (many states), makes it observer (one fixed state), and writes that result into DATA. When Compare returns true, the write (juigi) executes and the state fixes to one (<a href="../axiom.html#ax7">Axiom 7</a>: write = juigi, true fixes / false holds), and the cost of that write is $\hbar$ (<a href="h12.html">H-12</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition held)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Compare-branch norm of the quantum bracket $(\text{observer}+\text{superposition})$. It is chosen because the complementary relation — spending resources on observation raises $\text{observer}$ and lowers $\text{superposition}$ — is the essence of collapse. The sum of squares of the two domains closes at the write cost $\hbar^2$ (<a href="h14.html">H-14</a>).</p>
+<div class="math-block">
+<div class="math-row">$|\psi\rangle = \textstyle\sum_i c_i |i\rangle \;\xrightarrow{\text{Compare true}}\; |k\rangle$</div>
+<div class="math-row">$\text{observer}^2 + \text{superposition}^2 = \hbar^2$</div>
+<div class="math-legend">$|\psi\rangle$: superposed state | $|k\rangle$: one fixed state | $\text{observer}$: resource spent on write | $\text{superposition}$: remaining superposition | $\hbar^2$: total write cost (<a href="h12.html">H-12</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>ℏ</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h12.html">H-12</a>, <a href="h14.html">H-14</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Compare true  -> write executes -> superposition = 0 (fixed)
+Compare false -> hold           -> superposition max (superposed)
+write cost     = hbar            H-12
+sum closure    observer^2 + superposition^2 = hbar^2   H-14</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is from the quantum bracket into the measurement-result domain (DATA: time, space). What it reveals is why observation causes collapse: spend all of $\hbar$ on observer and superposition becomes 0, the state fixes to one, and the result is recorded into DATA — that is collapse. The size/complexity of the apparatus is irrelevant; once CAS runs, it is a write.</p>
+<div class="math-block">
+<div class="math-row">$\text{observer} = \hbar \;\Rightarrow\; \text{superposition} = 0 \;\Rightarrow\;$ recorded to DATA</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: collapse = write on Compare true, cost $\hbar$, result recorded to DATA</div>
+<div class="math-row">Correspondence: matches double-slit, quantum eraser, delayed-choice experiments</div>
+<div class="math-row">Agreement: structural (not a numeric error)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. It unifies the Copenhagen and decoherence interpretations into a write interpretation, but the formula deriving the square of the Born rule $P=|\psi|^2$ from the CAS structure is not yet written.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: reconstruction of quantum measurement theory. Unification under the "write interpretation" in place of Copenhagen/many-worlds/decoherence. Quantitative description of weak measurement.</p><p>This card can be re-used as input for the following cards: <a href="h12.html">H-12</a>, <a href="h14.html">H-14</a></p>
+<p>Re-injection path: <a href="h14.html">H-14</a>, <a href="h12.html">H-12</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

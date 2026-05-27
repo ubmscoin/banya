@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h731.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h731.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h731.html">H-731</a>. Kerr Solution = Asymmetric Cost Distribution of a Rotating FSM</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon proceeding to the next round / outstanding tasks specified.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; structure of the Banya formula itself, primary-integer (4,3) combination. Recursive substitution path: <a href="h730.html">H-730</a>, <a href="h734.html">H-734</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Kerr Solution from the lock-bit asymmetry of a rotating FSM</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A rotating black hole is the axisymmetric cost distribution produced by an FSM holding angular momentum $J$. The lock bit carries the angular momentum (<a href="../axiom.html#ax2">Axiom 2</a>), rotation splits the CAS cost left-right asymmetrically (<a href="../axiom.html#ax4">Axiom 4</a>), and this cost is read as the spacetime components of the full-description DOF 7 (<a href="../axiom.html#ax9">Axiom 9</a>). The non-rotating limit is the spherically symmetric <a href="h730.html">H-730</a> solution.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; structure of the Banya formula itself, primary-integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the axisymmetric cost norm split by the rotation parameter $a = J/(Mc)$. (b) For spherical symmetry (<a href="h730.html">H-730</a>) a single radial function sufficed, but once the lock bit holds angular momentum (<a href="../axiom.html#ax2">Axiom 2</a>) the cost depends on the polar angle $\theta$ and splits left-right, so this norm is chosen. The spherically symmetric metric is therefore substituted by an axisymmetric metric with a rotation term added.</p>
+<div class="math-block">
+<div class="math-row">$ds^2 = -\left(1 - \dfrac{r_s r}{r^2}\right)c^2 dt^2 + \dfrac{r^2}{\Delta}dr^2 + r^2 d\theta^2$</div>
+<div class="math-row">$ds^2 = -\left(1 - \dfrac{r_s r}{\Sigma}\right)c^2 dt^2 + \dfrac{\Sigma}{\Delta}dr^2 + \Sigma\, d\theta^2$</div>
+<div class="math-legend">$a$: rotation parameter $J/(Mc)$ | $\Sigma = r^2 + a^2\cos^2\theta$: polar-angle-dependent cost | $\Delta = r^2 - r_s r + a^2$: horizon factor | $r_s = 2GM/c^2$: non-rotating radius</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-injection:</strong> <a href="h730.html">H-730</a>, <a href="h734.html">H-734</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>r_s     = 2GM/c^2                  H-730
+a       = J/(Mc)                  rotation parameter
+r_pm    = M +- sqrt(M^2 - a^2)    inner/outer horizon
+a = M                            extremal Kerr (naked-singularity edge)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the axisymmetric rotating domain. (b) What it reveals is the horizon splitting and the ergosphere produced by rotation. Solving $\Delta = 0$ gives the inner/outer horizons $r_\pm$; solving $g_{tt} = 0$ gives the ergosphere boundary.</p>
+<div class="math-block">
+<div class="math-row">$r_\pm = M \pm \sqrt{M^2 - a^2}$</div>
+<div class="math-row">$a/M \approx 0.9 \;\Rightarrow\; r_+ \approx 1.44\,M,\quad r_- \approx 0.56\,M$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: lock-bit asymmetry of a rotating FSM $\Rightarrow$ double horizon + ergosphere</div>
+<div class="math-row">Measured: Sgr A* $a/M \approx 0.9$, GRS 1915+105 $a/M &gt; 0.98$ (X-ray reflection spectroscopy)</div>
+<div class="math-row">Status: structurally consistent, quantitative closure pending</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The axisymmetric metric follows from the lock-bit angular momentum, but the rotation parameter $a$ remains an external input, so the final step of the forward chain is not closed. Insight: rotation splits the cost distribution left-right, and that asymmetry is precisely frame dragging (<a href="h734.html">H-734</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: rotational extension of <a href="h730.html">H-730</a> (Schwarzschild). Source of <a href="h734.html">H-734</a> (frame dragging).</p><p>This card can be re-used as input for the following cards: <a href="h730.html">H-730</a>, <a href="h734.html">H-734</a></p>
+<p>Re-injection path: <a href="h734.html">H-734</a>, <a href="h730.html">H-730</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

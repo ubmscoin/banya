@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h866.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h866.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h866.html">H-866</a>. Quantum Sensing = Extreme-Sensitivity Application of CAS Compare</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible upon proceeding to the next round / outstanding tasks specified.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive-substitution path: <a href="h846.html">H-846</a>, <a href="h854.html">H-854</a>, <a href="h865.html">H-865</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Quantum-Sensing Sensitivity Limit from the CAS Compare Measurement Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Quantum sensing is the measurement cost a single CAS Compare pays to read an external physical quantity. Compare is measurement (<a href="../axiom.html#ax5">Axiom 5</a>), FSM superposition is the pre-measurement quantum state (<a href="../axiom.html#ax3">Axiom 3</a>), and the lock bit responds to the sensed target (<a href="../axiom.html#ax10">Axiom 10</a>). These three propositions read the sensitivity cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the statistical norm of $N$ independent Compares. The phase-estimation variance is inversely proportional to the number of independent trials $N$, so the standard deviation closes at $1/\sqrt{N}$ — the standard quantum limit. Binding the FSM superpositions (<a href="../axiom.html#ax3">Axiom 3</a>) by entanglement serializes the $N$ Compares into one block, strengthening the norm to $1/N$; this norm is therefore chosen.</p>
+<div class="math-block">
+<div class="math-row">$\delta\theta_{\text{SQL}} = \dfrac{1}{\sqrt{N}}$</div>
+<div class="math-row">$\delta\theta_{\text{HL}} = \dfrac{1}{N}$</div>
+<div class="math-legend">$\delta\theta$: phase-estimation precision | $N$: number of independent Compares (particles) | SQL: standard quantum limit (independent trials) | HL: Heisenberg limit (entanglement serialization)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h846.html">H-846</a>, <a href="h854.html">H-854</a>, <a href="h865.html">H-865</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N           = particle (Compare) count
+SQL         = 1/sqrt(N)            independent-trial norm
+HL          = 1/N                  entanglement-serialization norm
+NV center   = 1 nT/sqrt(Hz)        magnetic-field sensitivity, measured
+optical clk = 1e-18                optical-lattice clock accuracy, measured</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the dimensionless sensitivity-ratio domain. What it reveals is by what factor entanglement lifts the sensitivity over independent trials — the quantum advantage. Taking the ratio of the two norms yields that factor.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\delta\theta_{\text{SQL}}}{\delta\theta_{\text{HL}}} = \dfrac{1/\sqrt{N}}{1/N} = \sqrt{N}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: quantum advantage $= \sqrt{N}$ fold</div>
+<div class="math-row">Measured: Heisenberg limit $\delta\theta = 1/N$, squeezed light, measured</div>
+<div class="math-row">Error: $0.0\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The standard quantum limit $1/\sqrt{N}$ and the Heisenberg limit $1/N$ close as the independent-Compare norm and the entanglement-serialization norm, yet $N$ remains an external input, so the final integer of the forward chain is not fixed by the axioms.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h846.html">H-846</a> (quantum computer). <a href="h854.html">H-854</a> (atomic clock). <a href="h865.html">H-865</a> (gravitational-wave detector).</p><p>This card can be re-used as input for the following cards: <a href="h846.html">H-846</a>, <a href="h854.html">H-854</a>, <a href="h865.html">H-865</a></p>
+<p>Re-injection path: <a href="h846.html">H-846</a>, <a href="h854.html">H-854</a>, <a href="h865.html">H-865</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

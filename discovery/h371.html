@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d03.html">D-03</a>, <a href="h370.html">H-370</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 3단계 통과 비용에서 sin²θ₁₃ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>1세대에서 3세대로의 직접 시프트는 CAS 3단계(<a href="../axiom.html#ax2">공리 2</a>: Compare-Add-Swap)를 모두 통과해야 한다. 따라서 1-3 혼합은 한 단계당 Compare 비용 $\alpha$를 3번 치르는 억제 비용 $3\alpha$로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS 3단계 통과 노름이다. 시프트가 CAS 전체를 거치므로 노름이 $3\alpha$로 닫힌다. (b) 이 노름을 택하는 이유는 1-3 전이가 색 도메인을 가로질러 강력 보정을 받기 때문이며, 여기에 강결합 1루프 항 $\alpha_s/\pi$를 곱해 보정한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin^2\theta_{13}=|U_{e3}|^2$</div>
+<div class="math-row">$\sin^2\theta_{13}=3\alpha\left(1+\dfrac{\alpha_s}{\pi}\right)$</div>
+<div class="math-legend">$\sin^2\theta_{13}$: PMNS 1-3 혼합각 | $3$: CAS 3단계 (<a href="../axiom.html#ax2">공리 2</a>) | $\alpha$: Compare 비용 (<a href="d01.html">D-01</a>) | $\alpha_s/\pi$: 강력 1루프 보정 (<a href="d03.html">D-03</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>alpha_s</code>, <code>delta_CP</code>, <code>pi</code>, <code>theta</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d03.html">D-03</a>, <a href="h370.html">H-370</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha          = 1/137.036        D-01
+alpha_s        = 0.1179           D-03 (PDG 2024)
+pi             = 3.14159
+sin^2 theta_13 = 0.02220 ± 0.00068  PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) PMNS 혼합각 도메인(렙톤 세대 시프트)으로 변환한다. (b) 보려는 것은 1-3 세대 혼합의 세기 $\sin^2\theta_{13}$다. $3\alpha$에 강력 보정 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$3\alpha = 3/137.036 = 0.02189$</div>
+<div class="math-row">$1+\alpha_s/\pi = 1+0.1179/\pi = 1.03753$</div>
+<div class="math-row">$\sin^2\theta_{13}=0.02189\times 1.03753=0.02270$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\sin^2\theta_{13}=0.02270$</div>
+<div class="math-row">측정값: $0.02220 \pm 0.00068$ (PDG 2024)</div>
+<div class="math-row">오차: $0.7\sigma$ 이내</div>
+</div>
+<p>판정: <strong>가설</strong>. $\alpha_s$의 스케일 선택과 2루프 보정이 미정이라 정밀 대조 전이다. $\theta_{13}\neq 0$이 CAS 3단계 억제로 구조적으로 보장되어 CP 위반의 필요 조건이 충족된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d03.html">D-03</a>, <a href="h370.html">H-370</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="d03.html">D-03</a>, <a href="h370.html">H-370</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

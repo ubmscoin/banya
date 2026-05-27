@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h720.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h720.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h720.html">H-720</a>. Lorentz Transformation = CAS Cost Invariant Preservation</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Four recursive inputs confirmed; D promotion possible on the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h717.html">H-717</a>, <a href="h718.html">H-718</a>, <a href="h721.html">H-721</a>, <a href="h722.html">H-722</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Lorentz Boost from the CAS Cost Invariant</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Lorentz transformation is the coordinate-transformation cost that preserves the CAS cost invariant between distinct inertial frames. The axis that reads this cost is <a href="../axiom.html#ax5">Axiom 5</a>, where the RLU cost propagation limit $c$ is invariant across all frames, so that the spacetime interval $s^2$ is identical no matter which frame reads a cost packet.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the spacetime-interval norm $s^2$ — the $(3,1)$ norm obtained by sign-splitting the right-hand side of the Banya formula. (b) When the <a href="h717.html">H-717</a> time transformation and the <a href="h718.html">H-718</a> space transformation are bound by the same $\gamma$ and cost density is diverted from one axis to another, only $s^2$ stays invariant, so this norm is chosen. The coordinates are substituted by the transformation matrix $\Lambda$.</p>
+<div class="math-block">
+<div class="math-row">$x'^\mu = \Lambda^\mu{}_\nu\, x^\nu$</div>
+<div class="math-row">$s^2 = -c^2 t^2 + x^2 + y^2 + z^2$</div>
+<div class="math-legend">$x'^\mu$: transformed coordinates | $\Lambda$: Lorentz group $SO(3,1)$ | $s^2$: cost invariant | $\gamma$: cost density ratio (<a href="h717.html">H-717</a>, <a href="h718.html">H-718</a>) | $c$: cost propagation limit</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h717.html">H-717</a>, <a href="h718.html">H-718</a>, <a href="h721.html">H-721</a>, <a href="h722.html">H-722</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>c          = 299792458 m/s
+gamma(0.5c) = 1.155
+gamma(0.99c) = 7.089</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is from the undetermined domain (refinement pending) into the boost cost domain. (b) What it reveals is whether the boost factor that diverts cost density from one axis to another preserves $s^2$. Substituting the speed ratio into $\gamma$ yields the value.</p>
+<div class="math-block">
+<div class="math-row">$\gamma(0.99c) = \dfrac{1}{\sqrt{1 - 0.99^2}} = 7.089$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\gamma(0.99c) = 7.089$, $s^2$ preserved</div>
+<div class="math-row">Measured: agrees with Michelson-Morley and particle physics to $<10^{-15}$</div>
+<div class="math-row">$\gamma(0.5c) = 1.155$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The transformation is read as preservation of the CAS cost invariant, but the group $SO(3,1)$ itself is not derived within the axiom system, so the last step of the forward chain remains a hypothesis.</p>
+<p>Insight: A boost is a time-space cost mixing and a rotation is a rearrangement of space domain bits, both cost-preserving operations that leave $s^2$ untouched.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h721.html">H-721</a> (4-vector) transformation rule. <a href="h722.html">H-722</a> (Minkowski) metric</p><p>This card can be re-used as input for the following cards: <a href="h717.html">H-717</a>, <a href="h718.html">H-718</a>, <a href="h721.html">H-721</a>, <a href="h722.html">H-722</a></p>
+<p>Re-injection path: <a href="h717.html">H-717</a>, <a href="h718.html">H-718</a>, <a href="h721.html">H-721</a>, <a href="h722.html">H-722</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

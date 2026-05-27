@@ -68,39 +68,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 5개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형. 재귀 대입 경로: <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 자유도 비율에서 Bottom 질량 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>bottom 질량은 3세대 렙톤 타우에서 3세대 down-type 쿼크로 넘어갈 때 색 채널을 더 쥐는 비용이다. 완전기술자유도(<a href="../axiom.html#ax9">공리 9</a>)에서 CAS 내부 비영 상태 7과 CAS 단계 3의 비가 그 전환 비용을 정하고, 색 쥠은 비용 회수(<a href="../axiom.html#ax6">공리 6</a>)로 닫힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 자유도 비율 $7/3$ 노름이다. (b) 7은 CAS 내부 비영 상태 수($1+2+4$, <a href="../axiom.html#ax9">공리 9</a>), 3은 CAS 단계 수(Read·Compare·Swap, <a href="../axiom.html#ax2">공리 2</a>)이고, 타우에서 bottom으로의 색 전환이 이 비율로 정해지기 때문에 이 노름을 택한다. 여기에 강결합 2루프 비용 $2\alpha_s^2/\pi$를 곱한다.</p>
+<div class="math-block">
+<div class="math-row">$m_b = m_\tau \cdot \dfrac{7}{3}$</div>
+<div class="math-row">$m_b = m_\tau \cdot \dfrac{7}{3}\!\left(1 + \dfrac{2\alpha_s^2}{\pi}\right)$</div>
+<div class="math-legend">$m_b$: bottom 질량 | $m_\tau$: 타우 질량 | $7$: CAS 내부 비영 상태 수 | $3$: CAS 단계 수 | $\alpha_s$: 강결합 (<a href="d03.html">D-03</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>물리 상수 입력:</strong> <code>m_b</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_tau        = 1776.86 MeV         PDG 2024
+7/3          = 2.33333
+alpha_s      = 0.1183              D-03
+2 alpha_s^2/pi = 0.008908
+pi           = 3.141592653589793
+m_b          = 4180 ± 30 MeV       PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) down-type 유카와 질량 도메인(d-ring 이음새)으로 변환한다. (b) 이 변환으로 보려는 것은 2루프 강결합 보정이 들어간 bottom 질량의 정밀값이다. 타우 질량에 $7/3$과 강결합 보정 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_b = 1776.86 \times \dfrac{7}{3}\times(1 + 0.008908) = 4146.0 \times 1.008908 = 4183\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_b = 4183\;\text{MeV}$</div>
+<div class="math-row">측정값: $4180 \pm 30\;\text{MeV}$ (PDG 2024)</div>
+<div class="math-row">오차: $0.069\%$</div>
+</div>
+<p>판정: <strong>발견</strong></p>
+<p>$7/3$이 순수 CAS 구조 상수에서 나오면서 <a href="d21.html">D-21</a>의 1차 근사(0.81%)가 2루프 보정으로 10배 이상 정밀해졌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 3세대 쿼크-렙톤 대응. <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a> 교차.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
+<p>재투입 경로: <a href="d21.html">D-21</a>, <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d60.html">D-60</a>, <a href="d61.html">D-61</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

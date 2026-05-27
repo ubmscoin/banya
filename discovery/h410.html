@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="d01.html">D-01</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Read-Swap 직접 전이 비용에서 |V_ub| 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>$|V_{ub}|$는 1세대에서 3세대로 곧장 넘어가는 Read-Swap 직접 전이 비용이다. 이 직접 전이는 중간 Compare를 건너뛰므로(<a href="../axiom.html#ax2">공리 2</a>) 전자기 Compare 비용 $\alpha$(<a href="d01.html">D-01</a>)로 억제되고, 1-2 거리 $|V_{us}|$가 곱해진다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Read-Swap 직접 전이 노름이다. 직접 전이가 Compare를 건너뛰어 한 번의 $\alpha$로 억제되고(<a href="../axiom.html#ax2">공리 2</a>), 1-2 세대 거리 $|V_{us}|$를 곱한 뒤 CAS 유효 상태 $7$의 제곱근으로 정규화한다. 2세대 경유 경로를 무시한 노름이라 과억제가 따른다.</p>
+<div class="math-block">
+<div class="math-row">$|V_{ub}| = \alpha\,|V_{us}|$</div>
+<div class="math-row">$|V_{ub}| = \alpha\,|V_{us}|/\sqrt{7}$</div>
+<div class="math-legend">$|V_{ub}|$: CKM 1-3 전이 진폭 | $\alpha$: 전자기 Compare 비용 (<a href="d01.html">D-01</a>) | $|V_{us}|$: 1-2 세대 거리 | $\sqrt{7}$: CAS 유효 상태 정규화</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <code>V_cb</code>, <code>V_ub</code>, <code>V_us</code>, <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha    = 1/137.036 = 0.007297  D-01
+|V_us|   = 0.2253               PDG 2024
+sqrt(7)  = 2.646
+|V_ub|   = 0.00382 ± 0.00024    PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>CKM 혼합 도메인(직접 전이 채널만)으로 변환한다. 이 변환으로 보려는 것은 1-3 세대 직접 경로만의 $|V_{ub}|$ 기여다. $\alpha$에 $|V_{us}|$를 곱하고 $\sqrt{7}$로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$|V_{ub}| = 0.007297 \times 0.2253/2.646 = 0.000621$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $|V_{ub}| = 0.000621$</div>
+<div class="math-row">측정값: $0.00382 \pm 0.00024$ (PDG 2024)</div>
+<div class="math-row">억제율: 측정값의 $1/6.2$</div>
+</div>
+<p>판정: <strong>가설</strong>. 직접 전이 노름은 닫히나 2세대 경유 경로를 누락해 측정값의 $1/6.2$로 과억제된다. 직접 경로와 경유 경로 $|V_{us}||V_{cb}|$의 간섭, 위상 차이(CP 위반)의 CAS 해석이 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

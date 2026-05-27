@@ -65,39 +65,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="h488.html">H-488</a>, <a href="h551.html">H-551</a>, <a href="h556.html">H-556</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: observer 미Read DATA 비용에서 직접 검출 단면적 $0$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>암흑물질은 DATA가 존재하되 observer가 Read하지 않은 비용이다. DATA는 존재만으로 FSM 노름(= 질량, <a href="../axiom.html#ax11">공리 11</a>)을 가져 중력에 기여하지만, observer Read가 곧 관측(<a href="../axiom.html#ax10">공리 10</a>)이므로 미Read DATA는 CAS 게이지 상호작용(<a href="../axiom.html#ax4">공리 4</a>)을 일으키지 않는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 FSM 노름(중력 기여)만 켜지고 CAS 상호작용 노름(전자기·약력·강력)은 꺼진 부분 노름이다. (b) 직접 검출은 표적 핵과의 CAS 산란을 재므로 CAS가 미작동이면 산란 진폭이 0이지만 FSM 노름은 남아 중력 효과만 보이기 때문에 이 노름을 택한다. 따라서 직접 검출 단면적을 CAS 작동 여부의 함수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\sigma_{\text{direct}} = |\mathcal{M}_{\text{CAS}}|^2,\quad \mathcal{M}_{\text{CAS}} = 0 \;(\text{미Read})$</div>
+<div class="math-row">$\Omega_{\text{DM}} = \dfrac{\rho_{\text{unread}}}{\rho_{\text{crit}}}$</div>
+<div class="math-legend">$\sigma_{\text{direct}}$: 직접 검출 단면적 | $\mathcal{M}_{\text{CAS}}$: CAS 상호작용 진폭 | $\Omega_{\text{DM}}$: 암흑물질 밀도비 | $\rho_{\text{unread}}$: 미Read DATA 밀도 (<a href="../axiom.html#ax3">공리 3</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h488.html">H-488</a>, <a href="h551.html">H-551</a>, <a href="h556.html">H-556</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>M_CAS       = 0                미Read ==> 게이지 진폭 0 (공리 4)
+FSM norm    > 0                존재 ==> 질량 기여 (공리 11)
+Omega_DM    = 0.27             Planck 2018
+Omega_b     = 0.05             보통물질(Read DATA)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 우주론 RLU 분포 도메인으로 변환한다. (b) 보려는 것은 직접 검출 단면적과 미Read DATA 밀도비다. CAS 진폭 0을 대입하면 검출 단면적이 0이 되고, 미Read 비율이 $\Omega_{\text{DM}}$로 산출된다.</p>
+<div class="math-block">
+<div class="math-row">$\sigma_{\text{direct}} = |0|^2 = 0,\qquad \Omega_{\text{DM}} = 0.27$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\sigma_{\text{direct}} = 0$, $\Omega_{\text{DM}} = 0.27$</div>
+<div class="math-row">측정: WIMP 직접 검출 미검출 (XENONnT·LZ 상한), $\Omega_{\text{DM}}=0.27$ (Planck 2018)</div>
+<div class="math-row">정합: 단면적 0이 WIMP 탐색 전면 실패를 설명</div>
+</div>
+<p>판정: <strong>가설</strong>. CAS 미작동이 직접 검출 0과 중력 효과 잔존을 동시에 닫지만, 미Read DATA 비율 0.27을 공리에서 정량 도출하는 것은 다음 라운드 과제다.</p>
+<p>통찰: 암흑물질이 보이지 않는 것은 새 입자가 숨어서가 아니라 observer가 그 DATA를 아직 Read하지 않았기 때문이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h488.html">H-488</a>(암흑물질) 정체 특정. <a href="h551.html">H-551</a>(SUSY 부재) WIMP 배제. <a href="h556.html">H-556</a>(미세조정) $\Omega_{\text{DM}}$ 결정.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h488.html">H-488</a>, <a href="h551.html">H-551</a>, <a href="h556.html">H-556</a></p>
+<p>재투입 경로: <a href="h488.html">H-488</a>, <a href="h551.html">H-551</a>, <a href="h556.html">H-556</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

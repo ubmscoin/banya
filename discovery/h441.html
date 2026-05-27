@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h electromag qed. 도메인: delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2)). 재귀 대입 경로: <a href="d152.html">D-152</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: DATA 이산 적분 하한에서 전자 자기 에너지 유한성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전자 자기 에너지는 한 전하 엔티티가 자기 자신의 쿨롱 장과 Compare하며 누적하는 비용이다. 고전 전자기학은 이 비용을 점전하 반지름 0까지 적분해 발산시키지만, DATA가 이산(<a href="../axiom.html#ax3">공리 3</a>)이면 적분 하한이 최소 길이 $\Delta\ell_{\min}>0$에서 멎는다. 이 하한을 space 도메인의 이산 경계(<a href="../axiom.html#ax4">공리 4</a>)로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2))</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 space 도메인의 이산 길이 노름이다. 자기 에너지가 반지름에 대한 $1/\ell^2$ 장 에너지 적분(<a href="../axiom.html#ax11">공리 11</a> 상한 $1/(4\pi\ell^2)$)이고, 8비트 유한 해상도(<a href="../axiom.html#ax5">공리 5</a>)가 $\ell=0$을 금지하기 때문에 이 노름을 택한다. 따라서 연속 적분의 하한 0을 이산 하한 $\Delta\ell_{\min}$으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$U_{\text{self}} = \dfrac{e^2}{8\pi\epsilon_0}\displaystyle\int_{0}^{\infty}\dfrac{d\ell}{\ell^2}$</div>
+<div class="math-row">$U_{\text{self}} = \dfrac{e^2}{8\pi\epsilon_0}\displaystyle\int_{\Delta\ell_{\min}}^{\infty}\dfrac{d\ell}{\ell^2} = \dfrac{e^2}{8\pi\epsilon_0\,\Delta\ell_{\min}}$</div>
+<div class="math-legend">$U_{\text{self}}$: 전자 자기 에너지 | $\Delta\ell_{\min}$: DATA 이산 최소 길이 (<a href="../axiom.html#ax3">공리 3</a>) | $e$: 기본 전하 | $\epsilon_0$: 진공 유전율</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 5, 2 (서명 (5,2)), 137 (자료형 = T(16)+1)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d152.html">D-152</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>e            = 1.602176634e-19 C        CODATA 2018
+epsilon_0    = 8.8541878128e-12 F/m     CODATA 2018
+l_P          = 1.616255e-35 m           Planck 길이
+dl_min       = l_P                      이산 하한 채택</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>무한 적분 도메인에서 이산 길이 도메인(space 8비트 해상도)으로 변환한다. 이 변환으로 보려는 것은 적분 하한이 0이 아닐 때 자기 에너지가 유한값에 갇히는지 여부다. 최소 길이를 Planck 길이로 두고 상한을 계산한다.</p>
+<div class="math-block">
+<div class="math-row">$U_{\text{self}} \le \dfrac{e^2}{8\pi\epsilon_0\,\ell_P} \approx 1.1\times 10^{22}\ \text{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $U_{\text{self}} = e^2/(8\pi\epsilon_0\,\Delta\ell_{\min}) < \infty$</div>
+<div class="math-row">상한: $U_{\text{self}} \le e^2/(8\pi\epsilon_0\,\ell_P) \approx 10^{22}\ \text{eV}$</div>
+<div class="math-row">측정: QED 재규격화와 구조 정합 (정량값 대기)</div>
+</div>
+<p>판정: <strong>가설</strong>. 이산 하한이 발산을 막아 유한성은 닫혔으나, $\Delta\ell_{\min}$의 프레임 상수 환산이 외부 입력(Planck 길이)에 남아 forward chain 마지막 단계가 미완. 자외선 발산은 DATA 연속 가정의 산물이고 QED 재규격화는 그 자연 차단의 연속 근사다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d152.html">D-152</a>(쿨롱) 근거리 정규화. QED 발산 문제 해소 기반.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d152.html">D-152</a></p>
+<p>재투입 경로: <a href="d152.html">D-152</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

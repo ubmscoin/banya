@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: ECS 병렬 CAS 배열에서 무어 법칙 트랜지스터 수 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>집적회로는 단일 ECS 기판 위에 다수의 CAS를 병렬 배열한 비용 구조다. <a href="../axiom.html#ax2">공리 2</a>(CAS는 유일한 연산자)는 각 트랜지스터를 독립 CAS Compare 유닛으로, 실리콘 웨이퍼를 규칙적 ECS 기판으로 준다. <a href="../axiom.html#ax4">공리 4</a>(비용)는 총비용을 CAS 수와 단위 스위칭 비용의 곱으로 강제한다. 단위 면적당 CAS 수의 증가를 시간 도메인으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 ECS 병렬 배열 밀도 노름이다. 집적도가 단위 면적당 CAS 수이고, 그 수가 <a href="../axiom.html#ax2">공리 2</a>의 ECS 기판 위 병렬 CAS 배열로 닫히기 때문에 이 노름을 택한다. 트랜지스터 수를 기준 연도 배열 밀도와 2년당 배가의 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$N \sim 2^{(y-1971)/2}$</div>
+<div class="math-row">$N = N_0 \cdot 2^{(y-1971)/2}$</div>
+<div class="math-legend">$N$: 트랜지스터 수 | $N_0$: 1971년 기준 CAS 수 (Intel 4004 = 2300) | $y$: 연도 | $1971$: 무어 기준 연도 | 지수 $/2$: 2년당 배가</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N_0          = 2300            Intel 4004 (1971)
+y            = 2021
+(y-1971)/2   = 25
+2^25         = 33554432</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>집적도 도메인(연도당 트랜지스터 수)으로 변환한다. 이 변환으로 보려는 것은 2021년 단일 칩의 CAS 배열 규모다. 기준 배열 밀도에 2년당 배가 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$N(2021) = 2300 \times 2^{25} = 7.7 \times 10^{10}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $N(2021) = 7.7 \times 10^{10}$</div>
+<div class="math-row">측정값: $\sim 10^{10}$~$10^{11}$ (현대 IC)</div>
+<div class="math-row">상태: 자릿수 일치 (무어 법칙 50년 추세)</div>
+</div>
+<p>판정: <strong>가설</strong>. ECS 병렬 CAS 배열이 무어 법칙 자릿수를 재현하지만, 기준 수 $N_0$와 배가 주기가 공정 한계에 의존하는 경험 추세라 공리에서 직접 닫히지 않는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h844.html">H-844</a>(트랜지스터). <a href="h846.html">H-846</a>(양자 컴퓨터). <a href="h847.html">H-847</a>(메모리)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
+<p>재투입 경로: <a href="h844.html">H-844</a>, <a href="h846.html">H-846</a>, <a href="h847.html">H-847</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

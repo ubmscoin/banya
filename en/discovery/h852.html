@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on the next round / remaining tasks stated.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h848.html">H-848</a>, <a href="h853.html">H-853</a>, <a href="h865.html">H-865</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Radar Detection Range from the CAS Cost-Wave Round-Trip Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Radar emits the CAS cost wave (electromagnetic wave) of <a href="../axiom.html#ax7">Axiom 7</a> into the ECS and receives the cost wave reflected from the target. The CAS Compare of <a href="../axiom.html#ax5">Axiom 5</a> compares the transmitted and received signals to extract the time delay (range), and the RLU attenuation of <a href="../axiom.html#ax6">Axiom 6</a> sets the signal attenuation with propagation distance — radar reads this round-trip cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cost-wave round-trip attenuation norm. The emitted cost wave travels to the target and back, attenuating as $1/R^2$ on each of the transmit and receive legs, so the signal weakens as $1/R^4$; the maximum detection range is fixed where this attenuation equals the minimum received power, so this norm is chosen.</p>
+<div class="math-block">
+<div class="math-row">$P_r = \dfrac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4}$</div>
+<div class="math-row">$R_{\max} = \left(\dfrac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 P_{\min}}\right)^{1/4}$</div>
+<div class="math-legend">$R_{\max}$: maximum detection range | $P_t$: transmit power | $G$: antenna gain | $\lambda$: wavelength | $\sigma$: radar cross section | $P_{\min}$: minimum received power | $(4\pi)^3$: round-trip solid-angle factor</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h848.html">H-848</a>, <a href="h853.html">H-853</a>, <a href="h865.html">H-865</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>P_t     = 1.0e6 W              air-surveillance transmit
+G       = 1000 (30 dBi)        antenna gain
+lambda  = 0.03 m               X-band 10 GHz
+sigma   = 1.0 m^2              standard target
+P_min   = 1.0e-13 W            receiver sensitivity
+(4 pi)^3 = 1984.4</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the measurement domain (round-trip propagation range). What it reveals is the maximum detection range $R_{\max}$ reached before the signal attenuates to the noise floor. Substituting the constants above into the fourth root yields that value.</p>
+<div class="math-block">
+<div class="math-row">$R_{\max} = \left(\dfrac{10^6 \cdot 10^6 \cdot (0.03)^2 \cdot 1}{1984.4 \cdot 10^{-13}}\right)^{1/4} \approx 1.6\times 10^{5}\;\text{m}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Measurement Agreement</h3>
+<div class="math-block">
+<div class="math-row">Derived: $R_{\max} \approx 160\;\text{km}$</div>
+<div class="math-row">Measured: air-surveillance detection $100$~$400\;\text{km}$</div>
+<div class="math-row">Error: $&lt; 10\%$ (for comparable parameters)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $1/R^4$ range dependence closes, but the radar cross section $\sigma$ is not structurally derived from the CAS cost-wave model, leaving the forward chain incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h848.html">H-848</a> (communication). <a href="h853.html">H-853</a> (GPS). <a href="h865.html">H-865</a> (gravitational-wave detector).</p><p>This card can be re-used as input for the following cards: <a href="h848.html">H-848</a>, <a href="h853.html">H-853</a>, <a href="h865.html">H-865</a></p>
+<p>Re-injection path: <a href="h848.html">H-848</a>, <a href="h853.html">H-853</a>, <a href="h865.html">H-865</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

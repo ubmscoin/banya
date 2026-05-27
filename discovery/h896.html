@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 닫힘/열림 비용에서 쿼크-렙톤 상보성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>쿼크와 렙톤의 차이는 FSM(<a href="../axiom.html#ax14">공리 14</a>)이 닫힌 회로인가 열린 회로인가의 비용 차이다. 닫힌 FSM은 내부 자유도(색 3축)를 한 덩어리로 가두고, 열린 FSM은 그 자유도를 외부로 해방한다. 이 닫힘/열림이 같은 ECS(<a href="../axiom.html#ax12">공리 12</a>) 실행 모델 안에서 두 입자족을 가른다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 상태 노름이다. (a) 닫힘/열림 두 상태로 입자족을 가르는 이산 노름이고, (b) 색 가둠과 자유 전파의 차이가 FSM 회로의 위상(닫힘 vs 열림)에서 직접 갈라지기 때문에 이 노름을 택한다. 색 자유도 3은 닫힌 FSM 내부의 CAS R·C·S 3축 직교(<a href="../axiom.html#ax2">공리 2</a> 명제)다.</p>
+<div class="math-block">
+<div class="math-row">$\text{quark} = \text{color-confined triplet},\quad \text{lepton} = \text{color singlet}$</div>
+<div class="math-row">$\text{FSM closed} \Rightarrow \text{quark},\quad \text{FSM open} \Rightarrow \text{lepton}$</div>
+<div class="math-legend">FSM closed: 닫힌 회로 = 색 가둠 | FSM open: 열린 회로 = 자유 전파 | triplet: 색 3축 = CAS R·C·S | singlet: 색전하 0</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>color DOF   = 3            CAS 3축 직교 (공리 2)
+quark types = 6            세대 3 x 2
+lepton types= 6            세대 3 x 2
+generations = 3            FSM 상태 수 (H-01)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>표준 모형 입자 분류 도메인으로 변환한다. 이 변환으로 보려는 것은 닫힘/열림 노름이 입자 스펙트럼을 정확히 둘로 가르는가다. 닫힌 FSM에는 색 3축이 살아 쿼크 6종이, 열린 FSM에는 색이 죽어 렙톤 6종이 대응한다.</p>
+<div class="math-block">
+<div class="math-row">$3 \text{ generations} \times 2 = 6 \text{ quarks} \;|\; 6 \text{ leptons}$</div>
+<div class="math-row">$\text{closed FSM color} = 3,\quad \text{open FSM color} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 색 가둠 쿼크 6종 + 자유 렙톤 6종, 색 3축</div>
+<div class="math-row">대조: 표준 모형 입자 분류 (쿼크 6, 렙톤 6, 색 3, 세대 3)</div>
+<div class="math-row">정합: 입자 분류 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 닫힘/열림 노름이 입자족 분류와 일치하나, FSM 닫힘과 열림 사이 전환의 에너지 스케일이 공리에서 닫히지 않아 정량 forward chain은 미완.</p>
+<p>통찰: 색 가둠은 추가 가설이 아니라 FSM 회로가 닫혔다는 사실 그 자체다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h893.html">H-893</a>(약력-강력 통일). <a href="h897.html">H-897</a>(보손-페르미온)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
+<p>재투입 경로: <a href="h01.html">H-01</a>, <a href="h893.html">H-893</a>, <a href="h897.html">H-897</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

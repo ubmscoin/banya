@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h589.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h589.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h589.html">H-589</a>. Fluctuation Theorem = Symmetry Relation of CAS Cost Fluctuation</h1><div class="box-finding">
@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative expression absent / 2 recursive inputs confirmed, D promotion possible at the next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula's own structure, primary integer (4,3) combination. Recursive substitution path: <a href="h568.html">H-568</a>, <a href="h583.html">H-583</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the fluctuation-theorem symmetry relation from CAS cost fluctuation</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>In a microscopic system the CAS cost is not the same every cycle but fluctuates. Because the δ utterance (<a href="../axiom.html#ax15">Axiom 15</a>) is stochastic, the cost $+1$ can transiently reverse (entropy decrease). CAS irreversibility (<a href="../axiom.html#ax5">Axiom 5</a>) makes that bidirectional fluctuation asymmetric.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; Banya formula's own structure, primary integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS irreversible-cost fluctuation norm. It is chosen because the probability ratio of forward to reverse fluctuations is set by the statistical property of the irreversible cost. Reading the CAS cost as an energy fluctuation (<a href="../axiom.html#ax4">Axiom 4</a>), that ratio closes as the exponential of the entropy production $\sigma$.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{P(+\sigma)}{P(-\sigma)} = e^{\sigma t}$</div>
+<div class="math-row">$\langle e^{-\sigma t}\rangle = 1$</div>
+<div class="math-legend">$P(\pm\sigma)$: probability of positive/negative entropy-production fluctuation | $\sigma$: entropy production per unit time (CAS irreversible cost) | $t$: observation time | $\langle e^{-\sigma t}\rangle = 1$: integral fluctuation theorem (Jarzynski form)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h568.html">H-568</a>, <a href="h583.html">H-583</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>sigma > 0                      mean entropy production positive
+P(+sigma)/P(-sigma) = e^(sigma t)   Crooks-form symmetry
+<e^(-sigma t)> = 1             Jarzynski integral theorem
+macroscopic limit large t: P(-sigma) -> 0   Second Law H-568</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Banya formula's own structure domain (primary integer $(4,3)$ combination). What it reveals is the symmetry relation between positive and negative fluctuation probabilities — the fluctuation theorem. It is computed from the ratio of the two directional probabilities.</p>
+<div class="math-block">
+<div class="math-row">$\ln\dfrac{P(+\sigma)}{P(-\sigma)} = \sigma t$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $P(+\sigma)/P(-\sigma) = e^{\sigma t}$, $\langle e^{-\sigma t}\rangle = 1$</div>
+<div class="math-row">Measured check: consistent with colloidal and RNA-folding experiments (Bustamante et al.)</div>
+<div class="math-row">Status: quantitative derivation of the Jarzynski equality pending</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Second Law (<a href="h568.html">H-568</a>) is the macroscopic limit; microscopically a cost reversal is exponentially suppressed but not zero. Thermal fluctuation (<a href="h583.html">H-583</a>) follows from the same symmetry.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: microscopic foundation for <a href="h568.html">H-568</a> (second law). Symmetry relation for <a href="h583.html">H-583</a> (thermal fluctuation).</p><p>This card can be re-used as input for the following cards: <a href="h568.html">H-568</a>, <a href="h583.html">H-583</a></p>
+<p>Re-injection path: <a href="h583.html">H-583</a>, <a href="h568.html">H-568</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

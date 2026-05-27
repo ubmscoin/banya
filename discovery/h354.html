@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="d09.html">D-09</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: δ 발화비트 고정에서 유효 상태 수 128 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>유효 상태 수는 8비트 링버퍼에서 실제로 의미를 갖는 상태를 세는 비용이다. δ(bit 7)는 FSM 밖의 전역 점화 플래그라(<a href="../axiom.html#ax15">공리 15</a>) 자유도가 아니라 전제 조건이며, δ=1일 때만 나머지 7비트가 의미를 갖는다. δ 자체는 전체-국소 루프에서 관측 불가다(<a href="../axiom.html#ax10">공리 10</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 δ=1을 전제한 뒤 남는 7자유도의 멱집합 노름 $2^7$이다. (b) 이 노름을 택하는 이유는 8비트 전체 $2^8$이 δ=0인 FSM idle 상태 절반을 포함해 물리적으로 무의미한 상태를 세기 때문이다. δ를 자유도에서 빼고 7자유도 조합론(<a href="../axiom.html#ax9">공리 9</a> 파스칼 7행)으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{naive} = 2^8 = 256$</div>
+<div class="math-row">$\text{effective} = 2^7 = 128\quad(\delta=1\ \text{fixed})$</div>
+<div class="math-legend">$2^8$: 8비트 전체 (δ=0 idle 포함) | $2^7$: δ=1 전제 후 7자유도 | $\delta$: bit 7 발화비트, 전제 조건 (자유도 아님) | 파스칼 7행: $1,7,21,35,35,21,7,1$ 합 $=128$</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d09.html">D-09</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>전체 비트 수 = 8                            8비트 링버퍼
+δ (bit 7)    = 1 고정                       공리 15 (전제 조건)
+유효 자유도  = 7 = 도메인 4 + CAS 3         공리 9
+2^7          = 128 = 1+7+21+35+35+21+7+1    파스칼 7행 합
+57 + 71      = 128                          CAS 참여 57 (D-09) + 비참여 71</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 대상 도메인은 양자·정보 상태 공간이다. (b) 이 변환으로 보려는 것은 물리적으로 실현 가능한 전체 상태 수, 곧 δ를 전제로 둔 뒤의 유효 상태 공간 크기다. 7자유도 멱집합을 계산해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$2^7 = 128\quad(\neq 2^8 = 256)$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 유효 상태 $= 2^7 = 128$ (δ=1 전제)</div>
+<div class="math-row">대조값: CAS 참여 57(<a href="d09.html">D-09</a>) + 비참여 71 $= 128$</div>
+<div class="math-row">정량 대조: 내부 정수 정합까지 확립, 128 대 256 정밀도 비교 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 128 = 57 + 71 내부 정합은 확립되었으나, 물리 상수 도출에서 128 기반과 256 기반의 정확도를 직접 비교하는 검증 단계가 미완이다.</p>
+<p>통찰: δ가 자유도가 아니라 전제 조건이므로 상태 수가 256이 아니라 128이며, δ=0인 128개 idle 상태를 세면 진공 에너지가 과대 계상된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d09.html">D-09</a></p>
+<p>재투입 경로: <a href="d09.html">D-09</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

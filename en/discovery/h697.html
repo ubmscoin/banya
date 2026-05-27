@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h697.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h697.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_electromag_qed</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h697.html">H-697</a>. Brewster Angle = Polarization-Dependent Vanishing of Reflection Cost</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible at the next round / residual tasks stated.</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive-substitution path: <a href="h692.html">H-692</a>, <a href="h696.html">H-696</a>, <a href="h698.html">H-698</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Brewster Angle from the Polarization-Orthogonality Condition of Reflection Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Brewster angle is the incidence angle at which the CAS cost reflection of the domain-bit component parallel to the plane of incidence (p-polarization) vanishes. When the reflected and refracted waves are orthogonal, the p-polarization cost loses its transmission axis (<a href="../axiom.html#ax4">Axiom 4</a>) and the reflection cost becomes 0.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2))</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the orthogonality-condition norm of the two cost waves, reflected and refracted. When the p-polarization oscillation axis (the domain-bit direction of <a href="h696.html">H-696</a>) aligns with the reflection direction, the reflection cost vanishes, so this norm is chosen; the refractive-index ratio of Snell's law (<a href="h692.html">H-692</a>) is substituted into the reflection-vanishing condition $\theta_1+\theta_2=90^\circ$.</p>
+<div class="math-block">
+<div class="math-row">$n_1\sin\theta_1 = n_2\sin\theta_2,\quad \theta_1+\theta_2 = 90^\circ$</div>
+<div class="math-row">$\theta_B = \arctan\!\left(\dfrac{n_2}{n_1}\right)$</div>
+<div class="math-legend">$\theta_B$: Brewster angle | $n_1$: refractive index of incident medium | $n_2$: refractive index of transmitting medium | $\theta_1+\theta_2=90^\circ$: reflection-refraction orthogonality = p-polarization cost vanishing</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical constant inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library re-substitution:</strong> <a href="h692.html">H-692</a>, <a href="h696.html">H-696</a>, <a href="h698.html">H-698</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n1 = 1.0        air
+n2 = 1.5        glass         H-692
+n2/n1 = 1.5
+arctan(1.5) = 56.31 deg</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the reflection-polarization domain. What it reveals is the incidence angle $\theta_B$ at which the p-polarization reflection cost becomes 0. The arctangent of the refractive-index ratio $n_2/n_1$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\theta_B = \arctan(1.5) = 56.31^\circ$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for the detailed reasoning.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\theta_B = 56.31^\circ$ (glass $n=1.5$)</div>
+<div class="math-row">Measured: $\theta_B \approx 56.3^\circ$</div>
+<div class="math-row">Error: $0.02\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The p-polarization cost-vanishing condition matches the measured Brewster angle, but the CAS microscopic mechanism by which the reflection cost becomes exactly 0 is not closed, so it stops at hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h696.html">H-696</a> (polarization) application. <a href="h698.html">H-698</a> (laser) Brewster window.</p><p>This card can be re-used as input for the following cards: <a href="h692.html">H-692</a>, <a href="h696.html">H-696</a>, <a href="h698.html">H-698</a></p>
+<p>Re-injection path: <a href="h692.html">H-692</a>, <a href="h696.html">H-696</a>, <a href="h698.html">H-698</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

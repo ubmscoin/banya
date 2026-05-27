@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h542.html">H-542</a>, <a href="h543.html">H-543</a>, <a href="h544.html">H-544</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 도메인 경계 비용에서 바리온수 비보존 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>바리온수 보존은 CAS 색 도메인이 닫혀 있어 쿼크 자료형이 도메인 경계를 넘지 못하는 비용이다. 저에너지에서 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>)의 경계가 양자수 보존을 강제하지만, 고에너지 한계에서 CAS 비용(<a href="../axiom.html#ax4">공리 4</a>)이 경계 유지 비용을 초과하면 경계가 소멸한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 도메인 경계 노름이다. 바리온수가 색 도메인 경계의 보존량(<a href="../axiom.html#ax1">공리 1</a>: 도메인 경계 = 양자수 보존)이고, 그 경계가 GUT 스케일에서 CAS 비가역 비용(<a href="../axiom.html#ax5">공리 5</a>)에 의해 비대칭적으로 무너지기 때문에 이 노름을 택한다. 경계가 소멸하면 쿼크 자료형과 렙톤 자료형이 같은 도메인에 놓여 $B$ 전환이 허용된다.</p>
+<div class="math-block">
+<div class="math-row">$\partial_\mu J^\mu_B = 0 \quad (E \ll M_{\text{GUT}})$</div>
+<div class="math-row">$\Delta B \neq 0 \quad (E \gtrsim M_{\text{GUT}})$</div>
+<div class="math-legend">$J^\mu_B$: 바리온수 흐름 | $\Delta B$: 바리온수 변화 | $M_{\text{GUT}}$: 도메인 경계 소멸 스케일 | $E$: 상호작용 비용 스케일</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h542.html">H-542</a>, <a href="h543.html">H-543</a>, <a href="h544.html">H-544</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>M_GUT = 1e16 GeV          H-542 도메인 경계 소멸
+eta   = 6.1e-10           Planck 2018 바리온 비대칭
+색 도메인 = CAS(4) = SU(3)  닫힌 ring-7</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>닫힌 색 도메인에서 경계 소멸 도메인으로 변환한다. 이 변환으로 보려는 것은 바리온 비대칭 $\eta$를 낳는 $\Delta B$ 전환의 허용 조건이다. 경계 소멸 스케일에서 사하로프 세 조건($B$ 비보존·CP 위반·비평형)이 동시에 충족된다.</p>
+<div class="math-block">
+<div class="math-row">$\eta = \dfrac{n_B - n_{\bar B}}{n_\gamma} \approx 6 \times 10^{-10} \quad (\Delta B \neq 0 \text{ 필요})$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $E \gtrsim 10^{16}$ GeV에서 $\Delta B \neq 0$ 허용</div>
+<div class="math-row">측정: $\eta \approx 6 \times 10^{-10}$ (Planck 2018)</div>
+<div class="math-row">검증: 양성자 붕괴 직접 탐색 대기</div>
+</div>
+<p>판정: <strong>가설</strong>. 바리온수 비보존이 도메인 경계 소멸의 필연적 결과이며 바리오제네시스의 전제 조건임이 구조적으로 닫혔으나, 양성자 붕괴 직접 검출 전까지 정량 비율은 미확정이다.</p>
+<p>통찰: 양자수 보존은 절대 법칙이 아니라 도메인 경계가 닫혀 있는 동안에만 성립하는 비용 조건이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h543.html">H-543</a>(양성자 붕괴) 전제. <a href="h544.html">H-544</a>(GUT 통일) 대칭 깨짐 결과.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h542.html">H-542</a>, <a href="h543.html">H-543</a>, <a href="h544.html">H-544</a></p>
+<p>재투입 경로: <a href="h542.html">H-542</a>, <a href="h543.html">H-543</a>, <a href="h544.html">H-544</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

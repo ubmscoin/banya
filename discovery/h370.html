@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 대칭과 1루프 보정에서 sin²θ₂₃ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>2-3 세대 뉴트리노 혼합이 거의 최대인 까닭은 CAS의 Compare가 두 세대를 대칭으로 비교하기 때문이다(<a href="../axiom.html#ax2">공리 2</a>). 완전 대칭은 $1/2$을 주고, 그 위의 작은 이탈을 전자기 1루프 보정으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare 대칭 노름 $1/2$에 1루프 보정 $\alpha/(4\pi)$를 더한 것이다. 두 상태의 대칭 비교가 정확히 $1/2$을 주고(<a href="../axiom.html#ax2">공리 2</a>), Compare 확률 $\alpha$(<a href="d01.html">D-01</a>)가 $4\pi$ 입체각에 분배되는 1루프 항이 그 대칭을 깨기 때문에 이 노름을 택한다. 따라서 $\sin^2\theta_{23}$을 $1/2+\alpha/(4\pi)$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin^2\theta_{23}\;(\text{PMNS})$</div>
+<div class="math-row">$\sin^2\theta_{23}=\dfrac{1}{2}+\dfrac{\alpha}{4\pi}$</div>
+<div class="math-legend">$\theta_{23}$: PMNS 2-3 혼합각 | $1/2$: Compare 대칭(최대 혼합) | $\alpha$: Compare 확률 (<a href="d01.html">D-01</a>) | $\alpha/(4\pi)$: 1루프 전자기 보정</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <code>V_cb</code>, <code>alpha</code>, <code>pi</code>, <code>theta</code></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha         = 1/137.036          D-01
+4 pi          = 12.56637
+alpha/(4 pi)  = 0.000581
+sin^2 th23    = 0.547 ± 0.030      PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 PMNS 혼합 도메인으로 변환한다. 이 변환으로 보려는 것은 2-3 세대 혼합각의 제곱 사인 $\sin^2\theta_{23}$다. 대칭값 $1/2$에 1루프 보정 $\alpha/(4\pi)$를 더해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin^2\theta_{23}=0.5+0.000581=0.50058$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\sin^2\theta_{23}=0.50058$</div>
+<div class="math-row">측정값: $0.547\pm 0.030$ (PDG 2024)</div>
+<div class="math-row">정합: $1\sigma$ 범위 이내</div>
+</div>
+<p>판정: <strong>가설</strong>. $0.50058$은 실험 $1\sigma$ 안에 들지만 중심값 $0.547$보다 작아 2루프 보정과 옥탄트 구별이 미완이다. 대칭 깨짐 $\alpha/(4\pi)$가 CP 위반의 원천이며, $\theta_{13}$ 항(<a href="h371.html">H-371</a>)이 같은 1루프 구조에서 따라온다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

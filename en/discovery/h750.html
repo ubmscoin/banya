@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h750.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h750.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h750.html">H-750</a>. Tensor = Multilinear Representation of CAS Cost</h1><div class="box-finding">
@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 3 recursive inputs confirmed, D promotion possible upon next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Independent-Component Count of the Metric Tensor from the 4-axis Multilinear Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>CAS cost is distributed multilinearly across the 4 axes (<a href="../axiom.html#ax1">Axiom 1</a>: time, space, observer, superposition). A cost linear in two axes simultaneously is the rank-2 tensor $g_{\mu\nu}$, whose components set the cost distance (RLU decay). The cost classification (<a href="../axiom.html#ax4">Axiom 4</a>) sets the component values.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the 4-axis rank-2 symmetric tensor norm. The metric $g_{\mu\nu}$ is symmetric under exchange of the two axes (symmetry of distance), and the coordinate covariance of CAS cost (<a href="../axiom.html#ax2">Axiom 2</a>) sets the transformation law, which is why this norm is chosen. (b) The number of independent components of a symmetric rank-2 tensor on $d$ axes is $d(d+1)/2$, so the independent-component count of the 4-axis metric is substituted by that formula.</p>
+<div class="math-block">
+<div class="math-row">$ds^2 = g_{\mu\nu}\,dx^\mu dx^\nu, \qquad g_{\mu\nu} = g_{\nu\mu}$</div>
+<div class="math-row">$N_{\text{indep}} = \dfrac{d(d+1)}{2}$</div>
+<div class="math-legend">$g_{\mu\nu}$: metric tensor = cost distance | $d$: number of axes = 4 (<a href="../axiom.html#ax1">Axiom 1</a>) | $d(d+1)/2$: symmetric rank-2 independent components | $ds^2$: cost line element</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>number of axes d   = 4              Axiom 1 (4 axes)
+4x4 components     = 16
+symmetry condition = g_mn = g_nm
+independent count  = 4*5/2 = 10     general-relativity metric</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the general-relativity metric domain. (b) What it reveals is the independent degrees of freedom of the 4-axis cost distance, i.e. the independent-component count of the metric tensor. Reducing the 16 components by the symmetry condition yields that count.</p>
+<div class="math-block">
+<div class="math-row">$N_{\text{indep}} = \dfrac{4(4+1)}{2} = 10$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: metric independent components $4\times5/2 = 10$</div>
+<div class="math-row">Measured: 4D symmetric metric has 10 independent components (general relativity)</div>
+<div class="math-row">Match: component count agrees</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structural match in which the 4-axis multilinear cost reproduces the 10 independent components of the symmetric metric holds, but since the coupling $G$ of the Einstein equation $G_{\mu\nu}=8\pi G\,T_{\mu\nu}$ is not produced directly from the axioms, the quantitative-derivation stage remains incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h747.html">H-747</a> (differential forms). <a href="h751.html">H-751</a> (spinors). <a href="h755.html">H-755</a> (information geometry).</p><p>This card can be re-used as input for the following cards: <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a></p>
+<p>Re-injection path: <a href="h747.html">H-747</a>, <a href="h751.html">H-751</a>, <a href="h755.html">H-755</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

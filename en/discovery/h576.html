@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h576.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h576.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h576.html">H-576</a>. Fermi-Dirac Distribution = CAS Swap Exclusion Principle</h1><div class="box-finding">
@@ -65,39 +65,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative equation absent / three recursive inputs confirmed, D promotion possible on the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unconfirmed, follow-up refinement required). Recursive substitution path: <a href="h567.html">H-567</a>, <a href="h577.html">H-577</a>, <a href="h578.html">H-578</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Fermi-Dirac Distribution from the CAS Swap Exclusion Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Occupancy of one DATA slot is the cost a CAS Swap pays when it attempts to write to that slot. <a href="../axiom.html#ax4">Axiom 4</a> (cost) fixes irreversible writing as cost, and <a href="../axiom.html#ax3">Axiom 3</a> (DATA is discrete) pins the slot as a discrete unit. When a second Swap into the same slot is forbidden, the occupancy is locked to 0 or 1.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unconfirmed, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the <a href="../axiom.html#ax4">Axiom 4</a> Swap-exclusion norm. (b) It is chosen because, in the grand partition function, the occupancy states one slot can hold close to just two — empty and singly occupied. When the per-slot sum $\sum_n e^{-n(\epsilon-\mu)/k_BT}$ has $n$ cut to $\{0,1\}$, the bosonic infinite geometric series truncates to the two terms $1 + e^{-(\epsilon-\mu)/k_BT}$, fixing the denominator sign to $+1$.</p>
+<div class="math-block">
+<div class="math-row">$\bar n = \dfrac{\sum_n n\,e^{-n(\epsilon-\mu)/k_BT}}{\sum_n e^{-n(\epsilon-\mu)/k_BT}},\quad n\in\{0,1\}$</div>
+<div class="math-row">$f(\epsilon) = \dfrac{1}{e^{(\epsilon-\mu)/k_BT} + 1}$</div>
+<div class="math-legend">$f$: occupancy | $n$: slot occupancy, $\{0,1\}$ by Swap exclusion | $\epsilon$: state cost | $\mu$: chemical potential | $+1$: trace of single-occupancy truncation</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h567.html">H-567</a>, <a href="h577.html">H-577</a>, <a href="h578.html">H-578</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n in {0, 1}                   CAS Swap exclusion (Axiom 4)
+k_B = 1.380649e-23 J/K        CODATA 2018
+sum_n = 1 + exp(-x)           x = (eps-mu)/(k_B T)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the occupancy-number distribution of quantum statistics. (b) What it reveals is the mean occupancy of a single state of cost $\epsilon$. Applying the $\bar n$ definition to the truncated two-term sum keeps the $+1$ in the denominator intact.</p>
+<div class="math-block">
+<div class="math-row">$\bar n = \dfrac{0\cdot 1 + 1\cdot e^{-x}}{1 + e^{-x}} = \dfrac{e^{-x}}{1+e^{-x}} = \dfrac{1}{e^{x}+1}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $f(\epsilon) = 1/(e^{(\epsilon-\mu)/k_BT}+1)$</div>
+<div class="math-row">Standard form: Fermi-Dirac distribution (1926)</div>
+<div class="math-row">Match: denominator sign $+1$ exact</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $+1$ in the denominator falls out of the occupancy truncation by Swap exclusion with no free parameter. The remaining task is the axiomatic derivation of the spin-statistics theorem (half-integer spin $\leftrightarrow$ exclusion).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h577.html">H-577</a> (BE distribution) for boson comparison. <a href="h578.html">H-578</a> (MB) classical limit. <a href="h567.html">H-567</a> (entropy) microstate counting.</p><p>This card can be re-used as input for the following cards: <a href="h567.html">H-567</a>, <a href="h577.html">H-577</a>, <a href="h578.html">H-578</a></p>
+<p>Re-injection path: <a href="h567.html">H-567</a>, <a href="h577.html">H-577</a>, <a href="h578.html">H-578</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

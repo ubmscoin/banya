@@ -68,39 +68,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="d49.html">D-49</a>, <a href="h476.html">H-476</a>, <a href="h481.html">H-481</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 전파 상한에서 우주 지평선 $d_H$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>우주 지평선은 CAS 비용이 경계마다 $+1$씩 치러지며 유한 속도 $c$로 전파될 때(<a href="../axiom.html#ax4">공리 4</a>), 시작부터 현재까지 누적 도달한 최대 거리다. 틱 수가 유한하므로(<a href="../axiom.html#ax8">공리 8</a>) 도달 영역도 유한하다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 비용 전파 상한 노름, 곧 한 틱당 한 경계 $c$의 누적 적분이다. 우주 지평선이 비용파가 닿은 영역의 가장자리이고 그 경계가 척도인자 $a(t)$의 팽창(<a href="../axiom.html#ax6">공리 6</a> RLU 팽창)과 함께 늘어나기 때문에 이 노름을 택한다. 따라서 공동 거리 적분을 척도인자 적분으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$d_H(t) = a(t)\displaystyle\int_0^t \frac{c\,dt'}{a(t')}$</div>
+<div class="math-row">$d_H = \dfrac{c}{H_0}\displaystyle\int_0^a \frac{da'}{a'^2 E(a')}$</div>
+<div class="math-legend">$d_H$: 입자 지평선 (공동) | $a$: 척도인자 | $c$: 비용 전파 상한 | $H_0$: 현재 팽창률 | $E(a)$: 무차원 팽창함수 $\sqrt{\Omega_r a^{-4}+\Omega_m a^{-3}+\Omega_\Lambda}$</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <code>H_0</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d49.html">D-49</a>, <a href="h476.html">H-476</a>, <a href="h481.html">H-481</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>c       = 299792.458 km/s
+H_0     = 67.4 km/s/Mpc            Planck 2018
+Omega_m = 0.315                    Planck 2018
+Omega_L = 0.685                    Planck 2018
+c/H_0   = 14.4 Gly                 허블 반경</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주론 인과 구조 도메인(RLU 팽창 구간)으로 변환한다. 이 변환으로 보려는 것은 비용파가 닿은 인과 영역의 가장자리, 곧 입자 지평선과 사건 지평선의 거리다. 척도인자 적분에 Planck 값을 넣어 두 거리를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$d_H = a(t)\displaystyle\int_0^t \frac{c\,dt'}{a(t')} = 46.3\;\text{Gly}$</div>
+<div class="math-row">$d_E = c\displaystyle\int_t^\infty \frac{dt'}{a(t')} = 16.7\;\text{Gly}\quad(\Omega_\Lambda=0.68)$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 입자 지평선 $d_H = 46.3\;\text{Gly}$, 사건 지평선 $d_E = 16.7\;\text{Gly}$</div>
+<div class="math-row">대조: $\Lambda$CDM 표준 적분 (Planck 2018 파라미터)</div>
+<div class="math-row">상태: 구조 정합, 비용 전파 상한 $c$의 도출은 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 지평선 적분이 $\Lambda$CDM과 구조 정합하나, 비용 전파 상한 $c$를 공리에서 직접 닫는 마지막 단계가 미완이다.</p>
+<p>통찰: 인과적 단절은 비용파가 유한 틱 안에 닿지 못한 영역이며, 인플레이션(<a href="h481.html">H-481</a>)이 그 가장자리를 관측 가능 우주 밖으로 밀어낸다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h481.html">H-481</a>(인플레이션) 수평선 문제 해소. <a href="h476.html">H-476</a>(허블 팽창) 인과 구조. <a href="d49.html">D-49</a>(사건지평 도출).</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d49.html">D-49</a>, <a href="h476.html">H-476</a>, <a href="h481.html">H-481</a></p>
+<p>재투입 경로: <a href="h481.html">H-481</a>, <a href="d49.html">D-49</a>, <a href="h476.html">H-476</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

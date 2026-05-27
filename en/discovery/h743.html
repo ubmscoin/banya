@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h743.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h743.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_neutrino_cp</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h743.html">H-743</a>. Hamiltonian Mechanics = Phase-Space Flow of CAS Cost</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D promotion is feasible on the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7). Recursive substitution path: <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a>, <a href="h749.html">H-749</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Hamilton's canonical equations from the phase-space flow of CAS cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The phase-space coordinate $q$ is the DATA state (<a href="../axiom.html#ax3">Axiom 3</a>), the conjugate momentum $p$ is the CAS cost (<a href="../axiom.html#ax4">Axiom 4</a>), and the Hamiltonian $H$ is the CAS total cost. Since the FSM (<a href="../axiom.html#ax14">Axiom 14</a>) generates the time evolution each tick, the cost flow is read as a phase-space flow.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the symplectic norm. It is chosen because CAS operations evolve the DATA state and the cost as a pair while preserving phase-space volume (<a href="../axiom.html#ax2">Axiom 2</a> deterministic flow of CAS operations), and the canonical equations are substituted by the symplectic flow of the cost.</p>
+<div class="math-block">
+<div class="math-row">$\dot q = \dfrac{\partial H}{\partial p}, \quad \dot p = -\dfrac{\partial H}{\partial q}$</div>
+<div class="math-row">$\dfrac{dH}{dt} = 0$</div>
+<div class="math-legend">$q$: DATA state | $p$: CAS cost | $H$: CAS total cost | $dH/dt=0$: cost-sum conservation | volume conservation: Liouville</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS step), 9 (Koide theta), 30 (CAS access paths), 7 (degrees of freedom)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a>, <a href="h749.html">H-749</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>q           = DATA state           Axiom 3
+p           = CAS cost             Axiom 4
+H           = CAS total cost
+dH/dt       = 0                   cost-sum conservation
+check       = Liouville theorem    phase-space volume conservation</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the phase-space flow domain. What it reveals is whether the paired evolution of the cost preserves volume — that is, information conservation. The two canonical equations produce the cost flow.</p>
+<div class="math-block">
+<div class="math-row">$\dot q = \dfrac{\partial H}{\partial p}, \; \dot p = -\dfrac{\partial H}{\partial q} \Rightarrow \dfrac{dH}{dt} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: paired evolution of CAS cost $=$ symplectic flow, $dH/dt=0$</div>
+<div class="math-row">Check: Liouville theorem, phase-space volume conservation</div>
+<div class="math-row">Status: structural consistency confirmed, quantitative measurement incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The paired evolution of CAS cost and DATA state reproduces the canonical equations, but the limit from discrete ticks to the continuous symplectic form remains, deferred to the next-round inputs <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a>, and <a href="h749.html">H-749</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h744.html">H-744</a> (Lagrangian) Legendre transform. <a href="h748.html">H-748</a> (phase space) symplectic.</p><p>This card can be re-used as input for the following cards: <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a>, <a href="h749.html">H-749</a></p>
+<p>Re-injection path: <a href="h749.html">H-749</a>, <a href="h744.html">H-744</a>, <a href="h748.html">H-748</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

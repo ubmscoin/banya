@@ -44,13 +44,13 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <body>
 <div class="lang-switch"><a class="lang-btn" href="../../discovery/p04.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
-<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== Unique Predictions</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
 <h1><a href="p04.html">P-04</a>. dark energy w=-1</h1><div class="box-finding">
 <h3>Core Finding</h3>
 <p><strong><a href="p04.html">P-04</a>: dark energy w=-1</strong></p>
 <p class="finding-precision">P-04 prediction (predictions.html#r4)</p>
 <p>The equation of state for dark energy is defined as $w = P / \rho$, where $P$ is pressure and $\rho$ is energy density. $w = -1$ corresponds to the cosmological constant (vacuum energy). If $w$ deviates from $-1$, then something time-varying (quintessence, etc.) is at play.</p>
-<p>Within the Banya Framework the identity of dark energy is revealed in the <a href="banya.html">Master Report</a>: it is the COLD region of the LRU cache — the energy of states that no longer participate in active operations but still persist. This coincides with vacuum energy.</p>
+<p>Within the Banya Framework the identity of dark energy is revealed in the <a href="../banya.html">Master Report</a>: it is the COLD region of the LRU cache — the energy of states that no longer participate in active operations but still persist. This coincides with vacuum energy.</p>
 <p>Why doesn't LRU COLD change over time? The states in the COLD region are those whose operations have already terminated. A terminated operation cannot be restarted; once CAS completes, it cannot be reversed. Therefore the energy density of COLD remains constant regardless of spacetime expansion. This is why $w = -1$.</p>
 <p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is a unique prediction (Class III/IV) and is currently halted awaiting experimental verification. The forward chain is closed from axioms through to a quantitative predicted value, but the relevant experiment has either not yet been conducted or its precision has not yet reached the level required to verify this card's prediction. If the predicted value agrees with experimental measurement, the card is promoted to D; if it diverges from measurement by 5σ or more, the card is falsified ==&gt; this card is discarded and impact on the upstream hypothesis chain is assessed.</p>
 </div>
@@ -60,39 +60,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental data absent / structural forward chain complete / awaiting verification</p>
 <p><strong>Location:</strong> Category: p. Domain: δ ==&gt; the prediction's target domain (specified per P card). Recursive substitution path: round 1 (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving dark energy w=-1 from the RLU COLD irreversible-completion cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Dark energy is the COLD region of the RLU cache — the energy of states that no longer participate in active operations yet still exist. Once the CAS completes, it cannot be reversed (<a href="../axiom.html#ax4">Axiom 4</a>: irreversible cost). A finished operation never restarts, so the energy density of the COLD region stays constant independent of spacetime expansion.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; the prediction's target domain (specified per P card)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the RLU COLD irreversible-completion norm. (b) This norm is chosen because COLD states are irreversibly completed operations that do not respond to changes in spacetime volume. When the energy density $\rho$ is constant independent of volume, the equation of state $w = P/\rho$ is fixed at exactly $-1$.</p>
+<div class="math-block">
+<div class="math-row">$w = \dfrac{P}{\rho}$</div>
+<div class="math-row">$\rho_\text{COLD} = \text{const} \;\Rightarrow\; w = -1$</div>
+<div class="math-legend">$w$: dark-energy equation of state | $P$: pressure | $\rho$: energy density | $\rho_\text{COLD}$: RLU COLD region density (irreversibly completed, <a href="../axiom.html#ax4">Axiom 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> specified per prediction card</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <em>no external reference (round 1)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>rho_COLD  = const             irreversible completion (Axiom 4)
+P         = -rho              vacuum equation
+w(predict) = -1
+w(DESI)   = -1.03 ± 0.03      DESI 2024 observation</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the cosmic-expansion-dynamics domain. (b) What it reveals is the dark-energy equation of state $w$. Substituting the constant COLD density into the vacuum equation $P=-\rho$ yields the value.</p>
+<div class="math-block">
+<div class="math-row">$w = \dfrac{P}{\rho} = \dfrac{-\rho_\text{COLD}}{\rho_\text{COLD}} = -1$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Prediction</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Prediction</h3>
+<div class="math-block">
+<div class="math-row">Predicted: $w = -1$ (time-invariant)</div>
+<div class="math-row">Observed: $w = -1.03 \pm 0.03$ (DESI 2024)</div>
+<div class="math-row">Character: cosmological-constant type, not quintessence</div>
+</div>
+<p>Verification: precise $w(z)$ measurements from DESI, Euclid, and LSST. If $w$ drifts away from $-1$ over time (dynamical dark energy), falsification; if $w=-1$ is confirmed fixed, promotion to D.</p>
+<p>Verdict: <strong>Prediction</strong>. The irreversible completion of RLU COLD fixes the energy density as volume-invariant, closing $w=-1$ with 0 free parameters.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No explicit byproducts. Cross-links may be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

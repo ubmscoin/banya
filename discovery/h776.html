@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h775.html">H-775</a>, <a href="h782.html">H-782</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: ECS 집단 비용에서 창발 = 환원 불가능한 집단 패턴 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>창발은 다수 CAS가 ECS로 묶일 때 개별 비용의 단순 합을 넘어서는 집단 비용 패턴이다. ECS = 다수 FSM의 집단(<a href="../axiom.html#ax7">공리 7</a>)이고, 그 비용 합산이 비선형(<a href="../axiom.html#ax4">공리 4</a>)이므로 $\delta^2$ 비용을 개별 항으로 분해할 수 없다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 ECS 집단 노름이다. $N$개 CAS의 비용을 단순히 더하는 선형 노름이 아니라, RLU 집단 효과가 위상 전이로 나타나는(<a href="../axiom.html#ax6">공리 6</a>) 비선형 결합 노름을 택한다. 창발이 개별 합과 집단 패턴의 차이로 정의되기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\delta^2_{\text{집단}} = \sum_{i=1}^{N}\delta_i^2 + \sum_{i<j}J_{ij}$</div>
+<div class="math-row">$P_{\text{창발}} = \delta^2_{\text{집단}} - \sum_{i=1}^{N}\delta_i^2 = \sum_{i<j}J_{ij}$</div>
+<div class="math-legend">$\delta^2_{\text{집단}}$: ECS 전체 비용 | $\delta_i^2$: 개별 CAS 비용 | $J_{ij}$: CAS 쌍 사이 비선형 결합항 | $P_{\text{창발}}$: 환원 불가능한 집단 패턴 | $N$: ECS 내 CAS 수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h775.html">H-775</a>, <a href="h782.html">H-782</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N      : ECS 내 CAS 수 (가변, 미확정)
+J_ij   : 비선형 결합항 (공리 4, 형식 미정)
+경계    : J_ij = 0 이면 P_emergence = 0 (창발 없음)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>응집물질 위상 전이 도메인으로 변환한다. 이 변환으로 보려는 것은 개별 항으로 환원되지 않는 집단 패턴 $P_{\text{창발}}$의 존재 여부다. 결합항 $J_{ij}$가 0이 아닐 때만 집단 패턴이 살아남는다.</p>
+<div class="math-block">
+<div class="math-row">$P_{\text{창발}} = \sum_{i<j}J_{ij} \neq 0$</div>
+<div class="math-row">\text{BCS: } $\Delta_{\text{gap}} = \sum_{i<j}J_{ij}\big|_{\text{쿠퍼쌍}}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $P_{\text{창발}} = \sum_{i<j}J_{ij}$ (개별 합과의 차)</div>
+<div class="math-row">검증: $J_{ij}$ 형식 미정 — 정량 산출 대기</div>
+<div class="math-row">정합: 초전도 BCS 갭 = 창발적 집단 비용</div>
+</div>
+<p>판정: <strong>가설</strong>. 창발이 ECS 비선형 결합항 $J_{ij}$의 합으로 구조 정의되나, $J_{ij}$의 명시적 형식이 미정이라 정량 도출에 이르지 못해 가설에 머문다.</p>
+<p>통찰: 개별 합과 집단 패턴의 차이가 0이 아닌 한 창발은 환원 불가능하다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h775.html">H-775</a>(환원). <a href="h782.html">H-782</a>(범심론)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h775.html">H-775</a>, <a href="h782.html">H-782</a></p>
+<p>재투입 경로: <a href="h775.html">H-775</a>, <a href="h782.html">H-782</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

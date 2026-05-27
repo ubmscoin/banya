@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d qcd. 도메인: delta ==&gt; 색 자유도 x QCD 비용. 재귀 대입 경로: <a href="d03.html">D-03</a>, <a href="d80.html">D-80</a>, <a href="d98.html">D-98</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: DOF 9와 Compare 대각선 비용에서 $\Lambda_{QCD}/m_\pi$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>QCD 스케일과 파이온 질량의 비는 CAS가 강력(색) 도메인의 속박 스케일을 골드스톤 질량 스케일로 인덱싱할 때의 비용이다. DOF 9(<a href="../axiom.html#ax9">공리 9</a>)가 분자, 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>)에 Compare 연산의 대각선 비용 $\sqrt{2}$(<a href="../axiom.html#ax2">공리 2</a>)가 결합한 $4\sqrt{2}$가 분모를 이루는 구조로 이 비용을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 색 자유도 x QCD 비용</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 DOF를 도메인-Compare 대각선으로 나눈 인덱싱 노름이다. 분자 $9$는 완전기술자유도, 분모는 도메인 4축이 Compare의 대각선 비용 $\sqrt{2}$와 결합해 $4\sqrt{2}$가 되며, 이 비율이 스케일 변환 인덱싱 비용을 정하기 때문에 이 노름을 택한다. 따라서 스케일 비를 $9/(4\sqrt{2})$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Lambda_{QCD}}{m_\pi} = \dfrac{\text{DOF}}{\text{도메인 축} \times \text{Compare 대각선}}$</div>
+<div class="math-row">$\dfrac{\Lambda_{QCD}}{m_\pi} = \dfrac{9}{4\sqrt{2}}$</div>
+<div class="math-legend">$\Lambda_{QCD}$: QCD 속박 스케일 | $m_\pi$: 파이온 질량 | $9$: 완전기술자유도 (<a href="../axiom.html#ax9">공리 9</a>) | $4$: 도메인 4축 | $\sqrt{2}$: Compare 대각선 비용</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3, 7, 색 8</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d03.html">D-03</a>, <a href="d80.html">D-80</a>, <a href="d98.html">D-98</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>9          = 완전기술자유도
+sqrt(2)    = 1.414214
+4 sqrt(2)  = 5.656854
+Lambda_QCD = 222 MeV               D-03
+m_pi       = 139.57 MeV            PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>QCD 스케일 계층 도메인으로 변환한다. 이 변환으로 보려는 것은 속박 스케일과 골드스톤 질량의 비가 DOF·도메인·Compare 세 구조 상수만으로 닫히는가다. 분자 $9$를 분모 $4\sqrt{2}$로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Lambda_{QCD}}{m_\pi} = \dfrac{9}{5.656854} = 1.5910$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Lambda_{QCD}/m_\pi = 1.5910$</div>
+<div class="math-row">측정값: $222/139.57 = 1.5906$       PDG 2024</div>
+<div class="math-row">오차: $0.025\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. DOF 9·도메인 4·Compare 대각선 $\sqrt{2}$ 세 구조 상수가 자유 매개변수 없이 스케일 비를 닫는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: QCD 스케일-파이온 질량비. <a href="../axiom.html#ax9">공리 9</a>(DOF), <a href="../axiom.html#ax1">공리 1</a>(도메인 4축) 근거.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d03.html">D-03</a>, <a href="d80.html">D-80</a>, <a href="d98.html">D-98</a></p>
+<p>재투입 경로: <a href="d80.html">D-80</a>, <a href="d03.html">D-03</a>, <a href="d98.html">D-98</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

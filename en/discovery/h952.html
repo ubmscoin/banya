@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h952.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h952.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_neutrino_cp</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h952.html">H-952</a>. delta_CP Quaternion Octant Composition Candidate = 2 arccos((2+sqrt2)/4) (1sigma scatter)</h1><div class="box-finding">
@@ -69,39 +69,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7). Recursive substitution path: <a href="h942.html">H-942</a>, <a href="h943.html">H-943</a>, <a href="h948.html">H-948</a>, <a href="h950.html">H-950</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the δ_CP Phase from the Quaternion Octant Composition Angle</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The CKM CP-violating phase is the rotation angle when two orthogonal quaternion axes $i\perp j$ are non-commutatively composed on the unit sphere. The two-bracket orthogonality preservation of the weak-force domain is read as octant rotations of the quaternion units $i, j$, and this phase is captured as the composition angle.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm substituted is the quaternion unit-sphere rotation norm ($i^2=j^2=-1,\ ij=k$, <a href="../axiom.html#ax1">Axiom 1</a> quaternion proposition). (b) Non-commutatively composing a $\pi/4$ rotation (unit-sphere octant split, <a href="h943.html">H-943</a> Berry generalization) on each axis $i, j$ closes the scalar part to $\cos^2(\pi/8)$, so this norm is chosen. The δ_CP is therefore substituted by the composition rotation angle $2\arccos(\cos^2(\pi/8))$.</p>
+<div class="math-block">
+<div class="math-row">$\delta_{\text{CP}} = \arg\!\big(V_{ub}^{*}\big)$</div>
+<div class="math-row">$\delta_{\text{CP}}^{(\text{cand})} = 2\arccos\!\dfrac{2+\sqrt{2}}{4} = 2\arccos\!\big(\cos^{2}(\pi/8)\big)$</div>
+<div class="math-legend">$\delta_{\text{CP}}$: CKM CP-violating phase | $i, j$: orthogonal quaternion axes (<a href="h948.html">H-948</a> Pauli σ isomorphism) | $\pi/4$: octant split | $\cos^2(\pi/8)$: scalar part of the composed quaternion</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS steps), 9 (Koide theta), 30 (CAS access paths), 7 (DOF)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>delta_CP</code>, <code>pi</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h942.html">H-942</a>, <a href="h943.html">H-943</a>, <a href="h948.html">H-948</a>, <a href="h950.html">H-950</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>pi/8            = 0.392699
+cos^2(pi/8)     = (2+sqrt2)/4 = 0.853553
+delta_CP        = 1.144 rad        PDG 2024 (CKM)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the weak-force CKM phase domain. (b) What it reveals is the CP-violating rotation angle δ_CP set by the non-commutative composition of the two quaternion axes. Applying $2\arccos$ to the scalar part yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\delta_{\text{CP}}^{(\text{cand})} = 2\arccos(0.853553) = 1.0961\ \text{rad} = 62.80^{\circ}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Hypothesis</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\delta_{\text{CP}} = 1.0961\ \text{rad}$</div>
+<div class="math-row">Measured: $1.144\ \text{rad}$ (PDG 2024, $0.178\sigma$)</div>
+<div class="math-row">Error: $4.2\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. It emerges naturally as a closed surd expression, but the quaternion justification for the $\pi/4$ octant split is weak.</p>
+<p>Insight: this is a Round 1 candidate taking the quaternion cards <a href="h942.html">H-942</a>·<a href="h943.html">H-943</a>·<a href="h948.html">H-948</a> directly as input.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: follow-up mining of quaternion unit-sphere composition (PMNS delta_CP quaternion form), refinement of the <a href="h942.html">H-942</a>/<a href="h943.html">H-943</a>/<a href="h948.html">H-948</a> quaternion cards, follow-up verification of the naturalness of octant partition.</p><p>This card can be re-used as input for the following cards: <a href="h942.html">H-942</a>, <a href="h943.html">H-943</a>, <a href="h948.html">H-948</a>, <a href="h950.html">H-950</a></p>
+<p>Re-injection path: <a href="h942.html">H-942</a>, <a href="h948.html">H-948</a>, <a href="h943.html">H-943</a>, <a href="h950.html">H-950</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

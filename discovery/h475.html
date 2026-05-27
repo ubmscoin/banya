@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 7개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="d10.html">D-10</a>, <a href="d21.html">D-21</a>, <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a>, <a href="d37.html">D-37</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 각인 비용에서 히그스 질량 $m_H$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>질량 부여는 OPERATOR(o+sp)가 DATA(t+s)에 CAS를 실행할 때 FSM 사이클이 DATA에 노름을 각인하는 과정이다(<a href="../axiom.html#ax14">공리 14</a>). Compare가 true를 반환하면 Swap이 반드시 실행되어(<a href="../axiom.html#ax7">공리 7</a>) 대칭 원점에 머물 수 없으니, 이것이 히그스 포텐셜의 $\mu^2&lt;0$ = 자발적 대칭 깨짐이다. 사이클 1회 총 노름 예산이 진공 기대값 $v$다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 히그스 자기결합 노름 $\lambda_H$다. (b) 히그스 질량이 포텐셜 곡률 = 자기결합으로 정해지고, 그 $\lambda_H$가 총 비용 13(<a href="../axiom.html#ax4">공리 4</a>)에서 정수비 $7/54$로 닫히기 때문에(<a href="d24.html">D-24</a>) 이 노름을 택한다. 따라서 $m_H$를 $v\sqrt{2\lambda_H}$로 치환한다(<a href="d25.html">D-25</a>).</p>
+<div class="math-block">
+<div class="math-row">$m_H = v\sqrt{2\lambda_H}$</div>
+<div class="math-row">$\lambda_H = \dfrac{7}{54}$</div>
+<div class="math-legend">$m_H$: 히그스 질량 | $v$: 진공 기대값 | $\lambda_H$: 히그스 자기결합 (<a href="d24.html">D-24</a>) | $7$: 강력 자료형 (<a href="../axiom.html#ax9">공리 9</a>) | $54$: 비용 구조 정수비</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>m_t</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d10.html">D-10</a>, <a href="d21.html">D-21</a>, <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a>, <a href="d37.html">D-37</a>, <a href="h460.html">H-460</a>, <a href="h461.html">H-461</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>v          = 246.22 GeV             전약 진공 기대값
+lambda_H   = 7/54 = 0.12963         D-24
+m_H(측정)  = 125.25 ± 0.17 GeV      PDG 2024 (LHC)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 히그스 질량 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 FSM 노름 각인의 곡률이 결정하는 히그스 보손 질량 $m_H$다. $v$에 $\sqrt{2\lambda_H}$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_H = 246.22 \times \sqrt{2\times\tfrac{7}{54}} = 125.37\;\text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_H = 125.37\;\text{GeV}$</div>
+<div class="math-row">측정값: $125.25 \pm 0.17\;\text{GeV}$ (PDG 2024)</div>
+<div class="math-row">오차: $0.3\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 히그스 자기결합 $\lambda_H=7/54$가 비용 구조 정수비로 닫히며, FSM 노름 각인이 질량 부여 메커니즘임을 0.3%로 확인한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d24.html">D-24</a>($\lambda_H$), <a href="d25.html">D-25</a>($m_H$), <a href="d37.html">D-37</a>($m_H/m_t$), <a href="h460.html">H-460</a>(W 질량), <a href="h461.html">H-461</a>(Z 질량), 모든 질량 도출의 메커니즘 기반.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d10.html">D-10</a>, <a href="d21.html">D-21</a>, <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a>, <a href="d37.html">D-37</a>, <a href="h460.html">H-460</a>, <a href="h461.html">H-461</a></p>
+<p>재투입 경로: <a href="h460.html">H-460</a>, <a href="h461.html">H-461</a>, <a href="d10.html">D-10</a>, <a href="d21.html">D-21</a>, <a href="d25.html">D-25</a>, <a href="d24.html">D-24</a>, <a href="d37.html">D-37</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

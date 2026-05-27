@@ -67,39 +67,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / Recursive substitution not executed (1st round) / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: 1st round (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Domain-Selection Mask of Attention from the Observer Filter Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Attention is the filter cost by which the observer, on receiving the δ utterance (<a href="../axiom.html#ax15">Axiom 15</a>), passes only part of the 4 domain bits. <a href="../axiom.html#ax10">Axiom 10</a> (observer filter) sets the pass mask and <a href="../axiom.html#ax1">Axiom 1</a> (4-axis orthogonality) guarantees the independence of each domain bit, so this cost is read as a domain-bit mask.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm substituted is the selection-mask norm over the 4 domain bits — the number of bits $k$ the observer opens. (b) This norm is chosen because attention is a selective opening that passes only some axes rather than receiving all information, and that selectivity closes through the pass-bit count of the <a href="../axiom.html#ax10">Axiom 10</a> filter. The throughput is therefore substituted by $k/4$ and the mask count by $\binom{4}{k}$.</p>
+<div class="math-block">
+<div class="math-row">$\text{attention}=\text{spotlight on selected channels}$</div>
+<div class="math-row">$\text{attention}=\{\,\text{observer opens }k\text{ of 4 domain bits},\;k&lt;4\,\}$</div>
+<div class="math-legend">$k$: pass-bit count (<a href="../axiom.html#ax10">Axiom 10</a> filter) | $4$: number of domain axes (<a href="../axiom.html#ax1">Axiom 1</a>) | $k/4$: throughput ratio | $\binom{4}{k}$: mask combination count</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stage)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <em>no external reference (1st round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N domain  = 4                      Axiom 1 (4-axis orthogonality)
+k         = 1..3                   k &lt; 4 selective opening
+C(4,1)    = 4
+C(4,2)    = 6
+C(4,3)    = 4
+Swap cost = S+1                    Axiom 2 (one filter switch)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the bit-mask domain of the observer filter. (b) What it reveals is the fraction of information one mask setting passes, together with the number of masks that coexist. Substituting bit count $k$ into throughput and combination yields those values.</p>
+<div class="math-block">
+<div class="math-row">$k=1:\ \text{throughput}=1/4,\ \binom{4}{1}=4$</div>
+<div class="math-row">$k=2:\ \text{throughput}=1/2,\ \binom{4}{2}=6$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: attention width $=k/4$, mask count $=\binom{4}{k}$, switch cost $=S+1$</div>
+<div class="math-row">Against: inattentional blindness, narrowing of attention width, attentional blink</div>
+<div class="math-row">Awaiting measurement (no quantitative value cited)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Reducing attention to the observer-filter bit mask $k&lt;4$ makes selectivity, throughput, and switch cost follow from one structure. Comparison with a standard processing-bandwidth measurement in the next round permits D promotion.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No byproducts specified. Cross-links may be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

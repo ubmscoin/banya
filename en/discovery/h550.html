@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h550.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h550.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_neutrino_cp</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h550.html">H-550</a>. Neutrinoless Double Beta Decay = Majorana FSM Self-Coupling</h1><div class="box-finding">
@@ -65,39 +65,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D-promotion possible upon the next round / outstanding tasks listed.</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: δ ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7). Recursive-substitution path: <a href="h546.html">H-546</a>, <a href="h547.html">H-547</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Neutrinoless Double Beta Decay from the FSM Self-Coupling Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The FSM state distinguishes particle from antiparticle (<a href="../axiom.html#ax9">Axiom 9</a>), and its mass is set by the FSM norm (<a href="../axiom.html#ax11">Axiom 11</a>). If the neutrino FSM admits a Majorana term coupling it to itself, particle and antiparticle become the same state and self-annihilation is possible.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Majorana self-coupling norm. The FSM norm admits a Majorana mass term (<a href="../axiom.html#ax11">Axiom 11</a>: FSM norm ==&gt; Majorana mass), and CAS irreversibility (<a href="../axiom.html#ax5">Axiom 5</a>) enforces lepton-number non-conservation — hence this norm. For a Dirac norm, particle and antiparticle are distinct states and self-coupling is forbidden.</p>
+<div class="math-block">
+<div class="math-row">$(T_{1/2}^{0\nu})^{-1} = G \, |M_{\text{nucl}}|^2 \, |m_{ee}|^2$</div>
+<div class="math-row">$|m_{ee}| = 0 \;\Rightarrow\; 0\nu\beta\beta \text{ forbidden (Dirac)}$</div>
+<div class="math-legend">$T_{1/2}^{0\nu}$: neutrinoless half-life | $G$: phase-space factor | $M_{\text{nucl}}$: nuclear matrix element | $m_{ee}$: effective Majorana mass</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS steps), 9 (Koide theta), 30 (CAS access paths), 7 (degrees of freedom)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h546.html">H-546</a>, <a href="h547.html">H-547</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>T_1/2  &gt; 1e26 yr           current experimental limit
+m_ee   = effective Majorana mass   set by FSM norm
+Dirac   -&gt; m_ee = 0          self-coupling forbidden
+lepton number  Delta L = 2  CAS irreversible</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is from the weak-force contraction-overlap domain into the $\Delta L = 2$ lepton-number-non-conservation domain. What it reveals is the inverse-square relation between the half-life and the effective Majorana mass. For a Majorana norm, $|m_{ee}|$ sets the half-life; for a Dirac norm, the process itself is forbidden.</p>
+<div class="math-block">
+<div class="math-row">$T_{1/2}^{0\nu} \propto |m_{ee}|^{-2}, \quad T_{1/2}^{0\nu} > 10^{26}\;\text{yr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $T_{1/2}^{0\nu} \propto |m_{ee}|^{-2}$ (Majorana-norm condition)</div>
+<div class="math-row">Measured: $T_{1/2} > 10^{26}$ yr (current limit)</div>
+<div class="math-row">Verification: awaiting next-generation LEGEND, nEXO, CUPID</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure that whether Majorana self-coupling occurs hinges on whether the FSM norm admits a Majorana term is closed, but the predicted $|m_{ee}|$ stays undetermined until the norm structure is fixed.</p>
+<p>Insight: the identity of particle and antiparticle is decided by whether the FSM norm admits a Majorana term, and double beta decay is the measurement that reads that norm directly.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h547.html">H-547</a> (lepton-quark unification) Majorana property. <a href="h546.html">H-546</a> (baryon number) lepton-number counterpart.</p><p>This card can be re-used as input for the following cards: <a href="h546.html">H-546</a>, <a href="h547.html">H-547</a></p>
+<p>Re-injection path: <a href="h547.html">H-547</a>, <a href="h546.html">H-546</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -69,39 +69,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h gauge ew. 도메인: delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배. 재귀 대입 경로: <a href="h178.html">H-178</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 완전기술 DOF 9 × 링 8비트에서 $\Gamma_Z/M_Z$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>Z 보존의 폭/질량비는 한 상태가 붕괴하기까지 거치는 경로 수의 역비용이다. 완전기술 DOF 9(<a href="../axiom.html#ax9">공리 9</a>)와 링버퍼 8비트(<a href="../axiom.html#ax15">공리 15</a>)가 정하는 안정 경로 수를 Compare 분기 2로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 DOF 9 × 링 8비트 = 72 경로 노름이다. (b) Z 보존의 수명이 그 72개 경로의 안정성으로 정해지고 붕괴 채널 선택이 Compare 이진 분기 2를 따르기 때문에 이 노름을 택한다. 분자 2를 분모 $9\times 8$로 나눈다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Gamma_Z}{M_Z}$</div>
+<div class="math-row">$\dfrac{\Gamma_Z}{M_Z} = \dfrac{2}{9\times 8} = \dfrac{1}{36}$</div>
+<div class="math-legend">$\Gamma_Z$: Z 총붕괴폭 | $M_Z$: Z 질량 | $2$: Compare 이진 분기 | $9$: 완전기술 DOF (<a href="../axiom.html#ax9">공리 9</a>) | $8$: 링버퍼 비트 (<a href="../axiom.html#ax15">공리 15</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (도메인)</p>
-<p><strong>물리 상수 입력:</strong> <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h178.html">H-178</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>9 x 8       = 72
+2 / 72      = 1/36 = 0.02778
+Gamma_Z     = 2.4952 GeV             PDG 2024
+M_Z         = 91.1876 GeV            PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 전약 ring의 게이지 보존 안정성 도메인으로 변환한다. (b) 보려는 것은 Z 보존이 한 번의 사이클 안에 붕괴할 확률, 곧 폭/질량 무차원 비다. 분기 2를 72 경로로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Gamma_Z}{M_Z} = \dfrac{2.4952}{91.1876} = 0.02738$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Gamma_Z/M_Z = 1/36 = 0.02778$</div>
+<div class="math-row">측정값: $2.4952/91.1876 = 0.02738$ (PDG 2024)</div>
+<div class="math-row">오차: $1.50\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 비가 $1/36$ 닫힌 정수로 떨어지고 $72=8\times 9$가 <a href="h178.html">H-178</a>에서 독립 재등장하지만, 1.50% 오차가 Swap 비용 보정인지 발화비트 $\delta$(<a href="../axiom.html#ax15">공리 15</a>) 기여인지 미규명이라 forward chain이 닫히지 않았다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: Z 폭/질량비. <a href="../axiom.html#ax9">공리 9</a>(DOF 9), <a href="../axiom.html#ax15">공리 15</a>(8비트) 근거.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h178.html">H-178</a></p>
+<p>재투입 경로: <a href="h178.html">H-178</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

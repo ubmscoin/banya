@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h361.html">H-361</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 비용에서 파이프라인 실렌더율 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>실제 렌더는 CAS 한 사이클이 Swap(DATA 변경)까지 도달하는 비용이다. Swap에 도달하려면 Compare가 true여야 하고(<a href="../axiom.html#ax4">공리 4</a> 비용), 이 통과 확률을 양자·정보 도메인에서 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 Compare 통과 확률 노름, 곧 <a href="d01.html">D-01</a>의 $\alpha$다. (b) 한 Compare가 성공할 확률이 $\alpha$이고 파이프라인 4단계 중 render 단계의 듀티가 $1/4$이므로, 실렌더율은 두 인자의 곱이다. 이 노름을 택하는 이유는 Swap 도달이 Compare 통과와 render 점유를 동시에 요구하기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$P(\text{render}) = P(\text{Compare true}) \times D_{\text{render}}$</div>
+<div class="math-row">$= \alpha \times \dfrac{1}{4} = \dfrac{\alpha}{4}$</div>
+<div class="math-legend">$\alpha$: Compare 통과 확률 (<a href="d01.html">D-01</a>) | $1/4$: 4단계 파이프라인 render 듀티 | $P(\text{render})$: 실렌더율</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h361.html">H-361</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha   = 1/137.036          D-01
+1/4     = 0.25               4단계 파이프라인 render 듀티
+f_P     = 1.855e43 bit/s     스크린 대역폭 (H-361)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 파이프라인 처리율 도메인으로 변환한다. (b) 보려는 것은 한 사이클이 실제 DATA 변경에 도달하는 비율, 곧 실효 대역폭이다. $\alpha$에 render 듀티 $1/4$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$P(\text{render}) = \dfrac{1}{137.036} \times \dfrac{1}{4} = \dfrac{1}{548.1}$</div>
+<div class="math-row">$f_{\text{eff}} = f_P / 548.1 = 3.39 \times 10^{40}\ \text{bit/s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $P(\text{render}) = 1/548.1$</div>
+<div class="math-row">측정 검증 대기 (해당 비율의 직접 측정 표준 부재)</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>실렌더율 $\alpha/4 \approx 1/548$이 한 사이클의 Swap 도달 확률로 닫히며, 548 중 평균 1회만 실제 DATA 변경이 일어난다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h361.html">H-361</a></p>
+<p>재투입 경로: <a href="h361.html">H-361</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

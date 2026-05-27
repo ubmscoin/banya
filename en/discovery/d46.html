@@ -68,39 +68,50 @@ Error 0% confirms that this derivation is an identity, not an approximation.</p>
 <p><strong>Reason:</strong> Explicit derivation formula exists / Experimental comparison error &lt;= 1% / 2 recursive substitution inputs confirmed / forward chain complete (axiom ==&gt; formula ==&gt; value)</p>
 <p><strong>Location:</strong> Category: d mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type. Recursive substitution path: <a href="d32.html">D-32</a>, <a href="d49.html">D-49</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Schwarzschild radius from the CAS Compare+Swap cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The gravitational radius is the sum of the contraction cost each of $N=M/m_p$ juim imposes on the d-ring. The stages of one CAS pass that incur cost are Compare (C+1) and Swap (S+1), while Read costs 0 (<a href="../axiom.html#ax4">Axiom 4</a> proposition: cost only when ordered), so the contraction unit per juim is fixed at $2l_p$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cumulative norm of the per-juim contraction unit $2l_p$. It is chosen because the Schwarzschild radius is the sum of the CAS contraction of each of $N$ juim, and the factor 2 is not an arbitrary constant but the structural necessity of the cost-bearing Compare+Swap 2 stages.</p>
+<div class="math-block">
+<div class="math-row">$r_s = \dfrac{2GM}{c^2}$</div>
+<div class="math-row">$r_s = \dfrac{M}{m_p}\times 2l_p = N\times 2l_p$</div>
+<div class="math-legend">$r_s$: Schwarzschild radius | $N=M/m_p$: juim count in Planck-mass units | $2$: Compare+Swap 2 stages (<a href="../axiom.html#ax4">Axiom 4</a>) | $l_p$: Planck length | $m_p$: Planck mass</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d32.html">D-32</a>, <a href="d49.html">D-49</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>l_p = 1.616255e-35 m       CODATA 2018
+m_p = 2.176434e-8 kg       CODATA 2018
+G   = 6.67430e-11 m^3/kg/s^2
+c   = 2.99792458e8 m/s
+2 l_p / m_p = 2G/c^2 = 1.48523e-27 m/kg</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the gravitational-length domain (the event-horizon radius of a mass). What it reveals is the total radius $r_s$ that $N$ juim build by each contracting $2l_p$. Multiplying the juim count $N$ by the unit contraction $2l_p$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$r_s = N\times 2l_p = \dfrac{M}{m_p}\times 2l_p = \dfrac{2GM}{c^2}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Discovery</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $r_s = N\times 2l_p$</div>
+<div class="math-row">Measured: $r_s = 2GM/c^2$ (standard Schwarzschild)</div>
+<div class="math-row">Error: $0\%$ (identity)</div>
+</div>
+<p>Verdict: <strong>Discovery</strong>. The factor 2 of the gravitational radius closes as the CAS Compare+Swap 2 stages, identical to the standard formula, and this radius becomes the basis of the <a href="d49.html">D-49</a> event-horizon cost boundary.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: chains into <a href="d49.html">D-49</a> (event-horizon cost boundary) and <a href="d32.html">D-32</a> (BH temperature-lifetime). Details: derivation process</p><p>This card can be re-used as input for the following cards: <a href="d32.html">D-32</a>, <a href="d49.html">D-49</a></p>
+<p>Re-injection path: <a href="d49.html">D-49</a>, <a href="d32.html">D-32</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h955.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h955.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h955.html">H-955</a>. $D^{1/2}$ = Minimum-uncertainty (Coherent) State</h1><div class="box-finding">
@@ -52,7 +52,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p class="finding-precision">Structural description — 50:50 equal superposition of position and momentum = Heisenberg minimum uncertainty $\Delta x\,\Delta p = \hbar/2$</p>
 <p>$D^{1/2}\sin x = \sin(x+\pi/4) = \tfrac{1}{\sqrt{2}}(\sin x + \cos x)$. Here $\sin x$ is position and $\cos x = d(\sin x)/dx$ is momentum, so the half-derivative is the operation that sends a function to an exact 50:50 equal superposition of position and momentum (<a href="h953.html">H-953</a>).</p>
 <p>This equal superposition has the same structure as the coherent state of quantum optics (the eigenstate of the annihilation operator $\hat a = (\hat x + i\hat p)/\sqrt{2}$) = the Heisenberg minimum-uncertainty state ($\Delta x\,\Delta p = \hbar/2$). That is, $D^{1/2}$ = the operation that rotates a function into the minimum-uncertainty state.</p>
-<p>Quantitatively unfinished: the coherent-state correspondence is a structural isomorphism, but producing the uncertainty product of $D^{1/2}$ for a general function directly from the axioms is unfinished → hypothesis.</p>
+<p>Quantitatively unfinished: the coherent-state correspondence is a structural isomorphism, but producing the uncertainty product of $D^{1/2}$ for a general function directly from the axioms is unfinished ==> hypothesis.</p>
 <p><strong>Re-substitution purpose:</strong> Re-substitution purpose: squeezed states, half-derivative form of the uncertainty principle, quantum-optics applications.</p>
 <p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is classified as hypothesis (Class III) and is held without proceeding. The correspondence that $D^{1/2}$ sends a function to a position-momentum equal superposition = coherent (minimum-uncertainty) state is closed at structural-isomorphism level, but producing the uncertainty product $\Delta x\,\Delta p$ for a general function directly from the axioms is unfinished. Remaining tasks: (1) axiomatic derivation of the uncertainty product, (2) extension to squeezed states, (3) re-inject <a href="h953.html">H-953</a>.</p>
 </div>
@@ -62,39 +62,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Structural-isomorphism agreement confirmed (position-momentum equal superposition = coherent) / axiomatic derivation of the uncertainty product unfinished / Round 1 / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; position-momentum orthogonality (Compare branch). Recursive substitution path: <a href="h953.html">H-953</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Minimum-uncertainty State from the Half-derivative Equal Superposition</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Position and momentum are the two orthogonal axes the Compare splits. The half-derivative $D^{1/2}$ is a $\pi/4$ rotation inside the OPERATOR (<a href="h953.html">H-953</a>), so it sends a function to the exact halfway position between the two axes. The minimum uncertainty is read through this equal-superposition position.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; position-momentum orthogonality (Compare branch)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm substituted is the half-derivative $\pi/4$ rotation norm ($D^{1/2}\sin x = \sin(x+\pi/4)$, <a href="h953.html">H-953</a>). (b) Since $\sin x$ is position and $\cos x = d(\sin x)/dx$ is momentum, the half-derivative sends to a 50:50 position-momentum superposition, isomorphic to the coherent state, so this norm is chosen. The $D^{1/2}$ is therefore substituted by the annihilation-operator $\hat a$ form.</p>
+<div class="math-block">
+<div class="math-row">$D^{1/2}\sin x = \tfrac{1}{\sqrt{2}}(\sin x + \cos x)$</div>
+<div class="math-row">$\hat a = \tfrac{1}{\sqrt{2}}(\hat x + i\hat p)$</div>
+<div class="math-legend">$D^{1/2}$: half-derivative = $\pi/4$ rotation | $\sin x$: position | $\cos x$: momentum | $\hat a$: coherent annihilation operator | $1/\sqrt2$: 50:50 equal weight</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (orthogonal axes: position, momentum)</p>
-<p><strong>Physical Constant Inputs:</strong> none (directly from axiom structure)</p>
-<p><strong>Library Re-substitution:</strong> <a href="h953.html">H-953</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>pi/4              = 0.785398
+1/sqrt2           = 0.707107      50:50 equal weight
+dx dp (coherent)  = hbar/2        Heisenberg minimum uncertainty</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the position-momentum orthogonality domain (the Compare branch). (b) What it reveals is whether the half-derivative equal superposition closes the Heisenberg minimum uncertainty $\hbar/2$. Comparing the equal weighting of the two axes with the annihilation-operator eigenstate.</p>
+<div class="math-block">
+<div class="math-row">$\Delta x\,\Delta p = \tfrac{\hbar}{2}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Hypothesis</h3>
+<div class="math-block">
+<div class="math-row">Derived form: $D^{1/2}$ = 50:50 position-momentum equal superposition</div>
+<div class="math-row">Correspondence: coherent-state $\hat a$ eigenstate, $\Delta x\,\Delta p = \hbar/2$</div>
+<div class="math-row">Weight: $1/\sqrt{2}$ (equal on both axes)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The coherent-state correspondence closes as a structural isomorphism, but axiomatically deriving the uncertainty product of $D^{1/2}$ for a general function remains unfinished.</p>
+<p>Insight: the half-derivative is the operation that rotates a function into the minimum-uncertainty state.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: squeezed states, half-derivative form of the uncertainty principle, quantum-optics applications.</p>
+<p>Re-injection path: <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

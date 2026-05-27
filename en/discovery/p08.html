@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-08 Discrete Cost Ceiling in Extreme-density Regions (no singularity) — Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-08 Discrete Cost Ceiling in Extreme-density Regions (no singularity). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/p08.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== Unique Predictions</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
+<h1><a href="p08.html">P-08</a>. Discrete Cost Ceiling in Extreme-density Regions (no singularity)</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="p08.html">P-08</a>: Discrete Cost Ceiling in Extreme-density Regions (no singularity)</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\ell_{\min}=1,\qquad \max\frac{1}{\ell^2}=\frac{1}{1^2}=1,\qquad \text{밀집 } N\ \Rightarrow\ \text{비용}\propto N^2\ (\text{유한})$$</div></div>
+<p class="finding-precision">Prediction: per-pair cost ≤ 1/1²=1, no divergence ==> energy cutoff in high-density regions. Verify with ngEHT / X-ray (2030~)</p>
+<p>In the Banya formula $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$, DATA (the classical bracket) is discrete (<a href="../axiom.html#ax3">Axiom 3</a>). Spacetime is not continuous but an integer-celled d-ring.</p>
+<p>The distance $\ell$ between two entities (ECS, <a href="../axiom.html#ax12">Axiom 12</a>) is an integer. In a discrete system its minimum is not 0 but $\ell=1$ — the indivisible minimum unit (<a href="../axiom.html#ax3">Axiom 3</a>: there is no half a grasp).</p>
+<p>The inter-entity interaction strength is $C(1-\ell/N)/(4\pi\ell^2)$ (<a href="../axiom.html#ax13">Axiom 13</a> proposition). The maximum of the inverse-square term $1/\ell^2$ is $1/1^2=1$ at $\ell=1$.</p>
+<p>So a single pair has a finite ceiling of 1. Since $\ell=0$ does not exist, the divergence $1/\ell^2\to\infty$ is structurally blocked (<a href="../axiom.html#ax13">Axiom 13</a>: no singularity).</p>
+<p>When $N$ grasps pack at $\ell=1$, the cost over $N(N-1)/2$ pairs accumulates as $N^2$, but since each pair is finite the total is finite.</p>
+<p>A black hole is not an "infinite-density singularity" but a finite-cost $N^2$ accumulation. Because CAS is a discrete operator (<a href="../axiom.html#ax2">Axiom 2</a>), energy has a finite maximum.</p>
+<p>The singularities of physics are artifacts of assuming continuous spacetime and taking $1/r^2$ to $r\to0$ — in the Banya structure $r\to0$ itself does not exist.</p>
+<p>Hence below the Planck scale the energy spectrum must not diverge but show a finite cutoff (ceiling).</p>
+<p>This follows deductively from <a href="../axiom.html#ax3">Axiom 3</a> (discreteness) and <a href="../axiom.html#ax13">Axiom 13</a> ($\ell\geq1$) with no added axiom.</p>
+<p>Verification: ngEHT / next-gen X-ray (2030~) observe an energy cutoff in high-density regions near the event horizon. Refutation: if energy divergence is observed in a finite region, this prediction (discrete ceiling) is discarded.</p>
+<p><strong>Re-substitution purpose:</strong> Verify: ngEHT, next-gen X-ray (2030~). Refute: energy divergence in a finite region. Source: <a href="../axiom.html#ax13">Axiom 13</a> (no singularity) + <a href="../axiom.html#ax3">Axiom 3</a> (DATA discrete).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Awaiting experimental verification:</strong> This card is a unique prediction (Class III/IV) awaiting experimental verification. The forward chain closes from Axiom 3 (discreteness) and Axiom 13 (ℓ≥1) to a finite per-pair ceiling, but observations able to directly measure the high-density energy cutoff (ngEHT, next-gen X-ray) have not reached the needed precision. Observing the cutoff ==> promotion to Discovery; observing energy divergence in a finite region ==> refutation, this prediction discarded.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-prediction">
+<p><strong>Verdict: Prediction</strong> -- Prediction (awaiting experimental verification)</p>
+<p><strong>Reason:</strong> No experimental data / structural forward chain complete (Axioms 3, 13 ==> ℓ≥1 ==> finite 1/ℓ²) / awaiting verification</p>
+<p><strong>Location:</strong> Category: p. Domain: delta ==&gt; discrete-spacetime cost ceiling (Axioms 3, 13). Awaiting verification.</p>
+</div>
+<h2>5-Step Recursive Substitution: Deriving the Extreme-density Cost Ceiling from the Discrete-distance Norm</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>The cost in extreme-density regions starts from the fact that the DATA bracket is discrete (<a href="../axiom.html#ax3">Axiom 3</a>). Spacetime is not continuous but an integer-celled d-ring, and the distance $\ell$ between two entities (ECS, <a href="../axiom.html#ax12">Axiom 12</a>) is an integer. This cost is read through the discrete-distance norm of the inverse-square term $1/\ell^2$.</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the discrete-distance norm. The extreme-density cost is set by the inter-entity interaction strength (<a href="../axiom.html#ax13">Axiom 13</a> proposition), whose distance term closes at discrete cells $\ell\geq1$, so this norm is chosen. The continuous-assumption $1/r^2$ (divergent as $r\to0$) is substituted by the discrete-cell $1/\ell^2$ (with $\ell_{\min}=1$).</p>
+<div class="math-block">
+<div class="math-row">$w(r) = \dfrac{C}{4\pi r^2}, \quad r \to 0$</div>
+<div class="math-row">$w(\ell) = \dfrac{C(1-\ell/N)}{4\pi\ell^2}, \quad \ell \geq 1$</div>
+<div class="math-legend">$w$: interaction strength (<a href="../axiom.html#ax13">Axiom 13</a>) | $\ell$: integer-cell distance, $\ell_{\min}=1$ | $C$: cost coefficient | $N$: number of d-ring cells</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 3. Constant Substitution</h3>
+<pre>l_min   = 1            Axiom 3 (no half-cell)
+1/l^2   = 1/1^2 = 1    maximum (l=1)
+pairs   = N(N-1)/2     for N packed grasps</pre>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>The transformation is into the discrete-spacetime cost domain. What it reveals is the maximum of a single-pair cost and whether the total cost diverges when $N$ grasps pack together. Since the inverse-square term attains its maximum of 1 at $\ell=1$, a single pair has a finite ceiling of 1, and even multiplied by $N(N-1)/2$ pairs the total stays finite, scaling as $N^2$.</p>
+<div class="math-block">
+<div class="math-row">$\max \dfrac{1}{\ell^2} = \dfrac{1}{1^2} = 1$</div>
+<div class="math-row">$\text{total} = \dfrac{N(N-1)}{2}\times(\text{finite}) \propto N^2$</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 5. Prediction</h3>
+<div class="math-block">
+<div class="math-row">Predicted: per-pair cost $\leq 1$, total cost $\propto N^2$ (finite)</div>
+<div class="math-row">Measured: awaiting verification (high-density energy cutoff)</div>
+<div class="math-row">Verification method: ngEHT / next-gen X-ray (2030~) near-event-horizon observation</div>
+</div>
+<p>Verdict: <strong>Prediction</strong>. If an energy cutoff is observed in high-density regions, it is promoted to Discovery; if energy divergence is observed in a finite region, it is refuted.</p>
+<p>The black-hole singularity is an artifact made by continuous spacetime — in discrete cells with $\ell\geq1$ there is no $r\to0$ at all.</p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p>Re-injection path: <a href="d49.html">D-49</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>Experimental verification</td><td>Theoretical value derived</td><td>Relevant experiment (stated in text)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="p08.html">P-08</a>: Discrete Cost Ceiling in Extreme-density Regions (no singularity)</td><td>Prediction (pending) — discrete cost ceiling, no divergence</td><td><span class="tag-prediction">Prediction</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-en">
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib.html">Hypothesis Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

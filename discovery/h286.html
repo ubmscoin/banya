@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="h281.html">H-281</a>, <a href="h307.html">H-307</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: d-링 시프트 비대칭 비용에서 Jarlskog 불변량 $J$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CP 위반은 d-링 위에서 순방향 시프트와 역방향 시프트가 치르는 비용의 차이다. 3세대 링 버퍼(<a href="../axiom.html#ax12">공리 12</a>)에서 시프트 거리 $d \ge 3$일 때만 이 비대칭이 0이 아니며, 그 비대칭이 Jarlskog 불변량으로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 링 시프트 거리 노름이다. Jarlskog 불변량이 세 세대를 가로지르는 시프트 비대칭의 곱이고, 한 세대 시프트의 최대 거리가 $2/9$이므로 세 번 가로지른 $(2/9)^3$으로 닫히기 때문에 이 노름을 택한다.</p>
+<div class="math-block">
+<div class="math-row">$J = \text{Im}(V_{us}V_{cb}V_{ub}^*V_{cs}^*)$</div>
+<div class="math-row">$J = (2/9)^3 \sin\delta_{CP}$</div>
+<div class="math-legend">$J$: Jarlskog 불변량 | $2/9$: 한 세대 최대 시프트 거리 | $(2/9)^3$: 3세대 시프트 비대칭 (<a href="../axiom.html#ax12">공리 12</a>) | $\delta_{CP}$: CP 위상</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h281.html">H-281</a>, <a href="h307.html">H-307</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>2/9              = 0.22222
+(2/9)^3          = 0.010974
+sin d_CP         = 1            d_CP = pi/2 가정
+J (실험)         = 3.18e-5 ± 0.15e-5    PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 CP 위반 도메인(d-링 시프트 비대칭)으로 변환한다. 이 변환으로 보려는 것은 CP 위반의 크기, 곧 Jarlskog 불변량 $J$다. 3세대 시프트 인자 $(2/9)^3$에 위상 $\sin\delta_{CP}$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$J = (2/9)^3 \times 1 = 1.10 \times 10^{-2}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $J = 1.10 \times 10^{-2}$</div>
+<div class="math-row">측정값: $3.18 \times 10^{-5} \pm 0.15 \times 10^{-5}$ (PDG 2024)</div>
+<div class="math-row">오차: 2자릿수 차이 (구조 대응 수준)</div>
+</div>
+<p>판정: <strong>가설</strong>. 3세대 시프트 비대칭이 $J \neq 0$을 강제하는 구조는 닫혔으나, $\sin\delta_{CP} \approx 1$ 과대 추정으로 2자릿수 차이가 남아 정밀 적합이 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h281.html">H-281</a>, <a href="h307.html">H-307</a></p>
+<p>재투입 경로: <a href="h281.html">H-281</a>, <a href="h307.html">H-307</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

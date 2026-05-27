@@ -72,39 +72,49 @@ Structural consequence: at every CAS cycle, if Compare returns false then Swap i
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon advancing to the next round / remaining tasks made explicit</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition preserved). Recursive substitution path: <a href="h90.html">H-90</a>, <a href="h96.html">H-96</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Zeno survival probability 1 from the repeated CAS Compare-false cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The quantum Zeno effect is the cost paid when Compare returns false in one CAS cycle. Compare=false means juida is not executed (<a href="../axiom.html#ax7">Axiom 7</a>): the state is not updated and superposition is preserved. Frequent measurement chops the cycle finely and closes every cycle with false.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition preserved)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Compare binary-branch norm (<a href="../axiom.html#ax2">Axiom 2</a> proposition, true/false). This norm is chosen because the Zeno effect is the accumulation of branches closed false each cycle, and that accumulation closes as a product of survival probabilities. The survival probability is therefore substituted by the cosine-squared power over $n$ measurements with interval $\theta/(2n)$.</p>
+<div class="math-block">
+<div class="math-row">$P_{\text{survive}} = |\langle\psi_0|\psi(\theta)\rangle|^2$</div>
+<div class="math-row">$P_{\text{survive}} = \left(\cos^2\dfrac{\theta}{2n}\right)^n$</div>
+<div class="math-legend">$P_{\text{survive}}$: initial-state survival probability | $\theta$: total evolution angle | $n$: number of Compare-false events | $\theta/(2n)$: per-cycle evolution angle</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count, DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h90.html">H-90</a>, <a href="h96.html">H-96</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>theta = pi             evolution angle to full flip (example)
+n     = 100            number of Compare-false repetitions
+cos^2(theta/2n) = cos^2(pi/200) = 0.999753</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum-measurement domain (Compare branching). What it reveals is the degree to which frequent false repetition freezes the collapse, the initial-state survival probability. Substituting $n=100$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$P_{\text{survive}} = \left(\cos^2\dfrac{\pi}{200}\right)^{100} = 0.9756 \xrightarrow{n\to\infty} 1$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $P_{\text{survive}}(n=100) = 0.9756$, $\;\to 1$ as $n\to\infty$</div>
+<div class="math-row">Measured: cold atoms / ion traps, higher measurement rate ==&gt; suppressed decay (Itano 1990)</div>
+<div class="math-row">Correspondence: structurally matches the Zeno $n\to\infty$ limit</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $n\to\infty$ limit closes, but quantitative agreement of the finite-$n$ survival probability with measurement remains undetermined.</p>
+<p>Insight: the projection postulate of measurement reduces to the operation of repeated Compare false.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: inverse process of <a href="h90.html">H-90</a> (decoherence). Connection with quantum error correction (<a href="h96.html">H-96</a>).</p><p>This card can be re-used as input for the following cards: <a href="h90.html">H-90</a>, <a href="h96.html">H-96</a></p>
+<p>Re-injection path: <a href="h90.html">H-90</a>, <a href="h96.html">H-96</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

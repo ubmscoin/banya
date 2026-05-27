@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h713.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h713.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_electromag_qed</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h713.html">H-713</a>. Biphoton = Splitting One CAS Cost into Two Photons</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible on the next round / remaining tasks stated</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive-substitution path: <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the biphoton frequency-momentum split from CAS cost conservation</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The biphoton (SPDC) is the split by which, in a nonlinear crystal, one pump CAS cost quantum divides into two low-cost quanta. The frequency sum is read through CAS cost conservation (<a href="../axiom.html#ax4">Axiom 4</a>), and the phase matching through the momentum conservation of the post-Compare Swap write (<a href="../axiom.html#ax7">Axiom 7</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2))</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS cost-conservation norm. This norm is chosen because, even when one cost quantum splits, the total cost (time axis) and total momentum (space axis) must be conserved. The split is therefore substituted by two equations: cost-sum conservation and momentum-sum conservation.</p>
+<div class="math-block">
+<div class="math-row">$\omega_p = \omega_s + \omega_i$</div>
+<div class="math-row">$\vec{k}_p = \vec{k}_s + \vec{k}_i$</div>
+<div class="math-legend">$\omega_p$: pump cost quantum | $\omega_s,\omega_i$: signal/idler cost quanta | $\vec{k}$: momentum (phase matching) | first equation = cost conservation (<a href="../axiom.html#ax4">Axiom 4</a>) | second equation = momentum conservation (<a href="../axiom.html#ax7">Axiom 7</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>eta(BBO)   = 1e-10   photons/pump photon   SPDC efficiency
+rate       = 1e6     pairs/s/mW            pair generation rate
+degenerate : omega_s = omega_i = omega_p/2</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the electromagnetic-coupling domain. What it reveals is the conservation closure that the cost sum of the two split quanta equals the pump. The value is computed under the degenerate condition.</p>
+<div class="math-block">
+<div class="math-row">$\omega_s = \omega_i = \dfrac{\omega_p}{2}, \quad \omega_s + \omega_i = \omega_p$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: $\omega_p = \omega_s + \omega_i$ (cost conservation), $\vec{k}_p = \vec{k}_s + \vec{k}_i$ (momentum conservation)</div>
+<div class="math-row">Measured: BBO efficiency $\eta \approx 10^{-10}$, pair rate $\approx 10^6\;\text{pairs/s/mW}$</div>
+<div class="math-row">Status: consistent with biphoton experiments; the microscopic coefficient of the split quantum efficiency $\eta$ not yet closed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Both cost and momentum conservation follow directly from the axioms, but the step of closing the split probability $\eta$ from the $\chi^{(2)}$ nonlinearity (<a href="h700.html">H-700</a>) remains.</p>
+<p>Insight: cost conservation fixes the sum but not the ratio of the split, so one pump gives rise to entangled pairs across a continuous spectrum.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h700.html">H-700</a> (nonlinearity) SPDC. <a href="h714.html">H-714</a> (squeezing) quantum optics</p><p>This card can be re-used as input for the following cards: <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
+<p>Re-injection path: <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

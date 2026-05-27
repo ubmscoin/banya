@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-87 Max Simultaneous Inter-nibble Bit-AND Lock = 3 — Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-87 Max Simultaneous Inter-nibble Bit-AND Lock = 3. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/p87.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== Unique Predictions</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
+<h1><a href="p87.html">P-87</a>. Max Simultaneous Inter-nibble Bit-AND Lock = 3</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="p87.html">P-87</a>: Max Simultaneous Inter-nibble Bit-AND Lock = 3</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\max(\text{니블 동시 락})=\min(4,3)=3\ \Rightarrow\ \text{observer 비트는 항상 자유 (항상 관측 가능)}$$</div></div>
+<p class="finding-precision">Prediction: maximum simultaneous inter-nibble lock = 3; the observer bit is always free. Test: quantum-information experiments (2028~).</p>
+<p>In the Banya formula $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$, the 8 bits split into nibble 0 (4 domain bits) and nibble 1 (CAS 3 + δ), and a CAS operation applies a simultaneous lock via a bit-AND between the two nibbles (<a href="../axiom.html#ax5">Axiom 5</a>).</p>
+<p>The number of bits that can be simultaneously locked is limited by the smaller of the two nibbles — $\min(4,3)=3$.</p>
+<p>Since CAS is 3 bits (Read, Compare, Swap), it can lock at most 3 domain bits at once ==> the 4th domain bit is always free.</p>
+<p>That 4th free bit is the observer (<a href="../axiom.html#ax10">Axiom 10</a>: observer = filter). The observer bit is never locked by CAS, so observation is always possible.</p>
+<p>So during any CAS operation the observer can filter freely ==> the structural basis that observation is always possible in principle.</p>
+<p>This is why measurement is always possible and the observer can exercise will (P-105) — the observer bit is exempt from the lock.</p>
+<p>So this prediction is not "observation is possible" but the structural claim "maximum simultaneous lock 3, the observer bit is lock-exempt."</p>
+<p>3 = min(4,3) is a direct consequence of the CAS 3 steps and the 4 domain axes, leaving 4−3=1 bit (observer) always free.</p>
+<p>Test: if the observer DOF (measurement accessibility) is maintained during any operation in quantum-information experiments (2028~), this prediction is supported.</p>
+<p>Refutation: if a case is found where the observer bit is locked by CAS and observation is blocked, this prediction is discarded.</p>
+<p><strong>Re-substitution purpose:</strong> Test: quantum-information experiments, observer-DOF accessibility (2028~). Refutation: a case where the observer bit is locked by CAS. Source: <a href="../axiom.html#ax10">Axiom 10</a> (observer = filter), <a href="../axiom.html#ax5">Axiom 5</a> (CAS 3 bits), <a href="../axiom.html#ax1">Axiom 1</a> (domain 4).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Awaiting experimental verification:</strong> this card is a unique prediction in a pending state. The forward chain closes from Axioms 1, 5, 10 (min(4,3)=3) to the observer bit being lock-exempt. Confirming maintained observer DOF promotes to D; confirming a locked observer bit refutes it ==> this prediction is discarded.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-prediction">
+<p><strong>Verdict: Prediction</strong> -- Prediction (awaiting experimental verification)</p>
+<p><strong>Reason:</strong> Experiment not yet done / forward chain complete (Axioms 1, 5, 10 ==> min(4,3)=3 ==> observer bit free) / awaiting verification</p>
+<p><strong>Location:</strong> Category: p. Domain: observer ==&gt; maximum simultaneous lock 3, observer bit lock-exempt (Axioms 5, 10). Awaiting verification.</p>
+</div>
+<h2>5-Step Recursive Substitution: Deriving Max Simultaneous Lock 3 from the Inter-nibble Bit-AND Cost</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>The 8 bits split into nibble 0 (4 domain bits, <a href="../axiom.html#ax1">Axiom 1</a>) and nibble 1 (CAS 3 + δ). A CAS operation is the cost of applying a simultaneous lock on domain bits via a bit-AND between the two nibbles; this cost is read as the inter-nibble lock width (<a href="../axiom.html#ax5">Axiom 5</a>).</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the inter-nibble bit-AND lock-width norm. (b) It is chosen because the number of bits that can be simultaneously locked is limited by the smaller of the two nibbles, and CAS has only the 3 bits Read, Compare, Swap, so this norm sets the lock ceiling. The maximum simultaneous lock is therefore substituted by the minimum of the 4 domain axes and the 3 CAS axes.</p>
+<div class="math-block">
+<div class="math-row">$\max(\text{lock}) = \min(\text{nibble}_0,\ \text{nibble}_1)$</div>
+<div class="math-row">$\max(\text{lock}) = \min(4, 3) = 3$</div>
+<div class="math-legend">$\text{nibble}_0=4$: 4 domain axes (<a href="../axiom.html#ax1">Axiom 1</a>) | $\text{nibble}_1=3$: CAS Read, Compare, Swap (<a href="../axiom.html#ax5">Axiom 5</a>) | $\min$: bit-AND lock width | $4-3=1$: the always-free bit</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 3. Constant Substitution</h3>
+<pre>domain axes = 4              Axiom 1
+CAS bits = 3 (R, C, S)       Axiom 5
+min(4, 3) = 3
+free bit = 4 - 3 = 1 (observer)    Axiom 10</pre>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>(a) The transformation is into the observer domain. (b) What it reveals is which domain bit is exempt from the lock and thus always observable. When CAS locks 3, the 4th domain bit — the observer (<a href="../axiom.html#ax10">Axiom 10</a>: observer = filter) — remains.</p>
+<div class="math-block">
+<div class="math-row">$\max(\text{lock}) = 3,\quad \text{free bit} = 4 - 3 = 1 = \text{observer}$</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 5. Prediction</h3>
+<div class="math-block">
+<div class="math-row">Predicted: maximum simultaneous lock 3, observer bit always free</div>
+<div class="math-row">Test: quantum-information experiments, observer-DOF accessibility (2028~)</div>
+<div class="math-row">Refutation: a case where the observer bit is locked by CAS and observation is blocked</div>
+</div>
+<p>Verdict: <strong>Prediction</strong>. The observer bit is lock-exempt during any CAS operation, so measurement is always possible in principle.</p>
+<p>Insight: the one bit left by $4-3=1$ is the seat where the observer's will (<a href="p105.html">P-105</a>) is exercised, and observability is not a hypothesis but a structural consequence of the lock width $\min(4,3)$.</p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p>Re-injection path: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>Experimental verification</td><td>Theoretical value derived</td><td>Relevant experiment (stated in text)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="p87.html">P-87</a>: Max Simultaneous Inter-nibble Bit-AND Lock = 3</td><td>Prediction (pending) — maximum simultaneous lock 3, observer bit always free</td><td><span class="tag-prediction">Prediction</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-en">
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib.html">Hypothesis Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -69,39 +69,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h146.html">H-146</a>, <a href="h153.html">H-153</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving entropy $S$ from the CAS Compare count</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Entropy is the accumulated number of CAS Compare operations (<a href="../axiom.html#ax2">Axiom 2</a>) performed within a d-ring. Since a Compare is a binary decision over the two branches true and false, each one generates $\ln 2$ of information, and that accumulation is read as entropy.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS Compare-count norm. (b) This norm is chosen because the $\ln W$ of Boltzmann entropy $S = k_B \ln W$ is the logarithm of the microstate count, and that count is tallied as the accumulated binary Compare decisions $N_{\text{Compare}}$. $\ln 2$ is the per-Compare information (<a href="h146.html">H-146</a>), and $k_B$ is the unit conversion (<a href="h153.html">H-153</a>).</p>
+<div class="math-block">
+<div class="math-row">$S = k_B \ln W$</div>
+<div class="math-row">$S = k_B \cdot N_{\text{Compare}} \cdot \ln 2$</div>
+<div class="math-legend">$S$: entropy | $N_{\text{Compare}}$: accumulated Compare count (<a href="../axiom.html#ax2">Axiom 2</a>) | $\ln 2$: per-Compare branch information (<a href="h146.html">H-146</a>) | $k_B$: bracket-crossing unit conversion (<a href="h153.html">H-153</a>) | $\ln W = N_{\text{Compare}}\ln 2$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h146.html">H-146</a>, <a href="h153.html">H-153</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Compare branch = 2          Axiom 2 (true / false)
+ln 2           = 0.6931472   H-146
+k_B            = 1.380649e-23 J/K   H-153
+ln W           = N_Compare x ln 2</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the statistical-mechanics entropy domain. (b) What it reveals is that the microstate count $W$ is converted into an accumulated Compare count. Setting $N_{\text{Compare}} \sim N\ln N$ for $N$ ideal-gas particles agrees with Boltzmann entropy.</p>
+<div class="math-block">
+<div class="math-row">$S = k_B (N\ln N)\ln 2 \;\sim\; N k_B \ln N$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $S = k_B \, N_{\text{Compare}} \ln 2$</div>
+<div class="math-row">Observed: Boltzmann entropy $S = k_B \ln W$</div>
+<div class="math-row">Match: structural ($\ln W = N_{\text{Compare}}\ln 2$)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. $\ln W$ converts to accumulated Compare count × $\ln 2$ and agrees with Boltzmann entropy, but the link between Compare count and the density-matrix eigenvalues in von Neumann entropy is not yet closed, so it remains a hypothesis. It is the direct combination of <a href="h146.html">H-146</a> ($\ln 2$) and <a href="h153.html">H-153</a> ($k_B$).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: interpretation of entropy. Based on <a href="../axiom.html#ax2">Axiom 2</a> (CAS Compare).</p><p>This card can be re-used as input for the following cards: <a href="h146.html">H-146</a>, <a href="h153.html">H-153</a></p>
+<p>Re-injection path: <a href="h153.html">H-153</a>, <a href="h146.html">H-146</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D-promotion possible upon the next round / remaining tasks explicit.</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive substitution path: <a href="h848.html">H-848</a>, <a href="h850.html">H-850</a>, <a href="h863.html">H-863</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Optical-Fiber Attenuation from the Photon FSM Norm=0</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Optical communication is the process by which a cost carrier of FSM norm 0 (the photon, <a href="../axiom.html#ax3">Axiom 3</a>) transports cost along an ECS waveguide. Because the norm is 0, the carrier moves at maximum speed with no rest cost, and all the channel loses is the cost that leaks through scattering. This loss is read from the space term of $\delta^2$ as a cost per distance.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the propagation norm of the photon cost — the per-distance attenuation along the ECS waveguide. (b) Channel capacity closes at the Shannon limit, but the actual distance limit is set by Rayleigh scattering loss, which closes through the wavelength norm $\lambda^{-4}$ (<a href="../axiom.html#ax7">Axiom 7</a> cost transfer); hence the wavelength norm is chosen. The per-distance attenuation is therefore substituted by the wavelength-dependent scattering coefficient.</p>
+<div class="math-block">
+<div class="math-row">$C = B\log_2\!\left(1 + \dfrac{P}{N_0 B}\right)$</div>
+<div class="math-row">$\alpha_{\text{dB}} = \dfrac{A}{\lambda^4}$</div>
+<div class="math-legend">$C$: Shannon channel capacity | $\alpha_{\text{dB}}$: per-distance attenuation (dB/km) | $\lambda$: optical wavelength | $A$: Rayleigh scattering coefficient | $N_0$: noise cost density (FSM norm-0 floor)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1).</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h848.html">H-848</a>, <a href="h850.html">H-850</a>, <a href="h863.html">H-863</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>lambda        = 1550 nm           telecom standard window
+A             = 1.16 dB/km·um^4   silica Rayleigh coefficient
+alpha_dB(meas)= 0.20 dB/km        ITU-T 1550 nm measured
+C(max)        = ~100 Tbps         lab WDM</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main text is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is from the dimensionless scattering norm into the electromagnetic-transmission domain (per-distance attenuation). (b) What it reveals is how much photon cost is lost per km — the attenuation $\alpha_{\text{dB}}$ that sets the repeater spacing. Evaluating $A/\lambda^4$ at 1550 nm yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\alpha_{\text{dB}} = \dfrac{1.16\;\text{dB/km}\cdot\mu\text{m}^4}{(1.55\;\mu\text{m})^4} = \dfrac{1.16}{5.77}\;\text{dB/km} = 0.201\;\text{dB/km}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\alpha_{\text{dB}} = 0.201\;\text{dB/km}$</div>
+<div class="math-row">Measured: $0.20\;\text{dB/km}$ (ITU-T, 1550 nm)</div>
+<div class="math-row">Error: $&lt; 5\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Rayleigh $\lambda^{-4}$ scattering reproduces the 1550 nm attenuation of $0.2\;\text{dB/km}$ to within $&lt;5\%$, but the scattering coefficient $A$ enters as an external input from silica refractive-index fluctuations and does not close to an axiom integer, so it remains a hypothesis. Because FSM norm 0 guarantees maximum-speed transfer with no rest cost, the photon being the natural choice of cost carrier follows from <a href="../axiom.html#ax3">Axiom 3</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h848.html">H-848</a> (communication). <a href="h850.html">H-850</a> (LED). <a href="h863.html">H-863</a> (quantum cryptography).</p><p>This card can be re-used as input for the following cards: <a href="h848.html">H-848</a>, <a href="h850.html">H-850</a>, <a href="h863.html">H-863</a></p>
+<p>Re-injection path: <a href="h848.html">H-848</a>, <a href="h850.html">H-850</a>, <a href="h863.html">H-863</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

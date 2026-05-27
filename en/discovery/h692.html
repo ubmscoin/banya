@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h692.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h692.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h692.html">H-692</a>. Snell's Law = Ratio of CAS Cost Propagation Speeds Between Media</h1><div class="box-finding">
@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible on the next round / remaining tasks declared.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h693.html">H-693</a>, <a href="h706.html">H-706</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Snell's Law from the Ratio of CAS Cost Propagation Speeds</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Refraction is the propagation-delay cost a CAS cost wave pays when crossing a medium boundary. It is read through the structure in which the cost propagation speed depends on the medium's CAS density (<a href="../axiom.html#ax4">Axiom 4</a>) and the domain-axis direction bends at the boundary (<a href="../axiom.html#ax1">Axiom 1</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS cost-propagation-speed-ratio norm. It is chosen because cost flux must be conserved at the ECS boundary (<a href="../axiom.html#ax7">Axiom 7</a>), making the boundary-parallel component continuous, and that continuity condition forces the sine ratio of incidence and refraction angles to equal the speed ratio. The refractive index $n=c/v$ is therefore substituted by the inverse ratio of cost propagation speeds.</p>
+<div class="math-block">
+<div class="math-row">$n_1\sin\theta_1 = n_2\sin\theta_2$</div>
+<div class="math-row">$\dfrac{\sin\theta_1}{\sin\theta_2} = \dfrac{v_{\text{CAS},1}}{v_{\text{CAS},2}} = \dfrac{n_2}{n_1}$</div>
+<div class="math-legend">$n_i$: refractive index of medium $i$ = $c/v_{\text{CAS},i}$ | $\theta_i$: angle from the boundary normal | $v_{\text{CAS},i}$: cost propagation speed in medium $i$ | conservation: ECS boundary cost flux (<a href="../axiom.html#ax7">Axiom 7</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h693.html">H-693</a>, <a href="h706.html">H-706</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n_air     = 1.0003
+n_water   = 1.333
+n_glass   = 1.52
+n_diamond = 2.417       589 nm, room temperature</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the geometric-optics domain. What it reveals is the refraction angle of light entering glass from air. Substituting speed ratio = inverse index ratio into the sine ratio yields that angle.</p>
+<div class="math-block">
+<div class="math-row">$\sin\theta_2 = \dfrac{n_1}{n_2}\sin\theta_1 = \dfrac{1.0003}{1.52}\sin 30^\circ = 0.329$</div>
+<div class="math-row">$\theta_2 = 19.2^\circ$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: air$\to$glass at $30^\circ$ incidence gives $\theta_2 = 19.2^\circ$</div>
+<div class="math-row">Measured: consistent with geometric-optics experiments</div>
+<div class="math-row">Status: relation consistent, refractive index itself not derived</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The sine ratio = speed ratio relation closes from cost-flux conservation, but the refractive-index values themselves are not derived axiomatically from medium CAS density, so it falls short of D-promotion.</p>
+<p>Insight: the angle light bends is a direct reading of how much cost propagation slows in each medium.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h693.html">H-693</a> (total internal reflection) critical angle. <a href="h706.html">H-706</a> (Rayleigh scattering) basis.</p><p>This card can be re-used as input for the following cards: <a href="h693.html">H-693</a>, <a href="h706.html">H-706</a></p>
+<p>Re-injection path: <a href="h693.html">H-693</a>, <a href="h706.html">H-706</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

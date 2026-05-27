@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h593.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h593.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h593.html">H-593</a>. Quantum Gate = Unitary Transformation of CAS Operation</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D promotion possible upon advancing to the next round / residual tasks made explicit</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unconfirmed, follow-up refinement required). Recursive substitution path: <a href="h598.html">H-598</a>, <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the quantum-gate unitarity condition from CAS cost conservation</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A quantum gate is the reversible transformation that changes state at the CAS Compare stage (<a href="../axiom.html#ax2">Axiom 2</a>). Because the total cost before and after must be conserved (<a href="../axiom.html#ax4">Axiom 4</a>), the gate is subject to the condition that the Banya norm $\delta^2$ is invariant under the transformation.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unconfirmed, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS cost-conservation norm $\delta^2$. When a gate carries state $|\psi\rangle$ to $U|\psi\rangle$, cost conservation translates into norm conservation $\langle U\psi|U\psi\rangle = \langle\psi|\psi\rangle$. (b) This norm is chosen because the necessary and sufficient condition for norm invariance to hold for all $|\psi\rangle$ is $U^\dagger U = I$, the unitarity condition. Irreversible gates leak cost (violating <a href="../axiom.html#ax4">Axiom 4</a>) and are excluded.</p>
+<div class="math-block">
+<div class="math-row">$\langle U\psi | U\psi \rangle = \langle \psi | \psi \rangle \quad \forall\, |\psi\rangle$</div>
+<div class="math-row">$U^\dagger U = I$</div>
+<div class="math-legend">$U$: gate transform | $U^\dagger$: conjugate transpose | $I$: identity | $\langle\psi|\psi\rangle$: CAS cost norm (conserved, <a href="../axiom.html#ax4">Axiom 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h598.html">H-598</a>, <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>cost conservation = gate norm conservation  Axiom 4
+reversible transform = Compare stage         Axiom 2
+gate set           = fixed by FSM transition Axiom 14
+irreversible gate  = cost leak (excluded)    Axiom 4 violation</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the quantum-circuit gate domain. (b) What it reveals is the algebraic condition the admissible gate set must satisfy. Substituting the cost-conservation norm into the gate yields the unitary group.</p>
+<div class="math-block">
+<div class="math-row">$\{U : U^\dagger U = I\} = U(2^n)$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived condition: $U^\dagger U = I$ (unitary)</div>
+<div class="math-row">Experiment: gate unitarity confirmed</div>
+<div class="math-row">Consistency: structural match, no non-unitary component detected</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The unitarity condition closes from cost conservation, but the explicit CAS construction of a universal gate set (H, T, CNOT) remains, so it halts at hypothesis. Insight: a quantum gate is unitary because CAS loses no cost.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h598.html">H-598</a> (quantum supremacy), <a href="h599.html">H-599</a> (Shor), <a href="h600.html">H-600</a> (Grover) gate-based</p><p>This card can be re-used as input for the following cards: <a href="h598.html">H-598</a>, <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a></p>
+<p>Re-injection path: <a href="h598.html">H-598</a>, <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

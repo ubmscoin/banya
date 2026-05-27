@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 7비트 CAS 3연산 선택 비용에서 코셋 크기 35 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>코셋 크기는 완전기술자유도 7(<a href="../axiom.html#ax9">공리 9</a>: 도메인 4 + CAS 3) 중 CAS가 한 사이클에 쥐는 3비트를 고르는 비용이다. CAS는 Read·Compare·Swap 정확히 3연산(<a href="../axiom.html#ax2">공리 2</a>)이므로, 비용을 7비트에서 3비트를 고르는 조합 노름으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 7비트 3-선택 조합 노름 $\binom{7}{3}$다. 한 CAS 사이클이 7비트 중 R·C·S 3비트를 쥐고 나머지 4비트는 불변으로 두므로, 그 선택의 총수가 곧 코셋 공간 크기다. 이 노름이 CAS 3연산(<a href="../axiom.html#ax2">공리 2</a>)으로 닫히기 때문에 택한다.</p>
+<div class="math-block">
+<div class="math-row">$|G/H| = \dbinom{7}{3}$</div>
+<div class="math-row">$\dbinom{7}{3} = \dfrac{7!}{3!\,4!} = 35$</div>
+<div class="math-legend">$7$: 완전기술자유도 (<a href="../axiom.html#ax9">공리 9</a>) | $3$: CAS R·C·S 3연산 (<a href="../axiom.html#ax2">공리 2</a>) | $4$: 불변 비트 | $35$: 코셋 공간 크기</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>7        = 4 도메인 + 3 CAS    공리 9
+3        = Read+Compare+Swap   공리 2
+C(7,3)   = 7!/(3!*4!) = 35
+C(7,4)   = 35                  파스칼 대칭</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>CAS 코셋 도메인으로 변환한다. 이 변환으로 보려는 것은 한 CAS 사이클이 접근하는 3비트 부분집합의 총수, 곧 코셋 공간 크기다. 7비트에서 쥐는 3비트와 불변 4비트의 분할을 결합해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dbinom{7}{3} = \dbinom{7}{4} = 35$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $|G/H| = 35$</div>
+<div class="math-row">대칭: $\binom{7}{3} = \binom{7}{4} = 35$</div>
+<div class="math-row">차원 정합: 완전 일치 (조합 항등식)</div>
+</div>
+<p>판정: <strong>가설</strong>. 코셋 크기 35는 조합 항등식으로 확립되었으나 35개 코셋의 입자 상태 분류표가 미완이라 정량 측정 대조가 부재하다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

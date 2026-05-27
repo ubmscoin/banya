@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h325.html">H-325</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: δ의 전체 상태 인식에서 Kochen-Specker 비맥락성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>관측량에 맥락 독립 고정값을 줄 수 없다는 한계는 δ가 등호(=)로서 FSM 전체 상태를 안다(<a href="../axiom.html#ax15">공리 15</a>)는 사실에서 나온다. <a href="../axiom.html#ax13">공리 13</a>(인덱싱)이 observer 필터 설정을 맥락으로 삼고 <a href="../axiom.html#ax1">공리 1</a>(4축)이 그 맥락 공간을 정하므로, 이 한계를 δ 발화의 맥락 의존 비용으로 읽는다. <a href="h325.html">H-325</a>(벨 정리)의 δ 비국소성을 같은 δ 속성에서 재투입한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 δ의 전체 상태 인식 노름, 곧 등호가 전체 상태를 읽는 맥락 의존성이다. (b) observer 필터가 다르면 같은 δ 발화라도 스크린 출력이 달라지므로 맥락 독립 고정값 부여가 불가능하기 때문에 이 노름을 택한다. 따라서 값 할당을 도메인 4비트 위 맥락 수 $\sum_k\binom{4}{k}$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$v:\ \text{observable}\mapsto\text{fixed value (context-free)}$</div>
+<div class="math-row">$\delta\text{ knows full state (equality)}\;\Rightarrow\;\text{no context-free value assignment}$</div>
+<div class="math-legend">$v$: 값 할당 함수 | $\delta$: 등호, 전체 상태 인식 (<a href="../axiom.html#ax15">공리 15</a>) | 맥락: observer 필터 설정 (<a href="../axiom.html#ax13">공리 13</a>) | $\binom{4}{k}$: 4비트 맥락 조합</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h325.html">H-325</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N domain    = 4                    공리 1 (4축)
+sum C(4,k)  = 2^4 = 16             k=0..4 전체 맥락 수
+KS dimension&gt;= 3                   힐베르트 공간 3차원 이상 조건
+input       = H-325                벨 정리 (δ 비국소성) 재투입</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 observer 필터 맥락 공간(양자·정보 도메인)이다. (b) 보려는 것은 16개 맥락에 동시에 일관된 고정값 할당이 존재하는가다. 도메인 4비트가 3차원 이상 조건을 충족함을 대입해 그 답을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\sum_{k=0}^{4}\binom{4}{k}=16\ \text{contexts}$</div>
+<div class="math-row">$16\ \text{outputs not simultaneously consistent}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 16개 맥락에 일관된 맥락 독립 값 할당 부재 (비맥락성)</div>
+<div class="math-row">대조: Kochen-Specker 정리, 스핀 축별 측정 맥락 의존, Peres-Mermin 마방진</div>
+<div class="math-row">측정 검증 대기 (정량 측정값 미인용)</div>
+</div>
+<p>판정: <strong>가설</strong>. δ의 전체 상태 인식(<a href="../axiom.html#ax15">공리 15</a>)이 맥락 독립 값 할당을 막으니 비맥락성이 도메인 4비트에서 따라온다. <a href="h325.html">H-325</a> 비국소성과 평행하다. 4비트 위 착색 불가 그래프를 구성하면 D 승격 가능.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h325.html">H-325</a></p>
+<p>재투입 경로: <a href="h325.html">H-325</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

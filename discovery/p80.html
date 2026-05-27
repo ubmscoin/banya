@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-80 중력파 링다운 이산 간격 = 1/128 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-80 중력파 링다운 이산 간격 = 1/128. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p80.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p80.html">P-80</a>. 중력파 링다운 이산 간격 $=1/128$</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p80.html">P-80</a>: 중력파 링다운 이산 간격 $=1/128$</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\frac{\Delta f}{f}\sim\frac{1}{128}\approx0.0078\quad(\text{블랙홀 병합 QNM 주파수 간격의 이산 미세구조})$$</div></div>
+<p class="finding-precision">예측: 블랙홀 병합 QNM 주파수 간격에 $\Delta f/f\sim1/128\approx0.0078$ 이산 미세구조. 검증 LIGO O5/O6·ET(2028~2035).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 블랙홀은 점 특이점이 아니라 128-상태 이산 구조다(P-51, <a href="../axiom.html#ax13">공리 13</a>).</p>
+<p>본 카드는 P-17(중력파 링다운 이산 편차)의 정량 특정 버전으로, 편차 크기를 $\Delta f/f\sim1/128$로 못 박는다.</p>
+<p>병합 후 블랙홀이 진동하며 내는 준정상 모드(QNM) 주파수 간격에 $1/128$ 단위의 이산 미세구조가 나타난다.</p>
+<p>128 = $2^7$은 전체 상태 공간(P-51)이며, 이산 내부 구조의 분해 단위가 $1/128$이다 ==> QNM 봉우리가 $1/128$ 간격으로 미세 분열한다.</p>
+<p>$1/128\approx0.0078$은 GR의 매끈한 점 특이점 예측에는 없는 구조로, 반야 이산성의 직접 서명이다.</p>
+<p>즉 본 예측은 "링다운에 편차가 있다"(P-17)를 넘어 "정확히 $1/128$ 간격"이라는 정량 주장이다.</p>
+<p>같은 $1/128$이 인플레이션 전이 확률(P-60)·중력 적색편이 계단(P-102)에도 나타나는 128 구조의 일부다.</p>
+<p>관측 전략: LIGO O5/O6와 Einstein Telescope가 고SNR 병합 사건의 QNM 스펙트럼을 정밀 분해한다.</p>
+<p>검증: LIGO O5/O6·ET(2028~2035)에서 QNM 주파수 간격에 $1/128$ 이산 구조가 나타나면 본 예측을 지지한다.</p>
+<p>반박: QNM 분광에서 $1/128$ 간격이 부재하면(연속 스펙트럼) 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: LIGO O5/O6·ET(2028~2035). 반박: QNM 분광에서 $1/128$ 간격 부재. 출처: P-51(128 상태), P-17(링다운 이산), <a href="../axiom.html#ax13">공리 13</a>.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 P-17의 정량 특정 버전으로 검증 대기 상태다. forward chain은 공리 13·P-51(128 이산)에서 QNM $1/128$ 간격까지 닫혀 있으나, LIGO O5/O6·ET의 고SNR QNM 통계가 아직 부족하다. $1/128$ 구조 확인 시 D 승격, 연속 스펙트럼 확인 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 관측 통계 미축적 / forward chain 완료(공리 13·P-51 ==> 128 이산 ==> QNM $1/128$ 간격) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: space ==&gt; 128 이산 구조가 QNM 주파수 간격 $1/128$ 결정(공리 13). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: 128 상태 이산 비용에서 QNM 주파수 간격 $1/128$ 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>중력파 링다운 미세구조는 블랙홀이 점 특이점이 아니라 $128=2^7$ 상태의 이산 구조로 진동하는 비용이다. 차원 양자화(<a href="../axiom.html#ax13">공리 13</a>)와 128 상태 공간(<a href="p51.html">P-51</a>), 링다운 이산 편차(<a href="p17.html">P-17</a>)로 이 이산 비용을 읽는다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 이산 상태 공간의 분해 단위를 세는 상태수 노름이다. 블랙홀 진동이 연속이 아니라 128개 이산 상태 위에서 일어나고, 준정상 모드(QNM) 봉우리가 그 이산 단위로 미세 분열하기 때문에 이 노름을 택한다. 따라서 QNM 주파수 간격을 전체 상태 공간 128의 역수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$N_{\text{state}} = 2^7 = 128$</div>
+<div class="math-row">$\dfrac{\Delta f}{f} = \dfrac{1}{N_{\text{state}}} = \dfrac{1}{128}$</div>
+<div class="math-legend">$N_{\text{state}}$: 블랙홀 이산 상태 수 = $2^7$ (<a href="p51.html">P-51</a>) | $\Delta f/f$: QNM 주파수 간격 상대 크기 | $2^7$: 완전기술자유도 7비트 상태 공간 | $\Delta f/f$ 분해 단위: 이산 미세구조</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>N_state   = 128 = 2^7        P-51 128 상태
+2^7       = 128              완전기술자유도 7비트
+1/128     = 0.0078125        파생</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>space 도메인의 무차원 주파수 간격으로 변환한다. 이 변환으로 보려는 것은 GR의 매끈한 점 특이점에는 없는 QNM 봉우리의 이산 미세 분열 단위다. 전체 상태 공간 128의 역수를 취해 그 간격을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Delta f}{f} = \dfrac{1}{128} \approx 0.0078$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $\Delta f/f \sim 1/128 \approx 0.0078$</div>
+<div class="math-row">관측값: 검증 대기 (QNM 고SNR 통계 미축적)</div>
+<div class="math-row">검증: LIGO O5/O6·ET (2028~2035)</div>
+</div>
+<p>판정: <strong>예측</strong>. LIGO O5/O6와 Einstein Telescope의 QNM 분광에서 $1/128$ 이산 간격이 나타나면 본 예측을 지지한다.</p>
+<p>통찰: <a href="p17.html">P-17</a>의 정성 편차를 정확히 $1/128$ 간격으로 못 박는 정량 특정이며, 같은 128 구조가 인플레이션 전이(<a href="p60.html">P-60</a>)와 중력 적색편이 계단(<a href="p102.html">P-102</a>)에도 나타난다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p80.html">P-80</a>: 중력파 링다운 이산 간격 = 1/128</td><td>예측 (대기) — QNM 주파수 간격 $\Delta f/f\sim1/128$</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

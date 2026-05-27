@@ -68,39 +68,47 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h901.html">H-901</a>, <a href="h903.html">H-903</a>, <a href="h912.html">H-912</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: DATA 이산 평균 비용에서 OPERATOR 연속 극한 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>연속체는 이산 DATA를 거시 규모에서 평균할 때 드러나는 비용이다. DATA는 이산, OPERATOR는 연속(<a href="../axiom.html#ax3">공리 3</a>)이고 둘은 4축 중 2축(<a href="../axiom.html#ax1">공리 1</a>)이라, 이산/연속 이중 구조는 반야식 자체에 내장된 근본 구조다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 거시 평균 노름, 곧 이산 DATA의 표본 수 $N$이 커질 때의 극한 노름이다. (b) DATA는 이산이라 양자적이고 OPERATOR는 연속이라 고전적이며(<a href="../axiom.html#ax3">공리 3</a>), 둘이 4축 중 2축으로 공존하기(<a href="../axiom.html#ax1">공리 1</a>) 때문에 이 노름을 택한다. 따라서 연속체를 이산 DATA 평균이 OPERATOR 연속으로 수렴하는 거시 극한으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\displaystyle \lim_{N \to \text{large}} \frac{1}{N}\sum_{i=1}^{N} \text{DATA}_i = \text{OPERATOR}$</div>
+<div class="math-legend">$N$: 이산 표본 수 | $\text{DATA}_i$: 이산 값 (<a href="../axiom.html#ax3">공리 3</a>) | $\text{OPERATOR}$: 연속 (<a href="../axiom.html#ax3">공리 3</a>) | 4축 중 2축 (<a href="../axiom.html#ax1">공리 1</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h901.html">H-901</a>, <a href="h903.html">H-903</a>, <a href="h912.html">H-912</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>l_P, t_P  = 최소 이산 단위        공리 3 (DATA 이산)
+L         &gt;&gt; l_P                  연속 근사 유효 범위
+2 of 4    = DATA, OPERATOR        공리 1 (4축)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 반야 구조 도메인의 이산/연속 축이다. (b) 보려는 것은 미분 방정식·경로 적분 같은 연속체 물리가 이산 합의 극한으로 환원되는지다. 거시 평균 노름을 대입하면 $L \gg l_P$에서 이산 차분이 연속 미분으로, 이산 경로 합이 경로 적분으로 수렴한다.</p>
+<div class="math-block">
+<div class="math-row">$L \gg l_P \;\Longrightarrow\; \sum \text{DATA}_i \;\Longrightarrow\; \int \text{OPERATOR}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 연속체 = 이산 DATA의 $N$ 거시 극한, $L \gg l_P$ 유효</div>
+<div class="math-row">측정: GR·QFT가 거시에서 보이는 탁월한 정밀도</div>
+<div class="math-row">정합: 거시 연속 근사 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 연속체가 이산 DATA 극한으로 환원되나, 이산에서 연속 극한의 정보 손실 정량화와 플랑크 스케일 이산 구조 탐색이 미완이다. 통찰: 연속체는 이산의 거시적 창발이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h901.html">H-901</a>(양자-고전 전환). <a href="h903.html">H-903</a>(시공간 창발). <a href="h912.html">H-912</a>(무한 부재)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h901.html">H-901</a>, <a href="h903.html">H-903</a>, <a href="h912.html">H-912</a></p>
+<p>재투입 경로: <a href="h912.html">H-912</a>, <a href="h901.html">H-901</a>, <a href="h903.html">H-903</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

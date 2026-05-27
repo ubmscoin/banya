@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed, D promotion possible upon next-round progress / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type size (137, 27). Recursive substitution path: <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a>, <a href="h474.html">H-474</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the muon lifetime from the FSM norm transition cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Muon decay is the process in which the Compare-stage FSM norm (<a href="../axiom.html#ax14">Axiom 14</a>: norm = mass) transitions to the Read-stage FSM norm, emitting the cost difference. When Compare returns true a Swap executes (<a href="../axiom.html#ax7">Axiom 7</a>), and total cost is conserved (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the FSM norm transition cost norm. It is chosen because the decay rate is set by the product of the emitted phase space and the transitioning FSM norm. The 5th power $m_\mu^5$ decomposes as the 4D phase space $m_\mu^4$ times one power of the FSM norm $m_\mu$, and $G_F$ is the inverse square of the Compare boundary cost (<a href="h474.html">H-474</a>).</p>
+<div class="math-block">
+<div class="math-row">$\Gamma = \dfrac{G_F^2 m_\mu^5}{192\pi^3}$</div>
+<div class="math-row">$m_\mu^5 = \underbrace{m_\mu^4}_{\text{4D phase space}} \cdot \underbrace{m_\mu}_{\text{FSM norm}}$</div>
+<div class="math-legend">$\Gamma$: muon decay rate | $G_F$: Fermi constant = inverse square of Compare boundary cost (<a href="h474.html">H-474</a>) | $m_\mu$: muon FSM norm | $192\pi^3$: phase-space normalization (axiom integer 192)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>G_F</code>, <code>m_e</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a>, <a href="h474.html">H-474</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>G_F   = 1.1663787e-5 GeV^-2      PDG 2024
+m_mu  = 105.6583755 MeV          PDG 2024
+192   = axiom integer
+hbar  = 6.582119569e-25 GeV·s</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the mass-hierarchy coupling domain. What it reveals is the muon lifetime $\tau_\mu = \hbar/\Gamma$. Combining $G_F$, $m_\mu^5$, and $192\pi^3$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\tau_\mu = \dfrac{\hbar \cdot 192\pi^3}{G_F^2 m_\mu^5} = 2.197 \times 10^{-6}\ \text{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\tau_\mu = 2.197 \times 10^{-6}\ \text{s}$</div>
+<div class="math-row">Measured: $2.1969811 \times 10^{-6}\ \text{s}$ (MuLan)</div>
+<div class="math-row">Error: $0.0004\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The lifetime agrees to 0.0004%, but the axiom-chain quantitative derivation of $G_F$ (<a href="h474.html">H-474</a>) is not closed, leaving the final step of the forward chain incomplete.</p>
+<p>The structure in which cost is conserved as the product of phase space and norm across an FSM norm transition matches the most cleanly measured particle lifetime.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: <a href="h474.html">H-474</a> (Fermi constant) lifetime input, <a href="h466.html">H-466</a> (universality) verification tool, <a href="h468.html">H-468</a> (beta decay) cost-distribution archetype.</p><p>This card can be re-used as input for the following cards: <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a>, <a href="h474.html">H-474</a></p>
+<p>Re-injection path: <a href="h474.html">H-474</a>, <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

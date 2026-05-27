@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="h871.html">H-871</a>, <a href="h878.html">H-878</a>, <a href="h882.html">H-882</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 캐시 비용에서 α 사다리 29칸 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>스케일 계층은 캐시 한 칸을 옮길 때마다 한 번의 Compare 비용 $\alpha$를 치르며 RLU가 가장 가까운 칸에서 가장 먼 칸으로 펼쳐지는 누적 비용이다(<a href="../axiom.html#ax7">공리 7</a>: 비용 = $\alpha$, <a href="../axiom.html#ax12">공리 12</a>: 우주 스케일). Planck 길이 칸에서 Hubble 반경 칸까지 정수 개의 칸이 놓이고, 각 칸 사이가 $\alpha$ 한 거듭제곱이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 $\alpha$ 거듭제곱 사다리 노름이다. 미시 칸과 거시 칸의 길이 비가 $\alpha$의 정수 거듭제곱으로 정해지고, 그 정수 칸 수가 스케일 계층을 직접 닫기 때문에 이 노름을 택한다. Planck-Hubble 길이 비를 $\alpha^{-n}$ 사다리로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{R_H}{\ell_P}\sim\alpha^{-n}$</div>
+<div class="math-row">$n=\dfrac{\ln(R_H/\ell_P)}{\ln(1/\alpha)}\approx 29$</div>
+<div class="math-legend">$\ell_P$: Planck 길이 (최근접 칸) | $R_H$: Hubble 반경 (최원거리 칸) | $\alpha$: 칸당 Compare 비용 (<a href="d01.html">D-01</a>) | $n$: 사다리 칸 수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h871.html">H-871</a>, <a href="h878.html">H-878</a>, <a href="h882.html">H-882</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha   = 1/137.036          D-01
+l_P     = 1.616e-35 m        Planck 길이
+R_H     = 1.3e26 m           Hubble 반경
+R_H/l_P = 8e60 ~ 10^61</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주 스케일 계층 도메인으로 변환한다. 이 변환으로 보려는 것은 최근접 칸에서 최원거리 칸까지 $\alpha$가 몇 거듭제곱 쌓이는가, 곧 사다리 칸 수다. 길이 비의 로그를 $\ln(1/\alpha)$로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$n=\dfrac{\ln(10^{61})}{\ln 137.036}\approx\dfrac{140.5}{4.92}\approx 28.6\approx 29$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 가설</h3>
+<div class="math-block">
+<div class="math-row">도출값: $n\approx 29$ ($\alpha^{-29}\approx 10^{62}$)</div>
+<div class="math-row">측정값: $R_H/\ell_P\approx 10^{61}$</div>
+<div class="math-row">오차: 지수 레벨 $&lt; 5\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 칸 수 29는 떨어지나 칸마다의 물리 스케일 대응이 미완이고 지수 1자리 오차가 남아 forward chain 미완 — 29칸 대응표가 닫히면 D 승격된다. 통찰: 디락 대수 $10^{40}\approx\alpha^{-19}$가 같은 사다리의 다른 칸으로 떨어져 큰 수 우연을 정수 칸 간격으로 환원한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h882.html">H-882</a>(우주상수). <a href="h878.html">H-878</a>(19==&gt;3). <a href="h871.html">H-871</a>(입출력 비)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h871.html">H-871</a>, <a href="h878.html">H-878</a>, <a href="h882.html">H-882</a></p>
+<p>재투입 경로: <a href="h882.html">H-882</a>, <a href="h878.html">H-878</a>, <a href="h871.html">H-871</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

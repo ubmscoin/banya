@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h494.html">H-494</a>, <a href="h501.html">H-501</a>, <a href="h516.html">H-516</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 쿼크-반쿼크 FSM 쌍 결합에서 메손 노넷 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>메손은 쿼크 하나와 반쿼크 하나가 CAS Read-Swap 쌍으로 묶여 FSM이 닫히는 색 싱글렛이다(<a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax12">공리 12</a>). 쌍 결합 에너지는 CAS 비용으로 들어오고(<a href="../axiom.html#ax4">공리 4</a>), 메손 질량은 두 FSM 노름의 합으로 정해진다(<a href="../axiom.html#ax14">공리 14</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 $q\bar q$ 플레이버 텐서곱의 SU(3)$_F$ 표현 노름이다. (b) 이 노름을 택하는 이유: FSM 닫힘이 $q\bar q$ 색 싱글렛만 허용하므로 3 플레이버 쌍은 $\mathbf3\otimes\bar{\mathbf3}$로 분해되고, 그 팔중항+싱글렛이 곧 9개 메손 노넷이기 때문이다. 추상 쌍 결합을 SU(3) 텐서곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$q\otimes\bar q$</div>
+<div class="math-row">$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$</div>
+<div class="math-legend">$\mathbf{3}$: 쿼크 플레이버 | $\bar{\mathbf{3}}$: 반쿼크 | $\mathbf{8}$: 팔중항 메손 | $\mathbf{1}$: 싱글렛 ($U(1)_A$ anomaly로 $\eta'$ 상승) | $\mathbf{8}\oplus\mathbf{1}$: 9 = 노넷</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h494.html">H-494</a>, <a href="h501.html">H-501</a>, <a href="h516.html">H-516</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_pi   = 140 MeV        PDG
+m_K    = 494 MeV        PDG
+m_eta  = 548 MeV        PDG
+m_etap = 958 MeV        PDG</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 강력 색 도메인의 유사스칼라 노넷 질량으로 변환한다. (b) 보려는 것은 팔중항 내부 질량이 Gell-Mann-Okubo 규칙 $3m_\eta^2 = 4m_K^2 - m_\pi^2$를 따르는가이다. FSM 노름이 질량 제곱에 선형이면 이 관계가 성립한다.</p>
+<div class="math-block">
+<div class="math-row">$m_\eta = \sqrt{\tfrac{1}{3}(4m_K^2 - m_\pi^2)} = \sqrt{\tfrac{1}{3}(4\cdot494^2 - 140^2)} = 565\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 측정</h3>
+<div class="math-block">
+<div class="math-row">도출: $m_\eta = 565\;\text{MeV}$</div>
+<div class="math-row">측정: $m_\eta = 548\;\text{MeV}$ (PDG)</div>
+<div class="math-row">오차: $\sim 3\%$ (쿼크 모형 노넷 $\sim 10\%$)</div>
+</div>
+<p>판정: <strong>가설</strong>. 텐서곱이 9개 노넷을 정확히 닫고 GMO가 팔중항을 3% 안에 두지만, $\eta$-$\eta'$ 혼합각과 $U(1)_A$ anomaly 기여가 공리에서 정량 도출되지 않아 마지막 단계가 미완이다.</p>
+<p>통찰: 싱글렛 $\eta'$가 anomaly로 무겁게 들려 $m_{\eta'}\gg m_\eta$가 되는 것이 노넷이 팔중항으로 환원되지 않는 표식이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h494.html">H-494</a>(파이온) 노넷 구성원. <a href="h501.html">H-501</a>(스펙트럼) 메손 부문. <a href="h516.html">H-516</a>(이국적) 비표준 결합.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h494.html">H-494</a>, <a href="h501.html">H-501</a>, <a href="h516.html">H-516</a></p>
+<p>재투입 경로: <a href="h494.html">H-494</a>, <a href="h501.html">H-501</a>, <a href="h516.html">H-516</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

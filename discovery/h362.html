@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인×CAS 니블 교차 비용에서 16항 분류 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>16항 분류는 도메인 니블과 CAS 니블을 교차한 비용표다. <a href="../axiom.html#ax1">공리 1</a>(4축)에서 도메인 니블은 양자 괄호(observer, superposition)와 고전 괄호(time, space)로 갈리고, CAS 니블은 R, C, S, $\delta$ 4단계다. 두 니블의 곱이 16칸을 만든다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 두 니블의 교차곱 노름이다. 각 칸의 비용이 도메인 괄호(양자/고전)와 CAS 단계(읽기쪽 R·C / 쓰기쪽 S·$\delta$)의 짝으로 결정되기 때문에 이 노름을 택한다. 따라서 16을 4범주 각 4항으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$16=4\times 4=(\text{도메인 4축})\times(\text{CAS 4단계})$</div>
+<div class="math-row">$16=4_{\text{비용0}}+4_{\text{분기점}}+4_{\text{관측}}+4_{\text{렌더}}$</div>
+<div class="math-legend">$4_{\text{비용0}}$: 양자$\times$(R,C) 중첩 유지 | $4_{\text{분기점}}$: 양자$\times$(S,$\delta$) 붕괴 | $4_{\text{관측}}$: 고전$\times$(R,C) | $4_{\text{렌더}}$: 고전$\times$(S,$\delta$)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>도메인 니블 = 4 비트         공리 1
+CAS 니블    = 4 단계 (R,C,S,delta)
+교차 항 수  = 4 x 4 = 16
+비용 발생   = 12,  비용 0 = 4</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>도메인$\times$CAS 교차 도메인을 비용 발생 여부 도메인으로 변환한다. 이 변환으로 보려는 것은 양자-고전 경계가 어느 칸에서 비용을 켜는가다. 양자 읽기쪽 4칸만 비용 0이고 나머지 12칸이 비용을 켜므로 그 합을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$16=4_{\text{비용0}}+12_{\text{비용발생}}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 비용 0 = 4칸, 비용 발생 = 12칸</div>
+<div class="math-row">측정값: 직접 측정 부재 (양자 비파괴 측정·파동붕괴 구분과 정합)</div>
+<div class="math-row">오차: 정량 대조 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 16칸 분류는 닫혔으나 16항을 개별 물리 과정에 1:1 할당해 실험과 대조하는 단계가 미완이라 멈춘다. 양자-고전 경계가 도메인 니블 상위 2비트(고전 괄호)의 ON/OFF로 정의된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

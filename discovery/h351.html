@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 1틱 1 Swap 변위 상한에서 광속 불변 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>광속은 한 틱에 CAS 사이클 1회가 space 도메인에 쓸 수 있는 최대 변위 비용이다. Swap 1회가 space에 쥐는 변위가 1단위로 제한되므로(<a href="../axiom.html#ax6">공리 6</a> 비용 회수), space와 time 괄호를 가르는 전파 상한이 이 비용으로 고정된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 space 변위 대 time 진행의 비율 노름, 곧 1 Swap 변위를 1 tick으로 나눈 도메인 속도 노름이다. (b) 이 노름을 택하는 이유는 CAS가 순차 의존이라(<a href="../axiom.html#ax2">공리 2</a>) 한 틱에 두 번째 Swap을 쥘 수 없고, 따라서 도메인 속도의 분자가 한 틱당 1단위로 상한되기 때문이다. 측정값은 <a href="../axiom.html#ax3">공리 3</a> 스크린이 이 상한을 렌더링한 결과로 둔다.</p>
+<div class="math-block">
+<div class="math-row">$c = \dfrac{\Delta x_{\text{domain}}}{\Delta t_{\text{domain}}}\Big|_{\max}$</div>
+<div class="math-row">$c = \dfrac{1\ \text{Swap}}{1\ \text{tick}} = 1\ (\text{system, dimensionless})$</div>
+<div class="math-legend">$c$: 도메인 전파 상한 | $\Delta x_{\text{domain}}$: Swap 1회 space 변위 (최대 1단위) | $\Delta t_{\text{domain}}$: CAS 사이클 1회 = 1 tick | $1\ \text{Swap}/1\ \text{tick}$: 순차 의존 상한</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>Delta</code></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Swap/tick (max) = 1                       CAS 순차 의존 (공리 2)
+space 변위/Swap = 1 단위                   쥠 상한 (공리 6)
+c (system)      = 1                        무차원
+c (measured)    = 2.99792458e8 m/s         CODATA (정의값)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 대상 도메인은 스크린 렌더링 도메인이다(<a href="../axiom.html#ax3">공리 3</a>). (b) 이 변환으로 보려는 것은 시스템의 무차원 상한 1이 스크린에서 어떤 차원 속도로 렌더링되는가, 곧 관측자에 무관한 전파 상한이다. 시스템 비율 1에 스크린 단위 환산을 적용해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$c = 1\ \text{(system)} \xrightarrow{\text{screen cap}} 2.99792458 \times 10^8\ \text{m/s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $c = 1\ \text{Swap}/1\ \text{tick}$ (시스템 무차원 상한)</div>
+<div class="math-row">측정값: $c = 2.99792458 \times 10^8\ \text{m/s}$ (CODATA 정의값)</div>
+<div class="math-row">정량 대조: 차원·구조 일치까지 확립, 측정 정밀도 산출 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 차원·구조 일치(무차원 상한 1)는 확립되었으나 스크린 단위 환산 인자의 독립 도출이 없어 정밀도 대조가 미완이다.</p>
+<p>통찰: 광속 불변은 가정이 아니라 1틱 1 Swap이라는 CAS 순차 의존의 귀결이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

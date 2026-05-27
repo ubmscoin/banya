@@ -68,39 +68,47 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h446.html">H-446</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: δ가 FSM 밖에 존재하는 비용에서 선택 시점 무관성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>지연 선택은 광자가 간섭계를 지난 뒤 측정 방식을 정해도 결과가 불변인 현상이다. 반야식에서 time은 4축 중 하나(<a href="../axiom.html#ax1">공리 1</a>)로 FSM 내부 도메인이지만, δ는 FSM 밖 전역 플래그(<a href="../axiom.html#ax15">공리 15</a>)다. 따라서 δ 투영 비용을 time 항과 분리해 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 δ의 FSM 외부 노름이다. (b) 이 노름을 택하는 이유: 선택 시점은 FSM 클록 틱(<a href="../axiom.html#ax1">공리 1</a> time 축)의 순서일 뿐인데, δ 투영(<a href="../axiom.html#ax10">공리 10</a> δ 단계)은 그 클록 밖에 있어 틱 순서에 구속되지 않기 때문이다. 따라서 결과 분포 $P$를 선택 시점 $t_c$의 함수가 아니라 δ 투영만의 함수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$P = P(t_c)$</div>
+<div class="math-row">$\dfrac{\partial P}{\partial t_c} = 0$</div>
+<div class="math-legend">$P$: 결과 분포(간섭/비간섭 가시도) | $t_c$: FSM 클록상 선택 시점 | $\delta\notin\text{FSM}$: δ는 클록 밖(<a href="../axiom.html#ax15">공리 15</a>) | $\partial P/\partial t_c=0$: 시점 독립</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h446.html">H-446</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>t_c    선택 시점 (FSM 클록 틱)   공리 1 time 축
+delta  FSM 밖 전역 플래그        공리 15
+dP/dt_c = 0  (예측)             Jacques 2007 검증</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 단일 광자 간섭 가시도 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 가시도가 선택 시점에 의존하는가다. δ가 클록 밖이므로 $t_c$를 광자 진입 전·후 어디로 옮겨도 가시도는 동일하게 산출된다.</p>
+<div class="math-block">
+<div class="math-row">$V(t_c^\text{before}) = V(t_c^\text{after})$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\partial P/\partial t_c = 0$ (선택 시점 무관)</div>
+<div class="math-row">측정값: Jacques 2007 단일 광자 지연 선택 — 가시도가 선택 시점과 무관</div>
+</div>
+<p>판정: <strong>가설</strong>. 시점 무관성이 δ의 FSM 외부 노름에서 닫혔으나, δ의 "시간 밖" 존재 방식을 양자 중력과 잇는 공리적 정밀화가 미완이다. 지연은 FSM 내부 관점일 뿐, δ에는 시간 개념 자체가 적용되지 않는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h446.html">H-446</a>(측정 문제) 시간 순서 독립. <a href="h449.html">H-449</a>(벨 부등식) 비국소성 확장. <a href="h452.html">H-452</a>(양자 소거) 시간 역전.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h446.html">H-446</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
+<p>재투입 경로: <a href="h446.html">H-446</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

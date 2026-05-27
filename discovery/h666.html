@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h644.html">H-644</a>, <a href="h648.html">H-648</a>, <a href="h662.html">H-662</a>, <a href="h674.html">H-674</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 축적률에서 r-과정 대기점 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>r-과정은 FSM이 안정화(베타 붕괴)보다 빠르게 노름을 쌓아 올리는 경로다. 노름 한 칸 추가는 비가역 순서 비용(<a href="../axiom.html#ax4">공리 4</a>)이고, FSM은 이산 칸 단위로만 전진한다(<a href="../axiom.html#ax3">공리 3</a>). 그 노름이 비용 평형으로 회수되는 지점(<a href="../axiom.html#ax6">공리 6</a>)이 대기점이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 노름 증가율 노름이다. r-과정은 노름 축적률 $\lambda_n$이 회수율 $\lambda_\beta$를 압도하는 비평형 구간이므로 이 노름을 택한다. 두 율의 경쟁이 비용 평형($S_n \to 0$, <a href="../axiom.html#ax4">공리 4</a>)에 닿는 칸에서 노름 전진이 멈춰 대기점이 되고, 대기점의 칸 수가 풍부도 피크 $A$로 나타난다.</p>
+<div class="math-block">
+<div class="math-row">$\lambda_n n_n \langle \sigma v \rangle = \lambda_\beta$</div>
+<div class="math-row">$A_\text{peak} = N_\text{magic} + Z(N_\text{magic})$</div>
+<div class="math-legend">$\lambda_n$: 노름 축적률 | $\lambda_\beta$: 회수율(베타 붕괴) | $n_n$: 중성자 밀도 | $N_\text{magic}$: 닫힌 껍질 칸 수 | $A_\text{peak}$: 풍부도 피크 칸 수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h644.html">H-644</a>, <a href="h648.html">H-648</a>, <a href="h662.html">H-662</a>, <a href="h674.html">H-674</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N_magic = 50, 82, 126        닫힌 껍질 (H-648)
+n_n     = 1e20 cm^-3 이상     r-과정 조건
+tau_n   ~ 0.01 s             노름 축적 시간
+A_peak  = 80, 130, 195       관측 풍부도 피크</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>핵 노름 도메인(중성자 과잉 칸)으로 변환한다. 보려는 것은 노름 전진이 멈추는 대기점의 칸 수, 곧 풍부도 피크 $A$다. 마법수 칸($N = 50, 82, 126$)에서 회수율이 급락해 노름이 정체하고, 거기에 해당 양성자 칸을 더한 질량수가 피크가 된다.</p>
+<div class="math-block">
+<div class="math-row">$A_\text{peak} \approx 80,\; 130,\; 195$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 대기점 $N = 50, 82, 126$ 에서 피크 $A \approx 80, 130, 195$</div>
+<div class="math-row">측정값: 태양계 r-과정 풍부도 피크 $A \approx 80, 130, 195$</div>
+<div class="math-row">상태: 피크 위치 정성 일치, 정량 풍부도 미산출</div>
+</div>
+<p>판정: <strong>가설</strong>. 대기점 칸 위치는 마법수에서 자동으로 떨어지나, 풍부도 절대값은 $n_n$·온도 조건이 외부 입력으로 남아 forward chain이 닫히지 않았다. 마법수 대기점이 풍부도 피크 위치를 칸 수만으로 고정한다는 점이 핵심.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h662.html">H-662</a>(중성자 포획). <a href="h648.html">H-648</a>(마법수) 대기점. <a href="h674.html">H-674</a>(초신성)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h644.html">H-644</a>, <a href="h648.html">H-648</a>, <a href="h662.html">H-662</a>, <a href="h674.html">H-674</a></p>
+<p>재투입 경로: <a href="h662.html">H-662</a>, <a href="h644.html">H-644</a>, <a href="h648.html">H-648</a>, <a href="h674.html">H-674</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

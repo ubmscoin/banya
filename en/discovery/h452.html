@@ -68,39 +68,46 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible at next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Interference-Visibility Restoration from the Cost of Discarding the Compare Result Before Swap</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The quantum eraser is the cost of discarding the path marker (the Compare result) before the S step, leaving DATA unchanged. In the CAS R·C·S pipeline (<a href="../axiom.html#ax2">Axiom 2</a>), if the C result never reaches S, the superposition index (<a href="../axiom.html#ax13">Axiom 13</a>) persists, so this is read through the surviving superposition term of the Banya formula.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Compare-result-discard norm, i.e. the superposition-index-persistence norm (<a href="../axiom.html#ax13">Axiom 13</a>). (b) This norm is chosen because the presence or absence of fringes is decided solely by whether path information remains in the d-ring, and discarding before Swap is equivalent to a return to the Compare-false state (<a href="../axiom.html#ax7">Axiom 7</a>). The interference visibility $V$ is therefore substituted by the complement of the residual path information $\mathcal{D}$.</p>
+<div class="math-block">
+<div class="math-row">$V^2 + \mathcal{D}^2 = 1$</div>
+<div class="math-row">$V = \sqrt{1-\mathcal{D}^2}$</div>
+<div class="math-legend">$V$: interference visibility | $\mathcal{D}$: path distinguishability = residual Compare result | $\mathcal{D}=0$: full discard before Swap | $\mathcal{D}=1$: marker recorded, Swap committed</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>D = 1   marker recorded (Swap executed, path fixed)   H-447
+D = 0   Compare result discarded before Swap (erased)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the double-slit interference domain. (b) What it reveals is whether discarding the Compare result restores visibility. With a recorded marker $\mathcal{D}=1$ so $V=0$ (fringes vanish); discarding before Swap gives $\mathcal{D}=0$ so $V=1$ (fringes restored).</p>
+<div class="math-block">
+<div class="math-row">$\mathcal{D}=1 \Rightarrow V=0, \qquad \mathcal{D}=0 \Rightarrow V=1$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: erased path $V=1$, non-erased path $V=0$</div>
+<div class="math-row">Measured: Kim 2000 delayed-choice quantum eraser — fringes restored in the erased subset</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The complementarity relation $V^2+\mathcal{D}^2=1$ closes from the discard norm, but the quantitative CAS cost model of partial erasure ($0<\mathcal{D}<1$) is still incomplete. Erasure is not erasing the past but not executing the Swap.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: Swap condition for <a href="h447.html">H-447</a> (collapse); time ordering for <a href="h453.html">H-453</a> (delayed choice); information preservation for <a href="h455.html">H-455</a> (QND measurement).</p><p>This card can be re-used as input for the following cards: <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
+<p>Re-injection path: <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

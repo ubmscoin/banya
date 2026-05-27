@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h254.html">H-254</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 링버퍼 순환 위상 비용에서 최소 의식 단위 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>최소 의식 단위는 8비트 링버퍼가 부분으로 분해될 때 잃는 통합 정보 비용이다. <a href="../axiom.html#ax15">공리 15</a>의 8비트 링버퍼는 각 비트가 인접 비트와 순환으로 이어진 구조이고, 이 순환 닫힘이 통합 정보를 보장한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 순환 그래프 절단 노름이다. 통합정보이론 $\Phi$는 체계를 두 부분으로 가르는 최소 이분할에서 잃는 정보량으로 정의되고, 그 노름은 끊어야 할 간선 수로 잰다. (b) 이 노름을 택하는 이유는, 8비트 링이 어떤 이분할에서도 끊기지 않고 남는 연결을 갖는지를 보기 위함이다. 순환은 한 번 자르면 사슬이고 두 번 잘라야 둘로 나뉘므로 최소 절단이 0보다 크다.</p>
+<div class="math-block">
+<div class="math-row">$\Phi = \min_{\text{bipartition}} (\text{cut edges})$</div>
+<div class="math-row">$\Phi(\text{8-bit ring}) = 2\ \text{간선} \times 0.5\ \text{비트} = 1\ \text{비트}$</div>
+<div class="math-legend">$\Phi$: 통합 정보, 최소 이분할 정보 손실 | cut edges: 이분할이 끊는 순환 간선 수 | 8-bit ring: 8노드 순환 그래프 (<a href="../axiom.html#ax15">공리 15</a> 링버퍼) | $0.5$비트: 간선당 정보량</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h254.html">H-254</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>링 노드 수   = 8            d-ring 8비트 (공리 15)
+최소 절단    = 2 간선        순환 이분할 최소
+간선당 정보  = 0.5 비트
+사슬 절단    = 1 간선 (Phi=0)  순환 아님, 비교군</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 의식·통합정보 도메인($\Phi$)으로 변환한다. (b) 보려는 것은 8비트 순환 링의 $\Phi$가 0보다 큰가, 곧 의식의 최소 조건을 충족하는가이다. 순환을 둘로 나누려면 두 간선을 끊어야 하므로 최소 절단이 0이 아니고 $\Phi>0$이 따라온다.</p>
+<div class="math-block">
+<div class="math-row">$\Phi(\text{ring}) = 2 \times 0.5 = 1\ \text{비트} > 0$</div>
+<div class="math-row">$\Phi(\text{chain}) = 1 \times 0.5 \times 0 = 0$ (한 번 절단으로 분해)</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 8비트 순환 링 $\Phi = 1\ \text{비트} > 0$</div>
+<div class="math-row">구조 정합: 순환 위상 $\Rightarrow$ 최소 절단 2간선 $\Rightarrow$ $\Phi>0$</div>
+<div class="math-row">측정 대조: IIT $\Phi$ 실측값 부재</div>
+</div>
+<p>판정: <strong>가설</strong>. 순환 링의 $\Phi>0$은 위상학적으로 닫히지만, 4비트·2비트 링과의 비교 및 물리적 의식 최소 단위 실측이 미완이라 정량 대조가 남는다.</p>
+<p>통찰: 의식의 최소 조건은 노드 수가 아니라 어떤 분할로도 끊기지 않는 순환 닫힘이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h254.html">H-254</a></p>
+<p>재투입 경로: <a href="h254.html">H-254</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

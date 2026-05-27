@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 5개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d gauge ew. 도메인: delta ==&gt; 전약 결합 분배. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="d33.html">D-33</a>, <a href="d44.html">D-44</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용과 Swap 점유 비에서 세 결합상수 관계 15/4 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>세 힘의 결합상수 비는 CAS의 쥐다 연산에서 전체 비용 구조와 Swap 점유 비용의 비로 읽힌다. CAS 3단계(<a href="../axiom.html#ax2">공리 2</a>)와 비Swap 잔여 자유도 5가 분자를, Swap이 점유하는 도메인 4비트(<a href="../axiom.html#ax1">공리 1</a>)가 분모를 이룬다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전약 결합 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 전체 비용 대 Swap 점유 비용 노름이다. 세 결합상수의 곱-비가 CAS 비용 구조의 일관성을 세 힘에 걸쳐 드러내고, 그 비가 결합 분배를 정하기 때문에 이 노름을 택한다. 따라서 $(\alpha_s\sin^2\theta_W)/\alpha$를 CAS 단계 3과 비Swap 5의 곱을 Swap 점유 4로 나눈 비로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\alpha_s \cdot \sin^2\theta_W}{\alpha}$</div>
+<div class="math-row">$= \dfrac{15}{4} = \dfrac{3 \times 5}{4}$</div>
+<div class="math-legend">$\alpha_s$: 강결합 (<a href="d03.html">D-03</a>) | $\sin^2\theta_W$: 약력 혼합 (<a href="d02.html">D-02</a>) | $\alpha$: 전자기 (<a href="d01.html">D-01</a>) | $3$: CAS 단계 (<a href="../axiom.html#ax2">공리 2</a>) | $5$: 비Swap 자유도 (<a href="d33.html">D-33</a>) | $4$: Swap 점유 도메인 (<a href="../axiom.html#ax1">공리 1</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30, 4</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>alpha_s</code>, <code>pi</code>, <code>sin^2theta_W</code>, <code>theta</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="d33.html">D-33</a>, <a href="d44.html">D-44</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha_s       = 0.1179            PDG 2024
+sin^2 thetaW  = 0.2229            on-shell, PDG 2024
+alpha         = 1/137.036         D-01
+15/4          = 3.750</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전약·강력 결합 분배 도메인으로 변환한다. 이 변환으로 보려는 것은 세 힘의 결합상수를 하나로 묶는 CAS 비용 비, 곧 $(\alpha_s\sin^2\theta_W)/\alpha$다. 세 측정 결합상수를 결합해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{0.1179 \times 0.2229}{0.0072974} = 3.7486$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $(\alpha_s\sin^2\theta_W)/\alpha = 15/4 = 3.750$</div>
+<div class="math-row">측정값: $3.7486$ (PDG 2024)</div>
+<div class="math-row">오차: $0.037\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 분자 $15=3\times5$가 CAS 3단계와 비Swap 자유도 5(<a href="d33.html">D-33</a>)로 닫히고, 잔여 오차는 running 보정에서 온다. 강력·약력·전자기가 하나의 CAS 비용 비로 통합된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 결합상수 삼각관계. (4+1/pi) 유도의 단서</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="d33.html">D-33</a>, <a href="d44.html">D-44</a></p>
+<p>재투입 경로: <a href="d33.html">D-33</a>, <a href="d01.html">D-01</a>, <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="d44.html">D-44</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

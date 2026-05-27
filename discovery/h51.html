@@ -72,39 +72,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h03.html">H-03</a>, <a href="h44.html">H-44</a>, <a href="h52.html">H-52</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 3비트 옥텟 비용에서 글루온 8개 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>글루온은 CAS의 R·C·S 3비트가 비트 쌍을 교환할 때 치르는 강력(색) 비용이다. <a href="../axiom.html#ax2">공리 2</a>(CAS 원자성)에서 Read·Compare·Swap 3연산이 확정되고, <a href="h44.html">H-44</a>에서 이 3연산이 001·010·100 3비트로 인코딩된다. 글루온 수는 이 3비트 사이의 교환 연산자 개수로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 3비트 옥텟의 비트 교환 노름이다. (b) 글루온은 색을 옮기는 비대각 전이와 색을 보존하는 대각 전이로 갈리는데, 그 갯수 분포가 색 대칭의 수반 표현 차원을 정하기 때문에 이 노름을 택한다. 3비트 중 2비트를 고르는 쌍 $C(3,2)=3$에 실수·허수 2성분을 곱한 비대각 6, 여기에 대각 2를 더해 글루온 수를 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$N_g = \dim SU(3)_{\text{adj}} = 3^2 - 1$</div>
+<div class="math-row">$N_g = C(3,2)\times 2 + 2 = 3\times 2 + 2$</div>
+<div class="math-legend">$N_g$: 글루온 수 | $C(3,2)=3$: 3비트에서 2비트 교환 쌍 | $\times 2$: 실수·허수 성분 | $+2$: 대각 전이 (색 보존) | $\dim SU(3)_{\text{adj}}$: 색 대칭 수반 표현 차원</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h03.html">H-03</a>, <a href="h44.html">H-44</a>, <a href="h52.html">H-52</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>C(3,2)      = 3            CAS 3비트 교환 쌍 (H-44)
+비대각 6    = C(3,2) x 2 = 3 x 2
+대각 2      = 3비트 중 독립 대각 생성자 수
+N_g         = 8            PDG: SU(3) 게이지 보손 8개</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 강력 ring-7(FSM 원자성, 닫힌) 색 자유도 도메인으로 변환한다. (b) 보려는 것은 색을 매개하는 게이지 보손의 개수다. 비대각 6에 대각 2를 더해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$N_g = 3\times 2 + 2 = 8$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $N_g = 8$</div>
+<div class="math-row">측정값: $8$ (PDG: $SU(3)$ 게이지 보손 8개)</div>
+<div class="math-row">오차: 구조 일치 (정수 정확)</div>
+</div>
+<p>판정: <strong>가설</strong>. 8이 CAS 3비트 옥텟의 쌍전환 연산자 수로 떨어지며, <a href="h03.html">H-03</a>과 독립 경로로 동일 결과. 겔만 구조상수 $f_{abc}$의 비트 전이 도출이 닫히면 발견으로 승격한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h03.html">H-03</a> 강화. <a href="h44.html">H-44</a> 비트 전이 ==&gt; 겔만 구조상수 $f_{abc}$ 도출 가능성.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h03.html">H-03</a>, <a href="h44.html">H-44</a>, <a href="h52.html">H-52</a></p>
+<p>재투입 경로: <a href="h44.html">H-44</a>, <a href="h03.html">H-03</a>, <a href="h52.html">H-52</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

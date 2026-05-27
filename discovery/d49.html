@@ -68,39 +68,49 @@ d-ring 관점에서, 링 이음새(ring seam)에 쥠이 밀집하여 d-ring이 �
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 2개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d misc. 도메인: delta ==&gt; 자연 분류 외. 재귀 대입 경로: <a href="d32.html">D-32</a>, <a href="d46.html">D-46</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 쌍별 누적 비용에서 사건지평 경계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>사건지평은 $N$개 쥠의 CAS 누적비용이 탈출에너지에 도달하는 경계다. 쥠 1개의 Compare+Swap 비용이 $N$개 엔티티에 쌍별로 쌓이면 $N(N-1)/2\approx N^2/2$가 되고, 링 이음새에 쥠이 밀집해 d-ring이 닫힌다(<a href="../axiom.html#ax13">공리 13</a> 명제). 핵심은 발산이 아니라 $N^2$ 누적이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 쥠 쌍별 누적비용 $N^2$ 노름이다. 정보가 빠져나오지 못하는 까닭이 Read 비용이 무한대여서가 아니라 Read 경로 자체가 차단되기 때문이고, 그 차단이 $N^2$ 누적이 탈출에너지를 넘는 경계에서 일어나기 때문에 이 노름을 택한다. 경계 반지름은 <a href="d46.html">D-46</a>의 $r=2Nl_p$다.</p>
+<div class="math-block">
+<div class="math-row">$E_{acc} = \dfrac{N(N-1)}{2} \approx \dfrac{N^2}{2}$</div>
+<div class="math-row">$E_{acc}(N^2) \geq E_{escape} \quad\text{at}\quad r = 2Nl_p$</div>
+<div class="math-legend">$E_{acc}$: 쌍별 누적비용 | $N$: 쥠 수 | $N^2$: 쌍별 누적 (발산 아님) | $r=2Nl_p$: 경계 반지름 (<a href="d46.html">D-46</a>) | $E_{escape}$: 탈출에너지</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 본문 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d32.html">D-32</a>, <a href="d46.html">D-46</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>r       = 2 N l_p          D-46
+l_p     = 1.616255e-35 m   CODATA 2018
+E_acc   = N(N-1)/2 ~ N^2/2
+조건    = E_acc(N^2) >= E_escape</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>중력 경계 도메인(블랙홀 사건지평)으로 변환한다. 이 변환으로 보려는 것은 $N^2$ 누적비용이 탈출에너지를 넘어 d-ring이 닫히는 임계 반지름이다. <a href="d46.html">D-46</a>의 $r=2Nl_p$에서 누적조건이 성립함을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$E_{acc}(N^2) \geq E_{escape} \quad\text{at}\quad r = 2Nl_p$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 경계 $r = 2Nl_p$에서 $E_{acc}(N^2)\geq E_{escape}$</div>
+<div class="math-row">측정값: 표준 사건지평 조건 ($r_s=2GM/c^2$)</div>
+<div class="math-row">오차: $0\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 사건지평이 발산이 아닌 $N^2$ 쌍별 누적으로 닫히며 표준 조건을 정확히 재현하고, 같은 경계가 <a href="d32.html">D-32</a> 블랙홀 온도-수명으로 재투입된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 블랙홀 열역학 CAS 기원. <a href="d32.html">D-32</a>, <a href="d46.html">D-46</a> 연쇄. 상세보기:도출 과정</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d32.html">D-32</a>, <a href="d46.html">D-46</a></p>
+<p>재투입 경로: <a href="d46.html">D-46</a>, <a href="d32.html">D-32</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

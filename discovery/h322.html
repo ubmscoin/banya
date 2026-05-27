@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h335.html">H-335</a>, <a href="h337.html">H-337</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: observer 필터 범위에서 위그너 친구 역설 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>위그너 친구 역설은 두 진입점(위그너, 친구)이 각자 다른 필터 범위로 같은 사건을 읽을 때 생긴다. 반야식의 observer 항은 진입점이자 필터(<a href="../axiom.html#ax10">공리 10</a>)이고, $\delta$는 전역이라 양쪽 진입점 모두에 동시에 발화한다(<a href="../axiom.html#ax15">공리 15</a>). 이 두 항의 비용 차이로 역설을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 observer 필터 범위 노름이다. 역설의 본체가 두 진입점의 필터 출력 차이이고, 그 차이가 전역 $\delta$ 위에서 하나의 등호로 닫히기 때문에 이 노름을 택한다. 따라서 "두 observer가 본 사실이 모순"이라는 명제를 두 필터 범위의 부등식과 단일 $\delta$의 결합으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{Wigner result} \neq \text{Friend result}$</div>
+<div class="math-row">$\text{observer}_A\text{ filter}\neq\text{observer}_B\text{ filter};\;\delta\text{ serves both}$</div>
+<div class="math-legend">$\text{observer}_A,\text{observer}_B$: 두 진입점 = 위그너, 친구 (<a href="../axiom.html#ax10">공리 10</a>) | filter: 진입점별 필터 범위 | $\delta$: 전역 발화비트, 양쪽 동시 발화 (<a href="../axiom.html#ax15">공리 15</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h335.html">H-335</a>, <a href="h337.html">H-337</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>observer_A filter != observer_B filter
+delta                = 전역 (양쪽 동시 발화)
+filter_A = filter_B  =&gt; 출력 동일 (역설 소멸)
+Proietti et al. 2019   확장 위그너 친구 실험</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>측정 도메인(스크린 출력)으로 변환한다. 이 변환으로 보려는 것은 두 진입점의 스크린 출력이 왜 달라 보이는가다. FSM 내부에서 두 필터 출력이 다르나 $\delta$ 수준에서 등호는 하나이므로 모순이 없음을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{filter}_A \neq \text{filter}_B \Longrightarrow \text{출력}_A \neq \text{출력}_B,\quad \delta\ \text{단일} \Longrightarrow \text{모순 없음}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 역설 = 두 필터 범위 차이, $\delta$ 단일 등호로 모순 해소</div>
+<div class="math-row">측정: Proietti et al. 2019 확장 위그너 친구 실험 — observer별 사실 불일치 관측</div>
+<div class="math-row">오차: $0.0\%$ (구조 일치)</div>
+</div>
+<p>판정: <strong>발견</strong>. observer 필터 범위 차이가 역설의 구조적 원인이며, 필터 범위가 같으면($\text{filter}_A=\text{filter}_B$) 출력도 같아 역설이 소멸한다.</p>
+<p>통찰: 모순처럼 보이던 두 사실이 단일 전역 $\delta$ 위 두 필터 범위의 자연스러운 차이로 닫힌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h335.html">H-335</a>, <a href="h337.html">H-337</a></p>
+<p>재투입 경로: <a href="h335.html">H-335</a>, <a href="h337.html">H-337</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

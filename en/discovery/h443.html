@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion is possible once the next round proceeds / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive substitution path: <a href="h444.html">H-444</a>, <a href="h446.html">H-446</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Quantum Zeno Survival Probability from the δ Polling Period</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A Status transition advances only when δ polls every tick (<a href="../axiom.html#ax8">Axiom 8</a>) and Compare returns true so that a Swap occurs (<a href="../axiom.html#ax7">Axiom 7</a>). Reducing the polling interval to the extreme makes the Status change $\theta/n$ between Compares infinitesimal, and this is read as the polling-period cost of the time domain.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the polling-period norm of the time domain. It is chosen because the Swap probability per Compare is $\sin^2(\theta/2n)$ and the survival probability is the $n$-fold product of $\cos^2(\theta/2n)$ (each Compare independent by CAS atomicity, <a href="../axiom.html#ax2">Axiom 2</a>). The single-transition probability of free evolution is therefore substituted by the product norm of $n$-split polling.</p>
+<div class="math-block">
+<div class="math-row">$P_{\text{survive}} = \cos^2\!\dfrac{\theta}{2}\quad(n=1,\ \text{free evolution})$</div>
+<div class="math-row">$P_{\text{survive}}(n) = \left(\cos^2\dfrac{\theta}{2n}\right)^{n}\ \xrightarrow[n\to\infty]{}\ 1$</div>
+<div class="math-legend">$P_{\text{survive}}$: no-transition probability | $\theta$: total Rabi phase | $n$: number of polls (<a href="../axiom.html#ax8">Axiom 8</a>) | $\Delta t_{\text{poll}}=t/n$: polling period</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h444.html">H-444</a>, <a href="h446.html">H-446</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n        = 256                      Itano 1990 pulse count
+theta    = pi                       total transition phase
+P_surv   = cos^512(pi/512)          n=256 accumulation
+experiment = transition suppression ~100%   Itano 1990 (9-Be+)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is from the free-evolution domain into the frequent-polling domain (time period split). What it reveals is how close the survival probability approaches 1 when the poll count $n$ is large. Substituting the Itano condition $n=256$ yields the value.</p>
+<div class="math-block">
+<div class="math-row">$P_{\text{survive}} = \cos^{512}\!\left(\dfrac{\pi}{512}\right) \approx 0.99$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $P_{\text{survive}} = \cos^{512}(\pi/512) \approx 0.99$</div>
+<div class="math-row">Measured: transition suppression ~100% (Itano 1990, $^{9}\text{Be}^+$)</div>
+<div class="math-row">Error: within 1%</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The product norm converges to 1 as $n\to\infty$, so the suppression is closed, but experimental confirmation of the $\cos^{2n}$ curve form remains, leaving the final forward-chain step incomplete. The Zeno effect is not a mysterious power of observation but a function of CAS scheduling frequency.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: symmetric pair with <a href="h444.html">H-444</a> (anti-Zeno). Compare-frequency effect for <a href="h446.html">H-446</a> (measurement problem).</p><p>This card can be re-used as input for the following cards: <a href="h444.html">H-444</a>, <a href="h446.html">H-446</a></p>
+<p>Re-injection path: <a href="h444.html">H-444</a>, <a href="h446.html">H-446</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

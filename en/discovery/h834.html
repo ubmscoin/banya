@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h834.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h834.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h834.html">H-834</a>. Collective Intelligence = Compare Integration of Multiple Observers</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon advancing to the next round / outstanding tasks specified.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained). Recursive substitution path: <a href="h826.html">H-826</a>, <a href="h835.html">H-835</a>, <a href="h839.html">H-839</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the collective accuracy from multi-observer Compare integration</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Collective intelligence is the cost of several observers (<a href="../axiom.html#ax15">Axiom 15</a>) each performing a Compare (<a href="../axiom.html#ax2">Axiom 2</a>), exchanging the results via Swap, and integrating them into a single verdict. When the observer term of the Banya formula is multiplexed, the target is read by the majority vote of the Compare branch (Swap on true, superposition kept on false).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition maintained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the multi-observer Compare majority-vote norm. It is chosen because each observer's Compare success probability $p>1/2$ is mutually independent and the integrated verdict closes by majority vote. The collective accuracy is therefore substituted by the majority-vote probability of $N$ independent Compares (the Condorcet form).</p>
+<div class="math-block">
+<div class="math-row">$P_N = \sum_{k=\lceil N/2\rceil}^{N} \binom{N}{k} p^{k}(1-p)^{N-k}$</div>
+<div class="math-legend">$P_N$: collective accuracy | $N$: number of observers (odd) | $p$: individual observer Compare success probability | $\binom{N}{k}$: majority-vote combinations</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h826.html">H-826</a>, <a href="h835.html">H-835</a>, <a href="h839.html">H-839</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>p = 0.60          individual observer Compare accuracy
+N = 9             number of observers (odd)
+P_9 = sum_{k=5}^{9} C(9,k) 0.6^k 0.4^(9-k)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Compare branch domain (Swap then DATA on true / superposition kept on false). What it reveals is how far the integrated Compare surpasses the individual Compare — the collective accuracy. Putting $p=0.60$ and $N=9$ into the majority-vote sum yields that value.</p>
+<div class="math-block">
+<div class="math-row">$P_9 = 0.594 + 0.212 + \cdots \approx 0.73 > p = 0.60$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $P_9 \approx 0.73$ (raised from $p=0.60$)</div>
+<div class="math-row">Measured: collective accuracy $P_{\text{group}} > p_{\text{individual}}$ (diversity condition)</div>
+<div class="math-row">Inequality direction matches</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The inequality that integration surpasses the individual closes, but the individual accuracy $p$ and observer independence are external assumptions, so the final step of the forward chain does not close.</p>
+<p>That many ordinary Compares beat one genius Compare comes not from accuracy but from independence and number.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h826.html">H-826</a> (emergence). <a href="h835.html">H-835</a> (consciousness). <a href="h839.html">H-839</a> (game theory)</p><p>This card can be re-used as input for the following cards: <a href="h826.html">H-826</a>, <a href="h835.html">H-835</a>, <a href="h839.html">H-839</a></p>
+<p>Re-injection path: <a href="h826.html">H-826</a>, <a href="h835.html">H-835</a>, <a href="h839.html">H-839</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

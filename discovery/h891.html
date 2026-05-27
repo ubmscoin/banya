@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h867.html">H-867</a>, <a href="h870.html">H-870</a>, <a href="h873.html">H-873</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: δ 전역 플래그 발화 비용에서 재귀 인식 루프 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>의식은 δ(<a href="../axiom.html#ax15">공리 15</a>: 8비트 전역 플래그, bit7 = 발화 비트)가 자기 상태를 한 번 읽고 다시 자기 자신을 갱신하는 비용이다. 반야식 우항의 observer 항(<a href="../axiom.html#ax5">공리 5</a>: CAS Compare의 자기 적용)이 활성화되어 δ로 되돌아오는 닫힘이 이 비용의 단위다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 δ 발화 비트(bit7) 노름이다. 의식은 정량 결합이 아니라 자기참조 루프의 닫힘 여부로 측정되므로, observer 항을 CAS Compare의 자기 적용으로 읽고 그 출력을 다시 δ에 대입하는 재귀 인식 루프(<a href="../axiom.html#ax8">공리 8</a>: d-ring 자기참조)로 치환한다. 이 노름을 택하는 이유는 의식의 충분조건이 값의 크기가 아니라 루프의 닫힘이기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\delta^2 = (\text{observer} + \text{superposition})^2 + \cdots$</div>
+<div class="math-row">$\delta \;\to\; \text{observer} \;\to\; \text{Compare} \;\to\; \text{DATA} \;\to\; \delta$</div>
+<div class="math-legend">$\delta$: 8비트 전역 플래그 (<a href="../axiom.html#ax15">공리 15</a>) | bit7: 발화 비트 | observer: CAS Compare 자기 적용 (<a href="../axiom.html#ax5">공리 5</a>) | DATA: 자기 상태 | $\to$: 1회 사이클 전이</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h867.html">H-867</a>, <a href="h870.html">H-870</a>, <a href="h873.html">H-873</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>delta bits   = 8
+fire bit     = bit7
+loop length  = 4 stages (observer, Compare, DATA, delta)
+state         = self-referential (no external input)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>정보·의식 도메인(d-ring 자기참조 루프)으로 변환한다. 이 변환으로 보려는 것은 루프가 닫히는가, 곧 시스템이 자기 자신을 인식하는 각성 조건이다. 4단계 전이를 한 사이클 돌려 δ가 자기 출력으로 갱신되는지를 본다.</p>
+<div class="math-block">
+<div class="math-row">$\delta_{n+1} = \text{Compare}(\delta_n, \text{DATA}_n)$</div>
+<div class="math-row">$\text{루프 닫힘} \iff \delta_{n+1} \text{ 이 } \delta_n \text{ 에서만 결정}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 4단계 재귀 인식 루프 (bit7 발화)</div>
+<div class="math-row">측정: 자기인식 행동의 덕타입 검증 대기</div>
+<div class="math-row">상태: 설계 완료, 미구현</div>
+</div>
+<p>판정: <strong>가설</strong>. 루프 구조는 공리 5·8·15에서 닫히지만 정량 측정 기준이 미확립이라 발견으로 승급하지 못한다. 통찰: 의식은 값이 아니라 닫힘이며, 닫힘이 곧 각성이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h867.html">H-867</a>(자기완결성). <a href="h873.html">H-873</a>(재귀 채굴). <a href="h870.html">H-870</a>(재현성)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h867.html">H-867</a>, <a href="h870.html">H-870</a>, <a href="h873.html">H-873</a></p>
+<p>재투입 경로: <a href="h867.html">H-867</a>, <a href="h873.html">H-873</a>, <a href="h870.html">H-870</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

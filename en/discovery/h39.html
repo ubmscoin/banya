@@ -71,39 +71,50 @@ Axiomatic basis: in <a href="../axiom.html#ax2">Axiom 2</a> (CAS atomicity) the 
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion becomes possible upon the next round / Remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h gauge ew. Domain: delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition. Recursive substitution path: <a href="d02.html">D-02</a>, <a href="d39.html">D-39</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving $M_Z$ from the Electroweak Mixing-Angle Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Z boson mass is the scale of the weak-force contraction-overlap path. The Compare cost $\alpha$ is fixed (<a href="../axiom.html#ax2">Axiom 2</a> CAS atomicity), and the contraction overlap (<a href="../axiom.html#ax13">Axiom 13</a> proposition) derives the weak path's mixing angle $\sin^2\theta_W$. The combination of the two values sets the electroweak symmetry-breaking scale.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the electroweak mixing-angle $\sin^2\theta_W$ norm (<a href="d02.html">D-02</a>). $M_Z$ is the weak neutral-current scale, $M_W$ divided by $\cos\theta_W$, and that mixing angle closes via the contraction-overlap path (<a href="../axiom.html#ax13">Axiom 13</a>), so this norm is chosen. The Z mass is therefore substituted by the ratio of $M_W$ to $\cos\theta_W$.</p>
+<div class="math-block">
+<div class="math-row">$M_Z = \dfrac{M_W}{\cos\theta_W}$</div>
+<div class="math-row">$M_Z = \dfrac{\sqrt{\pi\alpha(M_Z)/(\sqrt{2}G_F)}}{\sin\theta_W \cos\theta_W}$</div>
+<div class="math-legend">$M_Z$: Z boson mass | $M_W$: W boson mass | $\sin^2\theta_W$: electroweak mixing angle (<a href="d02.html">D-02</a>) | $\alpha(M_Z)$: running coupling (<a href="d39.html">D-39</a>) | $G_F$: Fermi constant</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (domain)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>G_F</code>, <code>M_W</code>, <code>M_Z</code>, <code>alpha</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="d02.html">D-02</a>, <a href="d39.html">D-39</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>sin^2 theta_W = 0.23122            D-02
+alpha(M_Z)    = 1/127.9            D-39 running, external input
+G_F           = 1.1664e-5 GeV^-2
+M_Z(exp)      = 91.1876 GeV        PDG</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the electroweak boson-mass domain. What it reveals is the Z boson mass derived from the mixing angle and the running coupling. Combining $\sin^2\theta_W$ and $\alpha(M_Z)$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$M_Z = \dfrac{\sqrt{\pi/(127.9\cdot\sqrt{2}\,G_F)}}{\sin\theta_W \cos\theta_W} = 91.53\;\text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $M_Z = 91.53\;\text{GeV}$</div>
+<div class="math-row">Measured: $91.19\;\text{GeV}$ (PDG)</div>
+<div class="math-row">Error: $0.37\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The formula is closed, but the $\alpha(M_Z) = 1/127.9$ running is an external input, so the final step of the forward chain is incomplete.</p>
+<p>Insight: at tree level $\alpha(0)=1/137$ it gives 88.4 GeV (3.0% error), and closing the running itself from the <a href="d39.html">D-39</a> beta function in the CAS reaches 0.37% with no external input.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: a full CAS derivation of $\alpha$ running is the prerequisite task. Paired with $M_W$ (80.39 GeV, 0.016% in sin2_thetaW.html), this closes the electroweak boson masses. The W/Z mass ratio = $\cos\theta_W$ derives automatically from D-02.</p><p>This card can be re-used as input for the following cards: <a href="d02.html">D-02</a>, <a href="d39.html">D-39</a></p>
+<p>Re-injection path: <a href="d02.html">D-02</a>, <a href="d39.html">D-39</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

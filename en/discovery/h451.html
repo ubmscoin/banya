@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible at next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h448.html">H-448</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Teleportation Fidelity from the Compare 2-bit Result Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Teleportation is the cost of delivering, over a classical channel, the 2-bit result produced by Alice's Bell measurement (a 2-qubit Compare, <a href="../axiom.html#ax7">Axiom 7</a>) so that Bob can apply a conditional Swap. The δ projection (<a href="../axiom.html#ax15">Axiom 15</a>) supplies the correlation, but cost propagation (<a href="../axiom.html#ax11">Axiom 11</a>) is light-speed bounded, so this cost is read through the superposition term of the Banya formula.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Compare 2-bit-result norm. A Bell measurement selects one of four outcomes, so 2 bits (<a href="../axiom.html#ax7">Axiom 7</a> Compare branching) is exactly that information content. (b) This norm is chosen because teleportation success is decided solely by whether Bob's Swap matches Alice's Compare result, and that matching probability is the fidelity $F$. The fidelity is therefore substituted by the probability of exact transfer of the Compare result.</p>
+<div class="math-block">
+<div class="math-row">$F = \langle\psi|\rho_B|\psi\rangle$</div>
+<div class="math-row">$F = \dfrac{1}{2^{n}+1}\sum_{k}\langle\psi|U_k\,\rho_B\,U_k^\dagger|\psi\rangle$</div>
+<div class="math-legend">$F$: fidelity | $\rho_B$: Bob output state | $n$: Compare-result bit count $= 2$ | $U_k$: conditional Swap addressed by the 2 bits | $2/3$: no-classical-channel bound</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h448.html">H-448</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n        = 2                  Compare 2 bits (Axiom 7)
+2^n      = 4                  number of Bell states
+F_class  = 2/3 = 0.6667       no-classical-channel bound
+F_exp    = 0.90               Bouwmeester 1997</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum-information fidelity domain. (b) What it reveals is whether, once the classical 2 bits are delivered, the fidelity exceeds the classical bound $F=2/3$. In an ideal channel where $U_k$ matches the Compare result exactly, $F=1$; without a channel, $k$ is unknown and the Swap becomes random, dropping to $F=2/3$.</p>
+<div class="math-block">
+<div class="math-row">$F_\text{ideal} = 1, \qquad F_\text{no-channel} = \dfrac{2}{3} = 0.667$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $F = 1$ (ideal), $F = 2/3$ without channel</div>
+<div class="math-row">Measured: $F = 0.90$ (Bouwmeester 1997)</div>
+<div class="math-row">Exceeds the classical bound $2/3$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure by which the fidelity exceeds the classical bound is closed, but the gap between the experimental $F=0.90$ and the ideal $F=1$ is not yet closed by a quantitative model of channel loss. Teleportation is not state transmission but a conditional Swap instruction for the δ projection, and without the classical 2 bits superluminal communication is impossible.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: consumes the resource from <a href="h448.html">H-448</a> (entanglement); builds on Bell measurement of <a href="h449.html">H-449</a> (Bell inequality); conditional Swap into <a href="h452.html">H-452</a> (quantum eraser).</p><p>This card can be re-used as input for the following cards: <a href="h448.html">H-448</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
+<p>Re-injection path: <a href="h448.html">H-448</a>, <a href="h449.html">H-449</a>, <a href="h452.html">H-452</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h958.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h958.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h958.html">H-958</a>. Anomalous Diffusion = Time-fractional Diffusion $\partial^\beta/\partial t^\beta$ (memory = OPERATOR superposition)</h1><div class="box-finding">
@@ -52,7 +52,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p class="finding-precision">Structural description — subdiffusion β<1 = non-local memory = OPERATOR superposition (Axiom 13). MSD ∝ t^β form agreement</p>
 <p>Normal diffusion has mean-square displacement $\text{MSD}\propto t$ (β=1), but in porous, cytoplasmic and disordered media subdiffusion (β<1) and superdiffusion are observed, described by the time-fractional derivative $\partial^\beta/\partial t^\beta$. Banya: fractional order = orthogonal-rotation phase (<a href="h953.html">H-953</a>); non-integer β = a position between integer-derivative categories.</p>
 <p>What the memory effect (the entire past influencing the present) is: $\partial^\beta/\partial t^\beta$ is non-local, which is the time-axis projection of the superposition in which OPERATOR holds all states at once (<a href="../axiom.html#ax13">Axiom 13</a>). Integer derivative = local (one point), fractional = non-local (accumulated past).</p>
-<p>Quantitatively unfinished: β is medium-dependent (not an axiom integer) → hypothesis. The fractional generalization of reaction-diffusion (<a href="h836.html">H-836</a>) and expressing a specific β as a DOF ratio are remaining tasks.</p>
+<p>Quantitatively unfinished: β is medium-dependent (not an axiom integer) ==> hypothesis. The fractional generalization of reaction-diffusion (<a href="h836.html">H-836</a>) and expressing a specific β as a DOF ratio are remaining tasks.</p>
 <p><strong>Re-substitution purpose:</strong> Re-substitution purpose: CTRW, reaction-diffusion (<a href="h836.html">H-836</a>), intracellular transport, fBm/Hurst exponent.</p>
 <p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> Held as hypothesis (Class III). The structure (anomalous diffusion = projection of OPERATOR superposition as non-local memory) is closed, but deriving the order β from axiom DOF ratios for a specific medium is unfinished. Remaining tasks: (1) axiomatic derivation of β, (2) fractional generalization of reaction-diffusion (<a href="h836.html">H-836</a>), (3) re-inject <a href="h953.html">H-953</a>.</p>
 </div>
@@ -62,39 +62,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Structural agreement confirmed (non-local memory = OPERATOR superposition, MSD ∝ t^β) / axiomatic derivation of β unfinished / Round 1 / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; the Banya formula’s own structure, primary-integer (4,3) combination. Recursive substitution path: <a href="h953.html">H-953</a>, <a href="h836.html">H-836</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Anomalous Diffusion Exponent β from Time-axis Fractional Rotation (H-953)</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Diffusion is the CAS cost the time-axis derivative pays to advance the medium one step. An integer time derivative is the local cost referencing a single point, but the memory effect of a disordered medium is the non-local cost where the entire past affects the present — the time-axis projection of the superposition in which the OPERATOR holds all states at once (<a href="../axiom.html#ax13">Axiom 13</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; the Banya formula’s own structure, primary-integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the time-axis fractional-rotation norm. The memory effect is non-local transport, and that non-locality is the projection of OPERATOR superposition (<a href="../axiom.html#ax13">Axiom 13</a>) onto the time-axis fractional order $\beta$, with the fractional order closing as the orthogonal-rotation phase $\beta\pi/2$ (<a href="h953.html">H-953</a>), so this norm is chosen. The time derivative of the standard integer diffusion equation is substituted by the fractional derivative $\partial^\beta/\partial t^\beta$.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\partial u}{\partial t} = K\,\Delta u$</div>
+<div class="math-row">$\dfrac{\partial^\beta u}{\partial t^\beta} = K\,\Delta u,\quad 0 \lt \beta \lt 1$</div>
+<div class="math-legend">$\beta$: time fractional order ($0 \lt \beta \lt 1$ = subdiffusion) | $K$: diffusion coefficient | $\Delta$: spatial Laplacian | $\partial^\beta/\partial t^\beta$: non-local (past-accumulating) = projection of OPERATOR superposition (<a href="../axiom.html#ax13">Axiom 13</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> β (orthogonal-rotation phase, 0&lt;β&lt;1)</p>
-<p><strong>Physical Constant Inputs:</strong> none (directly from axiom structure)</p>
-<p><strong>Library Re-substitution:</strong> <a href="h953.html">H-953</a>, <a href="h836.html">H-836</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>beta = 1      normal diffusion (integer, local)
+beta < 1      subdiffusion (non-local, past-accumulating)
+beta > 1      superdiffusion
+beta(axiom)   = undetermined           medium-dependent, DOF-ratio derivation incomplete</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the disordered/porous/cytoplasmic-medium diffusion domain. What it reveals is the time power exponent of the mean-square displacement — the $\beta$ of $\text{MSD}\propto t^{\beta}$. The step deriving the $\beta$ of a specific medium as an axiomatic DOF ratio does not close.</p>
+<div class="math-block">
+<div class="math-row">$\text{MSD} \propto t^{\beta}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: non-local memory = time-axis fractional projection of OPERATOR superposition</div>
+<div class="math-row">Measured: $\text{MSD}\propto t^{\beta}$ form matches, $\beta$ value is medium-dependent</div>
+<div class="math-row">Status: structure closed, axiomatic derivation of $\beta$ incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure that the non-local memory of anomalous diffusion is a projection of OPERATOR superposition closes, but the step deriving the order $\beta$ as an axiomatic DOF ratio for a specific medium is incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: CTRW, reaction-diffusion (<a href="h836.html">H-836</a>), intracellular transport, fBm/Hurst exponent.</p>
+<p>Re-injection path: <a href="h953.html">H-953</a>, <a href="h836.html">H-836</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

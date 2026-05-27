@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h gauge ew. 도메인: delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배. 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 접근 경로 비에서 M_W/M_Z 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>W·Z 보손의 쥠은 쓰기 누적 횟수에 비례한다(<a href="../axiom.html#ax6">공리 6</a>). 쓰기는 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>)이 여는 접근 경로 위에서 일어나므로, 두 보손의 질량비를 각자가 쓸 수 있는 접근 경로 수의 비로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 접근 경로 비 노름 $23/30$이다. 총 접근 경로가 $N=30$이고 단일 자유도 접근이 $C(7,1)=7$개인데, Z는 전체 30 경로에 쓰고 W는 그중 단일 자유도 7개를 뺀 교차 접근 23개에만 쓰기 때문에 이 노름을 택한다. 쥠이 쓰기 누적의 제곱근 척도로 들어오므로 질량비는 $\sqrt{23/30}$이다.</p>
+<div class="math-block">
+<div class="math-row">$M_W/M_Z=\cos\theta_W$</div>
+<div class="math-row">$M_W/M_Z=\sqrt{23/30}$</div>
+<div class="math-legend">$M_W,M_Z$: W·Z 보손 쥠 | $30$: 총 접근 경로 $N$ | $7=C(7,1)$: 단일 자유도 접근 | $23=30-7$: W 교차 접근 | $\theta_W$: 와인버그 각</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (도메인)</p>
-<p><strong>물리 상수 입력:</strong> <code>M_W</code>, <code>M_Z</code>, <code>alpha</code>, <code>pi</code>, <code>sin^2theta_W</code>, <code>theta</code></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N             = 30
+7             = C(7,1)
+23            = 30 - 7
+23/30         = 0.7667
+M_W/M_Z       = 80.379/91.188 = 0.88148    PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전약 결합 도메인으로 변환한다. 이 변환으로 보려는 것은 W·Z 질량비, 곧 와인버그 각 $\cos\theta_W$다. 접근 경로 분율 $23/30$의 제곱근을 취해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$M_W/M_Z=\sqrt{23/30}=\sqrt{0.7667}=0.87560$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $M_W/M_Z=0.87560$</div>
+<div class="math-row">측정값: $0.88148$ (PDG 2024)</div>
+<div class="math-row">오차: $0.7\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. $0.87560$은 트리 레벨 값으로 $0.7\%$ 안에 들지만, $\alpha/(4\pi)$ 1루프 보정 도입이 미완이다. 동시에 $\sin^2\theta_W=1-23/30=7/30$이 부산물로 떨어지며 정밀값은 <a href="d02.html">D-02</a>에서 따로 도출된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

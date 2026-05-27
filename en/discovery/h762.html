@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h762.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h762.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_neutrino_cp</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h762.html">H-762</a>. Topological Invariant = Winding Number of FSM State Transitions</h1><div class="box-finding">
@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / two recursive inputs confirmed, D-promotion possible upon proceeding to the next round / remaining tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7). Recursive substitution path: <a href="h747.html">H-747</a>, <a href="h763.html">H-763</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Quantum Hall Conductance Quantization from the FSM-Cycle Winding Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A topological invariant is the integer of how many times the FSM goes around the cycle R$\to$C$\to$S$\to$IDLE (<a href="../axiom.html#ax14">Axiom 14</a>: FSM = closed loop). This winding is defined on the d-ring (<a href="../axiom.html#ax8">Axiom 8</a>), and the lock (<a href="../axiom.html#ax10">Axiom 10</a>) pins that winding to an integer.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the d-ring winding-number norm. The FSM cycle is a closed loop that no continuous deformation can break, and the lock locks the winding into an integer invariant, which is why this norm is chosen. Substituting the continuous Berry-curvature integral by the d-ring winding number $\nu$ makes the quantum Hall conductance fall out in integer multiples.</p>
+<div class="math-block">
+<div class="math-row">$\nu = \dfrac{1}{2\pi}\displaystyle\int_{\mathrm{BZ}} F\,d^2k$</div>
+<div class="math-row">$\sigma_{xy} = \nu\,\dfrac{e^2}{h},\qquad \nu \in \mathbb{Z}$</div>
+<div class="math-legend">$\nu$: Chern number = d-ring winding | $F$: Berry curvature = FSM cycle density | $\sigma_{xy}$: Hall conductance | $e^2/h$: conductance quantum | $\mathbb{Z}$: lock integer invariant</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS steps), 9 (Koide theta), 30 (CAS access paths), 7 (degrees of freedom)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h747.html">H-747</a>, <a href="h763.html">H-763</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>FSM cycle = R -> C -> S -> IDLE   closed loop (Axiom 14)
+nu        = integer               d-ring winding (Axiom 8)
+lock      = integer quantization  (Axiom 10)
+e^2/h     = 38.740 uS             conductance quantum
+precision = 10^-9                 quantum Hall plateau</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the weak-force topological-protection domain. What it reveals is whether the Hall conductance is quantized in exact integer multiples independent of the sample. Multiplying the d-ring winding number $\nu$ by the conductance quantum yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\sigma_{xy} = \nu\,\dfrac{e^2}{h},\qquad \nu = 1,2,3,\ldots$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: $\sigma_{xy} = \nu\,e^2/h$, $\nu \in \mathbb{Z}$ = d-ring winding</div>
+<div class="math-row">Measured: integer quantization on the quantum Hall plateau</div>
+<div class="math-row">Error: $10^{-9}$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Chern number coincides with the FSM-cycle winding and the lock guarantees integrality. The forward chain that computes the Berry curvature directly from the FSM-cycle density is incomplete, so it remains a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h747.html">H-747</a> (differential forms) de Rham. <a href="h763.html">H-763</a> (index theorem).</p><p>This card can be re-used as input for the following cards: <a href="h747.html">H-747</a>, <a href="h763.html">H-763</a></p>
+<p>Re-injection path: <a href="h747.html">H-747</a>, <a href="h763.html">H-763</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

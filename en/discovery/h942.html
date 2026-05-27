@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h942.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h942.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h942.html">H-942</a>. Half-Integer Spin = Quaternion 720-Degree Rotation Identity</h1><div class="box-finding">
@@ -69,39 +69,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D-Promotion possible upon proceeding to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; the Banya formula's own structure, primary integer (4,3) combination. Recursive-substitution path: <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a>, <a href="p03.html">P-03</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving half-integer spin $R(720^\circ)=+1$ from the quaternion two-sided product norm</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Spin is read through the rotation cost of the spatial 3-axis orthogonal subframe. In the quaternion proposition of <a href="../axiom.html#ax1">Axiom 1</a>, a 3-axis orthogonal group is represented by unit quaternions, and rotation acts as the two-sided product $q v q^{-1}$ of a unit quaternion.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; the Banya formula's own structure, primary integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm substituted is the quaternion two-sided product norm — a unit quaternion $q$ acting on the state as $q v q^{-1}$. (b) This norm is chosen because the fermion is represented by the spatial 3-axis orthogonal group (unit quaternions), and the action of a rotation angle $\theta$ appears as $\theta/2$ in the representation space. The phase $(-1)^n$ of the unit-circle form proposition of <a href="../axiom.html#ax1">Axiom 1</a> extends to unit-sphere rotation, so the phase flips after one full turn of $360^\circ$.</p>
+<div class="math-block">
+<div class="math-row">$q = e^{\hat{n}\theta/2}, \quad R(\theta)\,v = q\,v\,q^{-1}$</div>
+<div class="math-row">$R(360^\circ)\,|\psi\rangle = -|\psi\rangle, \quad R(720^\circ)\,|\psi\rangle = +|\psi\rangle$</div>
+<div class="math-legend">$q$: unit quaternion (<a href="../axiom.html#ax1">Axiom 1</a> quaternion proposition) | $\hat{n}$: rotation-axis unit pure-imaginary part | $\theta/2$: half-angle of the two-sided product | $(-1)^n$: unit-circle phase (<a href="../axiom.html#ax1">Axiom 1</a> proposition, <a href="../axiom.html#ax4">Axiom 4</a> norm reading)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full degree-of-freedom list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a>, <a href="p03.html">P-03</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>theta = 360 deg  -> half-angle 180 deg -> phase (-1)^1 = -1
+theta = 720 deg  -> half-angle 360 deg -> phase (-1)^2 = +1
+s     = 1/2 (fermion, quaternion representation)
+s     = 0,1 (boson, vector/scalar representation)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the spatial rotation-group domain ($SU(2)$ double cover). (b) What it reveals is why a fermion state is not the identity under one full turn. The half-angle of the two-sided product sends a $360^\circ$ rotation to $180^\circ$ in the representation space, giving phase $-1$, and only at two turns does it return to the $+1$ identity.</p>
+<div class="math-block">
+<div class="math-row">$R(360^\circ)\,|\psi_{\text{fermion}}\rangle = (-1)^1\,|\psi_{\text{fermion}}\rangle = -|\psi_{\text{fermion}}\rangle$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $R(720^\circ) = +1$ identity, spin $1/2$ (half-integer)</div>
+<div class="math-row">Measured: Werner 1985 neutron interferometry directly confirms the $720^\circ$ identity</div>
+<div class="math-row">Match: qualitatively 100% (electron $g\approx 2$, Stern-Gerlach)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The phase $(-1)^{2s}$ follows directly from the quaternion two-sided product, but the final step of closing spin $1/2$ itself with a quantitative formula remains incomplete. It is co-verified with the absence of a 4th-generation fermion (<a href="p03.html">P-03</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h944.html">H-944</a> (spin-statistics), <a href="h948.html">H-948</a> (Pauli sigma matrices), Dirac equation derivation. Reinforces <a href="p03.html">P-03</a> (absence of 4th generation).</p><p>This card can be re-used as input for the following cards: <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a>, <a href="p03.html">P-03</a></p>
+<p>Re-injection path: <a href="p03.html">P-03</a>, <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

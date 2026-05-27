@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="h517.html">H-517</a>, <a href="h521.html">H-521</a>, <a href="h522.html">H-522</a>, <a href="h540.html">H-540</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 보존에서 중력-열역학 대응 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>중력은 매 틱 누적되는 CAS 비가역 비용이 열로 흩어지는 과정이다. 비용 보존(<a href="../axiom.html#ax4">공리 4</a>: 비용 = + 순서 횡단)이 열역학 제1법칙 $\delta Q = T\,dS$의 시공간 판본이고, DATA 이산성(<a href="../axiom.html#ax3">공리 3</a>)이 엔트로피를 비트 수로 양자화한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 비용 보존 노름이다. 매 틱 갱신이 비가역(<a href="../axiom.html#ax8">공리 8</a>: 열역학 제2법칙)이고 그 비용 증분이 면적 비트의 엔트로피 증분과 온도의 곱으로 닫히기 때문에 이 노름을 택한다. 따라서 장방정식의 미분 형식을 비용 증분 $\delta Q$와 엔트로피·온도 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$G_{\mu\nu} + \Lambda g_{\mu\nu} = \dfrac{8\pi G}{c^4}\,T_{\mu\nu}$</div>
+<div class="math-row">$\delta Q = T_U\,dS,\qquad T_U = \dfrac{\hbar a}{2\pi c\,k_B}$</div>
+<div class="math-legend">$\delta Q$: CAS 비용 증분 | $T_U$: 언루 온도 | $dS$: 면적 비트 엔트로피 증분 (<a href="h522.html">H-522</a>) | $a$: 가속 | $k_B$: 볼츠만 상수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h517.html">H-517</a>, <a href="h521.html">H-521</a>, <a href="h522.html">H-522</a>, <a href="h540.html">H-540</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar  = 1.054571817e-34 J s
+k_B   = 1.380649e-23 J/K
+c     = 2.99792458e8 m/s
+a = g = 9.80665 m/s^2             지표 가속
+T_U   = 4.0e-20 K                 a=g 언루 온도</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주론 RLU 비용 도메인으로 변환한다. 이 변환으로 보려는 것은 비용 증분 $\delta Q = T_U\,dS$를 모든 국소 라인델 지평에 부과했을 때 닫히는 장방정식, 곧 중력의 열역학적 정체다. 야콥슨 1995 절차로 $\delta Q = T_U\,dS$가 아인슈타인 방정식을 강제한다.</p>
+<div class="math-block">
+<div class="math-row">$T_U = \dfrac{\hbar\,(9.80665)}{2\pi\,(2.99792458\times10^8)\,(1.380649\times10^{-23})} = 4.0\times10^{-20}\ \text{K}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\delta Q = T_U\,dS$에서 $G_{\mu\nu}+\Lambda g_{\mu\nu}=\tfrac{8\pi G}{c^4}T_{\mu\nu}$</div>
+<div class="math-row">측정: 아인슈타인 방정식 (GR 정확 재현, Jacobson 1995)</div>
+<div class="math-row">오차: $0.0\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 비용 보존 노름이 제1법칙을 닫아 장방정식을 재현하나, 베를린데 엔트로피 힘의 MOND 연결이 미확인이라 forward chain 마지막 단계가 열려 있다.</p>
+<p>통찰: 중력은 근본 힘이 아니라 CAS 비용 누적의 통계 효과다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h517.html">H-517</a>(중력) 열역학적 기원. <a href="h522.html">H-522</a>(BH 엔트로피) 제1법칙. <a href="h540.html">H-540</a>(드 시터) 열적 성격.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h517.html">H-517</a>, <a href="h521.html">H-521</a>, <a href="h522.html">H-522</a>, <a href="h540.html">H-540</a></p>
+<p>재투입 경로: <a href="h517.html">H-517</a>, <a href="h522.html">H-522</a>, <a href="h521.html">H-521</a>, <a href="h540.html">H-540</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

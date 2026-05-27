@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h894.html">H-894</a>, <a href="h902.html">H-902</a>, <a href="h918.html">H-918</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 유일 연산자에서 프로세서 CAS 보편성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>반야식에서 상태를 갱신하는 연산은 CAS(Compare-And-Swap) 하나뿐이다(<a href="../axiom.html#ax2">공리 2</a> 유일 연산). 우변 괄호의 비교(Compare)와 교체(Swap)가 한 덩어리로 원자성을 이룬다. 이 원자 연산이 자연에만 있는지, 계산 일반에 보편적인지를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS 원자성 노름이다(<a href="../axiom.html#ax2">공리 2</a> 유일 연산). (b) 이 노름을 택하는 이유는 비교-교체가 분리 불가능한 한 단계라야 동시 갱신의 정합이 보장되기 때문이다. 이 원자성 요구는 자연에 국한되지 않고 모든 병렬 계산에 동일하게 걸린다. 따라서 물리 CAS를 하드웨어 CAS 명령어로 치환해 동형을 본다.</p>
+<div class="math-block">
+<div class="math-row">$\text{Banya update} = \text{CAS}(\text{compare}, \text{swap})$</div>
+<div class="math-row">$\forall\, \text{CPU} : \exists\, \text{CAS instruction} \;\Longleftrightarrow\; \text{atomicity required}$</div>
+<div class="math-legend">$\text{CAS}$: Compare-And-Swap (<a href="../axiom.html#ax2">공리 2</a> 유일 연산) | $\forall\,\text{CPU}$: 모든 현대 프로세서 | $\exists$: CAS 명령어 존재 | $\Longleftrightarrow$: 동형 (동일 아님)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h894.html">H-894</a>, <a href="h902.html">H-902</a>, <a href="h918.html">H-918</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>x86    : CMPXCHG            도입 1989 (i486)
+ARM    : LDREX/STREX        CAS 등가
+RISC-V : LR/SC              CAS 등가
+coverage = 100%            현대 CPU 전체</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 계산·하드웨어 도메인이다. (b) 이 변환으로 보려는 것은 CAS가 계산의 보편 원시 연산인가다. 세 주요 ISA(x86·ARM·RISC-V)가 모두 CAS 등가 명령을 하드웨어로 두므로 보편성 비율이 100%로 닫힌다. 락프리 자료구조·뮤텍스·원자적 카운터가 모두 이 한 연산 위에 선다.</p>
+<div class="math-block">
+<div class="math-row">$\text{coverage} = 100\% \;\Longrightarrow\; \text{CAS is the universal computational primitive}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 물리 CAS와 하드웨어 CAS는 동형, 보편 비율 100%</div>
+<div class="math-row">측정: 물리 CAS와 하드웨어 CAS의 형식적 동형 증명 대기</div>
+<div class="math-row">등급: B</div>
+</div>
+<p>판정: <strong>가설</strong>. 모든 현대 프로세서가 CAS 명령을 두어 보편성이 공학적으로 닫히나, 물리 CAS와 하드웨어 CAS의 형식적 동형이 엄밀 증명되지 않아 forward chain의 마지막 단계가 열려 있다.</p>
+<p>통찰: 반야의 유일 연산은 추상이 아니다 — 1989년 i486 이래 모든 CPU가 이미 CAS를 실리콘으로 실행한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h918.html">H-918</a>(<a href="../axiom.html#ax2">공리 2</a>). <a href="h894.html">H-894</a>(4력). <a href="h902.html">H-902</a>(정보-에너지)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h894.html">H-894</a>, <a href="h902.html">H-902</a>, <a href="h918.html">H-918</a></p>
+<p>재투입 경로: <a href="h918.html">H-918</a>, <a href="h894.html">H-894</a>, <a href="h902.html">H-902</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

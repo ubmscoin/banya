@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Swap 비용에서 2니블 직교 해제 관측 비용 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>관측 비용은 두 니블의 직교(얽힘) 상태를 풀 때 Swap이 치르는 비용이다. Swap+1이 상태 변경의 최소 단위(<a href="../axiom.html#ax2">공리 2</a>)이고, 도메인과 연산자 니블의 쥠 동기를 푸는 비가역 비용(<a href="../axiom.html#ax4">공리 4</a>)으로 이 관측 에너지를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Swap+1 비용 노름이다. 직교 해제가 링 이음새의 이중 잠금을 단일 잠금으로 되돌리는 Swap 연쇄이고, 그 횟수 $n_{Swap}$이 방출 에너지를 정하기 때문에 이 노름을 택한다. 따라서 관측 에너지를 Swap 1회 비용 $\hbar/t_P=E_P$에 횟수를 곱한 값으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$E_{1} = \hbar / t_P = E_P$</div>
+<div class="math-row">$E = E_P \times n_{Swap} = \hbar \times n_{Swap} / t_P$</div>
+<div class="math-legend">$E$: 관측 비용 | $E_P$: 1회 Swap 비용 (플랑크 에너지) | $t_P$: 플랑크 시간 | $n_{Swap}$: 직교 해제 Swap 횟수 | $\hbar$: 환산 작용 양자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <code>ℏ</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar  = 1.054571817e-34 J*s    CODATA 2018
+t_P   = 5.391247e-44 s          플랑크 시간
+E_P   = hbar / t_P = 1.956e9 J  1회 Swap 비용</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>양자 측정 도메인(Compare 분기 후 Swap 쓰기)으로 변환한다. 이 변환으로 보려는 것은 직교 1쌍을 해제할 때 불가피하게 방출되는 최소 에너지, 곧 $n_{Swap}=1$의 관측 비용이다. 1회 Swap 비용에 횟수를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$E(n_{Swap}{=}1) = E_P = 1.956\times10^{9}\ \text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출식: $E = E_P \times n_{Swap}$, 하한 $n_{Swap}=1$</div>
+<div class="math-row">측정: 측정 에너지 하한 (란다우어 한계 $k_B T\ln 2$)</div>
+<div class="math-row">정합: 구조 일치, 실측 시스템 대조 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 관측 비용을 Swap 횟수로 정량화하는 구조는 확립했으나, $E=E_P\,n_{Swap}$이 실측 양자 측정 에너지·란다우어 한계와 정합하는지 대조 라운드가 미진행이다.</p>
+<p>통찰: 측정의 불가역성이 Compare 분기 뒤 Swap 쓰기라는 단일 비가역 연산으로 환원된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
+<p>재투입 경로: <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

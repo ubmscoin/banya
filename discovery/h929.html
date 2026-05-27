@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h901.html">H-901</a>, <a href="h919.html">H-919</a>, <a href="h923.html">H-923</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 인덱싱 비용에서 양자-고전 연결의 필요충분성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양자 상태에 고전 라벨을 붙이는 것은 상태 $|\psi\rangle$을 8비트 인덱스 공간(<a href="../axiom.html#ax5">공리 5</a> 직렬화)으로 사상하는 비용이다(<a href="../axiom.html#ax13">공리 13</a> 인덱싱). 측정 장치가 읽는 값은 이 인덱스이며, 반야식이 사상 비용을 정의한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 양자 상태를 고전 라벨로 보내는 인덱싱 노름 $\text{Index}(|\psi\rangle)$이다. (b) 인덱스가 없으면 측정 결과를 고전 값으로 변환할 수 없고(필요성), 인덱스가 있으면 모든 측정 결과가 기록되기 때문에(충분성) 이 노름을 택한다. 인덱스가 선택하는 우선 기저가 포인터 기저이고, 그 환경 복제가 양자 다윈이즘이다. 따라서 양자-고전 연결을 인덱싱 사상으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$$\text{Index} : |\psi\rangle \to x \in \{0,\dots,255\}$$</div>
+<div class="math-row">$$\text{관측 가능량} \;\equiv\; \text{인덱싱 가능한 양} \;\leftrightarrow\; \text{인덱싱 필요충분}$$</div>
+<div class="math-legend">$|\psi\rangle$: 양자 상태 | $x$: 고전 라벨 | $\{0,\dots,255\}$: 8비트 인덱스 (<a href="../axiom.html#ax5">공리 5</a>) | 포인터 기저: 인덱스가 고르는 우선 기저 | $\leftrightarrow$: 필요충분</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h901.html">H-901</a>, <a href="h919.html">H-919</a>, <a href="h923.html">H-923</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>인덱스 크기 = 8비트                 공리 5
+고전 라벨 수 = 2^8 = 256
+포인터 기저 = 인덱스가 고르는 우선 기저
+양자 다윈이즘 = 인덱스의 환경 복제</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 양자 측정 도메인으로 변환한다. (b) 보려는 것은 인덱싱이 결맞음 소실(<a href="h901.html">H-901</a>)과 같은 물리 과정인지다. 결맞음 소실은 환경이 포인터 기저를 인덱스로 선택해 256개 고전 라벨 중 하나로 사영하는 과정이고, 이것이 양자에서 고전으로의 사상을 물리적으로 실행한다.</p>
+<div class="math-block">
+<div class="math-row">$$|\psi\rangle = \sum_k c_k |k\rangle \;\to\; x = \text{Index}(|k\rangle),\quad x \in \{0,\dots,255\}$$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">필요성: 인덱싱 부재 $\Rightarrow$ 양자 결과를 고전 값으로 변환 불가</div>
+<div class="math-row">충분성: 인덱싱 존재 $\Rightarrow$ 모든 측정 결과 기록 가능</div>
+<div class="math-row">검증: 포인터 기저·양자 다윈이즘이 인덱싱의 물리 과정과 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 인덱싱이 양자-고전 연결의 필요충분 조건임은 닫혔으나 인덱싱과 결맞음 소실의 형식적 동치 증명이 아직 forward chain으로 닫히지 않아 가설에 머문다.</p>
+<p>통찰: 고전 세계는 양자 상태에 붙은 8비트 인덱스이며, 결맞음 소실은 그 인덱스를 고르는 물리 과정이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h901.html">H-901</a>(양자-고전). <a href="h919.html">H-919</a>(<a href="../axiom.html#ax3">공리 3</a>). <a href="h923.html">H-923</a>(<a href="../axiom.html#ax7">공리 7</a>)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h901.html">H-901</a>, <a href="h919.html">H-919</a>, <a href="h923.html">H-923</a></p>
+<p>재투입 경로: <a href="h901.html">H-901</a>, <a href="h919.html">H-919</a>, <a href="h923.html">H-923</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

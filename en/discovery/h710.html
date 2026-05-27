@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h710.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h710.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_electromag_qed</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h710.html">H-710</a>. Faraday Rotation = Magnetic-Field-Driven Polarization Domain-Bit Rotation</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible on the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive substitution path: <a href="h627.html">H-627</a>, <a href="h696.html">H-696</a>, <a href="h712.html">H-712</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Faraday Angle from Lock-Bit-Magnetic-Field-Driven Polarization Rotation</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Faraday rotation is the irreversible cost by which the polarization plane of a CAS cost wave propagating along a magnetic field rotates. Polarization is the domain-bit direction (<a href="h696.html">H-696</a>), magnetism is lock-bit alignment (<a href="h627.html">H-627</a>), and the lock-bit magnetic field rotates the oscillation plane of the domain bits (<a href="../axiom.html#ax2">Axiom 2</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2))</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the magneto-optic coupling norm, i.e. the Verdet constant $V$. (b) The lock-bit magnetic field gives the left- and right-circular polarizations different cost-propagation speeds (circular birefringence), and the phase difference of the two components accumulates along the path, so the rotation angle is substituted by a norm linear in the field $B$ and the path length $d$. Because the direction set by the field breaks time-reversal symmetry, the rotation is irreversible.</p>
+<div class="math-block">
+<div class="math-row">$\theta_F = V\,B\,d$</div>
+<div class="math-row">$V = \dfrac{\Delta(\text{lock-domain coupling})}{B}$</div>
+<div class="math-legend">$\theta_F$: Faraday rotation angle | $V$: Verdet constant (magneto-optic coupling) | $B$: lock-bit magnetic field | $d$: path length | irreversible: time-reversal symmetry broken</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h627.html">H-627</a>, <a href="h696.html">H-696</a>, <a href="h712.html">H-712</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>V(TGG)   = 40 rad/(T·m)          1064 nm
+V(glass) = 3 rad/(T·m)
+B        = 1 T                   example field
+d        = 0.02 m                TGG crystal length</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = ordered crossing of orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the magneto-optic domain (optical isolator). (b) What it reveals is the angle through which the polarization plane turns for a given field and path — the isolator rotation that blocks laser back-reflection. For TGG, $B=1\,\text{T}$ and $d=2\,\text{cm}$ are substituted.</p>
+<div class="math-block">
+<div class="math-row">$\theta_F = 40\times1\times0.02 = 0.8\,\text{rad} = 45.8^\circ$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\theta_F = 0.8\,\text{rad}\approx46^\circ$ (TGG, $1\,\text{T}$, $2\,\text{cm}$)</div>
+<div class="math-row">Measured: $V_{\text{TGG}}=40\,\text{rad/(T·m)}$ ($1064\,\text{nm}$), magneto-optics</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The form of the angle linear in $B$ and $d$ closes from the lock-domain coupling norm, but the last step — deriving the Verdet constant $V$ from the CAS lock-bit/domain-bit coupling — remains open, so it stops at hypothesis.</p>
+<p>Insight: the irreversibility of Faraday rotation comes from the direction set by the lock-bit magnetic field breaking time-reversal symmetry, so a round trip accumulates rather than cancels the rotation — the operating principle of the optical isolator.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h696.html">H-696</a> (polarization) irreversible rotation. <a href="h712.html">H-712</a> (magneto-optical Kerr) reflection counterpart.</p><p>This card can be re-used as input for the following cards: <a href="h627.html">H-627</a>, <a href="h696.html">H-696</a>, <a href="h712.html">H-712</a></p>
+<p>Re-injection path: <a href="h696.html">H-696</a>, <a href="h627.html">H-627</a>, <a href="h712.html">H-712</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

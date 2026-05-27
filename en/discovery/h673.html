@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h673.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h673.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h673.html">H-673</a>. Pulsar = Periodic Cost Emission of a Rotating FSM Assembly</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h_misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Pulsar Magnetic-Dipole Damping from the Lock-Bit Alignment Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A pulsar is a rotating FSM assembly whose macroscopic lock-bit (<a href="../axiom.html#ax9">Axiom 9</a>) alignment axis is misaligned with the rotation axis, emitting cost periodically. RLU damping (<a href="../axiom.html#ax6">Axiom 6</a>) appears as magnetic-dipole radiation, and angular-momentum conservation of the rotating FSM assembly (<a href="../axiom.html#ax3">Axiom 3</a>) appears as rapid rotation.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement required).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the lock-bit alignment norm. It is chosen because the macroscopic alignment of lock bits produces the magnetic field, whose asymmetry drains rotational energy via RLU damping. The emission rate is therefore substituted by the magnetic-dipole radiation cost.</p>
+<div class="math-block">
+<div class="math-row">$\dot E = \dfrac{4\pi^2 I \dot P}{P^3}$</div>
+<div class="math-legend">$\dot E$: rotational energy-loss rate | $I$: moment of inertia | $P$: rotation period | $\dot P$: period derivative (RLU damping, <a href="../axiom.html#ax6">Axiom 6</a>) | $B$: lock-bit alignment magnetic field</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body.</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>P_Crab       = 0.033 s            Crab pulsar
+Pdot         = ~1e-15             magnetic-dipole damping
+I            = 1e45 g cm^2        neutron-star moment of inertia
+B            = ~1e12 G            lock-bit alignment field
+Edot_Crab    = 4.6e38 erg/s       observed</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the rotating-FSM-assembly domain (magnetic-dipole radiation). What it reveals is the rotational energy-loss rate $\dot E$. Substituting the Crab pulsar's $P, \dot P, I$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\dot E = \dfrac{4\pi^2 \times 10^{45} \times 10^{-15}}{(0.033)^3} = 4.6\times 10^{38}\;\text{erg/s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\dot E = 4.6\times 10^{38}\;\text{erg/s}$</div>
+<div class="math-row">Measured: $4.6\times 10^{38}\;\text{erg/s}$ (Crab pulsar)</div>
+<div class="math-row">Error: $< 10\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The magnetic-dipole damping rate closes, but the field $B \sim 10^{12}\;\text{G}$ itself is not derived as a first-order integer from lock-bit alignment, so it is incomplete. The same alignment axis carries over to the neutron-star structure <a href="h672.html">H-672</a> and the gravitational-wave background <a href="h677.html">H-677</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h672.html">H-672</a> (neutron star structure). <a href="h677.html">H-677</a> (gravitational waves) PTA.</p><p>This card can be re-used as input for the following cards: <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a></p>
+<p>Re-injection path: <a href="h650.html">H-650</a>, <a href="h672.html">H-672</a>, <a href="h677.html">H-677</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

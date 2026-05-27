@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h698.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h698.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h698.html">H-698</a>. Laser = Stimulated Emission = Synchronized CAS Swap</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed, D promotion possible upon proceeding to next round / remaining tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h697.html">H-697</a>, <a href="h713.html">H-713</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Laser Stimulated Emission from the Synchronized CAS Swap Probability</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The laser is the cost of a chain of CAS Swaps (<a href="../axiom.html#ax4">Axiom 4</a>) synchronized by stimulated emission. In the population inversion where the upper CAS state (<a href="../axiom.html#ax2">Axiom 2</a>) is occupied more than the lower, same-phase Swaps are confined in a standing-wave cavity (<a href="../axiom.html#ax7">Axiom 7</a>), producing coherence.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the ratio norm of spontaneous Swap to stimulated Swap. The Einstein $A/B$ coefficients set the ratio of spontaneous to stimulated emission of one CAS state, so this norm is chosen; the stimulated-emission rate is substituted by the photon mode density and the Swap probability.</p>
+<div class="math-block">
+<div class="math-row">$R_\text{stim} = B_{21}\,\rho(\nu)$</div>
+<div class="math-row">$\dfrac{A_{21}}{B_{21}} = \dfrac{8\pi h\nu^3}{c^3}$</div>
+<div class="math-legend">$R_\text{stim}$: stimulated-emission rate | $B_{21}$: stimulated-emission coefficient | $A_{21}$: spontaneous-emission coefficient | $\rho(\nu)$: photon mode energy density | $A/B$: spontaneous-to-stimulated Swap ratio</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h697.html">H-697</a>, <a href="h713.html">H-713</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>h    = 6.62607e-34 J*s
+c    = 2.99792e8 m/s
+nu   = c/lambda,  lambda = 632.8 nm   He-Ne
+nu   = 4.738e14 Hz</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the laser-mode domain. What it reveals is $A_{21}/B_{21}$, the spontaneous-emission strength scale of the He-Ne transition. Substituting the frequency $\nu$ into the Einstein relation yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{A_{21}}{B_{21}} = \dfrac{8\pi h\nu^3}{c^3} = 2.09\times10^{-13}\ \text{J}\cdot\text{s}/\text{m}^3$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: He-Ne $\lambda = 632.8\ \text{nm}$, $\nu = 4.738\times10^{14}\ \text{Hz}$</div>
+<div class="math-row">Measured: He-Ne red line $632.8\ \text{nm}$</div>
+<div class="math-row">Error: $0\%$ (mode frequency matches, coefficient not closed)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The stimulated-emission = synchronized-CAS-Swap structure matches the Einstein $A/B$ ratio, but the Swap-synchronization threshold (population-inversion threshold) does not close in the forward chain, so it stops at hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h697.html">H-697</a> (Brewster window). <a href="h713.html">H-713</a> (two-photon) pump laser.</p><p>This card can be re-used as input for the following cards: <a href="h697.html">H-697</a>, <a href="h713.html">H-713</a></p>
+<p>Re-injection path: <a href="h697.html">H-697</a>, <a href="h713.html">H-713</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

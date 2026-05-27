@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h736.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h736.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h736.html">H-736</a>. Shapiro Time Delay = Path-Time Increase via Cost Gradient</h1><div class="box-finding">
@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon advancing to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; intrinsic structure of the Banya formula, (4,3) combination of primary integers. Recursive substitution path: <a href="h717.html">H-717</a>, <a href="h730.html">H-730</a>, <a href="h738.html">H-738</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Shapiro Time Delay from the CAS Cost-Gradient Transit Time</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Shapiro delay is the extra time cost a CAS cost quantum (a radio signal) pays crossing the cost gradient near a massive FSM norm. As the RLU cost-propagation speed $c$ of <a href="../axiom.html#ax5">Axiom 5</a> drops to a coordinate speed in the high-cost region, the time component of $\delta^2$ lengthens by the gradient integral.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; intrinsic structure of the Banya formula, (4,3) combination of primary integers</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the time-time component of the <a href="h730.html">H-730</a> Schwarzschild cost-gradient norm. (b) It is chosen because the factor by which cost density decelerates coordinate time is $g_{tt}=1-2GM/c^2 r$ (<a href="h717.html">H-717</a> time dilation), and integrating along the path that grazes the mass at impact parameter $b$ closes the logarithmic dependence.</p>
+<div class="math-block">
+<div class="math-row">$\Delta t = -\dfrac{2}{c}\displaystyle\int g_{tt}^{-1/2}\,dl$</div>
+<div class="math-row">$\Delta t = \dfrac{4GM}{c^3}\ln\!\left(\dfrac{4 r_1 r_2}{b^2}\right)$</div>
+<div class="math-legend">$\Delta t$: round-trip delay | $G$: gravitational constant | $M$: mass | $b$: impact parameter | $r_1,r_2$: emitter/receiver distances | $g_{tt}$: time component of cost gradient (<a href="h730.html">H-730</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h717.html">H-717</a>, <a href="h730.html">H-730</a>, <a href="h738.html">H-738</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>G       = 6.674e-11 m^3/kg/s^2
+M_sun   = 1.989e30 kg
+c       = 2.998e8 m/s
+4GM/c^3 = 9.85e-6 s        (Sun)
+ln(4 r1 r2 / b^2) ~ 24      (Earth-Mercury, b ~ R_sun)
+gamma_PPN = 1.000021 ± 0.000023   Cassini 2003</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main text above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the cosmological cost-gradient domain (weak gravitational field). (b) What it reveals is the extra path time $\Delta t$ accumulated as the signal grazes the Sun and returns. Multiplying $4GM/c^3$ by the path logarithm yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\Delta t = 9.85\times10^{-6}\times 24 \approx 2.4\times10^{-4}\ \text{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Delta t \approx 240\ \mu\text{s}$ (Mercury superior conjunction)</div>
+<div class="math-row">Measured: $\gamma_{\text{PPN}} = 1.000021 \pm 0.000023$ (Cassini 2003)</div>
+<div class="math-row">Error: $2.3\times10^{-5}$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The logarithmic dependence and the $4GM/c^3$ coefficient close from the cost-gradient integral, but the coefficient $4$ is not yet derived directly from a first-order integer, so promotion of this fourth GR test to D awaits.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h730.html">H-730</a> (Schwarzschild) fourth classical test. <a href="h738.html">H-738</a> (light deflection) path effect.</p><p>This card can be re-used as input for the following cards: <a href="h717.html">H-717</a>, <a href="h730.html">H-730</a>, <a href="h738.html">H-738</a></p>
+<p>Re-injection path: <a href="h730.html">H-730</a>, <a href="h717.html">H-717</a>, <a href="h738.html">H-738</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

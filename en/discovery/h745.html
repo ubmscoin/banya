@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h745.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h745.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h745.html">H-745</a>. Feynman Path Integral = Cost-Weighted Sum Over All CAS Paths</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h744.html">H-744</a>, <a href="h760.html">H-760</a>, <a href="h766.html">H-766</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Feynman propagator from the cost-weighted sum over all CAS paths</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>For every path along which CAS changes DATA, a cost $S$ accumulates (<a href="../axiom.html#ax4">Axiom 4</a>). Compare true/false splits constructive and destructive interference (<a href="../axiom.html#ax5">Axiom 5</a>), and $\hbar$ is the CAS minimum cost unit (<a href="../axiom.html#ax12">Axiom 12</a>). The propagator is the cost-phase sum over all these paths.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the path-phase-sum norm. It is chosen because every CAS path from one endpoint to the other interferes through its cost phase, and the propagator is substituted by the cost-weighted path sum.</p>
+<div class="math-block">
+<div class="math-row">$\langle q_f | e^{-iHt} | q_i \rangle = \displaystyle\int \mathcal{D}q\; e^{iS[q]/\hbar}$</div>
+<div class="math-row">$\delta S = 0 \;:\; \text{classical path survives}$</div>
+<div class="math-legend">$S$: CAS cost = action | $\hbar$: CAS minimum cost unit | $\delta S=0$: stationary phase = classical limit | phase difference: quantum interference</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h744.html">H-744</a>, <a href="h760.html">H-760</a>, <a href="h766.html">H-766</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>S           = CAS cost            Axiom 4
+hbar        = minimum cost unit    Axiom 12
+stationary   = δS = 0              classical path
+check        = QED g-2, 1e-12      experimental precision</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the path-phase-sum domain. What it reveals is whether the stationary-cost path (classical) and the phase-difference paths (quantum interference) split within one sum. The cost-phase sum over all paths produces the propagator.</p>
+<div class="math-block">
+<div class="math-row">$\langle q_f | e^{-iHt} | q_i \rangle = \displaystyle\int \mathcal{D}q\; e^{iS[q]/\hbar}, \quad \delta S = 0 \;:\; \text{classical}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: cost-phase sum over all CAS paths $=$ Feynman propagator</div>
+<div class="math-row">Check: QED $g-2$ path integral, agreeing with experiment to $10^{-12}$</div>
+<div class="math-row">Status: structural consistency confirmed, measure quantification incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The cost-phase sum reproduces the propagator and stationary phase gives the classical limit, but the limit from discrete paths to the continuous path-integral measure remains, deferred to the next-round inputs <a href="h744.html">H-744</a>, <a href="h766.html">H-766</a>, and <a href="h760.html">H-760</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h744.html">H-744</a> (Lagrangian) quantization. <a href="h766.html">H-766</a> (scattering matrix). <a href="h760.html">H-760</a> (Monte Carlo).</p><p>This card can be re-used as input for the following cards: <a href="h744.html">H-744</a>, <a href="h760.html">H-760</a>, <a href="h766.html">H-766</a></p>
+<p>Re-injection path: <a href="h744.html">H-744</a>, <a href="h766.html">H-766</a>, <a href="h760.html">H-760</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

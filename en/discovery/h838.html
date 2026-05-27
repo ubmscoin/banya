@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h838.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h838.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h838.html">H-838</a>. Genetic Algorithm = CAS Compare Fitness Selection</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible in the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h822.html">H-822</a>, <a href="h839.html">H-839</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Optimal Mutation Rate from the CAS 3-Stage Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The genetic algorithm is the deliberate execution of the CAS 3 stages (<a href="../axiom.html#ax2">Axiom 2</a>: Compare·Swap·error). Fitness comparison maps to Compare, gene exchange to Swap, and stochastic variation to Compare error. The target is read through the CAS 3-stage cost norm.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS 3-stage cost norm. The GA's three operations — selection, crossover, mutation — map 1:1 onto the three stages Compare·Swap·error, and the mutation rate is precisely the CAS error rate, which is why this norm is chosen. The target is therefore substituted by the condition where the error-rate threshold partitions cost divergence.</p>
+<div class="math-block">
+<div class="math-row">$\text{selection} = \text{Compare},\quad \text{crossover} = \text{Swap},\quad \text{mutation} = \text{Compare error}$</div>
+<div class="math-row">$p_m^{*} \sim \dfrac{1}{L}$</div>
+<div class="math-legend">$p_m$: mutation rate = CAS error rate | $L$: gene length = DATA bit count | $p_m^{*}$: threshold error rate preventing cost divergence</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h822.html">H-822</a>, <a href="h839.html">H-839</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>p_m*  ~ 1/L            optimal mutation rate
+L     : gene length     DATA bit count
+p_m &gt; p_m*  ==&gt; cost divergence  (excess error rate)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main body is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the CAS Compare cost region of the quantum/information domain. What it reveals is the optimal mutation rate $p_m^{*}$ that does not diverge the cost. The reciprocal of the gene length $L$ sets that threshold.</p>
+<div class="math-block">
+<div class="math-row">$p_m^{*} \sim 1/L$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Derivation</h3>
+<div class="math-block">
+<div class="math-row">Derived: optimal mutation rate $p_m^{*} \sim 1/L$; above it the CAS error rate is excessive and cost diverges</div>
+<div class="math-row">Measured: $1/L$ neighborhood is optimal in standard GA experiments (qualitative match)</div>
+<div class="math-row">Not closed: the proportionality coefficient of $1/L$ depends on the external fitness landscape, not derived from axioms</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong></p>
+<p>The three GA operations correspond exactly to the CAS 3 stages and the $1/L$ scaling of the optimal mutation rate follows, but the proportionality coefficient does not close from the axioms.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h822.html">H-822</a> (evolution). <a href="h839.html">H-839</a> (game theory).</p><p>This card can be re-used as input for the following cards: <a href="h822.html">H-822</a>, <a href="h839.html">H-839</a></p>
+<p>Re-injection path: <a href="h822.html">H-822</a>, <a href="h839.html">H-839</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

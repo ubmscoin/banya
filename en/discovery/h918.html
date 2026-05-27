@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h918.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h918.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h918.html">H-918</a>. <a href="../axiom.html#ax2">Axiom 2</a> Completeness = CAS is Necessary and Sufficient as the Sole Operator</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 5 recursive inputs confirmed; D promotion possible when the next round is run / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a>, <a href="h938.html">H-938</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Axiom 2 Completeness from the CAS Sole-Operator Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Every change on the right of the Banya formula is produced by a single operation, CAS (Compare-And-Swap), through compare-then-swap. Whether every physical operation reduces to CAS is the sole-operator completeness claim that <a href="../axiom.html#ax2">Axiom 2</a> stakes.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS sole-operator norm. It is chosen because a state transition from $A$ to $B$ cannot swap without comparing, and because every interaction composes from repeated CAS (<a href="h894.html">H-894</a>). An arbitrary operation is therefore substituted by a CAS composition.</p>
+<div class="math-block">
+<div class="math-row">$\text{Op} \in \{\text{add}, \text{mul}, \text{rot}, \ldots\} \;:\; \text{multiple primitive operations}$</div>
+<div class="math-row">$\forall\, \text{Op}: \text{Op} = \text{CAS}^{\circ k} \;:\; \text{sole-operator composition}$</div>
+<div class="math-legend">$\text{CAS}$: Compare-And-Swap (<a href="../axiom.html#ax2">Axiom 2</a>) | $\text{CAS}^{\circ k}$: $k$-fold CAS composition | Compare: comparison (necessary) | Swap: exchange (write)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a>, <a href="h938.html">H-938</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>operation kinds = 1              Axiom 2 (CAS sole)
+stages          = Compare ; Swap
+ISA             = {CAS}          Turing-complete</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Banya structure domain (the operation set). What it reveals is whether CAS is necessary and sufficient as the sole operator. If no transition can be defined without CAS, necessity holds; if repeated CAS alone attains Turing completeness, sufficiency holds.</p>
+<div class="math-block">
+<div class="math-row">$\neg\,\text{CAS} \;\Rightarrow\; \text{transition undefinable} \;:\; \text{necessity}$</div>
+<div class="math-row">$\text{CAS}^{\circ k} \;\Rightarrow\; \text{Turing-complete} \;:\; \text{sufficiency}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: operation kinds $= 1$ (Compare then Swap)</div>
+<div class="math-row">Measured: qualitative proposition (awaiting measurement)</div>
+<div class="math-row">Consistency: every processor implements a CAS instruction (<a href="h938.html">H-938</a>)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. CAS is the minimal instruction set of physics, and irreversibility (the arrow of time, <a href="h911.html">H-911</a>) and atomicity (indivisibility of observation) follow as intrinsic properties of the same operation.</p>
+<p>Insight: a single operator underpins both the unification of the 4 forces (<a href="h894.html">H-894</a>) and the irreversible arrow of time at once.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h917.html">H-917</a> (<a href="../axiom.html#ax1">Axiom 1</a>). <a href="h932.html">H-932</a> (mutual independence). <a href="h938.html">H-938</a> (CAS universality)</p><p>This card can be re-used as input for the following cards: <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a>, <a href="h938.html">H-938</a></p>
+<p>Re-injection path: <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h938.html">H-938</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

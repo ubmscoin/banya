@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h927.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h927.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h927.html">H-927</a>. <a href="../axiom.html#ax11">Axiom 11</a> Completeness = Multiple Projection is Necessary and Sufficient for Multi-Particle</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h892.html">H-892</a>, <a href="h894.html">H-894</a>, <a href="h896.html">H-896</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Multi-Particle Necessity-and-Sufficiency of Multiple Projection from the Inter-Projection CAS Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A multi-particle system is the accumulation of CAS cost paid per projection when one state is projected from several viewpoints (<a href="../axiom.html#ax11">Axiom 11</a> multiple projection). One term on the right of the Banya formula is the cost of one projection, and the cost between a pair of projections appears as interaction.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the multiple-projection norm $\text{Proj}_i(\text{State})$. (b) A single projection describes only one particle and cannot close the many-body problem; only $N$ projections describe all $N$ particles and their pairwise interactions, so this norm is chosen. Without projections, $N$-body interaction is undescribable (necessity); with $N$ projections, the system closes as independent description plus inter-projection CAS cost (sufficiency). The multi-particle system is therefore substituted by the projection set and its pairwise cost.</p>
+<div class="math-block">
+<div class="math-row">$$\text{Proj}_i(\text{State}) = \text{Particle}_i \quad (i = 1,\dots,N)$$</div>
+<div class="math-row">$$\text{Cost} \sim \binom{N}{2} = \tfrac{N(N-1)}{2} \;\leftrightarrow\; \text{multiple projection necessary and sufficient}$$</div>
+<div class="math-legend">$\text{Proj}_i$: $i$-th projection | $\text{State}$: single state | $N$: particle count | $\binom{N}{2}$: number of projection pairs = pairwise interaction cost | $\leftrightarrow$: necessary and sufficient</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h892.html">H-892</a>, <a href="h894.html">H-894</a>, <a href="h896.html">H-896</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N = 2  =>  1 pair    = 2-body (gravity, electromagnetism)
+N = 3  =>  3 pairs   = 3-body
+N      =>  N(N-1)/2 pairs  =  cost ~ N^2
+Pauli exclusion = identical projection forbidden (fermions)   Axiom 11</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the many-body interaction domain. (b) What it reveals is whether the projection count matches the particle count and the pairwise cost reproduces interaction. At $N=2$ the CAS cost of 2 projections becomes the 2-body force, and at general $N$ the cost accumulates as $N^2$ following the pair count $\binom{N}{2}$.</p>
+<div class="math-block">
+<div class="math-row">$$N=2:\; \binom{2}{2}=1,\qquad N=3:\; \binom{3}{2}=3,\qquad \text{Cost}\sim N^2$$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Necessity: no projections $\Rightarrow$ $N$-body interaction undescribable</div>
+<div class="math-row">Sufficiency: $N$ projections $\Rightarrow$ $N$ particles plus $\binom{N}{2}$ pair costs close the system</div>
+<div class="math-row">Check: pair count $N(N-1)/2$ matches the pairwise-interaction count of many-body physics</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. That multiple projection is necessary and sufficient for multi-particle description is closed, but the quantitative correspondence between inter-projection cost and coupling constants is not yet closed as a forward chain, so it remains a hypothesis.</p>
+<p>Insight: multi-particle is not a heap of particles but the multiple projection of one state, and interaction is the CAS cost of projection pairs.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h892.html">H-892</a> (electromagnetism-gravity). <a href="h894.html">H-894</a> (4 forces). <a href="h896.html">H-896</a> (quarks-leptons)</p><p>This card can be re-used as input for the following cards: <a href="h892.html">H-892</a>, <a href="h894.html">H-894</a>, <a href="h896.html">H-896</a></p>
+<p>Re-injection path: <a href="h892.html">H-892</a>, <a href="h894.html">H-894</a>, <a href="h896.html">H-896</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -66,39 +66,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 5개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57. 재귀 대입 경로: <a href="d136.html">D-136</a>, <a href="d141.html">D-141</a>, <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d145.html">D-145</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 초기 Swap 비용 비대칭에서 인플레이션 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>인플레이션은 첫 수 틱에서 time 기록과 space 기록의 비용 비대칭이다. 각 Swap(S+1)마다 space는 렌더링되지만 도메인 time은 로그 압축(<a href="d143.html">D-143</a>)되어 거의 0이고, d-ring 위 쥠이 공간을 기록하는 속도가 시간을 기록하는 속도를 압도한다(<a href="../axiom.html#ax3">공리 3</a> FSM).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 $T_\text{sys}\ll 1$ 구간에서 로그 함수의 도함수가 발산하는 초기 기울기 노름이다. 시간은 로그로 압축되고 공간은 Swap 횟수에 선형으로 쌓여 초기에 "시간 대비 공간" 비율이 폭발하기 때문에 이 노름을 택한다. 따라서 인플레이션을 $T_\text{sys}\ll 1$에서 $t_\text{dom}\approx 0$인 구간으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$T_\text{sys} \ll 1 \;\Rightarrow\; t_\text{dom} = \log(T_\text{sys}) \approx 0$</div>
+<div class="math-row">$\text{space} = N_\text{Swap} = T_\text{sys}\ \text{(선형)}$</div>
+<div class="math-legend">$T_\text{sys}$: 시스템 틱 (<a href="d141.html">D-141</a>) | $t_\text{dom}$: 도메인 시간 (<a href="d142.html">D-142</a>) | $N_\text{Swap}$: Swap(S+1) 누적 = space | $dt_\text{dom}/dT_\text{sys}=1/T_\text{sys}$: $T_\text{sys}\!\to\!0$ 발산</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57, 7, 21, 35</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d136.html">D-136</a>, <a href="d141.html">D-141</a>, <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d145.html">D-145</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>T_sys = 1  -> t_dom = 0,       space = 1 Swap   빅뱅 D-145
+T_sys = 2  -> t_dom = log(2),  space = 2 Swap
+e-folding N ~ 60 +- 10        링 이음새 초기 분포
+n_s ~ 0.965                   CMB 스케일 불변 D-136</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>CAS 틱 도메인에서 우주론 RLU 구간 도메인으로 변환한다. 이 변환으로 보려는 것은 인플라톤 필드 없이 로그 변환만으로 발생하는 초기 급팽창, 곧 시간 $\log(2)$에 공간 2배가 스크린에 지수적으로 렌더링되는 비율이다. 초기 기울기 발산으로 그 e-폴딩 수를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\text{space}}{t_\text{dom}} = \dfrac{T_\text{sys}}{\log(T_\text{sys})} \xrightarrow{\;T_\text{sys}\to 0\;} \infty,\quad N\approx 60$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $T_\text{sys}\ll 1$에서 $t_\text{dom}\approx 0$, e-폴딩 $N\approx 60$</div>
+<div class="math-row">측정값: $N = 60\pm 10$, $n_s\approx 0.965$ (CMB)</div>
+<div class="math-row">오차: 구조 대응 (e-폴딩 범위 일치)</div>
+</div>
+<p>판정: <strong>적중</strong>. 인플라톤 없이 $t_\text{dom}=\log(T_\text{sys})$의 초기 기울기 발산만으로 급팽창이 자연발생하며, e-폴딩 60 범위와 정합한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d136.html">D-136</a>, <a href="d141.html">D-141</a>, <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d145.html">D-145</a></p>
+<p>재투입 경로: <a href="d143.html">D-143</a>, <a href="d141.html">D-141</a>, <a href="d142.html">D-142</a>, <a href="d145.html">D-145</a>, <a href="d136.html">D-136</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

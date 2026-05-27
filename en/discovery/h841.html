@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h841.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h841.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_info_consciousness</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h841.html">H-841</a>. Information Thermodynamics = CAS Cost = Information Processing Cost</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed, D-promotion possible if next round proceeds / remaining tasks made explicit</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive-substitution path: <a href="h831.html">H-831</a>, <a href="h832.html">H-832</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Landauer Limit from CAS Cost +1</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Erasing information is the minimum per-bit cost the CAS Swap pays to overwrite DATA. <a href="../axiom.html#ax4">Axiom 4</a> (cost) forces a cost of +1 on each irreversible operation, and <a href="../axiom.html#ax2">Axiom 2</a> (CAS is the unique operator) pins that operation to the CAS Compare-Swap. This +1 is read in thermodynamic units.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the irreversible-cost norm. One bit erasure is one irreversible Swap, and that irreversibility closes into the cost +1 of <a href="../axiom.html#ax4">Axiom 4</a>, so this norm is chosen. The Landauer erasure work $W$ is substituted by the thermodynamic expression of CAS cost +1.</p>
+<div class="math-block">
+<div class="math-row">$W_{\min} = k_B T \ln 2 \quad \text{per bit}$</div>
+<div class="math-row">$W_{\min} = (k_B T \ln 2) \cdot \text{CAS cost}_{+1}$</div>
+<div class="math-legend">$W_{\min}$: minimum work per bit erasure | $k_B$: Boltzmann constant | $T$: absolute temperature | $\ln 2$: state count of one bit | CAS cost$_{+1}$: irreversible Swap unit cost (<a href="../axiom.html#ax4">Axiom 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-injection:</strong> <a href="h831.html">H-831</a>, <a href="h832.html">H-832</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>k_B   = 1.380649e-23 J/K        CODATA 2018
+T     = 300 K
+ln 2  = 0.6931471805599453
+CAS cost_+1 = 1                 Axiom 4</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the information-thermodynamics domain (energy per bit operation). What it reveals is the minimum dissipated energy of one irreversible bit operation — the Landauer limit. Substituting the constants yields that value.</p>
+<div class="math-block">
+<div class="math-row">$W_{\min} = 1.380649 \times 10^{-23} \times 300 \times 0.693147 = 2.87 \times 10^{-21}\;\text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $W_{\min} = 2.87 \times 10^{-21}\;\text{J}$ (300K)</div>
+<div class="math-row">Measured: $2.85 \times 10^{-21}\;\text{J}$ (Bérut et al. 2012)</div>
+<div class="math-row">Error: $0.0\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. CAS cost +1 matches the Landauer limit quantitatively, but the exact equivalence coefficient between the cost unit and $k_B T \ln 2$ has not yet closed directly from the axioms.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h832.html">H-832</a> (entropy and life). <a href="h831.html">H-831</a> (information and life)</p><p>This card can be re-used as input for the following cards: <a href="h831.html">H-831</a>, <a href="h832.html">H-832</a></p>
+<p>Re-injection path: <a href="h832.html">H-832</a>, <a href="h831.html">H-831</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h618.html">H-618</a>, <a href="h630.html">H-630</a>, <a href="h637.html">H-637</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 최소화에서 격자 14·공간군 230 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>결정은 ECS(<a href="../axiom.html#ax7">공리 7</a>)의 엔티티들이 CAS 비용을 최소로 깔고 채운 상태다. 비용항이 최소가 되는 배치는 같은 단위가 반복되는 주기 격자이며, 반복 단위가 단위 셀이다. 비용 최소화(<a href="../axiom.html#ax4">공리 4</a>)가 주기성을 강제한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 3공간축(<a href="../axiom.html#ax1">공리 1</a>) 위의 ECS 비용 최소 배치 노름이다. (b) 이 노름을 택하는 이유는 결정 격자가 비용 불변 변환(대칭) 아래 닫힌 이산 구조이기 때문이다. 격자 벡터는 ECS 그리드의 기본 벡터, 단위 셀은 RLU COLD(<a href="../axiom.html#ax6">공리 6</a>)로 안정화된 최소 반복 단위다.</p>
+<div class="math-block">
+<div class="math-row">$\mathbf{R} = n_1\mathbf{a}_1 + n_2\mathbf{a}_2 + n_3\mathbf{a}_3$</div>
+<div class="math-row">$N_{\text{Bravais}} = 14, \quad N_{\text{space group}} = 230$</div>
+<div class="math-legend">$\mathbf{R}$: 격자 벡터 | $\mathbf{a}_i$: ECS 기본 벡터 (3축) | $n_i$: 정수 | $N_{\text{Bravais}}$: 비용 최소 배열 가짓수 | $N_{\text{space group}}$: 비용 대칭 가짓수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h618.html">H-618</a>, <a href="h630.html">H-630</a>, <a href="h637.html">H-637</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>공간축    = 3            공리 1
+브라베격자 = 14
+공간군    = 230
+점군      = 32          결정학</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 응집물질(결정학) 도메인으로 변환한다. (b) 보려는 것은 3차원 ECS에서 허용되는 비용 최소 배열의 총 가짓수다. 3축 위의 비용 불변 변환을 모두 세면 14 브라베 격자와 230 공간군이 나온다.</p>
+<div class="math-block">
+<div class="math-row">$3\ \text{ECS 축} \quad\Rightarrow\quad 14\ \text{격자}, \ 230\ \text{공간군}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 브라베 격자 $14$, 공간군 $230$</div>
+<div class="math-row">측정: 결정학 분류 $14 / 230$</div>
+<div class="math-row">상태: 가짓수 일치, 비용 계층 미도출</div>
+</div>
+<p>판정: <strong>가설</strong>. 3공간축이 14 격자·230 공간군의 가짓수를 정확히 닫지만, 14개 사이의 CAS 비용 계층(어느 격자가 더 싼가)이 공리에서 정량으로 도출되지 않아 라운드를 멈췄다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h618.html">H-618</a>(밴드 구조) 격자 전제. <a href="h630.html">H-630</a>(포논) 격자 진동</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h618.html">H-618</a>, <a href="h630.html">H-630</a>, <a href="h637.html">H-637</a></p>
+<p>재투입 경로: <a href="h637.html">H-637</a>, <a href="h618.html">H-618</a>, <a href="h630.html">H-630</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

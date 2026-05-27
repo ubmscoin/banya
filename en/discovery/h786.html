@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h786.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h786.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h786.html">H-786</a>. Computability = CAS is Turing-Complete</h1><div class="box-finding">
@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D promotion possible upon next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement needed). Recursive substitution path: <a href="h783.html">H-783</a>, <a href="h787.html">H-787</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Turing-Completeness from the CAS 3 Operations</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Computability is the cost at which CAS closes an arbitrary computation using only the Read·Compare·Swap 3 operations. CAS is the sole operator (<a href="../axiom.html#ax2">Axiom 2</a>), the FSM is the finite control (<a href="../axiom.html#ax14">Axiom 14</a>), and DATA is the infinite tape (<a href="../axiom.html#ax3">Axiom 3</a>), so the combination of the three is read as the Turing-machine norm.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS 3-operation norm. (b) It is chosen because the 4 elements of a Turing machine (read, state transition, write, tape) map 1:1 onto the CAS 3 operations plus FSM and DATA. The Turing-machine construction is therefore substituted by the combination of CAS 3 operations + FSM + DATA.</p>
+<div class="math-block">
+<div class="math-row">$\text{TM} = (Q,\ \Gamma,\ \delta_{\text{tr}},\ q_0,\ F)$</div>
+<div class="math-row">$\text{CAS} = (\text{Read},\ \text{Compare},\ \text{Swap}) \cup \text{FSM} \cup \text{DATA}$</div>
+<div class="math-legend">$Q$: FSM state set | $\Gamma$: DATA tape alphabet | $\delta_{\text{tr}}$: Compare branch transition | $\text{Read}$: tape read | $\text{Swap}$: tape write | $F$: FSM halting states</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h783.html">H-783</a>, <a href="h787.html">H-787</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>CAS operations = 3          R, C, S (Axiom 2)
+TM primitives  = 3          read, write, move
+FSM states     = finite      Axiom 14
+DATA tape      = infinite    Axiom 3</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the computation-model domain. (b) What it reveals is whether CAS satisfies the Church-Turing thesis — whether every computable function can be implemented by CAS. Since the CAS 3 operations emulate the Turing-machine transition table, the two models are computationally equivalent.</p>
+<div class="math-block">
+<div class="math-row">$\delta_{\text{tr}}(q, s) = (\text{Swap}, \text{Read}, q') \ \Longleftrightarrow\ \text{one CAS cycle where Compare branches}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: CAS + FSM + DATA $=$ Turing machine (computationally equivalent)</div>
+<div class="math-row">Consequence: CAS halting is undecidable (halting problem, <a href="h783.html">H-783</a>)</div>
+<div class="math-row">Measurement: no quantitative output — a structural-equivalence proposition</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structural equivalence that the CAS 3 operations reduce to and from a Turing machine is closed, but since there is no quantitative measurement target, the next round refines it by re-injecting the complexity cost (<a href="h787.html">H-787</a>).</p>
+<p>Insight: that 3 sole operations close universal computation means halting undecidability follows from the CAS structure itself.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h783.html">H-783</a> (Gödel). <a href="h787.html">H-787</a> (complexity)</p><p>This card can be re-used as input for the following cards: <a href="h783.html">H-783</a>, <a href="h787.html">H-787</a></p>
+<p>Re-injection path: <a href="h783.html">H-783</a>, <a href="h787.html">H-787</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

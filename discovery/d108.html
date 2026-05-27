@@ -66,39 +66,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형. 재귀 대입 경로: <a href="d105.html">D-105</a>, <a href="d106.html">D-106</a>, <a href="d116.html">D-116</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 세대 교차 부재에서 $D_s$ 보정 0 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>$D_s$는 c쿼크(2세대)와 s쿼크(2세대)를 묶는다. 두 쿼크가 같은 세대이므로 CAS가 d-ring 이음새를 건너지 않는다. 쥠 1회 사이클(<a href="../axiom.html#ax3">공리 3</a>)이 동일 링 위에서 닫혀 회수할 교차 비용(<a href="../axiom.html#ax6">공리 6</a>)이 발생하지 않는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 교차 인덱싱 노름이다. $D_s$ 보정이 c·s 세대차 $|\Delta\text{gen}|=0$의 비용이고 교차가 없으면 1 bit가 가산되지 않기(<a href="d105.html">D-105</a>) 때문에 이 노름을 택한다. 따라서 보정을 1 bit 단위로 치환하면 영(零)이다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta m_{D_s} = 27\;\text{MeV}\times|\Delta\text{gen}|$</div>
+<div class="math-row">$\Delta m_{D_s} = 27\;\text{MeV}\times 0 = 0$</div>
+<div class="math-legend">$\Delta m_{D_s}$: $D_s$ 세대 교차 보정 | $|\Delta\text{gen}|$: c(2)–s(2) 세대차 $=0$ | $27\,\text{MeV}$: 1 bit (<a href="d105.html">D-105</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>물리 상수 입력:</strong> <code>Delta</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d105.html">D-105</a>, <a href="d106.html">D-106</a>, <a href="d116.html">D-116</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>1 bit  = 27 MeV               D-105
+|dgen| = 0                    c(2세대) - s(2세대)
+m(Ds)  = 1968.35 MeV          PDG 2024 (기본 질량)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>질량 계층 도메인(charm-strange 메손)으로 변환한다. 이 변환으로 보려는 것은 동일 세대 결합에서 가산되는 교차 비용의 부재다. 1 bit에 $|\Delta\text{gen}|=0$을 곱하면 보정이 사라진다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta m_{D_s} = 27\times 0 = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Delta m_{D_s} = 0\;\text{MeV}$</div>
+<div class="math-row">검증: <a href="d106.html">D-106</a>($|\Delta\text{gen}|=1$, $27$) 대비, <a href="d116.html">D-116</a> 보편공식 $|\Delta\text{gen}|=0$ 일치</div>
+<div class="math-row">오차: 보정 부재 정의 (오차 개념 없음)</div>
+</div>
+<p>판정: <strong>적중</strong>. c·s 동일 세대에서 교차 비용이 0으로 닫혔고, 보정 유무가 세대차에만 의존함을 $D_s$가 확증한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d105.html">D-105</a>, <a href="d106.html">D-106</a>, <a href="d116.html">D-116</a></p>
+<p>재투입 경로: <a href="d105.html">D-105</a>, <a href="d106.html">D-106</a>, <a href="d116.html">D-116</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -71,39 +71,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 비용에서 홀레보 한계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>정보 추출은 CAS Compare가 한 사이클에 치르는 비용이다. Compare는 원자적으로 true/false 한 비트만 판정하며(<a href="../axiom.html#ax2">공리 2</a>), 관측은 그 Compare 실행이다(<a href="../axiom.html#ax11">공리 11</a>). d-ring 1회전에 Compare가 1회 도므로 추출 정보의 상한이 이 비용에서 정해진다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 1사이클당 Compare 판정 비트 수 노름이다. 양자 상태에서 고전 정보를 뽑는 상한이 곧 1사이클에 가능한 Compare 횟수이고, Compare가 원자적 1비트 판정(비용 C+1)이기 때문에 이 노름을 택한다. 홀레보 한계 $\chi$를 사이클당 1비트로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\chi \leq S(\rho)$</div>
+<div class="math-row">$\chi_{\text{CAS}} = 1\;\text{bit / 사이클}$</div>
+<div class="math-legend">$\chi$: 홀레보 정보 | $S(\rho)$: 폰 노이만 엔트로피 | $1\,\text{bit}$: Compare 1회 판정 (<a href="../axiom.html#ax2">공리 2</a>) | 사이클: d-ring 1회전 = Compare 1회 (<a href="../axiom.html#ax11">공리 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Compare 판정/사이클 = 1 bit       공리 2 (원자성)
+관측 = Compare 실행                공리 11
+홀레보 한계         = 1 classical bit / 1 qubit</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>양자 정보 추출 도메인으로 변환한다. 이 변환으로 보려는 것은 1큐비트에서 뽑을 수 있는 고전 비트의 상한이다. 1사이클에 Compare가 1회뿐이므로 그 상한이 1비트로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\chi_{\max} = 1\;\text{Compare} \times 1\;\text{bit} = 1\;\text{bit}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 가설</h3>
+<div class="math-block">
+<div class="math-row">도출값: 사이클당 추출 상한 $= 1$ bit</div>
+<div class="math-row">대조: 홀레보 한계 $\chi \leq S(\rho) \leq 1$ bit (1큐비트)</div>
+<div class="math-row">정합: 구조 일치 (정량 닫힘 미완)</div>
+</div>
+<p>판정: <strong>가설</strong>. 1비트 상한이 Compare 원자성과 일치하나, $\chi$의 연속 부등식 전체를 CAS에서 닫는 단계가 남아 가설에 머문다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 양자 채널 용량의 CAS 해석. 초광속 통신 불가능의 구조적 증명. <a href="h70.html">H-70</a>(치렐슨 한계)과 연결.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
+<p>재투입 경로: <a href="h53.html">H-53</a>, <a href="h55.html">H-55</a>, <a href="h70.html">H-70</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

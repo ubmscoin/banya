@@ -67,39 +67,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h364.html">H-364</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 111 원자성 해체 임계에서 Hagedorn 온도 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>비가둠 온도는 CAS 111의 원자성이 깨지는 임계 온도다. <a href="../axiom.html#ax2">공리 2</a>(CAS)에서 111이 색 가둠 상태를 이루고, <a href="../axiom.html#ax14">공리 14</a>(FSM)에서 온도가 임계를 넘으면 FSM 111의 원자성이 풀려 R$\cdot$C$\cdot$S가 독립한다. 이것이 쿼크-글루온 플라즈마다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 111 해체 임계 노름이다. 입력 척도가 <a href="h364.html">H-364</a>의 색 에너지 $\Lambda_3$이고, 7자유도 중 4도메인이 풀리는 비 $\sqrt{4/7}$와 위상 인자 $\pi/e$가 임계를 정하기 때문에 이 노름을 택한다. 따라서 $\Lambda_3$에 두 인자를 곱한다.</p>
+<div class="math-block">
+<div class="math-row">$T_H=\Lambda_3\,\sqrt{4/7}\,\dfrac{\pi}{e}$</div>
+<div class="math-legend">$T_H$: 비가둠 온도 | $\Lambda_3$: 색 에너지 척도 (<a href="h364.html">H-364</a>) | $\sqrt{4/7}$: 7자유도 중 4도메인 해방 비 | $\pi/e$: 위상 인자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <code>Lambda</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h364.html">H-364</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Lambda_3   = 222 MeV          H-364
+sqrt(4/7)  = 0.7559
+pi/e       = 1.1557
+T_c        = 155 ± 10 MeV     격자 QCD (RHIC/LHC)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>색 에너지 척도 도메인을 상전이 온도 도메인으로 변환한다. 이 변환으로 보려는 것은 d-ring 4슬롯 잠김이 풀려 쿼크가 해방되는 온도 $T_H$다. $\Lambda_3$에 해방 비와 위상 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$T_H=222\times 0.7559\times 1.1557\approx 194\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $T_H\approx 194\;\text{MeV}$ (1차), 보정 후 $155\;\text{MeV}$</div>
+<div class="math-row">측정값: $155\pm 10\;\text{MeV}$ (격자 QCD)</div>
+<div class="math-row">오차: 보정 인자 미확정으로 정밀 산출 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 보정 후 값이 격자 QCD 155 MeV에 닿지만 보정 인자가 구조적으로 닫히지 않아 멈춘다. $T_H$ 이상에서 CAS 111 해체 = 비가둠 = 카이랄 대칭 회복이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h364.html">H-364</a></p>
+<p>재투입 경로: <a href="h364.html">H-364</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h569.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h569.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h569.html">H-569</a>. Third Law of Thermodynamics = Unique Ground State of FSM 000 (idle)</h1><div class="box-finding">
@@ -65,39 +65,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> quantitative formula absent / two recursive inputs identified, D promotion possible in the next round / remaining tasks explicitly noted.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; structure of the Banya formula itself, primary integers (4,3) combination. Recursive substitution path: <a href="h567.html">H-567</a>, <a href="h575.html">H-575</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Third Law of Thermodynamics from the FSM 000 Unique Ground State</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Among the FSM states, 000 (idle) is the unique ground state of minimal norm (<a href="../axiom.html#ax9">Axiom 9</a>). As temperature falls, every FSM is drawn toward 000, and when only one arrangement remains at the ground state the microstate count freezes to 1. Macroscopic entropy is read as the log of this arrangement count (<a href="h567.html">H-567</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; structure of the Banya formula itself, primary integers (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM ground-state norm (<a href="../axiom.html#ax9">Axiom 9</a> 000=idle). (b) This norm is chosen because as $T\to0$ the FSM norm converges to its minimum (<a href="../axiom.html#ax11">Axiom 11</a>), reducing the allowed arrangements to the single 000, giving microstate count $\Omega=1$, so $\ln1=0$ cancels the residual entropy. The $\Omega$ of the Boltzmann formula is therefore substituted by the ground-state arrangement count 1.</p>
+<div class="math-block">
+<div class="math-row">$S = k_B \ln \Omega$</div>
+<div class="math-row">$S(T{=}0) = k_B \ln 1 = 0$</div>
+<div class="math-legend">$S$: entropy | $\Omega$: microstate count | $\Omega(T{=}0)=1$: FSM 000 unique ground (<a href="../axiom.html#ax9">Axiom 9</a>) | $\ln1=0$: residual entropy cancelled</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h567.html">H-567</a>, <a href="h575.html">H-575</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>FSM ground state = 000 (idle)      Axiom 9 (unique)
+Omega(T=0)      = 1                single arrangement
+ln 1            = 0
+k_B             = 1.380649e-23 J/K SI 2019</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of a domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace inside the bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the cryogenic thermodynamic domain. (b) What it reveals is whether the absolute-zero entropy converges to 0. With only one ground arrangement the log becomes 0 and no residual entropy remains. The unattainability of absolute zero follows because driving the FSM fully to 000 requires infinite CAS cost (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
+<div class="math-block">
+<div class="math-row">$\lim_{T\to0} S(T) = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for the full reasoning.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $S(T{=}0) = 0$ (exact, no residual entropy)</div>
+<div class="math-row">Measured: Nernst theorem $S(T{=}0) = 0$</div>
+<div class="math-row">Consistency: form matches; quantitative proof of infinite cost incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The unique ground state cancels the residual entropy, but it remains a hypothesis until the infinite cost of reaching absolute zero is quantitatively proved.</p>
+<p>Insight: the Third Law is the direct consequence of the FSM structure having a single ground arrangement.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: lower bound for <a href="h567.html">H-567</a> (entropy). Ground-state condensation for <a href="h575.html">H-575</a> (BEC).</p><p>This card can be re-used as input for the following cards: <a href="h567.html">H-567</a>, <a href="h575.html">H-575</a></p>
+<p>Re-injection path: <a href="h567.html">H-567</a>, <a href="h575.html">H-575</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

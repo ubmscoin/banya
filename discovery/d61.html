@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 4개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형. 재귀 대입 경로: <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 색 채널 Read 비용에서 Strange 질량 $m_s$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>스트레인지 질량은 같은 2세대 뮤온이 색 채널을 한 번 더 쥐는 비용이다. 뮤온과 스트레인지는 d-ring의 동일 슬롯을 공유하고 색 자유도 유무만 다르므로, 렙톤에서 down-type 쿼크로의 전환은 색 채널 Read(<a href="../axiom.html#ax6">공리 6</a> CAS 원자성) 비용 한 번이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 강결합상수 $\alpha_s$의 색 채널 노름이다. 렙톤에서 down-type 전환이 색 채널을 쥐는 비용이고, 그 비용이 1차 감쇠 $(1-\alpha_s)$로 닫히기 때문에 이 노름을 택한다. 여기에 CAS Compare 2루프 기여 $(1+\alpha_s^2/2\pi)$를 곱해 뮤온 질량을 정밀화한다.</p>
+<div class="math-block">
+<div class="math-row">$m_s = y_s\,\dfrac{v}{\sqrt{2}}$</div>
+<div class="math-row">$m_s = m_\mu\,(1-\alpha_s)\!\left(1+\dfrac{\alpha_s^2}{2\pi}\right)$</div>
+<div class="math-legend">$m_s$: strange 질량 | $m_\mu$: 뮤온 질량 (동일 2세대 슬롯) | $(1-\alpha_s)$: 색 채널 Read 1차 감쇠 | $\alpha_s^2/2\pi$: Compare 2루프 보정 | $\alpha_s$: 강결합상수 (<a href="d03.html">D-03</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_mu       = 105.658 MeV         뮤온 질량
+alpha_s    = 0.1183             D-03
+1 - alpha_s = 0.8817
+1 + a_s^2/(2 pi) = 1.00222
+m_s(meas)  = 93.4 ± 0.8 MeV     PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>down-type 질량 계층 도메인으로 변환한다. 이 변환으로 보려는 것은 뮤온이 색 채널을 쥔 2세대 down-type strange의 질량이다. 1차 감쇠에 2루프 보정을 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_s = 105.658 \times 0.8817 \times 1.00222 = 93.37\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_s = 93.37\;\text{MeV}$</div>
+<div class="math-row">측정값: $93.4 \pm 0.8\;\text{MeV}$ (PDG 2024)</div>
+<div class="math-row">오차: $0.032\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. <a href="d19.html">D-19</a>의 1차 근사(오차 0.17%)에 2루프 괄호를 더해 정밀도가 5배 갱신된다.</p>
+<p>down-type 3종은 모두 렙톤에 색 채널 보정을 곱한 같은 패턴으로 닫힌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 쿼크-렙톤 질량 대응. <a href="d60.html">D-60</a> 교차.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a></p>
+<p>재투입 경로: <a href="d19.html">D-19</a>, <a href="d20.html">D-20</a>, <a href="d21.html">D-21</a>, <a href="d60.html">D-60</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h664.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h664.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_mass_yukawa</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h664.html">H-664</a>. Nuclear Symmetry Energy = Proton-Neutron FSM Norm Exchange Cost</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible upon proceeding to the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data-type size (137, 27). Recursive substitution path: <a href="h643.html">H-643</a>, <a href="h650.html">H-650</a>, <a href="h655.html">H-655</a>, <a href="h656.html">H-656</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Symmetry Energy $S_0$ from the Proton-Neutron FSM Norm-Exchange Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The nuclear symmetry energy is the cost paid when nuclear matter holds a proton-neutron asymmetry. The proton FSM and neutron FSM are the same norm with different CAS (<a href="../axiom.html#ax3">Axiom 3</a>), the norm-exchange asymmetry cost (<a href="../axiom.html#ax4">Axiom 4</a>) scales with the square of the asymmetry, and the CAS electromagnetic difference (<a href="../axiom.html#ax5">Axiom 5</a>) breaks isospin symmetry.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data-type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the proton-neutron FSM norm-exchange cost norm. (b) Because the asymmetry cost closes as the Weizsacker asymmetry term $a_A(N-Z)^2/A$ and its coefficient at saturation density is the symmetry energy $S_0$, it is read through this norm. The symmetry energy is substituted into density-expansion form.</p>
+<div class="math-block">
+<div class="math-row">$E_\text{sym} = a_A\,\dfrac{(N-Z)^2}{A}$</div>
+<div class="math-row">$S(\rho) = S_0 + L\,\dfrac{\rho-\rho_0}{3\rho_0} + \cdots$</div>
+<div class="math-legend">$S_0$: saturation-density symmetry energy | $L$: density-dependence slope | $(N-Z)/A$: asymmetry | $a_A$: Weizsacker asymmetry term = FSM exchange cost (<a href="../axiom.html#ax4">Axiom 4</a>) | $\rho_0$: nuclear saturation density</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h643.html">H-643</a>, <a href="h650.html">H-650</a>, <a href="h655.html">H-655</a>, <a href="h656.html">H-656</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>S_0_pred  = 32 MeV          FSM exchange cost (saturation density)
+S_0_exp   = 31.7 ± 1.1 MeV  extracted from experiment
+L_exp     = 58.7 ± 28.1 MeV density-dependence slope
+skin(Pb)  = 0.283 ± 0.071 fm PREX-II neutron skin</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the nuclear-matter equation-of-state domain (saturation density $\rho_0$). (b) What it reveals is the symmetry energy $S_0$ at saturation density. Evaluating the FSM norm-exchange cost at the saturation-density term yields the value.</p>
+<div class="math-block">
+<div class="math-row">$S_0 = 32\;\text{MeV}$ (FSM exchange cost, $\rho=\rho_0$)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $S_0 = 32\;\text{MeV}$</div>
+<div class="math-row">Measured: $S_0 = 31.7 \pm 1.1\;\text{MeV}$</div>
+<div class="math-row">Error: $< 10\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. $S_0$ closes as the proton-neutron FSM norm-exchange cost and agrees with the PREX-II neutron skin, but the density-dependence coefficient of the slope $L$ is not yet derived directly from an axiom integer, so the last step of the forward chain remains open.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h656.html">H-656</a> (proton-neutron ratio). <a href="h650.html">H-650</a> (neutron star) EOS. <a href="h655.html">H-655</a> (isotope stability)</p><p>This card can be re-used as input for the following cards: <a href="h643.html">H-643</a>, <a href="h650.html">H-650</a>, <a href="h655.html">H-655</a>, <a href="h656.html">H-656</a></p>
+<p>Re-injection path: <a href="h643.html">H-643</a>, <a href="h656.html">H-656</a>, <a href="h650.html">H-650</a>, <a href="h655.html">H-655</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

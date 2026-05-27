@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h932.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h932.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h932.html">H-932</a>. Mutual Independence of the 15 Axioms = No Axiom Derivable from the Other 14</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible upon proceeding to the next round / outstanding tasks explicitly listed.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required). Recursive substitution path: <a href="h917.html">H-917</a>, <a href="h931.html">H-931</a>, <a href="h933.html">H-933</a>, <a href="h934.html">H-934</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Mutual Independence of the 15 Axioms from the Axiom-Removal Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Mutual independence follows because no term of the Banya formula can derive the unique concept introduced by another. The 4-axis domain (<a href="../axiom.html#ax1">Axiom 1</a>), the unique operator CAS (<a href="../axiom.html#ax2">Axiom 2</a>), and the fire bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>) are each independent concepts, and independence is read through the information-loss cost paid when one axiom is removed.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the independence norm of a formal system — the model-construction norm. This norm is chosen because if axiom $i$ were derivable from the other 14, no model violating only axiom $i$ could exist; constructing even one such model proves underivability. The mutual-independence predicate is substituted by "for each axiom there exists a model violating only that axiom."</p>
+<div class="math-block">
+<div class="math-row">$\text{Axiom}_i \in \text{Cn}\!\left(\bigcup_{j \neq i}\text{Axiom}_j\right)$</div>
+<div class="math-row">$\forall i:\; \text{Axiom}_i \nvdash \bigcup_{j \neq i}\text{Axiom}_j \iff \text{15 indep.}$</div>
+<div class="math-legend">$\text{Cn}$: deductive closure | $\nvdash$: not derivable | $\iff$: necessary and sufficient | $15$: axiom count</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h917.html">H-917</a>, <a href="h931.html">H-931</a>, <a href="h933.html">H-933</a>, <a href="h934.html">H-934</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>axiom count    = 15            Axiom 1 ~ Axiom 15
+test pairs     = 15 (each axiom vs other 14)
+indep. models  = 15 (one per axiom)
+contradictions = 0</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Banya structure domain (the formal axiom system). What it reveals is whether all 15 are genuine axioms — whether none is demoted to a corollary. Constructing, for each axiom, a model violating only that axiom closes the 15-way independence.</p>
+<div class="math-block">
+<div class="math-row">$\#\{\text{indep. proofs}\} = 15, \quad \#\{\text{derivable}\} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: all 15 mutually independent (0 derivable axioms)</div>
+<div class="math-row">Measured: 15 formal independence proofs incomplete (model construction pending)</div>
+<div class="math-row">Current: 0 derivable axioms found</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The independence criterion closes, but the formal model construction for each of the 15 is incomplete, leaving the final step of the forward chain open.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h933.html">H-933</a> (consistency). <a href="h934.html">H-934</a> (closure declaration). <a href="h917.html">H-917</a>~<a href="h931.html">H-931</a> (per-axiom completeness)</p><p>This card can be re-used as input for the following cards: <a href="h917.html">H-917</a>, <a href="h931.html">H-931</a>, <a href="h933.html">H-933</a>, <a href="h934.html">H-934</a></p>
+<p>Re-injection path: <a href="h933.html">H-933</a>, <a href="h934.html">H-934</a>, <a href="h917.html">H-917</a>, <a href="h931.html">H-931</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

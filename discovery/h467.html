@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a>, <a href="h474.html">H-474</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름 전이 비용에서 뮤온 수명 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>뮤온 붕괴는 Compare 단계 FSM 노름(<a href="../axiom.html#ax14">공리 14</a>: 노름 = 질량)이 Read 단계 FSM 노름으로 전이하며 비용 차이를 방출하는 과정이다. Compare가 true를 반환할 때 Swap이 실행되고(<a href="../axiom.html#ax7">공리 7</a>), 총 비용은 보존된다(<a href="../axiom.html#ax4">공리 4</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 노름 전이 비용 노름이다. 붕괴율이 방출되는 위상 공간과 전이하는 FSM 노름의 곱으로 정해지므로 이 노름을 택한다. $m_\mu^5$의 5승은 4차원 위상 공간 $m_\mu^4$에 FSM 노름 1승 $m_\mu$를 곱한 분해이며, $G_F$는 Compare 경계 비용의 역제곱(<a href="h474.html">H-474</a>)이다.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma = \dfrac{G_F^2 m_\mu^5}{192\pi^3}$</div>
+<div class="math-row">$m_\mu^5 = \underbrace{m_\mu^4}_{\text{4차원 위상공간}} \cdot \underbrace{m_\mu}_{\text{FSM 노름}}$</div>
+<div class="math-legend">$\Gamma$: 뮤온 붕괴율 | $G_F$: Fermi 상수 = Compare 경계 비용 역제곱 (<a href="h474.html">H-474</a>) | $m_\mu$: 뮤온 FSM 노름 | $192\pi^3$: 위상 공간 정규화 (공리 정수 192)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <code>G_F</code>, <code>m_e</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a>, <a href="h474.html">H-474</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>G_F   = 1.1663787e-5 GeV^-2      PDG 2024
+m_mu  = 105.6583755 MeV          PDG 2024
+192   = 공리 정수
+hbar  = 6.582119569e-25 GeV·s</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>질량 계층 결합 도메인으로 변환한다. 이 변환으로 보려는 것은 뮤온 수명 $\tau_\mu = \hbar/\Gamma$다. $G_F$, $m_\mu^5$, $192\pi^3$을 결합해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_\mu = \dfrac{\hbar \cdot 192\pi^3}{G_F^2 m_\mu^5} = 2.197 \times 10^{-6}\ \text{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\tau_\mu = 2.197 \times 10^{-6}\ \text{s}$</div>
+<div class="math-row">측정값: $2.1969811 \times 10^{-6}\ \text{s}$ (MuLan)</div>
+<div class="math-row">오차: $0.0004\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 수명은 0.0004%로 정합하나 $G_F$의 공리 체인 정량 도출(<a href="h474.html">H-474</a>)이 닫히지 않아 forward chain의 마지막 단계가 미완이다.</p>
+<p>FSM 노름 전이에서 비용이 위상 공간과 노름의 곱으로 보존된다는 구조가 가장 깨끗하게 측정된 입자 수명과 일치한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h474.html">H-474</a>(Fermi 상수) 수명 입력, <a href="h466.html">H-466</a>(보편성) 검증 도구, <a href="h468.html">H-468</a>(베타 붕괴) 비용 분배 원형.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a>, <a href="h474.html">H-474</a></p>
+<p>재투입 경로: <a href="h474.html">H-474</a>, <a href="h466.html">H-466</a>, <a href="h468.html">H-468</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

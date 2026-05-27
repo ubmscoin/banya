@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 5개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a>, <a href="h938.html">H-938</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 단일 연산자 비용에서 공리 2 완전성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>반야식 우변의 모든 변화는 단 하나의 연산 CAS(Compare-And-Swap)가 비교 후 교환을 거쳐 만든다. 모든 물리 연산이 CAS로 환원되는지가 <a href="../axiom.html#ax2">공리 2</a>가 거는 유일성 완전성 주장이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 단일 연산자 노름이다. 상태 전이 $A$에서 $B$가 비교 없이는 교환될 수 없고, 모든 상호작용이 CAS 반복으로 합성되기 때문에 이 노름을 택한다(<a href="h894.html">H-894</a>). 임의 연산을 CAS 합성으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{Op} \in \{\text{add}, \text{mul}, \text{rot}, \ldots\} \;:\; \text{다중 원시 연산}$</div>
+<div class="math-row">$\forall\, \text{Op}: \text{Op} = \text{CAS}^{\circ k} \;:\; \text{단일 연산자 합성}$</div>
+<div class="math-legend">$\text{CAS}$: Compare-And-Swap(<a href="../axiom.html#ax2">공리 2</a>) | $\text{CAS}^{\circ k}$: CAS $k$회 합성 | Compare: 비교(필요) | Swap: 교환(쓰기)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a>, <a href="h938.html">H-938</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>연산 종류 = 1                    공리 2 (CAS 유일)
+단계      = Compare ; Swap
+ISA       = {CAS}                튜링 완전</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>반야 구조 도메인(연산 집합)으로 변환한다. 이 변환으로 보려는 것은 CAS가 유일 연산자로서 필요충분한지의 판별이다. CAS 없이는 어떤 전이도 정의 불가하면 필요, CAS 반복만으로 튜링 완전을 달성하면 충분이다.</p>
+<div class="math-block">
+<div class="math-row">$\neg\,\text{CAS} \;\Rightarrow\; \text{전이 정의 불가} \;:\; \text{필요성}$</div>
+<div class="math-row">$\text{CAS}^{\circ k} \;\Rightarrow\; \text{튜링 완전} \;:\; \text{충분성}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 연산 종류 $= 1$ (Compare 다음 Swap)</div>
+<div class="math-row">측정값: 정성 명제 (측정 검증 대기)</div>
+<div class="math-row">정합: 모든 프로세서가 CAS 명령어 구현(<a href="h938.html">H-938</a>)</div>
+</div>
+<p>판정: <strong>가설</strong>. CAS가 물리의 최소 명령어 집합이며, 비가역성(시간 화살 <a href="h911.html">H-911</a>)과 원자성(관측 비분할성)이 동일 연산의 고유 성질로 따라온다.</p>
+<p>통찰: 단 하나의 연산자가 4력 통일(<a href="h894.html">H-894</a>)과 비가역 시간 화살을 동시에 떠받친다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h917.html">H-917</a>(<a href="../axiom.html#ax1">공리 1</a>). <a href="h932.html">H-932</a>(상호독립성). <a href="h938.html">H-938</a>(CAS 보편성)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a>, <a href="h938.html">H-938</a></p>
+<p>재투입 경로: <a href="h894.html">H-894</a>, <a href="h911.html">H-911</a>, <a href="h938.html">H-938</a>, <a href="h917.html">H-917</a>, <a href="h932.html">H-932</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

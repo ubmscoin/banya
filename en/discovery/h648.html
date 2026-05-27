@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h648.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h648.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h648.html">H-648</a>. Magic Numbers = Cost Stability of FSM Closed Shells</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible when the next round is run / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h642.html">H-642</a>, <a href="h645.html">H-645</a>, <a href="h652.html">H-652</a>, <a href="h655.html">H-655</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Magic-Number Sequence from FSM Discrete-Level Closure</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Magic numbers are the stable points where the FSM norm fills the discrete levels into a closed shell, minimizing the cost. The discrete energy levels of a closed FSM interval (<a href="../axiom.html#ax3">Axiom 3</a>) and the spin-orbit split of the lock bit (<a href="../axiom.html#ax9">Axiom 9</a>) are read as a maximal cost gap (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the shell-filling norm: the cumulative discrete-level count plus the lock-bit $\ell\cdot s$ split. (b) A magic number is the filling event of a closing shell, and its closure position is set by the discrete-level cumulation (<a href="../axiom.html#ax3">Axiom 3</a>) plus the spin-orbit lock bit (<a href="../axiom.html#ax9">Axiom 9</a>) — hence this norm. The harmonic-oscillator levels $2,8,20$ plus the lock-bit $\ell\cdot s$ split adding $28,50,82,126$ close the magic-number sequence.</p>
+<div class="math-block">
+<div class="math-row">$N_\text{magic} = \{2,8,20\}\;\cup\;\{28,50,82,126\}$</div>
+<div class="math-row">$\Delta E_\text{gap}(N_\text{magic}) = \max$</div>
+<div class="math-legend">$N_\text{magic}$: magic numbers | $\{2,8,20\}$: discrete-level cumulation (<a href="../axiom.html#ax3">Axiom 3</a>) | $\{28,50,82,126\}$: lock-bit $\ell\cdot s$ split (<a href="../axiom.html#ax9">Axiom 9</a>) | $\Delta E_\text{gap}$: shell-closure cost gap</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h642.html">H-642</a>, <a href="h645.html">H-645</a>, <a href="h652.html">H-652</a>, <a href="h655.html">H-655</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N_magic     = 2,8,20,28,50,82,126   magic-number sequence
+E1*(Pb-208) = 2.614 MeV             first excitation gap
+dS(Ca-48)   = 4 MeV                 neutron separation energy gap</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the nuclear-shell cost domain (discrete levels + spin-orbit). (b) What it reveals is the nucleon count at which the closed-shell cost gap is maximal — the magic numbers. Summing the level cumulation and the lock-bit split yields the sequence.</p>
+<div class="math-block">
+<div class="math-row">$N_\text{magic} = 2,8,20,28,50,82,126, \qquad \Delta E_1(\text{Pb-208}) = 2.614\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $N_\text{magic} = 2,8,20,28,50,82,126$</div>
+<div class="math-row">Measured: Pb-208 first excitation $2.614\;\text{MeV}$, Ca-48 separation gap $\approx 4\;\text{MeV}$</div>
+<div class="math-row">Agreement: consistent with doubly-magic nuclide stability</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The level cumulation $2,8,20$ closes, but the lock-bit split of $28,50,82,126$ depends on an external spin-orbit strength, so the last step of the forward chain is incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h645.html">H-645</a> (alpha decay) shell effects. <a href="h652.html">H-652</a> (shell model). <a href="h655.html">H-655</a> (isotope stability).</p><p>This card can be re-used as input for the following cards: <a href="h642.html">H-642</a>, <a href="h645.html">H-645</a>, <a href="h652.html">H-652</a>, <a href="h655.html">H-655</a></p>
+<p>Re-injection path: <a href="h642.html">H-642</a>, <a href="h645.html">H-645</a>, <a href="h652.html">H-652</a>, <a href="h655.html">H-655</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

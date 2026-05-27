@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: h gauge ew. 도메인: delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배. 재귀 대입 경로: <a href="d03.html">D-03</a>, <a href="h107.html">H-107</a>, <a href="h111.html">H-111</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 색 3축 + $\alpha_s$ 보정 비용에서 $R_l$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>$R_l$은 $Z$의 하드론 폭과 렙톤 폭의 비다. CAS가 쿼크 채널을 처리할 때는 색 3축을 모두 거치지만 렙톤 채널은 단일 경로만 쓴다. <a href="../axiom.html#ax2">공리 2</a>(CAS 유일 연산자)에서 색 인자 3과 각 채널 결합 강도가 나온다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 하드론 폭 대 렙톤 폭의 비 노름이다. 쿼크가 색 3축을 거치는 추가 비용이 이 비를 정하므로 이 노름을 택한다. 색 인자 3에 곱해지는 QCD 보정은 <a href="d03.html">D-03</a>의 $\alpha_s$가 정한다.</p>
+<div class="math-block">
+<div class="math-row">$R_l = \dfrac{\Gamma_\text{had}}{\Gamma_\text{lep}}$</div>
+<div class="math-row">$R_l = N_c \sum_q \dfrac{g_{V,q}^2 + g_{A,q}^2}{g_{V,l}^2 + g_{A,l}^2}\big(1 + \tfrac{\alpha_s}{\pi}\big)$</div>
+<div class="math-legend">$R_l$: 하드론/렙톤 폭 비 | $N_c=3$: 색 인자 (CAS 3축) | $\alpha_s$: 강결합 보정 (<a href="d03.html">D-03</a>) | $g_{V},g_{A}$: 벡터·축벡터 결합</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (도메인)</p>
-<p><strong>물리 상수 입력:</strong> <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d03.html">D-03</a>, <a href="h107.html">H-107</a>, <a href="h111.html">H-111</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N_c          = 3                CAS 3축
+alpha_s(M_Z) = 0.1179           D-03
+1+alpha_s/pi = 1.0375
+R_l          = 20.767           PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전약 붕괴폭 비 도메인으로 변환한다. 이 변환으로 보려는 것은 $Z$가 하드론으로 갈라지는 비율 대 렙톤으로 갈라지는 비율, 곧 $R_l$이다. 색 3축이 곱해진 쿼크 합에 $\alpha_s$ 보정을 더해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$R_l = \dfrac{\Gamma_\text{had}}{\Gamma_\text{lep}} = 20.83$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $R_l = 20.83$</div>
+<div class="math-row">측정값: $20.767 \pm 0.025$ (PDG 2024)</div>
+<div class="math-row">오차: $0.31\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 색 인자 3이 CAS 3축에서 고정되고 <a href="d03.html">D-03</a>의 $\alpha_s$ 보정만으로 비가 닫혀 자유 매개변수 0개다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d03.html">D-03</a>($\alpha_s$), <a href="../axiom.html#ax3">공리 3</a>(CAS 3단계) 근거.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d03.html">D-03</a>, <a href="h107.html">H-107</a>, <a href="h111.html">H-111</a></p>
+<p>재투입 경로: <a href="d03.html">D-03</a>, <a href="h107.html">H-107</a>, <a href="h111.html">H-111</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

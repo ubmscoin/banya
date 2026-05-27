@@ -68,39 +68,46 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Swap 이전 Compare 결과 폐기 비용에서 간섭 가시도 복원 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양자 소거는 경로 표지(Compare 결과)를 S 단계 이전에 폐기해 DATA를 불변으로 두는 비용이다. CAS의 R·C·S 파이프라인(<a href="../axiom.html#ax2">공리 2</a>)에서 C 결과가 S로 이어지지 않으면 중첩 인덱스(<a href="../axiom.html#ax13">공리 13</a>)가 존속하므로, 반야식의 superposition 항이 유지되는 비용으로 이를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 Compare 결과 폐기 노름, 곧 중첩 인덱스 존속 노름이다(<a href="../axiom.html#ax13">공리 13</a>). (b) 이 노름을 택하는 이유: 간섭 무늬의 유무는 경로 정보가 d-ring에 남느냐로만 결정되고, Swap 이전 폐기는 Compare false 상태로의 복귀(<a href="../axiom.html#ax7">공리 7</a>)와 동치이기 때문이다. 따라서 간섭 가시도 $V$를 경로 정보 잔존량 $\mathcal{D}$의 여집합으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$V^2 + \mathcal{D}^2 = 1$</div>
+<div class="math-row">$V = \sqrt{1-\mathcal{D}^2}$</div>
+<div class="math-legend">$V$: 간섭 가시도 | $\mathcal{D}$: 경로 식별도 = 잔존 Compare 결과 | $\mathcal{D}=0$: Swap 이전 완전 폐기 | $\mathcal{D}=1$: 표지 기록 후 Swap 확정</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>D = 1   표지 기록 (Swap 실행, 경로 확정)   H-447
+D = 0   Swap 이전 Compare 결과 폐기 (소거)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 이중슬릿 간섭 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 Compare 결과 폐기 시 가시도가 복원되는가다. 표지가 기록되면 $\mathcal{D}=1$이라 $V=0$(무늬 소멸), Swap 이전 폐기하면 $\mathcal{D}=0$이라 $V=1$(무늬 복원).</p>
+<div class="math-block">
+<div class="math-row">$\mathcal{D}=1 \Rightarrow V=0, \qquad \mathcal{D}=0 \Rightarrow V=1$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 소거 경로 $V=1$, 비소거 경로 $V=0$</div>
+<div class="math-row">측정값: Kim 2000 지연 선택 양자 소거 — 소거 부분집합에서 무늬 복원</div>
+</div>
+<p>판정: <strong>가설</strong>. 가시도 상보 관계 $V^2+\mathcal{D}^2=1$이 폐기 노름에서 닫혔으나, 부분 소거($0<\mathcal{D}<1$)의 CAS 비용 정량 모델이 아직 미완이다. 소거는 과거를 지우는 것이 아니라 Swap을 실행하지 않는 것이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h447.html">H-447</a>(붕괴) Swap 조건. <a href="h453.html">H-453</a>(지연 선택) 시간 순서. <a href="h455.html">H-455</a>(비파괴 측정) 정보 보존.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
+<p>재투입 경로: <a href="h447.html">H-447</a>, <a href="h453.html">H-453</a>, <a href="h455.html">H-455</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

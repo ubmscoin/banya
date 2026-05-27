@@ -66,39 +66,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 4개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d misc. 도메인: delta ==&gt; 자연 분류 외. 재귀 대입 경로: <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 사이클 카운트에서 시스템 시간 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>시스템 시간은 FSM 상태가 한 번 전이할 때 치르는 비용의 누적 카운트다. 상태 전이 1회(<a href="../axiom.html#ax3">공리 3</a>)는 Read(R+1)·Compare(C+1)·Swap(S+1)의 CAS 1사이클(<a href="../axiom.html#ax2">공리 2</a>)이며, 발화비트 $\delta$(<a href="../axiom.html#ax15">공리 15</a>)가 1회 발화할 때 이 카운트가 정확히 1 증가한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 도메인 time 축 바깥에서 세는 CAS 틱 카운트 노름이다. 진짜 시간은 도메인 time이 아니라 CAS 사이클의 이산 횟수이고, 그 횟수가 비용 누적과 동일하기 때문에 이 노름을 택한다. 따라서 시스템 시간을 CAS 사이클 횟수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$T_\text{sys} = N_\text{cycle}$</div>
+<div class="math-row">$\Delta T_\text{sys} = 1\ \text{per}\ (R{+}1\to C{+}1\to S{+}1)$</div>
+<div class="math-legend">$T_\text{sys}$: 시스템 시간 | $N_\text{cycle}$: CAS 사이클 누적 횟수 | $R{+}1,C{+}1,S{+}1$: Read·Compare·Swap 1사이클 | $\Delta T_\text{sys}=1$: 1틱 = 분할 불가 최소 단위</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 본문 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>1 tick     = 1 CAS cycle (R+1 -> C+1 -> S+1)
+T_sys      = 1, 2, 3, ...   자연수
+T_sys = 0  = 틱 부재         D-145
+delta fire = +1 per tick</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>CAS 백엔드 도메인에서 시스템 시간 도메인으로 변환한다. 이 변환으로 보려는 것은 d-ring 위 쥠 하나가 완전한 Read-Compare-Swap을 수행하는 데 드는 분할 불가 시간 단위다. 발화비트 발화마다 카운트를 1 증가시켜 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$T_\text{sys}(n) = \sum_{k=1}^{n} 1 = n \in \mathbb{N}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $T_\text{sys} = $ CAS 사이클 이산 카운트 $(n\in\mathbb{N})$</div>
+<div class="math-row">측정값: 구조 정의 (반 틱 부재)</div>
+<div class="math-row">오차: $0\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. 시간이 측정값이 아니라 CAS 사이클의 이산 카운트라는 구조 정의로 닫혔으며, 모든 시간 카드 체인의 출발 노름이 된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a></p>
+<p>재투입 경로: <a href="d145.html">D-145</a>, <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

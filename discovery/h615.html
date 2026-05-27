@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h601.html">H-601</a>, <a href="h602.html">H-602</a>, <a href="h616.html">H-616</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 다중 observer δ 공유 비용에서 네트워크 링크 수 $\binom{M}{2}$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양자 네트워크는 여러 observer(<a href="../axiom.html#ax8">공리 8</a>)가 δ 비트를 서로 공유하는 비용이다. δ가 전역 플래그(<a href="../axiom.html#ax15">공리 15</a>)라 공유 가능하고, 각 노드는 ECS(<a href="../axiom.html#ax7">공리 7</a>)이며, 한 링크는 얽힌 d-ring 쌍이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 $M$개 observer를 잇는 δ 공유 그래프 노름이다. 양자 인터넷이 observer 쌍 집합으로 정의되고 각 쌍이 하나의 δ 공유 채널을 차지하기 때문에 이 노름을 택하며, 완전 그래프의 링크 수가 observer 쌍 조합으로 결정된다.</p>
+<div class="math-block">
+<div class="math-row">$\text{Net} = \{(\text{observer}_i,\text{observer}_j)\}\ \text{with}\ \delta\text{-share}$</div>
+<div class="math-row">$L = \dbinom{M}{2} = \dfrac{M(M-1)}{2}$</div>
+<div class="math-legend">$M$: observer 노드 수 | $L$: δ 공유 링크 수 | $\binom{M}{2}$: observer 쌍 조합 | δ: 전역 공유 플래그</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h601.html">H-601</a>, <a href="h602.html">H-602</a>, <a href="h616.html">H-616</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>M = 16           observer 노드 수 (도메인 16조합)
+M(M-1)/2 = 120   완전 그래프 링크 수
+참조: 양자 인터넷; 얽힘 스와핑; 묵자 위성</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>측정 도메인(Compare 분기 true==&gt;Swap==&gt;DATA)으로 변환한다. 이 변환으로 보려는 것은 $M$개 observer 완전 연결에 필요한 δ 공유 링크 수 $L$이다. $M$을 쌍 조합에 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$L = \dfrac{16\times 15}{2} = 120$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $L = \binom{M}{2}$, $M=16$에서 $120$</div>
+<div class="math-row">측정: 묵자 위성·중계기 실험에서 노드 증가 시 링크 수 $M^2$ 스케일링 관측</div>
+<div class="math-row">정합: 구조 일치 (링크당 생성률 검증 대기)</div>
+</div>
+<p>판정: <strong>가설</strong>. 링크 수가 observer 쌍 조합에서 따라오지만, 단일 링크 얽힘 생성률과 중계기 간격(<a href="h616.html">H-616</a>)의 절대 스케일이 외부 입력으로 남아 forward chain 마지막 단계가 닫히지 않았다. 통찰: observer 16조합은 자료형 136($\binom{16}{2}$, <a href="../axiom.html#ax2">공리 2</a>)과 같은 쌍 구조를 네트워크 링크로 재현한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h601.html">H-601</a>(QKD), <a href="h602.html">H-602</a>(채널 용량) 네트워크 확장</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h601.html">H-601</a>, <a href="h602.html">H-602</a>, <a href="h616.html">H-616</a></p>
+<p>재투입 경로: <a href="h601.html">H-601</a>, <a href="h616.html">H-616</a>, <a href="h602.html">H-602</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

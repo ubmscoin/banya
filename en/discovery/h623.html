@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h623.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h623.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_neutrino_cp</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h623.html">H-623</a>. Quantum Hall Effect = Topological Quantization of CAS Cost</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible in the next round / remaining tasks listed</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7). Recursive substitution path: <a href="h624.html">H-624</a>, <a href="h625.html">H-625</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the von Klitzing constant $R_K$ from the topological-invariant cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The exact quantization of the Hall conductance is the closure of CAS cost conduction (<a href="../axiom.html#ax4">Axiom 4</a>) into a topologically protected integer invariant. Since the cost flow is bound to a topological invariant (<a href="../axiom.html#ax11">Axiom 11</a>), only integer Chern numbers $\nu$ are allowed, independent of impurities and temperature.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS step gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the topological-invariant norm. It is chosen because the cost conduction is protected by the topological invariant called the Chern number (<a href="../axiom.html#ax11">Axiom 11</a>), and that Chern number coincides with the FSM integer norm filling the Landau levels (<a href="../axiom.html#ax14">Axiom 14</a>). The Hall conductance is therefore substituted by the product of the Chern number $\nu$ and the quantum of conductance $e^2/h$.</p>
+<div class="math-block">
+<div class="math-row">$\sigma_{xy} = \nu\,\dfrac{e^2}{h}, \quad \nu \in \mathbb{Z}$</div>
+<div class="math-row">$R_K = \dfrac{h}{e^2}$</div>
+<div class="math-legend">$\sigma_{xy}$: Hall conductance | $\nu$: Chern number = topological invariant | $e^2/h$: quantum of conductance | $R_K$: von Klitzing resistance quantum = $\nu=1$ resistance</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS step), 9 (Koide theta), 30 (CAS access path), 7 (DOF)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h624.html">H-624</a>, <a href="h625.html">H-625</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>h     = 6.62607015e-34 J s     defined value
+e     = 1.602176634e-19 C      defined value
+h/e^2 = 25812.80745 ohm        von Klitzing R_K
+nu    = 1, 2, 3, ...           integer Chern number</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the topologically protected conduction domain. What it reveals is the Hall resistance at Chern number $\nu=1$ — the von Klitzing constant $R_K=h/e^2$. Since $h$ and $e$ are SI defining constants, $R_K$ is produced in closed form.</p>
+<div class="math-block">
+<div class="math-row">$R_K = \dfrac{h}{e^2} = \dfrac{6.62607015\times10^{-34}}{(1.602176634\times10^{-19})^2} = 25812.80745\,\Omega$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $R_K = 25812.80745\,\Omega$</div>
+<div class="math-row">Measured: $R_K = 25812.80745\dots\,\Omega$ (resistance standard)</div>
+<div class="math-row">Error: $< 10^{-9}$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. $R_K=h/e^2$ closes exactly from the topological-invariant Chern number, but the step of explicitly computing the Chern number $\nu$ itself from the CAS cost is incomplete, so the forward chain does not close. The insight that cost conduction is a topological invariant is the entry point to the search for the fractional Chern number (<a href="h624.html">H-624</a>) and the surface channel (<a href="h625.html">H-625</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: topological premise for <a href="h624.html">H-624</a> (fractional quantum Hall), <a href="h625.html">H-625</a> (topological insulators)</p><p>This card can be re-used as input for the following cards: <a href="h624.html">H-624</a>, <a href="h625.html">H-625</a></p>
+<p>Re-injection path: <a href="h624.html">H-624</a>, <a href="h625.html">H-625</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

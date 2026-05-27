@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h731.html">H-731</a>, <a href="h737.html">H-737</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 회전 FSM의 RLU 틱 비대칭에서 프레임 끌림 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>RLU 틱은 시간 단위다(<a href="../axiom.html#ax5">공리 5</a>). lock 비트가 각운동량을 쥐면(<a href="../axiom.html#ax2">공리 2</a>) 회전 방향과 반대 방향에서 RLU 틱 속도가 달라져, 주변 ECS의 비용 좌표가 회전 방향으로 끌려간다. 이것이 커 해(<a href="h731.html">H-731</a>)의 비대칭 메트릭이 만드는 효과다. 양자·정보 도메인의 RLU 틱 비대칭으로 이 끌림을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 커 메트릭의 비대각 시간-각 노름 $g_{t\phi}$다. (b) 비대각 항은 시간 틱과 방위각 회전을 묶어 정지 좌표계 자체를 회전시키므로, RLU 틱 비대칭을 각속도로 읽으려면 이 노름을 택한다. 따라서 끌림 각속도를 $g_{t\phi}/g_{\phi\phi}$의 약장 근사로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\omega = -\dfrac{g_{t\phi}}{g_{\phi\phi}}$</div>
+<div class="math-row">$\omega_{\text{LT}} = \dfrac{2GJ}{c^2 r^3}$</div>
+<div class="math-legend">$\omega_{\text{LT}}$: 렌즈-티링 각속도 | $J$: lock 비트 각운동량 | $g_{t\phi}$: 시간-각 비대각 비용 | 약장 근사: $r_s \ll r$</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h731.html">H-731</a>, <a href="h737.html">H-737</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>G    = 6.674e-11 m^3 kg^-1 s^-2
+c    = 2.998e8 m s^-1
+J    = 5.86e33 kg m^2 s^-1        지구 각운동량
+r    = 7.0e6 m                   궤도 반지름 (GP-B)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 지구 근방 약장 도메인으로 변환한다. (b) 보려는 것은 자이로스코프 축의 세차 각속도 $\omega_{\text{LT}}$다. 각운동량 $J$에 $2G/(c^2 r^3)$을 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\omega_{\text{LT}} = \dfrac{2GJ}{c^2 r^3} \approx 0.039\;\text{arcsec/yr} \approx 39\;\text{mas/yr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\omega_{\text{LT}} \approx 39\;\text{mas/yr}$ (지구 근방)</div>
+<div class="math-row">측정: Gravity Probe B $39.2 \pm 7.2\;\text{mas/yr}$ (2011)</div>
+<div class="math-row">오차: $\sim 19\%$ (LAGEOS $\sim 10\%$)</div>
+</div>
+<p>판정: <strong>가설</strong>. RLU 틱 비대칭에서 끌림 각속도가 따라오나, 각운동량 $J$가 외부 입력이고 측정 오차대($\pm 7.2$)가 커 forward chain 마지막 단계가 닫히지 않았다. 통찰: 프레임 끌림은 회전 FSM이 시간 틱을 좌우로 가른 결과이며, 커 해(<a href="h731.html">H-731</a>) 비대칭의 관측 가능한 얼굴이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h731.html">H-731</a>(커 해) 관측 효과. <a href="h737.html">H-737</a>(중력파 편광) 회전 효과</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h731.html">H-731</a>, <a href="h737.html">H-737</a></p>
+<p>재투입 경로: <a href="h731.html">H-731</a>, <a href="h737.html">H-737</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

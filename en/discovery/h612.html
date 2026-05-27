@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D-promotion is possible upon proceeding to the next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h611.html">H-611</a>, <a href="h638.html">H-638</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the annealing time $1/\Delta_{\min}^2$ from the RLU decay schedule cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Quantum annealing is the cost of slowly steering the CAS to its minimum-cost configuration — its ground state — by controlling the RLU HOT==&gt;WARM==&gt;COLD decay (<a href="../axiom.html#ax6">Axiom 6</a>). The ground state is the cost minimum (<a href="../axiom.html#ax4">Axiom 4</a>), and quantum tunneling through a cost barrier is a CAS Compare (<a href="../axiom.html#ax2">Axiom 2</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the RLU decay-schedule norm, interpolating from the initial Hamiltonian to the problem Hamiltonian. It is chosen because the schedule must be slow enough for the adiabatic theorem to keep the system in the ground state, and the required time is set by the inverse square of the minimum energy gap $\Delta_{\min}$.</p>
+<div class="math-block">
+<div class="math-row">$H(s) = (1-s)\,H_0 + s\,H_P,\qquad s:0\,..\,1$</div>
+<div class="math-row">$T \gtrsim \dfrac{1}{\Delta_{\min}^2}$</div>
+<div class="math-legend">$H_0$: initial Hamiltonian | $H_P$: problem Hamiltonian | $s$: RLU decay progress variable | $T$: annealing time | $\Delta_{\min}$: minimum energy gap</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <code>H_0</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h611.html">H-611</a>, <a href="h638.html">H-638</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>s_start = 0      RLU HOT (initial Hamiltonian)
+s_end   = 1      RLU COLD (problem Hamiltonian)
+Delta_min = 0.1  minimum energy gap (unit)
+ref: Kadowaki-Nishimori 1998; adiabatic theorem; D-Wave</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum/information domain (the d-ring self-reference loop). What it reveals is the minimum annealing time $T$ that does not break adiabaticity. Substituting the gap $\Delta_{\min}$ into the adiabatic condition yields that value.</p>
+<div class="math-block">
+<div class="math-row">$T \gtrsim \dfrac{1}{\Delta_{\min}^2} = \dfrac{1}{0.1^2} = 100$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived scale: $T \gtrsim 1/\Delta_{\min}^2$, equal to $T \gtrsim 100$ at $\Delta_{\min}=0.1$</div>
+<div class="math-row">Measured: D-Wave annealers show a sharp rise in required time as the gap shrinks</div>
+<div class="math-row">Match: structural agreement (quantitative verification pending)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The annealing time follows from the RLU decay schedule and the adiabatic theorem, but the absolute size of the gap $\Delta_{\min}$ remains a problem-specific external input, so the final stage of the forward chain does not close. Insight: the difficulty of the optimization concentrates in the single instant when the RLU decay passes through the narrowest gap.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h611.html">H-611</a> (quantum simulation), <a href="h638.html">H-638</a> (glass transition) optimization linkage</p><p>This card can be re-used as input for the following cards: <a href="h611.html">H-611</a>, <a href="h638.html">H-638</a></p>
+<p>Re-injection path: <a href="h611.html">H-611</a>, <a href="h638.html">H-638</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

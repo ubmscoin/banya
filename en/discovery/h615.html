@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h615.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h615.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h615.html">H-615</a>. Quantum Network = δ-Sharing Channel Among Multiple observers</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: δ ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive-substitution path: <a href="h601.html">H-601</a>, <a href="h602.html">H-602</a>, <a href="h616.html">H-616</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the network link count $\binom{M}{2}$ from the multi-observer δ-sharing cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A quantum network is the cost of multiple observers (<a href="../axiom.html#ax8">Axiom 8</a>) sharing δ bits with one another. Because δ is a global flag (<a href="../axiom.html#ax15">Axiom 15</a>) it can be shared, each node is an ECS (<a href="../axiom.html#ax7">Axiom 7</a>), and one link is an entangled d-ring pair.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the δ-sharing graph norm connecting $M$ observers. It is chosen because the quantum internet is defined as a set of observer pairs and each pair occupies one δ-sharing channel, so the link count of the complete graph is fixed by the observer-pair combinations.</p>
+<div class="math-block">
+<div class="math-row">$\text{Net} = \{(\text{observer}_i,\text{observer}_j)\}\ \text{with}\ \delta\text{-share}$</div>
+<div class="math-row">$L = \dbinom{M}{2} = \dfrac{M(M-1)}{2}$</div>
+<div class="math-legend">$M$: number of observer nodes | $L$: number of δ-sharing links | $\binom{M}{2}$: observer-pair combinations | δ: global shared flag</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets, DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h601.html">H-601</a>, <a href="h602.html">H-602</a>, <a href="h616.html">H-616</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>M = 16           number of observer nodes (16 domain combinations)
+M(M-1)/2 = 120   complete-graph link count
+ref: quantum internet; entanglement swapping; Micius satellite</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the measurement domain (the Compare branch true==&gt;Swap==&gt;DATA). What it reveals is the number of δ-sharing links $L$ needed to fully connect $M$ observers. Substituting $M$ into the pair combination yields that value.</p>
+<div class="math-block">
+<div class="math-row">$L = \dfrac{16\times 15}{2} = 120$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $L = \binom{M}{2}$, equal to $120$ at $M=16$</div>
+<div class="math-row">Measured: Micius-satellite and repeater experiments show $M^2$ link scaling as nodes grow</div>
+<div class="math-row">Match: structural agreement (per-link generation rate pending)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The link count follows from the observer-pair combinations, but the absolute scale of the per-link entanglement-generation rate and repeater spacing (<a href="h616.html">H-616</a>) remains an external input, so the final stage of the forward chain does not close. Insight: the 16 observer combinations reproduce, as network links, the same pair structure as the data type 136 ($\binom{16}{2}$, <a href="../axiom.html#ax2">Axiom 2</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h601.html">H-601</a> (QKD), <a href="h602.html">H-602</a> (channel capacity) network extension.</p><p>This card can be re-used as input for the following cards: <a href="h601.html">H-601</a>, <a href="h602.html">H-602</a>, <a href="h616.html">H-616</a></p>
+<p>Re-injection path: <a href="h601.html">H-601</a>, <a href="h616.html">H-616</a>, <a href="h602.html">H-602</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

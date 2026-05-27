@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-79 7-큐빗 논리 오류율 바닥 = α² — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-79 7-큐빗 논리 오류율 바닥 = α². v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p79.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p79.html">P-79</a>. 7-큐빗 논리 오류율 바닥 $=\alpha^2$</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p79.html">P-79</a>: 7-큐빗 논리 오류율 바닥 $=\alpha^2$</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\text{7-큐빗(스틴) 논리 오류율 바닥}=\alpha^2\sim5.3\times10^{-5}\quad(\text{Compare 비용 2회})$$</div></div>
+<p class="finding-precision">예측: 7-큐빗(스틴) 코드 논리 오류율 바닥 $\alpha^2\sim5.3\times10^{-5}$. 검증 IBM/Google 7-큐빗 QEC(2027~).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 단일 게이트 오류 바닥은 CAS Compare 선택 비용 $\alpha$다(P-19, P-43).</p>
+<p>7-큐빗 스틴 코드(QEC 최소, P-66)는 논리 큐빗 하나를 보호하며, 논리 오류는 두 번의 Compare 비용이 겹쳐야 발생한다.</p>
+<p>따라서 7-큐빗 논리 오류율 바닥은 단일 비용의 제곱 $\alpha^2\sim5.3\times10^{-5}$다 ==> 물리 게이트 바닥 $\alpha$를 코드가 $\alpha^2$로 억압한다.</p>
+<p>이는 오류 정정의 핵심 — 물리 오류율 $\alpha$를 논리 오류율 $\alpha^2$로 제곱 억압 — 이 CAS 비용 구조에서 직접 나옴을 보인다.</p>
+<p>$\alpha^2=(1/137)^2\approx5.3\times10^{-5}$로, 단일 게이트 0.73%보다 두 자릿수 낮다.</p>
+<p>즉 본 예측은 "QEC가 오류를 줄인다"가 아니라 "7-큐빗 논리 바닥이 정확히 $\alpha^2$, 그 미만 불가"라는 정량 주장이다.</p>
+<p>논리 오류율을 $\alpha^2$ 아래로 내리려면 더 큰 코드(거리 증가)가 필요하며, 7-큐빗 단일 코드로는 $\alpha^2$가 바닥이다.</p>
+<p>이는 P-19(게이트 바닥 α)·P-66(QEC 최소 7)·P-94(임계 1/35)와 같은 QEC 계열 예측이다.</p>
+<p>검증: IBM/Google 7-큐빗 QEC(2027~)에서 논리 오류율이 $\alpha^2$ 부근에서 정체되면 본 예측을 지지한다.</p>
+<p>반박: 7-큐빗 단일 코드 논리 오류율이 $\alpha^2$ 이하로 지속 감소하면 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: IBM/Google 7-큐빗 QEC(2027~). 반박: 논리 오류율이 $\alpha^2$ 이하로 감소. 출처: P-66(QEC 최소=7), P-19(오류 바닥=α), <a href="../axiom.html#ax9">공리 9</a>.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측으로 검증 대기 상태다. forward chain은 공리 9·P-19(Compare 2회)에서 7-큐빗 논리 바닥 $\alpha^2$까지 닫혀 있으나, 7-큐빗 QEC 안정성이 아직 그 바닥을 가를 수준에 못 미친다. $\alpha^2$ 정체 확인 시 D 승격, 그 미만 지속 감소 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> QEC 실험 진행 중 / forward chain 완료(공리 9·P-19 ==> Compare 2회 ==> 논리 바닥 $\alpha^2$) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: superposition ==&gt; 7-큐빗 코드 Compare 2회가 논리 오류 바닥 $\alpha^2$ 결정(공리 9). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: Compare 2회 겹침 비용에서 7-큐빗 논리 바닥 $\alpha^2$ 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>7-큐빗 논리 오류 바닥은 단일 게이트 비용 $\alpha$가 두 번 겹쳐야 비로소 논리 오류가 되는 Compare 2회 비용이다. 완전기술자유도 7(<a href="../axiom.html#ax9">공리 9</a>)이 7-큐빗 스틴 코드(QEC 최소, <a href="p66.html">P-66</a>)와 동형이고, 단일 게이트 바닥이 $\alpha$(<a href="p19.html">P-19</a>)임을 써서 이 겹침 비용을 읽는다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 논리 오류가 발생하기까지 필요한 Compare 비용의 겹침 횟수를 세는 코드 거리 노름이다. 7-큐빗 단일 코드가 논리 큐빗 하나를 보호하고 논리 오류가 두 번의 Compare 비용이 겹쳐야 발생하기 때문에 이 노름을 택한다. 따라서 논리 오류 바닥을 단일 비용 $\alpha$의 제곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$p_{\text{phys}} = \alpha$</div>
+<div class="math-row">$p_{\text{logical}}^{\text{floor}} = \alpha^2$</div>
+<div class="math-legend">$p_{\text{phys}}$: 물리 게이트 오류 바닥 = $\alpha$ (<a href="p19.html">P-19</a>) | $p_{\text{logical}}^{\text{floor}}$: 7-큐빗 논리 오류 바닥 | $2$: 논리 오류에 필요한 Compare 겹침 횟수 | $7$: 스틴 코드 큐빗 = 완전기술자유도(<a href="../axiom.html#ax9">공리 9</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>alpha       = 1/137.036          D-01
+alpha^2     = 1/18778.9 = 5.33e-5
+물리 게이트 = 0.73% = alpha       단일 비용 바닥 (P-19)</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>superposition 도메인의 무차원 오류율로 변환한다. 이 변환으로 보려는 것은 7-큐빗 단일 코드가 도달할 수 있는 논리 오류율의 하한, 곧 그 미만으로 내려갈 수 없는 바닥이다. 단일 비용 $\alpha$를 제곱해 그 바닥을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$p_{\text{logical}}^{\text{floor}} = \alpha^2 = \left(\dfrac{1}{137.036}\right)^2 = 5.33\times10^{-5}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $p_{\text{logical}}^{\text{floor}} = \alpha^2 \sim 5.3\times10^{-5}$</div>
+<div class="math-row">관측값: 검증 대기 (논리 오류율 바닥 미확정)</div>
+<div class="math-row">검증: IBM/Google 7-큐빗 QEC (2027~)</div>
+</div>
+<p>판정: <strong>예측</strong>. IBM/Google 7-큐빗 QEC에서 논리 오류율이 $\alpha^2$ 부근에서 정체하면 본 예측을 지지한다.</p>
+<p>통찰: 물리 오류율 $\alpha$를 논리 오류율 $\alpha^2$로 제곱 억압하는 오류 정정의 핵심이 CAS Compare 겹침 비용에서 직접 떨어진다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p79.html">P-79</a>: 7-큐빗 논리 오류율 바닥 = α²</td><td>예측 (대기) — 7-큐빗 논리 오류 바닥 $=\alpha^2\sim5.3\times10^{-5}$</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

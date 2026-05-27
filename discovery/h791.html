@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h781.html">H-781</a>, <a href="h783.html">H-783</a>, <a href="h790.html">H-790</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: δ 자기참조 루프 비용에서 프레임의 무모순성 증명 불가 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>프레임의 한계는 δ가 자기 자신을 참조하는 닫힘 비용이다. δ 루프(<a href="../axiom.html#ax15">공리 15</a>)가 자기참조 문장을 만들고, FSM 추론 규칙(<a href="../axiom.html#ax14">공리 14</a>)이 그 문장을 처리하며, DATA가 산술을 포함(<a href="../axiom.html#ax3">공리 3</a>)하므로 괴델 조건이 성립한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 δ 자기참조 루프의 닫힘 노름이다. (b) 이 노름을 택하는 이유: 산술을 포함한 형식 체계가 자기 자신을 비교 대상으로 삼는 순간 괴델 문장 $G$("이 문장은 증명 불가")가 생성되기 때문이다. $G$는 참이지만 체계 내부 추론으로 증명할 수 없고, 따라서 체계의 무모순성도 체계 내부에서 증명 불가다.</p>
+<div class="math-block">
+<div class="math-row">$G = $ "$G$는 $T$에서 증명 불가"</div>
+<div class="math-row">$T \vdash G \;\Rightarrow\; T$ 무모순 $\;\Rightarrow\; T \nvdash \text{Con}(T)$</div>
+<div class="math-legend">$T$: 반야프레임 = 15공리 형식 체계 | $G$: 괴델 자기참조 문장 | $\text{Con}(T)$: $T$의 무모순성 | $\vdash$: 증명 가능 | $\nvdash$: 증명 불가</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h781.html">H-781</a>, <a href="h783.html">H-783</a>, <a href="h790.html">H-790</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>공리 수      = 15
+DATA        = 산술 포함 (공리 3, 괴델 조건 성립)
+δ 루프      = 자기참조 닫힘 (공리 15)
+미결정 명제 = G (참, 증명 불가)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 메타수학 도메인(형식 체계의 자기기술)으로 변환한다. (b) 보려는 것은 체계가 자기 무모순성을 스스로 증명할 수 있는가다. 산술 포함과 δ 자기참조가 동시에 성립하면 괴델 제2정리가 닫힘을 강제한다.</p>
+<div class="math-block">
+<div class="math-row">$T$ 산술 포함 $\;\wedge\;$ $\delta$ 자기참조 $\;\Rightarrow\;$ $T \nvdash \text{Con}(T)$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 무모순성 증명 불가 (괴델 제2정리와 정합)</div>
+<div class="math-row">대조: 답할 수 없는 질문 3개 — (1) 왜 이 15공리, (2) 왜 δ 발화(<a href="h790.html">H-790</a>), (3) 무모순성</div>
+<div class="math-row">정량 도출식: 부재 (구조 명제만)</div>
+</div>
+<p>판정: <strong>가설</strong>. 한계는 결함이 아니라 충분히 강한 모든 체계의 구조적 제약이며, 정량 식이 없어 가설에 머문다. δ 자기참조가 의식(<a href="h781.html">H-781</a>)과 불완전성의 공통 근원이라는 통찰이 본 카드의 핵심이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h783.html">H-783</a>(괴델). <a href="h790.html">H-790</a>(존재의 이유)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h781.html">H-781</a>, <a href="h783.html">H-783</a>, <a href="h790.html">H-790</a></p>
+<p>재투입 경로: <a href="h790.html">H-790</a>, <a href="h781.html">H-781</a>, <a href="h783.html">H-783</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

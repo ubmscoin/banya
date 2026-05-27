@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h706.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h706.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h706.html">H-706</a>. Rayleigh Scattering = Wavelength-Dependent Scattering of CAS Cost Waves</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible upon advancing to the next round / residual tasks stated.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unfixed, follow-up refinement required). Recursive substitution path: <a href="h707.html">H-707</a>, <a href="h708.html">H-708</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Rayleigh $1/\lambda^4$ Dependence from the CAS Cost-Wave Scattering Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Rayleigh scattering is the cost the CAS cost wave pays when it strikes a scatterer far smaller than its wavelength and re-emits the cost (<a href="../axiom.html#ax4">Axiom 4</a> cost-wave re-emission). The scatterer is a small region of size $\ll\lambda$ inside the ECS (<a href="../axiom.html#ax7">Axiom 7</a>), and the re-emission strength is read through the scatterer's induced dipole (<a href="../axiom.html#ax2">Axiom 2</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unfixed, follow-up refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the frequency norm of the CAS cost wave. (b) Because the scatterer is far smaller than the wavelength and sees a uniform field over one period of the cost wave, the re-emission cost closes as the fourth power of the cost-wave frequency (the square of the dipole acceleration times two frequency factors). Since frequency is $1/\lambda$, the scattering-intensity norm is substituted by $\lambda^{-4}$.</p>
+<div class="math-block">
+<div class="math-row">$I \propto \dfrac{\sigma\,I_0}{r^2}$</div>
+<div class="math-row">$I \propto \dfrac{a^6}{\lambda^4}$</div>
+<div class="math-legend">$I$: scattering intensity | $\lambda$: cost-wave wavelength | $a$: scatterer radius ($a\ll\lambda$) | $\sigma$: scattering cross-section | $a^6/\lambda^4$: dipole re-emission norm</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h707.html">H-707</a>, <a href="h708.html">H-708</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>lambda(blue) = 450 nm
+lambda(red)  = 650 nm
+(650/450)^4  = 4.35              blue/red scattering ratio
+sigma(N2)    = 5e-31 m^2         500 nm, atmospheric observation</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The expression in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the atmospheric-optics domain (ECS scattering region). (b) What it reveals is how much more strongly the short-wavelength cost wave scatters than the long-wavelength one — why the sky is blue and the sunset red. Substituting the blue and red wavelengths into the $\lambda^{-4}$ norm yields the scattering ratio.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{I_{450}}{I_{650}} = \left(\dfrac{650}{450}\right)^4 = 4.35$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: scattering intensity $\propto \lambda^{-4}$, blue/red ratio $4.35$</div>
+<div class="math-row">Measured: $\sigma_{\text{N}_2}\approx 5\times10^{-31}\,\text{m}^2$ ($500\,\text{nm}$), atmospheric optics</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $\lambda^{-4}$ dependence closes from the cost-wave re-emission norm, but the last step — deriving the absolute size of the cross-section $\sigma$ from axiomatic constants alone — remains open, so it stops at hypothesis.</p>
+<p>Insight: the blue of the sky is the direct visualization of the norm by which a CAS cost wave re-emits from small scatterers as the fourth power of frequency.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h707.html">H-707</a> (Raman scattering) elastic baseline. Comparison with <a href="h708.html">H-708</a> (Brillouin scattering).</p><p>This card can be re-used as input for the following cards: <a href="h707.html">H-707</a>, <a href="h708.html">H-708</a></p>
+<p>Re-injection path: <a href="h707.html">H-707</a>, <a href="h708.html">H-708</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

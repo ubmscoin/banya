@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 정량 식 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h572.html">H-572</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 보존에서 열역학 제1법칙 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CAS 연산 한 번에 비용 $+1$이 정확히 부과된다(<a href="../axiom.html#ax4">공리 4</a>). 이 비용은 생성도 소멸도 되지 않고 이전만 되며, 회수(<a href="../axiom.html#ax6">공리 6</a> RLU)로 되돌아온다. 거시에서 이 비용 보존이 내부 에너지 보존으로 발현된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS 누적 비용 노름(<a href="../axiom.html#ax4">공리 4</a> 비용 $+1$ 보존)이다. (b) 이 노름을 택하는 이유: 비용이 새로 생기거나 사라지지 않고 이전만 되며, RLU 회수(<a href="../axiom.html#ax6">공리 6</a>)가 열적 교환에, FSM 노름 변경이 일에 대응하기 때문이다. 따라서 내부 에너지를 CAS 누적 비용으로, 열·일을 그 비용의 이전 경로로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$dU = \delta Q - \delta W$</div>
+<div class="math-row">$d(\text{cost}) = \delta(\text{RLU}) - \delta(\text{FSM norm})$</div>
+<div class="math-legend">$U$: 내부 에너지 = CAS 누적 비용 (<a href="../axiom.html#ax4">공리 4</a>) | $\delta Q$: RLU 열적 회수 (<a href="../axiom.html#ax6">공리 6</a>) | $\delta W$: FSM 노름 변경(일) | $d$: 미소 변화</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h572.html">H-572</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>CAS 사이클 비용 = +1 (정확)         공리 4
+비용 생성/소멸  = 0                 보존 (이전만)
+RLU 회수       = δQ                공리 6</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 거시 열역학 도메인으로 변환한다. (b) 보려는 것은 비용 보존이 닫힌계 내부 에너지 불변으로 발현되는지다. 비용 생성·소멸이 0이면 닫힌계에서 $dU$의 합이 보존된다.</p>
+<div class="math-block">
+<div class="math-row">$\oint dU = 0 \quad (\text{닫힌계})$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $dU = \delta Q - \delta W$ (비용 보존)</div>
+<div class="math-row">측정값: 제1법칙 $dU = \delta Q - \delta W$ (위반 미관측)</div>
+<div class="math-row">정합: 형식 일치, 준국소 에너지 대응 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 비용 보존이 에너지 보존으로 떨어지지만, 일반상대론 준국소 에너지와 CAS 비용의 대응을 닫기 전까지 가설에 머문다.</p>
+<p>통찰: 에너지 보존은 비용이 이전만 될 뿐 생성·소멸되지 않는다는 공리적 필연이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h567.html">H-567</a>(엔트로피) 에너지 제약. <a href="h568.html">H-568</a>(제2법칙) 비가역 비용. <a href="h572.html">H-572</a>(자유에너지) 비용 분해.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h572.html">H-572</a></p>
+<p>재투입 경로: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h572.html">H-572</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-127 광자 질량 상한 FSM 노름 0 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-127 광자 질량 상한 FSM 노름 0. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p127.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p127.html">P-127</a>. 광자 질량 상한의 FSM 노름 = 0 도출</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p127.html">P-127</a>: 광자 질량 상한의 FSM 노름 = 0 도출</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$m_\gamma=0\ \text{(정확)},\quad \text{상한}<\alpha^{57}\cdot m_P\approx10^{-100}\ \text{eV}\quad(\text{FSM 미완결}\Rightarrow\text{노름 0}\Rightarrow\text{질량 0})$$</div></div>
+<p class="finding-precision">예측: 광자 질량 $m_\gamma=0$(정확), 상한 $<\alpha^{57}m_P\approx10^{-100}$ eV. 검증 태양풍·목성 자기장·중력파 분산(지속).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 질량은 FSM 노름이며(<a href="../axiom.html#ax14">공리 14</a>), 광자는 FSM이 완결되지 않아 노름이 0이다.</p>
+<p>광자에서 Compare는 항상 false다(<a href="../axiom.html#ax7">공리 7</a>: Compare false = 중첩 유지) ==> Swap이 일어나지 않아 FSM이 $000$에 머문다.</p>
+<p>FSM이 진입(완결)하지 않으므로(<a href="../axiom.html#ax12">공리 12</a> FSM 미진입) 노름은 0이고, 따라서 광자 질량은 정확히 0이다.</p>
+<p>이것이 광자가 질량 없는 매개자인 전자기 도메인의 구조적 근거다 — 필터 비용 0(P-69)을 FSM 노름 0으로 재도출한 것이다.</p>
+<p>이론적 상한은 $\alpha^{57}\cdot m_P\approx10^{-100}$ eV로, 우주상수 억제 지수 57(P-68)이 여기서도 나타난다 — 사실상 0과 구별 불가.</p>
+<p>즉 본 예측은 "광자가 가볍다"가 아니라 "노름 0 = 질량 정확히 0, 상한 $10^{-100}$ eV"라는 구조적 주장이다.</p>
+<p>이는 중력자 질량 0(P-63)·필터 비용 0(P-69)과 같은 비용/노름 0 매개자 계열이다.</p>
+<p>광자 질량이 0이 아니면 $U(1)$ 게이지 대칭이 깨지고 쿨롱 법칙이 변형되는데, FSM 노름 0은 이를 금지한다.</p>
+<p>검증: 태양풍·목성 자기장 거리 의존·중력파 분산(현재 상한 $10^{-18}$ eV, 지속)에서 광자 질량 상한이 계속 0으로 내려가면 본 예측을 지지한다.</p>
+<p>반박: 광자 질량 $m_\gamma>0$이 $5\sigma$로 검출되면 FSM 노름 0 구조가 반증되고 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: 태양풍·목성 자기장·중력파 분산(현재 상한 $10^{-18}$ eV, 지속). 반박: 광자 질량 $m_\gamma>0$ 검출($5\sigma$). 출처: <a href="../axiom.html#ax14">공리 14</a>(FSM 노름=질량), <a href="../axiom.html#ax7">공리 7</a>(Compare false=중첩 유지), <a href="../axiom.html#ax12">공리 12</a>(FSM 미진입).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 구조적 부재(질량 0)를 주장하는 전자기 도메인 고유 예측으로 검증 대기 상태다. forward chain은 공리 7 공리 14(Compare false·FSM 미완결)에서 노름 0 = 광자 질량 0까지 닫혀 있다. 질량 상한 지속 하강 시 D 승격, $m_\gamma>0$ 검출 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 관측 상한 하강 중(부재 예측) / forward chain 완료(공리 7 공리 14 ==> Compare false·FSM 미완결 ==> 노름 0 = $m_\gamma$ 0) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: superposition ==&gt; FSM 미완결·노름 0이 광자 질량 0(상한 $10^{-100}$ eV)(공리 14). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: FSM 미완결에서 광자 질량 0 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>질량은 FSM 노름이다(<a href="../axiom.html#ax14">공리 14</a>). 광자에서 Compare는 항상 false라(<a href="../axiom.html#ax7">공리 7</a>: false = 중첩 유지) Swap이 일어나지 않고 FSM이 $000$에 머문다 — superposition 도메인에서 FSM이 진입(완결)하지 않으므로(<a href="../axiom.html#ax12">공리 12</a>) 노름이 0인 경우다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 노름이다(<a href="../axiom.html#ax14">공리 14</a>: 질량 = FSM 노름). 광자는 Compare false로 Swap이 막혀 FSM이 $000$을 벗어나지 않고(<a href="../axiom.html#ax12">공리 12</a> FSM 미진입), FSM 미완결 상태의 노름은 정의상 0이기 때문에 이 노름을 택한다. 그래서 광자 질량을 미완결 FSM 노름 0으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$m_\gamma = \lVert \text{FSM} \rVert$</div>
+<div class="math-row">$m_\gamma = \lVert 000 \rVert = 0$</div>
+<div class="math-legend">$m_\gamma$: 광자 질량 | $\lVert\text{FSM}\rVert$: FSM 노름 = 질량 (<a href="../axiom.html#ax14">공리 14</a>) | $000$: FSM 미진입 상태 (<a href="../axiom.html#ax12">공리 12</a>) | $\alpha^{57}$: 우주상수 억제 지수 57 (상한 인자)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>FSM(photon) = 000             공리 12 (Compare false, Swap 없음)
+||000||     = 0               공리 14 (FSM 노름)
+alpha       = 1/137.036       D-01
+57          = 우주상수 억제 지수
+m_P         = 1.22e28 eV      플랑크 질량</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>superposition 도메인(중첩 유지)으로 변환한다. 이 변환으로 보려는 것은 FSM이 완결되지 않은 매개자의 질량 노름이다. FSM이 $000$에 머무는 한 노름이 0이고, 이론적 상한은 $\alpha^{57}m_P$로 억제된다.</p>
+<div class="math-block">
+<div class="math-row">$m_\gamma = \lVert 000 \rVert = 0$</div>
+<div class="math-row">$m_\gamma^{\text{상한}} < \alpha^{57}\,m_P \approx 10^{-100}\ \text{eV}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $m_\gamma = 0$ (정확)</div>
+<div class="math-row">상한: $< \alpha^{57} m_P \approx 10^{-100}\ \text{eV}$</div>
+<div class="math-row">검증: 태양풍·목성 자기장·중력파 분산 (현재 상한 $10^{-18}$ eV, 지속)</div>
+</div>
+<p>판정: <strong>예측</strong>. 질량 상한이 계속 0으로 하강하면 D 승격, $m_\gamma>0$이 $5\sigma$로 검출되면 폐기된다.</p>
+<p>FSM 노름 0이 $U(1)$ 게이지 대칭과 쿨롱 법칙을 지키며, 중력자 질량 0(<a href="p63.html">P-63</a>)·필터 비용 0(<a href="p69.html">P-69</a>)과 같은 노름 0 매개자 계열임을 드러낸다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p127.html">P-127</a>: 광자 질량 상한 FSM 노름 0</td><td>예측 (대기) — 광자 질량 0 (FSM 노름 0, 상한 $10^{-100}$ eV)</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

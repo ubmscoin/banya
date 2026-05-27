@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 2개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: h electromag qed. 도메인: delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2)). 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="h72.html">H-72</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 비용에서 전자 이상 자기 모멘트 a_e 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전자의 이상 자기 모멘트는 가상 광자 한 개를 방출하고 재흡수하는 비용이다. Compare 1회가 비용 $\alpha$를 수반하고(<a href="../axiom.html#ax2">공리 2</a> CAS 원자성, 비용 C+1), FSM 순차 점화(<a href="../axiom.html#ax5">공리 5</a>)에서 그 방출-재흡수가 d-ring 한 바퀴 회전에 해당한다. Compare 1건을 loop 위상으로 나눈 것이 이상 자기 모멘트다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2))</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Compare-per-loop 노름이다. 이상 자기 모멘트가 Compare 1건의 비용 $\alpha$를 d-ring 1회전 위상 $2\pi$로 평균한 값이고, 그 위상이 FSM 한 바퀴(<a href="../axiom.html#ax5">공리 5</a>)로 닫히기 때문에 이 노름을 택한다. 따라서 1-loop 항을 Compare 비용을 $2\pi$로 나눈 값으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$a_e = \dfrac{g-2}{2}$</div>
+<div class="math-row">$a_e = \dfrac{\alpha}{2\pi}$</div>
+<div class="math-legend">$a_e$: 전자 이상 자기 모멘트 | $g$: 전자 g인자 | $\alpha$: Compare 1회 비용 (<a href="d01.html">D-01</a>) | $2\pi$: d-ring 1-loop 완전 위상 회전</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 5, 2 (서명 (5,2)), 137 (자료형 = T(16)+1)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="h72.html">H-72</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha = 1/137.036          D-01
+2 pi  = 6.283185
+a_e   = 0.00115965218      실험값</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>무차원 자기 모멘트 도메인으로 변환한다. 이 변환으로 보려는 것은 Compare 1건을 loop 위상으로 평균했을 때의 이상 자기 모멘트 값이다. Compare 비용 $\alpha$를 d-ring 1회전 $2\pi$로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$a_e = \dfrac{1/137.036}{6.283185} = 0.001161410$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $a_e = 0.001161410$</div>
+<div class="math-row">측정값: $0.001159652$</div>
+<div class="math-row">오차: $0.15\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. Schwinger 1948 1-loop 항 하나가 Compare 비용을 d-ring 1회전으로 나눈 것으로 닫혀 실험값의 99.85%를 설명한다.</p>
+<p>통찰: 0.15% 잔차는 2-loop 이상 보정($\zeta(3)$, $\ln 2$ 초월수 포함)으로, <a href="h72.html">H-72</a>가 다음 검증점이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 고차항 CAS 유도가 완성되면 D카드 승격. $\alpha/(2\pi)$가 다른 1-loop 보정에도 등장하는지 확인 (뮤온 g-2, 약력 보정).</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="h72.html">H-72</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="h72.html">H-72</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

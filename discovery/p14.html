@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-14 특이점은 존재하지 않는다 (이산 최댓값) — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-14 특이점은 존재하지 않는다 (이산 최댓값). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p14.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p14.html">P-14</a>. 특이점은 존재하지 않는다 (이산 최댓값)</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p14.html">P-14</a>: 특이점은 존재하지 않는다 (이산 최댓값)</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\ell_{\min}=1\ \Rightarrow\ 1/\ell^2\leq1\ (\text{발산 없음});\quad \text{사건지평}=\text{누적비용 경계, not 특이점}$$</div></div>
+<p class="finding-precision">예측: 물리 특이점 부재 — 사건지평=비용경계. 검증 중력파 링다운 스펙트럼</p>
+<p>DATA는 이산이다(<a href="../axiom.html#ax3">공리 3</a>). d-ring 칸은 정수이므로 거리 $d$의 최솟값은 1이고 $d=0$은 불가하다(<a href="../axiom.html#ax13">공리 13</a> 명제).</p>
+<p>$d=1$에서 개별 경합 비용은 $1/d^2=1/1^2=1$로 유한하다. 발산(무한대)은 이산계에서 원천 차단된다.</p>
+<p>블랙홀은 $N$개 쥠이 $d=1$로 밀집한 것이다. 총 비용은 $N(N-1)/2$ 쌍의 경합 누적 = $N^2$에 비례하되 유한하다.</p>
+<p>사건 지평선은 누적 비용이 탈출 비용을 초과하는 경계일 뿐이다 — 부피 0의 특이점이 아니라 비용 경계다(D-49).</p>
+<p>즉 "중심 특이점"은 시공간 연속 가정의 인공물이고, 이산 구조에는 발산할 중심점 자체가 없다.</p>
+<p>이는 P-08·P-12와 한 뿌리다 — 이산($\ell\geq1$)이 발산을 막고, 내부는 격자로 채워진다.</p>
+<p>관측 시금석: 블랙홀 병합 후 링다운(준정상 모드) 스펙트럼.</p>
+<p>이산 내부 구조는 GR 점 특이점이 주는 매끄러운 링다운과 다른 미세 편차(모드 분열·주파수 이동)를 만든다.</p>
+<p>편차 크기는 d-ring 해상도에 비례($\Delta f/f\sim1/128$, P-80 연계)한다.</p>
+<p>검증: LIGO O5·ET의 링다운 정밀 분광. 반박: 모든 병합 신호가 GR 점 특이점과 편차 0으로 완벽히 일치하면 본 예측 폐기.</p>
+<p><strong>재대입 용도:</strong> 검증: 중력파 링다운(LIGO O5·ET). 반박: GR 점특이점과 완전 일치. 출처: <a href="../axiom.html#ax13">공리 13</a> 명제(특이점 부재).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측이다. 이산성(공리 3 공리 13)에서 특이점 부재·사건지평=비용경계까지 forward chain이 닫혀 있으나, 링다운 미세 편차를 분리할 중력파 분광 정밀도가 아직 부족하다. 링다운에서 이산 편차 검출 시 D 승격, GR 점특이점과 완전 일치 시 반증.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 실험 데이터 부재 / forward chain 완료(공리 3 공리 13 ==> ℓ≥1 ==> 유한, 사건지평=비용경계) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: delta ==&gt; 이산 시공간의 특이점 부재 (공리 3 공리 13). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: DATA 이산성 $\ell_{\min}=1$에서 특이점 부재·링다운 편차 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>DATA는 이산이므로 d-ring 칸은 정수이고 거리 최솟값은 $\ell_{\min}=1$, $\ell=0$은 불가하다(<a href="../axiom.html#ax3">공리 3</a>, <a href="../axiom.html#ax13">공리 13</a> 명제). 개별 경합 비용 $1/\ell^2$로 발산 가능성을 읽는다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 이산 거리의 역제곱 비용 노름 $1/\ell^2$이다(<a href="../axiom.html#ax13">공리 13</a> 명제). (b) $\ell\geq1$이면 $1/\ell^2\leq1$로 상한이 막히고, 블랙홀은 $N$개 쥠이 $\ell=1$로 밀집해 총비용이 $N^2$로 유한하므로 이 노름을 택한다. 따라서 사건 지평선을 부피 0의 점 특이점이 아니라 누적 비용이 탈출 비용을 초과하는 경계로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\ell_{\min}=1 \;\Rightarrow\; 1/\ell^2 \leq 1\quad(\text{발산 없음})$</div>
+<div class="math-row">$\text{사건지평} = \text{누적비용 경계},\quad \text{not 점 특이점}$</div>
+<div class="math-legend">$\ell_{\min}=1$: 이산 최솟값 (<a href="../axiom.html#ax3">공리 3</a>) | $1/\ell^2$: 쌍 경합 비용 | $N^2$: $N$개 밀집 누적, 유한 | 사건지평 = 비용 경계 (<a href="d49.html">D-49</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>l_min = 1                 이산 최솟값       공리 3
+1/l^2 = 1/1 = 1           l=1에서 유한      발산 차단
+cost  = N(N-1)/2 ~ N^2    l=1 밀집, 유한
+delta_f/f ~ 1/128 = 0.0078   링다운 미세 편차   P-80</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a) 블랙홀 병합 후 링다운(준정상 모드) 스펙트럼 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 이산 내부 구조가 GR 점 특이점의 매끄러운 링다운에 남기는 미세 편차다. 편차 크기를 d-ring 해상도로 환산한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta f/f \sim 1/128 = 0.0078\quad(\text{모드 분열·주파수 이동})$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: 물리 특이점 부재, 사건지평 = 비용 경계</div>
+<div class="math-row">예측값: 링다운 편차 $\Delta f/f \sim 1/128$</div>
+<div class="math-row">검증: LIGO O5 · ET 링다운 정밀 분광</div>
+</div>
+<p>판정: <strong>예측</strong>. <a href="p08.html">P-08</a>·<a href="p12.html">P-12</a>와 한 뿌리(이산이 발산을 막고 내부가 격자로 채워짐)이나, 링다운 미세 편차를 분리할 중력파 분광 정밀도가 아직 부족하다.</p>
+<p>통찰: 중심 특이점은 시공간 연속 가정의 인공물이고, 이산 구조에는 발산할 중심점 자체가 없다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="d49.html">D-49</a>, <a href="p08.html">P-08</a>, <a href="p12.html">P-12</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p14.html">P-14</a>: 특이점은 존재하지 않는다 (이산 최댓값)</td><td>예측 (대기) — 특이점 부재, 사건지평=비용경계</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

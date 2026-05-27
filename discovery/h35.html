@@ -69,39 +69,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="d45.html">D-45</a>, <a href="h04.html">H-04</a>, <a href="h22.html">H-22</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: alpha 길이 사다리 + CAS 보정 비용에서 양성자 반지름 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양성자 크기는 플랑크 길이에서 $\alpha$의 거듭제곱 사다리를 타고 올라오는 비용이다. 양성자는 CAS 커밋(111, <a href="h04.html">H-04</a>)이고, 사다리 높이가 완전기술자유도 9(<a href="../axiom.html#ax9">공리 9</a>)에 코이데 비율 $2/9$(<a href="h22.html">H-22</a>, <a href="d45.html">D-45</a>)를 더한 $9+2/9$다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 $\alpha$ 길이 사다리 노름에 CAS 연산 보정을 더한 것이다. 양성자가 강력 바운드 상태라 도메인 보정 $(4+1/\pi)$가 아닌 CAS 연산 보정 $3+2/9$가 적용되기 때문에 이 노름을 택한다. $2/9$가 지수와 보정 양쪽에 동일 구조로 출현한다.</p>
+<div class="math-block">
+<div class="math-row">$r_p = l_P\,\alpha^{-(9+2/9)}$</div>
+<div class="math-row">$r_p = l_P\,\alpha^{-(9+2/9)}\left(1+\dfrac{29}{9}\alpha\right)$</div>
+<div class="math-legend">$l_P$: 플랑크 길이 | $9+2/9=83/9$: 완전기술 9 (<a href="../axiom.html#ax9">공리 9</a>) + 코이데 $2/9$ | $3+2/9=29/9$: CAS 3단계 (<a href="../axiom.html#ax2">공리 2</a>) + 코이데 $2/9$ | $83=9^2+2$, $29=3^3+2$: 괄호 수 2</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d45.html">D-45</a>, <a href="h04.html">H-04</a>, <a href="h22.html">H-22</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>l_P     = 1.616255e-35 m
+alpha   = 1/137.036          D-01
+83/9    = 9 + 2/9 = 9.2222
+29/9    = 3 + 2/9 = 3.2222
+r_p exp = 0.8414 ± 0.0002 fm   뮤온수소</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>하드론 길이 도메인으로 변환한다. 이 변환으로 보려는 것은 양성자 전하 반지름이다. 주공식 $\alpha$ 사다리에 CAS 보정항 $29\alpha/9$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$r_p = l_P\,\alpha^{-83/9}\left(1+\dfrac{29}{9}\alpha\right) = 0.841333\ \text{fm}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $r_p = 0.841333\ \text{fm}$</div>
+<div class="math-row">측정값: $0.8414\pm0.0002\ \text{fm}$ (뮤온수소)</div>
+<div class="math-row">오차: $0.008\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 보정항이 2.31% 오차를 0.008%로 줄이고 $83=9^2+2$·$29=3^3+2$ 분해가 fitting 의심을 해소하나, 분해의 조합론적 필연성 증명은 미완이며 PRad-II가 검증선이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: alpha 길이 사다리 확장. 양성자 반지름 퍼즐 해결 단서. 83=9^2+2, 29=3^3+2 분해로 fitting 해소 완료.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d45.html">D-45</a>, <a href="h04.html">H-04</a>, <a href="h22.html">H-22</a></p>
+<p>재투입 경로: <a href="h04.html">H-04</a>, <a href="h22.html">H-22</a>, <a href="d45.html">D-45</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

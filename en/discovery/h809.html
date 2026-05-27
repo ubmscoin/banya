@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D-promotion possible upon the next round / residual tasks explicit</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type size (137, 27). Recursive-substitution path: <a href="h794.html">H-794</a>, <a href="h800.html">H-800</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Running Mass from the Accumulated CAS Loop Cost of the FSM Norm</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Mass is the FSM norm (<a href="../axiom.html#ax6">Axiom 6</a>), and that norm receives CAS loop (<a href="../axiom.html#ax2">Axiom 2</a>) corrections. The higher the energy (the shorter the distance), the more loops contribute, and the per-loop cost +1 (<a href="../axiom.html#ax4">Axiom 4</a>) accumulates, so the FSM norm depends on the energy scale $Q$. The renormalization-group equation is the CAS-cost accumulation equation of the FSM norm.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the accumulated CAS-loop-cost norm. It is chosen because the running mass is the energy dependence of the loop cost, and that dependence closes through the 1-loop accumulation of the strong coupling $\alpha_s$. The ratio of norms between two scales is therefore substituted by a power of the $\alpha_s$ ratio.</p>
+<div class="math-block">
+<div class="math-row">$m(Q) = \|F(Q)\|$</div>
+<div class="math-row">$m(M_Z) = m(m_b)\left[\dfrac{\alpha_s(M_Z)}{\alpha_s(m_b)}\right]^{12/23}$</div>
+<div class="math-legend">$m(Q)$: running mass at scale $Q$ | $\|F(Q)\|$: FSM norm | $\alpha_s$: strong coupling constant (<a href="d03.html">D-03</a>) | $12/23$: 1-loop anomalous-dimension ratio (5-flavor $\gamma_0/2\beta_0$)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>M_Z</code>, <code>alpha</code>, <code>m_b</code>, <code>m_t</code></p>
-<p><strong>Library Re-injection:</strong> <a href="h794.html">H-794</a>, <a href="h800.html">H-800</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>m_b(m_b)     = 4.18 GeV           PDG 2024
+alpha_s(m_b) = 0.2245
+alpha_s(M_Z) = 0.1179 ± 0.0010    D-03
+12/23        = 0.52174
+m_b(M_Z meas)= 2.83 GeV           PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the mass-hierarchy domain. What it reveals is the b-quark FSM norm at the $M_Z$ scale — the running mass $m_b(M_Z)$. Raising the $\alpha_s$ ratio of the two scales to the anomalous-dimension power and multiplying by $m_b(m_b)$ yields it.</p>
+<div class="math-block">
+<div class="math-row">$m_b(M_Z) = 4.18 \times \left(\dfrac{0.1179}{0.2245}\right)^{0.52174} = 2.99\ \text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $m_b(M_Z) = 2.99\ \text{GeV}$ (1-loop)</div>
+<div class="math-row">Measured: $2.83\ \text{GeV}$ (PDG 2024)</div>
+<div class="math-row">Error: $5.5\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The 1-loop accumulation alone leaves $5.5\%$; the reference value $m_b(m_b)$ is an external input, and with 2-loop corrections and flavor-threshold matching missing the final stage of the forward chain has not closed. The structure — that the running mass is the accumulated CAS loop cost of the FSM norm — is fixed.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h794.html">H-794</a> (mass hierarchy). <a href="h800.html">H-800</a> (g-2)</p><p>This card can be re-used as input for the following cards: <a href="h794.html">H-794</a>, <a href="h800.html">H-800</a></p>
+<p>Re-injection path: <a href="h794.html">H-794</a>, <a href="h800.html">H-800</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / recursive substitution not yet executed (1st round) / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS stage gap l/N (N=30, 9, 7). Recursive substitution path: 1st round (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the CKM element |V_ts| from the FSM ring-closure cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The CKM element $|V_{ts}|$ is the cost of the shift from t to s on the d-ring. Because the FSM is the closed cycle 000==&gt;001==&gt;011==&gt;111==&gt;000 (<a href="../axiom.html#ax14">Axiom 14</a>), the unitarity condition of the ring seam closing preserves the sum of shift distances.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS stage gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the FSM ring-closure norm. This norm is chosen because the $t\to s$ shift receives the second-order Cabibbo suppression $\lambda^2/2$ from the $c\to b$ shift, and that difference is preserved by the unitarity of the closed ring. $|V_{ts}|$ is therefore substituted by $|V_{cb}|$ multiplied by the second-order Cabibbo correction.</p>
+<div class="math-block">
+<div class="math-row">$|V_{ts}| = |V_{cb}|\,(1 - \lambda^2/2)$</div>
+<div class="math-row">$\lambda = |V_{us}|, \quad |V_{cb}| = A\lambda^2$</div>
+<div class="math-legend">$|V_{ts}|$: top-strange mixing | $|V_{cb}|$: charm-bottom mixing | $\lambda = |V_{us}|$: Cabibbo angle (1-slot shift) | $\lambda^2/2$: second-order ring-closure correction</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS stage), 9 (Koide theta), 30 (CAS access path), 7 (self-induction)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>V_cb</code>, <code>V_ts</code>, <code>V_us</code></p>
-<p><strong>Library Re-substitution:</strong> <em>No external reference (1st round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>|V_cb|   = 0.0405                  PDG 2024
+lambda   = |V_us| = 0.2253        Cabibbo angle
+lambda^2/2 = 0.0254
+1 - lambda^2/2 = 0.9746</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the weak-force CKM mixing domain. What it reveals is the $t\to s$ shift amplitude on the d-ring, $|V_{ts}|$. Multiplying $|V_{cb}|$ by the second-order ring-closure correction yields that value.</p>
+<div class="math-block">
+<div class="math-row">$|V_{ts}| = 0.0405 \times 0.9746 = 0.03948$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $|V_{ts}| = 0.03948$</div>
+<div class="math-row">Measured: $0.0394 \pm 0.0023$ (PDG 2024)</div>
+<div class="math-row">Error: $0.2\%$ (within 1$\sigma$)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The value matches to within 1$\sigma$, but $|V_{cb}|$ and $\lambda$ are external inputs, leaving the CAS derivation of the Wolfenstein parameters $A,\rho,\eta$ outstanding, so it does not promote to Discovery.</p>
+<p>Insight: CKM unitarity is the expression of the ring-seam closure condition of the closed FSM cycle.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No byproducts specified. Cross-links can be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

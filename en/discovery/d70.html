@@ -68,39 +68,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Explicit derivation formula exists / Experimental comparison error &lt;= 1% / Recursive substitution inputs 4 confirmed / forward chain complete (axiom ==&gt; formula ==&gt; numerics)</p>
 <p><strong>Location:</strong> Category: d mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type. Recursive substitution path: <a href="d09.html">D-09</a>, <a href="d16.html">D-16</a>, <a href="d60.html">D-60</a>, <a href="d79.html">D-79</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Top Mass from the CAS Swap Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The top mass is the energy scale of the CAS Swap cost of overwriting one state with a new value. Cost recovery (<a href="../axiom.html#ax6">Axiom 6</a>) sets the absolute scale of one Swap, and the color grab of the strong coupling slightly shaves that scale. That shaving is read as a cost correction of the full-description DOF (<a href="../axiom.html#ax9">Axiom 9</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Koide structure constant $2/9$ norm. (b) It is chosen because the top sits at the first-order Swap-cost scale $v/\sqrt{2}$ (<a href="d16.html">D-16</a>), while the strong-coupling 1-loop cost $\alpha_s/\pi$ shaves that scale by the Koide ratio $2/9$. The top mass is therefore substituted as $v/\sqrt{2}$ multiplied by the Koide correction factor.</p>
+<div class="math-block">
+<div class="math-row">$m_t = \dfrac{v}{\sqrt{2}}\,y_t$</div>
+<div class="math-row">$m_t = \dfrac{v}{\sqrt{2}}\!\left(1 - \dfrac{2}{9}\dfrac{\alpha_s}{\pi}\right)$</div>
+<div class="math-legend">$m_t$: top mass | $v$: electroweak vacuum expectation value | $2/9$: Koide structure constant (<a href="d09.html">D-09</a>) | $\alpha_s$: strong coupling (<a href="d03.html">D-03</a>) | $y_t$: top Yukawa coupling</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>Physical Constant Inputs:</strong> <code>m_t</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="d09.html">D-09</a>, <a href="d16.html">D-16</a>, <a href="d60.html">D-60</a>, <a href="d79.html">D-79</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>v            = 246220 MeV          electroweak VEV
+v/sqrt(2)    = 174100 MeV          D-16
+alpha_s      = 0.1183              D-03
+2/9          = 0.22222
+pi           = 3.141592653589793
+m_t          = 172760 ± 300 MeV    PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the up-type Yukawa mass domain (d-ring fire bit). (b) What it reveals is the precise top mass with the strong-coupling correction included. Multiplying $v/\sqrt{2}$ by the Koide correction factor yields that value.</p>
+<div class="math-block">
+<div class="math-row">$m_t = 174100\left(1 - \dfrac{2}{9}\cdot\dfrac{0.1183}{\pi}\right) = 174100 \times 0.99163 = 172648\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>discovery</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $m_t = 172648\;\text{MeV}$</div>
+<div class="math-row">Measured: $172760 \pm 300\;\text{MeV}$ (PDG 2024)</div>
+<div class="math-row">Error: $0.065\%$</div>
+</div>
+<p>Verdict: <strong>Discovery</strong></p>
+<p>The Koide constant $2/9$ appears in the correction term as well as the mass formula, sharpening the <a href="d16.html">D-16</a> first-order approximation (0.8%) more than tenfold.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: precise top mass. <a href="d16.html">D-16</a>, <a href="d60.html">D-60</a> cross-check.</p><p>This card can be reused as input for the following cards: <a href="d09.html">D-09</a>, <a href="d16.html">D-16</a>, <a href="d60.html">D-60</a>, <a href="d79.html">D-79</a></p>
+<p>Re-injection path: <a href="d09.html">D-09</a>, <a href="d16.html">D-16</a>, <a href="d60.html">D-60</a>, <a href="d79.html">D-79</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

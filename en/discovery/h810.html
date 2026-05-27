@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h810.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h810.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h810.html">H-810</a>. OPE = Short-Distance Expansion of the CAS Operation</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible on the next round / residual tasks explicitly listed</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed). Recursive substitution path: <a href="h809.html">H-809</a>, <a href="h811.html">H-811</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the OPE Wilson Coefficients from the CAS Cost Decomposition</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The product of two local operators, at short distance (high energy), is the case in which two CAS act on the same DATA simultaneously. The total cost then decomposes into the individual costs of the three CAS modes Read·Compare·Swap (<a href="../axiom.html#ax2">Axiom 2</a>, <a href="../axiom.html#ax4">Axiom 4</a>), and the cost weight of each mode is the Wilson coefficient $C_n(x)$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS cost-decomposition norm. It is chosen because the short-distance product is the weighted sum of the three mode costs, and those weights close through the per-mode bit costs. The operator-product expansion is therefore substituted by the sum of the three CAS mode costs.</p>
+<div class="math-block">
+<div class="math-row">$\mathcal{O}_A(x)\,\mathcal{O}_B(0) \sim \sum_n C_n(x)\,\mathcal{O}_n(0)$</div>
+<div class="math-row">$\sum_n \text{cost}_n = c_R + c_C + c_S = 1 + 2 + 4 = 7$</div>
+<div class="math-legend">$C_n(x)$: Wilson coefficient = mode cost weight | $c_R$: Read cost 1 | $c_C$: Compare cost 2 | $c_S$: Swap cost 4 | $7$: full-description DOF (<a href="../axiom.html#ax9">Axiom 9</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h809.html">H-809</a>, <a href="h811.html">H-811</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>c_R (Read)    = 1                 R = 001
+c_C (Compare) = 2                 C = 010
+c_S (Swap)    = 4                 S = 100
+sum           = 7                 Axiom 9 data type</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Banya structure domain. What it reveals is the relative weight distribution of the Wilson coefficients. Normalizing the three mode costs by the total 7 yields the share of each coefficient.</p>
+<div class="math-block">
+<div class="math-row">$C_R : C_C : C_S = \tfrac{1}{7} : \tfrac{2}{7} : \tfrac{4}{7}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: Wilson-coefficient weights = $1:2:4$ (mode cost ratio)</div>
+<div class="math-row">Measured: OPE convergence radius in QCD sum rules</div>
+<div class="math-row">Status: experimental separation of the coefficient ratio not yet established</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The step of separating the mode-cost ratio $1:2:4$ against the experimental Wilson coefficients is not yet established, so the final stage of the forward chain has not closed. The structure — that the OPE is the mode decomposition of the CAS cost — is fixed.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h809.html">H-809</a> (running mass). <a href="h811.html">H-811</a> (dispersion relations)</p><p>This card can be re-used as input for the following cards: <a href="h809.html">H-809</a>, <a href="h811.html">H-811</a></p>
+<p>Re-injection path: <a href="h809.html">H-809</a>, <a href="h811.html">H-811</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

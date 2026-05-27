@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h795.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h795.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_mass_yukawa</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h795.html">H-795</a>. Quark Mixing = Off-Diagonal Inter-Generation Components of CAS Compare</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible when the next round proceeds / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type size (137, 27). Recursive substitution path: <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the CKM Mixing Components from the CAS Compare Cross-Generation Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Quark mixing is the off-diagonal cost CAS Compare pays when comparing the DATA of a different generation. Compare (<a href="../axiom.html#ax2">Axiom 2</a>) compares generations $i,j$, the cross cost +1 (<a href="../axiom.html#ax4">Axiom 4</a>) accumulates with the generation gap, and the generation count is 3 (<a href="h793.html">H-793</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS Compare cross-generation off-diagonal norm. (b) It is chosen because a same-generation comparison is the diagonal component (cost 0) and a cross-generation comparison is the off-diagonal component (cost +1 × generation gap), so the mixing component decreases geometrically as the inter-generation distance grows.</p>
+<div class="math-block">
+<div class="math-row">$|V_{us}| \approx \sin\theta_C, \quad |V_{cb}| \approx \sin^2\theta_C, \quad |V_{ub}| \approx \sin^3\theta_C$</div>
+<div class="math-row">$\theta_C \approx 13^\circ$</div>
+<div class="math-legend">$V_{ij}$: CKM mixing component | $\theta_C$: Cabibbo angle = adjacent-generation cross cost | power exponent: generation gap (<a href="../axiom.html#ax4">Axiom 4</a>) | 3 generations: <a href="h793.html">H-793</a></div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>theta_C      = 13°
+sin theta_C  = 0.22             lambda (Wolfenstein)
+A            = 0.81             Wolfenstein
+|V_us|       = 0.22  |V_cb| = 0.04  |V_ub| = 0.004   measured</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main text above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quark-mixing domain (the CKM matrix). (b) What it reveals is the magnitude hierarchy of inter-generation mixing components. Powers of the Cabibbo angle yield the off-diagonal component per generation gap.</p>
+<div class="math-block">
+<div class="math-row">$|V_{us}| : |V_{cb}| : |V_{ub}| \approx 0.22 : 0.04 : 0.004 = \sin\theta_C : \sin^2\theta_C : \sin^3\theta_C$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $|V_{us}|:|V_{cb}|:|V_{ub}| = \sin\theta_C:\sin^2\theta_C:\sin^3\theta_C$</div>
+<div class="math-row">Measured: $0.22 : 0.04 : 0.004$ (CKM)</div>
+<div class="math-row">Status: order-of-magnitude agreement, precise comparison pending</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The power hierarchy of the off-diagonal components closes from accumulated CAS cross cost, but comparison with precise measurements and the derivation of the CP-violating phase are incomplete, so it remains a hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h796.html">H-796</a> (lepton mixing). <a href="h812.html">H-812</a> (CPT)</p><p>This card can be re-used as input for the following cards: <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
+<p>Re-injection path: <a href="h793.html">H-793</a>, <a href="h796.html">H-796</a>, <a href="h812.html">H-812</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

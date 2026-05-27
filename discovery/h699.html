@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h qcd. 도메인: delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로). 재귀 대입 경로: <a href="h693.html">H-693</a>, <a href="h700.html">H-700</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: ECS 도파관 가둠 노름에서 광섬유 수치 구경 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>광섬유는 코어-클래딩 경계의 전반사(<a href="h693.html">H-693</a>)로 CAS 비용파를 코어 안에 가두는 비용이다. ECS 원통 경계(<a href="../axiom.html#ax7">공리 7</a>)가 도파관이 되어 임계각보다 가파른 비용 전파(<a href="../axiom.html#ax4">공리 4</a>)만 가둠 모드로 살아남는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(3) 3축 색 자유도 x QCD 비용 도메인 (alpha_s 경로)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 코어-클래딩 굴절률 차의 가둠 노름이다. 전반사 임계각(<a href="h693.html">H-693</a>)이 가둠 허용 입사각 범위를 정하기 때문에 이 노름을 택하며, 수치 구경을 두 굴절률 제곱차의 제곱근으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin\theta_c = \dfrac{n_2}{n_1}$</div>
+<div class="math-row">$\text{NA} = \sqrt{n_1^2 - n_2^2}$</div>
+<div class="math-legend">$\text{NA}$: 수치 구경(가둠 입사각 범위) | $n_1$: 코어 굴절률 | $n_2$: 클래딩 굴절률 | $\theta_c$: 전반사 임계각 (<a href="h693.html">H-693</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 3축 = SU(3) 색), 7 (beta_0=7), 8 (글루온=3^2-1, 산출)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h693.html">H-693</a>, <a href="h700.html">H-700</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>n1 = 1.4475      코어 (1550 nm)
+n2 = 1.4424      클래딩
+n1^2 - n2^2 = 0.01475
+sqrt = 0.1215</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>광섬유 가둠 도메인으로 변환한다. 이 변환으로 보려는 것은 비용파가 코어에 가둬지는 입사각 범위 NA다. 코어-클래딩 굴절률 제곱차의 제곱근으로 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{NA} = \sqrt{1.4475^2 - 1.4424^2} = 0.1215$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\text{NA} = 0.1215$</div>
+<div class="math-row">측정값: $\text{NA} \approx 0.12$ (단일 모드 광섬유)</div>
+<div class="math-row">오차: $1.2\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. NA 식이 ECS 도파관 가둠 노름과 정합하나, 굴절률 차 자체가 공리 정수에서 도출되지 않고 외부 입력이라 forward chain이 닫히지 않아 가설에 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h693.html">H-693</a>(전반사) 응용. <a href="h700.html">H-700</a>(비선형 광학) 광섬유 내 효과</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h693.html">H-693</a>, <a href="h700.html">H-700</a></p>
+<p>재투입 경로: <a href="h693.html">H-693</a>, <a href="h700.html">H-700</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

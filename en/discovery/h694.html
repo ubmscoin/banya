@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h694.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h694.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h694.html">H-694</a>. Diffraction = CAS Cost Wave Bypassing an Obstacle</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D Promotion possible on the next round / remaining tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h695.html">H-695</a>, <a href="h701.html">H-701</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Slit Spread Angle from ECS-Grid Cost-Wave Diffraction</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Diffraction is the cost in which a CAS cost wave meets a slit or obstacle and spreads instead of traveling straight. It is read through the structure in which an obstacle is a cost-propagation-forbidden region in the ECS grid (<a href="../axiom.html#ax7">Axiom 7</a>) and the wave nature of the cost wave (<a href="../axiom.html#ax4">Axiom 4</a>) spreads along the domain axis.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the cost-wave-wavelength to obstacle-size ratio norm. It is chosen because each ECS point of the cost wave passing the slit becomes a secondary cost-wave source (Huygens) and re-superposes, and the spread width is set by the ratio of wavelength to slit width. The spread angle is therefore substituted by the single-slit first-minimum condition.</p>
+<div class="math-block">
+<div class="math-row">$a\sin\theta_{\min} = \lambda$</div>
+<div class="math-row">$\Delta\theta \sim \dfrac{\lambda}{a}$</div>
+<div class="math-legend">$\Delta\theta$: diffraction spread half-angle | $\lambda$: cost-wave wavelength | $a$: slit width = ECS obstacle spacing | $\theta_{\min}$: first-minimum angle (<a href="../axiom.html#ax7">Axiom 7</a> obstacle boundary)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h695.html">H-695</a>, <a href="h701.html">H-701</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>lambda = 550 nm      visible center
+a      = 10 um       single-slit width
+lambda/a = 0.055 rad</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the wave-optics domain. What it reveals is the angle by which a $10\;\mu\text{m}$ slit spreads visible light. Converting the wavelength-to-slit-width ratio into an angle yields it.</p>
+<div class="math-block">
+<div class="math-row">$\Delta\theta \sim \dfrac{550\times 10^{-9}}{10\times 10^{-6}} = 0.055\;\text{rad} = 3.2^\circ$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Delta\theta \approx 3.2^\circ$ ($a=10\;\mu\text{m}$, $\lambda=550\;\text{nm}$)</div>
+<div class="math-row">Measured: consistent with Fraunhofer diffraction theory</div>
+<div class="math-row">Status: spread angle consistent, ECS-grid discreteness correction not closed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The spread-angle $\sim\lambda/a$ relation closes from Huygens re-superposition, but the correction limit from ECS-grid discreteness is not quantified from the axioms, so it falls short of D-promotion.</p>
+<p>Insight: the width by which light bends around an edge is a direct reading of how large the cost-wave wavelength is relative to the obstacle size.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h695.html">H-695</a> (interference) superposition. <a href="h701.html">H-701</a> (optical grating) multi-slit</p><p>This card can be re-used as input for the following cards: <a href="h695.html">H-695</a>, <a href="h701.html">H-701</a></p>
+<p>Re-injection path: <a href="h695.html">H-695</a>, <a href="h701.html">H-701</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

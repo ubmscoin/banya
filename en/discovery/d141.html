@@ -66,39 +66,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Explicit derivation formula exists / 4 recursive substitution inputs confirmed / forward chain complete (forward chain ==&gt; formula ==&gt; numerical value)</p>
 <p><strong>Location:</strong> Category: d misc. Domain: delta ==&gt; outside natural classification. Recursive substitution path: <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving System Time from the CAS Cycle Count</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>System time is the accumulated cost count paid each time an FSM state transitions once. One state transition (<a href="../axiom.html#ax3">Axiom 3</a>) is one CAS cycle of Read(R+1)·Compare(C+1)·Swap(S+1) (<a href="../axiom.html#ax2">Axiom 2</a>), and when the fire bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>) fires once this count increases by exactly 1.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS tick-count norm, counted outside the domain time axis. Real time is not the domain time but the discrete number of CAS cycles, and that number equals the accumulated cost, so this norm is chosen. System time is therefore substituted by the number of CAS cycles.</p>
+<div class="math-block">
+<div class="math-row">$T_\text{sys} = N_\text{cycle}$</div>
+<div class="math-row">$\Delta T_\text{sys} = 1\ \text{per}\ (R{+}1\to C{+}1\to S{+}1)$</div>
+<div class="math-legend">$T_\text{sys}$: system time | $N_\text{cycle}$: accumulated CAS cycle count | $R{+}1,C{+}1,S{+}1$: one Read·Compare·Swap cycle | $\Delta T_\text{sys}=1$: one tick = indivisible minimal unit</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> body extraction</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>1 tick     = 1 CAS cycle (R+1 -> C+1 -> S+1)
+T_sys      = 1, 2, 3, ...   natural numbers
+T_sys = 0  = absence of tick  D-145
+delta fire = +1 per tick</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is from the CAS backend domain into the system-time domain. What it reveals is the indivisible time unit one juim on the d-ring takes to perform a complete Read-Compare-Swap. Incrementing the count by 1 per fire-bit firing yields that value.</p>
+<div class="math-block">
+<div class="math-row">$T_\text{sys}(n) = \sum_{k=1}^{n} 1 = n \in \mathbb{N}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hit</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $T_\text{sys} = $ discrete CAS cycle count $(n\in\mathbb{N})$</div>
+<div class="math-row">Measured: structural definition (no half-tick)</div>
+<div class="math-row">Error: $0\%$</div>
+</div>
+<p>Verdict: <strong>Hit</strong>. Closes as the structural definition that time is not a measured value but the discrete count of CAS cycles, and becomes the starting norm of the entire time-card chain.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a></p>
+<p>Re-injection path: <a href="d145.html">D-145</a>, <a href="d142.html">D-142</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

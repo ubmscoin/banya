@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h871.html">H-871</a>, <a href="h887.html">H-887</a>, <a href="h889.html">H-889</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 3 입력에서 파라미터 자동 생성비 33배 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>산업 응용은 CAS 도출 파이프라인을 기계적으로 실행해 시뮬레이션 상수를 채우는 작업이다. CAS 연산은 무모순으로 닫혀 있어(<a href="../axiom.html#ax2">공리 2</a> CAS 유일 연산자) 파라미터 간 불일치가 없으므로, 이 비용을 3 입력에서 자동 생성되는 파라미터 수, 곧 수동 입력 대비 자동화 배수로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 입력 상수 수를 분모로, CAS가 자동 생성하는 출력 파라미터 수를 분자로 두는 자동화 노름이다. 산업 응용이 소수 입력에서 다수 파라미터를 무모순으로 펼치는 파이프라인이고, 그 입력이 $(\alpha, m_e, m_p)$ 3개로 고정되기 때문에 이 노름을 택한다. 따라서 산업 가치를 입력당 자동 생성 파라미터 수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$(\alpha,\;m_e,\;m_p) \;\vdash\; \{\,p_1,\dots,p_M\,\}$</div>
+<div class="math-row">$A = \dfrac{N_{\text{param}}}{N_{\text{input}}}$</div>
+<div class="math-legend">$A$: 입력당 자동 생성비 | $N_{\text{param}}$: 자동 생성 파라미터 수 | $N_{\text{input}}$: 입력 상수 수 | $\vdash$: 3 입력이 파라미터 집합을 도출</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>m_e</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h871.html">H-871</a>, <a href="h887.html">H-887</a>, <a href="h889.html">H-889</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>N_input      = 3                 입력 상수 (alpha, m_e, m_p)
+N_param      = 100               자동 설정 가능 파라미터
+일관성 오류   = 0                 CAS 무모순
+표준모형 비교 = 19                개별 입력 파라미터</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>반야 구조 도메인(도출 파이프라인)으로 변환한다. 이 변환으로 보려는 것은 입력 상수 하나가 풀어내는 시뮬레이션 파라미터 수, 곧 자동 생성비 $A$다. 자동 생성 파라미터 수를 입력 상수 수로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$A = \dfrac{100}{3} \approx 33$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 가설</h3>
+<div class="math-block">
+<div class="math-row">도출값: $A \approx 33$ (입력당 자동 생성 파라미터, 일관성 오류 0)</div>
+<div class="math-row">관측: 3 입력에서 100+ 파라미터, 표준모형 19 개별 입력 대비</div>
+</div>
+<p>판정: <strong>가설</strong>. 입력당 33파라미터의 자동 생성비는 구조적으로 닫히나, 프로토타입 시뮬레이터로 자동·수동 파라미터 정합을 검증하기 전까지 분류 III이다.</p>
+<p>CAS 무모순성이 파라미터 간 불일치를 0으로 묶는 것이 자동 설정의 핵심이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h871.html">H-871</a>(입출력 비). <a href="h887.html">H-887</a>(교육). <a href="h889.html">H-889</a>(예측력)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h871.html">H-871</a>, <a href="h887.html">H-887</a>, <a href="h889.html">H-889</a></p>
+<p>재투입 경로: <a href="h871.html">H-871</a>, <a href="h887.html">H-887</a>, <a href="h889.html">H-889</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

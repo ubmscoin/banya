@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible upon the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive-substitution path: <a href="h844.html">H-844</a>, <a href="h863.html">H-863</a>, <a href="h866.html">H-866</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Quantum Parallelism $2^n$ from the CAS Compare Superposition Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A quantum computer is a device in which the CAS Compare stays in an unresolved superposition state and carries many paths at once. The superposition term on the right of the Banya formula (<a href="../axiom.html#ax5">Axiom 5</a>: Compare superposition) remains as an uncollapsed cost until measurement, and the moment the observer term confirms a Swap by measurement it closes into a single branch.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; Compare branching (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM two-state superposition norm. One qubit is a superposition in which both FSM states are simultaneously alive (<a href="../axiom.html#ax3">Axiom 3</a>: FSM superposition), and its coherence is preserved only while the lock bit is held (<a href="../axiom.html#ax10">Axiom 10</a>: lock bit = coherence). (b) This norm is chosen because the number of states the Compare holds without collapse before measurement is precisely the magnitude of quantum parallelism. When $n$ independent FSM superpositions form a product space, the simultaneously held states close at $2^n$.</p>
+<div class="math-block">
+<div class="math-row">$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle,\quad |\alpha|^2 + |\beta|^2 = 1$</div>
+<div class="math-row">$\dim \mathcal{H}_n = 2^{\,n}$</div>
+<div class="math-legend">$|\psi\rangle$: one qubit = FSM two-state superposition | $\alpha,\beta$: amplitudes of the two states | $n$: number of independent FSM superpositions | $2^n$: states held simultaneously before measurement = quantum parallelism</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h844.html">H-844</a>, <a href="h863.html">H-863</a>, <a href="h866.html">H-866</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n             = 53                Google Sycamore (2019)
+2^n           = 2^53 ~ 9.0e15     simultaneously held states
+gate fidelity = > 99%             superconducting-qubit measurement
+coherence T2  = us ~ ms           lock-bit stability
+quantum-supremacy threshold = 50 ~ 100   logical qubits</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the collapse-free superposition-holding domain (CAS Compare before measurement). (b) What it reveals is the number of states the Compare carries simultaneously until one measurement — the parallelism multiplier over the classical case. The dimension of the $n=53$ qubit superposition product space gives that multiplier.</p>
+<div class="math-block">
+<div class="math-row">$\dim \mathcal{H}_{53} = 2^{53} \approx 9.0\times 10^{15}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: quantum parallelism $= 2^n$ ($n$ FSM superpositions)</div>
+<div class="math-row">Measurement agreement: gate fidelity $> 99\%$, $T_2 \sim$ us~ms</div>
+<div class="math-row">Awaiting measurement: quantitative prediction of coherence time $T_2$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Quantum parallelism $2^n$ closes from the CAS Compare superposition structure, but a quantitative prediction of lock-bit stability ($T_2$) remains incomplete, so it stands one step short of promotion to discovery.</p>
+<p>The single rule measurement = Swap confirmation binds quantum parallelism and coherence collapse into one structure.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h844.html">H-844</a> (transistor). <a href="h863.html">H-863</a> (quantum cryptography). <a href="h866.html">H-866</a> (quantum sensing)</p><p>This card can be re-used as input for the following cards: <a href="h844.html">H-844</a>, <a href="h863.html">H-863</a>, <a href="h866.html">H-866</a></p>
+<p>Re-injection path: <a href="h844.html">H-844</a>, <a href="h863.html">H-863</a>, <a href="h866.html">H-866</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

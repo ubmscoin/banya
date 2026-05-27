@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h902.html">H-902</a>, <a href="h910.html">H-910</a>, <a href="h913.html">H-913</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: DATA 이산 + 유한 비트 비용에서 물리적 무한 부재 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>물리적 무한은 반야식 항이 담을 수 있는 상태 수의 비용이다. DATA가 이산(<a href="../axiom.html#ax3">공리 3</a>)이라 연속체가 아니고 상태 이력이 유한 비트(<a href="../axiom.html#ax5">공리 5</a>)에 담기므로, 한 항이 가질 수 있는 값은 유한 집합으로 닫힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 유한 카디널리티 노름, 곧 DATA 이산과 비트 유한이 정하는 상태 수 노름이다. (b) DATA가 이산이라 실수의 무한 자릿수가 불필요하고(<a href="../axiom.html#ax3">공리 3</a>), 8비트 링버퍼가 상태 이력을 유한으로 가두기(<a href="../axiom.html#ax5">공리 5</a>) 때문에 이 노름을 택한다. 따라서 물리량을 무한대가 아닌 유한 상한, 곧 최소 길이 $l_P$와 최대 엔트로피로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$|\text{DATA}| &lt; \infty, \quad |\text{bit}| &lt; \infty$</div>
+<div class="math-row">$\infty \notin \text{Banya} \;\Longleftrightarrow\; l \geq l_P$</div>
+<div class="math-legend">$|\text{DATA}|$: 상태 집합 크기 (<a href="../axiom.html#ax3">공리 3</a>) | $|\text{bit}|$: 비트 폭 (<a href="../axiom.html#ax5">공리 5</a>) | $l_P$: 최소 길이 = 자외 자르기 | $\infty$: 도달 불가 극한</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h902.html">H-902</a>, <a href="h910.html">H-910</a>, <a href="h913.html">H-913</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>l_P     = 1.616e-35 m           최소 길이 = 자외 자르기
+S_max   ~ 1e122 k_B             관측 가능 우주 최대 엔트로피
+bit     = 8                     공리 5 (링버퍼 유한)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 반야 구조 도메인의 상태 수 축이다. (b) 보려는 것은 발산·특이점·재규격화의 무한이 구조적으로 차단되는지다. 유한 카디널리티 노름을 대입하면 자외 발산이 $l_P$에서 자동 자르기되고, 우주 체적이 유한 상태 수로 닫혀 힐베르트 호텔이 물리적으로 배제된다.</p>
+<div class="math-block">
+<div class="math-row">$|\text{DATA}| &lt; \infty \;\Longrightarrow\; l_P \leq l, \quad S \leq S_{\max} \sim 10^{122}\,k_B$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 물리적 무한 부재, $l \geq l_P$, $S \leq 10^{122}\,k_B$</div>
+<div class="math-row">측정: 재규격화 양자장론의 유한 예측, 모든 관측량 유한</div>
+<div class="math-row">정합: 유한성 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 발산·특이점·재규격화의 무한이 유한 비트로 닫히나, 유한 비트에서 연속 수학의 정확도 한계 분석이 미완이다. 통찰: 무한은 수학적 극한일 뿐 물리적 실재가 아니다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h902.html">H-902</a>(정보-에너지). <a href="h913.html">H-913</a>(특이점 부재). <a href="h910.html">H-910</a>(다중 우주 부재)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h902.html">H-902</a>, <a href="h910.html">H-910</a>, <a href="h913.html">H-913</a></p>
+<p>재투입 경로: <a href="h913.html">H-913</a>, <a href="h902.html">H-902</a>, <a href="h910.html">H-910</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

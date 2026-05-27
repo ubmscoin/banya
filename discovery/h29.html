@@ -69,39 +69,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="d07.html">D-07</a>, <a href="h21.html">H-21</a>, <a href="h28.html">H-28</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 유니터리 삼각형 거리와 CP 위상에서 Jarlskog 불변량 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CP 위반은 CAS Compare의 물질-반물질 비대칭(<a href="h21.html">H-21</a>, <a href="../axiom.html#ax7">공리 7</a> Compare 분기)에서 나오고, Jarlskog 불변량은 그 비대칭의 정량적 크기다. 유니터리 삼각형 거리 $2/5$(<a href="h28.html">H-28</a>)와 CP 위상 $\delta_\text{CKM}$(<a href="h21.html">H-21</a>)의 결합으로 이를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 삼각형 거리 $2/5$와 위상 $\sin\delta_\text{CKM}$를 곱한 면적 노름이다. Jarlskog 불변량이 유니터리 삼각형 넓이의 2배라서 거리와 위상이 함께 면적을 정하기 때문에 이 노름을 택한다. 따라서 표준모형에서 행렬 원소 조합으로만 계산되던 $J_\text{CKM}$을 닫힌 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$J_\text{CKM} = \text{Im}(V_{us}V_{cb}V_{ub}^*V_{cs}^*)$</div>
+<div class="math-row">$J_\text{CKM} = A^2\lambda^6 \cdot \dfrac{2}{5} \cdot \sin\delta_\text{CKM}$</div>
+<div class="math-legend">$J_\text{CKM}$: Jarlskog 불변량 | $A,\lambda$: Wolfenstein 매개변수 (<a href="d07.html">D-07</a> 카비보) | $2/5$: 유니터리 삼각형 거리 (<a href="h28.html">H-28</a>) | $\delta_\text{CKM}$: CP 위상 (<a href="h21.html">H-21</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>alpha_s</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d07.html">D-07</a>, <a href="h21.html">H-21</a>, <a href="h28.html">H-28</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>A             = 0.81
+lambda        = 0.225
+2/5           = 0.400000
+delta_CKM     = 1.196 rad         H-21
+sin(delta_CKM) = 0.932
+J_CKM         = (3.08 ± 0.13)e-5  PDG</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 CP 위반 도메인(유니터리 삼각형 면적)으로 변환한다. 이 변환으로 보려는 것은 물질-반물질 비대칭의 절대 크기 $J_\text{CKM}$다. Wolfenstein 인자에 거리와 위상을 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$J_\text{CKM} = 0.81^2 \times 0.225^6 \times 0.4 \times 0.932 = 3.0\times 10^{-5}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $J_\text{CKM} = 3.0\times 10^{-5}$</div>
+<div class="math-row">측정값: $(3.08 \pm 0.13)\times 10^{-5}$ (PDG)</div>
+<div class="math-row">오차: $3.9\%$</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>잔여 오차는 Wolfenstein $A$(±0.02)의 불확도에서 오며, $A$·$\lambda$의 CAS 도출이 닫히면 줄어든다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: Jarlskog 불변량 단순화. H-28과 D-23의 결합.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d07.html">D-07</a>, <a href="h21.html">H-21</a>, <a href="h28.html">H-28</a></p>
+<p>재투입 경로: <a href="h28.html">H-28</a>, <a href="h21.html">H-21</a>, <a href="d07.html">D-07</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

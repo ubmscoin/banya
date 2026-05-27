@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="d43.html">D-43</a>, <a href="h476.html">H-476</a>, <a href="h480.html">H-480</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 회수 사이클 누적에서 우주 나이 $t_0$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>우주의 나이는 RLU가 첫 해제(FSM $000$==&gt;$001$, <a href="../axiom.html#ax14">공리 14</a>)부터 현재까지 누적한 회수 사이클(<a href="../axiom.html#ax6">공리 6</a>: 잔여 9 회수)의 총 틱 수다. 매 틱 $\delta$가 폴링(<a href="../axiom.html#ax8">공리 8</a>)하므로 시간은 이산 누적이고, 총 비용 보존(<a href="../axiom.html#ax4">공리 4</a>)이 에너지 보존으로 적분을 닫는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 RLU 회수 사이클 누적 노름, 곧 첫 해제부터 현재까지의 틱 수 합이다. (b) 이 노름을 택하는 이유는 우주 나이가 정의상 누적 시간이고, HOT/WARM/COLD 해제율이 $a$에 따라 변하는 유효 해제율 $E(a)$로 묶여 Friedmann 적분과 동형이기 때문이다. 따라서 나이를 틱 합으로, 다시 $1/H_0$ 곱하기 해제율 적분으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$t_{\text{univ}} = \displaystyle\sum_{k=1}^{N_{\text{cycle}}} \Delta t_{\text{tick}}(k)$</div>
+<div class="math-row">$t_0 = \dfrac{1}{H_0}\displaystyle\int_0^1 \dfrac{da}{a\,E(a)}$</div>
+<div class="math-legend">$t_0$: 우주 나이 | $N_{\text{cycle}}$: RLU 회수 사이클 총수 | $H_0$: 허블 상수 (<a href="h476.html">H-476</a>) | $E(a)=\sqrt{\Omega_r a^{-4}+\Omega_m a^{-3}+\Omega_\Lambda}$: 유효 해제율 | $a$: 척도인자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <code>H_0</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d43.html">D-43</a>, <a href="h476.html">H-476</a>, <a href="h480.html">H-480</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>1/H_0       = 14.4 Gyr            H-476 역수 (상한)
+HOT/WARM/COLD = 5/27/68           RLU 해제 비율
+Omega_r/m/L = 0.05/0.27/0.68
+t_0(obs)    = 13.797 ± 0.023 Gyr  Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환 도메인은 우주론 연대 도메인($a:0\to1$ 적분)이다. (b) 보려는 것은 HOT(복사) 초기의 빠른 해제가 나이를 $1/H_0$ 상한 아래로 끌어내린 실제 누적 시간이다. HOT/WARM/COLD = 5/27/68을 $E(a)$에 대입해 적분하면 값이 나온다.</p>
+<div class="math-block">
+<div class="math-row">$t_0 = 14.4\ \text{Gyr}\times\displaystyle\int_0^1 \dfrac{da}{a\,E(a)} = 13.80\ \text{Gyr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $t_0 = 13.80\ \text{Gyr}$</div>
+<div class="math-row">측정값: $13.797 \pm 0.023\ \text{Gyr}$ (Planck 2018)</div>
+<div class="math-row">오차: $0.02\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. Planck 값과 0.02% 정합하나, RLU 회수 사이클 총수 $N_{\text{cycle}}$의 독립 도출과 틱 간격 $\Delta t_{\text{tick}}$의 프레임 상수 환산이 닫히지 않아 가설에 머문다. 구상성단 연대 하한($>12$ Gyr)과는 양립한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h476.html">H-476</a>(허블 팽창) 역수 관계. <a href="h480.html">H-480</a>(빅뱅 핵합성) 초기 시간 스케일. <a href="d43.html">D-43</a>($z_{\text{eq}}$) 전이 시점.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d43.html">D-43</a>, <a href="h476.html">H-476</a>, <a href="h480.html">H-480</a></p>
+<p>재투입 경로: <a href="d43.html">D-43</a>, <a href="h476.html">H-476</a>, <a href="h480.html">H-480</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="d43.html">D-43</a>, <a href="h476.html">H-476</a>, <a href="h478.html">H-478</a>, <a href="h482.html">H-482</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 해제 슬롯 증가 비용에서 적색편이 $1+z$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>적색편이는 광자가 전파되는 동안 RLU가 주소 공간을 해제해(<a href="../axiom.html#ax6">공리 6</a>) 총 슬롯 수가 늘어나는 비용이다. 파장은 경계마다 $+1$의 비용 단위로 새겨지고(<a href="../axiom.html#ax4">공리 4</a>), 틱마다 슬롯 수 $N$이 갱신되며(<a href="../axiom.html#ax8">공리 8</a>), DATA가 이산이므로 슬롯 수는 유한하다(<a href="../axiom.html#ax3">공리 3</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 해제 슬롯 비율 노름이다. 광자의 비용 단위가 팽창된 주소 공간에서 상대적으로 작아져, 방출 시점과 관측 시점의 슬롯 수 비가 곧 파장 비가 되기 때문에 이 노름을 택한다. RLU 해제율이 스케일 팩터 변화율과 같으므로 슬롯 비율이 스케일 팩터 비율과 일치한다.</p>
+<div class="math-block">
+<div class="math-row">$1 + z = \dfrac{a_0}{a_{\text{emit}}} = \dfrac{N_{\text{slot}}(t_0)}{N_{\text{slot}}(t_{\text{emit}})}$</div>
+<div class="math-row">$1 + z = \dfrac{\lambda_{\text{obs}}}{\lambda_{\text{emit}}}$</div>
+<div class="math-legend">$z$: 적색편이 | $a$: 스케일 팩터 | $N_{\text{slot}}$: RLU 총 슬롯 수 (<a href="../axiom.html#ax6">공리 6</a>) | $\lambda$: 파장 = 비용 단위 (<a href="../axiom.html#ax4">공리 4</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <code>H_0</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d43.html">D-43</a>, <a href="h476.html">H-476</a>, <a href="h478.html">H-478</a>, <a href="h482.html">H-482</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>z_eq   = 3402                     D-43
+z_dec  = 1090
+z_r    = 7.7                      H-482
+Δz_min = 1/N_slot                 이산 최소 간격, 공리 3</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>bit7 발화비트 자기참조 루프 도메인(<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)으로 변환한다. 이 변환으로 보려는 것은 모든 우주론적 적색편이를 하나의 척도로 묶는 슬롯 비율, 곧 $1+z$다. 각 전이의 슬롯 비를 취해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$1 + z_{\text{eq}} = \dfrac{N_{\text{slot}}(t_0)}{N_{\text{slot}}(t_{\text{eq}})} = 3403$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $1+z = N_{\text{slot}}$ 비율, $z_{\text{eq}} = 3402$</div>
+<div class="math-row">측정값: 초신성 Ia 허블 도표 $\Lambda$CDM 적합과 정합</div>
+<div class="math-row">상태: 구조 정합 ($\Delta z_{\min}$ 수치 미완)</div>
+</div>
+<p>판정: <strong>가설</strong>. 모든 우주론적 적색편이가 RLU 슬롯 수 비율로 환산되며 근거리 $z \ll 1$에서 허블 법칙 $v = H_0 d$로 근사된다. 이산 최소 간격 $\Delta z_{\min} = 1/N_{\text{slot}}$의 수치 추정이 잔여 과제다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h476.html">H-476</a>(허블 팽창) 관측량. <a href="h478.html">H-478</a>(CMB 온도) $T \propto (1+z)$. <a href="d43.html">D-43</a>($z_{\text{eq}}$) 전이.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d43.html">D-43</a>, <a href="h476.html">H-476</a>, <a href="h478.html">H-478</a>, <a href="h482.html">H-482</a></p>
+<p>재투입 경로: <a href="d43.html">D-43</a>, <a href="h482.html">H-482</a>, <a href="h476.html">H-476</a>, <a href="h478.html">H-478</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h961.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h961.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h961.html">H-961</a>. 1/f Noise = Fractional Integral of White Noise</h1><div class="box-finding">
@@ -52,49 +52,61 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p class="finding-precision">Structural description — flicker noise PSD ∝ 1/f^α (α≈1). Fractional integration turns white (flat) into 1/f</p>
 <p>1/f (flicker) noise is the universal noise with PSD $1/f^{\alpha}$ (α≈1) seen in electronics, biology and finance. The fractional integral $D^{-\alpha/2}$ of white noise (flat, memoryless) produces the 1/f spectrum. Banya: fractional integration = negative-order rotation (the inverse direction of <a href="h953.html">H-953</a>), the injection of non-local memory.</p>
 <p>Neither white (order 0) nor Brownian ($1/f^2$, order-1 integration) but the intermediate 1/f is fractional-order. What the universality is: fractional integration is the universal operation interpolating between "memoryless" and "full memory" — the same "between" pattern as anomalous diffusion (H-958) and viscoelasticity (H-959).</p>
-<p>Quantitatively unfinished: α≈1 fluctuates and is medium-dependent → hypothesis.</p>
+<p>Quantitatively unfinished: α≈1 fluctuates and is medium-dependent ==> hypothesis.</p>
 <p><strong>Re-substitution purpose:</strong> Re-substitution purpose: fBm/Hurst exponent, noise spectroscopy, quantification of 1/f universality.</p>
-<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> Held as hypothesis (Class III). The structure (1/f = fractional integral of white noise, interpolating memoryless↔full-memory) is closed, but deriving the exponent α from axioms is unfinished. Remaining tasks: (1) axiomatic derivation of α, (2) link to fBm/Hurst, (3) re-inject <a href="h953.html">H-953</a>.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> Held as hypothesis (Class III). The structure (1/f = fractional integral of white noise, interpolating memoryless<==>full-memory) is closed, but deriving the exponent α from axioms is unfinished. Remaining tasks: (1) axiomatic derivation of α, (2) link to fBm/Hurst, (3) re-inject <a href="h953.html">H-953</a>.</p>
 </div>
 <h2>Why This Verdict</h2>
 <div class="verdict-hypothesis">
 <p><strong>Verdict: Hypothesis</strong> -- Hypothesis (recursive substitution in progress)</p>
-<p><strong>Reason:</strong> Structural agreement confirmed (fractional integration = interpolation memoryless↔full-memory) / axiomatic derivation of α unfinished / Round 1 / remaining tasks specified</p>
+<p><strong>Reason:</strong> Structural agreement confirmed (fractional integration = interpolation memoryless<==>full-memory) / axiomatic derivation of α unfinished / Round 1 / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; injection of non-local memory (fractional integration). Recursive substitution path: <a href="h953.html">H-953</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the 1/f Noise Fractional Integral from the OPERATOR-plane Negative-order Rotation Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>1/f noise is the cost a memoryless noise pays as it rotates the OPERATOR plane (observer + superposition) by a fractional order and thereby gains memory. This plane is an order-less axis with no cost, no irreversibility, no discreteness (<a href="../axiom.html#ax4">Axiom 4</a>), so a fractional rotation between integer orders is permitted and non-local memory is injected. The past state accumulated each tick by the d-ring polling (<a href="../axiom.html#ax8">Axiom 8</a>) is the source of that memory.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; injection of non-local memory (fractional integration)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the OPERATOR-plane rotation norm — the same norm by which <a href="h953.html">H-953</a> closed fractional-order differentiation $D^{\beta}$ as the plane rotation $e^{i\beta\pi/2}$. (b) This norm is chosen because white noise is order 0 (flat) and Brownian noise is order-1 integration ($1/f^2$), while 1/f is the negative-order rotation of the intermediate fractional order $-\alpha/2$ between them. Fractional integration is the inverse direction (negative order) of the H-953 rotation, and the integration operation tilts the spectral density to $1/f^{\alpha}$.</p>
+<div class="math-block">
+<div class="math-row">$D^{\beta}\ \text{rotation}:\ e^{i\beta\pi/2}\quad(\text{<a href=\"h953.html\">H-953</a>})$</div>
+<div class="math-row">$D^{-\alpha/2}\ \text{applied to}\ \xi_{\text{white}}:\quad S(f)\propto \dfrac{1}{f^{\alpha}}$</div>
+<div class="math-legend">$\xi_{\text{white}}$: white noise (flat PSD) | $D^{-\alpha/2}$: fractional integral of order $-\alpha/2$ | $\alpha$: spectral exponent ($\approx 1$) | $S(f)$: power spectral density | $\beta=0$: white, $\beta=1$: Brownian</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> α (fractional integration order, ≈1)</p>
-<p><strong>Physical Constant Inputs:</strong> none (directly from axiom structure)</p>
-<p><strong>Library Re-substitution:</strong> <a href="h953.html">H-953</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>alpha = 1            1/f anomalous noise exponent (target)
+-alpha/2 = -0.5      fractional integration order
+beta = 0             white noise (order 0, flat)
+beta = 1             Brownian noise (order-1 integration, 1/f^2)
+S(f) ~ 1/f^alpha     observed PSD form (universal: electronics/bio/finance)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation domain is the frequency spectrum of the quantum/information measurement domain. (b) What it reveals is whether the fractional order $-\alpha/2$ interpolating between memoryless (order 0) and full memory (order 1) tilts a flat spectrum into $1/f^{\alpha}$. Applying $D^{-\alpha/2}$ to white noise drops the spectral exponent to $\alpha$.</p>
+<div class="math-block">
+<div class="math-row">$S_{\xi}(f)=\text{const}\ \xrightarrow{\ D^{-\alpha/2}\ }\ S(f)=\dfrac{\text{const}}{f^{\alpha}}$</div>
+<div class="math-row">$\alpha=1\ \Rightarrow\ S(f)\propto \dfrac{1}{f}\quad(\text{1/f anomalous noise})$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $1/f$ noise = fractional integral $D^{-\alpha/2}$ of white noise, exponent $\alpha\approx 1$</div>
+<div class="math-row">Measured: flicker PSD $\propto 1/f^{\alpha}$, $\alpha\approx 1$ (medium-dependent fluctuation)</div>
+<div class="math-row">Quantitative: axiomatic derivation of $\alpha$ unfinished</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure — fractional integration as the interpolation between memoryless and full memory — is closed by the OPERATOR-plane negative-order rotation (inverse direction of <a href="h953.html">H-953</a>), but deriving the exponent $\alpha$ from axioms is unfinished. Insight: 1/f universality is not a kind of noise but the fractional order itself that bridges memoryless and full memory.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: fBm/Hurst exponent, noise spectroscopy, quantification of 1/f universality.</p>
+<p>Re-injection path: <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

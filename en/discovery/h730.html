@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h730.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h730.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h730.html">H-730</a>. Schwarzschild Solution = Cost Distribution of a Spherically Symmetric FSM Norm</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion is possible if the next round proceeds. Residual tasks explicitly listed.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula's own structure, primary integer combination (4,3). Recursive substitution path: <a href="h729.html">H-729</a>, <a href="h733.html">H-733</a>, <a href="h735.html">H-735</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Schwarzschild Solution from the Cost Distribution of a Spherically Symmetric FSM Norm</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The Schwarzschild solution is the spacetime metric of the CAS cost distribution produced by a spherically symmetric, static FSM norm (mass $M$). This metric is read through <a href="../axiom.html#ax3">Axiom 3</a> (DATA is discrete), under which the FSM norm is the cost source, and through <a href="../axiom.html#ax4">Axiom 4</a> (cost), under which the CAS cost decreases as $1/r$; it takes <a href="h729.html">H-729</a>, the vacuum $T_{\mu\nu}=0$ solution, as input.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; Banya formula's own structure, primary integer combination (4,3)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the spherically symmetric CAS cost-metric norm $ds^2$. It is chosen because the cost decreases as $1/r$ and the vacuum solution closes as $g_{tt}=-(1-r_s/r)$. The cost distribution is therefore substituted by the metric, with the cost-escape limit appearing as the Schwarzschild radius $r_s=2GM/c^2$.</p>
+<div class="math-block">
+<div class="math-row">$ds^2 = -\!\left(1 - \dfrac{r_s}{r}\right)c^2dt^2 + \dfrac{dr^2}{1 - r_s/r} + r^2 d\Omega^2$</div>
+<div class="math-row">$r_s = \dfrac{2GM}{c^2}$</div>
+<div class="math-legend">$r_s$: Schwarzschild radius = cost-escape limit | $M$: FSM norm (<a href="../axiom.html#ax3">Axiom 3</a>) | $1/r$: CAS cost decrease (<a href="../axiom.html#ax4">Axiom 4</a>) | $d\Omega^2$: spherical solid angle | vacuum $T_{\mu\nu}=0$ (<a href="h729.html">H-729</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h729.html">H-729</a>, <a href="h733.html">H-733</a>, <a href="h735.html">H-735</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>G       = 6.674e-11    m^3/kg/s^2
+c       = 299792458    m/s
+M_sun   = 1.989e30     kg
+r_s     = 2 G M / c^2</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the gravitational-metric domain (Schwarzschild radius). What it reveals is the cost-escape limit $r_s$ of a solar-mass FSM norm. Substituting $M=M_\odot$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$r_s = \dfrac{2 \times 6.674\!\times\!10^{-11} \times 1.989\!\times\!10^{30}}{(2.998\!\times\!10^8)^2} = 2954\ \text{m}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $r_s(M_\odot) = 2.95\ \text{km}$</div>
+<div class="math-row">Measured: $r_s(M_\odot) \approx 2.95\ \text{km}$ (standard astrophysics)</div>
+<div class="math-row">Error: $0\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The spherically symmetric FSM norm closes as the Schwarzschild metric and the solar $r_s$ is computed exactly, but the step deriving the vacuum field-equation integration constant directly from the cost distribution remains, leaving the forward chain's final stage open. The event horizon leads on to <a href="h733.html">H-733</a> and the Mercury-precession orbital correction to <a href="h735.html">H-735</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h733.html">H-733</a> (event horizon) boundary. <a href="h735.html">H-735</a> (Mercury precession) orbital correction.</p><p>This card can be re-used as input for the following cards: <a href="h729.html">H-729</a>, <a href="h733.html">H-733</a>, <a href="h735.html">H-735</a></p>
+<p>Re-injection path: <a href="h729.html">H-729</a>, <a href="h733.html">H-733</a>, <a href="h735.html">H-735</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

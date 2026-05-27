@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion is possible when the next round proceeds / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h445.html">H-445</a>, <a href="h448.html">H-448</a>, <a href="h456.html">H-456</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Density Matrix from the 8-Slot d-ring Time-Average Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The density matrix is the cost of reading the slots of the 8-bit ring buffer (d-ring, <a href="../axiom.html#ax5">Axiom 5</a>) as a time average. Since each slot is a single-instant snapshot updated by every-tick polling (<a href="../axiom.html#ax8">Axiom 8</a>), this cost is read from the d-ring ensemble.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the d-ring time-average norm. It is chosen because the density matrix is a direct reading of the d-ring structure rather than a subjective description of missing information, and that value closes into an 8-slot finite ensemble (<a href="../axiom.html#ax3">Axiom 3</a> discrete). The continuous statistical mixture is therefore substituted by the d-ring slot average.</p>
+<div class="math-block">
+<div class="math-row">$\rho = \sum_k p_k |\psi_k\rangle\langle\psi_k|$</div>
+<div class="math-row">$\rho_{ij} = \tfrac{1}{N_{\text{ring}}}\sum_{n=0}^{N_{\text{ring}}-1} d_n^{(i)}\,\overline{d_n^{(j)}}$</div>
+<div class="math-legend">$\rho$: density matrix | $p_k$: slot distribution | $d_n$: d-ring slot snapshot (<a href="../axiom.html#ax5">Axiom 5</a>) | $N_{\text{ring}}=8$: ring-buffer slot count | off-diagonal $\rho_{i\neq j}$: inter-slot phase correlation</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h445.html">H-445</a>, <a href="h448.html">H-448</a>, <a href="h456.html">H-456</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>N_ring = 8                   Axiom 5 (8-bit ring buffer)
+tr(rho) = 1                  slot-count normalization
+tr(rho^2) = 1  -> pure (all slots identical)
+tr(rho^2) < 1  -> mixed (slot spread)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum state-tomography domain. What it reveals is the criterion separating pure from mixed states. Substituting the trace into the d-ring slot alignment yields that criterion.</p>
+<div class="math-block">
+<div class="math-row">$\rho = \tfrac{1}{2}(I + \vec{r}\cdot\vec{\sigma}),\quad |\vec{r}| \leq 1$</div>
+<div class="math-row">$|\vec{r}| = 1 \Rightarrow \text{pure},\qquad |\vec{r}| < 1 \Rightarrow \text{mixed}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\text{tr}(\rho)=1$, pure/mixed $=$ d-ring phase alignment</div>
+<div class="math-row">Measured: matches the pure/mixed verdict of quantum state tomography</div>
+<div class="math-row">Remaining: limit transition from 8 slots to a continuous density matrix not closed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Bloch-sphere radius $|\vec{r}|$ is the d-ring phase alignment, and the off-diagonal components decay to 0 upon RLU eviction (<a href="h445.html">H-445</a>), directly connecting to decoherence.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: <a href="h445.html">H-445</a> (decoherence) off-diagonal decay. <a href="h456.html">H-456</a> (Born rule) probability interpretation. <a href="h448.html">H-448</a> (entanglement) subsystem tracing.</p><p>This card can be re-used as input for the following cards: <a href="h445.html">H-445</a>, <a href="h448.html">H-448</a>, <a href="h456.html">H-456</a></p>
+<p>Re-injection path: <a href="h445.html">H-445</a>, <a href="h456.html">H-456</a>, <a href="h448.html">H-448</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

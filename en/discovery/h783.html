@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h783.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h783.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h783.html">H-783</a>. Self-Reference and Goedel = delta==&gt;observer==&gt;Compare==&gt;DATA==&gt;delta Loop</h1><div class="box-finding">
@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 2 recursive inputs confirmed, D-promotion possible on the next round / remaining tasks listed.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h786.html">H-786</a>, <a href="h791.html">H-791</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Goedel Incompleteness from the δ Self-Reference Loop</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Goedel incompleteness is the cost a formal system pays when it describes itself. The FSM is the inference rules (<a href="../axiom.html#ax14">Axiom 14</a>), the DATA is the set of theorems (<a href="../axiom.html#ax3">Axiom 3</a>), and the $\delta$ loop is the self-referential cycle in which that FSM re-enters itself as observer (<a href="../axiom.html#ax15">Axiom 15</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained).</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the $\delta$ self-reference loop norm — the closure in which the observer re-feeds its own DATA into Compare. (b) The Goedel sentence is the self-reference "this proposition is unprovable," and the point where that self-reference occurs is precisely where the loop feeds itself back as input, so this norm is chosen. An FSM inside the system cannot prove its own consistency (Goedel's 2nd theorem), but the $\delta$ loop operates from the observer position outside the system and so encompasses that limit.</p>
+<div class="math-block">
+<div class="math-row">$G \equiv \text{(}G\text{ is unprovable within the FSM)}$</div>
+<div class="math-row">$\mathrm{loop}(\delta) = \delta\text{==&gt;}\mathrm{obs}\text{==&gt;}\mathrm{Cmp}\text{==&gt;}\mathrm{DATA}\text{==&gt;}\delta, \quad \mathrm{obs} \notin \mathrm{DATA}$</div>
+<div class="math-legend">$G$: Goedel sentence | FSM: inference rules (<a href="../axiom.html#ax14">Axiom 14</a>) | $\mathrm{DATA}$: set of theorems (<a href="../axiom.html#ax3">Axiom 3</a>) | $\mathrm{obs}$: observer (outside the system, <a href="../axiom.html#ax15">Axiom 15</a>) | $\mathrm{loop}$: self-reference cycle</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages).</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h786.html">H-786</a>, <a href="h791.html">H-791</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Goedel 1st : a true-but-unprovable G exists
+Goedel 2nd : an FSM cannot prove its own consistency
+Halting    : CAS termination undecidable
+loop length = 4 (obs,Cmp,DATA,delta)
+obs position : outside DATA (external to the system)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = ordered crossing of orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the Compare-branch domain (true gives Swap then DATA, false keeps superposition). (b) What it reveals is the locus of why self-reference breeds undecidability. Feeding in $G$, the Compare closes to neither true nor false and the loop polls forever; this non-termination is the halting problem and the cost of incompleteness.</p>
+<div class="math-block">
+<div class="math-row">$\mathrm{Cmp}(G) = \text{undecided} \;\Longrightarrow\; \mathrm{loop}\text{ non-terminating} = \text{halting undecided}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Structural map: Goedel incompleteness = non-termination of the $\delta$ self-reference loop</div>
+<div class="math-row">Measurement: consistent with mathematical logic theorems (Goedel 1st/2nd, halting, Chaitin) (qualitative match)</div>
+<div class="math-row">Quantitative error: not applicable (qualitative structural proposition, not a numeric target)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structural mapping that unifies Goedel, halting, and Chaitin into the same self-reference loop non-termination is closed, but a formal proof of the proposition that the observer is outside the system is incomplete, so promotion to Discovery is withheld.</p>
+<p>Insight: incompleteness is not a defect but the normal cost the loop pays when it feeds itself back as input.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h791.html">H-791</a> (limit). <a href="h786.html">H-786</a> (computability).</p><p>This card can be re-used as input for the following cards: <a href="h786.html">H-786</a>, <a href="h791.html">H-791</a></p>
+<p>Re-injection path: <a href="h791.html">H-791</a>, <a href="h786.html">H-786</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

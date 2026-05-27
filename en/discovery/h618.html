@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h618.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h618.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h618.html">H-618</a>. Band Structure = Periodic-Potential Branching of the FSM Norm</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D promotion is possible on the next round / residual task explicit.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unfixed, further refinement required). Recursive-substitution path: <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Band Gap $E_g$ from the Periodic-Potential Branching of the FSM Norm</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Bands are the result of the FSM norm (<a href="../axiom.html#ax14">Axiom 14</a>) splitting under a crystal's periodic potential (<a href="h617.html">H-617</a>). When the cost term forks into two values at the periodic boundary, the region between them becomes a forbidden gap where no state is usable. Bloch's periodic boundary condition is the periodicity of the FSM norm.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; outside the natural classification (domain unfixed, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM norm under a periodic potential. The FSM norm is energy (<a href="../axiom.html#ax14">Axiom 14</a>), and cost quantization (<a href="../axiom.html#ax4">Axiom 4</a>) splits the continuous energy into discrete bands. (b) This norm is chosen because the separation of allowed bands and forbidden gaps is the direct result of the norm forking into two branches at the periodic boundary. The gap is the distance between those two branches.</p>
+<div class="math-block">
+<div class="math-row">$E_n(\mathbf{k}) = \text{FSM norm}\big|_{\text{periodic potential}}$</div>
+<div class="math-row">$E_g = E_{n+1}(\mathbf{k}_0) - E_n(\mathbf{k}_0)$</div>
+<div class="math-legend">$E_n(\mathbf{k})$: $n$-th band | $\mathbf{k}$: wavevector (Brillouin zone) | $E_g$: band gap | $\mathbf{k}_0$: zone boundary | gap $= 0$: conductor, gap $&gt; 0$: insulator</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>E_g(Si)   = 1.12 eV
+E_g(GaAs) = 1.42 eV
+E_g(C)    = 5.5 eV         diamond</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the condensed-matter (band theory) domain. (b) What it reveals is the size of the forbidden gap between the two bands forked at the periodic boundary. The width by which the FSM norm splits at the zone boundary $\mathbf{k}_0$ is measured directly as the band gap.</p>
+<div class="math-block">
+<div class="math-row">$\text{FSM norm branching}\big|_{\text{Si}} \quad\Rightarrow\quad E_g = 1.12\ \text{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_g = $ FSM norm branching width (positive)</div>
+<div class="math-row">Measured: Si $1.12\ \text{eV}$, GaAs $1.42\ \text{eV}$</div>
+<div class="math-row">Status: gap existence matches, size not derived</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The branching of the FSM norm under a periodic potential closes the band+gap structure, but the per-material magnitude of the gap $E_g$ is not derived directly from the norm, so the round halted.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h619.html">H-619</a> (conductor/insulator), <a href="h625.html">H-625</a> (topological insulator) band premise</p><p>This card can be re-used as input for the following cards: <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
+<p>Re-injection path: <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

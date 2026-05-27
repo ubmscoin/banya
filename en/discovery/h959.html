@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h959.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h959.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h959.html">H-959</a>. Viscoelasticity = Fractional-order Stress-Strain (between spring 0 and dashpot 1)</h1><div class="box-finding">
@@ -52,49 +52,59 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p class="finding-precision">Structural description — interpolation between elastic (α=0) and viscous (α=1), half = α=1/2 (Scott-Blair). Polymer / soft-tissue form agreement</p>
 <p>The stress-strain law of a viscoelastic material is the fractional-order $\sigma = E\tau^{\alpha}D^{\alpha}\varepsilon$. α=0 = perfectly elastic (spring, proportional to strain), α=1 = perfectly viscous (dashpot, proportional to strain rate). Banya: $D^{\alpha}$ = orthogonal rotation $\alpha\pi/2$ (<a href="h953.html">H-953</a>), so α is a rotation position between the elastic and viscous categories.</p>
 <p>Half-order α=1/2 = 50:50 elastic-viscous = the Scott-Blair element. This is the mechanical version of the "between two categories" interpolation seen in <a href="h953.html">H-953</a>, the universal pattern by which fractional derivatives interpolate two poles (isomorphic to diffusion H-958 and statistics H-954).</p>
-<p>Quantitatively unfinished: α is material-dependent (not an axiom integer) → hypothesis.</p>
+<p>Quantitatively unfinished: α is material-dependent (not an axiom integer) ==> hypothesis.</p>
 <p><strong>Re-substitution purpose:</strong> Re-substitution purpose: fractional Maxwell/Kelvin-Voigt models, soft-tissue mechanics, creep/relaxation curves.</p>
-<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> Held as hypothesis (Class III). The structure (viscoelasticity = fractional rotation interpolating elastic 0 ↔ viscous 1) is closed, but deriving α from axiom DOF for a material is unfinished. Remaining tasks: (1) axiomatic derivation of α, (2) quantify creep/relaxation, (3) re-inject <a href="h953.html">H-953</a>.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> Held as hypothesis (Class III). The structure (viscoelasticity = fractional rotation interpolating elastic 0 <==> viscous 1) is closed, but deriving α from axiom DOF for a material is unfinished. Remaining tasks: (1) axiomatic derivation of α, (2) quantify creep/relaxation, (3) re-inject <a href="h953.html">H-953</a>.</p>
 </div>
 <h2>Why This Verdict</h2>
 <div class="verdict-hypothesis">
 <p><strong>Verdict: Hypothesis</strong> -- Hypothesis (recursive substitution in progress)</p>
-<p><strong>Reason:</strong> Structural agreement confirmed (fractional interpolation elastic↔viscous) / axiomatic derivation of α unfinished / Round 1 / remaining tasks specified</p>
+<p><strong>Reason:</strong> Structural agreement confirmed (fractional interpolation elastic<==>viscous) / axiomatic derivation of α unfinished / Round 1 / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; the Banya formula’s own structure, primary-integer (4,3) combination. Recursive substitution path: <a href="h953.html">H-953</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Viscoelasticity Order α from Fractional Rotation (H-953)</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The stress-strain relation is the CAS cost read as an orthogonal rotation inside the OPERATOR. Pure elasticity (spring) is the order-0 rotation proportional to strain, pure viscosity (dashpot) is the order-1 rotation proportional to strain rate, and viscoelasticity is the fractional-order rotation position between them (<a href="h953.html">H-953</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; the Banya formula’s own structure, primary-integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the fractional-rotation norm. The viscoelastic stress is an interpolation between the elastic pole (order 0) and the viscous pole (order 1), and that interpolation position closes as the fractional derivative $D^{\alpha}$ = orthogonal-rotation phase $\alpha\pi/2$ (<a href="h953.html">H-953</a>), so this norm is chosen. The integer-order stress-strain law is substituted by the fractional order $D^{\alpha}$.</p>
+<div class="math-block">
+<div class="math-row">$\sigma = E\,\varepsilon \;(\alpha=0),\qquad \sigma = \eta\,\dot\varepsilon \;(\alpha=1)$</div>
+<div class="math-row">$\sigma(t) = E\,\tau^{\alpha}\, D^{\alpha}\varepsilon(t),\quad 0 \le \alpha \le 1$</div>
+<div class="math-legend">$\alpha$: stress-strain fractional order ($\alpha{=}0$ spring, $\alpha{=}1$ dashpot) | $E$: elastic modulus | $\tau$: relaxation time | $D^{\alpha}$: fractional derivative = rotation phase $\alpha\pi/2$ (<a href="h953.html">H-953</a>) | $\alpha{=}1/2$: Scott-Blair (elastic-viscous 50:50)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> α (orthogonal-rotation phase, 0≤α≤1)</p>
-<p><strong>Physical Constant Inputs:</strong> none (directly from axiom structure)</p>
-<p><strong>Library Re-substitution:</strong> <a href="h953.html">H-953</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>alpha = 0     pure elastic (spring, sigma ~ epsilon)
+alpha = 1     pure viscous (dashpot, sigma ~ d epsilon/dt)
+alpha = 1/2   Scott-Blair (half-order, rotation pi/4)   H-953
+alpha(axiom)  = undetermined           material-dependent, DOF-ratio derivation incomplete</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the polymer / biological-tissue mechanics domain. What it reveals is the fractional order $\alpha$ of the stress-strain — the rotation position between elasticity and viscosity. The step deriving the $\alpha$ of a specific material as an axiomatic DOF ratio does not close.</p>
+<div class="math-block">
+<div class="math-row">$\alpha = 1/2 \;\Rightarrow\; D^{1/2} = $ rotation $\pi/4$ (Scott-Blair, elastic-viscous 50:50)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: viscoelasticity = fractional rotation interpolation between elastic (0) and viscous (1)</div>
+<div class="math-row">Measured: creep/relaxation curve form matches, $\alpha$ value is material-dependent</div>
+<div class="math-row">Status: structure closed, axiomatic derivation of $\alpha$ incomplete</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure that viscoelasticity is a fractional-rotation interpolation between elasticity and viscosity closes, and the half-order $\alpha=1/2$ matches the Scott-Blair element, but the step deriving the order $\alpha$ as an axiomatic DOF from the material is incomplete.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: fractional Maxwell/Kelvin-Voigt models, soft-tissue mechanics, creep/relaxation curves.</p>
+<p>Re-injection path: <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

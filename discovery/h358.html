@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 대입 미실행 (1차 라운드) / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Swap 비가역 비용에서 란다우어 한계 kT ln2 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>Swap 1건은 DATA를 덮어써(<a href="../axiom.html#ax3">공리 3</a>: 스크린 덮어쓰기) 이전 값을 비가역적으로 소거한다. <a href="../axiom.html#ax4">공리 4</a>(비용 존재)가 이 소거에 비용을 부과하고 <a href="../axiom.html#ax5">공리 5</a>(비용 보존)가 그 비용을 환경으로 보낸다. 이 최소 비가역 비용으로 1비트 소거 에너지를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Swap의 비가역 소거 노름이다. Read·Compare는 DATA를 바꾸지 않아 비가역 소거가 아니고, 이전 값을 복구 불가능하게 덮어쓰는 Swap만 열역학 최소 비용을 지불하기 때문에 이 노름을 택한다. 1비트 소거 에너지를 절대온도와 볼츠만 상수의 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{render,min}} = k_B T \ln W$</div>
+<div class="math-row">$E_{\text{render,min}} = k_B T \ln 2$</div>
+<div class="math-legend">$E_{\text{render,min}}$: Swap 1건 최소 비용 | $k_B$: 볼츠만 상수 | $T$: 절대온도 | $\ln 2$: 1비트(상태 수 $W=2$) 소거</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>k_B   = 1.380649e-23 J/K            CODATA 2018
+T     = 300 K                       실온
+ln 2  = 0.693147</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>열역학 에너지 도메인으로 변환한다. 이 변환으로 보려는 것은 실온에서 1비트를 소거할 때 환경으로 방출되는 최소 에너지다. 세 상수를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{render,min}} = 1.380649\times10^{-23} \times 300 \times 0.693147 = 2.87\times10^{-21}\,\text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $E_{\text{render,min}} = 2.87\times10^{-21}\,\text{J} \approx 0.018\,\text{eV}$ ($T=300$K)</div>
+<div class="math-row">측정값: 란다우어 한계 실험 확인 (Berut et al. 2012)</div>
+<div class="math-row">오차: 구조 일치(정량 대조 미완)</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>열역학 제2법칙의 엔트로피 증가는 Swap의 비가역 소거가 Swap마다 $k_B T\ln 2$ 이상을 환경으로 내보내는 데서 따라온다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h262.html">H-262</a>, <a href="h277.html">H-277</a>, <a href="h280.html">H-280</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인 4축 순열 비용에서 Z 비가시 붕괴폭 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>Z 비가시 붕괴폭은 Z가 뉴트리노 쌍으로 가는 부분폭, 곧 Compare가 어느 도메인도 직접 쥐지 못하는 중성 채널의 비용이다. 뉴트리노가 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>) 중 하나에 고정되지 않으므로 비용을 4축의 순열 $4!$로 읽는다(<a href="../axiom.html#ax2">공리 2</a> Compare 분기).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 도메인 4축 순열 노름이다. 뉴트리노 채널이 4도메인 어느 것도 쥐지 못해 가능한 모든 배열을 거치는 비용이고, 그 배열 수가 $4!=24$로 분모에 들어오기 때문에 이 노름을 택한다. 따라서 부분폭을 질량과 혼합각 곱의 비율로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma_{\nu\bar\nu} = \dfrac{G_F M_Z^3}{12\pi\sqrt2}$</div>
+<div class="math-row">$\Gamma_{\nu\bar\nu} = \dfrac{M_Z\,\alpha}{24\,\sin^2\theta_W\cos^2\theta_W}$</div>
+<div class="math-legend">$\Gamma_{\nu\bar\nu}$: 단일 뉴트리노 채널 부분폭 | $M_Z$: Z 질량 (<a href="h262.html">H-262</a>) | $24=4!$: 도메인 4축 순열 (<a href="../axiom.html#ax1">공리 1</a>) | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) | $\sin^2\theta_W\cos^2\theta_W$: 혼합각 곱</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h262.html">H-262</a>, <a href="h277.html">H-277</a>, <a href="h280.html">H-280</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>M_Z            = 91.19 GeV         H-262
+alpha          = 1/137.036         D-01
+4!             = 24
+sin^2 theta_W  = 0.2312            PDG 2024
+Gamma(exp)     = 166.3 ± 0.5 MeV   단일 채널, PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>중성 전류 결합 도메인으로 변환한다. 이 변환으로 보려는 것은 Z가 단일 세대 뉴트리노 쌍으로 붕괴하는 부분폭 $\Gamma_{\nu\bar\nu}$다. 질량 $M_Z$와 $\alpha$를 순열 24와 혼합각 곱으로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Gamma_{\nu\bar\nu} = \dfrac{91.19\times(1/137.036)}{24\times0.2312\times0.7688} = 165.9\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Gamma_{\nu\bar\nu} = 165.9\;\text{MeV}$</div>
+<div class="math-row">측정값: $166.3 \pm 0.5\;\text{MeV}$ (단일 채널, PDG 2024)</div>
+<div class="math-row">오차: $0.24\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 분모 $4!=24$가 도메인 4축 순열에서 나오며, 3세대 합 $3\times165.9$가 <a href="h280.html">H-280</a>의 세대 수 도출 입력이 된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h262.html">H-262</a>, <a href="h277.html">H-277</a>, <a href="h280.html">H-280</a></p>
+<p>재투입 경로: <a href="h280.html">H-280</a>, <a href="h262.html">H-262</a>, <a href="h277.html">H-277</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

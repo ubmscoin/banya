@@ -72,39 +72,52 @@ Structural consequence: total release rate $R(z)/R(0) = H^2(z)/H_0^2$. The stand
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h cosmology. Domain: delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale. Recursive substitution path: <a href="d15.html">D-15</a>, <a href="h30.html">H-30</a>, <a href="h48.html">H-48</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Friedmann Equation from the RLU-cache cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Cosmic expansion is the cost the RLU cache pays as it evicts data in the order HOT==&gt;WARM==&gt;COLD. The eviction order is set by <a href="../axiom.html#ax6">Axiom 6</a> (RLU), and the irreversibility — evicted data cannot be restored — is set by <a href="../axiom.html#ax4">Axiom 4</a> (irreversible Swap). This irreversible cost is read as the time dependence of the expansion rate.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the HOT:WARM:COLD segment-ratio norm of the RLU queue. The larger the redshift $z$, the more the volumetric density of the HOT+WARM matter modes grows as $(1+z)^3$ while the COLD cosmological-constant mode stays fixed, so the cache segment ratio becomes the energy-density fraction — which is why this norm is chosen. The domain 4 axes of <a href="../axiom.html#ax1">Axiom 1</a> fill the queue with no gap, closing it at the total state count 57. The squared expansion rate is therefore substituted by the RLU segment ratio.</p>
+<div class="math-block">
+<div class="math-row">$H^2(z) = H_0^2\left[\Omega_m(1+z)^3 + \Omega_\Lambda\right]$</div>
+<div class="math-row">$E(z) \equiv \dfrac{H^2(z)}{H_0^2} = \dfrac{18}{57}(1+z)^3 + \dfrac{39}{57}$</div>
+<div class="math-legend">$E(z)$: dimensionless squared expansion rate | $18/57$: HOT+WARM = matter fraction | $39/57$: COLD = cosmological-constant fraction | $57$: RLU total state count (<a href="h30.html">H-30</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 57 (output, alpha^57=Lambda*l_p^2), 7, 21, 35 (exterior algebra dimensions)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>H_0</code>, <code>Lambda</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="d15.html">D-15</a>, <a href="h30.html">H-30</a>, <a href="h48.html">H-48</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>HOT+WARM = 18/57 = 0.31579     H-30
+COLD     = 39/57 = 0.68421     H-30
+Omega_m  = 0.314              Planck 2018
+Omega_L  = 0.686              Planck 2018
+z_t obs  = 0.67               Planck 2018</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the cosmological RLU domain. What it reveals is the matter/cosmological-constant fractions and the deceleration==&gt;acceleration transition redshift $z_t$. The transition occurs where the two terms of $E(z)$ become equal, so $z_t$ is computed from $2\Omega_\Lambda = \Omega_m(1+z_t)^3$.</p>
+<div class="math-block">
+<div class="math-row">$\Omega_m = \dfrac{18}{57} = 0.316, \quad \Omega_\Lambda = \dfrac{39}{57} = 0.684$</div>
+<div class="math-row">$z_t = \left(\dfrac{2 \cdot 39}{18}\right)^{1/3} - 1 = \left(\dfrac{13}{3}\right)^{1/3} - 1 = 0.63$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\Omega_m = 0.316, \quad \Omega_\Lambda = 0.684, \quad z_t = 0.63$</div>
+<div class="math-row">Measured: $\Omega_m = 0.314, \quad \Omega_\Lambda = 0.686, \quad z_t = 0.67$ (Planck 2018)</div>
+<div class="math-row">Error: $\Omega_m\ 0.6\%, \quad \Omega_\Lambda\ 0.3\%, \quad z_t\ 6\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The two fractions of the Friedmann equation fall out of the RLU queue ratios 18/57 and 39/57 with no free parameter, but the 6% error in $z_t$ does not close, leaving the forward chain incomplete.</p>
+<p>Insight: The $\Omega_m$ and $\Omega_\Lambda$ that standard ΛCDM fits from experiment are forced into integer ratios by the RLU cache segment ratios.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: complete the z general term of <a href="h30.html">H-30</a>. Integrate D-15 with formula 14 (Friedmann). Next: precise separation of the radiation term ($z_{eq}$), derive the BAO scale from the HOT==&gt;WARM transition rate, sharpen the $z_t$ prediction.</p><p>This card can be re-used as input for the following cards: <a href="d15.html">D-15</a>, <a href="h30.html">H-30</a>, <a href="h48.html">H-48</a></p>
+<p>Re-injection path: <a href="d15.html">D-15</a>, <a href="h30.html">H-30</a>, <a href="h48.html">H-48</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

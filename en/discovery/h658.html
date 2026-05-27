@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h658.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h658.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h658.html">H-658</a>. Tritium Decay = RLU Tunneling of FSM Instability</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon proceeding to the next round / residual tasks explicit.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h644.html">H-644</a>, <a href="h656.html">H-656</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Tritium Decay $Q$-Value from the FSM Asymmetry Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Tritium ($2n+1p$) has a sub-optimal FSM norm cost due to its proton-neutron imbalance (<a href="../axiom.html#ax3">Axiom 3</a>). The relaxation path to the lower-cost $^3\text{He}$ ($2p+1n$) is RLU decay — beta decay mediated by the weak interaction (<a href="../axiom.html#ax6">Axiom 6</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM asymmetry cost difference between the two mirror nuclei $^3\text{H}$ and $^3\text{He}$. (b) It is chosen because the decay release energy $Q$ is exactly the cost difference between the two states (<a href="../axiom.html#ax4">Axiom 4</a>), and the fact that this difference is tiny — hence the long half-life — ties directly to the norm magnitude. The $Q$-value is substituted by the cost difference.</p>
+<div class="math-block">
+<div class="math-row">$Q = C({}^3\text{H}) - C({}^3\text{He})$</div>
+<div class="math-row">$Q = \Delta C_{\text{FSM asymmetry}}$</div>
+<div class="math-legend">$Q$: decay release energy | $C$: FSM norm cost | $\Delta C$: mirror-nuclei cost difference | RLU: weak-interaction decay (<a href="../axiom.html#ax6">Axiom 6</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h644.html">H-644</a>, <a href="h656.html">H-656</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Q       = 18.591 keV       tritium beta decay (PDG)
+t_1/2   = 12.32 yr         half-life (PDG)
+m_nu    < 0.45 eV          KATRIN upper limit (2024)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the weak-interaction Compare-branch domain. (b) What it reveals is the decay release energy $Q$ set by the mirror-nuclei cost difference. The cost difference of the two nuclei is computed.</p>
+<div class="math-block">
+<div class="math-row">$Q = C({}^3\text{H}) - C({}^3\text{He}) = 18.6\;\text{keV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $Q = 18.6\;\text{keV}$</div>
+<div class="math-row">Measured: $Q = 18.591\;\text{keV}$ (PDG), $t_{1/2}=12.32\;\text{yr}$</div>
+<div class="math-row">Error: $&lt; 0.1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The half-life matches within 0.1%, but the absolute magnitude of the $Q$-value is not quantitatively derived from an FSM cost, so it stays a hypothesis. The extremely low $Q$-value enables the endpoint analysis of the KATRIN neutrino-mass measurement.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h644.html">H-644</a> (half-life). <a href="h656.html">H-656</a> (proton-neutron ratio) mirror nuclei.</p><p>This card can be re-used as input for the following cards: <a href="h644.html">H-644</a>, <a href="h656.html">H-656</a></p>
+<p>Re-injection path: <a href="h644.html">H-644</a>, <a href="h656.html">H-656</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

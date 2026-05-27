@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> experimental comparison absent / quantitative formula absent / three recursive inputs confirmed, D-promotion possible upon the next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h gauge ew. Domain: delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition. Recursive substitution path: <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="h17.html">H-17</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the gauge-group generator counts from the per-stage CAS internal-DOF cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A gauge interaction is one of the three ways the CAS of the OPERATOR bracket accesses the DATA bracket. By <a href="../axiom.html#ax2">Axiom 2</a>, Read references a single state (DOF 1), Compare compares two states (DOF 2), and Swap exchanges three colors (DOF 3). The <a href="../axiom.html#ax4">Axiom 4</a> cost structure fixes the per-stage internal DOF $n$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; SU(2) x U(1) electroweak coupling, sin^2 theta_W partition</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the per-stage CAS internal-DOF norm $n$. The DOF $n$ of each stage sets the dimension of the Lie group it generates, and the count of off-diagonal traceless generators closes as $n^2-1$; this norm is chosen for that reason. The gauge-group generator count is therefore substituted by $n^2-1$.</p>
+<div class="math-block">
+<div class="math-row">$G_\text{SM} = U(1) \times SU(2) \times SU(3)$</div>
+<div class="math-row">$\dim G_n = n^2 - 1, \quad n \in \{1,2,3\}$</div>
+<div class="math-legend">$G_\text{SM}$: Standard Model gauge group | $n$: CAS stage internal DOF (Read 1·Compare 2·Swap 3, <a href="../axiom.html#ax2">Axiom 2</a>) | $n^2-1$: $SU(n)$ adjoint dimension | $U(1)$: $n{=}1$, 1 generator</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (domain)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>alpha</code>, <code>alpha_s</code>, <code>pi</code>, <code>sin^2theta_W</code>, <code>theta</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="h17.html">H-17</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Read   : n=1   ->  U(1)    1 generator
+Compare: n=2   ->  SU(2)   2^2-1 = 3   W+, W-, Z
+Swap   : n=3   ->  SU(3)   3^2-1 = 8   gluons
+Standard Model gauge bosons = 1 + 3 + 8 = 12   PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the gauge-group structure domain. What it reveals is the total number of Standard Model gauge bosons. Summing the per-stage DOF $n=1,2,3$ by the $n^2-1$ rule (with $U(1)$ giving 1) yields that count.</p>
+<div class="math-block">
+<div class="math-row">$N_\text{boson} = 1 + (2^2-1) + (3^2-1) = 1 + 3 + 8 = 12$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $N_\text{boson} = 12$ ($U(1){:}1$, $SU(2){:}3$, $SU(3){:}8$)</div>
+<div class="math-row">Measured: $12$ (photon·$W^\pm$·$Z$·8 gluons, PDG 2024)</div>
+<div class="math-row">Error: $0\%$ (integer match)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The generator counts match as integers from the CAS DOF $n^2-1$, but the mathematical refinement of the non-isomorphic principal-bundle projection (<a href="h17.html">H-17</a>) and the quantitative reproduction of coupling running are incomplete, so it cannot be closed as a discovery.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: ratio constraint between gauge coupling constants; basis for the coefficient 3 of <a href="d03.html">D-03</a> (alpha_s); estimate of the unification energy scale.</p><p>This card can be re-used as input for the following cards: <a href="d02.html">D-02</a>, <a href="d03.html">D-03</a>, <a href="h17.html">H-17</a></p>
+<p>Re-injection path: <a href="h17.html">H-17</a>, <a href="d03.html">D-03</a>, <a href="d02.html">D-02</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

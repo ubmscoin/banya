@@ -52,7 +52,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p class="finding-precision">구조 서술 — subdiffusion β<1 = 비국소 기억 = OPERATOR 중첩(공리 13). MSD ∝ t^β 형태 정합</p>
 <p>정상 확산은 평균제곱변위 $\text{MSD}\propto t$(β=1)이나, 다공질·세포질·무질서 매질에서는 subdiffusion(β<1)·superdiffusion이 관측되며 시간-분수 미분 $\partial^\beta/\partial t^\beta$로 기술된다. 반야: 분수 차수 = 직교 회전 위상(<a href="h953.html">H-953</a>), 비정수 β = 정수 미분 카테고리 사이 위치.</p>
 <p>memory effect(과거 전체가 현재에 영향)의 정체: $\partial^\beta/\partial t^\beta$는 비국소(non-local)이며, 이는 OPERATOR가 모든 상태를 동시에 가지는 중첩(<a href="../axiom.html#ax13">공리 13</a>)의 시간축 사영이다. 정수 미분 = 국소(한 점), 분수 = 비국소(과거 누적).</p>
-<p>정량 미완: β는 매질 의존(공리 정수 아님) → 가설. 반응-확산(<a href="h836.html">H-836</a>)의 분수 일반화와 특정 β의 자유도 비 표현이 잔여 과제.</p>
+<p>정량 미완: β는 매질 의존(공리 정수 아님) ==> 가설. 반응-확산(<a href="h836.html">H-836</a>)의 분수 일반화와 특정 β의 자유도 비 표현이 잔여 과제.</p>
 <p><strong>재대입 용도:</strong> 재대입 용도: CTRW, 반응-확산(<a href="h836.html">H-836</a>), 세포 내 수송, fBm/Hurst 지수.</p>
 <p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 미진행 멈춤. 이상확산의 비국소 기억 = OPERATOR 중첩 사영이라는 구조는 닫혔으나, 차수 β를 특정 매질에서 공리 자유도 비로 산출하는 단계가 미완. 잔여 과제: (1) β의 공리 도출, (2) 반응-확산(<a href="h836.html">H-836</a>) 분수 일반화, (3) <a href="h953.html">H-953</a> 재투입.</p>
 </div>
@@ -62,39 +62,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 구조 정합 확인(비국소 기억 = OPERATOR 중첩, MSD ∝ t^β) / β의 공리 도출 미완 / 1차 라운드 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h953.html">H-953</a>, <a href="h836.html">H-836</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 시간축 분수 회전(H-953)에서 이상확산 지수 β 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>확산은 시간축 미분이 매질을 한 칸 진행시킬 때 치르는 CAS 비용이다. 정수 시간 미분은 한 점만 참조하는 국소 비용이나, 무질서 매질의 기억효과는 과거 전체가 현재에 영향을 주는 비국소 비용 = OPERATOR가 모든 상태를 동시에 쥐는 중첩(<a href="../axiom.html#ax13">공리 13</a>)의 시간축 사영이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 시간축 분수 회전 노름이다. 기억효과가 비국소 수송이고, 그 비국소성이 OPERATOR 중첩(<a href="../axiom.html#ax13">공리 13</a>)을 시간축 분수 차수 $\beta$로 사영한 것이며 분수 차수가 직교 회전 위상 $\beta\pi/2$로 닫히기(<a href="h953.html">H-953</a>) 때문에 이 노름을 택한다. 표준 정수 확산 방정식의 시간 미분을 분수 미분 $\partial^\beta/\partial t^\beta$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\partial u}{\partial t} = K\,\Delta u$</div>
+<div class="math-row">$\dfrac{\partial^\beta u}{\partial t^\beta} = K\,\Delta u,\quad 0 \lt \beta \lt 1$</div>
+<div class="math-legend">$\beta$: 시간 분수 차수 ($0 \lt \beta \lt 1$ = subdiffusion) | $K$: 확산 계수 | $\Delta$: 공간 라플라시안 | $\partial^\beta/\partial t^\beta$: 비국소(과거 누적) = OPERATOR 중첩 사영 (<a href="../axiom.html#ax13">공리 13</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> β (직교 회전 위상, 0&lt;β&lt;1)</p>
-<p><strong>물리 상수 입력:</strong> 없음 (공리 구조에서 직접)</p>
-<p><strong>라이브러리 재투입:</strong> <a href="h953.html">H-953</a>, <a href="h836.html">H-836</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>beta = 1      정상 확산 (정수, 국소)
+beta < 1      subdiffusion (비국소, 과거 누적)
+beta > 1      superdiffusion
+beta(공리)    = 미정                  매질 의존, 자유도 비 도출 미완</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>무질서·다공질·세포질 매질 확산 도메인으로 변환한다. 이 변환으로 보려는 것은 평균제곱변위의 시간 거듭제곱 지수, 곧 $\text{MSD}\propto t^{\beta}$의 $\beta$다. 다만 특정 매질의 $\beta$를 공리 자유도 비로 산출하는 단계가 닫히지 않는다.</p>
+<div class="math-block">
+<div class="math-row">$\text{MSD} \propto t^{\beta}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 비국소 기억 = OPERATOR 중첩의 시간축 분수 사영</div>
+<div class="math-row">측정: $\text{MSD}\propto t^{\beta}$ 형태 정합, $\beta$ 값 매질 의존</div>
+<div class="math-row">상태: 구조 닫힘, $\beta$ 공리 도출 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 이상확산의 비국소 기억이 OPERATOR 중첩 사영이라는 구조는 닫혔으나, 차수 $\beta$를 특정 매질에서 공리 자유도 비로 산출하는 단계가 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: CTRW, 반응-확산(<a href="h836.html">H-836</a>), 세포 내 수송, fBm/Hurst 지수.</p>
+<p>재투입 경로: <a href="h953.html">H-953</a>, <a href="h836.html">H-836</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

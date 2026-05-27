@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / 2 recursive inputs confirmed, D-promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; natural classification plus (domain undetermined, subsequent refinement needed). Recursive substitution path: <a href="h264.html">H-264</a>, <a href="h297.html">H-297</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving $C(4,4)=1$ pattern $1111$ from the domain 4-bit occupancy cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Maximum occupancy is the cost the CAS pays to hold all 4 domain bits ON simultaneously in the held state. <a href="../axiom.html#ax1">Axiom 1</a> (4 domains) fixes the 4 bits, <a href="../axiom.html#ax2">Axiom 2</a> (CAS 3 steps) supplies the occupancy mechanism, and <a href="../axiom.html#ax14">Axiom 14</a> (FSM atomicity) guarantees the full lock at $1111$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; natural classification plus (domain undetermined, subsequent refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the domain 4-bit occupancy norm. It is chosen because the number of ways to fill all 4 bits ON closes as the binomial coefficient $C(4,4)$. The FSM atomic occupancy state is substituted by the last term of Pascal's triangle row 4.</p>
+<div class="math-block">
+<div class="math-row">$\Omega_{\max} = C(n,n)$</div>
+<div class="math-row">$C(4,4) = 1,\quad \text{pattern} = 1111$</div>
+<div class="math-legend">$\Omega_{\max}$: number of maximum-occupancy states $|$ $n=4$: domain bits (<a href="../axiom.html#ax1">Axiom 1</a>) $|$ $C(4,4)$: ways to set all 4 bits ON $|$ $1111$: FSM atomic occupancy (<a href="../axiom.html#ax14">Axiom 14</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h264.html">H-264</a>, <a href="h297.html">H-297</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n         = 4                     domain bits (Axiom 1)
+C(4,4)    = 1                     last term of Pascal row 4
+total patterns = 16 = 2^4         4-bit combinations
+max cost  = 12 = 3 x 4            CAS 3 steps x 4 domains</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the Banya structure domain. What it reveals is the uniqueness of the maximum-occupancy state with all 4 domains locked, and its serialization cost. The ratio of the binomial coefficient to the total pattern count is computed.</p>
+<div class="math-block">
+<div class="math-row">$C(4,4)/2^4 = 1/16 = 6.25\%,\quad \text{max cost} = 3 \times 4 = 12$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $C(4,4) = 1$, pattern $1111$, ratio $6.25\%$</div>
+<div class="math-row">Maximum serialization cost: $12$ units</div>
+<div class="math-row">Check: Pascal symmetry $C(4,0)=C(4,4)=1$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The maximum occupancy $1111$ closes as a unique state, forms a boundary symmetry with the vacuum $0000$ of <a href="h264.html">H-264</a>, and the maximum cost 12 corresponds to the 12 gauge bosons of <a href="h273.html">H-273</a>.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h264.html">H-264</a>, <a href="h297.html">H-297</a></p>
+<p>Re-injection path: <a href="h264.html">H-264</a>, <a href="h297.html">H-297</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

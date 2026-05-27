@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h857.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h857.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h857.html">H-857</a>. Thermoelectric Effect = Thermal-Electric Conversion of CAS Cost</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs identified; D promotion possible upon next round / residual tasks explicit.</p>
 <p><strong>Location:</strong> Category: h_misc. Domain: delta ==&gt; outside the natural classification (domain unconfirmed, follow-up refinement needed). Recursive-substitution path: <a href="h842.html">H-842</a>, <a href="h849.html">H-849</a>, <a href="h858.html">H-858</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the thermoelectric figure of merit ZT from the thermal-electric cost conversion</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The thermoelectric figure of merit measures how little leakage accompanies the conversion of cost between thermal and electric forms (<a href="../axiom.html#ax7">Axiom 7</a>). The FSM norm of the carrier sets the thermal energy (<a href="../axiom.html#ax3">Axiom 3</a>), while the phonons of the ECS lattice produce a thermal leak unrelated to the conversion (<a href="../axiom.html#ax2">Axiom 2</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unconfirmed, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the signal-to-leakage ratio of the conversion — the electric output factor $S^2\sigma$ divided by the thermal leak $\kappa$, a dimensionless norm. (b) This norm is chosen because conversion efficiency is set not by absolute output but only by the ratio against leakage. The product of the squared Seebeck coefficient $S^2$ and the electrical conductivity $\sigma$ is substituted by the thermal conductivity $\kappa$ and made dimensionless with the temperature $T$.</p>
+<div class="math-block">
+<div class="math-row">$\sigma_{th} = \dfrac{S^2\sigma}{\kappa}$</div>
+<div class="math-row">$ZT = \dfrac{S^2\sigma}{\kappa}\,T$</div>
+<div class="math-legend">$ZT$: dimensionless figure of merit | $S$: Seebeck coefficient | $\sigma$: electrical conductivity | $\kappa$: thermal conductivity | $T$: absolute temperature | $\sigma_{th}$: thermoelectric efficiency (power factor / $\kappa$)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h842.html">H-842</a>, <a href="h849.html">H-849</a>, <a href="h858.html">H-858</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>Bi2Te3   ZT ~ 1.0      room temperature
+PbTe     ZT ~ 2.0      high temperature
+SnSe     ZT ~ 2.6      best value
+eta/eta_C = 0.10~0.20  efficiency vs Carnot</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the thermal-electric conversion-efficiency domain. (b) What it reveals is the actual conversion efficiency against the Carnot limit, obtained by inserting $ZT$ into the efficiency formula.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\eta}{\eta_C} = \dfrac{\sqrt{1+ZT}-1}{\sqrt{1+ZT}+1}$</div>
+<div class="math-row">$ZT=1 \Rightarrow \eta/\eta_C \approx 0.17$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: at $ZT=1$, $\eta/\eta_C\approx 0.17$ (within the $10$–$20\%$ vs-Carnot range)</div>
+<div class="math-row">Measured: Bi₂Te₃ $ZT\sim1$, SnSe $ZT\sim2.6$</div>
+<div class="math-row">Error: $< 20\%$ (material dependent)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The functional form of $ZT$ and the efficiency formula close, but $S$, $\sigma$, $\kappa$ all remain per-material external inputs, so the last step of the forward chain is incomplete. The thermoelectric effect is the single channel through which cost converts between thermal and electric forms, and $ZT$ is the leakage efficiency of that channel.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h842.html">H-842</a> (semiconductors). <a href="h858.html">H-858</a> (piezoelectric effect). <a href="h849.html">H-849</a> (photovoltaic cells)</p><p>This card can be re-used as input for the following cards: <a href="h842.html">H-842</a>, <a href="h849.html">H-849</a>, <a href="h858.html">H-858</a></p>
+<p>Re-injection path: <a href="h842.html">H-842</a>, <a href="h858.html">H-858</a>, <a href="h849.html">H-849</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

@@ -62,39 +62,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 구조 동형 정합 확인(Lacroix·Fourier·semi-group), 정량 수치값 공리 도출 미완 / 1차 라운드 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: OPERATOR 직교 회전각에서 분수 차수 미분 위상 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>미분은 연속·가역인 OPERATOR(양자 괄호) 내부의 직교 회전이다. DATA는 이산이라 미분이 금지되고(<a href="../axiom.html#ax3">공리 3</a>), 1차 미분은 인접 직교축으로의 $\pi/2$ 회전이다. 이 회전 위상으로 분수 차수를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 OPERATOR 가역 회전 노름이다 — 차수 $\alpha$의 미분은 위상 $\alpha\pi/2$. (b) 가역이라 적분이 역연산이고 <a href="../axiom.html#ax2">공리 2</a>의 비가역 반구면 $\pi$가 아니라서 이 노름을 택한다. 따라서 $D^{\alpha}$를 회전 위상 $e^{i\alpha\pi/2}$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\theta_{\alpha} = \alpha\,\dfrac{\pi}{2}$</div>
+<div class="math-row">$D^{1/2}:\ e^{i\pi/4} = \dfrac{1+i}{\sqrt{2}}$</div>
+<div class="math-legend">$\alpha$: 미분 차수 | $\theta_\alpha$: 직교 회전 위상 | $\pi/2$: 1차 미분 1회 = 인접 직교축 | $D^{1/2}$: 반-미분 = $\pi/4$ 회전</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> 없음 (공리 구조에서 직접)</p>
-<p><strong>라이브러리 재투입:</strong> 1차 라운드 (외부 카드 입력 없음)</p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha        = 1/2
+alpha*pi/2   = pi/4 = 0.785398
+e^(i pi/4)   = (1+i)/sqrt2
+D^(1/2) x    = 2 sqrt(x/pi)        Lacroix 1819</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 반야 구조 자체 도메인(연속 OPERATOR)으로 변환한다. (b) 보려는 것은 반-미분이 회전 위상의 절반 $\pi/4$로 닫히는가다. $\alpha=1/2$를 위상에 대입해 표준 분수 미적분과 대조한다.</p>
+<div class="math-block">
+<div class="math-row">$D^{1/2}(\sin x) = \sin\!\big(x + \tfrac{\pi}{4}\big)$</div>
+<div class="math-row">$D^{1/2}\!\circ D^{1/2} = D^{1}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 가설</h3>
+<div class="math-block">
+<div class="math-row">도출 위상: $\theta_{1/2} = \pi/4$</div>
+<div class="math-row">정합: Lacroix 1819 $D^{1/2}x = 2\sqrt{x/\pi}$ · semi-group $D^{1/2}\!\circ D^{1/2}=D$</div>
+<div class="math-row">$\pi/4 + \pi/4 = \pi/2$ = 정수 미분 1회</div>
+</div>
+<p>판정: <strong>가설</strong>. 위상 형식이 Lacroix·Fourier·semi-group과 구조 동형으로 닫혔으나, 일반 함수의 $D^{\alpha}$ 수치값을 감마 함수 계수까지 공리에서 산출하는 단계가 미완이다.</p>
+<p>통찰: 라이프니츠가 1695년 L'Hôpital에게 던진 반-미분이 직교 회전 위상의 절반으로 닫힌다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 페르미온(스핀 1/2) = 반-미분 회전 위치, $D^{1/2}$ = 최소 불확정(coherent) 상태, Warburg 임피던스 = 상경계 반-미분의 입력 인자. 1차 정수 (4,3) 직교 구조(<a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>)에서 파생.</p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

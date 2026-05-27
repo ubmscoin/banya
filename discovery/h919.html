@@ -68,39 +68,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h901.html">H-901</a>, <a href="h912.html">H-912</a>, <a href="h914.html">H-914</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: DATA 이산·OPERATOR 연속 비용에서 공리 3 완전성 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>반야식에서 DATA는 이산 값으로 적히고 OPERATOR는 연속 변환으로 작동한다. 이 이산·연속 이중 구조가 양자(이산)와 고전(연속) 세계를 빠짐없이 기술하는지가 <a href="../axiom.html#ax3">공리 3</a>이 거는 완전성 주장이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 이산·연속 이중 노름이다. 이산 없이는 양자화(에너지 준위)가 불가하고 연속 없이는 고전 극한(대응 원리)이 불가하기 때문에 이 노름을 택한다. 상태를 DATA 이산 성분과 OPERATOR 연속 성분으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\text{State} = \text{DATA} \oplus \text{OPERATOR} \;:\; \text{이중 구조}$</div>
+<div class="math-row">$\text{DATA} \in \mathbb{Z} \;\mapsto\; \text{양자},\quad \text{OPERATOR} \in \mathbb{R} \;\mapsto\; \text{고전}$</div>
+<div class="math-legend">$\text{DATA}$: 이산 값축(<a href="../axiom.html#ax3">공리 3</a>) | $\text{OPERATOR}$: 연속 변환축 | $\hbar$: 이산 최소 단위 | $\hbar \to 0$: 고전 극한(대응 원리)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h901.html">H-901</a>, <a href="h912.html">H-912</a>, <a href="h914.html">H-914</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar      = 1.054571817e-34 J*s   CODATA 2018
+DATA      = 이산                  양자 스펙트럼
+OPERATOR  = 연속                  고전 궤적
+경계      = l_P, t_P              플랑크 스케일</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>반야 구조 도메인(양자-고전 경계)으로 변환한다. 이 변환으로 보려는 것은 이산·연속 구분이 양자/고전 판별에 필요충분한지다. 이산 단위 $\hbar$가 사라지는 극한에서 양자가 고전으로 넘어가는 경계가 정의된다.</p>
+<div class="math-block">
+<div class="math-row">$\hbar \neq 0 \;\Rightarrow\; \text{이산 스펙트럼} \;:\; \text{양자}$</div>
+<div class="math-row">$\hbar \to 0 \;\Rightarrow\; \text{매끄러운 궤적} \;:\; \text{고전}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 이산$\,\mapsto\,$양자, 연속$\,\mapsto\,$고전, 경계 $\sim l_P, t_P$</div>
+<div class="math-row">측정값: $\hbar = 1.054571817\times10^{-34}\,\text{J·s}$ (CODATA 2018)</div>
+<div class="math-row">정합: 양자역학 이산 스펙트럼 실험과 부합</div>
+</div>
+<p>판정: <strong>가설</strong>. 이산·연속 이중 구조가 양자-고전 이중성을 포착하며, 양자-고전 전환(<a href="h901.html">H-901</a>)이 이 경계의 이동으로 설명된다.</p>
+<p>통찰: 파동-입자 이중성이 OPERATOR(파동)·DATA(입자)의 두 성분으로 분해된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h901.html">H-901</a>(양자-고전). <a href="h914.html">H-914</a>(연속체). <a href="h912.html">H-912</a>(무한 부재)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h901.html">H-901</a>, <a href="h912.html">H-912</a>, <a href="h914.html">H-914</a></p>
+<p>재투입 경로: <a href="h901.html">H-901</a>, <a href="h914.html">H-914</a>, <a href="h912.html">H-912</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison missing / 2 recursive inputs confirmed, D promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h322.html">H-322</a>, <a href="h334.html">H-334</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the 7-Level Measurement Collapse Probability from the δ 7-bit Filter Bandwidth</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Measurement strength is set by the number of bits the observer entry point filters per δ fire. The number of domains the observer entry point (<a href="../axiom.html#ax10">Axiom 10</a>) accesses sets the filter bandwidth, and since δ has 7 effective bits (<a href="../axiom.html#ax15">Axiom 15</a>), the maximum bandwidth is 7.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the observer-axis norm. (b) Since measurement strength is the amount collapsed per fire, the observer component of $\delta^2$ is substituted by the number of filtered bits $k$ per fire. Because δ has 7 effective bits, $k$ takes discrete values from 1 to 7, and the collapse probability falls as $k/7$.</p>
+<div class="math-block">
+<div class="math-row">$P_{\text{collapse}} = k/7, \quad k = 1, 2, \dots, 7$</div>
+<div class="math-row">$k = 7 \Rightarrow P = 1 \;(\text{full measurement}), \quad k = 1 \Rightarrow P = 1/7 \;(\text{weak measurement})$</div>
+<div class="math-legend">$P_{\text{collapse}}$: collapse probability | $k$: filtered bits per fire | $7$: δ effective bits = max bandwidth | weak value: small $k$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h322.html">H-322</a>, <a href="h334.html">H-334</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>δ effective bits = 7         max filter bandwidth
+k                = 1,...,7    7-level discrete measurement strength
+P(k=7)           = 1          full collapse
+P(k=1)           = 1/7 ≈ 0.143   minimal collapse (weak measurement)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum/information domain (Compare branch). (b) What it reveals is the collapse probability as a function of the filtered-bit count $k$. Filtering all 7 bits gives full projection; filtering only 1-2 bits gives partial collapse and yields a weak value.</p>
+<div class="math-block">
+<div class="math-row">$k = 7 \Rightarrow P = 7/7 = 1; \quad k = 1 \Rightarrow P = 1/7 \approx 0.143$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived structure: $P = k/7$, 7-level discrete measurement strength</div>
+<div class="math-row">Measured: weak measurement (Aharonov-Albert-Vaidman 1988) — continuous strength control, weak values possible</div>
+<div class="math-row">Comparison: 7-level discrete structure proposed, continuous-limit correspondence not established so no quantitative error computed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure that the collapse probability is quantized into 7 levels follows from the δ 7 effective bits, but it stays a hypothesis until the convergence of the discrete 7 levels to the continuous weak-measurement limit is derived. Insight: measurement strength is not the continuous strength of system-meter coupling but the discrete parameter of filtered bits per fire.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h322.html">H-322</a>, <a href="h334.html">H-334</a></p>
+<p>Re-injection path: <a href="h334.html">H-334</a>, <a href="h322.html">H-322</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

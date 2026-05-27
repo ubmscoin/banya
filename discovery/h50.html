@@ -72,39 +72,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="h40.html">H-40</a>, <a href="h46.html">H-46</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 캐시 비용에서 감속 파라미터 $q_0$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>우주 가속 팽창은 RLU 캐시가 COLD 구간을 퇴거시키는 비율이 물질 인력을 압도하는 비용이다. COLD 퇴거 비율이 가속을 지배하는 것은 <a href="../axiom.html#ax4">공리 4</a>(비가역 Swap)가 정하고, HOT+WARM·COLD 구간 비율은 <a href="../axiom.html#ax6">공리 6</a>(RLU)가 정한다. 이 비용이 현재 감속 파라미터로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 큐의 HOT:WARM:COLD 구간 비율 노름이다. 감속 파라미터가 물질 분율 절반에서 우주상수 분율을 뺀 값이고, 두 분율이 모두 같은 총 상태수 57을 분모로 공유하기 때문에 이 노름을 택한다. 따라서 $q_0$를 RLU 구간 분율의 차로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$q_0 = \dfrac{\Omega_m}{2} - \Omega_\Lambda$</div>
+<div class="math-row">$q_0 = \dfrac{9}{57} - \dfrac{39}{57} = -\dfrac{30}{57} = -\dfrac{10}{19}$</div>
+<div class="math-legend">$q_0$: 감속 파라미터 | $\Omega_m/2 = 9/57$: HOT+WARM 절반 | $39/57$: COLD = 우주상수 | $30 = 7\times4+2$: CAS 자유도 7·도메인 4 + 괄호 2 (<a href="h40.html">H-40</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h40.html">H-40</a>, <a href="h46.html">H-46</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Omega_m/2 = 9/57
+Omega_L   = 39/57
+30/57     = 10/19 = 0.52632
+q0 obs    = -0.527             SNe Ia (Planck 2018)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주론 RLU 도메인으로 변환한다. 이 변환으로 보려는 것은 우주의 현재 가속 여부를 가르는 감속 파라미터 $q_0$다. 두 구간 분율의 차를 계산해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$q_0 = \dfrac{9}{57} - \dfrac{39}{57} = -\dfrac{30}{57} = -\dfrac{10}{19} = -0.5263$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $q_0 = -10/19 = -0.5263$</div>
+<div class="math-row">측정값: $-0.527$ (SNe Ia, Planck 2018)</div>
+<div class="math-row">오차: $0.14\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 가속 팽창 정량이 RLU 구간 비율에서 자유 매개변수 없이 0.14% 산출되었으나, $q(z)$ 전체 z 의존성이 닫히지 않아 forward chain 미완.</p>
+<p>통찰: 약력 결합상수(<a href="h40.html">H-40</a>)와 우주 가속 팽창이 같은 조합론적 수 $30 = 7\times4+2$를 분자로 공유한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 우주 가속 팽창의 CAS 정량화. $z_t = (13/3)^{1/3}-1 = 0.63$(<a href="h46.html">H-46</a>)과 쌍.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h40.html">H-40</a>, <a href="h46.html">H-46</a></p>
+<p>재투입 경로: <a href="h46.html">H-46</a>, <a href="h40.html">H-40</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

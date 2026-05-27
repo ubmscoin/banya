@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="h517.html">H-517</a>, <a href="h522.html">H-522</a>, <a href="h529.html">H-529</a>, <a href="h530.html">H-530</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용과 FSM 노름의 교차에서 플랑크 질량 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>플랑크 질량은 CAS 비용과 FSM 노름이 같아지는 교차 스케일이다. 두 노름의 중력적 상호작용 비용 $Gm^2/r$가 CAS 비용이고(<a href="../axiom.html#ax4">공리 4</a>), 입자 질량 에너지 $mc^2$가 FSM 노름의 콤프턴 표현이며(<a href="../axiom.html#ax14">공리 14</a>), DATA 이산(<a href="../axiom.html#ax3">공리 3</a>)이 이 교차를 최소 단위로 고정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 교차 노름 $\sqrt{\hbar c/G}$다. CAS 비용 $Gm^2/r$와 FSM 노름 에너지 $mc^2$를 같게 두고 $r=\hbar/(mc)$ 콤프턴 길이를 대입한다. (b) 이 노름을 택하는 이유는 두 노름이 같아지는 단일 스케일에서만 중력 비용 누적(<a href="../axiom.html#ax4">공리 4</a>)과 양자 노름(<a href="../axiom.html#ax14">공리 14</a>)이 경합하고, 그 스케일이 DATA 이산(<a href="../axiom.html#ax3">공리 3</a>)의 최소 단위이기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{Gm^2}{r} = mc^2,\quad r=\dfrac{\hbar}{mc}$</div>
+<div class="math-row">$m_P = \sqrt{\dfrac{\hbar c}{G}}$</div>
+<div class="math-legend">$m_P$: 플랑크 질량 | $Gm^2/r$: CAS 비용 (<a href="../axiom.html#ax4">공리 4</a>) | $mc^2$: FSM 노름 에너지 (<a href="../axiom.html#ax14">공리 14</a>) | $\hbar/(mc)$: 콤프턴 길이</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h517.html">H-517</a>, <a href="h522.html">H-522</a>, <a href="h529.html">H-529</a>, <a href="h530.html">H-530</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar = 1.054571817e-34   J s
+c    = 2.99792458e8      m/s
+G    = 6.67430e-11       m^3 kg^-1 s^-2   CODATA 2018
+측정 m_P = 2.176434e-8   kg               CODATA 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 양자 중력 스케일 도메인(ring 없음, 노름 수축)으로 변환한다. (b) 보려는 것은 CAS 비용과 FSM 노름이 교차하는 질량 $m_P$다. 교차 노름을 자연 단위 자료형에 투영해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_P = \sqrt{\dfrac{\hbar c}{G}} = 2.176\times10^{-8}\;\text{kg} = 1.221\times10^{19}\;\text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_P = 2.176\times10^{-8}\;\text{kg}$</div>
+<div class="math-row">측정값: $2.176434\times10^{-8}\;\text{kg}$ (CODATA 2018)</div>
+<div class="math-row">오차: $0.0\%$ ($G$ 불확도 $\sim10^{-5}$ 지배)</div>
+</div>
+<p>판정: <strong>가설</strong>. 교차 노름이 $m_P$를 닫지만 $G$의 공리적 정량 도출(<a href="h529.html">H-529</a>)이 미완이라 forward chain의 마지막 단계가 열려 있다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h530.html">H-530</a>(중력 양자화) 에너지 스케일. <a href="h522.html">H-522</a>(BH 엔트로피) 플랑크 면적. <a href="h529.html">H-529</a>(G) 상수.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h517.html">H-517</a>, <a href="h522.html">H-522</a>, <a href="h529.html">H-529</a>, <a href="h530.html">H-530</a></p>
+<p>재투입 경로: <a href="h517.html">H-517</a>, <a href="h530.html">H-530</a>, <a href="h522.html">H-522</a>, <a href="h529.html">H-529</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

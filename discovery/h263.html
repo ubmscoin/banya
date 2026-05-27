@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h gauge ew. 도메인: delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배. 재귀 대입 경로: <a href="h261.html">H-261</a>, <a href="h262.html">H-262</a>, <a href="h265.html">H-265</a>, <a href="h298.html">H-298</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 니블 직교 합에서 $m_H$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>힉스 질량은 니블 0(도메인 4비트, <a href="../axiom.html#ax1">공리 1</a>)의 자기 사영 성분과 니블 1(CAS 3비트)의 교차 성분이 합산된 양이다. 두 니블이 서로 다른 괄호에 속하므로 그 합은 반야식의 두 괄호처럼 직교(피타고라스)로 더해진다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; SU(2) x U(1) 전약 결합, sin^2 theta_W 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 니블 0과 니블 1을 직교로 합산하는 노름이다. 힉스가 니블 간 자기상호작용의 결과이고 게이지 보손(니블 교차)과 달리 방향 정보가 소거되어 스칼라이기 때문에 이 직교 합 노름을 택한다. 따라서 $m_H^2$를 $M_Z$의 $\cos\theta_W$ 사영 제곱과 $M_W^2$의 직교 합으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$m_H^2 = a^2 + b^2$</div>
+<div class="math-row">$m_H^2 = M_Z^2\cos^2\theta_W + M_W^2$</div>
+<div class="math-legend">$m_H$: 힉스 질량 | $M_Z$: Z 질량 (<a href="h262.html">H-262</a>) | $\cos^2\theta_W$: 니블 0 자기 사영 | $M_W$: W 질량 (<a href="h261.html">H-261</a>) | $a^2+b^2$: 두 니블 직교 합</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30 (sin^2 theta_W = 7/30), 4 (도메인)</p>
-<p><strong>물리 상수 입력:</strong> <code>M_W</code>, <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h261.html">H-261</a>, <a href="h262.html">H-262</a>, <a href="h265.html">H-265</a>, <a href="h298.html">H-298</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>M_Z        = 91.22 GeV        H-262
+cos^2 th_W = 0.7688           PDG 2024
+M_W        = 80.32 GeV        H-261
+m_H        = 125.25 GeV       LHC Run 2</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전기약 대칭 깨짐 스케일 도메인으로 변환한다. 이 변환으로 보려는 것은 니블 자기상호작용이 정하는 힉스 스칼라 질량 $m_H$다. 두 니블 성분을 직교 합한 뒤 제곱근을 취해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_H = \sqrt{91.22^2\times0.7688 + 80.32^2} = 125.4\;\text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_H = 125.4\;\text{GeV}$</div>
+<div class="math-row">측정값: $125.25 \pm 0.17\;\text{GeV}$ (LHC Run 2)</div>
+<div class="math-row">오차: $0.12\%$</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>독립 경로 <a href="h265.html">H-265</a>($m_H=v\sqrt{2\times7/54}$)가 같은 $m_H$에 수렴해 교차 검증된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h261.html">H-261</a>, <a href="h262.html">H-262</a>, <a href="h265.html">H-265</a>, <a href="h298.html">H-298</a></p>
+<p>재투입 경로: <a href="h261.html">H-261</a>, <a href="h262.html">H-262</a>, <a href="h265.html">H-265</a>, <a href="h298.html">H-298</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

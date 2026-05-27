@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 비용에서 MOSFET 임계하 기울기 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>트랜지스터의 스위칭은 CAS Compare가 게이트 전압을 임계값과 비교해 채널 Swap을 켜고 끄는 판정 비용이다. <a href="../axiom.html#ax5">공리 5</a>(TOCTOU 락 레지스터)는 Compare가 $V_{GS}$를 $V_{th}$와 비교해 ON/OFF를 결정하게 하고, <a href="../axiom.html#ax7">공리 7</a>(쓰기와 중첩 유지)는 그 결과를 채널 형성(쓰기)·차단(유지)으로 가른다. 이 Compare 비용을 게이트 전압 단위로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS Compare 비용 노름이다. 임계하 영역에서 채널 점유가 게이트 전압의 볼츠만 분포를 따르고, 그 분포가 <a href="../axiom.html#ax4">공리 4</a>(비용)의 열에너지 $k_BT$로 닫히기 때문에 이 노름을 택한다. 전류를 한 자릿수 올리는 데 필요한 게이트 전압, 곧 임계하 기울기로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$I_{DS} \propto e^{q V_{GS}/k_B T}$</div>
+<div class="math-row">$SS = \dfrac{k_B T}{q}\ln 10$</div>
+<div class="math-legend">$I_{DS}$: 드레인 전류 | $V_{GS}$: 게이트-소스 전압 | $SS$: 임계하 기울기 (전류 1자릿수당 전압) | $k_B T/q$: 열전압 (300K에서 0.02585 V) | $\ln 10$: 10진 한 자릿수</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>k_B T / q (300K) = 0.02585 V
+ln 10            = 2.302585
+SS 측정          = 60 mV/decade    이상 MOSFET 300K</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>MOSFET 전달특성 도메인(게이트 전압당 전류)으로 변환한다. 이 변환으로 보려는 것은 CAS Compare가 ON/OFF를 가르는 최소 게이트 전압 분해능, 곧 임계하 기울기다. 열전압에 $\ln 10$을 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$SS = 0.02585 \times 2.302585 = 0.0595\;\text{V/decade} = 59.5\;\text{mV/decade}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $SS = 59.5\;\text{mV/decade}$ (300K)</div>
+<div class="math-row">측정값: $60\;\text{mV/decade}$ (이상 MOSFET 300K)</div>
+<div class="math-row">오차: $< 10\%$ (단채널 효과 포함 시)</div>
+</div>
+<p>판정: <strong>가설</strong>. CAS Compare 비용이 임계하 기울기 한계 $60$ mV/decade와 정합하지만, 실소자의 단채널·게이트 산화막 보정이 공리에서 직접 닫히지 않아 가설로 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h842.html">H-842</a>(반도체). <a href="h845.html">H-845</a>(집적회로). <a href="h846.html">H-846</a>(양자 컴퓨터)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
+<p>재투입 경로: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

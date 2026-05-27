@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 1개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h358.html">H-358</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 파이프라인 듀티 사이클 비용에서 E_swap = kT ln4 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>Swap 1회 비용은 trigger·filter·update·render 4단계 파이프라인(<a href="h389.html">H-389</a>)에서 render(Swap)에 도달하는 비용이다. 4단계 균등 분배이면 render 점유율은 $1/4$이고, 비가역 비용(<a href="../axiom.html#ax4">공리 4</a>)을 치르는 이 점유율이 볼츠만 인자 $e^{-E/k_BT}$와 일치한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 파이프라인 단계 점유율을 볼츠만 분포로 읽는 듀티 사이클 노름(<a href="../axiom.html#ax4">공리 4</a>)이다. render 도달 확률이 비가역 Swap 비용을 지수로 갖는 볼츠만 인자이기 때문에 이 노름을 택한다. 따라서 render 점유율 $1/4$을 볼츠만 인자에 등치하고 로그를 취해 $E$를 푼다.</p>
+<div class="math-block">
+<div class="math-row">$P(\text{render}) = e^{-E/(k_B T)} = \dfrac{1}{4}$</div>
+<div class="math-row">$E = k_B T \ln 4 = 2\,k_B T \ln 2$</div>
+<div class="math-legend">$P$: render 점유율 | $E$: Swap 1회 비용 | $k_B$: 볼츠만 상수 | $1/4$: 4단계 균등 점유율 | $\ln 4 = 2\ln 2$: 란다우어 한계 2배 (<a href="h358.html">H-358</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h358.html">H-358</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>1/4    = 4단계 파이프라인 render 점유율   H-389
+ln 4   = 1.386294
+k_B    = 1.380649e-23 J/K               CODATA
+T      = 300 K                          실온</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>열역학(에너지 비용) 도메인으로 변환한다. 이 변환으로 보려는 것은 Swap 1회의 평균 에너지 비용 $E$다. 실온 $T=300\,\mathrm{K}$를 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$E = 1.380649\times10^{-23}\times 300 \times 1.386 = 5.74\times10^{-21}\ \mathrm{J} = 0.036\ \mathrm{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $E = k_B T\ln 4 = 0.036\ \mathrm{eV}$ ($T=300\,\mathrm{K}$)</div>
+<div class="math-row">관계 대조: 란다우어 한계 $k_B T\ln 2$의 정확히 2배 (<a href="h358.html">H-358</a>)</div>
+<div class="math-row">정밀 비교: 분자 모터·효소 최소 에너지 측정값 미대조</div>
+</div>
+<p>판정: <strong>가설</strong>. $\ln 4 = 2\ln 2$가 4단계 Swap이 2비트 소거에 해당함을 보이나, 실제 물리계 최소 에너지 소비와의 정량 대조가 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h358.html">H-358</a></p>
+<p>재투입 경로: <a href="h358.html">H-358</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h90.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h90.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h90.html">H-90</a>. Decoherence Time = Reciprocal of Compare-true Accumulation</h1><div class="box-finding">
@@ -72,39 +72,49 @@ Structural consequence: in $\tau_{\text{dec}} = 1/(n_{\text{true}} \cdot \Delta 
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion possible upon the next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition preserved). Recursive substitution path: <a href="h91.html">H-91</a>, <a href="h96.html">H-96</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Decoherence Time from the Compare-true Accumulation Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Decoherence is the cost of the environment repeatedly performing Compare on a system and accumulating true. Each time Compare (<a href="../axiom.html#ax2">Axiom 2</a>) returns true, a grasp executes and the state is fixed by a write (<a href="../axiom.html#ax7">Axiom 7</a>); the frequency at which the utterance bit (<a href="../axiom.html#ax15">Axiom 15</a>) turns on annihilates the superposition term of $\delta^2$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition preserved)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the reciprocal-of-Compare-true-accumulation-rate norm. (b) It is chosen because the superposition-annihilation time scale is inversely proportional to the number of true fixations per unit time, and that fixation is precisely a CAS write (<a href="../axiom.html#ax7">Axiom 7</a>). The accumulation rate is resolved as the product of the number of true events per unit time and the one-cycle time.</p>
+<div class="math-block">
+<div class="math-row">$\tau_{\text{dec}} = \dfrac{1}{\Gamma_{\text{Compare=true}}}$</div>
+<div class="math-row">$\tau_{\text{dec}} = \dfrac{1}{n_{\text{true}}\cdot \Delta t_{\text{CAS}}}$</div>
+<div class="math-legend">$\tau_{\text{dec}}$: decoherence time | $\Gamma$: true accumulation rate | $n_{\text{true}}$: true events per unit time (<a href="../axiom.html#ax15">Axiom 15</a> utterance bit) | $\Delta t_{\text{CAS}}$: CAS one-cycle time</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h91.html">H-91</a>, <a href="h96.html">H-96</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n_true (macroscopic) ~ 1e40 /s     Zurek environmental decoherence
+n_true (isolated)    ~ 1   /s
+dt_CAS               undetermined (Planck time candidate)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum/information measurement domain (delta ==&gt; Compare branch true/false). (b) What it reveals is the time scale at which the quantum-to-classical transition occurs. Taking the reciprocal of the true accumulation rate yields the time scales of the two limits.</p>
+<div class="math-block">
+<div class="math-row">$\tau_{\text{dec}}^{\text{macro}} \sim 10^{-40}\,\text{s},\qquad \tau_{\text{dec}}^{\text{isolated}} \sim 1\,\text{s}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\tau_{\text{dec}} = 1/(n_{\text{true}}\,\Delta t_{\text{CAS}})$</div>
+<div class="math-row">Correspondence: quantum-to-classical transition time scale (Zurek)</div>
+<div class="math-row">Status: absolute value of $\Delta t_{\text{CAS}}$ undetermined</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structural correspondence is consistent, but the absolute value of $\Delta t_{\text{CAS}}$ is undetermined so there is no quantitative closure, leaving the final step of the forward chain incomplete.</p>
+<p>Decoherence is the accumulated trace of the environment's pouring Compare=true fixing the superposition to a single point.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: paired with <a href="h91.html">H-91</a> (quantum Zeno). CAS interpretation of the coherence time in quantum computing.</p><p>This card can be re-used as input for the following cards: <a href="h91.html">H-91</a>, <a href="h96.html">H-96</a></p>
+<p>Re-injection path: <a href="h91.html">H-91</a>, <a href="h96.html">H-96</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

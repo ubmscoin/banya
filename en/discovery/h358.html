@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> experimental comparison absent / recursive substitution not yet executed (round 1) / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; natural classification plus (domain undetermined, subsequent refinement needed). Recursive substitution path: round 1 (no external input)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Landauer limit kT ln2 from the Swap irreversible cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A single Swap overwrites DATA (<a href="../axiom.html#ax3">Axiom 3</a>: screen overwrite) and irreversibly erases the previous value. <a href="../axiom.html#ax4">Axiom 4</a> (cost exists) imposes a cost on this erasure and <a href="../axiom.html#ax5">Axiom 5</a> (cost conservation) sends that cost to the environment. The single-bit erasure energy is read through this minimal irreversible cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; natural classification plus (domain undetermined, subsequent refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Swap irreversible-erasure norm. This norm is chosen because Read and Compare do not alter DATA and are not irreversible erasures, whereas only the Swap that overwrites the previous value irrecoverably pays the minimal thermodynamic cost. The single-bit erasure energy is substituted by the product of the absolute temperature and the Boltzmann constant.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{render,min}} = k_B T \ln W$</div>
+<div class="math-row">$E_{\text{render,min}} = k_B T \ln 2$</div>
+<div class="math-legend">$E_{\text{render,min}}$: minimum cost per Swap | $k_B$: Boltzmann constant | $T$: absolute temperature | $\ln 2$: 1-bit ($W=2$ states) erasure</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <em>no external reference (round 1)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>k_B   = 1.380649e-23 J/K            CODATA 2018
+T     = 300 K                       room temperature
+ln 2  = 0.693147</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the thermodynamic-energy domain. What it reveals is the minimum energy released to the environment when one bit is erased at room temperature. Multiplying the three constants yields that value.</p>
+<div class="math-block">
+<div class="math-row">$E_{\text{render,min}} = 1.380649\times10^{-23} \times 300 \times 0.693147 = 2.87\times10^{-21}\,\text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_{\text{render,min}} = 2.87\times10^{-21}\,\text{J} \approx 0.018\,\text{eV}$ ($T=300$K)</div>
+<div class="math-row">Measured: Landauer limit experimentally confirmed (Berut et al. 2012)</div>
+<div class="math-row">Error: structural agreement (quantitative cross-check incomplete)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong></p>
+<p>The entropy increase of the second law follows from the Swap irreversible erasure releasing at least $k_B T\ln 2$ to the environment per Swap.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No byproducts specified. Cross-links may be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

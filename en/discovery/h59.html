@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../../discovery/h59.html">KO</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h59.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_cosmology</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h59.html">H-59</a>. Hubble Tension: $H_0^{\text{local}} = H_0^{\text{CAS}} \times \sqrt{57/50}$ = 72.52</h1><div class="box-finding">
@@ -71,34 +71,44 @@ Axiom basis: under <a href="../axiom.html#ax11">Axiom 11</a> (OPERATOR = observe
 <p><strong>Reason:</strong> 1 recursive input confirmed; D promotion possible upon advancing to the next round / remaining tasks stated</p>
 <p><strong>Location:</strong> Category: h cosmology. Domain: delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale. Recursive substitution path: <a href="h57.html">H-57</a></p>
 </div>
-<h2>v1.8 Axiom-Based 5-Step Recursive Substitution</h2>
+<h2>5-Step Recursive Substitution: Deriving the local $H_0 = 72.52$ km/s/Mpc from the observer-occupied state count</h2>
 <div class="step">
-<h3>Step 1. Banya Formula Origin</h3>
+<h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>Every mining run starts from this single line. CAS sole operator + 4-axis orthogonal.</p>
+<p>The expansion rate a local observer sees is read as the effective state count after excluding the states the observer itself occupies. In <a href="../axiom.html#ax11">Axiom 11</a> (OPERATOR = observer) the observer occupies the 7 CAS degrees of freedom, and in <a href="../axiom.html#ax1">Axiom 1</a> subtracting those 7 from the total state count 57 leaves an effective 50.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta into the Target Domain</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD distribution or alpha^57 cosmic scale</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the observer-occupancy correction norm $\sqrt{57/50}$. The CMB measurement sees the full state count 57 including the observer, while the local measurement sees the effective 50 with the observer removed, so the same expansion rate is observed differently under the two norms — hence this norm is chosen. The local $H_0$ is therefore substituted by the CAS $H_0$ times $\sqrt{57/50}$.</p>
+<div class="math-block">
+<div class="math-row">$H_0^{\text{local}} = H_0^{\text{CAS}}\times\sqrt{\dfrac{N_{\text{total}}}{N_{\text{eff}}}}$</div>
+<div class="math-row">$H_0^{\text{local}} = 67.92\times\sqrt{\dfrac{57}{50}}$</div>
+<div class="math-legend">$H_0^{\text{CAS}} = 67.92$: CMB expansion rate (<a href="h57.html">H-57</a>) | $57$: total CAS state count (<a href="../axiom.html#ax1">Axiom 1</a>) | $50 = 57-7$: effective state count excluding the observer's 7 DOF (<a href="../axiom.html#ax11">Axiom 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constants + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 57 (output, alpha^57=Lambda*l_p^2), 7, 21, 35 (exterior algebra dimensions)</p>
-<p><strong>Physical constant inputs:</strong> <code>H_0</code></p>
-<p><strong>Library re-injection:</strong> <a href="h57.html">H-57</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>57          total CAS state count (Axiom 1)
+7           observer-occupied DOF (Axiom 11)
+50 = 57-7   effective state count
+sqrt(57/50) = 1.0677         observer correction factor
+H_0(local) = 73.04 ± 1.04    SH0ES 2022</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the main text above is the result of the domain transformation. v1.8 vocabulary alignment:</p>
-<ul>
-<li>Equals sign (=) = delta utterance bit = 1 (declaration that both sides change by the same amount)</li>
-<li>+ = orthogonal composition (orthogonal subspaces inside the parentheses)</li>
-<li>cost +1 = forced ordered traversal of an orthogonal boundary (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the local expansion-rate domain. What it reveals is whether the gap between the CMB rate (67.92) and the local measurement closes by the observer effect alone. Multiplying by the correction factor 1.0677 yields the value.</p>
+<div class="math-block">
+<div class="math-row">$H_0^{\text{local}} = 67.92\times 1.0677 = 72.52 \;\text{km/s/Mpc}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Finding / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for the detailed reasoning.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $H_0^{\text{local}} = 72.52$ km/s/Mpc</div>
+<div class="math-row">Measured: $73.04 \pm 1.04$ (SH0ES 2022)</div>
+<div class="math-row">Error: $0.71\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. It agrees with the SH0ES local value to 0.71%, matching the tension in direction and magnitude, but why $\sqrt{57/50}$ is a square root is unproven, leaving the final step of the forward chain open.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

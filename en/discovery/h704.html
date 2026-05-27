@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h704.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h704.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_electromag_qed</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h704.html">H-704</a>. Photonic Crystal = CAS Cost Bandgap</h1><div class="box-finding">
@@ -68,39 +68,47 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D-promotion possible upon next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive substitution path: <a href="h694.html">H-694</a>, <a href="h701.html">H-701</a>, <a href="h703.html">H-703</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Photonic Bandgap Width from Bragg Reflection of the Periodic Cost Structure</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>In a photonic crystal, an ECS periodic structure of periodically varying refractive index (<a href="../axiom.html#ax7">Axiom 7</a> Bloch theorem) makes Bragg reflection of the cost wave (<a href="../axiom.html#ax4">Axiom 4</a>; <a href="h694.html">H-694</a> periodic-structure scattering) forbid propagation in a specific frequency band — the bandgap.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2))</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Brillouin-boundary splitting norm of the dispersion relation $\omega(k)$ — the frequency difference between the upper and lower band edges split by Bragg reflection. (b) It is chosen because in the periodic structure, when the cost wave satisfies the Bragg condition $k=\pi/a$ it splits into two standing-wave branches, and the gap between them is the forbidden band.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Delta\omega}{\omega} \approx \dfrac{4}{\pi}\dfrac{\Delta n}{n}$</div>
+<div class="math-row">$a = \dfrac{\lambda}{2n}$</div>
+<div class="math-legend">$\Delta\omega/\omega$: relative bandgap width | $\Delta n$: index contrast | $n$: average index | $a$: lattice period | $\lambda$: center wavelength</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h694.html">H-694</a>, <a href="h701.html">H-701</a>, <a href="h703.html">H-703</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n          = 1.45            silica opal average index
+Delta n    = 0.1--0.4        opal/inverse-opal contrast
+4/pi       = 1.273</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the photonic-crystal dispersion domain. (b) What it reveals is the relative bandgap width $\Delta\omega/\omega$. Inserting the index contrast into the Bragg-split factor yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\Delta\omega}{\omega} \approx 1.273 \times \dfrac{0.1\text{--}0.4}{1.45} \approx 0.09\text{--}0.20$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived bandgap width: $\Delta\omega/\omega \approx 9\text{--}20\%$</div>
+<div class="math-row">Measured bandgap width: opal structure $\sim 5\text{--}20\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The bandgap width is consistent with the Bragg cost structure, but the index contrast $\Delta n$ is a material external input and the full-bandgap condition depends on the lattice geometry, so the final step of the forward chain does not close.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h701.html">H-701</a> (optical lattice) similar periodic structure. Compare with <a href="h703.html">H-703</a> (metamaterial).</p><p>This card can be re-used as input for the following cards: <a href="h694.html">H-694</a>, <a href="h701.html">H-701</a>, <a href="h703.html">H-703</a></p>
+<p>Re-injection path: <a href="h694.html">H-694</a>, <a href="h701.html">H-701</a>, <a href="h703.html">H-703</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

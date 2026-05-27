@@ -66,39 +66,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 8개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57. 재귀 대입 경로: <a href="d134.html">D-134</a>, <a href="d136.html">D-136</a>, <a href="d14.html">D-14</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 슬롯 누적 틱에서 우주 나이 $t_0 = 13.80$ Gyr 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>우주 나이는 발화비트 $\delta$가 첫 틱 이후 d-ring 위에서 누적한 CAS 사이클 틱이 도메인 시간으로 렌더링된 결과다. 시스템 틱 $T_\text{sys}$의 누적을 <a href="../axiom.html#ax5">공리 5</a>(RLU 57슬롯)과 <a href="../axiom.html#ax3">공리 3</a>(FSM 상태 전이)로 읽고, <a href="../axiom.html#ax4">공리 4</a>(비가역 비용)가 틱 한 칸의 시간 비용을 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 d-ring 팽창률 노름이다 — 누적 틱을 z에 대해 적분하는 프리드만 노름. (b) 누적 틱은 $z=0$부터 $z=\infty$까지 매 슬롯의 Read·Compare·Swap 사이클이고, 그 사이클 밀도가 $E(z)=\sqrt{\Omega_m(1+z)^3+\Omega_\Lambda}$로 결정되기 때문에 이 노름을 택한다. 따라서 우주 나이를 프리드만 적분으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$t_0 = \displaystyle\int_0^{t_0} dt$</div>
+<div class="math-row">$t_0 = \dfrac{1}{H_0}\displaystyle\int_0^\infty \dfrac{dz}{(1+z)\sqrt{\Omega_m(1+z)^3+\Omega_\Lambda}}$</div>
+<div class="math-legend">$t_0$: 우주 나이 | $H_0$: d-ring 팽창률 (<a href="d14.html">D-14</a>) | $\Omega_m=18/57$: 물질 밀도 (<a href="d134.html">D-134</a>) | $\Omega_\Lambda=39/57$: 암흑에너지 밀도 (<a href="d73.html">D-73</a>) | $z$: 링 이음새 스케일 인덱스</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57, 7, 21, 35</p>
-<p><strong>물리 상수 입력:</strong> <code>H_0</code>, <code>H₀</code>, <code>Lambda</code>, <code>theta</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d134.html">D-134</a>, <a href="d136.html">D-136</a>, <a href="d14.html">D-14</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a>, <a href="d73.html">D-73</a>, <a href="h46.html">H-46</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>H_0       = 67.4 km/s/Mpc        D-14
+Omega_m   = 18/57 = 0.3158       D-134
+Omega_L   = 39/57 = 0.6842       D-73
+1/H_0     = 14.51 Gyr
+t_0(obs)  = 13.797 ± 0.023 Gyr   Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 우주론 도메인(d-ring 누적 시간)으로 변환한다. (b) 보려는 것은 빅뱅(<a href="d145.html">D-145</a>, $T_\text{sys}=1$)부터 현재까지 d-ring이 누적한 도메인 시간이다. 평탄 우주($\Omega_\text{tot}=1$)라 곡률항이 없으므로 두 밀도만으로 적분을 닫는다.</p>
+<div class="math-block">
+<div class="math-row">$t_0 = 14.51\;\text{Gyr}\times 0.9510 = 13.80\;\text{Gyr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $t_0 = 13.80\;\text{Gyr}$</div>
+<div class="math-row">측정값: $13.797 \pm 0.023\;\text{Gyr}$ (Planck 2018)</div>
+<div class="math-row">오차: $0.02\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. RLU 57슬롯의 두 밀도 비($\Omega_m=18/57$, $\Omega_\Lambda=39/57$)만으로 프리드만 적분이 Planck $1\sigma$ 안에 닫혔다.</p>
+<p>잔차는 방사선 밀도 $\Omega_r$와 뉴트리노 질량 보정 — 링 이음새의 고차 비용이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d134.html">D-134</a>, <a href="d136.html">D-136</a>, <a href="d14.html">D-14</a>, <a href="d143.html">D-143</a>, <a href="d144.html">D-144</a>, <a href="d145.html">D-145</a>, <a href="d73.html">D-73</a>, <a href="h46.html">H-46</a></p>
+<p>재투입 경로: <a href="d143.html">D-143</a>, <a href="d14.html">D-14</a>, <a href="d134.html">D-134</a>, <a href="d73.html">D-73</a>, <a href="h46.html">H-46</a>, <a href="d145.html">D-145</a>, <a href="d136.html">D-136</a>, <a href="d144.html">D-144</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

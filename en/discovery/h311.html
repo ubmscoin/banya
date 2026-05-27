@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> experimental comparison missing / 3 recursive inputs confirmed; D-promotion possible in the next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; Banya formula self-structure, combinations of Primary Integers (4,3). Recursive substitution path: <a href="h260.html">H-260</a>, <a href="h315.html">H-315</a>, <a href="h354.html">H-354</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the 128 = 2x64 particle + antiparticle complete state space from the full-description 7-bit DOF</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The complete state space is the cost held by the 7 bits that remain once the utterance bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>: $\delta$ = bit 7, global flag) of the 8 bits is fixed to 1. This 7-bit DOF is split by the binomial classification $C(7,k)$ (<a href="../axiom.html#ax9">Axiom 9</a>) to read particle vs antiparticle.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Banya formula self-structure, combinations of Primary Integers (4,3)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the 7-bit binomial-classification norm $C(7,k)$. It is chosen because the cost filling the complete state space is the ON/OFF combination of the 7 bits after $\delta$ is fixed, and that combination splits upper and lower halves 1:1 through the Pascal symmetry $C(7,k)=C(7,7-k)$. The 128 states are therefore substituted by the sum of the $k\le3$ upper half and the $k\ge4$ lower half.</p>
+<div class="math-block">
+<div class="math-row">$2^7 = \displaystyle\sum_{k=0}^{7} C(7,k)$</div>
+<div class="math-row">$128 = 2\times 2^6,\quad \underbrace{\textstyle\sum_{k\le3}C(7,k)}_{\text{particle }64} + \underbrace{\textstyle\sum_{k\ge4}C(7,k)}_{\text{antiparticle }64}$</div>
+<div class="math-legend">$2^7$: 7-bit state count after $\delta$ fixed | $C(7,k)$: count of 7 bits with $k$ ON | $C(7,k)=C(7,7-k)$: Pascal symmetry | $k\le3$: particle | $k\ge4$: antiparticle</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full list of degrees of freedom)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h260.html">H-260</a>, <a href="h315.html">H-315</a>, <a href="h354.html">H-354</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>delta     = 1 (bit 7, fixed)       Axiom 15
+2^7       = 128
+C(7,0..3) = 1, 7, 21, 35          sum 64
+C(7,4..7) = 35, 21, 7, 1          sum 64</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the particle/antiparticle complete-state-space domain. What it reveals is the total number of independent states the 8-bit system holds and its particle/antiparticle split. Adding the upper-half sum and the lower-half sum yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\sum_{k=0}^{3}C(7,k) = 1+7+21+35 = 64$</div>
+<div class="math-row">$\sum_{k=4}^{7}C(7,k) = 35+21+7+1 = 64$</div>
+<div class="math-row">$64 + 64 = 128 = 2^7$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $128 = 64\,(\text{particle}) + 64\,(\text{antiparticle})$</div>
+<div class="math-row">Symmetry: $C(7,k) = C(7,7-k)$ Pascal identity</div>
+<div class="math-row">Error: $0.0\%$ (combinatorial identity, 0 free parameters)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The 1:1 particle/antiparticle symmetry falls out automatically from $C(7,k)=C(7,7-k)$, but the complete mapping of the 128 states onto Standard Model particles is unfinished, so a measurement comparison remains.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h260.html">H-260</a>, <a href="h315.html">H-315</a>, <a href="h354.html">H-354</a></p>
+<p>Re-injection path: <a href="h260.html">H-260</a>, <a href="h354.html">H-354</a>, <a href="h315.html">H-315</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

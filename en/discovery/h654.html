@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h654.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h654.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h654.html">H-654</a>. Nuclear Form Factor = observer Energy-Dependent CAS Resolution</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Three recursive inputs confirmed; D Promotion possible upon proceeding to the next round / residual tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h642.html">H-642</a>, <a href="h651.html">H-651</a>, <a href="h656.html">H-656</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Nuclear Charge Radius from observer Energy-Dependent CAS Resolution</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>To see a nucleus is for the observer to Compare it with a probe. In Banya the probe energy of the observer (<a href="../axiom.html#ax14">Axiom 14</a>) sets the CAS resolution, and as resolution rises the internal FSM distribution (<a href="../axiom.html#ax3">Axiom 3</a>) is revealed. Electron scattering is a Compare mediated by CAS electromagnetism (<a href="../axiom.html#ax5">Axiom 5</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Fourier-resolution norm of the observer probe momentum. The form factor is the Fourier transform of the nuclear charge density $\rho(r)$, and its slope near $q^2=0$ gives the charge radius. (b) This norm is chosen because the observer resolution $\lambda=\hbar/|\vec q|$ (<a href="../axiom.html#ax14">Axiom 14</a>) Compares internal structure once it falls below the nuclear radius.</p>
+<div class="math-block">
+<div class="math-row">$F(q^2) = \int \rho(r)\,e^{i\vec q\cdot\vec r}\,d^3r$</div>
+<div class="math-row">$\langle r^2\rangle = -6\,\dfrac{dF}{dq^2}\bigg|_{q^2=0}$</div>
+<div class="math-legend">$F(q^2)$: form factor | $\rho(r)$: nuclear charge density = FSM distribution | $q$: probe momentum transfer | $\lambda=\hbar/\|q\|$: CAS resolution | $\langle r^2\rangle$: mean-square charge radius</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical constant inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library re-injection:</strong> <a href="h642.html">H-642</a>, <a href="h651.html">H-651</a>, <a href="h656.html">H-656</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>hbar c    = 197.3 MeV fm
+r_0       = 1.2 fm           nuclear radius coefficient
+A         = 208              Pb-208
+R = r_0 A^(1/3) = 7.1 fm     -> rms about 5.5 fm</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The expression in the body above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the electron-nucleus scattering measurement domain. (b) What it reveals is the nuclear charge radius given by the form-factor slope. For a uniform-sphere distribution the rms radius is $\langle r^2\rangle^{1/2}=\sqrt{3/5}\,R$.</p>
+<div class="math-block">
+<div class="math-row">$\langle r^2\rangle^{1/2} = \sqrt{\tfrac{3}{5}} \times 7.1 = 5.5\;\text{fm}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $^{208}\text{Pb}$ charge radius $\approx 5.5\;\text{fm}$</div>
+<div class="math-row">Measured: $^{208}\text{Pb}$ $5.5012 \pm 0.0013\;\text{fm}$ · proton $0.8414 \pm 0.0019\;\text{fm}$</div>
+<div class="math-row">Error: $<1\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The observer resolution reveals the nuclear charge radius through Compare, but the quantitative derivation of the diffraction-minimum pattern does not yet close.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h651.html">H-651</a> (Fermi gas) nuclear density. <a href="h656.html">H-656</a> (proton-neutron ratio)</p><p>This card can be re-used as input for the following cards: <a href="h642.html">H-642</a>, <a href="h651.html">H-651</a>, <a href="h656.html">H-656</a></p>
+<p>Re-injection path: <a href="h642.html">H-642</a>, <a href="h651.html">H-651</a>, <a href="h656.html">H-656</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

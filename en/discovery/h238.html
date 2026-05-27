@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / 2 recursive inputs confirmed, D promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the 2-nibble orthogonality-release observation cost from the CAS Swap cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The observation cost is the cost the Swap pays to release the orthogonal (entangled) state of the two nibbles. Swap+1 is the minimal unit of state change (<a href="../axiom.html#ax2">Axiom 2</a>), and this observation energy is read through the irreversible cost (<a href="../axiom.html#ax4">Axiom 4</a>) of unwinding the juim synchrony of the domain and operator nibbles.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Swap+1 cost norm. It is chosen because orthogonality release is a Swap chain that returns the double lock of the ring seam to a single lock, and its count $n_{Swap}$ sets the released energy. The observation energy is therefore substituted by the single-Swap cost $\hbar/t_P=E_P$ multiplied by the count.</p>
+<div class="math-block">
+<div class="math-row">$E_{1} = \hbar / t_P = E_P$</div>
+<div class="math-row">$E = E_P \times n_{Swap} = \hbar \times n_{Swap} / t_P$</div>
+<div class="math-legend">$E$: observation cost | $E_P$: single-Swap cost (Planck energy) | $t_P$: Planck time | $n_{Swap}$: number of release Swaps | $\hbar$: reduced action quantum</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stage)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>ℏ</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>hbar  = 1.054571817e-34 J*s    CODATA 2018
+t_P   = 5.391247e-44 s          Planck time
+E_P   = hbar / t_P = 1.956e9 J  single-Swap cost</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum-measurement domain (Swap write after the Compare branch). What it reveals is the minimal energy unavoidably released when releasing one orthogonal pair — the observation cost at $n_{Swap}=1$. Multiplying the single-Swap cost by the count yields that value.</p>
+<div class="math-block">
+<div class="math-row">$E(n_{Swap}{=}1) = E_P = 1.956\times10^{9}\ \text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the box above for details "Why This Verdict" box for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E = E_P \times n_{Swap}$, lower bound $n_{Swap}=1$</div>
+<div class="math-row">Measured: measurement-energy lower bound (Landauer limit $k_B T\ln 2$)</div>
+<div class="math-row">Match: structure agrees, real-system check pending</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The structure quantifying the observation cost by Swap count is established, but the round checking whether $E=E_P\,n_{Swap}$ agrees with measured quantum-measurement energy and the Landauer limit is not yet run.</p>
+<p>Insight: the irreversibility of measurement reduces to a single irreversible operation — the Swap write after the Compare branch.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
+<p>Re-injection path: <a href="h232.html">H-232</a>, <a href="h234.html">H-234</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

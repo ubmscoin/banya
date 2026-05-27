@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 4개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57. 재귀 대입 경로: <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 상태공간 비용에서 스펙트럼 지수 $n_s$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>스펙트럼 지수가 1보다 약간 작은 것은 CAS가 상태 공간의 일부를 연산 비용으로 소비하기 때문이다. 도메인 4축의 $2^4=16$ 조합(<a href="../axiom.html#ax1">공리 1</a>)이 d-ring(<a href="../axiom.html#ax3">공리 3</a>) 위에서 57개 독립 조합을 이루고, 그중 일부를 쥠이 쥐면 나머지만 자유롭게 관측된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 57개 독립 조합 상태공간 노름이다. 스펙트럼이 척도 불변을 미세하게 깨는 것이 CAS 연산이 슬롯을 소비하는 비용이고, 그 비용이 정확히 Read 1회와 Compare 1회 = 2개 슬롯이기 때문에 이 노름을 택한다. 57(<a href="d15.html">D-15</a>)에서 2를 빼 관측 가능한 비율을 구한다.</p>
+<div class="math-block">
+<div class="math-row">$n_s = 1 - \dfrac{n_{\text{CAS}}}{N}$</div>
+<div class="math-row">$n_s = 1 - \dfrac{2}{57} = \dfrac{55}{57}$</div>
+<div class="math-legend">$n_s$: 스펙트럼 지수 | $57$: CAS 독립 조합 수 (<a href="d15.html">D-15</a>) | $2$: Read 1 + Compare 1 소비 슬롯 | $55$: 관측 가능 슬롯 | $N$: 전체 상태공간</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57, 7, 21, 35</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>57         = CAS 독립 조합       D-15
+2          = Read(R+1) + Compare(C+1)
+55/57      = 0.96491
+n_s(meas)  = 0.9649 ± 0.0042    Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>CMB 파워 스펙트럼 기울기 도메인으로 변환한다. 이 변환으로 보려는 것은 척도 불변에서 적색으로 기운 정도, 곧 스펙트럼 지수 $n_s$다. 57개 슬롯에서 CAS가 쓴 2개를 뺀 비율로 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$n_s = \dfrac{55}{57} = 0.96491$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $n_s = 0.96491$</div>
+<div class="math-row">측정값: $0.9649 \pm 0.0042$ (Planck 2018)</div>
+<div class="math-row">오차: $0.001\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. 순수 정수비 $55/57$이 자유 매개변수 0개로 CMB 적색 기울기를 닫는다.</p>
+<p>$n_s<1$의 적색 기울기는 CAS가 상태공간 2개 슬롯을 쥐어 척도 불변을 미세하게 깨는 흔적이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: CMB 파워 스펙트럼 기울기. <a href="d15.html">D-15</a>(57) 연쇄.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
+<p>재투입 경로: <a href="d15.html">D-15</a>, <a href="d63.html">D-63</a>, <a href="d73.html">D-73</a>, <a href="d74.html">D-74</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h611.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h611.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_info_consciousness</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h611.html">H-611</a>. Quantum Simulation = CAS Self-Reference Emulation</h1><div class="box-finding">
@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion is reachable in the next round / outstanding tasks explicitly listed</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Trotter error $O(t^2/n)$ from the CAS self-reference emulation cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Quantum simulation is the cost of one CAS emulating another Hamiltonian within its own structure. Because the CAS is a universal operator (<a href="../axiom.html#ax2">Axiom 2</a>), it can emulate an arbitrary Hamiltonian, and self-simulation is FSM self-reference (<a href="../axiom.html#ax12">Axiom 12</a>). When time evolution is split into $n$ Compare steps, cost is conserved (<a href="../axiom.html#ax4">Axiom 4</a>), which fixes the emulation accuracy.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the Trotter-decomposition norm, which splits the time-evolution operator into $n$ partial steps. It is chosen because the non-commuting terms $H_k$ cannot be processed together in one cycle, so the CAS divides them into sequential Compares; the residual that arises is the Trotter error.</p>
+<div class="math-block">
+<div class="math-row">$e^{-iHt} = \displaystyle\lim_{n\to\infty}\left(\prod_k e^{-iH_k t/n}\right)^{n}$</div>
+<div class="math-row">$e^{-iHt} = \displaystyle\prod_k e^{-iH_k t/n} + O(t^2/n)$</div>
+<div class="math-legend">$H$: full Hamiltonian | $H_k$: CAS partial step | $n$: number of Compare steps | $t$: emulation time | $O(t^2/n)$: Trotter residual</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (Recursive Substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>t = 1            emulation time (unit)
+n = 100          number of CAS Compare steps
+t^2/n = 0.01     leading Trotter error scale
+ref: Trotter-Suzuki decomposition; Feynman 1982</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the quantum/information domain (the d-ring self-reference loop). What it reveals is the magnitude of the Trotter error accumulated over an $n$-step emulation. Substituting the constants above into the leading term $t^2/n$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$O(t^2/n) = \dfrac{1^2}{100} = 0.01$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived scale: Trotter error $= O(t^2/n)$, equal to $0.01$ at $n=100$</div>
+<div class="math-row">Measured: ion-trap and cold-atom simulators show $1/n$ error decay as step count rises</div>
+<div class="math-row">Match: structural agreement (quantitative verification pending)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The Trotter decomposition follows from the sequential-Compare structure of CAS self-reference emulation, but the absolute coefficient of the per-step residual remains an external input, so the final stage of the forward chain does not close. Insight: the simulation error arises from the CAS being unable to hold the non-commuting terms in a single cycle.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h609.html">H-609</a> (QCA), <a href="h612.html">H-612</a> (quantum annealing) simulation applications</p><p>This card can be re-used as input for the following cards: <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
+<p>Re-injection path: <a href="h609.html">H-609</a>, <a href="h612.html">H-612</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

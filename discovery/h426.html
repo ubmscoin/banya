@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare=false 유지 비용에서 시스템 시간 정지 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>idle 상태는 CAS Compare가 false를 반환해 Swap이 일어나지 않는 비발화 상태다. <a href="../axiom.html#ax7">공리 7</a>(Compare=false이면 중첩 유지)과 <a href="../axiom.html#ax8">공리 8</a>(중첩 유지 비용 0)로 이 상태를 읽으면, 비용이 발생하지 않으므로 도메인 time이 진행하지 않는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 사이클의 발화 노름이다. 시스템 시간이 Swap 횟수로 정의되므로(<a href="../axiom.html#ax3">공리 3</a> 스크린 갱신) 이 노름을 택한다. Compare가 false면 Swap이 0이고, 따라서 시스템 시간 증분이 0으로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta T_{\text{sys}} = \sum_{\text{cycle}} [\text{Compare}=\text{true}]\cdot 1$</div>
+<div class="math-row">$\text{Compare}=\text{false}\;\Rightarrow\;\text{Swap}=0\;\Rightarrow\;\Delta T_{\text{sys}}=0$</div>
+<div class="math-legend">$\Delta T_{\text{sys}}$: 시스템 시간 증분 | $[\cdot]$: 발화 지시자 (true면 1) | Swap: <a href="../axiom.html#ax3">공리 3</a> 스크린 쓰기 | Compare: <a href="../axiom.html#ax2">공리 2</a> CAS 비교 단계</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <code>Delta</code>, <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>P(Compare=false) = 1 - alpha = 1 - 1/137.036 = 0.992704
+alpha            = 1/137.036                D-01
+idle FSM 상태    = 000                      비발화</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>도메인 time으로 변환한다. 이 변환으로 보려는 것은 idle 상태에서 한 사이클당 누적되는 시스템 시간이다. Compare=false 확률을 발화 노름에 대입하면 그 누적값이 0임이 드러난다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta T_{\text{sys}} = (1-\alpha)\cdot 0 + \alpha\cdot 1 \big|_{\text{idle}} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\Delta T_{\text{sys}}=0$ (idle 상태)</div>
+<div class="math-row">측정값: 정량 측정값 미인용 (구조 서술 단계)</div>
+<div class="math-row">정합: 유니터리 진화의 무관측 중첩 유지와 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. Compare=false에서 Swap이 0이라 시스템 시간이 정지한다는 구조는 닫혔으나, idle 지속의 정량 측정 대조가 미완이라 가설에 머문다.</p>
+<p>idle은 "시간이 없는" 상태가 아니라 "변화 비용이 0이라 시간이 진행하지 않는" 상태다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
+<p>재투입 경로: <a href="h333.html">H-333</a>, <a href="h395.html">H-395</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

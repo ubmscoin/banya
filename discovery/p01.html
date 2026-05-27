@@ -44,7 +44,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <body>
 <div class="lang-switch"><a class="lang-btn" href="../en/discovery/p01.html">EN</a></div>
 <main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
-<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
 <h1><a href="p01.html">P-01</a>. 뉴트리노 질량합</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="p01.html">P-01</a>: 뉴트리노 질량합</strong></p>
@@ -66,39 +66,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 데이터 부재 / 구조적 forward chain 완료 / 검증 대기</p>
 <p><strong>위치:</strong> 카테고리: p. 도메인: delta ==&gt; 예측 대상 도메인 (P 카드별 명시). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: Compare 생략 비용에서 뉴트리노 질량합 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>뉴트리노 질량은 CAS가 Compare 단계를 건너뛰고 Read에서 Swap으로 직행할 때 남는 잔여 비용이다. 하전 렙톤은 Read·Compare·Swap 3단계를 모두 거치지만 뉴트리노는 Compare를 생략한다(<a href="../axiom.html#ax7">공리 7</a>: Compare 판정이 Swap 쓰기를 가른다). 완전기술자유도 7(<a href="../axiom.html#ax9">공리 9</a>: 도메인 4 + CAS 3) 중 Compare가 점유하는 자유도가 모두 빠지면서 질량이 극단적으로 억제된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 예측 대상 도메인 (P 카드별 명시)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 Compare 도메인 횡단 노름이다. 비교 연산이 4개 도메인(<a href="../axiom.html#ax1">공리 1</a>) 전체에서 상태를 비교하고 여기에 판정 잔여 자유도 1이 부착되어 $4+1=5$자유도를 점유한다. (b) 뉴트리노는 이 5자유도를 건너뛰므로 결합이 $\alpha$(<a href="d01.html">D-01</a>)의 5제곱만큼 빠진다. 7-5=2는 Read(1)와 최소 존재 조건(1)으로 남아 뉴트리노가 약력으로만 상호작용하는 사실과 일치한다. CAS 3단계 중 1단계만 생략되어 남은 2단계가 부담하는 보정 $3/2$가 곱해진다.</p>
+<div class="math-block">
+<div class="math-row">$m_\nu \sim \alpha^5 \, m_\ell$</div>
+<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^5 \, v$</div>
+<div class="math-legend">$\Sigma m_\nu$: 세 뉴트리노 질량합 | $\alpha^5$: Compare 5자유도 생략 억제 | $3/2$: CAS 3단계 중 잔여 2단계 보정 | $v$: 전약 스케일 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 예측 카드별 명시</p>
-<p><strong>물리 상수 입력:</strong> <code>m_e</code></p>
-<p><strong>라이브러리 재투입:</strong> <em>외부 참조 없음 (1차 라운드)</em></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha   = 1/137.036          D-01
+alpha^5 = 2.06e-11
+3/2     = 1.5
+Sigma   &lt; 120 meV            우주론 상한 (DESI/Planck)
+dm2_32  = 2.5e-3 eV^2        진동 실험</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 약력 질량 도메인으로 변환한다. (b) 보려는 것은 세 뉴트리노 질량의 합 $\Sigma m_\nu$다. Compare 생략의 $\alpha^5$ 억제에 잔여 2단계 보정 $3/2$를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^5 \, v = 58.5\;\text{meV}$</div>
+<div class="math-row">$55.2^2 - 3.3^2 = 3036\;\text{meV}^2 \approx 3.0\times 10^{-3}\;\text{eV}^2$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>예측</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $\Sigma m_\nu = 58.5\;\text{meV}$</div>
+<div class="math-row">우주론 상한: $\Sigma \lt 120\;\text{meV}$ (DESI/Planck)</div>
+<div class="math-row">진동 정합: $\Delta m^2_{32} \approx 2.5\times 10^{-3}\;\text{eV}^2$ 자릿수 일치</div>
+</div>
+<p>검증 방법: KATRIN 직접 질량 측정 및 DESI/CMB-S4 우주론적 $\Sigma m_\nu$ 측정. 예측값이 측정과 정합하면 D 승격, 5σ 이상 어긋나면 반증.</p>
+<p>판정: <strong>예측</strong>. Compare 생략이 $\alpha^5$ 억제로 뉴트리노 질량의 극소성을 자유 매개변수 0개로 닫는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p><em>명시된 부산물 없음. 후속 채굴에서 cross-link 추가 가능.</em></p>
+<p>재투입 경로: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

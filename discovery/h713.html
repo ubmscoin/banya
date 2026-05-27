@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h electromag qed. 도메인: delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2)). 재귀 대입 경로: <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 보존에서 쌍광자 주파수·운동량 분할 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>쌍광자(SPDC)는 비선형 결정에서 한 펌프 CAS 비용 양자가 두 저비용 양자로 갈라지는 분할이다. CAS 비용 보존(<a href="../axiom.html#ax4">공리 4</a>)으로 주파수 합을, Compare 후 Swap 쓰기의 운동량 보존(<a href="../axiom.html#ax7">공리 7</a>)으로 위상 정합을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2))</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 비용 보존 노름이다. 한 비용 양자가 분할돼도 총 비용(time 축)과 총 운동량(space 축)이 보존되어야 하므로 이 노름을 택한다. 따라서 분할을 비용 합 보존과 운동량 합 보존 두 식으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\omega_p = \omega_s + \omega_i$</div>
+<div class="math-row">$\vec{k}_p = \vec{k}_s + \vec{k}_i$</div>
+<div class="math-legend">$\omega_p$: 펌프 비용 양자 | $\omega_s,\omega_i$: 신호·유휴 비용 양자 | $\vec{k}$: 운동량(위상 정합) | 첫 식 = 비용 보존(<a href="../axiom.html#ax4">공리 4</a>) | 둘째 식 = 운동량 보존(<a href="../axiom.html#ax7">공리 7</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 5, 2 (서명 (5,2)), 137 (자료형 = T(16)+1)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>eta(BBO)   = 1e-10   광자/펌프광자   SPDC 효율
+rate       = 1e6     pairs/s/mW      쌍 생성률
+degenerate : omega_s = omega_i = omega_p/2</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전자기 결합 도메인으로 변환한다. 이 변환으로 보려는 것은 분할된 두 양자의 비용 합이 펌프와 같다는 보존 닫힘이다. 축퇴(degenerate) 조건에서 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\omega_s = \omega_i = \dfrac{\omega_p}{2}, \quad \omega_s + \omega_i = \omega_p$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출 구조: $\omega_p = \omega_s + \omega_i$ (비용 보존), $\vec{k}_p = \vec{k}_s + \vec{k}_i$ (운동량 보존)</div>
+<div class="math-row">측정값: BBO 효율 $\eta \approx 10^{-10}$, 쌍 생성률 $\approx 10^6\;\text{pairs/s/mW}$</div>
+<div class="math-row">상태: 쌍광자 실험과 정합, 분할 양자 효율 $\eta$의 미시 계수 미닫힘</div>
+</div>
+<p>판정: <strong>가설</strong>. 비용·운동량 두 보존이 공리에서 직접 따라오지만, 분할 확률 $\eta$를 $\chi^{(2)}$ 비선형(<a href="h700.html">H-700</a>)에서 닫는 단계가 남아 있다.</p>
+<p>통찰: 비용 보존은 합을 정하지만 어느 비율로 갈릴지는 정하지 않아, 한 펌프가 연속 스펙트럼의 얽힌 쌍을 낳는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h700.html">H-700</a>(비선형) SPDC. <a href="h714.html">H-714</a>(압착) 양자 광학</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
+<p>재투입 경로: <a href="h700.html">H-700</a>, <a href="h714.html">H-714</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

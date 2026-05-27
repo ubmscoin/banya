@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57. 재귀 대입 경로: <a href="d15.html">D-15</a>, <a href="d33.html">D-33</a>, <a href="d42.html">D-42</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 우주 스케일 RLU 캐시 비용에서 기하상수 $e^{3/5}$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>우주 크기와 입자 스케일의 비는 RLU 캐시가 가장 먼 구간(COLD)까지 쥠을 인덱싱할 때 쌓이는 비용이다. 완전기술자유도 7(<a href="../axiom.html#ax9">공리 9</a>: 1+2+4)에서 2-조합과 3-조합이 이 장거리 비용의 두 지수를 가른다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 또는 alpha^57</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 7자유도의 조합 노름이다. Dirac 큰 수 $N_D \propto \alpha^{-57}$와 우주상수 $\Lambda l_P^2 \propto \alpha^{57}$가 같은 $\alpha$의 거듭제곱(<a href="d15.html">D-15</a>)을 반대 부호로 쥐기 때문에 이 노름을 택한다. 곱하면 $\alpha$ 의존성이 소거되고 7자유도 조합비만 잔류한다.</p>
+<div class="math-block">
+<div class="math-row">$N_D \cdot \Lambda l_P^2 = \dfrac{e^2/Gm_e m_p}{\Lambda l_P^2}\cdot\Lambda l_P^2$</div>
+<div class="math-row">$N_D \cdot \Lambda l_P^2 = \exp\!\left(\dfrac{C(7,2)}{C(7,3)}\right) = e^{21/35}$</div>
+<div class="math-legend">$N_D$: Dirac 큰 수 ($\propto\alpha^{-57}$) | $\Lambda l_P^2$: 무차원 우주상수 ($\propto\alpha^{57}$, <a href="d15.html">D-15</a>) | $C(7,2)=21$: 7자유도 2-조합 | $C(7,3)=35$: 7자유도 3-조합</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57, 7, 21, 35</p>
-<p><strong>물리 상수 입력:</strong> <code>Lambda</code>, <code>alpha</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d15.html">D-15</a>, <a href="d33.html">D-33</a>, <a href="d42.html">D-42</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>C(7,2) = 21        7자유도에서 2개 선택
+C(7,3) = 35        7자유도에서 3개 선택
+21/35  = 3/5 = 0.6
+57     = 3 x 19    alpha 우주 지수    D-15</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>무차원 우주론 도메인($\alpha^{57}$ 스케일)으로 변환한다. 이 변환으로 보려는 것은 $\alpha$가 소거된 뒤 남는 순수 기하상수다. 두 조합 수의 비를 지수로 올려 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$N_D \cdot \Lambda l_P^2 = e^{21/35} = e^{0.6} = 1.8221$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $e^{21/35} = 1.8221$</div>
+<div class="math-row">측정값: $1.820$ ($N_D$, $\Lambda$ 추정 결합)</div>
+<div class="math-row">오차: $0.09\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. Dirac 큰 수 가설이 $\alpha^{57}$ 상쇄로 닫히며, 우주 크기 정보가 사라지고 7자유도 조합비 $21/35$만 남는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: alpha57.html D-15와 연결. 우주 크기 정보가 상쇄되어 기하학으로 수렴</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d15.html">D-15</a>, <a href="d33.html">D-33</a>, <a href="d42.html">D-42</a></p>
+<p>재투입 경로: <a href="d15.html">D-15</a>, <a href="d33.html">D-33</a>, <a href="d42.html">D-42</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

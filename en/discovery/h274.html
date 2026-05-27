@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Experimental comparison absent / 2 recursive inputs confirmed; D promotion possible upon next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed). Recursive substitution path: <a href="h275.html">H-275</a>, <a href="h311.html">H-311</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Fermi-Dirac occupation probability from the δ-firing/Swap-completion cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The occupation probability is the probability that, after the firing bit δ is raised to 1 (<a href="../axiom.html#ax15">Axiom 15</a>: δ = global flag, bit 7), the CAS runs the 3 stages R·C·S to completion and reaches Swap. Since each stage crosses a + and pays cost +1 (<a href="../axiom.html#ax4">Axiom 4</a>), the cost accumulated up to Swap is $n_{\text{Swap}}=3$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the δ-firing completion norm. It is chosen because Swap completion is an exclusive single occupation and the cost is exponentially suppressed by the energy/temperature ratio. The occupation distribution is therefore substituted by the Fermi-Dirac form.</p>
+<div class="math-block">
+<div class="math-row">$f(E) = \dfrac{1}{1 + e^{(E-\mu)/(k_BT)}}$</div>
+<div class="math-row">$P(\delta=1,\,\text{Swap}) = \dfrac{1}{1 + e^{n_{\text{Swap}}\cdot E_P/(k_BT)}}$</div>
+<div class="math-legend">$P$: Swap completion probability | $n_{\text{Swap}}=3$: R·C·S stage count (<a href="../axiom.html#ax4">Axiom 4</a>) | $E_P$: Planck energy | $k_BT$: thermal energy | $\delta$: firing bit (<a href="../axiom.html#ax15">Axiom 15</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h275.html">H-275</a>, <a href="h311.html">H-311</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n_Swap      = 3            R, C, S
+T = E_P/k_B               Planck temperature
+exp(3)      = 20.0855
+P(T=E_P/k_B) = 1/(1+e^3) = 0.04743</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the fermion-statistics domain. What it reveals is the behavior of the occupation probability in the temperature limits. $P$ is computed at the Planck temperature and the two limits.</p>
+<div class="math-block">
+<div class="math-row">$P(T{=}E_P/k_B) = \dfrac{1}{1+e^3} = 0.0474,\quad P(T{\to}\infty) = 0.5,\quad P(T{\to}0) = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $P = 1/(1+e^{3E_P/k_BT})$, Fermi-Dirac form</div>
+<div class="math-row">Measured: Fermi-Dirac distribution (established by electron-gas heat capacity and metal conductivity)</div>
+<div class="math-row">Error: quantitative comparison incomplete, $n_{\text{Swap}}$ mapping undetermined</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The exclusion principle arises with no separate assumption from the probability of one Swap completion after δ firing, in the Fermi-Dirac form.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>This card can be re-used as input for the following cards: <a href="h275.html">H-275</a>, <a href="h311.html">H-311</a></p>
+<p>Re-injection path: <a href="h275.html">H-275</a>, <a href="h311.html">H-311</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

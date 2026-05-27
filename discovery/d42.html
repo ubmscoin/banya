@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 4개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d misc. 도메인: delta ==&gt; 자연 분류 외. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d35.html">D-35</a>, <a href="h35.html">H-35</a>, <a href="h40.html">H-40</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 링 이음새 α 배율 비용에서 길이 사다리 정수 간격 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>길이 스케일은 d-ring의 깊이(depth)가 이산화되는 비용이다. CAS 3단계(<a href="../axiom.html#ax2">공리 2</a>)가 정한 $\alpha$(<a href="d01.html">D-01</a>)가 링 이음새마다 $\alpha^{-1}$ 배율을 만들고, 완전기술자유도(<a href="../axiom.html#ax9">공리 9</a>)가 스케일 칸을 정수 인덱스 $n$으로 셈한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 $\alpha$ 거듭제곱 스케일 노름 $n=-\log(L/l_P)/\log\alpha$이다. (b) 기본 입자 길이들이 사다리 위에서 정수 간격을 이루는지를 보려는 것이기 때문에 이 노름을 택한다 — 링 이음새 배율이 $\alpha^{-1}$이므로 간격이 $\alpha$의 정의로 닫힌다. 길이를 $l_P\alpha^{-n}$으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$L = l_P\,\alpha^{-n}$</div>
+<div class="math-row">$a_0 = \bar{\lambda}_C/\alpha = r_e/\alpha^2 \;\Rightarrow\; \Delta n(r_e\to\bar{\lambda}_C)=\Delta n(\bar{\lambda}_C\to a_0)=1$</div>
+<div class="math-legend">$L$: 길이 스케일 | $l_P$: 플랑크 길이 ($n=0$) | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>) | $r_e$: 전자 고전 반지름 | $\bar{\lambda}_C$: 환산 콤프턴 파장 | $a_0$: 보어 반지름 | $\Delta n$: 사다리 간격</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 본문 추출</p>
-<p><strong>물리 상수 입력:</strong> <code>Delta</code>, <code>alpha</code>, <code>m_e</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d35.html">D-35</a>, <a href="h35.html">H-35</a>, <a href="h40.html">H-40</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha     = 1/137.036       D-01
+n(r_e)    = 9.47
+n(lam_C)  = 10.47
+n(a_0)    = 11.47
+n(R_H)    = 28.75           우주 스판 ~ 29</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 길이 스케일 도메인(d_misc)으로 변환한다. (b) 보려는 것은 기본 입자 길이 사이의 사다리 간격 $\Delta n$이다. $a_0=\bar{\lambda}_C/\alpha=r_e/\alpha^2$의 정의 항등식이 인접 칸 간격을 정확히 1로 고정한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta n(r_e\to\bar{\lambda}_C) = 1.000,\qquad \Delta n(\bar{\lambda}_C\to a_0) = 1.000$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 기본 입자 칸 간격 $\Delta n = 1$ (수학적 항등식)</div>
+<div class="math-row">우주 스판: $n(R_H)-n(l_P) = 28.75 \approx 29$</div>
+<div class="math-row">오차: $0\%$ (항등식); 양성자 $n=9.23$ 분수부 0.23 = QCD 결합 흔적</div>
+</div>
+<p>판정: <strong>발견</strong>. 기본 입자 길이가 $\alpha^{-1}$ 등간격 사다리에 놓이며, 복합 입자(양성자) 분수 간격이 <a href="h35.html">H-35</a>로 교차검증된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h35.html">H-35</a>(양성자 반지름)의 사다리 위치 검증. 새로운 길이 스케일의 n값 예측. 우주 스판 29 ~ Read^-¹(<a href="h40.html">H-40</a>)과 연결 가능성.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d35.html">D-35</a>, <a href="h35.html">H-35</a>, <a href="h40.html">H-40</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="h35.html">H-35</a>, <a href="d35.html">D-35</a>, <a href="h40.html">H-40</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

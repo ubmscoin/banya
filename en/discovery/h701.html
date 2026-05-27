@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h701.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h701.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h701.html">H-701</a>. Optical Lattice = Standing-Wave CAS Cost Potential</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible on next round / remaining tasks stated.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside the natural classification (domain unfixed, follow-up refinement needed). Recursive substitution path: <a href="h695.html">H-695</a>, <a href="h698.html">H-698</a>, <a href="h704.html">H-704</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Optical-Lattice Potential Depth from Standing-Wave Cost Interference</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>An optical lattice is the cost potential by which the standing wave formed from two counter-propagating cost waves (<a href="h698.html">H-698</a>) interfering (<a href="h695.html">H-695</a>) traps atoms at cost minima. This trapping is confinement by a cost potential (<a href="../axiom.html#ax4">Axiom 4</a>), and the spatial period of the cost wave becomes the lattice period.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; outside the natural classification (domain unfixed, follow-up refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the squared-amplitude norm of the cost wave — the standing-wave intensity $\sin^2(kx)$. (b) It is chosen because the node-antinode structure of the standing wave imprints a periodic cost potential in space and atoms are trapped at the cost minima (antinodes). The lattice potential is therefore substituted by a periodic function proportional to the cost-wave intensity.</p>
+<div class="math-block">
+<div class="math-row">$V(x) = V_0\sin^2(kx)$</div>
+<div class="math-row">$d = \dfrac{\lambda}{2}, \quad k = \dfrac{2\pi}{\lambda}$</div>
+<div class="math-legend">$V(x)$: lattice potential | $V_0$: lattice depth (proportional to cost-wave intensity) | $k$: cost-wave wavenumber | $d$: lattice spacing | $\lambda$: cost-wave wavelength</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h695.html">H-695</a>, <a href="h698.html">H-698</a>, <a href="h704.html">H-704</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>lambda = 800 nm          typical lattice laser wavelength
+V_0    = 1--30 E_R        E_R = recoil energy
+d      = lambda/2         lattice spacing</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of a domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The domain transformed into is the cold-atom spatial-lattice domain. (b) What it reveals is the distance between adjacent cost minima — the lattice spacing $d$. Since the standing-wave period is half the cost-wave wavelength, this yields $d=\lambda/2$.</p>
+<div class="math-block">
+<div class="math-row">$d = \dfrac{\lambda}{2} = \dfrac{800\;\text{nm}}{2} = 400\;\text{nm}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived lattice spacing: $d = 400\;\text{nm}$</div>
+<div class="math-row">Measured lattice spacing: $d \approx 400\;\text{nm}$ (Greiner 2002)</div>
+<div class="math-row">Lattice depth: $V_0 \sim 1\text{--}30\;E_R$ (consistent)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The lattice spacing and depth are consistent with the standing-wave cost structure, but the absolute scale of $V_0$ remains an external laser-intensity input, so the final step of the forward chain does not close.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h695.html">H-695</a> (interference) applications. <a href="h704.html">H-704</a> (photonic crystal) analogous structure.</p><p>This card can be re-used as input for the following cards: <a href="h695.html">H-695</a>, <a href="h698.html">H-698</a>, <a href="h704.html">H-704</a></p>
+<p>Re-injection path: <a href="h698.html">H-698</a>, <a href="h695.html">H-695</a>, <a href="h704.html">H-704</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

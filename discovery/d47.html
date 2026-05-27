@@ -68,39 +68,49 @@ $N=7$은 D-45의 $d=7$과 같은 수로, CAS 쌍이 만드는 내부 자유도�
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 2개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d gauge ew. 도메인: delta ==&gt; 전약 결합 분배. 재귀 대입 경로: <a href="d06.html">D-06</a>, <a href="d45.html">D-45</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 3단계 점유 비용에서 $\sin^2\theta_{23}$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>PMNS 혼합각 $\theta_{23}$은 d-ring 위에서 CAS 3단계 쥠이 7쌍 슬롯 중 얼마를 점유하느냐의 비용이다. CAS 3단계 $d=3$(R·C·S)이 CAS 쌍 $N=7$ 중 점유하는 비율을 다중 투영 수축 겹침비 $f(\theta)=1-d/N$(<a href="../axiom.html#ax11">공리 11</a> 명제)로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전약 결합 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 d-ring 점유 수축비 $f(\theta)=1-d/N$ 노름이다. 혼합각이 CAS 3단계가 7쌍에 분배되고 남기는 비점유 잔여분이고, 그 잔여 4가 도메인 4축 수(<a href="../axiom.html#ax1">공리 1</a>)와 일치하기 때문에 이 노름을 택한다. <a href="d45.html">D-45</a>와 같은 틀이되 $(d,N)$이 다르다.</p>
+<div class="math-block">
+<div class="math-row">$\sin^2\theta_{23} = \dfrac{4}{7}$</div>
+<div class="math-row">$f(\theta) = 1 - \dfrac{d}{N} = 1 - \dfrac{3}{7} = \dfrac{4}{7}$</div>
+<div class="math-legend">$\theta_{23}$: PMNS 혼합각 | $d=3$: CAS 3단계 R·C·S | $N=7$: CAS 쌍 | $4$: 잔여 = 도메인 4축 (<a href="../axiom.html#ax1">공리 1</a>) | $f(\theta)$: 수축 겹침비 (<a href="../axiom.html#ax11">공리 11</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30, 4</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d06.html">D-06</a>, <a href="d45.html">D-45</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>d   = 3        CAS 3단계 R C S
+N   = 7        CAS 쌍
+d/N = 3/7 = 0.428571
+sin^2 th23 = 0.572   NuFIT 5.2 (normal ordering)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전약 혼합 도메인(뉴트리노 PMNS 혼합)으로 변환한다. 이 변환으로 보려는 것은 3단계 쥠이 7쌍 슬롯에 분배되고 남은 혼합 가능 잔여비 $4/7$다. 점유비 $3/7$을 1에서 빼 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin^2\theta_{23} = 1 - \dfrac{3}{7} = \dfrac{4}{7} = 0.571429$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\sin^2\theta_{23} = 4/7 = 0.571429$</div>
+<div class="math-row">측정값: $0.572$ (NuFIT 5.2, normal ordering)</div>
+<div class="math-row">오차: $0.27\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 잔여 4가 도메인 4축과 일치하며, <a href="d45.html">D-45</a>의 코이데 $2/9$와 같은 $f(\theta)$ 틀이 다른 $(d,N)=(3,7)$으로 <a href="d06.html">D-06</a> 혼합각을 정밀화한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d06.html">D-06</a>(PMNS $\theta_{23}$) 정밀화. 뉴트리노 혼합 CAS 기원.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d06.html">D-06</a>, <a href="d45.html">D-45</a></p>
+<p>재투입 경로: <a href="d45.html">D-45</a>, <a href="d06.html">D-06</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

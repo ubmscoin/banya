@@ -69,39 +69,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a>, <a href="p03.html">P-03</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 사원수 양쪽 곱 노름에서 반정수 스핀 $R(720^\circ)=+1$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>스핀은 공간 3축 직교 서브프레임의 회전 비용으로 읽는다. <a href="../axiom.html#ax1">공리 1</a> 사원수 명제에서 3축 직교 그룹은 단위 사원수로 표현되며, 회전은 단위 사원수의 양쪽 곱 $q v q^{-1}$로 작용한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 사원수 양쪽 곱 노름이다 — 단위 사원수 $q$가 상태에 $q v q^{-1}$로 작용. (b) 이 노름을 택하는 이유: 페르미온은 공간 3축 직교 그룹(단위 사원수)으로 표현되고, 회전 각도 $\theta$의 작용이 표현 공간에서 $\theta/2$로 나타나기 때문이다. <a href="../axiom.html#ax1">공리 1</a> 단위원 형식 명제의 위상 $(-1)^n$이 단위구 회전으로 확장돼, 한 바퀴 $360^\circ$에서 위상이 반전된다.</p>
+<div class="math-block">
+<div class="math-row">$q = e^{\hat{n}\theta/2}, \quad R(\theta)\,v = q\,v\,q^{-1}$</div>
+<div class="math-row">$R(360^\circ)\,|\psi\rangle = -|\psi\rangle, \quad R(720^\circ)\,|\psi\rangle = +|\psi\rangle$</div>
+<div class="math-legend">$q$: 단위 사원수 (<a href="../axiom.html#ax1">공리 1</a> 사원수 명제) | $\hat{n}$: 회전축 단위 순허수부 | $\theta/2$: 양쪽 곱의 반각 | $(-1)^n$: 단위원 위상 (<a href="../axiom.html#ax1">공리 1</a> 명제, <a href="../axiom.html#ax4">공리 4</a> 노름 reading)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a>, <a href="p03.html">P-03</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>theta = 360 deg  -> 반각 180 deg -> 위상 (-1)^1 = -1
+theta = 720 deg  -> 반각 360 deg -> 위상 (-1)^2 = +1
+s     = 1/2 (페르미온, 사원수 표현)
+s     = 0,1 (보존, 벡터/스칼라 표현)</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 변환하는 도메인은 공간 회전군 도메인($SU(2)$ 이중 덮개)이다. (b) 보려는 것은 페르미온 상태가 한 바퀴 회전에서 항등이 아닌 이유다. 양쪽 곱의 반각이 $360^\circ$ 회전을 표현 공간 $180^\circ$로 보내므로 위상 $-1$이 되고, 두 바퀴에서야 $+1$ 항등으로 돌아온다.</p>
+<div class="math-block">
+<div class="math-row">$R(360^\circ)\,|\psi_{\text{fermion}}\rangle = (-1)^1\,|\psi_{\text{fermion}}\rangle = -|\psi_{\text{fermion}}\rangle$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $R(720^\circ) = +1$ 항등, 스핀 $1/2$ (반정수)</div>
+<div class="math-row">측정: Werner 1985 중성자 간섭 $720^\circ$ 항등 직접 확증</div>
+<div class="math-row">정합: 정성 100% (전자 $g\approx 2$, Stern-Gerlach)</div>
+</div>
+<p>판정: <strong>가설</strong>. 위상 $(-1)^{2s}$는 사원수 양쪽 곱에서 직접 따라오지만, 스핀 $1/2$ 자체를 정량 식으로 닫는 마지막 단계가 미완이다. 4세대 페르미온 부재(<a href="p03.html">P-03</a>)와 동시 검증된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h944.html">H-944</a> (스핀-통계), <a href="h948.html">H-948</a> (Pauli sigma matrices), Dirac equation 도출. <a href="p03.html">P-03</a> (4세대 부재) 보강.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a>, <a href="p03.html">P-03</a></p>
+<p>재투입 경로: <a href="p03.html">P-03</a>, <a href="h02.html">H-02</a>, <a href="h944.html">H-944</a>, <a href="h948.html">H-948</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

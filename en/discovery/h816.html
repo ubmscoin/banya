@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h816.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h816.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h816.html">H-816</a>. Crossing Symmetry = Time Reversal of CAS Input/Output Channels</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 3 recursive inputs confirmed; D promotion possible in the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h structure. Domain: δ ==&gt; Banya formula's own structure, primary integer (4,3) combination. Recursive substitution path: <a href="h811.html">H-811</a>, <a href="h812.html">H-812</a>, <a href="h815.html">H-815</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Crossing Symmetry from the CAS Input/Output Time-Reversal Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A scattering amplitude is the cost the CAS pays when it reads an input candidate and fixes it as output. Since swapping the input and output labels and reversing the traversal direction of the $\delta$ ring buffer (<a href="../axiom.html#ax8">Axiom 8</a>) leaves the same cost, this cost is read through the input/output-channel time-reversal norm.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>δ ==&gt; Banya formula's own structure, primary integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS input/output exchange norm, because the CAS cost function does not depend on the input/output labels and depends only on the Mandelstam variables $s,t,u$. (b) This norm is chosen because the single operation of exchanging input for output while reversing the $\delta$ utterance direction (<a href="../axiom.html#ax15">Axiom 15</a>) binds the s-channel and t-channel amplitudes into two regions of one analytic function. The scattering amplitude is substituted into the input-exchange form.</p>
+<div class="math-block">
+<div class="math-row">$\mathcal{A}(A+B \to C+D)$</div>
+<div class="math-row">$\mathcal{A}(A+B \to C+D) = \mathcal{A}(A+\bar{C} \to \bar{B}+D)$</div>
+<div class="math-legend">$\mathcal{A}$: scattering amplitude | $\bar{C},\bar{B}$: input/output-exchanged channels | $\delta$: ring-buffer traversal direction (<a href="../axiom.html#ax8">Axiom 8</a>) | $s,t,u$: three CAS read directions</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (full DOF list)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h811.html">H-811</a>, <a href="h812.html">H-812</a>, <a href="h815.html">H-815</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>s + t + u = sum m_i^2      Mandelstam relation (CAS cost conservation)
+s, t, u                    three read directions of the same CAS
+crossing symmetry          confirmed in every scattering experiment</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the scattering-amplitude domain. (b) What it reveals is whether the amplitude is conserved under input/output time reversal — that is, whether crossing symmetry holds. The conservation of the Mandelstam sum is confirmed to be the same equation as CAS cost conservation.</p>
+<div class="math-block">
+<div class="math-row">$s + t + u = \sum_i m_i^2$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: amplitude invariant under input/output exchange + $\delta$ reversal</div>
+<div class="math-row">Measured: crossing symmetry confirmed in every scattering experiment</div>
+<div class="math-row">Consistency: Mandelstam $s+t+u=\sum m_i^2$ = CAS cost conservation</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The input/output exchange norm closes qualitatively with the Mandelstam variables, but the final forward-chain step for the amplitude coefficients does not yet close from the axioms. Crossing symmetry forces the existence of antiparticles (<a href="h812.html">H-812</a> CPT).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h812.html">H-812</a> (CPT). <a href="h811.html">H-811</a> (dispersion relations). <a href="h815.html">H-815</a> (optical theorem)</p><p>This card can be re-used as input for the following cards: <a href="h811.html">H-811</a>, <a href="h812.html">H-812</a>, <a href="h815.html">H-815</a></p>
+<p>Re-injection path: <a href="h812.html">H-812</a>, <a href="h811.html">H-811</a>, <a href="h815.html">H-815</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

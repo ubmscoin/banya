@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: FSM 노름의 주기 포텐셜 분기에서 밴드 갭 $E_g$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>밴드는 FSM 노름(<a href="../axiom.html#ax14">공리 14</a>)이 결정의 주기 포텐셜(<a href="h617.html">H-617</a>) 아래에서 갈라진 결과다. 비용항이 주기 경계에서 두 값으로 갈리면, 그 사이는 어떤 상태도 못 쓰는 금지 구간이 된다. 블로흐의 주기 경계 조건이 FSM 노름의 주기성이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 주기 포텐셜 아래의 FSM 노름이다. FSM 노름은 곧 에너지(<a href="../axiom.html#ax14">공리 14</a>)이고, 비용 양자화(<a href="../axiom.html#ax4">공리 4</a>)가 연속 에너지를 이산 밴드로 가른다. (b) 이 노름을 택하는 이유는 허용 밴드와 금지 갭의 분리가 주기 경계에서 노름이 두 갈래로 분기하는 직접 결과이기 때문이다. 갭이 그 두 분기 사이의 거리다.</p>
+<div class="math-block">
+<div class="math-row">$E_n(\mathbf{k}) = \text{FSM 노름}\big|_{\text{주기 포텐셜}}$</div>
+<div class="math-row">$E_g = E_{n+1}(\mathbf{k}_0) - E_n(\mathbf{k}_0)$</div>
+<div class="math-legend">$E_n(\mathbf{k})$: $n$번째 밴드 | $\mathbf{k}$: 파수 (브릴루앙 존) | $E_g$: 밴드 갭 | $\mathbf{k}_0$: 존 경계 | 갭 $= 0$: 도체, 갭 $&gt; 0$: 부도체</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>E_g(Si)   = 1.12 eV
+E_g(GaAs) = 1.42 eV
+E_g(C)    = 5.5 eV         다이아몬드</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 응집물질(밴드 이론) 도메인으로 변환한다. (b) 보려는 것은 주기 경계에서 분기한 두 밴드 사이의 금지 갭 크기다. FSM 노름이 존 경계 $\mathbf{k}_0$에서 갈라진 폭이 그대로 밴드 갭으로 측정된다.</p>
+<div class="math-block">
+<div class="math-row">$\text{FSM 노름 분기}\big|_{\text{Si}} \quad\Rightarrow\quad E_g = 1.12\ \text{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $E_g = $ FSM 노름 분기 폭 (양수)</div>
+<div class="math-row">측정: Si $1.12\ \text{eV}$, GaAs $1.42\ \text{eV}$</div>
+<div class="math-row">상태: 갭 존재 일치, 크기 정량 미도출</div>
+</div>
+<p>판정: <strong>가설</strong>. 주기 포텐셜 아래 FSM 노름의 분기가 밴드+갭 구조를 닫지만, 갭 크기 $E_g$의 물질별 절댓값이 노름에서 직접 도출되지 않아 라운드를 멈췄다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h619.html">H-619</a>(도체/부도체), <a href="h625.html">H-625</a>(토폴로지컬 절연체) 밴드 전제</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
+<p>재투입 경로: <a href="h617.html">H-617</a>, <a href="h619.html">H-619</a>, <a href="h625.html">H-625</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

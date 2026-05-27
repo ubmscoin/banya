@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="h463.html">H-463</a>, <a href="h469.html">H-469</a>, <a href="h471.html">H-471</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 3단계 위상 닫힘 비용에서 유니터리 삼각형 각 합 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CKM 유니터리 삼각형은 CAS 3단계(Read-Compare-Swap) 사이클을 한 바퀴 돈 뒤 위상이 닫히는 조건이다. FSM이 닫힌 루프를 완주하면 총 위상이 보존되어야 하며(<a href="../axiom.html#ax14">공리 14</a>), 이 닫힘이 삼각형 꼭짓점 합 $=0$ 조건이다(<a href="../axiom.html#ax2">공리 2</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 3단계 사이클 위상 노름이다. CAS 3단계 전이가 닫힌 루프를 이루고(<a href="../axiom.html#ax2">공리 2</a>), 한 바퀴를 돈 위상의 합이 0이어야 프레임이 무모순이기 때문에 이 노름을 택한다. 복소 변 합 $=0$은 세 위상이 평면에서 닫힌 삼각형을 이루는 것과 동치이며, 따라서 세 각의 합은 평면 삼각형 값으로 닫힌다.</p>
+<div class="math-block">
+<div class="math-row">$V_{ud}V_{ub}^* + V_{cd}V_{cb}^* + V_{td}V_{tb}^* = 0$</div>
+<div class="math-row">$\alpha + \beta + \gamma = 180°$</div>
+<div class="math-legend">$V_{ij}$: CKM 행렬 성분 | $\alpha,\beta,\gamma$: 유니터리 삼각형 세 각 (3단계 위상) | $=0$: 닫힌 루프 위상 보존 (<a href="../axiom.html#ax2">공리 2</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h463.html">H-463</a>, <a href="h469.html">H-469</a>, <a href="h471.html">H-471</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha = 85.4 ± 3.8 deg     PDG 2024
+beta  = 22.2 ± 0.7 deg
+gamma = 73.5 ± 5.1 deg
+평면 삼각형 각 합 = 180 deg</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 위상 도메인으로 변환한다. 이 변환으로 보려는 것은 세 각의 합이다. 닫힌 루프 위상 보존이 세 각을 평면 삼각형으로 닫으므로 합을 더해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha + \beta + \gamma = 85.4 + 22.2 + 73.5 = 181.1° \approx 180°$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\alpha + \beta + \gamma = 180°$ (닫힌 루프)</div>
+<div class="math-row">측정값: $85.4 + 22.2 + 73.5 = 181.1° \pm 6.4°$ (PDG 2024)</div>
+<div class="math-row">오차: $0.6\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 각 합이 닫힘 조건과 1$\sigma$ 내 정합하나, 세 각의 개별값을 CAS 위상에서 정량 도출하는 단계가 미완이라 가설에 머문다.</p>
+<p>삼각형 넓이 $=J_{CP}/2 \neq 0$은 CAS 비가역성(<a href="h463.html">H-463</a>)의 직접 결과이며, 삼각형 퇴화 = CP 보존 = CAS 가역은 <a href="../axiom.html#ax2">공리 2</a>에 모순이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h463.html">H-463</a>(CP 위반) 위상 닫힘 조건, <a href="h469.html">H-469</a>(카비보) 확장, <a href="h471.html">H-471</a>(사하로프) CP 위반 정량 기반.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h463.html">H-463</a>, <a href="h469.html">H-469</a>, <a href="h471.html">H-471</a></p>
+<p>재투입 경로: <a href="h469.html">H-469</a>, <a href="h463.html">H-463</a>, <a href="h471.html">H-471</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

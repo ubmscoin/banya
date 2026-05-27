@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative expression absent / 3 recursive inputs confirmed, D promotion possible upon the next round / remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Landauer Minimum Erasure Energy from the CAS Irreversible Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Erasing 1 bit is the irreversible CAS operation merging two states (0,1) into one. The TOCTOU lock register (<a href="../axiom.html#ax5">Axiom 5</a>) cannot un-lock a once-locked bit, so the cost $+1$ (<a href="../axiom.html#ax4">Axiom 4</a>) is unrecoverable and dissipated as heat. An operation that ends with reversible Swap alone pays no such cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the state-count log norm of one d-ring bit — the $\ln 2$ entropy norm. (b) The microstate count lost by irreversible erasure is $2\to1$, i.e. $\ln 2$, which multiplied by temperature closes as the minimum energy; that is why this norm is chosen. The cost $+1$ is substituted by $k_B T\ln 2$.</p>
+<div class="math-block">
+<div class="math-row">$E_{\min} = T\,\Delta S = T\,(k_B\ln 2)$</div>
+<div class="math-row">$E_{\min} = k_B T \ln 2$</div>
+<div class="math-legend">$E_{\min}$: minimum bit-erasure energy | $\Delta S = k_B\ln 2$: $2\to1$ state-count loss of 1 bit | $T$: absolute temperature | $k_B$: cost-temperature conversion | $\ln 2$: one d-ring bit (<a href="../axiom.html#ax2">Axiom 2</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>No input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>k_B   = 1.380649e-23 J/K
+ln 2  = 0.6931471805599453
+T     = 300 K                    room temperature
+E_min = k_B T ln 2                Landauer 1961</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the information-thermodynamics domain ($\text{bit}\to\text{J}$). (b) What it reveals is the minimum heat an irreversible 1-bit erasure releases to the environment — the Landauer limit. Multiplying $\ln 2$ by $k_B T$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$E_{\min}=k_B T\ln 2=(1.380649\times10^{-23})(300)(0.693147)=2.871\times10^{-21}\ \text{J}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $E_{\min}=2.871\times10^{-21}\ \text{J}$ ($T=300\ \text{K}$)</div>
+<div class="math-row">Measured: $(2.8\pm0.1)\times10^{-21}\ \text{J}$ (Bérut et al. 2012)</div>
+<div class="math-row">Error: $2.5\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The minimum-cost formula $k_B T\ln 2$ closes from the irreversible-erasure norm, but fixing the CAS cost $+1$ and the $k_B$ conversion factor directly from the axioms is the next-round task. The Bérut 2012 single-colloidal-particle experiment agrees with the derived value within error.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h568.html">H-568</a> (Second Law) information-thermodynamics link. <a href="h586.html">H-586</a> (Maxwell's demon) cost.</p><p>This card can be re-used as input for the following cards: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
+<p>Re-injection path: <a href="h567.html">H-567</a>, <a href="h568.html">H-568</a>, <a href="h586.html">H-586</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

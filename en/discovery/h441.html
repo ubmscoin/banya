@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 1 recursive input confirmed; D promotion is possible once the next round proceeds / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive substitution path: <a href="d152.html">D-152</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Electron Self-Energy Finiteness from the DATA-Discrete Integration Lower Bound</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The electron self-energy is the cost a charge entity accumulates as it Compares against its own Coulomb field. Classical electromagnetism integrates this cost down to a point-charge radius of 0 and diverges, but if DATA is discrete (<a href="../axiom.html#ax3">Axiom 3</a>) the lower bound of integration halts at a minimum length $\Delta\ell_{\min}>0$. This bound is read as the discrete boundary of the space domain (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2))</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the discrete length norm of the space domain. It is chosen because the self-energy is the $1/\ell^2$ field-energy integral over radius (<a href="../axiom.html#ax11">Axiom 11</a> upper bound $1/(4\pi\ell^2)$) and the 8-bit finite resolution (<a href="../axiom.html#ax5">Axiom 5</a>) forbids $\ell=0$. The continuous lower bound 0 is therefore substituted by the discrete lower bound $\Delta\ell_{\min}$.</p>
+<div class="math-block">
+<div class="math-row">$U_{\text{self}} = \dfrac{e^2}{8\pi\epsilon_0}\displaystyle\int_{0}^{\infty}\dfrac{d\ell}{\ell^2}$</div>
+<div class="math-row">$U_{\text{self}} = \dfrac{e^2}{8\pi\epsilon_0}\displaystyle\int_{\Delta\ell_{\min}}^{\infty}\dfrac{d\ell}{\ell^2} = \dfrac{e^2}{8\pi\epsilon_0\,\Delta\ell_{\min}}$</div>
+<div class="math-legend">$U_{\text{self}}$: electron self-energy | $\Delta\ell_{\min}$: DATA discrete minimum length (<a href="../axiom.html#ax3">Axiom 3</a>) | $e$: elementary charge | $\epsilon_0$: vacuum permittivity</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d152.html">D-152</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>e            = 1.602176634e-19 C        CODATA 2018
+epsilon_0    = 8.8541878128e-12 F/m     CODATA 2018
+l_P          = 1.616255e-35 m           Planck length
+dl_min       = l_P                      discrete bound adopted</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is from the infinite-integration domain into the discrete length domain (space 8-bit resolution). What it reveals is whether the self-energy is trapped at a finite value once the lower bound is nonzero. Setting the minimum length to the Planck length, the upper bound is computed.</p>
+<div class="math-block">
+<div class="math-row">$U_{\text{self}} \le \dfrac{e^2}{8\pi\epsilon_0\,\ell_P} \approx 1.1\times 10^{22}\ \text{eV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $U_{\text{self}} = e^2/(8\pi\epsilon_0\,\Delta\ell_{\min}) < \infty$</div>
+<div class="math-row">Bound: $U_{\text{self}} \le e^2/(8\pi\epsilon_0\,\ell_P) \approx 10^{22}\ \text{eV}$</div>
+<div class="math-row">Measured: structurally consistent with QED renormalization (quantitative value pending)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The discrete lower bound blocks the divergence, so finiteness is closed, but the frame-constant conversion of $\Delta\ell_{\min}$ remains an external input (the Planck length), leaving the final forward-chain step incomplete. The ultraviolet divergence is an artefact of the DATA-continuous assumption, and QED renormalization is the continuous approximation to that natural cutoff.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: short-range regularization for <a href="d152.html">D-152</a> (Coulomb). Foundation for resolving the QED divergence problem.</p><p>This card can be re-used as input for the following cards: <a href="d152.html">D-152</a></p>
+<p>Re-injection path: <a href="d152.html">D-152</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

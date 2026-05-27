@@ -67,39 +67,51 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h209.html">H-209</a>, <a href="h210.html">H-210</a>, <a href="h212.html">H-212</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 단계별 +1 비용에서 파이프라인 유효 비용 3 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>v1.2 파이프라인은 발화비트 $\delta$ 점화(<a href="../axiom.html#ax15">공리 15</a>)로 trigger가 켜지고 filter·update·render·screen이 순차 실행되는 5단계다. 이 중 CAS 내부 세 단계 Read·Compare·Swap이 각각 +1 비용을 치르므로(<a href="../axiom.html#ax2">공리 2</a>), 기존 0:0:0:1 분배는 폐기된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 CAS 단계별 +1 비용 노름이다. 파이프라인 유효 비용이 CAS 내부 단계 수에 의해 정해지고, trigger·screen은 CAS 외부라 직접 비용이 없기 때문에 이 노름을 택한다. 세 CAS 단계의 +1 비용 합으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$C_{\text{pipe}} = c_{\text{trigger}}+c_{\text{filter}}+c_{\text{update}}+c_{\text{render}}+c_{\text{screen}}$</div>
+<div class="math-row">$C_{\text{pipe}} = 0 + 1 + 1 + 1 + 0 = 3$</div>
+<div class="math-legend">$C_{\text{pipe}}$: 파이프라인 유효 비용 | filter·update·render: CAS Read·Compare·Swap 각 +1 | trigger·screen: CAS 외부, 비용 0</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h209.html">H-209</a>, <a href="h210.html">H-210</a>, <a href="h212.html">H-212</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>Read    = +1     공리 2
+Compare = +1     공리 2
+Swap    = +1     공리 2
+trigger = 0      CAS 외부
+screen  = 0      CAS 외부</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>반야 구조 비용 도메인으로 변환한다. 이 변환으로 보려는 것은 5단계 파이프라인의 유효 인덱싱 비용이다. CAS 내부 세 단계의 +1 비용을 합산해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$C_{\text{pipe}} = 1 + 1 + 1 = 3$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $C_{\text{pipe}} = 3$ (CAS 내부 3단계)</div>
+<div class="math-row">측정 대응: 측정 가능량 없음 (구조 비용)</div>
+<div class="math-row">상태: 구조 정합 확인, 정량 대조 미완</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>각 꼭짓점 비용이 1인 파이프라인이 파인만 다이어그램 꼭짓점 구조와 정합하며, 0:0:0:1 분배가 CAS 단계별 +1로 교체된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h209.html">H-209</a>, <a href="h210.html">H-210</a>, <a href="h212.html">H-212</a></p>
+<p>재투입 경로: <a href="h209.html">H-209</a>, <a href="h210.html">H-210</a>, <a href="h212.html">H-212</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

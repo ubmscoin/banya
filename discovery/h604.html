@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h595.html">H-595</a>, <a href="h605.html">H-605</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: d-ring 상태 혼합도에서 양자 엔트로피 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양자 엔트로피는 d-ring 상태가 얼마나 섞여 있는가를 잰다. <a href="../axiom.html#ax3">공리 3</a>에서 d-ring은 이산 유한 차원이라 엔트로피에 천장이 있고, <a href="../axiom.html#ax2">공리 2</a>에서 Compare가 superposition을 확정할 때마다 혼합도가 줄어 엔트로피가 감소한다. 순수 상태(Compare 완료)는 $S=0$, 미확정 최대 혼합은 천장값이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 d-ring 밀도행렬의 von Neumann 엔트로피 노름 — 고윳값 분포의 Shannon 측도다. (b) 이 노름을 택하는 이유: CAS 상태의 정보 불확정성이 곧 d-ring 혼합도이고, 그 최댓값은 차원 $d$의 균등 분포에서 $\ln d$로 닫힌다(<a href="h595.html">H-595</a> 최대 엔트로피 $8\ln 2$). 8비트 d-ring이면 $d = 2^8$이다.</p>
+<div class="math-block">
+<div class="math-row">$S(\rho) = -\text{Tr}(\rho\ln\rho)$</div>
+<div class="math-row">$0 \;\leq\; S(\rho) \;\leq\; \ln d = 8\ln 2$</div>
+<div class="math-legend">$S$: von Neumann 엔트로피 | $\rho$: d-ring 밀도행렬 | $0$: 순수 상태 (Compare 완료) | $\ln d$: 최대 혼합 천장 | $d = 2^8$: 8비트 d-ring 차원</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h595.html">H-595</a>, <a href="h605.html">H-605</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>S(순수 상태) = 0
+ln 2       = 0.693147
+1큐빗 최대 S = ln 2 = 0.693
+8비트 d-ring 최대 = 8 ln 2 = 5.545     H-595</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 엔트로피 도메인(nat 단위 정보량)으로 변환한다. (b) 보려는 것은 d-ring 상태의 혼합도 상한, 곧 한 엔티티가 담을 수 있는 최대 정보 불확정성이다. 8비트 d-ring의 차원 $2^8$을 대입하면 천장이 $8\ln 2$로 떨어진다.</p>
+<div class="math-block">
+<div class="math-row">$S_{\max} = \ln 2^8 = 8\ln 2 = 5.545 \;\text{nat}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 1큐빗 $S_{\max} = \ln 2 = 0.693$, 8비트 $S_{\max} = 8\ln 2 = 5.545$</div>
+<div class="math-row">측정값: von Neumann 엔트로피 정의와 일치</div>
+<div class="math-row">상태: 정의 일치, CAS 비용-엔트로피 정량 관계 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 순수=0·최대=$\ln d$의 천장이 d-ring 이산성에서 닫혔으나, Compare 한 번이 깎는 엔트로피 감소량을 공리 4 비용 +1과 정량적으로 잇는 다음 라운드가 남았다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h595.html">H-595</a>(얽힘 엔트로피) 정의. <a href="h605.html">H-605</a>(상호정보) 구성 요소</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h595.html">H-595</a>, <a href="h605.html">H-605</a></p>
+<p>재투입 경로: <a href="h595.html">H-595</a>, <a href="h605.html">H-605</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

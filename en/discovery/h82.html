@@ -72,39 +72,48 @@ Structural consequence: the larger the Hamming distance, the higher the juim (ju
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible at the next round / Remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS stage gap l/N (N=30, 9, 7). Recursive substitution path: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the CKM u-row Hamming-Distance Monotone Correspondence from the Compare Bit-Comparison Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>A quark-flavor transition is the cost the Compare step of CAS Read ==&gt; Compare ==&gt; Swap (<a href="../axiom.html#ax2">Axiom 2</a>) pays to compare the bits of two states. The more bits there are to compare, the larger the cost and the more the transition is suppressed.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS stage gap l/N (N=30, 9, 7)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the Hamming-distance norm between the two quark bit strings. (b) In the 3-bit octet assignment of <a href="h44.html">H-44</a>, the $u$-row transitions move one bit further apart at a time, so this distance norm directly sets the Compare cost and forces the monotone ordering of the transition amplitudes — hence it is chosen.</p>
+<div class="math-block">
+<div class="math-row">$|V_{ij}| = f\big(d_H(i,j)\big),\quad f\ \text{monotone decreasing}$</div>
+<div class="math-row">$|V_{ud}| &gt; |V_{us}| &gt; |V_{ub}|,\quad d_H(u,d) &lt; d_H(u,s) &lt; d_H(u,b)$</div>
+<div class="math-legend">$|V_{ij}|$: CKM transition amplitude | $d_H$: Hamming distance (<a href="h44.html">H-44</a>) | $f$: distance ==&gt; amplitude monotone-decreasing function | $u,d,s,b$: quark flavors</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS stages), 9 (Koide theta), 30 (CAS access paths), 7 (degrees of freedom)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>d_H(u,d) = 1     |V_ud| = 0.97435    PDG 2024
+d_H(u,s) = 2     |V_us| = 0.22500    PDG 2024
+d_H(u,b) = 3     |V_ub| = 0.00382    PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the weak-mixing domain (CKM bit space). (b) What it reveals is whether bit distance sets the magnitude ordering of the transition amplitudes. Placing the Hamming-distance order alongside the amplitude order yields the monotone correspondence.</p>
+<div class="math-block">
+<div class="math-row">$d_H:\ 1 &lt; 2 &lt; 3 \;\Longleftrightarrow\; |V|:\ 0.974 &gt; 0.225 &gt; 0.0038$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: increasing $d_H$ ==&gt; monotone decreasing $|V_{ij}|$</div>
+<div class="math-row">Measured: $0.974 &gt; 0.225 &gt; 0.0038$ (PDG 2024)</div>
+<div class="math-row">Result: all 3 pairs match the ordering</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The distance ==&gt; amplitude monotone correspondence holds for all three pairs, but the functional form of $|V_{ij}| = f(d_H)$ is not yet closed as a quantitative formula (the exponential-decay candidate $\exp(-c\,d_H)$ is undetermined), leaving the forward chain open.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: structural basis for the derivation of <a href="h47.html">H-47</a> ($s_{13}$). Reconstruct the entire CKM as bit transitions.</p><p>This card can be reused as input for the following cards: $d_H=3$, $s_{13}$, $|V_{ij}| \propto \exp(-c \cdot d_H(i,j))$, $s_{13}$</p>
+<p>Re-injection path: <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a>, <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">
@@ -136,41 +145,6 @@ Structural consequence: the larger the Hamming distance, the higher the juim (ju
 <p><strong>Verdict: Hypothesis</strong> -- Hypothesis (Recursive substitution in progress)</p>
 <p><strong>Reason:</strong> 4 recursive inputs confirmed; D promotion possible at the next round / Remaining tasks specified.</p>
 <p><strong>Location:</strong> Category: h neutrino cp. Domain: delta ==&gt; CKM/PMNS mixing angle = CAS stage gap l/N (N=30, 9, 7). Recursive substitution path: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
-</div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
-<div class="step">
-<h3>Step 1. Banya Formula</h3>
-<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
-</div>
-<div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; CKM/PMNS mixing angle = CAS stage gap l/N (N=30, 9, 7)</p>
-</div>
-<div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS stages), 9 (Koide theta), 30 (CAS access paths), 7 (degrees of freedom)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="h44.html">H-44</a>, <a href="h47.html">H-47</a></p>
-</div>
-<div class="step">
-<h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of the domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
-</div>
-<div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
-</div>
-<div class="box-byproduct">
-<h3>Byproducts</h3>
-<p>Re-substitution Purpose: <a href="h47.html">H-47</a> ($s_{13}$) derivation provides the structural basis. CKM as a whole is reconstructed via bit transitions, with the chain closed by 2 H-card inputs, so a large amount of quantitative output that hypothesis-only inputs could not produce was completed as a forward chain via multiple D inputs. <a href="../axiom.html#ax2">Axiom 2</a> and <a href="../axiom.html#ax4">Axiom 4</a> are cited, so each step of the forward chain is directly mapped to the body of the axioms — the three-stage flow axiom → formula → numerics proceeds without breaks. <strong>Final verification:</strong> Explicit derivation formula exists ✓, Error 0.0% ≤ 1% ✓, 2 axioms cited (≥ 2) ✓, derivation/induction keywords stated in the body ✓, 0 free parameters ✓. All 5 D promotion conditions are met.</p>
-<p><strong>Post-promotion Location:</strong> in the lib.html index, moved from the H section to the D section (the HTML filename h82.html is preserved so cross-links are kept). A "(D Promotion, Grade B)" note remains in the H section to preserve history.</p>
-<p><strong>Next-round Follow-up:</strong> with this D promotion, the recursive substitution chains of other H cards gain an additional input. H cards that take this card as input need to be re-examined for further promotion possibilities.</p>
 </div>
 </main>
 <div class="page-nav lang-en">

@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합. 재귀 대입 경로: <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 요동 하한에서 압착 파라미터 $r$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>압착 상태는 CAS 비용의 두 직교 성분 $X_1, X_2$ 중 한 쪽 요동을 표준 한계 이하로 줄이고 다른 쪽을 키운 상태다. 비용 요동의 하한(<a href="../axiom.html#ax9">공리 9</a> 불확정성 관계)과 두 직교 성분(<a href="../axiom.html#ax4">공리 4</a>)으로 이 비대칭 축소를 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 반야식 자체 구조, 1차 정수 (4,3) 조합</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 비용 요동의 곱 하한 노름이다. 곱 $\Delta X_1\,\Delta X_2$는 하한에 묶이지만 한쪽 성분만 따로 줄이는 데는 하한이 없어, 압착 파라미터 $r$로 한쪽을 지수적으로 축소할 수 있기 때문에 이 노름을 택한다. 따라서 비대칭 축소를 $r$ 지수 함수로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\Delta X_1\,\Delta X_2 \geq \dfrac{1}{4}$</div>
+<div class="math-row">$\Delta X_1 = \dfrac{e^{-r}}{2}, \quad \Delta X_2 = \dfrac{e^{+r}}{2}$</div>
+<div class="math-legend">$\Delta X_1,\Delta X_2$: 두 직교 비용 요동 | $1/4$: 곱 하한(<a href="../axiom.html#ax9">공리 9</a>) | $r$: 압착 파라미터 | 곱은 하한 유지, 한쪽은 $e^{-r}$로 축소</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 1, 2, 3, 4, 7, 9, 16, 30, 128, 137 (자유도 목록 전체)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>squeeze_max = 15  dB   Vahlbruch 2016
+squeeze_LIGO= 6   dB   LIGO 적용
+dB          = -10 log10( (2 dX1)^2 )</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>비용 요동 도메인으로 변환한다. 이 변환으로 보려는 것은 최대 압착 15 dB에 대응하는 파라미터 $r$, 곧 한쪽 요동이 표준 한계 대비 줄어든 정도다. dB 정의에서 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$15 = -10\log_{10}(e^{-2r}) = \dfrac{20\,r}{\ln 10}, \quad r = \dfrac{15\ln 10}{20} = 1.73$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $r = 1.73$ (15 dB 최대 압착)</div>
+<div class="math-row">측정값: 15 dB (Vahlbruch 2016), LIGO 적용 6 dB</div>
+<div class="math-row">상태: 호모다인 측정과 정합, $r$의 극한값 이론 한계 미닫힘</div>
+</div>
+<p>판정: <strong>가설</strong>. 곱 하한과 한쪽 지수 축소는 공리에서 직접 따라오지만, 압착 $r$의 물리적 상한을 비용 요동으로 닫는 단계가 남아 있다.</p>
+<p>통찰: 곱 하한이 한쪽을 줄인 만큼 다른 쪽을 키우라 강제해, 정보는 사라지지 않고 직교 성분으로 이동한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h713.html">H-713</a>(쌍광자) 양자 광학. <a href="h715.html">H-715</a>(반묶음) 비고전 대비</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
+<p>재투입 경로: <a href="h700.html">H-700</a>, <a href="h713.html">H-713</a>, <a href="h715.html">H-715</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

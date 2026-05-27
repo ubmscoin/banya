@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h580.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h580.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_info_consciousness</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h580.html">H-580</a>. Stefan–Boltzmann Law = T⁴ = Thermal DOF of the 4-Axis Domain</h1><div class="box-finding">
@@ -65,39 +65,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Quantitative formula absent / 3 recursive inputs confirmed, D promotion possible at next round / remaining tasks explicit.</p>
 <p><strong>Location:</strong> Category: h info consciousness. Domain: delta ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>). Recursive substitution path: <a href="h577.html">H-577</a>, <a href="h579.html">H-579</a>, <a href="h591.html">H-591</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Stefan-Boltzmann Law from the Thermal-DOF Cost of the 4-Axis Domain</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The total radiated energy is the cost of summing the blackbody (<a href="h579.html">H-579</a>) Planck function over all modes. <a href="../axiom.html#ax1">Axiom 1</a> (Banya formula) fixes the domain to 4 axes, and those 4 axes set the integration dimension of phase space, pinning the temperature-dependence exponent to $T^4$. <a href="../axiom.html#ax2">Axiom 2</a> closes the mode count as an integral.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>δ ==&gt; bit 7 utterance bit / d-ring self-reference loop (<a href="../axiom.html#ax8">Axiom 8</a>, <a href="../axiom.html#ax15">Axiom 15</a>)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the <a href="../axiom.html#ax1">Axiom 1</a> domain-4-axis norm. (b) It is chosen because integrating the Planck function over $\nu$ via the dimensionless substitution $x=h\nu/k_BT$ pulls $T^4$ outside the integral, and that exponent 4 matches the 4 domain axes (time 1 + space 3). With space alone it would be $T^3$, but the added time axis makes it $T^4$.</p>
+<div class="math-block">
+<div class="math-row">$j=\displaystyle\int_0^\infty \dfrac{2\pi h\nu^3}{c^2}\dfrac{1}{e^{h\nu/k_BT}-1}\,d\nu$</div>
+<div class="math-row">$j=\dfrac{2\pi^5 k_B^4}{15h^3c^2}\,T^4=\sigma T^4$</div>
+<div class="math-legend">$j$: radiant emittance | $T^4$: domain 4 axes (time 1 + space 3) | $\sigma$: Stefan constant | $x=h\nu/k_BT$: dimensionless substitution | $\int x^3/(e^x-1)dx=\pi^4/15$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h577.html">H-577</a>, <a href="h579.html">H-579</a>, <a href="h591.html">H-591</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>k_B = 1.380649e-23 J/K         CODATA 2018
+h   = 6.62607015e-34 J s       CODATA 2018
+c   = 2.99792458e8 m/s         CODATA 2018
+int_0^inf x^3/(e^x - 1) dx = pi^4/15</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the total radiant emittance of a blackbody surface. (b) What it reveals is the temperature-dependence exponent and the coefficient $\sigma$. Pulling out $T^4$ via the dimensionless substitution and inserting the integral $\pi^4/15$ closes $\sigma$.</p>
+<div class="math-block">
+<div class="math-row">$\sigma=\dfrac{2\pi^5 k_B^4}{15h^3c^2}=5.6704\times 10^{-8}\ \mathrm{W\,m^{-2}K^{-4}}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $j=\sigma T^4,\ \sigma=2\pi^5 k_B^4/(15h^3c^2)$</div>
+<div class="math-row">Measured: $\sigma=5.670374\times 10^{-8}\ \mathrm{W\,m^{-2}K^{-4}}$</div>
+<div class="math-row">Error: $<0.01\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The exponent $T^4$ closes from the domain 4 axes (time 1 + space 3) and the coefficient $\sigma$ from the Planck integral with no free parameter. The remaining task is the axiomatic account of how the time axis contributes a thermal degree of freedom.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h579.html">H-579</a> (blackbody radiation) total energy. <a href="h591.html">H-591</a> (thermal death) radiative cooling.</p><p>This card can be re-used as input for the following cards: <a href="h577.html">H-577</a>, <a href="h579.html">H-579</a>, <a href="h591.html">H-591</a></p>
+<p>Re-injection path: <a href="h579.html">H-579</a>, <a href="h577.html">H-577</a>, <a href="h591.html">H-591</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

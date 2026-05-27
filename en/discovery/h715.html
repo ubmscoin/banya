@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h715.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h715.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_electromag_qed</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h715.html">H-715</a>. Photon Antibunching = Anticorrelation of FSM Norm-0 Entities</h1><div class="box-finding">
@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D-promotion possible upon advancing to the next round / outstanding tasks made explicit</p>
 <p><strong>Location:</strong> Category: h electromag qed. Domain: delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2)). Recursive substitution path: <a href="h713.html">H-713</a>, <a href="h714.html">H-714</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the antibunching $g^{(2)}(0)$ from FSM norm-0 single emission</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Photon antibunching is the nonclassical correlation by which two photons from a single-photon source never arrive simultaneously. The photon is an FSM norm-0 entity (<a href="../axiom.html#ax3">Axiom 3</a>), and this anticorrelation is read through the cost structure in which a single CAS cost quantum is emitted only one at a time (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; electromagnetic coupling alpha = D5 Shilov volume ratio (signature (5,2))</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the single-emission second-order correlation norm. This norm is chosen because, when a source emits only one cost quantum at a time, the simultaneous (zero-delay) detection probability drops, giving $g^{(2)}(0)<1$. The antibunching is therefore substituted by the zero-delay normalized correlation.</p>
+<div class="math-block">
+<div class="math-row">$g^{(2)}(0) = \dfrac{\langle n(n-1)\rangle}{\langle n\rangle^2}$</div>
+<div class="math-row">$g^{(2)}_{\text{single}}(0) = 1 - \dfrac{1}{N}$</div>
+<div class="math-legend">$g^{(2)}(0)$: zero-delay second-order correlation | $n$: detected quantum count | $N$: number of entities that can emit simultaneously | $N=1$ gives $g^{(2)}(0)=0$ (perfect single)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection (recursive substitution)</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 5, 2 (signature (5,2)), 137 (data type = T(16)+1)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h713.html">H-713</a>, <a href="h714.html">H-714</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>thermal      g2(0) = 2       bunching (Bose statistics)
+laser        g2(0) = 1       Poisson
+QD single    g2(0) < 0.01    quantum-dot measurement
+NV center    g2(0) = 0.1     NV-center measurement</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the electromagnetic-coupling domain. What it reveals is the zero-delay correlation of a single ($N=1$) emitter — the antibunching limit of a perfect single photon. Substituting $N=1$ into the formula above yields that value.</p>
+<div class="math-block">
+<div class="math-row">$g^{(2)}_{\text{single}}(0) = 1 - \dfrac{1}{1} = 0$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $g^{(2)}(0) = 0$ ($N=1$ single-emission limit)</div>
+<div class="math-row">Measured: quantum dot $g^{(2)}(0)<0.01$, NV center $\approx 0.1$</div>
+<div class="math-row">Status: consistent with single-photon experiments; the quantitative link of $N$ to FSM norm 0 not yet closed</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The $g^{(2)}(0)<1$ boundary follows directly from the single-emission cost structure, but the step of closing the emitter count $N$ from FSM norm 0 (<a href="../axiom.html#ax3">Axiom 3</a>) remains.</p>
+<p>Insight: laser at 1 is the divide — above it bunching (thermal 2), below it antibunching (single 0) — and only single emission drops below 1 as $1-1/N$.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h714.html">H-714</a> (squeezing) non-classical optics. <a href="h713.html">H-713</a> (biphoton) single photon</p><p>This card can be re-used as input for the following cards: <a href="h713.html">H-713</a>, <a href="h714.html">H-714</a></p>
+<p>Re-injection path: <a href="h714.html">H-714</a>, <a href="h713.html">H-713</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

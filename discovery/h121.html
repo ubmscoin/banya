@@ -69,39 +69,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="h106.html">H-106</a>, <a href="h115.html">H-115</a>, <a href="h116.html">H-116</a>, <a href="h46.html">H-46</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 퇴거 적분 비용에서 $t_0 = 13.50\;\text{Gyr}$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>우주 나이는 d-ring이 첫 사이클을 시작한 이후 RLU 캐시가 퇴거를 거듭한 총 시간이다. <a href="../axiom.html#ax6">공리 6</a>(RLU 퇴거)의 퇴거율을 <a href="h46.html">H-46</a>(RLU 프리드만)의 팽창 역사로 적분해 이 비용을 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 퇴거 적분 노름이다. 우주 나이가 허블 시간 $1/H_0$에 $\Lambda$CDM 팽창 보정을 곱한 적분량이고, 그 적분이 RLU 퇴거 역사 전체를 닫기 때문에 이 노름을 택한다. <a href="h116.html">H-116</a>의 $H_0$ 역수에 보정 인자 $f_\Lambda$를 곱해 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$t_0 = \displaystyle\int_0^1 \dfrac{da}{a\,H(a)}$</div>
+<div class="math-row">$t_0 = \dfrac{f_\Lambda}{H_0}$</div>
+<div class="math-legend">$t_0$: 우주 나이 | $H_0$: 허블 상수 (<a href="h116.html">H-116</a>) | $f_\Lambda$: $\Lambda$CDM 팽창 보정 | $a$: 척도 인자</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <code>H_0</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h106.html">H-106</a>, <a href="h115.html">H-115</a>, <a href="h116.html">H-116</a>, <a href="h46.html">H-46</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>H_0     = 67.92 km/s/Mpc        H-116
+1/H_0   = 14.40 Gyr
+f_Lambda= 0.938                 LambdaCDM 적분
+t_0     = 13.797 ± 0.023 Gyr    Planck 2018</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주론 시간 도메인으로 변환한다. 이 변환으로 보려는 것은 d-ring 첫 사이클부터 현재까지의 경과 사이클 총수, 곧 우주 나이 $t_0$다. 허블 시간에 팽창 보정을 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$t_0 = 0.938 \times 14.40\;\text{Gyr} = 13.50\;\text{Gyr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 가설</h3>
+<div class="math-block">
+<div class="math-row">도출값: $t_0 = 13.50\;\text{Gyr}$</div>
+<div class="math-row">측정값: $13.797 \pm 0.023\;\text{Gyr}$ (Planck 2018)</div>
+<div class="math-row">오차: $2.2\%$</div>
+</div>
+<p>판정: <strong>가설</strong></p>
+<p>$H_0$ 도출(<a href="h116.html">H-116</a>)의 정밀도가 올라가면 $t_0$도 자동으로 개선되는 라운드 2 입력 카드다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h116.html">H-116</a>($H_0$), <a href="h46.html">H-46</a>(RLU 프리드만) 근거.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h106.html">H-106</a>, <a href="h115.html">H-115</a>, <a href="h116.html">H-116</a>, <a href="h46.html">H-46</a></p>
+<p>재투입 경로: <a href="h116.html">H-116</a>, <a href="h46.html">H-46</a>, <a href="h106.html">H-106</a>, <a href="h115.html">H-115</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

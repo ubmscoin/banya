@@ -72,39 +72,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>v1.8 정정:</strong> v1.8: 중력자 질량 = 0은 √3 노름 수축이 매개입자 없이 직접 발생하기 때문 (ring 없음). 매개입자 매핑은 강력/약력/전자기 (ring-7/30/137)에만 적용.</p>
 <p><strong>4력 v1.8 분류 (physics_map):</strong> 강력=FSM 원자성(ring-7) | 약력=수축 겹침·직렬화(ring-30) | 전자기=교차 Cmp/Swp 비용(ring-137) | <strong>중력=√3 노름 누적·쥠 밀집 수축 (ring 없음, 비용 아닌 기하 수축)</strong></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: √3 노름 기하 수축에서 중력자 질량 0 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>중력은 CAS 비용 $+1$의 + 횡단(<a href="../axiom.html#ax4">공리 4</a>)이 아니라, 워크벤치 √3 노름이 거리에 따라 직접 분배되는 기하 수축이다. 매개입자가 왕복하는 ring(7·30·137)이 없으므로, 중력자 질량은 결합 비용의 값이 아니라 매개입자 부재 자체로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 CAS 3축 직교의 워크벤치 √3 노름(<a href="../axiom.html#ax2">공리 2</a> 명제)이다. (b) 이 노름을 택하는 이유: 중력은 ring 위 매개입자 교환이 아니라 √3 노름이 다중 투영(<a href="../axiom.html#ax11">공리 11</a>)으로 거리 무관하게 전파되는 현상이라, 콤프턴 파장을 정의할 유한 질량 항이 들어설 자리가 없다. 따라서 유카와 퍼텐셜의 질량 항을 √3 기하 수축으로 치환하면 질량 항이 소거된다.</p>
+<div class="math-block">
+<div class="math-row">$V(r) = -\dfrac{G m_1 m_2}{r}\,e^{-m_g r}$</div>
+<div class="math-row">$V(r) = -\dfrac{G m_1 m_2}{r}\,e^{-0\cdot r} = -\dfrac{G m_1 m_2}{r}$</div>
+<div class="math-legend">$m_g$: 중력자 질량 | $e^{-m_g r}$: 유카와 감쇠 인자 | √3: CAS 3축 직교 노름 (<a href="../axiom.html#ax2">공리 2</a>) | ring 없음: 매개입자 자리 부재</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h555.html">H-555</a>, <a href="h557.html">H-557</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_g       = 0                      프레임 예측 (ring 없음)
+|m_g|_exp &lt; 1.2e-22 eV             GW170817 (LIGO/Virgo 2017)
+|dv/c|    &lt; 1e-15                  중력파 속도 - 광속</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 무차원 매개입자 질량 도메인(중력, ring 없음)으로 변환한다. (b) 보려는 것은 유카와 감쇠 인자의 콤프턴 파장 $\lambda_g = \hbar/(m_g c)$다. √3 노름이 ring 없이 직접 분배되어 $m_g=0$이면 $\lambda_g\to\infty$이고 감쇠 인자가 1로 굳어 $1/r$ 의존성만 남는다.</p>
+<div class="math-block">
+<div class="math-row">$m_g = 0 \;\Rightarrow\; \lambda_g = \dfrac{\hbar}{m_g c} = \infty \;\Rightarrow\; e^{-m_g r} = 1$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_g = 0$ (정확)</div>
+<div class="math-row">측정값: $|m_g| &lt; 1.2\times10^{-22}$ eV (GW170817)</div>
+<div class="math-row">정합: 한계와 무모순, 유한 $m_g$ 검출 시 즉시 반박</div>
+</div>
+<p>판정: <strong>가설</strong>. ring 부재가 매개입자 질량 항을 소거하지만, 스핀-2 텐서 성질의 √3 노름 유도가 미완이라 D 승격 전 가설에 머문다.</p>
+<p>통찰: 중력자 질량 0은 결합 비용의 값이 아니라 ring 부재의 표현이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h555.html">H-555</a>(표준모형) 게이지 보손 질량. <a href="h557.html">H-557</a>(계층 문제) 중력 스케일.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h555.html">H-555</a>, <a href="h557.html">H-557</a></p>
+<p>재투입 경로: <a href="h517.html">H-517</a>, <a href="h529.html">H-529</a>, <a href="h555.html">H-555</a>, <a href="h557.html">H-557</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

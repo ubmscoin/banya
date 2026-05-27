@@ -69,39 +69,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> recursive inputs 2 confirmed, D promotion possible on next round / Remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h mass yukawa. Domain: delta ==&gt; fermion mass = CAS cost x data type size (137, 27). Recursive substitution path: <a href="d03.html">D-03</a>, <a href="h110.html">H-110</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving $\text{BR}_{\text{lep}}(\tau)$ from the LUT Exit-Branching Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The leptonic branching ratio of the tau is the branching cost each exit occupies as the decay splits among the LUT exits. The leptonic exits are 2 (<a href="../axiom.html#ax6">Axiom 6</a>: RLU's LUT structure, electron and muon), and the hadronic exits are the 3 (<a href="../axiom.html#ax3">Axiom 3</a>) that the CAS 3 stages map onto color DOF, multiplied by the first-order QCD correction $\alpha_s/\pi$.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; fermion mass = CAS cost x data type size (137, 27)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the leptonic-exits-2-over-total-exits norm. It is chosen because the branching ratio is the ratio of the 2 leptonic exits to the total exits, and the 3 hadronic exits carry the first-order color-coupling correction $\alpha_s/\pi$. The leptonic branching ratio is therefore substituted by the reciprocal of the leptonic exits 2 plus the corrected hadronic-exit sum.</p>
+<div class="math-block">
+<div class="math-row">$\text{BR}_{\text{lep}} = \dfrac{\Gamma_{e}+\Gamma_{\mu}}{\Gamma_{\text{total}}}$</div>
+<div class="math-row">$\text{BR}_{\text{lep}}(\tau) = \dfrac{1}{2+3\left(1+\dfrac{\alpha_s}{\pi}\right)}$</div>
+<div class="math-legend">$\text{BR}_{\text{lep}}$: leptonic branching ratio | $2$: leptonic LUT exits (<a href="../axiom.html#ax6">Axiom 6</a>) | $3$: CAS 3 stages = color DOF (<a href="../axiom.html#ax3">Axiom 3</a>) | $\alpha_s/\pi$: first-order QCD correction ($\alpha_s$ <a href="d03.html">D-03</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 137 (1/alpha), 27 (data type), 9, 2/9 (Koide)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constant</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="d03.html">D-03</a>, <a href="h110.html">H-110</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>2       = leptonic exits (e, mu)       Axiom 6
+3       = CAS 3 stages = color DOF      Axiom 3
+alpha_s = 0.1183                        D-03
+a_s/pi  = 0.037656
+BR_lep  = 0.1782 ± 0.0004               PDG 2024</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the tau-decay branching domain. What it reveals is the probability that the tau decays into a leptonic channel — the leptonic branching ratio. Adding the hadronic exit $3(1+\alpha_s/\pi)$ to the leptonic exits 2 and taking the reciprocal yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\text{BR}_{\text{lep}}(\tau) = \dfrac{1}{2+3\times 1.037656} = \dfrac{1}{5.1130} = 0.196$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Hypothesis</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\text{BR}_{\text{lep}}(\tau) = 0.196$</div>
+<div class="math-row">Measured: $0.1782 \pm 0.0004$ (PDG 2024)</div>
+<div class="math-row">Error: $9.8\%$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. This first-order approximation omits the phase-space correction $m_\mu^2/m_\tau^2$, so the error is large and the final step of the forward chain is incomplete. Specifying the CAS structural origin of the phase-space term opens the path to a D promotion.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: Basis from <a href="d03.html">D-03</a> ($\alpha_s$), <a href="../axiom.html#ax3">Axiom 3</a> (CAS 3 stages).</p><p>This card can be re-used as input for the following cards: <a href="d03.html">D-03</a>, <a href="h110.html">H-110</a></p>
+<p>Re-injection path: <a href="d03.html">D-03</a>, <a href="h110.html">H-110</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

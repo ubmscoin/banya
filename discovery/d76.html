@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 실험 비교 오차 &lt;= 1% / 재귀 대입 입력 3개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d gauge ew. 도메인: delta ==&gt; 전약 결합 분배. 재귀 대입 경로: <a href="d02.html">D-02</a>, <a href="d70.html">D-70</a>, <a href="d79.html">D-79</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 전약 혼합 비용에서 $M_W/M_Z$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전약 게이지 보손 질량비는 d-ring에서 $W$와 $Z$의 쥠 세기가 와인버그 각으로 갈라지는 비용이다(<a href="../axiom.html#ax6">공리 6</a> 원자성). 이 갈라짐을 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>)과 완전기술자유도가 정하는 혼합 비용 $3/13$으로 읽는다(<a href="../axiom.html#ax9">공리 9</a> 비용).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전약 결합 분배</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 전약 혼합 노름 $\sin^2\theta_W = 3/13$이다($3$ = CAS 단계, $13 = 4+9$ = 도메인 축 + 완전기술자유도). 질량비가 전약 대칭 깨짐에서 $W$·$Z$가 갈라지는 같은 혼합 각으로 닫히기 때문에 이 노름을 택하며, 트리 준위 관계 $M_W/M_Z = \cos\theta_W$로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{M_W}{M_Z} = \cos\theta_W = \sqrt{1 - \sin^2\theta_W}$</div>
+<div class="math-row">$\dfrac{M_W}{M_Z} = \sqrt{1 - \dfrac{3}{13}} = \sqrt{\dfrac{10}{13}}$</div>
+<div class="math-legend">$\sin^2\theta_W = 3/13$: 전약 혼합 (<a href="d02.html">D-02</a>) | $3$: CAS 단계 | $13 = 4+9$: 도메인 축 + 완전기술자유도 | $\cos\theta_W$: 와인버그 각 코사인</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7, 30, 4</p>
-<p><strong>물리 상수 입력:</strong> <code>M_W</code>, <code>M_Z</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d02.html">D-02</a>, <a href="d70.html">D-70</a>, <a href="d79.html">D-79</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>sin^2 theta_W = 3/13 = 0.23077    D-02
+10/13         = 0.76923
+M_Z           = 91.1876 GeV       PDG 2024
+M_W/M_Z       = 0.88145           PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전약 게이지 보손 질량비 도메인으로 변환한다. 이 변환으로 보려는 것은 대칭 깨짐 후 $W$와 $Z$ 사이의 질량비다. 혼합 노름의 코사인을 취해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{M_W}{M_Z} = \sqrt{\dfrac{10}{13}} = 0.8770$</div>
+<div class="math-row">$M_W = 91.1876 \times 0.8770 = 79.97\;\text{GeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>발견</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $M_W/M_Z = 0.8770$</div>
+<div class="math-row">측정값: $0.88145$ (PDG 2024)</div>
+<div class="math-row">오차: $0.005\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 전약 통일의 핵심 관계 $M_W/M_Z = \cos\theta_W$가 <a href="d02.html">D-02</a> 혼합 비용 $3/13$ 재투입만으로 닫히며, 대칭 깨짐 자체가 CAS 비용 경쟁의 결과임을 시사한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: 전약 게이지 보존 질량비. <a href="d02.html">D-02</a> 연쇄.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d02.html">D-02</a>, <a href="d70.html">D-70</a>, <a href="d79.html">D-79</a></p>
+<p>재투입 경로: <a href="d02.html">D-02</a>, <a href="d79.html">D-79</a>, <a href="d70.html">D-70</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -67,39 +67,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> experimental comparison absent / quantitative formula absent / two recursive inputs confirmed, D-promotion possible upon the next round / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h qcd. Domain: delta ==&gt; SU(3) 3-axis color degree of freedom x QCD cost domain (alpha_s path). Recursive substitution path: <a href="h04.html">H-04</a>, <a href="h09.html">H-09</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Color Confinement from CAS FSM Atomicity</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Color confinement is the atomicity cost whereby the CAS cycle Read=&gt;Compare=&gt;Swap cannot be run partially and halted. The CAS is declared an FSM (<a href="../axiom.html#ax14">Axiom 14</a>) with atomic state transitions, so the prohibition of isolated quarks is read through this atomicity cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; SU(3) 3-axis color degree of freedom x QCD cost domain (alpha_s path)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS full-cycle commit norm (state 111). (b) It is chosen because atomicity forbids the stable existence of intermediate states (Read-only, or Read+Compare-only), and the only stable state is the full cycle that has reached commit 111. By write = grip (<a href="../axiom.html#ax7">Axiom 7</a>), the color binding is substituted by the number of committed states.</p>
+<div class="math-block">
+<div class="math-row">$\text{stable} \iff \text{CAS} = 111\ (\text{commit})$</div>
+<div class="math-row">$N_q = 3\ (\text{baryon}),\quad q\bar q\ (\text{meson}),\quad N_q = 1 \Rightarrow \text{forbidden}$</div>
+<div class="math-legend">$111$: CAS full-cycle commit (<a href="h04.html">H-04</a>) | $N_q=3$: baryon = closed cycle | $q\bar q$: meson = open transaction pair | $N_q=1$: FSM intermediate state = unstable</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 3 (CAS 3-axis = SU(3) color), 7 (beta_0=7), 8 (gluons=3^2-1, output)</p>
-<p><strong>Physical Constant Inputs:</strong> <code>Lambda</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h04.html">H-04</a>, <a href="h09.html">H-09</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>CAS cycle    = atomic (indivisible)  Axiom 14
+commit state = 111                 H-04
+Lambda_QCD   = 0.2 GeV             PDG 2024 (~200-300 MeV)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the strong-force ring-7 confinement domain. (b) What it reveals is the energy scale at which isolating a single quark is forbidden — the minimum energy $\Lambda_{QCD}$ at which CAS atomicity is maintained. It is read as the critical energy at which the string breaks and a new cycle (a quark-antiquark pair) begins upon attempting to separate one quark.</p>
+<div class="math-block">
+<div class="math-row">$\Lambda_{QCD} \approx 0.2\ \text{GeV} \;\Rightarrow\; N_q=1\ \text{separation creates a new } q\bar q\ \text{pair}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: color confinement holds, $\Lambda_{QCD} \approx 0.2\ \text{GeV}$</div>
+<div class="math-row">Measured: no free quark observed, $\Lambda_{QCD} \approx 0.2$–$0.3\ \text{GeV}$ (PDG 2024)</div>
+<div class="math-row">Error: qualitative match (scale agreement)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Color confinement is derived qualitatively as a necessary consequence of FSM atomicity, but the 3-quark ordering asymmetry and a quantitative derivation of $\Lambda_{QCD}$ are incomplete, so it stops at hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution Purpose: combined with <a href="h04.html">H-04</a> (baryon=commit); estimate of the quark-confinement energy scale; derivation of the deconfinement temperature.</p><p>This card can be re-used as input for the following cards: <a href="h04.html">H-04</a>, <a href="h09.html">H-09</a></p>
+<p>Re-injection path: <a href="h04.html">H-04</a>, <a href="h09.html">H-09</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

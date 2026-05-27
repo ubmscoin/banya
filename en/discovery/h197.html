@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> experimental comparison absent / recursive substitution not executed (first round) / remaining tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; natural classification plus (domain undetermined, subsequent refinement required). Recursive substitution path: first round (no external inputs)</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Coset Size 35 from the 7-bit CAS 3-Operation Selection Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The coset size is the cost of choosing, out of the full-description DOF 7 (<a href="../axiom.html#ax9">Axiom 9</a>: domain 4 + CAS 3), the 3 bits the CAS grips in one cycle. The CAS is exactly 3 operations — Read·Compare·Swap (<a href="../axiom.html#ax2">Axiom 2</a>) — so the cost is read through the combinatorial norm of choosing 3 of the 7 bits.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; natural classification plus (domain undetermined, subsequent refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the 7-bit choose-3 combinatorial norm $\binom{7}{3}$. Since one CAS cycle grips 3 of the 7 bits as R·C·S and leaves the remaining 4 bits invariant, the total number of such choices is the coset space size. This norm is chosen because it closes through the CAS 3 operations (<a href="../axiom.html#ax2">Axiom 2</a>).</p>
+<div class="math-block">
+<div class="math-row">$|G/H| = \dbinom{7}{3}$</div>
+<div class="math-row">$\dbinom{7}{3} = \dfrac{7!}{3!\,4!} = 35$</div>
+<div class="math-legend">$7$: full-description DOF (<a href="../axiom.html#ax9">Axiom 9</a>) | $3$: CAS R·C·S 3 operations (<a href="../axiom.html#ax2">Axiom 2</a>) | $4$: invariant bits | $35$: coset space size</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <code>alpha</code></p>
-<p><strong>Library Re-substitution:</strong> <em>no external references (first round)</em></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>7        = 4 domain + 3 CAS     Axiom 9
+3        = Read+Compare+Swap    Axiom 2
+C(7,3)   = 7!/(3!*4!) = 35
+C(7,4)   = 35                   Pascal symmetry</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the CAS coset domain. What it reveals is the total number of 3-bit subsets one CAS cycle accesses — the coset space size. Combining the split of the 3 gripped bits and the 4 invariant bits out of 7 yields that value.</p>
+<div class="math-block">
+<div class="math-row">$\dbinom{7}{3} = \dbinom{7}{4} = 35$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $|G/H| = 35$</div>
+<div class="math-row">Symmetry: $\binom{7}{3} = \binom{7}{4} = 35$</div>
+<div class="math-row">Dimensional match: exact (combinatorial identity)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The coset size 35 is established as a combinatorial identity, but the particle-state classification table for the 35 cosets is incomplete, so a quantitative measurement comparison is absent.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p><em>No byproducts specified. Cross-links may be added in subsequent mining.</em></p>
+<p>Re-injection path: —</p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

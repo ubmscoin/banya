@@ -71,39 +71,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a>, <a href="h47.html">H-47</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 세대 갭 비용에서 $|V_{td}|$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>$|V_{td}|$은 3세대 t가 1세대 d로 건너가는 세 칸 전이 비용이다. FSM 순차 점화(<a href="../axiom.html#ax5">공리 5</a>)에서 1·3세대는 가장 먼 갭이고, 유니타리 삼각형 꼭짓점을 정하는 위상 $\delta$를 CAS 정수비로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 Wolfenstein 3단 갭 노름 $A\lambda^3$에 복소 꼭짓점 $(1-Re^{i\delta})$를 곱한 것이다. 1·3세대 세 칸 전이가 $\lambda^3$ 억압이고, $R=2/5$(<a href="h47.html">H-47</a>)와 $\delta=\arctan(5/2+\alpha_s/\pi)$(<a href="d23.html">D-23</a>)가 모두 CAS 수 $5/2=(9-4)/2$(<a href="../axiom.html#ax1">공리 1</a> 도메인 4·완전기술 9)에서 동시에 나오기 때문에 이 노름을 택한다. 따라서 가장 작은 CKM 성분을 닫힌 CAS 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$|V_{td}| = A\lambda^3\,(1 - R\,e^{i\delta})$</div>
+<div class="math-row">$A\lambda^3 = \sqrt{\dfrac{2}{3}}\left(\dfrac{2}{9}\right)^3\left(1+\dfrac{\pi\alpha}{2}\right)^3$</div>
+<div class="math-legend">$A\lambda^3$: 3단 갭 억압 (<a href="d07.html">D-07</a>·<a href="d08.html">D-08</a>) | $R=2/5$: 삼각형 변비 (<a href="h47.html">H-47</a>) | $\delta=\arctan(5/2+\alpha_s/\pi)$: CKM 위상 (<a href="d23.html">D-23</a>) | $5/2=(9-4)/2$: CAS 수 (<a href="../axiom.html#ax1">공리 1</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a>, <a href="h47.html">H-47</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>A lambda^3 = sqrt(2/3)*(2/9)^3*(1+pi a/2)^3 = 0.009291
+R          = 2/5 = 0.4            H-47
+delta      = arctan(5/2) ≈ 68.2°  D-23
+|V_td|(PDG)= 0.00857 ± 0.00018    PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 세대혼합 도메인으로 변환한다. 이 변환으로 보려는 것은 t에서 d로의 전이 진폭 $|V_{td}|$다. 3단 갭 억압에 복소 꼭짓점 모듈러스를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$|1 - 0.4\,e^{i\,68.2^\circ}| = \sqrt{(1-0.4\cos\delta)^2+(0.4\sin\delta)^2} = 0.9289$</div>
+<div class="math-row">$|V_{td}| = 0.009291 \times 0.9289 = 0.00863$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $|V_{td}| = 0.00863$</div>
+<div class="math-row">측정값: $0.00857 \pm 0.00018$ (PDG 2024)</div>
+<div class="math-row">오차: $0.72\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 가장 작은 CKM 성분까지 닫힌 CAS 곱으로 0.72% 일치하나, 유니타리 삼각형 면적의 CAS 해석이 닫히지 않아 발견에 미달한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: $B_d$ 혼합 진동수 $\Delta m_d$ 예측. 유니타리 삼각형 꼭짓점 좌표 확정. $|V_{td}/V_{ts}|$ 비율 검증.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a>, <a href="h47.html">H-47</a></p>
+<p>재투입 경로: <a href="h47.html">H-47</a>, <a href="d23.html">D-23</a>, <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

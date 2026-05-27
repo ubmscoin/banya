@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h electromag qed. 도메인: delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2)). 재귀 대입 경로: <a href="h627.html">H-627</a>, <a href="h696.html">H-696</a>, <a href="h712.html">H-712</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: lock 비트 자기장에 의한 편광 회전에서 패러데이 각 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>패러데이 회전은 자기장 방향으로 전파하는 CAS 비용파의 편광면이 회전하는 비가역 비용이다. 편광은 도메인 비트 방향이고(<a href="h696.html">H-696</a>), 자성은 lock 비트 정렬이며(<a href="h627.html">H-627</a>), lock 비트 자기장이 도메인 비트의 진동면을 회전시킨다(<a href="../axiom.html#ax2">공리 2</a>).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 전자기 결합 alpha = D5 Shilov 체적비 (서명 (5,2))</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 자기-광학 결합 노름, 곧 베르데 상수 $V$다. (b) lock 비트 자기장은 좌·우 원편광에 서로 다른 비용 전파 속도를 부여(원형 복굴절)하고, 두 성분의 위상차가 경로를 따라 누적되므로 회전각은 자기장 $B$와 경로 길이 $d$에 선형인 노름으로 치환된다. 자기장이 정한 방향이 시간 반전 대칭을 깨므로 회전은 비가역이다.</p>
+<div class="math-block">
+<div class="math-row">$\theta_F = V\,B\,d$</div>
+<div class="math-row">$V = \dfrac{\Delta(\text{lock-도메인 결합})}{B}$</div>
+<div class="math-legend">$\theta_F$: 패러데이 회전각 | $V$: 베르데 상수(자기-광학 결합) | $B$: lock 비트 자기장 | $d$: 경로 길이 | 비가역: 시간 반전 대칭 깨짐</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 5, 2 (서명 (5,2)), 137 (자료형 = T(16)+1)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h627.html">H-627</a>, <a href="h696.html">H-696</a>, <a href="h712.html">H-712</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>V(TGG)   = 40 rad/(T·m)          1064 nm
+V(유리)  = 3 rad/(T·m)
+B        = 1 T                   예시 자기장
+d        = 0.02 m                TGG 결정 길이</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 자기광학 도메인(광 아이솔레이터)으로 변환한다. (b) 보려는 것은 주어진 자기장·경로에서 편광면이 도는 각도, 곧 레이저 역반사를 차단하는 아이솔레이터 회전각이다. TGG에 $B=1\,\text{T}$, $d=2\,\text{cm}$를 대입한다.</p>
+<div class="math-block">
+<div class="math-row">$\theta_F = 40\times1\times0.02 = 0.8\,\text{rad} = 45.8^\circ$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: $\theta_F = 0.8\,\text{rad}\approx46^\circ$ (TGG, $1\,\text{T}$, $2\,\text{cm}$)</div>
+<div class="math-row">측정: $V_{\text{TGG}}=40\,\text{rad/(T·m)}$ ($1064\,\text{nm}$), 자기광학</div>
+</div>
+<p>판정: <strong>가설</strong>. 회전각이 $B$·$d$에 선형인 형태는 lock-도메인 결합 노름에서 닫혔으나, 베르데 상수 $V$를 CAS lock 비트-도메인 비트 결합에서 도출하는 마지막 단계가 미완이라 가설에 멈춘다.</p>
+<p>통찰: 패러데이 회전의 비가역성은 lock 비트 자기장이 정한 방향이 시간 반전 대칭을 깨, 왕복해도 회전이 상쇄되지 않고 누적되는 데서 온다 — 광 아이솔레이터의 작동 원리다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h696.html">H-696</a>(편광) 비가역 회전. <a href="h712.html">H-712</a>(자기 광학 커) 반사 대응</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h627.html">H-627</a>, <a href="h696.html">H-696</a>, <a href="h712.html">H-712</a></p>
+<p>재투입 경로: <a href="h696.html">H-696</a>, <a href="h627.html">H-627</a>, <a href="h712.html">H-712</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

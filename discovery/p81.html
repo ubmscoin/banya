@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-81 링 이음새 비대칭 = 바리온 비대칭 방향 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-81 링 이음새 비대칭 = 바리온 비대칭 방향. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p81.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p81.html">P-81</a>. 링 이음새 비대칭 = 바리온 비대칭 방향</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p81.html">P-81</a>: 링 이음새 비대칭 = 바리온 비대칭 방향</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\delta(\text{bit7})\to\text{observer}(\text{bit0})\ \text{순방향만},\ \text{역방향 비용}\ \infty\ \Rightarrow\ \eta_B>0\ (\text{바리온 우세})$$</div></div>
+<p class="finding-precision">예측: 바리온 비대칭 방향 $\eta_B>0$이 링 이음새 순방향 선택에서 나온다. 검증 AMS-02(2028~).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 d-ring은 $\delta$(bit 7)에서 observer(bit 0)로 한 바퀴 도는 링버퍼이고, 그 이음새(seam)는 순방향만 가능하다(<a href="../axiom.html#ax15">공리 15</a>).</p>
+<p>$\delta$==>observer 순방향 전이는 비용 0이지만, observer==>$\delta$ 역방향은 비용이 무한대다 ==> 링은 한 방향으로만 돈다.</p>
+<p>이 링 이음새의 방향 비대칭이 물질-반물질 비대칭의 구조적 기원이다.</p>
+<p>우주가 링 순방향(물질 방향)을 선택했으므로 바리온 수 비대칭 $\eta_B>0$(물질 우세)이 된다 ==> 반바리온이 아니라 바리온이 남는다.</p>
+<p>즉 바리온 비대칭은 미세 조정된 초기 조건(사하로프 조건의 임의 CP 위반)이 아니라 링 이음새 방향성의 직접 귀결이다.</p>
+<p>방향이 한 번 정해지면(순방향) 우주 전체가 같은 방향을 공유하므로, 반바리온 우세 영역은 존재하지 않는다.</p>
+<p>즉 본 예측은 "물질이 우세하다"가 아니라 "전 우주가 같은 링 방향, 반바리온 영역 부재"라는 구조적 주장이다.</p>
+<p>관측 전략: AMS-02가 우주선에서 반물질(반헬륨 등) 비율을 측정해 반바리온 우세 영역의 존재 여부를 본다.</p>
+<p>검증: AMS-02(2028~)에서 우주 어디서나 바리온 우세가 일관되고 반바리온 우세 영역이 없으면 본 예측을 지지한다.</p>
+<p>반박: 우주 일부에서 반바리온 우세가 확인되면 링 이음새 단일 방향성이 반증되고 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: AMS-02 반물질 비대칭 방향 일관성(2028~). 반박: 우주 일부에서 반바리온 우세 확인. 출처: <a href="../axiom.html#ax15">공리 15</a>(링 이음새), <a href="../axiom.html#ax10">공리 10</a>(observer=진입점).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측으로 검증 대기 상태다. forward chain은 공리 15(링 이음새 순방향만)에서 바리온 우세 $\eta_B>0$까지 닫혀 있으나, AMS-02의 반물질 비대칭 통계가 아직 충분치 않다. 전 우주 바리온 우세 일관 확인 시 D 승격, 반바리온 우세 영역 확인 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 관측 분석 진행 중 / forward chain 완료(공리 15 ==> 링 순방향만 ==> $\eta_B>0$) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: delta ==&gt; 링 이음새 순방향성이 바리온 우세 방향 결정(공리 15). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: 링 이음새 순방향 비용에서 바리온 비대칭 방향 $\eta_B>0$ 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>바리온 비대칭은 d-ring 링버퍼가 한 바퀴 도는 비용이다. 8비트 링은 $\delta$(bit 7)에서 observer(bit 0)로만 진행하며, 이 이음새 순방향성(<a href="../axiom.html#ax15">공리 15</a>)과 observer가 진입점이라는 점(<a href="../axiom.html#ax10">공리 10</a>)이 비대칭의 방향을 정한다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 링 이음새의 방향 노름이다. $\delta\to$observer 순방향 전이는 비용 0이지만 역방향은 비용 $\infty$이므로 링이 한 방향으로만 돈다 — 이 방향 비대칭이 물질-반물질 비대칭을 정하기 때문에 이 노름을 택한다. 따라서 바리온 비대칭 $\eta_B$를 링 이음새 순방향 부호로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\eta_B = \dfrac{n_B - n_{\bar B}}{n_\gamma}$</div>
+<div class="math-row">$\delta(\text{bit7}) \to \text{observer}(\text{bit0}) : \text{cost } 0, \quad \text{observer} \to \delta : \text{cost } \infty \;\Rightarrow\; \eta_B > 0$</div>
+<div class="math-legend">$\eta_B$: 바리온 수 비대칭 | $n_B,n_{\bar B}$: 바리온·반바리온 수 | bit7$\to$bit0: 링 순방향 | $\infty$: 역방향 비용 (<a href="../axiom.html#ax15">공리 15</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>bit7 = delta          공리 15 발화 비트
+bit0 = observer       공리 10 진입점
+forward cost = 0      delta -> observer
+reverse cost = inf    observer -> delta (금지)</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>delta 도메인의 시간 순서로 변환한다. 이 변환으로 보려는 것은 우주 전체가 공유하는 링 회전 방향, 곧 반바리온 영역 부재다. 순방향만 허용되므로 우주 어디서나 같은 부호의 비대칭이 산출된다.</p>
+<div class="math-block">
+<div class="math-row">$\text{ring direction uniform} \;\Rightarrow\; \eta_B > 0 \text{ everywhere}, \quad \text{anti-baryon region} = \varnothing$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $\eta_B > 0$ (전 우주 일관, 반바리온 우세 영역 부재)</div>
+<div class="math-row">검증: AMS-02 우주선 반물질 비율 (2028~)</div>
+<div class="math-row">반박: 우주 일부에서 반바리온 우세 확인</div>
+</div>
+<p>판정: <strong>예측</strong>. forward chain은 공리 15 링 이음새 순방향성에서 $\eta_B>0$까지 닫혀 있으나 AMS-02 반물질 통계가 아직 부족해 검증 대기 상태다.</p>
+<p>통찰: 바리온 비대칭은 미세 조정된 초기 조건이 아니라 링 이음새 방향성의 직접 귀결이다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p81.html">P-81</a>: 링 이음새 비대칭 = 바리온 비대칭 방향</td><td>예측 (대기) — 바리온 우세 $\eta_B>0$ = 링 이음새 순방향</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

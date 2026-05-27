@@ -71,39 +71,52 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 5개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h neutrino cp. 도메인: delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7). 재귀 대입 경로: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a>, <a href="h41.html">H-41</a>, <a href="h44.html">H-44</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 수축 겹침 비용에서 CKM $s_{13}$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>1-3 세대 혼합은 CAS가 1세대 비트 패턴을 3세대로 옮길 때 치르는 수축 겹침 비용이다. 세대 간 전이가 3단계로 억압되는 것은 <a href="../axiom.html#ax5">공리 5</a>(FSM 순차 점화)가 정하고, 한 단계 전이 비용 $\alpha$는 <a href="../axiom.html#ax2">공리 2</a>(CAS 원자성) Compare 비용이 정한다. 이 비용이 가장 작은 비대각 혼합 크기로 읽힌다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; CKM/PMNS 혼합각 = CAS 단계 갭 l/N (N=30, 9, 7)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 FSM 3단계 순차 점화 노름이다. 혼합 크기가 세대 갭을 3번 건너는 비용이라 $\lambda^3$로 억압되고, 그 계수가 CAS 수 9와 도메인 수 4에서 나온 비율 $R = 2/(9-4) = 2/5$로 닫히기 때문에 이 노름을 택한다. 따라서 $s_{13}$을 진폭 $A=\sqrt{2/3}$(<a href="d08.html">D-08</a>), 세대 갭 $\lambda=2/9$(<a href="d07.html">D-07</a>), 전이 보정 $(1+\pi\alpha/2)^3$, 비율 $2/5$의 곱으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$s_{13} = A\lambda^3 R$</div>
+<div class="math-row">$\sin\theta_{13}^{\text{CKM}} = \sqrt{\dfrac{2}{3}} \cdot \left(\dfrac{2}{9}\right)^3 \cdot \left(1+\dfrac{\pi\alpha}{2}\right)^3 \cdot \dfrac{2}{5}$</div>
+<div class="math-legend">$A=\sqrt{2/3}$: Wolfenstein 진폭 (<a href="d08.html">D-08</a>) | $\lambda=2/9$: 세대 갭 (<a href="d07.html">D-07</a>) | $(1+\pi\alpha/2)^3$: d-ring 전이 보정 | $R=2/5=2/(9-4)=\cot\delta_0$: CAS 9·도메인 4 비율</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 3 (CAS 단계), 9 (Koide theta), 30 (CAS 접근 경로), 7 (자유도)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a>, <a href="h41.html">H-41</a>, <a href="h44.html">H-44</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>A           = sqrt(2/3) = 0.81650    D-08
+lambda      = 2/9 = 0.22222          D-07
+(2/9)^3     = 0.0109739
+1+pi*alpha/2 = 1.011467              alpha=1/137.036
+R           = 2/5 = 0.4
+s13 exp     = 0.00369               PDG 2024</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>약력 CKM 혼합 도메인으로 변환한다. 이 변환으로 보려는 것은 b==&gt;u 전이를 지배하는 가장 작은 혼합각 $\sin\theta_{13}$이다. 네 인자를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\sin\theta_{13} = 0.81650 \times 0.0109739 \times 1.011467^3 \times 0.4 = 0.003709$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\sin\theta_{13} = 0.003709$</div>
+<div class="math-row">측정값: $0.00369$ (PDG 2024)</div>
+<div class="math-row">오차: $0.51\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 혼합 크기가 CAS 구조 상수만으로 0.51% 산출되었으나, $R = \cot\delta_0$의 필연성(<a href="d23.html">D-23</a> CP 위상과의 동일 기원)이 증명되지 않아 forward chain 미완.</p>
+<p>통찰: 같은 CAS 수 $5/2$가 혼합 크기 $R$과 CP 위상 $\delta_0$를 동시에 지배해 $R\tan\delta_0 = 1$을 강제한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h41.html">H-41</a>(Jarlskog) D카드 승격 경로. $R = \cot\delta_0$의 필연성 유도가 다음 과제. <a href="h44.html">H-44</a>(비트 전이: $u(001) \to b(110) = \text{XOR}111$)에서 전이 진폭으로 유도 가능성.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d07.html">D-07</a>, <a href="d08.html">D-08</a>, <a href="d23.html">D-23</a>, <a href="h41.html">H-41</a>, <a href="h44.html">H-44</a></p>
+<p>재투입 경로: <a href="d08.html">D-08</a>, <a href="d07.html">D-07</a>, <a href="d23.html">D-23</a>, <a href="h41.html">H-41</a>, <a href="h44.html">H-44</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

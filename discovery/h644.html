@@ -68,39 +68,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h645.html">H-645</a>, <a href="h658.html">H-658</a>, <a href="h666.html">H-666</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 감쇠 확률에서 C-14 붕괴 상수 $\lambda$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>반감기는 불안정 핵의 붕괴 확률이 시간에 무관한 상수 $\lambda$임을 뜻한다. <a href="../axiom.html#ax6">공리 6</a> RLU COLD가 감쇠 방향, HOT가 순간 터널링 확률이고, <a href="../axiom.html#ax3">공리 3</a> FSM 닫힌 구간이 비용 장벽, <a href="../axiom.html#ax4">공리 4</a> 비용 $c(s,a)$가 장벽 높이다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 감쇠 확률 노름이다. 단위 시간당 일정한 터널링 확률이 지수 감쇠를 닫기 때문에 이 노름을 택한다. 따라서 잔존 수 $N(t)$를 붕괴 상수 $\lambda$의 지수 함수로 치환하고, $\lambda$를 반감기와 잇는다.</p>
+<div class="math-block">
+<div class="math-row">$N(t) = N_0\, 2^{-t/t_{1/2}} = N_0\, e^{-\lambda t}$</div>
+<div class="math-row">$\lambda = \dfrac{\ln 2}{t_{1/2}}$</div>
+<div class="math-legend">$N(t)$: 잔존 핵 수 | $\lambda$: 붕괴 상수 = RLU 감쇠 확률 | $t_{1/2}$: 반감기 | $\ln 2$: 절반 도달 위상</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h645.html">H-645</a>, <a href="h658.html">H-658</a>, <a href="h666.html">H-666</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>ln 2      = 0.6931
+t_half    = 5730 yr        C-14 반감기
+1 yr      = 3.156e7 s
+lam_exp   = 3.83e-12 /s    가이거-누탈</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>붕괴 상수 도메인으로 변환한다. 이 변환으로 보려는 것은 FSM 비용 장벽을 단위 시간당 터널링하는 확률 $\lambda$다. C-14 반감기를 초로 환산해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\lambda = \dfrac{0.6931}{5730 \times 3.156\times 10^{7}} = 3.83\times 10^{-12}\;\text{s}^{-1}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\lambda = 3.83\times 10^{-12}\;\text{s}^{-1}$ (C-14)</div>
+<div class="math-row">측정값: $\lambda = 3.83\times 10^{-12}\;\text{s}^{-1}$ (가이거-누탈)</div>
+<div class="math-row">오차: 가이거-누탈 실험값과 $< 10\%$ 정합</div>
+</div>
+<p>판정: <strong>가설</strong>. 지수 감쇠와 $\lambda = \ln2/t_{1/2}$ 관계는 닫혔으나, 가모프 인자 $G$의 장벽 높이가 공리에서 직접 도출되지 않아 절대 반감기 예측이 미완이고 D 승격 직전에서 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h645.html">H-645</a>(알파 붕괴). <a href="h658.html">H-658</a>(삼중수소 붕괴). <a href="h666.html">H-666</a>(r-과정)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h645.html">H-645</a>, <a href="h658.html">H-658</a>, <a href="h666.html">H-666</a></p>
+<p>재투입 경로: <a href="h645.html">H-645</a>, <a href="h658.html">H-658</a>, <a href="h666.html">H-666</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

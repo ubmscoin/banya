@@ -69,39 +69,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 4개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="d43.html">D-43</a>, <a href="h116.html">H-116</a>, <a href="h120.html">H-120</a>, <a href="h49.html">H-49</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 캐시 냉각에서 CMB 현재 온도 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CMB 현재 온도는 RLU 캐시(<a href="../axiom.html#ax6">공리 6</a> 퇴거)가 물질-복사 등가점에서 HOT 상태로부터 WARM 상태로 전환된 뒤 d-ring 순환이 $z_\text{eq}$번 반복되며 식은 잔여 열복사다. 발화비트가 꺼진 채 남은 복사 온도가 $T_0$다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; RLU HOT/WARM/COLD 분포 또는 alpha^57 우주 스케일</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 캐시 냉각 노름이다. 현재 온도가 등가점 온도를 적색편이 인자로 나눈 값이고, 그 적색편이가 RLU HOT 상태에서 WARM 상태로의 전환점 $z_\text{eq}$로 닫히기 때문에 이 노름을 택한다. 등가 적색편이 $z_\text{eq}$는 <a href="d43.html">D-43</a>에서 들어온다.</p>
+<div class="math-block">
+<div class="math-row">$T_0 = \dfrac{T_\text{eq}}{1 + z_\text{eq}}$</div>
+<div class="math-row">$T_0 = 2.741\;\text{K}$</div>
+<div class="math-legend">$T_0$: CMB 현재 온도 | $T_\text{eq}$: 등가점 온도 | $z_\text{eq}$: 물질-복사 등가 적색편이 (<a href="d43.html">D-43</a>) | RLU 퇴거 (<a href="../axiom.html#ax6">공리 6</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 57 (산출, alpha^57=Lambda*l_p^2), 7, 21, 35 (외적 대수 차원)</p>
-<p><strong>물리 상수 입력:</strong> <code>H_0</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d43.html">D-43</a>, <a href="h116.html">H-116</a>, <a href="h120.html">H-120</a>, <a href="h49.html">H-49</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>z_eq    = 3402            D-43
+T_eq    = 9330 K          등가점 온도
+T_0     = 2.741 K         도출
+T_0(측정) = 2.7255 ± 0.0006 K   COBE/FIRAS</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>우주론 복사 온도 도메인으로 변환한다. 이 변환으로 보려는 것은 발화비트가 꺼진 현재의 잔여 흑체복사 온도 $T_0$다. 등가점 온도를 적색편이 인자 $1+z_\text{eq}$로 나눠 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$T_0 = \dfrac{9330}{1 + 3402} = 2.741\;\text{K}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 가설</h3>
+<div class="math-block">
+<div class="math-row">도출값: $T_0 = 2.741\;\text{K}$</div>
+<div class="math-row">측정값: $2.7255 \pm 0.0006\;\text{K}$ (COBE/FIRAS)</div>
+<div class="math-row">오차: $0.57\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. RLU 냉각이 CMB 온도를 정량 재현하나, FIRAS 정밀도(0.02%)에 못 미쳐 $z_\text{eq}$ 도출의 정밀화가 남아 있으므로 forward chain의 마지막 단계가 미완이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d43.html">D-43</a>($z_\text{eq}$), <a href="h49.html">H-49</a>($T_\text{CMB}$) 근거.</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d43.html">D-43</a>, <a href="h116.html">H-116</a>, <a href="h120.html">H-120</a>, <a href="h49.html">H-49</a></p>
+<p>재투입 경로: <a href="d43.html">D-43</a>, <a href="h49.html">H-49</a>, <a href="h116.html">H-116</a>, <a href="h120.html">H-120</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D promotion is possible upon proceeding to the next round / outstanding tasks specified</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain undetermined, further refinement required). Recursive substitution path: <a href="h820.html">H-820</a>, <a href="h825.html">H-825</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving Protein Folding from the FSM Norm Minimization Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Protein folding is the cost the CAS pays as it searches the possible conformations and transitions to the state of lowest FSM norm. Since each conformation is one FSM state and the FSM norm (<a href="../axiom.html#ax6">Axiom 6</a>) corresponds to the free energy, this cost is read through the FSM norm-minimization norm.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain undetermined, further refinement required)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the FSM norm $\|F_{\text{protein}}\|$, because folding proceeds by CAS search (<a href="../axiom.html#ax2">Axiom 2</a>) in its own conformation space without external instruction. (b) This norm is chosen because the CAS follows the cost-minimal path rather than a random one, which resolves the Levinthal paradox (about $10^{300}$ possible conformations). The native state is substituted by the norm-minimal conformation.</p>
+<div class="math-block">
+<div class="math-row">$\text{native} = \arg\min_{\text{conf}} \|F_{\text{protein}}\|$</div>
+<div class="math-row">$\arg\min_{\text{conf}} \|F_{\text{protein}}\| = \arg\min_{\text{conf}} G(\text{conf})$</div>
+<div class="math-legend">$\|F_{\text{protein}}\|$: FSM norm (<a href="../axiom.html#ax6">Axiom 6</a>) | $G$: free energy | conf: FSM state = conformation | chaperone: auxiliary FSM lowering the cost barrier</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h820.html">H-820</a>, <a href="h825.html">H-825</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>possible conformations ~ 10^300    Levinthal paradox
+folding time           ~ us - s     measured range
+misfolding fraction    < 10^-4      with chaperone help</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the free-energy-landscape domain. (b) What it reveals is whether the native state coincides with the norm-minimal conformation. The coincidence is read off the transition down the FSM-norm gradient.</p>
+<div class="math-block">
+<div class="math-row">$\|F_{\text{native}}\| = \min_{\text{conf}} \|F_{\text{protein}}\|$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: native state = FSM norm-minimal conformation</div>
+<div class="math-row">Measured: AlphaFold prediction vs. experimental structure RMSD $< 1\,\text{Å}$</div>
+<div class="math-row">Misfolding: prion = FSM trapped in local minimum, fraction $< 10^{-4}$</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. Folding closes qualitatively as FSM norm minimization, but the quantitative correspondence between the CAS cost landscape and the free-energy landscape does not yet close in the forward chain. The same norm minimization is re-injected into enzymes (<a href="h820.html">H-820</a>) and self-organization (<a href="h825.html">H-825</a>).</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h820.html">H-820</a> (enzymes). <a href="h825.html">H-825</a> (self-organization)</p><p>This card can be re-used as input for the following cards: <a href="h820.html">H-820</a>, <a href="h825.html">H-825</a></p>
+<p>Re-injection path: <a href="h820.html">H-820</a>, <a href="h825.html">H-825</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

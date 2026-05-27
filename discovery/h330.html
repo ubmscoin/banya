@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지). 재귀 대입 경로: <a href="h324.html">H-324</a>, <a href="h329.html">H-329</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 가속 시프트 방향 전환 비용에서 운릭 온도 $T_U$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>운릭 효과는 가속 observer가 시프트 방향을 전환할 때 드는 Swap 비용이 시스템-도메인 시간 매핑을 왜곡하는 데서 나온다. 방향 전환(가속)의 Swap 비용은 <a href="../axiom.html#ax4">공리 4</a>(비용)가, 시스템 시간 기준은 <a href="../axiom.html#ax15">공리 15</a>(δ = 시스템 시간)가, 관성·가속 observer의 구별은 <a href="../axiom.html#ax10">공리 10</a>(observer)가 규정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; Compare 분기 (true ==&gt; Swap ==&gt; DATA / false ==&gt; 중첩 유지)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 가속 observer의 시간 매핑 왜곡 노름이다. (b) 이 노름을 택하는 이유는 매핑이 observer에 의존해 관성계에서 빈 엔티티가 아닌 것이 가속계에서는 빈 엔티티(온도)로 보이기 때문이다. 그 왜곡도가 가속도 $a$에 비례한다. 운릭 온도를 가속도에 비례하는 형태로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$T_U = \dfrac{\hbar a}{2\pi c k_B}$</div>
+<div class="math-row">$T_U \propto a, \quad a = \text{시프트 방향 전환 빈도}$</div>
+<div class="math-legend">$T_U$: 운릭 온도 | $a$: 가속도 = 시프트 방향 전환 빈도 | observer 의존 매핑 (<a href="../axiom.html#ax10">공리 10</a>) | δ 시스템 시간 기준 (<a href="../axiom.html#ax15">공리 15</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 2 (괄호 수 DATA/OPERATOR), 3 (CAS 단계)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h324.html">H-324</a>, <a href="h329.html">H-329</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>hbar = 1.054571817e-34 J s          CODATA 2018
+c    = 299792458 m/s
+k_B  = 1.380649e-23 J/K
+a    = 9.8 m/s^2                    지구 중력</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 양자·정보 CAS Compare 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 가속이 만드는 매핑 왜곡도, 곧 가속 observer가 느끼는 운릭 온도 $T_U$다. $a=9.8\;\text{m/s}^2$을 대입해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$T_U = \dfrac{\hbar \times 9.8}{2\pi c k_B} \approx 4 \times 10^{-20}\;\text{K}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출 구조: $T_U\propto a$ (가속 = 시프트 방향 전환 비용 = 매핑 왜곡)</div>
+<div class="math-row">대조: $a=9.8\;\text{m/s}^2$에서 $T_U\sim10^{-20}$ K, 강한 레이저장 탐색 진행 중</div>
+<div class="math-row">상태: 차원·구조 일치, 직접 관측 미실현</div>
+</div>
+<p>판정: <strong>가설</strong>. 운릭 효과가 가속 observer의 매핑 왜곡으로 구조 일치하고 등가 원리로 호킹 복사(<a href="h329.html">H-329</a>)와 연결되나, $T_U$를 CAS 비용에서 직접 계산하는 정량 도출이 미완이라 승급 전이다.</p>
+<p>통찰: 진공의 정의가 observer마다 다른 이유는 시스템-도메인 매핑이 가속(방향 전환 비용)에 의존하기 때문이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h324.html">H-324</a>, <a href="h329.html">H-329</a></p>
+<p>재투입 경로: <a href="h329.html">H-329</a>, <a href="h324.html">H-324</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

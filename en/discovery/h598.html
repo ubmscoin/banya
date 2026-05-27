@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h598.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h598.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h598.html">H-598</a>. Quantum Supremacy = Exponential State Space of CAS Parallel Compare</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> Two recursive inputs confirmed; D promotion possible at the next round / remaining tasks made explicit.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition preserved). Recursive-substitution path: <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Exponential State-Space Size from the CAS Parallel Compare Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Quantum supremacy is read as the parallel cost of $n$ d-rings performing CAS Compare simultaneously. Since each d-ring has two branch states (<a href="../axiom.html#ax3">Axiom 3</a>), the joint state space of $n$ d-rings accumulates multiplicatively while the open FSM holds the superposition (<a href="../axiom.html#ax14">Axiom 14</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition preserved)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the CAS parallel Compare norm. (b) What it reveals is the size of the joint state space that $n$ d-rings explore simultaneously. CAS Compare can compare all d-ring branches at once (<a href="../axiom.html#ax2">Axiom 2</a>) whereas classical computation performs only one CAS at a time, so this norm is chosen. The parallel-search capacity is substituted by the joint state-space size $2^n$.</p>
+<div class="math-block">
+<div class="math-row">$\dim \mathcal{H} = 2^n$</div>
+<div class="math-row">$T_{\text{quantum}} = O(\text{poly}(n)),\;\;T_{\text{classical}} = O(2^n)$</div>
+<div class="math-legend">$\dim \mathcal{H}$: joint state-space size | $n$: d-rings (qubits) | $2$: d-ring branches 2 | $T$: simulation cost</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (number of brackets DATA/OPERATOR), 3 (CAS stages)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>none</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>n     = 50            number of d-rings (qubits)
+2^n   = 2^50 ~ 1e15   joint state-space size
+n     = 53            Google Sycamore (2019)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the quantum/information domain (parallel state search). (b) What it reveals is the number of d-rings at which classical simulation becomes infeasible. Substituting $n=50$ into the joint state-space size yields that scale.</p>
+<div class="math-block">
+<div class="math-row">$\dim \mathcal{H} = 2^{50} \approx 1.13 \times 10^{15}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\dim \mathcal{H} = 2^{50} \approx 10^{15}$ (classically infeasible region)</div>
+<div class="math-row">Measured: Google Sycamore 53-qubit quantum supremacy demonstration (2019)</div>
+<div class="math-row">State space: $2^n$ ($n$ d-rings)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The exponential state space $2^n$ closes from the parallel accumulation of d-ring branch 2. A step in which the $\text{BQP} \supsetneq \text{BPP}$ separation is proven from the axioms remains, so it has not advanced to the next round.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h599.html">H-599</a> (Shor) and <a href="h600.html">H-600</a> (Grover) — origin of the speed-up.</p><p>This card can be re-used as input for the following cards: <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a></p>
+<p>Re-injection path: <a href="h599.html">H-599</a>, <a href="h600.html">H-600</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

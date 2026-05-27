@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h956.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h956.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-discovery">Discovery</span></p>
 <h1><a href="h956.html">H-956</a>. $(-\Delta)^{5/3}$ = Fermi Degeneracy Pressure Exponent $\tfrac{9-4}{3}$ -- <a href="d33.html">D-33</a> promoted</h1><div class="box-finding">
@@ -61,39 +61,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> exponent 5/3 = (9−4)/3 established in D-33 (white-dwarf & Kolmogorov measurement, 0% error) / same result in fractional-Laplacian (-Δ)^(5/3) form / forward chain complete</p>
 <p><strong>Location:</strong> Category: h structure. Domain: delta ==&gt; the Banya formula’s own structure, primary-integer (4,3) combination. Recursive substitution path: <a href="h953.html">H-953</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Degeneracy Pressure Exponent 5/3 from Axiom 9 DOF 9, 4, 3</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Degeneracy pressure is the CAS cost paid to compress the Fermi medium one more notch. Of the 9 full-description DOF, removing the 4 the Swap holds leaves the non-Swap DOF, and dividing that by the 3 CAS steps fixes the pressure exponent (<a href="../axiom.html#ax9">Axiom 9</a>).</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — δ to target domain</h3>
-<p>delta ==&gt; the Banya formula’s own structure, primary-integer (4,3) combination</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the DOF-fraction $(9-4)/3$ norm. The degeneracy pressure exponent is the medium's compression cost, and that cost closes as the ratio of the non-Swap DOF (numerator) to the CAS step count (denominator), so this norm is chosen (<a href="../axiom.html#ax9">Axiom 9</a>). The exponent $\gamma$ of the standard polytropic equation of state $P\propto\rho^{\gamma}$ is substituted by the DOF ratio.</p>
+<div class="math-block">
+<div class="math-row">$P \propto \rho^{\gamma}$</div>
+<div class="math-row">$\gamma = \dfrac{9-4}{3} = \dfrac{5}{3}$</div>
+<div class="math-legend">$\gamma$: degeneracy pressure exponent | $9$: structure full-description DOF (<a href="../axiom.html#ax9">Axiom 9</a>) | $4$: Swap co-value (holding) | $3$: CAS steps | $(-\Delta)^{5/3}$: fractional Laplacian (<a href="h953.html">H-953</a> half-derivative generalization)</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 9 (structural DOF), 4 (ball value), 3 (CAS steps) → (9−4)/3</p>
-<p><strong>Physical Constant Inputs:</strong> none (directly from axiom structure)</p>
-<p><strong>Library Re-substitution:</strong> <a href="h953.html">H-953</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>9            = structure full-description DOF   Axiom 9
+4            = Swap co-value (holding)          Axiom 9
+3            = CAS steps R C S                  Axiom 2
+(9-4)/3      = 5/3 = 1.6667
+gamma(meas)  = 5/3                              white dwarf degeneracy (D-33)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = δ utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the degenerate Fermi-medium domain (white dwarfs, neutron stars). What it reveals is the power exponent of pressure against compression — the stiffness of the degeneracy pressure expressed by the fractional Laplacian $(-\Delta)^{5/3}$. The DOF ratio $(9-4)/3$ yields that exponent.</p>
+<div class="math-block">
+<div class="math-row">$\gamma = \dfrac{9-4}{3} = \dfrac{5}{3} = 1.6667$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Discovery</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $\gamma = 5/3 = 1.6667$</div>
+<div class="math-row">Measured: $5/3$ (white dwarf degeneracy pressure, <a href="d33.html">D-33</a>)</div>
+<div class="math-row">Error: $0\%$</div>
+</div>
+<p>Verdict: <strong>Discovery</strong>. The exponent $5/3$ closes as the DOF ratio $(9-4)/3$, and the same exponent appears in the Kolmogorov turbulence spectrum $E(k)\propto k^{-5/3}$, so both bind as projections of the fractional Laplacian $(-\Delta)^{5/3}$.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: Chandrasekhar limit, neutron-star equation of state, unification with the turbulence spectrum.</p>
+<p>Re-injection path: <a href="d33.html">D-33</a>, <a href="h953.html">H-953</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

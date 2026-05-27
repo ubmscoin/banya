@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h misc. 도메인: delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요). 재귀 대입 경로: <a href="d152.html">D-152</a>, <a href="d153.html">D-153</a>, <a href="d154.html">D-154</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인 4축 직교 비용에서 Maxwell 방정식 4개 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>전자기장의 기술은 도메인 4축(<a href="../axiom.html#ax1">공리 1</a>: time·space·observer·superposition)에 대한 CAS 투영이다. <a href="../axiom.html#ax5">공리 5</a>(도메인 4비트)가 독립 투영 채널을 4개로 제한하고, <a href="../axiom.html#ax4">공리 4</a>(경계 교차 비용)가 발산·회전 두 비용 형식을 가른다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 자연 분류 외 (도메인 미확정, 후속 정련 필요)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 도메인 4축 직교 투영 노름이다. 전자기장이 4축 각각에 대한 CAS 투영으로 닫히기 때문에 이 노름을 택한다. 스칼라 투영(발산) 2개와 벡터 투영(회전) 2개가 4축을 모두 소진해, 5번째 독립 방정식이 불가능하다.</p>
+<div class="math-block">
+<div class="math-row">$\{\nabla\cdot\mathbf{E},\;\nabla\cdot\mathbf{B},\;\nabla\times\mathbf{E},\;\nabla\times\mathbf{B}\}$</div>
+<div class="math-row">$N_{\text{eq}} = 2_{\text{scalar}} + 2_{\text{vector}} = 4 = \dim(\text{domain})$</div>
+<div class="math-legend">$N_{\text{eq}}$: 독립 방정식 수 | $2_{\text{scalar}}$: 발산 투영 (<a href="../axiom.html#ax4">공리 4</a> 경계) | $2_{\text{vector}}$: 회전 투영 | $\dim(\text{domain})$: 도메인 4축 (<a href="../axiom.html#ax1">공리 1</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 카드 본문에서 추출</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d152.html">D-152</a>, <a href="d153.html">D-153</a>, <a href="d154.html">D-154</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>dim(domain) = 4              공리 1, 공리 5
+scalar 투영 = 2 (div E, div B)
+vector 투영 = 2 (curl E, curl B)
+N_eq        = 4              관측 방정식 수 4</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>전자기장 도메인으로 변환한다. 이 변환으로 보려는 것은 독립 전자기 방정식의 개수다. 4축 직교 투영을 스칼라·벡터로 분해하면 그 개수가 정확히 4로 산출되고, $\nabla\cdot\mathbf{B}=0$은 space Swap 쌍닫힘의 표현이다.</p>
+<div class="math-block">
+<div class="math-row">$N_{\text{eq}} = 4,\qquad N_{\text{eq}}^{(5)} = \varnothing$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $N_{\text{eq}} = 4$ (5번째 독립 방정식 부재)</div>
+<div class="math-row">측정값: 독립 Maxwell 방정식 4개 (4개 초과 부재 실험 확인)</div>
+<div class="math-row">오차: $0.0\%$</div>
+</div>
+<p>판정: <strong>발견</strong>. 도메인 4축 직교 투영이 발산 2 + 회전 2 = 4를 강제해 Maxwell 방정식 수가 자유 매개변수 0개로 닫혔다.</p>
+<p>$dF=0$, $d{*}F=J$ 2개 축약은 4축 투영의 미분형식 압축과 동형이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="d152.html">D-152</a>(쿨롱), <a href="d153.html">D-153</a>(포인팅), <a href="d154.html">D-154</a>(패러데이) 통합 체계</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d152.html">D-152</a>, <a href="d153.html">D-153</a>, <a href="d154.html">D-154</a></p>
+<p>재투입 경로: <a href="d152.html">D-152</a>, <a href="d153.html">D-153</a>, <a href="d154.html">D-154</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

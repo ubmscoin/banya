@@ -68,39 +68,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 재귀 입력 3개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h info consciousness. 도메인: delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>). 재귀 대입 경로: <a href="h825.html">H-825</a>, <a href="h827.html">H-827</a>, <a href="h830.html">H-830</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: RLU 감쇠와 CAS 생성의 균형에서 자기조직화 임계 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>CAS는 쥠마다 비용을 생성하고(<a href="../axiom.html#ax2">공리 2</a>), 잔존 비용은 RLU 인덱스가 연속 회수한다(<a href="../axiom.html#ax11">공리 11</a>). 쥠 1개의 총비용 13 중 공 유지 4가 풀려도 잔존 9가 RLU에 남아 감쇠하므로, 생성과 회수의 비를 반야식의 비용 항으로 읽는다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; bit 7 발화비트 / d-ring 자기참조 루프 (<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)</p>
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 회수율 대 CAS 생성율의 비 노름이다. 회수율이 생성율보다 작으면 비용이 축적되어 사태가 터지고, 사태가 비용을 방출하면 다시 회수율이 생성율에 근접한다 — 이 자기 조절이 임계로 수렴시키므로 이 노름을 택한다. 잔존 9와 공 유지 4의 비 $9/4$가 회수/생성 균형점을 정한다.</p>
+<div class="math-block">
+<div class="math-row">$r = \dfrac{R_{\text{decay}}}{R_{\text{gen}}}, \qquad r^\ast = \dfrac{9}{4}$</div>
+<div class="math-row">$r < r^\ast \Rightarrow$ 축적, $\;\; r > r^\ast \Rightarrow$ 방출, $\;\; r = r^\ast \Rightarrow$ 임계</div>
+<div class="math-legend">$r$: 회수/생성 비 | $R_{\text{decay}}$: RLU 회수율 | $R_{\text{gen}}$: CAS 생성율 | $9$: 잔존 비용(13-4) | $4$: 공 유지 비용(3축+타임스탬프)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 7 (=4+3 Hamming), 128 (=2^7 Cl(0,7)), 8 (bit), 137</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h825.html">H-825</a>, <a href="h827.html">H-827</a>, <a href="h830.html">H-830</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>cost_total = 13           쥠 1개 총비용        공리 11
+cost_ball  = 4            3축 쥐기 + 타임스탬프
+cost_resid = 9 = 13 - 4   RLU 잔존 비용
+r_star     = 9/4 = 2.25   임계 균형비</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>$\delta$ 발화 / d-ring 자기참조 도메인(<a href="../axiom.html#ax8">공리 8</a>, <a href="../axiom.html#ax15">공리 15</a>)으로 변환한다. 이 변환으로 보려는 것은 사태 크기 분포의 임계 지수다. 균형비 $9/4$가 사태 방출을 규제하면 분포는 멱법칙(<a href="h827.html">H-827</a>)이 된다.</p>
+<div class="math-block">
+<div class="math-row">$r = r^\ast = \tfrac{9}{4} \;\Rightarrow\; P(s) \propto s^{-\tau}, \quad \tau \approx 1.5$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 균형비 $r^\ast = 9/4$에서 사태 분포 $P(s)\propto s^{-\tau}$</div>
+<div class="math-row">측정: 2D 모래더미 임계 지수 $\tau \approx 1.5$</div>
+<div class="math-row">결과: 자발 임계 수렴과 멱법칙 사태가 정성 일치</div>
+</div>
+<p>판정: <strong>가설</strong>. 자발 임계 수렴은 $9/4$ 균형에서 닫히나 임계 지수 $\tau$를 $9/4$에서 단일 값으로 잇는 사상이 미정이다.</p>
+<p>통찰: SOC는 외부 조율 없이 임계에 도달하는 비용 자기 조절이며, RLU와 CAS의 공존 자체가 임계를 강제한다 — 사태 분포는 멱법칙(<a href="h827.html">H-827</a>)으로 재투입된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h825.html">H-825</a>(자기조직화). <a href="h827.html">H-827</a>(멱법칙). <a href="h830.html">H-830</a>(카오스 가장자리)</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h825.html">H-825</a>, <a href="h827.html">H-827</a>, <a href="h830.html">H-830</a></p>
+<p>재투입 경로: <a href="h827.html">H-827</a>, <a href="h825.html">H-825</a>, <a href="h830.html">H-830</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h815.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h815.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_misc</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h815.html">H-815</a>. Optical Theorem = Imaginary Part of CAS Total Cost in Forward Scattering</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> 2 recursive inputs confirmed; D Promotion possible upon proceeding to the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h misc. Domain: delta ==&gt; outside natural classification (domain unfixed, further refinement needed). Recursive substitution path: <a href="h811.html">H-811</a>, <a href="h816.html">H-816</a></p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the Optical Theorem from CAS Unitarity</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>The total cross section is the sum of the cost CAS pays across all channels. Since the CAS Compare is the cost of selecting a candidate (<a href="../axiom.html#ax2">Axiom 2</a>) and each selection contributes to the cross section at cost $+1$ (<a href="../axiom.html#ax4">Axiom 4</a>), the unitarity that conserves total probability closes that cost sum into the imaginary part of the forward cost.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution — delta to target domain</h3>
-<p>delta ==&gt; outside natural classification (domain unfixed, further refinement needed)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the completeness norm of CAS state transitions (total probability $=1$). (b) When the S-matrix is unitary ($S^\dagger S=\mathbf{1}$), the optical term of $S=\mathbf{1}+iT$, namely $T-T^\dagger=iT^\dagger T$, binds the imaginary part of the forward amplitude to the total cost — that is why this norm is chosen. The total cross section is therefore substituted by the imaginary part of the forward scattering amplitude.</p>
+<div class="math-block">
+<div class="math-row">$S^\dagger S = \mathbf{1},\quad S = \mathbf{1} + iT$</div>
+<div class="math-row">$\sigma_{\text{tot}} = \dfrac{4\pi}{k}\,\text{Im}\,f(0)$</div>
+<div class="math-legend">$\sigma_{\text{tot}}$: total cross section = CAS total cost | $f(0)$: forward scattering amplitude | $\text{Im}$: imaginary cost component | $k$: incident wavenumber | $S$: CAS scattering operator</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> extracted from the card body</p>
-<p><strong>Physical Constant Inputs:</strong> <code>theta</code></p>
-<p><strong>Library Re-substitution:</strong> <a href="h811.html">H-811</a>, <a href="h816.html">H-816</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>4 pi          = 12.56637
+sigma_tot(pp) = 100 mb       LHC sqrt(s) = 13 TeV
+Froissart bound  sigma &lt; ln^2(s)   causality(H-811)</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>(a) The transformation is into the scattering cross-section domain (the forward channel of CAS cost). (b) What it reveals is that the total cost of all channels equals a single forward imaginary cost. Multiplying the imaginary part of the forward amplitude by $4\pi/k$ yields the total cross section.</p>
+<div class="math-block">
+<div class="math-row">$\sigma_{\text{tot}} = \dfrac{4\pi}{k}\,\text{Im}\,f(0)$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: unitarity $\Rightarrow$ total cost = forward imaginary part</div>
+<div class="math-row">Measured: $\sigma_{\text{tot}}(pp)\approx 100\;\text{mb}$ (LHC 13 TeV)</div>
+<div class="math-row">Constraint: $\sigma\lesssim\ln^2 s$ (Froissart, <a href="h811.html">H-811</a>)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The chain reaches the stage where unitarity closes the total cost into the forward imaginary part, but the final stage of deriving the $4\pi/k$ coefficient directly from axioms is unfinished. Insight: the imaginary cost of a single forward direction knows the total cost summed over all directions.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution purpose: <a href="h811.html">H-811</a> (dispersion relations). <a href="h816.html">H-816</a> (crossing symmetry)</p><p>This card can be re-used as input for the following cards: <a href="h811.html">H-811</a>, <a href="h816.html">H-816</a></p>
+<p>Re-injection path: <a href="h811.html">H-811</a>, <a href="h816.html">H-816</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">

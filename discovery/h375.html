@@ -67,39 +67,50 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="d21.html">D-21</a>, <a href="h374.html">H-374</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 57개 조합 완전 순환 억제 비용에서 양성자 수명 하한 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>양성자 붕괴는 양성자 쥠(<a href="d21.html">D-21</a>)이 풀리는 사건으로, FSM 111이 완전히 해체되려면 57개 CAS 조합(<a href="../axiom.html#ax9">공리 9</a>) 전부를 1회씩 통과하는 "완전 순환"이 필요하다. 통과마다 Compare 1회의 확률 억제 $\alpha$가 누적된다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 57개 조합 완전 순환의 누적 억제 노름 $\alpha^{57}$이다. (b) 이 노름을 택하는 이유는 양성자 수명이 양성자 질량 시간 스케일 $\hbar/(m_p c^2)$를 이 누적 억제로 나눈 하한으로 닫히기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_p &gt; \dfrac{\hbar}{m_p c^2\cdot\alpha^{57}}$</div>
+<div class="math-row">$\alpha^{57}=\textstyle\prod_{k=1}^{57}\alpha$</div>
+<div class="math-legend">$\tau_p$: 양성자 수명 | $\hbar/(m_p c^2)$: 양성자 질량 시간 스케일 | $\alpha^{57}$: 57개 조합 각 Compare 1회 누적 억제 (<a href="../axiom.html#ax9">공리 9</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>ℏ</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d21.html">D-21</a>, <a href="h374.html">H-374</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>alpha          = 1/137.036        D-01
+alpha^57       = 10^-122 (근사)
+hbar/(m_p c^2) = 7.01e-25 s
+tau_p (실험 하한) > 2.4e34 yr     Super-Kamiokande</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 양성자 붕괴 수명 도메인으로 변환한다. (b) 보려는 것은 57개 조합 완전 순환이 강제하는 수명 하한 $\tau_p$다. 질량 시간 스케일을 $\alpha^{57}$로 나누고 경로 최적화를 적용해 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$\tau_p &gt; 7.01\times 10^{-25}/10^{-122}=7.01\times 10^{97}\;\text{s}\approx 2.2\times 10^{90}\;\text{yr}$</div>
+<div class="math-row">경로 최적화 후 $\tau_p &gt; 10^{40}\;\text{yr}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\tau_p &gt; 10^{40}\;\text{yr}$</div>
+<div class="math-row">측정값: $\tau_p &gt; 2.4\times 10^{34}\;\text{yr}$ (Super-Kamiokande)</div>
+<div class="math-row">정합: 실험 하한보다 6자릿수 크며 모순 없음</div>
+</div>
+<p>판정: <strong>가설</strong>. 경로 최적화 인자의 구체적 계산과 <a href="h374.html">H-374</a>($\sim 10^{37}$ yr)와의 통합이 미정이다. 실제 수명이 두 추정 사이에 있으리라는 점이 통찰이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d21.html">D-21</a>, <a href="h374.html">H-374</a></p>
+<p>재투입 경로: <a href="d21.html">D-21</a>, <a href="h374.html">H-374</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

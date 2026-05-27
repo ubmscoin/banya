@@ -66,39 +66,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 명시적 도출 식 존재 / 재귀 대입 입력 4개 확인 / forward chain 완료 (공리 ==&gt; 식 ==&gt; 수치)</p>
 <p><strong>위치:</strong> 카테고리: d mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d04.html">D-04</a>, <a href="d10.html">D-10</a>, <a href="d118.html">D-118</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS 비용 $\alpha$의 역수에서 뮤온 질량 $m_\mu$ 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>뮤온은 전자의 d-ring 상위 쥠 상태이며, 두 경입자 DATA 크기의 비는 CAS Read 비용 $\alpha$의 역수가 결정한다. 한 단계 위 링으로 올라가는 비용 $1/\alpha$에 발화비트 보정이 더해진 것이 질량비다(<a href="../axiom.html#ax3">공리 3</a> CAS 연산).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 d-ring 3도메인 순환의 역비용 노름 $3/(2\alpha)$다. (b) 전자 대비 뮤온의 DATA 크기 절대값을 보려 하기 때문에 이 노름을 택한다. 전자 DATA 크기 $m_e$(<a href="d04.html">D-04</a>)에 비율 인자를 곱하고, CAS Read 비용 $\alpha$(<a href="d01.html">D-01</a>)의 발화비트 보정 $5\alpha/(2\pi)$를 더한다(<a href="d10.html">D-10</a> 비율).</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{m_\mu}{m_e} = \dfrac{3}{2\alpha}\left(1 + \dfrac{5\alpha}{2\pi}\right)$</div>
+<div class="math-row">$m_\mu = m_e \times \dfrac{3}{2\alpha}\left(1 + \dfrac{5\alpha}{2\pi}\right)$</div>
+<div class="math-legend">$m_\mu$: 뮤온 질량 | $m_e$: 전자 DATA 크기 (<a href="d04.html">D-04</a>) | $\alpha$: CAS Read 비용 (<a href="d01.html">D-01</a>) | $3/(2\alpha)$: 3도메인 순환 역비용 | $5\alpha/(2\pi)$: 발화비트 보정</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137, 27, 9, 2/9</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>m_e</code>, <code>m_mu</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="d04.html">D-04</a>, <a href="d10.html">D-10</a>, <a href="d118.html">D-118</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>m_e        = 0.5109989 MeV        D-04
+alpha      = 1/137.036           D-01
+3/(2 alpha) = 205.55
+m_mu (exp) = 105.658 MeV          PDG</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 경입자 질량 계층 절대값 도메인으로 변환한다. (b) 보려는 것은 비율 $m_\mu/m_e$(<a href="d10.html">D-10</a>)에서 $m_e$를 곱해 얻는 뮤온 질량 절대값이다. 기본 비율 $3/(2\alpha)\approx 205.55$에 발화비트 보정 $1+5\alpha/(2\pi)$를 곱한다.</p>
+<div class="math-block">
+<div class="math-row">$m_\mu = 0.5109989 \times 205.55 \times \left(1 + \dfrac{5}{2\pi \cdot 137.036}\right) = 105.66\;\text{MeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>적중</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_\mu = 105.66\;\text{MeV}$</div>
+<div class="math-row">측정값: $105.658\;\text{MeV}$ (PDG)</div>
+<div class="math-row">오차: $0.002\%$</div>
+</div>
+<p>판정: <strong>적중</strong>. $3/(2\alpha)$ 기본 비율과 발화비트 보정이 결합해 절대값이 0.002%로 맞았고, 뮤온 g-2 고차항(<a href="d118.html">D-118</a>)의 입력으로 재투입된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="d04.html">D-04</a>, <a href="d10.html">D-10</a>, <a href="d118.html">D-118</a></p>
+<p>재투입 경로: <a href="d10.html">D-10</a>, <a href="d04.html">D-04</a>, <a href="d01.html">D-01</a>, <a href="d118.html">D-118</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

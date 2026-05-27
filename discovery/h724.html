@@ -73,39 +73,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>v1.8 정정:</strong> v1.8: 상대론적 질량 = 도메인 시간/시스템 시간 변환비에 따른 FSM 노름의 도메인 측정값 변화. <a href="../axiom.html#ax15">공리 15</a> 시간 변환 + <a href="../axiom.html#ax14">공리 14</a> FSM 노름.</p>
 <p><strong>4력 v1.8 분류 (physics_map):</strong> 강력=FSM 원자성(ring-7) | 약력=수축 겹침·직렬화(ring-30) | 전자기=교차 Cmp/Swp 비용(ring-137) | <strong>중력=√3 노름 누적·쥠 밀집 수축 (ring 없음, 비용 아닌 기하 수축)</strong></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: 도메인 시간 변환비 노름에서 상대론적 질량 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>정지 질량 $m_0$는 FSM 노름(<a href="../axiom.html#ax14">공리 14</a>)이고, FSM은 닫힌 회로라 외부 비용으로 노름이 커질 수 없다. 따라서 관측되는 $\gamma m_0$ "증가"는 노름 변화가 아니라, $\delta^2$ 좌항 time축에서 시스템 시간과 도메인 시간이 갈리는(<a href="../axiom.html#ax15">공리 15</a>) 측정 효과로 읽는다(<a href="h723.html">H-723</a> 변환비의 직접 귀결).</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 <a href="../axiom.html#ax15">공리 15</a> 도메인 시간 변환비 노름이고, $m_0$ 자체는 <a href="../axiom.html#ax14">공리 14</a> FSM 노름으로 불변이다. (b) 이 노름을 택하는 이유는 $\gamma$가 시스템 시간/도메인 시간 비율이어서, 같은 운동량 변화에 도메인 시간이 $1/\gamma$만 흐르면 거시 observer가 관성을 $\gamma$배로 측정하기 때문이다. 외부 형식의 상대론적 질량을 변환비 측정값으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$m_{\text{rel}} = \gamma\,m_0,\quad \gamma = \dfrac{1}{\sqrt{1-v^2/c^2}}$</div>
+<div class="math-row">$\gamma = \dfrac{\text{시스템 시간}}{\text{도메인 시간}}$</div>
+<div class="math-legend">$m_0$: 정지 질량 = FSM 노름(불변, <a href="../axiom.html#ax14">공리 14</a>) | $\gamma$: 변환비 = 시스템/도메인 | $m_{\text{rel}}$: 거시 측정값 | 변환비: <a href="../axiom.html#ax15">공리 15</a></div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <em>입력 상수 없음</em></p>
-<p><strong>라이브러리 재투입:</strong> <a href="h717.html">H-717</a>, <a href="h725.html">H-725</a>, <a href="h726.html">H-726</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>v        = 0.999999991 c          LHC 양성자
+1-v^2/c^2 = 1.80e-8               변환비 제곱
+gamma    = 7461                   시스템/도메인 비율
+m_0      = 938.272   MeV/c^2      PDG 2024 양성자</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 거시 질량 측정 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 불변 $m_0$에 변환비 $\gamma$만 곱한 값이 가속기에서 실측되는 총 에너지로 닫히는가다. LHC 양성자에 $\gamma=7461$을 적용해 측정 에너지를 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$E = \gamma\,m_0 c^2 = 7461 \times 938.272\ \text{MeV} = 7.0\ \text{TeV}$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $E = \gamma m_0 c^2 = 7.0\ \text{TeV}$ ($\gamma=7461$)</div>
+<div class="math-row">측정값: LHC 양성자 빔 에너지 약 $7\ \text{TeV}$ (싱크로트론 주파수)</div>
+<div class="math-row">결과: 변환비 $\gamma$ 값 정합</div>
+</div>
+<p>판정: <strong>가설</strong>. $m_0$ 불변·$\gamma$ 측정 효과로 가속기 에너지가 닫히나, 변환비와 FSM 노름의 미시적 연결(어떤 RLU 비율로 변환되는지)이 미완이라 분류 III에 머문다. <a href="../axiom.html#ax6">공리 6</a> 비용 회수율과 <a href="../axiom.html#ax8">공리 8</a> 폴링 주기를 결합한 다음 라운드가 닫힘의 입력이다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재대입 용도: <a href="h725.html">H-725</a>(운동량) $\gamma m$ 성분. <a href="h726.html">H-726</a>(에너지) $\gamma mc^2$</p><p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="h717.html">H-717</a>, <a href="h725.html">H-725</a>, <a href="h726.html">H-726</a></p>
+<p>재투입 경로: <a href="h723.html">H-723</a>, <a href="h717.html">H-717</a>, <a href="h725.html">H-725</a>, <a href="h726.html">H-726</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

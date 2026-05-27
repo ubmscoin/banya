@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-87 니블 간 비트 AND 최대 동시 락 = 3 — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-87 니블 간 비트 AND 최대 동시 락 = 3. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p87.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p87.html">P-87</a>. 니블 간 비트 AND 최대 동시 락 = 3</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p87.html">P-87</a>: 니블 간 비트 AND 최대 동시 락 = 3</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\max(\text{니블 동시 락})=\min(4,3)=3\ \Rightarrow\ \text{observer 비트는 항상 자유 (항상 관측 가능)}$$</div></div>
+<p class="finding-precision">예측: 니블 간 최대 동시 락 = 3, observer 비트는 항상 자유. 검증 양자 정보 실험(2028~).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 8비트는 니블 0(도메인 4비트)과 니블 1(CAS 3 + δ)로 나뉘고, CAS 연산은 두 니블 사이 비트 AND로 동시 락을 건다(<a href="../axiom.html#ax5">공리 5</a>).</p>
+<p>동시에 락 가능한 비트 수는 두 니블의 더 작은 쪽에 의해 제한된다 — $\min(4,3)=3$이다.</p>
+<p>CAS는 3비트(Read·Compare·Swap)이므로 한 번에 최대 3개 도메인 비트만 락할 수 있다 ==> 4번째 도메인 비트는 항상 자유.</p>
+<p>그 4번째 자유 비트가 observer(<a href="../axiom.html#ax10">공리 10</a>: observer = 필터)다. observer 비트는 CAS에 의해 락되지 않으므로 항상 관측 가능하다.</p>
+<p>즉 어떤 CAS 연산 중에도 observer는 자유롭게 필터링할 수 있다 ==> 관측이 원리적으로 항상 가능한 구조적 근거.</p>
+<p>이것이 측정이 항상 가능하고, observer가 의지(P-105)를 발휘할 수 있는 이유다 — observer 비트는 락에서 면제된다.</p>
+<p>즉 본 예측은 "관측이 가능하다"가 아니라 "최대 동시 락 3, observer 비트는 락 면제"라는 구조적 주장이다.</p>
+<p>3 = min(4,3)은 CAS 3단계와 도메인 4축의 직접 귀결이며, 4−3=1개 비트(observer)가 항상 남는다.</p>
+<p>검증: 양자 정보 실험(2028~)에서 observer 자유도(측정 접근성)가 어떤 연산 중에도 유지되면 본 예측을 지지한다.</p>
+<p>반박: observer 비트가 CAS에 의해 락되어 관측이 차단되는 경우가 확인되면 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: 양자 정보 실험 observer 자유도 접근성(2028~). 반박: observer 비트가 CAS에 락되는 경우 확인. 출처: <a href="../axiom.html#ax10">공리 10</a>(observer=필터), <a href="../axiom.html#ax5">공리 5</a>(CAS 3비트), <a href="../axiom.html#ax1">공리 1</a>(도메인 4).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측으로 검증 대기 상태다. forward chain은 공리 1 공리 5 공리 10(min(4,3)=3)에서 observer 비트 락 면제까지 닫혀 있다. observer 자유도 유지 확인 시 D 승격, observer 비트 락 확인 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 실험 미실시 / forward chain 완료(공리 1 공리 5 공리 10 ==> min(4,3)=3 ==> observer 비트 자유) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: observer ==&gt; 최대 동시 락 3, observer 비트 락 면제(공리 5 공리 10). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: 니블 간 비트 AND 락 비용에서 최대 동시 락 3 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>8비트는 니블 0(도메인 4비트, <a href="../axiom.html#ax1">공리 1</a>)과 니블 1(CAS 3 + δ)로 나뉜다. CAS 연산은 두 니블 사이 비트 AND로 도메인 비트에 동시 락을 거는 비용이며, 이 비용을 니블 간 락 폭으로 읽는다(<a href="../axiom.html#ax5">공리 5</a>).</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 니블 간 비트 AND 락 폭 노름이다. (b) 동시 락 가능한 비트 수는 두 니블의 더 작은 쪽으로 제한되고 CAS는 Read·Compare·Swap 3비트뿐이라 이 노름이 락 상한을 정하기 때문에 택한다. 따라서 최대 동시 락을 도메인 4축과 CAS 3축의 최소값으로 치환한다.</p>
+<div class="math-block">
+<div class="math-row">$\max(\text{lock}) = \min(\text{nibble}_0,\ \text{nibble}_1)$</div>
+<div class="math-row">$\max(\text{lock}) = \min(4, 3) = 3$</div>
+<div class="math-legend">$\text{nibble}_0=4$: 도메인 4축 (<a href="../axiom.html#ax1">공리 1</a>) | $\text{nibble}_1=3$: CAS Read·Compare·Swap (<a href="../axiom.html#ax5">공리 5</a>) | $\min$: 비트 AND 락 폭 | $4-3=1$: 항상 자유로운 비트</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<pre>도메인 축 = 4              공리 1
+CAS 비트 = 3 (R, C, S)     공리 5
+min(4, 3) = 3
+자유 비트 = 4 - 3 = 1 (observer)   공리 10</pre>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a) observer 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 어느 도메인 비트가 락에서 면제되어 항상 관측 가능한가다. CAS가 3개를 락하면 4번째 도메인 비트, 곧 observer(<a href="../axiom.html#ax10">공리 10</a>: observer = 필터)가 남는다.</p>
+<div class="math-block">
+<div class="math-row">$\max(\text{lock}) = 3,\quad \text{free bit} = 4 - 3 = 1 = \text{observer}$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: 최대 동시 락 3, observer 비트 항상 자유</div>
+<div class="math-row">검증 방법: 양자 정보 실험 observer 자유도 접근성 (2028~)</div>
+<div class="math-row">반박 조건: observer 비트가 CAS에 락되어 관측이 차단되는 경우 확인</div>
+</div>
+<p>판정: <strong>예측</strong>. observer 비트는 어떤 CAS 연산 중에도 락 면제이므로 측정이 원리적으로 항상 가능하다.</p>
+<p>통찰: $4-3=1$의 남는 한 비트가 observer의 의지(<a href="p105.html">P-105</a>)가 발휘되는 자리이며, 관측 가능성은 가설이 아니라 락 폭 $\min(4,3)$의 구조적 귀결이다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: —</p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p87.html">P-87</a>: 니블 간 비트 AND 최대 동시 락 = 3</td><td>예측 (대기) — 최대 동시 락 3, observer 비트 항상 자유</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

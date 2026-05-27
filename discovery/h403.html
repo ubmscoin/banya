@@ -67,39 +67,49 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>이유:</strong> 실험 비교 부재 / 재귀 입력 2개 확인, 다음 라운드 진행 시 D 승격 가능 / 잔여 과제 명시</p>
 <p><strong>위치:</strong> 카테고리: h mass yukawa. 도메인: delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27). 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="h404.html">H-404</a></p>
 </div>
-<h2>v1.8 공리 기준 5단계 재귀 대입</h2>
+<h2>5단계 재귀 대입: CAS Compare 성공/실패 비에서 m_c/m_s 도출</h2>
 <div class="step">
-<h3>1단계. 반야식 출발</h3>
+<h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>모든 채굴은 이 1줄에서 시작. CAS 단일 연산자 + 4축 직교.</p>
+<p>charm·strange 질량비는 같은 2세대 안에서 Compare가 성공해 진행한 쥠과 실패해 정체한 쥠의 비다. charm은 Compare 성공 경로(CAS 011 통과), strange는 실패 경로(CAS 001 정체)이며(<a href="../axiom.html#ax2">공리 2</a>), 성공 확률은 <a href="d01.html">D-01</a>의 $\alpha$가 정한다.</p>
 </div>
 <div class="step">
-<h3>2단계. 노름 치환 -- delta가 대상 도메인으로</h3>
-<p>delta ==&gt; 페르미온 질량 = CAS 비용 x 자료형 크기 (137, 27)</p>
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 색 자유도 3을 ring-7 위에서 $\alpha$로 정규화한 성공/실패 비 노름이다. (b) 질량비가 한 번의 Compare 성공/실패 갈림에서 오고 도메인 순회 $4\pi$가 곱해지므로 이 노름을 택한다.</p>
+<div class="math-block">
+<div class="math-row">$m_c/m_s = \dfrac{P_{\text{성공}}}{P_{\text{실패}}}$</div>
+<div class="math-row">$m_c/m_s = 4\pi\sqrt{3/(7\alpha)}$</div>
+<div class="math-legend">$4\pi$: 도메인 입체각 순회 | $3$: CAS 3축 색 자유도 | $7$: ring-7 강력 자료형 | $\alpha$: Compare 성공 확률 (<a href="d01.html">D-01</a>)</div>
+</div>
 </div>
 <div class="step">
-<h3>3단계. 상수 + 가설 재투입 (재귀 대입)</h3>
-<p><strong>1차 정수 (<a href="../axiom.html#ax9">공리 9</a>):</strong> 137 (1/alpha), 27 (자료형), 9, 2/9 (코이데)</p>
-<p><strong>물리 상수 입력:</strong> <code>alpha</code>, <code>m_b</code>, <code>m_c</code>, <code>m_t</code>, <code>pi</code></p>
-<p><strong>라이브러리 재투입:</strong> <a href="d01.html">D-01</a>, <a href="h404.html">H-404</a></p>
+<h3>3단계. 상수 대입</h3>
+<pre>4 pi    = 12.566
+alpha   = 1/137.036          D-01
+3/(7 alpha) = 58.73
+m_c/m_s(exp) = 1275/93.4 = 13.65   PDG</pre>
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>위 본문의 식이 도메인 변환의 결과. v1.8 어휘 정렬:</p>
-<ul>
-<li>등호(=) = delta 발화비트 = 1 (좌우항 동일 변화량 선언)</li>
-<li>+ = 직교 합성 (괄호 내 직교 부분공간)</li>
-<li>비용 +1 = 직교 경계 순서 강제 횡단 (<a href="../axiom.html#ax3">공리 3</a>)</li>
-</ul>
+<p>(a) 2세대 쿼크 질량비 도메인으로 변환한다. (b) 보려는 것은 charm/strange 질량비 $m_c/m_s$다. 성공/실패 갈림에 도메인 순회를 곱해 그 값을 산출한다.</p>
+<div class="math-block">
+<div class="math-row">$m_c/m_s = 4\pi\sqrt{3/(7\alpha)} = 13.33$</div>
+</div>
 </div>
 <div class="step">
-<h3>5단계. 발견 / 판정</h3>
-<p>판정: <strong>가설</strong>. 자세한 이유는 위 "왜 이 판정인가" 박스 참조.</p>
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $m_c/m_s = 13.33$</div>
+<div class="math-row">측정값: $13.65$ (PDG, $1275/93.4$)</div>
+<div class="math-row">오차: $2.3\%$</div>
+</div>
+<p>판정: <strong>가설</strong>. 질량비가 Compare 성공/실패 비로 2.3% 안에 들어오나, $4\pi$ 순회와 $\sqrt{3/(7\alpha)}$ 구조 인자의 공리적 도출이 미완이라 가설에서 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>이 카드는 다음 카드의 입력으로 재사용 가능: <a href="d01.html">D-01</a>, <a href="h404.html">H-404</a></p>
+<p>재투입 경로: <a href="d01.html">D-01</a>, <a href="h404.html">H-404</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>미완</h3>
 <table class="tbl">

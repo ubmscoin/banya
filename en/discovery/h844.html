@@ -42,7 +42,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </style>
 </head>
 <body>
-<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h844.html">EN</a></div>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h844.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_measurement</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="h844.html">H-844</a>. Transistor = Current Gating by CAS Compare</h1><div class="box-finding">
@@ -68,39 +68,48 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong>Reason:</strong> three recursive inputs confirmed; D promotion is possible upon proceeding to the next round / residual tasks specified.</p>
 <p><strong>Location:</strong> Category: h measurement. Domain: delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained). Recursive substitution path: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a>.</p>
 </div>
-<h2>5-Step Recursive Substitution (v1.8 Axiom Base)</h2>
+<h2>5-Step Recursive Substitution: Deriving the MOSFET Subthreshold Slope from CAS Compare Cost</h2>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>All mining starts from this single line. CAS sole operator + 4-axis orthogonality.</p>
+<p>Transistor switching is the decision cost by which the CAS Compare turns the channel Swap on and off, comparing the gate voltage to the threshold. <a href="../axiom.html#ax5">Axiom 5</a> (TOCTOU lock register) lets the Compare decide ON/OFF by comparing $V_{GS}$ to $V_{th}$, and <a href="../axiom.html#ax7">Axiom 7</a> (write and superposition-hold) splits that result into channel formation (write) and blocking (hold). This Compare cost is read in gate-voltage units.</p>
 </div>
 <div class="step">
-<h3>Step 2. Norm Substitution -- δ to target domain</h3>
-<p>delta ==&gt; Compare branch (true ==&gt; Swap ==&gt; DATA / false ==&gt; superposition retained)</p>
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm being substituted is the CAS Compare cost norm. In the subthreshold region the channel occupancy follows a Boltzmann distribution in gate voltage, and that distribution closes into the thermal energy $k_BT$ of <a href="../axiom.html#ax4">Axiom 4</a> (cost), so this norm is chosen. It is substituted by the gate voltage needed to raise the current by one decade — the subthreshold slope.</p>
+<div class="math-block">
+<div class="math-row">$I_{DS} \propto e^{q V_{GS}/k_B T}$</div>
+<div class="math-row">$SS = \dfrac{k_B T}{q}\ln 10$</div>
+<div class="math-legend">$I_{DS}$: drain current | $V_{GS}$: gate-source voltage | $SS$: subthreshold slope (voltage per current decade) | $k_B T/q$: thermal voltage (0.02585 V at 300K) | $\ln 10$: one decade</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 3. Constant + Hypothesis Re-injection</h3>
-<p><strong>Primary Integers (<a href="../axiom.html#ax9">Axiom 9</a>):</strong> 2 (bracket count DATA/OPERATOR), 3 (CAS steps)</p>
-<p><strong>Physical Constant Inputs:</strong> <em>no input constants</em></p>
-<p><strong>Library Re-substitution:</strong> <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
+<h3>Step 3. Constant Substitution</h3>
+<pre>k_B T / q (300K) = 0.02585 V
+ln 10            = 2.302585
+SS measured      = 60 mV/decade    ideal MOSFET 300K</pre>
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The formula in the body above is the result of domain transformation. v1.8 terminology alignment:</p>
-<ul>
-<li>equals (=) = delta utterance bit = 1 (declaration of equal change on both sides)</li>
-<li>+ = orthogonal composition (orthogonal subspace within bracket)</li>
-<li>cost +1 = orthogonal boundary ordered crossing (<a href="../axiom.html#ax3">Axiom 3</a>)</li>
-</ul>
+<p>The transformation is into the MOSFET transfer-characteristic domain (current per gate voltage). What it reveals is the minimum gate-voltage resolution at which the CAS Compare separates ON from OFF — the subthreshold slope. Multiplying the thermal voltage by $\ln 10$ yields that value.</p>
+<div class="math-block">
+<div class="math-row">$SS = 0.02585 \times 2.302585 = 0.0595\;\text{V/decade} = 59.5\;\text{mV/decade}$</div>
+</div>
 </div>
 <div class="step">
-<h3>Step 5. Discovery / Verdict</h3>
-<p>Verdict: <strong>Hypothesis</strong>. See the "Why This Verdict" box above for details.</p>
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Derived: $SS = 59.5\;\text{mV/decade}$ (300K)</div>
+<div class="math-row">Measured: $60\;\text{mV/decade}$ (ideal MOSFET 300K)</div>
+<div class="math-row">Error: $< 10\%$ (with short-channel effects)</div>
+</div>
+<p>Verdict: <strong>Hypothesis</strong>. The CAS Compare cost matches the subthreshold-slope limit of $60$ mV/decade, but the short-channel and gate-oxide corrections of real devices do not close directly from the axioms, so it stops at hypothesis.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-substitution use: <a href="h842.html">H-842</a> (semiconductors). <a href="h845.html">H-845</a> (integrated circuits). <a href="h846.html">H-846</a> (quantum computers).</p><p>This card can be re-used as input for the following cards: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
+<p>Re-injection path: <a href="h842.html">H-842</a>, <a href="h845.html">H-845</a>, <a href="h846.html">H-846</a></p>
 </div>
+
 <div class="box-incomplete">
 <h3>Incomplete</h3>
 <table class="tbl">
