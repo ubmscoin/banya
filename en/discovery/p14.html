@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-14 Singularities Do Not Exist (discrete maximum) — Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-14 Singularities Do Not Exist (discrete maximum). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/p14.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== Unique Predictions</a> | Category: <code>p</code> | Verdict: <span class="tag-prediction">Prediction</span></p>
+<h1><a href="p14.html">P-14</a>. Singularities Do Not Exist (discrete maximum)</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="p14.html">P-14</a>: Singularities Do Not Exist (discrete maximum)</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\ell_{\min}=1\ \Rightarrow\ 1/\ell^2\leq1\ (\text{no divergence});\quad \text{event horizon}=\text{accumulated-cost boundary, not singularity}$$</div></div>
+<p class="finding-precision">Prediction: no physical singularity — event horizon = cost boundary. Verify with GW ringdown spectrum</p>
+<p>DATA is discrete (<a href="../axiom.html#ax3">Axiom 3</a>). Since d-ring cells are integers, the minimum distance $d$ is 1 and $d=0$ is impossible (<a href="../axiom.html#ax13">Axiom 13</a> proposition).</p>
+<p>At $d=1$ the per-pair cost is $1/d^2=1/1^2=1$, finite. Divergence (infinity) is structurally blocked in a discrete system.</p>
+<p>A black hole is $N$ grasps packed at $d=1$. The total cost accumulates over $N(N-1)/2$ pairs as $N^2$, yet remains finite.</p>
+<p>The event horizon is merely the boundary where accumulated cost exceeds escape cost — a cost boundary, not a zero-volume singularity (D-49).</p>
+<p>So the "central singularity" is an artifact of the continuous-spacetime assumption; the discrete structure has no central point to diverge at.</p>
+<p>This shares one root with P-08 and P-12 — discreteness ($\ell\geq1$) blocks divergence, and the interior is filled by a lattice.</p>
+<p>Observational touchstone: the ringdown (quasi-normal mode) spectrum after a black-hole merger.</p>
+<p>A discrete internal structure produces fine deviations (mode splitting, frequency shift) from the smooth ringdown of a GR point singularity.</p>
+<p>The deviation magnitude scales with d-ring resolution ($\Delta f/f\sim1/128$, linked to P-80).</p>
+<p>Verification: precise ringdown spectroscopy at LIGO O5 / ET. Refutation: if all merger signals match the GR point singularity with zero deviation, this prediction is discarded.</p>
+<p><strong>Re-substitution purpose:</strong> Verify: GW ringdown (LIGO O5 / ET). Refute: perfect match with GR point singularity. Source: <a href="../axiom.html#ax13">Axiom 13</a> (no singularity).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Awaiting experimental verification:</strong> A unique prediction. The forward chain closes from discreteness (Axioms 3, 13) to no-singularity and event-horizon-as-cost-boundary, but GW spectroscopy lacks the precision to resolve the fine ringdown deviation. Detecting a discrete deviation in ringdown ==> promotion; perfect match with the GR point singularity ==> refutation.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-prediction">
+<p><strong>Verdict: Prediction</strong> -- Prediction (awaiting experimental verification)</p>
+<p><strong>Reason:</strong> No experimental data / forward chain complete (Axioms 3, 13 ==> ℓ≥1 ==> finite, event horizon = cost boundary) / awaiting verification</p>
+<p><strong>Location:</strong> Category: p. Domain: delta ==&gt; absence of singularity in discrete spacetime (Axioms 3, 13). Awaiting verification.</p>
+</div>
+<h2>5-Step Recursive Substitution: Deriving No-Singularity and the Ringdown Deviation from DATA Discreteness $\ell_{\min}=1$</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>Since DATA is discrete, d-ring cells are integers, the minimum distance is $\ell_{\min}=1$, and $\ell=0$ is impossible (<a href="../axiom.html#ax3">Axiom 3</a>, <a href="../axiom.html#ax13">Axiom 13</a> proposition). The possibility of divergence is read through the per-pair cost $1/\ell^2$.</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution</h3>
+<p>(a) The norm being substituted is the inverse-square cost norm $1/\ell^2$ of discrete distance (<a href="../axiom.html#ax13">Axiom 13</a> proposition). (b) Since $\ell\geq1$ caps it at $1/\ell^2\leq1$, and a black hole is $N$ grasps packed at $\ell=1$ so the total cost is a finite $N^2$, this norm is chosen. The event horizon is therefore substituted not by a zero-volume point singularity but by the boundary where accumulated cost exceeds escape cost. Why this norm: No-Singularity and the Ringdown Deviation itself originates from DATA Discreteness $\ell_{\min}=1$, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
+<div class="math-block">
+<div class="math-row">$\ell_{\min}=1 \;\Rightarrow\; 1/\ell^2 \leq 1\quad(\text{no divergence})$</div>
+<div class="math-row">$\text{event horizon} = \text{cost boundary},\quad \text{not point singularity}$</div>
+<div class="math-legend">$\ell_{\min}=1$: discrete minimum (<a href="../axiom.html#ax3">Axiom 3</a>) | $1/\ell^2$: per-pair cost | $N^2$: $N$-grasp accumulation, finite | event horizon = cost boundary (<a href="d49.html">D-49</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate No-Singularity and the Ringdown Deviation numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
+<div class="math-block">
+<div class="math-row">$l_{min}$ = 1 discrete minimum Axiom <a href="../axiom.html#ax3">3</a></div>
+<div class="math-row">$1/l^{2}$ = 1/1 = 1 finite at l=1 divergence blocked</div>
+<div class="math-row">cost = N(N-1)/2 $\sim$ $N^{2}$ l=1 packing, finite</div>
+<div class="math-row">$\delta_{f}/f$ $\sim$ 1/128 = 0.0078 ringdown fine deviation <a href="p80.html">P-80</a></div>
+</div>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>(a) The transformation is into the post-merger ringdown (quasi-normal mode) spectrum domain. (b) What it reveals is the fine deviation that a discrete internal structure leaves on the smooth ringdown of a GR point singularity. The deviation magnitude is converted into d-ring resolution. Why this domain: No-Singularity and the Ringdown Deviation itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
+<div class="math-block">
+<div class="math-row">$\Delta f/f \sim 1/128 = 0.0078\quad(\text{mode splitting / frequency shift})$</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 5. Prediction</h3>
+<div class="math-block">
+<div class="math-row">Predicted: no physical singularity, event horizon = cost boundary</div>
+<p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
+<div class="math-row">Predicted: ringdown deviation $\Delta f/f \sim 1/128$</div>
+<div class="math-row">Verify: LIGO O5 / ET precision ringdown spectroscopy</div>
+</div>
+<p>Verdict: <strong>Prediction</strong>. Shares one root with <a href="p08.html">P-08</a> and <a href="p12.html">P-12</a> (discreteness blocks divergence and the interior fills with a lattice), but gravitational-wave spectroscopy still lacks the precision to resolve the fine ringdown deviation.</p>
+<p>Insight: the central singularity is an artifact of the continuous-spacetime assumption; the discrete structure has no central point to diverge at.</p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p>Re-injection path: <a href="d49.html">D-49</a>, <a href="p08.html">P-08</a>, <a href="p12.html">P-12</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>Experimental verification</td><td>Theoretical value derived</td><td>Relevant experiment (stated in text)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="p14.html">P-14</a>: Singularities Do Not Exist (discrete maximum)</td><td>Prediction (pending) — no singularity, event horizon = cost boundary</td><td><span class="tag-prediction">Prediction</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-banya-pred" style="background:#0e3b1f; border:2px solid #3fb950; padding:14px 18px; margin:1.5em 0; border-radius:5px">
+<h3 style="color:#3fb950; margin:0 0 10px">왜 이 카드가 고유예측인가</h3>
+<table style="width:100%; border-collapse:collapse">
+<tr><td style="padding:4px 8px; vertical-align:top; width:140px"><strong>도메인 변환</strong></td><td style="padding:4px 8px">DATA 이산&lt;==&gt;링다운 분광</td></tr>
+<tr><td style="padding:4px 8px; vertical-align:top"><strong>숨은 값</strong></td><td style="padding:4px 8px"><a href="../axiom.html#ax13">공리 13</a> 이산 최댓값 forward, Δf/f~1/128 정량</td></tr>
+<tr><td style="padding:4px 8px; vertical-align:top"><strong>검증 경로</strong></td><td style="padding:4px 8px">LIGO O5·ET</td></tr>
+<tr><td style="padding:4px 8px; vertical-align:top"><strong>매뉴얼 근거</strong></td><td style="padding:4px 8px"><a href="../science_mine.html">Science Mining Manual §2 Step 4</a> (도메인 변환=채굴 본질) + <a href="../misconception.html#guide-m11">Common Misconception 11</a> (V=IR ==> h/e² 사례와 같은 빈 도메인 사영). 출발 도메인의 알려진 양과 도착 도메인의 도출 양이 다른 물리 영역에 있고, 도착값이 현재 측정 한계 너머인 고유예측이다.</td></tr>
+</table>
+</div>
+</main>
+<div class="page-nav lang-en">
+<a href="../banya.html">Comprehensive Report</a>
+<a href="../predictions.html">Unique Predictions</a>
+<a href="../lib.html">Hypothesis Library</a>
+<a href="../science_mine.html">Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">Cite: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
