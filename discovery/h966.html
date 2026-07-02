@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-966 서열표적 절단(CRISPR·제한효소) = Compare-true 게이트 비가역 Swap — 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-966 CRISPR/제한효소 서열 인식-절단 = Compare-true→Swap 게이트, 불일치→hold. 공리 7·2. v1.8 axiom-based mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h966.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>h_structure</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h966.html">H-966</a>. 서열표적 절단(CRISPR·제한효소) = Compare-true 게이트 비가역 Swap</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h966.html">H-966</a>: 서열표적 절단(CRISPR·제한효소) = Compare-true 게이트 비가역 Swap</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\text{서열 정합} = \text{Compare-true} \;\to\; \text{절단(Swap, 비가역)},\qquad \text{불일치} = \text{Compare-false} \;\to\; \text{hold (해리)}$$</div></div>
+<p class="finding-precision">도메인 변환으로 드러낸 구조 대응 — 서열 상보 정합=Compare-true가 비가역 이중가닥 절단(Swap/붕괴)을 승인, 불일치=Compare-false→hold/해리(무커밋). 공리 7 조건 분기 + 공리 2 비가역. 정량 미완 → 가설.</p>
+<p><strong>정합 게이트 비가역 쓰기(<a href="../axiom.html#ax7">공리 7</a>).</strong> CRISPR-Cas9 gRNA는 ~20nt 스페이서를 PAM 인접 상보 표적에 염기쌍 결합하고, <strong>정확히 일치할 때만</strong> 양가닥을 절단한다. 제한효소도 특정(흔히 팰린드롬) 자리에 결합한 뒤 자른다 — 인식이 절단과 분리되어 있고 절단을 <strong>게이트</strong>한다. 이것이 공리 7 그대로: 정합(Compare-true) ⟹ 비가역 절단(Swap = 붕괴), 불일치(Compare-false) ⟹ 커밋 없이 해리(hold). 절단의 비가역성은 <a href="../axiom.html#ax2">공리 2</a>.</p>
+<p><strong>왜 통과인가(dup 아님).</strong> 인식 단계 <em>단독</em>은 기존 카드 "상보결합=Compare"와 겹친다. 그러나 이 카드가 잡는 것은 <strong>정합에 게이트된 비가역 쓰기</strong>(공리 7 조건 붕괴)이며, 이는 아직 카드가 없다. 절단의 비가역성은 가역적 인식-게이트 신호보다 깔끔한 Swap이라 일반 효소 특이성으로 환원되지 않는다. 숫자 맞추기·진화 우연 의존·정량 미해결 없음.</p>
+<p><strong>재대입 용도:</strong> 재대입 용도: <a href="h964.html">H-964</a>(tRNA 공리7 분기) 상보, 공리 7 조건 붕괴 생물 사례.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 멈춤. 도메인 변환으로 "정합 게이트 비가역 절단 = 공리 7 조건 붕괴" 구조 대응은 닫혔으나, 공리 정수에서 산출되는 정량값(정합 문턱·off-target율 등)은 미완이다 — 스페이서 길이·PAM은 시스템 설계값. 잔여 과제: (1) Compare 문턱의 정량화, (2) off-target = Compare-false 누출 대응.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (구조 대응 확인, 정량 미완)</p>
+<p><strong>이유:</strong> 도메인 변환으로 "정합(Compare-true) 게이트 비가역 절단(Swap), 불일치→hold" 구조 대응 확인(공리 7·2) / 인식-단독은 dup이나 게이트된 비가역 쓰기는 신규 / 정량 미완 / numerology·진화 우연 없음</p>
+<p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==&gt; 서열표적 절단 = 공리 7 조건 붕괴. 재귀 대입 경로: <a href="h964.html">H-964</a></p>
+</div>
+<h2>5단계 재귀 대입: Compare-true 게이트 비가역 Swap에서 서열표적 절단 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>서열표적 절단은 우변의 조건 분기 비용(<a href="../axiom.html#ax7">공리 7</a>: Compare-true→Swap, false→hold)에 대응한다 — 상보 정합이 성립할 때만 비가역 절단(<a href="../axiom.html#ax2">공리 2</a>)이 승인되고, 불일치면 커밋 없이 해리한다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 공리 7 조건 붕괴 노름(정합 게이트 비가역 쓰기)이다. (b) 이 노름을 택하는 이유: CRISPR/제한효소가 서열 정합(Compare)에 <strong>게이트된</strong> 비가역 절단(Swap)을 수행하고 불일치면 hold하는 것이 공리 7 분기 그대로이기 때문이다. 왜 이 노름인가 — 서열표적 절단이 조건 게이트 쓰기에서 비롯하므로 이 붕괴 구조를 담는 노름이라야 대응된다. 왜 이 치환이 정당한가 — 좌변의 인식-절단과 우변의 공리 7이 같은 성질(정합에만 커밋, 비가역)을 가리키기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\text{match} \to \text{Compare-true} \to \text{cut (Swap, 비가역)}$</div>
+<div class="math-row">$\text{no match} \to \text{Compare-false} \to \text{hold / dissociate (무커밋)}$</div>
+<div class="math-legend">gRNA/제한부위 = 기대값 | 표적 서열 = 메모리값 | 상보 정합 = 일치 판정 | 이중가닥 절단 = 조건부 비가역 쓰기</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 치환식 기호에 실제 값을 대입한다. 값은 공리 또는 분자생물학 관측에서 오며 본 카드가 새로 정한 것이 아니다. 자유 매개변수는 없다. 정량 신규값은 산출되지 않으므로(구조 대응) 함께 표기한다.</p>
+<div class="math-block">
+<div class="math-row">조건 분기 = Compare-true→Swap / false→hold <a href="../axiom.html#ax7">공리 7</a></div>
+<div class="math-row">Swap 비가역 <a href="../axiom.html#ax2">공리 2</a> (절단은 되돌리지 않음)</div>
+<div class="math-row">CRISPR: 정합 시에만 이중가닥 절단 관측</div>
+<div class="math-row">신규 정량값 = 없음 (구조 대응)</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a) 변환 도메인은 분자생물학의 서열 표적화(핵산분해효소) 도메인이다. (b) 보려는 것은 공리 7 조건 게이트와 공리 2 비가역이 서열 인식-절단에 얹히는가다. 왜 이 도메인으로 변환하는가 — 인식-절단이 이 도메인에서 관측되므로 조건 붕괴 구조를 여기 사영해야 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 정합-게이트-비가역 대응이 확인되면 조건 붕괴가 절단으로 사영되기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">Compare-true ==&gt; 이중가닥 절단(비가역), Compare-false ==&gt; 해리(무커밋)</div>
+<div class="math-row">인식 ==&gt; 상보 정합, 절단 ==&gt; 조건부 Swap</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출: 서열표적 절단 = 공리 7 정합 게이트 비가역 Swap(구조 대응), 정량 미완</div>
+<p>이 단계는 도출을 대조해 판정한다. 왜 이 판정인가 — 도메인 변환으로 "정합 게이트 비가역 절단 = 조건 붕괴" 구조 대응은 닫혔으나 공리 정수 산출 정량이 미완이라 발견이 아니라 가설이다. 이 대응은 사후 맞춤이 아니라 공리 7에서 도메인 변환으로 사영한 결과다.</p>
+<div class="math-row">대조: 알려진 CRISPR-Cas9·제한효소 기전 (정합 시에만 절단)</div>
+<div class="math-row">정량: Compare 문턱·off-target율 공리 산출 미완</div>
+</div>
+<p>판정: <strong>가설</strong>. 정합(Compare-true)에만 게이트된 비가역 절단(Swap)과 불일치 시 hold라는 공리 7 조건 분기가 서열표적 핵산분해에 그대로 얹히는 대응은 닫혔으나, 정량이 없다. 통찰: 인식 단독은 상보=Compare 재기술이지만, 이 카드가 잡는 것은 정합에 <strong>게이트된</strong> 비가역 쓰기 — 공리 7 전체 분기다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="h964.html">H-964</a> · <a href="h965.html">H-965</a> · <a href="../axiom.html#ax2">공리 2</a> · <a href="../axiom.html#ax7">공리 7</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>정량 산출</td><td>조건 붕괴 구조 대응까지</td><td>Compare 문턱·off-target(Compare-false 누출) 정량화</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="h966.html">H-966</a>: 서열표적 절단 = Compare-true 게이트 비가역 Swap</td><td>구조 대응 — 정합=Compare-true→절단(비가역 Swap), 불일치=hold (공리 7·2)</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
