@@ -23,7 +23,7 @@ Run  python3 paper7_rotation_probe.py
 셋째, mod 3 깊이 배제 판별 실험을 돌린다. 수 M0 M1 M2 를 하나씩 읽으며 지금까지 합의 mod 3 상태
 S0 S1 S2 를 자리마다 말한다. 길이 3 조합 27개 중 14개만 가르치고 13개는 숨기므로 표를 외운 풀이는
 빈칸에서 무너지고 순환 연산을 배운 풀이만 빈칸을 채운다.
-실험군 A(시그모이드 게이트, 연산면 켬), B(연산면 끔), D(tanh 게이트), E(회전 게이트)는 같은 반야
+실험군 A(시그모이드 게이트, 연산면 켬), B(연산면 차단), D(tanh 게이트), E(회전 게이트)는 같은 반야
 1블록 엔진에서 게이트만 다르고, C 는 대조용 표준 트랜스포머 1층으로 torch 가 있을 때만 돌며 없으면
 건너뛴다고 고지한다.
 채점: 강제 = 정답 상태를 보여주며 스텝 채점, 자기 = 자기 출력을 되먹여 끝까지.
@@ -472,7 +472,7 @@ def main():
     p_plumbing_proof(_train_rows, _train_slots)
     print("\n[3] 깊이 배제 판별 (빈칸과 안 본 길이, 강제/자기 되먹임)", flush=True)
     p_run_group("A σ켬", None, True, _train_rows, _train_slots, _tests)
-    p_run_group("B 끔", None, False, _train_rows, _train_slots, _tests)
+    p_run_group("B 차단", None, False, _train_rows, _train_slots, _tests)
     p_run_group("D tanh", p_patch_tanh, True, _train_rows, _train_slots, _tests)
     p_run_group("E 회전", paper7.install, True, _train_rows, _train_slots, _tests, inspect=True)
     p_run_torch_group(_train_rows, _train_slots, _tests)
