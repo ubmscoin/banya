@@ -212,6 +212,51 @@ def p_batch_speed():
         print(f"    {name:<18} 순차={_ts:>8.3f}ms  배치={_tb:>8.3f}ms  배치이득={_ts / _tb:>6.2f}배")
 
 
+# Role: verifies the adjoint consistency of the three circulant channel mixing formulas of Eq 5-2
+# Method: checks the inner-product identity of the transpose, then compares the analytic input gradient and kernel gradient of a scalar loss against central finite differences by ratio over 10 samples each
+# Why: because the derivation in the paper must be shown numerically exact as an adjoint before the engine can hook it into the credit chain
+# 역할: 식 5-2 순환 채널 혼합 세 식의 수반 정합을 검증한다
+# 방법: 전치의 내적 항등을 검사하고 스칼라 손실의 입력 기울기와 커널 기울기를 중심차분과 비율 표본 10개씩으로 대조한다
+# 이유: 논문의 유도가 수반으로서 수치적으로 정확함을 확인해야 엔진이 신용 사슬에 물릴 수 있는 원시로 성립하기 때문이다
+def p_circ_adjoint_check():
+    print("[5] 순환 채널 혼합 수반 정합 (식 5-2 세 식이 유한차분과 같은가)")
+    _rng = np.random.RandomState(11)
+    _hh = 64
+    _c = _rng.randn(_hh)
+    _h = _rng.randn(_hh)
+    _d = _rng.randn(_hh)
+
+    def p_circ(cv, hv):
+        return np.fft.irfft(np.fft.rfft(cv) * np.fft.rfft(hv), n=_hh)
+
+    _y = p_circ(_c, _h)
+    _dh = np.fft.irfft(np.conj(np.fft.rfft(_c)) * np.fft.rfft(_d), n=_hh)
+    _lhs = float(np.dot(_d, _y))
+    _rhs = float(np.dot(_dh, _h))
+    print(f"    내적 항등 <d,Ch>={_lhs:.8f}  <C^T d,h>={_rhs:.8f}  차이 {abs(_lhs - _rhs):.2e}")
+    _w = _rng.randn(_hh)
+    _dh_ana = np.fft.irfft(np.conj(np.fft.rfft(_c)) * np.fft.rfft(_w), n=_hh)
+    _dc_ana = np.fft.irfft(np.conj(np.fft.rfft(_h)) * np.fft.rfft(_w), n=_hh)
+    _eps = 1e-6
+    _ratio_h = []
+    _ratio_c = []
+    for k in range(10):
+        i = _rng.randint(0, _hh)
+        _hp = _h.copy()
+        _hp[i] += _eps
+        _hm = _h.copy()
+        _hm[i] -= _eps
+        _fd_h = (np.dot(_w, p_circ(_c, _hp)) - np.dot(_w, p_circ(_c, _hm))) / (2 * _eps)
+        _ratio_h.append(_fd_h / (_dh_ana[i] + 1e-20))
+        _cp = _c.copy()
+        _cp[i] += _eps
+        _cm = _c.copy()
+        _cm[i] -= _eps
+        _fd_c = (np.dot(_w, p_circ(_cp, _h)) - np.dot(_w, p_circ(_cm, _h))) / (2 * _eps)
+        _ratio_c.append(_fd_c / (_dc_ana[i] + 1e-20))
+    print(f"    입력 기울기 비율 중앙값 {np.median(_ratio_h):.6f}  커널 기울기 비율 중앙값 {np.median(_ratio_c):.6f}")
+
+
 def main():
     p_configure_small()
     _ids = xp.asarray(np.random.RandomState(0).randint(0, VOCAB, (BLOCK, BATCH)))
@@ -224,6 +269,8 @@ def main():
     p_grad_check(_ids, _y, _ar)
     print()
     p_batch_speed()
+    print()
+    p_circ_adjoint_check()
 
 
 if __name__ == "__main__":

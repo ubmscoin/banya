@@ -183,6 +183,48 @@ def main():
     print(f"\n[5.1 예측 기여] 실코퍼스 {CE_WINDOW}창, 연산면 켬 vs 끔 예측 교차엔트로피", flush=True)
     print(f"   끔 {_ce_off:.4f} · 켬 {_ce_on:.4f} · 연산 기여 {_ce_off - _ce_on:+.4f}", flush=True)
 
+    _ratio = _operate_norm / (_data_norm + _operate_norm + 1e-9)
+    _edges = [0, 0.15, 0.3, 0.45, 0.55, 0.7, 0.85, 1.0]
+    _bins = np.histogram(_ratio, bins=_edges)[0]
+    _mid = _bins[3] / _vocab * 100
+    _pole = (_bins[0] + _bins[6]) / _vocab * 100
+    _trained = bc.to_host(xp.abs(m.m_mat_w_data_axis_adam_moment).max(axis=0)) > 0
+    _n_trained = int(_trained.sum())
+    _bins_trained = np.histogram(_ratio[_trained], bins=_edges)[0]
+    _mid_trained = _bins_trained[3] / _n_trained * 100
+    _pole_trained = (_bins_trained[0] + _bins_trained[6]) / _n_trained * 100
+    _n_untrained = _vocab - _n_trained
+    _untrained_pole = int((_ratio[~_trained] < 0.15).sum())
+    print(f"\n[5.1 토큰 정체 분포] 연산 비율 = 연산면 노름 / (데이터면 노름 + 연산면 노름)", flush=True)
+    print(f"   전체 어휘 {_vocab}개: 가운데(0.45~0.55) {_mid:.0f}% · 양끝(0.15 미만 또는 0.85 초과) {_pole:.0f}%", flush=True)
+    print(f"   학습 토큰 {_n_trained}개(아담 모멘트가 0 아닌 열): 가운데 {_mid_trained:.0f}% · 양끝 {_pole_trained:.1f}% · 데이터쪽 극 {_bins_trained[0]}개 · 연산쪽 극 {_bins_trained[6]}개", flush=True)
+    print(f"   미학습 토큰 {_n_untrained}개 중 데이터쪽 극 {_untrained_pole}개 (초기값 그대로, 연산면 0)", flush=True)
+    print(f"   학습 토큰 노름 평균: 데이터면 {_data_norm[_trained].mean():.1f} · 연산면 {_operate_norm[_trained].mean():.1f}", flush=True)
+
+    _ef_host = bc.to_host(m.m_mat_w_data_axis).astype(np.float64)
+    _eop_host = bc.to_host(m.m_mat_w_operate_axis).astype(np.float64)
+    _tr_ids = np.where(_trained)[0]
+    _cos_in = np.abs((_ef_host[:, _tr_ids] * _eop_host[:, _tr_ids]).sum(0)
+                     / (np.linalg.norm(_ef_host[:, _tr_ids], axis=0) * np.linalg.norm(_eop_host[:, _tr_ids], axis=0) + 1e-12))
+    print(f"\n[5.1 토큰 내부 직교] 같은 토큰의 데이터면과 연산면이 겹치나 (절대 코사인)", flush=True)
+    print(f"   학습 토큰 {len(_tr_ids)}개: 평균 {_cos_in.mean():.3f} · 최대 {_cos_in.max():.3f} · 거의 직교(0.15 미만) {(_cos_in < 0.15).mean() * 100:.0f}% (무작위 {_base:.3f})", flush=True)
+
+    _itos_all = np.load(FROZEN, allow_pickle=True)["m_id_to_string"]
+    _func_syl = ["은", "는", "이", "가", "을", "를", "에", "의", "도", "만", "와", "과", "로", "서", "게", "다", "요", "까", "니", "고", "지", "면", "며", "자", "라", "야", "죠", "네", "든", "께"]
+    _noun_syl = ["물", "불", "꽃", "새", "밥", "집", "손", "발", "귀", "코", "입", "별", "달", "해", "돌", "강", "곰", "소", "닭", "차", "옷", "길", "산", "숲", "비", "책", "밤", "꿈", "몸", "흙"]
+    _stem_syl = ["먹", "놀", "씻", "뛰", "걷", "읽", "듣", "굽", "볶", "빼", "넣", "찾", "살", "죽", "크", "작", "맑", "검", "붉", "희", "늙", "씹", "밀", "끌", "업", "솟", "굴", "뻗", "휘", "쥐"]
+    _cls = {}
+    for _cname, _syls in (("기능", _func_syl), ("명사류", _noun_syl), ("어간", _stem_syl)):
+        _ids_c = [i for i in range(_vocab) if str(_itos_all[i]) in _syls and _trained[i]]
+        _cons_c, _ = p_direction_consistency(m, _ids_c, _data_ids)
+        _cls[_cname] = (_ids_c, float(np.mean(_cons_c)))
+    _func_ratio = _ratio[_cls["기능"][0]]
+    _noun_ratio = _ratio[_cls["명사류"][0]]
+    _win = float(sum((a > b) for a in _func_ratio for b in _noun_ratio)) / (len(_func_ratio) * len(_noun_ratio)) * 100
+    print(f"\n[5.1 연산자 정체] 연산자 노릇이 문법 부류의 소유인가 (부류별 비교)", flush=True)
+    print(f"   연산 비율 평균: 기능(조사어미) {_func_ratio.mean():.3f} · 명사류 {_noun_ratio.mean():.3f} · 쌍별 우세율 {_win:.1f}%", flush=True)
+    print(f"   방향 일관성: 기능 {_cls['기능'][1]:.3f} · 명사류 {_cls['명사류'][1]:.3f} · 용언 어간 {_cls['어간'][1]:.3f} (무작위 {_base:.3f})", flush=True)
+
     _L_init, _cl, _std_per_block = p_head_distance(m)
     print(f"\n[5.3 혼합 헤드 순서 분화] 거리커널 특성 거리, 블록 {DIVERSITY_BLOCK}", flush=True)
     print(f"   학습 시작 공통 {_L_init:.1f}칸 · 학습 후 {_cl.min():.0f}~{_cl.max():.0f}칸 · 헤드간 표준편차 {_cl.std():.1f}칸", flush=True)
@@ -192,6 +234,9 @@ def main():
     print(f"  방향 일관성 {_mean_consist:.3f} 대 무작위 {_base:.3f} = {_mean_consist / _base:.1f}배 (목표 0.316 대 0.031 = 10.1배)", flush=True)
     print(f"  직교쌍(<0.15) {_ortho:.1f}% (목표 72.5%)", flush=True)
     print(f"  ce 끔 {_ce_off:.2f} 대 켬 {_ce_on:.2f} 차이 {_ce_off - _ce_on:.2f} (목표 2.99 대 0.20 차이 2.79)", flush=True)
+    print(f"  토큰 정체: 전체 가운데 {_mid:.0f}% 양끝 {_pole:.0f}% (목표 0%와 34%) · 학습 토큰만 양끝 {_pole_trained:.1f}%", flush=True)
+    print(f"  토큰 내부 직교: 평균 {_cos_in.mean():.3f} 최대 {_cos_in.max():.3f} (목표 0.027과 0.121)", flush=True)
+    print(f"  부류 비교: 기능 일관성 {_cls['기능'][1]:.3f} 대 명사류 {_cls['명사류'][1]:.3f} (목표 0.324 대 0.316, 부류 차이 없음)", flush=True)
     print(f"  헤드 특성거리 시작 {_L_init:.1f}칸 -> 블록{DIVERSITY_BLOCK} {_cl.min():.0f}~{_cl.max():.0f}칸 분화 (목표 12.7칸 -> 39~66칸)", flush=True)
 
 
