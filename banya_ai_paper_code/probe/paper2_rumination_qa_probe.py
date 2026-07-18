@@ -220,9 +220,9 @@ def main():
     _r2 = p_run(_m2, tok, _base, _pool2, _norm0, _norm_ref, _ev, _block, "실험2")
 
     print("\n[실측 요약] 2AFC 16문항 우연 50%", flush=True)
-    print(f"  사전선호 기준선(질문 제거) {sum(_ok_noq)}/{len(QA)}", flush=True)
-    print(f"  실험1 발표 스케줄: {_r1[0]} -> {_r1[1]} · 뒤집힘 {_r1[2]}+{_r1[3]} · 움직인 문항 {_r1[4]}/{len(QA)}", flush=True)
-    print(f"  실험2 후보 강제:   {_r2[0]} -> {_r2[1]} · 뒤집힘 {_r2[2]}+{_r2[3]} · 움직인 문항 {_r2[4]}/{len(QA)} · 코사인 최소 {min(_r2[5]):.3f}", flush=True)
+    print(f"  사전선호 기준선(질문 제거) {sum(_ok_noq)}/{len(QA)} (목표 9/16)", flush=True)
+    print(f"  실험1 발표 스케줄: {_r1[0]} -> {_r1[1]} (목표 11/16 -> 11/16) · 뒤집힘 {_r1[2]}+{_r1[3]} (목표 0) · 움직인 문항 {_r1[4]}/{len(QA)}", flush=True)
+    print(f"  실험2 후보 강제:   {_r2[0]} -> {_r2[1]} (목표 11/16 -> 11/16) · 뒤집힘 {_r2[2]}+{_r2[3]} (목표 0) · 움직인 문항 {_r2[4]}/{len(QA)} · 코사인 최소 {min(_r2[5]):.3f} (목표 0.233)", flush=True)
 
 
 if __name__ == "__main__":

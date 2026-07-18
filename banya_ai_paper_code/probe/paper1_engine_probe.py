@@ -79,7 +79,7 @@ def p_norm_scale(ids):
         _in_norm = float(xp.sqrt((_x0 ** 2).sum(0)).mean())
         _cache, _aD, _z = bc.forward(_m, ids)
         _out_norm = float(xp.sqrt((_aD ** 2).sum(0)).mean())
-        print(f"    {nb:2d}블록  입력 L2={_in_norm:6.2f}  출력 L2={_out_norm:8.2f}  배수={_out_norm / _in_norm:6.2f}  (sqrt(H)={math.sqrt(H):.1f})")
+        print(f"    {nb:2d}블록  입력 L2={_in_norm:6.2f}  출력 L2={_out_norm:8.2f}  배수={_out_norm / _in_norm:6.2f}  (sqrt(H)={math.sqrt(H):.1f})  (목표 5.93)")
 
 
 # Role: measures agreement against finite differences. Confirms by ratio whether the manually derived exact transpose equals finite differences
@@ -126,7 +126,7 @@ def p_grad_check(ids, y, ar):
         _ratios.append(_fd / (_ana + 1e-20))
         print(f"    유한차분={_fd:>12.4e}  전치미분={_ana:>12.4e}  비율={_ratios[-1]:>8.3f}")
     _rr = np.array(_ratios)
-    print(f"    비율 중앙값 {np.median(_rr):.4f}  평균 {_rr.mean():.4f}  표준편차 {_rr.std():.4f}")
+    print(f"    비율 중앙값 {np.median(_rr):.4f} (목표 0.9997)  평균 {_rr.mean():.4f}  표준편차 {_rr.std():.4f}")
 
 
 def p_sync():
@@ -210,6 +210,7 @@ def p_batch_speed():
         _ts = p_timeit(fseq)
         _tb = p_timeit(fbat)
         print(f"    {name:<18} 순차={_ts:>8.3f}ms  배치={_tb:>8.3f}ms  배치이득={_ts / _tb:>6.2f}배")
+    print("    (목표: 순환 채널 변환 약 1.40배, 상대 거리 혼합 약 5.07배)")
 
 
 # Role: verifies the adjoint consistency of the three circulant channel mixing formulas of Eq 5-2
@@ -233,7 +234,7 @@ def p_circ_adjoint_check():
     _dh = np.fft.irfft(np.conj(np.fft.rfft(_c)) * np.fft.rfft(_d), n=_hh)
     _lhs = float(np.dot(_d, _y))
     _rhs = float(np.dot(_dh, _h))
-    print(f"    내적 항등 <d,Ch>={_lhs:.8f}  <C^T d,h>={_rhs:.8f}  차이 {abs(_lhs - _rhs):.2e}")
+    print(f"    내적 항등 <d,Ch>={_lhs:.8f}  <C^T d,h>={_rhs:.8f}  차이 {abs(_lhs - _rhs):.2e} (목표 1e-14 수준)")
     _w = _rng.randn(_hh)
     _dh_ana = np.fft.irfft(np.conj(np.fft.rfft(_c)) * np.fft.rfft(_w), n=_hh)
     _dc_ana = np.fft.irfft(np.conj(np.fft.rfft(_h)) * np.fft.rfft(_w), n=_hh)
@@ -254,7 +255,7 @@ def p_circ_adjoint_check():
         _cm[i] -= _eps
         _fd_c = (np.dot(_w, p_circ(_cp, _h)) - np.dot(_w, p_circ(_cm, _h))) / (2 * _eps)
         _ratio_c.append(_fd_c / (_dc_ana[i] + 1e-20))
-    print(f"    입력 기울기 비율 중앙값 {np.median(_ratio_h):.6f}  커널 기울기 비율 중앙값 {np.median(_ratio_c):.6f}")
+    print(f"    입력 기울기 비율 중앙값 {np.median(_ratio_h):.6f}  커널 기울기 비율 중앙값 {np.median(_ratio_c):.6f}  (목표 1.000000)")
 
 
 def main():
@@ -262,7 +263,7 @@ def main():
     _ids = xp.asarray(np.random.RandomState(0).randint(0, VOCAB, (BLOCK, BATCH)))
     _y = xp.asarray(np.random.RandomState(1).randint(0, VOCAB, (BLOCK * BATCH,)))
     _ar = xp.arange(BLOCK * BATCH)
-    print("[1] 자동미분 미적재: torch 모듈 적재됨?", "torch" in sys.modules)
+    print("[1] 자동미분 미적재: torch 모듈 적재됨?", "torch" in sys.modules, "(목표 False)")
     print()
     p_norm_scale(_ids)
     print()

@@ -202,8 +202,8 @@ def main():
     _hits = [c for c in _cross if c is not None]
     _hits_off = [c for c in _cross_off if c is not None]
     print("\n[실측 요약] 대조 off 도 여러 회 돌면 결국 한 점으로 수렴해 최대 확률이 튀므로 초반 상승과 도달 속도로 비교한다", flush=True)
-    print(f"  재해석 {_early}회까지 확실도 상승 문맥 동반 on {_on_gain:+.3f} · 단독 off {_off_gain:+.3f}", flush=True)
-    print(f"  확실 문턱 {paper6.GATE_PROBABILITY_MAX_HIGH} 도달 on {len(_hits)}/{len(_mohos)}개" + (f" 평균 {np.mean(_hits):.1f}회" if _hits else "") + f" · off {len(_hits_off)}/{len(_mohos)}개" + (f" 평균 {np.mean(_hits_off):.1f}회" if _hits_off else ""), flush=True)
+    print(f"  재해석 {_early}회까지 확실도 상승 문맥 동반 on {_on_gain:+.3f} (목표 +0.88) · 단독 off {_off_gain:+.3f} (목표 -0.06)", flush=True)
+    print(f"  확실 문턱 {paper6.GATE_PROBABILITY_MAX_HIGH} 도달 on {len(_hits)}/{len(_mohos)}개" + (f" 평균 {np.mean(_hits):.1f}회" if _hits else "") + " (목표 4개 전부 1회 도달)" + f" · off {len(_hits_off)}/{len(_mohos)}개" + (f" 평균 {np.mean(_hits_off):.1f}회" if _hits_off else ""), flush=True)
     print(f"  평균 궤적 on  {' '.join(f'{p:.2f}' for p in _on_mean)}", flush=True)
     print(f"  평균 궤적 off {' '.join(f'{p:.2f}' for p in _off_mean)}", flush=True)
 

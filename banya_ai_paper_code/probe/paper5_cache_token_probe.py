@@ -5,13 +5,13 @@
 """Banya Paper 5 cache tokenization probe. Measures three things on the frozen elementary-stage cache model.
 The vocabulary composition of the two-layer cache dictionary, the structural cost of how many times fewer parameters the low-rank head uses compared with a dense head,
 and whether the operate axis of the bundle-layer tokens, like the syllable layer, acts as consistent operators with coherent directions that are mutually orthogonal.
-The model is loaded and run forward through the common foundation banya_core, and the Paper 5 cache mechanism is imported from 논문5_캐시토큰. GPU-only cupy.
+The model is loaded and run forward through the common foundation banya_core, and the Paper 5 cache mechanism is imported from paper5_cache_token. GPU-only cupy.
 Run  python3 paper5_cache_token_probe.py
 
 반야 제5편 캐시 토큰화 프로브. 초등 단계 얼린 캐시 모델에서 세 가지를 실측한다.
 2층 캐시 사전의 어휘 구성과, 로우랭크 헤드가 밀집 헤드 대비 몇 배 적은 파라미터를 쓰는지의 구조적 비용과,
 묶음층 토큰의 연산면도 음절층처럼 일관 연산자로 방향이 일관되고 서로 직교하는지를 잰다.
-공통 토대 banya_core 로 모델을 불러 순전파하고 제5편 캐시 메커니즘은 논문5_캐시토큰 에서 가져다 쓴다. GPU 전용 cupy.
+공통 토대 banya_core 로 모델을 불러 순전파하고 제5편 캐시 메커니즘은 paper5_cache_token 에서 가져다 쓴다. GPU 전용 cupy.
 실행  python3 paper5_cache_token_probe.py"""
 import os
 import sys

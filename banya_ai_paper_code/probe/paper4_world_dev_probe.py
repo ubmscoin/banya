@@ -113,7 +113,7 @@ def p_measure_axes(w_data_axis, stoi, seed=0):
 def p_report_axes(w_data_axis, stoi, step):
     _rows, _base = p_measure_axes(w_data_axis, stoi)
     print(f"\n[축측정] 감각 축 방향 일치도 (무작위 대비 배수) · step {step:,}")
-    print(f"무작위 기준선: {_base:.3f}")
+    print(f"무작위 기준선: {_base:.3f} (목표 0.027)")
     print(f"{'축':<12}{'일치도':>8}{'기준선대비':>10}{'쌍수':>6}  판정")
     _strong = 0
     for ax, val, n in _rows:
@@ -125,7 +125,8 @@ def p_report_axes(w_data_axis, stoi, step):
         if _ratio > 5:
             _strong += 1
         print(f"{ax:<12}{val:>8.3f}{_ratio:>9.1f}x{n:>6}  {_verdict}")
-    print(f"강한 축(5배 초과) {_strong}개")
+    print(f"강한 축(5배 초과) {_strong}개 (목표 7~8개)")
+    print("축 배수 목표: 점성 24~27배 넓이 11~13배 날씨 4~11배 탄성 4~9배 시제 8~10배 존재 7배 맛 6배 속느낌 5~7배")
     return _base
 
 
@@ -195,8 +196,8 @@ def p_state_map(m, tok):
     _table.sort(key=lambda r: -r[1])
     _order_axes = [r[0] for r in _table if r[1] >= 50]
     _flat_axes = [r[0] for r in _table if r[1] < 30]
-    print(f"순서 잘 선 축(정합 50퍼센트 이상): {' '.join(_order_axes) if _order_axes else '없음'}")
-    print(f"아직 흐린 축(정합 30퍼센트 미만): {' '.join(_flat_axes) if _flat_axes else '없음'}")
+    print(f"순서 잘 선 축(정합 50퍼센트 이상): {' '.join(_order_axes) if _order_axes else '없음'} (목표 거리 67% 질감 57% 소리크기 52%)")
+    print(f"아직 흐린 축(정합 30퍼센트 미만): {' '.join(_flat_axes) if _flat_axes else '없음'} (목표 색 0% 맛 4% 냄새 4%)")
 
 
 def main():

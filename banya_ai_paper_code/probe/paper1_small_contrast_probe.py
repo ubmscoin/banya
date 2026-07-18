@@ -425,12 +425,12 @@ def main():
     _d20 = max(abs(a - b) for a, b in zip(_losses_a[:WARM + 20], _losses_b[:WARM + 20]))
     _fin_a = _losses_a[-1]
     _fin_b = _losses_b[-1]
-    print(f"  처음 20스텝 |Δ| 최대 {_d20:.2e} · 최종 |Δ| {abs(_fin_a - _fin_b):.2e} (상대 {abs(_fin_a - _fin_b) / _fin_a * 100:.2f}%)", flush=True)
+    print(f"  처음 20스텝 |Δ| 최대 {_d20:.2e} (목표 1e-06 미만) · 최종 |Δ| {abs(_fin_a - _fin_b):.2e} (상대 {abs(_fin_a - _fin_b) / _fin_a * 100:.2f}%)", flush=True)
 
     print("\n[실측 요약]", flush=True)
-    print(f"  스텝 0 손실 A {_losses_a[0]:.4f} 대 B {_losses_b[0]:.4f} · |Δ| {abs(_losses_a[0] - _losses_b[0]):.2e}", flush=True)
-    print(f"  최종 손실 A {_fin_a:.4f} 대 B {_fin_b:.4f} · numpy CPU 기준 {_loss_c_last:.4f}", flush=True)
-    print(f"  실행 시간 300스텝  엔진 GPU {_wall_a:.2f}초 ({_wall_a / STEPS * 1e3:.1f}ms/스텝) · 기준 cupy GPU {_wall_b:.2f}초 ({_wall_b / STEPS * 1e3:.1f}ms/스텝) · 기준 numpy CPU {_wall_c:.2f}초 ({_wall_c / STEPS * 1e3:.1f}ms/스텝)", flush=True)
+    print(f"  스텝 0 손실 A {_losses_a[0]:.4f} 대 B {_losses_b[0]:.4f} (목표 9.5692 일치) · |Δ| {abs(_losses_a[0] - _losses_b[0]):.2e}", flush=True)
+    print(f"  최종 손실 A {_fin_a:.4f} 대 B {_fin_b:.4f} · numpy CPU 기준 {_loss_c_last:.4f} (목표 모두 1.1039)", flush=True)
+    print(f"  실행 시간 300스텝  엔진 GPU {_wall_a:.2f}초 ({_wall_a / STEPS * 1e3:.1f}ms/스텝) · 기준 cupy GPU {_wall_b:.2f}초 ({_wall_b / STEPS * 1e3:.1f}ms/스텝) · 기준 numpy CPU {_wall_c:.2f}초 ({_wall_c / STEPS * 1e3:.1f}ms/스텝) (목표 스텝당 11.8ms 대 47.9ms 대 80.1ms)", flush=True)
     print("  궤적 자료 (그림용, 10스텝마다)", flush=True)
     print("  A: " + " ".join(f"{v:.3f}" for v in _losses_a[WARM::10]), flush=True)
     print("  B: " + " ".join(f"{v:.3f}" for v in _losses_b[WARM::10]), flush=True)

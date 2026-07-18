@@ -27,6 +27,17 @@ S0 S1 S2 를 자리마다 말한다. 길이 3 조합 27개 중 14개만 가르�
 1블록 엔진에서 게이트만 다르고, C 는 대조용 표준 트랜스포머 1층으로 torch 가 있을 때만 돌며 없으면
 건너뛴다고 고지한다.
 채점: 강제 = 정답 상태를 보여주며 스텝 채점, 자기 = 자기 출력을 되먹여 끝까지.
+Fourth it verifies the storage free adjoint of the quaternion gate the same way.
+Fifth it runs the triangle non commutative discrimination: reading moves R R2 F one by one, the model must speak
+the state of a labeled triangle among six states at every step. Two splits are run. The inference trial hides part
+of the rule table itself, so every group meets the same ceiling. The composition trial exposes the full rule
+table and hides 13 of the 27 length 3 combinations, so only a gate owning non commutative composition fills the
+blanks. Group Q(quaternion gate) joins the five groups of the mod 3 task.
+넷째, 쿼터니언 게이트의 무저장 수반을 같은 방식으로 검증한다.
+다섯째, 삼각형 비가환 판별을 돌린다. 이동 R R2 F 를 하나씩 읽으며 표시된 정삼각형의 상태 6종을
+자리마다 말한다. 분할 두 가지를 돌린다. 유추시험은 규칙 표 자체를 일부 숨겨 전 군이 같은 천장에 닿고,
+합성시험은 규칙 표 전체를 노출한 채 길이 3 조합 27개 중 13개를 숨겨 비가환 합성을 기본 연산으로 가진
+게이트만 빈칸을 채운다. mod 3 과제의 다섯 군에 Q(쿼터니언 게이트)가 더해진다.
 GPU 전용 cupy. 수치는 시드 고정이나 GPU 합산 순서로 마지막 자리가 흔들릴 수 있다.
 실행  python3 paper7_rotation_probe.py"""
 import itertools
@@ -190,7 +201,7 @@ def p_make_rows(lens):
 # Method: fills the target with pad everywhere and puts the true state token at each move position
 # Why: the other positions hold unpredictable moves whose noise gradient would bury the state signal
 # 역할: 상태 자리에만 손실이 걸리는 다음 토큰 타겟을 만든다
-# 방법: 타겟을 전부 pad 로 채우고 각 이동 자리에는 참 상태 토큰을 넣는다
+# 방법: 타겟을 전부 pad 로 채우고 각 이동 자리에는 정답 상태 토큰을 넣는다
 # 이유: 나머지 자리는 예측 불가능한 이동이라 그 잡음 기울기가 상태 신호를 묻기 때문이다
 def p_targets(rows, slots):
     _Y = np.full_like(rows, PAD)
@@ -225,7 +236,7 @@ def p_train_engine(seed, train_rows, train_slots):
 # Method: forced scores the final state with true states shown; self blanks the states, fills them one pass at a time from the model's own argmax, then scores the final state
 # Why: self-feedback is the real loop where per-step errors compound, so it is the honest score, and forced isolates the per-step rule
 # 역할: 강제 채점과 자기 되먹임 채점으로 한 칸을 채점한다
-# 방법: 강제는 참 상태를 보여주며 끝 상태를 채점하고, 자기는 상태를 비운 뒤 모델의 argmax 로 한 자리씩 채워 끝 상태를 채점한다
+# 방법: 강제는 정답 상태를 보여주며 끝 상태를 채점하고, 자기는 상태를 비운 뒤 모델의 argmax 로 한 자리씩 채워 끝 상태를 채점한다
 # 이유: 자기 되먹임은 스텝 오류가 눈덩이가 되는 진짜 루프라 정직한 점수이고, 강제는 스텝당 규칙만을 분리해 재기 때문이다
 def p_eval_engine(m, rows, slots, rollout):
     _rows = rows.copy()
@@ -281,13 +292,15 @@ def p_inspect_rotation(m):
     print(f"    [군 구조] " + "  ".join(_parts), flush=True)
 
 
-# Role: runs one experiment group over the three seeds and prints the row of the results table
-# Method: restores the published kernels, applies the group's gate setup, trains, then scores every rung under both scorings
-# Why: every group must pass through the identical pipeline so that the only remaining difference is the gate
-# 역할: 한 실험군을 시드 셋으로 돌리고 결과표의 한 줄을 인쇄한다
-# 방법: 발행 커널로 복귀한 뒤 그 군의 게이트 설치를 적용하고 학습해 전 칸을 두 채점으로 채점한다
-# 이유: 모든 군이 동일한 파이프라인을 지나야 남는 차이가 게이트뿐이기 때문이다
-def p_run_group(name, setup, bitok, train_rows, train_slots, test_sets, inspect=False):
+# Role: runs one experiment group over the seeds and prints one row per seed plus the group mean
+# Method: restores the published kernels, applies the group's gate setup, trains, scores every rung under both scorings, and prints the seed mean row at the end
+# Why: every group must pass through the identical pipeline so that the only remaining difference is the gate, and the mean row lets the text averages be checked straight off the output
+# 역할: 한 실험군을 시드들로 돌리고 시드별 한 줄과 군 평균 한 줄을 인쇄한다
+# 방법: 발행 커널로 복귀한 뒤 그 군의 게이트 설치를 적용하고 학습해 전 칸을 두 채점으로 채점하며, 끝에 시드 평균 줄을 인쇄한다
+# 이유: 모든 군이 동일한 파이프라인을 지나야 남는 차이가 게이트뿐이고, 평균 줄이 있어야 본문의 평균 수치를 출력에서 바로 대조할 수 있기 때문이다
+def p_run_group(name, setup, bitok, train_rows, train_slots, test_sets, inspect=False, report=None):
+    _sums = {}
+    _convs = []
     for seed in SEEDS:
         p_config()
         p_restore()
@@ -295,14 +308,24 @@ def p_run_group(name, setup, bitok, train_rows, train_slots, test_sets, inspect=
             setup()
         bc.USE_BITOKEN = bitok
         _m, _conv = p_train_engine(seed, train_rows, train_slots)
+        if _conv is not None:
+            _convs.append(_conv)
         _parts = []
         for tname, (rows, slots) in test_sets.items():
             _tf = p_eval_engine(_m, rows, slots, rollout=False)
             _ro = p_eval_engine(_m, rows, slots, rollout=True)
+            _acc = _sums.setdefault(tname, [0.0, 0.0])
+            _acc[0] += _tf
+            _acc[1] += _ro
             _parts.append(f"{tname} 강제{_tf * 100:.0f}%/자기{_ro * 100:.0f}%")
         print(f"  {name} 시드{seed} (수렴 {_conv}스텝): " + "  ".join(_parts), flush=True)
         if inspect:
             p_inspect_rotation(_m)
+        if report is not None:
+            report(_m)
+    _avg_parts = [f"{t} 강제{v[0] / len(SEEDS) * 100:.1f}%/자기{v[1] / len(SEEDS) * 100:.1f}%" for t, v in _sums.items()]
+    _conv_txt = f" (수렴 평균 {sum(_convs) / len(_convs):.0f}스텝)" if _convs else ""
+    print(f"  [평균] {name}{_conv_txt}: " + "  ".join(_avg_parts), flush=True)
     p_restore()
 
 
@@ -451,6 +474,239 @@ def p_run_torch_group(train_rows, train_slots, test_sets):
         print(f"  C 표준1층 시드{seed}: " + "  ".join(_parts), flush=True)
 
 
+TRI_MV = [1, 2, 3]
+TRI_ST = [4, 5, 6, 7, 8, 9]
+TRI_VOCAB = 10
+TRI_NAME = ["R", "R2", "F"]
+TRI_SEEDS = [0, 1, 2, 3, 4, 5]
+
+
+# Role: switches the task-wide token globals between the mod 3 task and the triangle task
+# Method: rebinds the module globals for move tokens, state tokens, and vocabulary size
+# Why: the training and scoring functions read these globals, so one switch reuses the identical pipeline for both tasks
+# 역할: 과제 전역 토큰 설정을 mod 3 과제와 삼각형 과제 사이에서 전환한다
+# 방법: 이동 토큰, 상태 토큰, 어휘 크기의 모듈 전역을 다시 묶는다
+# 이유: 학습과 채점 함수가 이 전역을 읽으므로 전환 하나로 두 과제가 동일한 파이프라인을 공유하기 때문이다
+def p_set_task(mv, st, vocab):
+    global MV, ST, VOCAB
+    MV = mv
+    ST = st
+    VOCAB = vocab
+
+
+# Role: builds the six states of the labeled triangle and the rule table of the three moves
+# Method: enumerates the six permutations of three vertices in sorted order, composes each state with the rotation, the double rotation, and the flip, and indexes the results
+# Why: the triangle symmetries form the smallest non commutative group, so this table is the ground truth the discrimination scores against
+# 역할: 표시된 정삼각형의 상태 6종과 이동 3종의 규칙 표를 만든다
+# 방법: 꼭짓점 세 개의 순열 6종을 정렬 순서로 나열하고 각 상태에 회전, 두 번 회전, 뒤집기를 합성해 결과를 색인한다
+# 이유: 정삼각형의 대칭은 가장 작은 비가환 군이라 이 표가 판별이 채점하는 정답이기 때문이다
+def p_tri_table():
+    _perms = sorted(itertools.permutations((0, 1, 2)))
+    _idx = {}
+    for i, p in enumerate(_perms):
+        _idx[p] = i
+
+    def p_compose(a, b):
+        return tuple(b[a[i]] for i in range(3))
+
+    _r = (1, 2, 0)
+    _f = (0, 2, 1)
+    _mv = [_r, p_compose(_r, _r), _f]
+    _trans = [[_idx[p_compose(_perms[s], _mv[m])] for m in range(3)] for s in range(6)]
+    return _trans
+
+
+# Role: returns the state index after applying a move word from the start state
+# Method: walks the rule table move by move
+# Why: row building, ceilings, and the self check all need the same walk
+# 역할: 시작 상태에서 이동 낱말을 적용한 뒤의 상태 색인을 돌려준다
+# 방법: 규칙 표를 이동 하나씩 따라간다
+# 이유: 행 생성, 천장 계산, 자가검사가 전부 같은 걸음을 쓰기 때문이다
+def p_tri_end(trans, word):
+    _s = 0
+    for mv in word:
+        _s = trans[_s][mv]
+    return _s
+
+
+# Role: lists the rule table entries a move word passes through
+# Method: yields the state and move pair before every step of the walk
+# Why: split coverage and blank solvability are defined over these entries
+# 역할: 이동 낱말이 지나가는 규칙 표 항목을 나열한다
+# 방법: 걸음마다 직전 상태와 이동의 쌍을 내놓는다
+# 이유: 분할의 노출과 빈칸의 풀이 가능성이 이 항목 위에서 정의되기 때문이다
+def p_tri_pairs(trans, word):
+    _s = 0
+    _out = []
+    for mv in word:
+        _out.append((_s, mv))
+        _s = trans[_s][mv]
+    return _out
+
+
+# Role: verifies the rule table against the defining relations of the triangle group
+# Method: checks F then R equals R2 then F, R then F has order two, the two orders differ, and length 3 words reach all six states
+# Why: every downstream number leans on this table, so the table itself must be proven before any training
+# 역할: 규칙 표를 삼각형 군의 정의 관계와 대조해 검증한다
+# 방법: F 뒤 R 이 R2 뒤 F 와 같은지, R 뒤 F 가 위수 2 인지, 두 순서가 다른지, 길이 3 낱말이 상태 6종을 모두 닿는지 검사한다
+# 이유: 아래 모든 수치가 이 표에 기대므로 학습 전에 표 자체가 증명되어야 하기 때문이다
+def p_tri_selfcheck(trans):
+    assert p_tri_end(trans, [2, 0]) == p_tri_end(trans, [1, 2])
+    assert p_tri_end(trans, [0, 2, 0, 2]) == 0
+    assert p_tri_end(trans, [0, 2]) != p_tri_end(trans, [2, 0])
+    _ends = set(p_tri_end(trans, w) for w in itertools.product([0, 1, 2], repeat=3))
+    assert len(_ends) == 6
+    print("    군 표 자가검사: F뒤R=R2뒤F 통과, RF 위수 2 통과, 비가환 통과, 길이 3 끝상태 6가지 통과", flush=True)
+
+
+# Role: builds triangle rows where the state is written after every move
+# Method: for each move word, left-pads to the fixed window and appends move token then state token following the rule table
+# Why: the same loop protocol as the mod 3 task keeps the two discriminations comparable step for step
+# 역할: 이동 하나마다 상태를 쓰는 삼각형 행을 만든다
+# 방법: 이동 낱말마다 고정 창으로 왼쪽을 채우고 규칙 표를 따라 이동 토큰과 상태 토큰을 차례로 붙인다
+# 이유: mod 3 과제와 같은 루프 프로토콜이어야 두 판별이 걸음 단위로 비교되기 때문이다
+def p_make_rows_tri(lens, trans):
+    _rows = []
+    _slots = []
+    _words = []
+    for k in lens:
+        for moves in itertools.product([0, 1, 2], repeat=k):
+            _seq = [PAD] * (T - 2 * k)
+            _bpos = []
+            _run = 0
+            for mv in moves:
+                _bpos.append(len(_seq))
+                _seq.append(TRI_MV[mv])
+                _run = trans[_run][mv]
+                _seq.append(TRI_ST[_run])
+            _rows.append(_seq)
+            _slots.append(_bpos)
+            _words.append(moves)
+    return np.asarray(_rows, dtype=np.int64), _slots, _words
+
+
+# Role: finds the smallest split seed whose 14 kept words expose the full rule table
+# Method: walks seeds upward, keeps the first permutation whose training words together with the length 2 words cover all 18 entries
+# Why: the composition trial must expose every rule so that the blanks test pure composition and nothing else
+# 역할: 남긴 14개 낱말이 규칙 표 전체를 노출하는 가장 작은 분할 시드를 찾는다
+# 방법: 시드를 올려 가며 길이 2 낱말과 합쳐 18항목을 전부 덮는 첫 순열을 잡는다
+# 이유: 합성시험은 규칙 전부를 노출해야 빈칸이 순수 합성만을 시험하기 때문이다
+def p_tri_cover_seed(trans, words2, words3):
+    for s in range(1000):
+        _perm = np.random.RandomState(s).permutation(len(words3))
+        _exp = set()
+        for w in words2:
+            _exp.update(p_tri_pairs(trans, w))
+        for i in _perm[:14]:
+            _exp.update(p_tri_pairs(trans, words3[i]))
+        if len(_exp) == 18:
+            return s, _perm
+    raise RuntimeError("커버리지 분할 탐색 실패")
+
+
+# Role: computes the ceiling of any order-blind solver on the blank words
+# Method: counts the blanks whose end state is identical across every ordering of the same move multiset over all 27 words
+# Why: a solver that ignores order answers one state per multiset, so it can only be sure on blanks whose answer does not depend on order at all
+# 역할: 순서를 무시하는 풀이가 빈칸에서 닿을 수 있는 천장을 계산한다
+# 방법: 낱말 27개 전체에서 같은 이동 다중집합의 모든 순서가 같은 끝상태를 내는 빈칸을 센다
+# 이유: 순서를 무시하는 풀이는 다중집합마다 상태 하나만 답하므로 순서와 무관하게 답이 정해지는 빈칸만 확실히 맞힐 수 있기 때문이다
+def p_tri_commutative_ceiling(trans, all_words, blank_words):
+    _classes = {}
+    for w in all_words:
+        _classes.setdefault(tuple(sorted(w)), set()).add(p_tri_end(trans, w))
+    _hit = 0
+    for w in blank_words:
+        if len(_classes[tuple(sorted(w))]) == 1:
+            _hit += 1
+    return _hit
+
+
+# Role: opens a trained model's rule table and prints the entries it failed to learn
+# Method: forward passes all 27 length 3 rows with true states shown and scores every state slot by its rule table entry
+# Why: the accuracy number says how many blanks fall but only this table says which rule fell, which is the autopsy the paper reports
+# 역할: 학습된 모델의 규칙 표를 열어 습득에 실패한 항목을 인쇄한다
+# 방법: 길이 3 행 27개 전부를 정답 상태를 보여주며 순전파하고 상태 자리마다 규칙 표 항목별로 채점한다
+# 이유: 정확도 수치는 빈칸이 몇 개 무너지는지만 말하고 어느 규칙이 무너졌는지는 이 표만 말하며 그것이 본문이 보고하는 부검이기 때문이다
+def p_tri_transition_report(m, trans, rows3, slots3, words3):
+    _hit = {}
+    _tot = {}
+    for i in range(0, len(rows3), 240):
+        _chunk = rows3[i:i + 240]
+        _cache, _aD, _z = bc.forward(m, xp.asarray(_chunk.T))
+        _zh = bc.to_host(_z.reshape(VOCAB, T, -1))
+        for j in range(len(_chunk)):
+            _pairs = p_tri_pairs(trans, words3[i + j])
+            for si, bp in enumerate(slots3[i + j]):
+                _sc = [_zh[t, bp, j] for t in TRI_ST]
+                _pred = TRI_ST[int(np.argmax(_sc))]
+                _key = _pairs[si]
+                _tot[_key] = _tot.get(_key, 0) + 1
+                if _pred == _chunk[j, bp + 1]:
+                    _hit[_key] = _hit.get(_key, 0) + 1
+    _fails = []
+    for key in sorted(_tot):
+        if _hit.get(key, 0) < _tot[key]:
+            _fails.append(f"P{key[0]}에 {TRI_NAME[key[1]]} ({_hit.get(key, 0)}/{_tot[key]})")
+    if _fails:
+        print(f"    [규칙 표] 18항목 중 오류 {len(_fails)}개: " + ", ".join(_fails), flush=True)
+    else:
+        print("    [규칙 표] 18항목 전부 정답 (완벽 습득)", flush=True)
+
+
+# Role: runs the whole triangle discrimination, both splits, all groups
+# Method: switches the task globals, builds the rule table and rows, runs the inference trial on the seed 42 random split and the composition trial on the coverage guaranteed split, then switches the globals back
+# Why: the mod 3 task asks whether a gate owns one cyclic operation, and this task asks whether it owns non commutative composition, the next rung of the ladder
+# 역할: 삼각형 판별 전체를 두 분할과 전 실험군으로 돌린다
+# 방법: 과제 전역을 전환하고 규칙 표와 행을 만들어 시드 42 무작위 분할로 유추시험을, 커버리지 보장 분할로 합성시험을 돌린 뒤 전역을 되돌린다
+# 이유: mod 3 과제는 게이트가 순환 연산 하나를 가졌는지를 묻고 이 과제는 비가환 합성을 가졌는지를 물으며 그것이 사다리의 다음 단이기 때문이다
+def p_run_triangle():
+    global SEEDS
+    _trans = p_tri_table()
+    p_set_task(TRI_MV, TRI_ST, TRI_VOCAB)
+    _seeds_saved = SEEDS
+    SEEDS = TRI_SEEDS
+    try:
+        p_tri_selfcheck(_trans)
+        _rows2, _slots2, _words2 = p_make_rows_tri([2], _trans)
+        _rows3, _slots3, _words3 = p_make_rows_tri([3], _trans)
+        _exp2 = set()
+        for w in _words2:
+            _exp2.update(p_tri_pairs(_trans, w))
+        _splits = []
+        _perm42 = np.random.RandomState(42).permutation(len(_words3))
+        _splits.append(("유추시험 (무작위 분할)", _perm42, None))
+        _cs, _permc = p_tri_cover_seed(_trans, _words2, _words3)
+        _splits.append((f"합성시험 (커버리지 보장 분할, 탐색 시드 {_cs})", _permc, _cs))
+        for label, perm, cs in _splits:
+            _keep = perm[:14]
+            _hold = perm[14:]
+            _exp = set(_exp2)
+            for i in _keep:
+                _exp.update(p_tri_pairs(_trans, _words3[i]))
+            _solv = sum(1 for i in _hold if all(p in _exp for p in p_tri_pairs(_trans, _words3[i])))
+            print(f"\n  [{label}] 규칙 표 노출 {len(_exp)}/18, 본 규칙만으로 풀리는 빈칸 {_solv}/{len(_hold)}", flush=True)
+            _ceil = p_tri_commutative_ceiling(_trans, _words3, [_words3[i] for i in _hold])
+            print(f"    가환 천장(순서 무시 풀이의 상계): 빈칸 {_ceil}/{len(_hold)}. 우연은 16.7%", flush=True)
+            _train_rows = np.concatenate([_rows2, _rows3[_keep]])
+            _train_slots = _slots2 + [_slots3[i] for i in _keep]
+            _tests = {"본것": (_train_rows, _train_slots), "빈칸3": (_rows3[_hold], [_slots3[i] for i in _hold])}
+            for k in TEST_LENS:
+                _rk, _sk, _wk = p_make_rows_tri([k], _trans)
+                _tests[f"길이{k}"] = (_rk, _sk)
+            _report = None
+            if cs is not None:
+                _report = lambda m: p_tri_transition_report(m, _trans, _rows3, _slots3, _words3)
+            p_run_group("A σ켬", None, True, _train_rows, _train_slots, _tests)
+            p_run_group("B 차단", None, False, _train_rows, _train_slots, _tests)
+            p_run_group("D tanh", p_patch_tanh, True, _train_rows, _train_slots, _tests)
+            p_run_group("E 회전", paper7.install, True, _train_rows, _train_slots, _tests, report=_report)
+            p_run_group("Q 쿼터니언", paper7.install_quaternion, True, _train_rows, _train_slots, _tests, report=_report)
+            p_run_torch_group(_train_rows, _train_slots, _tests)
+    finally:
+        SEEDS = _seeds_saved
+        p_set_task([1, 2, 3], [4, 5, 6], 8)
+
+
 def main():
     _rows2, _slots2 = p_make_rows([2])
     _rows3, _slots3 = p_make_rows([3])
@@ -476,6 +732,11 @@ def main():
     p_run_group("D tanh", p_patch_tanh, True, _train_rows, _train_slots, _tests)
     p_run_group("E 회전", paper7.install, True, _train_rows, _train_slots, _tests, inspect=True)
     p_run_torch_group(_train_rows, _train_slots, _tests)
+    print("\n[4] 쿼터니언 수반 정합 (식이 유한차분과 같은가)", flush=True)
+    paper7.adjoint_check_quaternion()
+    print("\n[5] 삼각형 판별 (비가환 과제. 유추시험과 합성시험, 강제/자기 되먹임)", flush=True)
+    print("  과제: 이동 R R2 F 를 읽으며 표시된 정삼각형의 상태 P0 부터 P5 를 자리마다 말한다", flush=True)
+    p_run_triangle()
 
 
 if __name__ == "__main__":

@@ -225,8 +225,8 @@ def main():
     print("\n[실측 요약] 이 홀드아웃 텍스트 기준. 모든 조각이 두 인코딩 모두 창 하나에 들어가 문맥 절단은 양쪽 다 없었다", flush=True)
     for nm in EVAL_SETS:
         _r = _rows[nm]
-        print(f"  {nm}: 켬 {_r['켬'][0]:.2f} 대 끔 {_r['끔'][0]:.2f} (재정규화 {_r['끔재정규']:.2f}) 글자당 비트", flush=True)
-    print(f"  토큰 절감 {_save:.1f}% · 창 {bc.CONTEXT_LENGTH}토큰이 덮는 글자는 비율의 산술 환산으로 켬 약 {_cov_on:.0f}자 대 끔 {_cov_off:.0f}자", flush=True)
+        print(f"  {nm}: 켬 {_r['켬'][0]:.2f} 대 끔 {_r['끔'][0]:.2f} (재정규화 {_r['끔재정규']:.2f}) 글자당 비트 (목표 {'켬 5.08 끔 7.98 재정규화 7.58' if nm == '홀드_중딩' else '켬 5.07 끔 7.48 재정규화 7.07'})", flush=True)
+    print(f"  토큰 절감 {_save:.1f}% (목표 21.5%) · 창 {bc.CONTEXT_LENGTH}토큰이 덮는 글자는 비율의 산술 환산으로 켬 약 {_cov_on:.0f}자 대 끔 {_cov_off:.0f}자", flush=True)
 
 
 if __name__ == "__main__":

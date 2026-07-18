@@ -1,467 +1,402 @@
+<!DOCTYPE html>
 <!--
 한혁진 (Hyukjin Han)
 https://orcid.org/0009-0007-4132-1707
 bokkamsun@gmail.com
 SPDX-License-Identifier: CC-BY-4.0
+이 페이지는 README.md 를 그대로 옮긴 목차다. 내용 수정은 README.md 에 하고 이 파일을 다시 굽는다.
 -->
-<!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Banya Research Reproduction Package</title>
 <style>
-:root { color-scheme: dark; }
-body { max-width: 940px; margin: 0 auto; padding: 34px 22px 140px; font-family: "Noto Sans KR", system-ui, -apple-system, sans-serif; line-height: 1.85; color: #c9c9c9; background: #181818; }
-h1 { font-size: 1.7em; border-bottom: 3px solid #4d4d4d; padding-bottom: 12px; color: #f0f0f0; line-height: 1.4; }
-h2 { margin-top: 54px; font-size: 1.32em; color: #e6e6e6; border-left: 6px solid #5c5c5c; padding-left: 12px; }
-h3 { margin-top: 32px; font-size: 1.1em; color: #c6c6c6; }
-a { color: #dcdcdc; text-decoration: underline; text-decoration-color: #5a5a5a; text-underline-offset: 2px; }
-a:hover { color: #ffffff; text-decoration-color: #9a9a9a; }
-.meta { color: #8f8f8f; font-size: 0.94em; margin-top: 6px; }
-.abstract { background: #202020; border: 1px solid #353535; border-radius: 8px; padding: 16px 20px; margin: 22px 0 12px; }
-.abstract::before { content: "초록"; display: inline-block; background: #4a4a4a; color: #ededed; font-size: 0.78em; font-weight: 700; padding: 2px 12px; border-radius: 12px; margin-bottom: 8px; }
-.formula { background: #1c1c1c; border-left: 6px solid #6a6a6a; padding: 12px 18px; margin: 6px 0 4px; border-radius: 4px; overflow-x: auto; }
-.expl { background: #191919; border: 1px solid #363636; border-left: 5px solid #6a6a6a; border-radius: 6px; padding: 12px 18px 13px; margin: 6px 0 26px; }
-.expl::before { content: "수식 설명"; display: inline-block; background: #3a3a3a; color: #ededed; font-size: 0.78em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; }
-.expl b { color: #dcdcdc; } .expl p { margin: 6px 0; } .expl ul { margin: 6px 0; padding-left: 22px; }
-.note { background: #1e1e1e; border: 1px solid #383838; border-radius: 8px; padding: 12px 18px 14px; margin: 8px 0 26px; }
-.note::before { content: "보충 설명"; display: inline-block; background: #4a4a4a; color: #ededed; font-size: 0.76em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; }
-.repro { background: #1a1f1a; border: 1px solid #3c4a3c; border-left: 5px solid #7a8a7a; border-radius: 6px; padding: 12px 18px; margin: 16px 0; }
-.repro::before { content: "실측"; display: inline-block; background: #4a5a4a; color: #e8f0e8; font-size: 0.76em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; }
-.benefit { background: #1a1e22; border: 1px solid #3a4450; border-left: 5px solid #7a8ca0; border-radius: 6px; padding: 12px 18px; margin: 16px 0; }
-.benefit::before { content: "확정 이득"; display: inline-block; background: #46586a; color: #e8f0f8; font-size: 0.76em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; }
-.caveat { background: #211d1d; border: 1px solid #4a3f3f; border-left: 5px solid #8a7a7a; border-radius: 6px; padding: 12px 18px; margin: 16px 0; }
-.caveat::before { content: "참고"; display: inline-block; background: #6a5a5a; color: #f0e8e8; font-size: 0.76em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; }
-.series { background: #1c1c22; border: 1px solid #3a3a48; border-left: 5px solid #7a7a92; border-radius: 6px; padding: 12px 18px; margin: 16px 0; }
-.series::before { content: "후속 논문 예고"; display: inline-block; background: #4a4a5c; color: #e8e8f0; font-size: 0.76em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; }
-.blabel { display: block; color: #b8b8b8; font-weight: 700; font-size: 0.9em; margin: 26px 0 2px; }
-.blabel + .formula, .blabel + .fig, .blabel + table { margin-top: 2px; }
-table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; font-size: 0.95em; }
-th, td { border: 1px solid #383838; padding: 8px 11px; text-align: left; vertical-align: top; }
-th { background: #2a2a2a; color: #ededed; font-weight: 600; }
-tr:nth-child(even) td { background: #1d1d1d; }
-code { background: #2b2b2b; color: #d2d2d2; padding: 1px 6px; border-radius: 4px; font-size: 0.92em; }
-.fig { background: #141414; border: 1px solid #303030; border-radius: 8px; padding: 18px 14px 12px; margin: 8px 0 6px; text-align: center; }
-.fig svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
-.figcap { font-size: 0.86em; color: #9a9a9a; margin: 8px 0 24px; line-height: 1.55; }
-.fig text { fill: #cccccc; font-family: "Noto Sans KR", system-ui, sans-serif; font-size: 14px; }
-.fig .cell { fill: #272727; stroke: #585858; stroke-width: 1.5; }
-.fig .hi { fill: #33383f; stroke: #9aa4b0; stroke-width: 2; }
-.fig .ar { stroke: #808080; stroke-width: 2; fill: none; }
-.fig .arh { fill: #808080; }
-.fig .link { stroke: #6a6a6a; stroke-width: 1.4; stroke-dasharray: 4 4; fill: none; }
-.fig .axis { stroke: #6a6a6a; stroke-width: 1.5; }
-.fig .grid { stroke: #333; stroke-width: 1; }
-.fig .bar { fill: #3a4450; stroke: #7a8ca0; stroke-width: 1.5; }
-.fig .bar2 { fill: #2f382f; stroke: #7a8a7a; stroke-width: 1.5; }
-.fig .dot { fill: #9aa4b0; stroke: #cfd6de; stroke-width: 1; }
-.fig .dotout { fill: #6a5a5a; stroke: #b09a9a; stroke-width: 1; }
-.fig .ref { stroke: #9a8a6a; stroke-width: 1.5; stroke-dasharray: 5 4; }
-.fig .em { fill: #ededed; font-weight: 700; }
-.fig .dim { fill: #8f8f8f; font-size: 12px; }
-.fig .op { fill: #dcdcdc; font-size: 20px; font-weight: 700; }
-.fig .box { fill: #222222; stroke: #5a5a5a; stroke-width: 1.5; }
-.toc { background: #1c1c1c; border: 1px solid #333; border-radius: 8px; padding: 12px 20px; }
-.foot { margin-top: 50px; font-size: 0.86em; color: #808080; border-top: 1px solid #353535; padding-top: 16px; }
-.refs li { margin: 7px 0; }
-
-
-/* 목차 트리 */
-.note { font-size: 1.2em; }
-.name a { color: inherit; text-decoration: none; }
-.name a:hover { text-decoration: underline; }
-.note::before { display: none; }
-ul.tree { list-style: none; padding-left: 0; margin: 8px 0; font-size: 1.1em; }
-ul.tree ul { list-style: none; padding-left: 30px; margin: 2px 0 10px; border-left: 2px solid #353535; }
-ul.tree li { margin: 7px 0; }
-.name { font-family: "D2Coding", "Consolas", monospace; font-weight: 600; color: #e0e0e0; }
-li.folder > .name { font-weight: 700; color: #ffffff; background: #2e2e2e; padding: 1px 8px; border-radius: 4px; border: 1px solid #4d4d4d; }
-.desc { color: #9a9a9a; margin-left: 10px; font-size: 0.95em; }
-li.folder { margin-top: 20px; }
-
-.langbtns { float: right; margin-top: 10px; }
-.langbtns button { background: #2e2e2e; color: #c9c9c9; border: 1px solid #4d4d4d; border-radius: 4px; padding: 4px 14px; font-weight: 700; cursor: pointer; }
-.langbtns button.on { background: #e6e6e6; color: #181818; }
+body { font-family: -apple-system, "Segoe UI", "Noto Sans KR", "Noto Sans CJK KR", sans-serif;
+       max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; color: #1f2328;
+       line-height: 1.6; font-size: 16px; background: #ffffff; }
+h1 { font-size: 1.9em; border-bottom: 1px solid #d1d9e0; padding-bottom: 8px; margin-top: 40px; }
+h2 { font-size: 1.4em; border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; margin-top: 32px; }
+h3 { font-size: 1.15em; margin-top: 24px; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+p { margin: 10px 0; }
+ul { padding-left: 26px; margin: 8px 0; }
+li { margin: 4px 0; }
+li > ul { margin: 4px 0; }
+pre { background: #f6f8fa; border: 1px solid #d1d9e0; border-radius: 6px;
+      padding: 12px 16px; overflow-x: auto; margin: 12px 0; }
+pre code { background: none; border: none; padding: 0; font-size: 0.95em; }
+code { background: #f6f8fa; border: 1px solid #e3e8ee; border-radius: 4px;
+       padding: 1px 5px; font-size: 0.92em;
+       font-family: ui-monospace, "DejaVu Sans Mono", Consolas, monospace; }
+hr { border: none; border-top: 2px solid #d1d9e0; margin: 48px 0; }
+b { color: #1f2328; }
 </style>
 </head>
 <body>
-<div class="langbtns"><button id="btn-en" onclick="setLang('en')">EN</button> <button id="btn-ko" onclick="setLang('ko')">KR</button></div>
-
-<div id="page-en">
 <h1>Banya Research Reproduction Package</h1>
-<div class="meta">Hyukjin Han (bokkamsun@gmail.com) · <a href="https://orcid.org/0009-0007-4132-1707">ORCID 0009-0007-4132-1707</a> · Code Apache-2.0 · Documents and data CC BY 4.0</div>
+<p>Hyukjin Han (bokkamsun@gmail.com) · <a href="https://orcid.org/0009-0007-4132-1707">ORCID 0009-0007-4132-1707</a> · Code Apache-2.0 · Documents and data CC BY 4.0</p>
 <h2>Usage</h2>
-<p>The three steps below reproduce every measurement in the six papers. The requirements are an NVIDIA GPU (CUDA) and Python 3.12; install the Python packages with the single line below. For cupy, choose the build that matches your CUDA version (for example, cupy-cuda13x for CUDA 13).</p>
-<div class="formula" style="font-family: monospace;">pip install -r <a href="requirements.txt">requirements.txt</a></div>
-
+<p>The three steps below reproduce every measurement in the seven papers. The requirements are an NVIDIA GPU (CUDA) and Python 3.12; install the Python packages with the single line below. For cupy, choose the build that matches your CUDA version (for example, cupy-cuda13x for CUDA 13).</p>
+<pre><code>
+pip install -r requirements.txt
+</code></pre>
 <h3>1. Download the models</h3>
-<p>The three frozen checkpoints under measurement (471 MB in total) live on Zenodo rather than in this repository, because of their size:
-<a href="https://doi.org/10.5281/zenodo.21383724">doi.org/10.5281/zenodo.21383724</a>.
-The single line below downloads the three files into the model folder and verifies their integrity (sha256) automatically.</p>
-<div class="formula" style="font-family: monospace;">cd model &amp;&amp; bash download.sh</div>
-<p>To download by hand, fetch bitok_elem2_170000_m.npz, cache_elem3_190000.npz, and world_toddler2_110000_m.npz from the record page above, place them in the model folder, and verify with <span style="font-family: monospace;">sha256sum -c checksums.sha256</span>. Details are in <a href="model/DOWNLOAD.md">model/DOWNLOAD.md</a>.</p>
-
+<p>The three frozen checkpoints under measurement (471 MB in total) live on Zenodo rather than in this repository, because of their size:</p>
+<p><a href="https://doi.org/10.5281/zenodo.21383724">doi.org/10.5281/zenodo.21383724</a>.</p>
+<p>The single line below downloads the three files into the model folder and verifies their integrity (sha256) automatically.</p>
+<pre><code>
+cd model &amp;&amp; bash download.sh
+</code></pre>
+<p>To download by hand, fetch bitok_elem2_170000_m.npz, cache_elem3_190000.npz, and world_toddler2_110000_m.npz from the record page above, place them in the model folder, and verify with <code>sha256sum -c checksums.sha256</code>. The optional standard-baseline checkpoint banya_bp_pytorch.pt (1.25 GB), needed only for the standard row of Paper 3, Table 6-1, is fetched with <code>bash download.sh bp</code>. Details are in <a href="model/DOWNLOAD.md">model/DOWNLOAD.md</a>.</p>
 <h3>2. Build the world data (corpora)</h3>
 <p>The corpora are built by generators instead of being distributed as raw text. The single line below builds all 23 corpora into the banya_world_data folder.</p>
-<div class="formula" style="font-family: monospace;">cd corpus_build &amp;&amp; bash build_all.sh</div>
-<p>To build a corpus from your own text, use <span style="font-family: monospace;">python3 encode_text.py input.txt output.npy</span>. The build order and rationale are in <a href="corpus_build/MANUAL.md">corpus_build/MANUAL.md</a>.</p>
-
+<pre><code>
+cd corpus_build &amp;&amp; bash build_all.sh
+</code></pre>
+<p>To build a corpus from your own text, use <code>python3 encode_text.py input.txt output.npy</code>. The build order and rationale are in <a href="corpus_build/MANUAL.md">corpus_build/MANUAL.md</a>.</p>
 <h3>3. Reproduce the measurements</h3>
-<p>The eleven probes in the probe folder reproduce the measured figures of Papers 1 through 6. The header of each file states what it measures and carries its run line. For example, the verification of Paper 1 runs as follows.</p>
-<div class="formula" style="font-family: monospace;">cd probe &amp;&amp; python3 paper1_engine_probe.py</div>
+<p>The thirteen probes in the probe folder reproduce the measured figures of Papers 1 through 7. The header of each file states what it measures and carries its run line. For example, the verification of Paper 1 runs as follows.</p>
+<pre><code>
+cd probe &amp;&amp; python3 paper1_engine_probe.py
+</code></pre>
 <p>The table of contents below reflects the completed state of the folder, with the models downloaded and the corpora built.</p>
 <h2>Folders and files</h2>
-<ul class='tree'>
-<li><span class='name'><a href="LICENSE">LICENSE</a></span> <span class='desc'>Full code license text (Apache License 2.0)</span></li>
-<li><span class='name'><a href="NOTICE">NOTICE</a></span> <span class='desc'>Copyright holder and dual-license notice</span></li>
-<li><span class='name'><a href="README.md">README.md</a></span> <span class='desc'>Quick-start guide: requirements, preparing checkpoints and corpora, and running the probes</span></li>
-<li><span class='name'><a href="banya_core.py">banya_core.py</a></span> <span class='desc'>Common foundation. The core module gathering the model class, forward pass, exact-adjoint training, cache tokenizer, and checkpoint save and load</span></li>
-<li class='folder'><span class='name'><a href="banya_world_data/">banya_world_data/</a></span> <span class='desc'>Home of the corpora and the vocabulary dictionary. Corpora are rebuilt with corpus_build</span>
 <ul>
-<li><span class='name'><a href="banya_world_data/baby.npy">baby.npy</a></span> <span class='desc'>baby corpus</span></li>
-<li><span class='name'><a href="banya_world_data/baby.txt">baby.txt</a></span> <span class='desc'>Generated text of the baby corpus</span></li>
-<li><span class='name'><a href="banya_world_data/baby_learn.npy">baby_learn.npy</a></span> <span class='desc'>baby_learn corpus</span></li>
-<li><span class='name'><a href="banya_world_data/baby_learn.txt">baby_learn.txt</a></span> <span class='desc'>Generated text of the baby_learn corpus</span></li>
-<li><span class='name'><a href="banya_world_data/baby_logic.npy">baby_logic.npy</a></span> <span class='desc'>baby_logic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/baby_logic.txt">baby_logic.txt</a></span> <span class='desc'>Generated text of the baby_logic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/bundle_cache.json">bundle_cache.json</a></span> <span class='desc'>Bundle vocabulary dictionary. It defines the checkpoint vocabulary; use this file as is instead of rebuilding it</span></li>
-<li><span class='name'><a href="banya_world_data/elem.npy">elem.npy</a></span> <span class='desc'>elem corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_dialog.npy">elem_dialog.npy</a></span> <span class='desc'>elem_dialog corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_dialog.txt">elem_dialog.txt</a></span> <span class='desc'>Generated text of the elem_dialog corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_inquiry.npy">elem_inquiry.npy</a></span> <span class='desc'>elem_inquiry corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_inquiry.txt">elem_inquiry.txt</a></span> <span class='desc'>Generated text of the elem_inquiry corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_knowledge.npy">elem_knowledge.npy</a></span> <span class='desc'>elem_knowledge corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_knowledge.txt">elem_knowledge.txt</a></span> <span class='desc'>Generated text of the elem_knowledge corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_logic.npy">elem_logic.npy</a></span> <span class='desc'>elem_logic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_logic.txt">elem_logic.txt</a></span> <span class='desc'>Generated text of the elem_logic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_subject.npy">elem_subject.npy</a></span> <span class='desc'>elem_subject corpus</span></li>
-<li><span class='name'><a href="banya_world_data/elem_subject.txt">elem_subject.txt</a></span> <span class='desc'>Generated text of the elem_subject corpus</span></li>
-<li><span class='name'><a href="banya_world_data/life.npy">life.npy</a></span> <span class='desc'>life corpus</span></li>
-<li><span class='name'><a href="banya_world_data/life.txt">life.txt</a></span> <span class='desc'>Generated text of the life corpus</span></li>
-<li><span class='name'><a href="banya_world_data/sense.npy">sense.npy</a></span> <span class='desc'>sense corpus</span></li>
-<li><span class='name'><a href="banya_world_data/sense.txt">sense.txt</a></span> <span class='desc'>Generated text of the sense corpus</span></li>
-<li><span class='name'><a href="banya_world_data/sense_mimic.npy">sense_mimic.npy</a></span> <span class='desc'>sense_mimic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/sense_mimic.txt">sense_mimic.txt</a></span> <span class='desc'>Generated text of the sense_mimic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/sense_space.npy">sense_space.npy</a></span> <span class='desc'>sense_space corpus</span></li>
-<li><span class='name'><a href="banya_world_data/sense_space.txt">sense_space.txt</a></span> <span class='desc'>Generated text of the sense_space corpus</span></li>
-<li><span class='name'><a href="banya_world_data/space.npy">space.npy</a></span> <span class='desc'>space corpus</span></li>
-<li><span class='name'><a href="banya_world_data/space.txt">space.txt</a></span> <span class='desc'>Generated text of the space corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler.npy">toddler.npy</a></span> <span class='desc'>toddler corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler.txt">toddler.txt</a></span> <span class='desc'>Generated text of the toddler corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2.npy">toddler2.npy</a></span> <span class='desc'>toddler2 corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2.txt">toddler2.txt</a></span> <span class='desc'>Generated text of the toddler2 corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2_link.npy">toddler2_link.npy</a></span> <span class='desc'>toddler2_link corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2_link.txt">toddler2_link.txt</a></span> <span class='desc'>Generated text of the toddler2_link corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_dialog.npy">toddler_dialog.npy</a></span> <span class='desc'>toddler_dialog corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_dialog.txt">toddler_dialog.txt</a></span> <span class='desc'>Generated text of the toddler_dialog corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_emotion.npy">toddler_emotion.npy</a></span> <span class='desc'>toddler_emotion corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_emotion.txt">toddler_emotion.txt</a></span> <span class='desc'>Generated text of the toddler_emotion corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_exp.npy">toddler_exp.npy</a></span> <span class='desc'>toddler_exp corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_exp.txt">toddler_exp.txt</a></span> <span class='desc'>Generated text of the toddler_exp corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_learn.npy">toddler_learn.npy</a></span> <span class='desc'>toddler_learn corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_learn.txt">toddler_learn.txt</a></span> <span class='desc'>Generated text of the toddler_learn corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_logic.npy">toddler_logic.npy</a></span> <span class='desc'>toddler_logic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_logic.txt">toddler_logic.txt</a></span> <span class='desc'>Generated text of the toddler_logic corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_state.npy">toddler_state.npy</a></span> <span class='desc'>toddler_state corpus</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_state.txt">toddler_state.txt</a></span> <span class='desc'>Generated text of the toddler_state corpus</span></li>
-</ul>
-</li>
-<li class='folder'><span class='name'><a href="core/">core/</a></span> <span class='desc'>Syllable-atom tokenizer layer</span>
+<li><a href="LICENSE">LICENSE</a> — Full code license text (Apache License 2.0)</li>
+<li><a href="NOTICE">NOTICE</a> — Copyright holder and dual-license notice</li>
+<li><a href="README.md">README.md</a> — Quick-start guide: requirements, preparing checkpoints and corpora, and running the probes</li>
+<li><a href="banya_bp_pytorch.py">banya_bp_pytorch.py</a> — Standard transformer baseline trainer, the common contrast model of the series. Same world curriculum, steps, and batch as the published bi-token model (Paper 3, Table 6-1)</li>
+<li><a href="banya_core.py">banya_core.py</a> — Common foundation. The core module gathering the model class, forward pass, exact-adjoint training, cache tokenizer, and checkpoint save and load</li>
+<li><b><a href="banya_world_data/">banya_world_data/</a></b> — Home of the corpora and the vocabulary dictionary. Corpora are rebuilt with corpus_build</li>
 <ul>
-<li><span class='name'><a href="core/banya_atoms.py">banya_atoms.py</a></span> <span class='desc'>Syllable-atom tokenizer. Encodes and decodes Korean at the syllable level</span></li>
-<li><span class='name'><a href="core/banya_syllables.txt">banya_syllables.txt</a></span> <span class='desc'>Source list of the syllable atoms</span></li>
+<li><a href="banya_world_data/baby.npy">baby.npy</a> — baby corpus</li>
+<li><a href="banya_world_data/baby.txt">baby.txt</a> — Generated text of the baby corpus</li>
+<li><a href="banya_world_data/baby_learn.npy">baby_learn.npy</a> — baby_learn corpus</li>
+<li><a href="banya_world_data/baby_learn.txt">baby_learn.txt</a> — Generated text of the baby_learn corpus</li>
+<li><a href="banya_world_data/baby_logic.npy">baby_logic.npy</a> — baby_logic corpus</li>
+<li><a href="banya_world_data/baby_logic.txt">baby_logic.txt</a> — Generated text of the baby_logic corpus</li>
+<li><a href="banya_world_data/bundle_cache.json">bundle_cache.json</a> — Bundle vocabulary dictionary. It defines the checkpoint vocabulary; use this file as is instead of rebuilding it</li>
+<li><a href="banya_world_data/elem.npy">elem.npy</a> — elem corpus</li>
+<li><a href="banya_world_data/elem_dialog.npy">elem_dialog.npy</a> — elem_dialog corpus</li>
+<li><a href="banya_world_data/elem_dialog.txt">elem_dialog.txt</a> — Generated text of the elem_dialog corpus</li>
+<li><a href="banya_world_data/elem_inquiry.npy">elem_inquiry.npy</a> — elem_inquiry corpus</li>
+<li><a href="banya_world_data/elem_inquiry.txt">elem_inquiry.txt</a> — Generated text of the elem_inquiry corpus</li>
+<li><a href="banya_world_data/elem_knowledge.npy">elem_knowledge.npy</a> — elem_knowledge corpus</li>
+<li><a href="banya_world_data/elem_knowledge.txt">elem_knowledge.txt</a> — Generated text of the elem_knowledge corpus</li>
+<li><a href="banya_world_data/elem_logic.npy">elem_logic.npy</a> — elem_logic corpus</li>
+<li><a href="banya_world_data/elem_logic.txt">elem_logic.txt</a> — Generated text of the elem_logic corpus</li>
+<li><a href="banya_world_data/elem_subject.npy">elem_subject.npy</a> — elem_subject corpus</li>
+<li><a href="banya_world_data/elem_subject.txt">elem_subject.txt</a> — Generated text of the elem_subject corpus</li>
+<li><a href="banya_world_data/life.npy">life.npy</a> — life corpus</li>
+<li><a href="banya_world_data/life.txt">life.txt</a> — Generated text of the life corpus</li>
+<li><a href="banya_world_data/sense.npy">sense.npy</a> — sense corpus</li>
+<li><a href="banya_world_data/sense.txt">sense.txt</a> — Generated text of the sense corpus</li>
+<li><a href="banya_world_data/sense_mimic.npy">sense_mimic.npy</a> — sense_mimic corpus</li>
+<li><a href="banya_world_data/sense_mimic.txt">sense_mimic.txt</a> — Generated text of the sense_mimic corpus</li>
+<li><a href="banya_world_data/sense_space.npy">sense_space.npy</a> — sense_space corpus</li>
+<li><a href="banya_world_data/sense_space.txt">sense_space.txt</a> — Generated text of the sense_space corpus</li>
+<li><a href="banya_world_data/space.npy">space.npy</a> — space corpus</li>
+<li><a href="banya_world_data/space.txt">space.txt</a> — Generated text of the space corpus</li>
+<li><a href="banya_world_data/toddler.npy">toddler.npy</a> — toddler corpus</li>
+<li><a href="banya_world_data/toddler.txt">toddler.txt</a> — Generated text of the toddler corpus</li>
+<li><a href="banya_world_data/toddler2.npy">toddler2.npy</a> — toddler2 corpus</li>
+<li><a href="banya_world_data/toddler2.txt">toddler2.txt</a> — Generated text of the toddler2 corpus</li>
+<li><a href="banya_world_data/toddler2_link.npy">toddler2_link.npy</a> — toddler2_link corpus</li>
+<li><a href="banya_world_data/toddler2_link.txt">toddler2_link.txt</a> — Generated text of the toddler2_link corpus</li>
+<li><a href="banya_world_data/toddler_dialog.npy">toddler_dialog.npy</a> — toddler_dialog corpus</li>
+<li><a href="banya_world_data/toddler_dialog.txt">toddler_dialog.txt</a> — Generated text of the toddler_dialog corpus</li>
+<li><a href="banya_world_data/toddler_emotion.npy">toddler_emotion.npy</a> — toddler_emotion corpus</li>
+<li><a href="banya_world_data/toddler_emotion.txt">toddler_emotion.txt</a> — Generated text of the toddler_emotion corpus</li>
+<li><a href="banya_world_data/toddler_exp.npy">toddler_exp.npy</a> — toddler_exp corpus</li>
+<li><a href="banya_world_data/toddler_exp.txt">toddler_exp.txt</a> — Generated text of the toddler_exp corpus</li>
+<li><a href="banya_world_data/toddler_learn.npy">toddler_learn.npy</a> — toddler_learn corpus</li>
+<li><a href="banya_world_data/toddler_learn.txt">toddler_learn.txt</a> — Generated text of the toddler_learn corpus</li>
+<li><a href="banya_world_data/toddler_logic.npy">toddler_logic.npy</a> — toddler_logic corpus</li>
+<li><a href="banya_world_data/toddler_logic.txt">toddler_logic.txt</a> — Generated text of the toddler_logic corpus</li>
+<li><a href="banya_world_data/toddler_state.npy">toddler_state.npy</a> — toddler_state corpus</li>
+<li><a href="banya_world_data/toddler_state.txt">toddler_state.txt</a> — Generated text of the toddler_state corpus</li>
 </ul>
-</li>
-<li class='folder'><span class='name'><a href="corpus_build/">corpus_build/</a></span> <span class='desc'>Self-build of the corpora. Generators rebuild every corpus without distributing raw text. See <a href="corpus_build/MANUAL.md">MANUAL.md</a></span>
+<li><b><a href="core/">core/</a></b> — Syllable-atom tokenizer layer</li>
 <ul>
-<li><span class='name'><a href="corpus_build/MANUAL.md">MANUAL.md</a></span> <span class='desc'>Build manual: run order and how to make corpora from external text</span></li>
-<li><span class='name'><a href="corpus_build/assemble_toddler2.py">assemble_toddler2.py</a></span> <span class='desc'>Assembly helper for the late-toddler corpus</span></li>
-<li><span class='name'><a href="corpus_build/baby_expr.py">baby_expr.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/baby_mimic.py">baby_mimic.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/baby_world_expr.py">baby_world_expr.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/build_all.sh">build_all.sh</a></span> <span class='desc'>Rebuilds every self-made corpus at once: bash build_all.sh</span></li>
-<li><span class='name'><a href="corpus_build/corpus_parts.py">corpus_parts.py</a></span> <span class='desc'>Shared parts for the generators: encoding and saving</span></li>
-<li><span class='name'><a href="corpus_build/elem.txt">elem.txt</a></span> <span class='desc'>Self-made source text of the elementary corpus. encode_text.py builds elem.npy from it</span></li>
-<li><span class='name'><a href="corpus_build/encode_text.py">encode_text.py</a></span> <span class='desc'>General tool that encodes any Korean text into a syllable-corpus npy</span></li>
-<li><span class='name'><a href="corpus_build/prep_baby_corpus.py">prep_baby_corpus.py</a></span> <span class='desc'>baby corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_baby_learn_corpus.py">prep_baby_learn_corpus.py</a></span> <span class='desc'>baby_learn corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_baby_logic_corpus.py">prep_baby_logic_corpus.py</a></span> <span class='desc'>baby_logic corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_bundle_cache.py">prep_bundle_cache.py</a></span> <span class='desc'>Reference generator showing how the bundle dictionary was built</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_corpus.py">prep_elem_corpus.py</a></span> <span class='desc'>Old elementary-stage generator kept for reference only; it reads a roster file that no longer exists. elem.npy is built from elem.txt</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_dialog_corpus.py">prep_elem_dialog_corpus.py</a></span> <span class='desc'>elem_dialog corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_inquiry_corpus.py">prep_elem_inquiry_corpus.py</a></span> <span class='desc'>elem_inquiry corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_knowledge_corpus.py">prep_elem_knowledge_corpus.py</a></span> <span class='desc'>elem_knowledge corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_logic_corpus.py">prep_elem_logic_corpus.py</a></span> <span class='desc'>elem_logic corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_subject_corpus.py">prep_elem_subject_corpus.py</a></span> <span class='desc'>elem_subject corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_life_corpus.py">prep_life_corpus.py</a></span> <span class='desc'>life corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_sense_corpus.py">prep_sense_corpus.py</a></span> <span class='desc'>sense corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_sense_mimic_corpus.py">prep_sense_mimic_corpus.py</a></span> <span class='desc'>sense_mimic corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_sense_space_corpus.py">prep_sense_space_corpus.py</a></span> <span class='desc'>sense_space corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_space_corpus.py">prep_space_corpus.py</a></span> <span class='desc'>space corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler2_corpus.py">prep_toddler2_corpus.py</a></span> <span class='desc'>toddler2 corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_corpus.py">prep_toddler_corpus.py</a></span> <span class='desc'>toddler corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_dialog_corpus.py">prep_toddler_dialog_corpus.py</a></span> <span class='desc'>toddler_dialog corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_emotion_corpus.py">prep_toddler_emotion_corpus.py</a></span> <span class='desc'>toddler_emotion corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_exp_corpus.py">prep_toddler_exp_corpus.py</a></span> <span class='desc'>toddler_exp corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_learn_corpus.py">prep_toddler_learn_corpus.py</a></span> <span class='desc'>toddler_learn corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_logic_corpus.py">prep_toddler_logic_corpus.py</a></span> <span class='desc'>toddler_logic corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_state_corpus.py">prep_toddler_state_corpus.py</a></span> <span class='desc'>toddler_state corpus generator</span></li>
-<li><span class='name'><a href="corpus_build/seeds.py">seeds.py</a></span> <span class='desc'>Seed vocabulary tables for generation</span></li>
-<li><span class='name'><a href="corpus_build/toddler2_expr.py">toddler2_expr.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/toddler2_link_expr.py">toddler2_link_expr.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/toddler_affect.py">toddler_affect.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/toddler_events.py">toddler_events.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/toddler_expr.py">toddler_expr.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/toddler_questions.py">toddler_questions.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/toddler_seed_expr.py">toddler_seed_expr.py</a></span> <span class='desc'>Expression data module read by the generators</span></li>
-<li><span class='name'><a href="corpus_build/world_ladder.py">world_ladder.py</a></span> <span class='desc'>World-ladder axis definition data</span></li>
+<li><a href="core/banya_atoms.py">banya_atoms.py</a> — Syllable-atom tokenizer. Encodes and decodes Korean at the syllable level</li>
+<li><a href="core/banya_syllables.txt">banya_syllables.txt</a> — Source list of the syllable atoms</li>
 </ul>
-</li>
-<li class='folder'><span class='name'><a href="data_prep/">data_prep/</a></span> <span class='desc'>World-ladder data modules used by the Paper 4 probe</span>
+<li><b><a href="corpus_build/">corpus_build/</a></b> — Self-build of the corpora. Generators rebuild every corpus without distributing raw text. See <a href="corpus_build/MANUAL.md">MANUAL.md</a></li>
 <ul>
-<li><span class='name'><a href="data_prep/baby_world_expr.py">baby_world_expr.py</a></span> <span class='desc'>World expression data of the baby stage</span></li>
-<li><span class='name'><a href="data_prep/world_ladder.py">world_ladder.py</a></span> <span class='desc'>World-ladder axis definitions</span></li>
+<li><a href="corpus_build/MANUAL.md">MANUAL.md</a> — Build manual: run order and how to make corpora from external text</li>
+<li><a href="corpus_build/assemble_toddler2.py">assemble_toddler2.py</a> — Assembly helper for the late-toddler corpus</li>
+<li><a href="corpus_build/baby_expr.py">baby_expr.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/baby_mimic.py">baby_mimic.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/baby_world_expr.py">baby_world_expr.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/build_all.sh">build_all.sh</a> — Rebuilds every self-made corpus at once: bash build_all.sh</li>
+<li><a href="corpus_build/corpus_parts.py">corpus_parts.py</a> — Shared parts for the generators: encoding and saving</li>
+<li><a href="corpus_build/elem.txt">elem.txt</a> — Self-made source text of the elementary corpus. encode_text.py builds elem.npy from it</li>
+<li><a href="corpus_build/encode_text.py">encode_text.py</a> — General tool that encodes any Korean text into a syllable-corpus npy</li>
+<li><a href="corpus_build/prep_baby_corpus.py">prep_baby_corpus.py</a> — baby corpus generator</li>
+<li><a href="corpus_build/prep_baby_learn_corpus.py">prep_baby_learn_corpus.py</a> — baby_learn corpus generator</li>
+<li><a href="corpus_build/prep_baby_logic_corpus.py">prep_baby_logic_corpus.py</a> — baby_logic corpus generator</li>
+<li><a href="corpus_build/prep_bundle_cache.py">prep_bundle_cache.py</a> — Reference generator showing how the bundle dictionary was built</li>
+<li><a href="corpus_build/prep_elem_corpus.py">prep_elem_corpus.py</a> — Old elementary-stage generator kept for reference only; it reads a roster file that no longer exists. elem.npy is built from elem.txt</li>
+<li><a href="corpus_build/prep_elem_dialog_corpus.py">prep_elem_dialog_corpus.py</a> — elem_dialog corpus generator</li>
+<li><a href="corpus_build/prep_elem_inquiry_corpus.py">prep_elem_inquiry_corpus.py</a> — elem_inquiry corpus generator</li>
+<li><a href="corpus_build/prep_elem_knowledge_corpus.py">prep_elem_knowledge_corpus.py</a> — elem_knowledge corpus generator</li>
+<li><a href="corpus_build/prep_elem_logic_corpus.py">prep_elem_logic_corpus.py</a> — elem_logic corpus generator</li>
+<li><a href="corpus_build/prep_elem_subject_corpus.py">prep_elem_subject_corpus.py</a> — elem_subject corpus generator</li>
+<li><a href="corpus_build/prep_life_corpus.py">prep_life_corpus.py</a> — life corpus generator</li>
+<li><a href="corpus_build/prep_sense_corpus.py">prep_sense_corpus.py</a> — sense corpus generator</li>
+<li><a href="corpus_build/prep_sense_mimic_corpus.py">prep_sense_mimic_corpus.py</a> — sense_mimic corpus generator</li>
+<li><a href="corpus_build/prep_sense_space_corpus.py">prep_sense_space_corpus.py</a> — sense_space corpus generator</li>
+<li><a href="corpus_build/prep_space_corpus.py">prep_space_corpus.py</a> — space corpus generator</li>
+<li><a href="corpus_build/prep_toddler2_corpus.py">prep_toddler2_corpus.py</a> — toddler2 corpus generator</li>
+<li><a href="corpus_build/prep_toddler_corpus.py">prep_toddler_corpus.py</a> — toddler corpus generator</li>
+<li><a href="corpus_build/prep_toddler_dialog_corpus.py">prep_toddler_dialog_corpus.py</a> — toddler_dialog corpus generator</li>
+<li><a href="corpus_build/prep_toddler_emotion_corpus.py">prep_toddler_emotion_corpus.py</a> — toddler_emotion corpus generator</li>
+<li><a href="corpus_build/prep_toddler_exp_corpus.py">prep_toddler_exp_corpus.py</a> — toddler_exp corpus generator</li>
+<li><a href="corpus_build/prep_toddler_learn_corpus.py">prep_toddler_learn_corpus.py</a> — toddler_learn corpus generator</li>
+<li><a href="corpus_build/prep_toddler_logic_corpus.py">prep_toddler_logic_corpus.py</a> — toddler_logic corpus generator</li>
+<li><a href="corpus_build/prep_toddler_state_corpus.py">prep_toddler_state_corpus.py</a> — toddler_state corpus generator</li>
+<li><a href="corpus_build/seeds.py">seeds.py</a> — Seed vocabulary tables for generation</li>
+<li><a href="corpus_build/toddler2_expr.py">toddler2_expr.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/toddler2_link_expr.py">toddler2_link_expr.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/toddler_affect.py">toddler_affect.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/toddler_events.py">toddler_events.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/toddler_expr.py">toddler_expr.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/toddler_questions.py">toddler_questions.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/toddler_seed_expr.py">toddler_seed_expr.py</a> — Expression data module read by the generators</li>
+<li><a href="corpus_build/world_ladder.py">world_ladder.py</a> — World-ladder axis definition data</li>
 </ul>
-</li>
-<li class='folder'><span class='name'><a href="model/">model/</a></span> <span class='desc'>Frozen checkpoints and evaluation data. The large npz files come from Zenodo (doi.org/10.5281/zenodo.21383724): bash download.sh</span>
+<li><b><a href="data_prep/">data_prep/</a></b> — World-ladder data modules used by the Paper 4 probe</li>
 <ul>
-<li><span class='name'><a href="model/DOWNLOAD.md">DOWNLOAD.md</a></span> <span class='desc'>Checkpoint download guide: the Zenodo address and verification</span></li>
-<li><span class='name'><a href="model/download.sh">download.sh</a></span> <span class='desc'>Downloads the three checkpoints at once and verifies integrity: bash download.sh</span></li>
-<li><span class='name'><a href="model/checksums.sha256">checksums.sha256</a></span> <span class='desc'>Expected checkpoint integrity values</span></li>
-<li><span class='name'><a href="model/bitok_elem2_170000_m.npz">bitok_elem2_170000_m.npz</a></span> <span class='desc'>Bi-token model checkpoint of the elementary stage. Used by the Paper 3 and Paper 6 probes</span></li>
-<li><span class='name'><a href="model/cache_elem3_190000.npz">cache_elem3_190000.npz</a></span> <span class='desc'>Cache-dictionary model checkpoint of the elementary stage. Used by the Paper 2 and Paper 5 probes</span></li>
-<li><span class='name'><a href="model/eval_sets.json">eval_sets.json</a></span> <span class='desc'>Evaluation sentence sets: the holdout snippets</span></li>
-<li><span class='name'><a href="model/legacy_key_convert.py">legacy_key_convert.py</a></span> <span class='desc'>One-off tool that converted old-key checkpoints to the new keys (m_ prefix). Reference only</span></li>
-<li><span class='name'><a href="model/stream_train.npy">stream_train.npy</a></span> <span class='desc'>Training-stream sample for collecting rumination seeds</span></li>
-<li><span class='name'><a href="model/world_toddler2_110000_m.npz">world_toddler2_110000_m.npz</a></span> <span class='desc'>World-model checkpoint of the late toddler stage. Used by the Paper 4 probe</span></li>
+<li><a href="data_prep/baby_world_expr.py">baby_world_expr.py</a> — World expression data of the baby stage</li>
+<li><a href="data_prep/world_ladder.py">world_ladder.py</a> — World-ladder axis definitions</li>
 </ul>
-</li>
-<li><span class='name'><a href="paper1_engine.py">paper1_engine.py</a></span> <span class='desc'>Paper 1 engine. Wraps train_step, which learns one step through the exact-adjoint credit chain</span></li>
-<li><span class='name'><a href="paper2_rumination.py">paper2_rumination.py</a></span> <span class='desc'>Paper 2 rumination. Firing-group collection, the pull rule, and the other rumination mechanisms</span></li>
-<li><span class='name'><a href="paper3_bitoken.py">paper3_bitoken.py</a></span> <span class='desc'>Paper 3 bi-token. Orthogonal-token mechanisms such as the operation-plane on and off switch</span></li>
-<li><span class='name'><a href="paper4_world_dev.py">paper4_world_dev.py</a></span> <span class='desc'>Paper 4 world-first development. Developmental-curriculum stage definitions</span></li>
-<li><span class='name'><a href="paper5_cache_token.py">paper5_cache_token.py</a></span> <span class='desc'>Paper 5 cache tokenization. Low-rank head cost accounting and related mechanisms</span></li>
-<li><span class='name'><a href="paper6_metacog.py">paper6_metacog.py</a></span> <span class='desc'>Paper 6 metacognition. Distribution statistics and certain, vague, unknown routing</span></li>
-<li><span class='name'><a href="paper7_rotation.py">paper7_rotation.py</a></span> <span class='desc'>Paper 7 rotation-operator gate. Storage-free closed-form adjoint, run-time kernel injection without touching the engine</span></li>
-<li class='folder'><span class='name'><a href="probe/">probe/</a></span> <span class='desc'>Eleven measurement probes. Each file header carries its run line; execute with python3 filename</span>
+<li><b><a href="model/">model/</a></b> — Frozen checkpoints and evaluation data. The large npz files come from Zenodo (doi.org/10.5281/zenodo.21383724): bash download.sh</li>
 <ul>
-<li><span class='name'><a href="probe/paper1_engine_probe.py">paper1_engine_probe.py</a></span> <span class='desc'>Paper 1. Verifies no-autodiff operation, adjoint correctness, and normalization scale stability</span></li>
-<li><span class='name'><a href="probe/paper1_small_contrast_probe.py">paper1_small_contrast_probe.py</a></span> <span class='desc'>Paper 1. Trains the engine and a standard-backpropagation reference side by side from the same initial weights and batches, measuring loss-trajectory agreement and run time</span></li>
-<li><span class='name'><a href="probe/paper2_rumination_probe.py">paper2_rumination_probe.py</a></span> <span class='desc'>Paper 2. Measures cohesion gain, holdout preservation, and equilibrium convergence of rumination</span></li>
-<li><span class='name'><a href="probe/paper2_rumination_qa_probe.py">paper2_rumination_qa_probe.py</a></span> <span class='desc'>Paper 2. Measures whether downstream 2AFC discrimination survives rumination, including a stress run that force-feeds the answer candidates as seeds</span></li>
-<li><span class='name'><a href="probe/paper3_bitoken_probe.py">paper3_bitoken_probe.py</a></span> <span class='desc'>Paper 3. Measures operator direction consistency, orthogonality, prediction contribution, and mixing-head differentiation</span></li>
-<li><span class='name'><a href="probe/paper3_composition_probe.py">paper3_composition_probe.py</a></span> <span class='desc'>Paper 3. Measures assembly discrimination of unseen stem-ending combinations against a bigram baseline</span></li>
-<li><span class='name'><a href="probe/paper4_world_dev_probe.py">paper4_world_dev_probe.py</a></span> <span class='desc'>Paper 4. Measures axis-structure formation in the developmental-stage checkpoint</span></li>
-<li><span class='name'><a href="probe/paper5_cache_token_probe.py">paper5_cache_token_probe.py</a></span> <span class='desc'>Paper 5. Measures the two-layer vocabulary, the low-rank head cost, and the operator structure of the bundle layer</span></li>
-<li><span class='name'><a href="probe/paper5_quality_contrast_probe.py">paper5_quality_contrast_probe.py</a></span> <span class='desc'>Paper 5. Measures bits per character with bundles on and off, confirming that the saving keeps quality</span></li>
-<li><span class='name'><a href="probe/paper6_metacog_probe.py">paper6_metacog_probe.py</a></span> <span class='desc'>Paper 6. Measures the distribution statistics of the certain, vague, and unknown question sets</span></li>
-<li><span class='name'><a href="probe/paper6_vague_trigger_probe.py">paper6_vague_trigger_probe.py</a></span> <span class='desc'>Paper 6. Measures the circuit that turns a vague hidden state certain through context-accompanied reinterpretation</span></li>
-<li><span class='name'><a href="probe/paper7_rotation_probe.py">paper7_rotation_probe.py</a></span> <span class='desc'>Paper 7. Adjoint check, injection design proof, and the mod 3 depth-excluded discrimination ablation across gate variants</span></li>
+<li><a href="model/DOWNLOAD.md">DOWNLOAD.md</a> — Checkpoint download guide: the Zenodo address and verification</li>
+<li><a href="model/download.sh">download.sh</a> — Downloads the checkpoints and verifies integrity: bash download.sh (core three), bash download.sh bp (adds the optional standard baseline)</li>
+<li><a href="model/checksums.sha256">checksums.sha256</a> — Expected integrity values of the three core checkpoints</li>
+<li><a href="model/checksums_bp.sha256">checksums_bp.sha256</a> — Expected integrity value of the optional standard-baseline checkpoint</li>
+<li><a href="model/banya_bp_pytorch.pt">banya_bp_pytorch.pt</a> — Standard-baseline checkpoint (optional, 1.25 GB). Used by the Paper 3 baseline probe for the standard row of Table 6-1</li>
+<li><a href="model/bitok_elem2_170000_m.npz">bitok_elem2_170000_m.npz</a> — Bi-token model checkpoint of the elementary stage. Used by the Paper 3 and Paper 6 probes</li>
+<li><a href="model/cache_elem3_190000.npz">cache_elem3_190000.npz</a> — Cache-dictionary model checkpoint of the elementary stage. Used by the Paper 2 and Paper 5 probes</li>
+<li><a href="model/eval_sets.json">eval_sets.json</a> — Evaluation sentence sets: the holdout snippets</li>
+<li><a href="model/legacy_key_convert.py">legacy_key_convert.py</a> — One-off tool that converted old-key checkpoints to the new keys (m_ prefix). Reference only</li>
+<li><a href="model/stream_train.npy">stream_train.npy</a> — Training-stream sample for collecting rumination seeds</li>
+<li><a href="model/world_toddler2_110000_m.npz">world_toddler2_110000_m.npz</a> — World-model checkpoint of the late toddler stage. Used by the Paper 4 probe</li>
 </ul>
-</li>
-<li><span class='name'><a href="requirements.txt">requirements.txt</a></span> <span class='desc'>Required Python packages. For cupy, install the build matching your CUDA version</span></li>
-<li class='folder'><span class='name'><a href="smoke/">smoke/</a></span> <span class='desc'>Minimal smoke check</span>
+<li><a href="paper1_engine.py">paper1_engine.py</a> — Paper 1 engine. Wraps train_step, which learns one step through the exact-adjoint credit chain</li>
+<li><a href="paper2_rumination.py">paper2_rumination.py</a> — Paper 2 rumination. Firing-group collection, the pull rule, and the other rumination mechanisms</li>
+<li><a href="paper3_bitoken.py">paper3_bitoken.py</a> — Paper 3 bi-token. Orthogonal-token mechanisms such as the operation-plane on and off switch</li>
+<li><a href="paper4_world_dev.py">paper4_world_dev.py</a> — Paper 4 world-first development. Developmental-curriculum stage definitions</li>
+<li><a href="paper5_cache_token.py">paper5_cache_token.py</a> — Paper 5 cache tokenization. Low-rank head cost accounting and related mechanisms</li>
+<li><a href="paper6_metacog.py">paper6_metacog.py</a> — Paper 6 metacognition. Distribution statistics and certain, vague, unknown routing</li>
+<li><a href="paper7_rotation.py">paper7_rotation.py</a> — Paper 7 rotation-operator gate and quaternion gate. Storage-free closed-form adjoints, run-time kernel injection without touching the engine</li>
+<li><b><a href="probe/">probe/</a></b> — Thirteen measurement probes. Each file header carries its run line; execute with python3 filename</li>
 <ul>
-<li><span class='name'><a href="smoke/example.txt">example.txt</a></span> <span class='desc'>Example text for the smoke check</span></li>
-<li><span class='name'><a href="smoke/smoke_vocab.py">smoke_vocab.py</a></span> <span class='desc'>Quick check that the vocabulary and tokenizer are healthy</span></li>
+<li><a href="probe/paper1_engine_probe.py">paper1_engine_probe.py</a> — Paper 1. Verifies no-autodiff operation, adjoint correctness, and normalization scale stability</li>
+<li><a href="probe/paper1_small_contrast_probe.py">paper1_small_contrast_probe.py</a> — Paper 1. Trains the engine and a standard-backpropagation reference side by side from the same initial weights and batches, measuring loss-trajectory agreement and run time</li>
+<li><a href="probe/paper2_rumination_probe.py">paper2_rumination_probe.py</a> — Paper 2. Measures cohesion gain, holdout preservation, and equilibrium convergence of rumination</li>
+<li><a href="probe/paper2_rumination_qa_probe.py">paper2_rumination_qa_probe.py</a> — Paper 2. Measures whether downstream 2AFC discrimination survives rumination, including a stress run that force-feeds the answer candidates as seeds</li>
+<li><a href="probe/paper3_bitoken_probe.py">paper3_bitoken_probe.py</a> — Paper 3. Measures operator direction consistency, orthogonality, prediction contribution, and mixing-head differentiation</li>
+<li><a href="probe/paper3_baseline_probe.py">paper3_baseline_probe.py</a> — Paper 3. Table 6-1 standard baseline: cross entropy on identical windows and per-step training time</li>
+<li><a href="probe/paper3_composition_probe.py">paper3_composition_probe.py</a> — Paper 3. Measures assembly discrimination of unseen stem-ending combinations against a bigram baseline</li>
+<li><a href="probe/paper4_world_dev_probe.py">paper4_world_dev_probe.py</a> — Paper 4. Measures axis-structure formation in the developmental-stage checkpoint</li>
+<li><a href="probe/paper5_cache_token_probe.py">paper5_cache_token_probe.py</a> — Paper 5. Measures the two-layer vocabulary, the low-rank head cost, and the operator structure of the bundle layer</li>
+<li><a href="probe/paper5_quality_contrast_probe.py">paper5_quality_contrast_probe.py</a> — Paper 5. Measures bits per character with bundles on and off, confirming that the saving keeps quality</li>
+<li><a href="probe/paper6_metacog_probe.py">paper6_metacog_probe.py</a> — Paper 6. Measures the distribution statistics of the certain, vague, and unknown question sets</li>
+<li><a href="probe/paper6_vague_trigger_probe.py">paper6_vague_trigger_probe.py</a> — Paper 6. Measures the circuit that turns a vague hidden state certain through context-accompanied reinterpretation</li>
+<li><a href="probe/paper7_rotation_probe.py">paper7_rotation_probe.py</a> — Paper 7. Adjoint checks, injection design proof, and the mod 3 and triangle depth-excluded discrimination ablations across gate variants including the quaternion gate</li>
 </ul>
-</li>
+<li><a href="requirements.txt">requirements.txt</a> — Required Python packages. For cupy, install the build matching your CUDA version</li>
+<li><b><a href="smoke/">smoke/</a></b> — Minimal smoke check</li>
+<ul>
+<li><a href="smoke/example.txt">example.txt</a> — Example text for the smoke check</li>
+<li><a href="smoke/smoke_vocab.py">smoke_vocab.py</a> — Quick check that the vocabulary and tokenizer are healthy</li>
 </ul>
-</div>
-
-<div id="page-ko" style="display:none">
+</ul>
+<hr>
 <h1>반야 연구 재현 패키지 목차</h1>
-<div class="meta">한혁진 (bokkamsun@gmail.com) · <a href="https://orcid.org/0009-0007-4132-1707">ORCID 0009-0007-4132-1707</a> · 코드 Apache-2.0 · 문서와 데이터 CC BY 4.0</div>
+<p>한혁진 (bokkamsun@gmail.com) · <a href="https://orcid.org/0009-0007-4132-1707">ORCID 0009-0007-4132-1707</a> · 코드 Apache-2.0 · 문서와 데이터 CC BY 4.0</p>
 <h2>사용법</h2>
-<p>아래 세 단계면 논문 여섯 편의 모든 실측이 재현된다. 요구 환경은 NVIDIA GPU(CUDA)와 Python 3.12 이며, 파이썬 패키지는 다음 한 줄로 설치한다. cupy 는 설치된 CUDA 버전에 맞는 배포판을 고른다(예: CUDA 13 은 cupy-cuda13x).</p>
-<div class="formula" style="font-family: monospace;">pip install -r <a href="requirements.txt">requirements.txt</a></div>
-
+<p>아래 세 단계면 논문 일곱 편의 모든 실측이 재현된다. 요구 환경은 NVIDIA GPU(CUDA)와 Python 3.12 이며, 파이썬 패키지는 다음 한 줄로 설치한다. cupy 는 설치된 CUDA 버전에 맞는 배포판을 고른다(예: CUDA 13 은 cupy-cuda13x).</p>
+<pre><code>
+pip install -r requirements.txt
+</code></pre>
 <h3>1. 모델 내려받기</h3>
-<p>실측의 대상인 얼린 체크포인트 3개(총 471MB)는 용량 때문에 저장소가 아니라 제노도에 있다:
-<a href="https://doi.org/10.5281/zenodo.21383724">doi.org/10.5281/zenodo.21383724</a>.
-아래 한 줄이 세 파일을 model 폴더로 내려받고 무결성(sha256)까지 자동으로 검증한다.</p>
-<div class="formula" style="font-family: monospace;">cd model &amp;&amp; bash download.sh</div>
-<p>손으로 받으려면 위 기록 페이지에서 bitok_elem2_170000_m.npz, cache_elem3_190000.npz, world_toddler2_110000_m.npz 세 파일을 받아 model 폴더에 넣고 <span style="font-family: monospace;">sha256sum -c checksums.sha256</span> 으로 검증한다. 자세한 안내는 <a href="model/DOWNLOAD.md">model/DOWNLOAD.md</a> 에 있다.</p>
-
+<p>실측의 대상인 얼린 체크포인트 3개(총 471MB)는 용량 때문에 저장소가 아니라 제노도에 있다:</p>
+<p><a href="https://doi.org/10.5281/zenodo.21383724">doi.org/10.5281/zenodo.21383724</a>.</p>
+<p>아래 한 줄이 세 파일을 model 폴더로 내려받고 무결성(sha256)까지 자동으로 검증한다.</p>
+<pre><code>
+cd model &amp;&amp; bash download.sh
+</code></pre>
+<p>손으로 받으려면 위 기록 페이지에서 bitok_elem2_170000_m.npz, cache_elem3_190000.npz, world_toddler2_110000_m.npz 세 파일을 받아 model 폴더에 넣고 <code>sha256sum -c checksums.sha256</code> 으로 검증한다. 제3편 표 6-1의 표준 줄에만 필요한 선택 체크포인트 banya_bp_pytorch.pt(1.25GB)는 <code>bash download.sh bp</code> 로 받는다. 자세한 안내는 <a href="model/DOWNLOAD.md">model/DOWNLOAD.md</a> 에 있다.</p>
 <h3>2. 월드데이터(말뭉치) 생성</h3>
 <p>말뭉치는 원문을 배포하지 않고 생성기로 만든다. 아래 한 줄이 banya_world_data 폴더에 말뭉치 23종을 전부 생성한다.</p>
-<div class="formula" style="font-family: monospace;">cd corpus_build &amp;&amp; bash build_all.sh</div>
-<p>자기 텍스트로 말뭉치를 만들려면 <span style="font-family: monospace;">python3 encode_text.py 입력텍스트.txt 출력말뭉치.npy</span> 를 사용한다. 생성 순서와 원리는 <a href="corpus_build/MANUAL.md">corpus_build/MANUAL.md</a> 에 있다.</p>
-
+<pre><code>
+cd corpus_build &amp;&amp; bash build_all.sh
+</code></pre>
+<p>자기 텍스트로 말뭉치를 만들려면 <code>python3 encode_text.py 입력텍스트.txt 출력말뭉치.npy</code> 를 사용한다. 생성 순서와 원리는 <a href="corpus_build/MANUAL.md">corpus_build/MANUAL.md</a> 에 있다.</p>
 <h3>3. 실측 재현</h3>
-<p>probe 폴더의 프로브 11개가 논문 1편부터 6편까지의 실측 수치를 재생한다. 각 파일의 머리말에 무엇을 측정하는지와 실행 줄이 적혀 있다. 예를 들어 제1편의 검증은 다음과 같다.</p>
-<div class="formula" style="font-family: monospace;">cd probe &amp;&amp; python3 paper1_engine_probe.py</div>
+<p>probe 폴더의 프로브 13개가 논문 1편부터 7편까지의 실측 수치를 재생한다. 각 파일의 머리말에 무엇을 측정하는지와 실행 줄이 적혀 있다. 예를 들어 제1편의 검증은 다음과 같다.</p>
+<pre><code>
+cd probe &amp;&amp; python3 paper1_engine_probe.py
+</code></pre>
 <p>아래 목차는 모델과 말뭉치가 준비된 완성 상태의 폴더 기준이다.</p>
-
 <h2>폴더와 파일</h2>
-<ul class='tree'>
-<li><span class='name'><a href="LICENSE">LICENSE</a></span> <span class='desc'>코드 라이선스 전문 (Apache License 2.0)</span></li>
-<li><span class='name'><a href="NOTICE">NOTICE</a></span> <span class='desc'>저작권자와 이중 라이선스 안내</span></li>
-<li><span class='name'><a href="README.md">README.md</a></span> <span class='desc'>빠른 시작 안내. 요구 환경, 체크포인트와 말뭉치 준비, 프로브 실행법</span></li>
-<li><span class='name'><a href="banya_core.py">banya_core.py</a></span> <span class='desc'>공통 토대. 모델 클래스, 순전파, 정확한 전치 학습, 캐시 토크나이저, 체크포인트 저장과 로드를 한곳에 모은 핵심 모듈</span></li>
-<li class='folder'><span class='name'><a href="banya_world_data/">banya_world_data/</a></span> <span class='desc'>말뭉치와 어휘 사전 자리. 말뭉치는 corpus_build 로 재생성한다</span>
 <ul>
-<li><span class='name'><a href="banya_world_data/baby.npy">baby.npy</a></span> <span class='desc'>baby 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/baby.txt">baby.txt</a></span> <span class='desc'>baby 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/baby_learn.npy">baby_learn.npy</a></span> <span class='desc'>baby_learn 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/baby_learn.txt">baby_learn.txt</a></span> <span class='desc'>baby_learn 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/baby_logic.npy">baby_logic.npy</a></span> <span class='desc'>baby_logic 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/baby_logic.txt">baby_logic.txt</a></span> <span class='desc'>baby_logic 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/bundle_cache.json">bundle_cache.json</a></span> <span class='desc'>묶음 어휘 사전. 체크포인트의 어휘 정의라 새로 만들지 말고 이것을 사용한다</span></li>
-<li><span class='name'><a href="banya_world_data/elem.npy">elem.npy</a></span> <span class='desc'>elem 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/elem_dialog.npy">elem_dialog.npy</a></span> <span class='desc'>elem_dialog 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/elem_dialog.txt">elem_dialog.txt</a></span> <span class='desc'>elem_dialog 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/elem_inquiry.npy">elem_inquiry.npy</a></span> <span class='desc'>elem_inquiry 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/elem_inquiry.txt">elem_inquiry.txt</a></span> <span class='desc'>elem_inquiry 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/elem_knowledge.npy">elem_knowledge.npy</a></span> <span class='desc'>elem_knowledge 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/elem_knowledge.txt">elem_knowledge.txt</a></span> <span class='desc'>elem_knowledge 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/elem_logic.npy">elem_logic.npy</a></span> <span class='desc'>elem_logic 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/elem_logic.txt">elem_logic.txt</a></span> <span class='desc'>elem_logic 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/elem_subject.npy">elem_subject.npy</a></span> <span class='desc'>elem_subject 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/elem_subject.txt">elem_subject.txt</a></span> <span class='desc'>elem_subject 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/life.npy">life.npy</a></span> <span class='desc'>life 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/life.txt">life.txt</a></span> <span class='desc'>life 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/sense.npy">sense.npy</a></span> <span class='desc'>sense 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/sense.txt">sense.txt</a></span> <span class='desc'>sense 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/sense_mimic.npy">sense_mimic.npy</a></span> <span class='desc'>sense_mimic 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/sense_mimic.txt">sense_mimic.txt</a></span> <span class='desc'>sense_mimic 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/sense_space.npy">sense_space.npy</a></span> <span class='desc'>sense_space 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/sense_space.txt">sense_space.txt</a></span> <span class='desc'>sense_space 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/space.npy">space.npy</a></span> <span class='desc'>space 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/space.txt">space.txt</a></span> <span class='desc'>space 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler.npy">toddler.npy</a></span> <span class='desc'>toddler 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler.txt">toddler.txt</a></span> <span class='desc'>toddler 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2.npy">toddler2.npy</a></span> <span class='desc'>toddler2 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2.txt">toddler2.txt</a></span> <span class='desc'>toddler2 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2_link.npy">toddler2_link.npy</a></span> <span class='desc'>toddler2_link 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler2_link.txt">toddler2_link.txt</a></span> <span class='desc'>toddler2_link 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_dialog.npy">toddler_dialog.npy</a></span> <span class='desc'>toddler_dialog 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_dialog.txt">toddler_dialog.txt</a></span> <span class='desc'>toddler_dialog 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_emotion.npy">toddler_emotion.npy</a></span> <span class='desc'>toddler_emotion 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_emotion.txt">toddler_emotion.txt</a></span> <span class='desc'>toddler_emotion 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_exp.npy">toddler_exp.npy</a></span> <span class='desc'>toddler_exp 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_exp.txt">toddler_exp.txt</a></span> <span class='desc'>toddler_exp 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_learn.npy">toddler_learn.npy</a></span> <span class='desc'>toddler_learn 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_learn.txt">toddler_learn.txt</a></span> <span class='desc'>toddler_learn 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_logic.npy">toddler_logic.npy</a></span> <span class='desc'>toddler_logic 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_logic.txt">toddler_logic.txt</a></span> <span class='desc'>toddler_logic 말뭉치의 생성 텍스트</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_state.npy">toddler_state.npy</a></span> <span class='desc'>toddler_state 말뭉치</span></li>
-<li><span class='name'><a href="banya_world_data/toddler_state.txt">toddler_state.txt</a></span> <span class='desc'>toddler_state 말뭉치의 생성 텍스트</span></li>
-</ul>
-</li>
-<li class='folder'><span class='name'><a href="core/">core/</a></span> <span class='desc'>음절 원자 토크나이저 층</span>
+<li><a href="LICENSE">LICENSE</a> — 코드 라이선스 전문 (Apache License 2.0)</li>
+<li><a href="NOTICE">NOTICE</a> — 저작권자와 이중 라이선스 안내</li>
+<li><a href="README.md">README.md</a> — 빠른 시작 안내. 요구 환경, 체크포인트와 말뭉치 준비, 프로브 실행법</li>
+<li><a href="banya_bp_pytorch.py">banya_bp_pytorch.py</a> — 표준 트랜스포머 기준선 학습기. 시리즈 공통 대조 모델. 발행 바이토큰 모델과 같은 월드 커리큘럼, 스텝, 배치 (제3편 표 6-1)</li>
+<li><a href="banya_core.py">banya_core.py</a> — 공통 토대. 모델 클래스, 순전파, 정확한 전치 학습, 캐시 토크나이저, 체크포인트 저장과 로드를 한곳에 모은 핵심 모듈</li>
+<li><b><a href="banya_world_data/">banya_world_data/</a></b> — 말뭉치와 어휘 사전 자리. 말뭉치는 corpus_build 로 재생성한다</li>
 <ul>
-<li><span class='name'><a href="core/banya_atoms.py">banya_atoms.py</a></span> <span class='desc'>음절 원자 토크나이저. 한국어를 음절 단위 아이디로 인코딩과 디코딩</span></li>
-<li><span class='name'><a href="core/banya_syllables.txt">banya_syllables.txt</a></span> <span class='desc'>음절 원자 사전 원본</span></li>
+<li><a href="banya_world_data/baby.npy">baby.npy</a> — baby 말뭉치</li>
+<li><a href="banya_world_data/baby.txt">baby.txt</a> — baby 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/baby_learn.npy">baby_learn.npy</a> — baby_learn 말뭉치</li>
+<li><a href="banya_world_data/baby_learn.txt">baby_learn.txt</a> — baby_learn 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/baby_logic.npy">baby_logic.npy</a> — baby_logic 말뭉치</li>
+<li><a href="banya_world_data/baby_logic.txt">baby_logic.txt</a> — baby_logic 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/bundle_cache.json">bundle_cache.json</a> — 묶음 어휘 사전. 체크포인트의 어휘 정의라 새로 만들지 말고 이것을 사용한다</li>
+<li><a href="banya_world_data/elem.npy">elem.npy</a> — elem 말뭉치</li>
+<li><a href="banya_world_data/elem_dialog.npy">elem_dialog.npy</a> — elem_dialog 말뭉치</li>
+<li><a href="banya_world_data/elem_dialog.txt">elem_dialog.txt</a> — elem_dialog 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/elem_inquiry.npy">elem_inquiry.npy</a> — elem_inquiry 말뭉치</li>
+<li><a href="banya_world_data/elem_inquiry.txt">elem_inquiry.txt</a> — elem_inquiry 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/elem_knowledge.npy">elem_knowledge.npy</a> — elem_knowledge 말뭉치</li>
+<li><a href="banya_world_data/elem_knowledge.txt">elem_knowledge.txt</a> — elem_knowledge 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/elem_logic.npy">elem_logic.npy</a> — elem_logic 말뭉치</li>
+<li><a href="banya_world_data/elem_logic.txt">elem_logic.txt</a> — elem_logic 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/elem_subject.npy">elem_subject.npy</a> — elem_subject 말뭉치</li>
+<li><a href="banya_world_data/elem_subject.txt">elem_subject.txt</a> — elem_subject 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/life.npy">life.npy</a> — life 말뭉치</li>
+<li><a href="banya_world_data/life.txt">life.txt</a> — life 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/sense.npy">sense.npy</a> — sense 말뭉치</li>
+<li><a href="banya_world_data/sense.txt">sense.txt</a> — sense 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/sense_mimic.npy">sense_mimic.npy</a> — sense_mimic 말뭉치</li>
+<li><a href="banya_world_data/sense_mimic.txt">sense_mimic.txt</a> — sense_mimic 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/sense_space.npy">sense_space.npy</a> — sense_space 말뭉치</li>
+<li><a href="banya_world_data/sense_space.txt">sense_space.txt</a> — sense_space 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/space.npy">space.npy</a> — space 말뭉치</li>
+<li><a href="banya_world_data/space.txt">space.txt</a> — space 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler.npy">toddler.npy</a> — toddler 말뭉치</li>
+<li><a href="banya_world_data/toddler.txt">toddler.txt</a> — toddler 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler2.npy">toddler2.npy</a> — toddler2 말뭉치</li>
+<li><a href="banya_world_data/toddler2.txt">toddler2.txt</a> — toddler2 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler2_link.npy">toddler2_link.npy</a> — toddler2_link 말뭉치</li>
+<li><a href="banya_world_data/toddler2_link.txt">toddler2_link.txt</a> — toddler2_link 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler_dialog.npy">toddler_dialog.npy</a> — toddler_dialog 말뭉치</li>
+<li><a href="banya_world_data/toddler_dialog.txt">toddler_dialog.txt</a> — toddler_dialog 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler_emotion.npy">toddler_emotion.npy</a> — toddler_emotion 말뭉치</li>
+<li><a href="banya_world_data/toddler_emotion.txt">toddler_emotion.txt</a> — toddler_emotion 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler_exp.npy">toddler_exp.npy</a> — toddler_exp 말뭉치</li>
+<li><a href="banya_world_data/toddler_exp.txt">toddler_exp.txt</a> — toddler_exp 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler_learn.npy">toddler_learn.npy</a> — toddler_learn 말뭉치</li>
+<li><a href="banya_world_data/toddler_learn.txt">toddler_learn.txt</a> — toddler_learn 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler_logic.npy">toddler_logic.npy</a> — toddler_logic 말뭉치</li>
+<li><a href="banya_world_data/toddler_logic.txt">toddler_logic.txt</a> — toddler_logic 말뭉치의 생성 텍스트</li>
+<li><a href="banya_world_data/toddler_state.npy">toddler_state.npy</a> — toddler_state 말뭉치</li>
+<li><a href="banya_world_data/toddler_state.txt">toddler_state.txt</a> — toddler_state 말뭉치의 생성 텍스트</li>
 </ul>
-</li>
-<li class='folder'><span class='name'><a href="corpus_build/">corpus_build/</a></span> <span class='desc'>말뭉치 자가 제작. 원문 텍스트 없이 생성기로 말뭉치를 재생성한다. <a href="corpus_build/MANUAL.md">MANUAL.md</a> 참고</span>
+<li><b><a href="core/">core/</a></b> — 음절 원자 토크나이저 층</li>
 <ul>
-<li><span class='name'><a href="corpus_build/MANUAL.md">MANUAL.md</a></span> <span class='desc'>제작 매뉴얼. 실행 순서와 외부 텍스트 말뭉치 만드는 법</span></li>
-<li><span class='name'><a href="corpus_build/assemble_toddler2.py">assemble_toddler2.py</a></span> <span class='desc'>유아 후반 말뭉치 조립 보조</span></li>
-<li><span class='name'><a href="corpus_build/baby_expr.py">baby_expr.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/baby_mimic.py">baby_mimic.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/baby_world_expr.py">baby_world_expr.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/build_all.sh">build_all.sh</a></span> <span class='desc'>자작 말뭉치 전부를 한 번에 재생성. bash build_all.sh</span></li>
-<li><span class='name'><a href="corpus_build/corpus_parts.py">corpus_parts.py</a></span> <span class='desc'>생성기 공용 부품. 인코딩과 저장</span></li>
-<li><span class='name'><a href="corpus_build/elem.txt">elem.txt</a></span> <span class='desc'>초등 말뭉치의 자작 원문 텍스트. encode_text.py 로 elem.npy 를 만든다</span></li>
-<li><span class='name'><a href="corpus_build/encode_text.py">encode_text.py</a></span> <span class='desc'>아무 한국어 텍스트를 음절 말뭉치 npy 로 굽는 범용 도구</span></li>
-<li><span class='name'><a href="corpus_build/prep_baby_corpus.py">prep_baby_corpus.py</a></span> <span class='desc'>baby 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_baby_learn_corpus.py">prep_baby_learn_corpus.py</a></span> <span class='desc'>baby_learn 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_baby_logic_corpus.py">prep_baby_logic_corpus.py</a></span> <span class='desc'>baby_logic 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_bundle_cache.py">prep_bundle_cache.py</a></span> <span class='desc'>묶음 어휘 사전이 만들어진 방법의 참고용 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_corpus.py">prep_elem_corpus.py</a></span> <span class='desc'>옛 초등 생성기. 지금은 없는 명단 파일을 읽어 참고용으로만 남김. elem.npy 는 elem.txt 로 만든다</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_dialog_corpus.py">prep_elem_dialog_corpus.py</a></span> <span class='desc'>elem_dialog 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_inquiry_corpus.py">prep_elem_inquiry_corpus.py</a></span> <span class='desc'>elem_inquiry 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_knowledge_corpus.py">prep_elem_knowledge_corpus.py</a></span> <span class='desc'>elem_knowledge 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_logic_corpus.py">prep_elem_logic_corpus.py</a></span> <span class='desc'>elem_logic 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_elem_subject_corpus.py">prep_elem_subject_corpus.py</a></span> <span class='desc'>elem_subject 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_life_corpus.py">prep_life_corpus.py</a></span> <span class='desc'>life 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_sense_corpus.py">prep_sense_corpus.py</a></span> <span class='desc'>sense 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_sense_mimic_corpus.py">prep_sense_mimic_corpus.py</a></span> <span class='desc'>sense_mimic 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_sense_space_corpus.py">prep_sense_space_corpus.py</a></span> <span class='desc'>sense_space 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_space_corpus.py">prep_space_corpus.py</a></span> <span class='desc'>space 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler2_corpus.py">prep_toddler2_corpus.py</a></span> <span class='desc'>toddler2 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_corpus.py">prep_toddler_corpus.py</a></span> <span class='desc'>toddler 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_dialog_corpus.py">prep_toddler_dialog_corpus.py</a></span> <span class='desc'>toddler_dialog 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_emotion_corpus.py">prep_toddler_emotion_corpus.py</a></span> <span class='desc'>toddler_emotion 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_exp_corpus.py">prep_toddler_exp_corpus.py</a></span> <span class='desc'>toddler_exp 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_learn_corpus.py">prep_toddler_learn_corpus.py</a></span> <span class='desc'>toddler_learn 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_logic_corpus.py">prep_toddler_logic_corpus.py</a></span> <span class='desc'>toddler_logic 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/prep_toddler_state_corpus.py">prep_toddler_state_corpus.py</a></span> <span class='desc'>toddler_state 말뭉치 생성기</span></li>
-<li><span class='name'><a href="corpus_build/seeds.py">seeds.py</a></span> <span class='desc'>생성 씨앗 어휘 표</span></li>
-<li><span class='name'><a href="corpus_build/toddler2_expr.py">toddler2_expr.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/toddler2_link_expr.py">toddler2_link_expr.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/toddler_affect.py">toddler_affect.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/toddler_events.py">toddler_events.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/toddler_expr.py">toddler_expr.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/toddler_questions.py">toddler_questions.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/toddler_seed_expr.py">toddler_seed_expr.py</a></span> <span class='desc'>생성기가 읽는 표현 자료 모듈</span></li>
-<li><span class='name'><a href="corpus_build/world_ladder.py">world_ladder.py</a></span> <span class='desc'>월드 사다리 축 정의 자료</span></li>
+<li><a href="core/banya_atoms.py">banya_atoms.py</a> — 음절 원자 토크나이저. 한국어를 음절 단위 아이디로 인코딩과 디코딩</li>
+<li><a href="core/banya_syllables.txt">banya_syllables.txt</a> — 음절 원자 사전 원본</li>
 </ul>
-</li>
-<li class='folder'><span class='name'><a href="data_prep/">data_prep/</a></span> <span class='desc'>논문4 프로브가 쓰는 월드 사다리 자료 모듈</span>
+<li><b><a href="corpus_build/">corpus_build/</a></b> — 말뭉치 자가 제작. 원문 텍스트 없이 생성기로 말뭉치를 재생성한다. <a href="corpus_build/MANUAL.md">MANUAL.md</a> 참고</li>
 <ul>
-<li><span class='name'><a href="data_prep/baby_world_expr.py">baby_world_expr.py</a></span> <span class='desc'>아기 단계 월드 표현 자료</span></li>
-<li><span class='name'><a href="data_prep/world_ladder.py">world_ladder.py</a></span> <span class='desc'>월드 사다리 축 정의</span></li>
+<li><a href="corpus_build/MANUAL.md">MANUAL.md</a> — 제작 매뉴얼. 실행 순서와 외부 텍스트 말뭉치 만드는 법</li>
+<li><a href="corpus_build/assemble_toddler2.py">assemble_toddler2.py</a> — 유아 후반 말뭉치 조립 보조</li>
+<li><a href="corpus_build/baby_expr.py">baby_expr.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/baby_mimic.py">baby_mimic.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/baby_world_expr.py">baby_world_expr.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/build_all.sh">build_all.sh</a> — 자작 말뭉치 전부를 한 번에 재생성. bash build_all.sh</li>
+<li><a href="corpus_build/corpus_parts.py">corpus_parts.py</a> — 생성기 공용 부품. 인코딩과 저장</li>
+<li><a href="corpus_build/elem.txt">elem.txt</a> — 초등 말뭉치의 자작 원문 텍스트. encode_text.py 로 elem.npy 를 만든다</li>
+<li><a href="corpus_build/encode_text.py">encode_text.py</a> — 아무 한국어 텍스트를 음절 말뭉치 npy 로 굽는 범용 도구</li>
+<li><a href="corpus_build/prep_baby_corpus.py">prep_baby_corpus.py</a> — baby 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_baby_learn_corpus.py">prep_baby_learn_corpus.py</a> — baby_learn 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_baby_logic_corpus.py">prep_baby_logic_corpus.py</a> — baby_logic 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_bundle_cache.py">prep_bundle_cache.py</a> — 묶음 어휘 사전이 만들어진 방법의 참고용 생성기</li>
+<li><a href="corpus_build/prep_elem_corpus.py">prep_elem_corpus.py</a> — 옛 초등 생성기. 지금은 없는 명단 파일을 읽어 참고용으로만 남김. elem.npy 는 elem.txt 로 만든다</li>
+<li><a href="corpus_build/prep_elem_dialog_corpus.py">prep_elem_dialog_corpus.py</a> — elem_dialog 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_elem_inquiry_corpus.py">prep_elem_inquiry_corpus.py</a> — elem_inquiry 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_elem_knowledge_corpus.py">prep_elem_knowledge_corpus.py</a> — elem_knowledge 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_elem_logic_corpus.py">prep_elem_logic_corpus.py</a> — elem_logic 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_elem_subject_corpus.py">prep_elem_subject_corpus.py</a> — elem_subject 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_life_corpus.py">prep_life_corpus.py</a> — life 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_sense_corpus.py">prep_sense_corpus.py</a> — sense 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_sense_mimic_corpus.py">prep_sense_mimic_corpus.py</a> — sense_mimic 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_sense_space_corpus.py">prep_sense_space_corpus.py</a> — sense_space 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_space_corpus.py">prep_space_corpus.py</a> — space 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler2_corpus.py">prep_toddler2_corpus.py</a> — toddler2 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler_corpus.py">prep_toddler_corpus.py</a> — toddler 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler_dialog_corpus.py">prep_toddler_dialog_corpus.py</a> — toddler_dialog 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler_emotion_corpus.py">prep_toddler_emotion_corpus.py</a> — toddler_emotion 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler_exp_corpus.py">prep_toddler_exp_corpus.py</a> — toddler_exp 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler_learn_corpus.py">prep_toddler_learn_corpus.py</a> — toddler_learn 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler_logic_corpus.py">prep_toddler_logic_corpus.py</a> — toddler_logic 말뭉치 생성기</li>
+<li><a href="corpus_build/prep_toddler_state_corpus.py">prep_toddler_state_corpus.py</a> — toddler_state 말뭉치 생성기</li>
+<li><a href="corpus_build/seeds.py">seeds.py</a> — 생성 씨앗 어휘 표</li>
+<li><a href="corpus_build/toddler2_expr.py">toddler2_expr.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/toddler2_link_expr.py">toddler2_link_expr.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/toddler_affect.py">toddler_affect.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/toddler_events.py">toddler_events.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/toddler_expr.py">toddler_expr.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/toddler_questions.py">toddler_questions.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/toddler_seed_expr.py">toddler_seed_expr.py</a> — 생성기가 읽는 표현 자료 모듈</li>
+<li><a href="corpus_build/world_ladder.py">world_ladder.py</a> — 월드 사다리 축 정의 자료</li>
 </ul>
-</li>
-<li class='folder'><span class='name'><a href="model/">model/</a></span> <span class='desc'>얼린 체크포인트와 평가 자료. 대용량 npz 는 제노도(doi.org/10.5281/zenodo.21383724)에서 받는다. bash download.sh</span>
+<li><b><a href="data_prep/">data_prep/</a></b> — 논문4 프로브가 쓰는 월드 사다리 자료 모듈</li>
 <ul>
-<li><span class='name'><a href="model/DOWNLOAD.md">DOWNLOAD.md</a></span> <span class='desc'>체크포인트 내려받기 안내. 제노도 주소와 검증법</span></li>
-<li><span class='name'><a href="model/download.sh">download.sh</a></span> <span class='desc'>체크포인트 3개를 한 번에 받고 무결성을 검증. bash download.sh</span></li>
-<li><span class='name'><a href="model/checksums.sha256">checksums.sha256</a></span> <span class='desc'>체크포인트 무결성 기대값</span></li>
-<li><span class='name'><a href="model/bitok_elem2_170000_m.npz">bitok_elem2_170000_m.npz</a></span> <span class='desc'>초등 단계 바이토큰 모델 체크포인트. 논문3 과 논문6 프로브가 사용한다</span></li>
-<li><span class='name'><a href="model/cache_elem3_190000.npz">cache_elem3_190000.npz</a></span> <span class='desc'>초등 단계 캐시 사전 모델 체크포인트. 논문2 와 논문5 프로브가 사용한다</span></li>
-<li><span class='name'><a href="model/eval_sets.json">eval_sets.json</a></span> <span class='desc'>평가 문장 묶음. 홀드아웃 조각들</span></li>
-<li><span class='name'><a href="model/legacy_key_convert.py">legacy_key_convert.py</a></span> <span class='desc'>옛 키 이름 체크포인트를 새 키(m_ 접두)로 바꾸던 일회성 도구. 참고용</span></li>
-<li><span class='name'><a href="model/stream_train.npy">stream_train.npy</a></span> <span class='desc'>되새김 씨앗 수집용 학습 스트림 표본</span></li>
-<li><span class='name'><a href="model/world_toddler2_110000_m.npz">world_toddler2_110000_m.npz</a></span> <span class='desc'>월드 모델 유아 후반 단계 체크포인트. 논문4 프로브가 사용한다</span></li>
+<li><a href="data_prep/baby_world_expr.py">baby_world_expr.py</a> — 아기 단계 월드 표현 자료</li>
+<li><a href="data_prep/world_ladder.py">world_ladder.py</a> — 월드 사다리 축 정의</li>
 </ul>
-</li>
-<li><span class='name'><a href="paper1_engine.py">paper1_engine.py</a></span> <span class='desc'>제1편 엔진. 정확한 전치 신용 사슬로 한 스텝을 학습하는 train_step 을 묶는다</span></li>
-<li><span class='name'><a href="paper2_rumination.py">paper2_rumination.py</a></span> <span class='desc'>제2편 되새김. 발화군 수집과 당김 규칙 등 되새김 메커니즘</span></li>
-<li><span class='name'><a href="paper3_bitoken.py">paper3_bitoken.py</a></span> <span class='desc'>제3편 바이토큰. 연산면 켬끔 스위치 등 직교 토큰 메커니즘</span></li>
-<li><span class='name'><a href="paper4_world_dev.py">paper4_world_dev.py</a></span> <span class='desc'>제4편 월드발달. 발달 커리큘럼 단계 정의</span></li>
-<li><span class='name'><a href="paper5_cache_token.py">paper5_cache_token.py</a></span> <span class='desc'>제5편 캐시 토큰화. 로우랭크 헤드 비용 계산 등</span></li>
-<li><span class='name'><a href="paper6_metacog.py">paper6_metacog.py</a></span> <span class='desc'>제6편 메타인지. 분포 통계량과 확실 모호 모름 라우팅</span></li>
-<li><span class='name'><a href="paper7_rotation.py">paper7_rotation.py</a></span> <span class='desc'>제7편 회전 연산자 게이트. 무저장 닫힌형 수반, 엔진 무수정 실행 중 커널 주입</span></li>
-<li class='folder'><span class='name'><a href="probe/">probe/</a></span> <span class='desc'>논문별 실측 프로브 11종. 각 파일 머리말에 실행 줄이 있고 python3 파일명 으로 실행한다</span>
+<li><b><a href="model/">model/</a></b> — 얼린 체크포인트와 평가 자료. 대용량 npz 는 제노도(doi.org/10.5281/zenodo.21383724)에서 받는다. bash download.sh</li>
 <ul>
-<li><span class='name'><a href="probe/paper1_engine_probe.py">paper1_engine_probe.py</a></span> <span class='desc'>제1편. 자동미분 미사용, 전치 정합성, 정규화 스케일 안정성 검증</span></li>
-<li><span class='name'><a href="probe/paper1_small_contrast_probe.py">paper1_small_contrast_probe.py</a></span> <span class='desc'>제1편. 표준 역전파 기준 구현과 같은 초기값 같은 배치로 나란히 학습해 손실 궤적 일치와 실행 시간을 측정한다</span></li>
-<li><span class='name'><a href="probe/paper2_rumination_probe.py">paper2_rumination_probe.py</a></span> <span class='desc'>제2편. 되새김의 동종 밀집도 상승, 홀드아웃 보존, 평형 수렴을 측정한다</span></li>
-<li><span class='name'><a href="probe/paper2_rumination_qa_probe.py">paper2_rumination_qa_probe.py</a></span> <span class='desc'>제2편. 되새김 전후 하류 2AFC 판별이 유지되는지 측정한다. 후보 강제 투입 압박 판 포함</span></li>
-<li><span class='name'><a href="probe/paper3_bitoken_probe.py">paper3_bitoken_probe.py</a></span> <span class='desc'>제3편. 연산자 방향 일관성, 직교성, 예측 기여, 혼합 헤드 분화를 측정한다</span></li>
-<li><span class='name'><a href="probe/paper3_composition_probe.py">paper3_composition_probe.py</a></span> <span class='desc'>제3편. 안 본 어간 어미 조합의 조립 판별을 바이그램 기준선과 나란히 측정한다</span></li>
-<li><span class='name'><a href="probe/paper4_world_dev_probe.py">paper4_world_dev_probe.py</a></span> <span class='desc'>제4편. 발달 단계 체크포인트의 축 구조 형성을 측정한다</span></li>
-<li><span class='name'><a href="probe/paper5_cache_token_probe.py">paper5_cache_token_probe.py</a></span> <span class='desc'>제5편. 2층 어휘 구성, 로우랭크 헤드 비용, 묶음층 연산자 구조를 측정한다</span></li>
-<li><span class='name'><a href="probe/paper5_quality_contrast_probe.py">paper5_quality_contrast_probe.py</a></span> <span class='desc'>제5편. 묶음 켬과 끔의 글자당 비트를 재 절감과 품질의 동행을 확인한다</span></li>
-<li><span class='name'><a href="probe/paper6_metacog_probe.py">paper6_metacog_probe.py</a></span> <span class='desc'>제6편. 확실 모호 모름 질문 묶음의 분포 통계량을 측정한다</span></li>
-<li><span class='name'><a href="probe/paper6_vague_trigger_probe.py">paper6_vague_trigger_probe.py</a></span> <span class='desc'>제6편. 모호 히든을 문맥 동반 재해석으로 확실화하는 회로를 측정한다</span></li>
-<li><span class='name'><a href="probe/paper7_rotation_probe.py">paper7_rotation_probe.py</a></span> <span class='desc'>제7편. 수반 정합, 주입 설계 증명, 게이트 변형 절제의 mod 3 깊이 배제 판별 측정</span></li>
+<li><a href="model/DOWNLOAD.md">DOWNLOAD.md</a> — 체크포인트 내려받기 안내. 제노도 주소와 검증법</li>
+<li><a href="model/download.sh">download.sh</a> — 체크포인트를 받고 무결성을 검증. bash download.sh (핵심 3개), bash download.sh bp (선택인 표준 기준선 추가)</li>
+<li><a href="model/checksums.sha256">checksums.sha256</a> — 핵심 체크포인트 3개의 무결성 기대값</li>
+<li><a href="model/checksums_bp.sha256">checksums_bp.sha256</a> — 선택인 표준 기준선 체크포인트의 무결성 기대값</li>
+<li><a href="model/banya_bp_pytorch.pt">banya_bp_pytorch.pt</a> — 표준 기준선 체크포인트 (선택, 1.25GB). 논문3 기준선 프로브가 표 6-1의 표준 줄에 사용한다</li>
+<li><a href="model/bitok_elem2_170000_m.npz">bitok_elem2_170000_m.npz</a> — 초등 단계 바이토큰 모델 체크포인트. 논문3 과 논문6 프로브가 사용한다</li>
+<li><a href="model/cache_elem3_190000.npz">cache_elem3_190000.npz</a> — 초등 단계 캐시 사전 모델 체크포인트. 논문2 와 논문5 프로브가 사용한다</li>
+<li><a href="model/eval_sets.json">eval_sets.json</a> — 평가 문장 묶음. 홀드아웃 조각들</li>
+<li><a href="model/legacy_key_convert.py">legacy_key_convert.py</a> — 옛 키 이름 체크포인트를 새 키(m_ 접두)로 바꾸던 일회성 도구. 참고용</li>
+<li><a href="model/stream_train.npy">stream_train.npy</a> — 되새김 씨앗 수집용 학습 스트림 표본</li>
+<li><a href="model/world_toddler2_110000_m.npz">world_toddler2_110000_m.npz</a> — 월드 모델 유아 후반 단계 체크포인트. 논문4 프로브가 사용한다</li>
 </ul>
-</li>
-<li><span class='name'><a href="requirements.txt">requirements.txt</a></span> <span class='desc'>필요 파이썬 패키지 목록. cupy 는 CUDA 버전에 맞는 배포판을 설치한다</span></li>
-<li class='folder'><span class='name'><a href="smoke/">smoke/</a></span> <span class='desc'>최소 동작 확인</span>
+<li><a href="paper1_engine.py">paper1_engine.py</a> — 제1편 엔진. 정확한 전치 신용 사슬로 한 스텝을 학습하는 train_step 을 묶는다</li>
+<li><a href="paper2_rumination.py">paper2_rumination.py</a> — 제2편 되새김. 발화군 수집과 당김 규칙 등 되새김 메커니즘</li>
+<li><a href="paper3_bitoken.py">paper3_bitoken.py</a> — 제3편 바이토큰. 연산면 켬끔 스위치 등 직교 토큰 메커니즘</li>
+<li><a href="paper4_world_dev.py">paper4_world_dev.py</a> — 제4편 월드발달. 발달 커리큘럼 단계 정의</li>
+<li><a href="paper5_cache_token.py">paper5_cache_token.py</a> — 제5편 캐시 토큰화. 로우랭크 헤드 비용 계산 등</li>
+<li><a href="paper6_metacog.py">paper6_metacog.py</a> — 제6편 메타인지. 분포 통계량과 확실 모호 모름 라우팅</li>
+<li><a href="paper7_rotation.py">paper7_rotation.py</a> — 제7편 회전 연산자 게이트와 쿼터니언 게이트. 무저장 닫힌형 수반, 엔진 무수정 실행 중 커널 주입</li>
+<li><b><a href="probe/">probe/</a></b> — 논문별 실측 프로브 13종. 각 파일 머리말에 실행 줄이 있고 python3 파일명 으로 실행한다</li>
 <ul>
-<li><span class='name'><a href="smoke/example.txt">example.txt</a></span> <span class='desc'>검사용 예시 텍스트</span></li>
-<li><span class='name'><a href="smoke/smoke_vocab.py">smoke_vocab.py</a></span> <span class='desc'>어휘와 토크나이저가 정상인지 빠르게 확인하는 검사</span></li>
+<li><a href="probe/paper1_engine_probe.py">paper1_engine_probe.py</a> — 제1편. 자동미분 미사용, 전치 정합성, 정규화 스케일 안정성 검증</li>
+<li><a href="probe/paper1_small_contrast_probe.py">paper1_small_contrast_probe.py</a> — 제1편. 표준 역전파 기준 구현과 같은 초기값 같은 배치로 나란히 학습해 손실 궤적 일치와 실행 시간을 측정한다</li>
+<li><a href="probe/paper2_rumination_probe.py">paper2_rumination_probe.py</a> — 제2편. 되새김의 동종 밀집도 상승, 홀드아웃 보존, 평형 수렴을 측정한다</li>
+<li><a href="probe/paper2_rumination_qa_probe.py">paper2_rumination_qa_probe.py</a> — 제2편. 되새김 전후 하류 2AFC 판별이 유지되는지 측정한다. 후보 강제 투입 압박 판 포함</li>
+<li><a href="probe/paper3_bitoken_probe.py">paper3_bitoken_probe.py</a> — 제3편. 연산자 방향 일관성, 직교성, 예측 기여, 혼합 헤드 분화를 측정한다</li>
+<li><a href="probe/paper3_baseline_probe.py">paper3_baseline_probe.py</a> — 제3편. 표 6-1 표준 기준선. 같은 창의 교차엔트로피와 스텝당 학습 시간을 측정한다</li>
+<li><a href="probe/paper3_composition_probe.py">paper3_composition_probe.py</a> — 제3편. 안 본 어간 어미 조합의 조립 판별을 바이그램 기준선과 나란히 측정한다</li>
+<li><a href="probe/paper4_world_dev_probe.py">paper4_world_dev_probe.py</a> — 제4편. 발달 단계 체크포인트의 축 구조 형성을 측정한다</li>
+<li><a href="probe/paper5_cache_token_probe.py">paper5_cache_token_probe.py</a> — 제5편. 2층 어휘 구성, 로우랭크 헤드 비용, 묶음층 연산자 구조를 측정한다</li>
+<li><a href="probe/paper5_quality_contrast_probe.py">paper5_quality_contrast_probe.py</a> — 제5편. 묶음 켬과 끔의 글자당 비트를 재 절감과 품질의 동행을 확인한다</li>
+<li><a href="probe/paper6_metacog_probe.py">paper6_metacog_probe.py</a> — 제6편. 확실 모호 모름 질문 묶음의 분포 통계량을 측정한다</li>
+<li><a href="probe/paper6_vague_trigger_probe.py">paper6_vague_trigger_probe.py</a> — 제6편. 모호 히든을 문맥 동반 재해석으로 확실화하는 회로를 측정한다</li>
+<li><a href="probe/paper7_rotation_probe.py">paper7_rotation_probe.py</a> — 제7편. 수반 정합, 주입 설계 증명, 게이트 변형 절제의 mod 3, 삼각형 깊이 배제 판별 측정</li>
 </ul>
-</li>
+<li><a href="requirements.txt">requirements.txt</a> — 필요 파이썬 패키지 목록. cupy 는 CUDA 버전에 맞는 배포판을 설치한다</li>
+<li><b><a href="smoke/">smoke/</a></b> — 최소 동작 확인</li>
+<ul>
+<li><a href="smoke/example.txt">example.txt</a> — 검사용 예시 텍스트</li>
+<li><a href="smoke/smoke_vocab.py">smoke_vocab.py</a> — 어휘와 토크나이저가 정상인지 빠르게 확인하는 검사</li>
 </ul>
-</div>
-
-<script>
-function setLang(l) {
-  document.getElementById('page-en').style.display = (l === 'en') ? '' : 'none';
-  document.getElementById('page-ko').style.display = (l === 'ko') ? '' : 'none';
-  document.getElementById('btn-en').className = (l === 'en') ? 'on' : '';
-  document.getElementById('btn-ko').className = (l === 'ko') ? 'on' : '';
-  document.documentElement.lang = (l === 'en') ? 'en' : 'ko';
-}
-setLang('en');
-</script>
+</ul>
 </body>
 </html>

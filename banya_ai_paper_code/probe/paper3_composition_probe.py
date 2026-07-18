@@ -240,8 +240,8 @@ def main():
             continue
         _acc, _c, _n, _pv = p_group_stats([v[2] for v in _R])
         _acc_b, _cb, _, _pvb = p_group_stats([v[3] for v in _R])
-        print(f"  {name} {_n}개 · 모델 {_acc:.1f}% ({_c}/{_n}, p={_pv:.1e}) · 마진 {np.mean([v[2] for v in _R]):+.2f}", flush=True)
-        print(f"      바이그램 {_acc_b:.1f}% ({_cb}/{_n}, p={_pvb:.1e}) · 마진 {np.mean([v[3] for v in _R]):+.2f}", flush=True)
+        print(f"  {name} {_n}개 · 모델 {_acc:.1f}% ({_c}/{_n}, p={_pv:.1e}) · 마진 {np.mean([v[2] for v in _R]):+.2f}" + (" (목표 100.0%)" if name == "본" else " (목표 87.7%)"), flush=True)
+        print(f"      바이그램 {_acc_b:.1f}% ({_cb}/{_n}, p={_pvb:.1e}) · 마진 {np.mean([v[3] for v in _R]):+.2f}" + (" (목표 77.8%)" if name == "본" else " (목표 47.7%)"), flush=True)
         _win = [f for f, sw, mf, bf in _R if mf > 0 and bf <= 0]
         _lose = [f for f, sw, mf, bf in _R if mf <= 0 and bf > 0]
         print(f"      모델만 정답 {len(_win)}개 " + " ".join(_win), flush=True)
@@ -251,7 +251,7 @@ def main():
     for name, label in (("본", "본 조합  "), ("안본", "안 본 조합")):
         _R = _rows[name]
         _acc, _c, _n, _pv = p_group_stats([v[1] for v in _R])
-        print(f"  {label} {_n}개 모델 {_acc:.1f}% · 바이그램 {p_group_stats([v[3] for v in _R])[0]:.1f}%", flush=True)
+        print(f"  {label} {_n}개 모델 {_acc:.1f}% · 바이그램 {p_group_stats([v[3] for v in _R])[0]:.1f}%" + (" (목표 모델 100.0% · 바이그램 90.9%)" if name == "본" else " (목표 모델 86.9% · 바이그램 83.3%)"), flush=True)
     print("  마진 자료 (그림용, 모델 전체마진)", flush=True)
     for name in ("본", "안본"):
         print(f"  {name}: " + " ".join(f"{v[1]:.1f}" for v in _rows[name]), flush=True)
