@@ -20,7 +20,7 @@ import re
 import json
 import collections
 
-JR = "/home/khan/.claude/projects/-home-khan------claude-work-banya-ai/5ecba458-6787-47db-86c2-f81e6773453a/subagents/workflows/wf_e0dfb1a9-5cc/journal.jsonl"
+JR = "/media/khan/backup/banya_ai/data_prep/journal.jsonl"
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Allowed: Hangul syllables, jamo, spaces, question marks, periods, exclamation marks, commas. Anything else (English, Hanja, symbols, emoticons) causes the text to be discarded
