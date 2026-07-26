@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B63YWKZSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8B63YWKZSJ');
+</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>자동미분 없이 수동으로 유도한 정확한 전치로 학습하는 언어모델 엔진</title>
+<meta name="description" content="본고는 자동미분 없이 언어모델을 학습하는 엔진을 제시한다. 이 엔진은 신경망을 이루는 모든 연산 원시마다 그 야코비안 전치(수반, adjoint)를 수동으로 유도한 닫힌형 수식으로 직접 구현한다. 본고의 초점은 표준 구조를 수동으로 옮겨 적는 재구현이 아니라, 자동미분 학습 루프에..."/>
+<meta name="keywords" content="자동미분, 수반, 야코비안 전치, 닫힌형 기울기, 언어모델 학습, 순환행렬, 분배함수, 신경망 엔진, 한혁진, 반야 연구 시리즈"/>
+<meta name="author" content="Hyukjin Han"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_1_kr.html"/>
+<link rel="alternate" hreflang="ko" href="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_1_kr.html"/>
+<link rel="alternate" hreflang="en" href="https://ubmscoin.github.io/banya/report/banya_ai/en/banya_ai_1_en.html"/>
+<link rel="alternate" hreflang="x-default" href="https://ubmscoin.github.io/banya/report/banya_ai/en/banya_ai_1_en.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="자동미분 없이 수동으로 유도한 정확한 전치로 학습하는 언어모델 엔진"/>
+<meta property="og:description" content="본고는 자동미분 없이 언어모델을 학습하는 엔진을 제시한다. 이 엔진은 신경망을 이루는 모든 연산 원시마다 그 야코비안 전치(수반, adjoint)를 수동으로 유도한 닫힌형 수식으로 직접 구현한다. 본고의 초점은 표준 구조를 수동으로 옮겨 적는 재구현이 아니라, 자동미분 학습 루프에..."/>
+<meta property="og:url" content="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_1_kr.html"/>
+<meta property="og:site_name" content="반야 연구 시리즈"/>
+<meta property="og:locale" content="ko_KR"/>
+<meta property="og:locale:alternate" content="en_US"/>
+<meta property="article:author" content="Hyukjin Han"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="자동미분 없이 수동으로 유도한 정확한 전치로 학습하는 언어모델 엔진"/>
+<meta name="twitter:description" content="본고는 자동미분 없이 언어모델을 학습하는 엔진을 제시한다. 이 엔진은 신경망을 이루는 모든 연산 원시마다 그 야코비안 전치(수반, adjoint)를 수동으로 유도한 닫힌형 수식으로 직접 구현한다. 본고의 초점은 표준 구조를 수동으로 옮겨 적는 재구현이 아니라, 자동미분 학습 루프에..."/>
+<meta name="citation_title" content="자동미분 없이 수동으로 유도한 정확한 전치로 학습하는 언어모델 엔진"/>
+<meta name="citation_author" content="Hyukjin Han"/>
+<meta name="citation_pdf_url" content="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_1_kr.pdf"/>
+<meta name="citation_language" content="ko"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "자동미분 없이 수동으로 유도한 정확한 전치로 학습하는 언어모델 엔진",
+  "name": "자동미분 없이 수동으로 유도한 정확한 전치로 학습하는 언어모델 엔진",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "Hyukjin Han",
+    "identifier": "https://orcid.org/0009-0007-4132-1707"
+  },
+  "description": "본고는 자동미분 없이 언어모델을 학습하는 엔진을 제시한다. 이 엔진은 신경망을 이루는 모든 연산 원시마다 그 야코비안 전치(수반, adjoint)를 수동으로 유도한 닫힌형 수식으로 직접 구현한다. 본고의 초점은 표준 구조를 수동으로 옮겨 적는 재구현이 아니라, 자동미분 학습 루프에...",
+  "url": "https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_1_kr.html",
+  "isPartOf": "반야 연구 시리즈",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_1_kr.pdf",
+    "encodingFormat": "application/pdf"
+  }
+}
+</script>
+</head>
+<body>
+<article>
+<h1>자동미분 없이 수동으로 유도한 정확한 전치로 학습하는 언어모델 엔진</h1>
+<p><strong>저자:</strong> 한혁진 (Hyukjin Han) · ORCID 0009-0007-4132-1707 · 반야 연구 시리즈 제1편 · bokkamsun@gmail.com</p>
+<h2>초록</h2>
+<p>본고는 자동미분 없이 언어모델을 학습하는 엔진을 제시한다. 이 엔진은 신경망을 이루는 모든 연산 원시마다 그 야코비안 전치(수반, adjoint)를 수동으로 유도한 닫힌형 수식으로 직접 구현한다. 본고의 초점은 표준 구조를 수동으로 옮겨 적는 재구현이 아니라, 자동미분 학습 루프에 정확히 물리기 어려운 비표준 연산 — 순환행렬 채널 혼합과 분배함수 없는 혼합 — 의 정확한 전치에 있다. 분배함수 없는 혼합은 엔진의 학습 경로에 실재하며, 순환행렬 채널 혼합은 닫힌형 전치의 유도와 유한차분 검증으로 제시한다.</p>
+<p><a href="banya_ai_1_kr.pdf" target="_blank" rel="noopener">PDF 전문 보기</a></p>
+</article>
+</body>
+</html>

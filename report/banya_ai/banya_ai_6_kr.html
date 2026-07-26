@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B63YWKZSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8B63YWKZSJ');
+</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>자기 출력 분포에서 창발하는 메타인지: 확실, 모호, 모름의 라우팅</title>
+<meta name="description" content="메타인지를 별도 회로 없이 모델이 자기 출력 분포를 읽어 뽑아낼 수 있다. 본고는 확실, 모호, 모름의 세 상태가 출력 분포의 통계량만으로 갈리는지를 측정한다. 통계량은 최대 확률(pmax), 정규화 엔트로피, 봉우리 수이다. 측정한 결과, 확실은 최대 확률 1.00에 엔트로피 0..."/>
+<meta name="keywords" content="메타인지, 출력 분포, 엔트로피, 최대 확률, 불확실성, 라우팅, 확실 모호 모름, 언어모델, 한혁진, 반야"/>
+<meta name="author" content="Hyukjin Han"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_6_kr.html"/>
+<link rel="alternate" hreflang="ko" href="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_6_kr.html"/>
+<link rel="alternate" hreflang="en" href="https://ubmscoin.github.io/banya/report/banya_ai/en/banya_ai_6_en.html"/>
+<link rel="alternate" hreflang="x-default" href="https://ubmscoin.github.io/banya/report/banya_ai/en/banya_ai_6_en.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="자기 출력 분포에서 창발하는 메타인지: 확실, 모호, 모름의 라우팅"/>
+<meta property="og:description" content="메타인지를 별도 회로 없이 모델이 자기 출력 분포를 읽어 뽑아낼 수 있다. 본고는 확실, 모호, 모름의 세 상태가 출력 분포의 통계량만으로 갈리는지를 측정한다. 통계량은 최대 확률(pmax), 정규화 엔트로피, 봉우리 수이다. 측정한 결과, 확실은 최대 확률 1.00에 엔트로피 0..."/>
+<meta property="og:url" content="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_6_kr.html"/>
+<meta property="og:site_name" content="반야 연구 시리즈"/>
+<meta property="og:locale" content="ko_KR"/>
+<meta property="og:locale:alternate" content="en_US"/>
+<meta property="article:author" content="Hyukjin Han"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="자기 출력 분포에서 창발하는 메타인지: 확실, 모호, 모름의 라우팅"/>
+<meta name="twitter:description" content="메타인지를 별도 회로 없이 모델이 자기 출력 분포를 읽어 뽑아낼 수 있다. 본고는 확실, 모호, 모름의 세 상태가 출력 분포의 통계량만으로 갈리는지를 측정한다. 통계량은 최대 확률(pmax), 정규화 엔트로피, 봉우리 수이다. 측정한 결과, 확실은 최대 확률 1.00에 엔트로피 0..."/>
+<meta name="citation_title" content="자기 출력 분포에서 창발하는 메타인지: 확실, 모호, 모름의 라우팅"/>
+<meta name="citation_author" content="Hyukjin Han"/>
+<meta name="citation_pdf_url" content="https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_6_kr.pdf"/>
+<meta name="citation_language" content="ko"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "자기 출력 분포에서 창발하는 메타인지: 확실, 모호, 모름의 라우팅",
+  "name": "자기 출력 분포에서 창발하는 메타인지: 확실, 모호, 모름의 라우팅",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "Hyukjin Han",
+    "identifier": "https://orcid.org/0009-0007-4132-1707"
+  },
+  "description": "메타인지를 별도 회로 없이 모델이 자기 출력 분포를 읽어 뽑아낼 수 있다. 본고는 확실, 모호, 모름의 세 상태가 출력 분포의 통계량만으로 갈리는지를 측정한다. 통계량은 최대 확률(pmax), 정규화 엔트로피, 봉우리 수이다. 측정한 결과, 확실은 최대 확률 1.00에 엔트로피 0...",
+  "url": "https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_6_kr.html",
+  "isPartOf": "반야 연구 시리즈",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://ubmscoin.github.io/banya/report/banya_ai/banya_ai_6_kr.pdf",
+    "encodingFormat": "application/pdf"
+  }
+}
+</script>
+</head>
+<body>
+<article>
+<h1>자기 출력 분포에서 창발하는 메타인지: 확실, 모호, 모름의 라우팅</h1>
+<p><strong>저자:</strong> 한혁진 (Hyukjin Han) · ORCID 0009-0007-4132-1707 · 반야 연구 시리즈 제6편 · bokkamsun@gmail.com</p>
+<h2>초록</h2>
+<p>메타인지를 별도 회로 없이 모델이 자기 출력 분포를 읽어 뽑아낼 수 있다. 본고는 확실, 모호, 모름의 세 상태가 출력 분포의 통계량만으로 갈리는지를 측정한다. 통계량은 최대 확률(pmax), 정규화 엔트로피, 봉우리 수이다. 측정한 결과, 확실은 최대 확률 1.00에 엔트로피 0.00으로 한 곳에 몰려 나머지와 명확히 갈린다. 모호(최대 확률 0.32, 엔트로피 0.35)와 모름(0.35, 0.37)은 확실과는 크게 갈리지만 서로는 통계량이 겹친다.</p>
+<p><a href="banya_ai_6_kr.pdf" target="_blank" rel="noopener">PDF 전문 보기</a></p>
+</article>
+</body>
+</html>
