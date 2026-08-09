@@ -64,7 +64,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><a href="../axiom.html#ax2">공리 2</a>(R==&gt;C==&gt;S 원자적 비가환), <a href="../axiom.html#ax5">공리 5</a>(8비트 레지스터 공유)</p>
 <p><a href="../axiom.html#ax2">공리 2</a>(CAS 원자성) ==&gt; <a href="../axiom.html#ax5">공리 5</a>(8비트 lock 경합) ==&gt; <a href="../axiom.html#ax3">공리 3</a>(DATA 이산 최소 단위) ==&gt; <a href="../axiom.html#ax7">공리 7</a>(Compare 결과에 의한 분기)</p>
 <p>불확정성은 자연의 근본 한계가 아니라 CAS 스케줄링의 구조적 제약이다. 한 틱에 하나의 Read-Compare 쌍만 원자적으로 완결되므로, 켤레 변수 쌍은 원리적으로 동시 확정 불가. $\hbar/2$는 CAS 1틱 최소 비용의 물리 환산값.</p>
-<p>$\Delta x \,\Delta p = \hbar/2$: CAS 최소 비용 = $\hbar/2 \approx 5.27 \times 10^{-35}$ J·s. 이중슬릿 전자 빔에서 슬릿 폭 $\Delta x$ 축소 시 회절각 증가 예측.</p>
+<p>$\Delta x \,\Delta p = \hbar/2$: CAS 최소 비용 = $\hbar/2 \approx 5.27 \times 10^{-35}$ J*s. 이중슬릿 전자 빔에서 슬릿 폭 $\Delta x$ 축소 시 회절각 증가 예측.</p>
 <p>표준 양자역학 불확정성 관계와 완전 정합. 모든 켤레 쌍($E$-$t$, $L$-$\theta$)에 동일 구조.</p>
 <p>하이젠베르크 불확정성 원리(1927), 정준 교환 관계 $[x,p]=i\hbar$</p>
 <p>모든 불확정성 실험(이중슬릿, 감마선 현미경 사고실험 등)과 정합. 반박: CAS 동시 실행이 가능한 경로 발견 시 위배.</p>
@@ -82,11 +82,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>position과 momentum은 같은 8비트 레지스터(<a href="../axiom.html#ax5">공리 5</a>)의 두 니블이다. CAS는 한 틱에서 R$\to$C$\to$S 순서를 원자적으로 처리하므로(<a href="../axiom.html#ax2">공리 2</a>), position 슬롯을 Read하는 동안 momentum 슬롯의 Compare는 같은 틱에 실행되지 못한다. 이 동시 실행 불가를 켤레 변수 쌍의 비가환으로 읽는다.</p>
+<p>position과 momentum은 같은 8비트 레지스터(<a href="../axiom.html#ax5">공리 5</a>)의 두 니블이다. CAS는 한 틱에서 R$\text{==>}$C$\text{==>}$S 순서를 원자적으로 처리하므로(<a href="../axiom.html#ax2">공리 2</a>), position 슬롯을 Read하는 동안 momentum 슬롯의 Compare는 같은 틱에 실행되지 못한다. 이 동시 실행 불가를 켤레 변수 쌍의 비가환으로 읽는다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>치환하는 노름은 CAS 1틱의 최소 작용 노름이다. 두 연산이 같은 레지스터의 서로 다른 니블을 동시에 잠그려 해 lock 경합이 일어나고(<a href="../axiom.html#ax5">공리 5</a>), 한 틱에 하나의 Read-Compare 쌍만 닫히기 때문에 이 노름을 택한다. 따라서 정준 교환 관계 $[x,p]$를 한 틱당 최소 비용 $\hbar/2$의 비가환으로 치환한다. 왜 이 노름인가 — 하이젠베르크 불확정성 자체가 CAS 원자성 lock 경합에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>치환하는 노름은 CAS 1틱의 최소 작용 노름이다. 두 연산이 같은 레지스터의 서로 다른 니블을 동시에 잠그려 해 lock 경합이 일어나고(<a href="../axiom.html#ax5">공리 5</a>), 한 틱에 하나의 Read-Compare 쌍만 닫히기 때문에 이 노름을 택한다. 따라서 정준 교환 관계 $[x,p]$를 한 틱당 최소 비용 $\hbar/2$의 비가환으로 치환한다. 왜 이 노름인가 -- 하이젠베르크 불확정성 자체가 CAS 원자성 lock 경합에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$[\hat{x},\hat{p}] = i\hbar \;\Rightarrow\; \Delta x\,\Delta p \ge \tfrac{1}{2}\,|\langle[\hat{x},\hat{p}]\rangle|$</div>
 <div class="math-row">$\Delta x\,\Delta p \ge \dfrac{\hbar}{2} \;\Leftrightarrow\; \text{Read}(x)\circ\text{Compare}(p)\ \text{비가환}$</div>
@@ -95,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 하이젠베르크 불확정성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 하이젠베르크 불확정성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">hbar = $1.054571817\times10^{-34}$ $J{\cdot}s$ CODATA 2018</div>
 <div class="math-row">hbar/2 = $5.272859\times10^{-35}$ $J{\cdot}s$ CAS 1틱 최소 비용</div>
@@ -104,7 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>CAS 스케줄링 도메인에서 켤레 변수 측정 도메인으로 변환한다. 이 변환으로 보려는 것은 한 틱에 닫히는 단일 Read-Compare 쌍이 두 켤레 변수의 곱 정밀도에 부과하는 하한이다. 최소 비용을 그 곱의 바닥으로 산출한다. 왜 이 도메인으로 변환하는가 — 하이젠베르크 불확정성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>CAS 스케줄링 도메인에서 켤레 변수 측정 도메인으로 변환한다. 이 변환으로 보려는 것은 한 틱에 닫히는 단일 Read-Compare 쌍이 두 켤레 변수의 곱 정밀도에 부과하는 하한이다. 최소 비용을 그 곱의 바닥으로 산출한다. 왜 이 도메인으로 변환하는가 -- 하이젠베르크 불확정성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\Delta x\,\Delta p \ge \dfrac{\hbar}{2} = 5.27\times 10^{-35}\ \text{J}\cdot\text{s}$</div>
 </div>
@@ -113,7 +113,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출: $\Delta x\,\Delta p \ge \hbar/2$ (CAS 1틱 lock 경합)</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">측정: 표준 양자역학 불확정성 관계와 완전 정합</div>
 <div class="math-row">오차: 구조 일치 (정량 0)</div>
 </div>

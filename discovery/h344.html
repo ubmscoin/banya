@@ -58,9 +58,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h344.html">H-344</a>. No-cloning 정리 = delta 발화의 CAS 비접근성</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="h344.html">H-344</a>: No-cloning 정리 = δ 발화의 CAS 비접근성</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\delta\notin\text{CAS Read target}\;\Rightarrow\;\text{no copy possible}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$\delta\notin\text{CAS Read target}\;\text{==>}\;\text{no copy possible}$$</div></div>
 <p>(1) No-cloning 정리는 임의의 양자 상태를 완전히 복제할 수 없다는 정리이다. 반야프레임에서 δ는 FSM 밖의 유일한 전역 플래그이므로 CAS의 Read 대상이 아니다.</p>
-<p>(2) 반야식: δ ∉ CAS Read target ⇒ no copy possible. 복제하려면 먼저 Read해야 하는데 δ는 Read할 수 없다.</p>
+<p>(2) 반야식: δ ∉ CAS Read target ==> no copy possible. 복제하려면 먼저 Read해야 하는데 δ는 Read할 수 없다.</p>
 <p>(3) <a href="../axiom.html#ax15">공리 15</a>에 따라 δ는 FSM 밖에 존재한다. <a href="../axiom.html#ax10">공리 10</a>에 따라 observer는 δ 발화의 결과만 필터링하여 수신하지, δ 자체를 직접 접근하지 못한다.</p>
 <p>(4) 구조적 귀결: CAS의 Read(R+1 비용)는 FSM 내부 DATA만 대상으로 한다. δ는 DATA가 아니므로 Read 단계에서 접근 불가이며, Read 없이 Compare나 Swap은 실행될 수 없다(<a href="../axiom.html#ax2">공리 2</a>).</p>
 <p>(5) 복제 = Read + Swap(원본 읽기 + 사본 쓰기)이다. Read가 불가능하면 Swap도 불가능하므로 복제 비용은 무한대이다.</p>
@@ -69,7 +69,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>(8) 고전 정보는 복제 가능하다(CAS Read 가능). 양자 정보가 복제 불가능한 이유는 δ 성분이 포함되어 있기 때문이다. δ 성분이 없는 순수 DATA는 Read==&gt;Swap으로 복제할 수 있다.</p>
 <p>(9) 검증: no-cloning 정리의 반야프레임 증명을 구성한다. 가정: 임의 δ 발화를 복제하는 CAS 사이클이 존재한다 ==&gt; Read 단계에서 δ에 접근해야 한다 ==&gt; <a href="../axiom.html#ax15">공리 15</a>에 의해 모순.</p>
 <p>(10) 잔여 과제: no-deleting 정리(양자 상태 임의 소거 불가)의 δ 구조 번역, 근사 복제(approximate cloning)의 CAS 비용 상한이 미정이다.</p>
-<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 분류되어 다음 라운드로 미진행한 채 멈춰 있다. 실험값과의 정량 비교가 부재하다. 비교할 표준 측정값(PDG/CODATA/실험 한계)이 인용되지 않았거나 차원·구조 일치까지만 확인되어 정밀도 산출이 미완. 도출 식은 존재하나 실험 측정값과의 정량 대조가 미완. 차원 정합과 구조 일치까지는 확립. 잔여 과제 명시: (10) 잔여 과제: no-deleting 정리(양자 상태 임의 소거 불가)의 δ 구조 번역, 근사 복제(approximate cloning)의 CAS 비용 상한이 미정이다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 라이브러리의 인접 D/H 카드를 재귀 대입 라운드 입력으로 재투입, (3) <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax9">공리 9</a>, <a href="../axiom.html#ax11">공리 11</a> 명제 중 미적용 명제 추가 도입의 3가지가 표준.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 분류되어 다음 라운드로 미진행한 채 멈춰 있다. 실험값과의 정량 비교가 부재하다. 비교할 표준 측정값(PDG/CODATA/실험 한계)이 인용되지 않았거나 차원*구조 일치까지만 확인되어 정밀도 산출이 미완. 도출 식은 존재하나 실험 측정값과의 정량 대조가 미완. 차원 정합과 구조 일치까지는 확립. 잔여 과제 명시: (10) 잔여 과제: no-deleting 정리(양자 상태 임의 소거 불가)의 δ 구조 번역, 근사 복제(approximate cloning)의 CAS 비용 상한이 미정이다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 라이브러리의 인접 D/H 카드를 재귀 대입 라운드 입력으로 재투입, (3) <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax9">공리 9</a>, <a href="../axiom.html#ax11">공리 11</a> 명제 중 미적용 명제 추가 도입의 3가지가 표준.</p>
 </div>
 <h2>왜 이 판정인가</h2>
 <div class="verdict-hypothesis">
@@ -85,16 +85,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 δ의 Read 비대상성 노름, 곧 복제 연산이 Read 단계를 통과하는가의 여부다. (b) 복제 = Read + Swap(원본 읽기 + 사본 쓰기)인데 CAS Read(R+1 비용)는 FSM 내부 DATA만 대상으로 하고 δ는 DATA가 아니어서 Read가 거부되기 때문에 이 노름을 택한다. 따라서 복제 가능성을 Read 비용의 유한·무한으로 치환한다. 왜 이 노름인가 — No-cloning 정리 자체가 δ의 Read 비대상성에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>(a) 치환하는 노름은 δ의 Read 비대상성 노름, 곧 복제 연산이 Read 단계를 통과하는가의 여부다. (b) 복제 = Read + Swap(원본 읽기 + 사본 쓰기)인데 CAS Read(R+1 비용)는 FSM 내부 DATA만 대상으로 하고 δ는 DATA가 아니어서 Read가 거부되기 때문에 이 노름을 택한다. 따라서 복제 가능성을 Read 비용의 유한*무한으로 치환한다. 왜 이 노름인가 -- No-cloning 정리 자체가 δ의 Read 비대상성에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$U(|\psi\rangle\otimes|0\rangle)=|\psi\rangle\otimes|\psi\rangle\ \text{(no such }U\text{)}$</div>
-<div class="math-row">$\delta\notin\text{CAS Read target}\;\Rightarrow\;\text{no copy possible}$</div>
+<div class="math-row">$\delta\notin\text{CAS Read target}\;\text{==>}\;\text{no copy possible}$</div>
 <div class="math-legend">$U$: 복제 유니터리 | $|\psi\rangle$: 임의 상태 | $\delta$: FSM 밖 플래그 (<a href="../axiom.html#ax15">공리 15</a>) | Read: R+1, DATA 한정 (<a href="../axiom.html#ax2">공리 2</a>)</div>
 </div>
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — No-cloning 정리 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- No-cloning 정리 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">copy = Read + Swap 원본 읽기 + 사본 쓰기</div>
 <div class="math-row">Read cost = R+1 <a href="../axiom.html#ax2">공리 2</a> (CAS 순차 R==C==S)</div>
@@ -105,9 +105,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 변환하는 도메인은 CAS Read·Swap 연산 도메인(양자·정보 도메인)이다. (b) 보려는 것은 δ 성분을 포함한 상태의 복제 비용이다. Read 없이 Swap이 실행될 수 없음을 대입해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 — No-cloning 정리 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) 변환하는 도메인은 CAS Read*Swap 연산 도메인(양자*정보 도메인)이다. (b) 보려는 것은 δ 성분을 포함한 상태의 복제 비용이다. Read 없이 Swap이 실행될 수 없음을 대입해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 -- No-cloning 정리 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
-<div class="math-row">$\text{Read}(\delta)\ \text{denied}\;\Rightarrow\;\text{Swap blocked}$</div>
+<div class="math-row">$\text{Read}(\delta)\ \text{denied}\;\text{==>}\;\text{Swap blocked}$</div>
 <div class="math-row">$\text{copy cost}(\delta\text{-state})=\infty$</div>
 </div>
 </div>
@@ -115,15 +115,15 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출: δ 성분 상태 복제 비용 무한대 (no-cloning); δ 없는 순수 DATA는 복제 가능</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">대조: 양자 no-cloning 정리, 양자 텔레포테이션(원본 소멸), 고전 정보 복제 가능</div>
 <div class="math-row">측정 검증 대기 (정량 측정값 미인용)</div>
 </div>
-<p>판정: <strong>가설</strong>. δ의 Read 비대상성(<a href="../axiom.html#ax15">공리 15</a>)이 복제를 막으니 고전·양자 정보의 복제 가능 여부가 δ 성분 유무 한 기준으로 갈린다. no-deleting 정리의 δ 번역을 추가하면 D 승격 가능.</p>
+<p>판정: <strong>가설</strong>. δ의 Read 비대상성(<a href="../axiom.html#ax15">공리 15</a>)이 복제를 막으니 고전*양자 정보의 복제 가능 여부가 δ 성분 유무 한 기준으로 갈린다. no-deleting 정리의 δ 번역을 추가하면 D 승격 가능.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재투입 경로: —</p>
+<p>재투입 경로: --</p>
 </div>
 
 <div class="box-incomplete">

@@ -14,16 +14,16 @@
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>양자측정 도출과정: CAS에서 측정 문제 해결 — 반야프레임 운영 보고서</title>
+<title>양자측정 도출과정: CAS에서 측정 문제 해결 -- 반야프레임 운영 보고서</title>
 <meta content="Han Hyukjin" name="author"/>
 <meta content="반야프레임 CAS에서 Heisenberg 불확정성, 파동함수 붕괴, Born 규칙, 양자 얽힘, Bell 부등식 위반 도출. Read-Compare에서 불확정성, Swap에서 붕괴, 자기참조에서 Born 규칙." name="description"/>
 <meta content="반야프레임,般若,Banya Framework,양자측정,quantum measurement,Heisenberg,불확정성,uncertainty,파동함수 붕괴,collapse,Born rule,얽힘,entanglement,Bell,CAS,Compare-And-Swap,한혁진,Han Hyukjin" name="keywords"/>
-<meta content="양자측정 도출과정 — 반야프레임" property="og:title"/>
+<meta content="양자측정 도출과정 -- 반야프레임" property="og:title"/>
 <meta content="CAS Read-Compare에서 Heisenberg, Swap에서 붕괴, 자기참조에서 Born 규칙 도출." property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="ko_KR" property="og:locale"/>
 <meta content="summary" name="twitter:card"/>
-<meta content="양자측정 도출과정 — 반야프레임" name="twitter:title"/>
+<meta content="양자측정 도출과정 -- 반야프레임" name="twitter:title"/>
 <meta content="CAS에서 양자측정 문제 해결. Heisenberg, 붕괴, Born, 얽힘, Bell." name="twitter:description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
@@ -45,7 +45,7 @@
 <blockquote><p>실행일: 2026-04-03</p></blockquote>
 <h2 id="intro">서두</h2>
 <p><strong>가치: 양자역학의 해석 문제 해결</strong> -- "측정이 왜 파동함수를 붕괴시키는가", "확률은 왜 $|\psi|^2$인가", "얽힘은 어떻게 빛보다 빠른가". 이 질문들은 양자역학 100년의 미해결 문제다. 반야프레임은 CAS 연산의 구조로부터 이 모든 것에 답한다. H-442~458 카드를 다룬다.</p>
-<p><strong>상태: <span class="tag-solved">적중</span></strong> -- Heisenberg = Read-Compare 간섭, 붕괴 = Swap, Born = 자기참조, 얽힘 = 공유 δ, Bell 위반 = δ→observer 비CAS 경로.</p>
+<p><strong>상태: <span class="tag-solved">적중</span></strong> -- Heisenberg = Read-Compare 간섭, 붕괴 = Swap, Born = 자기참조, 얽힘 = 공유 δ, Bell 위반 = δ==>observer 비CAS 경로.</p>
 <h2 id="discovery">핵심 발견</h2>
 <div class="discovery-block">
 <h4>측정 = CAS 실행. 붕괴 = Swap 완료.<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-442~445, 2026-04-03</span></h4>
@@ -56,7 +56,7 @@
 <div class="discovery-block">
 <h4>Born 규칙 = δ 자기참조의 제곱 노름<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-449~452, 2026-04-03</span></h4>
 <div class="formula">$$P(a_n) = |\langle a_n | \psi \rangle|^2 = \text{δ 루프의 자기참조 빈도}$$</div>
-<p><span class="precision">확률이 제곱인 이유: δ→observer→Compare→DATA→δ 루프(<a href="../axiom.html#ax10">공리 10</a>)가 자기 자신을 참조하므로 노름의 제곱</span></p>
+<p><span class="precision">확률이 제곱인 이유: δ==>observer==>Compare==>DATA==>δ 루프(<a href="../axiom.html#ax10">공리 10</a>)가 자기 자신을 참조하므로 노름의 제곱</span></p>
 </div>
 <h1 id="r1">라운드 1. Heisenberg 불확정성 원리 (H-442~444)</h1>
 <h3 id="r1-step1">1단계. 반야식</h3>
@@ -106,7 +106,7 @@
 <h3 id="r2-step2">2단계. Swap = 붕괴</h3>
 <p><a href="../axiom.html#ax7">공리 7</a>: Compare가 true를 반환하면 Swap이 실행된다. Compare가 false를 반환하면 중첩이 유지된다.</p>
 <div class="math-block">
-<div class="math-row">$$\text{Compare}(\text{기대값}, \text{현재값}) = \begin{cases} \text{true} \to \text{Swap 실행 (붕괴)} \\ \text{false} \to \text{중첩 유지} \end{cases}$$</div>
+<div class="math-row">$$\text{Compare}(\text{기대값}, \text{현재값}) = \begin{cases} \text{true} \text{==>} \text{Swap 실행 (붕괴)} \\ \text{false} \text{==>} \text{중첩 유지} \end{cases}$$</div>
 <div class="math-desc"><a href="../axiom.html#ax7">공리 7</a>: 파동함수 붕괴의 CAS 메커니즘</div>
 </div>
 <p>측정 장치는 특정 기대값을 가지고 Compare를 실행하는 엔티티다. 이 기대값과 시스템의 현재 상태가 일치하면 Swap이 일어나고, 시스템은 그 상태로 확정된다. 이것이 붕괴다.</p>
@@ -134,9 +134,9 @@
 <div class="math-desc">$\delta^2$은 제곱 형태다. 확률이 진폭의 제곱인 이유가 여기에 있다.</div>
 </div>
 <h3 id="r3-step2">2단계. 자기참조 루프와 제곱</h3>
-<p><a href="../axiom.html#ax10">공리 10</a>: δ→observer→Compare→DATA→δ 루프. 이 루프는 자기 자신을 참조한다. δ가 observer를 통해 DATA를 보고, 그 결과가 다시 δ로 돌아온다.</p>
+<p><a href="../axiom.html#ax10">공리 10</a>: δ==>observer==>Compare==>DATA==>δ 루프. 이 루프는 자기 자신을 참조한다. δ가 observer를 통해 DATA를 보고, 그 결과가 다시 δ로 돌아온다.</p>
 <div class="math-block">
-<div class="math-row">$$\delta \to \text{observer} \to \text{Compare} \to \text{DATA} \to \delta$$</div>
+<div class="math-row">$$\delta \text{==>} \text{observer} \text{==>} \text{Compare} \text{==>} \text{DATA} \text{==>} \delta$$</div>
 <div class="math-desc"><a href="../axiom.html#ax10">공리 10</a>: 재귀 인식 루프. 자기참조.</div>
 </div>
 <p>이 루프에서 확률이 제곱이 되는 이유:</p>
@@ -177,7 +177,7 @@
 <p>반야프레임에서 얽힘은 <strong>δ 공유</strong>다. 두 엔티티가 같은 δ 비트를 참조하면, 한쪽의 CAS(측정)가 δ를 변경할 때 다른 쪽도 즉시 영향을 받는다.</p>
 <div class="math-block">
 <div class="math-row">$$\delta_A = \delta_B \quad (\text{공유 δ})$$</div>
-<div class="math-row">$$\text{Swap}(A) \to \delta \text{ 변경} \to B \text{ 즉시 반영}$$</div>
+<div class="math-row">$$\text{Swap}(A) \text{==>} \delta \text{ 변경} \text{==>} B \text{ 즉시 반영}$$</div>
 <div class="math-desc">얽힘 = 동일 δ 비트 참조. 거리 무관.</div>
 </div>
 <p>왜 빛보다 빠른가: δ는 공간에 있지 않다. δ는 전역 플래그(<a href="../axiom.html#ax15">공리 15</a>)다. <a href="../axiom.html#ax1">공리 1</a>의 4축에서 δ는 시공간 축이 아니라 observer+superposition 축에 있다. 공간적 거리는 time+space 축의 개념이므로, δ의 변경은 공간적 전파를 필요로 하지 않는다.</p>
@@ -200,17 +200,17 @@
 <h3 id="r5-step1">1단계. 반야식</h3>
 <div class="math-block">
 <div class="math-row">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
-<div class="math-desc">δ→observer 경로는 CAS가 아니다. 국소적 숨은 변수로 기술 불가.</div>
+<div class="math-desc">δ==>observer 경로는 CAS가 아니다. 국소적 숨은 변수로 기술 불가.</div>
 </div>
-<h3 id="r5-step2">2단계. δ→observer는 비CAS 경로</h3>
+<h3 id="r5-step2">2단계. δ==>observer는 비CAS 경로</h3>
 <p>Bell 부등식은 국소적 숨은 변수 이론이 만족해야 하는 부등식이다. 양자역학은 이를 위반한다. 실험적으로도 위반이 확인되었다.</p>
-<p>반야프레임에서 Bell 위반의 기원: δ→observer 경로(<a href="../axiom.html#ax10">공리 10</a>)는 CAS가 아니다. CAS는 R→C→S의 국소적 연산이지만, δ→observer는 전역 플래그에서 관측자로의 직접 경로다. 이 경로는 국소성을 가정하지 않는다.</p>
+<p>반야프레임에서 Bell 위반의 기원: δ==>observer 경로(<a href="../axiom.html#ax10">공리 10</a>)는 CAS가 아니다. CAS는 R==>C==>S의 국소적 연산이지만, δ==>observer는 전역 플래그에서 관측자로의 직접 경로다. 이 경로는 국소성을 가정하지 않는다.</p>
 <div class="math-block">
 <div class="math-row">$$\text{국소적 숨은 변수} \implies |S| \leq 2 \quad (\text{Bell-CHSH 부등식})$$</div>
-<div class="math-row">$$\text{반야프레임 (δ→observer 비CAS)} \implies |S| = 2\sqrt{2} \quad (\text{Tsirelson 한계})$$</div>
-<div class="math-desc">δ→observer 경로가 비CAS이므로 Bell 부등식을 위반</div>
+<div class="math-row">$$\text{반야프레임 (δ==>observer 비CAS)} \implies |S| = 2\sqrt{2} \quad (\text{Tsirelson 한계})$$</div>
+<div class="math-desc">δ==>observer 경로가 비CAS이므로 Bell 부등식을 위반</div>
 </div>
-<p>CAS만 있었다면 Bell 부등식이 만족되었을 것이다. CAS는 국소적 연산이기 때문이다. 하지만 δ→observer 경로가 존재하고, 이 경로는 비국소적(전역 δ)이므로 Bell 부등식을 위반한다.</p>
+<p>CAS만 있었다면 Bell 부등식이 만족되었을 것이다. CAS는 국소적 연산이기 때문이다. 하지만 δ==>observer 경로가 존재하고, 이 경로는 비국소적(전역 δ)이므로 Bell 부등식을 위반한다.</p>
 <h3 id="r5-step3">3단계. 도메인 변환</h3>
 <p>Tsirelson 한계 $2\sqrt{2}$의 기원:</p>
 <div class="math-block">
@@ -222,8 +222,8 @@
 <p>$\sqrt{2}$는 observer 축과 superposition 축이 직교할 때의 대각선 길이다. Bell 실험에서 최대 위반이 45도 각도에서 일어나는 것과 일치한다.</p>
 <h3 id="r5-step4">4단계. 발견</h3>
 <div class="discovery-block">
-<h4>Bell 위반 = δ→observer 비CAS 경로의 존재<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-456~458</span></h4>
-<p>Bell 부등식이 위반되는 이유: 반야프레임에는 CAS(국소적 연산) 외에 δ→observer(비국소적 경로)가 있다. 국소적 숨은 변수 이론은 CAS만 가정하는 것과 같다. δ→observer 경로를 무시하면 Bell 부등식이 성립하지만, 이 경로가 실재하므로 위반된다. Tsirelson 한계 $2\sqrt{2}$는 Compare 자유도(2) $\times$ 직교 대각선($\sqrt{2}$)이다.</p>
+<h4>Bell 위반 = δ==>observer 비CAS 경로의 존재<span style="color:#6e7681;font-size:0.75em;margin-left:8px">H-456~458</span></h4>
+<p>Bell 부등식이 위반되는 이유: 반야프레임에는 CAS(국소적 연산) 외에 δ==>observer(비국소적 경로)가 있다. 국소적 숨은 변수 이론은 CAS만 가정하는 것과 같다. δ==>observer 경로를 무시하면 Bell 부등식이 성립하지만, 이 경로가 실재하므로 위반된다. Tsirelson 한계 $2\sqrt{2}$는 Compare 자유도(2) $\times$ 직교 대각선($\sqrt{2}$)이다.</p>
 </div>
 <h1 id="limits">한계</h1>
 <ol>
@@ -236,10 +236,10 @@
 <table>
 <tr><th>항목</th><th>결과</th><th class="col-status">상태</th><th class="col-date">날짜</th></tr>
 <tr><td>Heisenberg 불확정성 (H-442~444)</td><td>Read 최소 비용 = $\hbar/2$. observer-superposition 직교.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
-<tr><td>파동함수 붕괴 (H-445~448)</td><td>Compare true → Swap = 붕괴. Compare 미실행 = 중첩.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>파동함수 붕괴 (H-445~448)</td><td>Compare true ==> Swap = 붕괴. Compare 미실행 = 중첩.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
 <tr><td>Born 규칙 (H-449~452)</td><td>δ 자기참조 1회 = $|\psi|^2$. 최소 루프 논증.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
 <tr><td>양자 얽힘 (H-453~455)</td><td>공유 δ. 전역 플래그이므로 거리 무관.</td><td><span class="tag-solved">적중</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
-<tr><td>Bell 위반 (H-456~458)</td><td>δ→observer 비CAS 경로. $2\sqrt{2}$ = Compare(2) $\times \sqrt{2}$.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
+<tr><td>Bell 위반 (H-456~458)</td><td>δ==>observer 비CAS 경로. $2\sqrt{2}$ = Compare(2) $\times \sqrt{2}$.</td><td><span class="tag-hypothesis">가설</span></td><td><span style="color:#6e7681;font-size:0.75em">2026-04-03</span></td></tr>
 </table>
 </div>
 <p>현재 등급: <strong>A</strong> (측정 문제 4항목 적중, Bell 한계 정량 도출 미완)</p>

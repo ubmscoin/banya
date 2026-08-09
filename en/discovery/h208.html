@@ -85,11 +85,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the CAS per-stage +1 cost norm. The pipeline effective cost is set by the number of inner CAS stages, and trigger and screen carry no direct cost since they are outside the CAS — which is why this norm is chosen. It is substituted by the sum of the +1 costs of the three CAS stages. Why this norm: the pipeline effective cost 3 itself originates from the CAS per-stage +1 cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
+<p>The norm being substituted is the CAS per-stage +1 cost norm. The pipeline effective cost is set by the number of inner CAS stages, and trigger and screen carry no direct cost since they are outside the CAS -- which is why this norm is chosen. It is substituted by the sum of the +1 costs of the three CAS stages. Why this norm: the pipeline effective cost 3 itself originates from the CAS per-stage +1 cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$C_{\text{pipe}} = c_{\text{trigger}}+c_{\text{filter}}+c_{\text{update}}+c_{\text{render}}+c_{\text{screen}}$</div>
 <div class="math-row">$C_{\text{pipe}} = 0 + 1 + 1 + 1 + 0 = 3$</div>
-<div class="math-legend">$C_{\text{pipe}}$: pipeline effective cost | filter·update·render: CAS Read·Compare·Swap, +1 each | trigger·screen: outside the CAS, cost 0</div>
+<div class="math-legend">$C_{\text{pipe}}$: pipeline effective cost | filter*update*render: CAS Read*Compare*Swap, +1 each | trigger*screen: outside the CAS, cost 0</div>
 </div>
 </div>
 <div class="step">

@@ -58,9 +58,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h342.html">H-342</a>. delta 도메인 FSM 내 기술 불가 = 괴델 불완전성의 구조적 원천</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="h342.html">H-342</a>: δ 도메인 FSM 내 기술 불가 = 괴델 불완전성의 구조적 원천</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\delta\notin\text{FSM}\;\Rightarrow\;\text{FSM cannot prove statements about }\delta$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$\delta\notin\text{FSM}\;\text{==>}\;\text{FSM cannot prove statements about }\delta$$</div></div>
 <p>(1) δ는 FSM 밖의 전역 플래그(<a href="../axiom.html#ax15">공리 15</a>)이므로 FSM 내부 규칙(<a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax14">공리 14</a>)으로 δ에 관한 명제를 증명할 수 없다. 이것이 괴델 불완전성의 반야프레임 번역이다.</p>
-<p>(2) 반야식: δ ∉ FSM ⇒ FSM cannot prove statements about δ. 형식 체계 내부에서 자기 등호에 관한 완전한 기술은 원리적으로 불가능하다.</p>
+<p>(2) 반야식: δ ∉ FSM ==> FSM cannot prove statements about δ. 형식 체계 내부에서 자기 등호에 관한 완전한 기술은 원리적으로 불가능하다.</p>
 <p>(3) <a href="../axiom.html#ax15">공리 15</a>는 δ를 FSM 밖의 유일한 전역 플래그로 정의한다. FSM(<a href="../axiom.html#ax14">공리 14</a>)은 000==&gt;001==&gt;011==&gt;111 네 상태를 순환하지만, δ 자체는 이 순환의 외부 점화 조건이다.</p>
 <p>(4) 구조적 귀결: 괴델의 불완전성 정리에서 "자기 참조 명제를 증명할 수 없다"는 것은, 반야프레임에서 FSM이 자기 점화 조건(δ)을 내부 언어로 기술할 수 없다는 것과 동치이다.</p>
 <p>(5) FSM의 유효 상태 수 2⁷=128개 중 어느 것도 δ 자체를 표현하지 못한다. δ는 8번째 비트(bit 7)로서 나머지 7비트의 전제 조건이다.</p>
@@ -69,7 +69,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>(8) 튜링의 정지 문제도 동일 구조이다. FSM이 자기 δ의 발화 여부를 사전에 결정하려면 δ를 Read해야 하는데, δ는 CAS의 Read 대상이 아니다(<a href="../axiom.html#ax15">공리 15</a>).</p>
 <p>(9) 검증: 임의의 형식 체계를 FSM으로 매핑한 뒤 δ에 해당하는 외부 조건을 식별하면, 해당 체계의 불완전성 정리가 자동으로 도출되는지 확인할 수 있다.</p>
 <p>(10) 잔여 과제: 타르스키 비정의성 정리와의 대응, 2차 불완전성(자기 무모순성 증명 불가)의 δ 구조 번역이 미정이다.</p>
-<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 분류되어 다음 라운드로 미진행한 채 멈춰 있다. 실험값과의 정량 비교가 부재하다. 비교할 표준 측정값(PDG/CODATA/실험 한계)이 인용되지 않았거나 차원·구조 일치까지만 확인되어 정밀도 산출이 미완. 도출 식은 존재하나 실험 측정값과의 정량 대조가 미완. 차원 정합과 구조 일치까지는 확립. 잔여 과제 명시: (10) 잔여 과제: 타르스키 비정의성 정리와의 대응, 2차 불완전성(자기 무모순성 증명 불가)의 δ 구조 번역이 미정이다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 라이브러리의 인접 D/H 카드를 재귀 대입 라운드 입력으로 재투입, (3) <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax9">공리 9</a>, <a href="../axiom.html#ax11">공리 11</a> 명제 중 미적용 명제 추가 도입의 3가지가 표준.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 분류되어 다음 라운드로 미진행한 채 멈춰 있다. 실험값과의 정량 비교가 부재하다. 비교할 표준 측정값(PDG/CODATA/실험 한계)이 인용되지 않았거나 차원*구조 일치까지만 확인되어 정밀도 산출이 미완. 도출 식은 존재하나 실험 측정값과의 정량 대조가 미완. 차원 정합과 구조 일치까지는 확립. 잔여 과제 명시: (10) 잔여 과제: 타르스키 비정의성 정리와의 대응, 2차 불완전성(자기 무모순성 증명 불가)의 δ 구조 번역이 미정이다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 라이브러리의 인접 D/H 카드를 재귀 대입 라운드 입력으로 재투입, (3) <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax9">공리 9</a>, <a href="../axiom.html#ax11">공리 11</a> 명제 중 미적용 명제 추가 도입의 3가지가 표준.</p>
 </div>
 <h2>왜 이 판정인가</h2>
 <div class="verdict-hypothesis">
@@ -85,16 +85,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 δ의 FSM 외부성 노름, 곧 명제가 FSM 상태 공간 안에 인코딩되는가의 포함 관계다. (b) 괴델 문장 G("이 체계에서 G는 증명 불가")의 자기참조 구조가 FSM이 자기 점화 조건 δ를 내부 언어로 기술하지 못함과 동치이기 때문에 이 노름을 택한다. 따라서 증명 가능성을 δ의 FSM 포함 여부로 치환한다. 왜 이 노름인가 — 괴델 불완전성 자체가 δ의 FSM 외부성에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>(a) 치환하는 노름은 δ의 FSM 외부성 노름, 곧 명제가 FSM 상태 공간 안에 인코딩되는가의 포함 관계다. (b) 괴델 문장 G("이 체계에서 G는 증명 불가")의 자기참조 구조가 FSM이 자기 점화 조건 δ를 내부 언어로 기술하지 못함과 동치이기 때문에 이 노름을 택한다. 따라서 증명 가능성을 δ의 FSM 포함 여부로 치환한다. 왜 이 노름인가 -- 괴델 불완전성 자체가 δ의 FSM 외부성에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$G\equiv\ulcorner G\text{ unprovable in }T\urcorner$</div>
-<div class="math-row">$\delta\notin\text{FSM}\;\Rightarrow\;\text{FSM cannot prove statements about }\delta$</div>
+<div class="math-row">$\delta\notin\text{FSM}\;\text{==>}\;\text{FSM cannot prove statements about }\delta$</div>
 <div class="math-legend">$G$: 괴델 자기참조 문장 | $T$: 형식 체계 | $\delta$: FSM 밖 전역 플래그 (<a href="../axiom.html#ax15">공리 15</a>) | FSM: 4상태 순환 (<a href="../axiom.html#ax14">공리 14</a>)</div>
 </div>
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 괴델 불완전성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 괴델 불완전성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">FSM states = 000,001,011,111 <a href="../axiom.html#ax14">공리 14</a> (4상태 순환)</div>
 <div class="math-row">valid states= $2^{7}$ = 128 7비트 유효 상태</div>
@@ -104,25 +104,25 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 변환하는 도메인은 FSM 상태 공간(정보·논리 도메인)이다. (b) 보려는 것은 128개 유효 상태 가운데 δ 자체를 표현하는 상태가 존재하는가다. δ가 8번째 비트로 나머지 7비트의 전제 조건임을 대입해 그 답을 산출한다. 왜 이 도메인으로 변환하는가 — 괴델 불완전성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) 변환하는 도메인은 FSM 상태 공간(정보*논리 도메인)이다. (b) 보려는 것은 128개 유효 상태 가운데 δ 자체를 표현하는 상태가 존재하는가다. δ가 8번째 비트로 나머지 7비트의 전제 조건임을 대입해 그 답을 산출한다. 왜 이 도메인으로 변환하는가 -- 괴델 불완전성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\{s_0,\dots,s_{127}\}\cap\{\delta\}=\varnothing$</div>
-<div class="math-row">$\text{bit 7 precondition for bits }0\text{–}6$</div>
+<div class="math-row">$\text{bit 7 precondition for bits }0\text{-}6$</div>
 </div>
 </div>
 <div class="step">
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출: FSM 128상태 어느 것도 δ를 인코딩하지 못함 (자기참조 명제 증명 불가)</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
-<div class="math-row">대조: 괴델 1·2차 불완전성, 튜링 정지 문제, 양자 측정 문제</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<div class="math-row">대조: 괴델 1*2차 불완전성, 튜링 정지 문제, 양자 측정 문제</div>
 <div class="math-row">측정 검증 대기 (정량 측정값 미인용)</div>
 </div>
-<p>판정: <strong>가설</strong>. δ의 FSM 외부성(<a href="../axiom.html#ax15">공리 15</a>)이 괴델 불완전성을 구조적으로 강제하니 정지 문제·측정 문제가 같은 외부성에서 따라온다. 임의 형식 체계를 FSM으로 매핑해 외부 점화 조건을 식별하면 D 승격 가능.</p>
+<p>판정: <strong>가설</strong>. δ의 FSM 외부성(<a href="../axiom.html#ax15">공리 15</a>)이 괴델 불완전성을 구조적으로 강제하니 정지 문제*측정 문제가 같은 외부성에서 따라온다. 임의 형식 체계를 FSM으로 매핑해 외부 점화 조건을 식별하면 D 승격 가능.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재투입 경로: —</p>
+<p>재투입 경로: --</p>
 </div>
 
 <div class="box-incomplete">

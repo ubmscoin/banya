@@ -58,7 +58,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h844.html">H-844</a>. 트랜지스터 = CAS Compare에 의한 전류 게이팅</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="h844.html">H-844</a>: 트랜지스터 = CAS Compare에 의한 전류 게이팅</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$I_{DS} = \mu C_{ox}\frac{W}{L}\left[(V_{GS}-V_{th})V_{DS} - \frac{V_{DS}^2}{2}\right] \;\;\text{(CAS Compare → 게이트 제어)}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$I_{DS} = \mu C_{ox}\frac{W}{L}\left[(V_{GS}-V_{th})V_{DS} - \frac{V_{DS}^2}{2}\right] \;\;\text{(CAS Compare ==> 게이트 제어)}$$</div></div>
 <p class="finding-precision">등급: B</p>
 <p>트랜지스터는 CAS Compare가 게이트 전압에 의해 소스-드레인 간 Swap을 허용하거나 차단하는 3단자 스위치이다. 게이트 = CAS Compare의 외부 제어 입력. 소스-드레인 = Swap 경로.</p>
 <p><a href="../axiom.html#ax5">공리 5</a>(CAS Compare = 게이트 판정), <a href="../axiom.html#ax3">공리 3</a>(FSM 노름), <a href="../axiom.html#ax7">공리 7</a>(비용 = 전류)</p>
@@ -82,11 +82,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>트랜지스터의 스위칭은 CAS Compare가 게이트 전압을 임계값과 비교해 채널 Swap을 켜고 끄는 판정 비용이다. <a href="../axiom.html#ax5">공리 5</a>(TOCTOU 락 레지스터)는 Compare가 $V_{GS}$를 $V_{th}$와 비교해 ON/OFF를 결정하게 하고, <a href="../axiom.html#ax7">공리 7</a>(쓰기와 중첩 유지)는 그 결과를 채널 형성(쓰기)·차단(유지)으로 가른다. 이 Compare 비용을 게이트 전압 단위로 읽는다.</p>
+<p>트랜지스터의 스위칭은 CAS Compare가 게이트 전압을 임계값과 비교해 채널 Swap을 켜고 끄는 판정 비용이다. <a href="../axiom.html#ax5">공리 5</a>(TOCTOU 락 레지스터)는 Compare가 $V_{GS}$를 $V_{th}$와 비교해 ON/OFF를 결정하게 하고, <a href="../axiom.html#ax7">공리 7</a>(쓰기와 중첩 유지)는 그 결과를 채널 형성(쓰기)*차단(유지)으로 가른다. 이 Compare 비용을 게이트 전압 단위로 읽는다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>치환하는 노름은 CAS Compare 비용 노름이다. 임계하 영역에서 채널 점유가 게이트 전압의 볼츠만 분포를 따르고, 그 분포가 <a href="../axiom.html#ax4">공리 4</a>(비용)의 열에너지 $k_BT$로 닫히기 때문에 이 노름을 택한다. 전류를 한 자릿수 올리는 데 필요한 게이트 전압, 곧 임계하 기울기로 치환한다. 왜 이 노름인가 — MOSFET 임계하 기울기 자체가 CAS Compare 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>치환하는 노름은 CAS Compare 비용 노름이다. 임계하 영역에서 채널 점유가 게이트 전압의 볼츠만 분포를 따르고, 그 분포가 <a href="../axiom.html#ax4">공리 4</a>(비용)의 열에너지 $k_BT$로 닫히기 때문에 이 노름을 택한다. 전류를 한 자릿수 올리는 데 필요한 게이트 전압, 곧 임계하 기울기로 치환한다. 왜 이 노름인가 -- MOSFET 임계하 기울기 자체가 CAS Compare 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$I_{DS} \propto e^{q V_{GS}/k_B T}$</div>
 <div class="math-row">$SS = \dfrac{k_B T}{q}\ln 10$</div>
@@ -95,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — MOSFET 임계하 기울기 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- MOSFET 임계하 기울기 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">$k_{B}$ T / q (300K) = 0.02585 V</div>
 <div class="math-row">ln 10 = 2.302585</div>
@@ -104,7 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>MOSFET 전달특성 도메인(게이트 전압당 전류)으로 변환한다. 이 변환으로 보려는 것은 CAS Compare가 ON/OFF를 가르는 최소 게이트 전압 분해능, 곧 임계하 기울기다. 열전압에 $\ln 10$을 곱해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 — MOSFET 임계하 기울기 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>MOSFET 전달특성 도메인(게이트 전압당 전류)으로 변환한다. 이 변환으로 보려는 것은 CAS Compare가 ON/OFF를 가르는 최소 게이트 전압 분해능, 곧 임계하 기울기다. 열전압에 $\ln 10$을 곱해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 -- MOSFET 임계하 기울기 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$SS = 0.02585 \times 2.302585 = 0.0595\;\text{V/decade} = 59.5\;\text{mV/decade}$</div>
 </div>
@@ -113,11 +113,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출값: $SS = 59.5\;\text{mV/decade}$ (300K)</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">측정값: $60\;\text{mV/decade}$ (이상 MOSFET 300K)</div>
 <div class="math-row">오차: $&lt; 10\%$ (단채널 효과 포함 시)</div>
 </div>
-<p>판정: <strong>가설</strong>. CAS Compare 비용이 임계하 기울기 한계 $60$ mV/decade와 정합하지만, 실소자의 단채널·게이트 산화막 보정이 공리에서 직접 닫히지 않아 가설로 멈춘다.</p>
+<p>판정: <strong>가설</strong>. CAS Compare 비용이 임계하 기울기 한계 $60$ mV/decade와 정합하지만, 실소자의 단채널*게이트 산화막 보정이 공리에서 직접 닫히지 않아 가설로 멈춘다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>

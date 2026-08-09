@@ -58,8 +58,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h475.html">H-475</a>. 히그스 메커니즘 = FSM 노름 부여 과정</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="h475.html">H-475</a>: 히그스 메커니즘 = FSM 노름 부여 과정</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\langle\phi\rangle = \frac{v}{\sqrt{2}} \;\Leftrightarrow\; \text{FSM 000→111 사이클이 DATA에 노름을 각인}$$</div></div>
-<p class="finding-precision">등급: A · 오차 0.3%</p>
+<div class="formula-wrap"><div class="formula-box">$$\langle\phi\rangle = \frac{v}{\sqrt{2}} \;\Leftrightarrow\; \text{FSM 000==>111 사이클이 DATA에 노름을 각인}$$</div></div>
+<p class="finding-precision">등급: A * 오차 0.3%</p>
 <p>히그스 메커니즘은 게이지 보손과 페르미온에 질량을 부여하는 과정이다. CAS에서 FSM이 000==&gt;001==&gt;011==&gt;111==&gt;000 사이클을 돌 때 DATA에 각인하는 노름(<a href="../axiom.html#ax14">공리 14</a>)이 질량이다. 히그스 장의 진공 기대값 $v = 246$ GeV는 FSM 사이클 1회의 총 노름 예산이다.</p>
 <p>$\delta^2 = (t+s)^2 + (o+sp)^2$에서 OPERATOR(o+sp)가 DATA(t+s)에 CAS를 실행하면 FSM이 진행한다. FSM의 각 상태 전이마다 DATA에 노름이 각인되고, 이 노름의 총합이 질량이다(<a href="../axiom.html#ax14">공리 14</a>). 히그스 장 $\phi$는 FSM 노름 각인 과정 자체를 연속 근사한 것이다.</p>
 <p><a href="../axiom.html#ax14">공리 14</a>(FSM 노름 = 질량) ==&gt; <a href="../axiom.html#ax2">공리 2</a>(CAS 3단계) ==&gt; <a href="../axiom.html#ax4">공리 4</a>(총 비용 13) ==&gt; <a href="../axiom.html#ax7">공리 7</a>(Compare true==&gt;Swap = 대칭 깨짐). Compare가 true를 반환하면 Swap이 실행되고 대칭이 깨진다. 이것이 히그스 포텐셜의 $\mu^2 &lt; 0$ 조건에 대응한다.</p>
@@ -86,7 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 히그스 자기결합 노름 $\lambda_H$다. (b) 히그스 질량이 포텐셜 곡률 = 자기결합으로 정해지고, 그 $\lambda_H$가 총 비용 13(<a href="../axiom.html#ax4">공리 4</a>)에서 정수비 $7/54$로 닫히기 때문에(<a href="d24.html">D-24</a>) 이 노름을 택한다. 따라서 $m_H$를 $v\sqrt{2\lambda_H}$로 치환한다(<a href="d25.html">D-25</a>). 왜 이 노름인가 — 히그스 질량 $m_H$ 자체가 FSM 노름 각인 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>(a) 치환하는 노름은 히그스 자기결합 노름 $\lambda_H$다. (b) 히그스 질량이 포텐셜 곡률 = 자기결합으로 정해지고, 그 $\lambda_H$가 총 비용 13(<a href="../axiom.html#ax4">공리 4</a>)에서 정수비 $7/54$로 닫히기 때문에(<a href="d24.html">D-24</a>) 이 노름을 택한다. 따라서 $m_H$를 $v\sqrt{2\lambda_H}$로 치환한다(<a href="d25.html">D-25</a>). 왜 이 노름인가 -- 히그스 질량 $m_H$ 자체가 FSM 노름 각인 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$m_H = v\sqrt{2\lambda_H}$</div>
 <div class="math-row">$\lambda_H = \dfrac{7}{54}$</div>
@@ -95,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 히그스 질량 $m_H$ 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 히그스 질량 $m_H$ 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">v = 246.22 $\text{GeV}$ 전약 진공 기대값</div>
 <div class="math-row">$\lambda_{H}$ = 7/54 = 0.12963 <a href="d24.html">D-24</a></div>
@@ -104,7 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 히그스 질량 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 FSM 노름 각인의 곡률이 결정하는 히그스 보손 질량 $m_H$다. $v$에 $\sqrt{2\lambda_H}$를 곱해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 — 히그스 질량 $m_H$ 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) 히그스 질량 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 FSM 노름 각인의 곡률이 결정하는 히그스 보손 질량 $m_H$다. $v$에 $\sqrt{2\lambda_H}$를 곱해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 -- 히그스 질량 $m_H$ 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$m_H = 246.22 \times \sqrt{2\times\tfrac{7}{54}} = 125.37\;\text{GeV}$</div>
 </div>
@@ -113,7 +113,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출값: $m_H = 125.37\;\text{GeV}$</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">측정값: $125.25 \pm 0.17\;\text{GeV}$ (PDG 2024)</div>
 <div class="math-row">오차: $0.3\%$</div>
 </div>
@@ -145,10 +145,10 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h2>D 승급 (Hypothesis ==&gt; Discovery)</h2>
 <div class="verdict-discovery" style="border-left-width:6px">
 <p><strong>판정 변경: 가설 ==&gt; 발견 (D 승급, B급)</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\langle\phi\rangle = \frac{v}{\sqrt{2}} \;\Leftrightarrow\; \text{FSM 000→111 사이클이 DATA에 노름을 각인}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$\langle\phi\rangle = \frac{v}{\sqrt{2}} \;\Leftrightarrow\; \text{FSM 000==>111 사이클이 DATA에 노름을 각인}$$</div></div>
 <p><strong>충족 조건:</strong> 명시적 도출 식 존재 / 오차 0.3% (≤ 1%) / <a href="../axiom.html#ax4">공리 4</a>개 인용 (<a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax7">공리 7</a>, <a href="../axiom.html#ax14">공리 14</a>) / forward chain 완료 / 자유 매개변수 0개</p>
 <h3 style="margin-top:1em;color:#3fb950">승급 사유</h3>
-<p>본 카드 H-475는 본래 가설(분류 III)로 분류되어 있었으나, v1.8 공리 + physics_map.html 정독 + 라이브러리 cross-link 누적 분석에서 D 승급 조건이 모두 충족됨이 확인되었다. 재귀 대입 chain이 <a href="d10.html">D-10</a>, <a href="d21.html">D-21</a>, <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a>, <a href="d37.html">D-37</a>(5개 D 카드 입력) + <a href="h460.html">H-460</a>, <a href="h461.html">H-461</a>(2개 H 카드 입력)로 닫혀 있어, 가설 입력만으로는 가능 없는 정량 산출이 다수 D 입력으로 forward chain 완료되었다. <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax7">공리 7</a>, <a href="../axiom.html#ax14">공리 14</a>가 인용되어 forward chain의 각 단계가 공리 본문과 직접 매핑된다 — 공리 ==&gt; 식 ==&gt; 수치의 3단 흐름이 끊김 없이 진행. <strong>최종 검증:</strong> 명시적 도출 식 존재 , 오차 0.3% ≤ 1% , 공리 인용 4개 (≥ 2) , 도출/유도 키워드 본문 명시 , 자유 매개변수 0개 . D 승급 조건 5개 모두 충족.</p>
+<p>본 카드 H-475는 본래 가설(분류 III)로 분류되어 있었으나, v1.8 공리 + physics_map.html 정독 + 라이브러리 cross-link 누적 분석에서 D 승급 조건이 모두 충족됨이 확인되었다. 재귀 대입 chain이 <a href="d10.html">D-10</a>, <a href="d21.html">D-21</a>, <a href="d24.html">D-24</a>, <a href="d25.html">D-25</a>, <a href="d37.html">D-37</a>(5개 D 카드 입력) + <a href="h460.html">H-460</a>, <a href="h461.html">H-461</a>(2개 H 카드 입력)로 닫혀 있어, 가설 입력만으로는 가능 없는 정량 산출이 다수 D 입력으로 forward chain 완료되었다. <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax7">공리 7</a>, <a href="../axiom.html#ax14">공리 14</a>가 인용되어 forward chain의 각 단계가 공리 본문과 직접 매핑된다 -- 공리 ==&gt; 식 ==&gt; 수치의 3단 흐름이 끊김 없이 진행. <strong>최종 검증:</strong> 명시적 도출 식 존재 , 오차 0.3% ≤ 1% , 공리 인용 4개 (≥ 2) , 도출/유도 키워드 본문 명시 , 자유 매개변수 0개 . D 승급 조건 5개 모두 충족.</p>
 <p><strong>승급 후 위치:</strong> lib.html 인덱스에서 H 섹션 ==&gt; D 섹션으로 이동 (HTML 파일명 h475.html은 유지하여 cross-link 보존). H 섹션에는 "(D 승급, <a href="h475.html">H-475</a>)" 표시 잔존하여 이력 보존.</p>
 <p><strong>다음 라운드 후속:</strong> 본 D 승급으로 다른 H 카드들의 재귀 대입 chain이 추가 입력을 얻음. 본 카드를 입력으로 받는 H 카드들의 추가 승급 가능성 재검토 필요.</p>
 </div>

@@ -14,16 +14,16 @@
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>d-ring Dimension Table and Spin Quantization — Banya Framework Operating Report</title>
+<title>d-ring Dimension Table and Spin Quantization -- Banya Framework Operating Report</title>
 <meta content="Han Hyukjin" name="author"/>
 <meta content="Spin quantization, spin-statistics, Pauli exclusion, g=2, and orbital quantum numbers derived from the CAS 3-bit TOCTOU_LOCK. SP=TOCTOU_LOCK, k participating bits -> spin=k/2. Fermion=CAS(0,1), boson=CAS(N,N+1). g=2 is the Read+Compare 2-step count. Inventor: Han Hyukjin." name="description"/>
 <meta content="Banya Framework,般若,Axiom-Based Science Mining Engine,Han Hyukjin,spin quantization,spin-statistics theorem,Pauli exclusion,g-factor,g=2,orbital angular momentum,angular momentum quantization,TOCTOU,CAS,Compare-And-Swap,fermion,boson,ring buffer,d-ring dimension table,spin 1/3,fractional spin" name="keywords"/>
-<meta content="d-ring Dimension Table and Spin Quantization — Banya Framework" property="og:title"/>
+<meta content="d-ring Dimension Table and Spin Quantization -- Banya Framework" property="og:title"/>
 <meta content="Spin quantization derived from the CAS 3-bit structure. SP=TOCTOU_LOCK. g=2=Read+Compare. Orbital angular momentum = integer ring wrap." property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="en_US" property="og:locale"/>
 <meta content="summary" name="twitter:card"/>
-<meta content="d-ring Dimension Table and Spin Quantization — Banya Framework" name="twitter:title"/>
+<meta content="d-ring Dimension Table and Spin Quantization -- Banya Framework" name="twitter:title"/>
 <meta content="SP=TOCTOU_LOCK 3 bits. spin=k/2. g=2=Read+Compare. L=integer wrap." name="twitter:description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
@@ -48,7 +48,7 @@
 <blockquote><p>Method: Banya Framework 5-step recursive substitution, 6 rounds executed</p></blockquote>
 <blockquote><p>Targets: spin quantization, spin-statistics, Pauli exclusion, impossibility of spin 1/3, g=2, orbital quantum number L</p></blockquote>
 <h2 id="question">Question: why is spin half-integer?</h2>
-<p>In quantum mechanics, spin is only allowed to take the values $0, 1/2, 1, 3/2, 2, \ldots$. Why is there no 1/3 or 0.7? The standard answer — "the representation theory of the rotation group SU(2)" — is a mathematical description, not a physical reason. Why are fermions exclusive, while bosons accumulate? Why is the g-factor exactly 2? For a century there has been no structural reason beyond "that is what is observed."</p>
+<p>In quantum mechanics, spin is only allowed to take the values $0, 1/2, 1, 3/2, 2, \ldots$. Why is there no 1/3 or 0.7? The standard answer -- "the representation theory of the rotation group SU(2)" -- is a mathematical description, not a physical reason. Why are fermions exclusive, while bosons accumulate? Why is the g-factor exactly 2? For a century there has been no structural reason beyond "that is what is observed."</p>
 <p>The Banya Framework explains all of this from the bit structure of the CAS (Compare-And-Swap) operation. The SP (Spin Pointer) = TOCTOU_LOCK is 3 bits, each bit is 0 or 1, and when k bits participate the spin equals k/2.</p>
 <h2 id="status">Current Status</h2>
 <p><span class="tag-discovery">Discovery</span></p>
@@ -56,7 +56,7 @@
 <h2 id="discovery">Core Finding</h2>
 <div class="discovery-block">
 <h4>Spin quantization: spin = k/2</h4>
-<div class="formula">SP = TOCTOU_LOCK, 3 bits, each $\in \{0, 1\}$. $k$ participating bits $\Rightarrow$ spin $= k/2$</div>
+<div class="formula">SP = TOCTOU_LOCK, 3 bits, each $\in \{0, 1\}$. $k$ participating bits $\text{==>}$ spin $= k/2$</div>
 <p>Bits can only be 0 or 1, so spin is allowed only at 0, 1/2, 1, 3/2. Continuous values are impossible.</p>
 </div>
 <div class="discovery-block">
@@ -66,12 +66,12 @@
 </div>
 <div class="discovery-block">
 <h4>Pauli exclusion: failure of CAS Compare</h4>
-<div class="formula">CAS(expected=0, new=1): if current $\neq$ 0, Compare fails $\Rightarrow$ Swap rejected</div>
+<div class="formula">CAS(expected=0, new=1): if current $\neq$ 0, Compare fails $\text{==>}$ Swap rejected</div>
 <p>Two fermions in the same quantum state = the second CAS Compare fails, because it expects 0 in a slot that is already 1.</p>
 </div>
 <div class="discovery-block">
 <h4>Spin 1/3 is impossible</h4>
-<div class="formula">SP 3 bits: $k \in \{0, 1, 2, 3\}$ $\Rightarrow$ spin $\in \{0, 1/2, 1, 3/2\}$. $k=2/3$ is not an integer $\Rightarrow$ impossible.</div>
+<div class="formula">SP 3 bits: $k \in \{0, 1, 2, 3\}$ $\text{==>}$ spin $\in \{0, 1/2, 1, 3/2\}$. $k=2/3$ is not an integer $\text{==>}$ impossible.</div>
 <p>The number of participating bits must be an integer. A fractional 1/3 bit participating has no physical meaning.</p>
 </div>
 <div class="discovery-block">
@@ -93,7 +93,7 @@
 <p>Spin is an internal degree of freedom on the observer axis. The structure of the lock that the observer uses while reading a state determines the spin.</p>
 <h3 id="r1-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
-<div class="math-row">$\text{observer} \to \text{SP}(\text{TOCTOU\_LOCK})$</div>
+<div class="math-row">$\text{observer} \text{==>} \text{SP}(\text{TOCTOU\_LOCK})$</div>
 <div class="math-row">$\text{SP} = [b_2, b_1, b_0]$,   $b_i \in \{0, 1\}$</div>
 <div class="math-legend">SP = Spin Pointer. TOCTOU = Time-Of-Check-To-Time-Of-Use. A 3-bit lock.</div>
 </div>
@@ -140,8 +140,8 @@ Boson CAS:    expected = N (current occupation count)
               new = N+1 (accumulation allowed)</pre>
 <h3 id="r2-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
-<div class="math-row">Fermion CAS: writes only to an empty slot $\Rightarrow$ at most 1 per quantum state $\Rightarrow$ Fermi-Dirac statistics</div>
-<div class="math-row">Boson CAS: accumulates on top of existing $\Rightarrow$ unbounded count per quantum state $\Rightarrow$ Bose-Einstein statistics</div>
+<div class="math-row">Fermion CAS: writes only to an empty slot $\text{==>}$ at most 1 per quantum state $\text{==>}$ Fermi-Dirac statistics</div>
+<div class="math-row">Boson CAS: accumulates on top of existing $\text{==>}$ unbounded count per quantum state $\text{==>}$ Bose-Einstein statistics</div>
 <div class="math-desc">The expected value of the CAS determines the statistics: 0 makes it exclusive, N makes it cumulative.</div>
 </div>
 <h3 id="r2-step5">Step 5. Discovery</h3>
@@ -170,7 +170,7 @@ First electron: CAS(0, 1) -> success -> slot = 1
 Second electron (same state): CAS(0, 1) -> Compare fails -> rejected</pre>
 <h3 id="r3-step4">Step 4. Domain transformation</h3>
 <div class="math-block">
-<div class="math-row">$\text{Compare}(\text{current}=1, \;\text{expected}=0) \Rightarrow 1 \neq 0 \Rightarrow \text{Swap rejected}$</div>
+<div class="math-row">$\text{Compare}(\text{current}=1, \;\text{expected}=0) \text{==>} 1 \neq 0 \text{==>} \text{Swap rejected}$</div>
 <div class="math-desc">A failed atomic Compare of CAS = the Pauli exclusion principle. A second fermion cannot enter the same set of quantum numbers.</div>
 </div>
 <h3 id="r3-step5">Step 5. Discovery</h3>
@@ -238,7 +238,7 @@ Non-observing stages = 1 (Swap)</pre>
 <p>Orbital angular momentum comes from closed paths on the space axis. For a path on a ring buffer to close, it must wind an integer number of revolutions.</p>
 <h3 id="r6-step2">Step 2. Norm substitution</h3>
 <div class="math-block">
-<div class="math-row">$\text{space} \to \text{ring buffer}$,   closed path $= 2\pi L$,   $L \in \mathbb{Z}_{\geq 0}$</div>
+<div class="math-row">$\text{space} \text{==>} \text{ring buffer}$,   closed path $= 2\pi L$,   $L \in \mathbb{Z}_{\geq 0}$</div>
 <div class="math-legend">A closed path on a ring buffer = a path that returns to its starting point = an integer number of revolutions.</div>
 </div>
 <h3 id="r6-step3">Step 3. Constant substitution</h3>

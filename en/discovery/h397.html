@@ -85,7 +85,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm being substituted is the Compare-pass probability norm — the $\alpha$ of <a href="d01.html">D-01</a>. (b) The probability that one Compare succeeds is $\alpha$, and the duty of the render stage among the 4 pipeline stages is $1/4$, so the actual-render ratio is the product of the two factors. This norm is chosen because reaching Swap requires both passing Compare and occupying render. Why this norm: the Pipeline Actual-Render Ratio itself originates from the CAS Compare Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
+<p>(a) The norm being substituted is the Compare-pass probability norm -- the $\alpha$ of <a href="d01.html">D-01</a>. (b) The probability that one Compare succeeds is $\alpha$, and the duty of the render stage among the 4 pipeline stages is $1/4$, so the actual-render ratio is the product of the two factors. This norm is chosen because reaching Swap requires both passing Compare and occupying render. Why this norm: the Pipeline Actual-Render Ratio itself originates from the CAS Compare Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$P(\text{render}) = P(\text{Compare true}) \times D_{\text{render}}$</div>
 <div class="math-row">$= \alpha \times \dfrac{1}{4} = \dfrac{\alpha}{4}$</div>
@@ -103,7 +103,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The transformation is into the pipeline-throughput domain. (b) What it reveals is the ratio at which one cycle reaches an actual DATA change — the effective bandwidth. Multiplying $\alpha$ by the render duty $1/4$ yields that value. Why this domain: the Pipeline Actual-Render Ratio itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
+<p>(a) The transformation is into the pipeline-throughput domain. (b) What it reveals is the ratio at which one cycle reaches an actual DATA change -- the effective bandwidth. Multiplying $\alpha$ by the render duty $1/4$ yields that value. Why this domain: the Pipeline Actual-Render Ratio itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$P(\text{render}) = \dfrac{1}{137.036} \times \dfrac{1}{4} = \dfrac{1}{548.1}$</div>
 <div class="math-row">$f_{\text{eff}} = f_P / 548.1 = 3.39 \times 10^{40}\ \text{bit/s}$</div>

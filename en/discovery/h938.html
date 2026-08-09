@@ -58,7 +58,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h938.html">H-938</a>. CAS Universality = Every Processor Already Implements CAS</h1><div class="box-finding">
 <h3>Core Finding</h3>
 <p><strong><a href="h938.html">H-938</a>: CAS Universality = Every Processor Already Implements CAS</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\forall\; \text{CPU}: \exists\; \text{CAS instruction} \;\leftrightarrow\; \text{CAS is already universal}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$\forall\; \text{CPU}: \exists\; \text{CAS instruction} \;\text{<==>}\; \text{CAS is already universal}$$</div></div>
 <p class="finding-precision">Grade: B</p>
 <p>Banya's CAS (Compare-And-Swap) is not an abstract operation. Every modern processor (x86, ARM, RISC-V) implements the CAS instruction in hardware. This is an engineering proof that CAS is the universal primitive of computation.</p>
 <p><a href="../axiom.html#ax2">Axiom 2</a> (CAS = sole operator)</p>
@@ -89,8 +89,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>(a) The norm being substituted is the CAS atomicity norm (<a href="../axiom.html#ax2">Axiom 2</a> unique operator). (b) This norm is chosen because compare-and-swap must be one indivisible step for the consistency of concurrent updates to be guaranteed. This atomicity requirement is not confined to nature; it applies identically to all parallel computation. So physics CAS is substituted by the hardware CAS instruction to expose the isomorphism. Why this norm: Processor CAS Universality itself originates from the CAS Unique Operator, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\text{Banya update} = \text{CAS}(\text{compare}, \text{swap})$</div>
-<div class="math-row">$\forall\, \text{CPU} : \exists\, \text{CAS instruction} \;\Longleftrightarrow\; \text{atomicity required}$</div>
-<div class="math-legend">$\text{CAS}$: Compare-And-Swap (<a href="../axiom.html#ax2">Axiom 2</a> unique operator) | $\forall\,\text{CPU}$: every modern processor | $\exists$: a CAS instruction exists | $\Longleftrightarrow$: isomorphic (not identical)</div>
+<div class="math-row">$\forall\, \text{CPU} : \exists\, \text{CAS instruction} \;\text{<==>}\; \text{atomicity required}$</div>
+<div class="math-legend">$\text{CAS}$: Compare-And-Swap (<a href="../axiom.html#ax2">Axiom 2</a> unique operator) | $\forall\,\text{CPU}$: every modern processor | $\exists$: a CAS instruction exists | $\text{<==>}$: isomorphic (not identical)</div>
 </div>
 </div>
 <div class="step">
@@ -105,7 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>(a) The domain transformed into is the computation/hardware domain. (b) What it reveals is whether CAS is the universal primitive of computation. Since all three major ISAs (x86·ARM·RISC-V) place a CAS-equivalent instruction in hardware, the universality fraction closes at 100%. Lock-free data structures, mutexes, and atomic counters all stand on this one operation. Why this domain: Processor CAS Universality itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
+<p>(a) The domain transformed into is the computation/hardware domain. (b) What it reveals is whether CAS is the universal primitive of computation. Since all three major ISAs (x86*ARM*RISC-V) place a CAS-equivalent instruction in hardware, the universality fraction closes at 100%. Lock-free data structures, mutexes, and atomic counters all stand on this one operation. Why this domain: Processor CAS Universality itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$\text{coverage} = 100\% \;\Longrightarrow\; \text{CAS is the universal computational primitive}$</div>
 </div>
@@ -119,7 +119,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">Grade: B</div>
 </div>
 <p>Verdict: <strong>Hypothesis</strong>. Every modern processor carries a CAS instruction, so universality closes in engineering terms, but the formal isomorphism of physics CAS and hardware CAS is not rigorously proved, so the final step of the forward chain remains open.</p>
-<p>Insight: the Banya unique operator is not an abstraction — since the i486 in 1989, every CPU already executes CAS in silicon.</p>
+<p>Insight: the Banya unique operator is not an abstraction -- since the i486 in 1989, every CPU already executes CAS in silicon.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>

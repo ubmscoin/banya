@@ -58,7 +58,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h938.html">H-938</a>. CAS의 보편성 = 모든 프로세서가 이미 CAS 구현</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="h938.html">H-938</a>: CAS의 보편성 = 모든 프로세서가 이미 CAS 구현</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\forall\; \text{CPU}: \exists\; \text{CAS instruction} \;\leftrightarrow\; \text{CAS는 이미 보편적}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$\forall\; \text{CPU}: \exists\; \text{CAS instruction} \;\text{<==>}\; \text{CAS는 이미 보편적}$$</div></div>
 <p class="finding-precision">등급: B</p>
 <p>반야의 CAS(Compare-And-Swap)는 추상 연산이 아니다. 모든 현대 프로세서(x86, ARM, RISC-V)가 CAS 명령어를 하드웨어로 구현한다. 이는 CAS가 계산의 보편적 원시 연산임을 공학적으로 증명한다.</p>
 <p><a href="../axiom.html#ax2">공리 2</a>(CAS = 유일 연산)</p>
@@ -86,16 +86,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 CAS 원자성 노름이다(<a href="../axiom.html#ax2">공리 2</a> 유일 연산). (b) 이 노름을 택하는 이유는 비교-교체가 분리 불가능한 한 단계라야 동시 갱신의 정합이 보장되기 때문이다. 이 원자성 요구는 자연에 국한되지 않고 모든 병렬 계산에 동일하게 걸린다. 따라서 물리 CAS를 하드웨어 CAS 명령어로 치환해 동형을 본다. 왜 이 노름인가 — 프로세서 CAS 보편성 자체가 CAS 유일 연산자에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>(a) 치환하는 노름은 CAS 원자성 노름이다(<a href="../axiom.html#ax2">공리 2</a> 유일 연산). (b) 이 노름을 택하는 이유는 비교-교체가 분리 불가능한 한 단계라야 동시 갱신의 정합이 보장되기 때문이다. 이 원자성 요구는 자연에 국한되지 않고 모든 병렬 계산에 동일하게 걸린다. 따라서 물리 CAS를 하드웨어 CAS 명령어로 치환해 동형을 본다. 왜 이 노름인가 -- 프로세서 CAS 보편성 자체가 CAS 유일 연산자에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\text{Banya update} = \text{CAS}(\text{compare}, \text{swap})$</div>
-<div class="math-row">$\forall\, \text{CPU} : \exists\, \text{CAS instruction} \;\Longleftrightarrow\; \text{atomicity required}$</div>
-<div class="math-legend">$\text{CAS}$: Compare-And-Swap (<a href="../axiom.html#ax2">공리 2</a> 유일 연산) | $\forall\,\text{CPU}$: 모든 현대 프로세서 | $\exists$: CAS 명령어 존재 | $\Longleftrightarrow$: 동형 (동일 아님)</div>
+<div class="math-row">$\forall\, \text{CPU} : \exists\, \text{CAS instruction} \;\text{<==>}\; \text{atomicity required}$</div>
+<div class="math-legend">$\text{CAS}$: Compare-And-Swap (<a href="../axiom.html#ax2">공리 2</a> 유일 연산) | $\forall\,\text{CPU}$: 모든 현대 프로세서 | $\exists$: CAS 명령어 존재 | $\text{<==>}$: 동형 (동일 아님)</div>
 </div>
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 프로세서 CAS 보편성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 프로세서 CAS 보편성 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">x86 : CMPXCHG 도입 1989 (i486)</div>
 <div class="math-row">ARM : LDREX/STREX CAS 등가</div>
@@ -105,7 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 변환하는 도메인은 계산·하드웨어 도메인이다. (b) 이 변환으로 보려는 것은 CAS가 계산의 보편 원시 연산인가다. 세 주요 ISA(x86·ARM·RISC-V)가 모두 CAS 등가 명령을 하드웨어로 두므로 보편성 비율이 100%로 닫힌다. 락프리 자료구조·뮤텍스·원자적 카운터가 모두 이 한 연산 위에 선다. 왜 이 도메인으로 변환하는가 — 프로세서 CAS 보편성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) 변환하는 도메인은 계산*하드웨어 도메인이다. (b) 이 변환으로 보려는 것은 CAS가 계산의 보편 원시 연산인가다. 세 주요 ISA(x86*ARM*RISC-V)가 모두 CAS 등가 명령을 하드웨어로 두므로 보편성 비율이 100%로 닫힌다. 락프리 자료구조*뮤텍스*원자적 카운터가 모두 이 한 연산 위에 선다. 왜 이 도메인으로 변환하는가 -- 프로세서 CAS 보편성 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\text{coverage} = 100\% \;\Longrightarrow\; \text{CAS is the universal computational primitive}$</div>
 </div>
@@ -114,12 +114,12 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출: 물리 CAS와 하드웨어 CAS는 동형, 보편 비율 100%</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">측정: 물리 CAS와 하드웨어 CAS의 형식적 동형 증명 대기</div>
 <div class="math-row">등급: B</div>
 </div>
 <p>판정: <strong>가설</strong>. 모든 현대 프로세서가 CAS 명령을 두어 보편성이 공학적으로 닫히나, 물리 CAS와 하드웨어 CAS의 형식적 동형이 엄밀 증명되지 않아 forward chain의 마지막 단계가 열려 있다.</p>
-<p>통찰: 반야의 유일 연산은 추상이 아니다 — 1989년 i486 이래 모든 CPU가 이미 CAS를 실리콘으로 실행한다.</p>
+<p>통찰: 반야의 유일 연산은 추상이 아니다 -- 1989년 i486 이래 모든 CPU가 이미 CAS를 실리콘으로 실행한다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>

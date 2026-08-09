@@ -60,7 +60,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong><a href="h390.html">H-390</a>: Duty cycle 1/4 = Boltzmann factor: E_swap = kT ln4</strong></p>
 <div class="formula-wrap"><div class="formula-box">$$P(\text{render})=e^{-E/(k_B T)}=1/4\;\Rightarrow\;E=k_B T\ln 4$$</div></div>
 <p>(1) When the 4-stage pipeline is evenly distributed, the render stage occupancy 1/4 matches the Boltzmann factor, from which E_swap = kT ln 4 is derived.</p>
-<p>(2) Banya formula: P(render) = e^(-E/(k_B T)) = 1/4 ⇒ E = k_B T ln 4. The probability of reaching the render (Swap) stage follows the Boltzmann distribution.</p>
+<p>(2) Banya formula: P(render) = e^(-E/(k_B T)) = 1/4 ==> E = k_B T ln 4. The probability of reaching the render (Swap) stage follows the Boltzmann distribution.</p>
 <p>(3) By <a href="../axiom.html#ax4">Axiom 4</a> (cost), reaching Swap requires passing all 4 stages trigger==&gt;filter==&gt;update==&gt;render. If each stage's passage probability is independent, the total probability = (1/4) × the last of the 4 stages.</p>
 <p>(4) Structural consequence: the render occupancy of 1/4 holds because the pipeline has 4 stages. From the Boltzmann factor e^(-E/kT) = 1/4 we get E = kT ln 4 ≈ 1.386 kT. This is the average energy cost of one Swap.</p>
 <p>(5) Numerics: ln 4 = 1.386. At room temperature T = 300K, kT ln 4 = 1.381 × 10⁻²³ × 300 × 1.386 = 5.74 × 10⁻²¹ J ≈ 0.036 eV.</p>
@@ -81,7 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>The cost of one Swap is the cost of reaching render (Swap) in the 4-stage pipeline trigger·filter·update·render (<a href="h389.html">H-389</a>). Under equal allocation across 4 stages the render occupancy is $1/4$, and this occupancy, which pays the irreversible cost (<a href="../axiom.html#ax4">Axiom 4</a>), coincides with the Boltzmann factor $e^{-E/k_BT}$.</p>
+<p>The cost of one Swap is the cost of reaching render (Swap) in the 4-stage pipeline trigger*filter*update*render (<a href="h389.html">H-389</a>). Under equal allocation across 4 stages the render occupancy is $1/4$, and this occupancy, which pays the irreversible cost (<a href="../axiom.html#ax4">Axiom 4</a>), coincides with the Boltzmann factor $e^{-E/k_BT}$.</p>
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>

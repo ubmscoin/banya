@@ -59,9 +59,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Core Finding</h3>
 <p><strong><a href="h276.html">H-276</a>: Nibble 1 CAS-bit combinations $C(3,k)$</strong></p>
 <div class="formula-wrap"><div class="formula-box">$$C(3,0)+C(3,1)+C(3,2)+C(3,3)=1+3+3+1=8=2^3$$</div></div>
-<p>The binomial combinations $C(3,k)$ of nibble 1 (CAS 3 bits) total $2^3 = 8$, but the actual FSM admits only the 4 states on the sequential path $000 \to 001 \to 011 \to 111$.</p>
+<p>The binomial combinations $C(3,k)$ of nibble 1 (CAS 3 bits) total $2^3 = 8$, but the actual FSM admits only the 4 states on the sequential path $000 \text{==>} 001 \text{==>} 011 \text{==>} 111$.</p>
 <p>Banya formula: $C(3,0) + C(3,1) + C(3,2) + C(3,3) = 1 + 3 + 3 + 1 = 8 = 2^3$. The full binomial distribution is 8, but with the FSM sequential constraint only 4 states are effective.</p>
-<p>Axiomatic basis: <a href="../axiom.html#ax14">Axiom 14</a> (FSM atomicity, sequential pipeline $000 \to 001 \to 011 \to 111$) fixes the 4-state path. Among the 8 binomial combinations, only those admitted by the FSM are physically realized.</p>
+<p>Axiomatic basis: <a href="../axiom.html#ax14">Axiom 14</a> (FSM atomicity, sequential pipeline $000 \text{==>} 001 \text{==>} 011 \text{==>} 111$) fixes the 4-state path. Among the 8 binomial combinations, only those admitted by the FSM are physically realized.</p>
 <p>Structural consequence: only 4 of 8 are effective, so CAS efficiency = $4/8 = 50\%$. The remaining 4 combinations ($010, 100, 101, 110$) violate the FSM sequential constraint and are forbidden. The forbidden states are non-physical configurations.</p>
 <p>Numerics: 4 allowed states: $000$ (idle), $001$ (Read complete), $011$ (Compare complete), $111$ (Swap complete). 4 forbidden states: $010, 100, 101, 110$. Ratio 4:4 = 1:1.</p>
 <p>Consistency: combined with nibble 0 of <a href="h268.html">H-268</a> ($C(4,4)=1$, all ON = $1111$), total states are $16 \times 4 = 64$ (effective) or $16 \times 8 = 128$ (full binomial). Corresponds to <a href="h311.html">H-311</a> (128 complete states).</p>
@@ -81,11 +81,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>Nibble 1 is the cost of CAS R·C·S 3 bits completing one cycle. The 3-bit binomial combinations number $2^3=8$, but FSM atomicity (<a href="../axiom.html#ax14">Axiom 14</a>: sequential pipeline $000\,001\,011\,111$) forces a monotone-increasing path where only one bit turns on at a time. This cost is read as the FSM path constraint.</p>
+<p>Nibble 1 is the cost of CAS R*C*S 3 bits completing one cycle. The 3-bit binomial combinations number $2^3=8$, but FSM atomicity (<a href="../axiom.html#ax14">Axiom 14</a>: sequential pipeline $000\,001\,011\,111$) forces a monotone-increasing path where only one bit turns on at a time. This cost is read as the FSM path constraint.</p>
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the CAS 3-bit sequential-path norm. Nibble 1 is the closed FSM cost that traverses R·C·S in order only (<a href="../axiom.html#ax14">Axiom 14</a>), and that ordering admits only the monotone-increasing path among the 8 binomials, so this norm is chosen. The total binomial sum is therefore substituted by the FSM-allowed state count. Why this norm: Nibble 1 valid-state count itself originates from the CAS 3-bit sequential cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
+<p>The norm being substituted is the CAS 3-bit sequential-path norm. Nibble 1 is the closed FSM cost that traverses R*C*S in order only (<a href="../axiom.html#ax14">Axiom 14</a>), and that ordering admits only the monotone-increasing path among the 8 binomials, so this norm is chosen. The total binomial sum is therefore substituted by the FSM-allowed state count. Why this norm: Nibble 1 valid-state count itself originates from the CAS 3-bit sequential cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$\displaystyle\sum_{k=0}^{3} C(3,k)=C(3,0)+C(3,1)+C(3,2)+C(3,3)=8$</div>
 <div class="math-row">$N_{\text{FSM}}=|\{000,001,011,111\}|=4$</div>
@@ -105,7 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the quantum/information state domain. What it reveals is the number of physical states Nibble 1 actually occupies — the valid count the FSM allows out of 8. Removing the 4 order-violating states from the full binomial yields that value. Why this domain: Nibble 1 valid-state count itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
+<p>The transformation is into the quantum/information state domain. What it reveals is the number of physical states Nibble 1 actually occupies -- the valid count the FSM allows out of 8. Removing the 4 order-violating states from the full binomial yields that value. Why this domain: Nibble 1 valid-state count itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$N_{\text{FSM}} = 2^3 - |\{010,100,101,110\}| = 8 - 4 = 4$</div>
 </div>

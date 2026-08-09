@@ -14,9 +14,9 @@
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>D-141 System Time Definition — S-grade -- Banya Framework Mining</title>
+<title>D-141 System Time Definition -- S-grade -- Banya Framework Mining</title>
 <meta content="Han Hyukjin" name="author"/>
-<meta content="D-141 system time definition — S-grade. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="D-141 system time definition -- S-grade. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
 <link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
@@ -55,20 +55,20 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="lang-switch"><a class="lang-btn" href="../../discovery/d141.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
 <p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>d_misc</code> | Verdict: <span class="tag-discovery">Hit</span></p>
-<h1><a href="d141.html">D-141</a>. System Time Definition — S-grade</h1><div class="box-finding">
+<h1><a href="d141.html">D-141</a>. System Time Definition -- S-grade</h1><div class="box-finding">
 <h3>Core Finding</h3>
-<p><strong><a href="d141.html">D-141</a>: System Time Definition — S-grade</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$T_\text{sys} = \text{number of CAS cycles} = \text{cost count}$$</div></div><p class="finding-precision">Error: 0% · grade S-grade</p>
+<p><strong><a href="d141.html">D-141</a>: System Time Definition -- S-grade</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$T_\text{sys} = \text{number of CAS cycles} = \text{cost count}$$</div></div><p class="finding-precision">Error: 0% * grade S-grade</p>
 <p>(1) System time T_sys is defined as the number of CAS cycles. In the Banya Framework, "real time" is not domain time but the tick count of CAS.</p>
 <p>(2) Banya formula starting point: directly derived from <a href="../axiom.html#ax3">Axiom 3</a> (FSM state transition). When the FSM state transitions once, the sequence CAS Read (R+1) ==&gt; Compare (C+1) ==&gt; Swap (S+1) completes one cycle, and that is one tick.</p>
-<p>(3) Norm substitution: T_sys = number of CAS cycles = cost count. Unit = 1 tick = 1 CAS cycle. A single juim performing a complete Read–Compare–Swap on the d-ring consumes exactly 1 tick.</p>
+<p>(3) Norm substitution: T_sys = number of CAS cycles = cost count. Unit = 1 tick = 1 CAS cycle. A single juim performing a complete Read-Compare-Swap on the d-ring consumes exactly 1 tick.</p>
 <p>(4) Forward chain: <a href="../axiom.html#ax3">Axiom 3</a> (FSM) ==&gt; <a href="../axiom.html#ax2">Axiom 2</a> (CAS 3-stage) ==&gt; <a href="../axiom.html#ax15">Axiom 15</a> (utterance bit δ). CAS operates outside the domain time axis, so T_sys cannot be measured by domain time. The number of juida operation executions itself is time.</p>
 <p>(5) Derivation path: 1 FSM state transition = 1 CAS cycle = T_sys + 1. Discrete and indivisible. There is no "half tick". Each time the utterance bit (δ) utters once, T_sys increments by exactly 1.</p>
-<p>(6) Numerical value: structural definition. T_sys is a natural number (1, 2, 3, …). T_sys = 0 is the absence of any tick (<a href="d145.html">D-145</a>).</p>
+<p>(6) Numerical value: structural definition. T_sys is a natural number (1, 2, 3, ...). T_sys = 0 is the absence of any tick (<a href="d145.html">D-145</a>).</p>
 <p>(7) Error: 0% (definition). System time is not a measured value but a definition of the CAS structure, so the concept of error does not apply.</p>
 <p>(8) Physical correspondence: a discrete version of the Planck time t_P. The minimal time unit on the d-ring for one execution of a juim by the utterance bit (δ). Continuous time is rendered only by domain time (<a href="d142.html">D-142</a>); T_sys itself is discrete.</p>
 <p>(9) Verification: the relation to domain time is confirmed via <a href="d143.html">D-143</a> (t_dom = log(T_sys)). Consistent with <a href="d145.html">D-145</a> (Big Bang = T_sys = 1). Used as the initial condition for <a href="d144.html">D-144</a> (inflation).</p>
-<p>(10) Re-substitution: foundation of the entire time card chain — <a href="d142.html">D-142</a> (domain time), <a href="d143.html">D-143</a> (logarithmic relation), <a href="d144.html">D-144</a> (inflation), <a href="d145.html">D-145</a> (Big Bang). Starting point of every time-related derivation.</p>
+<p>(10) Re-substitution: foundation of the entire time card chain -- <a href="d142.html">D-142</a> (domain time), <a href="d143.html">D-143</a> (logarithmic relation), <a href="d144.html">D-144</a> (inflation), <a href="d145.html">D-145</a> (Big Bang). Starting point of every time-related derivation.</p>
 </div>
 <h2>Why This Verdict</h2>
 <div class="verdict-discovery">
@@ -80,22 +80,22 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>System time is the accumulated cost count paid each time an FSM state transitions once. One state transition (<a href="../axiom.html#ax3">Axiom 3</a>) is one CAS cycle of Read(R+1)·Compare(C+1)·Swap(S+1) (<a href="../axiom.html#ax2">Axiom 2</a>), and when the fire bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>) fires once this count increases by exactly 1.</p>
+<p>System time is the accumulated cost count paid each time an FSM state transitions once. One state transition (<a href="../axiom.html#ax3">Axiom 3</a>) is one CAS cycle of Read(R+1)*Compare(C+1)*Swap(S+1) (<a href="../axiom.html#ax2">Axiom 2</a>), and when the fire bit $\delta$ (<a href="../axiom.html#ax15">Axiom 15</a>) fires once this count increases by exactly 1.</p>
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
 <p>The norm being substituted is the CAS tick-count norm, counted outside the domain time axis. Real time is not the domain time but the discrete number of CAS cycles, and that number equals the accumulated cost, so this norm is chosen. System time is therefore substituted by the number of CAS cycles. Why this norm: System Time itself originates from the CAS Cycle Count, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$T_\text{sys} = N_\text{cycle}$</div>
-<div class="math-row">$\Delta T_\text{sys} = 1\ \text{per}\ (R{+}1\to C{+}1\to S{+}1)$</div>
-<div class="math-legend">$T_\text{sys}$: system time | $N_\text{cycle}$: accumulated CAS cycle count | $R{+}1,C{+}1,S{+}1$: one Read·Compare·Swap cycle | $\Delta T_\text{sys}=1$: one tick = indivisible minimal unit</div>
+<div class="math-row">$\Delta T_\text{sys} = 1\ \text{per}\ (R{+}1\text{==>} C{+}1\text{==>} S{+}1)$</div>
+<div class="math-legend">$T_\text{sys}$: system time | $N_\text{cycle}$: accumulated CAS cycle count | $R{+}1,C{+}1,S{+}1$: one Read*Compare*Swap cycle | $\Delta T_\text{sys}=1$: one tick = indivisible minimal unit</div>
 </div>
 </div>
 <div class="step">
 <h3>Step 3. Constant Substitution</h3>
 <p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate System Time numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
-<div class="math-row">1 tick = 1 CAS cycle (R+1 $\to$ C+1 $\to$ S+1)</div>
+<div class="math-row">1 tick = 1 CAS cycle (R+1 $\text{==>}$ C+1 $\text{==>}$ S+1)</div>
 <div class="math-row">$T_{sys}$ = 1, 2, 3, ... natural numbers</div>
 <div class="math-row">$T_{sys}$ = 0 = absence of tick <a href="d145.html">D-145</a></div>
 <div class="math-row">$\delta$ fire = +1 per tick</div>
@@ -137,7 +137,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <table class="tbl">
 <thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td><a href="d141.html">D-141</a>: System Time Definition — S-grade</td><td>derivation formula exists</td><td><span class="tag-discovery">Hit</span></td></tr>
+<tr><td><a href="d141.html">D-141</a>: System Time Definition -- S-grade</td><td>derivation formula exists</td><td><span class="tag-discovery">Hit</span></td></tr>
 </tbody>
 </table>
 </div>

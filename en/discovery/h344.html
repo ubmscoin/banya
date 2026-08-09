@@ -58,10 +58,10 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h344.html">H-344</a>. No-Cloning Theorem = CAS Inaccessibility of δ Utterance</h1><div class="box-finding">
 <h3>Core Finding</h3>
 <p><strong><a href="h344.html">H-344</a>: No-cloning theorem = CAS inaccessibility of δ utterance</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\delta\notin\text{CAS Read target}\;\Rightarrow\;\text{no copy possible}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$\delta\notin\text{CAS Read target}\;\text{==>}\;\text{no copy possible}$$</div></div>
 <p>(1) The no-cloning theorem states that an arbitrary quantum state cannot be fully copied. In the Banya Framework, δ is the unique global flag outside the FSM, so it is not a target of CAS Read.</p>
-<p>(2) Banya formula: δ ∉ CAS Read target ⇒ no copy possible. To copy something it must first be read, but δ cannot be read.</p>
-<p>(3) By <a href="../axiom.html#ax15">Axiom 15</a>, δ exists outside the FSM. By <a href="../axiom.html#ax10">Axiom 10</a>, the observer filters and receives only the result of the δ utterance — it does not access δ itself directly.</p>
+<p>(2) Banya formula: δ ∉ CAS Read target ==> no copy possible. To copy something it must first be read, but δ cannot be read.</p>
+<p>(3) By <a href="../axiom.html#ax15">Axiom 15</a>, δ exists outside the FSM. By <a href="../axiom.html#ax10">Axiom 10</a>, the observer filters and receives only the result of the δ utterance -- it does not access δ itself directly.</p>
 <p>(4) Structural consequence: CAS Read (R+1 cost) only targets DATA inside the FSM. Since δ is not DATA, it is inaccessible at the Read stage, and without Read, Compare and Swap cannot be executed (<a href="../axiom.html#ax2">Axiom 2</a>).</p>
 <p>(5) Copy = Read + Swap (read the original + write the copy). If Read is impossible, Swap is also impossible, so the copy cost is infinite.</p>
 <p>(6) Consistency: the proof of the quantum no-cloning theorem rests on the linearity of unitary operations. In the Banya Framework, the sequential dependency of CAS (R==&gt;C==&gt;S) plays the role of linearity.</p>
@@ -69,7 +69,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>(8) Classical information is copyable (CAS Read is possible). The reason quantum information cannot be copied is that it contains a δ component. Pure DATA without a δ component can be copied by Read==&gt;Swap.</p>
 <p>(9) Verification: constitutes a Banya Framework proof of the no-cloning theorem. Suppose a CAS cycle exists that copies an arbitrary δ utterance ==&gt; it must access δ at the Read stage ==&gt; contradiction with <a href="../axiom.html#ax15">Axiom 15</a>.</p>
 <p>(10) Remaining task: δ-structure translation of the no-deleting theorem (impossibility of arbitrary erasure of quantum states), and CAS cost upper bound of approximate cloning are pending.</p>
-<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is classified as hypothesis (Class III) and has halted without proceeding to the next round. Quantitative comparison with experimental value is absent. The standard measured value (PDG/CODATA/experimental limit) to compare against has not been cited, or only dimensional/structural match has been confirmed, so precision computation is incomplete. The derivation formula exists but quantitative cross-check with experimental value is incomplete. Dimensional consistency and structural match are established. Remaining tasks specified: (10) Remaining task: δ-structure translation of the no-deleting theorem (impossibility of arbitrary erasure of quantum states), and CAS cost upper bound of approximate cloning are pending. The D promotion path consists of (1) resolving the remaining tasks above, (2) re-injecting adjacent D/H cards from the library as recursive substitution round inputs, (3) introducing additional unapplied propositions from <a href="../axiom.html#ax1">Axiom 1</a>, <a href="../axiom.html#ax2">Axiom 2</a>, <a href="../axiom.html#ax4">Axiom 4</a>, <a href="../axiom.html#ax9">Axiom 9</a>, <a href="../axiom.html#ax11">Axiom 11</a> — these 3 are the standard.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why the Hypothesis Halted:</strong> This card is classified as hypothesis (Class III) and has halted without proceeding to the next round. Quantitative comparison with experimental value is absent. The standard measured value (PDG/CODATA/experimental limit) to compare against has not been cited, or only dimensional/structural match has been confirmed, so precision computation is incomplete. The derivation formula exists but quantitative cross-check with experimental value is incomplete. Dimensional consistency and structural match are established. Remaining tasks specified: (10) Remaining task: δ-structure translation of the no-deleting theorem (impossibility of arbitrary erasure of quantum states), and CAS cost upper bound of approximate cloning are pending. The D promotion path consists of (1) resolving the remaining tasks above, (2) re-injecting adjacent D/H cards from the library as recursive substitution round inputs, (3) introducing additional unapplied propositions from <a href="../axiom.html#ax1">Axiom 1</a>, <a href="../axiom.html#ax2">Axiom 2</a>, <a href="../axiom.html#ax4">Axiom 4</a>, <a href="../axiom.html#ax9">Axiom 9</a>, <a href="../axiom.html#ax11">Axiom 11</a> -- these 3 are the standard.</p>
 </div>
 <h2>Why This Verdict</h2>
 <div class="verdict-hypothesis">
@@ -85,10 +85,10 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>(a) The norm substituted is the Read-untargetability norm of δ — whether a copy operation passes the Read stage. (b) This norm is chosen because copy = Read + Swap (read original + write replica), yet CAS Read (cost R+1) targets only FSM-internal DATA, and δ is not DATA, so Read is denied. Copyability is therefore substituted by whether the Read cost is finite or infinite. Why this norm: the No-Cloning Theorem itself originates from the Read-Untargetability of δ, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
+<p>(a) The norm substituted is the Read-untargetability norm of δ -- whether a copy operation passes the Read stage. (b) This norm is chosen because copy = Read + Swap (read original + write replica), yet CAS Read (cost R+1) targets only FSM-internal DATA, and δ is not DATA, so Read is denied. Copyability is therefore substituted by whether the Read cost is finite or infinite. Why this norm: the No-Cloning Theorem itself originates from the Read-Untargetability of δ, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$U(|\psi\rangle\otimes|0\rangle)=|\psi\rangle\otimes|\psi\rangle\ \text{(no such }U\text{)}$</div>
-<div class="math-row">$\delta\notin\text{CAS Read target}\;\Rightarrow\;\text{no copy possible}$</div>
+<div class="math-row">$\delta\notin\text{CAS Read target}\;\text{==>}\;\text{no copy possible}$</div>
 <div class="math-legend">$U$: cloning unitary | $|\psi\rangle$: arbitrary state | $\delta$: flag outside FSM (<a href="../axiom.html#ax15">Axiom 15</a>) | Read: R+1, DATA only (<a href="../axiom.html#ax2">Axiom 2</a>)</div>
 </div>
 </div>
@@ -107,7 +107,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>Step 4. Domain Transformation</h3>
 <p>(a) The domain transformed into is the CAS Read/Swap operation domain (quantum/information domain). (b) What it reveals is the copy cost of a state containing a δ component. Substituting that Swap cannot run without Read yields that value. Why this domain: the No-Cloning Theorem itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
-<div class="math-row">$\text{Read}(\delta)\ \text{denied}\;\Rightarrow\;\text{Swap blocked}$</div>
+<div class="math-row">$\text{Read}(\delta)\ \text{denied}\;\text{==>}\;\text{Swap blocked}$</div>
 <div class="math-row">$\text{copy cost}(\delta\text{-state})=\infty$</div>
 </div>
 </div>
@@ -123,7 +123,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-injection path: —</p>
+<p>Re-injection path: --</p>
 </div>
 
 <div class="box-incomplete">

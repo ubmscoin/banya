@@ -14,16 +14,16 @@
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Quantum Measurement Derivation: Compare True/False to Born Rule — Banya Framework Report</title>
+<title>Quantum Measurement Derivation: Compare True/False to Born Rule -- Banya Framework Report</title>
 <meta content="Han Hyukjin" name="author"/>
 <meta content="Banya Framework derivation of quantum measurement. Measurement problem = Compare true/false. Heisenberg uncertainty from Read-Compare mutual exclusion. Entanglement = shared delta projections. Decoherence = RLU decay. Born Rule from self-referential normalization." name="description"/>
 <meta content="Banya Framework,Banya,quantum measurement,Born rule,Heisenberg uncertainty,entanglement,decoherence,Bell inequality,CAS,Compare,Han Hyukjin,TOE" name="keywords"/>
-<meta content="Quantum Measurement Derivation — Banya Framework" property="og:title"/>
+<meta content="Quantum Measurement Derivation -- Banya Framework" property="og:title"/>
 <meta content="Measurement problem, uncertainty, entanglement, decoherence, Born rule from CAS axioms." property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="en_US" property="og:locale"/>
 <meta content="summary" name="twitter:card"/>
-<meta content="Quantum Measurement — Banya Framework" name="twitter:title"/>
+<meta content="Quantum Measurement -- Banya Framework" name="twitter:title"/>
 <meta content="Born Rule |psi|^2 = self-referential normalization. Measurement = Compare true/false." name="twitter:description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
@@ -92,8 +92,8 @@
 <h2 id="en-discovery">Key Discovery</h2>
 <div class="discovery-block">
 <h4>Measurement = Compare Judgment (H-446, H-447)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
-<div class="formula">$$\text{Compare}(\text{expected}, \text{actual}) \to \begin{cases} \text{true} \to \text{Swap (state determined)} \\ \text{false} \to \text{superposition maintained} \end{cases}$$</div>
-<p>Wavefunction collapse = Compare true $\to$ Swap. No collapse = Compare false $\to$ superposition (Axiom 7).</p>
+<div class="formula">$$\text{Compare}(\text{expected}, \text{actual}) \text{==>} \begin{cases} \text{true} \text{==>} \text{Swap (state determined)} \\ \text{false} \text{==>} \text{superposition maintained} \end{cases}$$</div>
+<p>Wavefunction collapse = Compare true $\text{==>}$ Swap. No collapse = Compare false $\text{==>}$ superposition (Axiom 7).</p>
 </div>
 <div class="discovery-block">
 <h4>Born Rule = Self-Referential Normalization (H-456)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
@@ -109,7 +109,7 @@
 <p>The Banya equation places observer and superposition on orthogonal axes. This means a state can have nonzero projection onto both axes simultaneously. The measurement problem in quantum mechanics asks: when and how does a state that has a nonzero superposition component collapse to a definite observer component? The Banya Framework answers: when Compare returns true.</p>
 <h3 id="en-r1-step2">Step 2. Norm Substitution</h3>
 <div class="math-block">
-<div class="math-row">$$\text{Axiom 7: Compare true} \to \text{Swap};\quad \text{Compare false} \to \text{superposition}$$</div>
+<div class="math-row">$$\text{Axiom 7: Compare true} \text{==>} \text{Swap};\quad \text{Compare false} \text{==>} \text{superposition}$$</div>
 <div class="math-desc">The binary outcome of Compare determines whether the state is finalized or remains in superposition</div>
 </div>
 <p>Axiom 7 is the key. Compare takes two inputs: the expected value and the actual value. If they match (true), Swap executes and the state is written -- this is wavefunction collapse. If they do not match (false), the state remains in superposition -- the system stays unresolved on the superposition axis. There is no "measurement postulate" needed. The CAS architecture itself defines measurement.</p>
@@ -128,13 +128,13 @@
 <h3 id="en-r1-step5">Step 5. Discovery</h3>
 <div class="discovery-block">
 <h4>Measurement Problem Resolved (H-446, H-447)<span style="color:#6e7681;font-size:0.75em;margin-left:8px">2026-04-03</span></h4>
-<div class="formula">$$\text{Measurement} = \text{Compare};\quad \text{Collapse} = \text{Compare true} \to \text{Swap}$$</div>
+<div class="formula">$$\text{Measurement} = \text{Compare};\quad \text{Collapse} = \text{Compare true} \text{==>} \text{Swap}$$</div>
 <p>There is no measurement problem. There is only the Compare operation. The apparent mystery arises from treating measurement as something external to the system, when in fact it is the internal Compare step of CAS. <span class="tag-solved">Hit</span></p>
 </div>
 <h1 id="en-r2">Round 2. Heisenberg Uncertainty from Read-Compare Mutual Exclusion (H-442)</h1>
 <h3 id="en-r2-step1">Step 1. Banya Equation</h3>
 <div class="math-block">
-<div class="math-row">$$\text{CAS pipeline: } R \to C \to S \quad \text{(sequential, Axiom 2)}$$</div>
+<div class="math-row">$$\text{CAS pipeline: } R \text{==>} C \text{==>} S \quad \text{(sequential, Axiom 2)}$$</div>
 <div class="math-desc">Read and Compare are separate pipeline stages; they cannot execute simultaneously on the same entity</div>
 </div>
 <p>In the CAS pipeline, Read and Compare are sequential stages. Read acquires the current state. Compare evaluates it against an expected value. These two operations cannot be performed simultaneously on the same entity in the same tick (Axiom 8: $\delta$ polls every tick).</p>
@@ -149,7 +149,7 @@
 <div class="math-row">$$\Delta x \cdot \Delta p \geq \frac{\hbar}{2}$$</div>
 <div class="math-desc">Heisenberg uncertainty principle: the product of position and momentum uncertainties has a lower bound</div>
 </div>
-<p>The minimum uncertainty $\hbar/2$ corresponds to the minimum cost of one CAS tick. You cannot resolve both position and momentum to better than one tick's worth of information. The factor $\hbar$ is the quantum of action -- the cost of one complete CAS cycle (R$\to$C$\to$S) in the physics domain.</p>
+<p>The minimum uncertainty $\hbar/2$ corresponds to the minimum cost of one CAS tick. You cannot resolve both position and momentum to better than one tick's worth of information. The factor $\hbar$ is the quantum of action -- the cost of one complete CAS cycle (R$\text{==>}$C$\text{==>}$S) in the physics domain.</p>
 <h3 id="en-r2-step4">Step 4. Domain Transform</h3>
 <div class="math-block">
 <div class="math-row">$$[\hat{x}, \hat{p}] = i\hbar \;\longleftrightarrow\; [\text{Read}, \text{Compare}] \neq 0$$</div>
@@ -222,7 +222,7 @@
 <h1 id="en-r5">Round 5. Born Rule $|\psi|^2$ = Self-Referential Normalization (H-456)</h1>
 <h3 id="en-r5-step1">Step 1. Banya Equation</h3>
 <div class="math-block">
-<div class="math-row">$$\text{Axiom 10: } \delta \to \text{observer} \to \text{Compare} \to \text{DATA} \to \delta$$</div>
+<div class="math-row">$$\text{Axiom 10: } \delta \text{==>} \text{observer} \text{==>} \text{Compare} \text{==>} \text{DATA} \text{==>} \delta$$</div>
 <div class="math-desc">The observer loop: $\delta$ fires, observer is activated, Compare is executed, DATA is updated, $\delta$ is updated</div>
 </div>
 <p>Axiom 10 defines the recursive observer loop. The key feature is that $\delta$ appears at both the beginning and end of the loop. This self-referential structure -- the output feeds back into the input -- determines the normalization of probabilities.</p>
@@ -231,7 +231,7 @@
 <div class="math-row">$$P(k) = |\langle k|\psi\rangle|^2 \;\longleftrightarrow\; \text{self-referential norm of } \delta \text{ projection}$$</div>
 <div class="math-desc">The Born rule: probability = squared amplitude = self-referential normalization</div>
 </div>
-<p>Why is the probability the <em>square</em> of the amplitude, and not the amplitude itself, or the cube, or some other function? Because the observer loop is self-referential. When $\delta$ references itself through the loop $\delta \to \text{observer} \to \text{Compare} \to \text{DATA} \to \delta$, the consistency condition requires that the norm be quadratic. A linear norm would not be self-consistent under the loop (it would not be positive-definite). A cubic or higher norm would overdetermine the system. The unique self-consistent norm for a self-referential loop in a quadratic form ($\delta^2 = \ldots$, Axiom 1) is the squared modulus.</p>
+<p>Why is the probability the <em>square</em> of the amplitude, and not the amplitude itself, or the cube, or some other function? Because the observer loop is self-referential. When $\delta$ references itself through the loop $\delta \text{==>} \text{observer} \text{==>} \text{Compare} \text{==>} \text{DATA} \text{==>} \delta$, the consistency condition requires that the norm be quadratic. A linear norm would not be self-consistent under the loop (it would not be positive-definite). A cubic or higher norm would overdetermine the system. The unique self-consistent norm for a self-referential loop in a quadratic form ($\delta^2 = \ldots$, Axiom 1) is the squared modulus.</p>
 <h3 id="en-r5-step3">Step 3. Constant Binding</h3>
 <div class="math-block">
 <div class="math-row">$$\sum_k P(k) = \sum_k |\langle k|\psi\rangle|^2 = 1$$</div>
@@ -261,7 +261,7 @@
 <div class="table-wrap">
 <table>
 <tr><th>Item</th><th>Result</th><th class="col-status">Status</th><th class="col-date">Card</th></tr>
-<tr><td>Measurement problem</td><td>Compare true $\to$ Swap = collapse; false $\to$ superposition</td><td><span class="tag-solved">Hit</span></td><td>H-446, H-447</td></tr>
+<tr><td>Measurement problem</td><td>Compare true $\text{==>}$ Swap = collapse; false $\text{==>}$ superposition</td><td><span class="tag-solved">Hit</span></td><td>H-446, H-447</td></tr>
 <tr><td>Heisenberg uncertainty</td><td>Read-Compare pipeline mutual exclusion per tick</td><td><span class="tag-solved">Hit</span></td><td>H-442</td></tr>
 <tr><td>Entanglement</td><td>Shared $\delta$ bits in global register (Axiom 15)</td><td><span class="tag-solved">Hit</span></td><td>H-448</td></tr>
 <tr><td>Bell inequality violation</td><td>Global $\delta$ exceeds local hidden variable bound</td><td><span class="tag-solved">Hit</span></td><td>H-449</td></tr>

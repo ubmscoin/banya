@@ -14,7 +14,7 @@
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>P-87 니블 간 비트 AND 최대 동시 락 = 3 — 반야프레임 채굴</title>
+<title>P-87 니블 간 비트 AND 최대 동시 락 = 3 -- 반야프레임 채굴</title>
 <meta content="Han Hyukjin" name="author"/>
 <meta content="P-87 니블 간 비트 AND 최대 동시 락 = 3. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
 <meta content="index, follow" name="robots"/>
@@ -61,11 +61,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$\max(\text{니블 동시 락})=\min(4,3)=3\ \Rightarrow\ \text{observer 비트는 항상 자유 (항상 관측 가능)}$$</div></div>
 <p class="finding-precision">예측: 니블 간 최대 동시 락 = 3, observer 비트는 항상 자유. 검증 양자 정보 실험(2028~).</p>
 <p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 8비트는 니블 0(도메인 4비트)과 니블 1(CAS 3 + δ)로 나뉘고, CAS 연산은 두 니블 사이 비트 AND로 동시 락을 건다(<a href="../axiom.html#ax5">공리 5</a>).</p>
-<p>동시에 락 가능한 비트 수는 두 니블의 더 작은 쪽에 의해 제한된다 — $\min(4,3)=3$이다.</p>
-<p>CAS는 3비트(Read·Compare·Swap)이므로 한 번에 최대 3개 도메인 비트만 락할 수 있다 ==> 4번째 도메인 비트는 항상 자유.</p>
+<p>동시에 락 가능한 비트 수는 두 니블의 더 작은 쪽에 의해 제한된다 -- $\min(4,3)=3$이다.</p>
+<p>CAS는 3비트(Read*Compare*Swap)이므로 한 번에 최대 3개 도메인 비트만 락할 수 있다 ==> 4번째 도메인 비트는 항상 자유.</p>
 <p>그 4번째 자유 비트가 observer(<a href="../axiom.html#ax10">공리 10</a>: observer = 필터)다. observer 비트는 CAS에 의해 락되지 않으므로 항상 관측 가능하다.</p>
 <p>즉 어떤 CAS 연산 중에도 observer는 자유롭게 필터링할 수 있다 ==> 관측이 원리적으로 항상 가능한 구조적 근거.</p>
-<p>이것이 측정이 항상 가능하고, observer가 의지(P-105)를 발휘할 수 있는 이유다 — observer 비트는 락에서 면제된다.</p>
+<p>이것이 측정이 항상 가능하고, observer가 의지(P-105)를 발휘할 수 있는 이유다 -- observer 비트는 락에서 면제된다.</p>
 <p>즉 본 예측은 "관측이 가능하다"가 아니라 "최대 동시 락 3, observer 비트는 락 면제"라는 구조적 주장이다.</p>
 <p>3 = min(4,3)은 CAS 3단계와 도메인 4축의 직접 귀결이며, 4−3=1개 비트(observer)가 항상 남는다.</p>
 <p>검증: 양자 정보 실험(2028~)에서 observer 자유도(측정 접근성)가 어떤 연산 중에도 유지되면 본 예측을 지지한다.</p>
@@ -87,16 +87,16 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 니블 간 비트 AND 락 폭 노름이다. (b) 동시 락 가능한 비트 수는 두 니블의 더 작은 쪽으로 제한되고 CAS는 Read·Compare·Swap 3비트뿐이라 이 노름이 락 상한을 정하기 때문에 택한다. 따라서 최대 동시 락을 도메인 4축과 CAS 3축의 최소값으로 치환한다. 왜 이 노름인가 — 최대 동시 락 3 자체가 니블 간 비트 AND 락 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>(a) 치환하는 노름은 니블 간 비트 AND 락 폭 노름이다. (b) 동시 락 가능한 비트 수는 두 니블의 더 작은 쪽으로 제한되고 CAS는 Read*Compare*Swap 3비트뿐이라 이 노름이 락 상한을 정하기 때문에 택한다. 따라서 최대 동시 락을 도메인 4축과 CAS 3축의 최소값으로 치환한다. 왜 이 노름인가 -- 최대 동시 락 3 자체가 니블 간 비트 AND 락 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\max(\text{lock}) = \min(\text{nibble}_0,\ \text{nibble}_1)$</div>
 <div class="math-row">$\max(\text{lock}) = \min(4, 3) = 3$</div>
-<div class="math-legend">$\text{nibble}_0=4$: 도메인 4축 (<a href="../axiom.html#ax1">공리 1</a>) | $\text{nibble}_1=3$: CAS Read·Compare·Swap (<a href="../axiom.html#ax5">공리 5</a>) | $\min$: 비트 AND 락 폭 | $4-3=1$: 항상 자유로운 비트</div>
+<div class="math-legend">$\text{nibble}_0=4$: 도메인 4축 (<a href="../axiom.html#ax1">공리 1</a>) | $\text{nibble}_1=3$: CAS Read*Compare*Swap (<a href="../axiom.html#ax5">공리 5</a>) | $\min$: 비트 AND 락 폭 | $4-3=1$: 항상 자유로운 비트</div>
 </div>
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 최대 동시 락 3 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 최대 동시 락 3 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">도메인 축 = 4 <a href="../axiom.html#ax1">공리 1</a></div>
 <div class="math-row">CAS 비트 = 3 (R, C, S) <a href="../axiom.html#ax5">공리 5</a></div>
@@ -106,7 +106,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) observer 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 어느 도메인 비트가 락에서 면제되어 항상 관측 가능한가다. CAS가 3개를 락하면 4번째 도메인 비트, 곧 observer(<a href="../axiom.html#ax10">공리 10</a>: observer = 필터)가 남는다. 왜 이 도메인으로 변환하는가 — 최대 동시 락 3 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) observer 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 어느 도메인 비트가 락에서 면제되어 항상 관측 가능한가다. CAS가 3개를 락하면 4번째 도메인 비트, 곧 observer(<a href="../axiom.html#ax10">공리 10</a>: observer = 필터)가 남는다. 왜 이 도메인으로 변환하는가 -- 최대 동시 락 3 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$\max(\text{lock}) = 3,\quad \text{free bit} = 4 - 3 = 1 = \text{observer}$</div>
 </div>
@@ -115,7 +115,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 예측</h3>
 <div class="math-block">
 <div class="math-row">예측값: 최대 동시 락 3, observer 비트 항상 자유</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">검증 방법: 양자 정보 실험 observer 자유도 접근성 (2028~)</div>
 <div class="math-row">반박 조건: observer 비트가 CAS에 락되어 관측이 차단되는 경우 확인</div>
 </div>
@@ -124,7 +124,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
-<p>재투입 경로: —</p>
+<p>재투입 경로: --</p>
 </div>
 
 <div class="box-incomplete">
@@ -141,7 +141,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <table class="tbl">
 <thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
 <tbody>
-<tr><td><a href="p87.html">P-87</a>: 니블 간 비트 AND 최대 동시 락 = 3</td><td>예측 (대기) — 최대 동시 락 3, observer 비트 항상 자유</td><td><span class="tag-prediction">예측</span></td></tr>
+<tr><td><a href="p87.html">P-87</a>: 니블 간 비트 AND 최대 동시 락 = 3</td><td>예측 (대기) -- 최대 동시 락 3, observer 비트 항상 자유</td><td><span class="tag-prediction">예측</span></td></tr>
 </tbody>
 </table>
 </div>
@@ -149,7 +149,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3 style="color:#3fb950; margin:0 0 10px">왜 이 카드가 고유예측인가</h3>
 <table style="width:100%; border-collapse:collapse">
 <tr><td style="padding:4px 8px; vertical-align:top; width:140px"><strong>도메인 변환</strong></td><td style="padding:4px 8px">본문 5단계 도메인 변환 참조</td></tr>
-<tr><td style="padding:4px 8px; vertical-align:top"><strong>숨은 값</strong></td><td style="padding:4px 8px"><a href="../axiom.html#ax1">공리 1</a>·5·10 min(4,3)=3 락 폭, 4-3=1=observer 자유. 구조적 forward chain</td></tr>
+<tr><td style="padding:4px 8px; vertical-align:top"><strong>숨은 값</strong></td><td style="padding:4px 8px"><a href="../axiom.html#ax1">공리 1</a>*5*10 min(4,3)=3 락 폭, 4-3=1=observer 자유. 구조적 forward chain</td></tr>
 <tr><td style="padding:4px 8px; vertical-align:top"><strong>검증 경로</strong></td><td style="padding:4px 8px">본문 5단계 검증 경로 참조</td></tr>
 <tr><td style="padding:4px 8px; vertical-align:top"><strong>매뉴얼 근거</strong></td><td style="padding:4px 8px"><a href="../science_mine.html">과학 채굴 매뉴얼 §2 4단계</a> (도메인 변환=채굴 본질) + <a href="../misconception.html#guide-m11">흔한 오해 11</a> (V=IR ==> h/e² 사례와 같은 빈 도메인 사영). 출발 도메인의 알려진 양과 도착 도메인의 도출 양이 다른 물리 영역에 있고, 도착값이 현재 측정 한계 너머인 고유예측이다.</td></tr>
 </table>

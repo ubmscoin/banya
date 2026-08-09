@@ -69,7 +69,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>기존 물리에서 붕괴는 공준으로 도입되지만, 반야에서는 observer의 bit 0 진입이라는 구체적 메커니즘이다.</p>
 <p>검증: observer bit 0 진입이 보른 확률 규칙 P=|⟨ψ|φ⟩|²을 재현하는지 확인해야 한다.</p>
 <p>잔여 과제: bit 0이 아닌 다른 비트에서 진입하는 observer가 가능한지, 가능하다면 다른 측정 기저에 해당하는지 확인해야 한다.</p>
-<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 분류되어 다음 라운드로 미진행한 채 멈춰 있다. 실험값과의 정량 비교가 부재하다. 비교할 표준 측정값(PDG/CODATA/실험 한계)이 인용되지 않았거나 차원·구조 일치까지만 확인되어 정밀도 산출이 미완. 도출 식은 존재하나 실험 측정값과의 정량 대조가 미완. 차원 정합과 구조 일치까지는 확립. 잔여 과제 명시: 잔여 과제: bit 0이 아닌 다른 비트에서 진입하는 observer가 가능한지, 가능하다면 다른 측정 기저에 해당하는지 확인해야 한다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 라이브러리의 인접 D/H 카드를 재귀 대입 라운드 입력으로 재투입, (3) <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax9">공리 9</a>, <a href="../axiom.html#ax11">공리 11</a> 명제 중 미적용 명제 추가 도입의 3가지가 표준.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 분류되어 다음 라운드로 미진행한 채 멈춰 있다. 실험값과의 정량 비교가 부재하다. 비교할 표준 측정값(PDG/CODATA/실험 한계)이 인용되지 않았거나 차원*구조 일치까지만 확인되어 정밀도 산출이 미완. 도출 식은 존재하나 실험 측정값과의 정량 대조가 미완. 차원 정합과 구조 일치까지는 확립. 잔여 과제 명시: 잔여 과제: bit 0이 아닌 다른 비트에서 진입하는 observer가 가능한지, 가능하다면 다른 측정 기저에 해당하는지 확인해야 한다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 라이브러리의 인접 D/H 카드를 재귀 대입 라운드 입력으로 재투입, (3) <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax4">공리 4</a>, <a href="../axiom.html#ax9">공리 9</a>, <a href="../axiom.html#ax11">공리 11</a> 명제 중 미적용 명제 추가 도입의 3가지가 표준.</p>
 </div>
 <h2>왜 이 판정인가</h2>
 <div class="verdict-hypothesis">
@@ -81,11 +81,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>관측 붕괴는 observer가 링버퍼에 진입할 때 CAS의 Read가 한 비트의 중첩을 확정시키는 비용이다. observer는 $\delta$ 루프 완주의 결과이며(<a href="../axiom.html#ax15">공리 15</a>), Compare 분기의 주체로서 true에서 쥐기·false에서 중첩 유지를 결정한다(<a href="../axiom.html#ax7">공리 7</a>). 진입이 어느 비트에서 시작하는지가 붕괴 순서를 정한다.</p>
+<p>관측 붕괴는 observer가 링버퍼에 진입할 때 CAS의 Read가 한 비트의 중첩을 확정시키는 비용이다. observer는 $\delta$ 루프 완주의 결과이며(<a href="../axiom.html#ax15">공리 15</a>), Compare 분기의 주체로서 true에서 쥐기*false에서 중첩 유지를 결정한다(<a href="../axiom.html#ax7">공리 7</a>). 진입이 어느 비트에서 시작하는지가 붕괴 순서를 정한다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 링버퍼 비트 인덱스 노름이다. (b) observer의 진입 위치가 붕괴 시작점을 정하고, 링버퍼 비트 순서가 observer·superposition·time·space로 고정되어(<a href="../axiom.html#ax15">공리 15</a>) observer가 최하위 비트를 점유하기 때문에 이 노름을 택한다. 따라서 진입점을 비트 인덱스로 치환한다. 왜 이 노름인가 — 붕괴 진입점 bit 0 자체가 링버퍼 진입 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>(a) 치환하는 노름은 링버퍼 비트 인덱스 노름이다. (b) observer의 진입 위치가 붕괴 시작점을 정하고, 링버퍼 비트 순서가 observer*superposition*time*space로 고정되어(<a href="../axiom.html#ax15">공리 15</a>) observer가 최하위 비트를 점유하기 때문에 이 노름을 택한다. 따라서 진입점을 비트 인덱스로 치환한다. 왜 이 노름인가 -- 붕괴 진입점 bit 0 자체가 링버퍼 진입 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$i_{\text{entry}} = \min\{\,i : \text{observer 점유 비트}\,\}$</div>
 <div class="math-row">$i_{\text{entry}} = 0 \quad (\text{LSB})$</div>
@@ -94,7 +94,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 붕괴 진입점 bit 0 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 붕괴 진입점 bit 0 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">bit 0 = observer <a href="../axiom.html#ax15">공리 15</a> 링버퍼 순서 (LSB)</div>
 <div class="math-row">bit 1 = superposition</div>
@@ -105,7 +105,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 양자 측정 기저 도메인으로 변환한다. (b) 보려는 것은 붕괴가 먼저 확정시키는 비트, 곧 측정이 가장 먼저 사영하는 자유도이다. 링버퍼 최하위 비트를 observer가 점유하므로 진입 인덱스는 0으로 떨어진다. 왜 이 도메인으로 변환하는가 — 붕괴 진입점 bit 0 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) 양자 측정 기저 도메인으로 변환한다. (b) 보려는 것은 붕괴가 먼저 확정시키는 비트, 곧 측정이 가장 먼저 사영하는 자유도이다. 링버퍼 최하위 비트를 observer가 점유하므로 진입 인덱스는 0으로 떨어진다. 왜 이 도메인으로 변환하는가 -- 붕괴 진입점 bit 0 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$i_{\text{entry}} = 0 \;\Rightarrow\; \text{Read}(\text{bit }0)\;\text{가 최초 사영}$</div>
 </div>
@@ -114,7 +114,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출값: $i_{\text{entry}} = 0$ (observer = LSB)</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
 <div class="math-row">측정값: 붕괴 진입점 직접 관측 수단 부재</div>
 <div class="math-row">상태: 보른 규칙 $P=|\langle\psi|\varphi\rangle|^2$ 재현 검증 대기</div>
 </div>

@@ -14,7 +14,7 @@
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>H-844 Transistor = Current Gating by CAS Compare — Banya Framework Mining</title>
+<title>H-844 Transistor = Current Gating by CAS Compare -- Banya Framework Mining</title>
 <meta content="Han Hyukjin" name="author"/>
 <meta content="H-844 Transistor = Current Gating by CAS Compare. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
 <meta content="index, follow" name="robots"/>
@@ -58,7 +58,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h844.html">H-844</a>. Transistor = Current Gating by CAS Compare</h1><div class="box-finding">
 <h3>Core Finding</h3>
 <p><strong><a href="h844.html">H-844</a>: Transistor = Current Gating by CAS Compare</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$I_{DS} = \mu C_{ox}\frac{W}{L}\left[(V_{GS}-V_{th})V_{DS} - \frac{V_{DS}^2}{2}\right] \;\;\text{(CAS Compare → gate control)}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$I_{DS} = \mu C_{ox}\frac{W}{L}\left[(V_{GS}-V_{th})V_{DS} - \frac{V_{DS}^2}{2}\right] \;\;\text{(CAS Compare ==> gate control)}$$</div></div>
 <p class="finding-precision">Grade: B</p>
 <p>A transistor is a three-terminal switch in which CAS Compare, driven by the gate voltage, either permits or blocks the Swap between source and drain. Gate = the external control input to CAS Compare. Source-drain = the Swap path.</p>
 <p><a href="../axiom.html#ax5">Axiom 5</a> (CAS Compare = gate verdict), <a href="../axiom.html#ax3">Axiom 3</a> (FSM norm), <a href="../axiom.html#ax7">Axiom 7</a> (cost = current)</p>
@@ -86,7 +86,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>
-<p>The norm being substituted is the CAS Compare cost norm. In the subthreshold region the channel occupancy follows a Boltzmann distribution in gate voltage, and that distribution closes into the thermal energy $k_BT$ of <a href="../axiom.html#ax4">Axiom 4</a> (cost), so this norm is chosen. It is substituted by the gate voltage needed to raise the current by one decade — the subthreshold slope. Why this norm: the MOSFET Subthreshold Slope itself originates from CAS Compare Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
+<p>The norm being substituted is the CAS Compare cost norm. In the subthreshold region the channel occupancy follows a Boltzmann distribution in gate voltage, and that distribution closes into the thermal energy $k_BT$ of <a href="../axiom.html#ax4">Axiom 4</a> (cost), so this norm is chosen. It is substituted by the gate voltage needed to raise the current by one decade -- the subthreshold slope. Why this norm: the MOSFET Subthreshold Slope itself originates from CAS Compare Cost, so only a norm that carries that very cost structure maps onto it without slack. Why the substitution is valid: the standard physics form on the left and the Banya form on the right denote the same quantity, the latter merely rewriting it in CAS cost terms.</p>
 <div class="math-block">
 <div class="math-row">$I_{DS} \propto e^{q V_{GS}/k_B T}$</div>
 <div class="math-row">$SS = \dfrac{k_B T}{q}\ln 10$</div>
@@ -104,7 +104,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>Step 4. Domain Transformation</h3>
-<p>The transformation is into the MOSFET transfer-characteristic domain (current per gate voltage). What it reveals is the minimum gate-voltage resolution at which the CAS Compare separates ON from OFF — the subthreshold slope. Multiplying the thermal voltage by $\ln 10$ yields that value. Why this domain: the MOSFET Subthreshold Slope itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
+<p>The transformation is into the MOSFET transfer-characteristic domain (current per gate voltage). What it reveals is the minimum gate-voltage resolution at which the CAS Compare separates ON from OFF -- the subthreshold slope. Multiplying the thermal voltage by $\ln 10$ yields that value. Why this domain: the MOSFET Subthreshold Slope itself is the observable measured in this domain, so the cost structure must be projected here to be compared directly with experiment. Why the transformation closes the derivation: the constants substituted above fully numericalize the right-hand side, so the observable is fixed with no external input.</p>
 <div class="math-block">
 <div class="math-row">$SS = 0.02585 \times 2.302585 = 0.0595\;\text{V/decade} = 59.5\;\text{mV/decade}$</div>
 </div>

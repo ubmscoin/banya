@@ -63,8 +63,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>ℏ (h-bar) = the minimum TOCTOU lock cost between Compare and Swap in CAS. Identical in structure to the TOCTOU (Time-Of-Check to Time-Of-Use) problem of computer science.</p>
 <p>In δ² = (t+s)² + (o+sp)², there is a gap between Compare (state verdict, cost +1) and Swap (determined, cost +1). If DATA changes during this gap, CAS atomicity (<a href="../axiom.html#ax14">Axiom 14</a>) is broken. The minimum cost that prevents this is ℏ.</p>
 <p><a href="../axiom.html#ax5">Axiom 5</a> (TOCTOU lock register) ==&gt; <a href="../axiom.html#ax4">Axiom 4</a> (cost) ==&gt; <a href="../axiom.html#ax14">Axiom 14</a> (FSM). The Compare-Swap lock is mandatory to guarantee FSM atomicity. Lock cost = 0 leads to TOCTOU vulnerability: the state at the Compare moment can differ from the state at the Swap moment. The minimum cost must be greater than 0, and that minimum is ℏ/2.</p>
-<p>Comparing position precisely (small Δx) spends much of the lock cost on the position side. The lock cost on the momentum side then shrinks (Δp grows). Δx·Δp ≥ ℏ/2 is the conservation law of the total lock cost. The energy-time uncertainty ΔE·Δt ≥ ℏ/2 has the identical structure: the Compare-Swap energy lock.</p>
-<p>ℏ = 1.054571817 × 10⁻³⁴ J·s. This value itself is unit-system dependent, so what matters is the fact that ℏ &gt; 0. If ℏ = 0, CAS atomicity is broken and the entire framework loses consistency.</p>
+<p>Comparing position precisely (small Δx) spends much of the lock cost on the position side. The lock cost on the momentum side then shrinks (Δp grows). Δx*Δp ≥ ℏ/2 is the conservation law of the total lock cost. The energy-time uncertainty ΔE*Δt ≥ ℏ/2 has the identical structure: the Compare-Swap energy lock.</p>
+<p>ℏ = 1.054571817 × 10⁻³⁴ J*s. This value itself is unit-system dependent, so what matters is the fact that ℏ &gt; 0. If ℏ = 0, CAS atomicity is broken and the entire framework loses consistency.</p>
 <p>The uncertainty principle is confirmed in every quantum experiment. Double-slit, Stern-Gerlach, quantum tunneling, etc. all follow from ℏ &gt; 0.</p>
 <p>In quantum mechanics the uncertainty principle is a physical starting point. There is no explanation for "why ℏ &gt; 0". In the Banya Framework there is a structural reason: it is the TOCTOU lock cost required to guarantee CAS atomicity (FSM).</p>
 <p>In the Copenhagen interpretation uncertainty is "a fundamental limit of nature". In the Banya Framework it is "the cost of an operation". The viewpoint differs: not a limit but a cost. As a cost, it is natural.</p>
@@ -99,7 +99,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>This step substitutes concrete constant values for the symbols of the Banya relation above. Every value inserted is already fixed by a prior D/H/P card or axiom, not set anew in this card. Why these constants: they are exactly the inputs needed to evaluate h-bar = TOCTOU lock cost numerically, with no hand-tuned free parameter beyond them. Each value comes from measurement or a prior derivation, which keeps the derivation objective and free of circular reasoning. The table below lists each constant with its value and source (card or axiom).</p>
 <div class="math-block">
 <div class="math-row">hbar = $1.054571817\times10^{-34}$ $J{\cdot}s$ CODATA 2018</div>
-<div class="math-row">hbar > 0 atomicity condition (= 0 $\to$ TOCTOU vulnerable)</div>
+<div class="math-row">hbar > 0 atomicity condition (= 0 $\text{==>}$ TOCTOU vulnerable)</div>
 <div class="math-row">Planck units hbar = 1 unit-choice dependent</div>
 </div>
 </div>
@@ -115,14 +115,14 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-block">
 <div class="math-row">Derived: $\hbar &gt; 0$ = minimum Compare-Swap lock cost (atomicity necessity)</div>
 <p>This step compares the derived value against measurement to reach a verdict. The degree of agreement between the derived and measured values is the direct basis for that verdict. Why this verdict: discovery, hypothesis, or prediction is decided by whether the forward chain closes from axioms and real-card inputs alone and whether the error falls within the promotion threshold. The derivation is obtained forward from the CAS cost structure, not fitted to the standard theory after the fact. The verdict is revisited as measurement precision improves or as later cards are re-injected.</p>
-<div class="math-row">Measured: $\hbar = 1.054571817\times10^{-34}$ J·s (CODATA 2018)</div>
+<div class="math-row">Measured: $\hbar = 1.054571817\times10^{-34}$ J*s (CODATA 2018)</div>
 <div class="math-row">Agreement: dimensional/structural (absolute value not yet derived)</div>
 </div>
 <p>Verdict: <strong>Hypothesis</strong>. The structure in which uncertainty is a computational cost rather than a limit explains the necessity of $\hbar&gt;0$, but the formula deriving the absolute value $1.054\times10^{-34}$ from the CAS cost is not yet written.</p>
 </div>
 <div class="box-byproduct">
 <h3>Byproducts</h3>
-<p>Re-injection path: —</p>
+<p>Re-injection path: --</p>
 </div>
 
 <div class="box-incomplete">

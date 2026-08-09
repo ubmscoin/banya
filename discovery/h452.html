@@ -58,7 +58,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h1><a href="h452.html">H-452</a>. 양자 소거 = Swap 이전 Compare 결과 폐기</h1><div class="box-finding">
 <h3>핵심 발견</h3>
 <p><strong><a href="h452.html">H-452</a>: 양자 소거 = Swap 이전 Compare 결과 폐기</strong></p>
-<div class="formula-wrap"><div class="formula-box">$$\text{which-path info erased} \;\Longleftrightarrow\; \text{Compare result discarded before Swap} \;\Rightarrow\; \text{interference restored}$$</div></div>
+<div class="formula-wrap"><div class="formula-box">$$\text{which-path info erased} \;\text{<==>}\; \text{Compare result discarded before Swap} \;\text{==>}\; \text{interference restored}$$</div></div>
 <p class="finding-precision">등급: B</p>
 <p>이중슬릿에서 경로 정보 표지(Compare 결과)가 기록되면 간섭 소멸(<a href="h447.html">H-447</a>: Swap 실행 ==&gt; 경로 확정). 그러나 이 표지를 Swap 이전에 폐기(= Compare 결과를 d-ring에서 축출)하면, 시스템은 Compare false 상태로 복귀하여 중첩이 유지된다. 간섭 무늬 복원. CAS 관점: Compare 결과가 Swap으로 이어지지 않으면, DATA는 변경되지 않으므로 중첩 인덱스(<a href="../axiom.html#ax13">공리 13</a>)가 그대로 존재.</p>
 <p><a href="../axiom.html#ax7">공리 7</a>(Compare==&gt;Swap 사이 간격), <a href="../axiom.html#ax13">공리 13</a>(중첩 인덱스 존속)</p>
@@ -82,11 +82,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>양자 소거는 경로 표지(Compare 결과)를 S 단계 이전에 폐기해 DATA를 불변으로 두는 비용이다. CAS의 R·C·S 파이프라인(<a href="../axiom.html#ax2">공리 2</a>)에서 C 결과가 S로 이어지지 않으면 중첩 인덱스(<a href="../axiom.html#ax13">공리 13</a>)가 존속하므로, 반야식의 superposition 항이 유지되는 비용으로 이를 읽는다.</p>
+<p>양자 소거는 경로 표지(Compare 결과)를 S 단계 이전에 폐기해 DATA를 불변으로 두는 비용이다. CAS의 R*C*S 파이프라인(<a href="../axiom.html#ax2">공리 2</a>)에서 C 결과가 S로 이어지지 않으면 중첩 인덱스(<a href="../axiom.html#ax13">공리 13</a>)가 존속하므로, 반야식의 superposition 항이 유지되는 비용으로 이를 읽는다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>(a) 치환하는 노름은 Compare 결과 폐기 노름, 곧 중첩 인덱스 존속 노름이다(<a href="../axiom.html#ax13">공리 13</a>). (b) 이 노름을 택하는 이유: 간섭 무늬의 유무는 경로 정보가 d-ring에 남느냐로만 결정되고, Swap 이전 폐기는 Compare false 상태로의 복귀(<a href="../axiom.html#ax7">공리 7</a>)와 동치이기 때문이다. 따라서 간섭 가시도 $V$를 경로 정보 잔존량 $\mathcal{D}$의 여집합으로 치환한다. 왜 이 노름인가 — 간섭 가시도 복원 자체가 Swap 이전 Compare 결과 폐기 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 — 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>(a) 치환하는 노름은 Compare 결과 폐기 노름, 곧 중첩 인덱스 존속 노름이다(<a href="../axiom.html#ax13">공리 13</a>). (b) 이 노름을 택하는 이유: 간섭 무늬의 유무는 경로 정보가 d-ring에 남느냐로만 결정되고, Swap 이전 폐기는 Compare false 상태로의 복귀(<a href="../axiom.html#ax7">공리 7</a>)와 동치이기 때문이다. 따라서 간섭 가시도 $V$를 경로 정보 잔존량 $\mathcal{D}$의 여집합으로 치환한다. 왜 이 노름인가 -- 간섭 가시도 복원 자체가 Swap 이전 Compare 결과 폐기 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$V^2 + \mathcal{D}^2 = 1$</div>
 <div class="math-row">$V = \sqrt{1-\mathcal{D}^2}$</div>
@@ -95,7 +95,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>3단계. 상수 대입</h3>
-<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 — 간섭 가시도 복원 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드·공리)를 정리한다.</p>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 간섭 가시도 복원 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드*공리)를 정리한다.</p>
 <div class="math-block">
 <div class="math-row">D = 1 표지 기록 (Swap 실행, 경로 확정) <a href="h447.html">H-447</a></div>
 <div class="math-row">D = 0 Swap 이전 Compare 결과 폐기 (소거)</div>
@@ -103,17 +103,17 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 이중슬릿 간섭 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 Compare 결과 폐기 시 가시도가 복원되는가다. 표지가 기록되면 $\mathcal{D}=1$이라 $V=0$(무늬 소멸), Swap 이전 폐기하면 $\mathcal{D}=0$이라 $V=1$(무늬 복원). 왜 이 도메인으로 변환하는가 — 간섭 가시도 복원 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 — 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) 이중슬릿 간섭 도메인으로 변환한다. (b) 이 변환으로 보려는 것은 Compare 결과 폐기 시 가시도가 복원되는가다. 표지가 기록되면 $\mathcal{D}=1$이라 $V=0$(무늬 소멸), Swap 이전 폐기하면 $\mathcal{D}=0$이라 $V=1$(무늬 복원). 왜 이 도메인으로 변환하는가 -- 간섭 가시도 복원 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
-<div class="math-row">$\mathcal{D}=1 \Rightarrow V=0, \qquad \mathcal{D}=0 \Rightarrow V=1$</div>
+<div class="math-row">$\mathcal{D}=1 \text{==>} V=0, \qquad \mathcal{D}=0 \text{==>} V=1$</div>
 </div>
 </div>
 <div class="step">
 <h3>5단계. 발견</h3>
 <div class="math-block">
 <div class="math-row">도출: 소거 경로 $V=1$, 비소거 경로 $V=0$</div>
-<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 — forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견·가설·예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
-<div class="math-row">측정값: Kim 2000 지연 선택 양자 소거 — 소거 부분집합에서 무늬 복원</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견*가설*예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<div class="math-row">측정값: Kim 2000 지연 선택 양자 소거 -- 소거 부분집합에서 무늬 복원</div>
 </div>
 <p>판정: <strong>가설</strong>. 가시도 상보 관계 $V^2+\mathcal{D}^2=1$이 폐기 노름에서 닫혔으나, 부분 소거($0&lt;\mathcal{D}&lt;1$)의 CAS 비용 정량 모델이 아직 미완이다. 소거는 과거를 지우는 것이 아니라 Swap을 실행하지 않는 것이다.</p>
 </div>
