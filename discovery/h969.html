@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-969 윅 회전 = 단위원 pi/2 반횡단 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-969 윅 회전 = 단위원 pi/2 반횡단. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h969.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>h_structure</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h969.html">H-969</a>. 윅 회전 $t\to-i\tau$ = 단위원 $\pi/2$ 반횡단</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h969.html">H-969</a>: 윅 회전 $t\to-i\tau$ = 단위원 $\pi/2$ 반횡단</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$t\to-i\tau,\quad -i=e^{-i\pi/2},\quad \pi/2=\text{반횡단}$$</div></div>
+<p class="finding-precision">구조 가설 -- 축의 괄호 소속 이동, 유클리드 (+,+,+,+) = 공값 4 동부호 = 비용 0 구간</p>
+<p>윅 회전 $t\to-i\tau$는 물리학자들이 계산 트릭이라 부르며 써 온 조작이다. 반야 단위원 형식(<a href="../axiom.html#ax1">공리 1</a> 명제: $\delta=e^{i\theta}=\cos\theta+i\sin\theta$, DATA $=\cos\theta$ 실수부, $i\cdot$OPERATOR $=i\sin\theta$ 허수부)에 올리면 트릭이 아니라 주소 이동이다. $i$를 곱한다는 것은 그 축을 OPERATOR 괄호로 보낸다는 뜻이다.</p>
+<p>$\theta$를 0에서 $\pi/2$로 돌리면 DATA $=\cos(\pi/2)=0$, OPERATOR $=\sin(\pi/2)=1$ -- 서술이 순수 OPERATOR 괄호로 넘어가 유클리드 구간이 된다. 공리 명제는 $+1$회 횡단 $=\pi$ 회전만 정의하므로 윅 회전 $\pi/2$는 횡단의 절반, 곧 진입만 하고 DATA 기록으로 나오지 않은 상태로 읽힌다. 유클리드 계량 $(+,+,+,+)$는 공값 4($=1$ time $+3$ space, <a href="../axiom.html#ax9">공리 9</a> 비용 자유도 4)가 전부 같은 부호 $=$ 순서 없음 $=$ 비용 0 구간, 로렌츠 $(-,+,+,+)$ 복귀는 time이 실축으로 돌아와 부호가 갈림 $=$ 순서 발생 $=$ 비용 시작(<a href="../axiom.html#ax4">공리 4</a>)이다.</p>
+<p><strong>재대입 용도:</strong> 재대입 용도: <a href="h967.html">H-967</a>, <a href="h968.html">H-968</a>의 부호 문제를 반횡단 2회 = 완결 횡단 $\pi$ = 위상 반전으로 닫는 입력. <a href="../axiom.html#ax1">공리 1</a> 단위원 명제의 후속 명제 후보.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 다음 라운드로 미진행한 채 멈춰 있다. pi/2 반횡단의 공리적 지위 확립이 필요하고, 유클리드에서 로렌츠로의 전환점(터널링 순간)의 FSM 상태 지정이 미완이다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 인접 D/H 카드의 재귀 대입 재투입, (3) 미적용 공리 명제 추가 도입의 3가지가 표준이다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (구조 대응, pi/2 반횡단 공리 지위 미확립)</p>
+<p><strong>이유:</strong> i 곱 = OPERATOR 괄호 이동 정확 대응 / 유클리드 = 공값 4 동부호 = 비용 0 / pi/2 반횡단의 공리적 지위 미확립</p>
+<p><strong>위치:</strong> 카테고리: h structure. 도메인: delta ==> 반야식 자체 구조. 재귀 대입 경로: <a href="d157.html">D-157</a>, <a href="d144.html">D-144</a></p>
+</div>
+<h2>5단계 재귀 대입: 단위원 회전에서 윅 회전 위치 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>윅 회전은 괄호 경계 그 자체의 조작이다. time 축이 DATA 괄호에서 OPERATOR 괄호로 소속을 옮긴다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 단위원 형식(<a href="../axiom.html#ax1">공리 1</a> 명제)의 회전 노름이다. i 곱은 축을 OPERATOR 괄호로 보내는 90도 회전이다. 왜 이 노름인가 -- 윅 회전 = 단위원 pi/2 반횡단 자체가 이 비용 구조에서 비롯하므로, 그 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응된다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이다.</p>
+<div class="math-block">
+<div class="math-row">$t\to-i\tau$, $-i=e^{-i\pi/2}$</div>
+<div class="math-row">$\theta=\pi/2$: DATA=0, OPERATOR=1 (순수 OPERATOR = 유클리드)</div>
+<div class="math-legend">$\pi$: +1회 횡단(공리 4) | 2: 괄호 2(공리 1) | pi/2: 반횡단 = 진입만</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다.</p>
+<div class="math-block">
+<div class="math-row">pi = +1회 횡단 호 공리 4 명제</div>
+<div class="math-row">2 = 괄호 2 공리 1</div>
+<div class="math-row">유클리드 (+,+,+,+) = 공값 4 동부호 = 비용 0</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>대상 물리 도메인으로 변환한다. 이 변환으로 보려는 것은 관측/문헌값과 직접 견줄 수 있는 도출값이다. 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 값이 결정된다.</p>
+<div class="math-block">
+<div class="math-row">유클리드->로렌츠 복귀 pi/2 = time 실축 복귀 = 비용 시작</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">위치: pi/2 반횡단, 축의 괄호 소속 이동</div>
+<div class="math-row">문헌: 윅 회전 표준 조작, 유클리드 (+,+,+,+)</div>
+<div class="math-row">정합: 구조 재현 (오차% 부적용)</div>
+</div>
+<p>판정: <strong>가설. i 곱이 OPERATOR 이동으로 정확히 대응하나 pi/2 반횡단의 공리적 지위가 미확립이다.</strong></p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="h967.html">H-967</a>, <a href="h968.html">H-968</a>, <a href="d157.html">D-157</a>, <a href="d144.html">D-144</a></p>
+</div>
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>pi/2 반횡단 지위</td><td>공리 명제는 pi만 정의</td><td>후속 명제 추가</td></tr>
+<tr><td>전환점 FSM 상태</td><td>터널링 순간 000->001?</td><td>FSM 상태 지정</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="h969.html">H-969</a>: 윅 회전 = 단위원 pi/2 반횡단</td><td>구조 가설 (pi/2 반횡단 = 괄호 소속 이동)</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-969 Wick rotation = unit-circle pi/2 half-crossing -- Banya Framework Mining</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-969 Wick rotation = unit-circle pi/2 half-crossing. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../common.css" rel="stylesheet"/>
+<link href="../../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../../discovery/h969.html">KR</a></div>
+<main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>h_structure</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
+<h1><a href="h969.html">H-969</a>. Wick Rotation $t\to-i\tau$ = Unit-Circle $\pi/2$ Half-Crossing</h1><div class="box-finding">
+<h3>Core Finding</h3>
+<p><strong><a href="h969.html">H-969</a>: Wick Rotation $t\to-i\tau$ = Unit-Circle $\pi/2$ Half-Crossing</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$t\to-i\tau,\quad -i=e^{-i\pi/2},\quad \pi/2=\text{half-crossing}$$</div></div>
+<p class="finding-precision">Structural hypothesis -- axis changes bracket membership, Euclidean (+,+,+,+) = ball-value 4 same-sign = cost-0 interval</p>
+<p>The Wick rotation $t\to-i\tau$ is an operation physicists have used calling it a computational trick. Placed on the Banya unit-circle form (<a href="../axiom.html#ax1">Axiom 1</a> proposition: $\delta=e^{i\theta}=\cos\theta+i\sin\theta$, DATA $=\cos\theta$ real part, $i\cdot$OPERATOR $=i\sin\theta$ imaginary part), it is not a trick but an address change. Multiplying by $i$ means sending that axis into the OPERATOR bracket.</p>
+<p>Turning $\theta$ from 0 to $\pi/2$ gives DATA $=\cos(\pi/2)=0$, OPERATOR $=\sin(\pi/2)=1$ -- the description crosses to the pure OPERATOR bracket, the Euclidean interval. The axiom proposition defines only $+1$ crossing $=\pi$ rotation, so the Wick rotation $\pi/2$ reads as half a crossing: entered but not exited into a DATA record. The Euclidean metric $(+,+,+,+)$ is ball-value 4 ($=1$ time $+3$ space, <a href="../axiom.html#ax9">Axiom 9</a> cost DOF 4) all same-sign $=$ no order $=$ cost-0 interval; the Lorentzian $(-,+,+,+)$ return has time back as a real axis, sign splits $=$ order arises $=$ cost begins (<a href="../axiom.html#ax4">Axiom 4</a>).</p>
+<p><strong>Re-substitution purpose:</strong> input to close the sign problem of <a href="h967.html">H-967</a>, <a href="h968.html">H-968</a> as two half-crossings = one full crossing $\pi$ = phase reversal. Candidate successor proposition to the <a href="../axiom.html#ax1">Axiom 1</a> unit-circle proposition.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>Why it stopped at hypothesis:</strong> This card is a hypothesis (class III) halted before the next round. The axiom status of the pi/2 half-crossing must be established, and the FSM-state assignment of the Euclidean-to-Lorentzian transition (the tunneling instant) is incomplete. The standard D-promotion paths are (1) resolving the remaining task above, (2) re-injecting adjacent D/H cards, (3) introducing an unused axiom proposition.</p>
+</div>
+<h2>Why This Verdict</h2>
+<div class="verdict-hypothesis">
+<p><strong>Verdict: Hypothesis</strong> -- Hypothesis (structural correspondence, pi/2 half-crossing axiom status unestablished)</p>
+<p><strong>Reason:</strong> i-multiply = OPERATOR bracket move exact correspondence / Euclidean = ball-value 4 same-sign = cost 0 / axiom status of pi/2 half-crossing unestablished</p>
+<p><strong>Location:</strong> Category: h structure. Domain: delta ==> Banya-formula structure. Recursive path: <a href="d157.html">D-157</a>, <a href="d144.html">D-144</a></p>
+</div>
+<h2>5-Step Recursive Substitution: Locating the Wick Rotation in Unit-Circle Rotation</h2>
+<div class="step">
+<h3>Step 1. Banya Formula</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>The Wick rotation is an operation on the bracket boundary itself. The time axis moves membership from the DATA bracket to the OPERATOR bracket.</p>
+</div>
+<div class="step">
+<h3>Step 2. Norm Substitution</h3>
+<p>The norm substituted is the rotation norm of the unit-circle form (<a href="../axiom.html#ax1">Axiom 1</a> proposition). Multiplying by i is a 90-degree rotation sending the axis into the OPERATOR bracket. Why this norm: Wick rotation = unit-circle pi/2 half-crossing itself originates from this cost structure, so only a norm carrying that structure maps onto it without slack. Why valid: the standard form on the left and the Banya form on the right denote the same quantity rewritten in CAS cost terms.</p>
+<div class="math-block">
+<div class="math-row">$t\to-i\tau$, $-i=e^{-i\pi/2}$</div>
+<div class="math-row">$\theta=\pi/2$: DATA=0, OPERATOR=1 (pure OPERATOR = Euclidean)</div>
+<div class="math-legend">$\pi$: +1 crossing (Axiom 4) | 2: brackets 2 (Axiom 1) | pi/2: half-crossing = entry only</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 3. Constant Substitution</h3>
+<p>This step substitutes concrete values for the symbols above. Every value is already fixed by a prior card or axiom, not set anew here, so the derivation stays objective and free of circular reasoning.</p>
+<div class="math-block">
+<div class="math-row">pi = +1 crossing arc Axiom 4 proposition</div>
+<div class="math-row">2 = brackets 2 Axiom 1</div>
+<div class="math-row">Euclidean (+,+,+,+) = ball-value 4 same-sign = cost 0</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 4. Domain Transformation</h3>
+<p>The transformation is into the target physics domain. What it reveals is a derived value comparable directly with measurement or the literature. The constants above fully numericalize the right-hand side, fixing the value with no external input.</p>
+<div class="math-block">
+<div class="math-row">Euclidean->Lorentzian return pi/2 = time back to real axis = cost begins</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 5. Discovery</h3>
+<div class="math-block">
+<div class="math-row">Location: pi/2 half-crossing, axis bracket-membership move</div>
+<div class="math-row">Literature: standard Wick rotation, Euclidean (+,+,+,+)</div>
+<div class="math-row">Match: structural reproduction (error% not applicable)</div>
+</div>
+<p>Verdict: <strong>Hypothesis. The i-multiply corresponds exactly to the OPERATOR move, but the axiom status of the pi/2 half-crossing is unestablished.</strong></p>
+</div>
+<div class="box-byproduct">
+<h3>Byproducts</h3>
+<p>Re-injection path: <a href="h967.html">H-967</a>, <a href="h968.html">H-968</a>, <a href="d157.html">D-157</a>, <a href="d144.html">D-144</a></p>
+</div>
+<div class="box-incomplete">
+<h3>Incomplete</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Current State</th><th>Solution Direction</th></tr></thead>
+<tbody>
+<tr><td>pi/2 half-crossing status</td><td>axiom proposition defines only pi</td><td>add successor proposition</td></tr>
+<tr><td>transition FSM state</td><td>000->001 at tunneling instant?</td><td>assign FSM state</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>Summary</h3>
+<table class="tbl">
+<thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="h969.html">H-969</a>: Wick rotation = unit-circle pi/2 half-crossing</td><td>Structural hypothesis (pi/2 half-crossing = bracket membership move)</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<div class="page-nav lang-en">
+<a href="../banya.html">Report</a>
+<a href="../predictions.html">Predictions</a>
+<a href="../lib.html">Hypothesis Library</a>
+<a href="../science_mine.html">Science Mining Manual</a>
+<a href="../axiom.html">Axioms</a>
+</div>
+<footer class="doc-footer lang-en">
+<div class="f-top">
+<div class="f-corp">
+<b>Banya Framework (般若)</b><br/>
+Inventor: Han Hyukjin<br/>
+Email: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+Alias: Buddha's Palm Framework<br/>
+Classification: Axiom-Based Science Mining Engine
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

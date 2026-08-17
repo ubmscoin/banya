@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-632 재수축 우주 화살 비반전 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-632 재수축 우주 화살 비반전. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p632.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p632.html">P-632</a>. 재수축 우주에서도 열역학적 시간의 화살은 반전하지 않는다</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p632.html">P-632</a>: 재수축 우주에서도 열역학적 시간의 화살은 반전하지 않는다</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\text{화살} = T_{sys}\ \text{걸림} \Rightarrow \text{재수축 시에도 비반전}$$</div></div>
+<p class="finding-precision">예측 -- 화살이 a가 아니라 T_sys(CAS 틱)에 걸려 있어 재수축 우주에서 반전 없음. Kiefer-Zeh와 반대 예측</p>
+<p>Kiefer-Zeh(1995)는 열역학적 시간의 화살을 스케일 인자 $a$의 함수로 걸어, 우주가 재수축하면 화살이 반전한다고 주장한다. 반야는 반대를 예측한다.</p>
+<p>반야의 화살은 RLU 퇴거 방향(<a href="../axiom.html#ax12">공리 12</a> 인과율 명제)이고, RLU 퇴거는 $a$가 아니라 시스템 시간 $T_{sys}$(CAS 틱 누적)에 걸려 있다. CAS 틱은 쓰기 비가역(<a href="../axiom.html#ax14">공리 14</a>)이므로 되돌릴 수 없다(<a href="h982.html">H-982</a>, <a href="h11.html">H-11</a>). 우주가 재수축(부피 감소)해도 $T_{sys}$는 단조 증가하므로 화살은 반전하지 않는다. 저엔트로피 초기조건이 $T_{sys}{=}1$ 캐시 공백에서 공짜로 나오는 것(<a href="d145.html">D-145</a>)과 같은 구조다.</p>
+<p>이것이 반증 조건이다. 재수축 국면(또는 그 모형 실험/시뮬레이션)에서 열역학 화살의 반전이 확인되면 반야가 틀리고 Kiefer-Zeh가 맞다. 같은 현상에 반대 예측을 내는 깨끗한 갈림점이다.</p>
+<p><strong>재대입 용도:</strong> 재대입 용도: <a href="h982.html">H-982</a>(열역학 화살) 본체의 예측 갈래. <a href="d135.html">D-135</a>(우주 나이)/<a href="d144.html">D-144</a>(인플레이션) 체인에 화살 비반전 경계조건 입력.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 예측은 화살이 RLU 퇴거의 T_sys 걸림이라는 forward chain에서 나온 반증가능 예측이다. 판별 검증은 재수축 국면(또는 그 모형 실험/시뮬레이션)에서 이뤄진다. 화살 반전이 확인되면 반야 폐기 + Kiefer-Zeh 승, 비반전이 확인되면 D 승격. 반증 조건: 재수축(또는 빅 크런치 접근) 국면에서 열역학 화살의 반전 관측.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 화살 = T_sys 걸림(공리 12, 14) / CAS 틱 비가역 = 재수축 비반전 / Kiefer-Zeh a 함수와 반대 예측 / 재수축 관측 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: delta ==> RLU 퇴거 방향(시간의 화살). 재귀 대입 경로: <a href="h982.html">H-982</a>, <a href="d145.html">D-145</a>, <a href="h11.html">H-11</a></p>
+</div>
+<h2>5단계 재귀 대입: RLU 퇴거의 T_sys 걸림에서 화살 비반전 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>시간의 화살은 RLU 퇴거 방향이다. 퇴거는 스케일 인자 a가 아니라 CAS 틱 누적 T_sys에 걸려 있다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 RLU 퇴거 T_sys 노름이다. CAS 틱이 쓰기 비가역이라 재수축(부피 감소)에도 T_sys 단조 증가로 화살이 유지된다. 왜 이 노름인가 -- 재수축 우주 화살 비반전 자체가 이 비용 구조에서 비롯하므로, 그 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응된다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이다.</p>
+<div class="math-block">
+<div class="math-row">화살 = RLU 퇴거 방향 = $T_{sys}$ 단조 증가</div>
+<div class="math-row">재수축(부피 감소) 시에도 $T_{sys}$ 증가 ==> 화살 비반전</div>
+<div class="math-legend">RLU 퇴거(공리 12) | T_sys 걸림(a 아님) | CAS 틱 쓰기 비가역(공리 14) | 저엔트로피 = T_sys=1 공백(D-145)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다.</p>
+<div class="math-block">
+<div class="math-row">화살 = RLU 퇴거 공리 12 인과율 명제</div>
+<div class="math-row">CAS 틱 쓰기 비가역 공리 14, H-11</div>
+<div class="math-row">Kiefer-Zeh 1995 PRD 51(8) a 함수 화살 (재수축 반전 주장)</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>대상 물리 도메인으로 변환한다. 이 변환으로 보려는 것은 관측/문헌값과 직접 견줄 수 있는 도출값이다. 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 값이 결정된다.</p>
+<div class="math-block">
+<div class="math-row">재수축 우주 ==> T_sys 단조 증가 ==> 화살 비반전 (Kiefer-Zeh와 반대)</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">예측: 재수축 우주에서 화살 비반전</div>
+<div class="math-row">Kiefer-Zeh: a 함수 화살 = 재수축 반전</div>
+<div class="math-row">갈림: 반야 T_sys 걸림 = 비반전, 재수축 관측이 판별</div>
+</div>
+<p>판정: <strong>예측. 화살이 T_sys에 걸려 재수축 우주에서도 반전하지 않는다는 반증가능 예측이다. 재수축 국면 관측/시뮬레이션에서 화살 반전이 확인되면 폐기, 비반전이 확인되면 승격.</strong></p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="h982.html">H-982</a>, <a href="d135.html">D-135</a>, <a href="d144.html">D-144</a>, <a href="h11.html">H-11</a></p>
+</div>
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>재수축 화살 검증</td><td>이론값 산출</td><td>재수축 우주 시뮬레이션/관측 대기</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p632.html">P-632</a>: 재수축 우주 화살 비반전</td><td>예측 (재수축 우주 화살 비반전)</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

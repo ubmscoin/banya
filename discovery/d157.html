@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>D-157 휠러-드윗 방정식 = delta=0 미발화 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="D-157 휠러-드윗 방정식 = delta=0 미발화. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/d157.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>d_cosmology</code> | 판정: <span class="tag-discovery">발견</span></p>
+<h1><a href="d157.html">D-157</a>. 휠러-드윗 방정식은 $\delta=0$ 미발화 상태다</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="d157.html">D-157</a>: 휠러-드윗 방정식은 $\delta=0$ 미발화 상태다</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\hat H\,\Psi[h_{ij}]=0 \quad\Longleftrightarrow\quad \delta=0$$</div></div>
+<p class="finding-precision">위치 적중 -- 도메인 4비트 1010, 드윗 계량 시그니처 (5,1) = 반야 (5,2)에서 observer 1축 결손. 빈 축 2개 = 학계 우회로 2개</p>
+<p>양자중력의 휠러-드윗 방정식 $\hat H\Psi=0$은 시간이 사라진 방정식으로 60년간 시간 문제(problem of time)의 정체로 거주해 왔다. 반야프레임에 겹치면 위치가 확정된다. 파동함수 $\Psi[h_{ij}]$는 모든 상태가 공존하는 중첩이므로 superposition 축, 3차원 계량 $h_{ij}$는 스크린에 기록된 계량이므로 space 축, 소거된 좌표시간 $t$는 time 축의 부재, 관측자는 등장하지 않으므로 observer 축의 부재다. 도메인 4비트 판독은 observer=0, superposition=1, time=0, space=1, 즉 <strong>1010</strong> 괄호 교차 슬라이스로 확정된다(<a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax3">공리 3</a>).</p><p>드윗 계량 $G_{ijkl}$은 계량 6성분 위에 정의되고 각 점 시그니처가 $(-,+,+,+,+,+)=(5,1)$이다. 반야식의 비가역 5축 + 가역 2축 시그니처 $(5,2)$(<a href="../axiom.html#ax4">공리 4</a>, 정리 1, <a href="d01.html">D-01</a>)에서 가역 2축 중 observer 1축을 도려내면 정확히 $(5,1)$로 축소된다. 양 5축이 완전히 일치하고 차분은 음 1축 -- 그 1축이 3단계 비트판독에서 비어 있는 observer다.</p><p>$\hat H\Psi=0$의 $=0$을 반야가 재현하는 유일한 통로는 $\delta=0$(미발화)이다. 반야 노름은 두 괄호 제곱합의 정치(positive definite) 노름이므로, 운동항과 퍼텐셜항을 부호 반대로 상쇄하는 조작이 원천 봉쇄된다. 대신 $\delta=0$은 Compare false 영구 고정(<a href="../axiom.html#ax7">공리 7</a>)이며 중첩 영구 유지, 비용 0, DATA 기록 없음을 의미한다. 휠러-드윗의 정적성은 결함이 아니라 발화 이전 진공, 곧 $\delta=0$ 상태의 정확한 기술이다.</p><p>빈 도메인 2개가 예측을 산출한다(<a href="d146.html">D-146</a> 계열의 빈 축 원리). observer 축을 점화하면 다중 투영(<a href="../axiom.html#ax11">공리 11</a>)이 되어 페이지-우터스 조건부 확률이 나오고, time 축을 점화하면 RLU 수명(<a href="../axiom.html#ax12">공리 12</a>)이 되어 열역학적 시간의 화살이 나온다. 학계가 60년간 시간을 되찾으려 판 우회로 두 개가 반야의 빈 축 두 개와 정확히 겹친다.</p><p><strong>재대입 용도:</strong> 재대입 용도: 정준 형식론 채굴(<a href="h973.html">H-973</a>~<a href="h977.html">H-977</a>)과 경계조건 채굴(<a href="h967.html">H-967</a>~<a href="h972.html">H-972</a>)의 뿌리 카드. 드윗 계량 정밀화는 <a href="d158.html">D-158</a>에서 완성.</p>
+
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-discovery">
+<p><strong>판정: 발견</strong> -- Discovery (위치 적중, 시그니처 교차 정합)</p>
+<p><strong>이유:</strong> 1010 비트판독과 드윗 (5,1) = (5,2)-observer가 독립 경로에서 교차 정합 / 빈 축 2개가 학계 우회로 2개와 일치 / forward chain 완료 (<a href="../axiom.html#ax1">공리 1</a> <a href="../axiom.html#ax4">공리 4</a> ==> 시그니처 ==> 위치)</p>
+<p><strong>위치:</strong> 카테고리: d cosmology. 도메인: delta ==> RLU HOT/WARM/COLD 또는 alpha^57 우주 스케일. 재귀 대입 경로: <a href="d01.html">D-01</a>, <a href="d146.html">D-146</a>, <a href="h11.html">H-11</a></p>
+</div>
+<h2>5단계 재귀 대입: 휠러-드윗 방정식의 반야 위치찾기</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>메트릭 부여 이전에 토폴로지에서 위치를 먼저 잡는다. 휠러-드윗의 구성물을 4축에 배치한다. $\Psi$는 중첩이므로 superposition, $h_{ij}$는 기록면이므로 space, $t$는 소거되어 time 부재, 관측자 부재로 observer 부재다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 두 괄호를 가르는 정치 노름이다. $\hat H\Psi=0$의 $=0$은 상쇄가 아니라 미발화로 읽어야 하므로, $\delta=0$ 노름을 택한다. 왜 이 노름인가 -- 휠러-드윗의 정적성 자체가 발화 이전 상태에서 비롯하므로, 정치 노름이라야 상쇄 경로 없이 그 상태를 담는다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이다.</p>
+<div class="math-block">
+<div class="math-row">$\hat H\Psi=0 \;\Longleftrightarrow\; \delta=0$ (Compare false 영구 고정, 공리 7)</div>
+<div class="math-row">$G_{ijkl}$ 시그니처 $(5,1)$ = 반야 $(5,2)$에서 observer 1축 결손</div>
+<div class="math-legend">$\Psi$: 우주 파동함수 = superposition | $h_{ij}$: 3계량 = space | $=0$: delta=0 미발화 | $(5,1)$: 드윗 계량 시그니처</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 위치찾기에 필요한 입력이 이들로 모두 닫히고, 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">도메인 4비트 = 1010 (observer 0, superposition 1, time 0, space 1)</div>
+<div class="math-row">반야 시그니처 = (5,2) 공리 4 정리 1 D-01</div>
+<div class="math-row">드윗 시그니처 = (5,1) DeWitt 1967 Phys. Rev. 160:1113</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>양자중력 초공간 도메인으로 변환한다. 이 변환으로 보려는 것은 시간이 사라진 방정식의 반야 위치다. 정치 노름에서는 상쇄로 0을 만들 수 없으므로 $=0$은 미발화로만 번역되고, 빈 축 두 개가 학계 우회로 두 개를 예측한다. 왜 이 도메인으로 변환하는가 -- 시간 문제 자체가 이 도메인에서 제기되므로 비용 구조를 이 도메인으로 사영해야 문헌과 직접 견줄 수 있기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">observer 점화 ==> 다중투영(공리 11) ==> 페이지-우터스 조건부 확률</div>
+<div class="math-row">time 점화 ==> RLU 수명(공리 12) ==> 열역학적 시간의 화살</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">위치: 1010 괄호 교차, 시그니처 (5,1) = (5,2) - observer</div>
+<p>이 단계는 도출값을 문헌과 대조해 판정한다. 드윗 계량 시그니처와 빈 축 예측이 독립 경로에서 반야 구조와 교차 정합하는지가 판정의 직접 근거다. 이 도출은 표준 이론의 사후 맞춤이 아니라 비트판독에서 앞으로 전개된 결과다.</p>
+<div class="math-row">문헌: DeWitt 1967, 드윗 계량 (5,1) 부정치</div>
+<div class="math-row">정합: 양 5축 일치, 음 차분 = observer 1축</div>
+</div>
+<p>판정: <strong>발견</strong>. 휠러-드윗의 정적성이 delta=0 미발화의 정확한 기술이고, 빈 축 두 개가 페이지-우터스와 시간의 화살로 정확히 사영된다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="d158.html">D-158</a>, <a href="h967.html">H-967</a>, <a href="h973.html">H-973</a>, <a href="d146.html">D-146</a>, <a href="h11.html">H-11</a></p>
+</div>
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>드윗 계량 정량 보강</td><td>시그니처 위치 확정</td><td>D-158에서 6=T(3)=7-1 완성</td></tr>
+<tr><td>빈 축 점화 정량화</td><td>구조 예측</td><td>페이지-우터스/RLU 정량 카드</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="d157.html">D-157</a>: 휠러-드윗 방정식 = delta=0 미발화</td><td>위치 적중 (1010, 시그니처 (5,1)=(5,2)-observer)</td><td><span class="tag-discovery">발견</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

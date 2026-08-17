@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-978 LQC 임계밀도 rho_c = 16/(3 pi^2 ln^3 3) -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-978 LQC 임계밀도 rho_c = 16/(3 pi^2 ln^3 3). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h978.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>h_cosmology</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h978.html">H-978</a>. LQC 빅바운스 임계밀도 $\rho_c=\dfrac{16}{3\pi^2\ln^3 3}\rho_P$</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h978.html">H-978</a>: LQC 빅바운스 임계밀도 $\rho_c=\dfrac{16}{3\pi^2\ln^3 3}\rho_P$</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\rho_c=\frac{\sqrt{3}}{32\pi^2\gamma^3}\rho_P=\frac{16}{3\pi^2\ln^3 3}\rho_P=0.4075\,\rho_P$$</div></div>
+<p class="finding-precision">가설 -- 오차 0.41%. gamma 대입 시 닫힌형. 바운스 문턱 = 플랑크 밀도의 CAS 구조 분율. 부산물 13/32(0.72%)</p>
+<p>루프 양자우주론(LQC)에서 빅바운스는 밀도가 임계값 $\rho_c\approx0.41\rho_P$에 도달할 때 일어난다. <a href="p308.html">P-308</a>은 바운스의 존재($a_{\min}>0$, $\ell=1$)만 말하고 컷오프를 $\rho_P$로 놓았는데, 문헌은 $0.41\rho_P$라고 말한다. 그 $0.41$이 어디서 오는가 -- $\gamma^3$에서 온다.</p>
+<p>표준식 $\rho_c=\sqrt{3}/(32\pi^2\gamma^3)\rho_P$에 <a href="d159.html">D-159</a>의 $\gamma=\sqrt{3}\ln 3/8$을 대입하면 대수적으로 $16/(3\pi^2\ln^3 3)$이 된다. $16=2^4$(<a href="../axiom.html#ax9">공리 9</a> 구조 자유도), $3$ = CAS(<a href="../axiom.html#ax2">공리 2</a>), $\ln^3 3$ = $\gamma^3$의 3제곱 = CAS 3단계 중첩. 새로 도입한 수 없이 전부 <a href="d159.html">D-159</a>에서 상속한다. 바운스 문턱은 플랑크 밀도의 CAS 구조 분율로 읽힌다.</p>
+<p>직접 비율 후보도 훑었다. $13/32$(총비용 13 / $2^5$) $=0.40625$로 0.72% -- 놀랍게 좋지만 $\gamma$ 경로와 달리 유도 사슬이 없어 부산물로 격하. $2/5$(가역 2 / 비가역 5, 시그니처 $(5,2)$) $=0.400$으로 2.25% 부산물. 브리핑이 예시한 $4/13=0.3077$은 24.8%로 폐기, $9/21=0.4286$은 4.7% 부산물.</p>
+<p><strong>재대입 용도:</strong> 재대입 용도: <a href="p308.html">P-308</a> 개정 입력($\rho_{\max}=\rho_P\to16/(3\pi^2\ln^3 3)\rho_P$). CMB-S4 바운스 흔적 정량 예측의 진폭 상수.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 다음 라운드로 미진행한 채 멈춰 있다. 32=2^5의 비가역 5축 시프트 읽기는 표준식 계승이지 반야 독립 유도가 아니고, rho_c 공식 전체(sqrt3/32pi^2)의 반야 전방 유도가 빈칸이다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 인접 D/H 카드의 재귀 대입 재투입, (3) 미적용 공리 명제 추가 도입의 3가지가 표준이다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (닫힌형, 오차 0.41%, 표준식 전방 유도 미완)</p>
+<p><strong>이유:</strong> gamma 대입 시 16/(3pi^2 ln^3 3) 닫힌형, 오차 0.41% / 전부 D-159 상속 / 표준식 sqrt3/32pi^2 전방 유도 미완 / D-159 종속</p>
+<p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==> RLU 또는 alpha^57. 재귀 대입 경로: <a href="p308.html">P-308</a>, <a href="d159.html">D-159</a></p>
+</div>
+<h2>5단계 재귀 대입: gamma 대입에서 임계밀도 닫힌형 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>빅바운스는 씨앗의 delta=0 정적 우주가 LQC 유효 동역학으로 풀릴 때 space 축(ℓ=1 하한, <a href="p308.html">P-308</a>)이 밀도 발산을 차단하는 지점이다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 표준식 $\sqrt{3}/(32\pi^2\gamma^3)$에 <a href="d159.html">D-159</a>의 $\gamma$를 대입한 노름이다. $\gamma^3$이 $\ln^3 3$을 낳아 닫힌형이 된다. 왜 이 노름인가 -- LQC 임계밀도 rho_c = 16/(3 pi^2 ln^3 3) 자체가 이 비용 구조에서 비롯하므로, 그 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응된다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이다.</p>
+<div class="math-block">
+<div class="math-row">$\rho_c=\dfrac{\sqrt{3}}{32\pi^2\gamma^3}\rho_P$</div>
+<div class="math-row">$=\dfrac{16}{3\pi^2\ln^3 3}\rho_P$ ($\gamma=\sqrt{3}\ln 3/8$ 대입)</div>
+<div class="math-legend">16=2^4: 구조 자유도(공리 9) | 3: CAS(공리 2) | ln^3 3: gamma^3 = CAS 3단계 중첩 | 32=2^5</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다.</p>
+<div class="math-block">
+<div class="math-row">gamma = sqrt3 ln3 / 8 D-159</div>
+<div class="math-row">rho_c = sqrt3/(32 pi^2 gamma^3) rho_P Ashtekar</div>
+<div class="math-row">rho_c_문헌 = 0.41 rho_P (gamma_M 대입 0.409203)</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>대상 물리 도메인으로 변환한다. 이 변환으로 보려는 것은 관측/문헌값과 직접 견줄 수 있는 도출값이다. 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 값이 결정된다.</p>
+<div class="math-block">
+<div class="math-row">$\rho_c=16/(3\pi^2\ln^3 3)\rho_P=0.407536\,\rho_P$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 0.407536 rho_P</div>
+<div class="math-row">문헌값: 0.409203 rho_P (gamma_M 대입), 인용값 0.41</div>
+<div class="math-row">오차: 0.41%</div>
+</div>
+<p>판정: <strong>가설. 0.41이 gamma^3의 닫힌형으로 캐지나 표준식 sqrt3/32pi^2 자체의 반야 전방 유도가 미완이고 D-159 폐기 시 동반 폐기다.</strong></p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="p308.html">P-308</a>, <a href="d159.html">D-159</a>, <a href="h913.html">H-913</a></p>
+</div>
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>표준식 sqrt3/32pi^2 전방 유도</td><td>gamma 대입까지</td><td>전방 유도 빈칸</td></tr>
+<tr><td>D-159 종속</td><td>gamma 폐기 시 동반</td><td>독립 검증 대기</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="h978.html">H-978</a>: LQC 임계밀도 rho_c = 16/(3 pi^2 ln^3 3)</td><td>가설 (rho_c = 16/(3pi^2 ln^3 3) 0.41%)</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

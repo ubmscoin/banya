@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-988 페이지 곡선 = 시스템 시간 상수 재배분, 전환점 1/2 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-988 페이지 곡선 = 시스템 시간 상수 재배분, 전환점 1/2. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h988.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>h_cosmology</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h988.html">H-988</a>. 페이지 곡선 = 시스템 시간 상수의 도메인 시간 재배분, 전환점 $1/2$</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h988.html">H-988</a>: 페이지 곡선 = 시스템 시간 상수의 도메인 시간 재배분, 전환점 $1/2$</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$S_{\rm max}/2=(8/2)\ln 2=4\ln 2,\quad \delta^2=\text{const}$$</div></div>
+<p class="finding-precision">가설 -- 시스템 시간 delta^2 상수, 전환점 1/2 = 괄호 2 이분(P-555). 실측 53.81%/59.75% 편차는 RLU 미도출로 정직 기록</p>
+<p>페이지 곡선: 복사 엔트로피 $S_{\rm rad}(t)$가 증가하다 페이지 시점에 꺾여 0으로 복귀하고, 전환점에서 $S_{\rm rad}=S_{\rm BH}$이다. 비트판독은 증발이 4축 전부 ON인 스크린 안 과정이라 1111이나, 총량 대장($\delta^2$)은 축 밖 -- WDW 정적성(씨앗 $\delta=0$)과 같은 층위의 시스템 시간 상수 진술이다.</p>
+<p>시스템 시간에서 $\delta^2=$ const ==> 총정보 상수(<a href="h94.html">H-94</a>, <a href="p115.html">P-115</a>). 곡선 전체는 도메인 시간($=\log T_{sys}$, <a href="../axiom.html#ax15">공리 15</a> 명제)에 렌더링된 상수의 재배분 기록이다. 전환점 = OPERATOR==>DATA 전사(쥐다, <a href="../axiom.html#ax7">공리 7</a>)가 d-ring 용량의 절반을 넘는 틱: $S_{\rm max}/2=(8/2)\ln 2=4\ln 2$(<a href="p555.html">P-555</a> 승계). 절반인 이유: 이분 경계는 괄호 2개(<a href="../axiom.html#ax1">공리 1</a>)가 강제 -- 복사 쪽 괄호의 기록이 블랙홀 쪽 괄호의 잔여를 넘어서는 유일한 등호점.</p>
+<p>정직한 경계 표기: 실측 전환 시점은 증발 시간의 53.81%, 전환점 엔트로피는 초기 $S_{\rm BH}$의 59.75%다. 소박한 $1/2$ 대조 시 시간 눈금 7.08%(부산물), 엔트로피 눈금 16.32%(수치 주장 폐기, 구조만 기록). 편차 원인은 증발 중 열적 엔트로피 생성 -- 도메인 시간 렌더링의 RLU 감쇠 항이 담당해야 하나 미도출.</p>
+<p><strong>재대입 용도:</strong> 재대입 용도: <a href="p555.html">P-555</a> 승격 심사 입력. <a href="p570.html">P-570</a>(스크램블링 시간)과 결합해 전사 속도 도출. <a href="h989.html">H-989</a>와 함께 정적성 = 시스템 시간 진술 축.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 다음 라운드로 미진행한 채 멈춰 있다. 53.81%/59.75%를 RLU 감쇠(공리 12, 문턱 4/13)에서 도출하지 못했다 -- 열적 잉여비 ~1.5의 반야 도출이 없어 가설에 머문다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 인접 D/H 카드의 재귀 대입 재투입, (3) 미적용 공리 명제 추가 도입의 3가지가 표준이다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (전환점 구조 0%, 시간 눈금 미완)</p>
+<p><strong>이유:</strong> 시스템 시간 delta^2 상수 = 총정보 보존 / 전환점 1/2 = 괄호 2 이분(P-555) / 실측 53.81%/59.75% = RLU 미도출 정직 기록</p>
+<p><strong>위치:</strong> 카테고리: h cosmology. 도메인: delta ==> RLU 또는 alpha^57. 재귀 대입 경로: <a href="h94.html">H-94</a>, <a href="p115.html">P-115</a>, <a href="p555.html">P-555</a></p>
+</div>
+<h2>5단계 재귀 대입: 시스템 시간 상수에서 페이지 곡선 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>증발은 4축 전부 ON인 스크린 안 과정(1111)이나 총량 대장은 축 밖 = WDW 정적성과 같은 층위의 시스템 시간 상수다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 시스템 시간 delta^2 상수 노름이다. 곡선은 상수의 도메인 시간 재배분 기록이고 전환점은 괄호 2 이분이다. 왜 이 노름인가 -- 페이지 곡선 = 시스템 시간 상수 재배분, 전환점 1/2 자체가 이 비용 구조에서 비롯하므로, 그 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응된다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이다.</p>
+<div class="math-block">
+<div class="math-row">$\delta^2=$ const (시스템 시간), $S_{\rm max}/2=4\ln 2$</div>
+<div class="math-row">전환점 = OPERATOR==>DATA 전사 절반 초과 틱</div>
+<div class="math-legend">8: d-ring 8비트(공리 15) | 2: 괄호 2 이분(공리 1) | ln 2: 비트 nat | 전사(공리 7)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다.</p>
+<div class="math-block">
+<div class="math-row">8 = d-ring 8비트 공리 15, 2 = 괄호 2 공리 1</div>
+<div class="math-row">S_max/2 = 4 ln 2 P-555, delta^2 const H-94</div>
+<div class="math-row">Page 1993 hep-th/9306083; 실측 53.81%/59.75% arXiv:1301.4995</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>대상 물리 도메인으로 변환한다. 이 변환으로 보려는 것은 관측/문헌값과 직접 견줄 수 있는 도출값이다. 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 값이 결정된다.</p>
+<div class="math-block">
+<div class="math-row">시스템 상수 ==> 도메인 재배분 곡선, 전환점 1/2 = 괄호 이분</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: 전환점 1/2, S_max/2 = 4 ln 2</div>
+<div class="math-row">문헌값: Page 이분점 1/2 (이상화), 실측 53.81%/59.75%</div>
+<div class="math-row">오차: 이분 0%(이상화), 실측 7.08%/16.32%(구조만)</div>
+</div>
+<p>판정: <strong>가설. 전환점 절반 구조가 괄호 2 이분으로 항등하고 delta^2 상수가 정보 보존이나 53.81%/59.75%를 RLU 감쇠에서 도출하지 못했다.</strong></p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="p555.html">P-555</a>, <a href="p570.html">P-570</a>, <a href="p115.html">P-115</a>, <a href="h94.html">H-94</a></p>
+</div>
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>53.81%/59.75% 도출</td><td>RLU 감쇠 미연결</td><td>열적 잉여비 ~1.5 반야 도출</td></tr>
+<tr><td>전사 속도</td><td>미도출</td><td>P-570 스크램블링 결합</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="h988.html">H-988</a>: 페이지 곡선 = 시스템 시간 상수 재배분, 전환점 1/2</td><td>가설 (페이지 곡선 = 시스템 시간 상수 재배분)</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
