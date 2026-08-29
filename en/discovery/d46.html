@@ -61,7 +61,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$r_s = \frac{M}{m_p} \times 2l_p = \frac{2GM}{c^2}, \quad \times 2 = \text{Compare+Swap 2 stages}$$</div></div>
 <p class="finding-precision">Error 0%. exact reproduction of the standard formula. * Grade S-grade * identity</p>
 <p>$N = M/m_p$ is the juim count measured in Planck mass units. Each of these $N$ juim performs a CAS operation on the d-ring.
-In $r_s = N \times 2l_p$, the factor 2 comes from the two cost-bearing stages of CAS, Compare (C+1) and Swap (S+1). Read adds no cost and only reads the current state.
+In $r_s = N \times 2l_p$, the factor 2 follows the partial-sum accounting rule (Paper III Definition 5(a)): in the spatial-contraction context only the state-changing cost-bearing stages are counted, and of the three CAS stages those are Compare (C+1) and Swap (S+1). Read is also cost-bearing in the total accounting (R+1, Axiom 4) but changes no state, so it is not counted toward contraction. [Corrected 2026-08-30: the old wording "Read adds no cost" contradicted the total accounting (R, C, S each +1) -- the precise statement is the partial-sum accounting of the contraction context]
 That is, the factor 2 in the gravity radius is not an arbitrary constant but a structural necessity of the two cost-producing stages (Compare+Swap) among the three CAS stages.
 $2l_p$ is the minimum contraction length unit of the d-ring per one CAS completion, twice the Planck length $l_p$ (<a href="../axiom.html#ax4">Axiom 4</a> proposition: costs R+1, C+1, S+1).
 Since each of the $N$ juim contracts $2l_p$, the total contraction radius becomes $N \times 2l_p = 2GM/c^2$, exactly matching the standard Schwarzschild formula.
@@ -82,7 +82,7 @@ Error 0% confirms that this derivation is an identity, not an approximation.</p>
 <div class="step">
 <h3>Step 1. Banya Formula</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>The gravitational radius is the sum of the contraction cost each of $N=M/m_p$ juim imposes on the d-ring. The stages of one CAS pass that incur cost are Compare (C+1) and Swap (S+1), while Read costs 0 (<a href="../axiom.html#ax4">Axiom 4</a> proposition: cost only when ordered), so the contraction unit per juim is fixed at $2l_p$.</p>
+<p>The gravitational radius is the sum of the contraction cost each of $N=M/m_p$ juim imposes on the d-ring. All three CAS stages are cost-bearing in the total accounting (R, C, S each +1, <a href="../axiom.html#ax4">Axiom 4</a>), but the spatial-contraction context counts only the two state-changing stages Compare (C+1) and Swap (S+1) (partial-sum accounting, Paper III Definition 5(a)), so the contraction unit per juim is fixed at $2l_p$.</p>
 </div>
 <div class="step">
 <h3>Step 2. Norm Substitution</h3>

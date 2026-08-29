@@ -61,9 +61,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$m_t = \frac{v}{\sqrt{2}} = \frac{246220}{\sqrt{2}} = 174104\;\text{MeV}$$</div></div>
 <p class="finding-precision">오차: 0.78% (실험값 $172760$ MeV)</p>
 <p>톱 쿼크 질량은 CAS 4개 연산(Swap, Compare, Shift, Read) 중 최대 비용 연산(Swap, ‖√3‖)이 최대 비용 단계(S, 3세대)에 배정된 결과다(도출 시범 2, 3단계). m_t = v/√2에서 √2는 CAS FSM 011 상태(R+C 활성)의 노름이고, VEV를 이 노름으로 나눈 것이 top 질량이다.</p>
-<p>반야프레임에서 출발점은 <a href="../axiom.html#ax6">공리 6</a>(CAS 원자성)이다. CAS의 세 단계 Read(R+1), Compare(C+1), Swap(S+1) 중 Swap은 실제로 DATA 소유권을 이전하는 최종 단계이며, 이 단계의 비용이 가장 크다.</p>
+<p>반야프레임에서 출발점은 <a href="../axiom.html#ax2">공리 2</a>(CAS 원자성)이다. CAS의 세 단계 Read(R+1), Compare(C+1), Swap(S+1) 중 Swap은 실제로 DATA 소유권을 이전하는 최종 단계이며, 이 단계의 비용이 가장 크다.</p>
 <p>노름 치환: 힉스 VEV $v = 246.22$ GeV를 CAS 워크벤치의 기준 에너지로 놓는다. $\sqrt{2}$는 CAS FSM 011 상태의 노름이다(<a href="../axiom.html#ax2">공리 2</a> 명제, <a href="../axiom.html#ax5">공리 5</a>: 누적 락). CAS가 Read(001)==&gt;Compare(011)까지 진행하면 R+C 2축이 활성화되고, 이 2축의 노름이 $\sqrt{1^2+1^2}=\sqrt{2}$다. top은 up type(Compare true, <a href="../axiom.html#ax7">공리 7</a>)이므로 Compare 시점 노름 $\sqrt{2}$로 VEV를 나눈다. 4개 연산(Swap, Compare, Shift, Read) 중 Swap(최대 비용 연산 $\|\sqrt{3}\|$)이 최대 비용 단계(S, 3세대)에 배정된다. 배정에 자유도가 없다(<a href="../axiom.html#ax4">공리 4</a>: 비용 순서 강제).</p>
-<p>공리 체인: <a href="../axiom.html#ax1">공리 1</a>(도메인 4축) ==&gt; <a href="../axiom.html#ax2">공리 2</a>($2^N$ 시프트) ==&gt; <a href="../axiom.html#ax6">공리 6</a>(CAS 원자성) ==&gt; <a href="../axiom.html#ax8">공리 8</a>(쥠). 유카와 결합 $y_t = 1$은 쥠의 최대 비용 경로에서 감쇠 없이 Swap이 실행된다는 뜻이다.</p>
+<p>공리 체인: <a href="../axiom.html#ax1">공리 1</a>(도메인 4축) ==&gt; <a href="../axiom.html#ax2">공리 2</a>($2^N$ 시프트) ==&gt; <a href="../axiom.html#ax2">공리 2</a>(CAS 원자성) ==&gt; <a href="../axiom.html#ax8">공리 8</a>(쥠). 유카와 결합 $y_t = 1$은 쥠의 최대 비용 경로에서 감쇠 없이 Swap이 실행된다는 뜻이다.</p>
 <p>도출 경로: $m_t = v/\sqrt{2}$. VEV를 $\sqrt{2}$로 나누는 것은 워크벤치 내부에서 Compare==&gt;Swap 파이프라인이 직교 분해될 때의 사영이다. 발화비트가 켜진 상태에서 Swap이 완료되면 이 비용이 확정된다.</p>
 <p>수치: $m_t = 246220/\sqrt{2} = 174104$ MeV.</p>
 <p>오차: 실험값 172760 MeV 대비 0.78%. 1루프 QCD 보정 $(1 - 4\alpha_s/(3\pi))$을 적용하면 추가 수렴이 가능하다.</p>

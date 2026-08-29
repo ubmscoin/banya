@@ -61,7 +61,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$\text{Compare}=\text{false}\;\text{==>}\;\text{no Swap}\;\text{==>}\;\Delta T_{\text{sys}}=0$$</div></div>
 <p>(1) idle 상태에서는 Compare = false이므로 Swap이 발생하지 않고 시스템 시간이 진행하지 않는다. 변화 없음 = 시간 정지이다.</p>
 <p>(2) 반야식: Compare = false ==> no Swap ==> ΔT_sys = 0. 변화가 없으면 비용 0이고 시스템 시간이 진행하지 않는다.</p>
-<p>(3) <a href="../axiom.html#ax3">공리 3</a>(스크린)에 따라 Swap이 없으면 DATA 변경이 없다. <a href="../axiom.html#ax7">공리 7</a>(중첩 유지)에 따라 Compare = false이면 중첩이 유지된다. <a href="../axiom.html#ax8">공리 8</a>에 따라 중첩 유지 비용은 0이다.</p>
+<p>(3) <a href="../axiom.html#ax15">공리 15</a>(스크린)에 따라 Swap이 없으면 DATA 변경이 없다. <a href="../axiom.html#ax7">공리 7</a>(중첩 유지)에 따라 Compare = false이면 중첩이 유지된다. <a href="../axiom.html#ax8">공리 8</a>에 따라 중첩 유지 비용은 0이다.</p>
 <p>(4) 구조적 귀결: idle = FSM 000 = δ 비발화 상태. CAS 사이클이 시작되지 않으므로 비용 0, 시간 미진행. 양자 괄호에서 중첩이 유지되는 상태이다.</p>
 <p>(5) 수치: Compare = false 확률 = 1 - α ≈ 1 - 1/137 ≈ 99.27%. 대부분의 CAS 사이클에서 Compare가 false이므로 시스템은 대부분의 "시간"을 idle 상태로 보낸다.</p>
 <p>(6) 정합: 양자역학에서 중첩 상태가 관측 없이 무한히 유지되는 것(유니터리 진화)이 idle 상태의 시간 정지에 대응한다.</p>
@@ -81,7 +81,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>idle 상태는 CAS Compare가 false를 반환해 Swap이 일어나지 않는 비발화 상태다. <a href="../axiom.html#ax7">공리 7</a>(Compare=false이면 중첩 유지)과 <a href="../axiom.html#ax8">공리 8</a>(중첩 유지 비용 0)로 이 상태를 읽으면, 비용이 발생하지 않으므로 도메인 time이 진행하지 않는다.</p>
+<p>idle 상태는 CAS Compare가 false를 반환해 Swap이 일어나지 않는 비발화 상태다. <a href="../axiom.html#ax7">공리 7</a>(Compare=false이면 중첩 유지)과 <a href="../axiom.html#ax4">공리 4</a>(중첩 유지 비용 0)로 이 상태를 읽으면, 비용이 발생하지 않으므로 도메인 time이 진행하지 않는다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>

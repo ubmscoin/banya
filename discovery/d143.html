@@ -60,9 +60,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong><a href="d143.html">D-143</a>: $t_\text{dom} = \log(T_\text{sys})$ -- S급</strong></p>
 <div class="formula-wrap"><div class="formula-box">$$t_\text{dom} = \log(T_\text{sys})$$</div></div><p class="finding-precision">오차: 0% * 등급 S급</p>
 <p>(1) 도메인 시간과 시스템 시간의 관계 t_dom = log(T_sys)를 도출한다. 스크린에 렌더링되는 시간은 백엔드 틱 수의 로그 변환이다.</p>
-<p>(2) 반야식 출발점: <a href="../axiom.html#ax3">공리 3</a>(FSM 상태 전이)에서 직접 도출한다. FSM 안의 관측자가 측정하는 시간(t_dom)은 CAS 틱(T_sys)의 압축 표현이다. d-ring 위에서 쥠(juim)의 누적이 로그로 압축된다.</p>
+<p>(2) 반야식 출발점: <a href="../axiom.html#ax14">공리 14</a>(FSM 상태 전이)에서 직접 도출한다. FSM 안의 관측자가 측정하는 시간(t_dom)은 CAS 틱(T_sys)의 압축 표현이다. d-ring 위에서 쥠(juim)의 누적이 로그로 압축된다.</p>
 <p>(3) 노름 치환: t_dom = log(T_sys). 로그의 밑은 스크린 렌더링 스케일에 의존한다. 큰 T_sys 차이가 작은 t_dom 차이로 압축되어 스크린 안에서 "연속"으로 느껴진다. Read(R+1) 비용이 로그 단위로 누적된다.</p>
-<p>(4) 공리 체인: <a href="../axiom.html#ax3">공리 3</a>(FSM) ==&gt; <a href="d141.html">D-141</a>(T_sys 정의) ==&gt; <a href="d142.html">D-142</a>(t_dom 정의). 쥐다(juida) 연산이 DATA.bit[2]에 기록하는 값이 log(T_sys)다. Compare(C+1)로 시간을 읽으면 로그 변환된 값이 반환된다.</p>
+<p>(4) 공리 체인: <a href="../axiom.html#ax14">공리 14</a>(FSM) ==&gt; <a href="d141.html">D-141</a>(T_sys 정의) ==&gt; <a href="d142.html">D-142</a>(t_dom 정의). 쥐다(juida) 연산이 DATA.bit[2]에 기록하는 값이 log(T_sys)다. Compare(C+1)로 시간을 읽으면 로그 변환된 값이 반환된다.</p>
 <p>(5) 도출 경로: T_sys = 1 ==&gt; t_dom = log(1) = 0 (빅뱅, <a href="d145.html">D-145</a>). T_sys ==&gt; ∞ ==&gt; t_dom ==&gt; ∞ (시간 무한). T_sys가 기하급수적으로 증가해도 t_dom은 선형 증가. Swap(S+1) 비용의 로그 누적이 연속 시간의 환상을 만든다.</p>
 <p>(6) 수치: 구조 관계. t_dom/log(T_sys) = 1 (단위 정의). 물리 단위 변환은 플랑크 시간 t_P를 기준으로 수행된다.</p>
 <p>(7) 오차: 0% (구조 관계). 로그 관계는 정의이므로 오차 개념이 적용되지 않는다. 다만 로그의 밑 선택이 물리 단위 체계를 결정한다.</p>

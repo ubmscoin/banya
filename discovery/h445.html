@@ -61,8 +61,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$\rho_{ij}(t) = \rho_{ij}(0)\,e^{-t/\tau_D} \quad\Longleftrightarrow\quad \text{RLU}_{ij} \xrightarrow{\text{evict}} 0$$</div></div>
 <p class="finding-precision">등급: A</p>
 <p>중첩 상태의 비대각 성분 $\rho_{ij}$는 ECS 인덱스의 RLU(Recently Least Used) 캐시 항목이다(<a href="../axiom.html#ax13">공리 13</a>). 환경 엔티티와의 상호작용이 많을수록 해당 인덱스의 접근 빈도가 분산되어 RLU 순위가 하락하고, 임계 이하에서 캐시 축출(eviction)된다. 축출 = 결맞음 소실. 감쇠 시간 $\tau_D$는 환경 엔티티 수 $N_{\text{env}}$에 반비례.</p>
-<p><a href="../axiom.html#ax13">공리 13</a>(중첩 = ECS 인덱싱), <a href="../axiom.html#ax11">공리 11</a>($C \cdot (1-\ell/N)/(4\pi\ell^2)$ 상호작용)</p>
-<p><a href="../axiom.html#ax13">공리 13</a>(양자 브라켓 = ECS 인덱스) ==&gt; <a href="../axiom.html#ax11">공리 11</a>(다중 투영 상호작용) ==&gt; <a href="../axiom.html#ax3">공리 3</a>(DATA 이산 ==&gt; 유한 캐시) ==&gt; <a href="../axiom.html#ax8">공리 8</a>(폴링 ==&gt; RLU 갱신)</p>
+<p><a href="../axiom.html#ax12">공리 12</a>(중첩 = ECS 인덱싱), <a href="../axiom.html#ax11">공리 11</a>($C \cdot (1-\ell/N)/(4\pi\ell^2)$ 상호작용)</p>
+<p><a href="../axiom.html#ax12">공리 12</a>(양자 브라켓 = ECS 인덱스) ==&gt; <a href="../axiom.html#ax11">공리 11</a>(다중 투영 상호작용) ==&gt; <a href="../axiom.html#ax3">공리 3</a>(DATA 이산 ==&gt; 유한 캐시) ==&gt; <a href="../axiom.html#ax6">공리 6</a>(폴링 ==&gt; RLU 갱신)</p>
 <p>결맞음 소실은 환경과의 "정보 누출"이 아니라 유한 캐시의 축출 정책이다. 거시 객체는 $N_{\text{env}} \sim 10^{23}$이므로 RLU 축출이 즉각적($\tau_D \to 0$). 고립 큐비트는 $N_{\text{env}} \sim 1$이므로 $\tau_D$가 길다. 결맞음 보존 = RLU 순위 유지 = 환경 차단.</p>
 <p>초전도 큐비트: $\tau_D \sim 100\,\mu$s ($N_{\text{env}}$ 소). 먼지 입자($10^{18}$ 원자): $\tau_D \sim 10^{-31}$ s. $\tau_D \propto 1/N_{\text{env}}$ 스케일링.</p>
 <p>Zurek(2003) 결맞음 소실 시간 추정과 정합. 초전도 큐비트 $T_2$ 실측값과 구조 일치.</p>

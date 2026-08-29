@@ -61,8 +61,8 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$\Delta x \,\Delta p \;\geq\; \frac{\hbar}{2} \quad\Longleftrightarrow\quad \text{Read}(x) \circ \text{Compare}(p)\;\text{비가환}$$</div></div>
 <p class="finding-precision">등급: A</p>
 <p>CAS는 R==&gt;C==&gt;S 순서가 원자적(<a href="../axiom.html#ax2">공리 2</a>). 한 틱에서 Read가 position 슬롯을 점유하면 momentum 슬롯에 대한 Compare가 같은 틱에 실행 불가. 두 연산이 같은 8비트 레지스터(<a href="../axiom.html#ax5">공리 5</a>)의 서로 다른 니블을 동시에 잠그려 하므로, lock 경합이 발생하여 한쪽 정밀도가 반드시 열화된다.</p>
-<p><a href="../axiom.html#ax2">공리 2</a>(R==&gt;C==&gt;S 원자적 비가환), <a href="../axiom.html#ax5">공리 5</a>(8비트 레지스터 공유)</p>
-<p><a href="../axiom.html#ax2">공리 2</a>(CAS 원자성) ==&gt; <a href="../axiom.html#ax5">공리 5</a>(8비트 lock 경합) ==&gt; <a href="../axiom.html#ax3">공리 3</a>(DATA 이산 최소 단위) ==&gt; <a href="../axiom.html#ax7">공리 7</a>(Compare 결과에 의한 분기)</p>
+<p><a href="../axiom.html#ax2">공리 2</a>(R==&gt;C==&gt;S 원자적 비가환), <a href="../axiom.html#ax15">공리 15</a>(8비트 레지스터 공유)</p>
+<p><a href="../axiom.html#ax2">공리 2</a>(CAS 원자성) ==&gt; <a href="../axiom.html#ax15">공리 15</a>(8비트 lock 경합) ==&gt; <a href="../axiom.html#ax3">공리 3</a>(DATA 이산 최소 단위) ==&gt; <a href="../axiom.html#ax7">공리 7</a>(Compare 결과에 의한 분기)</p>
 <p>불확정성은 자연의 근본 한계가 아니라 CAS 스케줄링의 구조적 제약이다. 한 틱에 하나의 Read-Compare 쌍만 원자적으로 완결되므로, 켤레 변수 쌍은 원리적으로 동시 확정 불가. $\hbar/2$는 CAS 1틱 최소 비용의 물리 환산값.</p>
 <p>$\Delta x \,\Delta p = \hbar/2$: CAS 최소 비용 = $\hbar/2 \approx 5.27 \times 10^{-35}$ J*s. 이중슬릿 전자 빔에서 슬릿 폭 $\Delta x$ 축소 시 회절각 증가 예측.</p>
 <p>표준 양자역학 불확정성 관계와 완전 정합. 모든 켤레 쌍($E$-$t$, $L$-$\theta$)에 동일 구조.</p>

@@ -60,9 +60,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong><a href="d142.html">D-142</a>: 도메인 시간 정의 -- S급</strong></p>
 <div class="formula-wrap"><div class="formula-box">$$t_\text{dom} = \text{고전 괄호(DATA) 안의 서브프레임(bit 2)}$$</div></div><p class="finding-precision">오차: 0% * 등급 S급</p>
 <p>(1) 도메인 시간 t_dom을 DATA(고전 괄호) 안의 서브프레임(bit 2)으로 정의한다. 스크린에 렌더링된 시간이며, 시스템 시간 T_sys의 로그다.</p>
-<p>(2) 반야식 출발점: <a href="../axiom.html#ax3">공리 3</a>(FSM 상태 전이)에서 직접 도출한다. DATA 안의 bit 2가 time 축을 담당하며, 이것이 d-ring 위에서 쥠(juim)이 렌더링하는 "시간"이다.</p>
+<p>(2) 반야식 출발점: <a href="../axiom.html#ax14">공리 14</a>(FSM 상태 전이)에서 직접 도출한다. DATA 안의 bit 2가 time 축을 담당하며, 이것이 d-ring 위에서 쥠(juim)이 렌더링하는 "시간"이다.</p>
 <p>(3) 노름 치환: t_dom = DATA.bit[2] = 스크린 렌더링 시간. 도메인 time은 T_sys의 로그 변환(<a href="d143.html">D-143</a>)이다. 쥐다(juida) 연산이 Read(R+1)로 DATA를 읽을 때 bit 2에서 시간 정보를 추출한다.</p>
-<p>(4) 공리 체인: <a href="../axiom.html#ax3">공리 3</a>(FSM) ==&gt; <a href="../axiom.html#ax1">공리 1</a>(도메인 4축, bit 2 = time) ==&gt; <a href="../axiom.html#ax15">공리 15</a>(δ). 도메인 time은 자기 자신(DATA 안)만 측정 가능하다. OPERATOR나 δ는 도메인 time 밖에 있으므로 측정 대상이 아니다.</p>
+<p>(4) 공리 체인: <a href="../axiom.html#ax14">공리 14</a>(FSM) ==&gt; <a href="../axiom.html#ax1">공리 1</a>(도메인 4축, bit 2 = time) ==&gt; <a href="../axiom.html#ax15">공리 15</a>(δ). 도메인 time은 자기 자신(DATA 안)만 측정 가능하다. OPERATOR나 δ는 도메인 time 밖에 있으므로 측정 대상이 아니다.</p>
 <p>(5) 도출 경로: FSM 안에서 관측 가능한 시간 = 스크린에 렌더링된 시간 = t_dom. T_sys(시스템 틱)는 FSM 밖의 CAS 레벨이므로 도메인 안에서 직접 접근 불가. Compare(C+1)로 DATA.bit[2]를 읽는 것이 "시계를 보는 것"이다.</p>
 <p>(6) 수치: 구조 정의. t_dom은 연속적으로 느껴지는 실수값. T_sys의 로그 변환이므로 이산 틱이 연속 시간으로 렌더링된다.</p>
 <p>(7) 오차: 0% (정의). 도메인 시간은 측정값이 아니라 스크린 렌더링 구조의 정의다. 물리학의 "시간"은 이 t_dom에 해당한다.</p>

@@ -61,7 +61,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$\Delta t_{\text{domain}}/\Delta t_{\text{system}}=1-\text{cost}_{\text{swap}}/N$$</div></div>
 <p>중력 시간 지연을 쓰기 누적(질량)에 의한 렌더링 속도 저하로 도출한다. 쓰기 누적이 클수록 CAS Swap 비용이 커지고 렌더 파이프라인이 느려진다.</p>
 <p>반야식: $\Delta t_{\text{domain}}/\Delta t_{\text{system}} = 1 - \text{cost}_{\text{swap}}/N$. 시스템 시간 1틱 동안 도메인 시간 진행이 Swap 비용에 반비례하여 줄어든다.</p>
-<p>공리 근거: <a href="../axiom.html#ax6">공리 6</a>(쓰기 누적 = d-ring 크기)이 질량의 구조적 정의를 제공한다. <a href="../axiom.html#ax4">공리 4</a>(비용 = +를 넘을 때 +1)가 Swap 비용을 규정한다. <a href="../axiom.html#ax15">공리 15</a>(δ = 시스템 시간)가 기준 시간을 제공한다.</p>
+<p>공리 근거: <a href="../axiom.html#ax7">공리 7</a>(쓰기 누적 = d-ring 크기)이 질량의 구조적 정의를 제공한다. <a href="../axiom.html#ax4">공리 4</a>(비용 = +를 넘을 때 +1)가 Swap 비용을 규정한다. <a href="../axiom.html#ax15">공리 15</a>(δ = 시스템 시간)가 기준 시간을 제공한다.</p>
 <p>구조적 귀결: 질량이 큰 곳에서 시간이 느리게 흐르는 이유: 쓰기 누적이 많으면 CAS가 각 Swap에서 더 많은 비용(R+1, C+1, S+1)을 치러야 하므로 렌더 파이프라인이 느려진다. 이것이 아인슈타인의 등가 원리의 반야 번역이다.</p>
 <p>수치: 지표면에서 $\Delta t/t = GM/(Rc^2) \approx 7 \times 10^{-10}$. GPS 위성은 이 보정 없이는 하루 $\sim 38\;\mu$s 오차가 누적된다.</p>
 <p>정합성: <a href="h323.html">H-323</a>(로렌츠 불변 = 시스템-도메인 매핑 보존)과 결합하면 일반상대론의 시간 지연이 나온다. <a href="h326.html">H-326</a>(특수상대론 시간 팽창)과 병렬 구조이다.</p>

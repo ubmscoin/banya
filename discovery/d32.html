@@ -61,9 +61,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$T_H^3 \cdot \tau_{BH} = \frac{10}{\pi^2} \cdot T_P^3 \cdot t_P$$</div></div>
 <p class="finding-precision">0% (항등식, 모든 슈바르츠실트 BH에 성립)</p>
 <p>(1) 블랙홀 호킹 온도의 3승과 증발 수명의 곱이 플랑크 단위의 10/π²배라는 항등식이다. 쥠(juim) 밀집 상태의 RLU 회수 시간을 기술한다.</p>
-<p>(2) 반야 출발점: <a href="../axiom.html#ax5">공리 5</a>(RLU 교체)에서 시작한다. 쥠이 d-ring 위에 최대 밀집되면, 가장 오래된 엔티티부터 회수(evict)된다. 이것이 호킹 복사의 CAS 대응이다.</p>
+<p>(2) 반야 출발점: <a href="../axiom.html#ax6">공리 6</a>(RLU 비용 회수)에서 시작한다. 쥠이 d-ring 위에 최대 밀집되면 RLU 회수 규칙에 따라 쥠이 회수(evict)된다. 이것이 호킹 복사의 CAS 대응이다. [2026-08-30 정정: 구판의 공리 5 표기는 오기 -- 공리 5는 TOCTOU 락 레지스터, 회수는 공리 6]</p>
 <p>(3) 노름 치환: T_H = ℏc³/(8πGMk_B), τ_BH = 5120πG²M³/(ℏc⁴). 이를 곱하면 질량 M이 소거되고 플랑크 단위만 남는다. 계수 10/π² = 5120/(512π³) × π.</p>
-<p>(4) 공리 체인: <a href="../axiom.html#ax5">공리 5</a>(RLU) ==&gt; <a href="../axiom.html#ax9">공리 9</a>(완전기술 9비트) ==&gt; <a href="../axiom.html#ax2">공리 2</a>(CAS 3단계). 512 = 2⁹ = CAS 9비트 완전기술(<a href="../axiom.html#ax9">공리 9</a>)의 상태 수. 10 = dim(SO(5)) = Wyler α 도출에 등장하는 동일한 10.</p>
+<p>(4) 공리 체인: <a href="../axiom.html#ax6">공리 6</a>(RLU 비용 회수) ==&gt; <a href="../axiom.html#ax9">공리 9</a>(구조 완전기술자유도 9 = 7+2) ==&gt; <a href="../axiom.html#ax2">공리 2</a>(CAS 3단계). 512 = 2⁹ = 구조 완전기술자유도 9(<a href="../axiom.html#ax9">공리 9</a>)의 상태 수. 10 = dim SO(5) = Wyler α 도출에 등장하는 동일한 10 -- 군론 층위(분류 II)이며 기술자유도 등재 수가 아니다.</p>
 <p>(5) 도출 경로: T_H³*τ_BH에서 M 의존성이 M⁻³×M³으로 정확히 소거된다. 남는 것은 순수 플랑크 상수의 조합뿐이다. 쥠 밀집도가 높을수록(BH 질량 큼) 온도는 낮고 수명은 길지만, 3승-곱은 불변이다.</p>
 <p>(6) 수치: T_H³*τ_BH = (10/π²)*T_P³*t_P. 10/π² ≈ 1.0132. 모든 슈바르츠실트 블랙홀에 대해 성립하는 항등식.</p>
 <p>(7) 오차: 0% (항등식). 슈바르츠실트 BH에 대해 수학적으로 정확. 회전*전하 BH는 보정 필요 -- 이는 d-ring 위 추가 쥠 비용에 해당한다.</p>
@@ -82,15 +82,15 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>블랙홀은 쥠이 d-ring을 가득 채운 상태이고, RLU 교체(<a href="../axiom.html#ax5">공리 5</a>)가 가장 오래된 엔티티부터 회수하는 것이 호킹 복사다. 온도의 3승과 증발 수명의 곱은 이 회수 비용이 질량과 무관하게 닫히는 불변량으로 읽힌다.</p>
+<p>블랙홀은 쥠이 d-ring을 가득 채운 상태이고, RLU 비용 회수(<a href="../axiom.html#ax6">공리 6</a>)에 따라 쥠이 회수되는 것이 호킹 복사다. 온도의 3승과 증발 수명의 곱은 이 회수 비용이 질량과 무관하게 닫히는 불변량으로 읽힌다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>
-<p>치환하는 노름은 RLU 회수 노름이다. $T_H^3\cdot\tau_{BH}$에서 질량 $M$ 의존성이 $M^{-3}\times M^3$으로 정확히 소거되어 순수 플랑크 조합만 남고, 그 불변량이 회수 비용을 정하기 때문에 이 노름을 택한다. 계수 $10/\pi^2$의 $10=\dim SO(5)$, $512=2^9$(<a href="../axiom.html#ax9">공리 9</a> 완전기술 9비트 상태 수)이 증발 계수 $5120=10\times512$를 만든다. 왜 이 노름인가 -- 블랙홀 온도-수명 항등식 자체가 RLU 회수 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<p>치환하는 노름은 RLU 회수 노름이다. $T_H^3\cdot\tau_{BH}$에서 질량 $M$ 의존성이 $M^{-3}\times M^3$으로 정확히 소거되어 순수 플랑크 조합만 남고, 그 불변량이 회수 비용을 정하기 때문에 이 노름을 택한다. 계수 $10/\pi^2$의 $10=\dim SO(5)$, $512=2^9$(<a href="../axiom.html#ax9">공리 9</a> 구조 완전기술자유도 9 상태 수)이 증발 계수 $5120=10\times512$를 만든다. 왜 이 노름인가 -- 블랙홀 온도-수명 항등식 자체가 RLU 회수 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
 <div class="math-row">$T_H = \dfrac{\hbar c^3}{8\pi G M k_B},\quad \tau_{BH} = \dfrac{5120\pi G^2 M^3}{\hbar c^4}$</div>
 <div class="math-row">$T_H^3 \cdot \tau_{BH} = \dfrac{10}{\pi^2}\, T_P^3\, t_P$</div>
-<div class="math-legend">$T_H$: 호킹 온도 | $\tau_{BH}$: 증발 수명 | $T_P,t_P$: 플랑크 온도*시간 | $10=\dim SO(5)$ | $5120=10\times 2^9$ | $2^9$: 완전기술 9비트 (<a href="../axiom.html#ax9">공리 9</a>)</div>
+<div class="math-legend">$T_H$: 호킹 온도 | $\tau_{BH}$: 증발 수명 | $T_P,t_P$: 플랑크 온도*시간 | $10=\dim SO(5)$ | $5120=10\times 2^9$ | $2^9$: 구조 완전기술자유도 9 (<a href="../axiom.html#ax9">공리 9</a>)</div>
 </div>
 </div>
 <div class="step">
@@ -100,7 +100,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">$\pi^{2}$ = 9.869604401089358</div>
 <div class="math-row">$10/\pi^{2}$ = 1.013211836423378</div>
 <div class="math-row">5120 = 10 * $2^{9}$</div>
-<div class="math-row">$2^{9}$ = 512 완전기술 9비트 상태 수</div>
+<div class="math-row">$2^{9}$ = 512 구조 완전기술자유도 9 상태 수</div>
 <div class="math-row">dim SO(5)= 10</div>
 </div>
 </div>
@@ -119,7 +119,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">측정값: 모든 슈바르츠실트 블랙홀에 성립하는 항등식</div>
 <div class="math-row">오차: $0\%$ (항등식, $M$ 정확 소거)</div>
 </div>
-<p>판정: <strong>발견</strong>. 증발 계수 $5120=10\times2^9$이 $\dim SO(5)$와 완전기술 9비트로 닫히며, BH 열역학이 RLU 회수 비용으로 환원된다.</p>
+<p>판정: <strong>발견</strong>. 증발 계수 $5120=10\times2^9$이 $\dim SO(5)$와 구조 완전기술자유도 9로 닫히며, BH 열역학이 RLU 회수 비용으로 환원된다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>

@@ -61,7 +61,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$\text{same }t_{\text{system}}\;\to\;\text{different }t_{\text{domain}}\text{ per entity (ECS local)}$$</div></div>
 <p>(1) 동시성의 상대성이란 같은 시스템 틱이 서로 다른 엔티티의 스크린에서 다르게 렌더링되는 현상이다. 각 엔티티는 자신의 ECS에서 로컬로 돈다.</p>
 <p>(2) 반야식: same t_system ==&gt; different t_domain per entity (ECS local). 시스템 시간은 전역이지만 도메인 시간은 엔티티별 로컬이다.</p>
-<p>(3) <a href="../axiom.html#ax12">공리 12</a>(ECS)에 따라 각 엔티티는 독립된 컴포넌트 집합을 갖는다. <a href="../axiom.html#ax3">공리 3</a>(스크린)에 따라 렌더링은 로컬 DATA에 기반한다. <a href="../axiom.html#ax11">공리 11</a>(d-ring)에 따라 엔티티 간 상호작용은 링 이음새를 통한다.</p>
+<p>(3) <a href="../axiom.html#ax12">공리 12</a>(ECS)에 따라 각 엔티티는 독립된 컴포넌트 집합을 갖는다. <a href="../axiom.html#ax15">공리 15</a>(스크린)에 따라 렌더링은 로컬 DATA에 기반한다. <a href="../axiom.html#ax11">공리 11</a>(d-ring)에 따라 엔티티 간 상호작용은 링 이음새를 통한다.</p>
 <p>(4) 구조적 귀결: 엔티티 A의 스크린에서 "동시"인 두 사건이 엔티티 B의 스크린에서는 "순차"로 렌더링될 수 있다. 이는 A와 B의 CAS Swap 비용이 다르기 때문이다.</p>
 <p>(5) 수치: 두 엔티티의 Swap 비용 비율이 γ = 1/√(1-v²/c²)이면, A의 도메인 시간 1단위가 B의 도메인 시간 γ단위에 대응한다.</p>
 <p>(6) 정합: 특수상대론의 동시성 상대성과 정확히 일치한다. 민코프스키 시공간의 로렌츠 변환이 엔티티별 스크린 렌더링 변환으로 번역된다.</p>

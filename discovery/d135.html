@@ -60,9 +60,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong><a href="d135.html">D-135</a>: 우주 나이 $t_0 = 13.80$ Gyr -- S급</strong></p>
 <div class="formula-wrap"><div class="formula-box">$$t_0 = \frac{1}{H_0}\int_0^\infty \frac{dz}{(1+z)E(z)} = 13.80\;\text{Gyr}$$</div></div><p class="finding-precision">오차: 0.02% * 등급 S급</p>
 <p>(1) 우주 나이 t₀ = 13.80 Gyr을 프리드만 적분과 RLU 슬롯 매개변수로 도출한다. CAS 사이클의 누적 틱 수가 도메인 시간으로 변환된 결과다.</p>
-<p>(2) 반야식 출발점: <a href="../axiom.html#ax3">공리 3</a>(FSM 상태 전이)과 <a href="../axiom.html#ax5">공리 5</a>(RLU 57슬롯)에서 시작한다. T_sys(시스템 틱)의 누적이 t_dom = log(T_sys)(<a href="d143.html">D-143</a>)을 통해 도메인 시간으로 렌더링된다.</p>
+<p>(2) 반야식 출발점: <a href="../axiom.html#ax14">공리 14</a>(FSM 상태 전이)과 <a href="../axiom.html#ax6">공리 6</a>(RLU 57슬롯)에서 시작한다. T_sys(시스템 틱)의 누적이 t_dom = log(T_sys)(<a href="d143.html">D-143</a>)을 통해 도메인 시간으로 렌더링된다.</p>
 <p>(3) 노름 치환: t₀ = (1/H₀) × ∫dz/[(1+z)E(z)]. H₀ = d-ring 팽창률(<a href="d14.html">D-14</a>). E(z) = Ω_m(1+z)³ + Ω_Λ. Ω_m = 18/57(<a href="d134.html">D-134</a>), Ω_Λ = 39/57(<a href="d73.html">D-73</a>). 적분 변수 z = 링 이음새의 스케일 인덱스.</p>
-<p>(4) 공리 체인: <a href="../axiom.html#ax5">공리 5</a>(RLU) ==&gt; <a href="../axiom.html#ax3">공리 3</a>(FSM) ==&gt; <a href="../axiom.html#ax4">공리 4</a>(비용). <a href="d14.html">D-14</a>(H₀) + <a href="d134.html">D-134</a>(Ω_m) + <a href="d73.html">D-73</a>(Ω_Λ) + <a href="h46.html">H-46</a>(프리드만) 입력. d-ring 위 쥐다(juida) 연산의 전체 이력이 우주 나이가 된다.</p>
+<p>(4) 공리 체인: <a href="../axiom.html#ax6">공리 6</a>(RLU) ==&gt; <a href="../axiom.html#ax14">공리 14</a>(FSM) ==&gt; <a href="../axiom.html#ax4">공리 4</a>(비용). <a href="d14.html">D-14</a>(H₀) + <a href="d134.html">D-134</a>(Ω_m) + <a href="d73.html">D-73</a>(Ω_Λ) + <a href="h46.html">H-46</a>(프리드만) 입력. d-ring 위 쥐다(juida) 연산의 전체 이력이 우주 나이가 된다.</p>
 <p>(5) 도출 경로: <a href="h46.html">H-46</a>(프리드만 방정식)에 <a href="d134.html">D-134</a>(18/57)과 <a href="d73.html">D-73</a>(39/57)을 대입하여 수치 적분. 평탄 우주(Ω_tot=1)이므로 곡률항 없음. Read(R+1) ==&gt; Compare(C+1) ==&gt; Swap(S+1) 사이클의 z=0부터 z=∞까지 누적이 t₀를 결정한다.</p>
 <p>(6) 수치: t₀ = 13.80 Gyr. Planck 2018 관측값 13.797 ± 0.023 Gyr.</p>
 <p>(7) 오차: 0.02%. Planck 1σ 범위 이내. 방사선 밀도(Ω_r) 기여와 뉴트리노 질량 보정이 잔차의 원인이다. 링 이음새의 고차 비용에 해당한다.</p>
@@ -80,7 +80,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>우주 나이는 발화비트 $\delta$가 첫 틱 이후 d-ring 위에서 누적한 CAS 사이클 틱이 도메인 시간으로 렌더링된 결과다. 시스템 틱 $T_\text{sys}$의 누적을 <a href="../axiom.html#ax5">공리 5</a>(RLU 57슬롯)과 <a href="../axiom.html#ax3">공리 3</a>(FSM 상태 전이)로 읽고, <a href="../axiom.html#ax4">공리 4</a>(비가역 비용)가 틱 한 칸의 시간 비용을 정한다.</p>
+<p>우주 나이는 발화비트 $\delta$가 첫 틱 이후 d-ring 위에서 누적한 CAS 사이클 틱이 도메인 시간으로 렌더링된 결과다. 시스템 틱 $T_\text{sys}$의 누적을 <a href="../axiom.html#ax6">공리 6</a>(RLU 57슬롯)과 <a href="../axiom.html#ax14">공리 14</a>(FSM 상태 전이)로 읽고, <a href="../axiom.html#ax4">공리 4</a>(비가역 비용)가 틱 한 칸의 시간 비용을 정한다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>

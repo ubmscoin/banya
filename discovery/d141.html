@@ -60,9 +60,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p><strong><a href="d141.html">D-141</a>: 시스템 시간 정의 -- S급</strong></p>
 <div class="formula-wrap"><div class="formula-box">$$T_\text{sys} = \text{CAS 사이클 횟수} = \text{비용 카운트}$$</div></div><p class="finding-precision">오차: 0% * 등급 S급</p>
 <p>(1) 시스템 시간 T_sys를 CAS 사이클 횟수로 정의한다. 반야 프레임에서 "진짜 시간"은 도메인 time이 아니라 CAS의 틱 카운트다.</p>
-<p>(2) 반야식 출발점: <a href="../axiom.html#ax3">공리 3</a>(FSM 상태 전이)에서 직접 도출한다. FSM의 상태가 한 번 전이할 때 CAS Read(R+1) ==&gt; Compare(C+1) ==&gt; Swap(S+1)이 1사이클 완료되고, 이것이 1틱이다.</p>
+<p>(2) 반야식 출발점: <a href="../axiom.html#ax14">공리 14</a>(FSM 상태 전이)에서 직접 도출한다. FSM의 상태가 한 번 전이할 때 CAS Read(R+1) ==&gt; Compare(C+1) ==&gt; Swap(S+1)이 1사이클 완료되고, 이것이 1틱이다.</p>
 <p>(3) 노름 치환: T_sys = CAS 사이클 횟수 = 비용 카운트. 단위 = 1틱 = CAS 1사이클. 쥠(juim) 하나가 d-ring 위에서 완전한 Read-Compare-Swap을 수행하는 데 정확히 1틱이 소모된다.</p>
-<p>(4) 공리 체인: <a href="../axiom.html#ax3">공리 3</a>(FSM) ==&gt; <a href="../axiom.html#ax2">공리 2</a>(CAS 3단계) ==&gt; <a href="../axiom.html#ax15">공리 15</a>(발화비트 δ). CAS는 도메인 time 축 바깥에서 작동하므로 도메인 time으로 T_sys를 측정할 수 없다. 쥐다(juida) 연산의 실행 횟수 자체가 시간이다.</p>
+<p>(4) 공리 체인: <a href="../axiom.html#ax14">공리 14</a>(FSM) ==&gt; <a href="../axiom.html#ax2">공리 2</a>(CAS 3단계) ==&gt; <a href="../axiom.html#ax15">공리 15</a>(발화비트 δ). CAS는 도메인 time 축 바깥에서 작동하므로 도메인 time으로 T_sys를 측정할 수 없다. 쥐다(juida) 연산의 실행 횟수 자체가 시간이다.</p>
 <p>(5) 도출 경로: FSM 상태 전이 1회 = CAS 1사이클 = T_sys + 1. 이산적이고 분할 불가능하다. "반 틱"은 존재하지 않는다. 발화비트(δ)가 1회 발화할 때마다 T_sys가 정확히 1 증가한다.</p>
 <p>(6) 수치: 구조 정의. T_sys는 자연수(1, 2, 3, ...). T_sys = 0은 틱의 부재(<a href="d145.html">D-145</a>).</p>
 <p>(7) 오차: 0% (정의). 시스템 시간은 측정값이 아니라 CAS 구조의 정의이므로 오차 개념이 적용되지 않는다.</p>

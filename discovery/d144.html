@@ -62,7 +62,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>(1) 인플레이션을 T_sys ≪ 1에서의 로그 기울기 급변으로 도출한다. 도메인 시간이 거의 흐르지 않았는데 공간이 급팽창하는 현상의 CAS 해석이다.</p>
 <p>(2) 반야식 출발점: <a href="d143.html">D-143</a>(t_dom = log(T_sys))에서 직접 도출한다. 첫 수 틱에서 t_dom ≈ 0이지만, 각 Swap(S+1)마다 space는 렌더링된다. d-ring 위에서 쥠(juim)이 공간을 기록하는 속도가 시간 기록보다 빠르다.</p>
 <p>(3) 노름 치환: T_sys ≪ 1 ==&gt; t_dom = log(T_sys) ≈ 0. 그러나 space = Swap 횟수 = T_sys(선형). 시간은 로그, 공간은 선형이므로 초기에 "시간 대비 공간"의 비율이 폭발한다. Compare(C+1)가 시간을 기록하기 전에 Swap(S+1)이 공간을 확장한다.</p>
-<p>(4) 공리 체인: <a href="d143.html">D-143</a>(로그 관계) ==&gt; <a href="d141.html">D-141</a>(T_sys) ==&gt; <a href="d142.html">D-142</a>(t_dom) ==&gt; <a href="../axiom.html#ax3">공리 3</a>(FSM). 로그 함수의 도함수 dt_dom/dT_sys = 1/T_sys가 T_sys ==&gt; 0에서 발산. 쥐다(juida) 연산의 초기 비대칭이 인플레이션이다.</p>
+<p>(4) 공리 체인: <a href="d143.html">D-143</a>(로그 관계) ==&gt; <a href="d141.html">D-141</a>(T_sys) ==&gt; <a href="d142.html">D-142</a>(t_dom) ==&gt; <a href="../axiom.html#ax14">공리 14</a>(FSM). 로그 함수의 도함수 dt_dom/dT_sys = 1/T_sys가 T_sys ==&gt; 0에서 발산. 쥐다(juida) 연산의 초기 비대칭이 인플레이션이다.</p>
 <p>(5) 도출 경로: 첫 틱(T_sys=1): t_dom = 0, space = 1 Swap. 두 번째 틱(T_sys=2): t_dom = log(2), space = 2 Swap. 스크린에서 보면 시간 log(2)에 공간 2배 ==&gt; 지수적 팽창으로 렌더링. Read(R+1) 비용 누적이 로그로 압축되면서 인플레이션이 자연발생한다.</p>
 <p>(6) 수치: 구조 도출. e-폴딩 수 N ≈ 60은 T_sys의 초기 범위와 로그 밑에 의존. 정밀 수치는 링 이음새 스케일에 의존한다.</p>
 <p>(7) 오차: 구조 대응. 인플레이션 e-폴딩 수 60 ± 10의 범위는 d-ring 링 이음새의 초기 Swap(S+1) 비용 분포에 의존한다.</p>

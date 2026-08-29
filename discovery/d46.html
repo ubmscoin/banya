@@ -61,7 +61,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$r_s = \frac{M}{m_p} \times 2l_p = \frac{2GM}{c^2}, \quad \times 2 = \text{Compare+Swap 2단계}$$</div></div>
 <p class="finding-precision">오차 0%. 표준 공식 정확 재현. * 등급 S급 * 항등식</p>
 <p>$N = M/m_p$는 플랑크 질량 단위로 센 쥠(juim) 개수다. 이 $N$개 쥠 각각이 d-ring 위에서 CAS 연산을 수행한다.
-$r_s = N \times 2l_p$에서 팩터 2는 CAS의 Compare(C+1)와 Swap(S+1) 두 단계에서 나온다. Read는 비용을 추가하지 않고 현재 상태를 읽기만 한다.
+$r_s = N \times 2l_p$에서 팩터 2는 부분합 계상 규칙(3편 정의 5(a))에 의한다: 공간 수축 문맥에서는 상태를 변경하는 유비용 단계만 계상하며, CAS 3단계 중 그 단계는 Compare(C+1)와 Swap(S+1)의 둘이다. Read도 총 회계에서는 유비용(R+1, 공리 4)이나 상태를 변경하지 않는 관측이므로 수축에는 계상되지 않는다. [2026-08-30 정정: 구판의 "Read는 비용 0" 서술은 총 회계(R+C+S 각 +1)와 모순되는 오기 -- 정확한 표현은 수축 문맥의 부분합 계상]
 즉 중력 반지름의 팩터 2는 임의 상수가 아니라, CAS 3단계 중 비용을 발생시키는 2단계(Compare+Swap)의 구조적 필연이다.
 $2l_p$는 CAS 1회 완료 시 d-ring이 수축하는 최소 길이 단위로, 플랑크 길이 $l_p$의 2배다(<a href="../axiom.html#ax4">공리 4</a> 명제: 비용 R+1, C+1, S+1).
 $N$개 쥠이 각각 $2l_p$를 수축시키므로 총 수축 반지름이 $N \times 2l_p = 2GM/c^2$가 되어 표준 슈바르츠실트 공식과 정확히 일치한다.
@@ -82,7 +82,7 @@ $N$개 쥠이 각각 $2l_p$를 수축시키므로 총 수축 반지름이 $N \ti
 <div class="step">
 <h3>1단계. 반야식</h3>
 <div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
-<p>중력 반지름은 $N=M/m_p$개 쥠 각각이 d-ring을 수축시키는 비용의 합이다. CAS 한 회가 비용을 발생시키는 단계는 Compare(C+1)와 Swap(S+1) 둘이고 Read는 비용 0(<a href="../axiom.html#ax4">공리 4</a> 명제: 순서가 있을 때만 비용)이므로, 쥠 1개의 수축 단위가 $2l_p$로 정해진다.</p>
+<p>중력 반지름은 $N=M/m_p$개 쥠 각각이 d-ring을 수축시키는 비용의 합이다. CAS 3단계는 총 회계에서 전부 유비용(R+C+S 각 +1, <a href="../axiom.html#ax4">공리 4</a>)이나, 공간 수축 문맥에는 상태를 변경하는 두 단계 Compare(C+1)와 Swap(S+1)만 계상되므로(부분합 계상, 3편 정의 5(a)) 쥠 1개의 수축 단위가 $2l_p$로 정해진다.</p>
 </div>
 <div class="step">
 <h3>2단계. 노름 치환</h3>

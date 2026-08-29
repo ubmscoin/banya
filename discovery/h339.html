@@ -61,7 +61,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="formula-wrap"><div class="formula-box">$$\text{cost}=\text{serialization overhead};\;\alpha,G,\hbar=f(\text{bottleneck width})$$</div></div>
 <p>비용 = 순서화 병목(serialization bottleneck)이며, 직렬화 지점의 폭이 물리 상수($\alpha$, $G$, $\hbar$)를 결정한다. 비용은 +를 넘을 때마다 발생한다(<a href="../axiom.html#ax4">공리 4</a>).</p>
 <p>반야식: cost = serialization overhead. CAS의 R==&gt;C==&gt;S 각 전이마다 +를 넘어 비용 +1이다. 즉 R+1, C+1, S+1. 총 비용 = 3(CAS 3단계).</p>
-<p>공리 근거: <a href="../axiom.html#ax4">공리 4</a>(비용 = +를 넘을 때 +1)가 비용의 존재를 규정한다. <a href="../axiom.html#ax5">공리 5</a>(LUT)가 CAS 전이 규칙을 제공한다. <a href="../axiom.html#ax8">공리 8</a>(스크린)과 <a href="../axiom.html#ax15">공리 15</a>(δ)에서 δ 발화와 observer 필터링은 +를 넘지 않으므로 비용 0이다.</p>
+<p>공리 근거: <a href="../axiom.html#ax4">공리 4</a>(비용 = +를 넘을 때 +1)가 비용의 존재를 규정한다. <a href="../axiom.html#ax5">공리 5</a>(LUT)가 CAS 전이 규칙을 제공한다. <a href="../axiom.html#ax15">공리 15</a>(스크린)과 <a href="../axiom.html#ax15">공리 15</a>(δ)에서 δ 발화와 observer 필터링은 +를 넘지 않으므로 비용 0이다.</p>
 <p>구조적 귀결: v1.2 핵심 수정. 비용 발생점은 Swap만이 아니라 R, C, S 전부다. v1.1의 "Swap에서만 비용" 해석은 v1.2에서 폐기되었다. 이 수정으로 12 게이지 보손(<a href="h273.html">H-273</a>)의 비용 분배가 $4 \times 3 = 12$로 자연스럽게 나온다.</p>
 <p>수치: 직렬화 지점 수 = 3(R, C, S). 도메인 4축과 곱하면 $4 \times 3 = 12$. 이것이 표준 모형 게이지 보손 수(글루온 8 + $W^\pm$ 2 + $Z$ 1 + $\gamma$ 1 = 12)에 대응한다.</p>
 <p>정합성: <a href="h273.html">H-273</a>(12 게이지 보손 = 4도메인 × 3 CAS)에서 비용 분배가 확인된다. <a href="h261.html">H-261</a>~263(보손 질량)에서 직렬화 비용 &gt; 0인 경로가 유질량 보손이다. <a href="h274.html">H-274</a>(δ 듀티 사이클)에서 δ 비용 0이 확인된다.</p>
