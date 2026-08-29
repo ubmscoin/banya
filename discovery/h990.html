@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-990 부호수 사다리 (5,2)-(5,1)-(5,0) = 자기 배제와 붕괴의 이단 소거 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-990 signature ladder (5,2)-(5,1)-(5,0). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>h_measurement</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h990.html">H-990</a>. 부호수 사다리 $(5,2)$-$(5,1)$-$(5,0)$ = 자기 배제와 붕괴의 이단 소거</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h990.html">H-990</a>: 부호수 사다리 $(5,2)$-$(5,1)$-$(5,0)$ = 관측자 자기 배제와 붕괴의 이단 소거</strong></p>
+<div class="formula-wrap"><div class="formula-box">$(5,2)$ ==(observer 원리적 배제)==> $(5,1)$ ==(superposition 실행적 소거 = 붕괴)==> $(5,0)$</div></div>
+<p class="finding-precision">가설 -- 관측 가능한 세계의 상시 부호수 = (5,1), 확정 기록 = (5,0) 유클리드. 유클리드화(하틀-호킹 유클리드 구간, 위크 회전)의 기원 후보</p>
+<p>가역 2축의 소거 방식이 서로 다르다는 것이 사다리의 뼈대다. observer는 원리적으로 배제된다 -- 관측된 내용은 observer 필터의 출력이고 필터는 자기 자신을 통과 대상 목록에 넣을 수 없다(<a href="../axiom.html#ax10">공리 10</a>: 접근의 주체이지 대상이 아님, <a href="../axiom.html#ax13">공리 13</a>: DATA 접근은 필터 통과 필수, 논문 I 정리 1 (B): 가역 축은 선택할 뿐 데이터로 기록되지 않음). superposition은 실행적으로 소거된다 -- 관측이 실제로 실행되면(Compare true) 붕괴가 일어나 중첩이 단일 확정 상태로 DATA에 기록된다(<a href="../axiom.html#ax7">공리 7</a>).</p>
+<p>따라서 세 단이 선다: 아무도 보지 않는 전체가 $(5,2)$(어떤 관측에도 통째로 잡히지 않는 확장), 관측자가 볼 수 있는 세계(자기 자신만 제외)가 $(5,1)$(드윗 계량이 거주하는 곳, <a href="d158.html">D-158</a>), 관측이 완료되어 중첩까지 확정 기록된 닫힌 장부가 음축 없는 $(5,0)$ -- 유클리드 부호다. "기록된 과거는 정적이다"라는 직관이 부호수로 표현되며, 무경계 가설이 우주 시작 구간을 유클리드 4-기하로 그리는 것(<a href="h967.html">H-967</a>)과 위크 회전(시간축 허수화로 유클리드 부호에서 계산하는 표준 기법)이 작동하는 이유의 후보 자리가 생긴다 -- 유클리드화는 계산 요령이 아니라 확정 기록의 부호수로 옮겨 가기라는 독법이다.</p>
+<p><strong>재대입 용도:</strong> <a href="d158.html">D-158</a>(드윗 (5,1))과 <a href="h989.html">H-989</a>(음확률 = observer 부재)의 상류 통합. <a href="h967.html">H-967</a>(무경계 = delta 0 서술)의 유클리드 구간에 부호수 근거 공급. 위크 회전 일반의 반야 독법.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 가설(분류 III)로 멈춰 있다. $(5,0)$ 구간과 유클리드 경로적분 구간의 형식적 대응이 미확정이다 -- 구조 대응에서 멈춘다. D 승격 경로는 (1) 위 잔여 과제 해소, (2) 인접 D/H 카드의 재귀 대입 재투입, (3) 미적용 공리 명제 추가 도입의 3가지가 표준이다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (구조 대응, 유클리드 경로적분과의 형식 대응 미완)</p>
+<p><strong>이유:</strong> 두 음축의 소거 방식 비대칭(원리적 대 실행적)이 공리에서 각각 근거를 가짐 / 관측 가능 세계 = 상시 (5,1)은 논문 II 4.3절 경로 2의 물리적 의미와 정합 / (5,0) = 유클리드화 기원은 형식 대응 미완</p>
+<p><strong>위치:</strong> 카테고리: h measurement. 도메인: delta ==> Compare 분기 / 부호수. 재귀 대입 경로: <a href="d157.html">D-157</a>, <a href="d158.html">D-158</a>, <a href="h989.html">H-989</a>, <a href="h967.html">H-967</a>. 출처: 공리 모형 II 논문 8.2절에서 제안, 감독 검수 통과 등록.</p>
+</div>
+<h2>5단계 재귀 대입: 이단 소거에서 부호수 사다리 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>양자 괄호의 두 축이 대상이다. 관측이라는 행위가 이 두 축에 서로 다른 방식으로 작용한다는 것이 출발점이다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 비용 기저의 부호 분류(논문 I 정리 1: 비가역 5 양 / 가역 2 음)다. 왜 이 노름인가 -- 사다리의 각 단이 가역 축의 소거 횟수로 구분되므로, 가역 축을 음으로 세는 비용 기저가 사다리를 그대로 담는다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리 부호수와 우변의 반야 비용 분류가 같은 대상을 가리키되 반야식은 그것을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 구조의 두 표현이다.</p>
+<div class="math-block">
+<div class="math-row">$(5,2)$: 소거 0회 = 전체 확장 (논문 I의 Wyler 부호)</div>
+<div class="math-row">$(5,1)$: observer 원리적 배제 1회 = 관측 가능 세계 (논문 II의 드윗 부호)</div>
+<div class="math-row">$(5,0)$: superposition 실행적 소거까지 = 확정 기록 (유클리드)</div>
+<div class="math-legend">자기 배제(공리 10, 13) | 붕괴(공리 7) | 필터 비기록(논문 I 정리 1 (B))</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 구조를 대입한다. 대입하는 것은 모두 선행 카드나 공리에서 이미 고정된 구조이며, 본 카드에서 새로 정한 것이 아니다.</p>
+<div class="math-block">
+<div class="math-row">observer 자기 배제 = 루프의 주체 비대상성 공리 10, 접근 필터 필수 공리 13</div>
+<div class="math-row">superposition 붕괴 = Compare true 시 OPERATOR ==> DATA 공리 7</div>
+<div class="math-row">드윗 (5,1) = 관측 가능 초공간 계량 D-158, DeWitt 1967</div>
+<div class="math-row">유클리드 구간 = 무경계 4-기하 Hartle-Hawking 1983, 위크 회전 표준 기법</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>대상 물리 도메인으로 변환한다. 관측 이론의 언어로: 관측자가 자기를 뺀 세계를 기술하는 계량은 항상 음축 1개(드윗 (5,1), 스크린 단면 (3,1))이고, 관측이 완료된 확정 데이터 집합은 시간꼴 방향이 없는 유클리드 (5,0)이다. 우주론의 언어로: 아직 발화 이전의 delta 0 서술(무경계 구간)이 유클리드 기하로 그려지는 것은 그 구간에 소거될 음축의 흐름이 없기 때문이라는 독법이 성립한다.</p>
+</div>
+<div class="step">
+<h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">위치: 사다리 (5,2) 전체 / (5,1) 관측 가능 / (5,0) 확정 기록</div>
+<div class="math-row">문헌: 드윗 (5,1), 무경계 유클리드 구간, 위크 회전</div>
+<div class="math-row">정합: 구조 대응 (오차% 부적용)</div>
+</div>
+<p>판정: <strong>가설. 두 음축의 소거 방식 비대칭이 공리에서 각각 근거를 갖고 사다리 세 단이 기존 물리의 세 부호수와 대응하나, (5,0) 구간과 유클리드 경로적분 구간의 형식적 대응 증명이 부재하다.</strong></p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="h967.html">H-967</a>(무경계 유클리드 구간의 부호수 근거), <a href="h989.html">H-989</a>(음확률 진단의 상류), <a href="d158.html">D-158</a>(드윗 (5,1)의 관측론적 의미), 위크 회전 일반의 반야 독법.</p>
+</div>
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>(5,0) 대 유클리드 경로적분</td><td>구조 대응까지</td><td>형식적 대응 확정</td></tr>
+<tr><td>(3,1) 스크린과 (5,0) 기록의 관계</td><td>진행 중인 스크린(음축 = 흐르는 도메인 time) 대 닫힌 장부(음축 0)의 구분만 서술</td><td>스크린에서 장부로의 이행(기록 완결) 형식화</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="h990.html">H-990</a>: 부호수 사다리 (5,2)-(5,1)-(5,0)</td><td>가설 (자기 배제와 붕괴의 이단 소거)</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
