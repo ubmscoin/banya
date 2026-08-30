@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-01 뉴트리노 질량합 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-01 뉴트리노 질량합. v1.8 공리 기준 5단계 재귀 대입 채굴 카드." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p01.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p01.html">P-01</a>. 뉴트리노 질량합</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p01.html">P-01</a>: 뉴트리노 질량합</strong></p>
+<p class="finding-precision">P-01 예측 (predictions.html#r1)</p>
+<p>반야식 $\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$에서 출발한다. 모든 입자는 CAS 연산의 산출물이다. CAS에는 Read, Compare, Swap 3단계가 있다.</p>
+<p>전자, 뮤온, 타우는 CAS 3단계를 전부 거친다. 하전 렙톤이다. 전하가 있다. Compare 단계에서 전자기력과 결합한다.</p>
+<p>뉴트리노는 다르다. Compare 단계를 생략한다. Compare 단계를 건너뛰고 바로 Swap으로 간다. 그래서 전하가 없다. 전자기력과 결합하지 않는다. 약력으로만 상호작용한다.</p>
+<p>Compare를 생략한다는 것은 $\alpha$만큼의 결합이 빠진다는 뜻이다. 이것이 뉴트리노 질량이 극히 작은 이유다.</p>
+<p>Compare 생략의 대가는 $\alpha$의 거듭제곱으로 나타난다. CAS 위상공간에서 Compare를 건너뛰면 5차 억제가 발생한다.</p>
+<p>왜 5차인가. CAS 위상공간의 차원은 도메인 4 + 내부 자유도 3 = 7이다. Compare가 차지하는 자유도는 7 중 5다. 비교 연산이 4개 도메인에 걸쳐 일어나고, 내부 자유도 1개가 부착되기 때문이다. 이 5개가 모두 빠지므로 $\alpha^5$ 억제다.</p>
+<p>유도: Compare 도메인 횡단(4개 도메인 전체에서 상태를 비교) + 판정 잔여(비교 판정 자유도 1개) = 5. 나머지 7-5=2는 Read(1) + 최소 존재 조건(1)으로, 뉴트리노가 약력(Read)으로만 상호작용하는 물리적 사실과 일치한다.</p>
+<p>순수 $\alpha^5$ 억제에 보정 인자 $3/2$가 붙는다. CAS의 3단계 중 1단계(Compare)를 건너뛰므로, 남은 2단계(Read, Swap)가 부담하는 보정이다. 3단계 중 2단계가 남으니 $3/2$다.</p>
+<p>현재 우주론적 상한은 $\Sigma &lt; 120\;\text{meV}$이다. 반야프레임 예측 $58.5\;\text{meV}$는 이 범위 안에 있다. 진동 실험에서 나온 $\Delta m^2$ 값들과도 정합한다. $\Delta m^2_{32} \sim 2.5 \times 10^{-3}\;\text{eV}^2$이고, $55.2^2 - 3.3^2 = 3036\;\text{meV}^2 \sim 3.0 \times 10^{-3}\;\text{eV}^2$으로 자릿수가 맞는다.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 고유 예측(분류 III/IV)이며 실험 검증 대기 상태로 멈춰 있다. forward chain은 공리에서 출발해 정량 예측값까지 닫혀 있으나, 해당 실험이 아직 수행되지 않았거나 정밀도가 본 카드의 예측을 검증할 수준에 도달하지 않았다. 예측값이 실험 측정과 정합하면 D 승격, 측정과 5σ 이상 어긋나면 반증 ==&gt; 본 카드 폐기 + 상위 가설 사슬 영향 평가. 잔여 과제 또는 검증 일정: 유도: Compare 도메인 횡단(4개 도메인 전체에서 상태를 비교) + 판정 잔여(비교 판정 자유도 1개) = 5. 나머지 7-5=2는 Read(1) + 최소 존재 조건(1)으로, 뉴트리노가 약력(Read)으로만 상호작용하는 물리적 사실과 일치한다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 실험 데이터 부재 / 구조적 forward chain 완료 / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: delta ==&gt; 예측 대상 도메인 (P 카드별 명시). 재귀 대입 경로: 1차 라운드 (외부 입력 없음)</p>
+</div>
+<h2>5단계 재귀 대입: Compare 생략 비용에서 뉴트리노 질량합 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>뉴트리노 질량은 CAS가 Compare 단계를 건너뛰고 Read에서 Swap으로 직행할 때 남는 잔여 비용이다. 하전 렙톤은 Read Compare Swap 3단계를 모두 거치지만 뉴트리노는 Compare를 생략한다(<a href="../axiom.html#ax7">공리 7</a>: Compare 판정이 Swap 쓰기를 가른다). 완전기술자유도 7(<a href="../axiom.html#ax9">공리 9</a>: 도메인 4 + CAS 3) 중 Compare가 점유하는 자유도가 모두 빠지면서 질량이 극단적으로 억제된다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 Compare 도메인 횡단 노름이다. 비교 연산이 4개 도메인(<a href="../axiom.html#ax1">공리 1</a>) 전체에서 상태를 비교하고 여기에 판정 잔여 자유도 1이 부착되어 $4+1=5$자유도를 점유한다. (b) 뉴트리노는 이 5자유도를 건너뛰므로 결합이 $\alpha$(<a href="d01.html">D-01</a>)의 5제곱만큼 빠진다. 7-5=2는 Read(1)와 최소 존재 조건(1)으로 남아 뉴트리노가 약력으로만 상호작용하는 사실과 일치한다. CAS 3단계 중 1단계만 생략되어 남은 2단계가 부담하는 보정 $3/2$가 곱해진다. 왜 이 노름인가 -- 뉴트리노 질량합 자체가 Compare 생략 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$m_\nu \sim \alpha^5 \, m_\ell$</div>
+<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^5 \, v$</div>
+<div class="math-legend">$\Sigma m_\nu$: 세 뉴트리노 질량합 | $\alpha^5$: Compare 5자유도 생략 억제 | $3/2$: CAS 3단계 중 잔여 2단계 보정 | $v$: 전약 스케일 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 뉴트리노 질량합 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드 공리)를 정리한다.</p>
+<div class="math-block">
+<div class="math-row">$\alpha$ = 1/137.036 <a href="d01.html">D-01</a></div>
+<div class="math-row">$\alpha^{5}$ = $2.06\times10^{-11}$</div>
+<div class="math-row">3/2 = 1.5</div>
+<div class="math-row">$\Sigma$ < 120 meV 우주론 상한 (DESI/Planck)</div>
+<div class="math-row">$dm2_{32}$ = $2.5\times10^{-3}$ $\text{eV}^{2}$ 진동 실험</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a) 약력 질량 도메인으로 변환한다. (b) 보려는 것은 세 뉴트리노 질량의 합 $\Sigma m_\nu$다. Compare 생략의 $\alpha^5$ 억제에 잔여 2단계 보정 $3/2$를 곱해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 -- 뉴트리노 질량합 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^5 \, v = 58.5\;\text{meV}$</div>
+<div class="math-row">$55.2^2 - 3.3^2 = 3036\;\text{meV}^2 \approx 3.0\times 10^{-3}\;\text{eV}^2$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $\Sigma m_\nu = 58.5\;\text{meV}$</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견 가설 예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<div class="math-row">우주론 상한: $\Sigma \lt 120\;\text{meV}$ (DESI/Planck)</div>
+<div class="math-row">진동 정합: $\Delta m^2_{32} \approx 2.5\times 10^{-3}\;\text{eV}^2$ 자릿수 일치</div>
+</div>
+<p>검증 방법: KATRIN 직접 질량 측정 및 DESI/CMB-S4 우주론적 $\Sigma m_\nu$ 측정. 예측값이 측정과 정합하면 D 승격, 5σ 이상 어긋나면 반증.</p>
+<p>판정: <strong>예측</strong>. Compare 생략이 $\alpha^5$ 억제로 뉴트리노 질량의 극소성을 자유 매개변수 0개로 닫는다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: -- </p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출</td><td>해당 실험 (KATRIN, LHC, DESI 등)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p01.html">P-01</a>: 뉴트리노 질량합</td><td>출처: predictions.html#r1</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

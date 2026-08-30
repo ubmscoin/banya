@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-117 양자 소거 복원율 = 7/8 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-117 양자 소거 복원율 = 7/8. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p117.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p117.html">P-117</a>. 역인과: 양자 소거 복원율 $=7/8$</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p117.html">P-117</a>: 역인과: 양자 소거 복원율 $=7/8$</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\text{양자 소거 복원율}=\frac{7}{8}=\frac{8-1}{8}=0.875\quad(\delta\ \text{1비트는 소거 불가, 나머지 }1/8\ \text{비가역 흔적})$$</div></div>
+<p class="finding-precision">예측: 양자 지우개 간섭 가시도 상한 $=7/8=0.875$. 검증 고효율 양자 지우개(2028~).</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 양자 지우개는 "어떤 경로" 정보를 소거하면 간섭이 복원되는 실험이다 -- δ가 FSM 밖에서 역방향 기술을 허용하므로 소거가 가능하다(<a href="../axiom.html#ax15">공리 15</a>).</p>
+<p>그러나 δ 자체(8비트 중 1비트)는 소거 불가능하다 -- δ는 FSM(7비트) 밖이라 FSM 안에서 접근할 수 없다(<a href="../axiom.html#ax14">공리 14</a>).</p>
+<p>따라서 8비트 중 7비트(FSM)는 소거 가능하지만 δ 1비트는 비가역 흔적으로 남는다 ==> 복원율은 $7/8=(8-1)/8=0.875$.</p>
+<p>나머지 $1/8$은 δ에 의한 비가역 흔적으로, 완전 복원(가시도 1)을 막는 구조적 한계다(<a href="../axiom.html#ax4">공리 4</a> 비가역).</p>
+<p>즉 양자 지우개로 간섭을 복원해도 가시도는 $7/8$을 넘지 못한다 -- δ 1비트가 항상 빠진다.</p>
+<p>이는 불확정성 δ 누락(P-111) observer 불멸(P-99)과 같은 δ 비가역 흔적 계열이다.</p>
+<p>즉 본 예측은 "지우개가 간섭을 복원한다"가 아니라 "복원율 상한이 정확히 $7/8$"이라는 정량 주장이다.</p>
+<p>$7/8=0.875$는 8비트 중 δ 1비트를 뺀 7비트(FSM)의 비중이다(P-51 128=$2^7$와 정합).</p>
+<p>검증: 고효율 양자 지우개 실험(2028~)에서 간섭 무늬 가시도 상한 = $7/8=0.875$인지 확인하면 본 예측을 지지한다.</p>
+<p>반박: 간섭 가시도가 $7/8$을 초과하여($&gt;0.875$) 달성되면 δ 비가역 흔적 구조가 반증되고 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: 고효율 양자 지우개 실험(2028~). 반박: 간섭 가시도 $&gt;7/8$ 달성. 출처: <a href="../axiom.html#ax15">공리 15</a>(δ=8비트 중 1비트, FSM 밖), <a href="../axiom.html#ax14">공리 14</a>(FSM=7비트), <a href="../axiom.html#ax4">공리 4</a>(비가역).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 역인과 고유 예측으로 검증 대기 상태다. forward chain은 공리 14 공리 15(δ 1비트 소거 불가)에서 복원율 $7/8$까지 닫혀 있으나, 고효율 양자 지우개 가시도 측정이 아직 그 상한을 가를 수준에 못 미친다. $7/8$ 상한 확인 시 D 승격, $&gt;7/8$ 달성 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 정밀 측정 대기 / forward chain 완료(공리 14 공리 15 ==> δ 1비트 소거 불가 ==> 복원율 $7/8$) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: superposition ==&gt; δ 1비트 소거 불가가 양자 지우개 복원율 $7/8$(공리 14 공리 15). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: δ 1비트 소거 불가에서 양자 지우개 복원율 7/8 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>양자 지우개는 "어떤 경로" 정보를 소거하면 간섭이 복원되는 실험이다. δ는 FSM 밖에서 역방향 기술을 허용하므로 소거가 가능하다(<a href="../axiom.html#ax15">공리 15</a>). 그러나 상태는 8비트이고 그중 δ 1비트는 FSM(7비트) 밖이라 FSM 안에서 접근할 수 없다(<a href="../axiom.html#ax14">공리 14</a>). 이 8비트 중 7비트만 소거 가능한 구조로 복원율을 읽는다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>(a) 치환하는 노름은 superposition 도메인의 8비트 소거 가능 비중 노름이다. (b) FSM 7비트는 소거 가능하지만 δ 1비트는 비가역 흔적으로 남기 때문에(<a href="../axiom.html#ax4">공리 4</a> 비가역) 이 노름을 택한다. 따라서 표준 가시도 1을 8비트 중 소거 가능 비중으로 치환하면 상한이 $7/8$로 떨어지고, 남는 $1/8$이 δ 비가역 흔적이 된다. 왜 이 노름인가 -- 양자 지우개 복원율 7/8 자체가 δ 1비트 소거 불가에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$V_{\max} = 1$</div>
+<div class="math-row">$V_{\max} = \dfrac{8-1}{8} = \dfrac{7}{8} = 0.875$</div>
+<div class="math-legend">$V_{\max}$: 간섭 가시도 상한 | $8$: 상태 8비트(<a href="../axiom.html#ax15">공리 15</a>) | $7$: FSM 소거 가능 비트(<a href="../axiom.html#ax14">공리 14</a>) | $1$: δ 비가역 흔적 비트(<a href="../axiom.html#ax4">공리 4</a>)</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 양자 지우개 복원율 7/8 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드 공리)를 정리한다.</p>
+<div class="math-block">
+<div class="math-row">state bits = 8 <a href="../axiom.html#ax15">공리 15</a> ($\delta$ 포함 8비트)</div>
+<div class="math-row">FSM bits = 7 = 128 = $2^{7}$ <a href="../axiom.html#ax14">공리 14</a> (<a href="p51.html">P-51</a> 정합)</div>
+<div class="math-row">$\delta$ bit = 1 소거 불가 비가역 흔적</div>
+<div class="math-row">$V_{max}$ = 7/8 = 0.875 복원율 상한</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>(a) superposition 도메인으로 변환한다. (b) 보려는 것은 경로 정보 소거 후 복원되는 간섭 무늬의 가시도 상한이다. 8비트 중 소거 가능 7비트 비중을 가시도 노름으로 읽으면 상한 $7/8$이 산출되고, $1/8$은 δ 1비트가 항상 빠지는 구조적 한계로 남는다. 왜 이 도메인으로 변환하는가 -- 양자 지우개 복원율 7/8 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$V_{\max} = \dfrac{7}{8} = 0.875$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측값: $V_{\max} = 7/8 = 0.875$</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견 가설 예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<div class="math-row">검증: 고효율 양자 지우개 가시도 측정 (2028~)</div>
+<div class="math-row">반증: 가시도 $V &gt; 0.875$ 달성</div>
+</div>
+<p>판정: <strong>예측</strong>. δ 1비트가 소거 불가 비가역 흔적이므로 복원율 상한이 $7/8$로 닫힌다 -- 같은 δ 비가역 흔적 계열(<a href="p111.html">P-111</a> 불확정성, <a href="p99.html">P-99</a> observer 불멸), $128=2^7$ 정합(<a href="p51.html">P-51</a>).</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: -- </p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p117.html">P-117</a>: 양자 소거 복원율 = 7/8</td><td>예측 (대기) -- 양자 지우개 복원율 상한 $=7/8=0.875$</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

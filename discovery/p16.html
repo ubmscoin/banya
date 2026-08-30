@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-16 수명비에 (2π/9)^5 인자 포함 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-16 수명비에 (2π/9)^5 인자 포함. v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p16.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p16.html">P-16</a>. 수명비에 $(2\pi/9)^5$ 인자 포함</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p16.html">P-16</a>: 수명비에 $(2\pi/9)^5$ 인자 포함</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\frac{\tau_\tau}{\tau_\mu}\ \supset\ \left(\frac{2\pi}{9}\right)^5,\qquad 9=\underbrace{7}_{\text{CAS}}+\underbrace{2}_{\text{괄호}}\ (\text{공리 9}),\quad 2\pi=\text{d-ring 1주기}$$</div></div>
+<p class="finding-precision">예측: 타우/뮤온 수명비에 $(2\pi/9)^5$ 인자가 나타난다. 검증 Belle II(2026~), $3\sigma$.</p>
+<p>반야식 $\delta^2=(\text{time}+\text{space})^2+(\text{observer}+\text{superposition})^2$에서 입자의 수명은 CAS가 한 쥠(juim)을 RLU에서 회수(<a href="../axiom.html#ax6">공리 6</a>)하는 데 걸리는 회전 수에 대응한다. 따라서 수명비는 d-ring 위 위상각의 거듭제곱으로 나타나야 한다.</p>
+<p>타우/뮤온 수명비에는 $(2\pi/9)^5$ 인자가 관측된다(<a href="d53.html">D-53</a>). 이 식의 두 정수 9와 5, 그리고 $2\pi$는 모두 공리 구조에서 직접 읽힌다.</p>
+<p>분모의 9는 완전기술자유도다 -- CAS의 7상태(<a href="../axiom.html#ax2">공리 2</a>)에 고전 괄호 2개를 더한 값(<a href="../axiom.html#ax9">공리 9</a>: $7+2=9$). 한 쥠을 완전히 기술하는 데 필요한 자유도의 총수다.</p>
+<p>$2\pi$는 d-ring을 한 바퀴 도는 위상이다. 그래서 $2\pi/9$는 d-ring 위에서 완전기술자유도 1개가 차지하는 위상각 -- 9등분된 한 칸의 각도다.</p>
+<p>지수 5는 붕괴 경로의 위상공간 자유도다. 붕괴가 거치는 독립 자유도마다 $2\pi/9$의 위상이 한 번씩 곱해져 5제곱이 된다.</p>
+<p>이 인자는 CAS가 쥠을 RLU에서 회수할 때(<a href="../axiom.html#ax6">공리 6</a>, <a href="../axiom.html#ax12">공리 12</a> 명제) 각 자유도가 기여하는 붕괴 확률의 곱에 대응한다 ==> 곱의 구조가 거듭제곱을 만든다.</p>
+<p>핵심은 $2\pi/9$가 한 묶음으로 나타난다는 점이다. 만약 9가 우연한 맞춤이라면 다른 수명비에서는 $2\pi/9$가 깨질 것이다. 9가 완전기술자유도라면 모든 렙톤 붕괴에서 같은 분모가 반복된다.</p>
+<p>즉 본 예측은 단일 수치 맞춤이 아니라 "분모 9 = CAS 7 + 괄호 2"라는 공리적 정체성의 검증이다(<a href="../axiom.html#ax9">공리 9</a>).</p>
+<p>검증: Belle II(2026~)에서 타우 붕괴 분기비를 정밀 측정해 $(2\pi/9)^5$ 패턴의 존재 여부를 $3\sigma$ 수준으로 판별한다. 패턴이 확인되면 완전기술자유도 9가 물리적 실체임을 뜻한다.</p>
+<p>반박: Belle II 정밀 측정에서 수명비가 $(2\pi/9)^5$에서 $3\sigma$ 이상 벗어나면 본 예측은 폐기된다.</p>
+<p><strong>재대입 용도:</strong> 검증: Belle II(2026~), $3\sigma$. 반박: 수명비가 $(2\pi/9)^5$에서 $3\sigma$ 이상 이탈. 출처: <a href="../axiom.html#ax9">공리 9</a>(완전기술자유도 9 = CAS 7 + 괄호 2), <a href="../axiom.html#ax6">공리 6</a>(RLU 회수).</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 고유 예측으로 검증 대기 상태다. forward chain은 공리 9($9=7+2$) $2\pi$ d-ring 경로 DOF 5에서 $(2\pi/9)^5$까지 닫혀 있으나, Belle II의 타우 분기비 정밀도가 아직 $3\sigma$ 판별에 못 미친다. 패턴 확인 시 D 승격, $3\sigma$ 이탈 시 반증 ==> 본 예측 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (실험 검증 대기)</p>
+<p><strong>이유:</strong> 실험 정밀도 미달 / forward chain 완료(공리 9: 9=7+2, $2\pi$ d-ring, 경로 DOF 5 ==> $(2\pi/9)^5$) / 검증 대기</p>
+<p><strong>위치:</strong> 카테고리: p. 도메인: time ==&gt; d-ring 위상각의 거듭제곱이 수명비 결정(공리 6 공리 9). 검증 대기.</p>
+</div>
+<h2>5단계 재귀 대입: RLU 회수 회전 비용에서 수명비 $(2\pi/9)^5$ 인자 도출</h2>
+<div class="step">
+<h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>입자 수명은 CAS가 한 쥠을 RLU에서 회수(<a href="../axiom.html#ax6">공리 6</a>)하는 데 드는 d-ring 회전 비용이다. 한 쥠을 완전히 기술하는 데 필요한 자유도는 CAS 7상태(<a href="../axiom.html#ax2">공리 2</a>)에 고전 괄호 2를 더한 9다(<a href="../axiom.html#ax9">공리 9</a>: $7+2=9$). 수명비는 이 비용의 거듭제곱으로 읽힌다.</p>
+</div>
+<div class="step">
+<h3>2단계. 노름 치환</h3>
+<p>치환하는 노름은 d-ring 위상각 노름이다. $2\pi$는 d-ring을 한 바퀴 도는 위상이고 9는 완전기술자유도이므로, 한 자유도가 차지하는 위상각은 $2\pi/9$다. 수명은 이 위상이 곱으로 누적되는 회전 비용이므로 이 노름을 택한다. 따라서 수명비를 d-ring 위상각의 거듭제곱으로 치환한다. 왜 이 노름인가 -- 수명비 $(2\pi/9)^5$ 인자 자체가 RLU 회수 회전 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu} = \dfrac{m_\mu^5}{m_\tau^5}\,\dfrac{f(\tau\to)}{f(\mu\to)}$</div>
+<div class="math-row">$\dfrac{\tau_\tau}{\tau_\mu}\ \supset\ \left(\dfrac{2\pi}{9}\right)^5$</div>
+<div class="math-legend">$\tau_\tau,\tau_\mu$: 타우 뮤온 수명 | $9 = 7+2$: 완전기술자유도 = CAS 7 + 괄호 2 (<a href="../axiom.html#ax9">공리 9</a>) | $2\pi$: d-ring 1주기 | 지수 $5$: 붕괴 경로 위상공간 자유도</div>
+</div>
+</div>
+<div class="step">
+<h3>3단계. 상수 대입</h3>
+<p>이 단계에서는 앞의 반야 치환식에 등장한 기호에 실제 상수값을 대입한다. 대입하는 값은 모두 선행 D/H/P 카드나 공리에서 이미 고정된 상수이며, 본 카드에서 새로 정한 값이 아니다. 왜 이 상수들인가 -- 수명비 $(2\pi/9)^5$ 인자 산출에 필요한 입력이 이들로 모두 닫히고, 그 밖에 손으로 맞춘 자유 매개변수가 하나도 없기 때문이다. 각 값은 측정 또는 선행 도출에서 온 것이므로 도출의 객관성이 보장되고 순환 논증이 끼어들 여지가 없다. 아래에 각 상수의 값과 그 출처(카드 공리)를 정리한다.</p>
+<div class="math-block">
+<div class="math-row">2 $\pi$ = 6.283185307179586</div>
+<div class="math-row">9 = 7 + 2 <a href="../axiom.html#ax9">공리 9</a> (CAS 7 + 괄호 2)</div>
+<div class="math-row">2 $\pi$ / 9 = 0.6981317</div>
+<div class="math-row">경로 DOF = 5 붕괴 위상공간 자유도</div>
+</div>
+</div>
+<div class="step">
+<h3>4단계. 도메인 변환</h3>
+<p>time 도메인(렙톤 붕괴 위상)으로 변환한다. 이 변환으로 보려는 것은 수명비 안에 분모 9가 공리적 정체로 남는지 여부다. 한 자유도당 위상 $2\pi/9$를 경로 자유도 5에 걸쳐 곱해 인자를 산출한다. 왜 이 도메인으로 변환하는가 -- 수명비 $(2\pi/9)^5$ 인자 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<div class="math-block">
+<div class="math-row">$\left(\dfrac{2\pi}{9}\right)^5 = 0.6981317^5 = 0.16566$</div>
+</div>
+</div>
+<div class="step">
+<h3>5단계. 예측</h3>
+<div class="math-block">
+<div class="math-row">예측: $\dfrac{\tau_\tau}{\tau_\mu}$에 $\left(\dfrac{2\pi}{9}\right)^5$ 인자 포함</div>
+<p>이 단계는 도출값을 측정값과 대조해 판정한다. 도출값과 측정값의 정합 정도가 판정의 직접 근거다. 왜 이 판정인가 -- forward chain이 공리와 실재 카드 입력만으로 닫혔는지, 그리고 오차가 승급 기준 안에 드는지에 따라 발견 가설 예측이 갈리기 때문이다. 이 도출은 표준 이론의 사후 맞춤이 아니라 CAS 비용 구조에서 앞으로 전개된 결과다. 측정 정밀도가 높아지거나 후속 카드가 재투입되면 이 판정은 재검토된다.</p>
+<div class="math-row">검증: Belle II (2026~), $3\sigma$</div>
+<div class="math-row">측정: 검증 대기</div>
+</div>
+<p>판정: <strong>예측</strong>. 분모 9가 모든 렙톤 붕괴에서 같은 $2\pi/9$로 반복되면 완전기술자유도 9가 물리적 실체임을 뜻한다.</p>
+</div>
+<div class="box-byproduct">
+<h3>부산물</h3>
+<p>재투입 경로: <a href="d53.html">D-53</a></p>
+</div>
+
+<div class="box-incomplete">
+<h3>미완</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead>
+<tbody>
+<tr><td>실험 검증</td><td>이론값 산출 완료</td><td>해당 실험 (본문 명시)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box-summary">
+<h3>총괄</h3>
+<table class="tbl">
+<thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><a href="p16.html">P-16</a>: 수명비에 (2π/9)^5 인자 포함</td><td>예측 (대기) -- 수명비에 $(2\pi/9)^5$, 분모 9 = CAS 7 + 괄호 2</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody>
+</table>
+</div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">© 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
