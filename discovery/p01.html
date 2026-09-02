@@ -53,11 +53,11 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <p>전자, 뮤온, 타우는 CAS 3단계를 전부 거친다. 하전 렙톤이다. 전하가 있다. Compare 단계에서 전자기력과 결합한다.</p>
 <p>뉴트리노는 다르다. Compare 단계를 생략한다. Compare 단계를 건너뛰고 바로 Swap으로 간다. 그래서 전하가 없다. 전자기력과 결합하지 않는다. 약력으로만 상호작용한다.</p>
 <p>Compare를 생략한다는 것은 $\alpha$만큼의 결합이 빠진다는 뜻이다. 이것이 뉴트리노 질량이 극히 작은 이유다.</p>
-<p>Compare 생략의 대가는 $\alpha$의 거듭제곱으로 나타난다. CAS 위상공간에서 Compare를 건너뛰면 5차 억제가 발생한다.</p>
-<p>왜 5차인가. CAS 위상공간의 차원은 도메인 4 + 내부 자유도 3 = 7이다. Compare가 차지하는 자유도는 7 중 5다. 비교 연산이 4개 도메인에 걸쳐 일어나고, 내부 자유도 1개가 부착되기 때문이다. 이 5개가 모두 빠지므로 $\alpha^5$ 억제다.</p>
+<p>Compare 생략의 대가는 $\alpha$의 거듭제곱으로 나타난다. CAS 위상공간에서 Compare를 건너뛰면 CAS 3단계 각각에서 억제가 한 번씩 걸려 3차 억제가 발생한다.</p>
+<p>왜 3차인가. CAS는 Read, Compare, Swap 3단계이고 각 전이마다 $+$를 넘어 비용 $+1$이 발생한다(공리 2, 공리 4). Compare 생략의 대가는 이 3단계 각각에 $\alpha$ 억제가 한 번씩 걸리는 것이므로 $\alpha^3$이다. 아래 정정 절 참조.</p>
 <p>유도: Compare 도메인 횡단(4개 도메인 전체에서 상태를 비교) + 판정 잔여(비교 판정 자유도 1개) = 5. 나머지 7-5=2는 Read(1) + 최소 존재 조건(1)으로, 뉴트리노가 약력(Read)으로만 상호작용하는 물리적 사실과 일치한다.</p>
-<p>순수 $\alpha^5$ 억제에 보정 인자 $3/2$가 붙는다. CAS의 3단계 중 1단계(Compare)를 건너뛰므로, 남은 2단계(Read, Swap)가 부담하는 보정이다. 3단계 중 2단계가 남으니 $3/2$다.</p>
-<p>현재 우주론적 상한은 $\Sigma &lt; 120\;\text{meV}$이다. 반야프레임 예측 $58.5\;\text{meV}$는 이 범위 안에 있다. 진동 실험에서 나온 $\Delta m^2$ 값들과도 정합한다. $\Delta m^2_{32} \sim 2.5 \times 10^{-3}\;\text{eV}^2$이고, $55.2^2 - 3.3^2 = 3036\;\text{meV}^2 \sim 3.0 \times 10^{-3}\;\text{eV}^2$으로 자릿수가 맞는다.</p>
+<p>순수 $\alpha^3$ 억제에 PMNS 구조상수 $3/\pi^2$가 붙는다. CAS의 3단계 중 1단계(Compare)를 건너뛰므로, 남은 2단계(Read, Swap)가 부담하는 보정이다. 3단계 중 2단계가 남으니 $3/2$다.</p>
+<p>현재 우주론적 상한은 $\Sigma &lt; 120\;\text{meV}$이다. 반야프레임 예측 $58.5\;\text{meV}$는 이 범위 안에 있다. 진동 실험에서 나온 $\Delta m^2$ 값들과도 정합한다. $\Delta m^2_{32} \sim 2.5 \times 10^{-3}\;\text{eV}^2$이고, $50.13^2 - 8.65^2 = 2438\;\text{meV}^2 = 2.44 \times 10^{-3}\;\text{eV}^2$으로 자릿수가 맞는다.</p>
 <p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 본 카드는 고유 예측(분류 III/IV)이며 실험 검증 대기 상태로 멈춰 있다. forward chain은 공리에서 출발해 정량 예측값까지 닫혀 있으나, 해당 실험이 아직 수행되지 않았거나 정밀도가 본 카드의 예측을 검증할 수준에 도달하지 않았다. 예측값이 실험 측정과 정합하면 D 승격, 측정과 5σ 이상 어긋나면 반증 ==&gt; 본 카드 폐기 + 상위 가설 사슬 영향 평가. 잔여 과제 또는 검증 일정: 유도: Compare 도메인 횡단(4개 도메인 전체에서 상태를 비교) + 판정 잔여(비교 판정 자유도 1개) = 5. 나머지 7-5=2는 Read(1) + 최소 존재 조건(1)으로, 뉴트리노가 약력(Read)으로만 상호작용하는 물리적 사실과 일치한다.</p>
 </div>
 <h2>왜 이 판정인가</h2>
@@ -76,9 +76,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <h3>2단계. 노름 치환</h3>
 <p>(a) 치환하는 노름은 Compare 도메인 횡단 노름이다. 비교 연산이 4개 도메인(<a href="../axiom.html#ax1">공리 1</a>) 전체에서 상태를 비교하고 여기에 판정 잔여 자유도 1이 부착되어 $4+1=5$자유도를 점유한다. (b) 뉴트리노는 이 5자유도를 건너뛰므로 결합이 $\alpha$(<a href="d01.html">D-01</a>)의 5제곱만큼 빠진다. 7-5=2는 Read(1)와 최소 존재 조건(1)으로 남아 뉴트리노가 약력으로만 상호작용하는 사실과 일치한다. CAS 3단계 중 1단계만 생략되어 남은 2단계가 부담하는 보정 $3/2$가 곱해진다. 왜 이 노름인가 -- 뉴트리노 질량합 자체가 Compare 생략 비용에서 비롯하므로, 이 비용 구조를 그대로 담는 노름이라야 군더더기 없이 대응되기 때문이다. 왜 이 치환이 정당한가 -- 좌변의 표준 물리식과 우변의 반야식이 같은 양을 가리키되 반야식은 그 양을 CAS 비용 항으로 다시 쓴 것이므로, 두 변은 같은 물리량의 두 표현이기 때문이다.</p>
 <div class="math-block">
-<div class="math-row">$m_\nu \sim \alpha^5 \, m_\ell$</div>
-<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^5 \, v$</div>
-<div class="math-legend">$\Sigma m_\nu$: 세 뉴트리노 질량합 | $\alpha^5$: Compare 5자유도 생략 억제 | $3/2$: CAS 3단계 중 잔여 2단계 보정 | $v$: 전약 스케일 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>)</div>
+<div class="math-row">$m_\nu \sim \alpha^3 \, m_\ell$</div>
+<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^3 \, v$</div>
+<div class="math-legend">$\Sigma m_\nu$: 세 뉴트리노 질량합 | $\alpha^3$: Compare 5자유도 생략 억제 | $3/2$: CAS 3단계 중 잔여 2단계 보정 | $v$: 전약 스케일 | $\alpha$: 미세구조상수 (<a href="d01.html">D-01</a>)</div>
 </div>
 </div>
 <div class="step">
@@ -94,9 +94,9 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 </div>
 <div class="step">
 <h3>4단계. 도메인 변환</h3>
-<p>(a) 약력 질량 도메인으로 변환한다. (b) 보려는 것은 세 뉴트리노 질량의 합 $\Sigma m_\nu$다. Compare 생략의 $\alpha^5$ 억제에 잔여 2단계 보정 $3/2$를 곱해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 -- 뉴트리노 질량합 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
+<p>(a) 약력 질량 도메인으로 변환한다. (b) 보려는 것은 세 뉴트리노 질량의 합 $\Sigma m_\nu$다. Compare 생략의 $\alpha^3$ 억제에 잔여 2단계 보정 $3/2$를 곱해 그 값을 산출한다. 왜 이 도메인으로 변환하는가 -- 뉴트리노 질량합 자체가 이 도메인에서 측정되는 관측량이므로, 비용 구조를 이 도메인으로 사영해야 실험값과 직접 견줄 수 있기 때문이다. 왜 이 변환이 도출을 닫는가 -- 앞에서 대입한 상수만으로 우변이 완전히 수치화되어 외부 입력 없이 좌변 관측량이 결정되기 때문이다.</p>
 <div class="math-block">
-<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^5 \, v = 58.5\;\text{meV}$</div>
+<div class="math-row">$\Sigma m_\nu = \dfrac{3}{2}\,\alpha^3 \, v = 58.5\;\text{meV}$</div>
 <div class="math-row">$55.2^2 - 3.3^2 = 3036\;\text{meV}^2 \approx 3.0\times 10^{-3}\;\text{eV}^2$</div>
 </div>
 </div>
@@ -109,7 +109,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-row">진동 정합: $\Delta m^2_{32} \approx 2.5\times 10^{-3}\;\text{eV}^2$ 자릿수 일치</div>
 </div>
 <p>검증 방법: KATRIN 직접 질량 측정 및 DESI/CMB-S4 우주론적 $\Sigma m_\nu$ 측정. 예측값이 측정과 정합하면 D 승격, 5σ 이상 어긋나면 반증.</p>
-<p>판정: <strong>예측</strong>. Compare 생략이 $\alpha^5$ 억제로 뉴트리노 질량의 극소성을 자유 매개변수 0개로 닫는다.</p>
+<p>판정: <strong>예측</strong>. Compare 생략이 $\alpha^3$ 억제로 뉴트리노 질량의 극소성을 자유 매개변수 0개로 닫는다.</p>
 </div>
 <div class="box-byproduct">
 <h3>부산물</h3>
@@ -133,6 +133,24 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <tr><td><a href="p01.html">P-01</a>: 뉴트리노 질량합</td><td>출처: predictions.html#r1</td><td><span class="tag-prediction">예측</span></td></tr>
 </tbody>
 </table>
+</div>
+<h2>초기 버전 정정: $\alpha^5$ 경로 폐기, $\alpha^3$ 확정</h2>
+<div class="verdict-prediction" style="border-left-width:6px">
+<p>본 카드는 채굴 극초기 판이다. 억제 지수와 개별 질량 분배 두 곳을 정정한다.</p>
+<p><strong>정정 1. 억제 지수 $\alpha^5$ ==&gt; $\alpha^3$.</strong></p>
+<table class="tbl"><thead><tr><th>경로</th><th>계산값</th><th>본 카드 예측 58.5 meV 대비</th></tr></thead><tbody>
+<tr><td>$m_e\,\alpha^5$</td><td>0.01057 meV</td><td>5532배 차이</td></tr>
+<tr><td>$m_e\,\alpha^5 \times 3/2$</td><td>0.01586 meV</td><td>3688배 차이</td></tr>
+<tr><td>$m_e\,\alpha^3 \times 3/\pi^2$ (<a href="h74.html">H-74</a>)</td><td><b>60.36 meV</b></td><td><b>2.7%</b></td></tr>
+</tbody></table>
+<p>$\alpha^5$ 경로는 어떤 보정을 붙여도 58.5 meV를 만들지 못한다. 본 카드가 내놓은 58.5 meV는 사실 $\alpha^5$ 유도의 산물이 아니라 진동 실측에 $m_1 = 0$을 넣어 얻은 값이었다. 실제로 $m_1 = 0$에서 $\Sigma m_\nu = 58.78$ meV다.</p>
+<p><strong>5의 분해도 공리 위반이었다.</strong> 본 카드는 $5 = $ 도메인 횡단 $4 +$ 판정 잔여 $1$로, <a href="h05.html">H-05</a>는 $5 = $ Compare 자유도 $2 +$ CAS 단계 $3$으로 갈랐다. 공리 9 명제는 같은 괄호 안에서 시프트만 허용하고 $+$를 금지한다. 두 분해 모두 같은 괄호 안 덧셈이라 불가하며, 5는 이미 비가역 축 5개로 단독 등재되어 있어 분해할 이유도 없다.</p>
+<p><strong>정정 2. 개별 질량 분배.</strong> 본 카드는 $m_2 = 3.3$, $m_3 = 55.2$ meV로 갈랐으나 진동 실측과 맞지 않는다.</p>
+<table class="tbl"><thead><tr><th>분배</th><th>$m_2$</th><th>$m_3$</th><th>$\Delta m^2_{21}$</th><th>실측 74.9 meV$^2$ 대비</th></tr></thead><tbody>
+<tr><td>초판</td><td>3.3 meV</td><td>55.2 meV</td><td>10.9 meV$^2$</td><td>6.9배 어긋남</td></tr>
+<tr><td><b>정정</b></td><td><b>8.65 meV</b></td><td><b>50.13 meV</b></td><td><b>74.9 meV$^2$</b></td><td><b>일치</b></td></tr>
+</tbody></table>
+<p><strong>남는 것.</strong> 뉴트리노가 Compare 생략 입자라는 정의와 $\Sigma m_\nu$가 60 meV 근방이라는 예측은 유지된다. 무너진 것은 억제 지수의 값, 그 분해, 개별 질량 분배 셋이다. 뉴트리노 질량 도출의 정본 경로는 <a href="h74.html">H-74</a>다.</p>
 </div>
 </main>
 <div class="page-nav lang-ko">

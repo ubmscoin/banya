@@ -54,7 +54,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <body>
 <div class="lang-switch"><a class="lang-btn" href="../../discovery/d14.html">KR</a></div>
 <main class="lang-en" style="max-width:840px;margin:0 auto;padding:2em 1em">
-<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>d_mass_yukawa</code> | Verdict: <span class="tag-discovery">Discovery</span></p>
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== Library</a> | Category: <code>d_mass_yukawa</code> | Verdict: <span class="tag-hypothesis">Hypothesis</span></p>
 <h1><a href="d14.html">D-14</a>. Koide Deviation</h1><div class="box-finding">
 <h3>Core Finding</h3>
 <p><strong><a href="d14.html">D-14</a>: Koide Deviation</strong></p>
@@ -99,7 +99,7 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <div class="math-block">
 <div class="math-row">$\alpha$ = 1/137.036 <a href="d01.html">D-01</a></div>
 <div class="math-row">$\alpha^{3}$ = $3.88\times10^{-7}$</div>
-<div class="math-row">15 = 3 x 5 CAS 3-stage x 5</div>
+<div class="math-row">15 = 30 / 2 CAS 3-stage x 5</div>
 </div>
 </div>
 <div class="step">
@@ -138,9 +138,43 @@ table.tbl th { background:#161b22; color:#c9d1d9; }
 <table class="tbl">
 <thead><tr><th>Item</th><th>Result</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td><a href="d14.html">D-14</a>: Koide Deviation</td><td>Error: digits exact match</td><td><span class="tag-discovery">Discovery</span></td></tr>
+<tr><td><a href="d14.html">D-14</a>: Koide Deviation</td><td>Error: digits exact match</td><td><span class="tag-hypothesis">Hypothesis</span></td></tr>
 </tbody>
 </table>
+</div>
+<h2>H Demotion (Discovery ==&gt; Hypothesis)</h2>
+<div class="verdict-hypothesis" style="border-left-width:6px">
+<p><strong>Verdict change:</strong> Discovery ==&gt; Hypothesis (H demotion)</p>
+<p><strong>Reason for demotion:</strong> At the PDG 2024 central tau mass the Koide deviation is $-2.203\times10^{-6}$, which is 0.38 times $-15\alpha^3 = -5.829\times10^{-6}$. The coefficient $15$ misses the measurement by a factor of 2.65 and therefore fails the 1% error threshold required for a discovery verdict. The order of magnitude $10^{-6}$ still agrees, but the coefficient cannot be fixed.</p>
+<p><strong>The deviation is extremely sensitive to the tau mass</strong></p>
+<p>The Koide deviation is a small difference of three large numbers, so any change in the tau mass is amplified directly. The sensitivity is $dQ/dm_\tau = 5.646\times10^{-5}\;\text{MeV}^{-1}$, meaning a 1 keV shift in the tau mass moves the deviation by 1%.</p>
+<table class="tbl"><thead><tr><th>$m_\tau$ (MeV)</th><th>$Q - 2/3$</th><th>vs $-15\alpha^3$</th><th>Note</th></tr></thead><tbody>
+<tr><td>1776.84</td><td>$-7.284\times10^{-6}$</td><td>1.25x</td><td>PDG 2024 $-1\sigma$</td></tr>
+<tr><td>1776.86</td><td>$-6.155\times10^{-6}$</td><td>1.06x</td><td>older central value</td></tr>
+<tr><td>1776.93</td><td>$-2.203\times10^{-6}$</td><td>0.38x</td><td>PDG 2024 central</td></tr>
+<tr><td>1777.02</td><td>$+2.878\times10^{-6}$</td><td>sign flips positive</td><td>PDG 2024 $+1\sigma$</td></tr>
+<tr><td>1777.09</td><td>$+6.829\times10^{-6}$</td><td>sign flips positive</td><td>Belle II 2023</td></tr>
+</tbody></table>
+<p><strong>Inversion:</strong> The tau mass that satisfies $Q - 2/3 = -15\alpha^3 = -5.829\times10^{-6}$ exactly is $m_\tau = 1776.8658$ MeV, which sits $0.71\sigma$ from the PDG 2024 central value and is therefore not excluded.</p>
+<p><strong>Discrimination requirement:</strong> Determining the coefficient to 10% precision requires measuring the tau mass to 10.3 keV, a ninefold improvement over the current 90 keV.</p>
+<p><strong>Current verdict:</strong> The order of magnitude ($10^{-6}$) holds across the whole range. The negative sign holds at the PDG 2024 central value but flips at $+1\sigma$. Both the sign and the coefficient are therefore undetermined at present experimental precision. This card should be read as a conditional prediction rather than an assertion, and its falsification condition is a confirmed $m_\tau \ge 1777.0$ MeV.</p>
+</div>
+<h2>Coefficient Structure Corrected: 15 = 30/2</h2>
+<div class="verdict-hypothesis" style="border-left-width:6px">
+<p><strong>Correction:</strong> $15 = 3_{\text{CAS}} \times 5_{(9-4)}$ (product) ==&gt; $15 = 30_{\text{access paths}} \div 2_{\text{brackets}}$ (quotient)</p>
+<p><strong>The product reading violates the axioms.</strong> Two places forbid it.</p>
+<blockquote>Axiom 9: numbers that factor ($6=3\times2$, $8=2^3$ and so on) are not independent and are therefore not registered.<br/>
+Axiom 2 proposition, numerology filter, rejected examples: $28$ ($4\times7$, arbitrary product), $11$ (filter output)</blockquote>
+<p>$15 = 3\times5$ has the same form as the rejected $28 = 4\times7$. Indeed $15$ appears in neither the structural table (1, 2, 3, 4, 7, 9, 16, 30, 128, 137) nor the cost table (1, 2, 3, 4, 5, 9, 13) of Axiom 9.</p>
+<p><strong>Read as a quotient there is exactly one answer.</strong> Among all quotients of registered numbers, only $30 \div 2$ equals 15. Here $30$ is the access-path count registered in the structural table and $2$ is the bracket count, so the coefficient is the number of access paths per bracket.</p>
+<p><strong>Exact form.</strong> The D-56 update established that $30$ is the integer approximation of $2+9\pi = 30.274$ (Paper I, Section 5.1). Applying the same relation to the coefficient gives:</p>
+<div class="formula-wrap"><div class="formula-box">$$\delta K = -\frac{2+9\pi}{2}\,\alpha^3 = -15.137\,\alpha^3$$</div></div>
+<table class="tbl"><thead><tr><th>Coefficient</th><th>Value</th><th>vs 15.840 required by the older tau mass</th></tr></thead><tbody>
+<tr><td>$(2+9\pi)/2$ (exact)</td><td>15.137</td><td><b>4.6%</b></td></tr>
+<tr><td>$30/2 = 15$ (integer approximation)</td><td>15.000</td><td>5.6%</td></tr>
+</tbody></table>
+<p>The exact form fits better than the integer approximation, mirroring how $7/30$ gave way to $7/(2+9\pi)$ in D-56.</p>
+<p><strong>Still undetermined.</strong> The coefficient itself cannot be fixed at current experimental precision. Within $1\sigma$ of the tau mass the required coefficient runs from 18.745 (at $-1\sigma$) through 5.670 (central) to $-7.405$ (at $+1\sigma$), flipping sign. This correction fixes the structure of the coefficient, not its value.</p>
 </div>
 </main>
 <div class="page-nav lang-ko">
