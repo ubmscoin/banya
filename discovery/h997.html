@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B63YWKZSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8B63YWKZSJ');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-997 0점 개수 상수 7/8 = 1 - (1/4)(1/2) -- 반야프레임 채굴 카드</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-997 리만-폰 망골트 0점 개수 공식의 상수 7/8 = 1 - (1/4)(1/2), 스털링 위상 -pi/8 분해. v1.8 공리 기반 5단계 재귀 대입 채굴 카드." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h997.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>h_misc</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h997.html">H-997</a>. 0점 개수 상수 $7/8 = 1 - (1/4)(1/2)$: 스털링 위상 분해</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h997.html">H-997</a>: 리만-폰 망골트 공식의 상수 7/8은 극점 몫 1에서 스털링 위상 $-\pi/8$의 몫 $1/8$을 뺀 값이며, $1/8$은 등재수 4와 2의 역수 곱으로 갈린다</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$N(T) = \frac{T}{2\pi}\log\frac{T}{2\pi} - \frac{T}{2\pi} + \frac78 + S(T) + O(T^{-1}), \qquad \frac78 = 1 + \frac{1}{\pi}\Big(\tfrac14 - \tfrac12\Big)\frac{\pi}{2} = 1 - \frac14\cdot\frac12$$</div></div>
+<p class="finding-precision">가설 -- 분해는 수학적으로 정확하나 반야 독법이 유일하지 않다. 7/8 = CAS 7 / d-ring 8 독법은 8이 등재 탈락수이므로 분류 III 이하로 격리</p>
+<p>0점 개수 $N(T)$는 $N(T) = \theta(T)/\pi + 1 + S(T)$이고, 리만-지겔 세타 $\theta(T) = \arg\Gamma(\tfrac14 + \tfrac{iT}{2}) - \tfrac{T}{2}\log\pi$의 스털링 전개에서 상수항 $-\pi/8$이 나온다. 그 기원은 $\Gamma(z)$의 스털링 꼴 $(z - \tfrac12)\log z$에 $z = \tfrac14 + \tfrac{iT}{2}$를 넣었을 때의 허수부 $(\tfrac14 - \tfrac12)\arg z$이며, $T\to\infty$에서 $\arg z \to \pi/2$이다. 따라서 $-\pi/8 = (\tfrac14-\tfrac12)\cdot\tfrac{\pi}{2}$이고, $\pi$로 나누면 $-1/8$, 극점 몫 $+1$을 더하면 $7/8$이다. 여기서 $\tfrac14$는 임계선 $\mathrm{Re}\,s = \tfrac12$가 $\Gamma(s/2)$에서 반으로 접힌 자리다.</p>
+<p>반야 독법 후보 두 가지를 나란히 적는다. (가) $1/8 = (1/4)(1/2)$: 4와 2는 등재수(<a href="../axiom.html#ax9">공리 9</a>)이고, $\pi/2$는 <a href="../axiom.html#ax2">공리 2</a> 명제(CAS 정방향 경로의 기하학적 범위)가 "3경계 중 1개만 횡단한 것이므로 불완전"으로 규정한 부분 횡단의 호와 같은 값이다. (나) $7/8$ = CAS 내부 자유도 7 / d-ring 8비트: 7은 등재수이나 8은 <a href="../axiom.html#ax2">공리 2</a> 명제(CAS의 자료형)의 필터에서 $2^3$으로 분해되어 탈락한 수다. 두 독법 모두 결합 문법(괄호 안 시프트, 괄호 간 +, <a href="../axiom.html#ax9">공리 9</a> 명제)으로 강제되지 않는다.</p>
+<p><strong>재대입 용도:</strong> <a href="h995.html">H-995</a>의 도메인 시간 진동수 밀도 $\tfrac{1}{2\pi}\log\tfrac{T}{2\pi}$와 함께 0점 계수 공식 전체의 반야 독법을 구성하는 재료. 부분 횡단 $\pi/2$가 실제 물리량에 등장하는 사례 수집.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 수학적 분해는 정확하나 4, 2, $\pi/2$를 공리 자리에 배정하는 것은 사후 동정이며 비유일하다. 독법 (나)는 탈락수 8을 쓰므로 수비학 위험이 크다. 다중 비교 보정 전 판정이다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (분해 정확, 공리 배정 비유일, 수비학 경고)</p>
+<p><strong>이유:</strong> $7/8 = 1 - (1/4)(1/2)$ 수학 항등 / 1/4 = 임계선 1/2의 반 접힘 / $\pi/2$ = 부분 횡단 호 (공리 2 명제) 후보 / 7/8 = 7/8비트 독법은 탈락수 8 사용</p>
+<p><strong>위치:</strong> 카테고리: h misc. 도메인: 0점 계수 ==&gt; 스털링 위상 상수. 재귀 대입 경로: <a href="h995.html">H-995</a>, <a href="h996.html">H-996</a></p>
+</div>
+<h2>5단계 재귀 대입: 0점 계수 상수의 분해</h2>
+<div class="step"><h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>반야식은 위상이지 계량이 아니며(<a href="../axiom.html#ax1">공리 1</a> 명제), 위상의 단위원 형식에서 + 1회 횡단은 $\pi$ 회전이다. 본 카드는 0점 계수의 상수항을 위상($\pi$ 단위)으로 나눈 몫으로 읽는다.</p></div>
+<div class="step"><h3>2단계. 노름 치환</h3>
+<div class="math-block">
+<div class="math-row">$N(T) = \theta(T)/\pi + 1 + S(T)$, $\quad\theta(T) = \tfrac{T}{2}\log\tfrac{T}{2\pi} - \tfrac{T}{2} - \tfrac{\pi}{8} + O(T^{-1})$</div>
+<div class="math-row">$-\tfrac{\pi}{8} = \big(\tfrac14 - \tfrac12\big)\cdot\tfrac{\pi}{2} \;\Rightarrow\; \tfrac{1}{\pi}\big(-\tfrac{\pi}{8}\big) + 1 = \tfrac78$</div>
+<div class="math-legend">$\tfrac14$: $\Gamma(s/2)$의 $s = \tfrac12$ 자리 | $\tfrac12$: 스털링 $(z - \tfrac12)$ | $\tfrac{\pi}{2}$: $\arg z$의 점근값, 부분 횡단 호 후보 (<a href="../axiom.html#ax2">공리 2</a> 명제) | $1$: 극점 몫</div>
+</div></div>
+<div class="step"><h3>3단계. 상수 대입</h3>
+<div class="math-block">
+<div class="math-row">$N(100) = 29.0023$ (주항 + 7/8), 실제 0점 개수 29</div>
+<div class="math-row">$N(1000) = 648.616$, 실제 649 (차는 $S(T)$의 요동)</div>
+</div></div>
+<div class="step"><h3>4단계. 도메인 변환</h3>
+<p>0점 계수를 도메인 시간 진동수(<a href="h995.html">H-995</a>)의 누적 개수로 변환한다. 주항 $\tfrac{T}{2\pi}\log\tfrac{T}{2\pi}$는 진동수 $T$까지의 누적 밀도이고, 상수 $7/8$은 그 누적의 원점 보정이다. 원점 보정의 정체가 극점 1과 부분 횡단 몫 $1/8$의 차라는 것이 본 카드의 독법이다.</p></div>
+<div class="step"><h3>5단계. 발견</h3>
+<p>판정: <strong>가설. 반증 조건: 없음(수학 항등식의 분해). 승격 조건: $\tfrac14$와 $\tfrac{\pi}{2}$의 공리 배정이 다른 0점 계수 문맥(디리클레 L-함수의 상수항)에서도 같은 자리를 지키는지 확인. L-함수의 감마 인자가 바뀌면 상수가 바뀌므로 독법 (가)는 그 변화를 같은 규칙으로 따라가야 한다.</strong></p></div>
+<div class="box-byproduct"><h3>부산물</h3>
+<p>독법 (나) 7/8 = 7/8비트는 숫자가 매혹적이나, 같은 값이 $1 - (1/4)(1/2)$로 정확히 분해되는 순간 8을 끌어올 이유가 사라진다. 탈락수를 쓰지 않는 분해가 있으면 그쪽을 택한다는 필터 규칙의 적용 사례로 기록한다.</p></div>
+<div class="box-incomplete"><h3>미완</h3>
+<table class="tbl"><thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead><tbody>
+<tr><td>$\tfrac14$, $\tfrac{\pi}{2}$의 공리 배정</td><td>후보</td><td>L-함수 감마 인자별 상수항 비교로 규칙 검증</td></tr>
+<tr><td>극점 몫 1</td><td>해석 없음</td><td>$\xi(s)$의 $s(s-1)$ 인자의 반야 독법 미착수</td></tr>
+</tbody></table></div>
+<div class="box-summary"><h3>총괄</h3>
+<table class="tbl"><thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead><tbody>
+<tr><td><a href="h997.html">H-997</a>: 0점 개수 상수 7/8 분해</td><td>$7/8 = 1 - (1/4)(1/2)$, 탈락수 8 불필요</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody></table></div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

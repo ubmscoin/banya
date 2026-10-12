@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B63YWKZSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8B63YWKZSJ');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P-640 리만 가설 성립 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="P-640 리만 가설 성립 예측: 비자명 0점 전부 Re = 1/2 (직교 노름 지수). v1.8 axiom-based 5-step recursive substitution mining card." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/p640.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p style="color:#7d8590;font-size:0.85em"><a href="../predictions.html">&lt;== 고유 예측</a> | 카테고리: <code>p</code> | 판정: <span class="tag-prediction">예측</span></p>
+<h1><a href="p640.html">P-640</a>. 리만 가설 성립: 비자명 0점은 전부 $\mathrm{Re}\,\rho = 1/2$</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="p640.html">P-640</a>: 직교 = 독립 명제 아래에서 명시 공식의 모든 진동 항 진폭은 직교 노름 지수 $x^{1/2}$로 같아야 한다 -- 임계선 밖 0점은 없다</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$\zeta(\rho) = 0,\; 0 \lt \mathrm{Re}\,\rho \lt 1 \;\Longrightarrow\; \mathrm{Re}\,\rho = \tfrac12$$</div></div>
+<p class="finding-precision">예측 (대기) -- 표준 수학계의 다수 견해와 공유하는 예측이라 판별력이 낮다. 처음 수조 개의 0점은 전부 임계선 위에서 수치 확인됨</p>
+<p><a href="h996.html">H-996</a>은 임계 지수 1/2을 서로 독립인 직교 단위 $x$개의 노름 지수로 읽었다(<a href="../axiom.html#ax1">공리 1</a> 명제 직교 = 독립, <a href="../axiom.html#ax2">공리 2</a> 명제 노름 $\sqrt N$). 임계선 밖에 0점 $\rho = \beta + i\gamma$ ($\beta \gt 1/2$)가 하나라도 있으면 그 진동 항 $x^\rho$의 진폭 $x^\beta$가 노름 지수를 넘어 자란다. 이는 정수 계단의 요동이 독립 직교 단위의 노름 눈금을 초과한다는 뜻이고, <a href="h996.html">H-996</a>의 독법과 양립하지 않는다. 따라서 본 체계는 리만 가설 성립을 예측한다.</p>
+<p><strong>재대입 용도:</strong> <a href="h995.html">H-995</a>, <a href="h996.html">H-996</a>, <a href="h997.html">H-997</a> 리만 묶음의 반증 기준점. 임계선 밖 0점이 발견되면 묶음 전체가 재검토된다.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>실험 검증 대기:</strong> 본 카드는 리만 가설의 성립을 다루는 예측으로 검증 대기 상태다. 근거 사슬은 <a href="../axiom.html#ax1">공리 1</a>, <a href="../axiom.html#ax2">공리 2</a>, <a href="../axiom.html#ax3">공리 3</a>이며 증명이 아니다. 임계선 밖 0점의 수치 발견 시 폐기.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-prediction">
+<p><strong>판정: 예측</strong> -- Prediction (검증 대기, 판별력 낮음)</p>
+<p><strong>이유:</strong> H-996의 직교 노름 독법의 직접 귀결 / 수치 검증 범위 안에서 반례 없음 / 표준 견해와 공유</p>
+<p><strong>위치:</strong> 카테고리: p. 비자명 0점의 실수부 -- 직교 노름 지수에서 도출. 재귀 대입 경로: <a href="h996.html">H-996</a>, <a href="h995.html">H-995</a></p>
+</div>
+<h2>5단계 재귀 대입: 직교 노름에서 임계선 예측</h2>
+<div class="step"><h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>직교 성분의 노름은 제곱 합의 제곱근이며 교차항이 없다. 진동 항의 진폭 지수가 노름 지수를 넘는 것은 교차항(상관)이 있다는 뜻이다.</p></div>
+<div class="step"><h3>2단계. 노름 치환</h3>
+<div class="math-block"><div class="math-row">진폭 $|x^\rho| = x^{\mathrm{Re}\,\rho}$, 직교 노름 $\|\cdot\| \sim x^{1/2}$ $\Rightarrow$ $\mathrm{Re}\,\rho = 1/2$</div>
+<div class="math-legend">함수방정식 $\xi(s) = \xi(1-s)$에 의해 0점은 $\mathrm{Re}\,s = 1/2$에 대해 짝을 이루므로, 1/2보다 작은 쪽이 있으면 큰 쪽도 있다</div></div></div>
+<div class="step"><h3>3단계. 상수 대입</h3>
+<div class="math-block"><div class="math-row">처음 $10^{13}$개 이상의 0점: 전부 $\mathrm{Re}\,\rho = 1/2$ (Gourdon 2004 등 수치 검증)</div></div></div>
+<div class="step"><h3>4단계. 도메인 변환</h3>
+<p>소수 계수 도메인으로 변환하면 예측은 $\pi(x) = \mathrm{Li}(x) + O(\sqrt{x}\log x)$, 메르텐스 도메인에서는 $M(x) = O(x^{1/2+\varepsilon})$이다.</p></div>
+<div class="step"><h3>5단계. 발견</h3>
+<p>판정: <strong>예측. 반증 조건: 실수부가 1/2이 아닌 비자명 0점이 하나라도 수치로 확정되면 폐기하고, <a href="h996.html">H-996</a>의 직교 노름 독법도 동반 기각한다.</strong></p></div>
+<div class="box-byproduct"><h3>부산물</h3>
+<p>판별력 보강 후보: 반야 고유의 수치를 갖는 예측(예: 0점 간격 통계의 이산 눈금)은 현재 근거가 없어 등재하지 않는다. 0점 간격은 GUE 통계와 높은 정밀도로 일치하므로, 근거 없는 이산 눈금 예측은 즉시 반증될 위험이 크다.</p></div>
+<div class="box-summary"><h3>총괄</h3>
+<table class="tbl"><thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead><tbody>
+<tr><td><a href="p640.html">P-640</a>: 리만 가설 성립</td><td>비자명 0점 전부 $\mathrm{Re}\,\rho = 1/2$ (판별력 낮음)</td><td><span class="tag-prediction">예측</span></td></tr>
+</tbody></table></div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
