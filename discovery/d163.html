@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B63YWKZSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8B63YWKZSJ');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>D-163 리만 0점 통계 대칭 등급 beta=2 = CAS 비가역 -- 반야프레임 채굴</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="D-163 리만 0점 간격 통계 GUE beta=2 = 비가역 CAS의 복소수 등급 (준위 간격 등급 명제). v1.8 공리 기반 5단계 재귀 대입 채굴 카드." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/d163.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p class="card-created" style="color:#7d8590;font-size:0.8em;margin:0 0 6px">생성: 2026-10-13</p>
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>d_structure</code> | 판정: <span class="tag-discovery">발견</span></p>
+<h1><a href="d163.html">D-163</a>. 리만 0점 통계의 대칭 등급 $\beta = 2$ = 비가역 CAS의 복소수 등급 (준위 간격 등급 명제)</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="d163.html">D-163</a>: 리만 0점 간격이 따르는 무작위 행렬 등급은 다이슨의 세 등급 중 복소수 등급(GUE, $\beta=2$)이며, 반야는 이를 CAS 비가역성(시간 반전 부재)과 OPERATOR 괄호 2축의 복소 형식에서 얻는다</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$R_2(u) = 1 - \left(\frac{\sin\pi u}{\pi u}\right)^{2}, \qquad p(s) \propto s^{\beta}\ (s\to0), \qquad \beta = 2$$</div></div>
+<p class="finding-precision">발견 B급 -- 준위 반발 지수 $\beta = 2$ 오차 0% (몽고메리 1973, 오들리즈코 1987). 사용 수 1, 2, 3만. 기지 사실의 사후 재구성</p>
+<p>다이슨의 3중 분류에서 에르미트 연산자의 고유값 통계는 정확히 세 등급이다: 실수 대칭(GOE, $\beta=1$, 시간 반전 대칭 $T^2=+1$), 복소 에르미트(GUE, $\beta=2$, 시간 반전 대칭 없음), 사원수 자기쌍대(GSE, $\beta=4$, $T^2=-1$). 몽고메리의 쌍상관 $1-(\sin\pi u/\pi u)^2$는 GUE의 쌍상관과 같고, 오들리즈코는 높이 $10^{12}$ 부근의 0점으로 이를 수치 확인했다. 그래서 학계는 0점을 고유값으로 갖는 힐베르트-폴리아 연산자가 시간 반전 대칭을 깨야 한다고 본다.</p>
+<p>반야에서 이 등급은 <a href="../axiom.html#ax4">공리 4</a>의 준위 간격 등급 명제가 정한다: "수 체계는 반야식의 직교가 정하고 준위 간격 등급은 비용이 정한다." 수 체계 쪽에서 <a href="../axiom.html#ax1">공리 1</a> 명제(재귀 원리)는 직교 1축을 실수선, 2축을 단위원 복소수, 3축을 단위구 사원수로 등재하며, 이는 다이슨의 $\mathbb R, \mathbb C, \mathbb H$와 같은 목록이다. 등급 쪽에서 0점을 만드는 연산에는 비가역인 CAS가 관여한다. CAS 전이는 역순이 불가하므로(<a href="../axiom.html#ax2">공리 2</a> 명제: R==&gt;C==&gt;S 역순 불가, 환불 없음) 역순 2회의 부호가 정의되지 않고, 역순을 필요로 하는 실수 등급(역순 2회 $+1$)과 사원수 등급(역순 2회 $-1$)이 함께 탈락하여 복소수 등급 하나가 남는다. OPERATOR 괄호 2축의 복소 형식은 구조 층위의 그릇이고, 등급을 정하는 것은 비용 층위의 비가역성이다.</p>
+<p><strong>재대입 용도:</strong> <a href="h995.html">H-995</a>(0점 = 도메인 시간 진동수)의 진동수들이 어떤 통계를 갖는지 닫는다. 같은 규칙이 비가역 CAS가 관여하는 모든 양자 혼돈 스펙트럼에 적용되는지(시간 반전이 살아 있는 계에서는 GOE가 관측됨)가 다음 라운드 시험대.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>발견의 한정:</strong> 등급 판정(비가역 ==&gt; $\beta=2$)은 공리 구절의 직접 적용이나, GUE 통계 자체와 몽고메리 공식은 기지 사실이다. 0점이 OPERATOR 괄호의 연산자 고유값이라는 것은 힐베르트-폴리아 가설 위의 독법이다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-discovery">
+<p><strong>판정: 발견</strong> -- Discovery (B급, 지수 $\beta=2$ 오차 0%, 사용 수 1, 2, 3만)</p>
+<p><strong>이유:</strong> 준위 간격 등급 명제 (공리 4): 수 체계는 직교, 등급은 비용 / 다이슨 세 등급 = 공리 1 재귀 원리의 $\mathbb R, \mathbb C, \mathbb H$ / 0점 생성 연산에 비가역 CAS 관여 (공리 2 명제) ==&gt; 역순 부재 ==&gt; 실수, 사원수 등급 탈락 / 몽고메리-오들리즈코 수치와 일치</p>
+<p><strong>위치:</strong> 카테고리: d structure. 도메인: OPERATOR 연산자 스펙트럼 ==&gt; 0점 간격 통계. 재귀 대입 경로: <a href="h995.html">H-995</a>, <a href="h996.html">H-996</a>, <a href="h239.html">H-239</a></p>
+</div>
+<h2>5단계 재귀 대입: 비가역성에서 0점 통계 등급 도출</h2>
+<div class="step"><h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>OPERATOR 괄호(observer + superposition)는 직교 2축이다. <a href="../axiom.html#ax1">공리 1</a> 명제(반야식의 단위원 형식)는 직교 2축을 실수부와 허수부에 놓는 복소수 형식을 등재한다.</p></div>
+<div class="step"><h3>2단계. 노름 치환</h3>
+<div class="math-block">
+<div class="math-row">직교 축 수 1, 2, 3 ==&gt; $\mathbb R, \mathbb C, \mathbb H$ ==&gt; $\beta = 1, 2, 4$ (다이슨 지수 = 수 체계의 실차원)</div>
+<div class="math-row">CAS 비가역 ==&gt; 시간 반전 연산 $T$ 부재 ==&gt; $\beta=1$($T^2=+1$), $\beta=4$($T^2=-1$) 탈락 ==&gt; $\beta = 2$</div>
+<div class="math-legend">$\beta$: 준위 반발 지수 | $\mathbb R, \mathbb C, \mathbb H$: 재귀 원리 (<a href="../axiom.html#ax1">공리 1</a> 명제) | 비가역: R==&gt;C==&gt;S 역순 불가 (<a href="../axiom.html#ax2">공리 2</a> 명제) | 등급 결정: 준위 간격 등급 명제 (<a href="../axiom.html#ax4">공리 4</a>)</div>
+</div></div>
+<div class="step"><h3>3단계. 상수 대입</h3>
+<div class="math-block">
+<div class="math-row">GUE 위그너 근사: $p(s) = \tfrac{32}{\pi^2}s^2 e^{-4s^2/\pi}$, 작은 간격에서 $p(s)\propto s^2$</div>
+<div class="math-row">몽고메리 쌍상관 $1-(\sin\pi u/\pi u)^2$ = GUE 쌍상관 (다이슨 지적, 1972)</div>
+</div></div>
+<div class="step"><h3>4단계. 도메인 변환</h3>
+<p>0점 간격 통계 도메인으로 변환한다. 오들리즈코(1987)의 높이 $10^{12}$ 부근 0점, 이후 $10^{20}$대 높이의 0점 수억 개에서 최근접 간격 분포와 쌍상관이 GUE 곡선에 맞는다. 작은 간격의 반발 지수 2가 관측된다.</p></div>
+<div class="step"><h3>5단계. 발견</h3>
+<div class="math-block">
+<div class="math-row">도출값: $\beta = 2$ (GUE)</div>
+<div class="math-row">관측값: 몽고메리-오들리즈코 법칙, GUE 일치</div>
+<div class="math-row">오차: 0% (지수 정수 일치)</div>
+</div>
+<p>판정: <strong>발견. 반증 조건: 더 높은 높이의 0점 통계가 GOE나 GSE 쪽으로 기울면 폐기. 또한 시간 반전 대칭이 있는 양자 혼돈계에서 GUE가 관측되면 "비가역 ==&gt; $\beta=2$" 규칙의 고유성이 반증된다(현재 관측은 시간 반전이 있으면 GOE).</strong></p></div>
+<div class="box-byproduct"><h3>부산물</h3>
+<p>사원수 등급($\beta=4$)은 재귀 원리에서 3축(공간 xyz, CAS R/C/S)의 자리다. 3축 서브프레임이 시간 반전 $T^2=-1$(크라머스 이중 축퇴, 반정수 스핀)과 함께 나타날 때 GSE가 나온다는 독법이 따라 나오며, <a href="h942.html">H-942</a>(반정수 스핀 = 사원수 720도)와 접속한다.</p></div>
+<div class="box-incomplete"><h3>미완</h3>
+<table class="tbl"><thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead><tbody>
+<tr><td>0점 = OPERATOR 연산자 고유값</td><td>힐베르트-폴리아 독법</td><td>연산자 구성은 미완 (학계도 미완, 베리-키팅 xp는 닫힘 문제)</td></tr>
+<tr><td>L-함수 족의 저높이 대칭형</td><td>미착수</td><td>카츠-사낙 족별 대칭형(유니터리, 심플렉틱, 직교)과 재귀 원리 대응 검토</td></tr>
+</tbody></table></div>
+<div class="box-summary"><h3>총괄</h3>
+<table class="tbl"><thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead><tbody>
+<tr><td><a href="d163.html">D-163</a>: 0점 통계 등급 $\beta=2$</td><td>비가역 CAS ==&gt; 복소수 등급 (공리 4 준위 간격 등급 명제), 몽고메리-오들리즈코 일치</td><td><span class="tag-discovery">발견</span></td></tr>
+</tbody></table></div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
