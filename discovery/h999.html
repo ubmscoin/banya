@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="ko" translate="no">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B63YWKZSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8B63YWKZSJ');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>H-999 음향 지평의 두 문턱 -- 반야프레임 채굴 카드</title>
+<meta content="Han Hyukjin" name="author"/>
+<meta content="H-999 음향 지평의 두 문턱: 감쇠 연속, 문턱 이산에서 먼저 풀린 쪽의 누적 길이가 짧다(r* &lt; r_drag). 비율 56/57은 수치 근거 미완. v1.8 공리 기반 5단계 재귀 대입 채굴 카드." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="CC BY-NC-SA 4.0, Han Hyukjin 2026" name="rights"/>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/>
+<link href="../common.css" rel="stylesheet"/>
+<link href="../print.css" media="print" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,errorColor:'#f85149'});" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+.box-finding { background:#0e3b1f; border:2px solid #2ea043; padding:14px 18px; margin:1.5em 0; border-radius:5px; }
+.box-finding h3 { color:#3fb950; margin:0 0 10px; font-size:1.1em; }
+.box-byproduct { border-left:4px solid #1f6feb; padding:6px 16px; margin:1.2em 0; }
+.box-byproduct h3 { color:#58a6ff; margin:0 0 8px; font-size:1em; }
+.box-incomplete { border-left:4px solid #d29922; padding:6px 16px; margin:1.2em 0; }
+.box-incomplete h3 { color:#e3b341; margin:0 0 8px; font-size:1em; }
+.box-summary { border-left:4px solid #8b949e; padding:6px 16px; margin:1.2em 0; }
+.box-summary h3 { color:#c9d1d9; margin:0 0 8px; font-size:1em; }
+.formula-box { background:#161b22; padding:10px 14px; border-radius:3px; border:1px solid #30363d; }
+.finding-precision { color:#7ee787; font-weight:600; margin:6px 0; }
+.step { background:#0d1117; border-left:3px solid #58a6ff; padding:10px 16px; margin:0.8em 0; }
+.step h3 { margin:0 0 6px; color:#58a6ff; font-size:1em; }
+.verdict-discovery { background:#0e3b1f; padding:10px 16px; border-left:4px solid #2ea043; margin:8px 0; }
+.verdict-hypothesis { background:#0d2c5c; padding:10px 16px; border-left:4px solid #1f6feb; margin:8px 0; }
+.verdict-prediction { background:#3d2766; padding:10px 16px; border-left:4px solid #8957e5; margin:8px 0; }
+.verdict-unknown { background:#3a2d00; padding:10px 16px; border-left:4px solid #d29922; margin:8px 0; }
+.stop-point { background:#161b22; padding:10px 16px; border-left:3px solid #f0883e; margin:8px 0; }
+table.tbl { width:100%; border-collapse:collapse; margin:8px 0; }
+table.tbl th, table.tbl td { padding:6px 12px; border:1px solid #30363d; text-align:left; }
+table.tbl th { background:#161b22; color:#c9d1d9; }
+.tag-discovery,.tag-solved { background:#2ea043; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-hypothesis { background:#1f6feb; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-prediction { background:#8957e5; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+.tag-unknown { background:#d29922; color:#fff; padding:2px 6px; border-radius:3px; font-size:0.8em; }
+</style>
+</head>
+<body>
+<div class="lang-switch"><a class="lang-btn" href="../en/discovery/h999.html">EN</a></div>
+<main class="lang-ko" style="max-width:840px;margin:0 auto;padding:2em 1em">
+<p class="card-created" style="color:#7d8590;font-size:0.8em;margin:0 0 6px">생성: 2026-10-13</p>
+<p style="color:#7d8590;font-size:0.85em"><a href="../lib.html">&lt;== 라이브러리</a> | 카테고리: <code>h_cosmology</code> | 판정: <span class="tag-hypothesis">가설</span></p>
+<h1><a href="h999.html">H-999</a>. 음향 지평의 두 문턱: 먼저 풀린 쪽의 누적 길이가 짧다 ($r_* &lt; r_\text{drag}$)</h1><div class="box-finding">
+<h3>핵심 발견</h3>
+<p><strong><a href="h999.html">H-999</a>: 풀림의 문턱은 쓰기 유지 비용이 정한다. 감쇠는 연속이고 문턱은 이산이므로, 문턱이 다른 두 쥠은 같은 연속 감쇠 위에서 서로 다른 시점에 풀린다. 두 풀림 사이에도 회수는 연속으로 진행되므로, 먼저 풀린 쪽에서 잰 누적 길이는 나중에 풀린 쪽에서 잰 누적 길이보다 짧다.</strong></p>
+<div class="formula-wrap"><div class="formula-box">$$r_* &lt; r_\text{drag} = 3\times7^2 = 147\ \text{Mpc},\qquad \frac{r_*}{r_\text{drag}} \overset{?}{=} \frac{56}{57} = 0.98246\ \ (\text{수치 근거 미완})$$</div></div>
+<p class="finding-precision">가설 -- 방향($r_* &lt; r_\text{drag}$)은 공리 구절에서 나온다. 비율 56/57은 측정을 본 뒤 고른 값이다. 관측: $r_* = 144.39\pm0.30$, $r_\text{drag} = 147.09\pm0.26$ Mpc (Planck 2018), 비 0.98164</p>
+<p>공리 6은 CAS가 쥠을 만들 때 발생한 총 비용이 RLU에 기록되고, RLU가 잔존 비용을 연속적으로 회수한다고 정한다. 같은 자리에서 감쇠는 연속이고 문턱은 이산이라고 정한다(공리 2 명제). 문턱의 값은 공리 2의 쓰기 문턱 명제가 정한다: 문턱 = 쓰기 유지 비용 / CAS 총 비용 = 4/13이며, 쥐는 힘이 이 값 이하로 떨어지면 3축 쥐기가 풀리고 공이 DATA에서 이산 해제된다. 한편 공리 7에서 Compare false인 경우는 Swap이 실행되지 않고 중첩이 유지된다.</p>
+<p>이 구절들을 합치면, 문턱이 다른 두 쥠은 같은 연속 감쇠를 따라가다가 서로 다른 시점에 풀린다. 풀린 뒤에는 더 이상 그 쥠의 길이가 누적되지 않으므로, 먼저 풀린 쥠에서 잰 누적 길이는 나중에 풀린 쥠에서 잰 누적 길이보다 짧다. 공리에서 나오는 것은 이 순서와 부등호까지다.</p>
+<p>채굴 대응: 먼저 풀리는 쪽은 재결합(광자 탈결합)이고, 나중에 풀리는 쪽은 끌림(바리온 해방)이다. <a href="d63.html">D-63</a>의 147 Mpc는 Planck의 $r_\text{drag}$ 측정값 147.09와 비교되므로 끌림 시점 지평이다. 따라서 재결합 시점 지평 $r_*$는 147보다 짧아야 하고, 관측 144.39는 이 방향과 맞는다.</p>
+<p>수치: 비율을 $56/57 = 1 - 1/57$로 두면 $r_* = 147\times56/57 = 144.42$ Mpc로 관측 144.39와 0.02% 차이다. 그러나 이 비율은 공리에서 나오지 않는다. 57은 공리 9의 등재 수가 아니고, 57을 RLU 슬롯 수로 읽는 독법은 "RLU는 논리주소(슬롯 번호)를 사용하지 않는다"는 <a href="../axiom.html#ax13">공리 13</a> 명제와 충돌한다. 비율은 측정을 본 뒤 고른 것이므로 다중 비교의 우연 기대를 배제할 수 없다.</p>
+<p><strong>재대입 용도:</strong> <a href="d63.html">D-63</a>의 이름표를 $r_s$에서 $r_\text{drag}$로 바로잡는 근거다. <a href="p527.html">P-527</a>은 $r_\text{drag} = 147$을 직접 예측으로 다시 쓰고, 본 카드는 $r_*$가 그보다 짧다는 방향을 준다. <a href="p241.html">P-241</a>과 <a href="d136.html">D-136</a>의 음향 각은 $r_*$를 써야 하므로 이 카드에 의존한다.</p>
+<p style="margin-top:1em;padding:8px 12px;background:#0d1117;border-left:3px solid #f0883e"><strong>가설에서 멈춘 이유:</strong> 공리에는 쓰기 유지 비용 4 하나와 문턱 4/13 하나만 있다. 두 번째 문턱의 값이 정해지지 않으므로 두 지평의 비율을 공리에서 산출할 수 없다. 방향은 공리에서 나오지만 수치는 미완이다.</p>
+</div>
+<h2>왜 이 판정인가</h2>
+<div class="verdict-hypothesis">
+<p><strong>판정: 가설</strong> -- Hypothesis (방향은 공리 구절에서 도출, 비율 수치는 공리 근거 없음)</p>
+<p><strong>이유:</strong> 감쇠 연속, 문턱 이산 (<a href="../axiom.html#ax6">공리 6</a>, 공리 2 명제) / 문턱 = 쓰기 유지 비용 4 / 총 비용 13 (공리 2 명제) / 풀린 뒤에는 누적이 멈춤 / 두 번째 문턱 값은 공리에 없음 / 56/57은 사후 선택</p>
+<p><strong>위치:</strong> 카테고리: h cosmology. 도메인: RLU 연속 회수 ==&gt; 음향 지평 두 개. 재귀 대입 경로: <a href="d63.html">D-63</a>, <a href="h483.html">H-483</a>, <a href="p527.html">P-527</a>, <a href="p241.html">P-241</a>, <a href="d136.html">D-136</a></p>
+</div>
+<h2>5단계 재귀 대입: 연속 감쇠 위의 두 이산 문턱에서 두 음향 지평의 순서 읽기</h2>
+<div class="step"><h3>1단계. 반야식</h3>
+<div class="formula-wrap"><div class="formula-box">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div></div>
+<p>CAS가 쥠을 만들 때 생긴 비용은 RLU에 기록되고 연속으로 회수된다. 쥠이 DATA에서 풀리는 순간은 이산이다.</p></div>
+<div class="step"><h3>2단계. 노름 치환</h3>
+<div class="math-block">
+<div class="math-row">문턱 $= \dfrac{\text{쓰기 유지 비용}}{\text{CAS 총 비용}} = \dfrac{4}{13}$</div>
+<div class="math-row">풀림 시점 $t_1 &lt; t_2$ ==&gt; 누적 길이 $L(t_1) &lt; L(t_2)$</div>
+<div class="math-legend">쓰기 유지 비용 4 = 3축 쥐기 3 + 타임스탬프 1 (<a href="../axiom.html#ax6">공리 6</a>) | 총 비용 13 = 읽기 8 + 쓰기 5 (<a href="../axiom.html#ax9">공리 9</a>) | 감쇠 연속, 문턱 이산 (공리 2 명제)</div>
+</div></div>
+<div class="step"><h3>3단계. 상수 대입</h3>
+<div class="math-block">
+<div class="math-row">$r_\text{drag} = 3\times7^2 = 147$ Mpc (<a href="d63.html">D-63</a>; 3 = CAS 단계, 7 = CAS 내부 자유도)</div>
+<div class="math-row">$r_* &lt; 147$ Mpc (본 카드의 방향)</div>
+<div class="math-row">수치 시험: $r_* = 147\times56/57 = 144.42$ Mpc (비율의 공리 근거 없음)</div>
+</div></div>
+<div class="step"><h3>4단계. 도메인 변환</h3>
+<p>우주론 표준자 도메인으로 변환하면, 먼저 풀리는 문턱은 재결합이고 나중 문턱은 끌림이다. 관측은 $r_* = 144.39\pm0.30$, $r_\text{drag} = 147.09\pm0.26$ Mpc로 방향이 맞는다. 표준 ΛCDM의 비 0.98164와 수치 시험값 0.98246은 0.08% 다르다.</p></div>
+<div class="step"><h3>5단계. 발견</h3>
+<p>판정: <strong>가설. 반증 조건: 재결합 지평이 끌림 지평보다 길게 측정되면 폐기. 승격 조건: 두 번째 문턱 값을 공리 구절에서 산출해 비율을 사전에 고정하는 것.</strong></p></div>
+<div class="box-byproduct"><h3>부산물</h3>
+<p><a href="d136.html">D-136</a>의 음향 각 계산은 성립하지 않는다. 적힌 산식 $147/12.81\times180/\pi\times10^{-2}$를 실제로 계산하면 6.57이고, 공동 거리 $r$을 물리 거리 $D_A$로 나누어 단위가 맞지 않으며, 1.0411은 도 단위가 아니라 $100\theta_*$이다. 반야 자체 값($H_0 = 67.4$, $\Omega_m = 18/57$, 복사 포함)으로 $D_M(z_*) = 13851$ Mpc를 계산하면 $r_* = 144.42$에서 $100\theta_* = 1.0427$로 관측 1.04110과 0.15% 다르다.</p></div>
+<div class="box-incomplete"><h3>미완</h3>
+<table class="tbl"><thead><tr><th>항목</th><th>현재 상태</th><th>해결 방향</th></tr></thead><tbody>
+<tr><td>두 번째 문턱의 값</td><td>공리에 없음</td><td>쓰기 유지 비용 4 외의 유지 비용이 공리 구절에서 나오는지 대조</td></tr>
+<tr><td>비율 56/57</td><td>사후 선택</td><td>57의 공리 9 지위 확인 (조합된 기술끼리의 + 허용 여부), 공리 13 명제와 충돌하지 않는 독법</td></tr>
+<tr><td><a href="d136.html">D-136</a> 음향 각</td><td>계산 불성립</td><td>$r_*$와 반야 $D_M$으로 재도출, 오차 0.15% 명시</td></tr>
+</tbody></table></div>
+<div class="box-summary"><h3>총괄</h3>
+<table class="tbl"><thead><tr><th>항목</th><th>결과</th><th>상태</th></tr></thead><tbody>
+<tr><td><a href="h999.html">H-999</a>: 음향 지평의 두 문턱, $r_* &lt; r_\text{drag}$</td><td>방향은 공리 구절에서 도출, 관측과 일치. 비율 수치는 미완</td><td><span class="tag-hypothesis">가설</span></td></tr>
+</tbody></table></div>
+</main>
+<div class="page-nav lang-ko">
+<a href="../banya.html">종합 보고서</a>
+<a href="../predictions.html">고유 예측</a>
+<a href="../lib.html">가설 라이브러리</a>
+<a href="../science_mine.html">과학 채굴 메뉴얼</a>
+<a href="../axiom.html">공리</a>
+</div>
+<footer class="doc-footer lang-ko">
+<div class="f-top">
+<div class="f-corp">
+<b>반야프레임 (般若 Framework)</b><br/>
+발명자: 한혁진 (Han Hyukjin)<br/>
+이메일: <a href="mailto:bokkamsun@gmail.com">bokkamsun@gmail.com</a><br/>
+별칭: 부처님 손바닥 프레임<br/>
+분류: 공리 기반 과학 채굴 엔진 (Axiom-Based Science Mining Engine)
+</div>
+<div class="f-right">
+<div class="f1">$$\delta^2 = (\text{time} + \text{space})^2 + (\text{observer} + \text{superposition})^2$$</div>
+</div>
+</div>
+<div class="f-bottom">
+<div class="f-copy">&copy; 2026 Han Hyukjin. All rights reserved.</div>
+<div class="f-license">
+<div class="license-title">CC BY-NC-SA 4.0</div>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.<br/>
+<div class="license-cite">인용: Han Hyukjin, "Banya Framework", 2026. bokkamsun@gmail.com</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
