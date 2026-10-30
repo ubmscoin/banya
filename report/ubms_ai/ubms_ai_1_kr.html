@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B63YWKZSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8B63YWKZSJ');
+</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산</title>
+<meta name="description" content="0이 아닌 모든 수는 e^(ln x) 꼴로 표기할 수 있다. 여기서 출발해서 곱셈 없이, GPU 없이 LLM을 실행하는 정수 전용 연산 체계를 만든다. 이 글에서 제안하는 것은 세 가지다. 첫째, 반야수. 수의 본질은 2차원이다. 크기와 각도를 한 덩어리로 들고..."/>
+<meta name="keywords" content="반야수, 2차원 수체계, 로그 수체계, 유니터리 회전, 분수 미분, 정수 전용 추론, 곱셈 없는 LLM, SIMD, 유계 활성함수, GPU 없는 LLM, 한혁진, 반야"/>
+<meta name="author" content="Hyukjin Han"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html"/>
+<link rel="alternate" hreflang="ko" href="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html"/>
+<link rel="alternate" hreflang="x-default" href="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산"/>
+<meta property="og:description" content="0이 아닌 모든 수는 e^(ln x) 꼴로 표기할 수 있다. 여기서 출발해서 곱셈 없이, GPU 없이 LLM을 실행하는 정수 전용 연산 체계를 만든다. 이 글에서 제안하는 것은 세 가지다. 첫째, 반야수. 수의 본질은 2차원이다. 크기와 각도를 한 덩어리로 들고..."/>
+<meta property="og:url" content="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html"/>
+<meta property="og:site_name" content="반야 연구 시리즈"/>
+<meta property="og:locale" content="ko_KR"/>
+<meta property="article:author" content="Hyukjin Han"/>
+<meta property="article:published_time" content="2026-10-30"/>
+<meta property="article:modified_time" content="2026-10-31"/>
+<meta property="article:section" content="Computer Science"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산"/>
+<meta name="twitter:description" content="0이 아닌 모든 수는 e^(ln x) 꼴로 표기할 수 있다. 여기서 출발해서 곱셈 없이, GPU 없이 LLM을 실행하는 정수 전용 연산 체계를 만든다. 이 글에서 제안하는 것은 세 가지다. 첫째, 반야수. 수의 본질은 2차원이다. 크기와 각도를 한 덩어리로 들고..."/>
+<meta name="citation_title" content="ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산"/>
+<meta name="citation_author" content="Hyukjin Han"/>
+<meta name="citation_pdf_url" content="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.pdf"/>
+<meta name="citation_doi" content="10.5281/zenodo.23811490"/>
+<meta name="citation_language" content="ko"/>
+<meta name="citation_publication_date" content="2026/10/30"/>
+<meta name="citation_date" content="2026/10/30"/>
+<meta name="citation_online_date" content="2026/10/31"/>
+<meta name="citation_year" content="2026"/>
+<meta name="citation_publisher" content="Zenodo"/>
+<meta name="citation_author_institution" content="Independent Researcher"/>
+<meta name="citation_author_email" content="bokkamsun@gmail.com"/>
+<meta name="citation_author_orcid" content="0009-0007-4132-1707"/>
+<meta name="citation_keywords" content="banya number; two-dimensional number; logarithmic number system; unitary rotation; fractional derivative; integer-only inference; multiplication-free LLM; SIMD; bounded activation; transcendence of e"/>
+<meta name="citation_abstract_html_url" content="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html"/>
+<meta name="citation_public_url" content="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html"/>
+<meta name="date" content="2026-10-30"/>
+<meta name="last-modified" content="2026-10-31"/>
+<meta name="DC.title" content="ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산"/>
+<meta name="DC.creator" content="Hyukjin Han"/>
+<meta name="DC.date" content="2026-10-30"/>
+<meta name="DCTERMS.issued" content="2026-10-30"/>
+<meta name="DCTERMS.modified" content="2026-10-31"/>
+<meta name="DC.identifier" content="https://doi.org/10.5281/zenodo.23811490"/>
+<meta name="DC.identifier" scheme="DCTERMS.URI" content="https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html"/>
+<meta name="DC.language" content="ko"/>
+<meta name="DC.type" content="Text"/>
+<meta name="DC.publisher" content="Zenodo"/>
+<meta name="DC.subject" content="banya number; two-dimensional number; logarithmic number system; unitary rotation; fractional derivative; integer-only inference; multiplication-free LLM; SIMD; bounded activation; transcendence of e"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산",
+  "name": "ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "Hyukjin Han",
+    "identifier": "https://orcid.org/0009-0007-4132-1707",
+    "email": "bokkamsun@gmail.com",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Independent Researcher"
+    }
+  },
+  "datePublished": "2026-10-30",
+  "dateModified": "2026-10-31",
+  "keywords": "banya number; two-dimensional number; logarithmic number system; unitary rotation; fractional derivative; integer-only inference; multiplication-free LLM; SIMD; bounded activation; transcendence of e",
+  "description": "0이 아닌 모든 수는 e^(ln x) 꼴로 표기할 수 있다. 여기서 출발해서 곱셈 없이, GPU 없이 LLM을 실행하는 정수 전용 연산 체계를 만든다. 이 글에서 제안하는 것은 세 가지다. 첫째, 반야수. 수의 본질은 2차원이다. 크기와 각도를 한 덩어리로 들고...",
+  "url": "https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.html",
+  "isPartOf": "ubms ai 시리즈",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://ubmscoin.github.io/banya/report/ubms_ai/ubms_ai_1_kr.pdf",
+    "encodingFormat": "application/pdf"
+  },
+  "sameAs": "https://doi.org/10.5281/zenodo.23811490",
+  "identifier": "https://doi.org/10.5281/zenodo.23811490",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zenodo"
+  }
+}
+</script>
+</head>
+<body>
+<article>
+<h1>ubms ai 1: 반야수 - 2차원 수체계와 GPU 없는 LLM 연산</h1>
+<p><strong>저자:</strong> 한혁진 (Hyukjin Han) - 독립 연구자, 경기도 화성, 대한민국; bokkamsun@gmail.com</p>
+<h2>초록</h2>
+<p>0이 아닌 모든 수는 e^(ln x) 꼴로 표기할 수 있다. 여기서 출발해서 곱셈 없이, GPU 없이 LLM을 실행하는 정수 전용 연산 체계를 만든다. 이 글에서 제안하는 것은 세 가지다. 첫째, 반야수. 수의 본질은 2차원이다. 크기와 각도를 한 덩어리로 들고 다니는 수를 반야수라 부른다. 가중치도 활성값도 모두 반야수다. 연산은 유니터리 회전만으로 처리하므로 변환도 손실도 없다. 둘째, 식 자체를 값으로 들고 다닌다. 반야수의 합은 실수로 뭉개지 않고 e 지수 항들의 정수 계수 배열로 보존한다. e가 초월수이므로 같은지 비교는 계수 배열만 보면 정확하다. 셋째, 미분은 회전이다. e 지수 꼴은 미분해도 꼴이 변하지 않고, 미분 한 번은 90도 회전이다. 분수 미분은 임의 각도 회전이고, 반야프레임의 분수 미분 회전과 같은 구조다. 결과적으로 곱셈기도 부동소수점 장치도 없이 덧셈, 시프트, 비교만으로 LLM 전 과정을 실행한다.</p>
+<p><a href="ubms_ai_1_kr.pdf" target="_blank" rel="noopener">PDF 전문 보기</a></p>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.23811490" target="_blank" rel="noopener">10.5281/zenodo.23811490</a></p>
+<p><strong>발행일:</strong> 2026-10-30; <strong>최종 수정:</strong> 2026-10-31</p>
+</article>
+</body>
+</html>
