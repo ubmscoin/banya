@@ -3,7 +3,7 @@
 Banya Framework — Build banya_main PDF (KR + EN).
 
 Unlike build_pdf.py (which merges all 28 pages into one PDF),
-this builds a SINGLE-PAGE PDF from banya_main.html (or en/banya.html),
+this builds a SINGLE-PAGE PDF from index.html (or en/banya.html),
 keeping all cross-page links as absolute URLs pointing to
 https://ubmscoin.github.io/banya/ (and /en/ for English).
 
@@ -204,7 +204,7 @@ def build_single_pdf(source_html, output_name, source_dir, label):
     # 3. Force <details> to be open by default in PDF
     body_content = re.sub(r'<details(\s|>)', r'<details open\1', body_content)
     # 4. Inject click-to-live banner above Quick Nav grid
-    quicknav_url = f"{WEB_BASE}/{source_dir}/banya.html#quicknav" if source_dir else f"{WEB_BASE}/banya_main.html#quicknav"
+    quicknav_url = f"{WEB_BASE}/{source_dir}/banya.html#quicknav" if source_dir else f"{WEB_BASE}/index.html#quicknav"
     if source_dir == "en":
         banner = (
             '<a href="' + quicknav_url + '" '
@@ -297,10 +297,10 @@ def build_single_pdf(source_html, output_name, source_dir, label):
 if __name__ == "__main__":
     # Korean
     build_single_pdf(
-        source_html="banya_main.html",
+        source_html="index.html",
         output_name="banya_main_kr",
         source_dir="",  # root level
-        label="Korean (banya_main.html)",
+        label="Korean (index.html)",
     )
     # English
     build_single_pdf(
